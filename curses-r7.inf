@@ -2253,7 +2253,7 @@ Global global10 = 9641[?];
 Global global11 = 9706[?];
 Global global12 = 9827[?];
 Global global13 = 9892[?];
-Global global14;
+Global verb;
 Global noun;
 Global second;
 Global global17 = 9908[?];
@@ -2515,7 +2515,7 @@ Global global239;
       .label17361;
         noun = nothing;
         second = nothing;
-        global14 = 0;
+        verb = ##Action0;
         routine_14150(global13);	! not popped
         @pop;
         global48 = global47;
@@ -2530,7 +2530,7 @@ Global global239;
         if (global6 == 98[robot_mouse?]) {
             noun = global13->2;
             second = global13->3;
-            global14 = global13->0;
+            verb = global13->0;
             routine_75b4();	! not popped
             @pop;
         } else if (global6 ~= player) {
@@ -2543,57 +2543,57 @@ Global global239;
                 print "(taking the first sixteen objects only)^";
             }
             local7 = 0;
-            if (global14 ~= 0) {
+            if (verb ~= ##Action0) {
                 local7 = 1[?];
             }
-            if (global14 == 0) {
-                global14 = global13->0;
+            if (verb == ##Action0) {
+                verb = global13->0;
             }
             local6 = 0;
-            if (global14 == 18[antique_jewellery_box?]) {
+            if (verb == ##Action18) {
                 local6 = 1[?];
             }
-            if (global14 == 19[four_leafed_clover?]) {
+            if (verb == ##Action19) {
                 local6 = 1[?];
             }
-            if (global14 == 38[red_tablet?]) {
+            if (verb == ##Action38) {
                 local6 = 1[?];
             }
-            if (global14 == 39[Over_the_East_Wing?]) {
+            if (verb == ##Action39) {
                 local6 = 1[?];
             }
-            if (global14 == 37[medicine_bottle?]) {
+            if (verb == ##Action37) {
                 local6 = 1[?];
             }
-            if (global14 == 35[wrapping_paper?]) {
+            if (verb == ##Action35) {
                 local6 = 1[?];
             }
-            if (global14 == 64[Roof?]) {
+            if (verb == ##Action64) {
                 local6 = 1[?];
             }
-            if (global14 == 63[gas_mask?]) {
+            if (verb == ##Action63) {
                 local6 = 1[?];
             }
-            if (global14 == 45[solid_glass_ball?]) {
+            if (verb == ##Action45) {
                 local6 = 1[?];
             }
-            if (global14 == 46[Library_Storage?]) {
+            if (verb == ##Action46) {
                 local6 = 1[?];
             }
-            if (global14 >= 99 && global43 == 0) {
+            if (verb >= 99 && global43 == 0) {
                 print "You can't do that.^";
                 local6 = 1[?];
             } else {
                 if (game_section == DREAMING && local6 == 0) {
-                    if (global14 == 17[Meldrews_History?]) {
+                    if (verb == ##Action17) {
                         ! no code
-                    } else if (global14 == 2[?]) {
+                    } else if (verb == ##Action2) {
                         ! no code
-                    } else if (global14 == 20[Rod_of_Luck?]) {
+                    } else if (verb == ##Action20) {
                         ! no code
-                    } else if (global14 == 1[?]) {
+                    } else if (verb == ##Action1) {
                         ! no code
-                    } else if (global14 == 80[Old_Winery?]) {
+                    } else if (verb == ##Action80) {
                         ! no code
                     } else {
                         print "You seem unable to concentrate sufficiently.^";
@@ -2618,12 +2618,12 @@ Global global239;
                     jump label17361;
                 }
                 if (local2 == 0) {
-                    routine_47fc(0,0,global14);	! not popped
+                    routine_47fc(0,0,verb);	! not popped
                     @pop;
                 }
                 if (local2 > 0) {
                     if (noun ~= nothing) {
-                        routine_47fc(noun,second,global14);	! not popped
+                        routine_47fc(noun,second,verb);	! not popped
                         @pop;
                     }
                     if (noun == nothing) {
@@ -2640,7 +2640,7 @@ Global global239;
                             ++local4;
                             local5 = global17->local4;
                             print (name) local5, ": ";
-                            routine_47fc(local5,second,global14);	! not popped
+                            routine_47fc(local5,second,verb);	! not popped
                             @pop;
                             jump label17882;
                         }
@@ -2724,7 +2724,7 @@ Global global239;
 [ routine_47fc local1 local2 local3 ;	! 18428 / 0x47fc
     noun = local1;
     second = local2;
-    global14 = local3;
+    verb = local3;
     if (location ~= nothing) {
         local1 = location.after;
         if (local1 ~= 65535[?] && local1() ~= 0) {
@@ -3566,7 +3566,7 @@ Global global239;
 ];
 
 [ routine_75b4 local1 local2 local3 local4 local5 ;	! 30132 / 0x75b4
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         "The mouse emits a querulous, unhappy bleep.";
     }
     if (noun == ne_wall) {
@@ -4195,11 +4195,11 @@ Global global239;
     if (local1 ~= 0) {
         rtrue;
     }
-    global14 = 2[?];
+    verb = ##Action2;
     if (1[?] == routine_484c()) {
         rtrue;
     }
-    global14 = 3[s_wall?];
+    verb = ##Action3;
     if (1[?] == routine_484c()) {
         rtrue;
     }
@@ -4209,8 +4209,8 @@ Global global239;
 
 [ routine_84f2 local1 ;	! 34034 / 0x84f2
     if (second == floor) {
-        global14 = 8[se_wall?];
-        routine_47fc(noun,0,global14);	! not popped
+        verb = ##Action8;
+        routine_47fc(noun,0,verb);	! not popped
         @pop;
         rfalse;
     }
@@ -4280,8 +4280,8 @@ Global global239;
   .label34418;
     remove noun;
     move noun to player;
-    global14 = local2;
-    routine_47fc(noun,second,global14);	! not popped
+    verb = local2;
+    routine_47fc(noun,second,verb);	! not popped
     @pop;
     rfalse;
 ];
@@ -4327,8 +4327,8 @@ Global global239;
     if (local1 ~= 0) {
         local2 = sibling(local1);
         print (name) local1, ": ";
-        global14 = 11[floor?];
-        routine_47fc(local1,second,global14);	! not popped
+        verb = ##Action11;
+        routine_47fc(local1,second,verb);	! not popped
         @pop;
         local1 = local2;
         jump label34592;
@@ -4673,7 +4673,7 @@ Global global239;
             print " here.^";
         }
     }
-    global14 = 20[Rod_of_Luck?];
+    verb = ##Action20;
     if (1[?] == routine_4894()) {
         rtrue;
     }
@@ -5536,8 +5536,8 @@ Global global239;
         @pop;
         rfalse;
     }
-    global14 = 2[?];
-    routine_47fc(noun,0,global14);	! not popped
+    verb = ##Action2;
+    routine_47fc(noun,0,verb);	! not popped
     @pop;
     rtrue;
 ];
@@ -5568,11 +5568,11 @@ Global global239;
     }
     if (noun has attrib23) {
         if (noun has attrib24) {
-            global14 = 56[Dead_End?];
+            verb = ##Action56;
         } else {
-            global14 = 57[canvas_rucksack?];
+            verb = ##Action57;
         }
-        routine_47fc(noun,0,global14);	! not popped
+        routine_47fc(noun,0,verb);	! not popped
         @pop;
         rfalse;
     }
@@ -5606,11 +5606,11 @@ Global global239;
     }
     if (noun has attrib23) {
         if (noun has attrib24) {
-            global14 = 57[canvas_rucksack?];
+            verb = ##Action57;
         } else {
-            global14 = 56[Dead_End?];
+            verb = ##Action56;
         }
-        routine_47fc(noun,0,global14);	! not popped
+        routine_47fc(noun,0,verb);	! not popped
         @pop;
         rfalse;
     }
@@ -6618,7 +6618,7 @@ Global global239;
 ! References: Old_Winery.before
 
 [ routine_f566 local1 ;	! 62822 / 0xf566
-    if (global14 ~= 20[Rod_of_Luck?]) {
+    if (verb ~= ##Action20) {
         rfalse;
     }
     if (Old_Winery has attrib25) {
@@ -6632,7 +6632,7 @@ Global global239;
 ! References: East_Annexe.before
 
 [ routine_f630 local1 local2 ;	! 63024 / 0xf630
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         local1 = 24[old_smudged_battery?];
         local2 = local1.prop21;
         if (local2 > 3) {
@@ -6645,7 +6645,7 @@ Global global239;
 ! References: Inside_Cupboard.before
 
 [ routine_f64c local1 ;	! 63052 / 0xf64c
-    if (global14 == 7[nw_wall?] && second == big_iron_fireplace) {
+    if (verb == ##Action7 && second == big_iron_fireplace) {
         remove noun;
         move noun to Priests_Hole;
         if (sooty_old_stick hasnt attrib6) {
@@ -6662,7 +6662,7 @@ Global global239;
 ! References: Storage_Room.before
 
 [ routine_f68e local1 ;	! 63118 / 0xf68e
-    if (global14 == 7[nw_wall?] && second == dark_shaft) {
+    if (verb == ##Action7 && second == dark_shaft) {
         remove noun;
         move noun to dumbwaiter;
         local1 = 86[dumbwaiter?];
@@ -6683,7 +6683,7 @@ Global global239;
 ! References: Storage_Room.after
 
 [ routine_f714 local1 ;	! 63252 / 0xf714
-    if (global14 == 4[e_wall?]) {
+    if (verb == ##Action4) {
         local1 = 86[dumbwaiter?];
         local1 = parent(local1);
         if (local1 == 84[Storage_Room?]) {
@@ -6698,7 +6698,7 @@ Global global239;
 ! References: Cellars.after
 
 [ routine_f770 local1 ;	! 63344 / 0xf770
-    if (global14 == 4[e_wall?]) {
+    if (verb == ##Action4) {
         local1 = 86[dumbwaiter?];
         local1 = parent(local1);
         if (local1 == 93[Cellars?]) {
@@ -6711,7 +6711,7 @@ Global global239;
 ];
 
 [ routine_f7d0 ;	! 63440 / 0xf7d0
-    if (global14 == 0) {
+    if (verb == ##Action0) {
         "Far, far too dangerous to contemplate. Besides, you're a coward.";
     }
     rfalse;
@@ -6720,7 +6720,7 @@ Global global239;
 ! References: Chimney.after
 
 [ routine_f808 local1 ;	! 63496 / 0xf808
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         if (noun == floor) {
             local1 = child(player);
             if (local1 ~= 0) {
@@ -6737,7 +6737,7 @@ Global global239;
 ! References: Priests_Hole.after
 
 [ routine_f8c2 local1 ;	! 63682 / 0xf8c2
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         if (noun == ceiling) {
             local1 = child(player);
             if (local1 ~= 0) {
@@ -6757,7 +6757,7 @@ Global global239;
 ! References: painting_of_Mad_Isaac_Meldrewe.before
 
 [ routine_f968 ;	! 63848 / 0xf968
-    if (global14 == 2[?] && big_iron_fireplace has attrib1) {
+    if (verb == ##Action2 && big_iron_fireplace has attrib1) {
         give big_iron_fireplace ~attrib1;
         "Taken. (There's a fireplace behind it, by the way.)";
     }
@@ -6767,7 +6767,7 @@ Global global239;
 ! References: Dark_Room.before
 
 [ routine_f9a0 ;	! 63904 / 0xf9a0
-    if (global14 == 20[Rod_of_Luck?] && Dark_Room has light) {
+    if (verb == ##Action20 && Dark_Room has light) {
         print "^The room is filled with an eerie, reddish light. You feel gloomy and can't help thinking about aviation accident statistics.^";
     }
     rfalse;
@@ -6776,7 +6776,7 @@ Global global239;
 ! References: Dark_Shaft.before
 
 [ routine_fa08 ;	! 64008 / 0xfa08
-    if (global14 == 20[Rod_of_Luck?] && parent(dumbwaiter) ~= Dark_Shaft) {
+    if (verb == ##Action20 && parent(dumbwaiter) ~= Dark_Shaft) {
         print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the cellars.^";
     }
     rfalse;
@@ -6785,7 +6785,7 @@ Global global239;
 ! References: Dark_Shaft.after
 
 [ routine_fa5c ;	! 64092 / 0xfa5c
-    if (global14 == 17[Meldrews_History?] && noun == floor && parent(dumbwaiter) == Dark_Shaft) {
+    if (verb == ##Action17 && noun == floor && parent(dumbwaiter) == Dark_Shaft) {
         "Since the dumbwaiter is here, why not travel in that instead.";
     }
     rfalse;
@@ -6794,7 +6794,7 @@ Global global239;
 ! References: postcard.before
 
 [ routine_fa9e ;	! 64158 / 0xfa9e
-    if (global14 == 21[yourself?] && location == Dark_Room && Dark_Room has light) {
+    if (verb == ##Action21 && location == Dark_Room && Dark_Room has light) {
         routine_758a(0);	! not popped
         @pop;
         "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
@@ -6857,7 +6857,7 @@ Global global239;
 ! References: electric_torch.before
 
 [ routine_fc5a local1 ;	! 64602 / 0xfc5a
-    if (global14 == 29[House?]) {
+    if (verb == ##Action29) {
         if (electric_torch has light) {
             print "The torch goes out as you open the battery compartment.^";
         }
@@ -6867,7 +6867,7 @@ Global global239;
         give electric_torch ~light;
         rtrue;
     }
-    if (global14 == 31[furniture?]) {
+    if (verb == ##Action31) {
         local1 = 23[electric_torch?];
         local1 = child(local1);
         print "You close the battery compartment of the torch";
@@ -6900,7 +6900,7 @@ Global global239;
 ! References: hanging_cord.after
 
 [ routine_fe30 ;	! 65072 / 0xfe30
-    if (global14 == 51[south_wall?]) {
+    if (verb == ##Action51) {
         print "Click!  ";
         if (Dark_Room has light) {
             give Dark_Room ~light;
@@ -6915,7 +6915,7 @@ Global global239;
 ! References: solid_glass_ball.after
 
 [ routine_fe84 local1 ;	! 65156 / 0xfe84
-    if (global14 ~= 21[yourself?]) {
+    if (verb ~= ##Action21) {
         rfalse;
     }
     if (solid_glass_ball hasnt attrib25) {
@@ -6951,16 +6951,16 @@ Global global239;
 ! References: metal_door.before
 
 [ routine_10024 ;	! 65572 / 0x10024
-    if (global14 == 30[Old_Furniture?]) {
+    if (verb == ##Action30) {
         give coal_bunker ~attrib22;
     }
-    if (global14 == 58[secret_door?]) {
+    if (verb == ##Action58) {
         give coal_bunker attrib22;
     }
-    if (global14 == 29[House?]) {
+    if (verb == ##Action29) {
         give coal_bunker open;
     }
-    if (global14 == 31[furniture?]) {
+    if (verb == ##Action31) {
         give coal_bunker ~open;
     }
     rfalse;
@@ -6969,16 +6969,16 @@ Global global239;
 ! References: coal_bunker.before
 
 [ routine_10046 ;	! 65606 / 0x10046
-    if (global14 == 30[Old_Furniture?]) {
+    if (verb == ##Action30) {
         give metal_door ~attrib22;
     }
-    if (global14 == 58[secret_door?]) {
+    if (verb == ##Action58) {
         give metal_door attrib22;
     }
-    if (global14 == 29[House?]) {
+    if (verb == ##Action29) {
         give metal_door open;
     }
-    if (global14 == 31[furniture?]) {
+    if (verb == ##Action31) {
         give metal_door ~open;
     }
     rfalse;
@@ -6987,7 +6987,7 @@ Global global239;
 ! References: pulley_ropes.after
 
 [ routine_10068 local1 local2 ;	! 65640 / 0x10068
-    if (global14 == 51[south_wall?]) {
+    if (verb == ##Action51) {
         local1 = parent(player);
         if (local1 ~= 86[dumbwaiter?]) {
             "You can't reach them!";
@@ -7014,7 +7014,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (global14 == 71[Priests_Hole?]) {
+    if (verb == ##Action71) {
         "If only you didn't suffer from such dreadful vertigo...";
     }
     rfalse;
@@ -7023,7 +7023,7 @@ Global global239;
 ! References: windows.after
 
 [ routine_10194 ;	! 65940 / 0x10194
-    if (global14 == 59[Inside_Cupboard?]) {
+    if (verb == ##Action59) {
         if (windows has open) {
             rfalse;
         }
@@ -7036,10 +7036,10 @@ Global global239;
 ! References: medicine_bottle.after
 
 [ routine_101ec ;	! 66028 / 0x101ec
-    if (global14 == 59[Inside_Cupboard?]) {
+    if (verb == ##Action59) {
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
-    if (global14 == 29[House?]) {
+    if (verb == ##Action29) {
         if (medicine_bottle hasnt attrib22) {
             rfalse;
         }
@@ -7051,11 +7051,11 @@ Global global239;
 ! References: hinged_trapdoor.before
 
 [ routine_102fa ;	! 66298 / 0x102fa
-    if (global14 == 29[House?]) {
+    if (verb == ##Action29) {
         give hinged_trapdoor light;
         rfalse;
     }
-    if (global14 == 31[furniture?]) {
+    if (verb == ##Action31) {
         give hinged_trapdoor ~light;
         give antique_jewellery_box ~attrib1;
         "You close the trapdoor, surprised to see that something shiny was obscured by it.";
@@ -7066,7 +7066,7 @@ Global global239;
 ! References: demijohn.after
 
 [ routine_1034a ;	! 66378 / 0x1034a
-    if (global14 == 29[House?]) {
+    if (verb == ##Action29) {
         if (old_gardeners__gloves hasnt attrib2) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
         }
@@ -7079,7 +7079,7 @@ Global global239;
 ! References: gift_wrapped_parcel.after
 
 [ routine_10390 local1 ;	! 66448 / 0x10390
-    if (global14 == 29[House?]) {
+    if (verb == ##Action29) {
         local1 = 33[gift_wrapped_parcel?];
         remove local1;
         local1 = 36[postcard?];
@@ -7096,7 +7096,7 @@ Global global239;
 ! References: iron_key.after
 
 [ routine_103de local1 ;	! 66526 / 0x103de
-    if (global14 == 2[?]) {
+    if (verb == ##Action2) {
         if (iron_key has attrib25) {
             rfalse;
         }
@@ -7114,7 +7114,7 @@ Global global239;
 ! References: Potting_Room.before
 
 [ routine_10494 local1 ;	! 66708 / 0x10494
-    if (global14 == 20[Rod_of_Luck?] && antiquated_wireless has attrib25) {
+    if (verb == ##Action20 && antiquated_wireless has attrib25) {
         local1 = 111[antiquated_wireless?];
         local1 = parent(local1);
         if (local1 == 107[Conservatory?]) {
@@ -7127,7 +7127,7 @@ Global global239;
 ! References: old_gardeners__gloves.after
 
 [ routine_104d2 local1 ;	! 66770 / 0x104d2
-    if (global14 == 2[?] && old_gardeners__gloves hasnt attrib6) {
+    if (verb == ##Action2 && old_gardeners__gloves hasnt attrib6) {
         if (antiquated_wireless has attrib25) {
             rfalse;
         }
@@ -7140,7 +7140,7 @@ Global global239;
 ! References: calendar.after
 
 [ routine_10580 local1 ;	! 66944 / 0x10580
-    if (global14 == 21[yourself?]) {
+    if (verb == ##Action21) {
         local1 = 108[calendar?];
         local1 = local1.prop21;
         print "The calendar is turned to ";
@@ -7186,7 +7186,7 @@ Global global239;
         @pop;
         " daisies.";
     }
-    if (global14 == 55[cupboard_door?]) {
+    if (verb == ##Action55) {
         local1 = 108[calendar?];
         local1 = local1.prop21;
         ++local1;
@@ -7205,7 +7205,7 @@ Global global239;
 ! References: daisy_chain.after
 
 [ daiy_chain_after obj ;	! 67206 / 0x10686
-    if (global14 == 21[yourself?]) {
+    if (verb == ##Action21) {
         obj = daisy_chain;
         obj = obj.prop21;
         print "A delicate, pretty chain of ";
@@ -7213,7 +7213,7 @@ Global global239;
         @pop;
         " daisies.";
     }
-    if (global14 == 8[se_wall?]) {
+    if (verb == ##Action8) {
         obj = daisy_chain;
         remove obj;
         "The daisychain falls to pieces in your hands!";
@@ -7264,7 +7264,7 @@ Global global239;
 ! References: Coven_Cell.after
 
 [ routine_107de ;	! 67550 / 0x107de
-    if (global14 == 61[big_iron_fireplace?]) {
+    if (verb == ##Action61) {
         rfalse;
     }
     if (player has attrib25 && 5 > routine_7278(161[Coven_Cell?])) {
@@ -7276,7 +7276,7 @@ Global global239;
 ! References: poetry_book.after
 
 [ routine_10828 local1 ;	! 67624 / 0x10828
-    if (global14 == 21[yourself?]) {
+    if (verb == ##Action21) {
         print "Publishers talk a lot of nonsense about readers being transported away by books, but somehow you have arrived in the...^";
         local1 = 48[poetry_book?];
         remove local1;
@@ -7295,7 +7295,7 @@ Global global239;
 ! References: large_dial.after
 
 [ routine_108a0 ;	! 67744 / 0x108a0
-    if (global14 == 55[cupboard_door?]) {
+    if (verb == ##Action55) {
         finish_state = DESTROYED_UNIVERSE;
         global1 = 0;
         global1 = global1 - 99;
@@ -7314,7 +7314,7 @@ Global global239;
 ! References: wheel.after
 
 [ routine_10944 local1 ;	! 67908 / 0x10944
-    if (global14 == 55[cupboard_door?]) {
+    if (verb == ##Action55) {
         local1 = parent(player);
         if (local1 == 86[dumbwaiter?]) {
             "If you could only reach the wheel from here...";
@@ -7349,10 +7349,10 @@ Global global239;
 ! References: big_electricians_switch.before
 
 [ routine_10a14 ;	! 68116 / 0x10a14
-    if (global14 == 56[Dead_End?]) {
+    if (verb == ##Action56) {
         "Click-clunk!  The world looks precisely the same.";
     }
-    if (global14 == 57[canvas_rucksack?]) {
+    if (verb == ##Action57) {
         "Clunk-click!  Probably nothing very much has changed.";
     }
     rfalse;
@@ -7361,12 +7361,12 @@ Global global239;
 ! References: antiquated_wireless.before
 
 [ routine_10a6e local1 ;	! 68206 / 0x10a6e
-    if (global14 == 56[Dead_End?]) {
+    if (verb == ##Action56) {
         routine_7268(111[antiquated_wireless?],6[ne_wall?]);	! not popped
         @pop;
         "Nothing happens.";
     }
-    if (global14 == 57[canvas_rucksack?]) {
+    if (verb == ##Action57) {
         give antiquated_wireless ~attrib25;
         "Thank heaven for that.";
     }
@@ -7404,7 +7404,7 @@ Global global239;
 ! References: slide_projector.before
 
 [ routine_10b72 local1 ;	! 68466 / 0x10b72
-    if (global14 == 56[Dead_End?]) {
+    if (verb == ##Action56) {
         local1 = 50[slide_projector?];
         local1 = child(local1);
         if (local1 == 0) {
@@ -7414,7 +7414,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (global14 == 57[canvas_rucksack?]) {
+    if (verb == ##Action57) {
         give south_wall attrib1;
     }
     rfalse;
@@ -7423,7 +7423,7 @@ Global global239;
 ! References: Souvenirs_Room.after
 
 [ routine_10b98 local1 ;	! 68504 / 0x10b98
-    if (global14 == 7[nw_wall?]) {
+    if (verb == ##Action7) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -7454,7 +7454,7 @@ Global global239;
     if (slide_projector hasnt attrib24) {
         rfalse;
     }
-    if (global14 == 20[Rod_of_Luck?]) {
+    if (verb == ##Action20) {
         local1 = 50[slide_projector?];
         local1 = child(local1);
         if (local1 == 0) {
@@ -7465,7 +7465,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (global14 == 7[nw_wall?]) {
+    if (verb == ##Action7) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -7473,7 +7473,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (global14 == 2[?]) {
+    if (verb == ##Action2) {
         local1 = parent(noun);
         if (local1 == 50[slide_projector?]) {
             if (second ~= slide_projector) {
@@ -7484,7 +7484,7 @@ Global global239;
             rtrue;
         }
     }
-    if (global14 == 3[s_wall?]) {
+    if (verb == ##Action3) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -7498,13 +7498,13 @@ Global global239;
 ! References: Consulting_Room.after
 
 [ routine_10cd4 ;	! 68820 / 0x10cd4
-    if (global14 == 17[Meldrews_History?] && noun == w_wall) {
+    if (verb == ##Action17 && noun == w_wall) {
         "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.";
     }
-    if (global14 == 2[?] && noun == Tarot_pack) {
+    if (verb == ##Action2 && noun == Tarot_pack) {
         "That's funny. For a moment there your hand seemed to go straight through the pack of cards without touching it!";
     }
-    if (global14 == 7[nw_wall?] && second == Tarot_pack) {
+    if (verb == ##Action7 && second == Tarot_pack) {
         if (Madame_Sosostris hasnt attrib1) {
             "Madame Sosostris won't let you.";
         }
@@ -7525,7 +7525,7 @@ Global global239;
 ! References: poster.after
 
 [ routine_10df2 ;	! 69106 / 0x10df2
-    if (global14 == 2[?] && poster has attrib14) {
+    if (verb == ##Action2 && poster has attrib14) {
         give poster ~attrib14;
         "You hastily tear down the poster, but there's nothing interesting behind it, only painted graffiti: ~Shantih Shantih Shantih~.";
     }
@@ -7535,7 +7535,7 @@ Global global239;
 ! References: gas_mask.before
 
 [ routine_10e5e ;	! 69214 / 0x10e5e
-    if (global14 == 6[ne_wall?]) {
+    if (verb == ##Action6) {
         "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of World War II leftover cork.";
     }
     rfalse;
@@ -7547,7 +7547,7 @@ Global global239;
     if (gas_mask has attrib2) {
         rfalse;
     }
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         rfalse;
     }
     "The coal dust makes you cough and splutter, and your eyes stream. You are unable to concentrate on doing anything here.";
@@ -7650,7 +7650,7 @@ Global global239;
 ! References: maze_layout.after
 
 [ routine_1101e local1 local2 local3 ;	! 69662 / 0x1101e
-    if (global14 ~= 21[yourself?]) {
+    if (verb ~= ##Action21) {
         rfalse;
     }
     print "The layout is roughly as follows:^^";
@@ -7685,7 +7685,7 @@ Global global239;
 [ routine_1108a local1 ;	! 69770 / 0x1108a
     global24 = 4[e_wall?];
     global25 = 6[ne_wall?];
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= n_wall) {
@@ -7701,10 +7701,10 @@ Global global239;
 ! References: Maze.after
 
 [ routine_111cc local1 local2 local3 ;	! 70092 / 0x111cc
-    if (global14 == 0) {
+    if (verb == ##Action0) {
         "Remember the poor grass!";
     }
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         if (global24 == 4[e_wall?] && global25 == 6[ne_wall?] && noun == s_wall) {
             rfalse;
         }
@@ -7759,7 +7759,7 @@ Global global239;
 ! References: Maze_Foundations.after
 
 [ routine_112f4 local1 local2 local3 ;	! 70388 / 0x112f4
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         if (global24 == 4[e_wall?] && global25 == 6[ne_wall?] && noun == s_wall) {
             rfalse;
         }
@@ -7802,7 +7802,7 @@ Global global239;
 ! References: Patio_in_Maze.after
 
 [ routine_113d8 local1 ;	! 70616 / 0x113d8
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         if (noun == floor) {
             rfalse;
         }
@@ -8018,7 +8018,7 @@ Global global239;
 ! References: Maze.before, Patio_in_Maze.before
 
 [ routine_11818 local1 ;	! 71704 / 0x11818
-    if (global14 == 20[Rod_of_Luck?]) {
+    if (verb == ##Action20) {
         local1 = routine_11410();
         return local1;
     }
@@ -8028,11 +8028,11 @@ Global global239;
 ! References: Maze_Foundations.before
 
 [ routine_11828 local1 ;	! 71720 / 0x11828
-    if (global14 == 20[Rod_of_Luck?]) {
+    if (verb == ##Action20) {
         local1 = routine_11552();
         return local1;
     }
-    if (global14 == 8[se_wall?]) {
+    if (verb == ##Action8) {
         print "You feel an alarming wrench in your insides.^";
         finish_state = PARADOX;
         rtrue;
@@ -8043,14 +8043,14 @@ Global global239;
 ! References: Viewpoint_Ledge.after
 
 [ routine_11862 local1 ;	! 71778 / 0x11862
-    if (global14 == 21[yourself?]) {
+    if (verb == ##Action21) {
         local1 = parent(player);
         if (local1 == 132[garden_roller?] && noun == plaque) {
             "The writing's too small from here.";
             rfalse;
         }
     }
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= e_wall) {
@@ -8066,7 +8066,7 @@ Global global239;
 ! References: bean_pole.before
 
 [ routine_118ce local1 ;	! 71886 / 0x118ce
-    if (global14 == 2[?]) {
+    if (verb == ##Action2) {
         if (bean_pole has attrib25) {
             rfalse;
         }
@@ -8095,7 +8095,7 @@ Global global239;
 ! References: Clifftop_Walk.after
 
 [ routine_118f8 ;	! 71928 / 0x118f8
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= e_wall) {
@@ -8111,7 +8111,7 @@ Global global239;
 ! References: Sacred_Earth.after
 
 [ routine_1195e ;	! 72030 / 0x1195e
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= s_wall) {
@@ -8133,7 +8133,7 @@ Global global239;
 ! References: Temple_of_Zeus.after
 
 [ routine_11b52 ;	! 72530 / 0x11b52
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= n_wall) {
@@ -8149,7 +8149,7 @@ Global global239;
     if (Ekmek_Special has attrib6) {
         rfalse;
     }
-    if (global14 ~= 2[?]) {
+    if (verb ~= ##Action2) {
         rfalse;
     }
     if (copper_coin has attrib25) {
@@ -8161,7 +8161,7 @@ Global global239;
 ! References: Andromeda.after
 
 [ routine_11c2c ;	! 72748 / 0x11c2c
-    if (global14 ~= 21[yourself?]) {
+    if (verb ~= ##Action21) {
         rfalse;
     }
     print "Avert your eyes. She is naked";
@@ -8174,7 +8174,7 @@ Global global239;
 ! References: Ruined_Castle_Cafe.before
 
 [ routine_11ce8 ;	! 72936 / 0x11ce8
-    if (global14 == 20[Rod_of_Luck?]) {
+    if (verb == ##Action20) {
         if (Cups_and_Glasses hasnt attrib17) {
             rfalse;
         }
@@ -8188,7 +8188,7 @@ Global global239;
 ! References: complicated_looking_bomb.before
 
 [ routine_11dd0 ;	! 73168 / 0x11dd0
-    if (global14 == 2[?]) {
+    if (verb == ##Action2) {
         finish_state = PRISON;
         "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and twenty-five years isn't all that long.";
     }
@@ -8198,7 +8198,7 @@ Global global239;
 ! References: timer_detonater.after
 
 [ routine_11e7c local1 local2 ;	! 73340 / 0x11e7c
-    if (global14 ~= 21[yourself?]) {
+    if (verb ~= ##Action21) {
         rfalse;
     }
     print "The timer seems quite simple to set. ";
@@ -8294,7 +8294,7 @@ Global global239;
 ! References: Infinity_Symbol.before
 
 [ routine_12050 local1 local2 ;	! 73808 / 0x12050
-    if (global14 == 20[Rod_of_Luck?]) {
+    if (verb == ##Action20) {
         print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through seven equally spaced sockets or cylindrical wells.";
         local1 = 106[circular_arc?];
         local2 = local1.prop21;
@@ -8330,7 +8330,7 @@ Global global239;
 ! References: Infinity_Symbol.after
 
 [ routine_121e2 local1 local2 ;	! 74210 / 0x121e2
-    if (global14 == 7[nw_wall?]) {
+    if (verb == ##Action7) {
         if (second ~= circular_arc) {
             rfalse;
         }
@@ -8361,7 +8361,7 @@ Global global239;
 ! References: Stream.after
 
 [ routine_12294 ;	! 74388 / 0x12294
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         if (noun ~= ceiling) {
             rfalse;
         }
@@ -8373,7 +8373,7 @@ Global global239;
 ! References: bone_die.before
 
 [ routine_12370 local1 ;	! 74608 / 0x12370
-    if (global14 == 8[se_wall?]) {
+    if (verb == ##Action8) {
         local1 = 6[ne_wall?];
         local1 = random(local1);
         "Alea iacta est. It comes up ", local1, ".";
@@ -8384,7 +8384,7 @@ Global global239;
 ! References: Inside_Well.after
 
 [ routine_1239e local1 ;	! 74654 / 0x1239e
-    if (global14 == 17[Meldrews_History?]) {
+    if (verb == ##Action17) {
         rfalse;
     }
     "There's not enough room in this confined space to do anything much!";
@@ -8393,7 +8393,7 @@ Global global239;
 ! References: Triclinium.after
 
 [ routine_123d8 local1 ;	! 74712 / 0x123d8
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= floor) {
@@ -8415,7 +8415,7 @@ Global global239;
 ! References: Triclinium.before
 
 [ routine_124c8 local1 ;	! 74952 / 0x124c8
-    if (global14 == 7[nw_wall?] && second == kitchen_well) {
+    if (verb == ##Action7 && second == kitchen_well) {
         remove noun;
         if (noun has light) {
             give kitchen_well attrib25;
@@ -8433,7 +8433,7 @@ Global global239;
 ! References: Entrance.after
 
 [ routine_12552 ;	! 75090 / 0x12552
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun == s_wall) {
@@ -8463,10 +8463,10 @@ Global global239;
 ! References: yellow_daisy.before
 
 [ routine_125c4 ;	! 75204 / 0x125c4
-    if (global14 == 6[ne_wall?]) {
+    if (verb == ##Action6) {
         "You tuck the daisy behind your ear, almost out of sight.";
     }
-    if (global14 == 2[?] && yellow_daisy hasnt attrib25) {
+    if (verb == ##Action2 && yellow_daisy hasnt attrib25) {
         give yellow_daisy attrib25;
         "Aided by the swinging of the rope, you pick the daisy.";
     }
@@ -8476,7 +8476,7 @@ Global global239;
 ! References: yellow_daisy.after
 
 [ routine_12628 ;	! 75304 / 0x12628
-    if (global14 ~= 2[?]) {
+    if (verb ~= ##Action2) {
         rfalse;
     }
     if (yellow_daisy has attrib6) {
@@ -8491,7 +8491,7 @@ Global global239;
 ! References: Hanging_on_Rope.after
 
 [ routine_1267e ;	! 75390 / 0x1267e
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= floor) {
@@ -8506,9 +8506,9 @@ Global global239;
 ! References: hypocaust_vents.after
 
 [ routine_126ca local1 ;	! 75466 / 0x126ca
-    if (global14 == 21[yourself?]) {
+    if (verb == ##Action21) {
         ! no code
-    } else if (global14 ~= 22[crumpled_piece_of_paper?]) {
+    } else if (verb ~= ##Action22) {
         rfalse;
     }
     if (global39 > 7) {
@@ -8547,7 +8547,7 @@ Global global239;
 ! References: saxon_spy.after
 
 [ routine_12942 ;	! 76098 / 0x12942
-    if (global14 ~= 22[crumpled_piece_of_paper?]) {
+    if (verb ~= ##Action22) {
         rfalse;
     }
     "Not only are the guards better at searching suspects than you, they also did so first.";
@@ -8556,7 +8556,7 @@ Global global239;
 ! References: tent_pole.before
 
 [ routine_12986 ;	! 76166 / 0x12986
-    if (global14 ~= 2[?]) {
+    if (verb ~= ##Action2) {
         rfalse;
     }
     if (tent_pole hasnt attrib25) {
@@ -8577,7 +8577,7 @@ Global global239;
 ! References: Encampment.after
 
 [ routine_12a32 ;	! 76338 / 0x12a32
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     if (noun ~= e_wall) {
@@ -8593,7 +8593,7 @@ Global global239;
 ! References: Near_Dolmen.before
 
 [ routine_12a8e local1 local2 ;	! 76430 / 0x12a8e
-    if (global14 ~= 20[Rod_of_Luck?]) {
+    if (verb ~= ##Action20) {
         rfalse;
     }
     location = Servants_Room;
@@ -8624,7 +8624,7 @@ Global global239;
 ! References: Heavenly_Place.before
 
 [ routine_12af4 local1 local2 ;	! 76532 / 0x12af4
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     routine_8fdc(1[?]);	! not popped
@@ -8657,7 +8657,7 @@ Global global239;
 ! References: Hellish_Place.before
 
 [ Hellish_Place_Before demon_obj local2 ;	! 77124 / 0x12d44
-    if (global14 ~= 17[Meldrews_History?]) {
+    if (verb ~= ##Action17) {
         rfalse;
     }
     routine_8fdc(1[?]);	! not popped
@@ -9499,7 +9499,7 @@ Global global239;
         global19 = routine_151aa(global69);
         global49 = global69;
         global18 = routine_150fa();
-        global14 = 65[Battlements?];
+        verb = ##Action65;
         noun = compass;
         second = global6;
         global6 = player;
