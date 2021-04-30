@@ -268,10 +268,10 @@ Object 254	angel
 Object 255	carbolic_soap
 
 Attribute 0	light
-Attribute 1	attrib1			! obj1_compass obj17_History_of_the_Meldrews__vol__II_ obj18_antique_jewellery_box obj21_yourself obj51_south_wall obj58_secret_door obj61_big_iron_fireplace obj67_Sir_Joshua_Meldrewe obj79_delicate_gold_key obj111_antiquated_wireless obj173_Madame_Sosostris__famous_clairvoyante obj190_complicated_looking_bomb obj200_amber_hairband obj243_tent_pole obj255_carbolic_soap
+Attribute 1	closed
 Attribute 2 worn
-Attribute 3	wearable
-Attribute 4	attrib4			! obj21_yourself obj67_Sir_Joshua_Meldrewe obj114_Jemima obj173_Madame_Sosostris__famous_clairvoyante obj183_hollow_man obj186_surly_shopkeeper obj199_Andromeda obj213_bartender obj245_unconscious_Saxon_spy obj252_demon obj254_angel
+Attribute 3	clothing
+Attribute 4	animate
 Attribute 5	attrib5			! obj21_yourself obj67_Sir_Joshua_Meldrewe obj114_Jemima obj173_Madame_Sosostris__famous_clairvoyante obj199_Andromeda obj212_Ekmek_Special
 Attribute 6	attrib6			! obj22_crumpled_piece_of_paper obj23_electric_torch obj25_chocolate_biscuit
 Attribute 7	attrib7			! obj15_hinged_trapdoor obj51_south_wall obj55_cupboard_door obj58_secret_door obj61_big_iron_fireplace obj62_cranked_skylight obj72_hatch obj76_windows obj92_metal_door obj103_Gothic_door obj123_coal_bunker obj130_runner_bean_plant obj139_bronze_mural obj165_cell_door obj181_tourist_boat obj197_windowed_door obj206_wall_of_thorns obj237_kitchen_well obj247_dolmen
@@ -736,7 +736,7 @@ Action 106	Action106	! 'xdeter'
 Routine 0x7a07 LeaveAttic
 Routine 0x43aa routine_43aa local1 local2:dictword
 Routine 0x47fc routine_47fc
-Routine 0x484c routine_484c
+Routine 0x484c AfterRoutines:int
 Routine 0x4894 routine_4894
 Routine 0x48b4 routine_48b4 ptr:int
 Routine 0x4960 routine_4960 var
@@ -802,20 +802,20 @@ Routine 0x9f4a routine_9f4a
 Routine 0x9f8e routine_9f8e
 Routine 0x9fc4 routine_9fc4
 Routine 0xa06e routine_a06e
-Routine 0xa08c routine_a08c
+Routine 0xa08c SmellSub
 Routine 0xa0a4 routine_a0a4
 Routine 0xa0ba routine_a0ba
 Routine 0xa0d2 routine_a0d2
 Routine 0xa0e8 routine_a0e8
-Routine 0xa118 routine_a118
-Routine 0xa188 routine_a188
-Routine 0xa1ae routine_a1ae
-Routine 0xa1ca routine_a1ca
-Routine 0xa1f2 routine_a1f2
-Routine 0xa216 routine_a216
-Routine 0xa2ac routine_a2ac
-Routine 0xa34a routine_a34a
-Routine 0xa374 routine_a374
+Routine 0xa118 DigSub
+Routine 0xa188 CutSub
+Routine 0xa1ae JumpSub
+Routine 0xa1ca JumpOverSub
+Routine 0xa1f2 TieSub
+Routine 0xa216 DrinkSub
+Routine 0xa2ac FillSub
+Routine 0xa34a SorrySub
+Routine 0xa374 WashSub soap:object
 Routine 0xa3f0 routine_a3f0
 Routine 0xa448 routine_a448
 Routine 0xa47a routine_a47a
@@ -832,7 +832,7 @@ Routine 0xabb2 PointWand env:object local2:int
 Routine 0xac5c routine_ac5c
 Routine 0xacfc routine_acfc
 Routine 0xad16 routine_ad16
-Routine 0xae0a routine_ae0a
+Routine 0xae0a routine_ae0a who:object
 Routine 0xaf9a routine_af9a
 Routine 0xb10c routine_b10c
 Routine 0xb1ba routine_b1ba
