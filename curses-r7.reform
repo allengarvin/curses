@@ -275,41 +275,41 @@ Attribute 4	animate
 Attribute 5	attrib5			! obj21_yourself obj67_Sir_Joshua_Meldrewe obj114_Jemima obj173_Madame_Sosostris__famous_clairvoyante obj199_Andromeda obj212_Ekmek_Special
 Attribute 6	attrib6			! obj22_crumpled_piece_of_paper obj23_electric_torch obj25_chocolate_biscuit
 Attribute 7	attrib7			! obj15_hinged_trapdoor obj51_south_wall obj55_cupboard_door obj58_secret_door obj61_big_iron_fireplace obj62_cranked_skylight obj72_hatch obj76_windows obj92_metal_door obj103_Gothic_door obj123_coal_bunker obj130_runner_bean_plant obj139_bronze_mural obj165_cell_door obj181_tourist_boat obj197_windowed_door obj206_wall_of_thorns obj237_kitchen_well obj247_dolmen
-Attribute 8	attrib8			! obj16_teachests obj18_antique_jewellery_box obj23_electric_torch obj32_scratched_cupboard obj37_guaranteed_unbreakable_medicine_bottle_with_a_child_proof_lock obj43_photographer_s_flash obj50_slide_projector obj57_canvas_rucksack obj61_big_iron_fireplace obj81_labelled_glass_demijohn obj86_dumbwaiter obj87_dark_shaft obj95_dark_shaft obj154_Tarot_box obj190_complicated_looking_bomb obj215_mirrored_device obj237_kitchen_well
-Attribute 9	attrib9			! obj18_antique_jewellery_box obj23_electric_torch obj32_scratched_cupboard obj43_photographer_s_flash obj57_canvas_rucksack obj87_dark_shaft obj95_dark_shaft obj154_Tarot_box obj215_mirrored_device
+Attribute 8	container
+Attribute 9	transparent
 Attribute 10	open		! obj15_hinged_trapdoor obj16_teachests obj27_servant_s_bed obj32_scratched_cupboard obj50_slide_projector obj51_south_wall obj57_canvas_rucksack obj58_secret_door obj61_big_iron_fireplace obj75_comfortable_bed obj86_dumbwaiter obj87_dark_shaft obj95_dark_shaft obj190_complicated_looking_bomb obj215_mirrored_device obj247_dolmen
 Attribute 11	openable
-Attribute 13	attrib13		! obj27_servant_s_bed obj75_comfortable_bed obj86_dumbwaiter obj95_dark_shaft obj132_garden_roller
-Attribute 14	attrib14		! obj2_north_wall obj3_south_wall obj4_east_wall obj5_west_wall obj6_northeast_wall obj7_northwest_wall obj8_southeast_wall obj9_southwest_wall obj10_ceiling obj11_floor obj16_teachests obj27_servant_s_bed obj31_furniture obj32_scratched_cupboard obj50_slide_projector obj51_south_wall obj53_insulation_rolls obj75_comfortable_bed obj85_wheel obj87_dark_shaft obj94_wheel obj95_dark_shaft obj100_hole_in_the_wall obj105_lemniscus obj106_circular_arc obj108_calendar obj110_pile_of_sheets obj125_plane_tree obj127_mosaic obj135_maze_layout obj143_big_electrician_s_switch obj145_plaque obj168_poster obj170_Tarot_pack obj171_curtain obj172_bell_push obj189_cafe_table obj197_windowed_door obj204_herd_of_goats obj215_mirrored_device obj220_hanging_rope obj222_hemp_rope obj227_ladder obj232_mosaic obj240_hypocaust_vents obj252_demon obj254_angel
+Attribute 13	enterable
+Attribute 14	scenery
 Attribute 15	static
 Attribute 16	wall_attr
 Attribute 18	rod_attr
-Attribute 19	attrib19		! obj19_four_leafed_clover obj69_sooty_old_stick obj96_old_timber_prop obj148_bean_pole obj157_Eight_of_Wands obj163_shepherd_s_crook obj177_oak_quarterstaff obj200_amber_hairband obj229_summoning_horn obj243_tent_pole obj249_bluish_stone
+Attribute 19	hidden_rod
 attribute 20    rod_charged
 
 ! locked/lockable, probably:
 Attribute 21	attrib21		! obj18_antique_jewellery_box obj55_cupboard_door obj72_hatch obj92_metal_door obj103_Gothic_door
 Attribute 22	attrib22		! obj18_antique_jewellery_box obj37_guaranteed_unbreakable_medicine_bottle_with_a_child_proof_lock obj72_hatch obj92_metal_door obj103_Gothic_door obj123_coal_bunker obj165_cell_door obj197_windowed_door
 
-Attribute 23	attrib23		! obj50_slide_projector obj85_wheel obj94_wheel obj111_antiquated_wireless obj132_garden_roller obj143_big_electrician_s_switch
-Attribute 24	attrib24		! obj85_wheel obj94_wheel obj143_big_electrician_s_switch
-Attribute 25    on
+Attribute 23    switchable
+Attribute 24	on
+Attribute 25    general
 Attribute 26	edible
 Attribute 27	card
 Attribute 28	attrib28		! obj16_teachests obj53_insulation_rolls obj110_pile_of_sheets
 Attribute 29	wire
-Attribute 30	attrib30		! obj38_red_tablet obj66_gothic_looking_iron_key obj71_Priest_s_Hole obj79_delicate_gold_key obj104_Infinity_Symbol obj113_old_gardeners__gloves obj122_Garden_Stream obj136_Maze obj137_Patio_in_Maze obj141_Universe_Maintenance_Room obj144_Viewpoint_Ledge obj147_Folly obj153_Museum_of_Arcana obj166_Unreal_City obj188_Ruined_Castle_Cafe obj208_Temple_of_Zeus obj211_Eraina_Taverna obj212_Ekmek_Special obj214_Lighthouse obj223_yellow_daisy obj241_Entrance obj242_Rough_Tent obj246_Encampment obj248_Beneath_Dolmen obj249_bluish_stone
+Attribute 30	scored
 Attribute 31	attrib31		! obj98_robot_mouse obj100_hole_in_the_wall
 
 Property 1	name:dictwords
 Property 2	description:string
 Property 3	article:string
-Property 4	initial:string
+Property 4	when_open:string
 Property 5	after:routine
 Property 6	before:routine
-Property 7	prop7:?
-Property 8	prop8:?
-Property 9	prop9:?
+Property 7	rod_action:routine
+Property 8	in_to:object
+Property 9	n_to:object
 Property 10	s_to:object
 Property 11	e_to:object
 Property 12	w_to:object
@@ -320,10 +320,10 @@ Property 16	sw_to:object
 Property 17	u_to:object
 Property 18	d_to:object
 Property 19	door_to:object
-Property 20	prop20:string
-Property 21	prop21:?
+Property 20	when_closed:string
+Property 21	number:int
 Property 22	prop22:?
-Property 23	prop23:?
+Property 23	rod_assoc:object
 Property 24	prop24:string
 Property 25	devil_hint:string
 Property 26	angel_hint:string
@@ -346,7 +346,7 @@ Global 14	verb:action
 Global 15	noun:object
 Global 16	second:object
 Global 17	global17:?
-Global 18	global18:?
+Global 18	global18:dictword
 Global 19	global19:?
 Global 20	game_section:game_area
 Global 21	global21:?
@@ -362,27 +362,27 @@ Global 30	global30:?
 Global 31	global31:?
 Global 32	global32:?
 Global 33	global33:?
-Global 34	global34:?
-Global 35	global35:?
+Global 34	things_score:int
+Global 35	places_score:int
 Global 36	global36:?
 Global 37	global37:?
 Global 38	global38:?
 Global 39	global39:?
 Global 40	global40:?
-Global 41	global41:?
+Global 41	debug_deterministic_transportation:bool
 Global 42	transcript_mode:int
-Global 43	global43:?
+Global 43	debug_mode:bool
 Global 44	global44:?
 Global 45	global45:?
 Global 46	global46:?
-Global 47	global47:?
+Global 47	notheld_mode
 Global 48	global48:?
 Global 49	global49:?
-Global 50	global50:?
+Global 50	num_words
 Global 51	global51:?
 Global 52	global52:?
 Global 53	global53:?
-Global 54	global54:?
+Global 54	verb_word:dictword
 Global 55	global55:?
 Global 56	global56:?
 Global 57	global57:?
@@ -621,10 +621,7 @@ Action 19	Action19	! 'full'/'fullsc'
 Action 20	Action20	! 'l//'/'look'
 Action 21	Action21	! 'check'/'descri'/'examin'/'read'/'watch'/'x//' noun
 				! 'l//'/'look' 'at' noun
-Action 22	Action22	! 'frisk'/'search' noun
-				! 'l//'/'look' 'inside' noun
-				! 'l//'/'look' 'in' noun
-				! 'l//'/'look' 'throug' noun
+Action 22	SuearchSub
 Action 23	Action23	! 'l//'/'look' 'under' noun
 Action 24	Action24	! 'consul' held 'about' special
 				! 'l//'/'look' 'up' special
@@ -781,7 +778,7 @@ Routine 0x8f16 routine_8f16
 Routine 0x8f76 routine_8f76
 Routine 0x8fdc routine_8fdc
 Routine 0x9156 routine_9156
-Routine 0x9320 routine_9320
+Routine 0x9320 DescribeObj obj:object n:int
 Routine 0x946e routine_946e
 Routine 0x963c routine_963c
 Routine 0x999e routine_999e
@@ -835,16 +832,16 @@ Routine 0xad16 routine_ad16
 Routine 0xae0a routine_ae0a who:object
 Routine 0xaf9a routine_af9a
 Routine 0xb10c routine_b10c
-Routine 0xb1ba routine_b1ba
+Routine 0xb1ba SpraySub i:object
 Routine 0xb3f0 routine_b3f0
-Routine 0xb3fa routine_b3fa
+Routine 0xb3fa routine_b3fa o1:object o2:object
 Routine 0xb6de routine_b6de
-Routine 0xb6f2 routine_b6f2
+Routine 0xb6f2 routine_b6f2 i
 Routine 0xc658 routine_c658
 Routine 0xc66c routine_c66c
 Routine 0xc67c routine_c67c
 Routine 0xc68c routine_c68c
-Routine 0xc806 routine_c806
+Routine 0xc806 DemonHint hints_left:int
 Routine 0xc8ae routine_c8ae
 Routine 0xc956 routine_c956
 Routine 0xcfb4 routine_cfb4
@@ -853,11 +850,11 @@ Routine 0xd04c routine_d04c
 Routine 0xd0f0 routine_d0f0
 Routine 0xd122 routine_d122
 Routine 0xd12e routine_d12e
-Routine 0xd150 routine_d150
+Routine 0xd150 HintSub
 Routine 0xd196 routine_d196
-Routine 0xd254 routine_d254
+Routine 0xd254 HelpSub word:dictword
 Routine 0xe4a8 routine_e4a8
-Routine 0xe4c6 routine_e4c6
+Routine 0xe4c6 DebugMoveRods obj:object
 Routine 0xe55e routine_e55e
 Routine 0xe5a0 routine_e5a0
 Routine 0xe5bc routine_e5bc
@@ -868,26 +865,26 @@ Routine 0xe822 routine_e822
 Routine 0xe838 routine_e838
 Routine 0xe844 routine_e844
 Routine 0xead4 routine_ead4
-Routine 0xed4c routine_ed4c
+Routine 0xed4c transport_player n:int dest:object
 Routine 0xee10 routine_ee10
 Routine 0xeeb6 routine_eeb6
 Routine 0xef82 routine_ef82
 Routine 0xf006 routine_f006
 Routine 0xf0b2 routine_f0b2
-Routine 0xf0fa routine_f0fa
+Routine 0xf0fa stalking_rod_action
 Routine 0xf282 routine_f282
 Routine 0xf3d6 routine_f3d6
 Routine 0xf40e routine_f40e
 Routine 0xf566 routine_f566
-Routine 0xf630 routine_f630
-Routine 0xf64c routine_f64c
+Routine 0xf630 EasttAnnexeBefore
+Routine 0xf64c InsideCupboardBefore
 Routine 0xf68e routine_f68e
 Routine 0xf714 routine_f714
 Routine 0xf770 routine_f770
 Routine 0xf7d0 routine_f7d0
 Routine 0xf808 routine_f808
 Routine 0xf8c2 routine_f8c2
-Routine 0xf968 routine_f968
+Routine 0xf968 IsaacPaintingBefore
 Routine 0xf9a0 routine_f9a0
 Routine 0xfa08 routine_fa08
 Routine 0xfa5c routine_fa5c
@@ -920,9 +917,9 @@ Routine 0x10a14 routine_10a14
 Routine 0x10a6e routine_10a6e
 Routine 0x10aa6 routine_10aa6
 Routine 0x10b14 routine_10b14
-Routine 0x10b72 routine_10b72
-Routine 0x10b98 routine_10b98
-Routine 0x10c3e routine_10c3e
+Routine 0x10b72 ProjectorBefore
+Routine 0x10b98 SouvenirRoomAfter
+Routine 0x10c3e SouvenirRoomBefore
 Routine 0x10cd4 routine_10cd4
 Routine 0x10df2 routine_10df2
 Routine 0x10e5e routine_10e5e
@@ -942,9 +939,9 @@ Routine 0x11552 routine_11552
 Routine 0x11818 routine_11818
 Routine 0x11828 routine_11828
 Routine 0x11862 routine_11862
-Routine 0x118ce routine_118ce
-Routine 0x118e8 routine_118e8
-Routine 0x118f0 routine_118f0
+Routine 0x118ce BeanPoleBefore
+Routine 0x118e8 TreePlantingBefore
+Routine 0x118f0 FollyBefore
 Routine 0x118f8 routine_118f8
 Routine 0x1195e routine_1195e
 Routine 0x11b52 routine_11b52
@@ -973,19 +970,20 @@ Routine 0x12942 routine_12942
 Routine 0x12986 routine_12986
 Routine 0x12a32 routine_12a32
 Routine 0x12a8e routine_12a8e
-Routine 0x12af4 routine_12af4
-Routine 0x12d44 Hellish_Place_Before demon_obj:object
+Routine 0x12af4 Heavenly_Place_Before angel_obj:object hints:int
+Routine 0x12d44 Hellish_Place_Before demon_obj:object hints:int
 Routine 0x12f90 DevilAnswer topic:topic_enum
 Routine 0x13792 AngelAnswer topic:topic_enum
 Routine 0x13bd8 routine_13bd8:int wrd:dictword topic:topic_enum
 Routine 0x13dae routine_13dae wrd:dictword topic:topic_enum
 Routine 0x13e76 routine_13e76
 Routine 0x13e80 routine_13e80
-Routine 0x13e8a routine_13e8a
-Routine 0x13f70 routine_13f70
-Routine 0x14054 routine_14054
-Routine 0x14150 routine_14150
+Routine 0x13e8a DemonQuestion local1 local2
+Routine 0x13f70 AngelQuestion
+Routine 0x14054 Keyboard
+Routine 0x14150 Parser results syntax line num_lines line_address i j token l m local11 etype_local:int
 Routine 0x14972 routine_14972
+Routine 0x1493e routine_1493e local1 local2 local3:dictword local4:dictword local5 local6 local7 local8 local9 local10 local11 local12 local13
 Routine 0x149a6 routine_149a6
 Routine 0x149e2 routine_149e2
 Routine 0x14a12 routine_14a12
@@ -1068,7 +1066,7 @@ Word	electr	electric
 Word	embrac	embrace
 Word	etchin	etching
 Word	everyt	everything
-Word	examin	examin
+Word	examin	examine
 Word	exhibi	exhibition
 Word	exhume	exhume
 Word	extrac	extrac
@@ -1125,111 +1123,68 @@ Word	northe	northeast
 Word	northw	northwest
 Word	noscri	noscript
 Word	painti	painting
-Word	pamphl	pamphl
+Word	pamphl	pamphlet
 Word	paraph	paraph
 Word	parcel	parcel
 Word	patrol	patrol
 Word	pedest	pedest
 Word	perspe	perspe
 Word	pharos	pharos
-Word	photog	photog
-Word	pillar	pillar
-Word	places	places
-Word	plants	plants
-Word	plaque	plaque
-Word	plasti	plasti
-Word	plover	plover
-Word	poetry	poetry
-Word	polish	polish
-Word	postca	postca
-Word	poster	poster
-Word	prayer	prayer
+Word	photog	photograph
+Word	plasti	plastic
+Word	postca	postcard
 Word	premon	premoninition
 Word	projec	projector
 Word	pulley	pulley
-Word	purcha	purcha
+Word	purcha	purchase
 Word	quadra	quadra
-Word	quarte	quarte
+Word	quarte	quarter
 Word	quinqu	quinqu
-Word	reaper	reaper
 Word	reinde	reinde
-Word	remove	remove
-Word	restar	restar
-Word	restor	restor
-Word	return	return
-Word	reveal	reveal
-Word	roller	roller
-Word	romanc	romanc
-Word	romant	romant
-Word	rotate	rotate
-Word	rubbis	rubbis
-Word	rucksa	rucksa
-Word	runner	runner
-Word	sacrif	sacrif
-Word	safety	safety
-Word	sailor	sailor
-Word	sandal	sandal
-Word	scenes	scenes
-Word	scratc	scratc
-Word	script	script
-Word	sculpt	sculpt
-Word	search	search
-Word	secret	secret
-Word	servan	servan
+Word	restar	restart
+Word	restor	restore
+Word	romanc	romance
+Word	romant	romantic
+Word	rubbis	rubbish
+Word	rucksa	rucksack
+Word	sacrif	sacrifice
+Word	scratc	scratch
+Word	sculpt	sculpture
+Word	servan	servant
 Word	sevenb	sevenb
 Word	sheets	sheets
-Word	shephe	shephe
-Word	shopke	shopke
-Word	signpo	signpo
-Word	skylig	skylig
-Word	smudge	smudge
-Word	socket	socket
+Word	shephe	shepherd
+Word	shopke	shopkeeeper
+Word	signpo	signpost
+Word	skylig	skylight
 Word	sosost	sosost
 Word	southe	southeast
 Word	southw	southwest
-Word	souven	souven
-Word	spears	spears
-Word	specia	specia
-Word	squash	squash
-Word	squeez	squeez
-Word	stalki	stalki
-Word	sticks	sticks
-Word	stream	stream
-Word	strike	strike
-Word	summon	summon
-Word	superb	superb
+Word	souven	souvenir
+Word	specia	special
+Word	stalki	stalking
 Word	swallo	swallow
-Word	sweepi	sweepi
-Word	switch	switch
-Word	symbol	symbol
-Word	tablet	tablet
-Word	teache	teache
-Word	tender	tender
-Word	thorns	thorns
-Word	throug	throug
-Word	timber	timber
-Word	toggle	toggle
-Word	tortur	tortur
-Word	touris	touris
-Word	transf	transf
-Word	trapdo	trapdo
-Word	trowel	trowel
+Word	sweepi	sweeping
+Word	teache	teacher
+Word	throug	through
+Word	tortur	torture
+Word	touris	tourist
+Word	transf	transfer
+Word	trapdo	trapdooor
 Word	umbrel	umbrella
 Word	uncove	uncovered
-Word	unlock	unlock
-Word	unscre	unscre
-Word	unwrap	unwrap
-Word	verbos	verbos
-Word	wirele	wirele
-Word	wishbo	wishbo
-Word	wrappi	wrappi
+Word	unscre	unscrew
+Word	verbos	verbose
+Word	wirele	wireless
+Word	wishbo	wishbone
+Word	wrappi	wrapping
 Word	xallow	xallow
 Word	xattic	xattic
 Word	xcheat	xcheat
-Word	xcomma	xcomma
-Word	xdeter	xdeter
-Word	xmaste	xmaste
-Word	xtrave	xtrave
+Word	xcomma	xcommand
+Word	xdeter	xdetermine
+Word	xmaste	xmaster
+Word	xtrave	xtravel
 Word	yellow	yellow
 Word	zodiac	zodiac
 
