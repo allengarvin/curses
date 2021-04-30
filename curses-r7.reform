@@ -328,16 +328,16 @@ Property 25	devil_hint:string
 Property 26	angel_hint:string
 
 Global 0	location:object
-Global 1	global1:?
-Global 2	global2:?
+Global 1	score:int
+Global 2	turns:int
 Global 3	player:object
 Global 4	global4:?
 Global 5	global5:?
 Global 6	global6:?
 Global 7	global7:?
 Global 8	finish_state:final_state
-Global 9	global9:?
-Global 10	global10:?
+Global 9	buffer
+Global 10	parse
 Global 11	global11:?
 Global 12	global12:?
 Global 13	global13:?
@@ -369,7 +369,7 @@ Global 38	global38:?
 Global 39	global39:?
 Global 40	global40:?
 Global 41	global41:?
-Global 42	global42:?
+Global 42	transcript_mode:int
 Global 43	global43:?
 Global 44	global44:?
 Global 45	global45:?
@@ -747,17 +747,17 @@ Routine 0x7288 routine_7288
 Routine 0x72e0 routine_72e0
 Routine 0x7554 routine_7554
 Routine 0x758a routine_758a
-Routine 0x75b4 routine_75b4
-Routine 0x794e routine_794e
+Routine 0x75b4 MouseMove o:object rm:object
+Routine 0x794e ScoreSub score_var:int
 Routine 0x7ccc routine_7ccc
 Routine 0x7d0c routine_7d0c
 Routine 0x7e76 routine_7e76
-Routine 0x7ffa routine_7ffa
+Routine 0x7ffa QuitSub i:dictword
 Routine 0x805a routine_805a
-Routine 0x805e routine_805e
-Routine 0x80c0 routine_80c0
-Routine 0x80d2 routine_80d2
-Routine 0x80e4 routine_80e4
+Routine 0x805e RestartSub i:dictword
+Routine 0x80c0 RestoreSub
+Routine 0x80d2 SaveSub
+Routine 0x80e4 ScriptOnSub
 Routine 0x812c routine_812c
 Routine 0x8170 routine_8170
 Routine 0x81a6 routine_81a6
@@ -771,7 +771,7 @@ Routine 0x8684 routine_8684
 Routine 0x8690 routine_8690
 Routine 0x8742 routine_8742
 Routine 0x8760 routine_8760
-Routine 0x87b8 routine_87b8
+Routine 0x87b8 routine_87b8 env:object
 Routine 0x8848 routine_8848
 Routine 0x889c routine_889c
 Routine 0x88c4 routine_88c4

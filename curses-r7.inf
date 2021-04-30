@@ -2240,16 +2240,16 @@ Constant PRISON = 8;
 ! Globals
 
 Global location = Attic;
-Global global1;
-Global global2 = 1[?];
+Global score;
+Global turns = 1;
 Global player = yourself;
 Global global4;
 Global global5;
 Global global6;
 Global global7 = 1[?];
 Global finish_state;
-Global global9 = 9520[?];
-Global global10 = 9641[?];
+Global buffer = 9520[?];
+Global parse = 9641[?];
 Global global11 = 9706[?];
 Global global12 = 9827[?];
 Global global13 = 9892[?];
@@ -2281,7 +2281,7 @@ Global global38 = 10149[?];
 Global global39;
 Global global40;
 Global global41;
-Global global42;
+Global transcript_mode;
 Global global43;
 Global global44 = 1[?];
 Global global45;
@@ -2531,7 +2531,7 @@ Global global239;
             noun = global13->2;
             second = global13->3;
             verb = global13->0;
-            routine_75b4();	! not popped
+            MouseMove();	! not popped
             @pop;
         } else if (global6 ~= player) {
             routine_c67c(global6);	! not popped
@@ -2684,14 +2684,14 @@ Global global239;
         print " You have been imprisoned as a terrorist ";
     }
     print "***^^^";
-    routine_794e();	! not popped
+    ScoreSub();	! not popped
     @pop;
   .label18211;
     print "^Would you like to RESTART, RESTORE a saved game, give the FULL score for that game or QUIT?^";
   .label18294;
     print '?', ' ';
-    @sread global9 global10;
-    local2 = global10-->1;
+    @sread buffer parse;
+    local2 = parse-->1;
     if (local2 == 'quit') {
         @quit;
     }
@@ -2702,7 +2702,7 @@ Global global239;
         @restart;
     }
     if (local2 == 'restor') {
-        routine_80c0();	! not popped
+        RestoreSub();	! not popped
         @pop;
         jump label18211;
     }
@@ -2795,7 +2795,7 @@ Global global239;
 ];
 
 [ routine_4960 var local2 local3 ;	! 18784 / 0x4960
-    ++global2;
+    ++turns;
     if (heavy_iron_mascot has attrib6) {
         var = 119[heavy_iron_mascot?];
         var = parent(var);
@@ -2828,7 +2828,7 @@ Global global239;
     if (0 ~= routine_722e(Old_Winery)) {
         print "^Sorry. Thinking about it again, the score only gets in a muddle this way, so the bonus points had better go after all.^";
         global37 = 0;
-        global1 = global1 - 5;
+        score = score - 5;
     }
     if (0 ~= routine_722e(bean_pole) && game_section == GARDEN_PAST) {
         print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come running to investigate. In the ensuing confusion, they come across you and, of course, blame you for their incompetent masonry. You are hauled up before the county assizes...^";
@@ -2884,7 +2884,7 @@ Global global239;
             print "^The gentle sound of bazouki music strikes up in the background, and gradually rises to an intolerable pitch. After a moment comes a dull thud and a strangled noise, then blessed quiet.^";
         }
     }
-    if (location == parent(antiquated_wireless) && antiquated_wireless has attrib25) {
+    if (location == parent(antiquated_wireless) && antiquated_wireless has on) {
         print "^The radio plays a ";
         var = random(10);
         if (var == 1[?]) {
@@ -3147,7 +3147,7 @@ Global global239;
         new_line;
     }
     if (0 ~= routine_722e(antiquated_wireless)) {
-        give antiquated_wireless attrib25;
+        give antiquated_wireless on;
         var = 111[antiquated_wireless?];
         var = parent(var);
         if (location == var) {
@@ -3161,7 +3161,7 @@ Global global239;
         if (0 ~= routine_722e(kitchen_well)) {
             var = parent(player);
             if (var == 236[Triclinium?]) {
-                give kitchen_well attrib25;
+                give kitchen_well on;
                 print "^You hear a splash from far down in the depths of the well.^";
             }
         }
@@ -3344,8 +3344,8 @@ Global global239;
                     print "The flash suddenly gives an enormous magnesium-flare flash, almost blinding in its intensity. Your eyes take a little while to adjust. ";
                     local3 = 43[flash?];
                     local3 = parent(local3);
-                    if (local3 == 215[mirrored_device?] && flash hasnt attrib25) {
-                        give flash attrib25;
+                    if (local3 == 215[mirrored_device?] && flash hasnt on) {
+                        give flash on;
                         print "Consequently you can only hear as the smudge on the horizon rises from the waves, becomes an enormous Kraken sea monster and lunges for the stone tower. (Considering this is supposed to be a Greek myth it feels surprisingly like a Japanese 1960s creature film.)  The Kraken swipes at you, overreaches itself and falls over forward, impaling itself extremely messily on the pharos. Your eyes just about recover by the time the rest of your body is crushed by its weight.^^Up on Mount Olympus, Zeus is still cross. ~Take me to your Leda~, you wittily demand, but this does not seem to improve matters. Poseidon also looks rather fed up, but luckily a sizeable faction of goddesses take your side and arrange to have you resurrected...^";
                         routine_758a(11[floor?]);	! not popped
                         @pop;
@@ -3362,13 +3362,13 @@ Global global239;
         }
     } else {
         if (location == Cups_and_Glasses) {
-            if (Cups_and_Glasses hasnt attrib25) {
+            if (Cups_and_Glasses hasnt on) {
                 var = 196[Cups_and_Glasses?];
-                var.prop21 = global2;
-                give Cups_and_Glasses attrib25;
+                var.prop21 = turns;
+                give Cups_and_Glasses on;
             }
             var = 196[Cups_and_Glasses?];
-            var = global2 - var.prop21;
+            var = turns - var.prop21;
             if (var == 2[?]) {
                 print "^There is a scuffling noise as some men gather up on the pavement outside the skylight.^";
             }
@@ -3395,7 +3395,7 @@ Global global239;
             }
             if (0 ~= routine_724a(191[timer_detonater?])) {
                 give complicated_looking_bomb edible;
-                if (complicated_looking_bomb has attrib25) {
+                if (complicated_looking_bomb has on) {
                     if (194[blue_wire?] ~= global38->0) {
                         ! no code
                     } else if (192[green_wire?] ~= global38->1) {
@@ -3428,7 +3428,7 @@ Global global239;
             location = Coven_Cell;
             remove player;
             move player to Coven_Cell;
-            give player attrib25;
+            give player on;
             routine_7268(161[Coven_Cell?],5[w_wall?]);	! not popped
             @pop;
             routine_8fdc();	! not popped
@@ -3436,7 +3436,7 @@ Global global239;
         } else if (location == Coven_Cell) {
             print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
             finish_state = DIED;
-            if (player has attrib25) {
+            if (player has on) {
                 "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
             }
             "^Kicking and screaming, you are are dragged off to a grisly sacrifice...";
@@ -3460,7 +3460,7 @@ Global global239;
 
 [ routine_722e obj local2 ;	! 29230 / 0x722e
     local2 = obj.prop21;
-    if (local2 > global2) {
+    if (local2 > turns) {
         rfalse;
     }
     if (local2 == 0) {
@@ -3484,13 +3484,13 @@ Global global239;
 ];
 
 [ routine_7268 local1 local2 ;	! 29288 / 0x7268
-    local2 = global2 + local2;
+    local2 = turns + local2;
     local1.prop21 = local2;
     rtrue;
 ];
 
 [ routine_7278 local1 local2 ;	! 29304 / 0x7278
-    local2 = local1.prop21 - global2;
+    local2 = local1.prop21 - turns;
     return local2;
 ];
 
@@ -3556,16 +3556,16 @@ Global global239;
     if (local2 == 0) {
         global33->local1 = 1[?];
         if (local1 ~= 16[teachests?]) {
-            global1 = global1 + global32->local1;
+            score = score + global32->local1;
         }
         if (local1 == 16[teachests?]) {
-            global1 = global1 - 50;
+            score = score - 50;
         }
     }
     rtrue;
 ];
 
-[ routine_75b4 local1 local2 local3 local4 local5 ;	! 30132 / 0x75b4
+[ MouseMove o rm local3 local4 local5 ;	! 30132 / 0x75b4
     if (verb ~= ##Action17) {
         "The mouse emits a querulous, unhappy bleep.";
     }
@@ -3587,37 +3587,37 @@ Global global239;
     if (noun == ceiling) {
         "The mouse bleeps with annoyance.";
     }
-    local1 = 98[robot_mouse?];
-    local1 = parent(local1);
-    if (local1 == 99[Cellars_South?]) {
+    o = robot_mouse;
+    o = parent(o);
+    if (o == Cellars_South) {
         if (noun == n_wall) {
-            local2 = 93[Cellars?];
+            rm = Cellars;
             jump label30695;
         }
         if (noun == w_wall) {
-            local2 = 100[hole_in_the_wall?];
+            rm = hole_in_the_wall;
             global29 = 8[se_wall?];
             global30 = 3[s_wall?];
             jump label30695;
         }
-    } else if (local1 == 102[Cellar_West?]) {
+    } else if (o == Cellar_West) {
         if (noun == e_wall) {
-            local2 = 93[Cellars?];
+            rm = Cellars;
             jump label30695;
         }
-    } else if (local1 == 93[Cellars?]) {
+    } else if (o == Cellars) {
         if (noun == w_wall) {
-            local2 = 102[Cellar_West?];
+            rm = Cellar_West;
             jump label30695;
         }
         if (noun == s_wall) {
-            local2 = 99[Cellars_South?];
+            rm = Cellars_South;
             jump label30695;
         }
     } else {
-        if (local1 == 100[hole_in_the_wall?]) {
+        if (o == hole_in_the_wall) {
             if (global29 == 8[se_wall?] && global30 == 3[s_wall?] && noun == e_wall) {
-                local2 = 99[Cellars_South?];
+                rm = Cellars_South;
                 jump label30695;
             }
             if (noun == n_wall) {
@@ -3642,12 +3642,12 @@ Global global239;
             global29 = local4;
             global30 = local5;
             if (global29 == 4[e_wall?] && global30 == 1[?]) {
-                local1 = 101[small_brass_key?];
-                local1 = parent(local1);
-                if (local1 == 100[hole_in_the_wall?]) {
-                    local1 = 101[small_brass_key?];
-                    remove local1;
-                    move local1 to robot_mouse;
+                o = small_brass_key;
+                o = parent(o);
+                if (o == hole_in_the_wall) {
+                    o = small_brass_key;
+                    remove o;
+                    move o to robot_mouse;
                     "From somewhere inside the hole, you hear the spinning of tiny wheels, followed by an excitable high-pitched beep and a dull clanging noise.";
                 }
             }
@@ -3655,29 +3655,29 @@ Global global239;
         }
         "The mouse wheels spin, but can't get a good enough grip to move.";
       .label30695;
-        local3 = local1;
-        local1 = 98[robot_mouse?];
-        remove local1;
-        move local1 to local2;
+        local3 = o;
+        o = robot_mouse;
+        remove o;
+        move o to rm;
         give robot_mouse attrib6;
         if (location == local3) {
-            if (local2 == 100[hole_in_the_wall?]) {
+            if (rm == hole_in_the_wall) {
                 "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
             }
-            if (local2 ~= 100[hole_in_the_wall?]) {
+            if (rm ~= hole_in_the_wall) {
                 "The mouse runs off as ordered.";
             }
         }
-        if (location == local2) {
+        if (location == rm) {
             print "The mouse runs back out of the hole, looking dustier but none the worse for its adventure";
-            local1 = 101[small_brass_key?];
-            local1 = parent(local1);
-            if (local1 ~= 98[robot_mouse?]) {
+            o = small_brass_key;
+            o = parent(o);
+            if (o ~= robot_mouse) {
                 ".";
             }
-            local1 = 101[small_brass_key?];
-            remove local1;
-            move local1 to Cellars_South;
+            o = small_brass_key;
+            remove o;
+            move o to Cellars_South;
             ", and then almost looks proud as a magnet cuts out and something metal drops off the underside of the mouse onto the floor. The lost key is found!";
         }
         rtrue;
@@ -3685,7 +3685,7 @@ Global global239;
     "The mouse emits a low-pitched bleep.";
 ];
 
-[ routine_794e local1 ;	! 31054 / 0x794e
+[ ScoreSub score_var ;	! 31054 / 0x794e
     if (finish_state == 0) {
         if (game_section == MODERN) {
             print "This is the afternoon of June 3rd, 1993, and you are in Meldrew House. ";
@@ -3716,57 +3716,57 @@ Global global239;
     if (finish_state > 0) {
         print "In that game you scored ";
     }
-    print global1, " out of a possible 300, in ", global2, " turns, earning you the rank of ";
-    local1 = global1;
+    print score, " out of a possible 300, in ", turns, " turns, earning you the rank of ";
+    score_var = score;
     if (0 ~= global33->11) {
-        local1 = local1 - 50;
+        score_var = score_var - 50;
     }
-    if (local1 >= 250) {
+    if (score_var >= 250) {
         "happy Tourist.";
     }
-    if (local1 == 249[bluish_stone?]) {
+    if (score_var == 249) {
         "very nearly happy Tourist.";
     }
-    if (local1 >= 225) {
+    if (score_var >= 225) {
         "Druid.";
     }
-    if (local1 >= 200) {
+    if (score_var >= 200) {
         "Master Navigator.";
     }
-    if (local1 >= 175) {
+    if (score_var >= 175) {
         "Master Voyager.";
     }
-    if (local1 >= 150) {
+    if (score_var >= 150) {
         "Voyager.";
     }
-    if (local1 >= 125) {
+    if (score_var >= 125) {
         "Explorer.";
     }
-    if (local1 >= 100) {
+    if (score_var >= 100) {
         "Adventurer.";
     }
-    if (local1 >= 75) {
+    if (score_var >= 75) {
         "Connoisseur.";
     }
-    if (local1 >= 50) {
+    if (score_var >= 50) {
         "Dilletante.";
     }
-    if (local1 >= 35) {
+    if (score_var >= 35) {
         "cynical Tourist.";
     }
-    if (local1 >= 20) {
+    if (score_var >= 20) {
         "experienced Tourist.";
     }
-    if (local1 >= 5) {
+    if (score_var >= 5) {
         "casual Tourist.";
     }
-    if (local1 >= 1) {
+    if (score_var >= 1) {
         "gauche Tourist.";
     }
-    if (local1 >= 0) {
+    if (score_var >= 0) {
         "hapless Tourist.";
     }
-    if (0 == 99 + local1) {
+    if (0 == 99 + score_var) {
         "highly negligent deity.";
     }
     "accursed Tourist.";
@@ -3855,9 +3855,9 @@ Global global239;
 ];
 
 [ routine_7e76 local1 local2 local3 local4 ;	! 32374 / 0x7e76
-    routine_794e();	! not popped
+    ScoreSub();	! not popped
     @pop;
-    if (global1 == 0) {
+    if (score == 0) {
         rfalse;
     }
     new_line;
@@ -3907,7 +3907,7 @@ Global global239;
     if (global37 ~= 0) {
         local4 = local4 + 5;
     }
-    if (global1 + 99 == 0) {
+    if (score + 99 == 0) {
         local4 = local4 + 99;
         local4 = 0 - local4;
         routine_7ccc(local4);	! not popped
@@ -3915,7 +3915,7 @@ Global global239;
         print "destroying universe^";
     }
     new_line;
-    routine_7ccc(global1);	! not popped
+    routine_7ccc(score);	! not popped
     @pop;
     print "total (out of 300)^";
     if (finish_state == WON && 0 == global33->11) {
@@ -3924,21 +3924,21 @@ Global global239;
     rfalse;
 ];
 
-[ routine_7ffa local1 ;	! 32762 / 0x7ffa
+[ QuitSub i ;	! 32762 / 0x7ffa
     print "Are you sure you want to quit? ";
   .label32788;
-    @sread global9 global10;
-    local1 = global10-->1;
-    if (local1 == 17043['yes'?]) {
+    @sread buffer parse;
+    i = parse-->1;
+    if (i == 'yes') {
         @quit;
     }
-    if (local1 == 17029['y//'?]) {
+    if (i == 'y//') {
         @quit;
     }
-    if (local1 == 14908['no'?]) {
+    if (i == 'no') {
         rtrue;
     }
-    if (local1 == 14873['n//'?]) {
+    if (i == 'n//') {
         rtrue;
     }
     print "Please answer yes or no.", '>', ' ';
@@ -3951,21 +3951,21 @@ Global global239;
     rtrue;
 ];
 
-[ routine_805e local1 ;	! 32862 / 0x805e
+[ RestartSub i ;	! 32862 / 0x805e
     print "Are you sure you want to restart? ";
   .label32890;
-    @sread global9 global10;
-    local1 = global10-->1;
-    if (local1 == 17043['yes'?]) {
+    @sread buffer parse;
+    i = parse-->1;
+    if (i == 'yes') {
         @restart;
     }
-    if (local1 == 17029['y//'?]) {
+    if (i == 'y//') {
         @restart;
     }
-    if (local1 == 14908['no'?]) {
+    if (i == 'no') {
         rtrue;
     }
-    if (local1 == 14873['n//'?]) {
+    if (i == 'n//') {
         rtrue;
     }
     print "Please answer yes or no.", '>', ' ';
@@ -3973,7 +3973,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_80c0 ;	! 32960 / 0x80c0
+[ RestoreSub ;	! 32960 / 0x80c0
     @restore ?label32970;
     "Failed.";
   .label32970;
@@ -3983,7 +3983,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_80d2 ;	! 32978 / 0x80d2
+[ SaveSub ;	! 32978 / 0x80d2
     @save ?label32988;
     "Failed.";
   .label32988;
@@ -3991,11 +3991,11 @@ Global global239;
     rtrue;
 ];
 
-[ routine_80e4 local1 ;	! 32996 / 0x80e4
-    if (global42 == 1[?]) {
+[ ScriptOnSub local1 ;	! 32996 / 0x80e4
+    if (transcript_mode == 1) {
         "Transcripting is already on.";
     }
-    global42 = 1[?];
+    transcript_mode = 1;
     local1 = 0-->8 | 1;
     0-->8 = local1;
     print "Start of a transcript of^";
@@ -4005,11 +4005,11 @@ Global global239;
 ];
 
 [ routine_812c local1 ;	! 33068 / 0x812c
-    if (global42 == 0) {
+    if (transcript_mode == 0) {
         "Transcripting is already off.";
     }
     print "^End of transcript.^";
-    global42 = 0;
+    transcript_mode = 0;
     local1 = 0-->8 & 65534;
     0-->8 = local1;
     rtrue;
@@ -4149,7 +4149,7 @@ Global global239;
     if (noun hasnt attrib6) {
         give noun attrib6;
         if (noun has attrib30) {
-            global1 = global1 + 4;
+            score = score + 4;
             global34 = global34 + 4;
         }
     }
@@ -4356,7 +4356,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_87b8 local1 ;	! 34744 / 0x87b8
+[ routine_87b8 env ;	! 34744 / 0x87b8
     if (noun == compass) {
         routine_88c4();	! not popped
         @pop;
@@ -4367,15 +4367,15 @@ Global global239;
         @pop;
         rtrue;
     }
-    local1 = parent(player);
-    if (local1 ~= location) {
-        "But you're already in the ", (name) local1, ".";
+    env = parent(player);
+    if (env ~= location) {
+        "But you're already in the ", (name) env, ".";
     }
     if (noun hasnt attrib13) {
         "A surreal idea.";
     }
-    local1 = parent(noun);
-    if (local1 ~= location) {
+    env = parent(noun);
+    if (env ~= location) {
         "You can only get into something on the floor.";
     }
     remove player;
@@ -4479,10 +4479,10 @@ Global global239;
                 finish_state = DIED;
                 "^And find yourself stepping off a cliff. All is well for a moment, and then like a cartoon character you notice there is no ground beneath you and you plummet to a stony death far below.";
             }
-            if (local1 has attrib25) {
+            if (local1 has on) {
                 "But are unable to enter the scene for a second time.";
             }
-            give local1 attrib25;
+            give local1 on;
         }
         if (local2 == 123[coal_bunker?]) {
             if (local5 == 132[garden_roller?]) {
@@ -4598,7 +4598,7 @@ Global global239;
     if (location hasnt attrib17) {
         give location attrib17;
         if (location has attrib30) {
-            global1 = global1 + 5;
+            score = score + 5;
             global35 = global35 + 5;
         }
     }
@@ -4611,7 +4611,7 @@ Global global239;
             ++local4;
             if (local5 hasnt attrib6) {
                 local3 = local5.initial;
-                if (local5 == 111[antiquated_wireless?] && antiquated_wireless has attrib25) {
+                if (local5 == 111[antiquated_wireless?] && antiquated_wireless has on) {
                     local3 = 58944["The wire..."?];
                 }
                 if (local5 has attrib7 && local5 hasnt open) {
@@ -4854,7 +4854,7 @@ Global global239;
                 }
             } else {
                 print (string) local1;
-                give demon ~attrib25;
+                give demon ~on;
             }
             if (noun has edible) {
                 remove noun;
@@ -4882,7 +4882,7 @@ Global global239;
                 }
             } else {
                 print (string) local1;
-                give angel ~attrib25;
+                give angel ~on;
             }
             "~.";
         }
@@ -4913,7 +4913,7 @@ Global global239;
             remove local1;
             routine_758a(10[ceiling?]);	! not popped
             @pop;
-            give Jemima attrib25;
+            give Jemima on;
             "Aunt Jemima pounces on the chocolates, wolfs down a strawberry cream and persuades you to have an unappetising toffee cracknell. ~Now~, she says, ~Your turn for a daisy chain!~^^You try to look pleased.^^~Let's see, the others have had theirs... I have only a few colours left. What would you like?~";
         }
         print "A peace offering is a nice idea, but somehow the ", (name) noun;
@@ -4930,7 +4930,7 @@ Global global239;
             "~Ceci n'est pas argent,~ he explains wearily.";
         }
         remove noun;
-        give noun attrib25;
+        give noun on;
         "He takes the money. ~Q'est-ce que vous desirez?~";
     }
     if (second == Sir_Joshua_Meldrewe) {
@@ -4952,7 +4952,7 @@ Global global239;
     }
     if (second == bartender && noun == copper_coin) {
         remove noun;
-        give copper_coin attrib25;
+        give copper_coin on;
         "The bartender takes the coin wearily.";
     }
     (name) second, " doesn't seem interested.^";
@@ -5373,7 +5373,7 @@ Global global239;
     if (noun ~= hemp_rope) {
         "You can't swing on that.";
     }
-    give hemp_rope attrib25;
+    give hemp_rope on;
     "You set the rope swinging back and forth. Very exhilarating!";
 ];
 
@@ -5391,7 +5391,7 @@ Global global239;
     if (noun ~= solid_glass_ball) {
         "You achieve nothing by this.";
     }
-    give solid_glass_ball attrib25;
+    give solid_glass_ball on;
     "You polish the ball to a nice shine.";
 ];
 
@@ -5416,7 +5416,7 @@ Global global239;
     }
     remove noun;
     if (noun == red_tablet) {
-        give player ~attrib25;
+        give player ~on;
         "It tastes alarmingly of chocolate.";
     }
     routine_758a(17[Meldrews_History?]);	! not popped
@@ -5439,7 +5439,7 @@ Global global239;
             local1 = 115[daisy_chain?];
             local1 = local1.prop21;
             if (local1 == 1[?]) {
-                global1 = global1 + 6;
+                score = score + 6;
                 global36 = global36 + 6;
                 print "Light pulses around the daisy chain, then leaps out to engulf the ", (name) noun, " which melts into the ";
                 remove noun;
@@ -5449,7 +5449,7 @@ Global global239;
             }
         }
         if (yellow_daisy has attrib2) {
-            global1 = global1 + 6;
+            score = score + 6;
             global36 = global36 + 6;
             print "Light pulses from the daisy behind your ear, leaping out to engulf the ", (name) noun, " which melts into ";
             remove noun;
@@ -5547,10 +5547,10 @@ Global global239;
         "It already has been. The part you have, lost.";
     }
     if (noun has wire) {
-        if (noun has attrib25) {
+        if (noun has on) {
             "It is already pulled out.";
         }
-        give noun attrib25;
+        give noun on;
         print "You pull out ";
         routine_c66c(noun);	! not popped
         @pop;
@@ -5561,7 +5561,7 @@ Global global239;
         ++local2;
         local1.prop21 = local2;
         if (local2 == 4[e_wall?]) {
-            give complicated_looking_bomb attrib25;
+            give complicated_looking_bomb on;
             "All four wires are now disconnected.";
         }
         rtrue;
@@ -5594,7 +5594,7 @@ Global global239;
     }
     if (noun == bell_push) {
         if (Madame_Sosostris has attrib1) {
-            if (Madame_Sosostris has attrib25) {
+            if (Madame_Sosostris has on) {
                 "Nothing happens.";
             }
             give Madame_Sosostris ~attrib1;
@@ -5685,10 +5685,10 @@ Global global239;
     if (noun ~= weed_killer) {
         "You achieve nothing by this.";
     }
-    if (weed_killer has attrib25) {
+    if (weed_killer has on) {
         "Nothing emerges. The bottle must be empty.";
     }
-    give weed_killer attrib25;
+    give weed_killer on;
     if (location == Wall_of_Thorns) {
         "A valiant, but obviously utterly hopeless idea. The weed killer does not harm a single tendril of the wall.";
     }
@@ -5955,7 +5955,7 @@ Global global239;
             local1 = 66[iron_key?];
             remove local1;
             move local1 to Priests_Hole;
-            give iron_key attrib25;
+            give iron_key on;
             give Sir_Joshua_Meldrewe attrib1;
             routine_758a(2[?]);	! not popped
             @pop;
@@ -5967,7 +5967,7 @@ Global global239;
 ];
 
 [ routine_c806 local1 ;	! 51206 / 0xc806
-    if (demon hasnt attrib25) {
+    if (demon hasnt on) {
         local1 = demon.prop21;
         if (local1 == 0) {
             "~No hints left, sucker.~";
@@ -5978,7 +5978,7 @@ Global global239;
 ];
 
 [ routine_c8ae local1 ;	! 51374 / 0xc8ae
-    if (angel hasnt attrib25) {
+    if (angel hasnt on) {
         local1 = 254[angel?];
         local1 = angel.prop21;
         if (local1 == 0) {
@@ -5994,10 +5994,10 @@ Global global239;
         "Not through a gas mask you can't.";
     }
     if (second == Jemima) {
-        if (Jemima hasnt attrib25) {
+        if (Jemima hasnt on) {
             "She pretends not to have heard, a favourite ploy of hers when sulking.";
         }
-        give Jemima ~attrib25;
+        give Jemima ~on;
         local3 = 0;
         if (global18 == 17036['yellow//p'?]) {
             local3 = 1[?];
@@ -6031,7 +6031,7 @@ Global global239;
         "After a moment she notices you're still here. ~Come back later, it'll be done soon.~  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.";
     }
     if (second == surly_shopkeeper) {
-        if (fifty_franc_note hasnt attrib25) {
+        if (fifty_franc_note hasnt on) {
             "It's not that he doesn't understand you, he's just obstructive for the sake of it.";
         }
         if (global18 == 12927['carte//p'?]) {
@@ -6054,7 +6054,7 @@ Global global239;
         @pop;
         local1 = 173[Madame_Sosostris?];
         remove local1;
-        give local1 attrib25;
+        give local1 on;
         give local1 attrib1;
         rtrue;
     }
@@ -6072,8 +6072,8 @@ Global global239;
             move player to location;
             routine_8fdc(1[?]);	! not popped
             @pop;
-            if (hollow_man hasnt attrib25) {
-                give hollow_man attrib25;
+            if (hollow_man hasnt on) {
+                give hollow_man on;
                 move Ace_of_Cups_card to player;
                 print "^Was any of that real? you wonder, as you relax in the sunshine. But then you realise you are clutching a tarot card which certainly is.^";
             }
@@ -6114,7 +6114,7 @@ Global global239;
             rfalse;
         }
         if (0 ~= routine_13e8a(global18)) {
-            give demon ~attrib25;
+            give demon ~on;
         }
         rfalse;
     }
@@ -6123,7 +6123,7 @@ Global global239;
             rfalse;
         }
         if (0 ~= routine_13f70(global18)) {
-            give angel ~attrib25;
+            give angel ~on;
         }
         rfalse;
     }
@@ -6277,7 +6277,7 @@ Global global239;
 
 [ routine_e55e ;	! 58718 / 0xe55e
     global40 = 1[?];
-    global2 = global2 + 300;
+    turns = turns + 300;
     "You spend 300 minutes learning to speak Anglo-Saxon, Norse and Celtic.";
 ];
 
@@ -6297,8 +6297,8 @@ Global global239;
 
 [ routine_e5d0 ;	! 58832 / 0xe5d0
     game_section = global19;
-    give weed_killer ~attrib25;
-    routine_794e();	! not popped
+    give weed_killer ~on;
+    ScoreSub();	! not popped
     @pop;
     rtrue;
 ];
@@ -6313,10 +6313,10 @@ Global global239;
         }
         "You sleep briefly, fitfully, tossing and turning all the while, and dream of Miss Alison writing at her table, and then of being caught by a strange man, who strikes his staff on the ground, then points it directly at you... You begin to fade away. Before you do, he strikes his staff again, then points it at himself and vanishes. You explode back into consciousness!";
     }
-    if (servants_bed has attrib25) {
+    if (servants_bed has on) {
         "You doze awhile, but that's all.";
     }
-    give servants_bed attrib25;
+    give servants_bed on;
     print "You sleep unexpectedly deeply, but just as you think you are starting to wake up, you experience a sudden...^";
     local1 = child(player);
   .label59297;
@@ -6337,13 +6337,13 @@ Global global239;
 ];
 
 [ routine_e7c8 local1 ;	! 59336 / 0xe7c8
-    if (Old_Winery has attrib25) {
+    if (Old_Winery has on) {
         rtrue;
     }
-    give Old_Winery attrib25;
+    give Old_Winery on;
     routine_7268(80[Old_Winery?],4[e_wall?]);	! not popped
     @pop;
-    global1 = global1 + 5;
+    score = score + 5;
     global37 = 1[?];
     "^A shame to see such a good try unrewarded... oh, go on, have an extra five points.";
 ];
@@ -6481,7 +6481,7 @@ Global global239;
     if (second ~= herd_of_goats) {
         "Nothing obvious happens.";
     }
-    give herd_of_goats attrib25;
+    give herd_of_goats on;
     "The goats suddenly look up at you with awe, although they resume their former interest in eating the grass quite quickly.";
 ];
 
@@ -6508,7 +6508,7 @@ Global global239;
         if (big_electricians_switch has attrib24) {
             "You feel no different. Perhaps there's no such thing as luck.";
         }
-        give noun attrib25;
+        give noun on;
         "You feel optimistic and lucky. Mind you, you feel that most times.";
     }
     "Nothing obvious happens.";
@@ -6551,7 +6551,7 @@ Global global239;
     }
     give runner_bean_plant open;
     print "^Warning: something extremely cliched is about to happen. When you think you have composed yourself and can stand it, press ENTER. ", '>';
-    @sread global9 global10;
+    @sread buffer parse;
     new_line;
     "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reaching up high into the sky!  You yawn convulsively.";
 ];
@@ -6570,11 +6570,11 @@ Global global239;
     if (local2 < 6) {
         "You feel the air charge with excitement, and the symbol glows fiery red for a moment, but then the power drains away into one of the empty sockets in the arc.";
     }
-    if (noun has attrib25) {
+    if (noun has on) {
         "Nothing happens this time.";
     }
     print "The air charges with excitement, and the symbol glows fiery red, then begins to spin, faster and faster until everything becomes a daze and you find yourself...^";
-    give noun attrib25;
+    give noun on;
     routine_f3d6();	! not popped
     @pop;
     rtrue;
@@ -6621,11 +6621,11 @@ Global global239;
     if (verb ~= ##Action20) {
         rfalse;
     }
-    if (Old_Winery has attrib25) {
+    if (Old_Winery has on) {
         rfalse;
     }
     print "^As you disturb the still air, the attic key, which was balanced on top of the demijohn, slips onto the floor and disappears into a crack in the floorboards. Your spirits sink as it does, rattling down some distance. How on earth are you going to get it back?^";
-    give Old_Winery attrib25;
+    give Old_Winery on;
     rtrue;
 ];
 
@@ -6918,7 +6918,7 @@ Global global239;
     if (verb ~= ##Action21) {
         rfalse;
     }
-    if (solid_glass_ball hasnt attrib25) {
+    if (solid_glass_ball hasnt on) {
         "The ball is scratched and misted up.";
     }
     local1 = 8[se_wall?];
@@ -7097,7 +7097,7 @@ Global global239;
 
 [ routine_103de local1 ;	! 66526 / 0x103de
     if (verb == ##Action2) {
-        if (iron_key has attrib25) {
+        if (iron_key has on) {
             rfalse;
         }
         give Sir_Joshua_Meldrewe ~attrib1;
@@ -7114,7 +7114,7 @@ Global global239;
 ! References: Potting_Room.before
 
 [ routine_10494 local1 ;	! 66708 / 0x10494
-    if (verb == ##Action20 && antiquated_wireless has attrib25) {
+    if (verb == ##Action20 && antiquated_wireless has on) {
         local1 = 111[antiquated_wireless?];
         local1 = parent(local1);
         if (local1 == 107[Conservatory?]) {
@@ -7128,7 +7128,7 @@ Global global239;
 
 [ routine_104d2 local1 ;	! 66770 / 0x104d2
     if (verb == ##Action2 && old_gardeners__gloves hasnt attrib6) {
-        if (antiquated_wireless has attrib25) {
+        if (antiquated_wireless has on) {
             rfalse;
         }
         finish_state = FAILED;
@@ -7267,7 +7267,7 @@ Global global239;
     if (verb == ##Action61) {
         rfalse;
     }
-    if (player has attrib25 && 5 > routine_7278(161[Coven_Cell?])) {
+    if (player has on && 5 > routine_7278(161[Coven_Cell?])) {
         "You seem to lack the will any more. The drug must have taken hold.";
     }
     rfalse;
@@ -7297,8 +7297,8 @@ Global global239;
 [ routine_108a0 ;	! 67744 / 0x108a0
     if (verb == ##Action55) {
         finish_state = DESTROYED_UNIVERSE;
-        global1 = 0;
-        global1 = global1 - 99;
+        score = 0;
+        score = score - 99;
         "Mmm. On the whole, it's probably best not to alter one of the fundamental constants of the physical universe while still inside it. On the bright side, for once you are unlikely to get the blame.";
     }
     rfalse;
@@ -7367,7 +7367,7 @@ Global global239;
         "Nothing happens.";
     }
     if (verb == ##Action57) {
-        give antiquated_wireless ~attrib25;
+        give antiquated_wireless ~on;
         "Thank heaven for that.";
     }
     rfalse;
@@ -8067,10 +8067,10 @@ Global global239;
 
 [ routine_118ce local1 ;	! 71886 / 0x118ce
     if (verb == ##Action2) {
-        if (bean_pole has attrib25) {
+        if (bean_pole has on) {
             rfalse;
         }
-        give bean_pole attrib25;
+        give bean_pole on;
         routine_7268(148[bean_pole?],5[w_wall?]);	! not popped
         @pop;
     }
@@ -8101,7 +8101,7 @@ Global global239;
     if (noun ~= e_wall) {
         rfalse;
     }
-    if (herd_of_goats has attrib25) {
+    if (herd_of_goats has on) {
         print "The goats obediently part to allow you to get by.^";
         rfalse;
     }
@@ -8122,7 +8122,7 @@ Global global239;
         finish_state = DIED;
         "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave about. Pretty impressive prediction, is your last thought.";
     }
-    if (Rod_of_Luck has attrib25) {
+    if (Rod_of_Luck has on) {
         print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
         rfalse;
     }
@@ -8152,7 +8152,7 @@ Global global239;
     if (verb ~= ##Action2) {
         rfalse;
     }
-    if (copper_coin has attrib25) {
+    if (copper_coin has on) {
         rfalse;
     }
     "You can't understand a word of what the bartender says, but the drift is clear enough. Not until you pay for it.";
@@ -8246,28 +8246,28 @@ Global global239;
     }
     local3 = local2;
     local1 = 193[red_wire?];
-    if (local1 has attrib25) {
+    if (local1 has on) {
         print (name) local1;
         --local3;
         routine_12038(local3);	! not popped
         @pop;
     }
     local1 = 192[green_wire?];
-    if (local1 has attrib25) {
+    if (local1 has on) {
         print (name) local1;
         --local3;
         routine_12038(local3);	! not popped
         @pop;
     }
     local1 = 194[blue_wire?];
-    if (local1 has attrib25) {
+    if (local1 has on) {
         print (name) local1;
         --local3;
         routine_12038(local3);	! not popped
         @pop;
     }
     local1 = 195[black_wire?];
-    if (local1 has attrib25) {
+    if (local1 has on) {
         print (name) local1;
         --local3;
         routine_12038(local3);	! not popped
@@ -8402,7 +8402,7 @@ Global global239;
     if (kitchen_well hasnt open) {
         rfalse;
     }
-    if (kitchen_well has attrib25) {
+    if (kitchen_well has on) {
         print "Aware of the dangers, you very carefully lower yourself...^";
         routine_758a(15[hinged_trapdoor?]);	! not popped
         @pop;
@@ -8418,7 +8418,7 @@ Global global239;
     if (verb == ##Action7 && second == kitchen_well) {
         remove noun;
         if (noun has light) {
-            give kitchen_well attrib25;
+            give kitchen_well on;
             "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
         }
         if (noun ~= historical_pamphlet) {
@@ -8466,8 +8466,8 @@ Global global239;
     if (verb == ##Action6) {
         "You tuck the daisy behind your ear, almost out of sight.";
     }
-    if (verb == ##Action2 && yellow_daisy hasnt attrib25) {
-        give yellow_daisy attrib25;
+    if (verb == ##Action2 && yellow_daisy hasnt on) {
+        give yellow_daisy on;
         "Aided by the swinging of the rope, you pick the daisy.";
     }
     rfalse;
@@ -8482,7 +8482,7 @@ Global global239;
     if (yellow_daisy has attrib6) {
         rfalse;
     }
-    if (hemp_rope has attrib25) {
+    if (hemp_rope has on) {
         rfalse;
     }
     "You stretch out your hand, but cannot quite reach the daisy, such is the size of the overhang.";
@@ -8559,8 +8559,8 @@ Global global239;
     if (verb ~= ##Action2) {
         rfalse;
     }
-    if (tent_pole hasnt attrib25) {
-        give tent_pole attrib25;
+    if (tent_pole hasnt on) {
+        give tent_pole on;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
         routine_7268(246[Encampment?],10[ceiling?]);	! not popped
         @pop;
@@ -8630,7 +8630,7 @@ Global global239;
     routine_8fdc(1[?]);	! not popped
     @pop;
     new_line;
-    if (angel has attrib25) {
+    if (angel has on) {
         "~I presume you have decided what to ask,~ says the angel.";
     }
     local1 = 254[angel?];
@@ -8639,7 +8639,7 @@ Global global239;
         --local2;
         local1.prop21 = local2;
         if (local2 > 0) {
-            give angel attrib25;
+            give angel on;
         }
     }
     if (local2 == 0) {
@@ -8663,7 +8663,7 @@ Global global239;
     routine_8fdc(1[?]);	! not popped
     @pop;
     new_line;
-    if (demon has attrib25) {
+    if (demon has on) {
         "~Thought what you wanted to ask yet?~ says the demon.";
     }
     demon_obj = demon;
@@ -8672,7 +8672,7 @@ Global global239;
         --local2;
         demon_obj.prop21 = local2;
         if (local2 > 0) {
-            give demon attrib25;
+            give demon on;
         }
     }
     if (local2 == 0) {
@@ -9134,10 +9134,10 @@ Global global239;
         rtrue;
     }
   .label82320;
-    routine_14054(global9,global10);	! not popped
+    routine_14054(buffer,parse);	! not popped
     @pop;
   .label82328;
-    global50 = global10->1;
+    global50 = parse->1;
     local12 = 1[?];
     global69 = 1[?];
     global6 = player;
@@ -9246,7 +9246,7 @@ Global global239;
                             jump label83684;
                         }
                     }
-                    if (global49 <= global50 && local8 ~= routine_150d4(global10)) {
+                    if (global49 <= global50 && local8 ~= routine_150d4(parse)) {
                         jump label83684;
                     }
                 } else {
@@ -9806,20 +9806,20 @@ Global global239;
             }
             local5 = local5->4;
             if (0 ~= local5 & 1) {
-                routine_152b4(global9,global11);	! not popped
+                routine_152b4(buffer,global11);	! not popped
                 @pop;
-                routine_152b4(global10,global12);	! not popped
+                routine_152b4(parse,global12);	! not popped
                 @pop;
                 local6 = 1000[?];
                 return local6;
             }
-            local7 = global10->1;
-            global10->1 = local8 + local7;
+            local7 = parse->1;
+            parse->1 = local8 + local7;
             local6 = local7 + local8;
           .label85148;
             if (local6 > global67) {
                 local4 = local6 - local8;
-                routine_14f66(local6,global10,local4);	! not popped
+                routine_14f66(local6,parse,local4);	! not popped
                 @pop;
                 --local6;
                 jump label85148;
@@ -9850,14 +9850,14 @@ Global global239;
         local5 = global12-->1;
         local5 = local5->4;
         if (0 ~= local5 & 1) {
-            routine_152b4(global9,global11);	! not popped
+            routine_152b4(buffer,global11);	! not popped
             @pop;
-            routine_152b4(global10,global12);	! not popped
+            routine_152b4(parse,global12);	! not popped
             @pop;
             local6 = 1000[?];
             return local6;
         }
-        local7 = global10->1;
+        local7 = parse->1;
         if (global59 == 0) {
             local6 = 1[?];
             --local6;
@@ -9886,7 +9886,7 @@ Global global239;
             @pop;
             ++local8;
         }
-        global10->1 = local8 + local7;
+        parse->1 = local8 + local7;
         local6 = 1000[?];
         return local6;
         0 | 0;	! not popped
@@ -9896,7 +9896,7 @@ Global global239;
         @2OP:0 0 0;
         @2OP:0 65[Battlements?] 1[?];
         @2OP:0 1[?] 36[postcard?];
-        local3 = global10-->1;
+        local3 = parse-->1;
         local1 = 1[?];
         local6 = 1[?];
         if (local3 == 14397['inventory'?]) {
@@ -10011,10 +10011,10 @@ Global global239;
     @2OP:0 0 0;
     local4 = local1 * 2 - 1;
     local5 = local3 * 2 - 1;
-    global10-->local4 = local2-->local5;
+    parse-->local4 = local2-->local5;
     ++local4;
     ++local5;
-    global10-->local4 = local2-->local5;
+    parse-->local4 = local2-->local5;
     rtrue;
     if (0 >= 0) rfalse;
     if (local2 < global66) {
@@ -10127,10 +10127,10 @@ Global global239;
   .label86287;
     local1 = global49 * 2 - 1;
     global49 = global49 + 1;
-    local2 = global10-->local1;
+    local2 = parse-->local1;
     if (local2 == 0) {
         local3 = global49 * 4 - 3;
-        local1 = global9->(global10->local3);
+        local1 = buffer->(parse->local3);
         if (local1 == 44[Disused_Observatory?]) {
             local2 = 16987['xcomma//p'?];
         }
@@ -10144,12 +10144,12 @@ Global global239;
     @2OP:0 0 3[s_wall?];
     rfalse;
     local1 = local4 * 4;
-    local2 = global10->local1;
-    local3 = global10->(local1 + 1);
+    local2 = parse->local1;
+    local3 = parse->(local1 + 1);
     local3 = local3 + local2;
     print "Word ", local4, " ends with ";
   .label86396;
-    local1 = global9->local3;
+    local1 = buffer->local3;
     if (local1 == 32[scratched_cupboard?]) {
         ++local3;
         jump label86396;
@@ -10172,8 +10172,8 @@ Global global239;
     @2OP:0 86[dumbwaiter?] 1[?];
     @dec_chk 0 84 ?~label1;
     if (112 >= 26) jump label86988;
-    local5 = local3 + global9;
-    local6 = global10->(local2 - 1);
+    local5 = local3 + buffer;
+    local6 = parse->(local2 - 1);
     if (local6 >= 4) {
         local7 = 1000[?];
     }
