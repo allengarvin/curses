@@ -1,0 +1,1 @@
+According to https://www.filfre.net/2019/11/new-tricks-for-an-old-z-machine-part-2-hacking-deeper-or-follies-of-graham-nelsons-youth/ the original source of Curses has been lost. This is an attempt to reconstruct it using Reform.
