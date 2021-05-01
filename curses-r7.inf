@@ -565,7 +565,7 @@ Object -> teachests "teachests"	! 16 / 0x10
   with	name 'tea' 'chests' 'teacher',
 	description "Open-topped. You could easily look inside, if so minded.",
 	article "some",
-  has	container open scenery attrib28;
+  has	container open scenery pluralname;
 
 Object -> -> Meldrews_History "History of the Meldrews (vol. II)"	! 17 / 0x11
   with	name 'book' 'history',
@@ -581,7 +581,7 @@ Object -> antique_jewellery_box "antique jewellery box"	! 18 / 0x12
 	when_open "In one corner is a jewellery box, which had previously been hidden by the open trapdoor.",
 	prop22 [4f],
 	angel_hint "Try investigating the world of the romantic novel, out on the balconies of life.",
-  has	closed container transparent openable attrib21 locked;
+  has	closed container transparent openable lockable locked;
 
 Object -> -> four_leafed_clover "four-leafed clover"	! 19 / 0x13
   with	name 'four' 'leafed' 'clover',
@@ -716,7 +716,7 @@ Object Dark_Room "Dark Room"	! 40 / 0x28
   with	description "This is a roughly-furnished photographer's dark room, used by your grandfather years ago. There's nothing much here now, since you threw the chemicals out in case the children found them.",
 	before routine_f9a0,
 	e_to Over_the_East_Wing,
-	prop24 "The only doorway is back east.",
+	cant_go "The only doorway is back east.",
   has	;
 
 Object -> hanging_cord "hanging cord"	! 41 / 0x29
@@ -760,7 +760,7 @@ Object -> solid_glass_ball "solid glass ball"	! 45 / 0x2d
 Object Library_Storage "Library Storage"	! 46 / 0x2e
   with	description "Once upon a time, the house library was used as a gun-room, and all the unwanted books kept up here. Now this is just another awkward cranny.",
 	e_to Disused_Observatory,
-	prop24 "From here, you can only squeeze back east to the observatory.",
+	cant_go "From here, you can only squeeze back east to the observatory.",
   has	;
 
 Object -> romantic_novel "romantic novel"	! 47 / 0x2f
@@ -808,7 +808,7 @@ Object East_Annexe "East Annexe"	! 52 / 0x34
 Object -> insulation_rolls "insulation rolls"	! 53 / 0x35
   with	name 'insulation' 'rolls' 'roll',
 	article "some",
-  has	scenery attrib28;
+  has	scenery pluralname;
 
 Object -> -> new_battery "new-looking battery"	! 54 / 0x36
   with	name 'new' 'battery',
@@ -823,7 +823,7 @@ Object -> cupboard_door "cupboard door"	! 55 / 0x37
 	door_to Inside_Cupboard,
 	when_closed "In the north wall is an intriguing closed cupboard door.",
 	prop22 [65],
-  has	attrib7 openable static attrib21;
+  has	attrib7 openable static lockable;
 
 Object Dead_End "Dead End"	! 56 / 0x38
   with	name 'soot' 'chimney' 'sweeping' 'gear',
@@ -890,14 +890,14 @@ Object Roof "Roof"	! 64 / 0x40
 	description "This is a recessed area of the roof, open to the skies but screened from below. There used to be a flagpole here, but not any more. An open skylight leads down, and a fairly safe catwalk leads northwest. However, the red-tiled roof is vertiginous and you have vertigo, which makes it especially annoying that there's an odd little balcony too far away to the south.",
 	nw_to Battlements,
 	d_to Inside_Cupboard,
-	prop24 "William Wordsworth once described poetry as emotion recollected in tranquillity. If so, hospitals must be full of people turning out verses about what it was like to fall off the roof of a high building. Perhaps it might be better not to join them.",
+	cant_go "William Wordsworth once described poetry as emotion recollected in tranquillity. If so, hospitals must be full of people turning out verses about what it was like to fall off the roof of a high building. Perhaps it might be better not to join them.",
   has	light;
 
 Object Battlements "Battlements"	! 65 / 0x41
   with	name 'battle' 'crenel',
 	description "The old crenellated battlements of the house. An Englishman's home is, of course, his castle, but Meldrew Hall never saw much fighting and these military-looking features were just a seventeenth-century fashion. They also weren't intended for standing on, and the only safe way to proceed is back southeast.^^It is peculiarly cold here.",
 	se_to Roof,
-	prop24 "The rooftop is far too dangerous in that direction.",
+	cant_go "The rooftop is far too dangerous in that direction.",
   has	light;
 
 Object -> iron_key "gothic-looking iron key"	! 66 / 0x42
@@ -917,7 +917,7 @@ Object Chimney "Chimney"	! 68 / 0x44
 	after routine_f808,
 	e_to Inside_Cupboard,
 	d_to Priests_Hole,
-	prop24 "Not a chance!",
+	cant_go "Not a chance!",
   has	;
 
 Object -> sooty_old_stick "sooty old stick"	! 69 / 0x45
@@ -930,14 +930,14 @@ Object -> sooty_old_stick "sooty old stick"	! 69 / 0x45
 Object Rod_of_Fire "Rod of Fire"	! 70 / 0x46
   with	name 'rod' 'of' 'fire',
 	article "the",
-	rod_action routine_ead4,
+	rod_action FireRodAction,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
   has	rod_attr;
 
 Object Priests_Hole "Priest's Hole"	! 71 / 0x47
   with	name 'cross' 'padded' 'chute' 'crawl',
 	description "Good heavens, so the house has a priest hole after all!  It was always a family legend but nobody seemed to know quite where it was. Apart from a cross painted on one wall and a padded floor (to absorb the noise), this spartan cranny is featureless. Nevertheless there is a spooky air of the supernatural about... A narrow crawl leads up into the chimney.",
-	after routine_f8c2,
+	after PriestsHoleAfter,
 	u_to Chimney,
 	d_to hatch,
   has	scored;
@@ -950,7 +950,7 @@ Object -> hatch "hatch"	! 72 / 0x48
 	door_to Cellar_West,
 	when_closed "Low down on one wall is little hatch door, which if it were open would be large enough to enter.",
 	prop22 [65],
-  has	attrib7 openable static attrib21 locked;
+  has	attrib7 openable static lockable locked;
 
 Object -> ancient_prayer_book "ancient prayer book"	! 73 / 0x49
   with	name 'diary' 'ancient' 'prayer' 'book',
@@ -963,7 +963,7 @@ Object Alisons_Writing_Room "Alison's Writing Room"	! 74 / 0x4a
   with	description "A pleasantly furnished, if now mildewed, box room. A rather small door leads back north into the attics. The room is provided with a comfortable bed, which looks very inviting.",
 	n_to Dead_End,
 	s_to windows,
-	prop24 "There's just the secret north door, unless of course you count the windows.",
+	cant_go "There's just the secret north door, unless of course you count the windows.",
   has	light;
 
 Object -> comfortable_bed "comfortable bed"	! 75 / 0x4b
@@ -973,7 +973,7 @@ Object -> comfortable_bed "comfortable bed"	! 75 / 0x4b
 Object -> windows "windows"	! 76 / 0x4c
   with	name 'window' 'glass',
 	when_open "Black-latticed windows open on a beautiful summer's day.",
-	after routine_10194,
+	after WindowsAfter,
 	in_to ceiling,
 	door_to Tiny_Balcony,
 	when_closed "Blue skies can be seen through south-facing windows, latticed with black lead and shut tight.",
@@ -983,7 +983,7 @@ Object Tiny_Balcony "Tiny Balcony"	! 77 / 0x4d
   with	name 'roof' 'motorway' 'garden',
 	description "A tiny balcony around Miss Alison's windows, offering fresh air, blue skies and a magnificent view over the gardens down to the droning motorway in the distance. The roof is too perilous to scale even if you had a good reason (which you haven't), so you had better go back north.",
 	n_to Alisons_Writing_Room,
-	prop24 "The rooftop is far too dangerous in that direction.",
+	cant_go "The rooftop is far too dangerous in that direction.",
   has	light;
 
 Object -> window_sill "window sill"	! 78 / 0x4e
@@ -1010,7 +1010,7 @@ Object Old_Winery "Old Winery"	! 80 / 0x50
 Object -> demijohn "labelled glass demijohn"	! 81 / 0x51
   with	name 'demijohn' 'glass' 'bottle' 'label',
 	description "Faded ink on the label reads: Elderberry '63.",
-	after routine_1034a,
+	after DemijohnAfter,
   has	container openable static;
 
 Object -> -> nasty_battery "nasty-looking red battery"	! 82 / 0x52
@@ -1027,10 +1027,10 @@ Object -> -> tourist_map "tourist map"	! 83 / 0x53
 
 Object Storage_Room "Storage Room"	! 84 / 0x54
   with	description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
-	after routine_f714,
+	after StorageRoomAfter,
 	before routine_f68e,
 	w_to Old_Winery,
-	prop24 "The only doorway is back west to the winery.",
+	cant_go "The only doorway is back west to the winery.",
   has	;
 
 Object -> wheel "wheel"	! 85 / 0x55
@@ -1088,7 +1088,7 @@ Object -> metal_door "metal door"	! 92 / 0x5c
 	door_to Garden_Stream,
 	when_closed "At the north end is a closed metal door.",
 	prop22 [65],
-  has	attrib7 openable static attrib21 locked;
+  has	attrib7 openable static lockable locked;
 
 Object Cellars "Cellars"	! 93 / 0x5d
   with	description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues west and south.",
@@ -1159,7 +1159,7 @@ Object -> Gothic_door "Gothic door"	! 103 / 0x67
 	door_to Infinity_Symbol,
 	when_closed "In the northwest wall is a heavy, imposing Gothic iron door.",
 	prop22 [42],
-  has	attrib7 openable static attrib21 locked;
+  has	attrib7 openable static lockable locked;
 
 Object Infinity_Symbol "Infinity Symbol"	! 104 / 0x68
   with	name 'marble' 'disc' 'webs' 'icicle',
@@ -1197,12 +1197,12 @@ Object Airing_Cupboard "Airing Cupboard"	! 109 / 0x6d
   with	name 'coffee' 'mugs' 'sculpture' 'racks',
 	description "A space about six feet square. The old drying racks now contain odd ceramic sculptures almost but not quite unrecognisable as coffee mugs. One corner is filled with an enormous pile of tie-dyed sheets, from Aunt Jemima's infamous Sixties Revival period of last October.",
 	n_to Conservatory,
-	prop24 "The only way to go from here is back north.",
+	cant_go "The only way to go from here is back north.",
   has	light;
 
 Object -> pile_of_sheets "pile of sheets"	! 110 / 0x6e
   with	name 'pile' 'of' 'sheets',
-  has	scenery attrib28;
+  has	scenery pluralname;
 
 Object -> antiquated_wireless "antiquated wireless"	! 111 / 0x6f
   with	name 'switch' 'cabinet' 'radio' 'wireless',
@@ -1219,7 +1219,7 @@ Object Potting_Room "Potting Room"	! 112 / 0x70
 	description "This light room is full of pot plants, flowers, seeds, ornamental trowels and other miscellaneous garden implements.",
 	before routine_10494,
 	e_to Conservatory,
-	prop24 "The only exit is back east to the conservatory.",
+	cant_go "The only exit is back east to the conservatory.",
   has	light;
 
 Object -> old_gardeners__gloves "old gardeners' gloves"	! 113 / 0x71
@@ -1286,7 +1286,7 @@ Object Garden_Stream "Garden Stream"	! 122 / 0x7a
 	description "In the lush, verdant (which is to say, under-cared for) gardens of Meldrew House, where a stream gurgles pleasantly as it meanders through reeds. The house rises up high above you to the south and you do not dare go east for fear of being recaptured by the rest of the family, so you'll have to go northwest, deeper into the gardens.",
 	s_to coal_bunker,
 	nw_to Family_Tree,
-	prop24 "Better not go that way... you might get caught.",
+	cant_go "Better not go that way... you might get caught.",
   has	light scored;
 
 Object -> coal_bunker "coal bunker"	! 123 / 0x7b
@@ -1318,7 +1318,7 @@ Object Mosaic "Mosaic"	! 126 / 0x7e
 	description "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitor's shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists.",
 	w_to Family_Tree,
 	u_to Family_Tree,
-	prop24 "From here you can only climb back up to the plane tree.",
+	cant_go "From here you can only climb back up to the plane tree.",
   has	;
 
 Object -> mosaic_object "mosaic"	! 127 / 0x7f
@@ -1337,7 +1337,7 @@ Object Vegetable_Garden "Vegetable Garden"	! 129 / 0x81
   with	description "A recently-turned vegetable garden, using up a shady corner of the garden. The patch testifies more to good intentions than horticulture.",
 	n_to Clearing,
 	u_to runner_bean_plant,
-	prop24 "From this corner, you can only go back to the clearing.",
+	cant_go "From this corner, you can only go back to the clearing.",
   has	light;
 
 Object -> runner_bean_plant "runner-bean plant"	! 130 / 0x82
@@ -1370,7 +1370,7 @@ Object Up_the_Plane_Tree "Up the Plane Tree"	! 134 / 0x86
   with	name 'jemima//p' 'conservatory' 'window',
 	description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at the conservatory window, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
 	d_to Family_Tree,
-	prop24 "No, don't go out on a limb.",
+	cant_go "No, don't go out on a limb.",
   has	light;
 
 Object -> maze_layout "maze layout"	! 135 / 0x87
@@ -1384,7 +1384,7 @@ Object Maze "Maze"	! 136 / 0x88
 	before routine_11818,
 	s_to Family_Tree,
 	w_to Viewpoint_Ledge,
-	prop24 "The privet hedges are in the way.",
+	cant_go "The privet hedges are in the way.",
   has	light scored;
 
 Object Patio_in_Maze "Patio in Maze"	! 137 / 0x89
@@ -1393,7 +1393,7 @@ Object Patio_in_Maze "Patio in Maze"	! 137 / 0x89
 	after routine_113d8,
 	before routine_11818,
 	d_to Crypt,
-	prop24 "The privet hedges are in the way.",
+	cant_go "The privet hedges are in the way.",
   has	light scored;
 
 Object Crypt "Crypt"	! 138 / 0x8a
@@ -1446,7 +1446,7 @@ Object Viewpoint_Ledge "Viewpoint Ledge"	! 144 / 0x90
 	description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
 	after routine_11862,
 	e_to Maze,
-	prop24 "The hillside is too steep.",
+	cant_go "The hillside is too steep.",
   has	light scored;
 
 Object -> plaque "plaque"	! 145 / 0x91
@@ -1467,7 +1467,7 @@ Object Folly "Folly"	! 147 / 0x93
 	description "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across the river far below.^^Towering over you is a monstrously awful piece of architecture, a Folly. The freestanding tower has no appreciable purpose and no apparent entrance. The latter is just as well since it looks extremely unsafe.",
 	before FollyBefore,
 	e_to Maze_Foundations,
-	prop24 "The hillside is too steep.",
+	cant_go "The hillside is too steep.",
   has	light scored;
 
 Object -> bean_pole "bean pole"	! 148 / 0x94
@@ -1490,7 +1490,7 @@ Object Up_the_Beanstalk "Up the Beanstalk"	! 150 / 0x96
   with	description "At the top of the beanstalk, in amongst the clouds. There is no safe way to go from here except back down, not surprisingly. A dangerous way might be to step out onto the clouds to the north, but even if this is a fairy-tale it would be taking a lot on trust.",
 	n_to Heavenly_Place,
 	d_to Vegetable_Garden,
-	prop24 "The clouds are too tenuous that way.",
+	cant_go "The clouds are too tenuous that way.",
   has	light;
 
 Object Maze_Foundations "Maze Foundations"	! 151 / 0x97
@@ -1509,7 +1509,7 @@ Object Tree_Planting "Tree Planting"	! 152 / 0x98
 Object Museum_of_Arcana "Museum of Arcana"	! 153 / 0x99
   with	name 'shadow',
 	description "A dark hall, deserted after nightfall. Outside it is a stormy October night, and rain beats against the windowpanes. Shadows swoop and dive in the air like bats.",
-	prop24 "There's no apparent way out of here.",
+	cant_go "There's no apparent way out of here.",
   has	scored;
 
 Object -> Tarot_box "Tarot box"	! 154 / 0x9a
@@ -1567,7 +1567,7 @@ Object Coven_Cell "Coven Cell"	! 161 / 0xa1
   with	description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
 	after routine_107de,
 	number 0,
-	prop24 "There's definitely no way out of here.",
+	cant_go "There's definitely no way out of here.",
   has	;
 
 Object -> goat "anxious-looking goat"	! 162 / 0xa2
@@ -1718,14 +1718,14 @@ Object Near_Ring_Road "Near Ring Road"	! 184 / 0xb8
 	description "A dry, desolate waste of buildings borders here on a main road, so full of black-suited pedestrians off to work at banks that you can't force your way any further east. Once in a while a few of the bowler-hatted army step into the street and down some steps below a Metropolitan sign.",
 	w_to Unreal_City,
 	d_to Chatelet_les_Halles,
-	prop24 "You can't force your way through the tide of bankers.",
+	cant_go "You can't force your way through the tide of bankers.",
   has	light;
 
 Object Chatelet_les_Halles "Chatelet-les-Halles"	! 185 / 0xb9
   with	name 'gates',
 	description "This is a vast underground station in great rectangular caverns, deep beneath the streets. You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't a ticket you're likely to stay that way.",
 	u_to Near_Ring_Road,
-	prop24 "Back up the stairs for you. Call yourself a traveller...",
+	cant_go "Back up the stairs for you. Call yourself a traveller...",
   has	light;
 
 Object -> surly_shopkeeper "surly shopkeeper"	! 186 / 0xba
@@ -1745,7 +1745,7 @@ Object Ruined_Castle_Cafe "Ruined Castle Cafe"	! 188 / 0xbc
   with	name 'decor' 'arrows' 'quarter' 'waiter',
 	description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
 	before routine_11ce8,
-	prop24 "The crowd is lively and exciting, but also inconsiderate and bulky.",
+	cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
   has	light scored;
 
 Object -> cafe_table "cafe table"	! 189 / 0xbd
@@ -1789,7 +1789,7 @@ Object Cups_and_Glasses "Cups and Glasses"	! 196 / 0xc4
 	description "This basement room is filled with crate after crate of glasses and cups, enough for an entire hotel, or restaurant perhaps. A little light comes in from an opaque skylight which is at street level outdoors. There is no way out of here, since the only door is shut tight.",
 	n_to windowed_door,
 	number 0,
-	prop24 "There's no apparent way out of here.",
+	cant_go "There's no apparent way out of here.",
   has	light;
 
 Object -> windowed_door "windowed door"	! 197 / 0xc5
@@ -1802,7 +1802,7 @@ Object -> windowed_door "windowed door"	! 197 / 0xc5
 Object Sea_Shore "Sea Shore"	! 198 / 0xc6
   with	description "A rough rocky sea shore below barely-climbable cliffs, against which an inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.",
 	u_to Cliffs,
-	prop24 "The rocks are too dangerous. You'll have to scale the cliff.",
+	cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
   has	light;
 
 Object -> Andromeda "Andromeda"	! 199 / 0xc7
@@ -1831,7 +1831,7 @@ Object Cliffs "Cliffs"	! 202 / 0xca
 	description "On top of some exposed cliffs on the Mediterranean. A dangerous slither down leads on one side to the shore, all other ways down being even more hazardous. Atop the cliffs is the Pharos tower, a round stone pinnacle lighthouse, but there is no way in from here. A grassy walk leads east.",
 	e_to Clifftop_Walk,
 	d_to Sea_Shore,
-	prop24 "There's only dull grassland that way.",
+	cant_go "There's only dull grassland that way.",
   has	light;
 
 Object Clifftop_Walk "Clifftop Walk"	! 203 / 0xcb
@@ -1840,7 +1840,7 @@ Object Clifftop_Walk "Clifftop Walk"	! 203 / 0xcb
 	s_to Wall_of_Thorns,
 	e_to Outside_Taverna,
 	w_to Cliffs,
-	prop24 "There's only dull grassland that way.",
+	cant_go "There's only dull grassland that way.",
   has	light;
 
 Object -> herd_of_goats "herd of goats"	! 204 / 0xcc
@@ -1851,7 +1851,7 @@ Object Wall_of_Thorns "Wall of Thorns"	! 205 / 0xcd
   with	description "The rather sparse rolling landscape is dominated here by a massive, and suspiciously unnatural, wall of thorns, which forms a great ring about an area perhaps a hundred yards in diameter. There are goat pastures to the north.",
 	n_to Clifftop_Walk,
 	s_to wall_of_thorns_object,
-	prop24 "There's only dull grassland that way.",
+	cant_go "There's only dull grassland that way.",
   has	light;
 
 Object -> wall_of_thorns_object "wall of thorns"	! 206 / 0xce
@@ -1868,7 +1868,7 @@ Object Sacred_Earth "Sacred Earth"	! 207 / 0xcf
 	after routine_1195e,
 	n_to Wall_of_Thorns,
 	s_to Temple_of_Zeus,
-	prop24 "The wall of thorns hems you in.",
+	cant_go "The wall of thorns hems you in.",
   has	light;
 
 Object Temple_of_Zeus "Temple of Zeus"	! 208 / 0xd0
@@ -1876,7 +1876,7 @@ Object Temple_of_Zeus "Temple of Zeus"	! 208 / 0xd0
 	description "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and featureless save for the entrance at the north. So much for all the rumours about hoards of treasure - it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along.",
 	after routine_11b52,
 	n_to Sacred_Earth,
-	prop24 "Unfortunately for you (since Zeus is watching it), the temple has only one entrance.",
+	cant_go "Unfortunately for you (since Zeus is watching it), the temple has only one entrance.",
   has	light scored;
 
 Object -> copper_coin "copper coin"	! 209 / 0xd1
@@ -1889,13 +1889,13 @@ Object Outside_Taverna "Outside Taverna"	! 210 / 0xd2
   with	description "A long walk along the cliffs from the lighthouse leads naturally here, just outside the Eraina Taverna, whose open doorway lies to the south.",
 	s_to Eraina_Taverna,
 	w_to Clifftop_Walk,
-	prop24 "There's only dull grassland that way.",
+	cant_go "There's only dull grassland that way.",
   has	light;
 
 Object Eraina_Taverna "Eraina Taverna"	! 211 / 0xd3
   with	description "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight.",
 	n_to Clifftop_Walk,
-	prop24 "The tavern entrance is to the north.",
+	cant_go "The tavern entrance is to the north.",
   has	light scored;
 
 Object -> Ekmek_Special "Ekmek Special"	! 212 / 0xd4
@@ -1916,7 +1916,7 @@ Object -> bartender "bartender"	! 213 / 0xd5
 Object Lighthouse "Lighthouse"	! 214 / 0xd6
   with	name 'smudge' 'quinqu',
 	description "You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Inconsiderately enough, the builders have provided no obvious way down from here. Still, there's a fine view out across the Mediterranean sea into the dim dawning sun. It's going to be a nice day, you can't help thinking.^^In the centre of the pinnacle is a marvellous device of polished bronze mirrors, its open end pointed out across the bay. There seems to be very little traffic at the moment, though a smudge on the horizon might possibly be a quinquireme.",
-	prop24 "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
+	cant_go "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
   has	light scored;
 
 Object -> mirrored_device "mirrored device"	! 215 / 0xd7
@@ -1944,7 +1944,7 @@ Object Spur_of_Rock "Spur of Rock"	! 219 / 0xdb
   with	description "An uncomfortable spur of rock on the hillside crags. The only natural access to this spot is a crevice in the hill to the east, but there is also a securely fastened rope hanging down into the darkness.",
 	e_to Murky_Cave,
 	d_to Hanging_on_Rope,
-	prop24 "The crags are too precipitous.",
+	cant_go "The crags are too precipitous.",
   has	light;
 
 Object -> hanging_rope "hanging rope"	! 220 / 0xdc
@@ -1956,7 +1956,7 @@ Object Hanging_on_Rope "Hanging on Rope"	! 221 / 0xdd
 	description "You are hanging perilously on a hemp rope, suspended from an overhang of rock above, which drops down into the darkness of the valley. On the tracks below, patrols of men can be heard, and you feel instinctively that they are not friendly.",
 	after routine_1267e,
 	u_to Spur_of_Rock,
-	prop24 "Up and down are it, quite frankly.",
+	cant_go "Up and down are it, quite frankly.",
   has	light;
 
 Object -> hemp_rope "hemp rope"	! 222 / 0xde
@@ -1974,7 +1974,7 @@ Object Valley_Prospect "Valley Prospect"	! 224 / 0xe0
   with	description "The geography is strangely familiar here. You are on a natural shelf on the hillside, overlooking the valley below. An all-but invisible cleft in the rock leads to a cave to the southwest, and the slope can safely be traversed to the east.^^It is a brightly moonlit night, cool as in late spring. There will be a sharp frost tomorrow. Down in the valley, a great cartwheel circle of camp fires illuminate some dark shapes, perhaps crude encampments. There is no other sign of civilisation.",
 	e_to Roman_Villa,
 	sw_to Murky_Cave,
-	prop24 "The hillside is too steep.",
+	cant_go "The hillside is too steep.",
   has	light;
 
 Object Roman_Villa "Roman Villa"	! 225 / 0xe1
@@ -2069,14 +2069,14 @@ Object Inside_Well "Inside Well"	! 238 / 0xee
 	after routine_1239e,
 	w_to Hypocaust,
 	u_to Triclinium,
-	prop24 "Too risky. There might not be anything that way, for all you know.",
+	cant_go "Too risky. There might not be anything that way, for all you know.",
   has	;
 
 Object Hypocaust "Hypocaust"	! 239 / 0xef
   with	name 'fires' 'heating' 'log' 'logs',
 	description "This very low almost-cellar underneath the atrium is a tiny access space for log fires which are kept going to provide a form of central heating for the villa. They are lit and going away nicely, interestingly. It isn't very warm by twentieth-century standards, but you have to admit it works. A tiny amount of light filters in from the vents in the roof, but nowhere near enough to see by. The only way in seems to be the way you came.",
 	e_to Inside_Well,
-	prop24 "The log fires are hot, and anyway the only way out large enough for you is back east.",
+	cant_go "The log fires are hot, and anyway the only way out large enough for you is back east.",
   has	light;
 
 Object -> hypocaust_vents "hypocaust vents"	! 240 / 0xf0
@@ -2094,7 +2094,7 @@ Object Entrance "Entrance"	! 241 / 0xf1
 Object Rough_Tent "Rough Tent"	! 242 / 0xf2
   with	name 'hides',
 	description "Well, here you are, imprisoned again. This time the cell is a tent of stitched animal hides, perhaps twenty feet in diameter, supported by a central pole. You have no idea where the entrance is, because you were blindfolded on the way in. There is at least a dim light from the camp-fires outside the tent.",
-	prop24 "This tent doesn't seem to have an exit, either.",
+	cant_go "This tent doesn't seem to have an exit, either.",
   has	light scored;
 
 Object -> tent_pole "tent pole"	! 243 / 0xf3
@@ -2124,7 +2124,7 @@ Object Encampment "Encampment"	! 246 / 0xf6
 	after routine_12a32,
 	e_to dolmen,
 	number 0,
-	prop24 "Far, far too risky.",
+	cant_go "Far, far too risky.",
   has	light scored;
 
 Object -> dolmen "dolmen"	! 247 / 0xf7
@@ -2138,7 +2138,7 @@ Object Beneath_Dolmen "Beneath Dolmen"	! 248 / 0xf8
   with	name 'dolmen',
 	description "You stand beside the eerie dolmen, surrounded by the terrible noises and incantations of a druidic rite.",
 	w_to Encampment,
-	prop24 "Far, far too risky.",
+	cant_go "Far, far too risky.",
   has	light scored;
 
 Object -> bluish_stone "bluish stone"	! 249 / 0xf9
@@ -2157,7 +2157,7 @@ Object Hellish_Place "Hellish Place"	! 251 / 0xfb
 	before Hellish_Place_Before,
 	n_to Cellar_West,
 	u_to Cellar_West,
-	prop24 "That direction is not for the living.",
+	cant_go "That direction is not for the living.",
   has	light;
 
 Object -> demon "demon"	! 252 / 0xfc
@@ -2171,7 +2171,7 @@ Object Heavenly_Place "Heavenly Place"	! 253 / 0xfd
 	description "Heaven, you always imagined, would be a world of marble pillars, fluffy clouds, harps and angelic ladies with serene expressions. You were right about the last part. An angel is sitting here behind some new office furniture, next to a blue Tourist Information sign. A bridge of cloud extends south across the sky to the beanstalk. There is some choral singing going on somewhere, but not loud enough for you to hear properly. Not in this life, anyway.",
 	before Heavenly_Place_Before,
 	s_to Up_the_Beanstalk,
-	prop24 "That direction is not for the living.",
+	cant_go "That direction is not for the living.",
   has	light;
 
 Object -> angel "angel"	! 254 / 0xfe
@@ -2285,7 +2285,7 @@ Global transcript_mode;
 Global debug_mode;
 Global global44 = 1[?];
 Global global45;
-Global global46;
+Global multiflag;
 Global notheld_mode;
 Global global48;
 Global global49;
@@ -2608,7 +2608,7 @@ Global global239;
                 if (local7 ~= 0) {
                     local2 = 'invalidDictWord2';
                 }
-                global46 = 0;
+                multiflag = false;
                 if (local2 > 3) {
                     print "Madness!  Stack corrupted^";
                     jump label17361;
@@ -2627,7 +2627,7 @@ Global global239;
                         @pop;
                     }
                     if (noun == nothing) {
-                        global46 = 1[?];
+                        multiflag = true;
                         local3 = global17->0;
                         if (local3 == 0) {
                             print "Nothing to do!^";
@@ -4207,15 +4207,15 @@ Global global239;
     rtrue;
 ];
 
-[ routine_84f2 local1 ;	! 34034 / 0x84f2
+[ InsertSub env ;	! 34034 / 0x84f2
     if (second == floor) {
         verb = ##Action8;
         routine_47fc(noun,0,verb);	! not popped
         @pop;
         rfalse;
     }
-    local1 = parent(noun);
-    if (local1 ~= player) {
+    env = parent(noun);
+    if (env ~= player) {
         "You need to be holding it before you can put it into something else.";
     }
     if (second hasnt container) {
@@ -4235,14 +4235,14 @@ Global global239;
         "Only cards will fit.";
     }
     if (second == electric_torch) {
-        local1 = routine_fbf6();
-        if (local1 ~= 0) {
+        env = routine_fbf6();
+        if (env ~= nothing) {
             rtrue;
         }
     }
     if (second == flash) {
-        local1 = routine_fb36();
-        if (local1 ~= 0) {
+        env = routine_fb36();
+        if (env ~= nothing) {
             rtrue;
         }
     }
@@ -4251,7 +4251,7 @@ Global global239;
     if (1[?] == routine_4894()) {
         rtrue;
     }
-    if (global46 == 1[?]) {
+    if (multiflag == true) {
         "Done.";
     }
     "You put the ", (name) noun, " into the ", (name) second, ".";
@@ -4430,7 +4430,7 @@ Global global239;
         if (game_section == DREAMING) {
             "You drift in that direction, but without gaining any ground.";
         }
-        local1 = local1.prop24;
+        local1 = local1.cant_go;
         print (string) local1;
         new_line;
         rfalse;
@@ -4687,7 +4687,7 @@ Global global239;
     if (noun == yourself) {
         "As good-looking as ever.";
     }
-    if (noun has attrib28) {
+    if (noun has pluralname) {
         routine_b3fa();	! not popped
         @pop;
         rfalse;
@@ -4959,7 +4959,7 @@ Global global239;
 ];
 
 [ routine_999e local1 ;	! 39326 / 0x999e
-    if (noun hasnt attrib21) {
+    if (noun hasnt lockable) {
         "I can't see how to unlock that.";
     }
     if (noun hasnt locked) {
@@ -4978,7 +4978,7 @@ Global global239;
 ];
 
 [ routine_9a20 local1 ;	! 39456 / 0x9a20
-    if (noun hasnt attrib21) {
+    if (noun hasnt lockable) {
         "I can't see how to lock that.";
     }
     if (noun has locked) {
@@ -6399,7 +6399,7 @@ Global global239;
 
 ! References: Rod_of_Fire.rod_action
 
-[ routine_ead4 local1 ;	! 60116 / 0xead4
+[ FireRodAction local1 ;	! 60116 / 0xead4
     if (second == player) {
         finish_state = DIED;
         "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
@@ -6682,7 +6682,7 @@ Global global239;
 
 ! References: Storage_Room.after
 
-[ routine_f714 local1 ;	! 63252 / 0xf714
+[ StorageRoomAfter local1 ;	! 63252 / 0xf714
     if (verb == ##Action4) {
         local1 = 86[dumbwaiter?];
         local1 = parent(local1);
@@ -6736,7 +6736,7 @@ Global global239;
 
 ! References: Priests_Hole.after
 
-[ routine_f8c2 local1 ;	! 63682 / 0xf8c2
+[ PriestsHoleAfter local1 ;	! 63682 / 0xf8c2
     if (verb == ##Action17) {
         if (noun == ceiling) {
             local1 = child(player);
@@ -7022,7 +7022,7 @@ Global global239;
 
 ! References: windows.after
 
-[ routine_10194 ;	! 65940 / 0x10194
+[ WindowsAfter ;	! 65940 / 0x10194
     if (verb == ##Action59) {
         if (windows has open) {
             rfalse;
@@ -7065,7 +7065,7 @@ Global global239;
 
 ! References: demijohn.after
 
-[ routine_1034a ;	! 66378 / 0x1034a
+[ DemijohnAfter ;	! 66378 / 0x1034a
     if (verb == ##Action29) {
         if (old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";

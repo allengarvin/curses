@@ -277,7 +277,7 @@ Attribute 6	moved
 Attribute 7	attrib7			! obj15_hinged_trapdoor obj51_south_wall obj55_cupboard_door obj58_secret_door obj61_big_iron_fireplace obj62_cranked_skylight obj72_hatch obj76_windows obj92_metal_door obj103_Gothic_door obj123_coal_bunker obj130_runner_bean_plant obj139_bronze_mural obj165_cell_door obj181_tourist_boat obj197_windowed_door obj206_wall_of_thorns obj237_kitchen_well obj247_dolmen
 Attribute 8	container
 Attribute 9	transparent
-Attribute 10	open		! obj15_hinged_trapdoor obj16_teachests obj27_servant_s_bed obj32_scratched_cupboard obj50_slide_projector obj51_south_wall obj57_canvas_rucksack obj58_secret_door obj61_big_iron_fireplace obj75_comfortable_bed obj86_dumbwaiter obj87_dark_shaft obj95_dark_shaft obj190_complicated_looking_bomb obj215_mirrored_device obj247_dolmen
+Attribute 10	open
 Attribute 11	openable
 Attribute 13	enterable
 Attribute 14	scenery
@@ -287,11 +287,8 @@ Attribute 17    visited
 Attribute 18	rod_attr
 Attribute 19	hidden_rod
 attribute 20    rod_charged
-
-! locked/lockable, probably:
-Attribute 21	attrib21		! obj18_antique_jewellery_box obj55_cupboard_door obj72_hatch obj92_metal_door obj103_Gothic_door
+Attribute 21	lockable
 Attribute 22	locked
-
 Attribute 23    switchable
 Attribute 24	on
 Attribute 25    general
@@ -325,7 +322,7 @@ Property 20	when_closed:string
 Property 21	number:int
 Property 22	prop22:?
 Property 23	rod_assoc:object
-Property 24	prop24:string
+Property 24	cant_go:string
 Property 25	devil_hint:string
 Property 26	angel_hint:string
 
@@ -375,7 +372,7 @@ Global 42	transcript_mode:int
 Global 43	debug_mode:bool
 Global 44	global44:?
 Global 45	global45:?
-Global 46	global46:?
+Global 46	multiflag:bool
 Global 47	notheld_mode
 Global 48	global48:?
 Global 49	global49:?
@@ -764,7 +761,7 @@ Routine 0x81f4 routine_81f4
 Routine 0x8220 routine_8220
 Routine 0x8400 routine_8400
 Routine 0x846e routine_846e
-Routine 0x84f2 routine_84f2
+Routine 0x84f2 InsertSub env:object
 Routine 0x861c routine_861c
 Routine 0x8684 routine_8684
 Routine 0x8690 routine_8690
@@ -865,7 +862,7 @@ Routine 0xe7c8 routine_e7c8
 Routine 0xe822 routine_e822
 Routine 0xe838 routine_e838
 Routine 0xe844 routine_e844
-Routine 0xead4 routine_ead4
+Routine 0xead4 FireRodAction
 Routine 0xed4c transport_player n:int dest:object
 Routine 0xee10 routine_ee10
 Routine 0xeeb6 routine_eeb6
@@ -880,11 +877,11 @@ Routine 0xf566 routine_f566
 Routine 0xf630 EasttAnnexeBefore
 Routine 0xf64c InsideCupboardBefore
 Routine 0xf68e routine_f68e
-Routine 0xf714 routine_f714
+Routine 0xf714 StorageRoomAfter
 Routine 0xf770 routine_f770
 Routine 0xf7d0 routine_f7d0
 Routine 0xf808 routine_f808
-Routine 0xf8c2 routine_f8c2
+Routine 0xf8c2 PriestsHoleAfter
 Routine 0xf968 IsaacPaintingBefore
 Routine 0xf9a0 routine_f9a0
 Routine 0xfa08 routine_fa08
@@ -898,10 +895,10 @@ Routine 0xfe84 routine_fe84
 Routine 0x10024 routine_10024
 Routine 0x10046 CoalBunkerBefore
 Routine 0x10068 routine_10068
-Routine 0x10194 routine_10194
+Routine 0x10194 WindowsAfter
 Routine 0x101ec routine_101ec
 Routine 0x102fa routine_102fa
-Routine 0x1034a routine_1034a
+Routine 0x1034a DemijohnAfter
 Routine 0x10390 routine_10390
 Routine 0x103de routine_103de
 Routine 0x10494 routine_10494
