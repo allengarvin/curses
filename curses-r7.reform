@@ -31,7 +31,7 @@ Object 178	Rod_of_Bronze
 Object 230	Rod_of_Language
 Object 244	Rod_of_Returning2
 
-Object 12	Darkness
+Object 12	thedark
 Object 13	Grahams_Lair
 Object 14	Attic
 Object 15	hinged_trapdoor
@@ -102,7 +102,7 @@ Object 81	demijohn
 Object 82	nasty_battery
 Object 83	tourist_map
 Object 84	Storage_Room
-Object 85	wheel
+Object 85	wheel2
 Object 86	dumbwaiter
 Object 87	dark_shaft
 Object 88	pulley_ropes
@@ -271,7 +271,9 @@ Attribute 1	concealed
 Attribute 2 worn
 Attribute 3	clothing
 Attribute 4	animate
-Attribute 5	actor
+
+! attr 5 may be proper or actor
+Attribute 5	proper
 Attribute 6	moved
 
 ! not certain:
@@ -345,27 +347,27 @@ Global 14	verb:action
 Global 15	noun:object
 Global 16	second:object
 Global 17	global17:?
-Global 18	global18:dictword
-Global 19	global19:?
+Global 18	noun_word:dictword
+Global 19	current_year:int
 Global 20	game_section:game_area
-Global 21	global21:?
-Global 22	global22:?
+GlobalArray 21 card_deck:array(6*object)
+Global 22	card_ptr:int
 Global 23	global23:?
 Global 24	MazeX:int
 Global 25	MazyY:int
 Global 26	global26:?
 Global 27	global27:?
 Global 28	global28:?
-Global 29	global29:?
-Global 30	global30:?
+Global 29	Mouse_x:int
+Global 30	Mouse_y:int
 Global 31	BombTicking:bool
-Global 32	global32:?
-GlobalArray 33	ScoreArray:array(17*int)
+GlobalArray 32	score_array1:array(17*int)
+GlobalArray 33	score_array2:array(17*int)
 Global 34	things_score:int
 Global 35	places_score:int
 Global 36	rod_score:int
-Global 37	global37:?
-Global 38	global38:?
+Global 37	good_try_bonus:bool
+GlobalArray 38 BombWires:array(4*object)
 Global 39	CouncilCnt:int
 Global 40	KnowLanguages:bool
 Global 41	debug_deterministic_transportation:bool
@@ -374,8 +376,8 @@ Global 43	debug_mode:bool
 Global 44	global44:?
 Global 45	global45:?
 Global 46	multiflag:bool
-Global 47	notheld_mode
-Global 48	global48:?
+Global 47	notheld_mode:bool
+Global 48	onotheld_mode
 Global 49	global49:?
 Global 50	num_words
 Global 51	global51:?
@@ -535,39 +537,10 @@ Global 204	global204:?
 Global 205	global205:?
 Global 206	global206:?
 Global 207	global207:?
-Global 208	global208:?
-Global 209	global209:?
-Global 210	global210:?
-Global 211	global211:?
-Global 212	global212:?
-Global 213	global213:?
-Global 214	global214:?
-Global 215	global215:?
-Global 216	global216:?
-Global 217	global217:?
-Global 218	global218:?
-Global 219	global219:?
-Global 220	global220:?
-Global 221	global221:?
-Global 222	global222:?
-Global 223	global223:?
-Global 224	global224:?
-Global 225	global225:?
-Global 226	global226:?
-Global 227	global227:?
-Global 228	global228:?
-Global 229	global229:?
-Global 230	global230:?
-Global 231	global231:?
-Global 232	global232:?
-Global 233	global233:?
-Global 234	global234:?
-Global 235	global235:?
-Global 236	global236:?
-Global 237	global237:?
-Global 238	global238:?
-Global 239	global239:?
+Global 208	global208:object
+LastGlobal 208
 
+Array 11869 verb_routine_array:array(110*routine)
 ! meta-verbs
 
 Action 18	Score
@@ -687,11 +660,12 @@ Action 106	XDeter	! 'xdeter'
 
 
 Routine 0x7a07 LeaveAttic
-Routine 0x43aa routine_43aa local1 local2:dictword
-Routine 0x47fc routine_47fc
+Routine 0x42b0 Main
+Routine 0x43aa PlayTheGame i j k l aflag metaverb:bool nonexit:bool
+Routine 0x47fc RunRoutines i j k
 Routine 0x484c AfterRoutines:int
 Routine 0x4894 routine_4894
-Routine 0x48b4 routine_48b4 ptr:int
+Routine 0x48b4 Banner i:int
 Routine 0x4960 Time i:? j k:object 
 Routine 0x722e ResetTimer obj:object i:int
 Routine 0x724a DecrementTimer o:object i:int
@@ -701,11 +675,11 @@ Routine 0x7288 TorchTimer o:object i:int
 Routine 0x72e0 JoshuaDaemon who:object num:int
 Routine 0x7554 HasLightSource:bool i:object
 Routine 0x758a AddScore ndx:score_index i:int
-Routine 0x75b4 MouseMove o:object rm:object
+Routine 0x75b4 MouseMove o:object rm:object local3 x1:int x2:int
 Routine 0x794e ScoreSub score_var:int
-Routine 0x7ccc routine_7ccc
+Routine 0x7ccc PadInteger i:int j:int
 Routine 0x7d0c Explain_Score ndx:score_index final_score:int
-Routine 0x7e76 routine_7e76
+Routine 0x7e76 FullScoreSub
 Routine 0x7ffa QuitSub i:dictword
 Routine 0x805a routine_805a
 Routine 0x805e RestartSub i:dictword
@@ -714,8 +688,8 @@ Routine 0x80d2 SaveSub
 Routine 0x80e4 ScriptOnSub
 Routine 0x812c ScriptOffSub
 Routine 0x8170 InvSub
-Routine 0x81a6 TakeSub
-Routine 0x81f4 routine_81f4
+Routine 0x81a6 routine_81a6
+Routine 0x81f4 TakeSub
 Routine 0x8220 routine_8220
 Routine 0x8400 DropSub env:object unused unused2
 Routine 0x846e routine_846e
@@ -729,9 +703,9 @@ Routine 0x87b8 routine_87b8 env:object
 Routine 0x8848 routine_8848
 Routine 0x889c VagueGoSub
 Routine 0x88c4 GoSub env:object prop:property unused has_light:bool o:object
-Routine 0x8ea8 routine_8ea8
-Routine 0x8f16 routine_8f16
-Routine 0x8f76 routine_8f76
+Routine 0x8ea8 BriefSub
+Routine 0x8f16 VerboseSub
+Routine 0x8f76 SuperSub
 Routine 0x8fdc LookSub verbose:bool env:object str:string local4 chld:object local6 local7 
 Routine 0x9156 routine_9156
 Routine 0x9320 DescribeObj obj:object n:int
@@ -790,12 +764,14 @@ Routine 0xaf9a routine_af9a
 Routine 0xb10c routine_b10c
 Routine 0xb1ba SpraySub i:object
 Routine 0xb3f0 routine_b3f0
-Routine 0xb3fa routine_b3fa o1:object o2:object
+Routine 0xb3fa SearchSub o1:object o2:object
 Routine 0xb6de routine_b6de
 Routine 0xb6f2 routine_b6f2 i
-Routine 0xc658 routine_c658
-Routine 0xc66c routine_c66c
-Routine 0xc67c routine_c67c
+Routine 0xc658 Indefart
+Routine 0xc66c Defart
+Routine 0xc67c CDefart
+!!! - end of parser.h
+
 Routine 0xc68c routine_c68c
 Routine 0xc806 DemonHint hints_left:int
 Routine 0xc8ae routine_c8ae
@@ -816,29 +792,29 @@ Routine 0xe5a0 routine_e5a0
 Routine 0xe5bc routine_e5bc
 Routine 0xe5d0 routine_e5d0
 Routine 0xe5de routine_e5de
-Routine 0xe7c8 routine_e7c8
-Routine 0xe822 routine_e822
-Routine 0xe838 routine_e838
-Routine 0xe844 routine_e844
+Routine 0xe7c8 WineryBonusScore unused
+Routine 0xe822 DealCard:object 
+Routine 0xe838 InsertCardIntoDeck card:object
+Routine 0xe844 SosostrisDeals card3:object card2:object card1:object
 Routine 0xead4 FireRodAction
 Routine 0xed4c transport_player n:int dest:object
-Routine 0xee10 routine_ee10
-Routine 0xeeb6 routine_eeb6
-Routine 0xef82 RodOfLuckAfter
-Routine 0xf006 routine_f006
-Routine 0xf0b2 routine_f0b2
+Routine 0xee10 RodOfHusbandryAction
+Routine 0xeeb6 RodOfBronzeAction
+Routine 0xef82 RodOfLuckAction
+Routine 0xf006 RodOfSAcrificeAction
+Routine 0xf0b2 RodOfLanguageAction
 Routine 0xf0fa stalking_rod_action
-Routine 0xf282 routine_f282
+Routine 0xf282 RodOfInfinityAction
 Routine 0xf3d6 routine_f3d6
 Routine 0xf40e HouseAfter
-Routine 0xf566 routine_f566
+Routine 0xf566 WineryAfter
 Routine 0xf630 EasttAnnexeAfter
 Routine 0xf64c InsideCupboardAfter
-Routine 0xf68e routine_f68e
+Routine 0xf68e StorageRoomBefore
 Routine 0xf714 StorageRoomBefore
-Routine 0xf770 routine_f770
+Routine 0xf770 CellarsBefore
 Routine 0xf7d0 routine_f7d0
-Routine 0xf808 routine_f808
+Routine 0xf808 ChimneyBefore
 Routine 0xf8c2 PriestsHoleBefore
 Routine 0xf968 IsaacPaintingAfter
 Routine 0xf9a0 DarkRoomAfter
@@ -864,32 +840,32 @@ Routine 0x104d2 GlovesBefore
 Routine 0x10580 CalendarBefore
 Routine 0x10686 daiy_chain_after obj:object
 Routine 0x106e6 RandomFlower n:int
-Routine 0x107de routine_107de
-Routine 0x10828 routine_10828
-Routine 0x108a0 routine_108a0
-Routine 0x1093a routine_1093a
-Routine 0x10944 routine_10944
-Routine 0x10a14 routine_10a14
-Routine 0x10a6e routine_10a6e
+Routine 0x107de CellBefore
+Routine 0x10828 PoetryBefore
+Routine 0x108a0 DialBefore
+Routine 0x1093a WheelBefore
+Routine 0x10944 Wheel2Before
+Routine 0x10a14 ChanceSwitchAfter
+Routine 0x10a6e RadioAfter
 Routine 0x10aa6 routine_10aa6
 Routine 0x10b14 routine_10b14
 Routine 0x10b72 ProjectorAfter
 Routine 0x10b98 SouvenirRoomBefore
 Routine 0x10c3e SouvenirRoomAfter
-Routine 0x10cd4 routine_10cd4
-Routine 0x10df2 routine_10df2
-Routine 0x10e5e routine_10e5e
-Routine 0x10eb2 routine_10eb2
+Routine 0x10cd4 ConsultingRoomBefore
+Routine 0x10df2 PosterBefore
+Routine 0x10e5e MaskAfter
+Routine 0x10eb2 PassageBefore
 Routine 0x10f14 MazeBoundary:bool x:int y:int
-Routine 0x10f54 routine_10f54
+Routine 0x10f54 MouseMove2:bool x:int y:int local3
 Routine 0x10f94 routine_10f94
 Routine 0x10fe6 routine_10fe6
 Routine 0x10ffe routine_10ffe
-Routine 0x1101e routine_1101e
+Routine 0x1101e MazeLayoutBefore y:int x:int wallp:bool
 Routine 0x1108a FamilyTreeBefore env:object
 Routine 0x111cc MazeBefore local1 newx:int newy:int
 Routine 0x112f4 MazeFoundationsBefore local1 newx:int newy:int
-Routine 0x113d8 routine_113d8
+Routine 0x113d8 PatioBefore
 Routine 0x11410 MazeDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
 Routine 0x11552 MazeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
 Routine 0x11818 MazeAfter ret:bool
