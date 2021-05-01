@@ -273,7 +273,7 @@ Attribute 2 worn
 Attribute 3	clothing
 Attribute 4	animate
 Attribute 5	attrib5			! obj21_yourself obj67_Sir_Joshua_Meldrewe obj114_Jemima obj173_Madame_Sosostris__famous_clairvoyante obj199_Andromeda obj212_Ekmek_Special
-Attribute 6	attrib6			! obj22_crumpled_piece_of_paper obj23_electric_torch obj25_chocolate_biscuit
+Attribute 6	moved
 Attribute 7	attrib7			! obj15_hinged_trapdoor obj51_south_wall obj55_cupboard_door obj58_secret_door obj61_big_iron_fireplace obj62_cranked_skylight obj72_hatch obj76_windows obj92_metal_door obj103_Gothic_door obj123_coal_bunker obj130_runner_bean_plant obj139_bronze_mural obj165_cell_door obj181_tourist_boat obj197_windowed_door obj206_wall_of_thorns obj237_kitchen_well obj247_dolmen
 Attribute 8	container
 Attribute 9	transparent
@@ -283,13 +283,14 @@ Attribute 13	enterable
 Attribute 14	scenery
 Attribute 15	static
 Attribute 16	wall_attr
+Attribute 17    visited
 Attribute 18	rod_attr
 Attribute 19	hidden_rod
 attribute 20    rod_charged
 
 ! locked/lockable, probably:
 Attribute 21	attrib21		! obj18_antique_jewellery_box obj55_cupboard_door obj72_hatch obj92_metal_door obj103_Gothic_door
-Attribute 22	attrib22		! obj18_antique_jewellery_box obj37_guaranteed_unbreakable_medicine_bottle_with_a_child_proof_lock obj72_hatch obj92_metal_door obj103_Gothic_door obj123_coal_bunker obj165_cell_door obj197_windowed_door
+Attribute 22	locked
 
 Attribute 23    switchable
 Attribute 24	on
@@ -364,7 +365,7 @@ Global 32	global32:?
 Global 33	global33:?
 Global 34	things_score:int
 Global 35	places_score:int
-Global 36	global36:?
+Global 36	rod_score:int
 Global 37	global37:?
 Global 38	global38:?
 Global 39	global39:?
@@ -742,7 +743,7 @@ Routine 0x724a routine_724a
 Routine 0x7268 routine_7268
 Routine 0x7278 routine_7278
 Routine 0x7288 routine_7288
-Routine 0x72e0 routine_72e0
+Routine 0x72e0 JoshuaDaemon who:object num:int
 Routine 0x7554 routine_7554
 Routine 0x758a routine_758a
 Routine 0x75b4 MouseMove o:object rm:object
@@ -783,13 +784,13 @@ Routine 0x946e routine_946e
 Routine 0x963c routine_963c
 Routine 0x999e routine_999e
 Routine 0x9a20 routine_9a20
-Routine 0x9ab8 routine_9ab8
-Routine 0x9b3a routine_9b3a
-Routine 0x9bbc routine_9bbc
-Routine 0x9c8a routine_9c8a
-Routine 0x9cf4 routine_9cf4
-Routine 0x9d26 routine_9d26
-Routine 0x9d7e routine_9d7e
+Routine 0x9ab8 SwitchOnSub
+Routine 0x9b3a SwitchOffSub
+Routine 0x9bbc OpenSub
+Routine 0x9c8a CloseSub
+Routine 0x9cf4 DisrobeSub
+Routine 0x9d26 WearSub
+Routine 0x9d7e HandleSub i:int obj:object
 Routine 0x9e26 routine_9e26
 Routine 0x9e90 routine_9e90
 Routine 0x9ea8 routine_9ea8
@@ -895,7 +896,7 @@ Routine 0xfc5a routine_fc5a
 Routine 0xfe30 routine_fe30
 Routine 0xfe84 routine_fe84
 Routine 0x10024 routine_10024
-Routine 0x10046 routine_10046
+Routine 0x10046 CoalBunkerBefore
 Routine 0x10068 routine_10068
 Routine 0x10194 routine_10194
 Routine 0x101ec routine_101ec
@@ -930,7 +931,7 @@ Routine 0x10f94 routine_10f94
 Routine 0x10fe6 routine_10fe6
 Routine 0x10ffe routine_10ffe
 Routine 0x1101e routine_1101e
-Routine 0x1108a routine_1108a
+Routine 0x1108a FamilyTreeAfter
 Routine 0x111cc routine_111cc
 Routine 0x112f4 routine_112f4
 Routine 0x113d8 routine_113d8
@@ -1089,23 +1090,14 @@ Word	gobble	gobble
 Word	gothic	gothic
 Word	hairba	hairband
 Word	hambur	hambur
-Word	handke	handke
-Word	handle	handle
-Word	hangin	hangin
-Word	hankie	hankie
-Word	heatin	heatin
-Word	heaven	heaven
-Word	hinged	hinged
+Word	handke	handkerchief
+Word	hangin	hanging
+Word	heatin	heating
 Word	histor	history
 Word	holida	holiday
-Word	hollow	hollow
-Word	husban	husban
-Word	icicle	icicle
-Word	infini	infini
-Word	ingest	ingest
-Word	insert	insert
-Word	inside	inside
-Word	instru	instru
+Word	husban	husbandry
+Word	infini	infinity
+Word	instru	instructions
 Word	insula	insulation
 Word	invent	inventory
 Word	jewell	jewellery
@@ -1113,7 +1105,7 @@ Word	langua	language
 Word	leathe	leather
 Word	lemnis	lemnis
 Word	lighth	lighthouse
-Word	loadin	loadin
+Word	loadin	loading
 Word	machin	machine
 Word	medici	medicine
 Word	miniat	miniature
@@ -1125,10 +1117,8 @@ Word	noscri	noscript
 Word	painti	painting
 Word	pamphl	pamphlet
 Word	paraph	paraph
-Word	parcel	parcel
-Word	patrol	patrol
-Word	pedest	pedest
-Word	perspe	perspe
+Word	pedest	pedestal
+Word	perspe	perspephone
 Word	pharos	pharos
 Word	photog	photograph
 Word	plasti	plastic

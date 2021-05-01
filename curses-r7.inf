@@ -581,7 +581,7 @@ Object -> antique_jewellery_box "antique jewellery box"	! 18 / 0x12
 	when_open "In one corner is a jewellery box, which had previously been hidden by the open trapdoor.",
 	prop22 [4f],
 	angel_hint "Try investigating the world of the romantic novel, out on the balconies of life.",
-  has	closed container transparent openable attrib21 attrib22;
+  has	closed container transparent openable attrib21 locked;
 
 Object -> -> four_leafed_clover "four-leafed clover"	! 19 / 0x13
   with	name 'four' 'leafed' 'clover',
@@ -601,7 +601,7 @@ Object -> -> crumpled_piece_of_paper "crumpled piece of paper"	! 22 / 0x16
   with	name 'crumpled' 'paper',
 	description "   Things to do:^   1. Find map^   2. Phone airport to check parking^   3. Health forms...^and so on. Let's face it, 1. is more enticing than the rest put together.",
 	devil_hint "Immensely useful, that.",
-  has	attrib6;
+  has	moved;
 
 Object -> -> electric_torch "electric torch"	! 23 / 0x17
   with	name 'electric' 'torch' 'compartment',
@@ -609,7 +609,7 @@ Object -> -> electric_torch "electric torch"	! 23 / 0x17
 	article "an",
 	before routine_fc5a,
 	devil_hint "Pity you can't change the batteries.",
-  has	light attrib6 container transparent openable;
+  has	light moved container transparent openable;
 
 Object -> -> -> old_smudged_battery "old smudged battery"	! 24 / 0x18
   with	name 'old' 'smudge' 'battery',
@@ -621,7 +621,7 @@ Object -> -> chocolate_biscuit "chocolate biscuit"	! 25 / 0x19
   with	name 'chocolate' 'biscuit',
 	description "Oatmeal covered with plain chocolate, since you ask.",
 	devil_hint "I bet you didn't know that chocolate biscuit manufacturers are damned in perpetuity?  I'm afraid the chapters about that in the Old Testaments were lost, though, and now no-one can remember why.",
-  has	attrib6 edible;
+  has	moved edible;
 
 Object Rod_of_Luck "Rod of Luck"	! 20 / 0x14
   with	name 'rod' 'of' 'luck',
@@ -677,7 +677,7 @@ Object -> -> medicine_bottle "guaranteed-unbreakable medicine bottle with a chil
   with	name 'medicine' 'bottle',
 	after routine_101ec,
 	devil_hint "These bottles can even survive long drops, so perhaps you should try fire.",
-  has	container openable attrib22;
+  has	container openable locked;
 
 Object -> -> -> red_tablet "red tablet"	! 38 / 0x26
   with	name 'red//p' 'pill' 'tablet',
@@ -720,7 +720,7 @@ Object Dark_Room "Dark Room"	! 40 / 0x28
   has	;
 
 Object -> hanging_cord "hanging cord"	! 41 / 0x29
-  with	name 'hangin' 'cord',
+  with	name 'hanging' 'cord',
 	description "It is attached to the ceiling.",
 	when_open "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
 	after routine_fe30,
@@ -950,7 +950,7 @@ Object -> hatch "hatch"	! 72 / 0x48
 	door_to Cellar_West,
 	when_closed "Low down on one wall is little hatch door, which if it were open would be large enough to enter.",
 	prop22 [65],
-  has	attrib7 openable static attrib21 attrib22;
+  has	attrib7 openable static attrib21 locked;
 
 Object -> ancient_prayer_book "ancient prayer book"	! 73 / 0x49
   with	name 'diary' 'ancient' 'prayer' 'book',
@@ -1088,7 +1088,7 @@ Object -> metal_door "metal door"	! 92 / 0x5c
 	door_to Garden_Stream,
 	when_closed "At the north end is a closed metal door.",
 	prop22 [65],
-  has	attrib7 openable static attrib21 attrib22;
+  has	attrib7 openable static attrib21 locked;
 
 Object Cellars "Cellars"	! 93 / 0x5d
   with	description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues west and south.",
@@ -1159,7 +1159,7 @@ Object -> Gothic_door "Gothic door"	! 103 / 0x67
 	door_to Infinity_Symbol,
 	when_closed "In the northwest wall is a heavy, imposing Gothic iron door.",
 	prop22 [42],
-  has	attrib7 openable static attrib21 attrib22;
+  has	attrib7 openable static attrib21 locked;
 
 Object Infinity_Symbol "Infinity Symbol"	! 104 / 0x68
   with	name 'marble' 'disc' 'webs' 'icicle',
@@ -1170,7 +1170,7 @@ Object Infinity_Symbol "Infinity Symbol"	! 104 / 0x68
   has	light scored;
 
 Object -> lemniscus "lemniscus"	! 105 / 0x69
-  with	name 'infini' 'lemnis' 'symbol',
+  with	name 'infinity' 'lemnis' 'symbol',
   has	scenery;
 
 Object -> circular_arc "circular arc"	! 106 / 0x6a
@@ -1290,18 +1290,18 @@ Object Garden_Stream "Garden Stream"	! 122 / 0x7a
   has	light scored;
 
 Object -> coal_bunker "coal bunker"	! 123 / 0x7b
-  with	name 'coal' 'bunker' 'loadin' 'door',
+  with	name 'coal' 'bunker' 'loading' 'door',
 	when_open "On the house wall is a coal bunker, whose door stands open.",
-	before routine_10046,
+	before CoalBunkerBefore,
 	in_to ceiling,
 	door_to Dark_Passage,
 	when_closed "On the house wall is a coal bunker, whose loading door is shut.",
-  has	attrib7 openable static attrib22;
+  has	attrib7 openable static locked;
 
 Object Family_Tree "Family Tree"	! 124 / 0x7c
   with	name 'sign' 'signpost' 'post',
 	description "You stand in the shade of a great plane tree, seedlings for which were brought back from Spain by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and to the north a single break in the green privet hedge marks the entrance to the famously difficult Meldrew House Maze. A signpost reading ~To the Mosaic~ points east.",
-	after routine_1108a,
+	after FamilyTreeAfter,
 	n_to Maze,
 	e_to Mosaic,
 	w_to Clearing,
@@ -1314,7 +1314,7 @@ Object -> plane_tree "plane tree"	! 125 / 0x7d
   has	scenery;
 
 Object Mosaic "Mosaic"	! 126 / 0x7e
-  with	name 'perspe' 'scenes' 'quadra',
+  with	name 'perspephone' 'scenes' 'quadra',
 	description "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitor's shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists.",
 	w_to Family_Tree,
 	u_to Family_Tree,
@@ -1549,7 +1549,7 @@ Object -> -> Maiden_card "Maiden"	! 159 / 0x9f
   has	card;
 
 Object Rod_of_Infinity "Rod of Infinity"	! 158 / 0x9e
-  with	name 'rod' 'of' 'infini' 'card',
+  with	name 'rod' 'of' 'infinity' 'card',
 	article "the",
 	rod_action routine_f282,
 	angel_hint "Well, where might you have seen infinity before?",
@@ -1587,10 +1587,10 @@ Object -> cell_door "cell door"	! 165 / 0xa5
 	in_to ceiling,
 	door_to Museum_of_Arcana,
 	when_closed "As you might expect, the cell door is closed.",
-  has	attrib7 openable static attrib22;
+  has	attrib7 openable static locked;
 
 Object Rod_of_Husbandry "Rod of Husbandry"	! 164 / 0xa4
-  with	name 'rod' 'of' 'husban',
+  with	name 'rod' 'of' 'husbandry',
 	article "the",
 	rod_action routine_ee10,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
@@ -1685,7 +1685,7 @@ Object Down_by_River "Down by River"	! 179 / 0xb3
   has	light;
 
 Object -> silk_handkerchief "silk handkerchief"	! 180 / 0xb4
-  with	name 'silk' 'handke' 'hanky' 'hankie',
+  with	name 'silk' 'handkerchief' 'hanky' 'hankie',
 	description "Monogrammed J. A. P., but that's no great matter.",
 	when_open "On one especially repellent mound is, of all things, a fine silk handkerchief.",
 	devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth wouldn't attract anyone, would it?",
@@ -1714,7 +1714,7 @@ Object -> hollow_man "hollow man"	! 183 / 0xb7
   has	animate;
 
 Object Near_Ring_Road "Near Ring Road"	! 184 / 0xb8
-  with	name 'metro' 'pedest' 'army',
+  with	name 'metro' 'pedestal' 'army',
 	description "A dry, desolate waste of buildings borders here on a main road, so full of black-suited pedestrians off to work at banks that you can't force your way any further east. Once in a while a few of the bowler-hatted army step into the street and down some steps below a Metropolitan sign.",
 	w_to Unreal_City,
 	d_to Chatelet_les_Halles,
@@ -1797,7 +1797,7 @@ Object -> windowed_door "windowed door"	! 197 / 0xc5
 	description "Through the square window in the door you can see a bar at which staff are serving, and a very crowded and lively cafe-restaurant beyond. The cabaret act has her back to you, and a considerable amount of her front to the diners.",
 	in_to sw_wall,
 	door_to Cups_and_Glasses,
-  has	attrib7 openable scenery attrib22;
+  has	attrib7 openable scenery locked;
 
 Object Sea_Shore "Sea Shore"	! 198 / 0xc6
   with	description "A rough rocky sea shore below barely-climbable cliffs, against which an inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.",
@@ -2073,7 +2073,7 @@ Object Inside_Well "Inside Well"	! 238 / 0xee
   has	;
 
 Object Hypocaust "Hypocaust"	! 239 / 0xef
-  with	name 'fires' 'heatin' 'log' 'logs',
+  with	name 'fires' 'heating' 'log' 'logs',
 	description "This very low almost-cellar underneath the atrium is a tiny access space for log fires which are kept going to provide a form of central heating for the villa. They are lit and going away nicely, interestingly. It isn't very warm by twentieth-century standards, but you have to admit it works. A tiny amount of light filters in from the vents in the roof, but nowhere near enough to see by. The only way in seems to be the way you came.",
 	e_to Inside_Well,
 	prop24 "The log fires are hot, and anyway the only way out large enough for you is back east.",
@@ -2275,7 +2275,7 @@ Global global32 = 10106[?];
 Global global33 = 10124[?];
 Global things_score;
 Global places_score;
-Global global36;
+Global rod_score;
 Global global37;
 Global global38 = 10149[?];
 Global global39;
@@ -2796,7 +2796,7 @@ Global global239;
 
 [ routine_4960 var local2 local3 ;	! 18784 / 0x4960
     ++turns;
-    if (heavy_iron_mascot has attrib6) {
+    if (heavy_iron_mascot has moved) {
         var = 119[heavy_iron_mascot?];
         var = parent(var);
         if (var == player) {
@@ -2822,7 +2822,7 @@ Global global239;
         @pop;
     }
     if (Sir_Joshua_Meldrewe hasnt closed && location == Battlements) {
-        routine_72e0();	! not popped
+        JoshuaDaemon();	! not popped
         @pop;
     }
     if (0 ~= routine_722e(Old_Winery)) {
@@ -3509,23 +3509,23 @@ Global global239;
     rtrue;
 ];
 
-[ routine_72e0 local1 local2 local3 ;	! 29408 / 0x72e0
-    local1 = 67[Sir_Joshua_Meldrewe?];
-    local2 = local1.number - 1;
-    local1.number = local2;
-    if (local2 == 4[e_wall?]) {
+[ JoshuaDaemon who num local3 ;	! 29408 / 0x72e0
+    who = Sir_Joshua_Meldrewe;
+    num = who.number - 1;
+    who.number = num;
+    if (num == 4) {
         print "^The ghost laughs in a gurgling kind of way, as it were always coughing and spluttering.^";
     }
-    if (local2 == 3[s_wall?]) {
+    if (num == 3) {
         print "^The ghost begins to speak:^^                       My hour is almost come^   When I to sulph'rous and tormenting flames^   Must render up myself...^^Can this possibly be the infamous Sir Joshua Meldrewe?^";
     }
-    if (local2 == 2[?]) {
+    if (num == 2) {
         print "^~But not yet it hasn't, mark my word. And there's the burden of my inheritance, little wart!  Get thee from my sight ere I slice thee as befits a hog!~^";
     }
-    if (local2 == 1[?]) {
+    if (num == 1) {
         print "^~I prithee once more, begone!~^";
     }
-    if (local2 == 0) {
+    if (num == 0) {
         print "^The ghost swoops around and through you, making you scream with panic. Somehow you manage to run back to safety, where your family (who never believe a word of it) give you plenty of tea and occupy you with holiday arrangements. As for you, you are so traumatised that you never venture into the attic again.^";
         finish_state = FAILED;
     }
@@ -3659,7 +3659,7 @@ Global global239;
         o = robot_mouse;
         remove o;
         move o to rm;
-        give robot_mouse attrib6;
+        give robot_mouse moved;
         if (location == local3) {
             if (rm == hole_in_the_wall) {
                 "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
@@ -3883,8 +3883,8 @@ Global global239;
         }
         jump label32453;
     }
-    if (global36 ~= 0) {
-        routine_7ccc(global36);	! not popped
+    if (rod_score ~= 0) {
+        routine_7ccc(rod_score);	! not popped
         @pop;
         print "discovering rods^";
     }
@@ -3903,7 +3903,7 @@ Global global239;
         @pop;
         print "bonus for a good try^";
     }
-    local4 = local4 + (global36 + (things_score + places_score));
+    local4 = local4 + (rod_score + (things_score + places_score));
     if (global37 ~= 0) {
         local4 = local4 + 5;
     }
@@ -4146,8 +4146,8 @@ Global global239;
     remove noun;
     move noun to player;
     give noun ~closed;
-    if (noun hasnt attrib6) {
-        give noun attrib6;
+    if (noun hasnt moved) {
+        give noun moved;
         if (noun has scored) {
             score = score + 4;
             things_score = things_score + 4;
@@ -4587,7 +4587,7 @@ Global global239;
         if (global44 == 3[s_wall?]) {
             jump label36924;
         }
-        if (location has attrib17 && local1 == 1[?]) {
+        if (location has visited && local1 == 1[?]) {
             jump label36924;
         }
     }
@@ -4595,8 +4595,8 @@ Global global239;
     print (string) local2;
     new_line;
   .label36924;
-    if (location hasnt attrib17) {
-        give location attrib17;
+    if (location hasnt visited) {
+        give location visited;
         if (location has scored) {
             score = score + 5;
             places_score = places_score + 5;
@@ -4609,7 +4609,7 @@ Global global239;
         if (local5 hasnt closed && local5 hasnt scenery) {
             give local5 attrib12;
             ++local4;
-            if (local5 hasnt attrib6) {
+            if (local5 hasnt moved) {
                 local3 = local5.when_open;
                 if (local5 == 111[antiquated_wireless?] && antiquated_wireless has general) {
                     local3 = 58944["The wire..."?];
@@ -4943,7 +4943,7 @@ Global global239;
             remove noun;
             local1 = 200[amber_hairband?];
             give local1 ~static;
-            give local1 attrib6;
+            give local1 moved;
             remove local1;
             move local1 to player;
             "She smiles as if to say there's not much point watching her waist-line any more, and hungrily wolfs down her favourite dessert. As a gesture of thanks, she takes off her amber hairband and hands it you. Quickly she readopts her noble pose, however, just in case anyone else is looking.";
@@ -4962,14 +4962,14 @@ Global global239;
     if (noun hasnt attrib21) {
         "I can't see how to unlock that.";
     }
-    if (noun hasnt attrib22) {
+    if (noun hasnt locked) {
         "It is in fact unlocked now.";
     }
     local1 = noun.prop22;
     if (local1 ~= second) {
         "That doesn't seem to fit the lock.";
     }
-    give noun ~attrib22;
+    give noun ~locked;
     if (1 == AfterRoutines()) {
         rtrue;
     }
@@ -4981,7 +4981,7 @@ Global global239;
     if (noun hasnt attrib21) {
         "I can't see how to lock that.";
     }
-    if (noun has attrib22) {
+    if (noun has locked) {
         "It is in fact locked now.";
     }
     if (noun has open) {
@@ -4991,7 +4991,7 @@ Global global239;
     if (local1 ~= second) {
         "That doesn't seem to fit the lock.";
     }
-    give noun attrib22;
+    give noun locked;
     if (1 == AfterRoutines()) {
         rtrue;
     }
@@ -4999,7 +4999,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_9ab8 ;	! 39608 / 0x9ab8
+[ SwitchOnSub ;	! 39608 / 0x9ab8
     if (noun == electric_torch) {
         "There's no switch, just a battery compartment.";
     }
@@ -5017,7 +5017,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_9b3a ;	! 39738 / 0x9b3a
+[ SwitchOffSub ;	! 39738 / 0x9b3a
     if (noun == electric_torch) {
         "There's no switch, just a battery compartment.";
     }
@@ -5035,7 +5035,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_9bbc ;	! 39868 / 0x9bbc
+[ OpenSub ;	! 39868 / 0x9bbc
     if (noun == cranked_skylight) {
         "How, exactly?";
     }
@@ -5048,7 +5048,7 @@ Global global239;
     if (noun hasnt openable) {
         "That's not something you can open.";
     }
-    if (noun has attrib22) {
+    if (noun has locked) {
         "It seems to be locked.";
     }
     if (noun has open) {
@@ -5067,7 +5067,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_9c8a ;	! 40074 / 0x9c8a
+[ CloseSub ;	! 40074 / 0x9c8a
     if (noun == cranked_skylight) {
         "How, exactly?";
     }
@@ -5085,7 +5085,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_9cf4 ;	! 40180 / 0x9cf4
+[ DisrobeSub ;	! 40180 / 0x9cf4
     if (noun hasnt worn) {
         "You're not wearing that.";
     }
@@ -5094,7 +5094,7 @@ Global global239;
     rtrue;
 ];
 
-[ routine_9d26 local1 ;	! 40230 / 0x9d26
+[ WearSub local1 ;	! 40230 / 0x9d26
     if (noun hasnt clothing) {
         "You can't wear that!";
     }
@@ -5110,31 +5110,31 @@ Global global239;
     rtrue;
 ];
 
-[ routine_9d7e local1 local2 ;	! 40318 / 0x9d7e
+[ HandleSub i obj ;	! 40318 / 0x9d7e
     print "Objects you have handled:^^";
-    local1 = 1[?];
+    i = 1;
   .label40349;
-    if (local1 <= 255) {
-        if (local1 has attrib6) {
-            routine_c66c(local1);	! not popped
+    if (i <= 255) {
+        if (i has moved) {
+            routine_c66c(i);	! not popped
             @pop;
-            local2 = parent(local1);
-            if (local2 == player) {
+            obj = parent(i);
+            if (obj == player) {
                 print "   (held)";
-            } else if (local2 has animate) {
+            } else if (obj has animate) {
                 print "   (given away)";
-            } else if (local2 has attrib17) {
-                print "   (in ", (name) local2, ")";
-            } else if (local2 has enterable) {
-                print "   (in ", (name) local2, ")";
-            } else if (local2 has container) {
-                print "   (inside ", (name) local2, ")";
+            } else if (obj has visited) {
+                print "   (in ", (name) obj, ")";
+            } else if (obj has enterable) {
+                print "   (in ", (name) obj, ")";
+            } else if (obj has container) {
+                print "   (inside ", (name) obj, ")";
             } else {
                 print "   (lost)";
             }
             new_line;
         }
-        ++local1;
+        ++i;
         jump label40349;
     }
     rtrue;
@@ -5146,7 +5146,7 @@ Global global239;
     local2 = 0;
   .label40514;
     if (local1 < 255) {
-        if (local1 has attrib17) {
+        if (local1 has visited) {
             ++local2;
         }
         ++local1;
@@ -5156,7 +5156,7 @@ Global global239;
     local3 = 0;
   .label40537;
     if (local1 < 255) {
-        if (local1 has attrib17) {
+        if (local1 has visited) {
             print (name) local1;
             ++local3;
             if (local3 == local2) {
@@ -5440,7 +5440,7 @@ Global global239;
             local1 = local1.number;
             if (local1 == 1[?]) {
                 score = score + 6;
-                global36 = global36 + 6;
+                rod_score = rod_score + 6;
                 print "Light pulses around the daisy chain, then leaps out to engulf the ", (name) noun, " which melts into the ";
                 remove noun;
                 local1 = noun.rod_assoc;
@@ -5450,7 +5450,7 @@ Global global239;
         }
         if (yellow_daisy has worn) {
             score = score + 6;
-            global36 = global36 + 6;
+            rod_score = rod_score + 6;
             print "Light pulses from the daisy behind your ear, leaping out to engulf the ", (name) noun, " which melts into ";
             remove noun;
             local1 = noun.rod_assoc;
@@ -6039,7 +6039,7 @@ Global global239;
             move local1 to player;
             routine_758a(13[Grahams_Lair?]);	! not popped
             @pop;
-            give tourist_map_of_Paris attrib6;
+            give tourist_map_of_Paris moved;
             "Extremely reluctantly he serves you, giving you a tourist map of Paris.";
         }
         "~Non.~  And he folds his arms defiantly. Perhaps he has no such thing.";
@@ -6062,10 +6062,10 @@ Global global239;
         if (global18 == 'time//p') {
             game_section = GARDEN;
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
-            if (tourist_map_of_Paris has attrib6) {
+            if (tourist_map_of_Paris has moved) {
                 location = Attic;
             }
-            if (tourist_map_of_Paris hasnt attrib6) {
+            if (tourist_map_of_Paris hasnt moved) {
                 location = Garden_Stream;
             }
             remove player;
@@ -6191,7 +6191,7 @@ Global global239;
 [ HelpSub word ;	! 53844 / 0xd254
     word = global18;
     new_line;
-    if (word == 'instru//p') {
+    if (word == 'instructions//p') {
         "Welcome to CURSES, an interactive adventure game set initially in and around Meldrew House, an old family seat in the shires of England. You play the part of the current heir to the house. As for what you should do, try to keep in mind that your aim is simply to find that map of Paris so you can go on holiday - you certainly haven't any enormous quests in mind. Still, it would be interesting to find out:^", "^  Just how real is what the Tarot cards show?^  What do sixth century politics have to do with you?^  Surely Greek myths can't come into this?^  What on earth is wrong with your entire family?^  Do the National Trust have sinister motives?^  Can modernist poetry really be bad for you?^  What are daisies for?  Or goats, for that matter?^  Should you rescue someone who doesn't want you to?^^", "To finally understand the secret, you will need to reach the Master Game, a concluding game-within-a-game buried deep in the past. A quick solution takes about 700 turns. Good luck!";
     }
     if (word == 'credit//p') {
@@ -6648,11 +6648,11 @@ Global global239;
     if (verb == ##Action7 && second == big_iron_fireplace) {
         remove noun;
         move noun to Priests_Hole;
-        if (sooty_old_stick hasnt attrib6) {
+        if (sooty_old_stick hasnt moved) {
             local1 = 69[sooty_old_stick?];
             remove local1;
             move local1 to Priests_Hole;
-            give sooty_old_stick attrib6;
+            give sooty_old_stick moved;
         }
         "It rattles out of sight down the chimney.";
     }
@@ -6671,7 +6671,7 @@ Global global239;
             "Put on the dumbwaiter.";
         }
         if (noun == medicine_bottle) {
-            give medicine_bottle ~attrib22;
+            give medicine_bottle ~locked;
             give medicine_bottle open;
             "It disappears into the darkness, and there is a slight cracking noise.";
         }
@@ -6952,10 +6952,10 @@ Global global239;
 
 [ routine_10024 ;	! 65572 / 0x10024
     if (verb == ##Action30) {
-        give coal_bunker ~attrib22;
+        give coal_bunker ~locked;
     }
     if (verb == ##Action58) {
-        give coal_bunker attrib22;
+        give coal_bunker locked;
     }
     if (verb == ##Action29) {
         give coal_bunker open;
@@ -6968,12 +6968,12 @@ Global global239;
 
 ! References: coal_bunker.before
 
-[ routine_10046 ;	! 65606 / 0x10046
+[ CoalBunkerBefore ;	! 65606 / 0x10046
     if (verb == ##Action30) {
-        give metal_door ~attrib22;
+        give metal_door ~locked;
     }
     if (verb == ##Action58) {
-        give metal_door attrib22;
+        give metal_door locked;
     }
     if (verb == ##Action29) {
         give metal_door open;
@@ -7040,7 +7040,7 @@ Global global239;
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
     if (verb == ##Action29) {
-        if (medicine_bottle hasnt attrib22) {
+        if (medicine_bottle hasnt locked) {
             rfalse;
         }
         "You try absolutely everything. Pushing the top down, turning it, pulling it, putting it on the floor and jumping up and down on it, everything. It is resolutely adult-proof. Whatever would it take to break the dratted thing?";
@@ -7127,7 +7127,7 @@ Global global239;
 ! References: old_gardeners__gloves.after
 
 [ routine_104d2 local1 ;	! 66770 / 0x104d2
-    if (verb == ##Action2 && old_gardeners__gloves hasnt attrib6) {
+    if (verb == ##Action2 && old_gardeners__gloves hasnt moved) {
         if (antiquated_wireless has general) {
             rfalse;
         }
@@ -7682,7 +7682,7 @@ Global global239;
 
 ! References: Family_Tree.after
 
-[ routine_1108a local1 ;	! 69770 / 0x1108a
+[ FamilyTreeAfter local1 ;	! 69770 / 0x1108a
     global24 = 4[e_wall?];
     global25 = 6[ne_wall?];
     if (verb ~= ##Action17) {
@@ -8146,7 +8146,7 @@ Global global239;
 ! References: Ekmek_Special.after
 
 [ routine_11bc8 ;	! 72648 / 0x11bc8
-    if (Ekmek_Special has attrib6) {
+    if (Ekmek_Special has moved) {
         rfalse;
     }
     if (verb ~= ##Action2) {
@@ -8175,7 +8175,7 @@ Global global239;
 
 [ routine_11ce8 ;	! 72936 / 0x11ce8
     if (verb == ##Action20) {
-        if (Cups_and_Glasses hasnt attrib17) {
+        if (Cups_and_Glasses hasnt visited) {
             rfalse;
         }
         if (complicated_looking_bomb has closed) {
@@ -8479,7 +8479,7 @@ Global global239;
     if (verb ~= ##Action2) {
         rfalse;
     }
-    if (yellow_daisy has attrib6) {
+    if (yellow_daisy has moved) {
         rfalse;
     }
     if (hemp_rope has general) {
@@ -8972,7 +8972,7 @@ Global global239;
     if (wrd == 'master//p') {
         topic = T_FLOWERS;
     }
-    if (wrd == 'infini') {
+    if (wrd == 'infinity') {
         topic = T_MEDICINE;
     }
     if (wrd == 'lemnis') {
