@@ -2268,25 +2268,17 @@ Global global5;
 Global global6;
 Global global7 = 1[?];
 Global finish_state;
-Global buffer = 9520[?];
-Global parse = 9641[?];
-Global global11 = 9706[?];
-Global global12 = 9827[?];
-Global global13 = 9892[?];
 Global verb;
 Global noun;
 Global second;
-Global global17 = 9908[?];
 Global noun_word;
 Global current_year;
 Global game_section = MODERN;
 Global card_ptr;
-Global global23 = 9980[?];
 Global MazeX = 4;
 Global MazyY = 6;
 Global global26 = 100[hole_in_the_wall?];
 Global global27 = 100[hole_in_the_wall?];
-Global global28 = 10043[?];
 Global Mouse_x = 8;
 Global Mouse_y = 3;
 Global BombTicking;
@@ -2310,23 +2302,18 @@ Global global51;
 Global global52;
 Global global53;
 Global verb_word;
-Global global55 = 10154[?];
-Global global56 = 10170[?];
 Global global57;
 Global global58;
 Global global59;
 Global global60;
 Global global61;
 Global global62;
-Global global63 = 10186[?];
-Global global64 = 10202[?];
 Global global65;
 Global global66;
 Global global67;
 Global global68;
 Global global69;
 Global global70;
-Global global71 = 10266[?];
 Global global72;
 Global global73;
 Global global74;
@@ -2466,6 +2453,12 @@ Global global207;
 Global global208;
 
 ! Arrays
+Array buffer --> 30720[?];	! 9520 (0x2530)
+Array parse --> 16384[?];	! 9641 (0x25a9)
+Array global11 --> 30720[?];	! 9706 (0x25ea)
+Array global12 --> 16384[?];	! 9827 (0x2663)
+Array global13 --> 1;	! 9892 (0x26a4)
+Array global17 --> 1;	! 9908 (0x26b4)
 Array card_deck -->	! 9972 (0x26f4)
     nothing
     nothing
@@ -2473,6 +2466,36 @@ Array card_deck -->	! 9972 (0x26f4)
     nothing
     invalidObj12593
     invalidObj12593
+;
+Array global23 --> 12593[?];	! 9980 (0x26fc)
+Array Mouse_maze -->	! 10043 (0x273b)
+    12593
+    12593
+    12593
+    12593
+    12593
+    12593
+    12336
+    12592
+    12337
+    12593
+    12593
+    12336
+    12592
+    12593
+    12593
+    12593
+    12336
+    12336
+    12593
+    12593
+    12336
+    12593
+    12593
+    12593
+    12593
+    12336
+    12593
 ;
 Array score_array1 -->	! 10106 (0x277a)
     775
@@ -2495,6 +2518,11 @@ Array score_array1 -->	! 10106 (0x277a)
 ;
 Array score_array2 --> 17;	! 10124 (0x278c)
 Array BombWires --> 4;	! 10149 (0x27a5)
+Array global55 --> 1;	! 10154 (0x27aa)
+Array global56 --> 1;	! 10170 (0x27ba)
+Array global63 --> 1;	! 10186 (0x27ca)
+Array global64 --> 1;	! 10202 (0x27da)
+Array global71 --> 1;	! 10266 (0x281a)
 Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_8848
     InvSub
@@ -7704,7 +7732,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ MouseMove2 x y local3 ;	! 69460 / 0x10f54
+[ MouseMove2 x y pos ;	! 69460 / 0x10f54
     if (x < 0) {
         rfalse;
     }
@@ -7717,14 +7745,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (y > 6) {
         rfalse;
     }
-    local3 = global28->(9 * y + x);
-    if (local3 == 48[poetry_book?]) {
-        local3 = 0;
-        return local3;
+    pos = Mouse_maze->(9 * y + x);
+    if (pos == 48) {
+        pos = 0;
+        return pos;
     }
-    if (local3 == 49[Souvenirs_Room?]) {
-        local3 = 1[?];
-        return local3;
+    if (pos == 49) {
+        pos = 1;
+        return pos;
     }
     rtrue;
 ];

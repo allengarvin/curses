@@ -338,26 +338,26 @@ Global 5	global5:?
 Global 6	global6:?
 Global 7	global7:?
 Global 8	finish_state:final_state
-Global 9	buffer
-Global 10	parse
-Global 11	global11:?
-Global 12	global12:?
-Global 13	global13:?
+GlobalArray 9	buffer:array(?)
+GlobalArray 10	parse:array(?)
+GlobalArray 11	global11:array(?)
+GlobalArray 12	global12:array(?)
+GlobalArray 13	global13:array(?)
 Global 14	verb:action
 Global 15	noun:object
 Global 16	second:object
-Global 17	global17:?
+GlobalArray 17	global17:array(?)
 Global 18	noun_word:dictword
 Global 19	current_year:int
 Global 20	game_section:game_area
 GlobalArray 21 card_deck:array(6*object)
 Global 22	card_ptr:int
-Global 23	global23:?
+GlobalArray 23	global23:array(?)
 Global 24	MazeX:int
 Global 25	MazyY:int
 Global 26	global26:?
 Global 27	global27:?
-Global 28	global28:?
+GlobalArray 28	Mouse_maze:array(27*int) ! byte array, unsupported by reform (6x9 array)
 Global 29	Mouse_x:int
 Global 30	Mouse_y:int
 Global 31	BombTicking:bool
@@ -384,23 +384,23 @@ Global 51	global51:?
 Global 52	global52:?
 Global 53	global53:?
 Global 54	verb_word:dictword
-Global 55	global55:?
-Global 56	global56:?
+GlobalArray 55	global55:array(?)
+GlobalArray 56	global56:array(?)
 Global 57	global57:?
 Global 58	global58:?
 Global 59	global59:?
 Global 60	global60:?
 Global 61	global61:?
 Global 62	global62:?
-Global 63	global63:?
-Global 64	global64:?
+GlobalArray 63	global63:array(?)
+GlobalArray 64	global64:array(?)
 Global 65	global65:?
 Global 66	global66:?
 Global 67	global67:?
 Global 68	global68:?
 Global 69	global69:?
 Global 70	global70:?
-Global 71	global71:?
+GlobalArray 71	global71:array(?)
 Global 72	global72:?
 Global 73	global73:?
 Global 74	global74:?
@@ -857,7 +857,7 @@ Routine 0x10df2 PosterBefore
 Routine 0x10e5e MaskAfter
 Routine 0x10eb2 PassageBefore
 Routine 0x10f14 MazeBoundary:bool x:int y:int
-Routine 0x10f54 MouseMove2:bool x:int y:int local3
+Routine 0x10f54 MouseMove2:bool x:int y:int pos:int
 Routine 0x10f94 routine_10f94
 Routine 0x10fe6 routine_10fe6
 Routine 0x10ffe routine_10ffe
