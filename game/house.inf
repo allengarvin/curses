@@ -25,7 +25,7 @@ Object  -> hinged_trapdoor "hinged trapdoor"
                 "You close the trapdoor, surprised to see that something 
                     shiny was obscured by it.";
         ],
-        ! in_to antique_jewellery_box,
+        door_dir d_to,
         door_to House,
         when_closed "There is a closed trapdoor in the middle of the floor.",
   has   light door open openable static;
@@ -128,7 +128,7 @@ Object  -> demijohn "labelled glass demijohn"
   has   container openable static;
 
 Object  -> -> nasty_battery "nasty-looking red battery"
-  with  name 'nasty' 'red//p' 'battery',
+  with  name 'nasty' 'red' 'battery',
         description "On the side is the word ~Achtung~.",
         devil_hint "It's provided for your torch, and not for anything else.",
   has   ;
@@ -160,7 +160,7 @@ Object  Conservatory "Aunt Jemima's Lair"
         u_to Old_Winery,
   has   light;
 
-Object  -> calendar "calendar"   ! 108 / 0x6c
+Object  -> calendar "calendar"
   with  name 'calendar' 'page' 'pages',
         before [ i;
             i = self.number;
@@ -193,7 +193,7 @@ Object  -> calendar "calendar"   ! 108 / 0x6c
         number 5,
   has   scenery;
 
-Object  Airing_Cupboard "Airing Cupboard"    ! 109 / 0x6d
+Object  Airing_Cupboard "Airing Cupboard"
   with  name 'coffee' 'mugs' 'sculpture' 'racks',
         description "A space about six feet square. The old drying racks 
             now contain odd ceramic sculptures almost but not quite
@@ -204,11 +204,11 @@ Object  Airing_Cupboard "Airing Cupboard"    ! 109 / 0x6d
         cant_go "The only way to go from here is back north.",
   has   light;
 
-Object  -> pile_of_sheets "pile of sheets"   ! 110 / 0x6e
+Object  -> pile_of_sheets "pile of sheets"
   with  name 'pile' 'of' 'sheets',
   has   scenery pluralname;
 
-Object  -> antiquated_wireless "antiquated wireless" ! 111 / 0x6f
+Object  -> antiquated_wireless "antiquated wireless"
   with  name 'switch' 'cabinet' 'radio' 'wireless',
         description "It rolls on casters, and has a bakelite on/off switch.",
         article "an",
@@ -391,7 +391,7 @@ Object chocolate_biscuit "chocolate biscuit"
         ],
   has   moved edible;
 
-Object Servants_Room "Servant's Room"   ! 26 / 0x1a
+Object Servants_Room "Servant's Room"
   with  description "Once upon a time, servants in great houses lived in 
             awful little crevices and excuses for rooms like this
             one. They must have been in permanent danger of suffocation,
@@ -402,11 +402,11 @@ Object Servants_Room "Servant's Room"   ! 26 / 0x1a
         w_to Attic,
   has   ;
 
-Object  -> servants_bed "servant's bed"  ! 27 / 0x1b
+Object  -> servants_bed "servant's bed"
   with  name 'servant' 'bed',
   has   open enterable scenery supporter;
 
-Object  -> old_striped_scarf "old striped scarf" ! 28 / 0x1c
+Object  -> old_striped_scarf "old striped scarf"
   with  name 'old' 'scarf',
         description "Made by Dunn and Co., naturally, with four stripes: royal blue, 
             emerald, dark grey and scarlet.",
@@ -415,7 +415,7 @@ Object  -> old_striped_scarf "old striped scarf" ! 28 / 0x1c
         devil_hint "The very height of fashion, if you ignore the colours and wear it regardless.",
   has   clothing;
 
-Object  Old_Furniture "Old Furniture"    ! 30 / 0x1e
+Object  Old_Furniture "Old Furniture"
   with  name 'armchair' 'umbrella' 'table',
         description "Scruffy old furniture is piled up here: armchairs with 
             springs coming out, umbrella stands, a badly scratched
@@ -426,7 +426,7 @@ Object  Old_Furniture "Old Furniture"    ! 30 / 0x1e
         se_to Over_the_East_Wing,
   has   ;
 
-Object  -> furniture "furniture" ! 31 / 0x1f
+Object  -> furniture "furniture"
   with  name 'furniture',
         description "Nothing there, but that cupboard looks interesting.",
   has   scenery;
@@ -467,7 +467,7 @@ Object  -> -> -> red_tablet "red tablet"
         devil_hint "This drug is for fun, it isn't an antidote. And it tastes gorgeous...",
   has   edible scored;
 
-Object  Over_the_East_Wing "Over the East Wing"  ! 39 / 0x27
+Object  Over_the_East_Wing "Over the East Wing"
   with  name 'steps',
         description "The air is dusty and warm, almost making you choke in this rather 
             empty area. The attic turns from northwest to east, and
@@ -495,7 +495,7 @@ Object Dark_Room "Dark Room"
         cant_go "The only doorway is back east.",
   has   ;
 
-Object  -> hanging_cord "hanging cord"   ! 41 / 0x29
+Object  -> hanging_cord "hanging cord"
   with  name 'hanging' 'cord',
         description "It is attached to the ceiling.",
         initial "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
@@ -525,7 +525,7 @@ Object  -> flash "photographer's flash"
         angel_hint "When you can get this working, perhaps you should take it somewhere prominent.",
   has   container transparent openable;
 
-Object  East_Annexe "East Annexe"    ! 52 / 0x34
+Object  East_Annexe "East Annexe"
   with  name 'gap' 'tiles' 'roof',
         description "This tight annexe at the eastern end of the house is piled up 
             with old loft insulation rolls, left over from the last
@@ -534,15 +534,35 @@ Object  East_Annexe "East Annexe"    ! 52 / 0x34
             lets a little natural light in, but the attics to the west
             and south are dark.",
         after [;
-            Go:
-                if( old_smudged_battery.time_left > 3 )
-                    old_smudged_battery.time_left = 3;
-                rfalse;
+            if( old_smudged_battery.time_left > 3 )
+                old_smudged_battery.time_left = 3;
+            rfalse;
         ],
         n_to cupboard_door,
         s_to Dead_End,
         w_to Over_the_East_Wing,
   has   light;
+
+
+Object  -> insulation_rolls "insulation rolls"   ! 53 / 0x35
+  with  name 'insulation' 'rolls' 'roll',
+        article "some",
+  has   scenery pluralname;
+
+Object  -> -> new_battery "new-looking battery"  ! 54 / 0x36
+  with  name 'new' 'battery',
+        number 200,
+        devil_hint "That is a difficult puzzle, yes.",
+  has   ;
+
+Object  -> cupboard_door "cupboard door" ! 55 / 0x37
+  with  name 'cupboard' 'door',
+        when_open "In the north wall is an open cupboard door, large enough to step inside.",
+        door_dir n_to,
+        door_to Inside_Cupboard,
+        when_closed "In the north wall is an intriguing closed cupboard door.",
+        with_key small_brass_key,
+  has   door openable static lockable;
 
 Object Storage_Room "Storage Room"
   with  description "A disused storage room off the winery. In one wall is an opening 
@@ -579,13 +599,13 @@ Object  -> wheel2 "wheel"
         before WheelBefore,
   has   scenery switchable on;
 
-Object  -> dumbwaiter "dumbwaiter"   ! 86 / 0x56
+Object  -> dumbwaiter "dumbwaiter"
   with  name 'dumb' 'waiter' 'dumbwaiter',
         article "the old",
         initial "Inside the dark shaft is the old dumbwaiter.",
   has   container open enterable static;
 
-Object  -> -> pulley_ropes "pulley ropes"    ! 88 / 0x58
+Object  -> -> pulley_ropes "pulley ropes"
   with  name 'pulley' 'rope' 'ropes',
         article "the",
         initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
@@ -617,14 +637,686 @@ Object  -> -> pulley_ropes "pulley ropes"    ! 88 / 0x58
         ],
   has   static;
 
-Object  -> -> chicken_wishbone "chicken wishbone"    ! 89 / 0x59
+Object  -> -> chicken_wishbone "chicken wishbone"
   with  name 'wish' 'bone' 'wishbone' 'chicken',
         description "The half which didn't get the wish, actually.",
         devil_hint "It isn't even mentioned in any of the books I've read.",
   has   ;
 
-Object -> dark_shaft "dark shaft"   ! 87 / 0x57
+Object -> dark_shaft_obj2 "dark shaft"
   with  name 'shaft' 'dark',
         description "Uninviting.",
   has   container transparent open scenery;
+
+Object  Dead_End "Dead End"
+  with  name 'soot' 'chimney' 'sweeping' 'gear',
+        description "The winding attic comes to a dead end here, and particularly dirty it is too, what with soot everywhere from the broken old chimney-sweeping gear.",
+        n_to East_Annexe,
+        s_to secret_door,
+  has   ;
+
+Object  -> canvas_rucksack "canvas rucksack"
+  with  name 'canvas' 'rucksack' 'sack',
+        description "On second thoughts, now you look at more closely, it seems to be the 
+            rucksack you bought to go to Paris with five years ago.",
+        initial "Great Scott!  That old canvas rucksack must be the very one your famous 
+            ancestor, the African explorer Ebenezer Meldrew, brought back from the Zambeze Expedition of 1882!",
+        devil_hint "It might be handy, if only it could carry anything.",
+  has   clothing container transparent open openable;
+
+Object -> secret_door "secret door"
+  with  name 'secret' 'door',
+        initial "A secret door stands open in the south wall!",
+        door_dir s_to,
+        door_to Alisons_Writing_Room,
+        describe "The secret door is closed.",
+  has   concealed door open openable static;
+
+Object  Inside_Cupboard "Inside Cupboard" 
+  with  description "This is a surprisingly spacious cupboard, which you can't 
+            recall ever visiting before today. You really ought to use
+            this convenient empty room for something...",
+        after InsideCupboardAfter,
+        s_to East_Annexe,
+        w_to big_iron_fireplace,
+        u_to cranked_skylight,
+  has   ;
+
+Object  -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe" 
+  with  name 'painting' 'of' 'mad' 'isaac',
+        description "It used to hang in the downstairs landing, and the red, deranged eyes 
+            annoyed everybody who passed. Then Aunt Jemima picked up the
+            ridiculous idea that it was by Sir Joshua Reynolds and had
+            it valued. Happily it wasn't and, to cut a long story long,
+            it ended up here.",
+        initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is 
+            propped up against the west wall.",
+        after IsaacPaintingAfter,
+        devil_hint "Carry this with you everywhere you go.",
+  has   ;
+
+Object  -> big_iron_fireplace "big iron fireplace"
+  with  name 'iron' 'fireplace' 'chimney',
+        initial "There is a big iron fireplace in the west wall.",
+        door_dir w_to,
+        door_to Chimney,
+  has   concealed door container open static;
+
+Object  -> cranked_skylight "cranked skylight"
+  with  name 'crank' 'skylight' 'handle',
+        description "It was painted out black during the first wave of Zeppelin air raids in World War One. This is completely irrelevant, but you did ask.",
+        initial "The skylight above is open, and the sky does indeed light the room.",
+        door_dir u_to,
+        door_to Roof,
+        describe "Above you is a blacked-out skylight with a crank handle.",
+  has   door static;
+
+Object  -> gas_mask "gas mask"
+  with  name 'gas' 'mask' 'gasmask',
+        after [;
+            Wear: "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of 
+                World War II leftover cork.";
+        ],
+        devil_hint "The cork filters have gone. It's useless now.",
+  has   clothing;
+
+Object  Roof "Roof"
+  with  name 'roof' 'balcony',
+        description "This is a recessed area of the roof, open to the skies but 
+            screened from below. There used to be a flagpole here,
+            but not any more. An open skylight leads down, and a fairly
+            safe catwalk leads northwest. However, the red-tiled roof is
+            vertiginous and you have vertigo, which makes it especially
+            annoying that there's an odd little balcony too far away to
+            the south.",
+        nw_to Battlements,
+        d_to Inside_Cupboard,
+        cant_go "William Wordsworth once described poetry as emotion recollected in tranquillity. 
+            If so, hospitals must be full of people turning out verses
+            about what it was like to fall off the roof of a high
+            building. Perhaps it might be better not to join them.",
+  has   light;
+
+Object  Battlements "Battlements"
+  with  name 'battlements' 'crenellated',
+        description "The old crenellated battlements of the house. An Englishman's home is, of 
+            course, his castle, but Meldrew Hall never saw much
+            fighting and these military-looking features were just a
+            seventeenth-century fashion. They also weren't intended
+            for standing on, and the only safe way to proceed is back
+            southeast.^^It is peculiarly cold here.",
+        se_to Roof,
+        cant_go "The rooftop is far too dangerous in that direction.",
+  has   light;
+
+Object  -> iron_key "gothic-looking iron key"
+  with  name 'gothic' 'iron' 'key',
+        before IronKeyBefore,
+        devil_hint "Unfortunately, what you need this for is a very long way away.",
+  has   scored;
+
+Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
+  with  name 'ghost' 'sir' 'joshua//p',
+        description "He is dressed in a grey shadow of Georgian finery.",
+        number 0,
+  has   concealed animate proper;
+
+Object  Chimney "Chimney"
+  with  description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, 
+            so you are held up only by jamming your feet against the walls. To the east, through 
+            the fireplace, is the cupboard.",
+        before ChimneyBefore,
+        e_to Inside_Cupboard,
+        d_to Priests_Hole,
+        cant_go "Not a chance!",
+  has   ;
+
+Object  -> sooty_old_stick "sooty old stick"
+  with  name 'sooty' 'stick',
+        initial "Wedged loosely in beside you is a sooty old stick.",
+        rod_assoc rod_of_fire,
+        devil_hint "It's exactly what it seems.",
+  has   hidden_rod;
+
+Object  rod_of_fire "Rod of Fire"
+  with  name 'rod' 'of' 'fire',
+        article "the",
+        rod_action FireRodAction,
+        angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
+  has   rod_attr;
+
+Object  Priests_Hole "Priest's Hole"
+  with  name 'cross' 'padded' 'chute' 'crawl',
+        description "Good heavens, so the house has a priest hole after all!  It was always a 
+            family legend but nobody seemed to know quite where it
+            was. Apart from a cross painted on one wall and a padded
+            floor (to absorb the noise), this spartan cranny is
+            featureless. Nevertheless there is a spooky air of the
+            supernatural about... A narrow crawl leads up into the
+            chimney.",
+        before PriestsHoleBefore,
+        u_to Chimney,
+        d_to hatch,
+  has   scored;
+
+Object  -> hatch "hatch"
+  with  name 'hatch' 'door',
+        description "Perhaps the attic key might unlock it?  It does look modern compared to everything else here.",
+        initial "An open hatch-door in the floor reveals a chute leading down into darkness.",
+        door_dir d_to,
+        door_to Cellar_West,
+        describe "Low down on one wall is little hatch door, which if it were open would be large enough to enter.",
+        with_key small_brass_key,
+  has   door openable static lockable locked;
+
+Object  -> ancient_prayer_book "ancient prayer book"
+  with  name 'diary' 'ancient' 'prayer' 'book',
+        description "Despite appearances, this is not a prayer book after all but is Mad Isaac's 
+            diary of supernatural investigations!  The script is cursive
+            and cursory as he rambles on through all those theories
+            about the Curse. There's so much of it that you'd better
+            just look up particular years.",
+        initial "The dust and grime on the floor almost obscures an ancient prayer book.",
+        devil_hint "The really good research was in his earlier years.",
+  has   ;
+
+
+! ----------------------------
+Object Dark_Shaft "Dark Shaft"
+  with  description "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor leading north.",
+        before DarkShaftBefore,
+        after DarkShaftAfter,
+        n_to Dark_Passage,
+        d_to Cellars,
+  has   ;
+
+Object Dark_Passage "Dark Passage"
+  with  name 'coal' 'dust',
+        description "A passage which slants very slightly down to the south, which is full of coal 
+            dust, to which you are unfortunately allergic. Not somewhere to linger.",
+        before PassageBefore,
+        n_to metal_door,
+        s_to Dark_Shaft,
+        number 2,
+  has   ;
+
+Object -> metal_door "metal door"
+  with  name 'metal' 'door',
+        initial "At the north end is a metal door, standing open.",
+        after MetalDoorAfter,
+        door_dir n_to,
+        door_to Garden_Stream,
+        describe "At the north end is a closed metal door.",
+        with_key small_brass_key,
+  has   door openable static lockable locked;
+
+Object Cellars "Cellars"
+  with  description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues west and south.",
+    before CellarsBefore,
+    s_to Cellars_South,
+    w_to Cellar_West,
+  has   ;
+
+Object  -> wheel "wheel"
+  with  name 'wheel' 'handle' 'safety' 'catch',
+        description "There is a concealed safety catch on the wheel axle.",
+        before WheelBefore,
+  has   scenery switchable on;
+
+Object  -> dark_shaft_obj "dark shaft"
+  with  name 'shaft' 'dark',
+        description "Uninviting.",
+  has   container transparent open enterable scenery;
+
+Object  -> old_timber_prop "old timber prop"
+  with  name 'prop' 'timber',
+        article "an",
+        rod_assoc rod_of_returning,
+        devil_hint "A plain old piece of timber.",
+  has   hidden_rod;
+
+Object -> robot_mouse "robot mouse"
+  with  name 'robot' 'mouse',
+        description "Remember the late 1970s, when a craze for home-made robots swept 
+            the home computing world?  No, perhaps not, but here is a
+            left-over from it anyway. The mouse is quite large (almost
+            a foot wide and tall), and has a big smile painted on its
+            metal chassis.",
+        initial "In one corner is a dust-covered robot mouse.",
+        devil_hint "It can't even follow orders.",
+  has   talkable;
+
+Object  rod_of_returning "Rod of Returning"
+  with  name 'rod' 'of' 'returning',
+        article "the",
+        rod_action transport_player,
+        devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
+  has   rod_attr;
+
+Object  Cellars_South "Cellars South"
+  with  description "The bricking-up of this cellar seems incomplete, because there is a hole about ten or eleven inches across in the west wall. You peer at this with interest but nothing is within reach inside, and it is far too small for you to wriggle through. The cellars go back north, and so, it would appear, do you.",
+    n_to Cellars,
+  has   ;
+
+Object  -> hole_in_the_wall "hole in the wall"
+  with  name 'hole' 'mouseh',
+  has   scenery talkable;
+
+Object  -> -> small_brass_key "small brass key"
+  with  name 'small' 'brass' 'attic' 'key',
+        initial "Lying where the mouse dropped it is a small brass key.",
+        devil_hint "It isn't the attic key, I fear.",
+  has   ;
+
+Object Cellar_West "Cellar West"
+  with  description "The west end of a disused and shadowy old cellar. It used to be a wine cellar, but was bricked up when you were a child - you never did find out why. Perhaps the golden, jewelled staircase leading down into smoky mists to the south might be something to do with it.",
+        s_to Hellish_Place,
+        e_to Cellars,
+        nw_to Gothic_door,
+        d_to Hellish_Place,
+  has   ;
+
+Object -> Gothic_door "Gothic door"
+  with  name 'gothic' 'iron' 'door',
+        initial "In the northwest wall the iron door stands open.",
+        door_dir nw_to,
+        door_to nw_to,
+        describe "In the northwest wall is a heavy, imposing Gothic iron door.",
+        with_key iron_key,
+  has   door openable static lockable locked;
+
+Object Infinity_Symbol "Infinity Symbol"
+  with  name 'marble' 'disc' 'webs' 'icicle',
+        description "An eerie, dark cave carved from crystal icicles of rock 
+            and strewn with great spiders' webs hung from the ragged
+            stone, inhabited only by dead white insects. A narrow
+            crevice opens out to an iron doorway and the warmth of the
+            house.^^The rough stone floor levels out to a perfectly
+            round, smooth white marble disc about five yards across,
+            inscribed with a black lemniscus (or infinity) symbol.^^You
+            shiver with foreboding, but inexplicably feel that the map
+            you're looking for must be somewhere near here.",
+        before InfinityBefore,
+        after InfinityAfter,
+        se_to Cellar_West,
+  has   light scored;
+
+Object -> lemniscus "lemniscus"
+  with  name 'infinity' 'lemnis' 'symbol',
+  has   scenery;
+
+Object -> circular_arc "circular arc"
+  with  name 'wells' 'circular' 'arc' 'socket',
+        number 0,
+  has   scenery;
+
+Object Garden_Stream "Garden Stream"
+  with  name 'reeds',
+        description "In the lush, verdant (which is to say, under-cared for) 
+            gardens of Meldrew House, where a stream gurgles pleasantly
+            as it meanders through reeds. The house rises up high above
+            you to the south and you do not dare go east for fear of
+            being recaptured by the rest of the family, so you'll have
+            to go northwest, deeper into the gardens.",
+        s_to coal_bunker,
+        nw_to Family_Tree,
+        cant_go "Better not go that way... you might get caught.",
+  has   light scored;
+
+Object -> coal_bunker "coal bunker"
+  with  name 'coal' 'bunker' 'loading' 'door',
+        initial "On the house wall is a coal bunker, whose door stands open.",
+        after CoalBunkerAfter,
+        door_dir s_to,
+        door_to Dark_Passage,
+        describe "On the house wall is a coal bunker, whose loading door is shut.",
+  has   door openable static locked;
+
+Object Family_Tree "Family Tree"
+  with  name 'sign' 'signpost' 'post',
+        description "You stand in the shade of a great plane tree, seedlings for 
+            which were brought back from Spain by an ancestor of yours
+            in 1806. To the southeast is a stream, to the west is a small
+            clearing and to the north a single break in the green privet
+            hedge marks the entrance to the famously difficult Meldrew
+            House Maze. A signpost reading ~To the Mosaic~ points east.",
+        n_to [;
+            MazeX = 4;
+            MazeY = 6;
+            if( parent(player) == garden_roller )
+                return Maze;
+                "You can't go that way. Now, this takes a little explaining. These 
+                 days, it isn't easy to keep up a house the size of
+                 Meldrew House, and your family has had to strike a
+                 bargain with the National Trust that the house should
+                 be open to the public in the summer months. The maze is
+                 so popular with visitors that the grass has worn away,
+                 and it's being reseeded at the moment, so you shouldn't
+                 go treading all over it.";
+        ],
+        e_to Mosaic,
+        w_to Clearing,
+        se_to Garden_Stream,
+        u_to Up_the_Plane_Tree,
+  has   light;
+
+Object -> plane_tree "plane tree"
+  with  name 'plane' 'tree' 'family',
+  has   scenery;
+
+Object Mosaic "Mosaic"
+  with  name 'perspephone' 'scenes' 'quadra',
+    description "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitor's shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists.",
+    w_to Family_Tree,
+    u_to Family_Tree,
+    cant_go "From here you can only climb back up to the plane tree.",
+  has   ;
+
+Object -> mosaic_object "mosaic"
+  with  name 'mosaic',
+    description "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.",
+  has   scenery;
+
+Object Clearing "Clearing"
+  with  description "A clearing at the edge of the garden, surrounded by walls and the privet hedges of the maze. To the east is the plane tree, to the west an opening in the wall makes a garage entrance and to the south is a small vegetable garden.",
+    s_to Vegetable_Garden,
+    e_to Family_Tree,
+    w_to Garage,
+  has   light;
+
+Object Vegetable_Garden "Vegetable Garden"
+  with  description "A recently-turned vegetable garden, using up a shady corner of the garden. The patch testifies more to good intentions than horticulture.",
+    n_to Clearing,
+    u_to runner_bean_plant,
+    cant_go "From this corner, you can only go back to the clearing.",
+  has   light;
+
+Object -> runner_bean_plant "runner-bean plant"
+  with  name 'runner' 'bean' 'plant',
+    initial "A giant runner-bean plant leads up vertiginously into the sky from here.",
+    door_to Up_the_Beanstalk,
+    describe "Only a runner-bean plant graces the vegetable garden.",
+  has   door;
+
+Object Garage "Garage"
+  with  description "A modest brick garage, built into the garden walls. A big open doorway leads east onto the clearing.",
+    e_to Clearing,
+  has   ;
+
+Object -> garden_roller "garden roller"
+  with  name 'garden' 'roller' 'switch',
+    description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
+    initial "The garden roller sits here, its engine still running.",
+    describe "A big motorised garden roller is parked here.",
+  has   enterable static switchable;
+
+Object -> weed_killer "weed killer bottle"
+  with  name 'weed' 'killer' 'bottle',
+    description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
+    initial "In the shadows is a weed killer bottle.",
+    angel_hint "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens.",
+  has   ;
+
+Object Up_the_Plane_Tree "Up the Plane Tree"
+  with  name 'jemima//p' 'conservatory' 'window',
+    description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at the conservatory window, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
+    d_to Family_Tree,
+    cant_go "No, don't go out on a limb.",
+  has   light;
+
+Object -> maze_layout "maze layout"
+  with  name 'maze' 'layout',
+    before MazeLayoutBefore,
+  has   scenery;
+
+Object Maze "Maze"
+  with  description "A maze of green privet passages, all alike.",
+    before MazeBefore,
+    after MazeAfter,
+    s_to Family_Tree,
+    w_to Viewpoint_Ledge,
+    cant_go "The privet hedges are in the way.",
+  has   light scored;
+
+Object Patio_in_Maze "Patio in Maze"
+  with  name 'patio' 'flagstone',
+    description "This is an old stone patio in the heart of the garden maze. A missing flagstone offers an intriguing dark prospect beneath.",
+    before PatioBefore,
+    after MazeAfter,
+    d_to Crypt,
+    cant_go "The privet hedges are in the way.",
+  has   light scored;
+
+Object Crypt "Crypt"
+  with  description "A dismal crypt, disused, full of leaves and rainswept. Light streams in from the square hole in the roof. There are no bones or urns on show.",
+    n_to bronze_mural,
+    u_to Patio_in_Maze,
+    d_to bronze_mural,
+  has   light;
+
+Object -> bronze_mural "bronze mural"
+  with  name 'bronze' 'mural',
+    description "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations.",
+    initial "The mural stands slightly to one side, revealing a passage leading downward.",
+    door_dir d_to,
+    door_to Catacomb_Passage,
+    describe "The north wall forms a giant bronze mural, which has stood the test of time.",
+  has   door static;
+
+Object Universe_Maintenance_Room "Universe Maintenance Room"
+  with  name 'gauges' 'machine',
+    description "You really should try to be more awestruck, for this is Merlin's cave, the hub of Creation. Every visitor perceives this place differently, according to his or her own myths and beliefs. Your particular creed being science, it is an unimpressive collection of gauges, dials and machines. A single passage leads up and out to the south.",
+    s_to Catacomb_Passage,
+    u_to Catacomb_Passage,
+  has   scored;
+
+Object -> large_dial "large dial"
+  with  name 'large' 'dial',
+    description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
+    initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.",
+    before DialBefore,
+  has   static;
+
+Object -> big_electricians_switch "big electrician's switch"
+  with  name 'big' 'electric' 'switch',
+    description "The lower, on, position is labelled ~Determinism~. The upper, off, position is labelled ~Chance~.",
+    after ChanceSwitchAfter,
+  has   scenery static switchable on;
+
+Object Viewpoint_Ledge "Viewpoint Ledge"
+  with  name 'motorway' 'coache',
+    description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
+    before LedgeBefore,
+    e_to Maze,
+    cant_go "The hillside is too steep.",
+  has   light scored;
+
+Object -> plaque "plaque"
+  with  name 'plaque',
+    description "~This viewpoint, one of the finest in the county, was laid down by Capability Meldrew, a well-known landscape gardener of his day. It was intended as one of the rewards of the garden maze, and was constructed c. 1808 after an earlier folly on the site collapsed.~",
+  has   scenery;
+
+Object -> miniature "miniature"
+  with  name 'miniature' 'plastic' 'etching',
+    description "No larger than a playing card, it depicts the Folly which used to stand on the hillside outcrop.",
+    initial "A miniature plastic etching rests on the plaque.",
+    door_to Folly,
+    devil_hint "What's the point of a drawing so small it might almost be a playing card?",
+  has   ;
+
+Object Folly "Folly"
+  with  name 'wain' 'hay' 'tower' 'valley',
+    description "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across the river far below.^^Towering over you is a monstrously awful piece of architecture, a Folly. The freestanding tower has no appreciable purpose and no apparent entrance. The latter is just as well since it looks extremely unsafe.",
+    after FollyAfter,
+    e_to Maze_Foundations,
+    cant_go "The hillside is too steep.",
+  has   light scored;
+
+Object -> bean_pole "bean pole"
+  with  name 'bean' 'pole',
+    initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
+    after BeanPoleAfter,
+    number 0,
+    rod_assoc rod_of_stalking,
+    devil_hint "Whatever you do, it'll always be a bean pole.",
+  has   hidden_rod;
+
+Object rod_of_stalking "Rod of Stalking"
+  with  name 'rod' 'of' 'stalking',
+    article "the",
+    rod_action stalking_rod_action,
+    devil_hint "It has no horticultural application.",
+  has   rod_attr;
+
+Object Up_the_Beanstalk "Up the Beanstalk"
+  with  description "At the top of the beanstalk, in amongst the clouds. There is no safe way to go from here except back down, not surprisingly. A dangerous way might be to step out onto the clouds to the north, but even if this is a fairy-tale it would be taking a lot on trust.",
+    n_to Heavenly_Place,
+    d_to Vegetable_Garden,
+    cant_go "The clouds are too tenuous that way.",
+  has   light;
+
+Object Maze_Foundations "Maze Foundations"
+  with  description "A square grid of plots of grass and seedbeds, all alike.",
+    before MazeFoundationsBefore,
+    after MazeFoundationsAfter,
+    s_to Tree_Planting,
+    w_to Folly,
+  has   light;
+
+Object Tree_Planting "Tree Planting"
+  with  description "Capability Meldrew and his gang of workmen are 
+            delicately planting a sapling plane tree here. Your
+            disturbance annoys them immensely and you are immediately
+            arrested for vagrancy and theft. After a few months in prison,
+            you are hauled up before the County Assizes and sentenced...",
+        after [;
+            deadflag = AUSTRALIA;
+        ],
+  has   ;       ! bug--no light?
+
+Object Disused_Observatory "Disused Observatory"    ! 44 / 0x2c
+  with  name 'mural' 'zodiac' 'signs',
+    description "Once upon a time, this small circular room had a dome and a telescope, but it leaked dreadfully and so now there's a proper roof. A circular mural painted with the signs of the zodiac is interrupted by a short flight of stairs leading up to the north, a west doorway to a shadowy alcove and the continuation of the stairs down and to the south.",
+    n_to Over_the_East_Wing,
+    s_to Souvenirs_Room,
+    w_to Library_Storage,
+    u_to Over_the_East_Wing,
+    d_to Souvenirs_Room,
+  has   ;
+
+Object -> solid_glass_ball "solid glass ball"   ! 45 / 0x2d
+  with  name 'glass' 'ball',
+    description "The ball is scratched and misted up.",
+    initial "Mounted on the old telescope stand is what looks like a solid glass ball.",
+    before GlassBallBefore,
+  has   static;
+
+Object Library_Storage "Library Storage"    ! 46 / 0x2e
+  with  description "Once upon a time, the house library was used as a gun-room, and all the unwanted books kept up here. Now this is just another awkward cranny.",
+    e_to Disused_Observatory,
+    cant_go "From here, you can only squeeze back east to the observatory.",
+  has   ;
+
+Object -> romantic_novel "romantic novel"   ! 47 / 0x2f
+  with  name 'romance' 'romantic' 'novel' 'book',
+    description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
+    devil_hint "Don't bother reading or thinking about it. Nothing to do with your family.",
+  has   ;
+
+Object -> poetry_book "book of Twenties poetry" ! 48 / 0x30
+  with  name 'poetry' 'book',
+    before PoetryBefore,
+    devil_hint "My my, a golden age for clear, simple poetry. At last, the dreary obscurity of Tennyson, Kipling, and [frothing at the mouth] Hardy gives way...",
+  has   ;
+
+Object Souvenirs_Room "Souvenirs Room"  ! 49 / 0x31
+  with  name 'souvenir' 'holiday' 'snaps',
+    description "This is where you ought to have left the wretched map, in the family lumber-room of souvenirs and holiday snaps. You checked it thoroughly earlier, and can't bear the thought of searching it all again. A slide projector is aimed at the whitewashed south wall, one of the outside walls of the house. The only way to go is back up to the observatory.",
+    before SouvenirRoomBefore,
+    after SouvenirRoomAfter,
+    n_to Disused_Observatory,
+    s_to south_wall,
+    u_to Disused_Observatory,
+  has   ;
+
+[ ShowProjectorImage o dto;
+    print "the picture on ", (the) o;
+    dto = o.door_to;
+    if( dto == nothing )
+        ".";
+    ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
+];
+
+[ DisplayProjector o dto w ;
+    if( o ~= nothing ) {
+        dto = o.door_to;
+        if( dto ~= nothing) {
+            w = south_wall;
+            w.door_to = dto;
+            give south_w ~concealed;
+        }
+        print "The south wall lights up with ";
+        routine_10aa6(o);
+        rtrue;
+    }
+    give south_wall concealed;
+    "The south wall becomes blank again.";
+];
+
+Object -> slide_projector "slide projector" ! 50 / 0x32
+  with  name 'slide' 'projector' 'switch',
+        description "It has an on/off switch on the side, and a slot for holding whatever is to be projected.",
+        after [ o;
+            SwitchOn:
+                o = child(self);
+                if( o == nothing )
+                    rfalse;
+                return DisplayProjector(o);
+            SwitchOff:
+                give south_wall concealed;
+                rfalse;
+        ],
+  has   container open scenery switchable;
+
+Object -> south_wall "south wall"   ! 51 / 0x33
+  with  door_dir s_to,
+        door_to nothing,
+  has   concealed door open scenery static;
+
+Object Alisons_Writing_Room "Alison's Writing Room" ! 74 / 0x4a
+  with  description "A pleasantly furnished, if now mildewed, box room. A rather small door leads back north into the attics. The room is provided with a comfortable bed, which looks very inviting.",
+    n_to Dead_End,
+    s_to windows,
+    cant_go "There's just the secret north door, unless of course you count the windows.",
+  has   light;
+
+Object -> comfortable_bed "comfortable bed" ! 75 / 0x4b
+  with  name 'comfortble' 'bed',
+  has   light open enterable scenery;
+
+Object -> windows "windows" ! 76 / 0x4c
+  with  name 'window' 'glass',
+    initial "Black-latticed windows open on a beautiful summer's day.",
+    before WindowsBefore,
+    door_dir s_to,
+    door_to Tiny_Balcony,
+    describe "Blue skies can be seen through south-facing windows, latticed with black lead and shut tight.",
+  has   door static;
+
+Object Tiny_Balcony "Tiny Balcony"  ! 77 / 0x4d
+  with  name 'roof' 'motorway' 'garden',
+    description "A tiny balcony around Miss Alison's windows, offering fresh air, blue skies and a magnificent view over the gardens down to the droning motorway in the distance. The roof is too perilous to scale even if you had a good reason (which you haven't), so you had better go back north.",
+    n_to Alisons_Writing_Room,
+    cant_go "The rooftop is far too dangerous in that direction.",
+  has   light;
+
+Object -> window_sill "window sill" ! 78 / 0x4e
+  with  name 'window' 'sill',
+    initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
+  has   static;
+
+Object -> delicate_gold_key "delicate gold key" ! 79 / 0x4f
+  with  name 'delicate' 'gold' 'key',
+    devil_hint "Gold and lead are naturally related, so you want to find a lead box to open.",
+  has   concealed scored;
 
