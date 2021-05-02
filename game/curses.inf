@@ -27,42 +27,6 @@ Include "unreal.inf";
 !        }
 !        "You make no further alarming discoveries.";
 !    }
-!    if (noun == window_sill && delicate_gold_key has concealed) {
-!        give delicate_gold_key ~concealed;
-!        "You dislodge something shiny!";
-!    }
-    if (noun == teachests) {
-        print "That was the first place you tried, hours and hours ago now";
-        if (Meldrews_History has concealed) {
-            print ", and there's nothing there but that boring old book. You pick it up anyway, bored as you are";
-            give Meldrews_History ~concealed;
-            remove Meldrews_History;
-            move Meldrews_History to player;
-        }
-        ".";
-    }
-    if (noun == pile_of_sheets) {
-        if (antiquated_wireless has concealed) {
-            give antiquated_wireless ~concealed;
-            Achieved(SCORE_WIRELESS); 
-            "Not as many sheets as you thought - they were on top of a large black wireless, now exposed to the light for the first time in months.";
-        }
-        "No, you're only getting your hands stained looking.";
-    }
-!    if (noun == insulation_rolls) {
-!        if (old_gardeners__gloves hasnt worn) {
-!            "A rash act. The itchy fibres of the insulation soon deter you.";
-!        }
-!        o1 = new_battery;
-!        if (insulation_rolls ~= parent(o1)) {
-!            "Nothing else there, unfortunately.";
-!        }
-!        remove o1;
-!        move o1 to East_Annexe;
-!        Achieved(SCORE_BATTERY);    ! not popped
-!        @pop;
-!        "You uncover a shiny new battery. It must have been dropped by accident when the loft insulation was being done.";
-!    }
     if (noun hasnt container) {
         "You find nothing of interest.";
     }
@@ -83,4 +47,5 @@ Include "unreal.inf";
     StartTimer(old_smudged_battery, 200);
 ];
 
+Include "newverbs.inf";
 Include "Grammar";
