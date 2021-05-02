@@ -1,1 +1,4 @@
-According to https://www.filfre.net/2019/11/new-tricks-for-an-old-z-machine-part-2-hacking-deeper-or-follies-of-graham-nelsons-youth/ the original source of Curses has been lost. This is an attempt to reconstruct it using Reform.
+According to https://www.filfre.net/2019/11/new-tricks-for-an-old-z-machine-part-2-hacking-deeper-or-follies-of-graham-nelsons-youth/ the original source of Curses has been lost. This is an attempt to reconstruct it using Reform:
+
+To my great regret, the source code for Curses is now lost. It was for a while on a disk promisingly labelled “Curses source code”, but that disk is unreadable, and not for want of trying. Somewhere in my many changes of address and computer, I lost the necessary tech, or damaged it. (And Jigsaw too, alas.) It wouldn’t be hard to resurrect something, by working from a disassembly of the story file: there’s actually a tool to turn story files into Inform 6 out there somewhere. I occasionally think of asking if anyone would like to do that, and perhaps produce a faithful Inform 7 implementation.
+
