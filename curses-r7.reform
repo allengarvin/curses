@@ -20,16 +20,16 @@ Object 9	sw_wall
 Object 10	ceiling
 Object 11	floor
 
-Object 20	Rod_of_Luck
-Object 70	Rod_of_Fire
-Object 201	Rod_of_Sacrifice
-Object 164	Rod_of_Husbandry
-Object 158	Rod_of_Infinity
-Object 149	Rod_of_Stalking
-Object 97	Rod_of_Returning
-Object 178	Rod_of_Bronze
-Object 230	Rod_of_Language
-Object 244	Rod_of_Returning2
+Object 20	rod_of_luck
+Object 70	rod_of_fire
+Object 201	rod_of_sacrifice
+Object 164	rod_of_husbandry
+Object 158	rod_of_infinity
+Object 149	rod_of_stalking
+Object 97	rod_of_returning
+Object 178	rod_of_bronze
+Object 230	rod_of_language
+Object 244	rod_of_returning2
 
 Object 12	thedark
 Object 13	Grahams_Lair
@@ -791,7 +791,7 @@ Routine 0xe55e LearnLanguages
 Routine 0xe5a0 routine_e5a0
 Routine 0xe5bc routine_e5bc
 Routine 0xe5d0 routine_e5d0
-Routine 0xe5de routine_e5de
+Routine 0xe5de SleepSub env:object sib:object
 Routine 0xe7c8 WineryBonusScore unused
 Routine 0xe822 DealCard:object 
 Routine 0xe838 InsertCardIntoDeck card:object
@@ -837,14 +837,14 @@ Routine 0x10390 ParcelBefore o:object
 Routine 0x103de IronKeyBefore o:object
 Routine 0x10494 PottingRoomAfter
 Routine 0x104d2 GlovesBefore
-Routine 0x10580 CalendarBefore
+Routine 0x10580 CalendarBefore i
 Routine 0x10686 daiy_chain_after obj:object
 Routine 0x106e6 RandomFlower n:int
 Routine 0x107de CellBefore
 Routine 0x10828 PoetryBefore
 Routine 0x108a0 DialBefore
 Routine 0x1093a WheelBefore
-Routine 0x10944 Wheel2Before
+Routine 0x10944 Wheel2Before obj:object
 Routine 0x10a14 ChanceSwitchAfter
 Routine 0x10a6e RadioAfter
 Routine 0x10aa6 routine_10aa6

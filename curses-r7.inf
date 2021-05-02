@@ -586,7 +586,7 @@ Object -> antique_jewellery_box "antique jewellery box"	! 18 / 0x12
 Object -> -> four_leafed_clover "four-leafed clover"	! 19 / 0x13
   with	name 'four' 'leafed' 'clover',
 	description "The fabulously lucky plant has a long stalk.",
-	rod_assoc Rod_of_Luck,
+	rod_assoc rod_of_luck,
 	angel_hint "Not much use as it is, is it?",
   has	hidden_rod;
 
@@ -623,7 +623,7 @@ Object -> -> chocolate_biscuit "chocolate biscuit"	! 25 / 0x19
 	devil_hint "I bet you didn't know that chocolate biscuit manufacturers are damned in perpetuity?  I'm afraid the chapters about that in the Old Testaments were lost, though, and now no-one can remember why.",
   has	moved edible;
 
-Object Rod_of_Luck "Rod of Luck"	! 20 / 0x14
+Object rod_of_luck "Rod of Luck"	! 20 / 0x14
   with	name 'rod' 'of' 'luck',
 	article "the",
 	rod_action RodOfLuckAction,
@@ -923,11 +923,11 @@ Object Chimney "Chimney"	! 68 / 0x44
 Object -> sooty_old_stick "sooty old stick"	! 69 / 0x45
   with	name 'sooty' 'stick',
 	when_open "Wedged loosely in beside you is a sooty old stick.",
-	rod_assoc Rod_of_Fire,
+	rod_assoc rod_of_fire,
 	devil_hint "It's exactly what it seems.",
   has	hidden_rod;
 
-Object Rod_of_Fire "Rod of Fire"	! 70 / 0x46
+Object rod_of_fire "Rod of Fire"	! 70 / 0x46
   with	name 'rod' 'of' 'fire',
 	article "the",
 	rod_action FireRodAction,
@@ -1111,7 +1111,7 @@ Object -> dark_shaft "dark shaft"	! 95 / 0x5f
 Object -> old_timber_prop "old timber prop"	! 96 / 0x60
   with	name 'prop' 'timber',
 	article "an",
-	rod_assoc Rod_of_Returning,
+	rod_assoc rod_of_returning,
 	devil_hint "A plain old piece of timber.",
   has	hidden_rod;
 
@@ -1122,7 +1122,7 @@ Object -> robot_mouse "robot mouse"	! 98 / 0x62
 	devil_hint "It can't even follow orders.",
   has	talkable;
 
-Object Rod_of_Returning "Rod of Returning"	! 97 / 0x61
+Object rod_of_returning "Rod of Returning"	! 97 / 0x61
   with	name 'rod' 'of' 'returning',
 	article "the",
 	rod_action transport_player,
@@ -1475,11 +1475,11 @@ Object -> bean_pole "bean pole"	! 148 / 0x94
 	when_open "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
 	after BeanPoleAfter,
 	number 0,
-	rod_assoc Rod_of_Stalking,
+	rod_assoc rod_of_stalking,
 	devil_hint "Whatever you do, it'll always be a bean pole.",
   has	hidden_rod;
 
-Object Rod_of_Stalking "Rod of Stalking"	! 149 / 0x95
+Object rod_of_stalking "Rod of Stalking"	! 149 / 0x95
   with	name 'rod' 'of' 'stalking',
 	article "the",
 	rod_action stalking_rod_action,
@@ -1536,7 +1536,7 @@ Object -> -> Star_card "Star"	! 156 / 0x9c
 Object -> -> Eight_of_Wands_card "Eight of Wands"	! 157 / 0x9d
   with	name 'eight' 'of' 'wands' 'card',
 	article "the",
-	rod_assoc Rod_of_Infinity,
+	rod_assoc rod_of_infinity,
 	devil_hint "There's less to this card than meets the eye.",
   has	hidden_rod card;
 
@@ -1548,7 +1548,7 @@ Object -> -> Maiden_card "Maiden"	! 159 / 0x9f
 	devil_hint "What an ugly girl!  Bet she's good for a laugh though.",
   has	card;
 
-Object Rod_of_Infinity "Rod of Infinity"	! 158 / 0x9e
+Object rod_of_infinity "Rod of Infinity"	! 158 / 0x9e
   with	name 'rod' 'of' 'infinity' 'card',
 	article "the",
 	rod_action RodOfInfinityAction,
@@ -1577,7 +1577,7 @@ Object -> goat "anxious-looking goat"	! 162 / 0xa2
 
 Object -> crook "shepherd's crook"	! 163 / 0xa3
   with	name 'shepherd' 'crook',
-	rod_assoc Rod_of_Husbandry,
+	rod_assoc rod_of_husbandry,
 	devil_hint "Just a crook. And what's wrong with crooks, that's what I say.",
   has	hidden_rod;
 
@@ -1589,7 +1589,7 @@ Object -> cell_door "cell door"	! 165 / 0xa5
 	when_closed "As you might expect, the cell door is closed.",
   has	supporter openable static locked;
 
-Object Rod_of_Husbandry "Rod of Husbandry"	! 164 / 0xa4
+Object rod_of_husbandry "Rod of Husbandry"	! 164 / 0xa4
   with	name 'rod' 'of' 'husbandry',
 	article "the",
 	rod_action RodOfHusbandryAction,
@@ -1666,11 +1666,11 @@ Object Drowned_Sailor_card "Drowned Sailor"	! 176 / 0xb0
 
 Object oak_quarterstaff "oak quarterstaff"	! 177 / 0xb1
   with	name 'oak' 'staff' 'quarter',
-	rod_assoc Rod_of_Bronze,
+	rod_assoc rod_of_bronze,
 	devil_hint "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?",
   has	hidden_rod;
 
-Object Rod_of_Bronze "Rod of Bronze"	! 178 / 0xb2
+Object rod_of_bronze "Rod of Bronze"	! 178 / 0xb2
   with	name 'rod' 'of' 'bronze',
 	article "the",
 	rod_action RodOfBronzeAction,
@@ -1815,11 +1815,11 @@ Object -> amber_hairband "amber hairband"	! 200 / 0xc8
   with	name 'amber' 'hairband' 'hair' 'band',
 	description "A long clasp of amber, pefect for long straggly Greek hair.",
 	article "Andromeda's",
-	rod_assoc Rod_of_Sacrifice,
+	rod_assoc rod_of_sacrifice,
 	devil_hint "Mmm... it still has her perfume on it. Hehehehe. Bet she's dead now.",
   has	concealed static hidden_rod;
 
-Object Rod_of_Sacrifice "Rod of Sacrifice"	! 201 / 0xc9
+Object rod_of_sacrifice "Rod of Sacrifice"	! 201 / 0xc9
   with	name 'rod' 'of' 'sacrifice',
 	article "the",
 	rod_action RodOfSAcrificeAction,
@@ -2006,10 +2006,10 @@ Object Cloister "Atrium Cloister"	! 228 / 0xe4
 Object -> summoning_horn "summoning horn"	! 229 / 0xe5
   with	name 'horn' 'summon' 'on' 'pole',
 	when_open "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
-	rod_assoc Rod_of_Language,
+	rod_assoc rod_of_language,
   has	hidden_rod;
 
-Object Rod_of_Language "Rod of Language"	! 230 / 0xe6
+Object rod_of_language "Rod of Language"	! 230 / 0xe6
   with	name 'rod' 'of' 'language',
 	article "the",
 	rod_action RodOfLanguageAction,
@@ -2101,10 +2101,10 @@ Object -> tent_pole "tent pole"	! 243 / 0xf3
   with	name 'pole' 'central',
 	after TentPoleAfter,
 	number 0,
-	rod_assoc Rod_of_Returning2,
+	rod_assoc rod_of_returning2,
   has	concealed static hidden_rod;
 
-Object Rod_of_Returning2 "Rod of Returning"	! 244 / 0xf4
+Object rod_of_returning2 "Rod of Returning"	! 244 / 0xf4
   with	name 'rod' 'of' 'returning',
 	article "the",
 	rod_action transport_player,
@@ -2592,7 +2592,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_c956
     routine_d01e
     routine_a858
-    routine_e5de
+    SleepSub
     StrikeWand
     PointWand
     routine_d0f0
@@ -3145,7 +3145,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 19[four_leafed_clover?]) {
             print "the Beatles' ~Magical Mystery Tour~.";
         }
-        if (i == 20[Rod_of_Luck?]) {
+        if (i == 20[rod_of_luck?]) {
             print "the Beatles' ~I Am The Walrus~.";
         }
         if (i == 21[yourself?]) {
@@ -3295,7 +3295,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 69[sooty_old_stick?]) {
             print "Toto's ~The Eye of the Tiger~.";
         }
-        if (i == 70[Rod_of_Fire?]) {
+        if (i == 70[rod_of_fire?]) {
             print "Cindi Lauper's ~Girls Just Wanna Have Fun~.";
         }
         new_line;
@@ -6373,28 +6373,28 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ DebugMoveRods obj ;	! 58566 / 0xe4c6
-    obj = Rod_of_Fire;
+    obj = rod_of_fire;
     remove obj;
     move obj to Infinity_Symbol;
-    obj = Rod_of_Returning;
+    obj = rod_of_returning;
     remove obj;
     move obj to Infinity_Symbol;
-    obj = Rod_of_Luck;
+    obj = rod_of_luck;
     remove obj;
     move obj to Infinity_Symbol;
-    obj = Rod_of_Bronze;
+    obj = rod_of_bronze;
     remove obj;
     move obj to Infinity_Symbol;
-    obj = Rod_of_Infinity;
+    obj = rod_of_infinity;
     remove obj;
     move obj to Infinity_Symbol;
-    obj = Rod_of_Stalking;
+    obj = rod_of_stalking;
     remove obj;
     move obj to Infinity_Symbol;
-    obj = Rod_of_Sacrifice;
+    obj = rod_of_sacrifice;
     remove obj;
     move obj to Infinity_Symbol;
-    obj = Rod_of_Husbandry;
+    obj = rod_of_husbandry;
     remove obj;
     move obj to Infinity_Symbol;
     obj = Star_card;
@@ -6457,12 +6457,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_e5de local1 local2 ;	! 58846 / 0xe5de
-    local1 = parent(player);
-    if (local1 == 27[servants_bed?]) {
+[ SleepSub env sib ;	! 58846 / 0xe5de
+    env = parent(player);
+    if (env == servants_bed) {
         ! no code
     } else {
-        if (local1 ~= 75[comfortable_bed?]) {
+        if (env ~= comfortable_bed) {
             "Your mother taught you never to go to sleep until you're tucked up in bed.";
         }
         "You sleep briefly, fitfully, tossing and turning all the while, and dream of Miss Alison writing at her table, and then of being caught by a strange man, who strikes his staff on the ground, then points it directly at you... You begin to fade away. Before you do, he strikes his staff again, then points it at himself and vanishes. You explode back into consciousness!";
@@ -6472,13 +6472,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     give servants_bed general;
     print "You sleep unexpectedly deeply, but just as you think you are starting to wake up, you experience a sudden...^";
-    local1 = child(player);
+    env = child(player);
   .label59297;
-    if (local1 ~= 0) {
-        local2 = sibling(local1);
-        remove local1;
-        move local1 to e_wall;
-        local1 = local2;
+    if (env ~= nothing) {
+        sib = sibling(env);
+        remove env;
+        move env to e_wall;
+        env = sib;
         jump label59297;
     }
     game_section = DREAMING;
@@ -6551,7 +6551,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-! References: Rod_of_Fire.rod_action
+! References: rod_of_fire.rod_action
 
 [ FireRodAction local1 ;	! 60116 / 0xead4
     if (second == player) {
@@ -6589,7 +6589,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You start a great conflagration, and then perish in it!";
 ];
 
-! References: Rod_of_Returning.rod_action, Rod_of_Returning2.rod_action
+! References: rod_of_returning.rod_action, rod_of_returning2.rod_action
 
 [ transport_player n dest ;	! 60748 / 0xed4c
     if (second ~= player) {
@@ -6626,7 +6626,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-! References: Rod_of_Husbandry.rod_action
+! References: rod_of_husbandry.rod_action
 
 [ RodOfHusbandryAction local1 local2 ;	! 60944 / 0xee10
     if (second == player) {
@@ -6639,7 +6639,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "The goats suddenly look up at you with awe, although they resume their former interest in eating the grass quite quickly.";
 ];
 
-! References: Rod_of_Bronze.rod_action
+! References: rod_of_bronze.rod_action
 
 [ RodOfBronzeAction local1 local2 ;	! 61110 / 0xeeb6
     if (second == player) {
@@ -6655,7 +6655,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "With an awful heaving, wrenching noise, the mural slides a little sideways, opening up a murky downward passage which can't have been used for centuries.";
 ];
 
-! References: Rod_of_Luck.rod_action
+! References: rod_of_luck.rod_action
 
 [ RodOfLuckAction local1 local2 ;	! 61314 / 0xef82
     if (second == player) {
@@ -6668,7 +6668,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Nothing obvious happens.";
 ];
 
-! References: Rod_of_Sacrifice.rod_action
+! References: rod_of_sacrifice.rod_action
 
 [ RodOfSAcrificeAction local1 local2 ;	! 61446 / 0xf006
     if (second == player) {
@@ -6678,7 +6678,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Nothing obvious happens.";
 ];
 
-! References: Rod_of_Language.rod_action
+! References: rod_of_language.rod_action
 
 [ RodOfLanguageAction ;	! 61618 / 0xf0b2
     if (second == player) {
@@ -6688,7 +6688,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Nothing obvious happens.";
 ];
 
-! References: Rod_of_Stalking.rod_action
+! References: rod_of_stalking.rod_action
 
 [ stalking_rod_action local1 local2 ;	! 61690 / 0xf0fa
     if (second == player) {
@@ -6710,7 +6710,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reaching up high into the sky!  You yawn convulsively.";
 ];
 
-! References: Rod_of_Infinity.rod_action
+! References: rod_of_infinity.rod_action
 
 [ RodOfInfinityAction local1 local2 ;	! 62082 / 0xf282
     if (second == player) {
@@ -7293,61 +7293,61 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: calendar.before
 
-[ CalendarBefore local1 ;	! 66944 / 0x10580
+[ CalendarBefore i ;	! 66944 / 0x10580
     if (verb == ##Examine) {
-        local1 = 108[calendar?];
-        local1 = local1.number;
+        i = 108[calendar?];
+        i = i.number;
         print "The calendar is turned to ";
       .label66978;
-        if (local1 == 0) {
+        if (i == 0) {
             print "January";
         }
-        if (local1 == 1[?]) {
+        if (i == 1[?]) {
             print "February";
         }
-        if (local1 == 2[?]) {
+        if (i == 2[?]) {
             print "March";
         }
-        if (local1 == 3[s_wall?]) {
+        if (i == 3[s_wall?]) {
             print "April";
         }
-        if (local1 == 4[e_wall?]) {
+        if (i == 4[e_wall?]) {
             print "May";
         }
-        if (local1 == 5[w_wall?]) {
+        if (i == 5[w_wall?]) {
             print "June";
         }
-        if (local1 == 6[ne_wall?]) {
+        if (i == 6[ne_wall?]) {
             print "July";
         }
-        if (local1 == 7[nw_wall?]) {
+        if (i == 7[nw_wall?]) {
             print "August";
         }
-        if (local1 == 8[se_wall?]) {
+        if (i == 8[se_wall?]) {
             print "September";
         }
-        if (local1 == 9[sw_wall?]) {
+        if (i == 9[sw_wall?]) {
             print "October";
         }
-        if (local1 == 10[ceiling?]) {
+        if (i == 10[ceiling?]) {
             print "November";
         }
-        if (local1 == 11[floor?]) {
+        if (i == 11[floor?]) {
             print "December";
         }
         print " and a watercolour painting of some ";
-        RandomFlower(local1);	! not popped
+        RandomFlower(i);	! not popped
         @pop;
         " daisies.";
     }
     if (verb == ##Turn) {
-        local1 = 108[calendar?];
-        local1 = local1.number;
-        ++local1;
-        if (local1 == 12[thedark?]) {
-            local1 = 0;
+        i = 108[calendar?];
+        i = i.number;
+        ++i;
+        if (i == 12[thedark?]) {
+            i = 0;
         }
-        calendar.number = local1;
+        calendar.number = i;
         AddScore(SCORE_CALENDAR);	! not popped
         @pop;
         print "You turn over to ";
@@ -7467,31 +7467,31 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: wheel2.before
 
-[ Wheel2Before local1 ;	! 67908 / 0x10944
+[ Wheel2Before obj ;	! 67908 / 0x10944
     if (verb == ##Turn) {
-        local1 = parent(player);
-        if (local1 == 86[dumbwaiter?]) {
+        obj = parent(player);
+        if (obj == dumbwaiter) {
             "If you could only reach the wheel from here...";
         }
         if (noun has on) {
             "It won't turn. Perhaps it's broken, or perhaps only rusty.";
         }
         print "It spins round smoothly, and the dumbwaiter is hoisted ";
-        local1 = 86[dumbwaiter?];
-        local1 = parent(local1);
-        if (local1 == location) {
+        obj = dumbwaiter;
+        obj = parent(obj);
+        if (obj == location) {
             print "away out of sight.";
         }
-        if (local1 ~= location) {
+        if (obj ~= location) {
             print "into view.";
         }
-        if (local1 == 84[Storage_Room?]) {
+        if (obj == Storage_Room) {
             move dumbwaiter to Cellars;
         }
-        if (local1 == 90[Dark_Shaft?]) {
+        if (obj == Dark_Shaft) {
             move dumbwaiter to location;
         }
-        if (local1 == 93[Cellars?]) {
+        if (obj == Cellars) {
             move dumbwaiter to Storage_Room;
         }
         new_line;
@@ -8276,7 +8276,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         finish_state = DIED;
         "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave about. Pretty impressive prediction, is your last thought.";
     }
-    if (Rod_of_Luck has general) {
+    if (rod_of_luck has general) {
         print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
         rfalse;
     }
@@ -8492,7 +8492,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (noun hasnt rod_attr) {
             "That won't fit in a socket.";
         }
-        if (noun == Rod_of_Infinity) {
+        if (noun == rod_of_infinity) {
             "The Rod of Infinity is just slightly too large to fit.";
         }
         if (cnt == 7) {
@@ -9738,7 +9738,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ routine_1493e local1=1537[?] local2=38406[?] local3='invalidDictWord25094' local4='wiring' local5=10645[?] local6=1590[?] local7=518[?] local8=85[wheel2?] local9=1[?] local10=111[antiquated_wireless?] local11=6656[?] local12=1857[?] local13=1792[?] ;	! 84286 / 0x1493e
-    @2OP:0 9[sw_wall?] 178[Rod_of_Bronze?];
+    @2OP:0 9[sw_wall?] 178[rod_of_bronze?];
     if (global96 has global62) jump label91691;
     if (++global49 <= 7) jump label84452;
     if (167 & 7 == 7) jump label84365;
@@ -10185,7 +10185,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
-    @2OP:0 97[Rod_of_Returning?] 1[?];
+    @2OP:0 97[rod_of_returning?] 1[?];
     global208 = 0->8;
     @2OP:31 167[Shadowy_Hallway?] 219[Spur_of_Rock?];
     if (2[?] ~= 162[goat?]) jump label86226;
@@ -10240,7 +10240,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (0 >= 85) rtrue;
     if (++local13 <= 6) jump label86292;
     if (robot_mouse notin ne_wall) jump label87427;
-    global95 = Rod_of_Stalking.after;
+    global95 = rod_of_stalking.after;
     if (--local6 >= 3) jump label86188;
     if (3 >= 0) jump label87104;
     jump label86145;
