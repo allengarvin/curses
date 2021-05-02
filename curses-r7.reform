@@ -580,14 +580,12 @@ Action 16	VagueGo
 Action 17	Go
 Action 20	Look
 Action 21	Examine
-				! 'l//'/'look' 'at' noun
 Action 22	SearchSub
 Action 23	LookUnder
 Action 24	Consult2
 Action 25	Consult
 Action 29	Open
 Action 30	Unlock
-				! 'open'/'uncove'/'undo'/'unwrap' noun 'with' held
 Action 31	Close
 Action 32	Lie
 Action 33	LieDown
@@ -692,15 +690,15 @@ Routine 0x81a6 routine_81a6
 Routine 0x81f4 TakeSub
 Routine 0x8220 routine_8220
 Routine 0x8400 DropSub env:object unused unused2
-Routine 0x846e routine_846e
+Routine 0x846e RemoveSub
 Routine 0x84f2 InsertSub env:object
-Routine 0x861c routine_861c
-Routine 0x8684 routine_8684
-Routine 0x8690 routine_8690
+Routine 0x861c TransferSub
+Routine 0x8684 EmptySub
+Routine 0x8690 EmptyTSub
 Routine 0x8742 routine_8742
 Routine 0x8760 routine_8760
-Routine 0x87b8 routine_87b8 env:object
-Routine 0x8848 routine_8848
+Routine 0x87b8 ExitSub env:object
+Routine 0x8848 ExitSub
 Routine 0x889c VagueGoSub
 Routine 0x88c4 GoSub env:object prop:property unused has_light:bool o:object
 Routine 0x8ea8 BriefSub
@@ -709,8 +707,8 @@ Routine 0x8f76 SuperSub
 Routine 0x8fdc LookSub verbose:bool env:object str:string local4 chld:object local6 local7 
 Routine 0x9156 routine_9156
 Routine 0x9320 DescribeObj obj:object n:int
-Routine 0x946e routine_946e
-Routine 0x963c routine_963c obj:object
+Routine 0x946e ShowSub
+Routine 0x963c GiveRSub obj:object
 Routine 0x999e routine_999e
 Routine 0x9a20 routine_9a20
 Routine 0x9ab8 SwitchOnSub
@@ -772,13 +770,13 @@ Routine 0xc66c Defart
 Routine 0xc67c CDefart
 !!! - end of parser.h
 
-Routine 0xc68c routine_c68c
+Routine 0xc68c ThrowAtSub
 Routine 0xc806 DemonHint hints_left:int
 Routine 0xc8ae routine_c8ae
 Routine 0xc956 routine_c956
 Routine 0xcfb4 routine_cfb4
 Routine 0xd01e routine_d01e
-Routine 0xd04c routine_d04c
+Routine 0xd04c SingSub
 Routine 0xd0f0 routine_d0f0
 Routine 0xd122 routine_d122
 Routine 0xd12e routine_d12e

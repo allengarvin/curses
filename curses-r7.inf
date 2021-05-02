@@ -2524,22 +2524,22 @@ Array global63 --> 1;	! 10186 (0x27ca)
 Array global64 --> 1;	! 10202 (0x27da)
 Array global71 --> 1;	! 10266 (0x281a)
 Array verb_routine_array -->	! 11869 (0x2e5d)
-    routine_8848
+    ExitSub
     InvSub
     TakeSub
-    routine_846e
-    routine_87b8
+    RemoveSub
+    ExitSub
     DisrobeSub
     WearSub
     InsertSub
     DropSub
-    routine_8684
-    routine_8690
-    routine_861c
-    routine_c68c
-    routine_963c
-    routine_d04c
-    routine_946e
+    EmptySub
+    EmptyTSub
+    TransferSub
+    ThrowAtSub
+    GiveRSub
+    SingSub
+    ShowSub
     VagueGoSub
     GoSub
     ScoreSub
@@ -4334,7 +4334,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_846e local1 ;	! 33902 / 0x846e
+[ RemoveSub local1 ;	! 33902 / 0x846e
     local1 = parent(noun);
     if (local1 hasnt open) {
         "Alas, it is closed.";
@@ -4411,7 +4411,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You put the ", (name) noun, " into the ", (name) second, ".";
 ];
 
-[ routine_861c local1 local2 ;	! 34332 / 0x861c
+[ TransferSub local1 local2 ;	! 34332 / 0x861c
     local2 = 7[nw_wall?];
     if (second == floor) {
         local2 = 8[se_wall?];
@@ -4440,14 +4440,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ routine_8684 ;	! 34436 / 0x8684
+[ EmptySub ;	! 34436 / 0x8684
     second = floor;
-    routine_8690();	! not popped
+    EmptyTSub();	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine_8690 local1 local2 ;	! 34448 / 0x8690
+[ EmptyTSub local1 local2 ;	! 34448 / 0x8690
     if (noun hasnt container) {
         CDefart(noun);	! not popped
         @pop;
@@ -4505,12 +4505,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (noun == nothing) {
         "You lie down on the floor for a while and then get up again, feeling foolish.";
     }
-    routine_87b8();	! not popped
+    ExitSub();	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine_87b8 env ;	! 34744 / 0x87b8
+[ ExitSub env ;	! 34744 / 0x87b8
     if (noun == compass) {
         GoSub();	! not popped
         @pop;
@@ -4537,7 +4537,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You get into the ", (name) noun, ".";
 ];
 
-[ routine_8848 local1 ;	! 34888 / 0x8848
+[ ExitSub local1 ;	! 34888 / 0x8848
     local1 = parent(player);
     if (local1 == location) {
         "But you're aren't in anything at the moment.";
@@ -4992,7 +4992,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     return local7;
 ];
 
-[ routine_946e local1 local2 ;	! 37998 / 0x946e
+[ ShowSub local1 local2 ;	! 37998 / 0x946e
     if (second == demon) {
         if (DemonHint() == 0) {
             print "The demon glances lazily at ";
@@ -5047,14 +5047,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     " makes no comment.";
 ];
 
-[ routine_963c obj local2 ;	! 38460 / 0x963c
+[ GiveRSub obj local2 ;	! 38460 / 0x963c
     if (second == demon) {
-        routine_946e();	! not popped
+        ShowSub();	! not popped
         @pop;
         rfalse;
     }
     if (second == angel) {
-        routine_946e();	! not popped
+        ShowSub();	! not popped
         @pop;
         rfalse;
     }
@@ -5088,7 +5088,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         "He takes the money. ~Q'est-ce que vous desirez?~";
     }
     if (second == Sir_Joshua_Meldrewe) {
-        routine_c68c();	! not popped
+        ThrowAtSub();	! not popped
         @pop;
         rfalse;
     }
@@ -6096,7 +6096,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_c68c local1 local2 ;	! 50828 / 0xc68c
+[ ThrowAtSub local1 local2 ;	! 50828 / 0xc68c
     if (second hasnt animate) {
         "Futile.";
     }
@@ -6312,7 +6312,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "No reply.";
 ];
 
-[ routine_d04c ;	! 53324 / 0xd04c
+[ SingSub ;	! 53324 / 0xd04c
     "You do your best to sing the opening from Schutz' sacred concerto ~O bone Jesu, fili Mariae~ (SWV 471). Unfortunately your best is such that the result is indistinguishable from ~How much is that doggie in the window?~.";
 ];
 
