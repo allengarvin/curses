@@ -1,0 +1,82 @@
+Constant Story "CURSES";
+Constant Headline "^An Interactive Diversion^Copyright (c) 1993 by Graham Nelson. New players should type ~help~.^";
+
+Property angel_hint;
+Property devil_hint;
+
+Include "Parser";
+Replace SearchSub;
+Include "variables.inf";
+Include "VerbLib";
+
+Include "house.inf";
+Include "unreal.inf";
+
+[ SearchSub o1 o2 ; ! 46074 / 0xb3fa
+!    if (noun == cafe_table) {
+!        if (complicated_looking_bomb has concealed) {
+!            give complicated_looking_bomb ~concealed;
+!            o1 = complicated_looking_bomb;
+!            remove o1;
+!            move o1 to Ruined_Castle_Cafe;
+!            "Now don't panic, but there's a ticking bomb loosely taped to the underside of the table you're sitting at!";
+!        }
+!        "You make no further alarming discoveries.";
+!    }
+!    if (noun == window_sill && delicate_gold_key has concealed) {
+!        give delicate_gold_key ~concealed;
+!        "You dislodge something shiny!";
+!    }
+    if (noun == teachests) {
+        print "That was the first place you tried, hours and hours ago now";
+        if (Meldrews_History has concealed) {
+            print ", and there's nothing there but that boring old book. You pick it up anyway, bored as you are";
+            give Meldrews_History ~concealed;
+            remove Meldrews_History;
+            move Meldrews_History to player;
+        }
+        ".";
+    }
+    if (noun == pile_of_sheets) {
+        if (antiquated_wireless has concealed) {
+            give antiquated_wireless ~concealed;
+            Achieved(SCORE_WIRELESS); 
+            "Not as many sheets as you thought - they were on top of a large black wireless, now exposed to the light for the first time in months.";
+        }
+        "No, you're only getting your hands stained looking.";
+    }
+!    if (noun == insulation_rolls) {
+!        if (old_gardeners__gloves hasnt worn) {
+!            "A rash act. The itchy fibres of the insulation soon deter you.";
+!        }
+!        o1 = new_battery;
+!        if (insulation_rolls ~= parent(o1)) {
+!            "Nothing else there, unfortunately.";
+!        }
+!        remove o1;
+!        move o1 to East_Annexe;
+!        Achieved(SCORE_BATTERY);    ! not popped
+!        @pop;
+!        "You uncover a shiny new battery. It must have been dropped by accident when the loft insulation was being done.";
+!    }
+    if (noun hasnt container) {
+        "You find nothing of interest.";
+    }
+    if (noun has transparent && noun hasnt open) {
+        "You can't see inside, since it is closed.";
+    }
+    if (1 == AfterRoutines()) {
+        rtrue;
+    }
+    print "You peer at ", (the) noun, ".";
+];
+
+[ Initialise;
+    location = Attic;
+    move crumpled_piece_of_paper to player;
+    move electric_torch to player;
+    move chocolate_biscuit to player;
+    StartTimer(old_smudged_battery, 200);
+];
+
+Include "Grammar";

@@ -1,0 +1,630 @@
+Object  Attic "Attic"
+  with  name 'beams' 'wiring' 'floor' 'floorboard',
+        description "The attics, full of low beams and awkward angles, 
+            begin here in a relatively tidy area which extends north,
+            south and east. The wooden floorboards seem fairly sound, just
+            as well considering how heavy all these teachests are. But the
+            old wiring went years ago, and there's no electric light.",
+        n_to  Old_Winery,
+        s_to  Old_Furniture,
+        e_to  Servants_Room,
+        d_to  hinged_trapdoor,
+  has   ;
+
+Object  -> hinged_trapdoor "hinged trapdoor"
+  with  name 'hinged' 'trap' 'door' 'trapdoor',
+        when_open "A hinged trapdoor in the floor stands open, and 
+            light streams in from below.",
+        after [;
+            Open: 
+                give self light;
+                rfalse;
+            Close:
+                give self ~light;
+                give antique_jewellery_box ~concealed;
+                "You close the trapdoor, surprised to see that something 
+                    shiny was obscured by it.";
+        ],
+        ! in_to antique_jewellery_box,
+        door_to House,
+        when_closed "There is a closed trapdoor in the middle of the floor.",
+  has   light door open openable static;
+
+Object  -> teachests "teachests"
+  with  name 'tea' 'chests' 'teachests',
+        description "Open-topped. You could easily look inside, 
+         if so minded.",
+        article "some",
+  has   container open scenery pluralname;
+
+Object -> -> Meldrews_History "History of the Meldrews (vol. II)"
+  with  name 'book' 'history',
+        description "It was to have been the Honourable Peter 
+          Meldrew's life's work, a two-volume edition giving the
+          definitive family history. Unfortunately, although he
+          claimed to have hunted for evidence to the ends of the
+          earth, he never could find a detail he wanted for volume
+          I, and it was never published. Somehow, this typifies
+          your family, and consulting this worthy book about your
+          ancestors makes you realise what an uncanny knack they
+          had for never quite achieving anything.^^Unless, of
+          course, you count having an awful lot of children. So
+          many Meldrews are listed here that you'll have to look
+          them up individually.",
+        article "the",
+        devil_hint "What a boring old book!  There's nobody worth looking up.",
+  has   concealed;
+
+Object  -> antique_jewellery_box "antique jewellery box"
+  with  name 'antique' 'jewellery' 'box',
+        description "A graceful lady's box, bearing the initials A. M. 
+            and engraved with a drawing of what seems to be a rabbit's foot.",
+        article "an",
+        initial "In one corner is a jewellery box, which had previously 
+            been hidden by the open trapdoor.",
+        with_key delicate_gold_key,
+        angel_hint "Try investigating the world of the romantic novel, 
+            out on the balconies of life.",
+  has   concealed container transparent openable lockable locked;
+
+Object  House "House"
+  with  after [ obj;
+            obj = tourist_map_of_Paris;
+            obj = parent(obj);
+            if( obj == player ) {
+                deadflag = WON;
+                "You have succeeded in shaking off the Curse of the Meldrews: 
+                 for the first time in sixty generations, a Meldrew
+                 has found the useless object he was doomed to seek!
+                 Unfortunately on the way to the airport you realise that
+                 you left the map on the kitchen table in all the rush,
+                 but never mind, you're on holiday now.";
+            }
+            deadflag = FAILED;
+            "Yes, probably just as well to give up looking, and heaven knows 
+             there's enough packing to do, what with the rest of the
+             family in uproar. Oh well.";
+        ],
+  has   light;
+
+Object  Old_Winery "Old Winery"
+  with  name 'banister' 'rail' 'crack' 'paraph',
+        description "This small cavity at the north end of the attic once 
+            housed all manner of home-made wine paraphernalia, now
+            lost and unlamented. Steps, provided with a good strong
+            banister rail, lead down and to the west, and the banister
+            rail continues along a passage east.",
+        after [;
+            if( self has general )
+                rfalse;
+            print "^As you disturb the still air, the attic key, which was 
+                balanced on top of the demijohn, slips onto the floor and
+                disappears into a crack in the floorboards. Your spirits
+                sink as it does, rattling down some distance. How on
+                earth are you going to get it back?^";
+            give Old_Winery general;
+            rtrue;
+        ],
+        s_to Attic,
+        e_to Storage_Room,
+        w_to Conservatory,
+        d_to Conservatory,
+    number 0,
+  has   ;
+
+Object  -> demijohn "labelled glass demijohn"
+  with  name 'demijohn' 'glass' 'bottle' 'label',
+            description "Faded ink on the label reads: Elderberry '63.",
+        before [;
+            Open:
+                if( old_gardeners__gloves hasnt worn )
+                    "Your hands slip on the screw-top of the demijohn and 
+                     can't get a grip.";
+                rfalse;
+        ],
+        after [;
+            Open: 
+        ],
+  has   container openable static;
+
+Object  -> -> nasty_battery "nasty-looking red battery"
+  with  name 'nasty' 'red//p' 'battery',
+        description "On the side is the word ~Achtung~.",
+        devil_hint "It's provided for your torch, and not for anything else.",
+  has   ;
+
+Object  -> -> tourist_map "tourist map"
+  with  name 'hambur' 'tourist' 'map',
+        description "The good news is that it has excellent grid references, 
+            which are easy to look up. The bad news is that it is a map of 
+            central Hamburg.",
+        devil_hint "Purely decorative.",
+  has   ;
+
+Object  Conservatory "Aunt Jemima's Lair"
+  with  description "This used to be called the Conservatory, before Aunt 
+            Jemima took it over to potter about with plants, painting
+            and indeed (on occasion) pottery. She has filled the place
+            with objets trouves and bric-a-brac, and hung up a home-made
+            calendar of watercolours. Even the old airing cupboard to
+            the south is cluttered.^^An open doorway leads back southwest
+            onto the upstairs landing, and you can hear the chaotic noise
+            of suitcases being manhandled about - good thing nobody's
+            seen you. A narrow staircase leads up and to the east into
+            the attic.^^Jemima herself seems to be in the potting room
+            to the west.",
+        s_to Airing_Cupboard,
+        e_to Old_Winery,
+!        w_to Potting_Room,
+        sw_to House,
+        u_to Old_Winery,
+  has   light;
+
+Object  -> calendar "calendar"   ! 108 / 0x6c
+  with  name 'calendar' 'page' 'pages',
+        before [ i;
+            i = self.number;
+            Examine:
+                switch( i ) {
+                    1: print "January";
+                    2: print "February";
+                    3: print "March";
+                    4: print "April";
+                    5: print "May";
+                    6: print "June";
+                    7: print "July";
+                    8: print "August";
+                    9: print "September";
+                   10: print "October";
+                   11: print "November";
+                   12: print "December";
+                }
+                print " and a watercolour painting of some ";
+                " daisies.";
+            Turn:
+                i++;
+                if( i == 12 )
+                    i = 0;
+                self.number = i;
+                Achieved(SCORE_CALENDAR);
+                print "You turn over to ";
+                << Examine self >>;
+        ],
+        number 5,
+  has   scenery;
+
+Object  Airing_Cupboard "Airing Cupboard"    ! 109 / 0x6d
+  with  name 'coffee' 'mugs' 'sculpture' 'racks',
+        description "A space about six feet square. The old drying racks 
+            now contain odd ceramic sculptures almost but not quite
+            unrecognisable as coffee mugs. One corner is filled with an
+            enormous pile of tie-dyed sheets, from Aunt Jemima's infamous
+            Sixties Revival period of last October.",
+        n_to Conservatory,
+        cant_go "The only way to go from here is back north.",
+  has   light;
+
+Object  -> pile_of_sheets "pile of sheets"   ! 110 / 0x6e
+  with  name 'pile' 'of' 'sheets',
+  has   scenery pluralname;
+
+Object  -> antiquated_wireless "antiquated wireless" ! 111 / 0x6f
+  with  name 'switch' 'cabinet' 'radio' 'wireless',
+        description "It rolls on casters, and has a bakelite on/off switch.",
+        article "an",
+        initial "To one side is a heavy cabinet on casters containing an 
+            antiquated wireless, the kind with glowing valves inside. On
+            the top is a bakelite on-off switch.",
+        after [;
+            SwitchOn:
+                StartTimer(self, 6);
+                "Nothing happens.";
+            SwitchOff:
+                ! Bug here: needs StopTimer
+                give self ~general;
+                "Thank heaven for that.";
+        ],
+        time_left 0,
+        time_out [ env;
+            give antiquated_wireless general;
+            env = parent(self);
+            if( location == env )
+                print "^The radio valves glow, and execrable so-called easy 
+                    listening music fills the air with a sort of bland
+                    aural candy-floss.^";
+            if( location == Potting_Room && env == Conservatory )
+                print "^Execrable music begins to sound from the conservatory, 
+                    and Aunt Jemima hums vacantly.^";
+        ],
+        describe "To one side is a heavy cabinet on casters containing an 
+            antiquated wireless, the kind with valves inside. On the
+            top is a bakelite on-off switch.",
+        number 0,
+  has   concealed static switchable;
+
+Object  Potting_Room "Potting Room"
+  with  name 'plants' 'flower' 'seeds' 'trowel',
+        description "This light room is full of pot plants, flowers, seeds, 
+            ornamental trowels and other miscellaneous garden implements.",
+        after [;
+            Look:
+                if( antiquated_wireless has general && antiquated_wireless in Conservatory )
+                    print "^Execrable music drifts in from the conservatory.^";
+                rfalse;
+        ],
+        e_to Conservatory,
+        cant_go "The only exit is back east to the conservatory.",
+  has   light;
+
+Object  -> old_gardeners__gloves "old gardeners' gloves"
+  with  name 'garden' 'gloves',
+        article "some",
+        initial "A pair of yellow rubber gloves hangs from a hook on one wall.",
+        before [;
+            Take:
+                if( self has moved || antiquated_wireless has general )
+                    rfalse;
+                deadflag = FAILED;
+                "Aunt Jemima suddenly hears you, spins round to see you 
+                 filching her gloves and screeches with irritation, 
+                 eventually summoning the entire family. You volunteer to
+                 shift some suitcases about just to get away from her.";
+        ],
+
+        devil_hint "Good for nothing. Why would you want gloves on?",
+  has   clothing scored;
+
+Object  -> Jemima "Jemima"
+  with  name 'aunt' 'jemima',
+        description "She's been fiddling about with those cut flowers all 
+            afternoon. And she's a bit upset at being left alone in the
+            house while you're off on holiday, so best not to get on
+            her bad side. You really ought to make it up to her somehow.",
+        article "Aunt",
+        initial "Aunt Jemima, who has for years collected varieties of daisy, 
+            is engaged in her regular annual pastime of deciding which
+            species make the best chains.",
+        number 0,
+  has   animate proper;
+
+[ DescFlower n;
+    switch( n ) {
+         1: print "speckled Jemima's Pride";
+         2: print "yellowish Merlyn's Hat";
+         3: print "blue-tinted bell";
+         4: print "heavy-headed Dorset Pride";
+         5: print "reddish meadow-heart";
+         6: print "wild white common";
+         7: print "green-edged hedgerow";
+         8: print "plain Russian Steppe";
+         9: print "tall-stemmed Breton";
+        10: print "orange meadow";
+        11: print "short-leaved Meldrew";
+        12: print "tiny bonsai";
+    }
+];
+Object daisy_chain "daisy chain"
+  with  name 'daisy' 'chain' 'daisychain',
+        before [ n;
+            Examine:
+                n = self.number;
+                print_ret "A delicate, pretty chain of ", DescFlower(self), 
+                    " daisies.";
+            Drop:
+                remove self;
+                "The daisychain falls to pieces in your hands!";
+        ],
+        number 11,
+        devil_hint "Dangerous to wear. But at least any sort of daisies will 
+            do.",
+  has   clothing;
+
+
+Object crumpled_piece_of_paper "crumpled piece of paper"
+  with  name 'crumpled' 'paper',
+        description "   Things to do:^   1. Find map^   2. Phone airport to 
+            check parking^   3. Health forms...^and so on. Let's face it, 
+            1. is more enticing than the rest put together.",
+        devil_hint "Immensely useful, that.",
+  has   moved;
+
+Object electric_torch "electric torch"
+  with  name 'electric' 'torch' 'compartment',
+        description "The torch has a battery compartment which can be 
+            reached by opening it up.",
+        article "an",
+        after [ o;
+            o = child(self);
+            Open:
+                give electric_torch ~light;
+                if( o == old_smudged_battery )
+                    StopTimer(o);
+                if( self has light ) 
+                    "The torch goes out as you open the battery compartment.^";
+                if (electric_torch hasnt light)
+                    "You open the battery compartment of the torch.^";
+            Close:
+                print "You close the battery compartment of the torch";
+                if( o == new_battery )
+                    Achieved(SCORE_TORCH);
+                else { 
+                    if( o == nasty_battery ) {
+                        deadflag = FAILED;
+                        ", and it explodes with light, becomes hot enough to melt, 
+                         falls to the floor, catches fire and burns down
+                         most of the attic...^^It may be some consolation
+                         that since you spend your holiday in the local
+                         hospital burns unit, you are never inconvenienced
+                         much by not finding the map.";
+                    }
+                    if( o ~= old_smudged_battery )
+                        rfalse;
+                }
+                o = o.number;
+                if( o == 0 )
+                    ", but the battery must be dead because nothing happens.";
+                if( o == old_smudged_battery )
+                    StartTimer(o, o.time_left);
+                give electric_torch light;
+                if( o > 5 )
+                    ", and it lights up brightly.";
+                ", and it lights up feebly.";
+        ],
+        devil_hint "Pity you can't change the batteries.",
+  has   light moved container transparent openable;
+
+Object -> old_smudged_battery "old smudged battery"
+  with  name 'old' 'smudge' 'battery',
+        article "an",
+        time_left 200,
+  has   ;
+
+Object chocolate_biscuit "chocolate biscuit"
+  with  name 'chocolate' 'biscuit',
+        description "Oatmeal covered with plain chocolate, since you ask.",
+        devil_hint "I bet you didn't know that chocolate biscuit manufacturers
+            are damned in perpetuity?  I'm afraid the chapters about that
+            in the Old Testaments were lost, though, and now no-one can
+            remember why.",
+        after [;
+            Eat: Achieved(SCORE_BISCUIT); rfalse;
+        ],
+  has   moved edible;
+
+Object Servants_Room "Servant's Room"   ! 26 / 0x1a
+  with  description "Once upon a time, servants in great houses lived in 
+            awful little crevices and excuses for rooms like this
+            one. They must have been in permanent danger of suffocation,
+            for there are no windows and only a doorway to the west. A bed
+            is still kept here, and the sight of it brings on drowsiness
+            in all this warm stuffy air. All you want to do is curl up
+            and sleep.",
+        w_to Attic,
+  has   ;
+
+Object  -> servants_bed "servant's bed"  ! 27 / 0x1b
+  with  name 'servant' 'bed',
+  has   open enterable scenery supporter;
+
+Object  -> old_striped_scarf "old striped scarf" ! 28 / 0x1c
+  with  name 'old' 'scarf',
+        description "Made by Dunn and Co., naturally, with four stripes: royal blue, 
+            emerald, dark grey and scarlet.",
+        article "an",
+        initial "An old striped scarf is hung up behind the doorway.",
+        devil_hint "The very height of fashion, if you ignore the colours and wear it regardless.",
+  has   clothing;
+
+Object  Old_Furniture "Old Furniture"    ! 30 / 0x1e
+  with  name 'armchair' 'umbrella' 'table',
+        description "Scruffy old furniture is piled up here: armchairs with 
+            springs coming out, umbrella stands, a badly scratched
+            cupboard, a table with one leg missing... You try to remember
+            why you keep all this rubbish, and fail. Anyway the attic
+            continues to the southeast.",
+        n_to Attic,
+        se_to Over_the_East_Wing,
+  has   ;
+
+Object  -> furniture "furniture" ! 31 / 0x1f
+  with  name 'furniture',
+        description "Nothing there, but that cupboard looks interesting.",
+  has   scenery;
+
+Object  -> scratched_cupboard "scratched cupboard"
+  with  name 'scratch' 'cupboard',
+  has   container transparent open openable scenery;
+
+Object  -> -> gift_wrapped_parcel "gift-wrapped parcel"
+  with  name 'gift' 'parcel',
+        before [;
+            remove self;
+            move postcard to player;
+            move box_of_chocolates to player; 
+            move wrapping_paper to player;
+            "You tear open the parcel to find a box of chocolates and a card.";
+        ],
+        devil_hint "Shame the wrapping paper won't come off.",
+  has   ;
+
+Object  -> -> medicine_bottle "guaranteed-unbreakable medicine bottle with a child-proof lock" 
+  with  name 'medicine' 'bottle',
+        before [;
+            Attack:
+                "You become extremely violent in your attempt, but the glass resists all attacks. 
+                    Whatever would it take to break the dratted thing?";
+            Open:
+                if( self hasnt locked ) rfalse;
+                "You try absolutely everything. Pushing the top down, turning it, pulling it, 
+                 putting it on the floor and jumping up and down on it, everything. It is resolutely 
+                 adult-proof. Whatever would it take to break the dratted thing?";
+        ],
+        devil_hint "These bottles can even survive long drops, so perhaps you should try fire.",
+  has   container openable locked;
+
+Object  -> -> -> red_tablet "red tablet"
+  with  name 'red' 'pill' 'tablet',
+        devil_hint "This drug is for fun, it isn't an antidote. And it tastes gorgeous...",
+  has   edible scored;
+
+Object  Over_the_East_Wing "Over the East Wing"  ! 39 / 0x27
+  with  name 'steps',
+        description "The air is dusty and warm, almost making you choke in this rather 
+            empty area. The attic turns from northwest to east, and
+            there is also a tight doorway leading west. A short flight
+            of wooden steps leads down and to the south.",
+        s_to Disused_Observatory,
+        e_to East_Annexe,
+        w_to Dark_Room,
+        nw_to Old_Furniture,
+        d_to Disused_Observatory,
+  has   ;
+
+Object Dark_Room "Dark Room"
+  with  description "This is a roughly-furnished photographer's dark room, used by your 
+            grandfather years ago. There's nothing much here now, since
+            you threw the chemicals out in case the children found them.",
+        after [;
+            Look: 
+                if( self has light )
+                    print "^The room is filled with an eerie, reddish light. You feel 
+                        gloomy and can't help thinking about aviation accident statistics.^";
+                rfalse;
+        ],
+        e_to Over_the_East_Wing,
+        cant_go "The only doorway is back east.",
+  has   ;
+
+Object  -> hanging_cord "hanging cord"   ! 41 / 0x29
+  with  name 'hanging' 'cord',
+        description "It is attached to the ceiling.",
+        initial "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
+        before [;
+            Pull:
+                print "Click!  ";
+            if( self has light ) {
+                give Dark_Room ~light;
+                "The lamp goes out.";
+            }
+            give Dark_Room light;
+            "A developing lamp comes on, emitting an eerie red light.";
+        ],
+  has   static;
+
+Object -> sepia_photograph "sepia photograph"
+  with  name 'sepia' 'photo' 'photograph' 'roger',
+        description "The photograph is one of the very early ones which looks as if it was taken in the dark because the chemicals have gradually oxidised. The poor man in the frame (Mr Roger Meldrew, Esquire) looks as if he was propped up by a big clamp to hold him still for five minutes, and that's because he was.",
+        article "the old",
+        initial "Mounted on a plaque is an old sepia photograph of a man.",
+  has   static;
+
+Object  -> flash "photographer's flash"
+  with  name 'photograph' 'flash' 'compartment',
+        description "It has an openable compartment on the side to hold a battery and a timer mechanism.",
+        initial "A rather more modern photographer's flash lies on a shelf to one side.",
+        angel_hint "When you can get this working, perhaps you should take it somewhere prominent.",
+  has   container transparent openable;
+
+Object  East_Annexe "East Annexe"    ! 52 / 0x34
+  with  name 'gap' 'tiles' 'roof',
+        description "This tight annexe at the eastern end of the house is piled up 
+            with old loft insulation rolls, left over from the last
+            time the job was done (whenever that was). A gap between the
+            tiles of the roof (which you really must mend before winter)
+            lets a little natural light in, but the attics to the west
+            and south are dark.",
+        after [;
+            Go:
+                if( old_smudged_battery.time_left > 3 )
+                    old_smudged_battery.time_left = 3;
+                rfalse;
+        ],
+        n_to cupboard_door,
+        s_to Dead_End,
+        w_to Over_the_East_Wing,
+  has   light;
+
+Object Storage_Room "Storage Room"
+  with  description "A disused storage room off the winery. In one wall is an opening 
+            onto an ominous dark shaft, and beside it is a big
+            Victorian-steam-engine style wheel with a handle on.",
+        before StorageRoomBefore,
+        after StorageRoomBefore,
+        w_to Old_Winery,
+        cant_go "The only doorway is back west to the winery.",
+  has   ;
+
+[ WheelBefore obj;
+    if( action == ##Turn) {
+        obj = parent(player);
+        if( obj == dumbwaiter ) "If you could only reach the wheel from here...";
+        if( noun has on ) "It won't turn. Perhaps it's broken, or perhaps only rusty.";
+        print "It spins round smoothly, and the dumbwaiter is hoisted ";
+        obj = dumbwaiter;
+        obj = parent(obj);
+        if( obj == location ) print "away out of sight.";
+        if (obj ~= location)  print "into view.";
+        if (obj == Storage_Room) move dumbwaiter to Cellars;
+        if (obj == Dark_Shaft) move dumbwaiter to location;
+        if (obj == Cellars) move dumbwaiter to Storage_Room;
+        new_line;
+        rtrue;
+    }
+    rfalse;
+];
+
+Object  -> wheel2 "wheel"
+  with  name 'wheel' 'handle' 'catch' 'safety',
+        description "There is a concealed safety catch (poorly) hidden on the wheel.",
+        before WheelBefore,
+  has   scenery switchable on;
+
+Object  -> dumbwaiter "dumbwaiter"   ! 86 / 0x56
+  with  name 'dumb' 'waiter' 'dumbwaiter',
+        article "the old",
+        initial "Inside the dark shaft is the old dumbwaiter.",
+  has   container open enterable static;
+
+Object  -> -> pulley_ropes "pulley ropes"    ! 88 / 0x58
+  with  name 'pulley' 'rope' 'ropes',
+        article "the",
+        initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
+        before [ env dst;
+            Pull:
+                env = parent(player);
+                if( env ~= dumbwaiter ) "You can't reach them!";
+                Achieved(SCORE_WAITER);
+                if( location == Storage_Room ) {
+                    dst = Cellars;
+                    print "You begin moving, and then plummet, but friction gradually slows you down and 
+                        you land without too much of a thump...^";
+                }
+                if( location == Dark_Shaft ) {
+                    dst = Storage_Room;
+                    print "You heave yourself up to the attic again...^";
+                }
+                if( location == Cellars ) {
+                    dst = Dark_Shaft;
+                    print "You heave yourself half-way up, and then need to stop for a rest.^";
+                }
+                env = dumbwaiter;
+                remove env;
+                move env to dst;
+                location = dst;
+                << Look >>;
+            Climb:
+                "If only you didn't suffer from such dreadful vertigo...";
+        ],
+  has   static;
+
+Object  -> -> chicken_wishbone "chicken wishbone"    ! 89 / 0x59
+  with  name 'wish' 'bone' 'wishbone' 'chicken',
+        description "The half which didn't get the wish, actually.",
+        devil_hint "It isn't even mentioned in any of the books I've read.",
+  has   ;
+
+Object -> dark_shaft "dark shaft"   ! 87 / 0x57
+  with  name 'shaft' 'dark',
+        description "Uninviting.",
+  has   container transparent open scenery;
+
