@@ -125,7 +125,7 @@ Object  Old_Winery "Old Winery"
                 sink as it does, rattling down some distance. How on
                 earth are you going to get it back?^";
             give Old_Winery general;
-            rtrue;
+            rfalse;
         ],
         s_to Attic,
         e_to Storage_Room,
@@ -152,7 +152,7 @@ Object  -> demijohn "labelled glass demijohn"
         after [;
             Open: 
         ],
-  has   container openable static;
+  has   container openable static transparent;
 
 Object  -> -> nasty_battery "nasty-looking red battery"
   with  name 'nasty' 'red' 'battery',
@@ -182,7 +182,7 @@ Object  Conservatory "Aunt Jemima's Lair"
             to the west.",
         s_to Airing_Cupboard,
         e_to Old_Winery,
-!        w_to Potting_Room,
+        w_to Potting_Room,
         sw_to House,
         u_to Old_Winery,
   has   light;
@@ -581,7 +581,7 @@ Object  East_Annexe "East Annexe"
   has   light;
 
 
-Object  -> insulation_rolls "insulation rolls"   ! 53 / 0x35
+Object  -> insulation_rolls "insulation rolls"
   with  name 'insulation' 'rolls' 'roll',
         article "some",
         before [;
@@ -598,13 +598,13 @@ Object  -> insulation_rolls "insulation rolls"   ! 53 / 0x35
         ],
   has   scenery pluralname;
 
-Object  -> -> new_battery "new-looking battery"  ! 54 / 0x36
+Object  -> -> new_battery "new-looking battery"
   with  name 'new' 'battery',
         number 200,
         devil_hint "That is a difficult puzzle, yes.",
   has   ;
 
-Object  -> cupboard_door "cupboard door" ! 55 / 0x37
+Object  -> cupboard_door "cupboard door"
   with  name 'cupboard' 'door',
         when_open "In the north wall is an open cupboard door, large enough to step inside.",
         door_dir n_to,
@@ -849,7 +849,17 @@ Object  Chimney "Chimney"
   with  description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, 
             so you are held up only by jamming your feet against the walls. To the east, through 
             the fireplace, is the cupboard.",
-        before ChimneyBefore,
+        before [;
+            Go:
+                if( noun == d_obj ) {
+                    if( child(player) )
+                        "It's too narrow a squeeze for you at present.";
+                    print "You squeeze awkwardly down the chimney. Lucky your best clothes are all packed, 
+                        because you're getting filthy.^";
+                    rfalse;
+                }
+            default: "There's not enough room in this confined space to do anything much!";
+        ],
         e_to Inside_Cupboard,
         d_to Priests_Hole,
         cant_go "Not a chance!",
@@ -862,24 +872,24 @@ Object  -> sooty_old_stick "sooty old stick"
         devil_hint "It's exactly what it seems.",
   has   hidden_rod;
 
-[ FireRodAction  ;    ! 60116 / 0xead4
+[ FireRodAction  ;
     if( second == player ) {
         deadflag = DIED;
         "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
     }
     if( second has animate )
         "For heaven's sake, you're only looking for an out-of-date map. Murder does seem a little extreme.";
-    if( second == wall_of_thorns_object ) {
-        if( wall_of_thorns_object has open )
-            "The wall wriggles in discomfort, but manages to avoid further devastation.";
-        give wall_of_thorns_object open;
-        "Fire leaps out from the rod into the heart of the thorn wall, which screams 
-         out as it burns, revealing a great hole through the wild
-         flames. You catch a tantalising glimpse of a great Temple, before
-         the wall heals back. But it is unable to recover entirely,
-         and a charred gap is left to the south. You could probably
-         squeeze through it.";
-    }
+!    if( second == wall_of_thorns_object ) {
+!        if( wall_of_thorns_object has open )
+!            "The wall wriggles in discomfort, but manages to avoid further devastation.";
+!        give wall_of_thorns_object open;
+!        "Fire leaps out from the rod into the heart of the thorn wall, which screams 
+!         out as it burns, revealing a great hole through the wild
+!         flames. You catch a tantalising glimpse of a great Temple, before
+!         the wall heals back. But it is unable to recover entirely,
+!         and a charred gap is left to the south. You could probably
+!         squeeze through it.";
+!    }
     if( second has scenery || second has static ) {
         deadflag = DIED;
         "You start a great conflagration, and then perish in it!";
@@ -944,11 +954,23 @@ Object  -> ancient_prayer_book "ancient prayer book"
   has   ;
 
 
-! ----------------------------
 Object Dark_Shaft "Dark Shaft"
-  with  description "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor leading north.",
-        before DarkShaftBefore,
-        after DarkShaftAfter,
+  with  description [;
+            print "Halfway up, or else halfway down, and a dreary place it is too: 
+                nothing but a dark corridor leading north.";
+            if( parent(dumbwaiter) ~= self ) {
+                "^Since the dumbwaiter isn't here, the best you can do is clamber 
+                 down the shaft to the cellars.";
+            }
+            new_line;
+            rtrue;
+        ],
+        before [;
+            Go:
+                if( noun == d_obj && parent(dumbwaiter) == self )
+                    "Since the dumbwaiter is here, why not travel in that instead.";
+                rfalse;
+        ],
         n_to Dark_Passage,
         d_to Cellars,
   has   ;
@@ -983,11 +1005,13 @@ Object -> metal_door "metal door"
         with_key small_brass_key,
   has   door openable static lockable locked;
 
-Object Cellars "Cellars"
-  with  description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues west and south.",
-    before CellarsBefore,
-    s_to Cellars_South,
-    w_to Cellar_West,
+Object  Cellars "Cellars"
+  with  description "Cobwebbed old cellars. There is nothing to see except an opening in 
+            one wall onto a dark shaft, and a big Victorian-steam-engine
+            style wheel beside it with a handle on. The cellar continues
+            west and south.",
+        s_to Cellars_South,
+        w_to Cellar_West,
   has   ;
 
 Object  -> wheel "wheel"
@@ -999,6 +1023,12 @@ Object  -> wheel "wheel"
 Object  -> dark_shaft_obj "dark shaft"
   with  name 'shaft' 'dark',
         description "Uninviting.",
+        before [;
+            Enter:
+                if( parent(dumbwaiter) == location )
+                    <<Enter dumbwaiter>>;
+                "No, don't. There's nothing there and it's nasty and dirty. Bring the dumbwaiter down instead.";
+        ],
   has   container transparent open enterable scenery;
 
 Object  -> old_timber_prop "old timber prop"
@@ -1008,17 +1038,17 @@ Object  -> old_timber_prop "old timber prop"
         devil_hint "A plain old piece of timber.",
   has   hidden_rod;
 
-[ transport_player dest ; ! 60748 / 0xed4c
+[ transport_player dest ;
     if( second ~= player )
         "Nothing obvious happens.";
 
     print "You are engulfed in a cloud of spinning white lights, like insects. 
         When the swarm clears, you find yourself transported...^";
 
-    if( game_section == ANCIENT_BRITAIN ) {
-        dest = Infinity_Symbol;
-        remove rod_of_returning2;
-    }
+!    if( game_section == ANCIENT_BRITAIN ) {
+!        dest = Infinity_Symbol;
+!        remove rod_of_returning2;
+!    }
     if( game_section ~= ANCIENT_BRITAIN ) {
         switch( random(4) ) {
             1: dest = Attic;
@@ -1054,8 +1084,13 @@ Object  rod_of_returning "Rod of Returning"
   has   rod_attr;
 
 Object  Cellars_South "Cellars South"
-  with  description "The bricking-up of this cellar seems incomplete, because there is a hole about ten or eleven inches across in the west wall. You peer at this with interest but nothing is within reach inside, and it is far too small for you to wriggle through. The cellars go back north, and so, it would appear, do you.",
-    n_to Cellars,
+  with  description "The bricking-up of this cellar seems incomplete, 
+            because there is a hole about ten or eleven inches across in
+            the west wall. You peer at this with interest but nothing
+            is within reach inside, and it is far too small for you to
+            wriggle through. The cellars go back north, and so, it would
+            appear, do you.",
+        n_to Cellars,
   has   ;
 
 Object  -> hole_in_the_wall "hole in the wall"
@@ -1096,8 +1131,8 @@ Object Infinity_Symbol "Infinity Symbol"
             inscribed with a black lemniscus (or infinity) symbol.^^You
             shiver with foreboding, but inexplicably feel that the map
             you're looking for must be somewhere near here.",
-        before InfinityBefore,
-        after InfinityAfter,
+!        before InfinityBefore,
+!        after InfinityAfter,
         se_to Cellar_West,
   has   light scored;
 
@@ -1108,7 +1143,21 @@ Object -> lemniscus "lemniscus"
 Object -> circular_arc "circular arc"
   with  name 'wells' 'circular' 'arc' 'socket',
         number 0,
-  has   scenery;
+        describe [;
+            print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, 
+                which passes through seven equally spaced sockets or cylindrical wells. ";
+            switch( self.number ) {
+                0: "";
+                1: "One socket contains a rod, fixed in place.";
+                2: "Two of the sockets contain rods, fixed in place.";
+                3: "Three of the sockets contain rods, fixed in place.";
+                4: "Four of the sockets contain rods, fixed in place.";
+                5: "Five of the sockets contain rods, fixed in place.";
+                6: "Only one socket is left empty.";
+                7: "All seven sockets are occupied by rods.";
+            }
+        ],
+  has   static;
 
 Object Garden_Stream "Garden Stream"
   with  name 'reeds',
@@ -1171,48 +1220,63 @@ Object -> plane_tree "plane tree"
 
 Object Mosaic "Mosaic"
   with  name 'perspephone' 'scenes' 'quadra',
-    description "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitor's shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists.",
-    w_to Family_Tree,
-    u_to Family_Tree,
-    cant_go "From here you can only climb back up to the plane tree.",
+        description "This sunken corner of the garden has been excavated 
+            and then covered over with tough perspex to protect it from
+            visitor's shoes. It consists of a time-worn Roman mosaic,
+            divided into four quadrants, each showing scenes of idealised
+            Roman life. There was probably a villa on this site, but
+            your family has never been keen on archaeologists.",
+        w_to Family_Tree,
+        u_to Family_Tree,
+        cant_go "From here you can only climb back up to the plane tree.",
   has   ;
 
 Object -> mosaic_object "mosaic"
   with  name 'mosaic',
-    description "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.",
+        description "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.",
   has   scenery;
 
 Object Clearing "Clearing"
-  with  description "A clearing at the edge of the garden, surrounded by walls and the privet hedges of the maze. To the east is the plane tree, to the west an opening in the wall makes a garage entrance and to the south is a small vegetable garden.",
-    s_to Vegetable_Garden,
-    e_to Family_Tree,
-    w_to Garage,
+  with  description "A clearing at the edge of the garden, surrounded by 
+            walls and the privet hedges of the maze. To the east is the
+            plane tree, to the west an opening in the wall makes a garage
+            entrance and to the south is a small vegetable garden.",
+        s_to Vegetable_Garden,
+        e_to Family_Tree,
+        w_to Garage,
   has   light;
 
 Object Vegetable_Garden "Vegetable Garden"
-  with  description "A recently-turned vegetable garden, using up a shady corner of the garden. The patch testifies more to good intentions than horticulture.",
-    n_to Clearing,
-    u_to runner_bean_plant,
-    cant_go "From this corner, you can only go back to the clearing.",
+  with  description "A recently-turned vegetable garden, using up a shady 
+            corner of the garden. The patch testifies more to good intentions than horticulture.",
+        n_to Clearing,
+        u_to runner_bean_plant,
+        cant_go "From this corner, you can only go back to the clearing.",
   has   light;
 
 Object -> runner_bean_plant "runner-bean plant"
   with  name 'runner' 'bean' 'plant',
-    initial "A giant runner-bean plant leads up vertiginously into the sky from here.",
-    door_to Up_the_Beanstalk,
-    describe "Only a runner-bean plant graces the vegetable garden.",
+        initial "A giant runner-bean plant leads up vertiginously into the sky from here.",
+        door_to Up_the_Beanstalk,
+        describe "Only a runner-bean plant graces the vegetable garden.",
   has   door;
 
 Object Garage "Garage"
-  with  description "A modest brick garage, built into the garden walls. A big open doorway leads east onto the clearing.",
-    e_to Clearing,
+  with  description "A modest brick garage, built into the garden walls. 
+            A big open doorway leads east onto the clearing.",
+        e_to Clearing,
   has   ;
 
 Object -> garden_roller "garden roller"
   with  name 'garden' 'roller' 'switch',
-    description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
-    initial "The garden roller sits here, its engine still running.",
-    describe "A big motorised garden roller is parked here.",
+        description "A motorised garden roller of the kind you sit inside, 
+            among whose simple controls is a big on/off switch.",
+        describe [;
+            if( self has on )
+                "The garden roller sits here, its engine still running.";
+            else
+                "A big motorised garden roller is parked here.";
+        ],
   has   enterable static switchable;
 
 Object -> weed_killer "weed killer bottle"
@@ -1231,16 +1295,16 @@ Object Up_the_Plane_Tree "Up the Plane Tree"
 
 Object -> maze_layout "maze layout"
   with  name 'maze' 'layout',
-    before MazeLayoutBefore,
+!        before MazeLayoutBefore,
   has   scenery;
 
 Object Maze "Maze"
   with  description "A maze of green privet passages, all alike.",
-    before MazeBefore,
-    after MazeAfter,
-    s_to Family_Tree,
-    w_to Viewpoint_Ledge,
-    cant_go "The privet hedges are in the way.",
+!        before MazeBefore,
+!        after MazeAfter,
+        s_to Family_Tree,
+        w_to Viewpoint_Ledge,
+        cant_go "The privet hedges are in the way.",
   has   light scored;
 
 Object Patio_in_Maze "Patio in Maze"
@@ -1255,7 +1319,7 @@ Object Patio_in_Maze "Patio in Maze"
                     return Maze;
                 }
         ],
-        after MazeAfter,
+!        after MazeAfter,
         d_to Crypt,
         cant_go "The privet hedges are in the way.",
   has   light scored;
@@ -1397,7 +1461,7 @@ Object  rod_of_stalking "Rod of Stalking"
         devil_hint "It has no horticultural application.",
   has   rod_attr;
 
-[ stalking_rod_action local1 local2 ;   ! 61690 / 0xf0fa
+[ stalking_rod_action ;
     if( second == player )
         "Your hair stands momentarily on end, as if it wants to stalk up out of your head, but happily it decides against.";
     if( second == plane_tree )
@@ -1429,10 +1493,10 @@ Object  Up_the_Beanstalk "Up the Beanstalk"
 
 Object  Maze_Foundations "Maze Foundations"
   with  description "A square grid of plots of grass and seedbeds, all alike.",
-    before MazeFoundationsBefore,
-    after MazeFoundationsAfter,
-    s_to Tree_Planting,
-    w_to Folly,
+!        before MazeFoundationsBefore,
+!        after MazeFoundationsAfter,
+        s_to Tree_Planting,
+        w_to Folly,
   has   light;
 
 Object  Tree_Planting "Tree Planting"
@@ -1446,7 +1510,7 @@ Object  Tree_Planting "Tree Planting"
         ],
   has   ;       ! bug--no light?
 
-Object Disused_Observatory "Disused Observatory"    ! 44 / 0x2c
+Object Disused_Observatory "Disused Observatory"
   with  name 'mural' 'zodiac' 'signs',
         description "Once upon a time, this small circular room had a dome and a 
             telescope, but it leaked dreadfully and so now there's a
@@ -1461,7 +1525,7 @@ Object Disused_Observatory "Disused Observatory"    ! 44 / 0x2c
         d_to Souvenirs_Room,
   has   ;
 
-Object  -> solid_glass_ball "solid glass ball"   ! 45 / 0x2d
+Object  -> solid_glass_ball "solid glass ball"
   with  name 'glass' 'ball',
         description "The ball is scratched and misted up.",
         initial "Mounted on the old telescope stand is what looks like a solid glass ball.",
@@ -1487,7 +1551,7 @@ Object  -> solid_glass_ball "solid glass ball"   ! 45 / 0x2d
         ],
   has   static;
 
-Object  Library_Storage "Library Storage"    ! 46 / 0x2e
+Object  Library_Storage "Library Storage"
   with  description "Once upon a time, the house library was used as a gun-room, and 
             all the unwanted books kept up here. Now this is just another
             awkward cranny.",
@@ -1495,7 +1559,7 @@ Object  Library_Storage "Library Storage"    ! 46 / 0x2e
         cant_go "From here, you can only squeeze back east to the observatory.",
   has   ;
 
-Object -> romantic_novel "romantic novel"   ! 47 / 0x2f
+Object -> romantic_novel "romantic novel"
   with  name 'romance' 'romantic' 'novel' 'book',
         description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. 
             It's all about the happy-go-lucky daughter of a Yorkshire
@@ -1503,7 +1567,7 @@ Object -> romantic_novel "romantic novel"   ! 47 / 0x2f
         devil_hint "Don't bother reading or thinking about it. Nothing to do with your family.",
   has   ;
 
-Object -> poetry_book "book of Twenties poetry" ! 48 / 0x30
+Object -> poetry_book "book of Twenties poetry"
   with  name 'poetry' 'book',
         before [;
             Examine:
@@ -1511,23 +1575,34 @@ Object -> poetry_book "book of Twenties poetry" ! 48 / 0x30
                     away by books, but somehow you have arrived in the...^";
                 move self to location;
                 game_section = UNREAL;
-                PlayerTo(UnrealCity, 2);
+!                PlayerTo(UnrealCity, 2);
                 rtrue;
         ],
         devil_hint "My my, a golden age for clear, simple poetry. At last, the dreary obscurity of Tennyson, 
             Kipling, and [frothing at the mouth] Hardy gives way...",
   has   ;
 
-Object  Souvenirs_Room "Souvenirs Room"  ! 49 / 0x31
+Object  Souvenirs_Room "Souvenirs Room"
   with  name 'souvenir' 'holiday' 'snaps',
-        description "This is where you ought to have left the wretched map, 
-            in the family lumber-room of souvenirs and holiday snaps. You
-            checked it thoroughly earlier, and can't bear the thought
-            of searching it all again. A slide projector is aimed at
-            the whitewashed south wall, one of the outside walls of the
-            house. The only way to go is back up to the observatory.",
-        before SouvenirRoomBefore,
-        after SouvenirRoomAfter,
+        description [ o;
+            print "This is where you ought to have left the wretched map, 
+                in the family lumber-room of souvenirs and holiday snaps. You
+                checked it thoroughly earlier, and can't bear the thought
+                of searching it all again. A slide projector is aimed at
+                the whitewashed south wall, one of the outside walls of the
+                house. The only way to go is back up to the observatory. ";
+            if( slide_projector hasnt on ) {
+                new_line;
+                rtrue;
+            }
+            o = child(slide_projector);
+            if( o ) {
+                print "The south wall displays ";
+                ShowProjectorImage(o);
+                rtrue;
+            }
+            "The south wall is lit up by the projector.";
+        ],
         n_to Disused_Observatory,
         s_to south_wall,
         u_to Disused_Observatory,
@@ -1547,7 +1622,7 @@ Object  Souvenirs_Room "Souvenirs Room"  ! 49 / 0x31
         if( dto ~= nothing) {
             w = south_wall;
             w.door_to = dto;
-            give south_w ~concealed;
+            give south_wall ~concealed;
         }
         print "The south wall lights up with ";
         ShowProjectorImage(o);
@@ -1557,9 +1632,22 @@ Object  Souvenirs_Room "Souvenirs Room"  ! 49 / 0x31
     "The south wall becomes blank again.";
 ];
 
-Object -> slide_projector "slide projector" ! 50 / 0x32
+Object -> slide_projector "slide projector"
   with  name 'slide' 'projector' 'switch',
         description "It has an on/off switch on the side, and a slot for holding whatever is to be projected.",
+        before [;
+            Receive:
+                if( child(self) )
+                    "There's a slide in already.";
+                if( noun == postcard ) {
+                    print "The postcard is just too large to fit.^";
+                    OneTimeBonusScore();
+                    rtrue;
+                }
+                if( noun == miniature )
+                    rfalse;
+                "It won't fit. There's only room for something flat and the size of, say, a playing card.";
+        ],
         after [ o;
             SwitchOn:
                 o = child(self);
@@ -1569,26 +1657,29 @@ Object -> slide_projector "slide projector" ! 50 / 0x32
             SwitchOff:
                 give south_wall concealed;
                 rfalse;
+            LetGo:
+                DisplayProjector(nothing);
+                rtrue;
         ],
   has   container open scenery switchable;
 
-Object -> south_wall "south wall"   ! 51 / 0x33
+Object -> south_wall "south wall"
   with  door_dir s_to,
         door_to nothing,
   has   concealed door open scenery static;
 
-Object Alisons_Writing_Room "Alison's Writing Room" ! 74 / 0x4a
+Object Alisons_Writing_Room "Alison's Writing Room"
   with  description "A pleasantly furnished, if now mildewed, box room. A rather small door leads back north into the attics. The room is provided with a comfortable bed, which looks very inviting.",
     n_to Dead_End,
     s_to windows,
     cant_go "There's just the secret north door, unless of course you count the windows.",
   has   light;
 
-Object -> comfortable_bed "comfortable bed" ! 75 / 0x4b
+Object -> comfortable_bed "comfortable bed"
   with  name 'comfortble' 'bed',
   has   light open enterable scenery;
 
-Object  -> windows "windows" ! 76 / 0x4c
+Object  -> windows "windows"
   with  name 'window' 'glass',
         when_open "Black-latticed windows open on a beautiful summer's day.",
         before [;
@@ -1614,7 +1705,7 @@ Object  Tiny_Balcony "Tiny Balcony"
         cant_go "The rooftop is far too dangerous in that direction.",
   has   light;
 
-Object  -> window_sill "window sill" ! 78 / 0x4e
+Object  -> window_sill "window sill"
   with  name 'window' 'sill',
         initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
         before [;
@@ -1627,12 +1718,12 @@ Object  -> window_sill "window sill" ! 78 / 0x4e
         ]
   has   static;
 
-Object  -> delicate_gold_key "delicate gold key" ! 79 / 0x4f
+Object  -> delicate_gold_key "delicate gold key"
   with  name 'delicate' 'gold' 'key',
         devil_hint "Gold and lead are naturally related, so you want to find a lead box to open.",
   has   concealed scored;
 
-Object Catacomb_Passage "Catacomb Passage"  ! 140 / 0x8c
+Object Catacomb_Passage "Catacomb Passage"
   with  name 'bones',
         description "An eerie passage, running down from an opening at the south 
             to murky depths in the north. The walls are jagged, uneven and decorated with bones.",
@@ -1642,7 +1733,7 @@ Object Catacomb_Passage "Catacomb Passage"  ! 140 / 0x8c
         d_to Universe_Maintenance_Room,
   has   ;
 
-Object Heavenly_Place "Heavenly Place"  ! 253 / 0xfd
+Object Heavenly_Place "Heavenly Place"
   with  name 'furniture' 'cloud',
         description "Heaven, you always imagined, would be a world of marble pillars, fluffy 
             clouds, harps and angelic ladies with serene expressions. You
@@ -1652,15 +1743,63 @@ Object Heavenly_Place "Heavenly Place"  ! 253 / 0xfd
             sky to the beanstalk. There is some choral singing going on
             somewhere, but not loud enough for you to hear properly. Not
             in this life, anyway.",
-        after Heavenly_Place_After,
+!        after Heavenly_Place_After,
         s_to Up_the_Beanstalk,
         cant_go "That direction is not for the living.",
   has   light;
 
-Object  -> angel "angel" ! 254 / 0xfe
+Object  -> angel "angel"
   with  name 'angel',
         description "If you were to cast a film of your adventures so far, you would hire Dame 
             Judi Dench to play this lady.",
         number 4,
   has   animate scenery;
+
+Object Hellish_Place "Hellish Place"
+  with  name 'desk',
+        description "Hell, you always imagined, would contain fiery, sulphurous 
+            pits and a great many gentlemen with forked tails. You
+            were right about the last part. A demon is sitting behind a
+            flame-proofed desk at the bottom of the stairs. There are
+            some disconcerting screams from further away, but nothing
+            to worry about. Not in this life, anyway.",
+!        after Hellish_Place_After,
+        n_to Cellar_West,
+        u_to Cellar_West,
+        cant_go "That direction is not for the living.",
+  has   light;
+
+Object  -> demon "demon"
+  with  name 'devil' 'demon',
+        description "If you were to cast a film of your adventures so far, 
+            you would hire Donald Sutherland to play this gentleman.",
+        number 4,
+  has   animate scenery;
+
+Object  box_of_chocolates "box of chocolates"    ! 34 / 0x22
+  with  name 'box' 'of' 'chocolate',
+        devil_hint "Far too nice to give to anybody else. In fact...",
+  has   edible;
+
+Object  wrapping_paper "wrapping paper with reindeer on" ! 35 / 0x23
+  with  name 'wrapping' 'paper' 'reinde',
+        article "some",
+        devil_hint "The reindeer have enormous significance.",
+  has   ;
+
+Object  postcard "postcard of the Champs-Elysees"    ! 36 / 0x24
+  with  name 'postcard' 'card',
+        description "It is addressed to the house, and postmarked 1963, but has no message. Odd, that.",
+        after [;
+            Examine:
+                if( location == Dark_Room && Dark_Room has light ) {
+                    Achieved(SCORE_HAMBURG); 
+                    "^No... wait. The eerie lamp-light is bringing out a message in 
+                     invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is 
+                     crossed through in continental fashion.";
+                }
+                rfalse;
+        ],
+        devil_hint "There's no message there to read.",
+  has   ;
 
