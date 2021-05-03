@@ -104,7 +104,7 @@ Object 83	tourist_map
 Object 84	Storage_Room
 Object 85	wheel2
 Object 86	dumbwaiter
-Object 87	dark_shaft
+Object 87	dark_shaft_obj
 Object 88	pulley_ropes
 Object 89	chicken_wishbone
 Object 90	Dark_Shaft
@@ -277,7 +277,7 @@ Attribute 5	proper
 Attribute 6	moved
 
 ! not certain:
-Attribute 7	supporter			! obj15_hinged_trapdoor obj51_south_wall obj55_cupboard_door obj58_secret_door obj61_big_iron_fireplace obj62_cranked_skylight obj72_hatch obj76_windows obj92_metal_door obj103_Gothic_door obj123_coal_bunker obj130_runner_bean_plant obj139_bronze_mural obj165_cell_door obj181_tourist_boat obj197_windowed_door obj206_wall_of_thorns obj237_kitchen_well obj247_dolmen
+Attribute 7	door
 Attribute 8	container
 Attribute 9	transparent
 Attribute 10	open
@@ -305,11 +305,11 @@ Attribute 31	talkable
 Property 1	name:dictwords
 Property 2	description:string
 Property 3	article:string
-Property 4	when_open:string
+Property 4	initial:string
 Property 5	before:routine
 Property 6	after:routine
 Property 7	rod_action:routine
-Property 8	in_to:object
+Property 8	door_dir:property
 Property 9	n_to:object
 Property 10	s_to:object
 Property 11	e_to:object
@@ -321,7 +321,7 @@ Property 16	sw_to:object
 Property 17	u_to:object
 Property 18	d_to:object
 Property 19	door_to:object
-Property 20	when_closed:string
+Property 20	describe:string
 Property 21	number:int
 Property 22	with_key:object
 Property 23	rod_assoc:object
@@ -337,7 +337,7 @@ Global 4	global4:?
 Global 5	global5:?
 Global 6	global6:?
 Global 7	global7:?
-Global 8	finish_state:final_state
+Global 8	deadflag:final_state
 GlobalArray 9	buffer:array(?)
 GlobalArray 10	parse:array(?)
 GlobalArray 11	global11:array(?)
@@ -361,7 +361,7 @@ GlobalArray 28	Mouse_maze:array(27*int) ! byte array, unsupported by reform (6x9
 Global 29	Mouse_x:int
 Global 30	Mouse_y:int
 Global 31	BombTicking:bool
-GlobalArray 32	score_array1:array(17*int)
+GlobalArray 32	task_scores:array(17*int)
 GlobalArray 33	score_array2:array(17*int)
 Global 34	things_score:int
 Global 35	places_score:int
@@ -667,16 +667,16 @@ Routine 0x48b4 Banner i:int
 Routine 0x4960 Time i:? j k:object 
 Routine 0x722e ResetTimer obj:object i:int
 Routine 0x724a DecrementTimer o:object i:int
-Routine 0x7268 CountDown o:object i:int
+Routine 0x7268 StartTimer o:object i:int
 Routine 0x7278 CountDown o:object i:int
 Routine 0x7288 TorchTimer o:object i:int
 Routine 0x72e0 JoshuaDaemon who:object num:int
 Routine 0x7554 HasLightSource:bool i:object
-Routine 0x758a AddScore ndx:score_index i:int
+Routine 0x758a Achieved ndx:score_index i:int
 Routine 0x75b4 MouseMove o:object rm:object local3 x1:int x2:int
 Routine 0x794e ScoreSub score_var:int
 Routine 0x7ccc PadInteger i:int j:int
-Routine 0x7d0c Explain_Score ndx:score_index final_score:int
+Routine 0x7d0c PrintTaskName task_number:score_index final_score:int
 Routine 0x7e76 FullScoreSub
 Routine 0x7ffa QuitSub i:dictword
 Routine 0x805a routine_805a
@@ -747,7 +747,7 @@ Routine 0xa47a routine_a47a
 Routine 0xa5e4 routine_a5e4
 Routine 0xa6c0 routine_a6c0
 Routine 0xa72c routine_a72c
-Routine 0xa7b0 routine_a7b0
+Routine 0xa7b0 CleanSub
 Routine 0xa7ea routine_a7ea
 Routine 0xa858 routine_a858
 Routine 0xa8b6 routine_a8b6
@@ -790,7 +790,7 @@ Routine 0xe5a0 routine_e5a0
 Routine 0xe5bc routine_e5bc
 Routine 0xe5d0 routine_e5d0
 Routine 0xe5de SleepSub env:object sib:object
-Routine 0xe7c8 WineryBonusScore unused
+Routine 0xe7c8 OneTimeBonusScore unused
 Routine 0xe822 DealCard:object 
 Routine 0xe838 InsertCardIntoDeck card:object
 Routine 0xe844 SosostrisDeals card3:object card2:object card1:object
@@ -806,7 +806,7 @@ Routine 0xf282 RodOfInfinityAction
 Routine 0xf3d6 routine_f3d6
 Routine 0xf40e HouseAfter
 Routine 0xf566 WineryAfter
-Routine 0xf630 EasttAnnexeAfter
+Routine 0xf630 EastAnnexeAfter
 Routine 0xf64c InsideCupboardAfter
 Routine 0xf68e StorageRoomBefore
 Routine 0xf714 StorageRoomBefore
@@ -837,7 +837,7 @@ Routine 0x10494 PottingRoomAfter
 Routine 0x104d2 GlovesBefore
 Routine 0x10580 CalendarBefore i
 Routine 0x10686 daiy_chain_after obj:object
-Routine 0x106e6 RandomFlower n:int
+Routine 0x106e6 DescFlower n:int
 Routine 0x107de CellBefore
 Routine 0x10828 PoetryBefore
 Routine 0x108a0 DialBefore
@@ -845,8 +845,8 @@ Routine 0x1093a WheelBefore
 Routine 0x10944 Wheel2Before obj:object
 Routine 0x10a14 ChanceSwitchAfter
 Routine 0x10a6e RadioAfter
-Routine 0x10aa6 routine_10aa6
-Routine 0x10b14 routine_10b14
+Routine 0x10aa6 ShowProjectorImage o:object
+Routine 0x10b14 DisplayProjector o:object dto:object wall:object
 Routine 0x10b72 ProjectorAfter
 Routine 0x10b98 SouvenirRoomBefore
 Routine 0x10c3e SouvenirRoomAfter

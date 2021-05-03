@@ -468,61 +468,61 @@ Object compass "compass"	! 1 / 0x1
 Object -> n_wall "north wall"	! 2 / 0x2
   with	name 'n//' 'north' 'wall',
 	article "the",
-	in_to sw_wall,
+	door_dir n_to,
   has	scenery wall_attr;
 
 Object -> s_wall "south wall"	! 3 / 0x3
   with	name 's//' 'south' 'wall',
 	article "the",
-	in_to ceiling,
+	door_dir s_to,
   has	scenery wall_attr;
 
 Object -> e_wall "east wall"	! 4 / 0x4
   with	name 'e//' 'east' 'wall',
 	article "the",
-	in_to floor,
+	door_dir e_to,
   has	scenery wall_attr;
 
 Object -> w_wall "west wall"	! 5 / 0x5
   with	name 'w//' 'west' 'wall',
 	article "the",
-	in_to thedark,
+	door_dir w_to,
   has	scenery wall_attr;
 
 Object -> ne_wall "northeast wall"	! 6 / 0x6
   with	name 'ne' 'northeast' 'wall',
 	article "the",
-	in_to Grahams_Lair,
+	door_dir ne_to,
   has	scenery wall_attr;
 
 Object -> nw_wall "northwest wall"	! 7 / 0x7
   with	name 'nw' 'northwest' 'wall',
 	article "the",
-	in_to hinged_trapdoor,
+	door_dir nw_to,
   has	scenery wall_attr;
 
 Object -> se_wall "southeast wall"	! 8 / 0x8
   with	name 'se' 'southeast' 'wall',
 	article "the",
-	in_to Attic,
+	door_dir se_to,
   has	scenery wall_attr;
 
 Object -> sw_wall "southwest wall"	! 9 / 0x9
   with	name 'sw' 'southwest' 'wall',
 	article "the",
-	in_to teachests,
+	door_dir sw_to,
   has	scenery wall_attr;
 
 Object -> ceiling "ceiling"	! 10 / 0xa
   with	name 'u//' 'up' 'ceiling',
 	article "the",
-	in_to Meldrews_History,
+	door_dir u_to,
   has	scenery wall_attr;
 
 Object -> floor "floor"	! 11 / 0xb
   with	name 'd//' 'down' 'floor',
 	article "the",
-	in_to antique_jewellery_box,
+	door_dir d_to,
   has	scenery wall_attr;
 
 Object thedark "Darkness"	! 12 / 0xc
@@ -554,12 +554,12 @@ Object Attic "Attic"	! 14 / 0xe
 
 Object -> hinged_trapdoor "hinged trapdoor"	! 15 / 0xf
   with	name 'hinged' 'trap' 'door' 'trapdooor',
-	when_open "A hinged trapdoor in the floor stands open, and light streams in from below.",
+	initial "A hinged trapdoor in the floor stands open, and light streams in from below.",
 	after TrapdoorAfter,
-	in_to antique_jewellery_box,
+	door_dir d_to,
 	door_to House,
-	when_closed "There is a closed trapdoor in the middle of the floor.",
-  has	light supporter open openable static;
+	describe "There is a closed trapdoor in the middle of the floor.",
+  has	light door open openable static;
 
 Object -> teachests "teachests"	! 16 / 0x10
   with	name 'tea' 'chests' 'teacher',
@@ -578,7 +578,7 @@ Object -> antique_jewellery_box "antique jewellery box"	! 18 / 0x12
   with	name 'antique' 'jewellery' 'box',
 	description "A graceful lady's box, bearing the initials A. M. and engraved with a drawing of what seems to be a rabbit's foot.",
 	article "an",
-	when_open "In one corner is a jewellery box, which had previously been hidden by the open trapdoor.",
+	initial "In one corner is a jewellery box, which had previously been hidden by the open trapdoor.",
 	with_key delicate_gold_key,
 	angel_hint "Try investigating the world of the romantic novel, out on the balconies of life.",
   has	concealed container transparent openable lockable locked;
@@ -643,7 +643,7 @@ Object -> old_striped_scarf "old striped scarf"	! 28 / 0x1c
   with	name 'old' 'scarf',
 	description "Made by Dunn and Co., naturally, with four stripes: royal blue, emerald, dark grey and scarlet.",
 	article "an",
-	when_open "An old striped scarf is hung up behind the doorway.",
+	initial "An old striped scarf is hung up behind the doorway.",
 	devil_hint "The very height of fashion, if you ignore the colours and wear it regardless.",
   has	clothing;
 
@@ -722,7 +722,7 @@ Object Dark_Room "Dark Room"	! 40 / 0x28
 Object -> hanging_cord "hanging cord"	! 41 / 0x29
   with	name 'hanging' 'cord',
 	description "It is attached to the ceiling.",
-	when_open "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
+	initial "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
 	before HangingCordBefore,
   has	static;
 
@@ -730,13 +730,13 @@ Object -> sepia_photograph "sepia photograph"	! 42 / 0x2a
   with	name 'sepia' 'photo' 'photograph' 'roger//p',
 	description "The photograph is one of the very early ones which looks as if it was taken in the dark because the chemicals have gradually oxidised. The poor man in the frame (Mr Roger Meldrew, Esquire) looks as if he was propped up by a big clamp to hold him still for five minutes, and that's because he was.",
 	article "the old",
-	when_open "Mounted on a plaque is an old sepia photograph of a man.",
+	initial "Mounted on a plaque is an old sepia photograph of a man.",
   has	static;
 
 Object -> flash "photographer's flash"	! 43 / 0x2b
   with	name 'photograph' 'flash' 'compartment',
 	description "It has an openable compartment on the side to hold a battery and a timer mechanism.",
-	when_open "A rather more modern photographer's flash lies on a shelf to one side.",
+	initial "A rather more modern photographer's flash lies on a shelf to one side.",
 	angel_hint "When you can get this working, perhaps you should take it somewhere prominent.",
   has	container transparent openable;
 
@@ -753,7 +753,7 @@ Object Disused_Observatory "Disused Observatory"	! 44 / 0x2c
 Object -> solid_glass_ball "solid glass ball"	! 45 / 0x2d
   with	name 'glass' 'ball',
 	description "The ball is scratched and misted up.",
-	when_open "Mounted on the old telescope stand is what looks like a solid glass ball.",
+	initial "Mounted on the old telescope stand is what looks like a solid glass ball.",
 	before GlassBallBefore,
   has	static;
 
@@ -792,14 +792,14 @@ Object -> slide_projector "slide projector"	! 50 / 0x32
   has	container open scenery switchable;
 
 Object -> south_wall "south wall"	! 51 / 0x33
-  with	in_to ceiling,
+  with	door_dir s_to,
 	door_to nothing,
-  has	concealed supporter open scenery static;
+  has	concealed door open scenery static;
 
 Object East_Annexe "East Annexe"	! 52 / 0x34
   with	name 'gap' 'tiles' 'roof',
 	description "This tight annexe at the eastern end of the house is piled up with old loft insulation rolls, left over from the last time the job was done (whenever that was). A gap between the tiles of the roof (which you really must mend before winter) lets a little natural light in, but the attics to the west and south are dark.",
-	after EasttAnnexeAfter,
+	after EastAnnexeAfter,
 	n_to cupboard_door,
 	s_to Dead_End,
 	w_to Over_the_East_Wing,
@@ -818,12 +818,12 @@ Object -> -> new_battery "new-looking battery"	! 54 / 0x36
 
 Object -> cupboard_door "cupboard door"	! 55 / 0x37
   with	name 'cupboard' 'door',
-	when_open "In the north wall is an open cupboard door, large enough to step inside.",
-	in_to sw_wall,
+	initial "In the north wall is an open cupboard door, large enough to step inside.",
+	door_dir n_to,
 	door_to Inside_Cupboard,
-	when_closed "In the north wall is an intriguing closed cupboard door.",
+	describe "In the north wall is an intriguing closed cupboard door.",
 	with_key small_brass_key,
-  has	supporter openable static lockable;
+  has	door openable static lockable;
 
 Object Dead_End "Dead End"	! 56 / 0x38
   with	name 'soot' 'chimney' 'sweeping' 'gear',
@@ -835,17 +835,17 @@ Object Dead_End "Dead End"	! 56 / 0x38
 Object -> canvas_rucksack "canvas rucksack"	! 57 / 0x39
   with	name 'canvas' 'rucksack' 'sack',
 	description "On second thoughts, now you look at more closely, it seems to be the rucksack you bought to go to Paris with five years ago.",
-	when_open "Great Scott!  That old canvas rucksack must be the very one your famous ancestor, the African explorer Ebenezer Meldrew, brought back from the Zambeze Expedition of 1882!",
+	initial "Great Scott!  That old canvas rucksack must be the very one your famous ancestor, the African explorer Ebenezer Meldrew, brought back from the Zambeze Expedition of 1882!",
 	devil_hint "It might be handy, if only it could carry anything.",
   has	clothing container transparent open openable;
 
 Object -> secret_door "secret door"	! 58 / 0x3a
   with	name 'secret' 'door',
-	when_open "A secret door stands open in the south wall!",
-	in_to ceiling,
+	initial "A secret door stands open in the south wall!",
+	door_dir s_to,
 	door_to Alisons_Writing_Room,
-	when_closed "The secret door is closed.",
-  has	concealed supporter open openable static;
+	describe "The secret door is closed.",
+  has	concealed door open openable static;
 
 Object Inside_Cupboard "Inside Cupboard"	! 59 / 0x3b
   with	description "This is a surprisingly spacious cupboard, which you can't recall ever visiting before today. You really ought to use this convenient empty room for something...",
@@ -858,26 +858,26 @@ Object Inside_Cupboard "Inside Cupboard"	! 59 / 0x3b
 Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"	! 60 / 0x3c
   with	name 'painting' 'of' 'mad' 'isaac//p',
 	description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
-	when_open "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
+	initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
 	after IsaacPaintingAfter,
 	devil_hint "Carry this with you everywhere you go.",
   has	;
 
 Object -> big_iron_fireplace "big iron fireplace"	! 61 / 0x3d
   with	name 'iron' 'fireplace' 'chimney',
-	when_open "There is a big iron fireplace in the west wall.",
-	in_to thedark,
+	initial "There is a big iron fireplace in the west wall.",
+	door_dir w_to,
 	door_to Chimney,
-  has	concealed supporter container open static;
+  has	concealed door container open static;
 
 Object -> cranked_skylight "cranked skylight"	! 62 / 0x3e
   with	name 'crank' 'skylight' 'handle',
 	description "It was painted out black during the first wave of Zeppelin air raids in World War One. This is completely irrelevant, but you did ask.",
-	when_open "The skylight above is open, and the sky does indeed light the room.",
-	in_to Meldrews_History,
+	initial "The skylight above is open, and the sky does indeed light the room.",
+	door_dir u_to,
 	door_to Roof,
-	when_closed "Above you is a blacked-out skylight with a crank handle.",
-  has	supporter static;
+	describe "Above you is a blacked-out skylight with a crank handle.",
+  has	door static;
 
 Object -> gas_mask "gas mask"	! 63 / 0x3f
   with	name 'gas' 'mask' 'gasmask',
@@ -922,7 +922,7 @@ Object Chimney "Chimney"	! 68 / 0x44
 
 Object -> sooty_old_stick "sooty old stick"	! 69 / 0x45
   with	name 'sooty' 'stick',
-	when_open "Wedged loosely in beside you is a sooty old stick.",
+	initial "Wedged loosely in beside you is a sooty old stick.",
 	rod_assoc rod_of_fire,
 	devil_hint "It's exactly what it seems.",
   has	hidden_rod;
@@ -945,17 +945,17 @@ Object Priests_Hole "Priest's Hole"	! 71 / 0x47
 Object -> hatch "hatch"	! 72 / 0x48
   with	name 'hatch' 'door',
 	description "Perhaps the attic key might unlock it?  It does look modern compared to everything else here.",
-	when_open "An open hatch-door in the floor reveals a chute leading down into darkness.",
-	in_to antique_jewellery_box,
+	initial "An open hatch-door in the floor reveals a chute leading down into darkness.",
+	door_dir d_to,
 	door_to Cellar_West,
-	when_closed "Low down on one wall is little hatch door, which if it were open would be large enough to enter.",
+	describe "Low down on one wall is little hatch door, which if it were open would be large enough to enter.",
 	with_key small_brass_key,
-  has	supporter openable static lockable locked;
+  has	door openable static lockable locked;
 
 Object -> ancient_prayer_book "ancient prayer book"	! 73 / 0x49
   with	name 'diary' 'ancient' 'prayer' 'book',
 	description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
-	when_open "The dust and grime on the floor almost obscures an ancient prayer book.",
+	initial "The dust and grime on the floor almost obscures an ancient prayer book.",
 	devil_hint "The really good research was in his earlier years.",
   has	;
 
@@ -972,12 +972,12 @@ Object -> comfortable_bed "comfortable bed"	! 75 / 0x4b
 
 Object -> windows "windows"	! 76 / 0x4c
   with	name 'window' 'glass',
-	when_open "Black-latticed windows open on a beautiful summer's day.",
+	initial "Black-latticed windows open on a beautiful summer's day.",
 	before WindowsBefore,
-	in_to ceiling,
+	door_dir s_to,
 	door_to Tiny_Balcony,
-	when_closed "Blue skies can be seen through south-facing windows, latticed with black lead and shut tight.",
-  has	supporter static;
+	describe "Blue skies can be seen through south-facing windows, latticed with black lead and shut tight.",
+  has	door static;
 
 Object Tiny_Balcony "Tiny Balcony"	! 77 / 0x4d
   with	name 'roof' 'motorway' 'garden',
@@ -988,7 +988,7 @@ Object Tiny_Balcony "Tiny Balcony"	! 77 / 0x4d
 
 Object -> window_sill "window sill"	! 78 / 0x4e
   with	name 'window' 'sill',
-	when_open "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
+	initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
   has	static;
 
 Object -> delicate_gold_key "delicate gold key"	! 79 / 0x4f
@@ -1042,13 +1042,13 @@ Object -> wheel2 "wheel"	! 85 / 0x55
 Object -> dumbwaiter "dumbwaiter"	! 86 / 0x56
   with	name 'dumb' 'waiter' 'dumbwaiter',
 	article "the old",
-	when_open "Inside the dark shaft is the old dumbwaiter.",
+	initial "Inside the dark shaft is the old dumbwaiter.",
   has	container open enterable static;
 
 Object -> -> pulley_ropes "pulley ropes"	! 88 / 0x58
   with	name 'pulley' 'rope' 'ropes',
 	article "the",
-	when_open "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
+	initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
 	before PulleyBefore,
   has	static;
 
@@ -1058,7 +1058,7 @@ Object -> -> chicken_wishbone "chicken wishbone"	! 89 / 0x59
 	devil_hint "It isn't even mentioned in any of the books I've read.",
   has	;
 
-Object -> dark_shaft "dark shaft"	! 87 / 0x57
+Object -> dark_shaft_obj "dark shaft"	! 87 / 0x57
   with	name 'shaft' 'dark',
 	description "Uninviting.",
   has	container transparent open scenery;
@@ -1082,13 +1082,13 @@ Object Dark_Passage "Dark Passage"	! 91 / 0x5b
 
 Object -> metal_door "metal door"	! 92 / 0x5c
   with	name 'metal' 'door',
-	when_open "At the north end is a metal door, standing open.",
+	initial "At the north end is a metal door, standing open.",
 	after MetalDoorAfter,
-	in_to sw_wall,
+	door_dir n_to,
 	door_to Garden_Stream,
-	when_closed "At the north end is a closed metal door.",
+	describe "At the north end is a closed metal door.",
 	with_key small_brass_key,
-  has	supporter openable static lockable locked;
+  has	door openable static lockable locked;
 
 Object Cellars "Cellars"	! 93 / 0x5d
   with	description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues west and south.",
@@ -1118,7 +1118,7 @@ Object -> old_timber_prop "old timber prop"	! 96 / 0x60
 Object -> robot_mouse "robot mouse"	! 98 / 0x62
   with	name 'robot' 'mouse',
 	description "Remember the late 1970s, when a craze for home-made robots swept the home computing world?  No, perhaps not, but here is a left-over from it anyway. The mouse is quite large (almost a foot wide and tall), and has a big smile painted on its metal chassis.",
-	when_open "In one corner is a dust-covered robot mouse.",
+	initial "In one corner is a dust-covered robot mouse.",
 	devil_hint "It can't even follow orders.",
   has	talkable;
 
@@ -1140,7 +1140,7 @@ Object -> hole_in_the_wall "hole in the wall"	! 100 / 0x64
 
 Object -> -> small_brass_key "small brass key"	! 101 / 0x65
   with	name 'small' 'brass' 'attic' 'key',
-	when_open "Lying where the mouse dropped it is a small brass key.",
+	initial "Lying where the mouse dropped it is a small brass key.",
 	devil_hint "It isn't the attic key, I fear.",
   has	;
 
@@ -1154,12 +1154,12 @@ Object Cellar_West "Cellar West"	! 102 / 0x66
 
 Object -> Gothic_door "Gothic door"	! 103 / 0x67
   with	name 'gothic' 'iron' 'door',
-	when_open "In the northwest wall the iron door stands open.",
-	in_to hinged_trapdoor,
+	initial "In the northwest wall the iron door stands open.",
+	door_dir nw_to,
 	door_to Infinity_Symbol,
-	when_closed "In the northwest wall is a heavy, imposing Gothic iron door.",
+	describe "In the northwest wall is a heavy, imposing Gothic iron door.",
 	with_key iron_key,
-  has	supporter openable static lockable locked;
+  has	door openable static lockable locked;
 
 Object Infinity_Symbol "Infinity Symbol"	! 104 / 0x68
   with	name 'marble' 'disc' 'webs' 'icicle',
@@ -1208,9 +1208,9 @@ Object -> antiquated_wireless "antiquated wireless"	! 111 / 0x6f
   with	name 'switch' 'cabinet' 'radio' 'wireless',
 	description "It rolls on casters, and has a bakelite on/off switch.",
 	article "an",
-	when_open "To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with glowing valves inside. On the top is a bakelite on-off switch.",
+	initial "To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with glowing valves inside. On the top is a bakelite on-off switch.",
 	after RadioAfter,
-	when_closed "To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with valves inside. On the top is a bakelite on-off switch.",
+	describe "To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with valves inside. On the top is a bakelite on-off switch.",
 	number 0,
   has	concealed static switchable;
 
@@ -1225,7 +1225,7 @@ Object Potting_Room "Potting Room"	! 112 / 0x70
 Object -> old_gardeners__gloves "old gardeners' gloves"	! 113 / 0x71
   with	name 'garden' 'gloves',
 	article "some",
-	when_open "A pair of yellow rubber gloves hangs from a hook on one wall.",
+	initial "A pair of yellow rubber gloves hangs from a hook on one wall.",
 	before GlovesBefore,
 	devil_hint "Good for nothing. Why would you want gloves on?",
   has	clothing scored;
@@ -1234,7 +1234,7 @@ Object -> Jemima "Jemima"	! 114 / 0x72
   with	name 'aunt' 'jemima//p',
 	description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow.",
 	article "Aunt",
-	when_open "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
+	initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
 	number 0,
   has	animate proper;
 
@@ -1265,7 +1265,7 @@ Object Beside_Table "Beside Table"	! 118 / 0x76
 Object -> heavy_iron_mascot "heavy iron mascot"	! 119 / 0x77
   with	name 'heavy' 'iron' 'mascot',
 	description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
-	when_open "On the table is a heavy iron mascot of some kind.",
+	initial "On the table is a heavy iron mascot of some kind.",
 	number 0,
 	devil_hint "An absolute essential.",
   has	;
@@ -1291,12 +1291,12 @@ Object Garden_Stream "Garden Stream"	! 122 / 0x7a
 
 Object -> coal_bunker "coal bunker"	! 123 / 0x7b
   with	name 'coal' 'bunker' 'loading' 'door',
-	when_open "On the house wall is a coal bunker, whose door stands open.",
+	initial "On the house wall is a coal bunker, whose door stands open.",
 	after CoalBunkerAfter,
-	in_to ceiling,
+	door_dir s_to,
 	door_to Dark_Passage,
-	when_closed "On the house wall is a coal bunker, whose loading door is shut.",
-  has	supporter openable static locked;
+	describe "On the house wall is a coal bunker, whose loading door is shut.",
+  has	door openable static locked;
 
 Object Family_Tree "Family Tree"	! 124 / 0x7c
   with	name 'sign' 'signpost' 'post',
@@ -1342,10 +1342,10 @@ Object Vegetable_Garden "Vegetable Garden"	! 129 / 0x81
 
 Object -> runner_bean_plant "runner-bean plant"	! 130 / 0x82
   with	name 'runner' 'bean' 'plant',
-	when_open "A giant runner-bean plant leads up vertiginously into the sky from here.",
+	initial "A giant runner-bean plant leads up vertiginously into the sky from here.",
 	door_to Up_the_Beanstalk,
-	when_closed "Only a runner-bean plant graces the vegetable garden.",
-  has	supporter;
+	describe "Only a runner-bean plant graces the vegetable garden.",
+  has	door;
 
 Object Garage "Garage"	! 131 / 0x83
   with	description "A modest brick garage, built into the garden walls. A big open doorway leads east onto the clearing.",
@@ -1355,14 +1355,14 @@ Object Garage "Garage"	! 131 / 0x83
 Object -> garden_roller "garden roller"	! 132 / 0x84
   with	name 'garden' 'roller' 'switch',
 	description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
-	when_open "The garden roller sits here, its engine still running.",
-	when_closed "A big motorised garden roller is parked here.",
+	initial "The garden roller sits here, its engine still running.",
+	describe "A big motorised garden roller is parked here.",
   has	enterable static switchable;
 
 Object -> weed_killer "weed killer bottle"	! 133 / 0x85
   with	name 'weed' 'killer' 'bottle',
 	description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
-	when_open "In the shadows is a weed killer bottle.",
+	initial "In the shadows is a weed killer bottle.",
 	angel_hint "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens.",
   has	;
 
@@ -1406,11 +1406,11 @@ Object Crypt "Crypt"	! 138 / 0x8a
 Object -> bronze_mural "bronze mural"	! 139 / 0x8b
   with	name 'bronze' 'mural',
 	description "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations.",
-	when_open "The mural stands slightly to one side, revealing a passage leading downward.",
-	in_to antique_jewellery_box,
+	initial "The mural stands slightly to one side, revealing a passage leading downward.",
+	door_dir d_to,
 	door_to Catacomb_Passage,
-	when_closed "The north wall forms a giant bronze mural, which has stood the test of time.",
-  has	supporter static;
+	describe "The north wall forms a giant bronze mural, which has stood the test of time.",
+  has	door static;
 
 Object Catacomb_Passage "Catacomb Passage"	! 140 / 0x8c
   with	name 'bones',
@@ -1431,7 +1431,7 @@ Object Universe_Maintenance_Room "Universe Maintenance Room"	! 141 / 0x8d
 Object -> large_dial "large dial"	! 142 / 0x8e
   with	name 'large' 'dial',
 	description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
-	when_open "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.",
+	initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.",
 	before DialBefore,
   has	static;
 
@@ -1457,7 +1457,7 @@ Object -> plaque "plaque"	! 145 / 0x91
 Object -> miniature "miniature"	! 146 / 0x92
   with	name 'miniature' 'plastic' 'etching',
 	description "No larger than a playing card, it depicts the Folly which used to stand on the hillside outcrop.",
-	when_open "A miniature plastic etching rests on the plaque.",
+	initial "A miniature plastic etching rests on the plaque.",
 	door_to Folly,
 	devil_hint "What's the point of a drawing so small it might almost be a playing card?",
   has	;
@@ -1472,7 +1472,7 @@ Object Folly "Folly"	! 147 / 0x93
 
 Object -> bean_pole "bean pole"	! 148 / 0x94
   with	name 'bean' 'pole',
-	when_open "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
+	initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
 	after BeanPoleAfter,
 	number 0,
 	rod_assoc rod_of_stalking,
@@ -1583,11 +1583,11 @@ Object -> crook "shepherd's crook"	! 163 / 0xa3
 
 Object -> cell_door "cell door"	! 165 / 0xa5
   with	name 'cell' 'door',
-	when_open "The door to the south stands open.",
-	in_to ceiling,
+	initial "The door to the south stands open.",
+	door_dir s_to,
 	door_to Museum_of_Arcana,
-	when_closed "As you might expect, the cell door is closed.",
-  has	supporter openable static locked;
+	describe "As you might expect, the cell door is closed.",
+  has	door openable static locked;
 
 Object rod_of_husbandry "Rod of Husbandry"	! 164 / 0xa4
   with	name 'rod' 'of' 'husbandry',
@@ -1687,18 +1687,18 @@ Object Down_by_River "Down by River"	! 179 / 0xb3
 Object -> silk_handkerchief "silk handkerchief"	! 180 / 0xb4
   with	name 'silk' 'handkerchief' 'hanky' 'hankie',
 	description "Monogrammed J. A. P., but that's no great matter.",
-	when_open "On one especially repellent mound is, of all things, a fine silk handkerchief.",
+	initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
 	devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth wouldn't attract anyone, would it?",
   has	;
 
 Object -> tourist_boat "tourist boat"	! 181 / 0xb5
   with	name 'boat' 'bateau',
 	description "The side reads: PHLEBAS.",
-	when_open "Moored close to the bank is a glass-roofed tourist boat.",
-	in_to thedark,
+	initial "Moored close to the bank is a glass-roofed tourist boat.",
+	door_dir w_to,
 	door_to On_board_the_Phlebas,
-	when_closed "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention.",
-  has	supporter static;
+	describe "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention.",
+  has	door static;
 
 Object On_board_the_Phlebas "On board the Phlebas"	! 182 / 0xb6
   with	name 'wheel',
@@ -1710,7 +1710,7 @@ Object -> hollow_man "hollow man"	! 183 / 0xb7
   with	name 'hollow//p' 'man',
 	description "Every now and then he whimpers.",
 	article "the",
-	when_open "The hollow man mechanically says: ~Where to, guv'nor?  Me with my big mouth, I gone and done it again, calling you the guv'nor. I was down Margate Sands way once, had a bloke come on board, he thought any old destination would do, like a real place, like anywhere was real... We are the hollow men, I says, he didn't like that... Hurry up, please, it's time.~",
+	initial "The hollow man mechanically says: ~Where to, guv'nor?  Me with my big mouth, I gone and done it again, calling you the guv'nor. I was down Margate Sands way once, had a bloke come on board, he thought any old destination would do, like a real place, like anywhere was real... We are the hollow men, I says, he didn't like that... Hurry up, please, it's time.~",
   has	animate;
 
 Object Near_Ring_Road "Near Ring Road"	! 184 / 0xb8
@@ -1731,7 +1731,7 @@ Object Chatelet_les_Halles "Chatelet-les-Halles"	! 185 / 0xb9
 Object -> surly_shopkeeper "surly shopkeeper"	! 186 / 0xba
   with	name 'surly' 'man' 'shopkeeeper',
 	description "His jumper is unstriped, and there are no onions around his neck. Nonetheless he has a rather Gallic, disgruntled look to him. Perhaps he's a former Socialist cabinet minister.",
-	when_open "Behind a kiosk, a surly-looking man is selling guide books and maps.",
+	initial "Behind a kiosk, a surly-looking man is selling guide books and maps.",
   has	animate;
 
 Object tourist_map_of_Paris "tourist map of Paris"	! 187 / 0xbb
@@ -1755,7 +1755,7 @@ Object -> cafe_table "cafe table"	! 189 / 0xbd
 Object complicated_looking_bomb "complicated-looking bomb"	! 190 / 0xbe
   with	name 'bomb',
 	description "It contains a timer-detonater, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
-	when_open "Taped loosely to the underside of the table is a complicated-looking bomb.",
+	initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
 	after BombAfter,
 	number 0,
   has	concealed container open;
@@ -1795,9 +1795,9 @@ Object Cups_and_Glasses "Cups and Glasses"	! 196 / 0xc4
 Object -> windowed_door "windowed door"	! 197 / 0xc5
   with	name 'door' 'window',
 	description "Through the square window in the door you can see a bar at which staff are serving, and a very crowded and lively cafe-restaurant beyond. The cabaret act has her back to you, and a considerable amount of her front to the diners.",
-	in_to sw_wall,
+	door_dir n_to,
 	door_to Cups_and_Glasses,
-  has	supporter openable scenery locked;
+  has	door openable scenery locked;
 
 Object Sea_Shore "Sea Shore"	! 198 / 0xc6
   with	description "A rough rocky sea shore below barely-climbable cliffs, against which an inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.",
@@ -1807,7 +1807,7 @@ Object Sea_Shore "Sea Shore"	! 198 / 0xc6
 
 Object -> Andromeda "Andromeda"	! 199 / 0xc7
   with	name 'andromeda' 'maiden',
-	when_open "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
+	initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
 	before AndromedaBefore,
   has	animate proper;
 
@@ -1857,11 +1857,11 @@ Object Wall_of_Thorns "Wall of Thorns"	! 205 / 0xcd
 Object -> wall_of_thorns_object "wall of thorns"	! 206 / 0xce
   with	name 'gap' 'thorns' 'of' 'wall',
 	description "It's hard to imagine what could possibly shift a wall like that.",
-	when_open "A ragged gap in the wall has been burnt out to the south.",
-	in_to ceiling,
+	initial "A ragged gap in the wall has been burnt out to the south.",
+	door_dir s_to,
 	door_to Sacred_Earth,
-	when_closed "The wall rustles and clashes its thorns like a beast alive.",
-  has	supporter static;
+	describe "The wall rustles and clashes its thorns like a beast alive.",
+  has	door static;
 
 Object Sacred_Earth "Sacred Earth"	! 207 / 0xcf
   with	description "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number of myths about gods getting cross about that sort of thing.",
@@ -1901,7 +1901,7 @@ Object Eraina_Taverna "Eraina Taverna"	! 211 / 0xd3
 Object -> Ekmek_Special "Ekmek Special"	! 212 / 0xd4
   with	name 'ekmek' 'special' 'dessert',
 	description "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste.",
-	when_open "Left untouched on one table is an Ekmek Special dessert.",
+	initial "Left untouched on one table is an Ekmek Special dessert.",
 	before EkmekSpecialBefore,
 	devil_hint "Better with chocolate ice cream, I think.",
 	angel_hint "Doesn't somebody else need this more than you?",
@@ -1910,7 +1910,7 @@ Object -> Ekmek_Special "Ekmek Special"	! 212 / 0xd4
 Object -> bartender "bartender"	! 213 / 0xd5
   with	name 'bar' 'tender' 'bartender',
 	description "Morose and unconvivial at the best of times. This is not the best of times.",
-	when_open "Behind the bar, a depressed bartender polishes glasses.",
+	initial "Behind the bar, a depressed bartender polishes glasses.",
   has	animate;
 
 Object Lighthouse "Lighthouse"	! 214 / 0xd6
@@ -1931,7 +1931,7 @@ Object Murky_Cave "Murky Cave"	! 216 / 0xd8
 
 Object -> flaming_torch "flaming torch"	! 217 / 0xd9
   with	name 'flaming' 'torch',
-	when_open "Hanging up on an iron bracket is a flaming torch.",
+	initial "Hanging up on an iron bracket is a flaming torch.",
   has	light;
 
 Object -> historical_pamphlet "historical pamphlet"	! 218 / 0xda
@@ -1965,7 +1965,7 @@ Object -> hemp_rope "hemp rope"	! 222 / 0xde
 
 Object -> yellow_daisy "yellow daisy"	! 223 / 0xdf
   with	name 'yellow//p' 'daisy',
-	when_open "A single yellow daisy grows from a little tuft of grass on the crags.",
+	initial "A single yellow daisy grows from a little tuft of grass on the crags.",
 	before DaisyBefore,
 	after DaisyAfter,
   has	clothing scored;
@@ -2005,7 +2005,7 @@ Object Cloister "Atrium Cloister"	! 228 / 0xe4
 
 Object -> summoning_horn "summoning horn"	! 229 / 0xe5
   with	name 'horn' 'summon' 'on' 'pole',
-	when_open "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
+	initial "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
 	rod_assoc rod_of_language,
   has	hidden_rod;
 
@@ -2056,12 +2056,12 @@ Object Triclinium "Triclinium"	! 236 / 0xec
 Object -> kitchen_well "kitchen well"	! 237 / 0xed
   with	name 'well' 'hinged' 'wooden' 'cover',
 	description "The well has a hinged wooden cover. You can't tell by looking how deep it is.",
-	when_open "The hinged wooden cover is raised, revealing a circular well about a yard in diameter. It is very dark inside.",
-	in_to antique_jewellery_box,
+	initial "The hinged wooden cover is raised, revealing a circular well about a yard in diameter. It is very dark inside.",
+	door_dir d_to,
 	door_to Inside_Well,
-	when_closed "In one corner is a hinged wooden cover of some kind, which is shut.",
+	describe "In one corner is a hinged wooden cover of some kind, which is shut.",
 	number 0,
-  has	supporter container openable static;
+  has	door container openable static;
 
 Object Inside_Well "Inside Well"	! 238 / 0xee
   with	name 'air',
@@ -2113,7 +2113,7 @@ Object rod_of_returning2 "Rod of Returning"	! 244 / 0xf4
 Object saxon_spy "unconscious Saxon spy"	! 245 / 0xf5
   with	name 'saxon' 'spy',
 	description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours.",
-	when_open "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
+	initial "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
 	before SaxonBefore,
 	number 0,
   has	animate;
@@ -2129,10 +2129,10 @@ Object Encampment "Encampment"	! 246 / 0xf6
 
 Object -> dolmen "dolmen"	! 247 / 0xf7
   with	name 'dolmen' 'coals' 'hot' 'rock',
-	when_open "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be made out to the east, on the other side of an almost-extinguished campfire of hot coals.",
-	in_to e_wall,
+	initial "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be made out to the east, on the other side of an almost-extinguished campfire of hot coals.",
+	door_dir initial,
 	door_to Beneath_Dolmen,
-  has	supporter open;
+  has	door open;
 
 Object Beneath_Dolmen "Beneath Dolmen"	! 248 / 0xf8
   with	name 'dolmen',
@@ -2143,7 +2143,7 @@ Object Beneath_Dolmen "Beneath Dolmen"	! 248 / 0xf8
 
 Object -> bluish_stone "bluish stone"	! 249 / 0xf9
   with	name 'stone' 'blue//p' 'bluish',
-	when_open "Resting on top of the dolmen is a polished blue stone.",
+	initial "Resting on top of the dolmen is a polished blue stone.",
 	rod_assoc fifty_franc_note,
   has	hidden_rod scored;
 
@@ -2267,7 +2267,7 @@ Global global4;
 Global global5;
 Global global6;
 Global global7 = 1[?];
-Global finish_state;
+Global deadflag;
 Global verb;
 Global noun;
 Global second;
@@ -2497,7 +2497,7 @@ Array Mouse_maze -->	! 10043 (0x273b)
     12336
     12593
 ;
-Array score_array1 -->	! 10106 (0x277a)
+Array task_scores -->	! 10106 (0x277a)
     775
     1802
     771
@@ -2613,7 +2613,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_a0ba
     routine_a0d2
     routine_a0e8
-    routine_a7b0
+    CleanSub
     TieSub
     routine_9ee6
     DrinkSub
@@ -2665,7 +2665,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         jump label17342;
     }
   .label17356;
-    if (finish_state == 0) {
+    if (deadflag == 0) {
       .label17361;
         noun = nothing;
         second = nothing;
@@ -2806,35 +2806,35 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (notheld_mode == true) {
             metaverb = true;
         }
-        if (finish_state == 0 && metaverb == false) {
+        if (deadflag == 0 && metaverb == false) {
             Time();	! not popped
             @pop;
         }
         jump label17356;
     }
     print "^^    ***";
-    if (finish_state == DIED) {
+    if (deadflag == DIED) {
         print " You have died ";
     }
-    if (finish_state == WON) {
+    if (deadflag == WON) {
         print " You have won ";
     }
-    if (finish_state == FAILED) {
+    if (deadflag == FAILED) {
         print " You have missed the point entirely ";
     }
-    if (finish_state == DESTROYED_UNIVERSE) {
+    if (deadflag == DESTROYED_UNIVERSE) {
         print " You have disembodied the entire universe ";
     }
-    if (finish_state == AUSTRALIA) {
+    if (deadflag == AUSTRALIA) {
         print " You have been transported to Australia ";
     }
-    if (finish_state == PARADOX) {
+    if (deadflag == PARADOX) {
         print " You have been annihilated by a temporal paradox ";
     }
-    if (finish_state == MYTH) {
+    if (deadflag == MYTH) {
         print " You have become a constellation ";
     }
-    if (finish_state == PRISON) {
+    if (deadflag == PRISON) {
         print " You have been imprisoned as a terrorist ";
     }
     print "***^^^";
@@ -2955,7 +2955,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         i = parent(i);
         if (i == player) {
             if (0 ~= ResetTimer(heavy_iron_mascot)) {
-                finish_state = DIED;
+                deadflag = DIED;
                 "^In an astonishing freak accident, a meteorite hurtles through the Earth's atmosphere and then straight through your head. Anyone would think you had a curse on you (anyone, that is, still able to think).";
             }
             i = CountDown(heavy_iron_mascot);
@@ -2986,7 +2986,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     if (0 ~= ResetTimer(bean_pole) && game_section == GARDEN_PAST) {
         print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come running to investigate. In the ensuing confusion, they come across you and, of course, blame you for their incompetent masonry. You are hauled up before the county assizes...^";
-        finish_state = AUSTRALIA;
+        deadflag = AUSTRALIA;
     }
     if (game_section ~= GARDEN_PAST && global26 < 100) {
         i = global26 + 9 * global27;
@@ -3439,7 +3439,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             i = 245[saxon_spy?];
             remove i;
             move i to Rough_Tent;
-            CountDown(saxon_spy,5);	! not popped
+            StartTimer(saxon_spy,5);	! not popped
             @pop;
         }
         if (location == Rough_Tent && 0 ~= ResetTimer(saxon_spy)) {
@@ -3449,17 +3449,17 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                 print "^Men arrive to drag the Saxon spy away to some unguessable grisly fate. They grimace at you as if to say, ~You're next.~^";
                 j = 245[saxon_spy?];
                 remove j;
-                CountDown(saxon_spy,5);	! not popped
+                StartTimer(saxon_spy,5);	! not popped
                 @pop;
             }
             if (i == 0) {
-                finish_state = DIED;
+                deadflag = DIED;
                 print "^The men arrive once more and this time they securely grab you by the arms. If you were an anthropologist, you'd be fascinated by the ritual in which you are bound up, then garotted with a cord and laid into a peat swamp. Instead, your last thought is to remember the celebrated body they found when they drained the marshes in 1974 to build a motorway service station.^";
             }
         }
         if (0 ~= ResetTimer(Encampment)) {
             print "^It had to happen sooner or later. One of the druids looks round, sees you and raises an instant alarm. It is absolutely hopeless and you are dragged away screaming to your fate.^";
-            finish_state = DIED;
+            deadflag = DIED;
         }
     }
     if (location == Potting_Room && 0 ~= ResetTimer(Jemima)) {
@@ -3468,7 +3468,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         move i to player;
         give daisy_chain worn;
     }
-    if (finish_state ~= 0) {
+    if (deadflag ~= 0) {
         ! no code
     } else if (BombTicking == true) {
         if (0 ~= DecrementTimer(timer_detonater)) {
@@ -3501,7 +3501,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                     if (k == mirrored_device && flash hasnt general) {
                         give flash general;
                         print "Consequently you can only hear as the smudge on the horizon rises from the waves, becomes an enormous Kraken sea monster and lunges for the stone tower. (Considering this is supposed to be a Greek myth it feels surprisingly like a Japanese 1960s creature film.)  The Kraken swipes at you, overreaches itself and falls over forward, impaling itself extremely messily on the pharos. Your eyes just about recover by the time the rest of your body is crushed by its weight.^^Up on Mount Olympus, Zeus is still cross. ~Take me to your Leda~, you wittily demand, but this does not seem to improve matters. Poseidon also looks rather fed up, but luckily a sizeable faction of goddesses take your side and arrange to have you resurrected...^";
-                        AddScore(SCORE_ANDROMEDA);	! not popped
+                        Achieved(SCORE_ANDROMEDA);	! not popped
                         @pop;
                         location = Souvenirs_Room;
                         remove player;
@@ -3571,7 +3571,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                     print "Click!  Perhaps there's more to bomb disposal than you thought.^";
                 }
                 print "^In a sudden cataclysm, there is an enormous explosion from your table, blowing out all the arrowslit windows, making a thunderous noise, starting a minor fire, and of course having one other consequence:^";
-                finish_state = DIED;
+                deadflag = DIED;
             }
         }
     }
@@ -3583,13 +3583,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             remove player;
             move player to Coven_Cell;
             give player general;
-            CountDown(Coven_Cell,5);	! not popped
+            StartTimer(Coven_Cell,5);	! not popped
             @pop;
             LookSub();	! not popped
             @pop;
         } else if (location == Coven_Cell) {
             print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
-            finish_state = DIED;
+            deadflag = DIED;
             if (player has general) {
                 "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
             }
@@ -3637,7 +3637,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ CountDown o i ;	! 29288 / 0x7268
+[ StartTimer o i ;	! 29288 / 0x7268
     i = turns + i;
     o.number = i;
     rtrue;
@@ -3681,7 +3681,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     if (num == 0) {
         print "^The ghost swoops around and through you, making you scream with panic. Somehow you manage to run back to safety, where your family (who never believe a word of it) give you plenty of tea and occupy you with holiday arrangements. As for you, you are so traumatised that you never venture into the attic again.^";
-        finish_state = FAILED;
+        deadflag = FAILED;
     }
     rtrue;
 ];
@@ -3705,12 +3705,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ AddScore ndx i ;	! 30090 / 0x758a
+[ Achieved ndx i ;	! 30090 / 0x758a
     i = score_array2->ndx;
     if (i == 0) {
         score_array2->ndx = 1[?];
         if (ndx ~= SCORE_DOLEMN) {
-            score = score + score_array1->ndx;
+            score = score + task_scores->ndx;
         }
         if (ndx == SCORE_DOLEMN) {
             score = score - 50;
@@ -3840,7 +3840,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ ScoreSub score_var ;	! 31054 / 0x794e
-    if (finish_state == 0) {
+    if (deadflag == 0) {
         if (game_section == MODERN) {
             print "This is the afternoon of June 3rd, 1993, and you are in Meldrew House. ";
         }
@@ -3867,7 +3867,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         }
         print "You have so far scored ";
     }
-    if (finish_state > 0) {
+    if (deadflag > 0) {
         print "In that game you scored ";
     }
     print score, " out of a possible 300, in ", turns, " turns, earning you the rank of ";
@@ -3944,65 +3944,65 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ Explain_Score ndx final_score ;	! 32012 / 0x7d0c
-    if (ndx == SCORE_DOLEMN) {
+[ PrintTaskName task_number final_score ;	! 32012 / 0x7d0c
+    if (task_number == SCORE_DOLEMN) {
         final_score = 0;
         final_score = final_score - 50;
     }
     PadInteger(final_score);	! not popped
     @pop;
-    if (ndx == SCORE_HAMBURG) {
+    if (task_number == SCORE_HAMBURG) {
         "reading postcard";
     }
-    if (ndx == SCORE_TORCH) {
+    if (task_number == SCORE_TORCH) {
         "recharging torch";
     }
-    if (ndx == SCORE_JOSHUA) {
+    if (task_number == SCORE_JOSHUA) {
         "exorcism";
     }
-    if (ndx == SCORE_SECRETDOOR) {
+    if (task_number == SCORE_SECRETDOOR) {
         "opening secret door";
     }
-    if (ndx == SCORE_DEMIJOHN) {
+    if (task_number == SCORE_DEMIJOHN) {
         "opening demijohn";
     }
-    if (ndx == SCORE_WAITER) {
+    if (task_number == SCORE_WAITER) {
         "using dumbwaiter";
     }
-    if (ndx == SCORE_WAND) {
+    if (task_number == SCORE_WAND) {
         "charging a rod";
     }
-    if (ndx == SCORE_AIMWAND) {
+    if (task_number == SCORE_AIMWAND) {
         "firing a rod";
     }
-    if (ndx == SCORE_WIRELESS) {
+    if (task_number == SCORE_WIRELESS) {
         "exposing radio";
     }
-    if (ndx == SCORE_CALENDAR) {
+    if (task_number == SCORE_CALENDAR) {
         "turning calendar";
     }
-    if (ndx == SCORE_CHOCOLATE) {
+    if (task_number == SCORE_CHOCOLATE) {
         "placating Aunt Jemima";
     }
-    if (ndx == SCORE_ANDROMEDA) {
+    if (task_number == SCORE_ANDROMEDA) {
         "rescuing Andromeda";
     }
-    if (ndx == SCORE_BATTERY) {
+    if (task_number == SCORE_BATTERY) {
         "uncovering battery";
     }
-    if (ndx == SCORE_TOURIST) {
+    if (task_number == SCORE_TOURIST) {
         "buying map of Paris";
     }
-    if (ndx == SCORE_INFINITY) {
+    if (task_number == SCORE_INFINITY) {
         "filling the arc";
     }
-    if (ndx == SCORE_TRICLINIUM) {
+    if (task_number == SCORE_TRICLINIUM) {
         "getting into the well";
     }
-    if (ndx == SCORE_DOLEMN) {
+    if (task_number == SCORE_DOLEMN) {
         "acquiring the mascot";
     }
-    if (ndx == SCORE_BISCUIT) {
+    if (task_number == SCORE_BISCUIT) {
         "eating between meals";
     }
     "(something else)";
@@ -4016,10 +4016,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     new_line;
     local4 = 0;
-    if (finish_state > 0) {
+    if (deadflag > 0) {
         print "The score was ";
     }
-    if (finish_state == 0) {
+    if (deadflag == 0) {
         print "The score is ";
     }
     print "made up as follows:^^";
@@ -4028,10 +4028,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
   .label32453;
     if (local1 < 17) {
         ++local1;
-        local2 = score_array1->local1;
+        local2 = task_scores->local1;
         local3 = score_array2->local1;
         if (local3 == 1[?]) {
-            Explain_Score(local1,local2);	! not popped
+            PrintTaskName(local1,local2);	! not popped
             @pop;
             local4 = local4 + local2;
         }
@@ -4072,7 +4072,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     PadInteger(score);	! not popped
     @pop;
     print "total (out of 300)^";
-    if (finish_state == WON && 0 == score_array2->11) {
+    if (deadflag == WON && 0 == score_array2->11) {
         print "^You missed out on the 50-point bonus for rescuing Andromeda, sad to tell.^";
     }
     rfalse;
@@ -4516,7 +4516,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         @pop;
         rtrue;
     }
-    if (noun has supporter) {
+    if (noun has door) {
         GoSub();	! not popped
         @pop;
         rtrue;
@@ -4575,7 +4575,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         }
     }
   .label35174;
-    prop = noun.in_to;
+    prop = noun.door_dir;
     if (prop == 0) {
         "That doesn't seem to be something you can walk into.";
     }
@@ -4589,7 +4589,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         new_line;
         rfalse;
     }
-    if (prop has supporter) {
+    if (prop has door) {
         if (prop has concealed) {
             "You can't go that way.";
         }
@@ -4622,15 +4622,15 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                 game_section = TAROT;
             }
             if (env == Death_card) {
-                finish_state = DIED;
+                deadflag = DIED;
                 "^And find yourself in a golden cornfield on a sunny afternoon. You have just time to admire the ears of wheat before the scythe of the Grim Reaper cuts your soul from your body.";
             }
             if (env == Drowned_Sailor_card) {
-                finish_state = DIED;
+                deadflag = DIED;
                 "^You are underwater, in the wreck of a ship, surrounded by the skeletons of its former crew, whom you abruptly join as your air runs out.";
             }
             if (env == Fool_card) {
-                finish_state = DIED;
+                deadflag = DIED;
                 "^And find yourself stepping off a cliff. All is well for a moment, and then like a cartoon character you notice there is no ground beneath you and you plummet to a stony death far below.";
             }
             if (env has general) {
@@ -4677,11 +4677,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     if (has_light == false) {
         if (location == thedark) {
-            finish_state = DIED;
+            deadflag = DIED;
             if (game_section ~= MODERN) {
                 "As you step falteringly through the darkness, cowardly but evil creatures devour you whole!";
             }
-            finish_state = FAILED;
+            deadflag = FAILED;
             "As you unwisely blunder about in the dark, you put a foot wrong and crash through a thin plaster roof into one of the upstairs bedrooms, happily landing on the bed. In later years it becomes a family joke that you demolished half the house for a tatty old tourist map.";
         }
         location = thedark;
@@ -4764,15 +4764,15 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             give chld attrib12;
             ++local4;
             if (chld hasnt moved) {
-                str = chld.when_open;
+                str = chld.initial;
                 if (chld == antiquated_wireless && antiquated_wireless has general) {
                     str = "The wireless fills the air with Jemima's favourite station, ~Mild-n-Breezy FM~, about which the least said the better.";
                 }
-                if (chld has supporter && chld hasnt open) {
-                    str = chld.when_closed;
+                if (chld has door && chld hasnt open) {
+                    str = chld.describe;
                 }
                 if (chld has switchable && chld hasnt on) {
-                    str = chld.when_closed;
+                    str = chld.describe;
                 }
                 if (str ~= 0) {
                     new_line;
@@ -4866,7 +4866,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                 "The south wall is lit up by the projector.";
             }
             print "The south wall shows ";
-            routine_10aa6(local1);	! not popped
+            ShowProjectorImage(local1);	! not popped
             @pop;
             rfalse;
         }
@@ -5065,7 +5065,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (noun == box_of_chocolates) {
             obj = box_of_chocolates;
             remove obj;
-            AddScore(SCORE_CHOCOLATE);	! not popped
+            Achieved(SCORE_CHOCOLATE);	! not popped
             @pop;
             give Jemima general;
             "Aunt Jemima pounces on the chocolates, wolfs down a strawberry cream and persuades you to have an unappetising toffee cracknell. ~Now~, she says, ~Your turn for a daisy chain!~^^You try to look pleased.^^~Let's see, the others have had theirs... I have only a few colours left. What would you like?~";
@@ -5073,7 +5073,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         print "A peace offering is a nice idea, but somehow the ", (name) noun;
         if (noun == gift_wrapped_parcel) {
             print " lacks style... after all, it isn't Christmas.^";
-            WineryBonusScore();	! not popped
+            OneTimeBonusScore();	! not popped
             @pop;
             rtrue;
         }
@@ -5362,7 +5362,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 [ routine_9fc4 ;	! 40900 / 0x9fc4
     if (noun == Jemima) {
         print "She is slightly mollified, but only slightly.^";
-        WineryBonusScore();	! not popped
+        OneTimeBonusScore();	! not popped
         @pop;
         rtrue;
     }
@@ -5516,7 +5516,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (location ~= Sea_Shore) {
         "There's not enough water to swim in.";
     }
-    finish_state = MYTH;
+    deadflag = MYTH;
     "As you dive into the sea, you catch sight of Andromeda looking suddenly cheerful. It soon becomes apparent why, as a Kraken wakes from the depths of the ocean and swipes you for a quick snack. You seem to have replaced her as sacrifice... a Pyrrhic victory.";
 ];
 
@@ -5541,7 +5541,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_a7b0 ;	! 42928 / 0xa7b0
+[ CleanSub ;	! 42928 / 0xa7b0
     if (noun ~= solid_glass_ball) {
         "You achieve nothing by this.";
     }
@@ -5573,7 +5573,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         give player ~general;
         "It tastes alarmingly of chocolate.";
     }
-    AddScore(SCORE_BISCUIT);	! not popped
+    Achieved(SCORE_BISCUIT);	! not popped
     @pop;
     "You eat the ", (name) noun, ". Not bad.";
 ];
@@ -5640,11 +5640,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         "You ineffectually bash the ", (name) env, " on the ground.";
     }
     if (env has rod_charged) {
-        finish_state = DIED;
+        deadflag = DIED;
         "The already-charged rod explodes with cataclysmic violence, burying everything nearby in rubble!";
     }
     give env rod_charged;
-    AddScore(SCORE_WAND);	! not popped
+    Achieved(SCORE_WAND);	! not popped
     @pop;
     if (location == Ruined_Castle_Cafe) {
         "You look rather conspicuous striking the rod on the cafe table, but everyone else assumes you're part of the cabaret. Anyway, the rod charges up as usual.";
@@ -5668,7 +5668,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (env hasnt rod_charged) {
         "Nothing happens.";
     }
-    AddScore(SCORE_AIMWAND);	! not popped
+    Achieved(SCORE_AIMWAND);	! not popped
     @pop;
     local2 = noun.rod_action;
     if (local2 == 65535) {
@@ -5742,7 +5742,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 [ routine_ae0a who ;	! 44554 / 0xae0a
     if (noun == s_wall && location == Dead_End && secret_door has concealed) {
         give secret_door ~concealed;
-        AddScore(SCORE_SECRETDOOR);	! not popped
+        Achieved(SCORE_SECRETDOOR);	! not popped
         @pop;
         "A secret door springs open!";
     }
@@ -5805,7 +5805,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     remove local1;
     move local1 to location;
     if (location == Potting_Room) {
-        finish_state = FAILED;
+        deadflag = FAILED;
         "Aunt Jemima spends the next four hours explaining to you exactly why she put the radio into storage. The reason is awfully convoluted and due to her firm conviction that magnetic fields influence the growth of plants. By that time you have to leave for the airport...";
     }
     rtrue;
@@ -5911,7 +5911,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (noun == pile_of_sheets) {
         if (antiquated_wireless has concealed) {
             give antiquated_wireless ~concealed;
-            AddScore(SCORE_WIRELESS);	! not popped
+            Achieved(SCORE_WIRELESS);	! not popped
             @pop;
             "Not as many sheets as you thought - they were on top of a large black wireless, now exposed to the light for the first time in months.";
         }
@@ -5927,7 +5927,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         }
         remove o1;
         move o1 to East_Annexe;
-        AddScore(SCORE_BATTERY);	! not popped
+        Achieved(SCORE_BATTERY);	! not popped
         @pop;
         "You uncover a shiny new battery. It must have been dropped by accident when the loft insulation was being done.";
     }
@@ -6024,7 +6024,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     i = current_year;
     if (i == 1420[?]) {
         print "^At that exact grid reference is Meldreustrasse, a minor back street which houses a museum of arcana.^^Suddenly you remember!  You visited the place once, and the curator Doktor Stein showed you round... and he hypnotised you into a swirl of unconsciousness...^^";
-        CountDown(Coven_Cell,7);	! not popped
+        StartTimer(Coven_Cell,7);	! not popped
         @pop;
         i = 83[tourist_map?];
         remove i;
@@ -6111,7 +6111,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             move local1 to Priests_Hole;
             give iron_key general;
             give Sir_Joshua_Meldrewe concealed;
-            AddScore(SCORE_JOSHUA);	! not popped
+            Achieved(SCORE_JOSHUA);	! not popped
             @pop;
             "The ghost swallows the wishbone, grinning nastily. Then a look of consternation spreads across his face. He begins to choke and as he fades away, his arms flailing wildly, he lets go of the key, which sails through the air onto the roof and (against all odds) falls neatly down a chimney.";
         }
@@ -6178,7 +6178,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             local3 = 5[w_wall?];
             print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
         }
-        CountDown(Jemima,10);	! not popped
+        StartTimer(Jemima,10);	! not popped
         @pop;
         local1 = 115[daisy_chain?];
         local1.number = local3;
@@ -6191,7 +6191,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (noun_word == 'carte//p') {
             local1 = 187[tourist_map_of_Paris?];
             move local1 to player;
-            AddScore(SCORE_TOURIST);	! not popped
+            Achieved(SCORE_TOURIST);	! not popped
             @pop;
             give tourist_map_of_Paris moved;
             "Extremely reluctantly he serves you, giving you a tourist map of Paris.";
@@ -6490,12 +6490,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ WineryBonusScore unused ;	! 59336 / 0xe7c8
+[ OneTimeBonusScore unused ;	! 59336 / 0xe7c8
     if (Old_Winery has general) {
         rtrue;
     }
     give Old_Winery general;
-    CountDown(Old_Winery,4);	! not popped
+    StartTimer(Old_Winery,4);	! not popped
     @pop;
     score = score + 5;
     good_try_bonus = true;
@@ -6555,7 +6555,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ FireRodAction local1 ;	! 60116 / 0xead4
     if (second == player) {
-        finish_state = DIED;
+        deadflag = DIED;
         "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
     }
     if (second has animate) {
@@ -6575,7 +6575,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     } else {
         if (second == medicine_bottle) {
             print "The melting point of this glass is very high, and amazingly it withstands the bolt of fire.^";
-            WineryBonusScore();	! not popped
+            OneTimeBonusScore();	! not popped
             @pop;
             rfalse;
         }
@@ -6585,7 +6585,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         @pop;
         " utterly!";
     }
-    finish_state = DIED;
+    deadflag = DIED;
     "You start a great conflagration, and then perish in it!";
 ];
 
@@ -6672,7 +6672,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ RodOfSAcrificeAction local1 local2 ;	! 61446 / 0xf006
     if (second == player) {
-        finish_state = DIED;
+        deadflag = DIED;
         "You feel a noble surge of pride as your body is incinerated by the Rod of Sacrifice. At least you died for some terribly important cause, although exactly what it was seems to have slipped your mind.";
     }
     "Nothing obvious happens.";
@@ -6762,10 +6762,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     local1 = 187[tourist_map_of_Paris?];
     local1 = parent(local1);
     if (local1 == player) {
-        finish_state = WON;
+        deadflag = WON;
         "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty generations, a Meldrew has found the useless object he was doomed to seek!  Unfortunately on the way to the airport you realise that you left the map on the kitchen table in all the rush, but never mind, you're on holiday now.";
     }
-    finish_state = FAILED;
+    deadflag = FAILED;
     "Yes, probably just as well to give up looking, and heaven knows there's enough packing to do, what with the rest of the family in uproar. Oh well.";
 ];
 
@@ -6785,7 +6785,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: East_Annexe.after
 
-[ EasttAnnexeAfter local1 local2 ;	! 63024 / 0xf630
+[ EastAnnexeAfter local1 local2 ;	! 63024 / 0xf630
     if (verb == ##Go) {
         local1 = 24[old_smudged_battery?];
         local2 = local1.number;
@@ -6816,7 +6816,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ! References: Storage_Room.after
 
 [ StorageRoomBefore local1 ;	! 63118 / 0xf68e
-    if (verb == ##Insert && second == dark_shaft) {
+    if (verb == ##Insert && second == dark_shaft_obj) {
         remove noun;
         move noun to dumbwaiter;
         local1 = 86[dumbwaiter?];
@@ -6949,7 +6949,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ PostcardAfter ;	! 64158 / 0xfa9e
     if (verb == ##Examine && location == Dark_Room && Dark_Room has light) {
-        AddScore(SCORE_HAMBURG);	! not popped
+        Achieved(SCORE_HAMBURG);	! not popped
         @pop;
         "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
     }
@@ -7026,11 +7026,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         o = child(o);
         print "You close the battery compartment of the torch";
         if (o == new_battery) {
-            AddScore(SCORE_TORCH);	! not popped
+            Achieved(SCORE_TORCH);	! not popped
             @pop;
         } else {
             if (o == nasty_battery) {
-                finish_state = FAILED;
+                deadflag = FAILED;
                 ", and it explodes with light, becomes hot enough to melt, falls to the floor, catches fire and burns down most of the attic...^^It may be some consolation that since you spend your holiday in the local hospital burns unit, you are never inconvenienced much by not finding the map.";
             }
             if (o ~= old_smudged_battery) {
@@ -7146,7 +7146,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (env ~= dumbwaiter) {
             "You can't reach them!";
         }
-        AddScore(SCORE_WAITER);	! not popped
+        Achieved(SCORE_WAITER);	! not popped
         @pop;
         if (location == Storage_Room) {
             dst = Cellars;
@@ -7224,7 +7224,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
         }
-        AddScore(SCORE_DEMIJOHN);	! not popped
+        Achieved(SCORE_DEMIJOHN);	! not popped
         @pop;
     }
     rfalse;
@@ -7285,7 +7285,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (antiquated_wireless has general) {
             rfalse;
         }
-        finish_state = FAILED;
+        deadflag = FAILED;
         "Aunt Jemima suddenly hears you, spins round to see you filching her gloves and screeches with irritation, eventually summoning the entire family. You volunteer to shift some suitcases about just to get away from her.";
     }
     rfalse;
@@ -7336,7 +7336,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "December";
         }
         print " and a watercolour painting of some ";
-        RandomFlower(i);	! not popped
+        DescFlower(i);	! not popped
         @pop;
         " daisies.";
     }
@@ -7348,7 +7348,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             i = 0;
         }
         calendar.number = i;
-        AddScore(SCORE_CALENDAR);	! not popped
+        Achieved(SCORE_CALENDAR);	! not popped
         @pop;
         print "You turn over to ";
         jump label66978;
@@ -7363,7 +7363,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         obj = daisy_chain;
         obj = obj.number;
         print "A delicate, pretty chain of ";
-        RandomFlower(obj);	! not popped
+        DescFlower(obj);	! not popped
         @pop;
         " daisies.";
     }
@@ -7375,7 +7375,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ RandomFlower n ;	! 67302 / 0x106e6
+[ DescFlower n ;	! 67302 / 0x106e6
     if (n == 0) {
         print "speckled Jemima's Pride";
     }
@@ -7450,7 +7450,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ DialBefore ;	! 67744 / 0x108a0
     if (verb == ##Turn) {
-        finish_state = DESTROYED_UNIVERSE;
+        deadflag = DESTROYED_UNIVERSE;
         score = 0;
         score = score - 99;
         "Mmm. On the whole, it's probably best not to alter one of the fundamental constants of the physical universe while still inside it. On the bright side, for once you are unlikely to get the blame.";
@@ -7516,7 +7516,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ RadioAfter local1 ;	! 68206 / 0x10a6e
     if (verb == ##SwitchOn) {
-        CountDown(antiquated_wireless,6);	! not popped
+        StartTimer(antiquated_wireless,6);	! not popped
         @pop;
         "Nothing happens.";
     }
@@ -7527,27 +7527,27 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ routine_10aa6 local1 local2 ;	! 68262 / 0x10aa6
+[ ShowProjectorImage o local2 ;	! 68262 / 0x10aa6
     print "the picture on ";
-    Defart(local1);	! not popped
+    Defart(o);	! not popped
     @pop;
-    local2 = local1.door_to;
+    local2 = o.door_to;
     if (local2 == 0) {
         ".";
     }
     ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
 ];
 
-[ routine_10b14 local1 local2 local3 ;	! 68372 / 0x10b14
-    if (local1 ~= 0) {
-        local2 = local1.door_to;
-        if (local2 ~= 0) {
-            local3 = 51[south_wall?];
-            local3.door_to = local2;
+[ DisplayProjector o dto wall ;	! 68372 / 0x10b14
+    if (o ~= nothing) {
+        dto = o.door_to;
+        if (dto ~= nothing) {
+            wall = south_wall;
+            wall.door_to = dto;
             give south_wall ~concealed;
         }
         print "The south wall lights up with ";
-        routine_10aa6(local1);	! not popped
+        ShowProjectorImage(o);	! not popped
         @pop;
         rtrue;
     }
@@ -7564,7 +7564,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (local1 == 0) {
             rfalse;
         }
-        routine_10b14(local1);	! not popped
+        DisplayProjector(local1);	! not popped
         @pop;
         rtrue;
     }
@@ -7588,7 +7588,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         }
         if (noun == postcard) {
             print "The postcard is just too large to fit.^";
-            WineryBonusScore();	! not popped
+            OneTimeBonusScore();	! not popped
             @pop;
             rtrue;
         }
@@ -7615,7 +7615,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             "The south wall is lit up by the projector.";
         }
         print "The south wall displays ";
-        routine_10aa6(local1);	! not popped
+        ShowProjectorImage(local1);	! not popped
         @pop;
         rtrue;
     }
@@ -7623,7 +7623,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (second ~= slide_projector) {
             rfalse;
         }
-        routine_10b14(noun);	! not popped
+        DisplayProjector(noun);	! not popped
         @pop;
         rtrue;
     }
@@ -7633,7 +7633,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             if (second ~= slide_projector) {
                 rfalse;
             }
-            routine_10b14(0);	! not popped
+            DisplayProjector(nothing);	! not popped
             @pop;
             rtrue;
         }
@@ -7642,7 +7642,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (second ~= slide_projector) {
             rfalse;
         }
-        routine_10b14(0);	! not popped
+        DisplayProjector(nothing);	! not popped
         @pop;
         rtrue;
     }
@@ -8188,7 +8188,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     if (verb == ##Drop) {
         print "You feel an alarming wrench in your insides.^";
-        finish_state = PARADOX;
+        deadflag = PARADOX;
         rtrue;
     }
     rfalse;
@@ -8225,7 +8225,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             rfalse;
         }
         give bean_pole general;
-        CountDown(bean_pole,5);	! not popped
+        StartTimer(bean_pole,5);	! not popped
         @pop;
     }
     rfalse;
@@ -8234,7 +8234,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ! References: Tree_Planting.after
 
 [ TreePlantingAfter local1 ;	! 71912 / 0x118e8
-    finish_state = AUSTRALIA;
+    deadflag = AUSTRALIA;
     rfalse;
 ];
 
@@ -8273,14 +8273,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     print "Zeus, who is after all the chief of all the gods, appears and hurls a thunderbolt down just before you begin to cross into the Temple. ";
     if (big_electricians_switch has on) {
-        finish_state = DIED;
+        deadflag = DIED;
         "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave about. Pretty impressive prediction, is your last thought.";
     }
     if (rod_of_luck has general) {
         print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
         rfalse;
     }
-    finish_state = DIED;
+    deadflag = DIED;
     "With the luck of the gods, Zeus' thunderbolt strikes you just about exactly in the back, despite your attempts to weave about.";
 ];
 
@@ -8343,7 +8343,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ BombAfter ;	! 73168 / 0x11dd0
     if (verb == ##Take) {
-        finish_state = PRISON;
+        deadflag = PRISON;
         "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and twenty-five years isn't all that long.";
     }
     rtrue;
@@ -8504,7 +8504,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         ++cnt;
         second.number = cnt;
         if (cnt == 7) {
-            AddScore(SCORE_INFINITY);	! not popped
+            Achieved(SCORE_INFINITY);	! not popped
             @pop;
         }
         "It fits perfectly in one of the arc sockets.";
@@ -8558,11 +8558,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     if (kitchen_well has general) {
         print "Aware of the dangers, you very carefully lower yourself...^";
-        AddScore(SCORE_TRICLINIUM);	! not popped
+        Achieved(SCORE_TRICLINIUM);	! not popped
         @pop;
         rfalse;
     }
-    finish_state = DIED;
+    deadflag = DIED;
     "Having no reason to suppose the well is very deep, you cheerfully lower yourself in. This turns out to be something of a misjudgement and you soon lose your grip and fall, endlessly banging against the walls until finally...";
 ];
 
@@ -8576,7 +8576,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
         }
         if (noun ~= historical_pamphlet) {
-            CountDown(kitchen_well,3);	! not popped
+            StartTimer(kitchen_well,3);	! not popped
             @pop;
         }
         "It drops into the well-shaft.";
@@ -8673,12 +8673,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ Capture local1 ;	! 75678 / 0x1279e
     if (CouncilCnt < 8) {
-        finish_state = DIED;
+        deadflag = DIED;
         print "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and anyway if they had they would probably just have done you in more unpleasantly.^";
         rtrue;
     }
     print "^Suddenly you are thrust before a druidical figure. He seems to recognise you, and is troubled. Perhaps because of this, your life is saved and you are taken away into custody, down in the valley among the army encampments.^";
-    CountDown(tent_pole,4);	! not popped
+    StartTimer(tent_pole,4);	! not popped
     @pop;
     local1 = child(player);
   .label76060;
@@ -8716,7 +8716,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (tent_pole hasnt general) {
         give tent_pole general;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
-        CountDown(Encampment,10);	! not popped
+        StartTimer(Encampment,10);	! not popped
         @pop;
         location = Encampment;
         remove player;
@@ -8767,9 +8767,9 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     o = heavy_iron_mascot;
     o = parent(o);
     if (o == player) {
-        CountDown(heavy_iron_mascot,15);	! not popped
+        StartTimer(heavy_iron_mascot,15);	! not popped
         @pop;
-        AddScore(SCORE_DOLEMN);	! not popped
+        Achieved(SCORE_DOLEMN);	! not popped
         @pop;
     }
     "^You awaken, shivering with dread.";
@@ -10236,7 +10236,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     @2OP:0 0 0;
     @2OP:0 0 82[nasty_battery?];
     if (1[?] == 4[e_wall?]) jump label78965;
-    @2OP:0 87[dark_shaft?] 0;
+    @2OP:0 87[dark_shaft_obj?] 0;
     if (0 >= 85) rtrue;
     if (++local13 <= 6) jump label86292;
     if (robot_mouse notin ne_wall) jump label87427;
