@@ -44,7 +44,7 @@ Include "unreal.inf";
     move crumpled_piece_of_paper to player;
     move electric_torch to player;
     move chocolate_biscuit to player;
-    StartTimer(old_smudged_battery, 200);
+    StartDaemon(old_smudged_battery);
 ];
 
 Include "newverbs.inf";

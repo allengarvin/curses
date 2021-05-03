@@ -370,12 +370,12 @@ Object electric_torch "electric torch"
         description "The torch has a battery compartment which can be 
             reached by opening it up.",
         article "an",
-        after [ o;
+        after [ o n;
             o = child(self);
             Open:
                 give electric_torch ~light;
                 if( o == old_smudged_battery )
-                    StopTimer(o);
+                    StopDaemon(o);
                 if( self has light ) 
                     "The torch goes out as you open the battery compartment.^";
                 if (electric_torch hasnt light)
@@ -397,23 +397,39 @@ Object electric_torch "electric torch"
                     if( o ~= old_smudged_battery )
                         rfalse;
                 }
-                o = o.number;
-                if( o == 0 )
+                n = o.time_left;
+                if( n == 0 )
                     ", but the battery must be dead because nothing happens.";
                 if( o == old_smudged_battery )
-                    StartTimer(o, o.time_left);
+                    StartDaemon(o);
                 give electric_torch light;
-                if( o > 5 )
+                if( n > 5 )
                     ", and it lights up brightly.";
                 ", and it lights up feebly.";
         ],
         devil_hint "Pity you can't change the batteries.",
-  has   light moved container transparent openable;
+  has   light moved container openable;
 
 Object -> old_smudged_battery "old smudged battery"
   with  name 'old' 'smudge' 'battery',
         article "an",
         time_left 200,
+        daemon [ i;
+            if( parent(self) ~= electric_torch )
+                rfalse;
+            i = self.time_left;
+            if( i == 0 ) {
+                StopDaemon(self);
+                rfalse;
+            }
+            i--;
+            if( i == 2 )
+                "^The torch flickers ominously.";
+            if( i == 0 ) {
+                give electric_torch ~light;
+                "^The torch finally dies out.";
+            }
+        ],
   has   ;
 
 Object chocolate_biscuit "chocolate biscuit"
@@ -571,8 +587,10 @@ Object  East_Annexe "East Annexe"
             lets a little natural light in, but the attics to the west
             and south are dark.",
         after [;
-            if( old_smudged_battery.time_left > 3 )
-                old_smudged_battery.time_left = 3;
+            if( old_smudged_battery.time_left > 3 ) {
+                StopTimer(old_smudged_battery);
+                StartTimer(old_smudged_battery, 3);
+            }
             rfalse;
         ],
         n_to cupboard_door,
@@ -600,7 +618,7 @@ Object  -> insulation_rolls "insulation rolls"
 
 Object  -> -> new_battery "new-looking battery"
   with  name 'new' 'battery',
-        number 200,
+        time_left 200,
         devil_hint "That is a difficult puzzle, yes.",
   has   ;
 
