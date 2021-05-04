@@ -252,6 +252,9 @@ Object  -> antiquated_wireless "antiquated wireless"
         initial "To one side is a heavy cabinet on casters containing an 
             antiquated wireless, the kind with glowing valves inside. On
             the top is a bakelite on-off switch.",
+        before [;
+            Push: "It moves easily on the casters.";
+        ],
         after [;
             SwitchOn:
                 StartTimer(self, 6);
@@ -858,7 +861,7 @@ Object  -> iron_key "gothic-looking iron key"
   has   scored;
 
 Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
-  with  name 'ghost' 'sir' 'joshua//p',
+  with  name 'ghost' 'sir' 'joshua',
         description "He is dressed in a grey shadow of Georgian finery.",
         number 0,
   has   concealed animate proper;
@@ -1305,7 +1308,7 @@ Object -> weed_killer "weed killer bottle"
   has   ;
 
 Object Up_the_Plane_Tree "Up the Plane Tree"
-  with  name 'jemima//p' 'conservatory' 'window',
+  with  name 'jemima' 'conservatory' 'window',
     description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at the conservatory window, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
     d_to Family_Tree,
     cant_go "No, don't go out on a limb.",

@@ -7,11 +7,44 @@ Property rod_assoc;
 
 Attribute hidden_rod;
 Attribute rod_attr;
+Attribute card;
+Attribute wire;
 
 Include "Parser";
 Replace SearchSub;
 Include "variables.inf";
 Include "VerbLib";
+
+class Tarot
+  with  article "the"
+  has   card;
+
+! early versions of Timers. Leaving in until I recode them
+
+[ ResetTimer obj i ;
+    i = obj.number;
+    if (i > turns) {
+        rfalse;
+    }
+    if (i == 0) {
+        rfalse;
+    }
+    obj.number = 0;
+    rtrue;
+];
+
+[ DecrementTimer o i ;
+    i = o.number;
+    if (i == 0) {
+        rfalse;
+    }
+    --i;
+    o.number = i;
+    if (i > 0) {
+        rfalse;
+    }
+    rtrue;
+];
 
 Include "house.inf";
 Include "unreal.inf";

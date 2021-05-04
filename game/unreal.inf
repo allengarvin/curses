@@ -1,3 +1,220 @@
+Array card_deck --> 8;
+Global card_ptr;
+
+[ InsertCardIntoDeck card ;
+    card_deck-->card_ptr = card;
+    ++card_ptr;
+    rtrue;
+];
+
+Object  Unreal_City "Unreal City"
+  with  description "This is a city side street, but as if seen through the grey of despair. 
+            People stream by, some of whom you almost recognise, as
+            if dead. The street runs east-west, and to the north is a
+            doorway into a grubby tenement building.",
+        n_to Shadowy_Hallway,
+        e_to Near_Ring_Road,
+        w_to Down_by_River,
+  has   light scored;
+
+Object  Shadowy_Hallway "Shadowy Hallway"
+  with  description "A filthy wooden staircase leads up from here, off the street 
+            to the south. Peeling-away posters have been stuck up on top
+            of each other on the walls, in such a way that you can only
+            read the most recent.",
+        s_to Unreal_City,
+        u_to Consulting_Room,
+  has   light;
+
+Object  -> poster "poster"
+  with  name 'poster',
+        description "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish 
+            you had a dog called Toto, so as to be able to say ~Toto,
+            I've got a feeling we're not in England any more.~",
+        before [;
+            Take:
+                if( self hasnt scenery )
+                    rfalse;
+                give poster ~scenery;
+                "You hastily tear down the poster, but there's nothing 
+                 interesting behind it, only painted graffiti: ~Shantih Shantih Shantih~.";
+        ],
+        devil_hint "What a very useful piece of paper. Pity there's writing on it.",
+  has   scenery;
+
+Object  Consulting_Room "Consulting Room"
+  with  name 'sevenb' 'candel' 'sticks' 'table',
+        description "The stairs end at a shabby room, with screened windows, 
+            lit by incense sticks and sevenbranched candelabra. A doorway
+            with a hanging bead curtain leads west. In the centre of
+            the room is a table, on which is an electric bell push and
+            a wicked Tarot pack.",
+        d_to Shadowy_Hallway,
+        w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
+  has   light;
+
+Object  -> Tarot_pack "Tarot pack"
+  with  name 'wicked' 'tarot' 'pack',
+        before [;
+            Take: "That's funny. For a moment there your hand seemed to go straight 
+                   through the pack of cards without touching it!";
+            Receive:
+                if( Madame_Sosostris hasnt concealed )
+                    "Madame Sosostris won't let you.";
+                if( noun hasnt card )
+                    "That would look rather incongruous, surely?";
+                remove noun;
+                InsertCardIntoDeck(noun);
+                print_ret "You carefully lay ", (the) noun, " face down on the tarot pack.";
+        ],
+  has   scenery container;
+
+Object  -> curtain "curtain"
+  with  name 'curtain' 'bead',
+  has   scenery;
+
+Object  -> bell_push "bell push"
+  with  name 'bell' 'push',
+        before [;
+            Push:
+                if (Madame_Sosostris has concealed) {
+                    if( Madame_Sosostris has general )
+                        "Nothing happens.";
+                    give Madame_Sosostris ~concealed;
+                    move Madame_Sosostris to Consulting_Room;
+                    "Madame Sosostris, the famous clairvoyante, breezes in 
+                     through the hanging curtain and sits behind
+                     the table, making waving gestures with her
+                     hands.^^~First, this I must know, were you born in
+                     an even, or an odd, year?~";
+                }
+                "Madame Sosostris looks at you in some irritation.";
+        ],
+  has   scenery;
+
+Object  Madame_Sosostris "Madame Sosostris, famous clairvoyante"
+  with  name 'sosost' 'madame' 'clairvoyant',
+        description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
+  has   concealed animate proper;
+
+Tarot   Death_card "Grim Reaper"
+  with  name 'death' 'grim' 'reaper' 'card',
+        description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
+        door_to Ruined_Castle_Cafe,
+        devil_hint "It's vital you slide right along with this one.",
+  has   ;
+
+Tarot   Fool_card "Fool"
+  with  name 'fool' 'card',
+        description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
+        door_to Ruined_Castle_Cafe,
+        devil_hint "Don't worry, he won't slide down the cliff.",
+  has   ;
+
+Tarot   Drowned_Sailor_card "Drowned Sailor"
+  with  name 'drowne' 'sailor' 'card',
+        description "Those are pearls that were his eyes...",
+        door_to Ruined_Castle_Cafe,
+        devil_hint "He's one of my colleagues now, of course.",
+  has   ;
+
+Object  oak_quarterstaff "oak quarterstaff"
+  with  name 'oak' 'staff' 'quarter',
+        rod_assoc rod_of_bronze,
+        devil_hint "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?",
+  has   hidden_rod;
+
+Object  rod_of_bronze "Rod of Bronze"
+  with  name 'rod' 'of' 'bronze',
+        article "the",
+        rod_action [;
+            if( second == player ) "You acquire a sudden sun tan, but it soon fades.";
+            if( second ~= bronze_mural ) "Nothing obvious happens.";
+            if( bronze_mural has open ) "Nothing further happens.";
+            give bronze_mural open;
+            "With an awful heaving, wrenching noise, the mural slides a little 
+             sideways, opening up a murky downward passage which can't have been used for 
+             centuries.";
+        ],
+        angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
+  has   rod_attr;
+
+Object  Down_by_River "Down by River"
+  with  name 'rats' 'mounds' 'rubbish',
+        description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you.",
+        e_to Unreal_City,
+        w_to tourist_boat,
+  has   light;
+
+Object  -> silk_handkerchief "silk handkerchief"
+  with  name 'silk' 'handkerchief' 'hanky' 'hankie',
+        description "Monogrammed J. A. P., but that's no great matter.",
+        initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
+        devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth wouldn't attract anyone, would it?",
+  has   ;
+
+Object  -> tourist_boat "tourist boat"
+  with  name 'boat' 'bateau',
+        description "The side reads: PHLEBAS.",
+        initial "Moored close to the bank is a glass-roofed tourist boat.",
+        door_dir w_to,
+        door_to On_board_the_Phlebas,
+        describe "On the far bank is a glass-roofed tourist boat. As much as you like to 
+            explore, you can't see how to attract its attention.",
+  has   door static;
+
+Object  On_board_the_Phlebas "On board the Phlebas"
+  with  name 'wheel',
+        description "A tourist river-boat, glass-roofed. You can climb out 
+            to the shore to the east. At the helm is a very strange man,
+            at times almost a straw dummy, almost perhaps a hollow cut-out
+            made of paper. He (or it) turns the wheel and casts his eyes
+            to windward.",
+        e_to Down_by_River,
+  has   light;
+
+Object  -> hollow_man "hollow man"
+  with  name 'hollow' 'man',
+        description "Every now and then he whimpers.",
+        article "the",
+        initial "The hollow man mechanically says: ~Where to, guv'nor?  
+            Me with my big mouth, I gone and done it again, calling you
+            the guv'nor. I was down Margate Sands way once, had a bloke
+            come on board, he thought any old destination would do, like
+            a real place, like anywhere was real... We are the hollow men,
+            I says, he didn't like that... Hurry up, please, it's time.~",
+  has   animate;
+
+Object  Near_Ring_Road "Near Ring Road"
+  with  name 'metro' 'pedestal' 'army',
+        description "A dry, desolate waste of buildings borders here on a 
+            main road, so full of black-suited pedestrians off to work at
+            banks that you can't force your way any further east. Once
+            in a while a few of the bowler-hatted army step into the
+            street and down some steps below a Metropolitan sign.",
+        w_to Unreal_City,
+        d_to Chatelet_les_Halles,
+        cant_go "You can't force your way through the tide of bankers.",
+  has   light;
+
+Object Chatelet_les_Halles "Chatelet-les-Halles"
+  with  name 'gates',
+        description "This is a vast underground station in great rectangular 
+            caverns, deep beneath the streets. You are outside the ticket
+            gates, near a flight of steps back up to the city, and since
+            you haven't a ticket you're likely to stay that way.",
+        u_to Near_Ring_Road,
+        cant_go "Back up the stairs for you. Call yourself a traveller...",
+  has   light;
+
+Object -> surly_shopkeeper "surly shopkeeper"
+  with  name 'surly' 'man' 'shopkeeeper',
+        description "His jumper is unstriped, and there are no onions around 
+            his neck. Nonetheless he has a rather Gallic, disgruntled look
+            to him. Perhaps he's a former Socialist cabinet minister.",
+        initial "Behind a kiosk, a surly-looking man is selling guide books and maps.",
+  has   animate;
+
 Object  tourist_map_of_Paris "tourist map of Paris"
   with  name 'tourist' 'map' 'of' 'paris',
         description "Just the way you remember yours having been.",
@@ -5,4 +222,255 @@ Object  tourist_map_of_Paris "tourist map of Paris"
         angel_hint "What a very useful map!  Now you can go on holiday.",
   has   ;
 
+! --- might as well shove this short scene here:
+
+Object Ruined_Castle_Cafe "Ruined Castle Cafe"
+  with  name 'decor' 'arrows' 'quarter' 'waiter',
+        description "This crowded, bohemian cafe bears only a passing 
+            resemblance to the ruined castle of the Tarot card: the
+            decor imitates castle walls and arrowslits. You find yourself
+            sitting at a table for one in the centre of the cafe floor. It
+            is noisy, bustling and cheery, and a string quartet plays
+            Strauss under the chattering of German voices. Your chances
+            of attracting a waiter are very slight.",
+        after [;
+            Look:
+                if( complicated_looking_bomb has concealed )
+                    StartDaemon(timer_detonater);
+                if( Cups_and_Glasses hasnt visited )
+                    rfalse;
+                if( complicated_looking_bomb hasnt concealed )
+                    rfalse;
+                "^Over in one corner, you can see a little square window, 
+                 behind which must be the store of cups and
+                 glasses. Remembering this, you are distracted and
+                 unable to enjoy the entertainment. Even the table is
+                 annoying. It must have one leg shorter than the rest,
+                 or something, because it rattles now and then.";
+        ],
+        cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
+  has   light scored;
+
+Object  -> cafe_table "cafe table"
+  with  name 'table',
+        before [;
+            LookUnder, Search:
+                if( complicated_looking_bomb hasnt concealed )
+                    "You make no further alarming discoveries.";
+                give complicated_looking_bomb ~concealed;
+                move complicated_looking_bomb to Ruined_Castle_Cafe;
+                "Now don't panic, but there's a ticking bomb loosely taped to the underside of the table you're sitting at!";
+        ],
+  has   scenery;
+
+Object  complicated_looking_bomb "complicated-looking bomb"
+  with  name 'bomb',
+        description "It contains a timer-detonater, a bundle of plastic explosives 
+            and many, many wires. The most obvious ones are green, red,
+            blue and black. They would pull out of their loose sockets
+            in the timer easily, so perhaps this bomb disposal nonsense
+            isn't as tricky as people make out.",
+        initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
+        after [;
+            Take:
+                deadflag = PRISON;
+                "Suddenly, someone catches sight of you with the bomb and screams. 
+                 One thing leads to another, and, well, you know how it
+                 is with foreign legal systems. At least the bomb gets
+                 defused, and twenty-five years isn't all that long.";
+        ],
+        number 0,
+  has   concealed container open;
+
+Array BombWires --> 4;
+Global BombTicking;
+
+Object  -> timer_detonater "timer-detonater"
+  with  name 'timer' 'detonate',
+        before [ n;
+            Examine:
+                print "The timer seems quite simple to set. ";
+                n = self.number;
+                if( BombTicking == true )
+                    print_ret "The clock is running, and currently at ", n, " minutes.";
+                if( n ~= 0 )
+                    return DescribeDetonator();
+                "At present the clock is reset to 0.";
+            Set:
+                if( self.number ~= 0 )
+                    "It is already running!";
+                StartDaemon(self);
+                self.number = 10;
+                BombTicking = true;
+                "You wind back the timer to 10 minutes, and off it goes.^";
+        ],
+        daemon [;
+            if( complicated_looking_bomb hasnt edible ) {
+                if( complicated_looking_bomb hasnt concealed ) {
+                    new_line;
+                    DescribeDetonator();
+                }
+                if( complicated_looking_bomb has concealed ) {
+                    print "^The table rattles again.^";
+                }
+            }
+            if( 0 ~= DecrementTimer(timer_detonater) ) {
+                give complicated_looking_bomb edible;
+                if( complicated_looking_bomb has general ) {
+                    if( blue_wire ~= BombWires-->0 ) {
+                        ! no code
+                    } else if( green_wire ~= BombWires-->1 ) {
+                        ! no code
+                    } else if( black_wire ~= BombWires-->2 ) {
+                        ! no code
+                    } else if( red_wire ~= BombWires-->3 ) {
+                        ! no code
+                    } else {
+                        print "^Click!  The timer runs out, but the bomb was 
+                            disarmed. You pocket the timer and hide the rest of the evidence under the table.^";
+                        move timer_detonater to player;
+                        give timer_detonater ~static;
+                        StopDaemon(self);
+                        remove self;
+                        rtrue;
+                    }
+                    print "Click!  Perhaps there's more to bomb disposal than you thought.^";
+                }
+                print "^In a sudden cataclysm, there is an enormous explosion 
+                    from your table, blowing out all the arrowslit
+                    windows, making a thunderous noise, starting a minor
+                    fire, and of course having one other consequence:^";
+                deadflag = DIED;
+                StopDaemon(self);
+            }
+        ],
+        number 10,
+        devil_hint "Time flies down here, you know. Eternity simply breezes by.",
+        angel_hint "Good photographic gear that. You didn't get it from a... well, a bomb, I hope.",
+  has   static;
+
+Class   WireC
+  has   static wire;
+
+! TODO: where is the pull-wire code
+WireC   -> green_wire "green wire"
+  with  name 'green' 'wire';
+
+WireC   -> red_wire "red wire"
+  with  name 'red' 'wire';
+
+WireC   -> blue_wire "blue wire"
+  with  name 'blue' 'wire';
+
+WireC   -> black_wire "black wire"
+  with  name 'black' 'wire';
+
+[ DescribeDetonator w wires_unplugged wire_num ;
+    print "The clock is ticking downwards, and has only ", timer_detonater.number; 
+    if (w == 1)
+        print " minute ";
+    else
+        print " minutes ";
+    print "to go before it hits the red zone. ";
+    
+    wires_unplugged = complicated_looking_bomb.number;
+    if( wires_unplugged == 0)
+        "All four wires are plugged into the timer.";
+
+    if( wires_unplugged == 1 )
+        print "Only the ";
+    if( wires_unplugged == 2 || wires_unplugged == 3 )
+        print "The ";
+    if( wires_unplugged == 4 ) {
+        "None of the wires are plugged in.";
+    }
+    wire_num = wires_unplugged;
+    w = green_wire;
+    if( w has general ) {
+        print (name) w;
+        --wire_num;
+        WireList(wire_num);
+    }
+    w = red_wire;
+    if( w has general ) {
+        print (name) w;
+        --wire_num;
+        WireList(wire_num);
+    }
+    w = blue_wire;
+    if( w has general ) {
+        print (name) w;
+        --wire_num;
+        WireList(wire_num);
+    }
+    w = black_wire;
+    if( w has general ) {
+        print (name) w;
+        --wire_num;
+        WireList(wire_num);
+    }
+    if( wires_unplugged == 1 ) {
+        " is unplugged.";
+    }
+    " are unplugged.";
+];
+
+Object  Cups_and_Glasses "Cups and Glasses"
+  with  name 'cups' 'glasse' 'skylight' 'crates',
+        description "This basement room is filled with crate after crate of 
+            glasses and cups, enough for an entire hotel, or restaurant
+            perhaps. A little light comes in from an opaque skylight
+            which is at street level outdoors. There is no way out of
+            here, since the only door is shut tight.",
+        n_to windowed_door,
+        number 0,
+        cant_go "There's no apparent way out of here.",
+  has   light;
+
+Object  -> windowed_door "windowed door"
+  with  name 'door' 'window',
+        description "Through the square window in the door you can see a bar 
+            at which staff are serving, and a very crowded and lively
+            cafe-restaurant beyond. The cabaret act has her back to you,
+            and a considerable amount of her front to the diners.",
+        door_dir n_to,
+        door_to Cups_and_Glasses,
+  has   door openable scenery locked;
+
+! to implement as daemon
+
+!    } else {
+!        if (location == Cups_and_Glasses) {
+!            if (Cups_and_Glasses hasnt general) {
+!                i = 196[Cups_and_Glasses?];
+!                i.number = turns;
+!                give Cups_and_Glasses general;
+!            }
+!            i = 196[Cups_and_Glasses?];
+!            i = turns - i.number;
+!            if (i == 2[?]) {
+!                print "^There is a scuffling noise as some men gather up on the pavement outside the skylight.^";
+!            }
+!            if (i == 3[s_wall?]) {
+!                print "^The men begin to talk like conspirators. You catch occasional sounds, but can make little sense of them.^";
+!            }
+!            if (i == 4[e_wall?]) {
+!                print "^Alarmingly, you catch the odd word ~bomb~ and are almost sure you can make out someone say ~get that Meldrew~. Paranoia, bound to be.^";
+!            }
+!            if (i == 5[w_wall?]) {
+!                print "^The men walk away, perhaps a few feet, perhaps a mile.^";
+!            }
+!        }
+
+[ WireList n ;
+    if( n == 1 ) {
+        print " and ";
+        rfalse;
+    }
+    if( n == 0 ) {
+        rfalse;
+    }
+    print ", ";
+    rtrue;
+];
 
