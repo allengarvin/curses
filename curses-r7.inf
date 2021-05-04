@@ -6734,23 +6734,23 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ TriggerEndgame local1 local2 ;	! 62422 / 0xf3d6
+[ TriggerEndgame i j ;	! 62422 / 0xf3d6
     game_section = ANCIENT_BRITAIN;
-    local1 = child(player);
+    i = child(player);
   .label62434;
-    if (local1 ~= 0) {
-        local2 = sibling(local1);
-        give local1 ~worn;
-        remove local1;
-        move local1 to Infinity_Symbol;
-        local1 = local2;
+    if (i ~= nothing) {
+        j = sibling(i);
+        give i ~worn;
+        remove i;
+        move i to Infinity_Symbol;
+        i = j;
         jump label62434;
     }
     location = Murky_Cave;
     remove player;
     move player to Murky_Cave;
-    local1 = 218[historical_pamphlet?];
-    move local1 to player;
+    i = historical_pamphlet;
+    move i to player;
     LookSub();	! not popped
     @pop;
     rtrue;
