@@ -465,49 +465,49 @@ Verb 'get' 'lift' 'pick' 'take'
 Object compass "compass"	! 1 / 0x1
   has	concealed;
 
-Object -> n_wall "north wall"	! 2 / 0x2
+Object -> n_obj "north wall"	! 2 / 0x2
   with	name 'n//' 'north' 'wall',
 	article "the",
 	door_dir n_to,
   has	scenery wall_attr;
 
-Object -> s_wall "south wall"	! 3 / 0x3
+Object -> s_obj "south wall"	! 3 / 0x3
   with	name 's//' 'south' 'wall',
 	article "the",
 	door_dir s_to,
   has	scenery wall_attr;
 
-Object -> e_wall "east wall"	! 4 / 0x4
+Object -> e_obj "east wall"	! 4 / 0x4
   with	name 'e//' 'east' 'wall',
 	article "the",
 	door_dir e_to,
   has	scenery wall_attr;
 
-Object -> w_wall "west wall"	! 5 / 0x5
+Object -> w_obj "west wall"	! 5 / 0x5
   with	name 'w//' 'west' 'wall',
 	article "the",
 	door_dir w_to,
   has	scenery wall_attr;
 
-Object -> ne_wall "northeast wall"	! 6 / 0x6
+Object -> ne_obj "northeast wall"	! 6 / 0x6
   with	name 'ne' 'northeast' 'wall',
 	article "the",
 	door_dir ne_to,
   has	scenery wall_attr;
 
-Object -> nw_wall "northwest wall"	! 7 / 0x7
+Object -> nw_obj "northwest wall"	! 7 / 0x7
   with	name 'nw' 'northwest' 'wall',
 	article "the",
 	door_dir nw_to,
   has	scenery wall_attr;
 
-Object -> se_wall "southeast wall"	! 8 / 0x8
+Object -> se_obj "southeast wall"	! 8 / 0x8
   with	name 'se' 'southeast' 'wall',
 	article "the",
 	door_dir se_to,
   has	scenery wall_attr;
 
-Object -> sw_wall "southwest wall"	! 9 / 0x9
+Object -> sw_obj "southwest wall"	! 9 / 0x9
   with	name 'sw' 'southwest' 'wall',
 	article "the",
 	door_dir sw_to,
@@ -2626,14 +2626,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     DebugMoveRods
     routine_e5d0
     routine_e5bc
-    routine_f3d6
+    TriggerEndgame
     LearnLanguages
     routine_13e76
     routine_13e80
     routine_e5a0
     routine_e5d0
     routine_e5bc
-    routine_f3d6
+    TriggerEndgame
 ;
 
 ! CodeArea 0x42b0 0x15360
@@ -2962,7 +2962,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             if (i == 10[ceiling?]) {
                 print "^You feel very nervous indeed, for some reason.^";
             }
-            if (i == 5[w_wall?]) {
+            if (i == 5[w_obj?]) {
                 print "^You scratch yourself, unable to get rid of an itching sensation.^";
             }
             if (i == 2[?]) {
@@ -3001,10 +3001,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 2[?]) {
             print "^A flash of light sears your eyes, as the sulphurous flames grumble.^";
         }
-        if (i == 3[s_wall?]) {
+        if (i == 3[s_obj?]) {
             print "^You can almost, but not quite, make out the noise of shouting.^";
         }
-        if (i == 4[e_wall?]) {
+        if (i == 4[e_obj?]) {
             print "^Thunder and lightning can be heard from the fiery depths.^";
         }
     }
@@ -3016,10 +3016,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 2[?]) {
             print "^Babies float by, just counting their toes.^";
         }
-        if (i == 3[s_wall?]) {
+        if (i == 3[s_obj?]) {
             print "^Burnished-gold sunlight strokes the tops of the clouds here.^";
         }
-        if (i == 4[e_wall?]) {
+        if (i == 4[e_obj?]) {
             print "^The choir invisible almost, for a moment, becomes audible.^";
         }
     }
@@ -3031,10 +3031,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 2[?]) {
             print "^The bartender gives you a hard stare.^";
         }
-        if (i == 3[s_wall?]) {
+        if (i == 3[s_obj?]) {
             print "^A fight breaks out, over an obscure question to do with somebody's second cousin.^";
         }
-        if (i == 4[e_wall?]) {
+        if (i == 4[e_obj?]) {
             print "^The gentle sound of bazouki music strikes up in the background, and gradually rises to an intolerable pitch. After a moment comes a dull thud and a strangled noise, then blessed quiet.^";
         }
     }
@@ -3047,25 +3047,25 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 2[?]) {
             print "light orchestra";
         }
-        if (i == 3[s_wall?]) {
+        if (i == 3[s_obj?]) {
             print "choral";
         }
-        if (i == 4[e_wall?]) {
+        if (i == 4[e_obj?]) {
             print "snare drum and strings";
         }
-        if (i == 5[w_wall?]) {
+        if (i == 5[w_obj?]) {
             print "country-and-western";
         }
-        if (i == 6[ne_wall?]) {
+        if (i == 6[ne_obj?]) {
             print "one-finger piano";
         }
-        if (i == 7[nw_wall?]) {
+        if (i == 7[nw_obj?]) {
             print "Welsh coal-miners' Eisteddfod choir";
         }
-        if (i == 8[se_wall?]) {
+        if (i == 8[se_obj?]) {
             print "Hammond organ";
         }
-        if (i == 9[sw_wall?]) {
+        if (i == 9[sw_obj?]) {
             print "easy-listening";
         }
         if (i == 10[ceiling?]) {
@@ -3078,13 +3078,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 2[?]) {
             print " rendition of ";
         }
-        if (i == 3[s_wall?]) {
+        if (i == 3[s_obj?]) {
             print " travesty of ";
         }
-        if (i == 4[e_wall?]) {
+        if (i == 4[e_obj?]) {
             print " arrangement of ";
         }
-        if (i == 5[w_wall?]) {
+        if (i == 5[w_obj?]) {
             print " transcription of ";
         }
         i = random(70);
@@ -3094,25 +3094,25 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 2[?]) {
             print "Bach's ~Air on a G-string~.";
         }
-        if (i == 3[s_wall?]) {
+        if (i == 3[s_obj?]) {
             print "Mozart's ~Musical Joke~.";
         }
-        if (i == 4[e_wall?]) {
+        if (i == 4[e_obj?]) {
             print "Stockhausen's ~Piano Pieces I-IX~.";
         }
-        if (i == 5[w_wall?]) {
+        if (i == 5[w_obj?]) {
             print "Beethoven's ~Moonlight Sonata~.";
         }
-        if (i == 6[ne_wall?]) {
+        if (i == 6[ne_obj?]) {
             print "Summer from Vivaldi's ~Four Seasons~.";
         }
-        if (i == 7[nw_wall?]) {
+        if (i == 7[nw_obj?]) {
             print "the especially slow movement of Gorecki's ~Symphony no. 3~.";
         }
-        if (i == 8[se_wall?]) {
+        if (i == 8[se_obj?]) {
             print "Spandau Ballet's ~Gold~.";
         }
-        if (i == 9[sw_wall?]) {
+        if (i == 9[sw_obj?]) {
             print "Duran Duran's ~Is There Something I Should Know?~.";
         }
         if (i == 10[ceiling?]) {
@@ -3526,13 +3526,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             if (i == 2[?]) {
                 print "^There is a scuffling noise as some men gather up on the pavement outside the skylight.^";
             }
-            if (i == 3[s_wall?]) {
+            if (i == 3[s_obj?]) {
                 print "^The men begin to talk like conspirators. You catch occasional sounds, but can make little sense of them.^";
             }
-            if (i == 4[e_wall?]) {
+            if (i == 4[e_obj?]) {
                 print "^Alarmingly, you catch the odd word ~bomb~ and are almost sure you can make out someone say ~get that Meldrew~. Paranoia, bound to be.^";
             }
-            if (i == 5[w_wall?]) {
+            if (i == 5[w_obj?]) {
                 print "^The men walk away, perhaps a few feet, perhaps a mile.^";
             }
         }
@@ -3723,16 +3723,16 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         "The mouse emits a querulous, unhappy bleep.";
     }
-    if (noun == ne_wall) {
+    if (noun == ne_obj) {
         noun = ceiling;
     }
-    if (noun == nw_wall) {
+    if (noun == nw_obj) {
         noun = ceiling;
     }
-    if (noun == se_wall) {
+    if (noun == se_obj) {
         noun = ceiling;
     }
-    if (noun == sw_wall) {
+    if (noun == sw_obj) {
         noun = ceiling;
     }
     if (noun == floor) {
@@ -3744,49 +3744,49 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     o = robot_mouse;
     o = parent(o);
     if (o == Cellars_South) {
-        if (noun == n_wall) {
+        if (noun == n_obj) {
             rm = Cellars;
             jump label30695;
         }
-        if (noun == w_wall) {
+        if (noun == w_obj) {
             rm = hole_in_the_wall;
             Mouse_x = 8;
             Mouse_y = 3;
             jump label30695;
         }
     } else if (o == Cellar_West) {
-        if (noun == e_wall) {
+        if (noun == e_obj) {
             rm = Cellars;
             jump label30695;
         }
     } else if (o == Cellars) {
-        if (noun == w_wall) {
+        if (noun == w_obj) {
             rm = Cellar_West;
             jump label30695;
         }
-        if (noun == s_wall) {
+        if (noun == s_obj) {
             rm = Cellars_South;
             jump label30695;
         }
     } else {
         if (o == hole_in_the_wall) {
-            if (Mouse_x == 8 && Mouse_y == 3 && noun == e_wall) {
+            if (Mouse_x == 8 && Mouse_y == 3 && noun == e_obj) {
                 rm = Cellars_South;
                 jump label30695;
             }
-            if (noun == n_wall) {
+            if (noun == n_obj) {
                 x1 = Mouse_x;
                 x2 = Mouse_y - 1;
             }
-            if (noun == e_wall) {
+            if (noun == e_obj) {
                 x1 = Mouse_x + 1;
                 x2 = Mouse_y;
             }
-            if (noun == s_wall) {
+            if (noun == s_obj) {
                 x1 = Mouse_x;
                 x2 = Mouse_y + 1;
             }
-            if (noun == w_wall) {
+            if (noun == w_obj) {
                 x1 = Mouse_x - 1;
                 x2 = Mouse_y;
             }
@@ -4412,9 +4412,9 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ TransferSub local1 local2 ;	! 34332 / 0x861c
-    local2 = 7[nw_wall?];
+    local2 = 7[nw_obj?];
     if (second == floor) {
-        local2 = 8[se_wall?];
+        local2 = 8[se_obj?];
     }
     local1 = parent(noun);
     if (local1 ~= player) {
@@ -4696,10 +4696,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             @pop;
             rfalse;
         }
-        if (noun == e_wall) {
+        if (noun == e_obj) {
             print "You pass uncomfortably straight through the hide wall.^";
         }
-        if (noun == w_wall) {
+        if (noun == w_obj) {
             print "You pass uncomfortably straight through the hide wall.^";
         }
     }
@@ -4719,7 +4719,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ SuperSub ;	! 36726 / 0x8f76
-    global44 = 3[s_wall?];
+    global44 = 3[s_obj?];
     "~Curses~ is now in its ~superbrief~ mode, which always gives short descriptions of locations (even if you haven't been there before).";
 ];
 
@@ -4738,7 +4738,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     } else if (global44 == 2[?]) {
         ! no code
     } else {
-        if (global44 == 3[s_wall?]) {
+        if (global44 == 3[s_obj?]) {
             jump label36924;
         }
         if (location has visited && verbose == true) {
@@ -4859,7 +4859,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "A beautifully realistic picture. ";
         }
     }
-    if (noun == s_wall) {
+    if (noun == s_obj) {
         if (location == Souvenirs_Room && slide_projector has on) {
             local1 = child(slide_projector);
             if (local1 == 0) {
@@ -5714,7 +5714,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         BombWires->local2 = noun;
         ++local2;
         local1.number = local2;
-        if (local2 == 4[e_wall?]) {
+        if (local2 == 4[e_obj?]) {
             give complicated_looking_bomb general;
             "All four wires are now disconnected.";
         }
@@ -5740,7 +5740,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ PushSub who ;	! 44554 / 0xae0a
-    if (noun == s_wall && location == Dead_End && secret_door has concealed) {
+    if (noun == s_obj && location == Dead_End && secret_door has concealed) {
         give secret_door ~concealed;
         Achieved(SCORE_SECRETDOOR);	! not popped
         @pop;
@@ -5794,7 +5794,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (noun ~= antiquated_wireless) {
         "Is that the best you can think of?";
     }
-    if (second == e_wall) {
+    if (second == e_obj) {
         "Not upstairs you can't.";
     }
     print "It moves easily on the casters.^";
@@ -6060,13 +6060,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (i == 2[?]) {
         "concave mirrors.";
     }
-    if (i == 3[s_wall?]) {
+    if (i == 3[s_obj?]) {
         "the edibility of reptiles.";
     }
-    if (i == 4[e_wall?]) {
+    if (i == 4[e_obj?]) {
         "the spleens of flightless birds.";
     }
-    if (i == 5[w_wall?]) {
+    if (i == 5[w_obj?]) {
         "melting points of metals.";
     }
     rtrue;
@@ -6160,22 +6160,22 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             local3 = 2[?];
         }
         if (noun_word == 'red//p') {
-            local3 = 4[e_wall?];
+            local3 = 4[e_obj?];
         }
         if (noun_word == 'white//p') {
-            local3 = 5[w_wall?];
+            local3 = 5[w_obj?];
         }
         if (noun_word == 'green//p') {
-            local3 = 6[ne_wall?];
+            local3 = 6[ne_obj?];
         }
         if (noun_word == 'orange//p') {
-            local3 = 9[sw_wall?];
+            local3 = 9[sw_obj?];
         }
         if (local3 ~= 0) {
             print "~Right you are then, I'm sure I have some which are just right.~^^";
         }
         if (local3 == 0) {
-            local3 = 5[w_wall?];
+            local3 = 5[w_obj?];
             print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
         }
         StartTimer(Jemima,10);	! not popped
@@ -6240,19 +6240,19 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (global45 == 2[?]) {
             "~Hurry up please it's time!~";
         }
-        if (global45 == 3[s_wall?]) {
+        if (global45 == 3[s_obj?]) {
             "~HURRY UP PLEASE IT'S TIME!~";
         }
-        if (global45 == 4[e_wall?]) {
+        if (global45 == 4[e_obj?]) {
             "He can't be bothered to say anything this time.";
         }
-        if (global45 == 5[w_wall?]) {
+        if (global45 == 5[w_obj?]) {
             "It really is time you thought of something.";
         }
-        if (global45 == 6[ne_wall?]) {
+        if (global45 == 6[ne_obj?]) {
             "Time and time again you haven't guessed correctly.";
         }
-        if (global45 == 7[nw_wall?]) {
+        if (global45 == 7[nw_obj?]) {
             "The hollow man must be beginning to think you can't take a hint.";
         }
         "~It's time!~ repeats the hollow man.";
@@ -6477,7 +6477,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (env ~= nothing) {
         sib = sibling(env);
         remove env;
-        move env to e_wall;
+        move env to e_obj;
         env = sib;
         jump label59297;
     }
@@ -6729,12 +6729,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     print "The air charges with excitement, and the symbol glows fiery red, then begins to spin, faster and faster until everything becomes a daze and you find yourself...^";
     give noun general;
-    routine_f3d6();	! not popped
+    TriggerEndgame();	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine_f3d6 local1 local2 ;	! 62422 / 0xf3d6
+[ TriggerEndgame local1 local2 ;	! 62422 / 0xf3d6
     game_section = ANCIENT_BRITAIN;
     local1 = child(player);
   .label62434;
@@ -7308,25 +7308,25 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 2[?]) {
             print "March";
         }
-        if (i == 3[s_wall?]) {
+        if (i == 3[s_obj?]) {
             print "April";
         }
-        if (i == 4[e_wall?]) {
+        if (i == 4[e_obj?]) {
             print "May";
         }
-        if (i == 5[w_wall?]) {
+        if (i == 5[w_obj?]) {
             print "June";
         }
-        if (i == 6[ne_wall?]) {
+        if (i == 6[ne_obj?]) {
             print "July";
         }
-        if (i == 7[nw_wall?]) {
+        if (i == 7[nw_obj?]) {
             print "August";
         }
-        if (i == 8[se_wall?]) {
+        if (i == 8[se_obj?]) {
             print "September";
         }
-        if (i == 9[sw_wall?]) {
+        if (i == 9[sw_obj?]) {
             print "October";
         }
         if (i == 10[ceiling?]) {
@@ -7652,7 +7652,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ! References: Consulting_Room.before
 
 [ ConsultingRoomBefore ;	! 68820 / 0x10cd4
-    if (verb == ##Go && noun == w_wall) {
+    if (verb == ##Go && noun == w_obj) {
         "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.";
     }
     if (verb == ##Take && noun == Tarot_pack) {
@@ -7760,11 +7760,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 [ routine_10f94 local1 local2 local3 ;	! 69524 / 0x10f94
     if (local1 == 0) {
         ! no code
-    } else if (local1 == 8[se_wall?]) {
+    } else if (local1 == 8[se_obj?]) {
         ! no code
     } else if (local2 == 0) {
         ! no code
-    } else if (local2 == 6[ne_wall?]) {
+    } else if (local2 == 6[ne_obj?]) {
         ! no code
     } else {
         local3 = MazeBoundary(local1,local2);
@@ -7842,7 +7842,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= n_wall) {
+    if (noun ~= n_obj) {
         rfalse;
     }
     env = parent(player);
@@ -7859,27 +7859,27 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         "Remember the poor grass!";
     }
     if (verb == ##Go) {
-        if (MazeX == 4 && MazyY == 6 && noun == s_wall) {
+        if (MazeX == 4 && MazyY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (MazeX == 0 && MazyY == 1 && noun == w_wall) {
+        if (MazeX == 0 && MazyY == 1 && noun == w_obj) {
             rfalse;
         }
         newx = 100;
         newy = 100;
-        if (noun == n_wall) {
+        if (noun == n_obj) {
             newx = MazeX;
             newy = MazyY - 1;
         }
-        if (noun == e_wall) {
+        if (noun == e_obj) {
             newx = MazeX + 1;
             newy = MazyY;
         }
-        if (noun == s_wall) {
+        if (noun == s_obj) {
             newx = MazeX;
             newy = MazyY + 1;
         }
-        if (noun == w_wall) {
+        if (noun == w_obj) {
             newx = MazeX - 1;
             newy = MazyY;
         }
@@ -7914,27 +7914,27 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ MazeFoundationsBefore local1 newx newy ;	! 70388 / 0x112f4
     if (verb == ##Go) {
-        if (MazeX == 4 && MazyY == 6 && noun == s_wall) {
+        if (MazeX == 4 && MazyY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (MazeX == 0 && MazyY == 1 && noun == w_wall) {
+        if (MazeX == 0 && MazyY == 1 && noun == w_obj) {
             rfalse;
         }
         newx = 100;
         newy = 100;
-        if (noun == n_wall) {
+        if (noun == n_obj) {
             newx = MazeX;
             newy = MazyY - 1;
         }
-        if (noun == e_wall) {
+        if (noun == e_obj) {
             newx = MazeX + 1;
             newy = MazyY;
         }
-        if (noun == s_wall) {
+        if (noun == s_obj) {
             newx = MazeX;
             newy = MazyY + 1;
         }
-        if (noun == w_wall) {
+        if (noun == w_obj) {
             newx = MazeX - 1;
             newy = MazyY;
         }
@@ -8207,7 +8207,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= e_wall) {
+    if (noun ~= e_obj) {
         rfalse;
     }
     env = parent(player);
@@ -8252,7 +8252,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= e_wall) {
+    if (noun ~= e_obj) {
         rfalse;
     }
     if (herd_of_goats has general) {
@@ -8268,7 +8268,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= s_wall) {
+    if (noun ~= s_obj) {
         rfalse;
     }
     print "Zeus, who is after all the chief of all the gods, appears and hurls a thunderbolt down just before you begin to cross into the Temple. ";
@@ -8290,7 +8290,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= n_wall) {
+    if (noun ~= n_obj) {
         rfalse;
     }
     print "~I'll get you this time, worm!~ says Zeus, and hurls another thunderbolt, but now he's angry his aim is right off. You survive once more.^";
@@ -8590,11 +8590,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun == s_wall) {
+    if (noun == s_obj) {
         ! no code
-    } else if (noun == sw_wall) {
+    } else if (noun == sw_obj) {
         ! no code
-    } else if (noun == se_wall) {
+    } else if (noun == se_obj) {
         ! no code
     } else {
         rfalse;
@@ -8734,7 +8734,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= e_wall) {
+    if (noun ~= e_obj) {
         rfalse;
     }
     if (sandals has worn) {
@@ -8754,7 +8754,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     remove player;
     move player to servants_bed;
     game_section = MODERN;
-    o = e_wall;
+    o = e_obj;
     o = child(o);
   .label76459;
     if (o ~= nothing) {
@@ -9337,7 +9337,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             jump label83687;
           .label82476;
             j = global49 - 1;
-            token = 6[ne_wall?];
+            token = 6[ne_obj?];
             if (j == 1[?]) {
                 print "You can't begin with a comma.^";
                 jump label82320;
@@ -9477,7 +9477,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                         ++global49;
                         global68 = 1[?];
                     }
-                    if (token == 7[nw_wall?]) {
+                    if (token == 7[nw_obj?]) {
                         current_year = routine_151aa(global49);
                         noun_word = routine_150fa();
                         results->(j + 2) = 255[carbolic_soap?];
@@ -9514,11 +9514,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                                 jump label83684;
                             }
                             if (global53 == 2[?]) {
-                                if (token == 5[w_wall?]) {
+                                if (token == 5[w_obj?]) {
                                     routine_14a68(results->3);	! not popped
                                     @pop;
                                 }
-                                if (token == 4[e_wall?]) {
+                                if (token == 4[e_obj?]) {
                                     routine_14a68(global6);	! not popped
                                     @pop;
                                     local11 = parent(results->3);
@@ -9531,7 +9531,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                                     routine_14a68(location);	! not popped
                                     @pop;
                                 }
-                                if (token == 3[s_wall?]) {
+                                if (token == 3[s_obj?]) {
                                     routine_14a68(global6);	! not popped
                                     @pop;
                                 }
@@ -9559,7 +9559,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                                 etype_local = routine_14972();
                                 jump label83684;
                             }
-                            if (token == 6[ne_wall?] && l hasnt animate) {
+                            if (token == 6[ne_obj?] && l hasnt animate) {
                                 etype_local = 10;
                                 jump label83684;
                             }
@@ -9738,13 +9738,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ routine_1493e local1=1537[?] local2=38406[?] local3='invalidDictWord25094' local4='wiring' local5=10645[?] local6=1590[?] local7=518[?] local8=85[wheel2?] local9=1[?] local10=111[antiquated_wireless?] local11=6656[?] local12=1857[?] local13=1792[?] ;	! 84286 / 0x1493e
-    @2OP:0 9[sw_wall?] 178[rod_of_bronze?];
+    @2OP:0 9[sw_obj?] 178[rod_of_bronze?];
     if (global96 has global62) jump label91691;
     if (++global49 <= 7) jump label84452;
     if (167 & 7 == 7) jump label84365;
     @2OP:31 second global124;
     @check_arg_count ?label83231;
-    @2OP:0 3[s_wall?] 0;
+    @2OP:0 3[s_obj?] 0;
     @2OP:0 0 0;
     @2OP:0 0 45[solid_glass_ball?];
     move global61 to crook;
@@ -9755,7 +9755,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     @2OP:31 168[poster?] global109;
     if (224 < 43) jump label78274;
     if (2[?] ~= 0) jump label76439;
-    @2OP:0 128[Clearing?] 7[nw_wall?];
+    @2OP:0 128[Clearing?] 7[nw_obj?];
     local3 = 'invalidDictWord12';
     return local3;
     local3 = 'invalidDictWord3';
@@ -9815,7 +9815,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         }
         jump label84518;
     }
-    local5 = 9[sw_wall?];
+    local5 = 9[sw_obj?];
     return local5;
     if (0 >= 0) rfalse;
     global51 = 1[?];
@@ -9831,13 +9831,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         jump label84601;
     }
     rtrue;
-    @2OP:0 7[nw_wall?] 0;
+    @2OP:0 7[nw_obj?] 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 85[wheel2?] 81[demijohn?];
-    if (3[s_wall?] == 13[Grahams_Lair?]) {
+    if (3[s_obj?] == 13[Grahams_Lair?]) {
         local5 = global64->0;
         local2 = 0;
         --local2;
@@ -9853,19 +9853,19 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                     ++local4;
                     local5 = local7;
                 }
-                if (local1 == 3[s_wall?] && local6 == global6) {
+                if (local1 == 3[s_obj?] && local6 == global6) {
                     ++local4;
                     local5 = local7;
                 }
-                if (local1 == 4[e_wall?] && local6 == global6) {
+                if (local1 == 4[e_obj?] && local6 == global6) {
                     ++local4;
                     local5 = local7;
                 }
-                if (local1 == 5[w_wall?] && local6 == global6) {
+                if (local1 == 5[w_obj?] && local6 == global6) {
                     ++local4;
                     local5 = local7;
                 }
-                if (local1 == 6[ne_wall?] && local7 has animate) {
+                if (local1 == 6[ne_obj?] && local7 has animate) {
                     ++local4;
                     local5 = local7;
                 }
@@ -10230,16 +10230,16 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     local1 = sibling(local1);
     jump label85972;
     rfalse;
-    @2OP:0 6[ne_wall?] 0;
+    @2OP:0 6[ne_obj?] 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 0 82[nasty_battery?];
-    if (1[?] == 4[e_wall?]) jump label78965;
+    if (1[?] == 4[e_obj?]) jump label78965;
     @2OP:0 87[dark_shaft_obj?] 0;
     if (0 >= 85) rtrue;
     if (++local13 <= 6) jump label86292;
-    if (robot_mouse notin ne_wall) jump label87427;
+    if (robot_mouse notin ne_obj) jump label87427;
     global95 = rod_of_stalking.after;
     if (--local6 >= 3) jump label86188;
     if (3 >= 0) jump label87104;
@@ -10250,10 +10250,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (0 ~= 224[Valley_Prospect?]) jump label86089;
     @2OP:29 local2 global177;
     global66 = ~568;
-    @2OP:0 7[nw_wall?] 13[Grahams_Lair?];
+    @2OP:0 7[nw_obj?] 13[Grahams_Lair?];
     if (1 <= 171) jump label87153;
     global83 = ~576;
-    @2OP:0 7[nw_wall?] 13[Grahams_Lair?];
+    @2OP:0 7[nw_obj?] 13[Grahams_Lair?];
     if (1 <= 171) jump label87037;
     if (0 >= 0) jump label87154;
     local3 = local2-->4;
@@ -10261,7 +10261,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         rfalse;
     }
     return local2;
-    @2OP:0 3[s_wall?] 0;
+    @2OP:0 3[s_obj?] 0;
     @2OP:0 0 0;
     @2OP:0 0 224[Valley_Prospect?];
     @2OP:31 168[poster?] global109;
@@ -10293,9 +10293,9 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     @dec_chk 0 0 ?~rfalse;
     @2OP:0 0 0;
     @2OP:0 85[wheel2?] 65[Battlements?];
-    if (4[e_wall?] ~= 80[Old_Winery?]) jump label93007;
-    @2OP:0 99[Cellars_South?] 4[e_wall?];
-    @2OP:0 0 3[s_wall?];
+    if (4[e_obj?] ~= 80[Old_Winery?]) jump label93007;
+    @2OP:0 99[Cellars_South?] 4[e_obj?];
+    @2OP:0 0 3[s_obj?];
     rfalse;
     local1 = local4 * 4;
     local2 = parse->local1;
@@ -10331,7 +10331,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (local6 >= 4) {
         local7 = 1000[?];
     }
-    if (local6 == 3[s_wall?]) {
+    if (local6 == 3[s_obj?]) {
         local7 = 100[hole_in_the_wall?];
     }
     if (local6 == 2[?]) {
@@ -10356,19 +10356,19 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         } else if (local10 == 50[slide_projector?]) {
             local9 = 2[?];
         } else if (local10 == 51[south_wall?]) {
-            local9 = 3[s_wall?];
+            local9 = 3[s_obj?];
         } else if (local10 == 52[East_Annexe?]) {
-            local9 = 4[e_wall?];
+            local9 = 4[e_obj?];
         } else if (local10 == 53[insulation_rolls?]) {
-            local9 = 5[w_wall?];
+            local9 = 5[w_obj?];
         } else if (local10 == 54[new_battery?]) {
-            local9 = 6[ne_wall?];
+            local9 = 6[ne_obj?];
         } else if (local10 == 55[cupboard_door?]) {
-            local9 = 7[nw_wall?];
+            local9 = 7[nw_obj?];
         } else if (local10 == 56[Dead_End?]) {
-            local9 = 8[se_wall?];
+            local9 = 8[se_obj?];
         } else if (local10 == 57[canvas_rucksack?]) {
-            local9 = 9[sw_wall?];
+            local9 = 9[sw_obj?];
         } else {
             rfalse;
         }
@@ -10377,10 +10377,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         jump label86536;
     }
     return local8;
-    @2OP:0 3[s_wall?] 0;
+    @2OP:0 3[s_obj?] 0;
     @2OP:0 0 0;
     @2OP:0 0 80[Old_Winery?];
-    if (0 ~= 3[s_wall?]) jump label90017;
+    if (0 ~= 3[s_obj?]) jump label90017;
     if (150[Up_the_Beanstalk?] ~= 2[?]) jump label86725;
     if (3 >= 0) jump label89917;
     if (226 >= 167) jump label86959;
@@ -10389,8 +10389,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 0 80[Old_Winery?];
-    if (0 ~= 4[e_wall?]) jump label90052;
-    if (150[Up_the_Beanstalk?] ~= 3[s_wall?]) jump label86759;
+    if (0 ~= 4[e_obj?]) jump label90052;
+    if (150[Up_the_Beanstalk?] ~= 3[s_obj?]) jump label86759;
     if (4 <= 0) jump label90975;
     if (112 <= 2) jump label87503;
     @storeb local1 local3 SP;
