@@ -42,9 +42,37 @@ Object  -> -> Maiden_card "Maiden"
 Object rod_of_infinity "Rod of Infinity"
   with  name 'rod' 'of' 'infinity' 'card',
         article "the",
-        rod_action RodOfInfinityAction,
+        rod_action [;
+            if( second == player )
+                "You acquire no especial sense of the infinite.";
+            if( second ~= lemniscus )
+                "Nothing obvious happens.";
+            if( circular_arc.number < 6 )
+                "You feel the air charge with excitement, and the symbol 
+                 glows fiery red for a moment, but then the power drains
+                 away into one of the empty sockets in the arc.";
+            if( self has general )
+                "Nothing happens this time.";
+            print "The air charges with excitement, and the symbol glows fiery red, then 
+                begins to spin, faster and faster until everything
+                becomes a daze and you find yourself...^";
+            give self general;
+            TriggerEndgame();
+        ],
         angel_hint "Well, where might you have seen infinity before?",
   has   rod_attr;
+
+[ TriggerEndgame i j;
+    game_section = ANCIENT_BRITAIN;
+    for( i = child(player) : i : i = j ) {
+        j = sibling(i);
+        give i ~worn;
+        move i to Infinity_Symbol;
+    }
+    PlayerTo(Murky_Cave, 2);
+    move historical_pamphlet to player;
+    rtrue;
+];
 
 Tarot   Ace_of_Cups_card "Ace of Cups"
   with  name 'ace' 'of' 'cups' 'card',
