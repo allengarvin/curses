@@ -6798,14 +6798,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: Inside_Cupboard.after
 
-[ InsideCupboardAfter local1 ;	! 63052 / 0xf64c
+[ InsideCupboardAfter i ;	! 63052 / 0xf64c
     if (verb == ##Insert && second == big_iron_fireplace) {
         remove noun;
         move noun to Priests_Hole;
         if (sooty_old_stick hasnt moved) {
-            local1 = 69[sooty_old_stick?];
-            remove local1;
-            move local1 to Priests_Hole;
+            i = sooty_old_stick;
+            remove i;
+            move i to Priests_Hole;
             give sooty_old_stick moved;
         }
         "It rattles out of sight down the chimney.";
