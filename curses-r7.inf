@@ -2573,11 +2573,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_9e26
     routine_a8b6
     routine_a8cc
-    routine_a7ea
+    SetSub
     DigSub
     routine_ad16
     routine_acfc
-    routine_ae0a
+    PushSub
     routine_af9a
     routine_b10c
     SwitchOnSub
@@ -5549,7 +5549,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You polish the ball to a nice shine.";
 ];
 
-[ routine_a7ea local1 local2 ;	! 42986 / 0xa7ea
+[ SetSub local1 local2 ;	! 42986 / 0xa7ea
     if (noun ~= timer_detonater) {
         "No, you can't set that.";
     }
@@ -5739,7 +5739,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Nothing obvious happens.";
 ];
 
-[ routine_ae0a who ;	! 44554 / 0xae0a
+[ PushSub who ;	! 44554 / 0xae0a
     if (noun == s_wall && location == Dead_End && secret_door has concealed) {
         give secret_door ~concealed;
         Achieved(SCORE_SECRETDOOR);	! not popped
