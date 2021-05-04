@@ -84,7 +84,7 @@ Tarot   Ace_of_Cups_card "Ace of Cups"
 Object  Coven_Cell "Coven Cell"
   with  description "An old administrative office of the museum, emptied and 
             made into a prison cell: amateur but effective.",
-        before CellBefore,
+!        before CellBefore,
         number 0,
         cant_go "There's definitely no way out of here.",
   has   ;
@@ -111,7 +111,7 @@ Object  -> cell_door "cell door"
 Object  rod_of_husbandry "Rod of Husbandry"
   with  name 'rod' 'of' 'husbandry',
         article "the",
-        rod_action RodOfHusbandryAction,
+!        rod_action RodOfHusbandryAction,
         angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
   has   rod_attr;
 

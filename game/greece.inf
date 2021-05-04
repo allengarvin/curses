@@ -10,7 +10,7 @@ Object  Sea_Shore "Sea Shore"
 Object  -> Andromeda "Andromeda"
   with  name 'andromeda' 'maiden',
         initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
-        before AndromedaBefore,
+!        before AndromedaBefore,
   has   animate proper;
 
 Object  -> amber_hairband "amber hairband"
@@ -24,7 +24,7 @@ Object  -> amber_hairband "amber hairband"
 Object  rod_of_sacrifice "Rod of Sacrifice"
   with  name 'rod' 'of' 'sacrifice',
         article "the",
-        rod_action RodOfSAcrificeAction,
+!        rod_action RodOfSAcrificeAction,
         angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
   has   rod_attr;
 
@@ -46,7 +46,7 @@ Object  Clifftop_Walk "Clifftop Walk"
             occupied by herds of hardy mountain goats, continually
             butting each other and frisking. To the south a path leads
             across sparse grassland to a great outgrowth of some kind.",
-        before ClifftopWalkBefore,
+!        before ClifftopWalkBefore,
         s_to Wall_of_Thorns,
         e_to Outside_Taverna,
         w_to Cliffs,
@@ -82,7 +82,7 @@ Object  Sacred_Earth "Sacred Earth"
             Zeus. You feel distinctly uneasy walking on such hallowed
             turf. There are any number of myths about gods getting cross
             about that sort of thing.",
-        before SacredEarthBefore,
+!        before SacredEarthBefore,
         n_to Wall_of_Thorns,
         s_to Temple_of_Zeus,
         cant_go "The wall of thorns hems you in.",
@@ -95,7 +95,7 @@ Object Temple_of_Zeus "Temple of Zeus"
             entrance at the north. So much for all the rumours about
             hoards of treasure - it looks as if Zeus (who is, by the
             way howling with anger outside) was bluffing all along.",
-        before TempleBefore,
+!        before TempleBefore,
         n_to Sacred_Earth,
         cant_go "Unfortunately for you (since Zeus is watching it), the temple has only one entrance.",
   has   light scored;
@@ -113,6 +113,17 @@ Object  Outside_Taverna "Outside Taverna"
         s_to Eraina_Taverna,
         w_to Clifftop_Walk,
         cant_go "There's only dull grassland that way.",
+        each_turn [;
+            switch( random(13) ) {
+                1: "^The diners grumble and play backgammon viciously.";
+                2: "^The bartender gives you a hard stare.";
+                3: "^A fight breaks out, over an obscure question to do with somebody's second cousin.";
+                4: "^The gentle sound of bazouki music strikes up in the background, 
+                    and gradually rises to an intolerable pitch. After
+                    a moment comes a dull thud and a strangled noise,
+                    then blessed quiet.";
+            }
+        ],
   has   light;
 
 Object  Eraina_Taverna "Eraina Taverna"
@@ -129,7 +140,7 @@ Object  -> Ekmek_Special "Ekmek Special"
         description "A speciality dessert of the Taverna: ice cream, kateifi, 
             raspberry sauce, cream. An acquired taste.",
         initial "Left untouched on one table is an Ekmek Special dessert.",
-        before EkmekSpecialBefore,
+!        before EkmekSpecialBefore,
         devil_hint "Better with chocolate ice cream, I think.",
         angel_hint "Doesn't somebody else need this more than you?",
   has   proper edible scored;

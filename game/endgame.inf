@@ -53,7 +53,7 @@ Object  Hanging_on_Rope "Hanging on Rope"
             overhang of rock above, which drops down into the darkness of
             the valley. On the tracks below, patrols of men can be heard,
             and you feel instinctively that they are not friendly.",
-        before HangingBefore,
+!        before HangingBefore,
         d_to [;
             print "You clamber down the rope, straight into a patrol of guards who capture you!^";
             Capture();
@@ -127,7 +127,7 @@ Object  Stream "Stream"
             which so spoils the view from your back garden. A rough
             ladder of wood lashed together with leather rests against
             the villa at the lowest point of the tiled roof.",
-        before StreamBefore,
+!        before StreamBefore,
         w_to Roman_Villa,
   has   light;
 
@@ -155,7 +155,7 @@ Object  -> summoning_horn "summoning horn"
 Object  rod_of_language "Rod of Language"
   with  name 'rod' 'of' 'language',
         article "the",
-        rod_action RodOfLanguageAction,
+!        rod_action RodOfLanguageAction,
   has   rod_attr;
 
 Object  Atrium "Atrium"
@@ -194,7 +194,7 @@ Object  -> bone_die "crude bone die"
         description "A crude six-sided die made from animal bone.",
         after [;
             Drop:
-                print_ret "Alea iacta est. It comes up ", (number) n, ".";
+                print_ret "Alea iacta est. It comes up ", (number) random(6), ".";
         ],
   has   ;
 
@@ -209,8 +209,8 @@ Object  Triclinium "Triclinium"
             lives on their own in this century, and this villa wouldn't
             be easy to defend.)  A doorway to the west gives onto the
             atrium.",
-        before TricliniumBefore,
-        after TricliniumAfter,
+!        before TricliniumBefore,
+!        after TricliniumAfter,
         w_to Atrium,
         d_to kitchen_well,
   has   light;
@@ -233,7 +233,7 @@ Object  Inside_Well "Inside Well"
             dangerous well. You can hardly see a thing, even with the
             aid of the torch, but curiously enough you feel warm air
             blowing across you from the west.",
-        before InsideWellBefore,
+!        before InsideWellBefore,
         w_to Hypocaust,
         u_to Triclinium,
         cant_go "Too risky. There might not be anything that way, for all you know.",
@@ -255,7 +255,7 @@ Object  Hypocaust "Hypocaust"
 
 Object  -> hypocaust_vents "hypocaust vents"
   with  name 'vents',
-        before HypocaustBefore,
+!        before HypocaustBefore,
   has   scenery;
 
 Object  Entrance "Entrance"
@@ -268,7 +268,7 @@ Object  Entrance "Entrance"
             a deserted villa, this is certainly well-guarded.",
         before [;
             Go:
-                if( noun == s_obj || noun == sw_obj || n == se_obj ) {
+                if( noun == s_obj || noun == sw_obj || noun == se_obj ) {
                     print "You walk out into the courtyard and are immediately 
                         set upon by guards, who drag you away.^";
                     Capture();
@@ -276,7 +276,7 @@ Object  Entrance "Entrance"
                 }
                 rfalse;
         ],
-        after EntranceAfter,
+!        after EntranceAfter,
         n_to Atrium,
   has   light scored;
 
@@ -367,7 +367,7 @@ Object  Encampment "Encampment"
             surrounded by hostile territory that you simply have nowhere
             to run or hide. Things are, not to put too fine a point on
             it, looking grim.",
-        before EncampmentBefore,
+!        before EncampmentBefore,
         e_to [;
             Go:
                 if( noun == e_obj ) {

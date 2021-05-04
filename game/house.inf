@@ -279,6 +279,102 @@ Object  -> antiquated_wireless "antiquated wireless"
         describe "To one side is a heavy cabinet on casters containing an 
             antiquated wireless, the kind with valves inside. On the
             top is a bakelite on-off switch.",
+        each_turn [;
+            if( location ~= parent(self) || self hasnt general )
+                rfalse;
+            print "^The radio plays a ";
+            switch( random(10) ) {
+                1: print "synthesized";
+                2: print "light orchestra";
+                3: print "choral";
+                4: print "snare drum and strings";
+                5: print "country-and-western";
+                6: print "one-finger piano";
+                7: print "Welsh coal-miners' Eisteddfod choir";
+                8: print "Hammond organ";
+                9: "easy-listening";
+                10: "~lite-n-mellow~";
+            }
+            switch( random(5) ) {
+                1: print " version of ";
+                2: print " rendition of ";
+                3: print " travesty of ";
+                4: print " arrangement of ";
+                5: print " transcription of ";
+            }
+            switch( random(70) ) {
+                 1: "Queen's ~I Want To Break Free~.";
+                 2: "Bach's ~Air on a G-string~.";
+                 3: "Mozart's ~Musical Joke~.";
+                 4: "Stockhausen's ~Piano Pieces I-IX~.";
+                 5: "Beethoven's ~Moonlight Sonata~.";
+                 6: "Summer from Vivaldi's ~Four Seasons~.";
+                 7: "the especially slow movement of Gorecki's ~Symphony no. 3~.";
+                 8: "Spandau Ballet's ~Gold~.";
+                 9: "Duran Duran's ~Is There Something I Should Know?~.";
+                10: "Derek and the Dominos' ~Layla~.";
+                11: "Don Maclean's ~American Pie~.";
+                12: "Chopin's ~Nocturne no. 1~.";
+                13: "something by Jean-Michel Jarre.";
+                14: "the Beatles' ~Yellow Submarine~.";
+                15: "the Beatles' ~She Loves You~.";
+                16: "the Beatles' ~Hey Jude~.";
+                17: "the Beatles' ~Lucy in the Sky with Diamonds~.";
+                18: "Queen's ~Bohemian Rhapsody~.";
+                19: "the Beatles' ~Magical Mystery Tour~.";
+                20: "the Beatles' ~I Am The Walrus~.";
+                21: "Bill Haley's ~Rock Around the Clock~.";
+                22: "the old Elvis Presley number ~Jailhouse Rock~.";
+                23: "the old Elvis Presley number ~Blue Suede Shoes~.";
+                24: "ELO's ~Mr Blue Sky~.";
+                25: "Sky's arrangement of Bach's Toccata in D minor for organ.";
+                26: "ABC's ~The Look of Love~.";
+                27: "the Beach Boys' ~Californian Girls~.";
+                28: "the Stranglers' ~Golden Brown~.";
+                29: "Genesis' ~That's All~.";
+                30: "Grieg's piano concerto.";
+                31: "Bruce Springsteen's ~Born in the USA~.";
+                32: "Beethoven's Symphony no. 5.";
+                33: "Beethoven's ~Emperor~ piano concerto.";
+                34: "Mozart's ~Elvira Madigan~ concerto.";
+                35: "Bach's Brandenburg Concerto no. 5.";
+                36: "Deep Purple's ~Smoke On The Water~.";
+                37: "Faure's Requiem.";
+                38: "Tchaikovsky's ~1812 Overture~.";
+                39: "the Dying Swan from Saint-Saens' ~Carnival of the Animals~.";
+                40: "the ~O Fortuna~ from Carl Orff's ~Carmina Burana~.";
+                41: "Led Zeppelin's ~Stairway to Heaven~.";
+                42: "the Bugs Bunny theme tune.";
+                43: "Strauss' ~Blue Danube~ waltz.";
+                44: "the Star Wars theme tune.";
+                45: "the Star Trek theme tune.";
+                46: "the Dallas theme tune.";
+                47: "Wagner's ~Ride of the Valkyries~ overture.";
+                48: "Dire Straits' ~Money For Nothing~.";
+                49: "Dire Straits' ~Brothers In Arms~.";
+                50: "Dire Straits' ~Tunnel Of Love~.";
+                51: "Wham's ~Wake Me Up Before You Go-Go~.";
+                52: "something abysmal by Leo Sayer.";
+                53: "Lionel Richie's ~Hello~.";
+                54: "Hot Chocolate's ~Happy Birthday~.";
+                55: "Abba's ~Mama Mia~.";
+                56: "Abba's ~Knowing Me, Knowing You~.";
+                57: "Barry Manilow's ~I Write The Songs~.";
+                58: "Ian Dury and the Blockheads' ~Hit Me With Your Rhythm Stick~.";
+                59: "Ravel's ~Bolero~.";
+                60: "~Nessun Dorma~, as sung simultaneously by Pavarotti, Carreras and Dolly Parton.";
+                61: "Michael Jackson's ~Thriller~.";
+                62: "Michael Jackson's ~Billy Jean~.";
+                63: "Michael Jackson's ~Beat It~.";
+                64: "Kylie Minogue's ~I Should Be So Lucky~.";
+                65: "the Eurovision Song Contest's finest five minutes, ~Diggy-Loo Diggy-Lay (Life Is Going My Way)~.";
+                66: "Dexy's Midnight Runners' ~Come on Eileen~.";
+                67: "Steppenwolf's ~Born to be Wild~.";
+                68: "John Cage's tuneful ~Four minutes and thirty-three seconds~.";
+                69: "Toto's ~The Eye of the Tiger~.";
+                70: "Cindi Lauper's ~Girls Just Wanna Have Fun~.";
+            }
+        ],
         number 0,
   has   concealed static switchable;
 
