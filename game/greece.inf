@@ -1,0 +1,161 @@
+Object  Sea_Shore "Sea Shore"
+  with  description "A rough rocky sea shore below barely-climbable cliffs, 
+            against which an inviting deep blue sea laps. It seems to
+            be early morning, soon after dawn, from the look of the sun
+            on the water.",
+        u_to Cliffs,
+        cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
+  has   light;
+
+Object  -> Andromeda "Andromeda"
+  with  name 'andromeda' 'maiden',
+        initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
+        before AndromedaBefore,
+  has   animate proper;
+
+Object  -> amber_hairband "amber hairband"
+  with  name 'amber' 'hairband' 'hair' 'band',
+        description "A long clasp of amber, pefect for long straggly Greek hair.",
+        article "Andromeda's",
+        rod_assoc rod_of_sacrifice,
+        devil_hint "Mmm... it still has her perfume on it. Hehehehe. Bet she's dead now.",
+  has   concealed static hidden_rod;
+
+Object  rod_of_sacrifice "Rod of Sacrifice"
+  with  name 'rod' 'of' 'sacrifice',
+        article "the",
+        rod_action RodOfSAcrificeAction,
+        angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
+  has   rod_attr;
+
+Object  Cliffs "Cliffs"
+  with  name 'pharosp' 'lighthouse' 'tower',
+        description "On top of some exposed cliffs on the Mediterranean. A 
+            dangerous slither down leads on one side to the shore, all
+            other ways down being even more hazardous. Atop the cliffs
+            is the Pharos tower, a round stone pinnacle lighthouse,
+            but there is no way in from here. A grassy walk leads east.",
+        e_to Clifftop_Walk,
+        d_to Sea_Shore,
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+Object  Clifftop_Walk "Clifftop Walk"
+  with  description "A long clifftop walk by the sea, from the lighthouse 
+            to the west to the village not far east. These fields are
+            occupied by herds of hardy mountain goats, continually
+            butting each other and frisking. To the south a path leads
+            across sparse grassland to a great outgrowth of some kind.",
+        before ClifftopWalkBefore,
+        s_to Wall_of_Thorns,
+        e_to Outside_Taverna,
+        w_to Cliffs,
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+Object  -> herd_of_goats "herd of goats"
+  with  name 'goats' 'herd' 'of',
+  has   scenery;
+
+Object Wall_of_Thorns "Wall of Thorns"
+  with  description "The rather sparse rolling landscape is dominated here 
+            by a massive, and suspiciously unnatural, wall of thorns,
+            which forms a great ring about an area perhaps a hundred
+            yards in diameter. There are goat pastures to the north.",
+        n_to Clifftop_Walk,
+        s_to wall_of_thorns_object,
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+Object  -> wall_of_thorns_object "wall of thorns"
+  with  name 'gap' 'thorns' 'of' 'wall',
+        description "It's hard to imagine what could possibly shift a wall like that.",
+        initial "A ragged gap in the wall has been burnt out to the south.",
+        door_dir s_to,
+        door_to Sacred_Earth,
+        describe "The wall rustles and clashes its thorns like a beast alive.",
+  has   door static;
+
+Object  Sacred_Earth "Sacred Earth"
+  with  description "Here inside the thorn wall, a north-south path leads 
+            across sacred earth into the imposing marble Temple of
+            Zeus. You feel distinctly uneasy walking on such hallowed
+            turf. There are any number of myths about gods getting cross
+            about that sort of thing.",
+        before SacredEarthBefore,
+        n_to Wall_of_Thorns,
+        s_to Temple_of_Zeus,
+        cant_go "The wall of thorns hems you in.",
+  has   light;
+
+Object Temple_of_Zeus "Temple of Zeus"
+  with  name 'pillar',
+        description "The beautiful candle-lit Temple of Zeus, a cavern of marble 
+            pillars which is quite empty and featureless save for the
+            entrance at the north. So much for all the rumours about
+            hoards of treasure - it looks as if Zeus (who is, by the
+            way howling with anger outside) was bluffing all along.",
+        before TempleBefore,
+        n_to Sacred_Earth,
+        cant_go "Unfortunately for you (since Zeus is watching it), the temple has only one entrance.",
+  has   light scored;
+
+Object  -> copper_coin "copper coin"
+  with  name 'copper' 'coin',
+        article "one",
+        angel_hint "This currency is only valid in ancient Greece. Where on earth have you been?",
+  has   ;
+
+Object  Outside_Taverna "Outside Taverna"
+  with  description "A long walk along the cliffs from the lighthouse 
+            leads naturally here, just outside the Eraina Taverna,
+            whose open doorway lies to the south.",
+        s_to Eraina_Taverna,
+        w_to Clifftop_Walk,
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+Object  Eraina_Taverna "Eraina Taverna"
+  with  description "A plain but cheery taverna, fill of miserable and rather 
+            ashamed men who are drinking retsina heavily. The day is
+            dawning outside the north door, but they strangely do not
+            share your uplifted feeling at the sight.",
+        n_to Clifftop_Walk,
+        cant_go "The tavern entrance is to the north.",
+  has   light scored;
+
+Object  -> Ekmek_Special "Ekmek Special"
+  with  name 'ekmek' 'special' 'dessert',
+        description "A speciality dessert of the Taverna: ice cream, kateifi, 
+            raspberry sauce, cream. An acquired taste.",
+        initial "Left untouched on one table is an Ekmek Special dessert.",
+        before EkmekSpecialBefore,
+        devil_hint "Better with chocolate ice cream, I think.",
+        angel_hint "Doesn't somebody else need this more than you?",
+  has   proper edible scored;
+
+Object  -> bartender "bartender"
+  with  name 'bar' 'tender' 'bartender',
+        description "Morose and unconvivial at the best of times. This is not the best of times.",
+        initial "Behind the bar, a depressed bartender polishes glasses.",
+  has   animate;
+
+Object  Lighthouse "Lighthouse"
+  with  name 'smudge' 'quinqu',
+        description "You stand atop a pinnacle of stone, on an early Pharos, 
+            or lighthouse. Inconsiderately enough, the builders have
+            provided no obvious way down from here. Still, there's a
+            fine view out across the Mediterranean sea into the dim
+            dawning sun. It's going to be a nice day, you can't help
+            thinking.^^In the centre of the pinnacle is a marvellous
+            device of polished bronze mirrors, its open end pointed out
+            across the bay. There seems to be very little traffic at
+            the moment, though a smudge on the horizon might possibly
+            be a quinquireme.",
+        cant_go "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
+  has   light scored;
+
+Object  -> mirrored_device "mirrored device"
+  with  name 'device' 'mirror' 'bronze',
+  has   container transparent open scenery;
+

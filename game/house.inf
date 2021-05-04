@@ -455,6 +455,21 @@ Object Servants_Room "Servant's Room"
             is still kept here, and the sight of it brings on drowsiness
             in all this warm stuffy air. All you want to do is curl up
             and sleep.",
+        before [;
+            Sleep:
+                if( parent(player) ~= servants_bed )
+                    rfalse;
+                if( servants_bed has general )
+                    "You doze awhile, but that's all.";
+                print "You sleep unexpectedly deeply, but just as you think you 
+                    are starting to wake up, you experience a sudden...^";
+                give servants_bed general;
+                while( child(player) )
+                    move child(player) to temp_location;
+                game_section = DREAMING;
+                PlayerTo(Premonition, 2);
+                rtrue;
+        ],
         w_to Attic,
   has   ;
 
@@ -470,6 +485,9 @@ Object  -> old_striped_scarf "old striped scarf"
         initial "An old striped scarf is hung up behind the doorway.",
         devil_hint "The very height of fashion, if you ignore the colours and wear it regardless.",
   has   clothing;
+
+Object  -> temp_location ""
+  has   concealed scenery;      ! My addition for moving things when sleeping in the bed
 
 Object  Old_Furniture "Old Furniture"
   with  name 'armchair' 'umbrella' 'table',
@@ -1690,10 +1708,25 @@ Object -> south_wall "south wall"
   has   concealed door open scenery static;
 
 Object Alisons_Writing_Room "Alison's Writing Room"
-  with  description "A pleasantly furnished, if now mildewed, box room. A rather small door leads back north into the attics. The room is provided with a comfortable bed, which looks very inviting.",
-    n_to Dead_End,
-    s_to windows,
-    cant_go "There's just the secret north door, unless of course you count the windows.",
+  with  description "A pleasantly furnished, if now mildewed, box room. A 
+            rather small door leads back north into the attics. The
+            room is provided with a comfortable bed, which looks very
+            inviting.",
+        n_to Dead_End,
+        s_to windows,
+        before [;
+            Sleep:
+                if( parent(player) ~= comfortable_bed )
+                    "Your mother taught you never to go to sleep until you're tucked up in bed.";
+                "You sleep briefly, fitfully, tossing and turning all the while, 
+                 and dream of Miss Alison writing at her table, and then
+                 of being caught by a strange man, who strikes his staff
+                 on the ground, then points it directly at you... You
+                 begin to fade away. Before you do, he strikes his staff
+                 again, then points it at himself and vanishes. You
+                 explode back into consciousness!";
+        ],
+        cant_go "There's just the secret north door, unless of course you count the windows.",
   has   light;
 
 Object -> comfortable_bed "comfortable bed"

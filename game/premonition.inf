@@ -1,0 +1,82 @@
+Object  Premonition "Premonition"
+  with  description "It is a frosty, clear night, but there is a scent of 
+            camp-fires burning in the distance. You are passing through
+            the landscape as if a ghost, and all seems faintly unreal. To
+            the east is one side of an animal-hide tent, but there is
+            no way in from here. To southwest, some soldiers sit around
+            the embers of a fire. There is a terrible sense of something
+            about to happen.",
+        e_to The_Generals_Tent,
+        sw_to Camp_Fire,
+  has   light;
+
+Object  The_Generals_Tent "The General's Tent"
+  with  description "This is the tent of a thin, reedy man who wears no 
+            uniform but has an obvious and commanding presence. He has an
+            aquiline, patrician nose and, at five feet four, is taller
+            than anyone else present. The others are advisers, junior
+            officers, scheming politicians and their like. A strange,
+            more solid figure stands by a trestle table at the north
+            end of the tent.",
+        n_to Beside_Table,
+        w_to Premonition,
+  has   light;
+
+Object  Beside_Table "Beside Table"
+  with  description "Beside the table is a more substantial adviser, as if 
+            she too walks in this strange spirit plane. She is wearing
+            frightening druidical robes, of strange pelts and furs,
+            with nasty-looking charms around her neck. Every so often,
+            she seems to catch sight of you out of the corner of her
+            eye, but then look round and see nothing. The military
+            men do not believe in her power, and yet... they treat her
+            with respect.",
+        s_to The_Generals_Tent,
+  has   light;
+
+Object  -> heavy_iron_mascot "heavy iron mascot"
+  with  name 'heavy' 'iron' 'mascot',
+        description "The mascot is in the shape of an ankh, with a lemniscus 
+            (or infinity) symbol moulded onto it.",
+        initial "On the table is a heavy iron mascot of some kind.",
+        number 0,
+        devil_hint "An absolute essential.",
+  has   ;
+
+Object  Camp_Fire "Camp Fire"
+  with  description "You can almost smell fear here. A motley platoon of 
+            soldiers are sitting about the embers of a fire. None are
+            talking or sleeping, and the false good humour of the evening
+            has died away. At first light, you realise, there will be a
+            battle. It isn't a risk you'd like to run in their place. And
+            there is a strange light already in the east... not yet a
+            dawn, for the soldiers seem unaware of it.",
+        e_to Near_Dolmen,
+        ne_to Premonition,
+  has   light;
+
+Object  Near_Dolmen "Near Dolmen"
+  with  description "A standing stone, perhaps a glacial erratic, stands 
+            here and on top of it is a shining blue stone, whose
+            brightness almost blinds you. You feel irresistably drawn
+            to it, and your hand reaches out...",
+        name 'bluish' 'stone' 'dolmen' 'brightness',
+        before [ ;
+! Need to intercept all actions. Not working in this version of inform
+! TODO
+            Look, Go:
+                rfalse;
+            default:
+                game_section = MODERN;
+                while( child(temp_location) )
+                    move child(temp_location) to player;
+                if( parent(heavy_iron_mascot) == player ) {
+                    StartTimer(heavy_iron_mascot, 15);
+                    Achieved(SCORE_DOLEMN);
+                }
+                PlayerTo(Servants_Room, 2);
+                move player to servants_bed;
+                "^You awaken, shivering with dread.";
+        ],
+  has   light;
+

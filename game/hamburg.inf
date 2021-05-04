@@ -1,0 +1,90 @@
+Object Museum_of_Arcana "Museum of Arcana"
+  with  name 'shadow',
+        description "A dark hall, deserted after nightfall. Outside it is a 
+            stormy October night, and rain beats against the
+            windowpanes. Shadows swoop and dive in the air like bats.",
+        cant_go "There's no apparent way out of here.",
+  has   scored;
+
+Object  -> Tarot_box "Tarot box"
+  with  name 'box' 'of' 'tarot',
+        devil_hint "There's nothing worthwhile in it.",
+  has   container transparent openable;
+
+Tarot   -> -> Castle_card "Castle"
+  with  name 'castle' 'card',
+        description "A stone castle on a hill.",
+        article "the",
+        door_to Ruined_Castle_Cafe,
+        devil_hint "It leads nowhere.";
+
+Tarot   -> -> Star_card "Star"
+  with  name 'star' 'card',
+        description "A single bright light in the darkness.",
+        article "the",
+        door_to Lighthouse,
+        devil_hint "Ugh, what a nasty bright light. Good thing you'll never go there.";
+
+Tarot   -> -> Eight_of_Wands_card "Eight of Wands"
+  with  name 'eight' 'of' 'wands' 'card',
+        article "the",
+        rod_assoc rod_of_infinity,
+        devil_hint "There's less to this card than meets the eye.",
+  has   hidden_rod;
+
+Object  -> -> Maiden_card "Maiden"
+  with  name 'maiden' 'card',
+        description "Andromeda chained to a rock on the sea-shore.",
+        article "the",
+        door_to Sea_Shore,
+        devil_hint "What an ugly girl!  Bet she's good for a laugh though.";
+
+Object rod_of_infinity "Rod of Infinity"
+  with  name 'rod' 'of' 'infinity' 'card',
+        article "the",
+        rod_action RodOfInfinityAction,
+        angel_hint "Well, where might you have seen infinity before?",
+  has   rod_attr;
+
+Tarot   Ace_of_Cups_card "Ace of Cups"
+  with  name 'ace' 'of' 'cups' 'card',
+        description "It shows a great many crystal-glass cups and glasses.",
+        article "the",
+        door_to Cups_and_Glasses,
+        devil_hint "It leads nowhere.";
+
+Object  Coven_Cell "Coven Cell"
+  with  description "An old administrative office of the museum, emptied and 
+            made into a prison cell: amateur but effective.",
+        before CellBefore,
+        number 0,
+        cant_go "There's definitely no way out of here.",
+  has   ;
+
+Object  -> goat "anxious-looking goat"
+  with  name 'anxious' 'goat',
+        article "an",
+  has   static;
+
+Object  -> crook "shepherd's crook"
+  with  name 'shepherd' 'crook',
+        rod_assoc rod_of_husbandry,
+        devil_hint "Just a crook. And what's wrong with crooks, that's what I say.",
+  has   hidden_rod;
+
+Object  -> cell_door "cell door"
+  with  name 'cell' 'door',
+        initial "The door to the south stands open.",
+        door_dir s_to,
+        door_to Museum_of_Arcana,
+        describe "As you might expect, the cell door is closed.",
+  has   door openable static locked;
+
+Object  rod_of_husbandry "Rod of Husbandry"
+  with  name 'rod' 'of' 'husbandry',
+        article "the",
+        rod_action RodOfHusbandryAction,
+        angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
+  has   rod_attr;
+
+
