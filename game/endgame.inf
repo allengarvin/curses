@@ -1,3 +1,5 @@
+Global CouncilCnt;
+
 Object  Murky_Cave "Murky Cave"
   with  description "This is a murky hillside cave, whose mouth opens to the 
             northeast, though a tight squeeze might lead a little way
@@ -52,6 +54,11 @@ Object  Hanging_on_Rope "Hanging on Rope"
             the valley. On the tracks below, patrols of men can be heard,
             and you feel instinctively that they are not friendly.",
         before HangingBefore,
+        d_to [;
+            print "You clamber down the rope, straight into a patrol of guards who capture you!^";
+            Capture();
+            rtrue;
+        ],
         u_to Spur_of_Rock,
         cant_go "Up and down are it, quite frankly.",
   has   light;
@@ -64,8 +71,21 @@ Object  -> yellow_daisy "yellow daisy"
   with  name 'yellow//p' 'daisy',
         initial "A single yellow daisy grows from a little tuft of grass 
             on the crags.",
-        before DaisyBefore,
-        after DaisyAfter,
+        before [;
+            Take:
+                if( self has moved || hemp_rope has general )
+                    rfalse;
+                "You stretch out your hand, but cannot quite reach the daisy, such is the size of the overhang.";
+        ],
+        after [;
+            Take:
+                if( self has general )
+                    rfalse;
+                give self general;
+                "Aided by the swinging of the rope, you pick the daisy.";
+            Wear:
+                "You tuck the daisy behind your ear, almost out of sight.";
+        ],
   has   clothing scored;
 
 Object  Valley_Prospect "Valley Prospect"
@@ -246,7 +266,16 @@ Object  Entrance "Entrance"
             on the hill, where Meldrew House will one day be built,
             men on horseback can be seen circling the access track. For
             a deserted villa, this is certainly well-guarded.",
-        before EntranceBefore,
+        before [;
+            Go:
+                if( noun == s_obj || noun == sw_obj || n == se_obj ) {
+                    print "You walk out into the courtyard and are immediately 
+                        set upon by guards, who drag you away.^";
+                    Capture();
+                    rtrue;
+                }
+                rfalse;
+        ],
         after EntranceAfter,
         n_to Atrium,
   has   light scored;
@@ -275,7 +304,17 @@ Object  -> tent_pole "tent pole"
                 PlayerTo(Encampment, 2);
                 rtrue;
         ],
-        number 0,
+        time_left 0,
+        time_out [;
+            give tent_pole ~static;
+            move saxon_spy to Rough_Tent;
+            StartTimer(saxon_spy, 5);
+            "^Without warning a Saxon spy (or, as the guards would no doubt put 
+             it, another Saxon spy) is thrown bodily into the tent,
+             careering into the central pole and slumping unconscious on
+             the ground as a result. For a moment the whole tent rocks
+             with the force - the pole was nearly broken.^";
+        ],
         rod_assoc rod_of_returning2,
   has   concealed static hidden_rod;
 
@@ -298,7 +337,25 @@ Object  saxon_spy "unconscious Saxon spy"
                  than you, they also did so first.";
 
         ],
-        number 0,
+        time_left 0,
+        time_out [;
+            if( location ~= Rough_Tent )
+                rfalse;
+            if( parent(self) == Rough_Tent ) {
+                remove self;
+                StartTimer(saxon_spy, 5);
+                "^Men arrive to drag the Saxon spy away to some unguessable
+                 grisly fate. They grimace at you as if to say, ~You're next.~";
+            }
+            deadflag = DIED;
+            "^The men arrive once more and this time they securely grab you 
+             by the arms. If you were an anthropologist, you'd be
+             fascinated by the ritual in which you are bound up, then
+             garotted with a cord and laid into a peat swamp. Instead,
+             your last thought is to remember the celebrated body they
+             found when they drained the marshes in 1974 to build a
+             motorway service station.";
+        ],
   has   animate;
 
 Object  Encampment "Encampment"
@@ -359,3 +416,27 @@ Object  fifty_franc_note "fifty-franc note"
   with  name 'fifty' 'franc' 'note' 'francs',
   has   ;
 
+[ Capture o;
+    if (CouncilCnt < 8) {
+        deadflag = DIED;
+        "^The guardsmen grab your head by the chin and examine you, 
+            but take you for a plain thief and immediately put you to
+            the sword. A pity they did not realise your importance,
+            but then they are only guards, and anyway if they had they
+            would probably just have done you in more unpleasantly.";
+    }
+    print "^Suddenly you are thrust before a druidical figure. He seems to 
+        recognise you, and is troubled. Perhaps because of this, your
+        life is saved and you are taken away into custody, down in the
+        valley among the army encampments.^";
+    StartTimer(tent_pole, 4);
+
+    for( o = child(player): o: o = sibling(o) )
+        if( o hasnt worn )
+            remove o;
+    CouncilCnt = 0;
+    PlayerTo(Rough_Tent, 2);
+     rtrue;
+    
+
+];
