@@ -1,3 +1,27 @@
+Global WeedkillerX;
+Global WeedkillerY;
+
+Constant XXXX 49;
+Constant c___ 48;
+
+Array garden_array -> 
+    XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX 
+    c___ c___ c___ c___ c___ XXXX c___ c___ XXXX 
+    XXXX XXXX c___ XXXX c___ c___ XXXX c___ XXXX 
+    XXXX c___ c___ c___ XXXX c___ c___ c___ XXXX 
+    XXXX XXXX c___ XXXX XXXX XXXX XXXX XXXX XXXX 
+    XXXX c___ c___ c___ c___ c___ XXXX c___ XXXX
+    XXXX XXXX XXXX XXXX c___ XXXX XXXX XXXX XXXX;
+
+Array mouse_maze -> 
+    XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX 
+    XXXX XXXX XXXX c___ c___ XXXX c___ c___ XXXX
+    XXXX XXXX XXXX XXXX c___ c___ XXXX c___ XXXX
+    XXXX XXXX XXXX XXXX XXXX c___ c___ c___ c___
+    XXXX XXXX XXXX XXXX c___ c___ XXXX XXXX XXXX
+    XXXX XXXX XXXX XXXX XXXX c___ c___ XXXX XXXX
+    XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX;
+
 [ OneTimeBonusScore ;
     if (Old_Winery has general) {
         rtrue;
@@ -75,6 +99,98 @@ Object -> -> Meldrews_History "History of the Meldrews (vol. II)"
           them up individually.",
         article "the",
         devil_hint "What a boring old book!  There's nobody worth looking up.",
+        before [ word;
+            Consult:
+                word = NextWord();
+                if( word == 'me' || word == 'myself' || word == 'self' )
+                    "^Perhaps you may one day earn a place in vol. III.";
+                switch( word ) {
+                    'joshua':
+                        "^Oh dear, the deeply regrettable Sir Joshua Meldrewe (1710-1776). 
+                         Member of the Dilletanti Society and the
+                         Hell-Fire Club, and a politician (chancellor
+                         of the exchequer 1762-3; ~probably the least
+                         competent minister ever to hold that office~ -
+                         Oxford History of England, vol. xii).^^", "His
+                         father disinherited him for wildly excessive
+                         living (he almost invariably wore jewelled
+                         buttons worth at least a thousand pounds)
+                         and for marrying a lady of easy virtue while
+                         on the run from a prison in France, where
+                         he was sentenced to be beheaded. In order to
+                         stop his sister getting the fortune, he went
+                         back to Italy and advertised for a pregnant
+                         bride to provide a male heir. This nefarious
+                         plot was foiled when he choked to death on a
+                         chicken-bone.^^It is said that he stole the
+                         money anyway near the end, and certainly some
+                         gold went missing. (He also managed to get the
+                         family stripped of its baronetcy by cheating
+                         at bridge with the Prince of Wales.)";
+                    'alison':
+                        "^Under the pseudonym Marie Swelldon, your ancestress 
+                         Alison (1871-1930) wrote several mildly
+                         successful romances. She obsessively collected
+                         lucky charms, and advertised in newspapers for
+                         double-headed coins and the like (although she
+                         never traced a rumoured find of a five-leafed
+                         clover, somewhere in County Donegall).^^In
+                         order to write in tranquillity and to avoid her
+                         husband, it was she who installed the fake wall
+                         at the far south end of the attic east wing,
+                         and each afternoon she would sneak upstairs to
+                         push it aside.";
+                    'capability':
+                        "^~Capability~ Meldrew (1761-1817) became a mildly 
+                         celebrated landscape gardener, starting a
+                         brief fashion for crypts and memorials as
+                         garden ornaments (he claimed it was closer
+                         to nature). Very little of his work now
+                         survives. His real name, incidentally, was
+                         Willard.";
+                    'roger':
+                        "^Roger (1846-1913), the elder of a pair of twins, 
+                         was very Victorian indeed, especially in his
+                         disapproval of his beautiful young wife's
+                         literary career. He thought her romances so
+                         immoral that he refused to allow the family name
+                         to appear on them. A prominent local vestryman,
+                         his own writing was confined to a great many
+                         monographs on the problems of municipal drainage,
+                         but he died before his grand National Sewerage
+                         Plan was complete.";
+                    'ebenezer':
+                        "^It seems Ebenezer (1846-1908), the younger of 
+                         a pair of twins, threw up a promising career in
+                         the East India Company one day, took a packet
+                         steamer to Cape Colony and simply marched off
+                         into the bush on a quest to find a legendary
+                         river. His maps were used for several years
+                         after, and a province was named after him
+                         for a while, but the locals call it something
+                         else now.";
+                    'isaac':
+                        "^Mad Isaac (1705-1792) went in for mystic 
+                         experiments of all kinds, and was a noted
+                         antiquarian. He believed that the Meldrew family
+                         had an ancestral curse, dooming each member to
+                         undertake a futile quest. The only way to break
+                         the curse, he thought, was for one of them to
+                         actually succeed... unfortunately he died in
+                         peculiar circumstances before finding out how.^",
+                         "^Then again, he also believed that King Arthur's
+                         wizard Merlin was buried not in a Tintagel cave,
+                         as is usually claimed, but somewhere in the
+                         back garden (near where the motorway is now),
+                         and that the moon is a giant pair of black and
+                         white discs towed through the night sky by a
+                         team of angels.";
+                    'jemima': "^She's far too recent to be included.";
+                    'peter': "^Modestly, the author (died 1940 or so?) missed himself out.";
+
+                }
+                "^Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find what you want.";
+        ],
   has   concealed;
 
 Object  -> antique_jewellery_box "antique jewellery box"
@@ -161,10 +277,32 @@ Object  -> -> nasty_battery "nasty-looking red battery"
   has   ;
 
 Object  -> -> tourist_map "tourist map"
-  with  name 'hambur' 'tourist' 'map',
+  with  name 'hamburg' 'tourist' 'map',
         description "The good news is that it has excellent grid references, 
             which are easy to look up. The bad news is that it is a map of 
             central Hamburg.",
+        before [ wn word addr;
+            Consult:
+                wn = consult_from;
+                word = NextWord();
+                addr = TryNumber(wn);
+                if( addr == 1420 ) {
+                    print "^At that exact grid reference is Meldreustrasse, a 
+                        minor back street which houses a museum of
+                        arcana.^^Suddenly you remember!  You visited the
+                        place once, and the curator Doktor Stein showed
+                        you round... and he hypnotised you into a swirl
+                        of unconsciousness...^^";
+                    StartTimer(Museum_of_Arcana, 7);
+                    move self to location;
+                    game_section = HAMBURG;
+                    PlayerTo(Museum_of_Arcana, 2);
+                    rtrue;
+                }
+                "Just some anonymous streets. The detail of this map is so tiny that 
+                 unless you have the exact four-digit grid reference for what you
+                 want, you'll never find it.";
+        ],
         devil_hint "Purely decorative.",
   has   ;
 
@@ -207,6 +345,7 @@ Object  -> calendar "calendar"
                    12: print "December";
                 }
                 print " and a watercolour painting of some ";
+                DescFlower(i);
                 " daisies.";
             Turn:
                 i++;
@@ -254,6 +393,27 @@ Object  -> antiquated_wireless "antiquated wireless"
             the top is a bakelite on-off switch.",
         before [;
             Push: "It moves easily on the casters.";
+            PushDir:
+                if( location == Airing_Cupboard || (location == Conservatory && second == s_obj) ) {
+                    print "It moves easily on the casters.^";
+
+                    AllowPushDir();
+                    rtrue;
+                }
+                if( location == Conservatory ) {
+                    if( second == e_obj )
+                        "Not upstairs you can't.";
+                    if( second == w_obj ) {
+                        deadflag = FAILED;
+                        "Aunt Jemima spends the next four hours explaining to you exactly 
+                         why she put the radio into storage. The reason
+                         is awfully convoluted and due to her firm
+                         conviction that magnetic fields influence the
+                         growth of plants. By that time you have to
+                         leave for the airport...";
+                    }
+                }
+                rfalse;
         ],
         after [;
             SwitchOn:
@@ -914,6 +1074,16 @@ Object  -> cranked_skylight "cranked skylight"
   with  name 'crank' 'skylight' 'handle',
         description "It was painted out black during the first wave of Zeppelin air raids in World War One. This is completely irrelevant, but you did ask.",
         initial "The skylight above is open, and the sky does indeed light the room.",
+        before [;
+            Turn:
+                print "With a horrid creaking noise, the crank ";
+                if( Inside_Cupboard has light ) {
+                    give Inside_Cupboard ~light ~open;
+                    "shuts down the skylight.";
+                }
+                give Inside_Cupboard light open;
+                "winds open the skylight, flooding the room with sunshine.";
+        ],
         door_dir u_to,
         door_to Roof,
         describe "Above you is a blacked-out skylight with a crank handle.",
@@ -977,7 +1147,48 @@ Object  -> iron_key "gothic-looking iron key"
 Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
   with  name 'ghost' 'sir' 'joshua',
         description "He is dressed in a grey shadow of Georgian finery.",
-        number 0,
+        number 5,
+        before [;
+            ThrowAt:
+                ! bug compatable--this doesn't check if static, scenery, or the ghost itself!!
+                remove noun;
+                if( noun == chicken_wishbone ) {
+                    move iron_key to Priests_Hole;
+                    give iron_key general;
+                    give self concealed;
+                    Achieved(SCORE_JOSHUA);
+                    "The ghost swallows the wishbone, grinning nastily. Then a 
+                     look of consternation spreads across his face. He
+                     begins to choke and as he fades away, his arms
+                     flailing wildly, he lets go of the key, which sails
+                     through the air onto the roof and (against all odds)
+                     falls neatly down a chimney.";
+                }
+                print_ret "The ghost swallows ", (the) noun, " whole and grins!";
+        ],
+        each_turn [ ;
+            self.number--;
+            switch( self.number ) {
+                4: "^The ghost laughs in a gurgling kind of way, as it were 
+                    always coughing and spluttering.";
+                3: "^The ghost begins to speak:^^                       My 
+                    hour is almost come^   When I to sulph'rous and tormenting 
+                    flames^   Must render up myself...^^Can this possibly be 
+                    the infamous Sir Joshua Meldrewe?";
+                2: "^~But not yet it hasn't, mark my word. And there's the 
+                    burden of my inheritance, little wart!  Get thee
+                    from my sight ere I slice thee as befits a hog!~";
+                1: "^~I prithee once more, begone!~";
+                0: 
+                    deadflag = FAILED;
+                    "^The ghost swoops around and through you, making you scream 
+                     with panic. Somehow you manage to run back to safety,
+                     where your family (who never believe a word of it)
+                     give you plenty of tea and occupy you with holiday
+                     arrangements. As for you, you are so traumatised
+                     that you never venture into the attic again.";
+            }
+        ],
   has   concealed animate proper;
 
 Object  Chimney "Chimney"
@@ -1014,17 +1225,17 @@ Object  -> sooty_old_stick "sooty old stick"
     }
     if( second has animate )
         "For heaven's sake, you're only looking for an out-of-date map. Murder does seem a little extreme.";
-!    if( second == wall_of_thorns_object ) {
-!        if( wall_of_thorns_object has open )
-!            "The wall wriggles in discomfort, but manages to avoid further devastation.";
-!        give wall_of_thorns_object open;
-!        "Fire leaps out from the rod into the heart of the thorn wall, which screams 
-!         out as it burns, revealing a great hole through the wild
-!         flames. You catch a tantalising glimpse of a great Temple, before
-!         the wall heals back. But it is unable to recover entirely,
-!         and a charred gap is left to the south. You could probably
-!         squeeze through it.";
-!    }
+    if( second == wall_of_thorns_object ) {
+        if( wall_of_thorns_object has open )
+            "The wall wriggles in discomfort, but manages to avoid further devastation.";
+        give wall_of_thorns_object open;
+        "Fire leaps out from the rod into the heart of the thorn wall, which screams 
+         out as it burns, revealing a great hole through the wild
+         flames. You catch a tantalising glimpse of a great Temple, before
+         the wall heals back. But it is unable to recover entirely,
+         and a charred gap is left to the south. You could probably
+         squeeze through it.";
+    }
     if( second has scenery || second has static ) {
         deadflag = DIED;
         "You start a great conflagration, and then perish in it!";
@@ -1085,6 +1296,41 @@ Object  -> ancient_prayer_book "ancient prayer book"
             about the Curse. There's so much of it that you'd better
             just look up particular years.",
         initial "The dust and grime on the floor almost obscures an ancient prayer book.",
+        before [ wn word year;
+            Consult:
+                wn = consult_from;
+                word = NextWord();
+                year = TryNumber(wn);
+                if( year < 1725 || year > 1792 )
+                    "He didn't seem to be experimenting in those days.";
+                if( year == 1792 )
+                    "In 1792, the last year of his life, ol' red-eyes becomes
+                     very excited about his new discovery. This time he
+                     claims that Merlyn bounde uppe the mystic estate
+                     (by this he means the back garden - Isaac never did
+                     have any sense of proportion) wyth great Roddes of
+                     Power. These are dangerous and sometimes useful for
+                     themselves, but are really part of a great key... the
+                     usual nonsense. Of course you never actually
+                     see these rods, because they disguise themselves
+                     until waved by someone wearing Merlyn's hat.^^",
+                     "The funny thing is that Isaac died (legend has
+                     it, by spontaneous combustion) only a week after
+                     this breakthrough, preventing him from sending yet
+                     another paper to the Royal Society. But since Merlyn
+                     supposedly lived in about the sixth century A.D.,
+                     there can't be a lot left of his hat, so the matter
+                     may be academic.";
+                print "In the year ", (number) year, ", Isaac was mainly concerned with ";
+                switch( year % 6 ) {
+                    0: "alchemy";
+                    1: "caustical opticks.";
+                    2: "concave mirrors.";
+                    3: "the edibility of reptiles.";
+                    4: "the spleens of flightless birds.";
+                    5: "melting points of metals.";
+                }
+        ],
         devil_hint "The really good research was in his earlier years.",
   has   ;
 
@@ -1135,7 +1381,11 @@ Object -> metal_door "metal door"
             Close: give coal_bunker ~open;
         ],
         door_dir n_to,
-        door_to Garden_Stream,
+        door_to [;
+            game_section = GARDEN;
+            print "Your eyes blink with the sunlight as you emerge.^";
+            return Garden_Stream;
+        ],
         describe "At the north end is a closed metal door.",
         with_key small_brass_key,
   has   door openable static lockable locked;
@@ -1180,10 +1430,10 @@ Object  -> old_timber_prop "old timber prop"
     print "You are engulfed in a cloud of spinning white lights, like insects. 
         When the swarm clears, you find yourself transported...^";
 
-!    if( game_section == ANCIENT_BRITAIN ) {
-!        dest = Infinity_Symbol;
-!        remove rod_of_returning2;
-!    }
+    if( game_section == ANCIENT_BRITAIN ) {
+        dest = Infinity_Symbol;
+        remove rod_of_returning2;
+    }
     if( game_section ~= ANCIENT_BRITAIN ) {
         switch( random(4) ) {
             1: dest = Attic;
@@ -1198,7 +1448,6 @@ Object  -> old_timber_prop "old timber prop"
     }
     rtrue;
 ];
-
 
 Object -> robot_mouse "robot mouse"
   with  name 'robot' 'mouse',
@@ -1266,8 +1515,6 @@ Object Infinity_Symbol "Infinity Symbol"
             inscribed with a black lemniscus (or infinity) symbol.^^You
             shiver with foreboding, but inexplicably feel that the map
             you're looking for must be somewhere near here.",
-!        before InfinityBefore,
-!        after InfinityAfter,
         se_to Cellar_West,
   has   light scored;
 
@@ -1292,6 +1539,21 @@ Object -> circular_arc "circular arc"
                 7: "All seven sockets are occupied by rods.";
             }
         ],
+        before [;
+            Receive:
+                if( noun hasnt rod_attr )
+                    "That won't fit in a socket.";
+                if( noun == rod_of_infinity )
+                    "The Rod of Infinity is just slightly too large to fit.";
+                if( self.number == 7 )
+                    "The sockets are all full.";
+                move noun to self;
+                give noun static;
+                self.number++;
+                if( self.number == 7 )
+                    Achieved(SCORE_INFINITY);
+                "It fits perfectly in one of the arc sockets.";
+        ],
   has   static;
 
 Object Garden_Stream "Garden Stream"
@@ -1309,7 +1571,7 @@ Object Garden_Stream "Garden Stream"
 
 Object -> coal_bunker "coal bunker"
   with  name 'coal' 'bunker' 'loading' 'door',
-        initial "On the house wall is a coal bunker, whose door stands open.",
+        when_open "On the house wall is a coal bunker, whose door stands open.",
         after [;
             Unlock: give metal_door ~locked;
             Lock: give metal_door locked;
@@ -1317,8 +1579,11 @@ Object -> coal_bunker "coal bunker"
             Close: give metal_door ~open;
         ],
         door_dir s_to,
-        door_to Dark_Passage,
-        describe "On the house wall is a coal bunker, whose loading door is shut.",
+        door_to [;
+            game_section = MODERN;
+            return Dark_Passage;
+        ],
+        when_closed "On the house wall is a coal bunker, whose loading door is shut.",
   has   door openable static locked;
 
 Object Family_Tree "Family Tree"
@@ -1402,35 +1667,111 @@ Object Garage "Garage"
         e_to Clearing,
   has   ;
 
+[ MazeBoundary x y ndx ;
+    if( x < 0 || x > 8 || y < 0 || y > 6 )
+        rfalse;
+    ndx = garden_array->(9 * y + x);
+    if( ndx == 48 )
+        return 0;
+    if( ndx == 49 )
+        return 1;
+    rtrue;
+];
+
 Object -> garden_roller "garden roller"
   with  name 'garden' 'roller' 'switch',
         description "A motorised garden roller of the kind you sit inside, 
             among whose simple controls is a big on/off switch.",
-        describe [;
-            if( self has on )
-                "The garden roller sits here, its engine still running.";
-            else
-                "A big motorised garden roller is parked here.";
+        before [;
+!0   to disallow the movement, printing a refusal;
+!1   to allow the movement, moving vehicle and player;
+!2   to disallow but print and do nothing; or
+!3   to allow but print and do nothing.
+            Go:
+                if( self hasnt on )
+                    "The motor isn't on at the moment.";
+                if( location == Garden_Stream && noun == s_obj )
+                    "The garden roller will never fit.";
+                if( (location == Family_Tree && noun == u_obj) || (location == Patio_in_Maze && noun == d_obj) )
+                    "It won't go that way.";
+                if( location ~= Maze )
+                    return 1;
+! Todo: Maze travel
         ],
+        when_on "The garden roller sits here, its engine still running.",
+        when_off "A big motorised garden roller is parked here.",
   has   enterable static switchable;
 
 Object -> weed_killer "weed killer bottle"
   with  name 'weed' 'killer' 'bottle',
-    description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
-    initial "In the shadows is a weed killer bottle.",
-    angel_hint "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens.",
+        description "If squeezed, it squirts weed killer over the ground. 
+            There are many warning labels about getting it on one's hands.",
+        initial "In the shadows is a weed killer bottle.",
+        angel_hint "The funny thing is, they didn't have weedkillers in the
+            early nineteenth century, and yet they still planned some marvellous gardens.",
+        before [ i ;
+            Squeeze:
+                if( self has general )
+                    "Nothing emerges. The bottle must be empty.";
+                if( location == Wall_of_Thorns )
+                    "A valiant, but obviously utterly hopeless idea. The weed killer does not harm a single tendril of the wall.";
+                if( location == Vegetable_Garden ) {
+                    remove runner_bean_plant;
+                    location.u_to = nothing;
+                    "Congratulations. You have devastated the runner-bean plant.";
+                }
+                if( location == Family_Tree )
+                    "Happily, the weed killer makes no impression on the beautiful old tree.";
+                if( game_section == GARDEN )
+                    "A stream of weed-killer soaks into the earth, and does nothing obvious.";
+                if( game_section ~= GARDEN_PAST )
+                    "A stream of weed-killer emerges, but evaporates almost at once, just as well considering the vile smell.";
+                if( location ~= Maze_Foundations )
+                    "A stream of weed-killer soaks into the earth, and does nothing obvious.";
+                i = MazeBoundary(MazeX, MazeY);
+                if( i == 0 )
+                    "A stream of weed-killer soaks into the grass, and does nothing obvious.";
+                WeedkillerX = MazeX;
+                WeedkillerY = MazeY;
+                "A stream of weed-killer soaks into the earth, and does nothing obvious.";
+        ],
   has   ;
 
 Object Up_the_Plane_Tree "Up the Plane Tree"
   with  name 'jemima' 'conservatory' 'window',
-    description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at the conservatory window, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
-    d_to Family_Tree,
-    cant_go "No, don't go out on a limb.",
+        description "A magnificent view of the gardens would be yours, were 
+            it not for the branches and leaves which surround you. You
+            can make out Aunt Jemima up at the conservatory window, but
+            hide from her view. Down below, the privet-hedge layout of
+            the maze can be seen through the lower branches.",
+        d_to Family_Tree,
+        cant_go "No, don't go out on a limb.",
   has   light;
 
 Object -> maze_layout "maze layout"
   with  name 'maze' 'layout',
-!        before MazeLayoutBefore,
+        before [ x y wallp ;
+            Examine:
+                print "The layout is roughly as follows:^^";
+                y = 0;
+                --y;
+                while( y < 6 ) {
+                    y++;
+                    print "    ";
+                    x = 0;
+                    x--;
+                    while( x < 8 ) {
+                        x++;
+                        wallp = MazeBoundary(x,y);
+                        if( wallp == true )
+                            print "###";
+                        else
+                            print "...";
+                    }
+                    new_line;
+                }
+            rtrue;
+        ],
   has   scenery;
 
 Object Maze "Maze"
@@ -1710,7 +2051,7 @@ Object -> poetry_book "book of Twenties poetry"
                     away by books, but somehow you have arrived in the...^";
                 move self to location;
                 game_section = UNREAL;
-!                PlayerTo(UnrealCity, 2);
+                PlayerTo(Unreal_City, 2);
                 rtrue;
         ],
         devil_hint "My my, a golden age for clear, simple poetry. At last, the dreary obscurity of Tennyson, 
@@ -1766,6 +2107,52 @@ Object  Souvenirs_Room "Souvenirs Room"
     give south_wall concealed;
     "The south wall becomes blank again.";
 ];
+
+!TODO:
+!        if (prop == prop51) {
+!            print "You walk confidently into the south wall...^";
+!            env = slide_projector;
+!            env = child(env);
+!            if (env == miniature) {
+!                game_section = GARDEN_PAST;
+!            }
+!            if (env ~= miniature) {
+!                game_section = TAROT;
+!            }
+!            if (env == Death_card) {
+!                deadflag = DIED;
+!                "^And find yourself in a golden cornfield on a sunny afternoon. You have just time to admire the ears of wheat before the scythe of the Grim Reaper cuts your soul from your body.";
+!            }
+!            if (env == Drowned_Sailor_card) {
+!                deadflag = DIED;
+!                "^You are underwater, in the wreck of a ship, surrounded by the skeletons of its former crew, whom you abruptly join as your air runs out.";
+!            }
+!            if (env == Fool_card) {
+!                deadflag = DIED;
+!                "^And find yourself stepping off a cliff. All is well for a moment, and then like a cartoon character you notice there is no ground beneath you and you plummet to a stony death far below.";
+!            }
+!            if (env has general) { 
+!                "But are unable to enter the scene for a second time.";
+!            }
+!            give env general;
+!        }
+!        if (prop == prop123) {
+!            if (o == garden_roller) {
+!                "The garden roller will never fit.";
+!            }
+!            game_section = MODERN;
+!        }
+!        if (prop == prop92) {
+!            game_section = GARDEN; 
+!            print "Your eyes blink with the sunlight as you emerge.^";
+!        }
+!        prop = prop.door_to;
+!        if (prop == 0) {
+!            print "You can't, since ";
+!            Defart(prop);   ! not popped
+!            @pop;
+!            " leads nowhere.";
+!        }
 
 Object -> slide_projector "slide projector"
   with  name 'slide' 'projector' 'switch',
@@ -1917,6 +2304,14 @@ Object Hellish_Place "Hellish Place"
         n_to Cellar_West,
         u_to Cellar_West,
         cant_go "That direction is not for the living.",
+        each_turn [;
+            switch( random(10) ) {
+                1: "^There is a horrid grinding noise from far away.^";
+                2: "^A flash of light sears your eyes, as the sulphurous flames grumble.^";
+                3: "^You can almost, but not quite, make out the noise of shouting.^";
+                4: "^Thunder and lightning can be heard from the fiery depths.^";
+            }
+        ],
   has   light;
 
 Object  -> demon "demon"
@@ -1926,18 +2321,18 @@ Object  -> demon "demon"
         number 4,
   has   animate scenery;
 
-Object  box_of_chocolates "box of chocolates"    ! 34 / 0x22
+Object  box_of_chocolates "box of chocolates"
   with  name 'box' 'of' 'chocolate',
         devil_hint "Far too nice to give to anybody else. In fact...",
   has   edible;
 
-Object  wrapping_paper "wrapping paper with reindeer on" ! 35 / 0x23
-  with  name 'wrapping' 'paper' 'reinde',
+Object  wrapping_paper "wrapping paper with reindeer on"
+  with  name 'wrapping' 'paper' 'reindeer',
         article "some",
         devil_hint "The reindeer have enormous significance.",
   has   ;
 
-Object  postcard "postcard of the Champs-Elysees"    ! 36 / 0x24
+Object  postcard "postcard of the Champs-Elysees"
   with  name 'postcard' 'card',
         description "It is addressed to the house, and postmarked 1963, but has no message. Odd, that.",
         after [;
@@ -1952,4 +2347,21 @@ Object  postcard "postcard of the Champs-Elysees"    ! 36 / 0x24
         ],
         devil_hint "There's no message there to read.",
   has   ;
+
+Object Grahams_Lair "Graham's Lair"
+  with  description "A home for the bewildered. NE to stream, NW to 
+            lighthouse, SE to cupboard, SW to Folly, N to onboat, S to
+            projector room, E to Shaftmid, W to Infroom, U to cliffs,
+            D to cave.",
+        n_to On_board_the_Phlebas,
+        s_to Souvenirs_Room,
+        e_to Dark_Shaft,
+        w_to Infinity_Symbol,
+        ne_to Garden_Stream,
+        se_to Inside_Cupboard,
+        nw_to Lighthouse,
+        sw_to Folly,
+        u_to Cliffs,
+        d_to Universe_Maintenance_Room,
+  has   light;
 

@@ -1,3 +1,7 @@
+Constant DEBUG;
+Constant SACK_OBJECT = canvas_rucksack;
+Constant MAX_CARRIED = 5;
+
 Constant Story "CURSES";
 Constant Headline "^An Interactive Diversion^Copyright (c) 1993 by Graham Nelson. New players should type ~help~.^";
 
@@ -5,15 +9,106 @@ Property angel_hint;
 Property devil_hint;
 Property rod_assoc;
 
+Array score_array2 -> 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+
 Attribute hidden_rod;
 Attribute rod_attr;
 Attribute card;
 Attribute wire;
 
+Replace ScoreSub;
+
 Include "Parser";
-Replace SearchSub;
 Include "variables.inf";
 Include "VerbLib";
+
+[ PrintRank score_var;
+    print ", earning you the rank of ";
+    if( score_array2->11 )
+        score_var = score_var - 50;
+
+    if (score_var >= 250)
+        "happy Tourist.";
+    if (score_var == 249)
+        "very nearly happy Tourist.";
+    if (score_var >= 225)
+        "Druid.";
+    if (score_var >= 200) 
+        "Master Navigator.";
+    if (score_var >= 175) 
+        "Master Voyager.";
+    if (score_var >= 150) 
+        "Voyager.";
+    if (score_var >= 125) 
+        "Explorer.";
+    if (score_var >= 100) 
+        "Adventurer.";
+    if (score_var >= 75) 
+        "Connoisseur.";
+    if (score_var >= 50) 
+        "Dilletante.";
+    if (score_var >= 35) 
+        "cynical Tourist.";
+    if (score_var >= 20) 
+        "experienced Tourist.";
+    if (score_var >= 5) 
+        "casual Tourist.";
+    if (score_var >= 1) 
+        "gauche Tourist.";
+    if (score_var >= 0) 
+        "hapless Tourist.";
+    if (0 == 99 + score_var) 
+        "highly negligent deity.";
+    "accursed Tourist.";
+];
+
+[ ScoreSub ;
+    if( deadflag == 0 ) {
+        switch( game_section ) {
+            MODERN: print "This is the afternoon of June 3rd, 1993, and you are in Meldrew House. ";
+            UNREAL: print "It is early morning on October 5th, 1922, and you are in the Unreal City. ";
+            HAMBURG: print "It is nearly midnight on October 31st, 1988, and you are in a museum in Hamburg. ";
+            TAROTAREA: print "You are passing among the ancient, unearthly world of the Tarot box. ";
+            GARDEN: print "It is the afternoon of June 3rd, 1993, and you are in the gardens. ";
+            GARDEN_PAST: print "It is about noon on March 14th, 1808, and you are in the gardens. ";
+            ANCIENT_BRITAIN: print "It is some time in the sixth century A.D., and you are in the Master Game. ";
+            DREAMING: print "Time seems to have no meaning, and you are dreaming. ";
+        }
+        print "You have so far scored ";
+    } else
+        print "In that game you scored ";
+    print (number) score, " out of a possible 300, in ", turns, " turns";
+    PrintRank();
+    rtrue;
+];
+
+
+[ DeathMessage;
+    if (deadflag == DIED) {
+        print " You have died ";
+    }
+    if (deadflag == WON) {
+        print " You have won ";
+    }
+    if (deadflag == FAILED) {
+        print " You have missed the point entirely ";
+    }
+    if (deadflag == DESTROYED_UNIVERSE) {
+        print " You have disembodied the entire universe ";
+    }
+    if (deadflag == AUSTRALIA) {
+        print " You have been transported to Australia ";
+    }
+    if (deadflag == PARADOX) {
+        print " You have been annihilated by a temporal paradox ";
+    }
+    if (deadflag == MYTH) {
+        print " You have become a constellation ";
+    }
+    if (deadflag == PRISON) {
+        print " You have been imprisoned as a terrorist ";
+    }
+];
 
 class Tarot
   with  article "the"
@@ -52,29 +147,6 @@ Include "hamburg.inf";
 Include "premonition.inf";
 Include "greece.inf";
 Include "endgame.inf";
-
-[ SearchSub o1 o2 ; ! 46074 / 0xb3fa
-!    if (noun == cafe_table) {
-!        if (complicated_looking_bomb has concealed) {
-!            give complicated_looking_bomb ~concealed;
-!            o1 = complicated_looking_bomb;
-!            remove o1;
-!            move o1 to Ruined_Castle_Cafe;
-!            "Now don't panic, but there's a ticking bomb loosely taped to the underside of the table you're sitting at!";
-!        }
-!        "You make no further alarming discoveries.";
-!    }
-    if (noun hasnt container) {
-        "You find nothing of interest.";
-    }
-    if (noun has transparent && noun hasnt open) {
-        "You can't see inside, since it is closed.";
-    }
-    if (1 == AfterRoutines()) {
-        rtrue;
-    }
-    print "You peer at ", (the) noun, ".";
-];
 
 [ Initialise;
     location = Attic;

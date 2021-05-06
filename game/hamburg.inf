@@ -4,12 +4,27 @@ Object Museum_of_Arcana "Museum of Arcana"
             stormy October night, and rain beats against the
             windowpanes. Shadows swoop and dive in the air like bats.",
         cant_go "There's no apparent way out of here.",
+        time_left 0,
+        time_out [;
+            print "^Doktor Stein appears and steps toward you, clapping his 
+                hands sharply. Suddenly dozens of robed figures leap out
+                of the darkness. Their faces are painted hideously and
+                they betray no emotion as they pinion you tight...^^Stein
+                forces your mouth open and makes you swallow a violet
+                pill. ~One of your apothecary ancestors made this drug!
+                Appropriate, no?~^^", "You feel queasy, but this is
+                perhaps the least of your problems as they drag you
+                off...^^";
+            give player general;
+            PlayerTo(Coven_Cell, 2);
+            StartTimer(Coven_Cell, 5);
+        ],
   has   scored;
 
 Object  -> Tarot_box "Tarot box"
   with  name 'box' 'of' 'tarot',
         devil_hint "There's nothing worthwhile in it.",
-  has   container transparent openable;
+  has   container openable;
 
 Tarot   -> -> Castle_card "Castle"
   with  name 'castle' 'card',
@@ -84,8 +99,23 @@ Tarot   Ace_of_Cups_card "Ace of Cups"
 Object  Coven_Cell "Coven Cell"
   with  description "An old administrative office of the museum, emptied and 
             made into a prison cell: amateur but effective.",
-!        before CellBefore,
-        number 0,
+        before [;
+            if( player has general && self.time_left < 5 )
+            "You seem to lack the will any more. The drug must have taken hold.";
+        ],    
+        time_left 0,
+        time_out [;
+                print "^A key turns in the door and Doktor Stein bursts in. 
+                    He stops to pat the goat affectionately. ~Cheer up,
+                    Dobbin. As soon as I've finished this brutal human
+                    sacrifice I'll take you for your walk.~  He feeds
+                    Dobbin some sugar-cake. ~They make such marvellous
+                    cheese,~ he explains confidentially.^";
+                deadflag = DIED;
+                if( player has general )
+                    "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
+
+        ],
         cant_go "There's definitely no way out of here.",
   has   ;
 
