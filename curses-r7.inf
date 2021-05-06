@@ -31,7 +31,7 @@ Verb 'xtravel'
 ;
 
 Verb 'xattic'
-    * special						-> XAttack
+    * special						-> XAttic
 ;
 
 Verb 'xcheat'
@@ -128,7 +128,7 @@ Verb 'dive' 'swim'
     * 							-> Swim
 ;
 
-Verb 'squash' 'squeez'
+Verb 'squash' 'squeeze'
     * noun						-> Squeeze
 ;
 
@@ -2276,9 +2276,9 @@ Global current_year;
 Global game_section = MODERN;
 Global card_ptr;
 Global MazeX = 4;
-Global MazyY = 6;
-Global global26 = 100[hole_in_the_wall?];
-Global global27 = 100[hole_in_the_wall?];
+Global MazeY = 6;
+Global WeedkillerX = 100;
+Global WeedkillerY = 100;
 Global Mouse_x = 8;
 Global Mouse_y = 3;
 Global BombTicking;
@@ -2291,7 +2291,7 @@ Global KnowLanguages;
 Global debug_deterministic_transportation;
 Global transcript_mode;
 Global debug_mode;
-Global global44 = 1[?];
+Global lookmode = 1;
 Global global45;
 Global multiflag;
 Global notheld_mode;
@@ -2467,8 +2467,33 @@ Array card_deck -->	! 9972 (0x26f4)
     invalidObj12593
     invalidObj12593
 ;
-Array global23 --> 12593[?];	! 9980 (0x26fc)
-Array Mouse_maze -->	! 10043 (0x273b)
+Array garden_array -->	! 9980 (0x26fc)
+    12593
+    12593
+    12593
+    12593
+    12592
+    12336
+    12336
+    12592
+    12337
+    12593
+    12337
+    12336
+    12592
+    12593
+    12336
+    12337
+    12336
+    12337
+    12593
+    12337
+    12593
+    12593
+    12593
+    12336
+;
+Array mouse_maze -->	! 10043 (0x273b)
     12593
     12593
     12593
@@ -2578,8 +2603,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_ad16
     routine_acfc
     PushSub
-    routine_af9a
-    routine_b10c
+    PushDir
+    TurnSub
     SwitchOnSub
     SwitchOffSub
     routine_9a20
@@ -2599,7 +2624,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_d12e
     routine_805a
     routine_cfb4
-    SpraySub
+    SqueezeSub
     routine_a5e4
     routine_a6c0
     routine_a72c
@@ -2625,14 +2650,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_e4a8
     DebugMoveRods
     routine_e5d0
-    routine_e5bc
+    DebugXTravelSub
     TriggerEndgame
     LearnLanguages
     routine_13e76
     routine_13e80
     routine_e5a0
     routine_e5d0
-    routine_e5bc
+    DebugXTravelSub
     TriggerEndgame
 ;
 
@@ -2897,28 +2922,28 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ AfterRoutines local1 local2 ;	! 18508 / 0x484c
-    local2 = location;
-    local1 = local2.after;
-    if (local1 == 65535[?]) {
+[ AfterRoutines i o ;	! 18508 / 0x484c
+    o = location;
+    i = o.after;
+    if (i == 65535) {
         ! no code
-    } else if (local1() ~= 0) {
+    } else if (i() ~= 0) {
         rtrue;
     }
-    local2 = 0;
-    local1 = global13->1;
-    if (local1 ~= 0) {
-        local2 = noun;
+    o = nothing;
+    i = global13->1;
+    if (i ~= 0) {
+        o = noun;
     }
-    if (local2 == 0) {
+    if (o == nothing) {
         rfalse;
     }
-    local1 = local2.after;
-    if (local1 == 65535[?]) {
+    i = o.after;
+    if (i == 65535) {
         rfalse;
     }
-    local1 = local1();
-    return local1;
+    i = i();
+    return i;
 ];
 
 [ routine_4894 local1 local2 ;	! 18580 / 0x4894
@@ -2988,10 +3013,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come running to investigate. In the ensuing confusion, they come across you and, of course, blame you for their incompetent masonry. You are hauled up before the county assizes...^";
         deadflag = AUSTRALIA;
     }
-    if (game_section ~= GARDEN_PAST && global26 < 100) {
-        i = global26 + 9 * global27;
-        global23->i = 48[poetry_book?];
-        global26 = 100[hole_in_the_wall?];
+    if (game_section ~= GARDEN_PAST && WeedkillerX < 100) {
+        i = WeedkillerX + 9 * WeedkillerY;
+        garden_array->i = 48[poetry_book?];
+        WeedkillerX = 100;
     }
     if (location == Hellish_Place) {
         i = random(10);
@@ -4709,17 +4734,17 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ BriefSub ;	! 36520 / 0x8ea8
-    global44 = 1[?];
+    lookmode = 1;
     "~Curses~ is now in its normal ~brief~ printing mode, which gives long descriptions of places never before visited and short descriptions otherwise.";
 ];
 
 [ VerboseSub ;	! 36630 / 0x8f16
-    global44 = 2[?];
+    lookmode = 2;
     "~Curses~ is now in its ~verbose~ mode, which always gives long descriptions of locations (even if you've been there before).";
 ];
 
 [ SuperSub ;	! 36726 / 0x8f76
-    global44 = 3[s_obj?];
+    lookmode = 3;
     "~Curses~ is now in its ~superbrief~ mode, which always gives short descriptions of locations (even if you haven't been there before).";
 ];
 
@@ -4735,10 +4760,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     new_line;
     if (verbose ~= true) {
         ! no code
-    } else if (global44 == 2[?]) {
+    } else if (lookmode == 2) {
         ! no code
     } else {
-        if (global44 == 3[s_obj?]) {
+        if (lookmode == 3) {
             jump label36924;
         }
         if (location has visited && verbose == true) {
@@ -5780,9 +5805,9 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Nothing obvious happens.";
 ];
 
-[ routine_af9a local1 ;	! 44954 / 0xaf9a
-    local1 = parent(second);
-    if (local1 ~= 1[?]) {
+[ PushDir o ;	! 44954 / 0xaf9a
+    o = parent(second);
+    if (o ~= compass) {
         "That's not a direction.";
     }
     if (second == ceiling) {
@@ -5798,12 +5823,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         "Not upstairs you can't.";
     }
     print "It moves easily on the casters.^";
-    local1 = noun;
+    o = noun;
     noun = second;
     GoSub();	! not popped
     @pop;
-    remove local1;
-    move local1 to location;
+    remove o;
+    move o to location;
     if (location == Potting_Room) {
         deadflag = FAILED;
         "Aunt Jemima spends the next four hours explaining to you exactly why she put the radio into storage. The reason is awfully convoluted and due to her firm conviction that magnetic fields influence the growth of plants. By that time you have to leave for the airport...";
@@ -5811,7 +5836,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_b10c ;	! 45324 / 0xb10c
+[ TurnSub ;	! 45324 / 0xb10c
     if (noun == cranked_skylight) {
         print "With a horrid creaking noise, the crank ";
         if (Inside_Cupboard has light) {
@@ -5832,7 +5857,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Nothing obvious happens.";
 ];
 
-[ SpraySub i ;	! 45498 / 0xb1ba
+[ SqueezeSub i ;	! 45498 / 0xb1ba
     if (noun has animate) {
         "Keep your hands to yourself.";
     }
@@ -5865,12 +5890,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (location ~= Maze_Foundations) {
             ! no code
         } else {
-            i = MazeBoundary(MazeX,MazyY);
+            i = MazeBoundary(MazeX,MazeY);
             if (i == nothing) {
                 "A stream of weed-killer soaks into the grass, and does nothing obvious.";
             }
-            global26 = MazeX;
-            global27 = MazyY;
+            WeedkillerX = MazeX;
+            WeedkillerY = MazeY;
             "A stream of weed-killer soaks into the seedbed, and does nothing obvious.";
         }
     }
@@ -6440,7 +6465,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Location is now determinable.";
 ];
 
-[ routine_e5bc local1 ;	! 58812 / 0xe5bc
+[ DebugXTravelSub local1 ;	! 58812 / 0xe5bc
     remove player;
     move player to Grahams_Lair;
     location = Grahams_Lair;
@@ -7707,7 +7732,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "The coal dust makes you cough and splutter, and your eyes stream. You are unable to concentrate on doing anything here.";
 ];
 
-[ MazeBoundary x y local3 ;	! 69396 / 0x10f14
+[ MazeBoundary x y ndx ;	! 69396 / 0x10f14
     if (x < 0) {
         rfalse;
     }
@@ -7720,14 +7745,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (y > 6) {
         rfalse;
     }
-    local3 = global23->(9 * y + x);
-    if (local3 == 48[poetry_book?]) {
-        local3 = 0;
-        return local3;
+    ndx = garden_array->(9 * y + x);
+    if (ndx == 48) {
+        ndx = 0;
+        return ndx;
     }
-    if (local3 == 49[Souvenirs_Room?]) {
-        local3 = 1[?];
-        return local3;
+    if (ndx == 49) {
+        ndx = 1;
+        return ndx;
     }
     rtrue;
 ];
@@ -7745,7 +7770,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (y > 6) {
         rfalse;
     }
-    pos = Mouse_maze->(9 * y + x);
+    pos = mouse_maze->(9 * y + x);
     if (pos == 48) {
         pos = 0;
         return pos;
@@ -7770,7 +7795,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         local3 = MazeBoundary(local1,local2);
         return local3;
     }
-    local3 = global23->(9 * local2 + local1);
+    local3 = garden_array->(9 * local2 + local1);
     if (local3 == 48[poetry_book?]) {
         local3 = 0;
         return local3;
@@ -7838,7 +7863,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ FamilyTreeBefore env ;	! 69770 / 0x1108a
     MazeX = 4;
-    MazyY = 6;
+    MazeY = 6;
     if (verb ~= ##Go) {
         rfalse;
     }
@@ -7859,29 +7884,29 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         "Remember the poor grass!";
     }
     if (verb == ##Go) {
-        if (MazeX == 4 && MazyY == 6 && noun == s_obj) {
+        if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (MazeX == 0 && MazyY == 1 && noun == w_obj) {
+        if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
         newx = 100;
         newy = 100;
         if (noun == n_obj) {
             newx = MazeX;
-            newy = MazyY - 1;
+            newy = MazeY - 1;
         }
         if (noun == e_obj) {
             newx = MazeX + 1;
-            newy = MazyY;
+            newy = MazeY;
         }
         if (noun == s_obj) {
             newx = MazeX;
-            newy = MazyY + 1;
+            newy = MazeY + 1;
         }
         if (noun == w_obj) {
             newx = MazeX - 1;
-            newy = MazyY;
+            newy = MazeY;
         }
         if (newx == 100) {
             "The maze is constructed with rectangular grid-lines of privet, so you can only proceed north, east, south or west.";
@@ -7890,14 +7915,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             "The privet hedge is in the way.";
         }
         MazeX = newx;
-        MazyY = newy;
+        MazeY = newy;
         if (location == Patio_in_Maze) {
             location = Maze;
             local1 = 132[garden_roller?];
             remove local1;
             move local1 to Maze;
         }
-        if (MazeX == 7 && MazyY == 5) {
+        if (MazeX == 7 && MazeY == 5) {
             location = Patio_in_Maze;
             local1 = 132[garden_roller?];
             remove local1;
@@ -7914,29 +7939,29 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ MazeFoundationsBefore local1 newx newy ;	! 70388 / 0x112f4
     if (verb == ##Go) {
-        if (MazeX == 4 && MazyY == 6 && noun == s_obj) {
+        if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (MazeX == 0 && MazyY == 1 && noun == w_obj) {
+        if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
         newx = 100;
         newy = 100;
         if (noun == n_obj) {
             newx = MazeX;
-            newy = MazyY - 1;
+            newy = MazeY - 1;
         }
         if (noun == e_obj) {
             newx = MazeX + 1;
-            newy = MazyY;
+            newy = MazeY;
         }
         if (noun == s_obj) {
             newx = MazeX;
-            newy = MazyY + 1;
+            newy = MazeY + 1;
         }
         if (noun == w_obj) {
             newx = MazeX - 1;
-            newy = MazyY;
+            newy = MazeY;
         }
         if (newx == 100) {
             "The maze is constructed along rectangular grid-lines, so you can only proceed north, east, south or west.";
@@ -7945,7 +7970,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             "The wooden fence is in the way.";
         }
         MazeX = newx;
-        MazyY = newy;
+        MazeY = newy;
         LookSub(true);	! not popped
         @pop;
         rtrue;
@@ -7970,17 +7995,17 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ MazeDescribe numwalls n_side e_side s_side w_side ;	! 70672 / 0x11410
-    --MazyY;
-    n_side = MazeBoundary(MazeX,MazyY);
-    ++MazyY;
+    --MazeY;
+    n_side = MazeBoundary(MazeX,MazeY);
+    ++MazeY;
     ++MazeX;
-    s_side = MazeBoundary(MazeX,MazyY);
+    s_side = MazeBoundary(MazeX,MazeY);
     --MazeX;
-    ++MazyY;
-    e_side = MazeBoundary(MazeX,MazyY);
-    --MazyY;
+    ++MazeY;
+    e_side = MazeBoundary(MazeX,MazeY);
+    --MazeY;
     --MazeX;
-    w_side = MazeBoundary(MazeX,MazyY);
+    w_side = MazeBoundary(MazeX,MazeY);
     ++MazeX;
     numwalls = n_side + (s_side + (e_side + w_side));
     if (numwalls == 4) {
@@ -8032,8 +8057,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ MazeOldDescribe numwalls n_side e_side s_side w_side ;	! 70994 / 0x11552
-    numwalls = MazeBoundary(MazeX,MazyY);
-    if (MazeX == 7 && MazyY == 5) {
+    numwalls = MazeBoundary(MazeX,MazeY);
+    if (MazeX == 7 && MazeY == 5) {
         numwalls = 2;
     }
     new_line;
@@ -8046,17 +8071,17 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (numwalls == 2) {
         print "You stand on a rough patch of grass, marked out with whitewash. ";
     }
-    --MazyY;
-    n_side = routine_10fe6(MazeX,MazyY);
-    ++MazyY;
+    --MazeY;
+    n_side = routine_10fe6(MazeX,MazeY);
+    ++MazeY;
     ++MazeX;
-    s_side = routine_10fe6(MazeX,MazyY);
+    s_side = routine_10fe6(MazeX,MazeY);
     --MazeX;
-    ++MazyY;
-    e_side = routine_10fe6(MazeX,MazyY);
-    --MazyY;
+    ++MazeY;
+    e_side = routine_10fe6(MazeX,MazeY);
+    --MazeY;
     --MazeX;
-    w_side = routine_10fe6(MazeX,MazyY);
+    w_side = routine_10fe6(MazeX,MazeY);
     ++MazeX;
     numwalls = n_side + (s_side + (e_side + w_side));
     if (numwalls == 4) {
@@ -8107,17 +8132,17 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         }
     }
   .label71442;
-    --MazyY;
-    n_side = routine_10ffe(MazeX,MazyY);
-    ++MazyY;
+    --MazeY;
+    n_side = routine_10ffe(MazeX,MazeY);
+    ++MazeY;
     ++MazeX;
-    s_side = routine_10ffe(MazeX,MazyY);
+    s_side = routine_10ffe(MazeX,MazeY);
     --MazeX;
-    ++MazyY;
-    e_side = routine_10ffe(MazeX,MazyY);
-    --MazyY;
+    ++MazeY;
+    e_side = routine_10ffe(MazeX,MazeY);
+    --MazeY;
     --MazeX;
-    w_side = routine_10ffe(MazeX,MazyY);
+    w_side = routine_10ffe(MazeX,MazeY);
     ++MazeX;
     numwalls = n_side + (s_side + (e_side + w_side));
     if (numwalls == 0) {
@@ -8242,7 +8267,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ FollyAfter ;	! 71920 / 0x118f0
     MazeX = 0;
-    MazyY = 1;
+    MazeY = 1;
     rfalse;
 ];
 
@@ -10077,7 +10102,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "embrace";
             jump label85722;
         }
-        if (local3 == 'squeez') {
+        if (local3 == 'squeeze') {
             print "squeeze";
             jump label85722;
         }

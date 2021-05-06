@@ -352,12 +352,12 @@ Global 19	current_year:int
 Global 20	game_section:game_area
 GlobalArray 21 card_deck:array(6*object)
 Global 22	card_ptr:int
-GlobalArray 23	global23:array(?)
+GlobalArray 23	garden_array:array(24*int)
 Global 24	MazeX:int
-Global 25	MazyY:int
-Global 26	global26:?
-Global 27	global27:?
-GlobalArray 28	Mouse_maze:array(27*int) ! byte array, unsupported by reform (6x9 array)
+Global 25	MazeY:int
+Global 26	WeedkillerX:int
+Global 27	WeedkillerY:int
+GlobalArray 28	mouse_maze:array(27*int) ! byte array, unsupported by reform (6x9 array)
 Global 29	Mouse_x:int
 Global 30	Mouse_y:int
 Global 31	BombTicking:bool
@@ -373,7 +373,7 @@ Global 40	KnowLanguages:bool
 Global 41	debug_deterministic_transportation:bool
 Global 42	transcript_mode:int
 Global 43	debug_mode:bool
-Global 44	global44:?
+Global 44	lookmode:int
 Global 45	global45:?
 Global 46	multiflag:bool
 Global 47	notheld_mode:bool
@@ -648,7 +648,7 @@ Action 97	Xyzzy
 ! Cheat/debug commands
 Action 98	XAllow	! 'xallow' special
 Action 99	XCheat	! 'xcheat'
-Action 100	XAttack	! 'xattic' special
+Action 100	XAttic 	! 'xattic' special
 Action 101	XTravel	! 'xtrave'
 Action 102	XMaste	! 'xmaste'
 Action 103	XAsnc	! 'xasnc'
@@ -661,7 +661,7 @@ Routine 0x7a07 LeaveAttic
 Routine 0x42b0 Main
 Routine 0x43aa PlayTheGame i j k l aflag metaverb:bool nonexit:bool
 Routine 0x47fc RunRoutines i j k
-Routine 0x484c AfterRoutines:int
+Routine 0x484c AfterRoutines:int i:int o:object
 Routine 0x4894 routine_4894
 Routine 0x48b4 Banner i:int
 Routine 0x4960 Time i:? j k:object 
@@ -758,9 +758,9 @@ Routine 0xac5c routine_ac5c
 Routine 0xacfc routine_acfc
 Routine 0xad16 routine_ad16
 Routine 0xae0a PushSub who:object
-Routine 0xaf9a routine_af9a
-Routine 0xb10c routine_b10c
-Routine 0xb1ba SpraySub i:object
+Routine 0xaf9a PushDir o:object
+Routine 0xb10c TurnSub
+Routine 0xb1ba SqueezeSub i:object
 Routine 0xb3f0 routine_b3f0
 Routine 0xb3fa SearchSub o1:object o2:object
 Routine 0xb6de routine_b6de
@@ -787,7 +787,7 @@ Routine 0xe4a8 routine_e4a8
 Routine 0xe4c6 DebugMoveRods obj:object
 Routine 0xe55e LearnLanguages
 Routine 0xe5a0 routine_e5a0
-Routine 0xe5bc routine_e5bc
+Routine 0xe5bc DebugXTravelSub
 Routine 0xe5d0 routine_e5d0
 Routine 0xe5de SleepSub env:object sib:object
 Routine 0xe7c8 OneTimeBonusScore unused
@@ -854,7 +854,7 @@ Routine 0x10cd4 ConsultingRoomBefore
 Routine 0x10df2 PosterBefore
 Routine 0x10e5e MaskAfter
 Routine 0x10eb2 PassageBefore
-Routine 0x10f14 MazeBoundary:bool x:int y:int
+Routine 0x10f14 MazeBoundary:bool x:int y:int ndx:int
 Routine 0x10f54 MouseMove2:bool x:int y:int pos:int
 Routine 0x10f94 routine_10f94
 Routine 0x10fe6 routine_10fe6
@@ -1082,6 +1082,7 @@ Word	southe	southeast
 Word	southw	southwest
 Word	souven	souvenir
 Word	specia	special
+Word    squeez  squeeze
 Word	stalki	stalking
 Word	swallo	swallow
 Word	sweepi	sweeping
