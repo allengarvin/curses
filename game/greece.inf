@@ -4,13 +4,46 @@ Object  Sea_Shore "Sea Shore"
             be early morning, soon after dawn, from the look of the sun
             on the water.",
         u_to Cliffs,
+        before [;
+            Swim:
+                deadflag = MYTH;
+                "As you dive into the sea, you catch sight of Andromeda 
+                 looking suddenly cheerful. It soon becomes apparent
+                 why, as a Kraken wakes from the depths of the ocean and
+                 swipes you for a quick snack. You seem to have replaced
+                 her as sacrifice... a Pyrrhic victory.";
+        ],
         cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
   has   light;
 
 Object  -> Andromeda "Andromeda"
   with  name 'andromeda' 'maiden',
-        initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
-!        before AndromedaBefore,
+        initial "Chained to the cliff face is the beautiful Andromeda, 
+            looking nobly out to sea as she awaits her fate.",
+        before [;
+            Give: 
+                if( noun has edible ) {
+                    if( noun == Ekmek_Special ) {
+                        remove noun;
+                        give amber_hairband ~static moved;
+                        move amber_hairband to player;
+                        "She smiles as if to say there's not much point 
+                         watching her waist-line any more, and hungrily
+                         wolfs down her favourite dessert. As a gesture
+                         of thanks, she takes off her amber hairband
+                         and hands it you. Quickly she readopts her
+                         noble pose, however, just in case anyone else
+                         is looking.";
+                    }
+                    "She looks with obvious hunger, but her sense of duty 
+                     wins out and she refuses.";
+                }
+            Kiss: "She evades you deftly, after years of practice with Greek men.^";
+            Attack: "No need, if the sea-monster is all it's cracked up to be.";
+            Ask, Tell, Answer, Order:
+                "Andromeda hisses something contemptuous at you in Greek. (Demotic, not Attic, 
+                 ironically enough, but then it's all Greek to you.)";
+        ],
   has   animate proper;
 
 Object  -> amber_hairband "amber hairband"
