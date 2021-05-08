@@ -4,6 +4,9 @@ Global WeedkillerY;
 Constant XXXX 49;
 Constant c___ 48;
 
+Global Mouse_x;
+Global Mouse_y;
+
 Array garden_array -> 
     XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX 
     c___ c___ c___ c___ c___ XXXX c___ c___ XXXX 
@@ -232,7 +235,7 @@ Object  Old_Winery "Old Winery"
             lost and unlamented. Steps, provided with a good strong
             banister rail, lead down and to the west, and the banister
             rail continues along a passage east.",
-        after [;
+        each_turn [;
             if( self has general )
                 rfalse;
             print "^As you disturb the still air, the attic key, which was 
@@ -241,7 +244,6 @@ Object  Old_Winery "Old Winery"
                 sink as it does, rattling down some distance. How on
                 earth are you going to get it back?^";
             give Old_Winery general;
-            rfalse;
         ],
         s_to Attic,
         e_to Storage_Room,
@@ -417,7 +419,7 @@ Object  -> antiquated_wireless "antiquated wireless"
         ],
         after [;
             SwitchOn:
-                StartTimer(self, 6);
+                StartTimer(self, 5);
                 "Nothing happens.";
             SwitchOff:
                 ! Bug here: needs StopTimer
@@ -429,7 +431,7 @@ Object  -> antiquated_wireless "antiquated wireless"
             give antiquated_wireless general;
             env = parent(self);
             if( location == env )
-                print "^The radio valves glow, and execrable so-called easy 
+                "^The radio valves glow, and execrable so-called easy 
                     listening music fills the air with a sort of bland
                     aural candy-floss.^";
             if( location == Potting_Room && env == Conservatory )
@@ -580,7 +582,72 @@ Object  -> Jemima "Jemima"
         initial "Aunt Jemima, who has for years collected varieties of daisy, 
             is engaged in her regular annual pastime of deciding which
             species make the best chains.",
-        number 0,
+        time_left 0,
+        time_out [;
+            move daisy_chain to self;
+        ],
+        each_turn [;
+            if( daisy_chain in self && location == Potting_Room ) {
+                move daisy_chain to player;
+                give daisy_chain worn;
+                "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
+            }
+        ],
+        life [ c;
+            Give:
+                if( noun == box_of_chocolates ) {
+                    remove box_of_chocolates;
+                    Achieved(SCORE_CHOCOLATE);
+                    give self general;
+                    "Aunt Jemima pounces on the chocolates, wolfs down a strawberry cream and 
+                     persuades you to have an unappetising toffee
+                     cracknell. ~Now~, she says, ~Your turn for a daisy
+                     chain!~^^You try to look pleased.^^~Let's see,
+                     the others have had theirs... I have only a few
+                     colours left. What would you like?~";
+                }
+                print "A peace offering is a nice idea, but somehow ", (the) noun;
+                if( noun == gift_wrapped_parcel ) {
+                    print " lacks style... after all, it isn't Christmas.^";
+                    OneTimeBonusScore();
+                    rtrue;
+                }
+                " seems inappropriate.";
+            Kiss:
+                print "She is slightly mollified, but only slightly.^";
+                OneTimeBonusScore();
+                rtrue;
+            Attack:
+                "Well, she's annoying, but that's family for you.";
+            ThrowAt:
+                "Well, quite. Best to just grit your teeth and put up with her though.";
+            Answer:
+                if( gas_mask has worn )
+                    "Not through a gas mask you can't.";
+                if( self hasnt general )
+                    "She pretends not to have heard, a favourite ploy of hers when sulking.";
+                give self ~general;
+                c = 0;
+                switch( noun ) {
+                    'yellow': c = 1;
+                    'blue': c = 2;
+                    'red': c = 3;
+                    'white': c = 4;
+                    'green': c = 5;
+                    'orange': c = 6;
+                }
+                if( c == 0 ) {
+                    c = 5;
+                    print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
+                } else
+                    print "~Right you are then, I'm sure I have some which are just right.~^^";
+                StartTimer(self, 10);
+                daisy_chain.number = c;
+                "After a moment she notices you're still here. ~Come back later, 
+                 it'll be done soon.~ You groan inwardly but force a
+                 sickly smile. Should have eaten the chocolates myself,
+                 you find yourself thinking.";
+        ],
   has   animate proper;
 
 [ DescFlower n;
@@ -768,11 +835,12 @@ Object  -> scratched_cupboard "scratched cupboard"
 Object  -> -> gift_wrapped_parcel "gift-wrapped parcel"
   with  name 'gift' 'parcel',
         before [;
-            remove self;
-            move postcard to player;
-            move box_of_chocolates to player; 
-            move wrapping_paper to player;
-            "You tear open the parcel to find a box of chocolates and a card.";
+            Open:
+                remove self;
+                move postcard to player;
+                move box_of_chocolates to player; 
+                move wrapping_paper to player;
+                "You tear open the parcel to find a box of chocolates and a card.";
         ],
         devil_hint "Shame the wrapping paper won't come off.",
   has   ;
@@ -999,6 +1067,12 @@ Object -> dark_shaft_obj2 "dark shaft"
                 }
                 "It disappears into the darkness.";
         ],
+        before [;
+            Enter:
+                if( dumbwaiter in location )
+                    << Enter dumbwaiter >>;
+                "But you suffer from vertigo. Even the thought of the plane journey tomorrow is nerve-wracking.";
+        ],
   has   container transparent open scenery;
 
 Object  Dead_End "Dead End"
@@ -1019,11 +1093,25 @@ Object  -> canvas_rucksack "canvas rucksack"
 
 Object -> secret_door "secret door"
   with  name 'secret' 'door',
-        initial "A secret door stands open in the south wall!",
+        when_open "A secret door stands open in the south wall!",
         door_dir s_to,
         door_to Alisons_Writing_Room,
-        describe "The secret door is closed.",
+        when_closed "The secret door is closed.",
   has   concealed door open openable static;
+
+Object  -> s_wall "south wall"
+  with  name 's//' 'south' 'wall',
+        before [;
+            Push:
+                if( location == Dead_End && secret_door has concealed ) {
+                    give secret_door ~concealed;
+                    Achieved(SCORE_SECRETDOOR);
+                    "A secret door springs open!";
+                }
+                rfalse;
+            Enter:
+        ],
+  has   scenery;
 
 Object  Inside_Cupboard "Inside Cupboard" 
   with  description "This is a surprisingly spacious cupboard, which you can't 
@@ -1081,7 +1169,8 @@ Object  -> cranked_skylight "cranked skylight"
                     give Inside_Cupboard ~light ~open;
                     "shuts down the skylight.";
                 }
-                give Inside_Cupboard light open;
+                give Inside_Cupboard light;
+                give self open;
                 "winds open the skylight, flooding the room with sunshine.";
         ],
         door_dir u_to,
@@ -1148,8 +1237,8 @@ Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
   with  name 'ghost' 'sir' 'joshua',
         description "He is dressed in a grey shadow of Georgian finery.",
         number 5,
-        before [;
-            ThrowAt:
+        life [;
+            Give, ThrowAt:
                 ! bug compatable--this doesn't check if static, scenery, or the ghost itself!!
                 remove noun;
                 if( noun == chicken_wishbone ) {
@@ -1167,6 +1256,8 @@ Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
                 print_ret "The ghost swallows ", (the) noun, " whole and grins!";
         ],
         each_turn [ ;
+            if( self has concealed )
+                rfalse;
             self.number--;
             switch( self.number ) {
                 4: "^The ghost laughs in a gurgling kind of way, as it were 
@@ -1195,11 +1286,12 @@ Object  Chimney "Chimney"
   with  description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, 
             so you are held up only by jamming your feet against the walls. To the east, through 
             the fireplace, is the cupboard.",
-        before [;
+        before [ o;
             Go:
                 if( noun == d_obj ) {
-                    if( child(player) )
-                        "It's too narrow a squeeze for you at present.";
+                    objectloop( o in player )
+                        if( o hasnt worn )
+                            "It's too narrow a squeeze for you at present.";
                     print "You squeeze awkwardly down the chimney. Lucky your best clothes are all packed, 
                         because you're getting filthy.^";
                     rfalse;
@@ -1458,6 +1550,40 @@ Object -> robot_mouse "robot mouse"
             metal chassis.",
         initial "In one corner is a dust-covered robot mouse.",
         devil_hint "It can't even follow orders.",
+        orders [ dst p;
+            Go:
+                dst = nothing;
+                p = parent(self);
+                if( p ~= Cellars_South && p ~= Cellar_West && p ~= Cellars )
+                    "The mouse wheels spin, but can't get a good enough grip to move.";
+                if( noun == ne_obj || noun == se_obj || noun == sw_obj || noun == nw_obj || noun == d_obj || noun == u_obj )
+                    "The mouse bleeps with annoyance.";
+                if( location == Cellars_South ) {
+                    switch( noun ) {
+                        n_obj: dst = Cellars;
+                        w_obj: 
+                            Mouse_x = 8;
+                            Mouse_y = 3;
+                            dst = hole_in_the_wall;
+                    }
+                } else if( location == Cellar_West && noun == e_obj ) {
+                    dst = Cellars;
+                } else if( location == Cellars ) {
+                    switch( noun ) {
+                        w_obj: dst = Cellar_West;
+                        s_obj: dst = Cellars_South;
+                    }
+                }
+                if( dst == nothing )
+                    "The mouse emits a low-pitched bleep.";
+                move self to dst;
+                if( dst == hole_in_the_wall )
+                    "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
+                else
+                    "The mouse runs off as ordered.";
+            default:
+                "The mouse emits a querulous, unhappy bleep.";
+        ],
   has   talkable;
 
 Object  rod_of_returning "Rod of Returning"
@@ -1477,8 +1603,60 @@ Object  Cellars_South "Cellars South"
         n_to Cellars,
   has   ;
 
+[ MouseMove2 x y pos ;
+    if( x < 0 || x > 8 || y < 0 || y > 6 )
+        rfalse;
+    pos = mouse_maze->(9 * y + x);
+    if( pos == 48 )
+        rfalse;
+    if (pos == 49)
+        rtrue;
+    rtrue;
+];
+
 Object  -> hole_in_the_wall "hole in the wall"
-  with  name 'hole' 'mouseh',
+  with  name 'hole' 'mousehole',
+        orders [ x1 y1;
+            if( robot_mouse notin self )
+                rfalse;
+            Go:
+                if( Mouse_x == 8 && Mouse_y == 3 && noun == e_obj ) {
+                    move robot_mouse to Cellars_South;
+                    print "The mouse runs back out of the hole, looking dustier but none the worse for its adventure";
+                    if( parent(small_brass_key) ~= robot_mouse )
+                        ".";
+                    move small_brass_key to Cellars_South;
+                    ", and then almost looks proud as a magnet cuts out and something metal drops off the underside of the mouse onto the floor. The lost key is found!";
+                } else if( noun == n_obj ) {
+                    x1 = Mouse_x;
+                    y1 = Mouse_y - 1;
+                } else if( noun == e_obj ) {
+                    x1 = Mouse_x + 1;
+                    y1 = Mouse_y;
+                } else if( noun == s_obj ) {
+                    x1 = Mouse_x;
+                    y1 = Mouse_y + 1;
+                } else if( noun == w_obj ) {
+                    x1 = Mouse_x - 1;
+                    y1 = Mouse_y;
+                }
+                if( MouseMove2(x1,y1) == true )
+                    "From somewhere inside the hole, you hear a disconsolate bleep.";
+
+                Mouse_x = x1;
+                Mouse_y = y1;
+            if( Mouse_x == 4 && Mouse_y == 1 ) {
+                if( parent(small_brass_key) == hole_in_the_wall) {
+                    move small_brass_key to robot_mouse;
+                    "From somewhere inside the hole, you hear the spinning of tiny 
+                     wheels, followed by an excitable high-pitched beep and a dull 
+                     clanging noise.";
+                }
+            }
+            "From somewhere inside the hole, you hear tiny wheels spin.";
+
+            default: "The mouse emits a querulous, unhappy bleep.";
+        ],
   has   scenery talkable;
 
 Object  -> -> small_brass_key "small brass key"
@@ -1499,7 +1677,7 @@ Object -> Gothic_door "Gothic door"
   with  name 'gothic' 'iron' 'door',
         initial "In the northwest wall the iron door stands open.",
         door_dir nw_to,
-        door_to nw_to,
+        door_to Infinity_Symbol,
         describe "In the northwest wall is a heavy, imposing Gothic iron door.",
         with_key iron_key,
   has   door openable static lockable locked;
@@ -1694,16 +1872,15 @@ Object -> garden_roller "garden roller"
                     "The garden roller will never fit.";
                 if( (location == Family_Tree && noun == u_obj) || (location == Patio_in_Maze && noun == d_obj) )
                     "It won't go that way.";
-                if( location ~= Maze )
-                    return 1;
+                return 1;
 ! Todo: Maze travel
         ],
         when_on "The garden roller sits here, its engine still running.",
         when_off "A big motorised garden roller is parked here.",
-  has   enterable static switchable;
+  has   enterable static switchable transparent;
 
 Object -> weed_killer "weed killer bottle"
-  with  name 'weed' 'killer' 'bottle',
+  with  name 'weed' 'killer' 'bottle' 'weedkiller',
         description "If squeezed, it squirts weed killer over the ground. 
             There are many warning labels about getting it on one's hands.",
         initial "In the shadows is a weed killer bottle.",
@@ -1774,10 +1951,107 @@ Object -> maze_layout "maze layout"
         ],
   has   scenery;
 
+[ MazeDescribe numwalls n_side e_side s_side w_side ;   ! 70672 / 0x11410
+    --MazeY;
+    n_side = MazeBoundary(MazeX,MazeY);
+    ++MazeY;
+    ++MazeX;
+    s_side = MazeBoundary(MazeX,MazeY);
+    --MazeX;
+    ++MazeY;
+    e_side = MazeBoundary(MazeX,MazeY);
+    --MazeY;
+    --MazeX;
+    w_side = MazeBoundary(MazeX,MazeY);
+    ++MazeX;
+    numwalls = n_side + (s_side + (e_side + w_side));
+    if (numwalls == 4) {
+        "^You are hedged in on all sides.";
+    }
+    if (numwalls == 3) {
+        print "^You are hedged in and can only go back ";
+    }
+    if (numwalls == 2) {
+        print "^The corridor runs ";
+    }
+    if (numwalls == 1) {
+        print "^At this junction, the maze runs ";
+    }
+    if (numwalls == 0) {
+        "^This is a crossroads in the maze.";
+    }
+    while( numwalls < 4 ) {
+        if (n_side == false) {
+            print "north";
+            n_side = true;
+        } else if (s_side == false) {
+            print "east";
+            s_side = true;
+        } else if (e_side == false) {
+            print "south";
+            e_side = true;
+        } else if (w_side == false) {
+            print "west";
+            w_side = true;
+        }
+        ++numwalls;
+        if (numwalls == 4) {
+            ".";
+        }
+        if (numwalls == 3) {
+            print " and ";
+        }
+        if (numwalls == 2) {
+            print ", ";
+        }
+        if (numwalls == 1) {
+            print ", ";
+        }
+    }
+    rtrue;
+];
+
 Object Maze "Maze"
   with  description "A maze of green privet passages, all alike.",
-!        before MazeBefore,
-!        after MazeAfter,
+        before [ newx newy;
+            Exit: "Remember the poor grass!";
+            Go:
+                if( MazeX == 4 && MazeY == 6 && noun == s_obj )
+                    rfalse;
+                if( MazeX == 0 && MazeY == 1 && noun == w_obj )
+                    rfalse;
+                newx = 100; newy = 100;
+                if( noun == n_obj ) {
+                    newx = MazeX;
+                    newy = MazeY - 1;
+                } else if( noun == e_obj ) {
+                    newx = MazeX + 1;
+                    newy = MazeY;
+                } else if( noun == s_obj ) {
+                    newx = MazeX;
+                    newy = MazeY + 1;
+                } else if( noun == w_obj ) {
+                    newx = MazeX - 1;
+                    newy = MazeY;
+                }
+                if( newx == 100 )
+                    "The maze is constructed with rectangular grid-lines of 
+                     privet, so you can only proceed north, east, south or west.";
+                if( MazeBoundary(newx,newy) )
+                    "The privet hedge is in the way.";
+                MazeX = newx;
+                MazeY = newy;
+                if( location == Patio_in_Maze ) {
+                    move garden_roller to Maze;
+                } else if( MazeX == 7 && MazeY == 5 ) {
+                    move garden_roller to Patio_in_Maze;
+                }
+                << Look >>;
+        ],
+        after [;
+            Look:
+                return MazeDescribe();
+        ],
         s_to Family_Tree,
         w_to Viewpoint_Ledge,
         cant_go "The privet hedges are in the way.",
@@ -2085,19 +2359,17 @@ Object  Souvenirs_Room "Souvenirs Room"
   has   ;
 
 [ ShowProjectorImage o dto;
-    print "the picture on ", (the) o;
+    print "the picture of ", (the) o;
     dto = o.door_to;
     if( dto == nothing )
         ".";
     ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
 ];
 
-[ DisplayProjector o dto w ;
+[ DisplayProjector o dto ;
     if( o ~= nothing ) {
         dto = o.door_to;
         if( dto ~= nothing) {
-            w = south_wall;
-            w.door_to = dto;
             give south_wall ~concealed;
         }
         print "The south wall lights up with ";
@@ -2107,52 +2379,6 @@ Object  Souvenirs_Room "Souvenirs Room"
     give south_wall concealed;
     "The south wall becomes blank again.";
 ];
-
-!TODO:
-!        if (prop == prop51) {
-!            print "You walk confidently into the south wall...^";
-!            env = slide_projector;
-!            env = child(env);
-!            if (env == miniature) {
-!                game_section = GARDEN_PAST;
-!            }
-!            if (env ~= miniature) {
-!                game_section = TAROT;
-!            }
-!            if (env == Death_card) {
-!                deadflag = DIED;
-!                "^And find yourself in a golden cornfield on a sunny afternoon. You have just time to admire the ears of wheat before the scythe of the Grim Reaper cuts your soul from your body.";
-!            }
-!            if (env == Drowned_Sailor_card) {
-!                deadflag = DIED;
-!                "^You are underwater, in the wreck of a ship, surrounded by the skeletons of its former crew, whom you abruptly join as your air runs out.";
-!            }
-!            if (env == Fool_card) {
-!                deadflag = DIED;
-!                "^And find yourself stepping off a cliff. All is well for a moment, and then like a cartoon character you notice there is no ground beneath you and you plummet to a stony death far below.";
-!            }
-!            if (env has general) { 
-!                "But are unable to enter the scene for a second time.";
-!            }
-!            give env general;
-!        }
-!        if (prop == prop123) {
-!            if (o == garden_roller) {
-!                "The garden roller will never fit.";
-!            }
-!            game_section = MODERN;
-!        }
-!        if (prop == prop92) {
-!            game_section = GARDEN; 
-!            print "Your eyes blink with the sunlight as you emerge.^";
-!        }
-!        prop = prop.door_to;
-!        if (prop == 0) {
-!            print "You can't, since ";
-!            Defart(prop);   ! not popped
-!            @pop;
-!            " leads nowhere.";
-!        }
 
 Object -> slide_projector "slide projector"
   with  name 'slide' 'projector' 'switch',
@@ -2175,6 +2401,7 @@ Object -> slide_projector "slide projector"
                 o = child(self);
                 if( o == nothing )
                     rfalse;
+                give south_wall ~concealed;
                 return DisplayProjector(o);
             SwitchOff:
                 give south_wall concealed;
@@ -2182,13 +2409,43 @@ Object -> slide_projector "slide projector"
             LetGo:
                 DisplayProjector(nothing);
                 rtrue;
+            Receive:
+                if( self has on )
+                    give south_wall ~concealed;
         ],
   has   container open scenery switchable;
 
 Object -> south_wall "south wall"
-  with  door_dir s_to,
-        door_to nothing,
-  has   concealed door open scenery static;
+  with  name 's//' 'south' 'wall',
+        door_dir s_to,
+        door_to [ card;
+            if( slide_projector hasnt on )  
+                rfalse;
+            card = child(slide_projector);
+            if( ~~card )
+                rfalse;
+            if( card has general )
+                "But are unable to enter the scene for a second time.";
+            print "You walk confidently into the south wall...^";
+            if( card == miniature )
+                game_section = GARDEN_PAST;
+            else
+                game_section = TAROT;
+            if( card == Death_card ) {
+                deadflag = DIED;
+                "^And find yourself in a golden cornfield on a sunny afternoon. You have just time to admire the ears of wheat before the scythe of the Grim Reaper cuts your soul from your body.";
+            }
+            if( card == Drowned_Sailor_card ) {
+                deadflag = DIED;
+                "^You are underwater, in the wreck of a ship, surrounded by the skeletons of its former crew, whom you abruptly join as your air runs out.";
+            }
+            if( card == Fool_card ) {
+                deadflag = DIED;
+                "^And find yourself stepping off a cliff. All is well for a moment, and then like a cartoon character you notice there is no ground beneath you and you plummet to a stony death far below.";
+            }
+            return card.door_to;
+        ],
+  has   concealed door open scenery;
 
 Object Alisons_Writing_Room "Alison's Writing Room"
   with  description "A pleasantly furnished, if now mildewed, box room. A 

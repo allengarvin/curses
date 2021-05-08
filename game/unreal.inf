@@ -150,6 +150,14 @@ Object  -> silk_handkerchief "silk handkerchief"
   with  name 'silk' 'handkerchief' 'hanky' 'hankie',
         description "Monogrammed J. A. P., but that's no great matter.",
         initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
+        before [;
+            Wave:
+                if( location == Down_by_River && tourist_boat hasnt open ) {
+                    give tourist_boat open;
+                    "You wave the handkerchief, and the boat glides smoothly across the river toward you.";
+                }
+                rfalse;
+        ],
         devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth wouldn't attract anyone, would it?",
   has   ;
 

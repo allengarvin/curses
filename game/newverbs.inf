@@ -6,7 +6,11 @@
 ];
     
 Verb 'xtravel'
-    *                           -> XTravel
-;
+    *                           -> XTravel;
 
+Verb 'strike'
+    * noun                      -> Strike;
+
+Verb 'point'
+    * noun 'at' noun            -> Point;
 

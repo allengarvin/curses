@@ -9,19 +9,61 @@ Property angel_hint;
 Property devil_hint;
 Property rod_assoc;
 
-Array score_array2 -> 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+Array score_array2 -> 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 
 Attribute hidden_rod;
 Attribute rod_attr;
+Attribute rod_charged;
 Attribute card;
 Attribute wire;
 
 Replace ScoreSub;
+Replace WaveSub;
 
 Include "Parser";
 Include "variables.inf";
 Include "VerbLib";
 
+Global rod_score;
+
+[ StrikeSub ;
+    if( parent(noun) ~= player )
+        "But you aren't holding it.";
+    if( noun hasnt rod_attr )
+        print_ret "You ineffectually bash ", (the) noun, " on the ground.";
+    if( noun has rod_charged ) {
+        deadflag = DIED;
+        "The already-charged rod explodes with cataclysmic violence, burying everything nearby in rubble!";
+    }
+    give noun rod_charged;
+    Achieved(SCORE_WAND);
+    if( location == Ruined_Castle_Cafe )
+        "You look rather conspicuous striking the rod on the cafe table, 
+         but everyone else assumes you're part of the cabaret. Anyway,
+         the rod charges up as usual.";
+
+    "The rod charges up with etherial power, drawn up from the earth through ley lines...";
+];
+
+[ PointSub func;
+    if( parent(noun) ~= player )
+        "But you aren't holding it.";
+    if( parent(second) == player )
+        "It's too fiddly pointing the rod at something you're holding.";
+    if( noun hasnt rod_attr )
+        "Ok. (Why?)";
+    if( noun hasnt rod_charged )
+        "Nothing happens.";
+    Achieved(SCORE_AIMWAND);
+    
+    func = noun.rod_action;
+    if( func == -1 )
+        "Not implemented yet.";
+    give noun ~rod_charged;
+    func();
+    rtrue;
+];
+    
 [ PrintRank score_var;
     print ", earning you the rank of ";
     if( score_array2->11 )
@@ -80,6 +122,47 @@ Include "VerbLib";
     print (number) score, " out of a possible 300, in ", turns, " turns";
     PrintRank();
     rtrue;
+];
+
+[ WaveSub o ;
+    o = parent(noun);
+    if( o ~= player )
+        "But you aren't holding it.";
+    o = noun;
+    if( o has hidden_rod ) {
+        if (daisy_chain has worn) {
+            if( daisy_chain.number == 1 ) {
+                score = score + 6;
+                rod_score = rod_score + 6;
+                print "Light pulses around the daisy chain, then leaps out to engulf ", 
+                    (the) noun, " which melts into the ";
+                remove noun;
+                o = noun.rod_assoc;
+                move o to player;
+                print_ret (name) o, "!";
+            }
+        }
+        if( yellow_daisy has worn ) {
+            score = score + 6;
+            rod_score = rod_score + 6;
+            print "Light pulses from the daisy behind your ear, leaping out to engulf ", 
+                (the) noun, " which melts into ";
+            remove noun;
+            o = noun.rod_assoc;
+            move o to player;
+            if( o has rod_attr ) {
+                print (the) o;
+            }
+            if( o hasnt rod_attr ) {
+                print (a) o;
+            }
+            "!";
+        }
+    }
+    if( o has rod_attr ) {
+        "That seems to be not quite how they work...";
+    }
+    "You look ridiculous waving ", (the) o, ".";
 ];
 
 
