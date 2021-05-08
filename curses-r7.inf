@@ -169,7 +169,7 @@ Verb 'nap' 'sleep' 'snooze'
     * 							-> Sleep
 ;
 
-Verb 'consum' 'eat' 'gobble' 'ingest' 'munch'
+Verb 'consume' 'eat' 'gobble' 'ingest' 'munch'
     * held						-> Eat
 ;
 
@@ -200,11 +200,11 @@ Verb 'rip' 'tear'
     * noun						-> Rip
 ;
 
-Verb 'attack' 'break' 'crack' 'destro' 'fight' 'hit' 'kill' 'murder' 'smash' 'torture' 'wreck'
+Verb 'attack' 'break' 'crack' 'destroy' 'fight' 'hit' 'kill' 'murder' 'smash' 'torture' 'wreck'
     * noun						-> Attack
 ;
 
-Verb 'consul'
+Verb 'consult'
     * held 'about' special				-> Consult2
 ;
 
@@ -340,7 +340,7 @@ Verb 'close' 'cover' 'shut'
     * noun						-> Close
 ;
 
-Verb 'open' 'uncovered' 'undo' 'unwrap'
+Verb 'open' 'uncover' 'undo' 'unwrap'
     * noun						-> Open
     * noun 'with' held					-> Unlock
 ;
@@ -368,7 +368,7 @@ Verb 'l//' 'look'
     * 'through' noun					-> SearchSub
 ;
 
-Verb 'full' 'fullsc'
+Verb 'full' 'fullscore'
     * 							-> FullScore
 ;
 
@@ -438,7 +438,7 @@ Verb 'assume' 'don' 'wear'
     * held						-> Wear
 ;
 
-Verb 'extrac' 'remove' 'shed'
+Verb 'extract' 'remove' 'shed'
     * held						-> Disrobe
     * multi						-> Take
     * multiinside 'from' noun				-> Remove
@@ -690,7 +690,7 @@ Object box_of_chocolates "box of chocolates"	! 34 / 0x22
   has	edible;
 
 Object wrapping_paper "wrapping paper with reindeer on"	! 35 / 0x23
-  with	name 'wrapping' 'paper' 'reinde',
+  with	name 'wrapping' 'paper' 'reindeer',
 	article "some",
 	devil_hint "The reindeer have enormous significance.",
   has	;
@@ -894,7 +894,7 @@ Object Roof "Roof"	! 64 / 0x40
   has	light;
 
 Object Battlements "Battlements"	! 65 / 0x41
-  with	name 'battle' 'crenel',
+  with	name 'battlements' 'crenellated',
 	description "The old crenellated battlements of the house. An Englishman's home is, of course, his castle, but Meldrew Hall never saw much fighting and these military-looking features were just a seventeenth-century fashion. They also weren't intended for standing on, and the only safe way to proceed is back southeast.^^It is peculiarly cold here.",
 	se_to Roof,
 	cant_go "The rooftop is far too dangerous in that direction.",
@@ -997,7 +997,7 @@ Object -> delicate_gold_key "delicate gold key"	! 79 / 0x4f
   has	concealed scored;
 
 Object Old_Winery "Old Winery"	! 80 / 0x50
-  with	name 'banister' 'rail' 'crack' 'paraph',
+  with	name 'banister' 'rail' 'crack' 'paraphernalia',
 	description "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east.",
 	after WineryAfter,
 	s_to Attic,
@@ -1020,7 +1020,7 @@ Object -> -> nasty_battery "nasty-looking red battery"	! 82 / 0x52
   has	;
 
 Object -> -> tourist_map "tourist map"	! 83 / 0x53
-  with	name 'hambur' 'tourist' 'map',
+  with	name 'hamburg' 'tourist' 'map',
 	description "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg.",
 	devil_hint "Purely decorative.",
   has	;
@@ -1135,7 +1135,7 @@ Object Cellars_South "Cellars South"	! 99 / 0x63
   has	;
 
 Object -> hole_in_the_wall "hole in the wall"	! 100 / 0x64
-  with	name 'hole' 'mouseh',
+  with	name 'hole' 'mousehole',
   has	scenery talkable;
 
 Object -> -> small_brass_key "small brass key"	! 101 / 0x65
@@ -1170,7 +1170,7 @@ Object Infinity_Symbol "Infinity Symbol"	! 104 / 0x68
   has	light scored;
 
 Object -> lemniscus "lemniscus"	! 105 / 0x69
-  with	name 'infinity' 'lemnis' 'symbol',
+  with	name 'infinity' 'lemniscus' 'symbol',
   has	scenery;
 
 Object -> circular_arc "circular arc"	! 106 / 0x6a
@@ -1314,7 +1314,7 @@ Object -> plane_tree "plane tree"	! 125 / 0x7d
   has	scenery;
 
 Object Mosaic "Mosaic"	! 126 / 0x7e
-  with	name 'perspephone' 'scenes' 'quadra',
+  with	name 'perspephone' 'scenes' 'quadrants',
 	description "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitor's shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists.",
 	w_to Family_Tree,
 	u_to Family_Tree,
@@ -1442,7 +1442,7 @@ Object -> big_electricians_switch "big electrician's switch"	! 143 / 0x8f
   has	scenery static switchable on;
 
 Object Viewpoint_Ledge "Viewpoint Ledge"	! 144 / 0x90
-  with	name 'motorway' 'coache',
+  with	name 'motorway' 'coaches',
 	description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
 	before LedgeBefore,
 	e_to Maze,
@@ -1617,7 +1617,7 @@ Object -> poster "poster"	! 168 / 0xa8
   has	scenery;
 
 Object Consulting_Room "Consulting Room"	! 169 / 0xa9
-  with	name 'sevenb' 'candel' 'sticks' 'table',
+  with	name 'sevenbranched' 'candelebra' 'sticks' 'table',
 	description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table, on which is an electric bell push and a wicked Tarot pack.",
 	before ConsultingRoomBefore,
 	d_to Shadowy_Hallway,
@@ -1636,7 +1636,7 @@ Object -> bell_push "bell push"	! 172 / 0xac
   has	scenery;
 
 Object Madame_Sosostris "Madame Sosostris, famous clairvoyante"	! 173 / 0xad
-  with	name 'sosost' 'madame' 'clairvoyant',
+  with	name 'sosostris' 'madame' 'clairvoyant',
 	description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
   has	concealed animate proper;
 
@@ -1657,7 +1657,7 @@ Object Fool_card "Fool"	! 175 / 0xaf
   has	card;
 
 Object Drowned_Sailor_card "Drowned Sailor"	! 176 / 0xb0
-  with	name 'drowne' 'sailor' 'card',
+  with	name 'drowned' 'sailor' 'card',
 	description "Those are pearls that were his eyes...",
 	article "the",
 	door_to Ruined_Castle_Cafe,
@@ -1785,7 +1785,7 @@ Object -> black_wire "black wire"	! 195 / 0xc3
   has	static wire;
 
 Object Cups_and_Glasses "Cups and Glasses"	! 196 / 0xc4
-  with	name 'cups' 'glasse' 'skylight' 'crates',
+  with	name 'cups' 'glasses' 'skylight' 'crates',
 	description "This basement room is filled with crate after crate of glasses and cups, enough for an entire hotel, or restaurant perhaps. A little light comes in from an opaque skylight which is at street level outdoors. There is no way out of here, since the only door is shut tight.",
 	n_to windowed_door,
 	number 0,
@@ -1914,7 +1914,7 @@ Object -> bartender "bartender"	! 213 / 0xd5
   has	animate;
 
 Object Lighthouse "Lighthouse"	! 214 / 0xd6
-  with	name 'smudge' 'quinqu',
+  with	name 'smudge' 'quinquireme',
 	description "You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Inconsiderately enough, the builders have provided no obvious way down from here. Still, there's a fine view out across the Mediterranean sea into the dim dawning sun. It's going to be a nice day, you can't help thinking.^^In the centre of the pinnacle is a marvellous device of polished bronze mirrors, its open end pointed out across the bay. There seems to be very little traffic at the moment, though a smudge on the horizon might possibly be a quinquireme.",
 	cant_go "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
   has	light scored;
@@ -2029,7 +2029,7 @@ Object -> mosaic "mosaic"	! 232 / 0xe8
   has	scenery;
 
 Object Guard_Quarters "Guard Quarters"	! 233 / 0xe9
-  with	name 'armour' 'spears' 'hides' 'blanke',
+  with	name 'armour' 'spears' 'hides' 'blankets',
 	description "Whatever function this spacious room once had, now it is evidently home to military men, for it is filled with crude armour, spears, rough blankets which are little more than animal hides. Fortunately for you the guards are absent.",
 	e_to Atrium,
   has	light;
@@ -2540,8 +2540,9 @@ Array task_scores -->	! 10106 (0x277a)
     0
     0
     0
+    0
 ;
-Array score_array2 --> 17;	! 10124 (0x278c)
+Array score_array2 --> 18;	! 10124 (0x278c)
 Array BombWires --> 4;	! 10149 (0x27a5)
 Array global55 --> 1;	! 10154 (0x27aa)
 Array global56 --> 1;	! 10170 (0x27ba)
@@ -2597,7 +2598,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     HandleSub
     routine_9e26
     routine_a8b6
-    routine_a8cc
+    WaveSub
     SetSub
     DigSub
     routine_ad16
@@ -2608,7 +2609,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     SwitchOnSub
     SwitchOffSub
     routine_9a20
-    routine_a47a
+    AttackSub
     routine_ac5c
     routine_d122
     HintSub
@@ -2885,7 +2886,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         @pop;
         jump label18211;
     }
-    if (j == 13914['fullsc'?]) {
+    if (j == 13914['fullscore'?]) {
         FullScoreSub();	! not popped
         @pop;
         jump label18211;
@@ -5512,7 +5513,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "It's good that you can express your frustration in such a mild way.";
 ];
 
-[ routine_a47a ;	! 42106 / 0xa47a
+[ AttackSub ;	! 42106 / 0xa47a
     if (noun == Jemima) {
         "Well, she's annoying, but that's family for you.";
     }
@@ -5607,24 +5608,24 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You wave, feeling foolish.";
 ];
 
-[ routine_a8cc local1 ;	! 43212 / 0xa8cc
-    local1 = parent(noun);
-    if (local1 ~= player) {
+[ WaveSub o ;	! 43212 / 0xa8cc
+    o = parent(noun);
+    if (o ~= player) {
         "But you aren't holding it.";
     }
-    local1 = noun;
-    if (local1 has hidden_rod) {
+    o = noun;
+    if (o has hidden_rod) {
         if (daisy_chain has worn) {
-            local1 = 115[daisy_chain?];
-            local1 = local1.number;
-            if (local1 == 1[?]) {
+            o = daisy_chain;
+            o = o.number;
+            if (o == compass) {
                 score = score + 6;
                 rod_score = rod_score + 6;
                 print "Light pulses around the daisy chain, then leaps out to engulf the ", (name) noun, " which melts into the ";
                 remove noun;
-                local1 = noun.rod_assoc;
-                move local1 to player;
-                (name) local1, "!";
+                o = noun.rod_assoc;
+                move o to player;
+                (name) o, "!";
             }
         }
         if (yellow_daisy has worn) {
@@ -5632,27 +5633,27 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             rod_score = rod_score + 6;
             print "Light pulses from the daisy behind your ear, leaping out to engulf the ", (name) noun, " which melts into ";
             remove noun;
-            local1 = noun.rod_assoc;
-            move local1 to player;
-            if (local1 has rod_attr) {
-                Defart(local1);	! not popped
+            o = noun.rod_assoc;
+            move o to player;
+            if (o has rod_attr) {
+                Defart(o);	! not popped
                 @pop;
             }
-            if (local1 hasnt rod_attr) {
-                Indefart(local1);	! not popped
+            if (o hasnt rod_attr) {
+                Indefart(o);	! not popped
                 @pop;
             }
             "!";
         }
     }
-    if (local1 has rod_attr) {
+    if (o has rod_attr) {
         "That seems to be not quite how they work...";
     }
-    if (local1 == 180[silk_handkerchief?] && location == Down_by_River && tourist_boat hasnt open) {
+    if (o == silk_handkerchief && location == Down_by_River && tourist_boat hasnt open) {
         give tourist_boat open;
         "You wave the handkerchief, and the boat glides smoothly across the river toward you.";
     }
-    "You look ridiculous waving the ", (name) local1, ".";
+    "You look ridiculous waving the ", (name) o, ".";
 ];
 
 [ StrikeWand env ;	! 43616 / 0xaa60
@@ -6026,7 +6027,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (i == 14411['isaac//p'?]) {
         "^Mad Isaac (1705-1792) went in for mystic experiments of all kinds, and was a noted antiquarian. He believed that the Meldrew family had an ancestral curse, dooming each member to undertake a futile quest. The only way to break the curse, he thought, was for one of them to actually succeed... unfortunately he died in peculiar circumstances before finding out how.^", "^Then again, he also believed that King Arthur's wizard Merlin was buried not in a Tintagel cave, as is usually claimed, but somewhere in the back garden (near where the motorway is now), and that the moon is a giant pair of black and white discs towed through the night sky by a team of angels.";
     }
-    if (i == 13606['ebenez//p'?]) {
+    if (i == 13606['ebenezer//p'?]) {
         "^It seems Ebenezer (1846-1908), the younger of a pair of twins, threw up a promising career in the East India Company one day, took a packet steamer to Cape Colony and simply marched off into the bush on a quest to find a legendary river. His maps were used for several years after, and a province was named after him for a while, but the locals call it something else now.";
     }
     if (i == 15622['roger//p'?]) {
@@ -7815,15 +7816,15 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     return local3;
 ];
 
-[ routine_10ffe local1 local2 local3 ;	! 69630 / 0x10ffe
-    local3 = routine_10f94(local1,local2);
-    if (local3 == 1[?]) {
-        local3 = 0;
+[ OldMazeBoundary x y ndx ;	! 69630 / 0x10ffe
+    ndx = routine_10f94(x,y);
+    if (ndx == 1) {
+        ndx = 0;
     }
-    if (local3 == 2[?]) {
-        local3 = 1[?];
+    if (ndx == 2) {
+        ndx = 1;
     }
-    return local3;
+    return ndx;
 ];
 
 ! References: maze_layout.before
@@ -7966,7 +7967,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (newx == 100) {
             "The maze is constructed along rectangular grid-lines, so you can only proceed north, east, south or west.";
         }
-        if (routine_10ffe(newx,newy) ~= 0) {
+        if (OldMazeBoundary(newx,newy) ~= false) {
             "The wooden fence is in the way.";
         }
         MazeX = newx;
@@ -8133,16 +8134,16 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
   .label71442;
     --MazeY;
-    n_side = routine_10ffe(MazeX,MazeY);
+    n_side = OldMazeBoundary(MazeX,MazeY);
     ++MazeY;
     ++MazeX;
-    s_side = routine_10ffe(MazeX,MazeY);
+    s_side = OldMazeBoundary(MazeX,MazeY);
     --MazeX;
     ++MazeY;
-    e_side = routine_10ffe(MazeX,MazeY);
+    e_side = OldMazeBoundary(MazeX,MazeY);
     --MazeY;
     --MazeX;
-    w_side = routine_10ffe(MazeX,MazeY);
+    w_side = OldMazeBoundary(MazeX,MazeY);
     ++MazeX;
     numwalls = n_side + (s_side + (e_side + w_side));
     if (numwalls == 0) {
@@ -9083,7 +9084,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (wrd == 'book') {
         topic = T_BOOK;
     }
-    if (wrd == 'ebenez//p') {
+    if (wrd == 'ebenezer//p') {
         topic = T_EBENEZER;
     }
     if (wrd == 'projector') {
@@ -9104,7 +9105,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (wrd == 'tarot') {
         topic = T_TAROT;
     }
-    if (wrd == 'sosost') {
+    if (wrd == 'sosostris') {
         topic = T_TAROT;
     }
     if (wrd == 'boat') {
@@ -9154,7 +9155,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (wrd == 'infinity') {
         topic = T_MEDICINE;
     }
-    if (wrd == 'lemnis') {
+    if (wrd == 'lemniscus') {
         topic = T_MEDICINE;
     }
     if (wrd == 'arc') {
@@ -10086,7 +10087,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "examine";
             jump label85722;
         }
-        if (local3 == 'extrac') {
+        if (local3 == 'extract') {
             print "extract";
             jump label85722;
         }
@@ -10110,7 +10111,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "purchase";
             jump label85722;
         }
-        if (local3 == 'consul') {
+        if (local3 == 'consult') {
             print "consult";
             jump label85722;
         }
@@ -10122,7 +10123,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "describ";
             jump label85722;
         }
-        if (local3 == 'uncovered') {
+        if (local3 == 'uncover') {
             print "uncover";
             jump label85722;
         }
