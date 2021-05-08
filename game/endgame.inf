@@ -1,4 +1,5 @@
-Global CouncilCnt;
+ ! Global CouncilCnt;
+ ! recoded using kitchen_well.number, plus a daemon
 
 Object  Murky_Cave "Murky Cave"
   with  description "This is a murky hillside cave, whose mouth opens to the 
@@ -53,7 +54,6 @@ Object  Hanging_on_Rope "Hanging on Rope"
             overhang of rock above, which drops down into the darkness of
             the valley. On the tracks below, patrols of men can be heard,
             and you feel instinctively that they are not friendly.",
-!        before HangingBefore,
         d_to [;
             print "You clamber down the rope, straight into a patrol of guards who capture you!^";
             Capture();
@@ -127,7 +127,12 @@ Object  Stream "Stream"
             which so spoils the view from your back garden. A rough
             ladder of wood lashed together with leather rests against
             the villa at the lowest point of the tiled roof.",
-!        before StreamBefore,
+        u_to "You climb the ladder and are about to jump onto the roof 
+            when you catch sight of a man swaddled in animal furs,
+            spreadeagled over the tiles, looking down into the central
+            courtyard of the villa. He has a nasty-looking sword and
+            since he hasn't seen you, you quietly shin back down the
+            ladder again.",
         w_to Roman_Villa,
   has   light;
 
@@ -155,7 +160,12 @@ Object  -> summoning_horn "summoning horn"
 Object  rod_of_language "Rod of Language"
   with  name 'rod' 'of' 'language',
         article "the",
-!        rod_action RodOfLanguageAction,
+        rod_action [;
+            if( second ~= player )
+                "Nothing obvious happens.";
+            KnowLanguages = true;
+            "Nothing obvious happens. You curse eloquently in Celtic.";
+        ],
   has   rod_attr;
 
 Object  Atrium "Atrium"
@@ -209,8 +219,24 @@ Object  Triclinium "Triclinium"
             lives on their own in this century, and this villa wouldn't
             be easy to defend.)  A doorway to the west gives onto the
             atrium.",
-!        before TricliniumBefore,
-!        after TricliniumAfter,
+        before [;
+            Go:
+                if( noun ~= d_obj )
+                    rfalse;
+                if( kitchen_well hasnt open )
+                    rfalse;
+                if( kitchen_well has general ) {
+                    print "Aware of the dangers, you very carefully lower yourself...^";
+                    Achieved(SCORE_TRICLINIUM);
+                    rfalse;
+                }
+                deadflag = DIED;
+                "Having no reason to suppose the well is very deep, you 
+                 cheerfully lower yourself in. This turns out to be
+                 something of a misjudgement and you soon lose your
+                 grip and fall, endlessly banging against the walls
+                 until finally...";
+        ],
         w_to Atrium,
         d_to kitchen_well,
   has   light;
@@ -219,12 +245,112 @@ Object  -> kitchen_well "kitchen well"
   with  name 'well' 'hinged' 'wooden' 'cover',
         description "The well has a hinged wooden cover. You can't tell 
             by looking how deep it is.",
-        initial "The hinged wooden cover is raised, revealing a circular 
+        when_open "The hinged wooden cover is raised, revealing a circular 
             well about a yard in diameter. It is very dark inside.",
         door_dir d_to,
         door_to Inside_Well,
-        describe "In one corner is a hinged wooden cover of some kind, which is shut.",
-        number 0,
+        when_closed "In one corner is a hinged wooden cover of some kind, which is shut.",
+        after [;
+            Receive:
+                remove noun;
+                if( noun has light ) {
+                    give kitchen_well general;
+                    "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
+                }
+                if( noun ~= historical_pamphlet )
+                    StartTimer(kitchen_well,3);
+                "It drops into the well-shaft.";
+        ],
+        number -1,
+        time_left 0,
+        time_out [;
+            if( location == Triclinium ) {
+                give kitchen_well general;
+                print "^You hear a splash from far down in the depths of the well.^";
+            }
+            StartDaemon(self);
+        ],
+        daemon [;
+            self.number ++;
+            switch( self.number ) {
+                1: "^From up on the hill you hear the blowing of a horn.";
+                2: "^Horses are approaching the villa, coming down the hill.";
+                3: "^The sound of horses draws nearer.";
+                4: 
+                   if( location == Entrance ) {
+                     print "^Horsemen suddenly gallop into the courtyard and you are soon ringed by guards!^";
+                     Capture();
+                     StopDaemon(self);
+                     rtrue;
+                   }
+                   "^There is definitely activity outside the villa.";
+            }
+            if( self.number >= 5 && (location == Entrance || location == Roman_Villa)) {
+                if( location == Entrance )
+                    print "^You walk straight into the guards.^";
+                else if( location == Roman_Villa )
+                    print "^You walk straight into the guards at the back door.^";
+                Capture();
+                StopDaemon(self);
+                rtrue;
+            }
+            if( self.number == 7 ) {
+                print "^There is sudden activity as the guards make a thorough search of the villa, just to be on the safe side. ";
+                if( location == Hypocaust )
+                    "Luckily, they don't even think of looking down in here.^";
+                else {
+                    if( location == Inside_Well )
+                        print "Unfortunately, they do think of looking into the kitchen well, and drag you out onto the triclinium floor.^";
+                    else
+                        print "The virtue of doing so is demonstrated when they find you without difficulty.^";
+                    Capture();
+                    StopDaemon(self);
+                    rtrue;
+                }
+            }
+            if( self.number > 7 && location == Triclinium ) {
+                print "^An industrious-looking slave (who cooks for the horsemen) is rather surprised to see you, but with creditable presence of mind he summons the guard at once.^";
+                Capture();
+                StopDaemon(self);
+            }
+            if( location == Hypocaust ) {
+                switch( self.number ) {
+                    8: "^You hear men walking across the mosaic just above your head.";
+                    9: print "^A voice, which can just be heard through the vent, says ";
+                       if( KnowLanguages )
+                           "~Welcome, great masters. We are convened in secret conclave to decide the fate of Britain. Lament, for the old ways are passing!  There will be a dark age, a collapse into many monarchies, and any man who can hold a town will call himself King and heir to Vortigern.~";
+                        else
+                            "something in Anglo-Saxon or Celtic (hard to say which).";
+                   10: print "^A younger, more impatient voice, says ";
+                       if( KnowLanguages )
+                           "~This is an opportunity!  We must be the power behind the thrones, we will in secret unite and be the true force of the land...~";
+                       else
+                           "something else.";
+                   11: print "^There is cynical laughter for a moment, and a third voice interjects ";
+                       if( KnowLanguages )
+                           "~And who will lead this, this unity?  We take all sides and none, you know that. There are potent druids in the tents of each general down there in the rabble. They'd kill each other without hesitation on the battlefield.~";
+                       else
+                           "something.";
+                   12: print "^The first voice speaks once more. ";
+                       if( KnowLanguages )
+                           "~Far worse is to come. The jumped-up kings and their new men will no longer believe in the ancient powers. Already I can feel the druidic magic weakening away, and we are perilously close to the nexus now. In the valleys below, armies wait to fight the decisive battle. Whichever side wins, they will no longer need us. In a matter of hours, the power will be broken forever.~";
+                       rtrue;
+                   13: print "^After a sombre silence, a much older voice says ";
+                       if( KnowLanguages )
+                           "~You did right to call us together. There is a path prepared for us, but the sacrifice will be terrible. We must concentrate all the remaining druidical energy into this sacred hill, that it may last through all time, and we must ensure that druids live on this site forever and keep the faith.~";
+                       else
+                           "something wise. It really is a pity you can't understand them.";
+                   14: print "^The younger voice speaks again. ";
+                       if( KnowLanguages )
+                           "~For now, yes, for a century or two, yes, but what then?  They will forget the old ways, they will no longer truly be druids.~";
+                       rtrue;
+                   15: print "^The older voice replies triumphantly. ";
+                       if( KnowLanguages )
+                           "~This is what must be done. They will forget, so we must give them a substitute. We shall accurse them to always seek after this magical stone, which it will be all but impossible for them to find. It will take the form of whatever they most desire. In six hundred years, by my prophecy, religious wars in the East will capture men's hearts, and then they will think it is the Holy Grail, the cup which held the blood of Christ. A thousand years later they will think it is -~  But at this moment the voices move away.";
+                       rtrue;
+                }
+            }
+        ],
   has   door container openable static;
 
 Object  Inside_Well "Inside Well"
@@ -233,7 +359,11 @@ Object  Inside_Well "Inside Well"
             dangerous well. You can hardly see a thing, even with the
             aid of the torch, but curiously enough you feel warm air
             blowing across you from the west.",
-!        before InsideWellBefore,
+        before [;
+            Go:
+                rfalse;
+            default: "There's not enough room in this confined space to do anything much!";
+        ],
         w_to Hypocaust,
         u_to Triclinium,
         cant_go "Too risky. There might not be anything that way, for all you know.",
@@ -255,7 +385,12 @@ Object  Hypocaust "Hypocaust"
 
 Object  -> hypocaust_vents "hypocaust vents"
   with  name 'vents',
-!        before HypocaustBefore,
+        before [;
+            Examine, Search:
+                if( kitchen_well.number > 7 )
+                    "Four men in druidic furs are standing on the corners of the mosaic, in some kind of sinister conference. This old villa must be some kind of rendezvous point. Between the men a bluish stone rests on the mosaic floor.";
+                "You see across the mosaic floor of the moonlit atrium.";
+        ],
   has   scenery;
 
 Object  Entrance "Entrance"
@@ -276,7 +411,11 @@ Object  Entrance "Entrance"
                 }
                 rfalse;
         ],
-!        after EntranceAfter,
+        after [;
+            if( kitchen_well.number <= 0 ) {
+                StartDaemon(kitchen_well);
+            }
+        ],
         n_to Atrium,
   has   light scored;
 
@@ -367,7 +506,6 @@ Object  Encampment "Encampment"
             surrounded by hostile territory that you simply have nowhere
             to run or hide. Things are, not to put too fine a point on
             it, looking grim.",
-!        before EncampmentBefore,
         e_to [;
             Go:
                 if( noun == e_obj ) {
@@ -390,13 +528,14 @@ Object  Encampment "Encampment"
 
 Object  -> dolmen "dolmen"
   with  name 'dolmen' 'coals' 'hot' 'rock',
-        initial "An erratic glacial rock, which seems in the feverish 
+        describe "An erratic glacial rock, which seems in the feverish 
             firelight to make a natural dolmen, can be made out to the
             east, on the other side of an almost-extinguished campfire
             of hot coals.",
         door_dir initial,
         door_to Beneath_Dolmen,
-  has   door open;
+  has   door open;   
+  !! R7 bug: you can take the dolmen!
 
 Object  Beneath_Dolmen "Beneath Dolmen"
   with  name 'dolmen',
@@ -417,7 +556,7 @@ Object  fifty_franc_note "fifty-franc note"
   has   ;
 
 [ Capture o;
-    if (CouncilCnt < 8) {
+    if (kitchen_well.number < 8) {
         deadflag = DIED;
         "^The guardsmen grab your head by the chin and examine you, 
             but take you for a plain thief and immediately put you to
@@ -430,11 +569,11 @@ Object  fifty_franc_note "fifty-franc note"
         life is saved and you are taken away into custody, down in the
         valley among the army encampments.^";
     StartTimer(tent_pole, 4);
+    StopDaemon(kitchen_Well);
 
     for( o = child(player): o: o = sibling(o) )
         if( o hasnt worn )
             remove o;
-    CouncilCnt = 0;
     PlayerTo(Rough_Tent, 2);
      rtrue;
     

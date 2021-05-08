@@ -102,9 +102,11 @@ Object -> -> Meldrews_History "History of the Meldrews (vol. II)"
           them up individually.",
         article "the",
         devil_hint "What a boring old book!  There's nobody worth looking up.",
-        before [ word;
+        before [ word word2;
             Consult:
+                wn = consult_from;
                 word = NextWord();
+                word2 = NextWord();
                 if( word == 'me' || word == 'myself' || word == 'self' )
                     "^Perhaps you may one day earn a place in vol. III.";
                 switch( word ) {
@@ -194,7 +196,7 @@ Object -> -> Meldrews_History "History of the Meldrews (vol. II)"
                 }
                 "^Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find what you want.";
         ],
-  has   concealed;
+  has   concealed proper;
 
 Object  -> antique_jewellery_box "antique jewellery box"
   with  name 'antique' 'jewellery' 'box',
@@ -207,6 +209,27 @@ Object  -> antique_jewellery_box "antique jewellery box"
         angel_hint "Try investigating the world of the romantic novel, 
             out on the balconies of life.",
   has   concealed container transparent openable lockable locked;
+
+Object -> -> four_leafed_clover "four-leafed clover"
+  with  name 'four' 'leafed' 'clover',
+        description "The fabulously lucky plant has a long stalk.",
+        rod_assoc rod_of_luck,
+        angel_hint "Not much use as it is, is it?",
+  has   hidden_rod;
+
+Object rod_of_luck "Rod of Luck"    ! 20 / 0x14
+  with  name 'rod' 'of' 'luck',
+        article "the",
+        rod_action [;
+            if( second ~= player )
+                "Nothing obvious happens.";
+            if( big_electricians_switch has on )
+                "You feel no different. Perhaps there's no such thing as luck.";
+            give self general;
+            "You feel optimistic and lucky. Mind you, you feel that most times.";
+        ],
+        angel_hint "Well, if there's such a thing as luck, maybe this would help.",
+  has   rod_attr;
 
 Object  House "House"
   with  after [ obj;
@@ -269,6 +292,8 @@ Object  -> demijohn "labelled glass demijohn"
         ],
         after [;
             Open: 
+                Achieved(SCORE_DEMIJOHN);
+                rfalse;
         ],
   has   container openable static transparent;
 
@@ -295,7 +320,7 @@ Object  -> -> tourist_map "tourist map"
                         place once, and the curator Doktor Stein showed
                         you round... and he hypnotised you into a swirl
                         of unconsciousness...^^";
-                    StartTimer(Museum_of_Arcana, 7);
+                    StartTimer(Museum_of_Arcana, 6);
                     move self to location;
                     game_section = HAMBURG;
                     PlayerTo(Museum_of_Arcana, 2);

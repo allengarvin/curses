@@ -138,6 +138,8 @@ Object  Madame_Sosostris "Madame Sosostris, famous clairvoyante"
             Kiss: "She kisses you forcibly. Her mouth tastes of tobacco.";
             Attack: "She mesmerises you back. She hasn't lived all these centuries in the Latin Quarter for nothing, you know.";
             Answer:
+                if( gas_mask in player && gas_mask has worn )
+                    "Not through a gas mask you can't.";
                 if( noun ~= 'even' && noun ~= 'odd' )
                     "~You must answer my question!~  She does seem anxious.";
                 SosostrisDeals();

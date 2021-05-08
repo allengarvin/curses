@@ -709,8 +709,8 @@ Routine 0x9156 routine_9156
 Routine 0x9320 DescribeObj obj:object n:int
 Routine 0x946e ShowSub
 Routine 0x963c GiveRSub obj:object
-Routine 0x999e routine_999e
-Routine 0x9a20 routine_9a20
+Routine 0x999e UnlockSub
+Routine 0x9a20 LockSub
 Routine 0x9ab8 SwitchOnSub
 Routine 0x9b3a SwitchOffSub
 Routine 0x9bbc OpenSub
@@ -756,7 +756,7 @@ Routine 0xaa60 StrikeWand env:object
 Routine 0xabb2 PointWand env:object local2:int
 Routine 0xac5c routine_ac5c
 Routine 0xacfc routine_acfc
-Routine 0xad16 routine_ad16
+Routine 0xad16 PullSub
 Routine 0xae0a PushSub who:object
 Routine 0xaf9a PushDir o:object
 Routine 0xb10c TurnSub
@@ -856,8 +856,8 @@ Routine 0x10e5e MaskAfter
 Routine 0x10eb2 PassageBefore
 Routine 0x10f14 MazeBoundary:bool x:int y:int ndx:int
 Routine 0x10f54 MouseMove2:bool x:int y:int pos:int
-Routine 0x10f94 routine_10f94
-Routine 0x10fe6 routine_10fe6
+Routine 0x10f94 SeedText x:int y:int ndx:int
+Routine 0x10fe6 SeedBoundary:bool x:int y:int ndx:int
 Routine 0x10ffe OldMazeBoundary:bool x:int y:int ndx:int 
 Routine 0x1101e MazeLayoutBefore y:int x:int wallp:bool
 Routine 0x1108a FamilyTreeBefore env:object

@@ -49,6 +49,8 @@ Object  -> Andromeda "Andromeda"
             Kiss: "She evades you deftly, after years of practice with Greek men.^";
             Attack: "No need, if the sea-monster is all it's cracked up to be.";
             Ask, Tell, Answer, Order:
+                if( gas_mask in player && gas_mask has worn )
+                    "Not through a gas mask you can't.";
                 "Andromeda hisses something contemptuous at you in Greek. (Demotic, not Attic, 
                  ironically enough, but then it's all Greek to you.)";
         ],
@@ -65,7 +67,16 @@ Object  -> amber_hairband "amber hairband"
 Object  rod_of_sacrifice "Rod of Sacrifice"
   with  name 'rod' 'of' 'sacrifice',
         article "the",
-!        rod_action RodOfSAcrificeAction,
+        rod_action [;
+            if( second == player ) {
+                deadflag = DIED;
+                "You feel a noble surge of pride as your body is 
+                 incinerated by the Rod of Sacrifice. At least you died
+                 for some terribly important cause, although exactly
+                 what it was seems to have slipped your mind.";
+            }
+            "Nothing obvious happens.";
+        ],
         angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
   has   rod_attr;
 
@@ -87,9 +98,13 @@ Object  Clifftop_Walk "Clifftop Walk"
             occupied by herds of hardy mountain goats, continually
             butting each other and frisking. To the south a path leads
             across sparse grassland to a great outgrowth of some kind.",
-!        before ClifftopWalkBefore,
         s_to Wall_of_Thorns,
-        e_to Outside_Taverna,
+        e_to [;
+            if( herd_of_goats hasnt general )
+                "The goats hiss and butt against you, not letting you through.";
+            print "The goats obediently part to allow you to get by.^";
+            return Outside_Taverna;
+        ],
         w_to Cliffs,
         cant_go "There's only dull grassland that way.",
   has   light;
@@ -123,9 +138,20 @@ Object  Sacred_Earth "Sacred Earth"
             Zeus. You feel distinctly uneasy walking on such hallowed
             turf. There are any number of myths about gods getting cross
             about that sort of thing.",
-!        before SacredEarthBefore,
         n_to Wall_of_Thorns,
-        s_to Temple_of_Zeus,
+        s_to [;
+            print "Zeus, who is after all the chief of all the gods, appears and hurls a thunderbolt down just before you begin to cross into the Temple. ";
+            if( big_electricians_switch has on ) {
+                deadflag = DIED;
+                "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave about. Pretty impressive prediction, is your last thought.";
+            }
+            if( rod_of_luck has general ) {
+                print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
+                return Temple_of_Zeus;
+            }
+            deadflag = DIED;
+            "With the luck of the gods, Zeus' thunderbolt strikes you just about exactly in the back, despite your attempts to weave about.";
+        ],
         cant_go "The wall of thorns hems you in.",
   has   light;
 
@@ -136,8 +162,10 @@ Object Temple_of_Zeus "Temple of Zeus"
             entrance at the north. So much for all the rumours about
             hoards of treasure - it looks as if Zeus (who is, by the
             way howling with anger outside) was bluffing all along.",
-!        before TempleBefore,
-        n_to Sacred_Earth,
+        n_to [;
+            print "~I'll get you this time, worm!~ says Zeus, and hurls another thunderbolt, but now he's angry his aim is right off. You survive once more.^";
+            return Sacred_Earth;
+        ],
         cant_go "Unfortunately for you (since Zeus is watching it), the temple has only one entrance.",
   has   light scored;
 
@@ -174,6 +202,14 @@ Object  Eraina_Taverna "Eraina Taverna"
             share your uplifted feeling at the sight.",
         n_to Clifftop_Walk,
         cant_go "The tavern entrance is to the north.",
+        each_turn [;
+            switch( random(13) ) {
+                1: "^The diners grumble and play backgammon viciously.";
+                2: "^The bartender gives you a hard stare.";
+                3: "^A fight breaks out, over an obscure question to do with somebody's second cousin.";
+                4: "^The gentle sound of bazouki music strikes up in the background, and gradually rises to an intolerable pitch. After a moment comes a dull thud and a strangled noise, then blessed quiet.";
+            }
+        ],
   has   light scored;
 
 Object  -> Ekmek_Special "Ekmek Special"
@@ -181,7 +217,13 @@ Object  -> Ekmek_Special "Ekmek Special"
         description "A speciality dessert of the Taverna: ice cream, kateifi, 
             raspberry sauce, cream. An acquired taste.",
         initial "Left untouched on one table is an Ekmek Special dessert.",
-!        before EkmekSpecialBefore,
+        before [;
+            Take:
+                if( self has moved || copper_coin has general )
+                    rfalse;
+                "You can't understand a word of what the bartender says, but the drift is clear enough. Not until you pay for it.";
+        ],
+                
         devil_hint "Better with chocolate ice cream, I think.",
         angel_hint "Doesn't somebody else need this more than you?",
   has   proper edible scored;
@@ -189,6 +231,18 @@ Object  -> Ekmek_Special "Ekmek Special"
 Object  -> bartender "bartender"
   with  name 'bar' 'tender' 'bartender',
         description "Morose and unconvivial at the best of times. This is not the best of times.",
+        life [;
+            Give:
+                if( noun == copper_coin ) {
+                    remove noun;
+                    give copper_coin general;
+                    "The bartender takes the coin wearily.";
+                }
+                rfalse;
+            Answer, Ask, Tell:
+                "Being an educated person, the bartender speaks a little Latin and some Aramaic. 
+                 Being an uneducated one, you don't, and communication proves impossible.";
+        ],
         initial "Behind the bar, a depressed bartender polishes glasses.",
   has   animate;
 

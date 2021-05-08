@@ -142,8 +142,14 @@ Object  -> cell_door "cell door"
 Object  rod_of_husbandry "Rod of Husbandry"
   with  name 'rod' 'of' 'husbandry',
         article "the",
-!        rod_action RodOfHusbandryAction,
+        rod_action [;
+            if( second == player )
+                "You feel suddenly obedient, and briefly fancy a dog biscuit.";
+            if( second ~= herd_of_goats )
+                "Nothing obvious happens.";
+            give herd_of_goats general;
+            "The goats suddenly look up at you with awe, although they resume 
+             their former interest in eating the grass quite quickly.";
+        ],
         angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
   has   rod_attr;
-
-

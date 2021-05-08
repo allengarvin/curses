@@ -25,6 +25,7 @@ Include "variables.inf";
 Include "VerbLib";
 
 Global rod_score;
+Global KnowLanguages;
 
 [ StrikeSub ;
     if( parent(noun) ~= player )
@@ -66,6 +67,7 @@ Global rod_score;
     
 [ PrintRank score_var;
     print ", earning you the rank of ";
+    score_var = score;
     if( score_array2->11 )
         score_var = score_var - 50;
 
