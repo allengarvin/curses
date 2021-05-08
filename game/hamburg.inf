@@ -47,7 +47,7 @@ Tarot   -> -> Eight_of_Wands_card "Eight of Wands"
         devil_hint "There's less to this card than meets the eye.",
   has   hidden_rod;
 
-Object  -> -> Maiden_card "Maiden"
+Tarot   -> -> Maiden_card "Maiden"
   with  name 'maiden' 'card',
         description "Andromeda chained to a rock on the sea-shore.",
         article "the",
@@ -105,16 +105,17 @@ Object  Coven_Cell "Coven Cell"
         ],    
         time_left 0,
         time_out [;
-                print "^A key turns in the door and Doktor Stein bursts in. 
-                    He stops to pat the goat affectionately. ~Cheer up,
-                    Dobbin. As soon as I've finished this brutal human
-                    sacrifice I'll take you for your walk.~  He feeds
-                    Dobbin some sugar-cake. ~They make such marvellous
-                    cheese,~ he explains confidentially.^";
-                deadflag = DIED;
-                if( player has general )
-                    "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
-
+            if( player notin self )
+                rfalse;
+            print "^A key turns in the door and Doktor Stein bursts in. 
+                He stops to pat the goat affectionately. ~Cheer up,
+                Dobbin. As soon as I've finished this brutal human
+                sacrifice I'll take you for your walk.~  He feeds
+                Dobbin some sugar-cake. ~They make such marvellous
+                cheese,~ he explains confidentially.^";
+            deadflag = DIED;
+            if( player has general )
+                "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
         ],
         cant_go "There's definitely no way out of here.",
   has   ;

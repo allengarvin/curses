@@ -862,6 +862,11 @@ Object  -> -> medicine_bottle "guaranteed-unbreakable medicine bottle with a chi
 
 Object  -> -> -> red_tablet "red tablet"
   with  name 'red' 'pill' 'tablet',
+        after [;
+            Eat:
+                give player ~general;
+                "It tastes alarmingly of chocolate.";
+        ],
         devil_hint "This drug is for fun, it isn't an antidote. And it tastes gorgeous...",
   has   edible scored;
 
@@ -1910,6 +1915,8 @@ Object -> weed_killer "weed killer bottle"
                     "A stream of weed-killer soaks into the grass, and does nothing obvious.";
                 WeedkillerX = MazeX;
                 WeedkillerY = MazeY;
+                garden_array->(WeedkillerX + 9 * WeedkillerY) = 48;
+                WeedkillerX = 100;
                 "A stream of weed-killer soaks into the earth, and does nothing obvious.";
         ],
   has   ;
@@ -2011,42 +2018,46 @@ Object -> maze_layout "maze layout"
     rtrue;
 ];
 
+[ MazeGo newx newy;
+    if( MazeX == 4 && MazeY == 6 && noun == s_obj )
+        rfalse;
+    if( MazeX == 0 && MazeY == 1 && noun == w_obj )
+        rfalse;
+    newx = 100; newy = 100;
+    if( noun == n_obj ) {
+        newx = MazeX;
+        newy = MazeY - 1;
+    } else if( noun == e_obj ) {
+        newx = MazeX + 1;
+        newy = MazeY;
+    } else if( noun == s_obj ) {
+        newx = MazeX;
+        newy = MazeY + 1;
+    } else if( noun == w_obj ) {
+        newx = MazeX - 1;
+        newy = MazeY;
+    }
+    if( newx == 100 )
+        "The maze is constructed with rectangular grid-lines of 
+         privet, so you can only proceed north, east, south or west.";
+    if( MazeBoundary(newx,newy) )
+        "The privet hedge is in the way.";
+    MazeX = newx;
+    MazeY = newy;
+    if( location == Patio_in_Maze ) {
+        location = Maze;
+        move garden_roller to Maze;
+    } else if( MazeX == 7 && MazeY == 5 ) {
+        location = Patio_in_Maze;
+        move garden_roller to Patio_in_Maze;
+    }
+    << Look >>;
+];
 Object Maze "Maze"
   with  description "A maze of green privet passages, all alike.",
-        before [ newx newy;
+        before [ ;
             Exit: "Remember the poor grass!";
-            Go:
-                if( MazeX == 4 && MazeY == 6 && noun == s_obj )
-                    rfalse;
-                if( MazeX == 0 && MazeY == 1 && noun == w_obj )
-                    rfalse;
-                newx = 100; newy = 100;
-                if( noun == n_obj ) {
-                    newx = MazeX;
-                    newy = MazeY - 1;
-                } else if( noun == e_obj ) {
-                    newx = MazeX + 1;
-                    newy = MazeY;
-                } else if( noun == s_obj ) {
-                    newx = MazeX;
-                    newy = MazeY + 1;
-                } else if( noun == w_obj ) {
-                    newx = MazeX - 1;
-                    newy = MazeY;
-                }
-                if( newx == 100 )
-                    "The maze is constructed with rectangular grid-lines of 
-                     privet, so you can only proceed north, east, south or west.";
-                if( MazeBoundary(newx,newy) )
-                    "The privet hedge is in the way.";
-                MazeX = newx;
-                MazeY = newy;
-                if( location == Patio_in_Maze ) {
-                    move garden_roller to Maze;
-                } else if( MazeX == 7 && MazeY == 5 ) {
-                    move garden_roller to Patio_in_Maze;
-                }
-                << Look >>;
+            Go: return MazeGo();
         ],
         after [;
             Look:
@@ -2069,7 +2080,12 @@ Object Patio_in_Maze "Patio in Maze"
                     return Maze;
                 }
         ],
-!        after MazeAfter,
+        after [;
+            Look:
+                return MazeDescribe();
+        ],
+        w_to [; return MazeGo(); ],
+        n_to [; return MazeGo(); ],
         d_to Crypt,
         cant_go "The privet hedges are in the way.",
   has   light scored;
@@ -2241,10 +2257,211 @@ Object  Up_the_Beanstalk "Up the Beanstalk"
         cant_go "The clouds are too tenuous that way.",
   has   light;
 
+[ SeedText x y ndx ;
+    if( x ~= 0 && x ~= 8 && y ~= 0 && y ~= 6 )
+        return MazeBoundary(x,y);
+
+    ndx = garden_array->(9 * y + x);
+    if (ndx == 48) {
+        ndx = 0;
+        return ndx;
+    }
+    if (ndx == 49) {
+        ndx = 2;
+        return ndx;
+    }
+    rtrue;
+];
+
+[ SeedBoundary x y ndx ;
+    ndx = SeedText(x,y);
+    if (ndx == 2) {
+        ndx = 0;
+    }
+    return ndx;
+];
+
+[ OldMazeBoundary x y ndx ; ! 69630 / 0x10ffe
+    ndx = SeedText(x,y);
+    if( ndx == 1 ) {
+        ndx = 0;
+    }
+    if( ndx == 2 ) {
+        ndx = 1;
+    }
+    return ndx;
+];
+
+[ MazeOldDescribe numwalls n_side e_side s_side w_side ;    ! 70994 / 0x11552
+    numwalls = MazeBoundary(MazeX,MazeY);
+    if (MazeX == 7 && MazeY == 5) {
+        numwalls = 2;
+    }
+    new_line;
+    if (numwalls == 1) {
+        print "You are standing on a bed in which seeds have been recently planted. ";
+    }
+    if (numwalls == 0) {
+        print "You stand on a rough patch of grass. ";
+    }
+    if (numwalls == 2) {
+        print "You stand on a rough patch of grass, marked out with whitewash. ";
+    }
+    --MazeY;
+    n_side = SeedBoundary(MazeX,MazeY);
+    ++MazeY;
+    ++MazeX;
+    s_side = SeedBoundary(MazeX,MazeY);
+    --MazeX;
+    ++MazeY;
+    e_side = SeedBoundary(MazeX,MazeY);
+    --MazeY;
+    --MazeX;
+    w_side = SeedBoundary(MazeX,MazeY);
+    ++MazeX;
+    numwalls = n_side + (s_side + (e_side + w_side));
+    if (numwalls == 4) {
+        print "There are seedbeds on all sides. ";
+    } else {
+        if (numwalls == 3) {
+            print "There are seedbeds to ";
+        }
+        if (numwalls == 2) {
+            print "There are seedbeds to the ";
+        }
+        if (numwalls == 1) {
+            print "There is a seedbed to the ";
+        }
+        while( numwalls > 0 ) {
+            if( n_side == true ) {
+                print "north";
+                n_side = false;
+            } else if( s_side == true ) {
+                print "east";
+                s_side = false;
+            } else if( e_side == true ) {
+                print "south";
+                e_side = false;
+            } else if( w_side == true ) {
+                print "west";
+                w_side = false;
+            }
+            --numwalls;
+            if( numwalls == 0 ) {
+                print ". ";
+            } else {
+                if( numwalls == 1 ) {
+                    print " and ";
+                }
+                if( numwalls == 2 ) {
+                    print ", ";
+                }
+                if( numwalls == 3 ) {
+                    print ", ";
+                }
+            }
+        }
+    }
+    --MazeY;
+    n_side = OldMazeBoundary(MazeX,MazeY);
+    ++MazeY;
+    ++MazeX;
+    s_side = OldMazeBoundary(MazeX,MazeY);
+    --MazeX;
+    ++MazeY;
+    e_side = OldMazeBoundary(MazeX,MazeY);
+    --MazeY;
+    --MazeX;
+    w_side = OldMazeBoundary(MazeX,MazeY);
+    ++MazeX;
+    numwalls = n_side + (s_side + (e_side + w_side));
+    if (numwalls == 0) {
+        new_line;
+        rfalse;
+    }
+    if (numwalls == 1) {
+        print "There is a fence to the ";
+    }
+    if (numwalls == 2) {
+        print "There are fences to ";
+    }
+    if (numwalls == 3) {
+        print "There are fences to ";
+    }
+    if (numwalls == 4) {
+        "This is a fenced-in area.";
+    }
+    while( numwalls > 0 ) {
+        if (n_side == true) {
+            print "north";
+            n_side = false;
+        } else if (s_side == true) {
+            print "east";
+            s_side = false;
+        } else if (e_side == true) {
+            print "south";
+            e_side = false;
+        } else if (w_side == true) {
+            print "west";
+            w_side = false;
+        }
+        --numwalls;
+        if (numwalls == 0) {
+            ".";
+        }
+        if (numwalls == 1) {
+            print " and ";
+        }
+        if (numwalls == 2) {
+            print ", ";
+        }
+        if (numwalls == 3) {
+            print ", ";
+        }
+    }
+    rtrue;
+];
+
 Object  Maze_Foundations "Maze Foundations"
   with  description "A square grid of plots of grass and seedbeds, all alike.",
-!        before MazeFoundationsBefore,
-!        after MazeFoundationsAfter,
+        before [ newx newy;
+            Go:
+                if( MazeX == 4 && MazeY == 6 && noun == s_obj )
+                    rfalse;
+                if( MazeX == 0 && MazeY == 1 && noun == w_obj )
+                    rfalse;
+                newx = 100; newy = 100;
+                if( noun == n_obj ) {
+                    newx = MazeX;
+                    newy = MazeY - 1;
+                }
+                if( noun == e_obj ) {
+                    newx = MazeX + 1;
+                    newy = MazeY;
+                }
+                if( noun == s_obj ) {
+                    newx = MazeX;
+                    newy = MazeY + 1;
+                }
+                if( noun == w_obj ) {
+                    newx = MazeX - 1;
+                    newy = MazeY;
+                }
+                if( newx == 100 )
+                    "The maze is constructed along rectangular grid-lines, so you 
+                     can only proceed north, east, south or west.";
+                if( OldMazeBoundary(newx,newy) ~= false )
+                    "The wooden fence is in the way.";
+                MazeX = newx; MazeY = newy;
+                <<Look>>;
+        ],
+        after [;
+            Look:
+                return MazeOldDescribe();
+            Drop:
+                deadflag = PARADOX;
+                "You feel an alarming wrench in your insides.";
+        ],
         s_to Tree_Planting,
         w_to Folly,
   has   light;
@@ -2392,7 +2609,7 @@ Object -> slide_projector "slide projector"
                     OneTimeBonusScore();
                     rtrue;
                 }
-                if( noun == miniature )
+                if( noun == miniature || noun has card )
                     rfalse;
                 "It won't fit. There's only room for something flat and the size of, say, a playing card.";
         ],

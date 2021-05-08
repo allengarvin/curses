@@ -53,6 +53,45 @@ Object  Consulting_Room "Consulting Room"
         w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
   has   light;
 
+[ DealCard card ;
+    --card_ptr;
+    card = card_deck-->card_ptr;
+    move card to Consulting_Room;
+    print (the) card;
+    return card;
+];
+
+[ SosostrisDeals card3 card2 card1 ;    ! 59460 / 0xe844
+    print "Madame Sosostris picks up the cards and deals them onto the table. She frowns in concentration as ";
+    card3 = DealCard();
+    print ", ";
+    card2 = DealCard();
+    print " and then ";
+    card1 = DealCard();
+    print " show. ";
+    if( card3 == Death_card ) {
+        print "She blanches with alarm, then recovers and jabbers something 
+            about not taking the cards too literally, the images being
+            symbolic and so on. As rapidly as she possibly can, she
+            warns you to fear death by water and then hustles you out
+            onto the street.^";
+    } else {
+        if( card3 == Star_card && card2 == Maiden_card && card1 == Eight_of_Wands_card ) {
+            print "~You have come!  At last, after all these centuries!  But there 
+                is little I can do to ease your way, save to return the
+                staff you left with me for safe keeping.~  And she shows
+                you out. You feel rather bewildered.^";
+            move oak_quarterstaff to player;
+        } else
+            print "~Then... it is not you...~ she says, in an unguarded moment. Then she 
+                recovers her poise and advises about handsome strangers,
+                fearing death by water, crossing palms with gold and so
+                on. Eventually she ushers you out.^";
+        PlayerTo(Unreal_City, 0);
+        rtrue;
+    }
+];
+
 Object  -> Tarot_pack "Tarot pack"
   with  name 'wicked' 'tarot' 'pack',
         before [;
@@ -95,6 +134,17 @@ Object  -> bell_push "bell push"
 Object  Madame_Sosostris "Madame Sosostris, famous clairvoyante"
   with  name 'sosost' 'madame' 'clairvoyant',
         description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
+        life [;
+            Kiss: "She kisses you forcibly. Her mouth tastes of tobacco.";
+            Attack: "She mesmerises you back. She hasn't lived all these centuries in the Latin Quarter for nothing, you know.";
+            Answer:
+                if( noun ~= 'even' && noun ~= 'odd' )
+                    "~You must answer my question!~  She does seem anxious.";
+                SosostrisDeals();
+                remove self;
+                give self general concealed;
+                rtrue;
+        ],
   has   concealed animate proper;
 
 Tarot   Death_card "Grim Reaper"
@@ -112,14 +162,14 @@ Tarot   Fool_card "Fool"
   has   ;
 
 Tarot   Drowned_Sailor_card "Drowned Sailor"
-  with  name 'drowne' 'sailor' 'card',
+  with  name 'drowned' 'sailor' 'card',
         description "Those are pearls that were his eyes...",
         door_to Ruined_Castle_Cafe,
         devil_hint "He's one of my colleagues now, of course.",
   has   ;
 
 Object  oak_quarterstaff "oak quarterstaff"
-  with  name 'oak' 'staff' 'quarter',
+  with  name 'oak' 'staff' 'quarterstaff' 'quarter',
         rod_assoc rod_of_bronze,
         devil_hint "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?",
   has   hidden_rod;
@@ -191,6 +241,28 @@ Object  -> hollow_man "hollow man"
             come on board, he thought any old destination would do, like
             a real place, like anywhere was real... We are the hollow men,
             I says, he didn't like that... Hurry up, please, it's time.~",
+        life [ dst;
+            Attack: "You are unable to touch the man. It is as if he isn't there.";
+            Answer:
+                if( noun == 'time' ) {
+                    game_section = GARDEN;
+                    print "You lose all sense of time and place as the boat drifts down river... 
+                        It comes as a considerable relief to your
+                        befuddled nerves when the man helps you off the
+                        boat again, and you find yourself:^";
+                    if( tourist_map_of_Paris has moved )
+                        dst = Attic;
+                    else
+                        dst = Garden_Stream;
+                    PlayerTo(dst, 2);
+                    if( hollow_man hasnt general ) {
+                        give hollow_man general;
+                        move Ace_of_Cups_card to player;
+                        print "^Was any of that real? you wonder, as you relax in the sunshine. But then you realise you are clutching a tarot card which certainly is.^";
+                    }
+                }
+                rtrue;
+        ],
   has   animate;
 
 Object  Near_Ring_Road "Near Ring Road"
@@ -358,6 +430,22 @@ Object  -> timer_detonater "timer-detonater"
   has   static;
 
 Class   WireC
+  with  before [ n;
+            Pull:
+                if( self has general )
+                    "It is already pulled out.";
+                give self general;
+                print "You pull out ", (the) self, ". ";
+                n = complicated_looking_bomb.number;
+                BombWires-->n = self;
+                n++;
+                complicated_looking_bomb.number = n;
+                if( n == 4 ) {
+                    give complicated_looking_bomb general;
+                    "All four wires are now disconnected.";
+                }
+                "";
+        ],
   has   static wire;
 
 ! TODO: where is the pull-wire code
@@ -424,7 +512,7 @@ WireC   -> black_wire "black wire"
 ];
 
 Object  Cups_and_Glasses "Cups and Glasses"
-  with  name 'cups' 'glasse' 'skylight' 'crates',
+  with  name 'cups' 'glasses' 'skylight' 'crates',
         description "This basement room is filled with crate after crate of 
             glasses and cups, enough for an entire hotel, or restaurant
             perhaps. A little light comes in from an opaque skylight
@@ -433,6 +521,18 @@ Object  Cups_and_Glasses "Cups and Glasses"
         n_to windowed_door,
         number 0,
         cant_go "There's no apparent way out of here.",
+        each_turn [;
+            if( self hasnt general )
+                give self general;
+
+            self.number++;
+            switch( self.number ) {
+                2: "^There is a scuffling noise as some men gather up on the pavement outside the skylight.";
+                3: "^The men begin to talk like conspirators. You catch occasional sounds, but can make little sense of them.";
+                4: "^Alarmingly, you catch the odd word ~bomb~ and are almost sure you can make out someone say ~get that Meldrew~. Paranoia, bound to be.";
+                5: "^The men walk away, perhaps a few feet, perhaps a mile.";
+            }
+        ],
   has   light;
 
 Object  -> windowed_door "windowed door"

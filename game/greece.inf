@@ -20,6 +20,14 @@ Object  -> Andromeda "Andromeda"
   with  name 'andromeda' 'maiden',
         initial "Chained to the cliff face is the beautiful Andromeda, 
             looking nobly out to sea as she awaits her fate.",
+        description [;
+            print "Avert your eyes. She is naked";
+            if( amber_hairband has static )
+                print " (unless you count a hairband)";
+            ", as used to be fashionable for human sacrifices: the victim left 
+             overnight without food or shelter until the dawn. It has to
+             be said that she doesn't look all that keen to be rescued.";
+        ],
         life [;
             Give: 
                 if( noun has edible ) {
