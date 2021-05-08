@@ -294,6 +294,25 @@ Object -> surly_shopkeeper "surly shopkeeper"
         description "His jumper is unstriped, and there are no onions around 
             his neck. Nonetheless he has a rather Gallic, disgruntled look
             to him. Perhaps he's a former Socialist cabinet minister.",
+        life [;
+            Give:
+                if( noun ~= fifty_franc_note )
+                    "~Ceci n'est pas argent,~ he explains wearily.";
+
+                give noun general;
+                remove noun;
+                "He takes the money. ~Q'est-ce que vous desirez?~";
+            Answer:
+                if( fifty_franc_note hasnt general )
+                    "It's not that he doesn't understand you, he's just obstructive for the sake of it.";
+                if( noun == 'carte' ) {
+                    move tourist_map_of_Paris to player;
+                    Achieved(SCORE_TOURIST);
+                    give tourist_map_of_Paris moved;
+                    "Extremely reluctantly he serves you, giving you a tourist map of Paris.";
+                }
+                "~Non.~  And he folds his arms defiantly. Perhaps he has no such thing.";
+        ],
         initial "Behind a kiosk, a surly-looking man is selling guide books and maps.",
   has   animate;
 

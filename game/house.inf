@@ -225,7 +225,7 @@ Object rod_of_luck "Rod of Luck"    ! 20 / 0x14
                 "Nothing obvious happens.";
             if( big_electricians_switch has on )
                 "You feel no different. Perhaps there's no such thing as luck.";
-            give self general;
+            give rod_of_luck general;
             "You feel optimistic and lucky. Mind you, you feel that most times.";
         ],
         angel_hint "Well, if there's such a thing as luck, maybe this would help.",
@@ -1565,9 +1565,9 @@ Object  -> old_timber_prop "old timber prop"
         }
         if( deterministic_transport == true )
             dest = Attic;
-        game_section = MODERN;
-        PlayerTo(dest, 2);
     }
+    game_section = MODERN;
+    PlayerTo(dest, 2);
     rtrue;
 ];
 
@@ -1727,7 +1727,7 @@ Object Infinity_Symbol "Infinity Symbol"
   has   light scored;
 
 Object -> lemniscus "lemniscus"
-  with  name 'infinity' 'lemnis' 'symbol',
+  with  name 'infinity' 'lemniscus' 'symbol',
   has   scenery;
 
 Object -> circular_arc "circular arc"

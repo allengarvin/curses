@@ -65,6 +65,11 @@ Object  Hanging_on_Rope "Hanging on Rope"
 
 Object  -> hemp_rope "hemp rope"
   with  name 'hemp' 'rope',
+        before [;
+            Swing:
+                give self general;
+                "You set the rope swinging back and forth. Very exhilarating!";
+        ],
   has   scenery;
 
 Object  -> yellow_daisy "yellow daisy"
@@ -154,6 +159,12 @@ Object  -> summoning_horn "summoning horn"
   with  name 'horn' 'summon' 'on' 'pole',
         initial "Resting against one pillar is a horn made from a tusk, 
             mounted on a long spear-like pole.",
+        before [;
+            Blow:
+                print "You blow the horn, and it gives a great clarion call out to the hills which is promptly answered by a large number of annoyed guardsmen.^";
+                Capture();
+                rtrue;
+        ],
         rod_assoc rod_of_language,
   has   hidden_rod;
 
@@ -209,7 +220,7 @@ Object  -> bone_die "crude bone die"
   has   ;
 
 Object  -> sandals "leather sandals"
-  with  name 'sandal' 'shoes' 'leather',
+  with  name 'sandals' 'shoes' 'leather',
         article "a pair of",
   has   clothing;
 
@@ -258,7 +269,7 @@ Object  -> kitchen_well "kitchen well"
                     "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
                 }
                 if( noun ~= historical_pamphlet )
-                    StartTimer(kitchen_well,3);
+                    StartTimer(kitchen_well,2);
                 "It drops into the well-shaft.";
         ],
         number -1,
@@ -268,7 +279,7 @@ Object  -> kitchen_well "kitchen well"
                 give kitchen_well general;
                 print "^You hear a splash from far down in the depths of the well.^";
             }
-            StartDaemon(self);
+            self.number = 0;
         ],
         daemon [;
             self.number ++;
@@ -412,7 +423,7 @@ Object  Entrance "Entrance"
                 rfalse;
         ],
         after [;
-            if( kitchen_well.number <= 0 ) {
+            if( kitchen_well.number == 0 ) {
                 StartDaemon(kitchen_well);
             }
         ],
@@ -447,7 +458,7 @@ Object  -> tent_pole "tent pole"
         time_out [;
             give tent_pole ~static;
             move saxon_spy to Rough_Tent;
-            StartTimer(saxon_spy, 5);
+            StartTimer(saxon_spy, 4);
             "^Without warning a Saxon spy (or, as the guards would no doubt put 
              it, another Saxon spy) is thrown bodily into the tent,
              careering into the central pole and slumping unconscious on
@@ -518,6 +529,8 @@ Object  Encampment "Encampment"
         ],
         time_left 0,
         time_out [;
+            if( game_section ~= ANCIENT_BRITAIN )
+                rfalse;
             deadflag = DIED;
             "^It had to happen sooner or later. One of the druids looks 
              round, sees you and raises an instant alarm. It is absolutely

@@ -182,17 +182,6 @@ Object  Outside_Taverna "Outside Taverna"
         s_to Eraina_Taverna,
         w_to Clifftop_Walk,
         cant_go "There's only dull grassland that way.",
-        each_turn [;
-            switch( random(13) ) {
-                1: "^The diners grumble and play backgammon viciously.";
-                2: "^The bartender gives you a hard stare.";
-                3: "^A fight breaks out, over an obscure question to do with somebody's second cousin.";
-                4: "^The gentle sound of bazouki music strikes up in the background, 
-                    and gradually rises to an intolerable pitch. After
-                    a moment comes a dull thud and a strangled noise,
-                    then blessed quiet.";
-            }
-        ],
   has   light;
 
 Object  Eraina_Taverna "Eraina Taverna"
