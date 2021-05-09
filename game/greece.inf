@@ -64,9 +64,8 @@ Object  -> amber_hairband "amber hairband"
         devil_hint "Mmm... it still has her perfume on it. Hehehehe. Bet she's dead now.",
   has   concealed static hidden_rod;
 
-Object  rod_of_sacrifice "Rod of Sacrifice"
+Rod     rod_of_sacrifice "Rod of Sacrifice"
   with  name 'rod' 'of' 'sacrifice',
-        article "the",
         rod_action [;
             if( second == player ) {
                 deadflag = DIED;
@@ -77,8 +76,7 @@ Object  rod_of_sacrifice "Rod of Sacrifice"
             }
             "Nothing obvious happens.";
         ],
-        angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
-  has   rod_attr;
+        angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.";
 
 Object  Cliffs "Cliffs"
   with  name 'pharosp' 'lighthouse' 'tower',
@@ -189,6 +187,9 @@ Object  Eraina_Taverna "Eraina Taverna"
             ashamed men who are drinking retsina heavily. The day is
             dawning outside the north door, but they strangely do not
             share your uplifted feeling at the sight.",
+        before [;
+            Buy: "Given the language difficulty, you'd better resort to barter.";
+        ],
         n_to Clifftop_Walk,
         cant_go "The tavern entrance is to the north.",
         each_turn [;

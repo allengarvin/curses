@@ -110,6 +110,9 @@ Object  -> Tarot_pack "Tarot pack"
 
 Object  -> curtain "curtain"
   with  name 'curtain' 'bead',
+        before [;
+            Open: "It seems immovable, as if made of solid iron.";
+        ],
   has   scenery;
 
 Object  -> bell_push "bell push"
@@ -176,9 +179,8 @@ Object  oak_quarterstaff "oak quarterstaff"
         devil_hint "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?",
   has   hidden_rod;
 
-Object  rod_of_bronze "Rod of Bronze"
+Rod     rod_of_bronze "Rod of Bronze"
   with  name 'rod' 'of' 'bronze',
-        article "the",
         rod_action [;
             if( second == player ) "You acquire a sudden sun tan, but it soon fades.";
             if( second ~= bronze_mural ) "Nothing obvious happens.";
@@ -188,8 +190,7 @@ Object  rod_of_bronze "Rod of Bronze"
              sideways, opening up a murky downward passage which can't have been used for 
              centuries.";
         ],
-        angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
-  has   rod_attr;
+        angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?";
 
 Object  Down_by_River "Down by River"
   with  name 'rats' 'mounds' 'rubbish',
@@ -263,8 +264,20 @@ Object  -> hollow_man "hollow man"
                         print "^Was any of that real? you wonder, as you relax in the sunshine. But then you realise you are clutching a tarot card which certainly is.^";
                     }
                 }
+                self.number++;
+                switch( self.number ) {
+                    1: "~I don't believe in that place any more. Hurry up please it's time!~";
+                    2: "~Hurry up please it's time!~";
+                    3: "~HURRY UP PLEASE IT'S TIME!~";
+                    4: "He can't be bothered to say anything this time.";
+                    5: "It really is time you thought of something.";
+                    6: "Time and time again you haven't guessed correctly.";
+                    7: "The hollow man must be beginning to think you can't take a hint.";
+                    default:  "~It's time!~ repeats the hollow man.";
+                }
                 rtrue;
         ],
+        number 0,
   has   animate;
 
 Object  Near_Ring_Road "Near Ring Road"
@@ -285,6 +298,9 @@ Object Chatelet_les_Halles "Chatelet-les-Halles"
             caverns, deep beneath the streets. You are outside the ticket
             gates, near a flight of steps back up to the city, and since
             you haven't a ticket you're likely to stay that way.",
+        before [;
+            Buy: "~Q'est-ce que vous voulez acheter?~";
+        ],
         u_to Near_Ring_Road,
         cant_go "Back up the stairs for you. Call yourself a traveller...",
   has   light;

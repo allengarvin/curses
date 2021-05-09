@@ -168,16 +168,14 @@ Object  -> summoning_horn "summoning horn"
         rod_assoc rod_of_language,
   has   hidden_rod;
 
-Object  rod_of_language "Rod of Language"
+Rod     rod_of_language "Rod of Language"
   with  name 'rod' 'of' 'language',
-        article "the",
         rod_action [;
             if( second ~= player )
                 "Nothing obvious happens.";
             KnowLanguages = true;
             "Nothing obvious happens. You curse eloquently in Celtic.";
-        ],
-  has   rod_attr;
+        ];
 
 Object  Atrium "Atrium"
   with  description "The central well of the villa, ringed with columns. 
@@ -468,11 +466,10 @@ Object  -> tent_pole "tent pole"
         rod_assoc rod_of_returning2,
   has   concealed static hidden_rod;
 
-Object  rod_of_returning2 "Rod of Returning"
+Rod     rod_of_returning2 "Rod of Returning"
   with  name 'rod' 'of' 'returning',
         article "the",
-        rod_action transport_player,
-  has   rod_attr;
+        rod_action transport_player;
 
 Object  saxon_spy "unconscious Saxon spy"
   with  name 'saxon' 'spy',
@@ -486,6 +483,7 @@ Object  saxon_spy "unconscious Saxon spy"
                 "Not only are the guards better at searching suspects 
                  than you, they also did so first.";
 
+            WakeOther: "The spy is too deeply unconscious.";
         ],
         time_left 0,
         time_out [;

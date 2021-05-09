@@ -60,8 +60,13 @@ Attribute rod_charged;
 Attribute card;
 Attribute wire;
 
+Replace SingSub;
+Replace DigSub;
 Replace ScoreSub;
 Replace WaveSub;
+Replace WakeSub;
+Replace FillSub;
+Replace MildSub;
 
 Include "Parser";
 Include "variables.inf";
@@ -69,6 +74,126 @@ Include "VerbLib";
 
 Global rod_score;
 Global KnowLanguages;
+
+[ HelpSub;
+    "Newcomers to the game may like to try the following:^^  ~help instructions~   gives some basic information,^  ~help credits~        runs the game credits,^  ~help legal~          makes some legal disclaimers,^  ~help commands~       details some common commands.";
+];
+
+[ HelpSpecialSub  ;
+    new_line;
+    if( noun == 'instructions' )
+        "Welcome to CURSES, an interactive adventure game set initially in and around Meldrew House, an old family seat in the shires of England. You play the part of the current heir to the house. As for what you should do, try to keep in mind that your aim is simply to find that map of Paris so you can go on holiday - you certainly haven't any enormous quests in mind. Still, it would be interesting to find out:^", "^  Just how real is what the Tarot cards show?^  What do sixth century politics have to do with you?^  Surely Greek myths can't come into this?^  What on earth is wrong with your entire family?^  Do the National Trust have sinister motives?^  Can modernist poetry really be bad for you?^  What are daisies for?  Or goats, for that matter?^  Should you rescue someone who doesn't want you to?^^", "To finally understand the secret, you will need to reach the Master Game, a concluding game-within-a-game buried deep in the past. A quick solution takes about 700 turns. Good luck!";
+    if( noun == 'credit' )
+        "^Release 7 is the earliest version to be posted to the interactive-fiction archive. Updated versions may be posted if enough small improvements are made.^", "^The author wishes to thank Richard Tucker, Gareth Rees, David Moore, Mark Knibbs and Toby Nelson for helpful comments. He also wishes to apologise to the late Mr T. S. Eliot and to acknowledge the editors of the Oxford History of England for helping to provide a thin veneer of intellectual respectability.^^Inform, the compiler which produced this file, could not have been written without the archaeological investigations of the InfoTaskForce.";
+    if( noun == 'legal' )
+        "^This story file is copyright (c) Graham Nelson 1993, but may be freely distributed and used provided no profit is involved and provided it is not modified in any way. Although it conforms to some (not quite all) file standards previously used by a certain computing company, it contains no fragments of code written by anyone other than the author. It was not produced by modification of any existing story file. The author was extremely tempted to hide an important clue here, but thought better of it. No trade marks are (knowingly) used. All characters and locations are imaginary, and any resemblance to real persons or places is accidental.";
+    if( noun == 'command' )
+        "Basic commands consist either of a verb on its own, or a verb with one or more nouns. For instance, to see where you are type ~look~. Some verbs can also have more elaborate forms; for instance you could also look at, inside or under something. There are about 675 English words understood by ~Curses~, so most reasonable synonyms are allowed.^^To pick something up, ~take thing~ and to drop it again, ~drop thing~. To see what you have, type ~take inventory~ or just ~inventory~. You can move about with commands such as ~go west~, or just ~west~ for short. (It is assumed that you are blessed with an excellent sense of direction.)^^", "Some commands can act on more than one thing. You can ~drop all~, which will drop everything (except things you're wearing), for instance. Or if you found a packing case with a number of things in, you could type such things as:^^    remove everything but the blue key^    get all the coins except ten, twenty and fifty^^(Containers may also be emptied or emptied into each other.)  If you are not explicit enough, sometimes the game can infer what you mean, but at other times it will ask for further details. It might have replied to the first line above by saying^^    (from the yellow packing case)^^", "so that you know what has been assumed on your behalf. If there had been two blue keys you might reasonably have meant, it would reply with something like^^    Which do you mean, the blue doorkey or the Blue Moon Agency key?^^You may either tell it which, or else give up and do something else instead. If you don't mind which key, you can always say something such as:^^    drop a key into the slot^^and the game will make a sensible choice and tell you what it was.^^", "~Curses~ sometimes assumes commands which you implicitly make, but always tells you what they are in brackets. For instance:^^    >look up bach in book^    (first taking the Encyclopaedia of Composers)^    (putting the tuning fork in the rucksack to make room)^    ~J. S. Bach (1685-1750) had a pet aardvark called Nigel...^^", "~it~ refers to the last thing manipulated and ~again~ repeats the last command.^^You can ~save~, ~restore~ or ~restart~ the game at any time, or indeed ~quit~ or ask for your ~score~, which also tells the time and thus will be consulted every so often by alert players. ~fullscore~ or ~full~ gives a breakdown of the score. As an aide-memoire the command ~objects~ tells you where you left things you once had, and ~places~ says where you have been. These commands do not take up any game time, and nor does anything the game didn't understand.^^", "Some jaundiced players get tired of the long descriptions of places, and they can type ~short~ (or ~superbrief~) to make the game only give short ones. Amnesiac players, on the other hand, may like to use ~long~ (or ~verbose~) to give only long ones. Either kind can go back to the usual state of affairs with ~normal~ (or ~brief~).^^", "Simple typing mistakes can sometimes be corrected just by typing ~oops~ followed by the word you had intended to type, so for instance:^^    drop fish in buket^    oops bucket^^The game knows several useful abbreviations: i for inventory, ne for northeast (and so on), l for look, g for again, o for oops, x for examine, z for wait (short for ~zzz~ - sorry about that).^^", "You can sometimes enter larger objects you find. You might well be able to get in a tractor, for instance, though driving it around might be harder.^^", "From time to time, you will wish to speak to other people. If you only have a single word to say, you could use commands like^^    answer yes^    say boo to goose^^(Text in quotation marks is not allowed.)  The game will usually guess who you want to talk to if you miss off the name. A better way to talk, which allows more complicated remarks, is to use commands such as^", "^    goose, boo^    wine waiter, give me the bill^^though, of course, the waiter may have better things to do.^Some documents may be consulted in this game. For this, try commands such as^^    look up chlorine^    consult periodic table about argon^^", "There are, of course, many other commands for more specialised circumstances. A final word of warning: cursing is strictly forbidden in this game.";
+    "There's no help on that, sorry.";
+];
+
+[ XMasterSub;
+    TriggerEndgame();
+
+];
+
+[ XAsncSub; 
+    KnowLanguages = true;
+    turns = turns + 300;
+    "You spend 300 minutes learning to speak Anglo-Saxon, Norse and Celtic.";
+];
+
+[ XCheatSub obj ;
+    obj = rod_of_fire;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = rod_of_returning;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = rod_of_luck;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = rod_of_bronze;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = rod_of_infinity;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = rod_of_stalking;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = rod_of_sacrifice;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = rod_of_husbandry;
+    remove obj;
+    move obj to Infinity_Symbol;
+    obj = Star_card;
+    remove obj;
+    move obj to Grahams_Lair;
+    obj = Maiden_card;
+    remove obj;
+    move obj to Grahams_Lair;
+    obj = Castle_card;
+    remove obj;
+    move obj to Grahams_Lair;
+    obj = tourist_map_of_Paris;
+    remove obj;
+    move obj to Grahams_Lair;
+    obj = flash;
+    remove obj;
+    move obj to Grahams_Lair;
+    obj = nasty_battery;
+    remove obj;
+    move obj to flash;
+    obj = timer_detonater;
+    remove obj;
+    move obj to flash;
+    give timer_detonater ~static;
+    obj.number = 0;
+    obj = canvas_rucksack;
+    remove obj;
+    move obj to Grahams_Lair;
+    obj = Tarot_box;
+    remove obj;
+    move obj to Grahams_Lair;
+    "Ok.";
+];
+
+[ XyzzySub;
+    "For a moment you can almost hear a hoarse voice say something to you. But it passes.";
+];
+
+[ SingSub ;
+    "You do your best to sing the opening from Schutz' sacred concerto 
+     ~O bone Jesu, fili Mariae~ (SWV 471). Unfortunately your best is
+     such that the result is indistinguishable from ~How much is that
+     doggie in the window?~.";
+];
+
+[ HintsSub;
+    "There are hints built into this game, but you will have to find out for yourself how to get them.";
+];
+
+[ MildSub ;
+    "It's good that you can express your frustration in such a mild way.";
+];
+
+[ FillSub ;
+    if( location == Down_by_River || location == Garden_Stream || location == Stream || location == Sea_Shore )
+        "Don't go carting water about, for heaven's sake, it'll only make a mess of your clothes and all your spare clothes are packed.";
+    "Try ~get all~ and then ~put all in...~.";
+];
+
+[ DigSub ;
+    "There are three problems with that. One, the ground isn't really suitable, two, you have nothing to dig with and three, you have always loathed gardening.";
+];
+
+[ WakeSub ;
+    if( game_section == DREAMING )
+        "You are unable to shake off the dream.";
+    "The dreadful truth is, this is not a dream.";
+];
 
 [ StrikeSub ;
     if( parent(noun) ~= player )
@@ -204,9 +329,6 @@ Global KnowLanguages;
             "!";
         }
     }
-    if( o has rod_attr ) {
-        "That seems to be not quite how they work...";
-    }
     "You look ridiculous waving ", (the) o, ".";
 ];
 
@@ -239,22 +361,24 @@ Global KnowLanguages;
 ];
 
 class Tarot
-  with  article "the"
+  with  article "the",
+        description [;
+            if( self provides door_to )
+                "A beautifully realistic picture. ";
+            rfalse;
+        ],
+        list_together "tarot cards",
   has   card;
 
-! early versions of Timers. Leaving in until I recode them
+class Rod
+  with  list_together "rods",
+        article "the",
+        before [;
+            Wave: "That seems to be not quite how they work...";
+        ],
+  has   rod_attr;
 
-[ ResetTimer obj i ;
-    i = obj.number;
-    if (i > turns) {
-        rfalse;
-    }
-    if (i == 0) {
-        rfalse;
-    }
-    obj.number = 0;
-    rtrue;
-];
+! early versions of Timers. Leaving in until I recode them
 
 [ DecrementTimer o i ;
     i = o.number;
@@ -267,6 +391,39 @@ class Tarot
         rfalse;
     }
     rtrue;
+];
+
+[ HandleObjectsSub o p; 
+    objectloop( o ) {
+        if( o hasnt moved )
+            continue;
+        print (the) o;
+        p = parent(o);
+        if( p == player )
+            print "  (held)";
+        else if( p has animate )
+            print "  (given away)";
+        else if( p has visited || p has enterable )
+            print "  (in ", (name) p, ")";
+        else if( p has container )
+            print "  (inside ", (name) p, ")";
+        else
+            print "  (lost)";
+        new_line;
+    }
+];
+
+[ DarkToDark ;
+    if( game_section == MODERN ) {
+        deadflag = FAILED;
+        "As you unwisely blunder about in the dark, you put a foot wrong and crash
+         through a thin plaster roof into one of the upstairs bedrooms,
+         happily landing on the bed. In later years it becomes a family
+         joke that you demolished half the house for a tatty old tourist
+         map.";
+    }
+    deadflag = DIED;
+    "As you step falteringly through the darkness, cowardly but evil creatures devour you whole!";
 ];
 
 Include "house.inf";
@@ -282,6 +439,7 @@ Include "endgame.inf";
     move electric_torch to player;
     move chocolate_biscuit to player;
     StartDaemon(old_smudged_battery);
+    print "^^^^It's become a matter of pride now not to give up. That tourist map of Paris must be up here somewhere in all this clutter, even if it has been five years since your last trip. And it's your own fault. It looks as if your great-grandfather was the last person to tidy up these lofts...^^";
 ];
 
 Include "newverbs.inf";

@@ -217,9 +217,8 @@ Object -> -> four_leafed_clover "four-leafed clover"
         angel_hint "Not much use as it is, is it?",
   has   hidden_rod;
 
-Object rod_of_luck "Rod of Luck"    ! 20 / 0x14
+Rod     rod_of_luck "Rod of Luck"    ! 20 / 0x14
   with  name 'rod' 'of' 'luck',
-        article "the",
         rod_action [;
             if( second ~= player )
                 "Nothing obvious happens.";
@@ -229,7 +228,7 @@ Object rod_of_luck "Rod of Luck"    ! 20 / 0x14
             "You feel optimistic and lucky. Mind you, you feel that most times.";
         ],
         angel_hint "Well, if there's such a thing as luck, maybe this would help.",
-  has   rod_attr;
+;
 
 Object  House "House"
   with  after [ obj;
@@ -705,6 +704,18 @@ Object daisy_chain "daisy chain"
         number 11,
         devil_hint "Dangerous to wear. But at least any sort of daisies will 
             do.",
+        short_name [ o i;
+            if( self hasnt worn )
+                rfalse;
+            i = false;
+            objectloop( o in player )
+                if( o has hidden_rod )
+                    i = true;
+            print "daisy chain";
+            if( i )
+                print " (which rustles as if with a magical wind)";
+            rtrue;
+        ],
   has   clothing;
 
 
@@ -721,6 +732,9 @@ Object electric_torch "electric torch"
         description "The torch has a battery compartment which can be 
             reached by opening it up.",
         article "an",
+        before [;
+            SwitchOn, SwitchOff: "There's no switch, just a battery compartment.";
+        ],
         after [ o n;
             o = child(self);
             Open:
@@ -909,15 +923,14 @@ Object  Over_the_East_Wing "Over the East Wing"
   has   ;
 
 Object Dark_Room "Dark Room"
-  with  description "This is a roughly-furnished photographer's dark room, used by your 
-            grandfather years ago. There's nothing much here now, since
-            you threw the chemicals out in case the children found them.",
-        after [;
-            Look: 
-                if( self has light )
-                    print "^The room is filled with an eerie, reddish light. You feel 
-                        gloomy and can't help thinking about aviation accident statistics.^";
-                rfalse;
+  with  description [;
+            print "This is a roughly-furnished photographer's dark room, used by your 
+                grandfather years ago. There's nothing much here now, since
+                you threw the chemicals out in case the children found them";
+            if( self has light )
+                print ".^^The room is filled with an eerie, reddish light. You feel 
+                 gloomy and can't help thinking about aviation accident statistics";
+            ".";
         ],
         e_to Over_the_East_Wing,
         cant_go "The only doorway is back east.",
@@ -1141,6 +1154,13 @@ Object  -> s_wall "south wall"
                 rfalse;
             Enter:
         ],
+        description [;
+            if( secret_door has concealed )
+                rfalse;
+            if( secret_door has open )
+                "There is a secret door in it, standing open.";
+            "There is a partly concealed secret door in it, which would be easy to open.";
+        ],
   has   scenery;
 
 Object  Inside_Cupboard "Inside Cupboard" 
@@ -1202,6 +1222,7 @@ Object  -> cranked_skylight "cranked skylight"
                 give Inside_Cupboard light;
                 give self open;
                 "winds open the skylight, flooding the room with sunshine.";
+            Close, Open: "How, exactly?";
         ],
         door_dir u_to,
         door_to Roof,
@@ -1213,6 +1234,12 @@ Object  -> gas_mask "gas mask"
         after [;
             Wear: "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of 
                 World War II leftover cork.";
+        ],
+        react_before [;
+            Answer: 
+                if( self has worn )
+                    "Not through a gas mask you can't.";
+                rfalse;
         ],
         devil_hint "The cork filters have gone. It's useless now.",
   has   clothing;
@@ -1268,6 +1295,7 @@ Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
         description "He is dressed in a grey shadow of Georgian finery.",
         number 5,
         life [;
+            Attack: "Ectoplasm is as nice to touch as its reputation suggests.";
             Give, ThrowAt:
                 ! bug compatable--this doesn't check if static, scenery, or the ghost itself!!
                 remove noun;
@@ -1371,12 +1399,11 @@ Object  -> sooty_old_stick "sooty old stick"
     print "A bolt of fire leaps from the rod and consumes ", (the) second, " utterly!";
 ];
 
-Object  rod_of_fire "Rod of Fire"
+Rod     rod_of_fire "Rod of Fire"
   with  name 'rod' 'of' 'fire',
-        article "the",
         rod_action FireRodAction,
         angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
-  has   rod_attr;
+;
 
 Object  Priests_Hole "Priest's Hole"
   with  name 'cross' 'padded' 'chute' 'crawl',
@@ -1462,7 +1489,7 @@ Object Dark_Shaft "Dark Shaft"
             print "Halfway up, or else halfway down, and a dreary place it is too: 
                 nothing but a dark corridor leading north.";
             if( parent(dumbwaiter) ~= self ) {
-                "^Since the dumbwaiter isn't here, the best you can do is clamber 
+                "^^Since the dumbwaiter isn't here, the best you can do is clamber 
                  down the shaft to the cellars.";
             }
             new_line;
@@ -1616,12 +1643,10 @@ Object -> robot_mouse "robot mouse"
         ],
   has   talkable;
 
-Object  rod_of_returning "Rod of Returning"
+Rod     rod_of_returning "Rod of Returning"
   with  name 'rod' 'of' 'returning',
-        article "the",
         rod_action transport_player,
-        devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
-  has   rod_attr;
+        devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.";
 
 Object  Cellars_South "Cellars South"
   with  description "The bricking-up of this cellar seems incomplete, 
@@ -1824,6 +1849,9 @@ Object Family_Tree "Family Tree"
 
 Object -> plane_tree "plane tree"
   with  name 'plane' 'tree' 'family',
+        before [;
+            Climb: << Go u_obj >>;
+        ],
   has   scenery;
 
 Object Mosaic "Mosaic"
@@ -2251,12 +2279,10 @@ Object -> bean_pole "bean pole"
         devil_hint "Whatever you do, it'll always be a bean pole.",
   has   hidden_rod;
 
-Object  rod_of_stalking "Rod of Stalking"
+Rod     rod_of_stalking "Rod of Stalking"
   with  name 'rod' 'of' 'stalking',
-        article "the",
         rod_action stalking_rod_action,
-        devil_hint "It has no horticultural application.",
-  has   rod_attr;
+        devil_hint "It has no horticultural application.";
 
 [ stalking_rod_action ;
     if( second == player )
@@ -2725,6 +2751,7 @@ Object  -> windows "windows"
   with  name 'window' 'glass',
         when_open "Black-latticed windows open on a beautiful summer's day.",
         before [;
+            Open: "It's old and gummed up somehow.";
             Attack:
                 if( self has open )
                     rfalse;
@@ -2880,6 +2907,7 @@ Object  -> angel "angel"
                 else
                     print "I'm afraid I'm don't know much about ", (the) noun, ".";
                 "~.";
+            Attack: "That is possibly not a very far-sighted act.";
         ],
         number 4,
   has   animate scenery;
@@ -2892,7 +2920,38 @@ Object Hellish_Place "Hellish Place"
             flame-proofed desk at the bottom of the stairs. There are
             some disconcerting screams from further away, but nothing
             to worry about. Not in this life, anyway.",
-!        after Hellish_Place_After,
+
+        ! this is an ugly hack to print a message when the player arrives in the room,
+        ! after the description is printed. Handled originally with an 'after: Go'
+        ! routine, but in the current library that prints before the room desc.
+        ! Better way to do it? I don't know
+        initial [; StartTimer(self, 0); ],
+        time_left 0,
+        time_out [;
+            new_line;
+            if( demon has general )
+                "~Thought what you wanted to ask yet?~ says the demon.";
+            if( demon.number > 0 ) {
+                demon.number--;
+                if( demon.number > 0 )
+                    give demon general;
+            }
+            switch( demon.number ) {
+                0: "~Get out, you little pipsqueak!  I'll be seeing you... 
+                    much later...~ says the demon with a memorable smile.";
+                1: "~All right, toad, you have one, just one, chance left,~ 
+                    says the demon with a memorable smile.";
+                2: "~Now then, two chances remaining,~ says the demon with 
+                    a memorable smile.";
+            }
+            "~Good afternoon,~ says the demon with a memorable smile. 
+             ~As a reward for your naked greed, may I welcome you to
+             our little information service. We try to be as helpful as
+             possible to explorers who are lost, or can't think how to
+             solve their problems, you know the kind of thing. So just
+             tell me what you want to know, or show me something to look
+             at. You get the usual three hints.~";
+        ],
         n_to Cellar_West,
         u_to Cellar_West,
         cant_go "That direction is not for the living.",
@@ -2989,6 +3048,7 @@ Object  -> demon "demon"
         description "If you were to cast a film of your adventures so far, 
             you would hire Donald Sutherland to play this gentleman.",
         before [ a;
+            Attack: "A little late for that now.";
             Ask:
                 if( DemonHint() )
                     rtrue;

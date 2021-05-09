@@ -54,9 +54,8 @@ Tarot   -> -> Maiden_card "Maiden"
         door_to Sea_Shore,
         devil_hint "What an ugly girl!  Bet she's good for a laugh though.";
 
-Object rod_of_infinity "Rod of Infinity"
+Rod     rod_of_infinity "Rod of Infinity"
   with  name 'rod' 'of' 'infinity' 'card',
-        article "the",
         rod_action [;
             if( second == player )
                 "You acquire no especial sense of the infinite.";
@@ -74,8 +73,7 @@ Object rod_of_infinity "Rod of Infinity"
             give self general;
             TriggerEndgame();
         ],
-        angel_hint "Well, where might you have seen infinity before?",
-  has   rod_attr;
+        angel_hint "Well, where might you have seen infinity before?";
 
 [ TriggerEndgame i j;
     game_section = ANCIENT_BRITAIN;
@@ -139,7 +137,7 @@ Object  -> cell_door "cell door"
         describe "As you might expect, the cell door is closed.",
   has   door openable static locked;
 
-Object  rod_of_husbandry "Rod of Husbandry"
+Rod     rod_of_husbandry "Rod of Husbandry"
   with  name 'rod' 'of' 'husbandry',
         article "the",
         rod_action [;
@@ -151,5 +149,4 @@ Object  rod_of_husbandry "Rod of Husbandry"
             "The goats suddenly look up at you with awe, although they resume 
              their former interest in eating the grass quite quickly.";
         ],
-        angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
-  has   rod_attr;
+        angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.";
