@@ -298,6 +298,14 @@ Global KnowLanguages;
     "accursed Tourist.";
 ];
 
+[ LieSub;
+    if( location == Servants_Room )
+        << Enter servants_bed >>;
+    if( location == Alisons_Writing_Room )
+        << Enter comfortable_bed >>;
+    "You lie down on the floor for a while and then get up again, feeling foolish.";
+];
+
 [ ScoreSub ;
     if( deadflag == 0 ) {
         switch( game_section ) {
@@ -456,11 +464,23 @@ class Rod
     "As you step falteringly through the darkness, cowardly but evil creatures devour you whole!";
 ];
 
+[ WashMouthSub;
+    if( second ~= carbolic_soap )
+        "That's not something you can wash with.";
+    if( noun ~= 'mouth' )
+        "You're on the right lines there.";
+    remove carbolic_soap;
+    give carbolic_soap concealed;
+    "Ugh, it tastes absolutely ghastly. But you feel better for it.";
+];
 
 Object carbolic_soap "carbolic soap"
   with  name 'soap' 'carbolic' 'cake',
         description "~For foulmouths everywhere~.",
         article "a cake of",
+        react_before [;
+            Go: "You're going nowhere until you make amends for that nasty bad language.";
+        ],
         devil_hint "That's the spirit, keep it up!",
         angel_hint "Really!  How disgraceful!",
   has   concealed;
@@ -481,5 +501,5 @@ Include "endgame.inf";
     print "^^^^It's become a matter of pride now not to give up. That tourist map of Paris must be up here somewhere in all this clutter, even if it has been five years since your last trip. And it's your own fault. It looks as if your great-grandfather was the last person to tidy up these lofts...^^";
 ];
 
-Include "newverbs.inf";
 Include "Grammar";
+Include "newverbs.inf";

@@ -39,4 +39,11 @@ Verb 'plover' 'plugh' 'xyzzy'
 Verb 'qq'
     *                           -> QuitNow;
 
+Verb 'wash'
+    * special 'with' held       -> WashMouth;
+
+Extend 'lie' first
+    * 'down'                    -> Lie
+    *                           -> Lie;
+
 
