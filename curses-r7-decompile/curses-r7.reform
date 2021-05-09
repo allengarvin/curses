@@ -375,7 +375,7 @@ Global 41 debug_deterministic_transportation:bool
 Global 42 transcript_mode:int
 Global 43 debug_mode:bool
 Global 44 lookmode:int
-Global 45 global45:?
+Global 45 hollowman_cnt:int
 Global 46 multiflag:bool
 Global 47 notheld_mode:bool
 Global 48 onotheld_mode
@@ -720,12 +720,12 @@ Routine 0x9cf4 DisrobeSub
 Routine 0x9d26 WearSub
 Routine 0x9d7e HandleSub i:int obj:object
 Routine 0x9e26 routine_9e26
-Routine 0x9e90 routine_9e90
-Routine 0x9ea8 routine_9ea8
-Routine 0x9ee6 routine_9ee6
-Routine 0x9f08 routine_9f08
-Routine 0x9f4a routine_9f4a
-Routine 0x9f8e routine_9f8e
+Routine 0x9e90 YesSub
+Routine 0x9ea8 ListenSub
+Routine 0x9ee6 BurnSub
+Routine 0x9f08 PraySub
+Routine 0x9f4a WakeSub
+Routine 0x9f8e WakeUpSub
 Routine 0x9fc4 routine_9fc4
 Routine 0xa06e routine_a06e
 Routine 0xa08c SmellSub
@@ -742,15 +742,15 @@ Routine 0xa216 DrinkSub
 Routine 0xa2ac FillSub
 Routine 0xa34a SorrySub
 Routine 0xa374 WashSub soap:object
-Routine 0xa3f0 routine_a3f0
-Routine 0xa448 routine_a448
+Routine 0xa3f0 StrongSub soap:object
+Routine 0xa448 MildSub;
 Routine 0xa47a AttackSub
-Routine 0xa5e4 routine_a5e4
+Routine 0xa5e4 SwimSub
 Routine 0xa6c0 routine_a6c0
-Routine 0xa72c routine_a72c
+Routine 0xa72c BlowSub
 Routine 0xa7b0 CleanSub
 Routine 0xa7ea SetSub
-Routine 0xa858 routine_a858
+Routine 0xa858 EatSub
 Routine 0xa8b6 routine_a8b6
 Routine 0xa8cc WaveSub o:object
 Routine 0xaa60 StrikeWand env:object
@@ -775,15 +775,15 @@ Routine 0xc68c ThrowAtSub
 Routine 0xc806 DemonHint hints_left:int
 Routine 0xc8ae AngelHint hints_left:int
 Routine 0xc956 AnswerQuestion
-Routine 0xcfb4 routine_cfb4
+Routine 0xcfb4 BuySub
 Routine 0xd01e routine_d01e
 Routine 0xd04c SingSub
-Routine 0xd0f0 routine_d0f0
-Routine 0xd122 routine_d122
+Routine 0xd0f0 ClimbSub
+Routine 0xd122 WaitSub
 Routine 0xd12e routine_d12e
 Routine 0xd150 HintSub
-Routine 0xd196 routine_d196
-Routine 0xd254 HelpSub word:dictword
+Routine 0xd196 HelpSub
+Routine 0xd254 HelpSpecialSub word:dictword
 Routine 0xe4a8 routine_e4a8
 Routine 0xe4c6 DebugMoveRods obj:object
 Routine 0xe55e LearnLanguages

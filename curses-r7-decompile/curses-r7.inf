@@ -2308,7 +2308,7 @@ Global debug_deterministic_transportation;
 Global transcript_mode;
 Global debug_mode;
 Global lookmode = 1;
-Global global45;
+Global hollowman_cnt;
 Global multiflag;
 Global notheld_mode;
 Global onotheld_mode;
@@ -2606,10 +2606,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     SaveSub
     ScriptOnSub
     ScriptOffSub
-    routine_9e90
+    YesSub
     SorrySub
-    routine_a3f0
-    routine_a448
+    StrongSub
+    MildSub;
     WashSub
     HandleSub
     routine_9e26
@@ -2633,21 +2633,21 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     HelpSub
     AnswerQuestion
     routine_d01e
-    routine_a858
+    EatSub
     SleepSub
     StrikeWand
     PointWand
     routine_d0f0
     routine_d12e
     routine_805a
-    routine_cfb4
+    BuySub
     SqueezeSub
-    routine_a5e4
+    SwimSub
     routine_a6c0
-    routine_a72c
-    routine_9f08
-    routine_9f4a
-    routine_9f8e
+    BlowSub
+    PraySub
+    WakeSub
+    WakeUpSub
     routine_9fc4
     routine_a06e
     SmellSub
@@ -2657,13 +2657,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_a0e8
     CleanSub
     TieSub
-    routine_9ee6
+    BurnSub
     DrinkSub
     FillSub
     CutSub
     JumpSub
     JumpOverSub
-    routine_9ea8
+    ListenSub
     routine_e4a8
     DebugMoveRods
     routine_e5d0
@@ -5371,30 +5371,30 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_9e90 ;	! 40592 / 0x9e90
+[ YesSub ;	! 40592 / 0x9e90
     "That was a rhetorical question.";
 ];
 
-[ routine_9ea8 ;	! 40616 / 0x9ea8
+[ ListenSub ;	! 40616 / 0x9ea8
     "For a moment you can almost hear a hoarse voice say something to you. But it passes.";
 ];
 
-[ routine_9ee6 ;	! 40678 / 0x9ee6
+[ BurnSub ;	! 40678 / 0x9ee6
     "In this game, arson is (usually) forbidden.";
 ];
 
-[ routine_9f08 ;	! 40712 / 0x9f08
+[ PraySub ;	! 40712 / 0x9f08
     "The heavenly host can be quite helpful in this game, but you'll have to ask them directly.";
 ];
 
-[ routine_9f4a ;	! 40778 / 0x9f4a
+[ WakeSub ;	! 40778 / 0x9f4a
     if (game_section == DREAMING) {
         "You are unable to shake off the dream.";
     }
     "The dreadful truth is, this is not a dream.";
 ];
 
-[ routine_9f8e ;	! 40846 / 0x9f8e
+[ WakeUpSub ;	! 40846 / 0x9f8e
     if (noun ~= saxon_spy) {
         "That seems rather unnecessary.";
     }
@@ -5517,15 +5517,15 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Ugh, it tastes absolutely ghastly. But you feel better for it.";
 ];
 
-[ routine_a3f0 local1 ;	! 41968 / 0xa3f0
-    local1 = 255[carbolic_soap?];
-    remove local1;
-    move local1 to player;
+[ StrongSub soap ;	! 41968 / 0xa3f0
+    soap = carbolic_soap;
+    remove soap;
+    move soap to player;
     give carbolic_soap ~concealed;
     "Now, that sort of language is an absolute disgrace, and you're going to have to pay the price for it.";
 ];
 
-[ routine_a448 ;	! 42056 / 0xa448
+[ MildSub; ;	! 42056 / 0xa448
     "It's good that you can express your frustration in such a mild way.";
 ];
 
@@ -5554,7 +5554,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Violence isn't the answer, you know.";
 ];
 
-[ routine_a5e4 ;	! 42468 / 0xa5e4
+[ SwimSub ;	! 42468 / 0xa5e4
     if (location ~= Sea_Shore) {
         "There's not enough water to swim in.";
     }
@@ -5573,7 +5573,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You set the rope swinging back and forth. Very exhilarating!";
 ];
 
-[ routine_a72c ;	! 42796 / 0xa72c
+[ BlowSub ;	! 42796 / 0xa72c
     if (noun ~= summoning_horn) {
         "You can't usefully blow that.";
     }
@@ -5606,7 +5606,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_a858 ;	! 43096 / 0xa858
+[ EatSub ;	! 43096 / 0xa858
     if (noun hasnt edible) {
         "No, it's plainly inedible.";
     }
@@ -6275,26 +6275,26 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             }
             rtrue;
         }
-        global45 = global45 + 1;
-        if (global45 == 1[?]) {
+        hollowman_cnt = hollowman_cnt + 1;
+        if (hollowman_cnt == 1) {
             "~I don't believe in that place any more. Hurry up please it's time!~";
         }
-        if (global45 == 2[?]) {
+        if (hollowman_cnt == 2) {
             "~Hurry up please it's time!~";
         }
-        if (global45 == 3[s_obj?]) {
+        if (hollowman_cnt == 3) {
             "~HURRY UP PLEASE IT'S TIME!~";
         }
-        if (global45 == 4[e_obj?]) {
+        if (hollowman_cnt == 4) {
             "He can't be bothered to say anything this time.";
         }
-        if (global45 == 5[w_obj?]) {
+        if (hollowman_cnt == 5) {
             "It really is time you thought of something.";
         }
-        if (global45 == 6[ne_obj?]) {
+        if (hollowman_cnt == 6) {
             "Time and time again you haven't guessed correctly.";
         }
-        if (global45 == 7[nw_obj?]) {
+        if (hollowman_cnt == 7) {
             "The hollow man must be beginning to think you can't take a hint.";
         }
         "~It's time!~ repeats the hollow man.";
@@ -6326,7 +6326,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "No reply.";
 ];
 
-[ routine_cfb4 local1 ;	! 53172 / 0xcfb4
+[ BuySub local1 ;	! 53172 / 0xcfb4
     if (location == Eraina_Taverna) {
         "Given the language difficulty, you'd better resort to barter.";
     }
