@@ -1,0 +1,119 @@
+>turn wireless on
+Nothing happens.
+
+>turn wireless off
+Thank heaven for that.
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+The radio valves glow, and execrable so-called easy listening music fills the air with a sort of bland aural candy-floss.
+
+
+>turn wireless off
+It's already off.
+
+The radio plays a easy-listening transcription of the Bugs Bunny theme tune.
+
+[ Curses r7, r8: works
+         r9 on: fixed]
+----
+
+
+Object Tree_Planting "Tree Planting"
+  with  description "Capability Meldrew and his gang of workmen are 
+            delicately planting a sapling plane tree here. Your 
+            disturbance annoys them immensely and you are immediately
+            arrested for vagrancy and theft. After a few months in prison,
+            you are hauled up before the County Assizes and sentenced...",
+[has no light, so you'll move into the dark without one]
+
+----
+As you disturb the still air, the attic key, which was balanced on top of the demijohn, slips onto the floor and disappears into a crack in the floorboards. Your spirits sink as it does, rattling down some
+distance. How on earth are you going to get it back?
+   @set_attr Old Winery 25
+
+This sets the general property. But there's some code segment:
+
+[ OneTimeBonusScore unused ;    ! 59336 / 0xe7c8
+    if (Old_Winery has general) {
+        rtrue;
+    }
+    give Old_Winery general;
+    StartTimer(Old_Winery,4);   ! not popped
+    @pop;
+    score = score + 5;
+    good_try_bonus = true;
+    "^A shame to see such a good try unrewarded... oh, go on, have an extra five points.";
+];
+
+This fails once you visit the winery. And if you do this before you visit the winery, the key message never appears
+
+----
+
+
+
+>l  
+
+Family Tree
+You stand in the shade of a great plane tree, seedlings for which were brought back from Spain by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and to the north a
+single break in the green privet hedge marks the entrance to the famously difficult Meldrew House Maze. A signpost reading "To the Mosaic" points east.
+
+The garden roller sits here, its engine still running.
+
+You can also see a flaming torch (providing light) here.
+
+>get in roller
+You get into the garden roller.
+
+It is now pitch dark in here!
+
+>stand
+You are on your own two feet again.
+
+Darkness
+It is pitch dark, and you can't see a thing.
+
+---
+
+Encampment
+Luckily for you the tent, now collapsed, was hardly being watched at all, because all the attention is diverted to a ghastly ritual being carried out over beyond the camp-fires. But your luck cannot hold for
+long. You are so surrounded by hostile territory that you simply have nowhere to run or hide. Things are, not to put too fine a point on it, looking grim.
+
+An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be made out to the east, on the other side of an almost-extinguished campfire of hot coals.
+
+>get dolmen
+Taken.
+
+----
+Rustles even if not a merlyn's hat:
+
+"Let's see, the others have had theirs... I have only a few colours left. What would you like?"
+
+>answer green
+(to Jemima)
+"Right you are then, I'm sure I have some which are just right."
+
+After a moment she notices you're still here. "Come back later, it'll be done soon."  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.
+
+>z.z.z.z.z.z.z.z.z.z
+I only understood you as far as wanting to z.
+
+"There we are!  All done now."  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.
+
+>z
+Time passes.
+
+>i
+You are carrying:
+  a daisy chain (being worn) (which rustles as if with a magical wind)
+
