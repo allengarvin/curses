@@ -18,8 +18,8 @@ Object 6 ne_obj
 Object 7 nw_obj
 Object 8 se_obj
 Object 9 sw_obj
-Object 10 ceiling
-Object 11 floor
+Object 10 u_obj
+Object 11 d_obj
 
 Object 20 rod_of_luck
 Object 70 rod_of_fire
@@ -721,7 +721,7 @@ Routine 0x9d26 WearSub
 Routine 0x9d7e HandleSub i:int obj:object
 Routine 0x9e26 routine_9e26
 Routine 0x9e90 YesSub
-Routine 0x9ea8 ListenSub
+Routine 0x9ea8 XyzzySub
 Routine 0x9ee6 BurnSub
 Routine 0x9f08 PraySub
 Routine 0x9f4a WakeSub
@@ -786,7 +786,7 @@ Routine 0xd196 HelpSub
 Routine 0xd254 HelpSpecialSub word:dictword
 Routine 0xe4a8 routine_e4a8
 Routine 0xe4c6 XCheatSub obj:object
-Routine 0xe55e XMasterSub
+Routine 0xe55e SOMETHIMGSub
 Routine 0xe5a0 routine_e5a0
 Routine 0xe5bc DebugXTravelSub
 Routine 0xe5d0 routine_e5d0
@@ -804,16 +804,16 @@ Routine 0xf006 RodOfSAcrificeAction
 Routine 0xf0b2 RodOfLanguageAction
 Routine 0xf0fa stalking_rod_action
 Routine 0xf282 RodOfInfinityAction
-Routine 0xf3d6 TriggerEndgame i:object j:object
+Routine 0xf3d6 XMasterSub i:object j:object
 Routine 0xf40e HouseAfter
 Routine 0xf566 WineryAfter
-Routine 0xf630 EastAnnexeAfter
+Routine 0xf630 EastAnnexeAfter o:object n:int
 Routine 0xf64c InsideCupboardAfter i:object
 Routine 0xf68e StorageRoomBefore
 Routine 0xf714 StorageRoomBefore
 Routine 0xf770 CellarsBefore
-Routine 0xf7d0 routine_f7d0
-Routine 0xf808 ChimneyBefore
+Routine 0xf7d0 orphan_room_routine
+Routine 0xf808 ChimneyBefore o:object
 Routine 0xf8c2 PriestsHoleBefore
 Routine 0xf968 IsaacPaintingAfter
 Routine 0xf9a0 DarkRoomAfter
@@ -834,15 +834,15 @@ Routine 0x102fa TrapdoorAfter
 Routine 0x1034a DemijohnBefore
 Routine 0x10390 ParcelBefore o:object
 Routine 0x103de IronKeyBefore o:object
-Routine 0x10494 PottingRoomAfter
-Routine 0x104d2 GlovesBefore
+Routine 0x10494 PottingRoomAfter o:object
+Routine 0x104d2 GlovesBefore unused
 Routine 0x10580 CalendarBefore i
 Routine 0x10686 daiy_chain_after obj:object
 Routine 0x106e6 DescFlower n:int
 Routine 0x107de CellBefore
 Routine 0x10828 PoetryBefore
 Routine 0x108a0 DialBefore
-Routine 0x1093a WheelBefore
+Routine 0x1093a WheelBefore r:object
 Routine 0x10944 Wheel2Before obj:object
 Routine 0x10a14 ChanceSwitchAfter
 Routine 0x10a6e RadioAfter

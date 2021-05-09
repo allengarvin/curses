@@ -23,7 +23,7 @@ Verb 'xasnc'
 ;
 
 Verb 'xmaster'
-    * 							-> XMaste
+    * 							-> XMaster
 ;
 
 Verb 'xtravel'
@@ -513,13 +513,13 @@ Object -> sw_obj "southwest wall"	! 9 / 0x9
 	door_dir sw_to,
   has	scenery wall_attr;
 
-Object -> ceiling "ceiling"	! 10 / 0xa
+Object -> u_obj "ceiling"	! 10 / 0xa
   with	name 'u//' 'up' 'ceiling',
 	article "the",
 	door_dir u_to,
   has	scenery wall_attr;
 
-Object -> floor "floor"	! 11 / 0xb
+Object -> d_obj "floor"	! 11 / 0xb
   with	name 'd//' 'down' 'floor',
 	article "the",
 	door_dir d_to,
@@ -2663,19 +2663,19 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     CutSub
     JumpSub
     JumpOverSub
-    ListenSub
+    XyzzySub
     routine_e4a8
     XCheatSub
     routine_e5d0
     DebugXTravelSub
-    TriggerEndgame
-    LearnLanguages
+    XMasterSub
+    SOMETHIMGSub
     routine_13e76
     routine_13e80
     routine_e5a0
     routine_e5d0
     DebugXTravelSub
-    TriggerEndgame
+    XMasterSub
 ;
 
 ! CodeArea 0x42b0 0x15360
@@ -3001,7 +3001,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                 "^In an astonishing freak accident, a meteorite hurtles through the Earth's atmosphere and then straight through your head. Anyone would think you had a curse on you (anyone, that is, still able to think).";
             }
             i = CountDown(heavy_iron_mascot);
-            if (i == 10[ceiling?]) {
+            if (i == 10[u_obj?]) {
                 print "^You feel very nervous indeed, for some reason.^";
             }
             if (i == 5[w_obj?]) {
@@ -3110,7 +3110,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 9[sw_obj?]) {
             print "easy-listening";
         }
-        if (i == 10[ceiling?]) {
+        if (i == 10[u_obj?]) {
             print "~lite-n-mellow~";
         }
         i = random(5);
@@ -3157,10 +3157,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 9[sw_obj?]) {
             print "Duran Duran's ~Is There Something I Should Know?~.";
         }
-        if (i == 10[ceiling?]) {
+        if (i == 10[u_obj?]) {
             print "Derek and the Dominos' ~Layla~.";
         }
-        if (i == 11[floor?]) {
+        if (i == 11[d_obj?]) {
             print "Don Maclean's ~American Pie~.";
         }
         if (i == 12[thedark?]) {
@@ -3766,21 +3766,21 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         "The mouse emits a querulous, unhappy bleep.";
     }
     if (noun == ne_obj) {
-        noun = ceiling;
+        noun = u_obj;
     }
     if (noun == nw_obj) {
-        noun = ceiling;
+        noun = u_obj;
     }
     if (noun == se_obj) {
-        noun = ceiling;
+        noun = u_obj;
     }
     if (noun == sw_obj) {
-        noun = ceiling;
+        noun = u_obj;
     }
-    if (noun == floor) {
-        noun = ceiling;
+    if (noun == d_obj) {
+        noun = u_obj;
     }
-    if (noun == ceiling) {
+    if (noun == u_obj) {
         "The mouse bleeps with annoyance.";
     }
     o = robot_mouse;
@@ -4404,7 +4404,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ InsertSub env ;	! 34034 / 0x84f2
-    if (second == floor) {
+    if (second == d_obj) {
         verb = ##Drop;
         RunRoutines(noun,0,verb);	! not popped
         @pop;
@@ -4455,7 +4455,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ TransferSub local1 local2 ;	! 34332 / 0x861c
     local2 = 7[nw_obj?];
-    if (second == floor) {
+    if (second == d_obj) {
         local2 = 8[se_obj?];
     }
     local1 = parent(noun);
@@ -4483,7 +4483,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ EmptySub ;	! 34436 / 0x8684
-    second = floor;
+    second = d_obj;
     EmptyTSub();	! not popped
     @pop;
     rtrue;
@@ -4500,7 +4500,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         @pop;
         " is closed.";
     }
-    if (second ~= floor) {
+    if (second ~= d_obj) {
         if (second hasnt container) {
             CDefart(second);	! not popped
             @pop;
@@ -4636,13 +4636,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             "You can't go that way.";
         }
         if (prop hasnt open) {
-            if (noun == ceiling) {
+            if (noun == u_obj) {
                 print "You are unable to climb ";
                 Defart(prop);	! not popped
                 @pop;
                 ".";
             }
-            if (noun == floor) {
+            if (noun == d_obj) {
                 print "You are unable to descend ";
                 Defart(prop);	! not popped
                 @pop;
@@ -4703,10 +4703,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         move player to prop;
     }
     if (o ~= nothing) {
-        if (noun == floor) {
+        if (noun == d_obj) {
             "It won't go that way.";
         }
-        if (noun == ceiling) {
+        if (noun == u_obj) {
             "It won't go that way.";
         }
         remove o;
@@ -5375,7 +5375,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "That was a rhetorical question.";
 ];
 
-[ ListenSub ;	! 40616 / 0x9ea8
+[ XyzzySub ;	! 40616 / 0x9ea8
     "For a moment you can almost hear a hoarse voice say something to you. But it passes.";
 ];
 
@@ -5827,10 +5827,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (o ~= compass) {
         "That's not a direction.";
     }
-    if (second == ceiling) {
+    if (second == u_obj) {
         "Not upstairs you can't.";
     }
-    if (second == floor) {
+    if (second == d_obj) {
         "Not downstairs you can't.";
     }
     if (noun ~= antiquated_wireless) {
@@ -6360,7 +6360,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ ClimbSub ;	! 53488 / 0xd0f0
     if (noun == plane_tree) {
-        noun = ceiling;
+        noun = u_obj;
         GoSub();	! not popped
         @pop;
         rfalse;
@@ -6471,7 +6471,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "Ok.";
 ];
 
-[ LearnLanguages ;	! 58718 / 0xe55e
+[ SOMETHIMGSub ;	! 58718 / 0xe55e
     KnowLanguages = true;
     turns = turns + 300;
     "You spend 300 minutes learning to speak Anglo-Saxon, Norse and Celtic.";
@@ -6771,12 +6771,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     print "The air charges with excitement, and the symbol glows fiery red, then begins to spin, faster and faster until everything becomes a daze and you find yourself...^";
     give noun general;
-    TriggerEndgame();	! not popped
+    XMasterSub();	! not popped
     @pop;
     rtrue;
 ];
 
-[ TriggerEndgame i j ;	! 62422 / 0xf3d6
+[ XMasterSub i j ;	! 62422 / 0xf3d6
     game_section = ANCIENT_BRITAIN;
     i = child(player);
   .label62434;
@@ -6827,12 +6827,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: East_Annexe.after
 
-[ EastAnnexeAfter local1 local2 ;	! 63024 / 0xf630
+[ EastAnnexeAfter o n ;	! 63024 / 0xf630
     if (verb == ##Go) {
-        local1 = 24[old_smudged_battery?];
-        local2 = local1.number;
-        if (local2 > 3) {
-            local1.number = 3;
+        o = old_smudged_battery;
+        n = o.number;
+        if (n > 3) {
+            o.number = 3;
         }
     }
     rfalse;
@@ -6906,7 +6906,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ routine_f7d0 ;	! 63440 / 0xf7d0
+[ orphan_room_routine ;	! 63440 / 0xf7d0
     if (verb == ##Exit) {
         "Far, far too dangerous to contemplate. Besides, you're a coward.";
     }
@@ -6915,11 +6915,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: Chimney.before
 
-[ ChimneyBefore local1 ;	! 63496 / 0xf808
+[ ChimneyBefore o ;	! 63496 / 0xf808
     if (verb == ##Go) {
-        if (noun == floor) {
-            local1 = child(player);
-            if (local1 ~= 0) {
+        if (noun == d_obj) {
+            o = child(player);
+            if (o ~= nothing) {
                 "It's too narrow a squeeze for you at present.";
             }
             print "You squeeze awkwardly down the chimney. Lucky your best clothes are all packed, because you're getting filthy.";
@@ -6934,7 +6934,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ PriestsHoleBefore local1 ;	! 63682 / 0xf8c2
     if (verb == ##Go) {
-        if (noun == ceiling) {
+        if (noun == u_obj) {
             local1 = child(player);
             if (local1 ~= 0) {
                 "It's too narrow a squeeze for you at present.";
@@ -6942,7 +6942,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "You squeeze awkwardly back up the chimney.";
             rfalse;
         }
-        if (noun == floor && hatch has open) {
+        if (noun == d_obj && hatch has open) {
             print "You zoom rapidly down the chute, but decelerate just in time and land in a dark corner of...^";
             rfalse;
         }
@@ -6981,7 +6981,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ! References: Dark_Shaft.before
 
 [ DarkShaftBefore ;	! 64092 / 0xfa5c
-    if (verb == ##Go && noun == floor && parent(dumbwaiter) == Dark_Shaft) {
+    if (verb == ##Go && noun == d_obj && parent(dumbwaiter) == Dark_Shaft) {
         "Since the dumbwaiter is here, why not travel in that instead.";
     }
     rfalse;
@@ -7309,11 +7309,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: Potting_Room.after
 
-[ PottingRoomAfter local1 ;	! 66708 / 0x10494
+[ PottingRoomAfter o ;	! 66708 / 0x10494
     if (verb == ##Look && antiquated_wireless has general) {
-        local1 = 111[antiquated_wireless?];
-        local1 = parent(local1);
-        if (local1 == 107[Conservatory?]) {
+        o = antiquated_wireless;
+        o = parent(o);
+        if (o == Conservatory) {
             print "^Execrable music drifts in from the conservatory.^";
         }
     }
@@ -7322,7 +7322,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: old_gardeners__gloves.before
 
-[ GlovesBefore local1 ;	! 66770 / 0x104d2
+[ GlovesBefore unused ;	! 66770 / 0x104d2
     if (verb == ##Take && old_gardeners__gloves hasnt moved) {
         if (antiquated_wireless has general) {
             rfalse;
@@ -7371,10 +7371,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (i == 9[sw_obj?]) {
             print "October";
         }
-        if (i == 10[ceiling?]) {
+        if (i == 10[u_obj?]) {
             print "November";
         }
-        if (i == 11[floor?]) {
+        if (i == 11[d_obj?]) {
             print "December";
         }
         print " and a watercolour painting of some ";
@@ -7502,9 +7502,9 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 ! References: wheel.before
 
-[ WheelBefore local1 ;	! 67898 / 0x1093a
-    local1 = Wheel2Before();
-    return local1;
+[ WheelBefore r ;	! 67898 / 0x1093a
+    r = Wheel2Before();
+    return r;
 ];
 
 ! References: wheel2.before
@@ -7999,7 +7999,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ PatioBefore local1 ;	! 70616 / 0x113d8
     if (verb == ##Go) {
-        if (noun == floor) {
+        if (noun == d_obj) {
             rfalse;
         }
         if (garden_roller ~= parent(player)) {
@@ -8558,7 +8558,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 
 [ StreamBefore ;	! 74388 / 0x12294
     if (verb == ##Go) {
-        if (noun ~= ceiling) {
+        if (noun ~= u_obj) {
             rfalse;
         }
         "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.";
@@ -8592,7 +8592,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= floor) {
+    if (noun ~= d_obj) {
         rfalse;
     }
     if (kitchen_well hasnt open) {
@@ -8690,7 +8690,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (verb ~= ##Go) {
         rfalse;
     }
-    if (noun ~= floor) {
+    if (noun ~= d_obj) {
         rfalse;
     }
     print "You clamber down the rope, straight into a patrol of guards who capture you!^";
@@ -10358,7 +10358,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     print "no comma^";
     local3 = 0;
     return local3;
-    @2OP:0 10[ceiling?] 0;
+    @2OP:0 10[u_obj?] 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
     @2OP:0 0 0;
@@ -10377,7 +10377,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         local7 = 100[hole_in_the_wall?];
     }
     if (local6 == 2[?]) {
-        local7 = 10[ceiling?];
+        local7 = 10[u_obj?];
     }
     if (local6 == 1[?]) {
         local7 = 1[?];
