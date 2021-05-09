@@ -1,6 +1,7 @@
 MD5 8e15f0de60c1a479e122067a207b53af
 
 Enum score_index SCORE_CHOCOLATE=10 SCORE_BISCUIT=17 SCORE_WAND=6 SCORE_AIMWAND=7 SCORE_SECRETDOOR=3 SCORE_WIRELESS=8 SCORE_BATTERY=12 SCORE_JOSHUA=2 SCORE_TOURIST=13 SCORE_HAMBURG=0 SCORE_TORCH=1 SCORE_WAITER=5 SCORE_DEMIJOHN=4 SCORE_CALENDAR=9 SCORE_INFINITY=14 SCORE_TRICLINIUM=15 SCORE_DOLEMN=16 SCORE_ANDROMEDA=11
+Enum angel_topic_enum AT_HEAVEN=1 AT_HELL=2 AT_RODS=3 AT_MAZE=4 AT_MASTER=5 AT_INFINITY=6 AT_ANDROMEDA=7 AT_MURAL=8 AT_FOLLY=9 AT_ZEUS=10 AT_BOMB=11 AT_SACRIFICE=12 AT_LUCK=13 AT_FIRE=14
 Enum topic_enum T_DREAM=1 T_FLASHLIGHT=2 T_JEMIMA=3 T_NOVEL=4 T_FLOWERS=5 T_MEDICINE=6 T_WINE=7 T_BOTTLE=8 T_HEAVEN=9 T_HELL=10 T_POSTCARD=11 T_JOSHUA=12 T_ISAAC=13 T_ARCANUM=14 T_MERLIN=15 T_HAT=16 T_BOOK=17 T_EBENEZER=18 T_CARDS=19 T_RODS=20 T_TAROT=21 T_BOAT=22 T_MOUSE=23 T_KEY=24 T_RADIO=25
 Enum game_area MODERN=1 UNREAL=2 HAMBURG=3 TAROT=4 GARDEN=5 GARDEN_PAST=6 ANCIENT_BRITAIN=7 DREAMING=8
 Enum final_state DIED=1 WON=2 FAILED=3 DESTROYED_UNIVERSE=4 AUSTRALIA=5 PARADOX=6 MYTH=7 PRISON=8
@@ -772,7 +773,7 @@ Routine 0xc67c CDefart
 
 Routine 0xc68c ThrowAtSub
 Routine 0xc806 DemonHint hints_left:int
-Routine 0xc8ae routine_c8ae
+Routine 0xc8ae AngelHint hints_left:int
 Routine 0xc956 routine_c956
 Routine 0xcfb4 routine_cfb4
 Routine 0xd01e routine_d01e
@@ -903,9 +904,9 @@ Routine 0x12a8e NearDolemnAfter o:object sib:object
 Routine 0x12af4 Heavenly_Place_After angel_obj:object hints:int
 Routine 0x12d44 Hellish_Place_After demon_obj:object hints:int
 Routine 0x12f90 DevilAnswer topic:topic_enum
-Routine 0x13792 AngelAnswer topic:topic_enum
+Routine 0x13792 AngelAnswer topic:angel_topic_enum
 Routine 0x13bd8 DevilConsultTopic:int wrd:dictword topic:topic_enum
-Routine 0x13dae AngelConsultTopic:int wrd:dictword topic:topic_enum
+Routine 0x13dae AngelConsultTopic:int wrd:dictword topic:angel_topic_enum
 Routine 0x13e76 routine_13e76
 Routine 0x13e80 routine_13e80
 Routine 0x13e8a DemonQuestion local1 local2

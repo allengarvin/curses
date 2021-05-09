@@ -2210,6 +2210,22 @@ Constant SCORE_TRICLINIUM = 15;
 Constant SCORE_DOLEMN = 16;
 Constant SCORE_BISCUIT = 17;
 
+! angel_topic_enum
+Constant AT_HEAVEN = 1;
+Constant AT_HELL = 2;
+Constant AT_RODS = 3;
+Constant AT_MAZE = 4;
+Constant AT_MASTER = 5;
+Constant AT_INFINITY = 6;
+Constant AT_ANDROMEDA = 7;
+Constant AT_MURAL = 8;
+Constant AT_FOLLY = 9;
+Constant AT_ZEUS = 10;
+Constant AT_BOMB = 11;
+Constant AT_SACRIFICE = 12;
+Constant AT_LUCK = 13;
+Constant AT_FIRE = 14;
+
 ! topic_enum
 Constant T_DREAM = 1;
 Constant T_FLASHLIGHT = 2;
@@ -5045,7 +5061,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         rfalse;
     }
     if (second == angel) {
-        if (routine_c8ae() == 0) {
+        if (AngelHint() == 0) {
             print "The angel looks conscientiously at ";
             Defart(noun);	! not popped
             @pop;
@@ -6157,11 +6173,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ routine_c8ae local1 ;	! 51374 / 0xc8ae
+[ AngelHint hints_left ;	! 51374 / 0xc8ae
     if (angel hasnt general) {
-        local1 = 254[angel?];
-        local1 = angel.number;
-        if (local1 == 0) {
+        hints_left = 254;
+        hints_left = angel.number;
+        if (hints_left == 0) {
             "~No hints left, alas.~";
         }
         "~Under Regulation 3, paragraph 15 (i) clause (f), only one hint per visit to the sacred domain. You'll have to go away again and come back if you want another. So sorry.~";
@@ -6299,7 +6315,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         rfalse;
     }
     if (second == angel) {
-        if (routine_c8ae() ~= 0) {
+        if (AngelHint() ~= 0) {
             rfalse;
         }
         if (0 ~= AngelQuestion(noun_word)) {
@@ -8947,46 +8963,46 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ AngelAnswer topic ;	! 79762 / 0x13792
-    if (topic == T_FLASHLIGHT) {
+    if (topic == AT_HELL) {
         "The angel acknowledges the question, but cannot bring herself to speak of Hell.";
     }
-    if (topic == T_DREAM) {
+    if (topic == AT_HEAVEN) {
         "~Heaven?  Oh this isn't your eternal salvation, it's mine, able to serve by answering all these delightful questions. No, Heaven itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~";
     }
-    if (topic == T_JEMIMA) {
+    if (topic == AT_RODS) {
         "~The rods definitely fit into all this somewhere.~";
     }
-    if (topic == T_NOVEL) {
+    if (topic == AT_MAZE) {
         "~If only you could have been there when the maze was being laid out!~";
     }
-    if (topic == T_FLOWERS) {
+    if (topic == AT_MASTER) {
         "~The master game is like a point at infinity to we mortals,~ the angel says wistfully.";
     }
-    if (topic == T_MEDICINE) {
+    if (topic == AT_INFINITY) {
         "~All a matter of fitting the rods in somewhere.~";
     }
-    if (topic == T_WINE) {
+    if (topic == AT_ANDROMEDA) {
         "~How she must long to let her hair down now, instead of being chained to that rock,~ the angel says sorrowfully. ~But in deference to her wishes, I cannot help you rescue her.~";
     }
-    if (topic == T_BOTTLE) {
+    if (topic == AT_MURAL) {
         "~Amazing fortune you must have in finding it, I can tell.~";
     }
-    if (topic == T_HEAVEN) {
+    if (topic == AT_FOLLY) {
         "~Ah yes, we must all lament for human folly,~ says the angel, misunderstanding completely.";
     }
-    if (topic == T_HELL) {
+    if (topic == AT_ZEUS) {
         "~Zeus wasn't a true god, of course,~ the angel predictably insists, ~just a manifestation of the laws of physics to an Ancient Greek, a kind of symbol for the way the universe fundamentally worked.~";
     }
-    if (topic == T_POSTCARD) {
+    if (topic == AT_BOMB) {
         "The angel maintains a tight-lipped silence.";
     }
-    if (topic == T_JOSHUA) {
+    if (topic == AT_SACRIFICE) {
         "~That's too dangerous a rod to actually use, of course, and the Church no longer approves of martyrs.~";
     }
-    if (topic == T_ISAAC) {
+    if (topic == AT_LUCK) {
         "~Is there really such a thing as luck, or free will?  It's a theological grey area,~ says the angel with fine casuistry.";
     }
-    if (topic == T_ARCANUM) {
+    if (topic == AT_FIRE) {
         "~Certainly a thorny problem, that.~";
     }
     rtrue;
@@ -9138,61 +9154,61 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 [ AngelConsultTopic wrd topic ;	! 81326 / 0x13dae
     topic = 0;
     if (wrd == 'heaven//p') {
-        topic = T_DREAM;
+        topic = AT_HEAVEN;
     }
     if (wrd == 'hell//p') {
-        topic = T_FLASHLIGHT;
+        topic = AT_HELL;
     }
     if (wrd == 'rods//p') {
-        topic = T_JEMIMA;
+        topic = AT_RODS;
     }
     if (wrd == 'maze') {
-        topic = T_NOVEL;
+        topic = AT_MAZE;
     }
     if (wrd == 'master//p') {
-        topic = T_FLOWERS;
+        topic = AT_MASTER;
     }
     if (wrd == 'infinity') {
-        topic = T_MEDICINE;
+        topic = AT_INFINITY;
     }
     if (wrd == 'lemniscus') {
-        topic = T_MEDICINE;
+        topic = AT_INFINITY;
     }
     if (wrd == 'arc') {
-        topic = T_MEDICINE;
+        topic = AT_INFINITY;
     }
     if (wrd == 'andromeda') {
-        topic = T_WINE;
+        topic = AT_ANDROMEDA;
     }
     if (wrd == 'mural') {
-        topic = T_BOTTLE;
+        topic = AT_MURAL;
     }
     if (wrd == 'folly//p') {
-        topic = T_HEAVEN;
+        topic = AT_FOLLY;
     }
     if (wrd == 'zeus//p') {
-        topic = T_HELL;
+        topic = AT_ZEUS;
     }
     if (wrd == 'bomb') {
-        topic = T_POSTCARD;
+        topic = AT_BOMB;
     }
     if (wrd == 'lighthouse//p') {
-        topic = T_POSTCARD;
+        topic = AT_BOMB;
     }
     if (wrd == 'pharos//p') {
-        topic = T_POSTCARD;
+        topic = AT_BOMB;
     }
     if (wrd == 'device//p') {
-        topic = T_POSTCARD;
+        topic = AT_BOMB;
     }
     if (wrd == 'sacrifice') {
-        topic = T_JOSHUA;
+        topic = AT_SACRIFICE;
     }
     if (wrd == 'luck') {
-        topic = T_ISAAC;
+        topic = AT_LUCK;
     }
     if (wrd == 'fire') {
-        topic = T_ARCANUM;
+        topic = AT_FIRE;
     }
     return topic;
 ];
