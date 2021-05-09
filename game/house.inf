@@ -440,6 +440,7 @@ Object  -> antiquated_wireless "antiquated wireless"
                     }
                 }
                 rfalse;
+            Take: "It's too heavy to lift off the casters.";
         ],
         after [;
             SwitchOn:
@@ -734,6 +735,12 @@ Object electric_torch "electric torch"
         article "an",
         before [;
             SwitchOn, SwitchOff: "There's no switch, just a battery compartment.";
+            Receive:
+                if( child(self) )
+                    "There's a battery in already.";
+                if( noun ~= new_battery && noun ~= old_smudged_battery && noun ~= nasty_battery )
+                    "Not surprisingly, it won't fit in the battery compartment.";
+                rfalse;
         ],
         after [ o n;
             o = child(self);
@@ -1832,14 +1839,14 @@ Object Family_Tree "Family Tree"
             MazeY = 6;
             if( parent(player) == garden_roller )
                 return Maze;
-                "You can't go that way. Now, this takes a little explaining. These 
-                 days, it isn't easy to keep up a house the size of
-                 Meldrew House, and your family has had to strike a
-                 bargain with the National Trust that the house should
-                 be open to the public in the summer months. The maze is
-                 so popular with visitors that the grass has worn away,
-                 and it's being reseeded at the moment, so you shouldn't
-                 go treading all over it.";
+            "You can't go that way. Now, this takes a little explaining. These 
+             days, it isn't easy to keep up a house the size of
+             Meldrew House, and your family has had to strike a
+             bargain with the National Trust that the house should
+             be open to the public in the summer months. The maze is
+             so popular with visitors that the grass has worn away,
+             and it's being reseeded at the moment, so you shouldn't
+             go treading all over it.";
         ],
         e_to Mosaic,
         w_to Clearing,

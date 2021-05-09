@@ -24,6 +24,12 @@ Object Museum_of_Arcana "Museum of Arcana"
 Object  -> Tarot_box "Tarot box"
   with  name 'box' 'of' 'tarot',
         devil_hint "There's nothing worthwhile in it.",
+        before [;
+            Receive:
+                if( noun hasnt card )
+                    "Only cards will fit.";
+                rfalse;
+        ],
   has   container openable;
 
 Tarot   -> -> Castle_card "Castle"

@@ -60,6 +60,7 @@ Attribute rod_charged;
 Attribute card;
 Attribute wire;
 
+Replace DrinkSub;
 Replace SingSub;
 Replace DigSub;
 Replace ScoreSub;
@@ -67,6 +68,7 @@ Replace WaveSub;
 Replace WakeSub;
 Replace FillSub;
 Replace MildSub;
+Replace SorrySub;
 
 Include "Parser";
 Include "variables.inf";
@@ -74,6 +76,24 @@ Include "VerbLib";
 
 Global rod_score;
 Global KnowLanguages;
+
+[ SorrySub;
+    if( carbolic_soap has concealed )
+        "Oh, don't apologise.";
+    "Sorry isn't good enough!";
+];
+
+[ DrinkSub;
+    if( location == Down_by_River )
+        "Ugh!  What foul water.";
+    if( location == Garden_Stream ) 
+        "Just about drinkable. Not much fun, though.";
+    if( location == Stream )
+        "Delicious clear and unpolluted.";
+    if( location == Sea_Shore )
+        "Salt water!  You must be joking.";
+    "There's nothing suitable to drink here.";
+];
 
 [ HelpSub;
     "Newcomers to the game may like to try the following:^^  ~help instructions~   gives some basic information,^  ~help credits~        runs the game credits,^  ~help legal~          makes some legal disclaimers,^  ~help commands~       details some common commands.";
@@ -162,6 +182,10 @@ Global KnowLanguages;
 
 [ XyzzySub;
     "For a moment you can almost hear a hoarse voice say something to you. But it passes.";
+];
+
+[ QuitNowSub;
+    @quit;
 ];
 
 [ SingSub ;
@@ -376,6 +400,12 @@ class Rod
         before [;
             Wave: "That seems to be not quite how they work...";
         ],
+        description [;
+            print (The) noun, " is ";
+            if( self has rod_charged )
+                "charged up.";
+            "uncharged.";
+        ],
   has   rod_attr;
 
 ! early versions of Timers. Leaving in until I recode them
@@ -425,6 +455,15 @@ class Rod
     deadflag = DIED;
     "As you step falteringly through the darkness, cowardly but evil creatures devour you whole!";
 ];
+
+
+Object carbolic_soap "carbolic soap"
+  with  name 'soap' 'carbolic' 'cake',
+        description "~For foulmouths everywhere~.",
+        article "a cake of",
+        devil_hint "That's the spirit, keep it up!",
+        angel_hint "Really!  How disgraceful!",
+  has   concealed;
 
 Include "house.inf";
 Include "unreal.inf";
