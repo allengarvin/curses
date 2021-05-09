@@ -680,7 +680,7 @@ Routine 0x7ccc PadInteger i:int j:int
 Routine 0x7d0c PrintTaskName task_number:score_index final_score:int
 Routine 0x7e76 FullScoreSub
 Routine 0x7ffa QuitSub i:dictword
-Routine 0x805a routine_805a
+Routine 0x805a UnconditionalQuitSub
 Routine 0x805e RestartSub i:dictword
 Routine 0x80c0 RestoreSub
 Routine 0x80d2 SaveSub
@@ -696,8 +696,8 @@ Routine 0x84f2 InsertSub env:object
 Routine 0x861c TransferSub
 Routine 0x8684 EmptySub
 Routine 0x8690 EmptyTSub
-Routine 0x8742 routine_8742
-Routine 0x8760 routine_8760
+Routine 0x8742 LieSub
+Routine 0x8760 LieDownSub
 Routine 0x87b8 ExitSub env:object
 Routine 0x8848 ExitSub
 Routine 0x889c VagueGoSub
@@ -706,7 +706,7 @@ Routine 0x8ea8 BriefSub
 Routine 0x8f16 VerboseSub
 Routine 0x8f76 SuperSub
 Routine 0x8fdc LookSub verbose:bool env:object str:string local4 chld:object local6 local7 
-Routine 0x9156 routine_9156
+Routine 0x9156 Describe o:object
 Routine 0x9320 DescribeObj obj:object n:int
 Routine 0x946e ShowSub
 Routine 0x963c GiveRSub obj:object
