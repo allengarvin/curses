@@ -2631,7 +2631,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     HintSub
     routine_d196
     HelpSub
-    routine_c956
+    AnswerQuestion
     routine_d01e
     routine_a858
     SleepSub
@@ -6185,7 +6185,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ routine_c956 local1 local2 local3 ;	! 51542 / 0xc956
+[ AnswerQuestion local1 local2 local3 ;	! 51542 / 0xc956
     if (gas_mask has worn) {
         "Not through a gas mask you can't.";
     }
@@ -6340,14 +6340,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (noun == demon) {
         noun = second;
         second = demon;
-        routine_c956();	! not popped
+        AnswerQuestion();	! not popped
         @pop;
         rfalse;
     }
     if (noun == angel) {
         noun = second;
         second = angel;
-        routine_c956();	! not popped
+        AnswerQuestion();	! not popped
         @pop;
         rfalse;
     }
