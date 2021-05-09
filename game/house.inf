@@ -825,6 +825,8 @@ Object Servants_Room "Servant's Room"
             in all this warm stuffy air. All you want to do is curl up
             and sleep.",
         before [;
+            Lie:
+                << Enter servants_bed >>;
             Sleep:
                 if( parent(player) ~= servants_bed )
                     rfalse;
