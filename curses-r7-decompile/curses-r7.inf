@@ -2627,17 +2627,17 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     LockSub
     AttackSub
     routine_ac5c
-    routine_d122
+    WaitSub
     HintSub
-    routine_d196
     HelpSub
+    HelpSpecialSub
     AnswerQuestion
     routine_d01e
     EatSub
     SleepSub
     StrikeWand
     PointWand
-    routine_d0f0
+    ClimbSub
     routine_d12e
     routine_805a
     BuySub
@@ -2665,7 +2665,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     JumpOverSub
     ListenSub
     routine_e4a8
-    DebugMoveRods
+    XCheatSub
     routine_e5d0
     DebugXTravelSub
     TriggerEndgame
@@ -6358,7 +6358,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You do your best to sing the opening from Schutz' sacred concerto ~O bone Jesu, fili Mariae~ (SWV 471). Unfortunately your best is such that the result is indistinguishable from ~How much is that doggie in the window?~.";
 ];
 
-[ routine_d0f0 ;	! 53488 / 0xd0f0
+[ ClimbSub ;	! 53488 / 0xd0f0
     if (noun == plane_tree) {
         noun = ceiling;
         GoSub();	! not popped
@@ -6368,7 +6368,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "I don't think much is to be achieved by that.";
 ];
 
-[ routine_d122 ;	! 53538 / 0xd122
+[ WaitSub ;	! 53538 / 0xd122
     "Time passes.";
 ];
 
@@ -6380,11 +6380,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "There are hints built into this game, but you will have to find out for yourself how to get them.";
 ];
 
-[ routine_d196 ;	! 53654 / 0xd196
+[ HelpSub ;	! 53654 / 0xd196
     "Newcomers to the game may like to try the following:^^  ~help instructions~   gives some basic information,^  ~help credits~        runs the game credits,^  ~help legal~          makes some legal disclaimers,^  ~help commands~       details some common commands.";
 ];
 
-[ HelpSub word ;	! 53844 / 0xd254
+[ HelpSpecialSub word ;	! 53844 / 0xd254
     word = noun_word;
     new_line;
     if (word == 'instructions//p') {
@@ -6414,7 +6414,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You can't do that.";
 ];
 
-[ DebugMoveRods obj ;	! 58566 / 0xe4c6
+[ XCheatSub obj ;	! 58566 / 0xe4c6
     obj = rod_of_fire;
     remove obj;
     move obj to Infinity_Symbol;

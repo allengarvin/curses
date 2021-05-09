@@ -651,7 +651,7 @@ Action 98 XAllow ! 'xallow' special
 Action 99 XCheat ! 'xcheat'
 Action 100 XAttic  ! 'xattic' special
 Action 101 XTravel ! 'xtrave'
-Action 102 XMaste ! 'xmaste'
+Action 102 XMaster ! 'xmaste'
 Action 103 XAsnc ! 'xasnc'
 Action 104 XDh ! 'xdh' special
 Action 105 XAh ! 'xah' special
@@ -785,8 +785,8 @@ Routine 0xd150 HintSub
 Routine 0xd196 HelpSub
 Routine 0xd254 HelpSpecialSub word:dictword
 Routine 0xe4a8 routine_e4a8
-Routine 0xe4c6 DebugMoveRods obj:object
-Routine 0xe55e LearnLanguages
+Routine 0xe4c6 XCheatSub obj:object
+Routine 0xe55e XMasterSub
 Routine 0xe5a0 routine_e5a0
 Routine 0xe5bc DebugXTravelSub
 Routine 0xe5d0 routine_e5d0
