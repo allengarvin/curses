@@ -2282,7 +2282,7 @@ Global player = yourself;
 Global global4;
 Global global5;
 Global global6;
-Global global7 = 1[?];
+Global light_lvl = true;
 Global deadflag;
 Global verb;
 Global noun;
@@ -2587,7 +2587,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     ScoreSub
     FullScoreSub
     LookSub
-    routine_9156
+    Describe
     SearchSub
     routine_b3f0
     routine_b6f2
@@ -2598,8 +2598,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     OpenSub
     UnlockSub
     CloseSub
-    routine_8742
-    routine_8760
+    LieSub
+    LieDownSub
     QuitSub
     RestoreSub
     RestartSub
@@ -2639,7 +2639,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     PointWand
     ClimbSub
     routine_d12e
-    routine_805a
+    UnconditionalQuitSub
     BuySub
     SqueezeSub
     SwimSub
@@ -2651,10 +2651,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     routine_9fc4
     routine_a06e
     SmellSub
-    routine_a0a4
-    routine_a0ba
-    routine_a0d2
-    routine_a0e8
+    ListenSub
+    TasteSub
+    FeelSub
+    TouchSub
     CleanSub
     TieSub
     BurnSub
@@ -3638,15 +3638,15 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             "^Kicking and screaming, you are are dragged off to a grisly sacrifice...";
         }
     }
-    i = global7;
-    global7 = HasLightSource(parent(player));
-    if (i == 0 && global7 == 1[?]) {
+    i = light_lvl;
+    light_lvl = HasLightSource(parent(player));
+    if (i == 0 && light_lvl == true) {
         new_line;
         location = parent(player);
         LookSub(true);	! not popped
         @pop;
     }
-    if (i == 1[?] && global7 == 0) {
+    if (i == 1[?] && light_lvl == false) {
         new_line;
         print "It is now pitch dark in here!^";
         location = thedark;
@@ -4142,7 +4142,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_805a ;	! 32858 / 0x805a
+[ UnconditionalQuitSub ;	! 32858 / 0x805a
     @quit;
     rtrue;
 ];
@@ -4532,11 +4532,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_8742 ;	! 34626 / 0x8742
+[ LieSub ;	! 34626 / 0x8742
     "Whatever happened to truthfulness...";
 ];
 
-[ routine_8760 ;	! 34656 / 0x8760
+[ LieDownSub ;	! 34656 / 0x8760
     noun = nothing;
     if (location == Servants_Room) {
         noun = servants_bed;
@@ -4715,7 +4715,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     has_light = HasLightSource(prop);
     if (has_light ~= false) {
         location = prop;
-        global7 = 1[?];
+        light_lvl = true;
     }
     if (has_light == false) {
         if (location == thedark) {
@@ -4727,7 +4727,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             "As you unwisely blunder about in the dark, you put a foot wrong and crash through a thin plaster roof into one of the upstairs bedrooms, happily landing on the bed. In later years it becomes a family joke that you demolished half the house for a tatty old tourist map.";
         }
         location = thedark;
-        global7 = 0;
+        light_lvl = false;
     }
     if (1[?] == routine_4894()) {
         rtrue;
@@ -4876,7 +4876,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ routine_9156 local1 ;	! 37206 / 0x9156
+[ Describe o ;	! 37206 / 0x9156
     if (location == thedark) {
         "Darkness, noun. An absence of light to see by.";
     }
@@ -4896,19 +4896,19 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         "uncharged.";
     }
     if (noun has card) {
-        local1 = noun.door_to;
-        if (local1 ~= 0) {
+        o = noun.door_to;
+        if (o ~= nothing) {
             print "A beautifully realistic picture. ";
         }
     }
     if (noun == s_obj) {
         if (location == Souvenirs_Room && slide_projector has on) {
-            local1 = child(slide_projector);
-            if (local1 == 0) {
+            o = child(slide_projector);
+            if (o == nothing) {
                 "The south wall is lit up by the projector.";
             }
             print "The south wall shows ";
-            ShowProjectorImage(local1);	! not popped
+            ShowProjectorImage(o);	! not popped
             @pop;
             rfalse;
         }
@@ -4920,8 +4920,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             }
         }
     }
-    local1 = noun.description;
-    if (local1 == 0) {
+    o = noun.description;
+    if (o == nothing) {
         if (noun has container) {
             SearchSub();	! not popped
             @pop;
@@ -4932,7 +4932,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         @pop;
         ".";
     }
-    print (string) local1;
+    print (string) o;
     new_line;
     if (noun has switchable) {
         print "It is currently switched ";
@@ -5427,19 +5427,19 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You smell nothing unexpected.";
 ];
 
-[ routine_a0a4 ;	! 41124 / 0xa0a4
+[ ListenSub ;	! 41124 / 0xa0a4
     "You hear nothing unexpected.";
 ];
 
-[ routine_a0ba ;	! 41146 / 0xa0ba
+[ TasteSub ;	! 41146 / 0xa0ba
     "You taste nothing unexpected.";
 ];
 
-[ routine_a0d2 ;	! 41170 / 0xa0d2
+[ FeelSub ;	! 41170 / 0xa0d2
     "You feel nothing unexpected.";
 ];
 
-[ routine_a0e8 ;	! 41192 / 0xa0e8
+[ TouchSub ;	! 41192 / 0xa0e8
     if (noun has animate) {
         "Keep your hands to yourself!";
     }

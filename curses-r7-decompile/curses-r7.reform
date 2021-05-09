@@ -337,7 +337,7 @@ Global 3 player:object
 Global 4 global4:?
 Global 5 global5:?
 Global 6 global6:?
-Global 7 global7:?
+Global 7 light_lvl:bool
 Global 8 deadflag:final_state
 GlobalArray 9 buffer:array(?)
 GlobalArray 10 parse:array(?)
@@ -729,10 +729,10 @@ Routine 0x9f8e WakeUpSub
 Routine 0x9fc4 routine_9fc4
 Routine 0xa06e routine_a06e
 Routine 0xa08c SmellSub
-Routine 0xa0a4 routine_a0a4
-Routine 0xa0ba routine_a0ba
-Routine 0xa0d2 routine_a0d2
-Routine 0xa0e8 routine_a0e8
+Routine 0xa0a4 ListenSub
+Routine 0xa0ba TasteSub
+Routine 0xa0d2 FeelSub
+Routine 0xa0e8 TouchSub
 Routine 0xa118 DigSub
 Routine 0xa188 CutSub
 Routine 0xa1ae JumpSub
