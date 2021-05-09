@@ -1891,10 +1891,6 @@ Object -> garden_roller "garden roller"
         description "A motorised garden roller of the kind you sit inside, 
             among whose simple controls is a big on/off switch.",
         before [;
-!0   to disallow the movement, printing a refusal;
-!1   to allow the movement, moving vehicle and player;
-!2   to disallow but print and do nothing; or
-!3   to allow but print and do nothing.
             Go:
                 if( self hasnt on )
                     "The motor isn't on at the moment.";
@@ -1903,7 +1899,6 @@ Object -> garden_roller "garden roller"
                 if( (location == Family_Tree && noun == u_obj) || (location == Patio_in_Maze && noun == d_obj) )
                     "It won't go that way.";
                 return 1;
-! Todo: Maze travel
         ],
         when_on "The garden roller sits here, its engine still running.",
         when_off "A big motorised garden roller is parked here.",
@@ -2116,7 +2111,9 @@ Object Patio_in_Maze "Patio in Maze"
   has   light scored;
 
 Object Crypt "Crypt"
-  with  description "A dismal crypt, disused, full of leaves and rainswept. Light streams in from the square hole in the roof. There are no bones or urns on show.",
+  with  description "A dismal crypt, disused, full of leaves and rainswept. 
+            Light streams in from the square hole in the roof. There
+            are no bones or urns on show.",
     n_to bronze_mural,
     u_to Patio_in_Maze,
     d_to bronze_mural,
@@ -2124,7 +2121,11 @@ Object Crypt "Crypt"
 
 Object -> bronze_mural "bronze mural"
   with  name 'bronze' 'mural',
-    description "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations.",
+        description "The mural depicts an old bearded wise man following a star 
+            in the western sky. He has his right arm around an attractive
+            young woman and holds a bundle of wands with his left
+            hand. Around the border are astrological symbols of all kinds,
+            from Tarot suits to zodiacal constellations.",
     initial "The mural stands slightly to one side, revealing a passage leading downward.",
     door_dir d_to,
     door_to Catacomb_Passage,
@@ -2133,7 +2134,12 @@ Object -> bronze_mural "bronze mural"
 
 Object Universe_Maintenance_Room "Universe Maintenance Room"
   with  name 'gauges' 'machine',
-    description "You really should try to be more awestruck, for this is Merlin's cave, the hub of Creation. Every visitor perceives this place differently, according to his or her own myths and beliefs. Your particular creed being science, it is an unimpressive collection of gauges, dials and machines. A single passage leads up and out to the south.",
+        description "You really should try to be more awestruck, for this 
+            is Merlin's cave, the hub of Creation. Every visitor perceives
+            this place differently, according to his or her own myths
+            and beliefs. Your particular creed being science, it is an
+            unimpressive collection of gauges, dials and machines. A
+            single passage leads up and out to the south.",
     s_to Catacomb_Passage,
     u_to Catacomb_Passage,
   has   scored;
@@ -2157,7 +2163,7 @@ Object  -> large_dial "large dial"
   has   static;
 
 Object  -> big_electricians_switch "big electrician's switch"
-  with  name 'big' 'electric' 'switch',
+  with  name 'big' 'electrician' 'switch',
         description [;
             print "The lower, on, position is labelled ~Determinism~. 
                 The upper, off, position is labelled ~Chance~. It is currently switched ";
@@ -2167,12 +2173,12 @@ Object  -> big_electricians_switch "big electrician's switch"
         ],
         after [;
             SwitchOn: "Click-clunk!  The world looks precisely the same.";
-            SwitchOn: "Clunk-click!  Probably nothing very much has changed.";
+            SwitchOff: "Clunk-click!  Probably nothing very much has changed.";
         ],
   has   scenery static switchable on;
 
 Object Viewpoint_Ledge "Viewpoint Ledge"
-  with  name 'motorway' 'coache',
+  with  name 'motorway' 'coaches',
         description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) 
             to the motorway below. Coaches pass by, reminding you of
             the rapidly approaching time when visitors will have to be
@@ -2779,15 +2785,102 @@ Object Heavenly_Place "Heavenly Place"
             sky to the beanstalk. There is some choral singing going on
             somewhere, but not loud enough for you to hear properly. Not
             in this life, anyway.",
-!        after Heavenly_Place_After,
+        ! this is an ugly hack to print a message when the player arrives in the room,
+        ! after the description is printed. Handled originally with an 'after: Go'
+        ! routine, but in the current library that prints before the room desc.
+        ! Better way to do it? I don't know
+        initial [; StartTimer(self, 0); ],
+        time_left 0,
+        time_out [;
+            new_line;
+            if( angel has general )
+                "~I presume you have decided what to ask,~ says the angel.";
+            if( angel.number > 0 ) {
+                angel.number--;
+                if( angel.number > 0 )
+                    give angel general;
+            }
+            switch( angel.number ) {
+                0: "~I'm afraid I can be of no further use to you!  See you in another life,~ says the angel 
+                     with a memorable smile.";
+                1: "~You have one remaining question,~ says the angel with a memorable smile.";
+                2: "~A whole two questions left,~ says the angel with a memorable smile.";
+            }
+            "~Good day,~ says the angel with a memorable smile. ~As a reward 
+             for your act of faith, may I welcome you to our little
+             information service. We try to be as helpful as possible
+             to explorers who are lost, or can't think how to solve
+             their problems. Is there anything, pray, which you would
+             like a hint about, or which you'd like to show me?  You are
+             permitted three hints in all, in accordance with standard
+             practice.";
+        ],
         s_to Up_the_Beanstalk,
         cant_go "That direction is not for the living.",
   has   light;
 
+[ DemonHint ;
+    if( demon hasnt general ) {
+        if( demon.number == 0 )
+            "~No hints left, sucker.~";
+        "~Under Regulation 3, paragraph 15 (i) clause (f), only one hint per visit to the infernal domain. You'll have to go away again and come back if you want another. So sorry.~";
+    }
+    rfalse;
+];
+
+[ AngelHint ;
+    if( angel hasnt general ) {
+        if( angel.number == 0 )
+            "~No hints left, alas.~";
+        "~Under Regulation 3, paragraph 15 (i) clause (f), only one hint per visit to the sacred domain. You'll have to go away again and come back if you want another. So sorry.~";
+     }
+    rfalse;
+];
+    
 Object  -> angel "angel"
   with  name 'angel',
         description "If you were to cast a film of your adventures so far, you would hire Dame 
             Judi Dench to play this lady.",
+        life [ a;
+            Ask:
+                if( AngelHint() )
+                    rtrue;
+                a = AngelConsultTopic(second);
+                if( a )
+                    give angel ~general;
+
+                switch( a ) {
+                     AT_HELL: "The angel acknowledges the question, but cannot bring herself to speak of Hell.";
+                     AT_HEAVEN: "~Heaven?  Oh this isn't your eternal salvation, it's mine, able to serve by answering all these delightful questions. No, Heaven itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~";
+                     AT_RODS: "~The rods definitely fit into all this somewhere.~";
+                     AT_MAZE: "~If only you could have been there when the maze was being laid out!~";
+                     AT_MASTER: "~The master game is like a point at infinity to we mortals,~ the angel says wistfully.";
+                     AT_INFINITY: "~All a matter of fitting the rods in somewhere.~";
+                     AT_ANDROMEDA: "~How she must long to let her hair down now, instead of being chained to that rock,~ the angel says sorrowfully. ~But in deference to her wishes, I cannot help you rescue her.~";
+                     AT_MURAL: "~Amazing fortune you must have in finding it, I can tell.~";
+                     AT_FOLLY: "~Ah yes, we must all lament for human folly,~ says the angel, misunderstanding completely.";
+                     AT_ZEUS: "~Zeus wasn't a true god, of course,~ the angel predictably insists, ~just a manifestation of the laws of physics to an Ancient Greek, a kind of symbol for the way the universe fundamentally worked.~";
+                     AT_BOMB: "The angel maintains a tight-lipped silence.";
+                     AT_SACRIFICE: "~That's too dangerous a rod to actually use, of course, and the Church no longer approves of martyrs.~";
+                     AT_LUCK: "~Is there really such a thing as luck, or free will?  It's a theological grey area,~ says the angel with fine casuistry.";
+                     AT_FIRE: "~Certainly a thorny problem, that.~";
+                }
+                if( AngelConsultTopic(second) )
+                    "~That's a question you'd better put to my colleague in the Other Place,~ says the demon smoothly. ~Try something else.~^";
+                "~That's not something I am empowered to answer,~ says the demon with a nervous glance behind him. ~Try something else.~^";
+            Show:
+                if( AngelHint() )
+                    rtrue;
+                print "The angel looks conscientiously at ", (the) noun, " and rouses herself to say: ~";
+                if( noun provides angel_hint ) {
+                    print noun.angel_hint;
+                    give angel ~general;
+                } else if( noun provides devil_hint )
+                    print "I suppose you could ask, um, that tailed gentleman.";
+                else
+                    print "I'm afraid I'm don't know much about ", (the) noun, ".";
+                "~.";
+        ],
         number 4,
   has   animate scenery;
 
@@ -2813,10 +2906,126 @@ Object Hellish_Place "Hellish Place"
         ],
   has   light;
 
+
+[ AngelConsultTopic w;
+    switch( w ) {
+        'heaven': return AT_HEAVEN;
+        'hell': return AT_HELL;
+        'rods': return AT_RODS;
+        'maze': return AT_MAZE;
+        'master': return AT_MASTER;
+        'infinity': return AT_INFINITY;
+        'lemniscus': return AT_INFINITY;
+        'arc': return AT_INFINITY;
+        'andromeda': return AT_ANDROMEDA;
+        'mural': return AT_MURAL;
+        'folly': return AT_FOLLY;
+        'zeus': return AT_ZEUS;
+        'bomb': return AT_BOMB;
+        'lighthouse': return AT_BOMB;
+        'pharos': return AT_BOMB;
+        'device': return AT_BOMB;
+        'sacrifice': return AT_SACRIFICE;
+        'luck': return AT_LUCK;
+        'fire': return AT_FIRE;
+    }
+    return 0;
+];
+
+[ DevilConsultTopic w;
+    switch( w ) {
+        'premoninition': return T_DREAM;
+        'dream':         return T_DREAM;
+        'torch':         return T_FLASHLIGHT;
+        'battery':       return T_FLASHLIGHT;
+        'aunt':          return T_JEMIMA;
+        'jemima':        return T_JEMIMA;
+        'gloves':        return T_JEMIMA;
+        'romance':       return T_NOVEL;
+        'marie':         return T_NOVEL;
+        'daisy':         return T_FLOWERS;
+        'daisychain':    return T_FLOWERS;
+        'daisies':       return T_FLOWERS;
+        'medicine':      return T_MEDICINE;
+        'demijohn':      return T_WINE;
+        'bottle':        return T_BOTTLE;
+        'heaven':        return T_HEAVEN;
+        'hell':          return T_HELL;
+        'card':          return T_POSTCARD;
+        'postcard':      return T_POSTCARD;
+        'ghost':         return T_JOSHUA;
+        'joshua':        return T_JOSHUA;
+        'prayer':        return T_ISAAC;
+        'isaac':         return T_ISAAC;
+        'museum':        return T_ARCANUM;
+        'arcana':        return T_ARCANUM;
+        'doktor':        return T_ARCANUM;
+        'stein':         return T_ARCANUM;
+        'merlyn':        return T_MERLIN;
+        'hat':           return T_HAT;
+        'book':          return T_BOOK;
+        'ebenezer':      return T_EBENEZER;
+        'projector':     return T_CARDS;
+        'slide':         return T_CARDS;
+        'cards':         return T_CARDS;
+        'rod':           return T_RODS;
+        'rods':          return T_RODS;
+        'tarot':         return T_TAROT;
+        'sosostris':     return T_TAROT;
+        'boat':          return T_BOAT;
+        'hollow':        return T_BOAT;
+        'mouse':         return T_MOUSE;
+        'robot':         return T_MOUSE;
+        'hole':          return T_MOUSE;
+        'key':           return T_KEY;
+        'radio':         return T_RADIO;
+        'wireless':      return T_RADIO;
+    }
+    return 0;
+];
+
 Object  -> demon "demon"
   with  name 'devil' 'demon',
         description "If you were to cast a film of your adventures so far, 
             you would hire Donald Sutherland to play this gentleman.",
+        before [ a;
+            Ask:
+                if( DemonHint() )
+                    rtrue;
+                a = DevilConsultTopic(second);
+                if( a )
+                    give demon ~general;
+                switch( a ) {
+                    T_DREAM: "~In the premonition, it is vital to get hold of the mascot for later use.~";
+                    T_FLASHLIGHT: "~It's no use poking about on the attic floor for fresh torch batteries, because there aren't any.~";
+                    T_JEMIMA: "~Your Aunt Jemima is not the kind of woman to be distracted by music or frivolous presents, mark my words.~";
+                    T_NOVEL: "~Novels are, of course, invariably written by people using their real names, not disguised in any way.~";
+                    T_FLOWERS: "~The thing about daisies is, they are the same all year round, not changing with the calendar.~";
+                    T_MEDICINE: "~Modern medicine bottles can even withstand falls from a great height. I should try heat if I were you.~";
+                    T_WINE: "~You can easily get a grip on the demijohn with your bare hands.~";
+                    T_BOTTLE: "~The answer's the same, whichever bottle you meant. That counts as your hint, I'm afraid. Not very fair, but then I am a demon.~";
+                    T_HEAVEN: "The demon acknowledges the question, but cannot bring himself to speak of Heaven.";
+                    T_HELL: "~Hell?  Oh this isn't your eternal damnation, it's mine, having to answer all these wretched questions. No, Hell itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~";
+                    T_POSTCARD: "~Don't worry, there's nothing written there. No need to look at the problem in a fresh light.~";
+                    T_JOSHUA: "~History never repeats itself, so it's pointless looking him up in the book.~";
+                    T_ISAAC: "~The really interesting stuff is at the very start of his working life.~";
+                    T_ARCANUM: "~Forget it, there's no way to return from the museum, and Doktor Stein's medicine has no antidote.~";
+                    T_MERLIN: "~Merlyn doesn't really come into this. Try working on something else.~";
+                    T_HAT: "~Literally, Merlyn's actual hat. Green pointy felt, I wouldn't wonder.~";
+                    T_BOOK: "~The answer's the same, whichever book you meant. That counts as your hint, I'm afraid. Not very fair, but then I am a demon.~";
+                    T_EBENEZER: "~Ebenezer?  He's absolutely central to this. Concentrate on him, definitely.~";
+                    T_CARDS: "~Trouble with holiday snaps is, once somebody gets the old slide projector going, a boring time is on the cards for all.~";
+                    T_RODS: "~You'll need to be wide awake and alert to work out what to do with them. Finding them is easy - just remember to keep an eye out for short, fat things.~";
+                    T_TAROT: "~Clairvoyantes are expert at detecting stacked decks, so it's no good cheating.~";
+                    T_BOAT: "~Phlebas runs a very badly-advertised service, I'm afraid. I've got no time for him.~";
+                    T_MOUSE: "~Once the mouse is in the hole, forget it, it couldn't hear you even if you talked to the hole instead. But there is an alternative method.~";
+                    T_KEY: "~Your fault for letting the key get into the foundations - nothing can get in there to retrieve it.~";
+                    T_RADIO: "~Marvellous, marvellous contraption. Starts the moment you switch it on, and then nothing but solid gold classics all the way. You can really concentrate when that's playing.~";
+                }
+                if( AngelConsultTopic(second) )
+                    "~That's a question you'd better put to my colleague in the Other Place,~ says the demon smoothly. ~Try something else.~^";
+                "~That's not something I am empowered to answer,~ says the demon with a nervous glance behind him. ~Try something else.~^";
+        ],
         number 4,
   has   animate scenery;
 

@@ -484,7 +484,7 @@ WireC   -> black_wire "black wire"
 
 [ DescribeDetonator w wires_unplugged wire_num ;
     print "The clock is ticking downwards, and has only ", timer_detonater.number; 
-    if (w == 1)
+    if( timer_detonater.number == 1 )
         print " minute ";
     else
         print " minutes ";
