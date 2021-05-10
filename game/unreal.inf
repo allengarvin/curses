@@ -403,23 +403,63 @@ Array BombWires --> 4;
 Global BombTicking;
 
 Object  -> timer_detonater "timer-detonater"
-  with  name 'timer' 'detonate',
-        before [ n;
-            Examine:
-                print "The timer seems quite simple to set. ";
-                n = self.number;
-                if( BombTicking == true )
-                    print_ret "The clock is running, and currently at ", n, " minutes.";
-                if( n ~= 0 )
-                    return DescribeDetonator();
-                "At present the clock is reset to 0.";
+  with  name 'timer' 'detonater',
+        description [ n;
+            print "The timer seems quite simple to set. ";
+            n = self.number;
+            if( n == 0 )
+                n = self.time_left;
+            if( BombTicking == true )
+                print_ret "The clock is running, and currently at ", n, " minutes.";
+            if( n ~= 0 )
+                return DescribeDetonator();
+            "At present the clock is reset to 0.";
+        ],
+        before [ ;
             Set:
-                if( self.number ~= 0 )
+                if( self.number ~= 0 || self.time_left ~= 0 )
                     "It is already running!";
-                StartDaemon(self);
-                self.number = 10;
+                StartTimer(self, 10);
                 BombTicking = true;
                 "You wind back the timer to 10 minutes, and off it goes.^";
+        ],
+        time_left 0,
+        time_out [ r a;
+            r = self;
+            while( parent(r) )
+                r = parent(r);
+            if( location ~= r )
+                rfalse;
+            print "^You hear a sharp click!^";
+            if( parent(timer_detonater) ~= flash )
+                "";
+            a = child(flash);
+            if( a == self )
+                a = sibling(a);
+            if( a == nothing )
+                "But the flash does nothing.";
+            if( a ~= nasty_battery )
+                "And the flash gives a pathetically small flash of light.^";
+            print "The flash suddenly gives an enormous magnesium-flare flash, almost blinding in its intensity. Your eyes take a little while to adjust. ";
+            if( parent(flash) == mirrored_device && flash hasnt general ) {
+                give flash general;
+                print "Consequently you can only hear as the smudge on the horizon 
+                    rises from the waves, becomes an enormous Kraken sea
+                    monster and lunges for the stone tower. (Considering
+                    this is supposed to be a Greek myth it feels
+                    surprisingly like a Japanese 1960s creature film.)
+                    The Kraken swipes at you, overreaches itself and falls
+                    over forward, impaling itself extremely messily on
+                    the pharos. Your eyes just about recover by the time
+                    the rest of your body is crushed by its weight.^^Up on
+                    Mount Olympus, Zeus is still cross. ~Take me to your
+                    Leda~, you wittily demand, but this does not seem to
+                    improve matters. Poseidon also looks rather fed up,
+                    but luckily a sizeable faction of goddesses take
+                    your side and arrange to have you resurrected...^";
+                Achieved(SCORE_ANDROMEDA);
+                PlayerTo(Souvenirs_Room, 2);
+            }
         ],
         daemon [;
             if( complicated_looking_bomb hasnt edible ) {
@@ -430,35 +470,34 @@ Object  -> timer_detonater "timer-detonater"
                 if( complicated_looking_bomb has concealed ) {
                     print "^The table rattles again.^";
                 }
-            }
-            if( 0 ~= DecrementTimer(timer_detonater) ) {
-                give complicated_looking_bomb edible;
-                if( complicated_looking_bomb has general ) {
-                    if( blue_wire ~= BombWires-->0 ) {
-                        ! no code
-                    } else if( green_wire ~= BombWires-->1 ) {
-                        ! no code
-                    } else if( black_wire ~= BombWires-->2 ) {
-                        ! no code
-                    } else if( red_wire ~= BombWires-->3 ) {
-                        ! no code
-                    } else {
-                        print "^Click!  The timer runs out, but the bomb was 
-                            disarmed. You pocket the timer and hide the rest of the evidence under the table.^";
-                        move timer_detonater to player;
-                        give timer_detonater ~static;
-                        StopDaemon(self);
-                        remove self;
-                        rtrue;
+                if( 0 ~= DecrementTimer(timer_detonater) ) {
+                    give complicated_looking_bomb edible;
+                    if( complicated_looking_bomb has general ) {
+                        if( blue_wire ~= BombWires-->0 ) {
+                            ! no code
+                        } else if( green_wire ~= BombWires-->1 ) {
+                            ! no code
+                        } else if( black_wire ~= BombWires-->2 ) {
+                            ! no code
+                        } else if( red_wire ~= BombWires-->3 ) {
+                            ! no code
+                        } else {
+                            print "^Click!  The timer runs out, but the bomb was 
+                                disarmed. You pocket the timer and hide the rest of the evidence under the table.^";
+                            move timer_detonater to player;
+                            give timer_detonater ~static;
+                            StopDaemon(self);
+                            rtrue;
+                        }
+                        print "Click!  Perhaps there's more to bomb disposal than you thought.^";
                     }
-                    print "Click!  Perhaps there's more to bomb disposal than you thought.^";
+                    print "^In a sudden cataclysm, there is an enormous explosion 
+                        from your table, blowing out all the arrowslit
+                        windows, making a thunderous noise, starting a minor
+                        fire, and of course having one other consequence:^";
+                    deadflag = DIED;
+                    StopDaemon(self);
                 }
-                print "^In a sudden cataclysm, there is an enormous explosion 
-                    from your table, blowing out all the arrowslit
-                    windows, making a thunderous noise, starting a minor
-                    fire, and of course having one other consequence:^";
-                deadflag = DIED;
-                StopDaemon(self);
             }
         ],
         number 10,
@@ -485,7 +524,6 @@ Class   WireC
         ],
   has   static wire;
 
-! TODO: where is the pull-wire code
 WireC   -> green_wire "green wire"
   with  name 'green' 'wire';
 
@@ -581,31 +619,6 @@ Object  -> windowed_door "windowed door"
         door_dir n_to,
         door_to Cups_and_Glasses,
   has   door openable scenery locked;
-
-! to implement as daemon
-
-!    } else {
-!        if (location == Cups_and_Glasses) {
-!            if (Cups_and_Glasses hasnt general) {
-!                i = 196[Cups_and_Glasses?];
-!                i.number = turns;
-!                give Cups_and_Glasses general;
-!            }
-!            i = 196[Cups_and_Glasses?];
-!            i = turns - i.number;
-!            if (i == 2[?]) {
-!                print "^There is a scuffling noise as some men gather up on the pavement outside the skylight.^";
-!            }
-!            if (i == 3[s_wall?]) {
-!                print "^The men begin to talk like conspirators. You catch occasional sounds, but can make little sense of them.^";
-!            }
-!            if (i == 4[e_wall?]) {
-!                print "^Alarmingly, you catch the odd word ~bomb~ and are almost sure you can make out someone say ~get that Meldrew~. Paranoia, bound to be.^";
-!            }
-!            if (i == 5[w_wall?]) {
-!                print "^The men walk away, perhaps a few feet, perhaps a mile.^";
-!            }
-!        }
 
 [ WireList n ;
     if( n == 1 ) {

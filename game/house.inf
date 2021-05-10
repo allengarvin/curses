@@ -194,7 +194,8 @@ Object -> -> Meldrews_History "History of the Meldrews (vol. II)"
                     'peter': "^Modestly, the author (died 1940 or so?) missed himself out.";
 
                 }
-                "^Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find what you want.";
+                "^Annoyingly there's no index (there was going to be a 
+                 consolidated one in vol. I) and you can't find what you want.";
         ],
   has   concealed proper;
 
@@ -275,7 +276,8 @@ Object  Old_Winery "Old Winery"
         time_out [;
             good_try_bonus = false;
             score = score - 5;
-            "^Sorry. Thinking about it again, the score only gets in a muddle this way, so the bonus points had better go after all.";
+            "^Sorry. Thinking about it again, the score only gets in a muddle this way, 
+             so the bonus points had better go after all.";
         ],
   has   ;
 
@@ -333,17 +335,12 @@ Object  -> -> tourist_map "tourist map"
   has   ;
 
 Object  Conservatory "Aunt Jemima's Lair"
-  with  description "This used to be called the Conservatory, before Aunt 
-            Jemima took it over to potter about with plants, painting
-            and indeed (on occasion) pottery. She has filled the place
-            with objets trouves and bric-a-brac, and hung up a home-made
-            calendar of watercolours. Even the old airing cupboard to
-            the south is cluttered.^^An open doorway leads back southwest
-            onto the upstairs landing, and you can hear the chaotic noise
-            of suitcases being manhandled about - good thing nobody's
-            seen you. A narrow staircase leads up and to the east into
-            the attic.^^Jemima herself seems to be in the potting room
-            to the west.",
+  with  description [;
+            print "This used to be called the Conservatory, before Aunt Jemima took it over to potter about with plants, painting and indeed (on occasion) pottery. She has filled the place with objets trouves and bric-a-brac, and hung up a home-made calendar of watercolours. Even the old airing cupboard to the south is cluttered.^^An open doorway leads back southwest onto the upstairs landing, and you can hear the chaotic noise of suitcases being manhandled about - good thing nobody's seen you. A narrow staircase leads up and to the east into the attic.^^Jemima herself seems to be in the potting room to the west.^";
+            if( antiquated_wireless in Conservatory && antiquated_wireless has general )
+                "^Execrable music drifts in from the conservatory.^";
+            rtrue;
+        ],
         s_to Airing_Cupboard,
         e_to Old_Winery,
         w_to Potting_Room,
@@ -615,7 +612,9 @@ Object  -> Jemima "Jemima"
             if( daisy_chain in self && location == Potting_Room ) {
                 move daisy_chain to player;
                 give daisy_chain worn;
-                "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
+                "^~There we are!  All done now.~  Jemima hangs a daisy chain 
+                 around your neck, then frowns and adjusts your hair in an 
+                 exceedingly annoying way.^";
             }
         ],
         life [ c;
@@ -961,7 +960,12 @@ Object  -> hanging_cord "hanging cord"
 
 Object -> sepia_photograph "sepia photograph"
   with  name 'sepia' 'photo' 'photograph' 'roger',
-        description "The photograph is one of the very early ones which looks as if it was taken in the dark because the chemicals have gradually oxidised. The poor man in the frame (Mr Roger Meldrew, Esquire) looks as if he was propped up by a big clamp to hold him still for five minutes, and that's because he was.",
+        description "The photograph is one of the very early ones which looks 
+            as if it was taken in the dark because the chemicals have
+            gradually oxidised. The poor man in the frame (Mr Roger
+            Meldrew, Esquire) looks as if he was propped up by a big
+            clamp to hold him still for five minutes, and that's because
+            he was.",
         article "the old",
         initial "Mounted on a plaque is an old sepia photograph of a man.",
   has   static;
@@ -971,6 +975,24 @@ Object  -> flash "photographer's flash"
         description "It has an openable compartment on the side to hold a battery and a timer mechanism.",
         initial "A rather more modern photographer's flash lies on a shelf to one side.",
         angel_hint "When you can get this working, perhaps you should take it somewhere prominent.",
+        before [ a b;
+            Receive:
+                if( self hasnt open )
+                    rfalse;
+                a = child(self);
+                if( a )
+                    b = sibling(a);
+                if( a * b ~= 0 )
+                    "The flash is full already.";
+                if( noun ~= new_battery && noun ~= old_smudged_battery && noun ~= nasty_battery && noun ~= timer_detonater )
+                    "Only batteries and timers will fit in.";
+                if( a == new_battery || a == old_smudged_battery || a == nasty_battery ) {
+                    if( noun == timer_detonater )
+                        rfalse;
+                    "There is already a battery inside, and there's only room now for a timer.";
+                }
+                rfalse;
+        ],
   has   container transparent openable;
 
 Object  East_Annexe "East Annexe"
@@ -1127,7 +1149,9 @@ Object -> dark_shaft_obj2 "dark shaft"
 
 Object  Dead_End "Dead End"
   with  name 'soot' 'chimney' 'sweeping' 'gear',
-        description "The winding attic comes to a dead end here, and particularly dirty it is too, what with soot everywhere from the broken old chimney-sweeping gear.",
+        description "The winding attic comes to a dead end here, and 
+            particularly dirty it is too, what with soot everywhere from
+            the broken old chimney-sweeping gear.",
         n_to East_Annexe,
         s_to secret_door,
   has   ;
@@ -1217,8 +1241,9 @@ Object  -> big_iron_fireplace "big iron fireplace"
 
 Object  -> cranked_skylight "cranked skylight"
   with  name 'crank' 'skylight' 'handle',
-        description "It was painted out black during the first wave of Zeppelin air raids in World War One. This is completely irrelevant, but you did ask.",
-        initial "The skylight above is open, and the sky does indeed light the room.",
+        description "It was painted out black during the first wave of Zeppelin 
+            air raids in World War One. This is completely irrelevant, but you did ask.",
+        when_open "The skylight above is open, and the sky does indeed light the room.",
         before [;
             Turn:
                 print "With a horrid creaking noise, the crank ";
@@ -1233,7 +1258,7 @@ Object  -> cranked_skylight "cranked skylight"
         ],
         door_dir u_to,
         door_to Roof,
-        describe "Above you is a blacked-out skylight with a crank handle.",
+        when_closed "Above you is a blacked-out skylight with a crank handle.",
   has   door static;
 
 Object  -> gas_mask "gas mask"
@@ -1728,7 +1753,11 @@ Object  -> -> small_brass_key "small brass key"
   has   ;
 
 Object Cellar_West "Cellar West"
-  with  description "The west end of a disused and shadowy old cellar. It used to be a wine cellar, but was bricked up when you were a child - you never did find out why. Perhaps the golden, jewelled staircase leading down into smoky mists to the south might be something to do with it.",
+  with  description "The west end of a disused and shadowy old cellar. It 
+            used to be a wine cellar, but was bricked up when you were
+            a child - you never did find out why. Perhaps the golden,
+            jewelled staircase leading down into smoky mists to the
+            south might be something to do with it.",
         s_to Hellish_Place,
         e_to Cellars,
         nw_to Gothic_door,
@@ -3056,6 +3085,21 @@ Object  -> demon "demon"
             you would hire Donald Sutherland to play this gentleman.",
         before [ a;
             Attack: "A little late for that now.";
+            Show:
+                print "The demon glances lazily at ", (the) noun, " and rouses himself to say: ~";
+
+                if( noun provides devil_hint ) {
+                    print noun.devil_hint;
+                    give demon ~general;
+                } else if( noun provides angel_hint )
+                    print "I know about that, but my counterpart doesn't.";
+                else
+                    print "I know just what that's for.";
+                if( noun has edible ) {
+                    remove noun;
+                    " Mmm... delicious!~  Sloth and gluttony... two deadly sins in one minute. His boss will be pleased.";
+                }
+                "~.";
             Ask:
                 if( DemonHint() )
                     rtrue;

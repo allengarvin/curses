@@ -1,4 +1,11 @@
-Object  Premonition "Premonition"
+Class   PremoR
+  with  before [;
+            Go, Take, Look, Inv, Wake: rfalse;
+            default: "You seem unable to concentrate sufficiently.^";
+        ],
+  has   light;
+
+PremoR  Premonition "Premonition"
   with  description "It is a frosty, clear night, but there is a scent of 
             camp-fires burning in the distance. You are passing through
             the landscape as if a ghost, and all seems faintly unreal. To
@@ -6,11 +13,15 @@ Object  Premonition "Premonition"
             no way in from here. To southwest, some soldiers sit around
             the embers of a fire. There is a terrible sense of something
             about to happen.",
-        e_to The_Generals_Tent,
+        e_to [;
+            print "You pass uncomfortably straight through the hide wall.^";
+            return The_Generals_Tent;
+        ],
         sw_to Camp_Fire,
+        cant_go "You drift in that direction, but without gaining any ground.",
   has   light;
 
-Object  The_Generals_Tent "The General's Tent"
+PremoR  The_Generals_Tent "The General's Tent"
   with  description "This is the tent of a thin, reedy man who wears no 
             uniform but has an obvious and commanding presence. He has an
             aquiline, patrician nose and, at five feet four, is taller
@@ -19,10 +30,12 @@ Object  The_Generals_Tent "The General's Tent"
             more solid figure stands by a trestle table at the north
             end of the tent.",
         n_to Beside_Table,
-        w_to Premonition,
-  has   light;
+        w_to [;
+            print "You pass uncomfortably straight through the hide wall.^";
+            return Premonition;
+        ];
 
-Object  Beside_Table "Beside Table"
+PremoR  Beside_Table "Beside Table"
   with  description "Beside the table is a more substantial adviser, as if 
             she too walks in this strange spirit plane. She is wearing
             frightening druidical robes, of strange pelts and furs,
@@ -31,8 +44,7 @@ Object  Beside_Table "Beside Table"
             eye, but then look round and see nothing. The military
             men do not believe in her power, and yet... they treat her
             with respect.",
-        s_to The_Generals_Tent,
-  has   light;
+        s_to The_Generals_Tent;
 
 Object  -> heavy_iron_mascot "heavy iron mascot"
   with  name 'heavy' 'iron' 'mascot',
@@ -59,7 +71,7 @@ Object  -> heavy_iron_mascot "heavy iron mascot"
         devil_hint "An absolute essential.",
   has   ;
 
-Object  Camp_Fire "Camp Fire"
+PremoR  Camp_Fire "Camp Fire"
   with  description "You can almost smell fear here. A motley platoon of 
             soldiers are sitting about the embers of a fire. None are
             talking or sleeping, and the false good humour of the evening
@@ -68,31 +80,25 @@ Object  Camp_Fire "Camp Fire"
             there is a strange light already in the east... not yet a
             dawn, for the soldiers seem unaware of it.",
         e_to Near_Dolmen,
-        ne_to Premonition,
-  has   light;
+        ne_to Premonition;
 
-Object  Near_Dolmen "Near Dolmen"
+PremoR  Near_Dolmen "Near Dolmen"
   with  description "A standing stone, perhaps a glacial erratic, stands 
             here and on top of it is a shining blue stone, whose
             brightness almost blinds you. You feel irresistably drawn
             to it, and your hand reaches out...",
         name 'bluish' 'stone' 'dolmen' 'brightness',
-        before [ ;
-! Need to intercept all actions. Not working in this version of inform
-! TODO
-            Look, Go:
-                rfalse;
-            default:
-                game_section = MODERN;
-                while( child(temp_location) )
-                    move child(temp_location) to player;
-                if( parent(heavy_iron_mascot) == player ) {
-                    StartDaemon(heavy_iron_mascot);
-                    Achieved(SCORE_DOLEMN);
-                }
-                PlayerTo(Servants_Room, 2);
-                move player to servants_bed;
-                "^You awaken, shivering with dread.";
-        ],
-  has   light;
+        each_turn [;
+            game_section = MODERN;
+            while( child(temp_location) )
+                move child(temp_location) to player;
+            if( parent(heavy_iron_mascot) == player ) {
+                StartDaemon(heavy_iron_mascot);
+                Achieved(SCORE_DOLEMN);
+                score = score - 50;
+            }
+            PlayerTo(Servants_Room, 1);
+            move player to servants_bed;
+            "^You awaken, shivering with dread.";
+        ];
 

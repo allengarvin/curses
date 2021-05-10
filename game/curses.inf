@@ -2,6 +2,57 @@ Constant DEBUG;
 Constant SACK_OBJECT = canvas_rucksack;
 Constant MAX_CARRIED = 5;
 
+! game_area
+Constant MODERN = 1;
+Constant UNREAL = 2;
+Constant HAMBURG = 3;
+Constant TAROTAREA = 4;
+Constant GARDEN = 5;
+Constant GARDEN_PAST = 6;
+Constant ANCIENT_BRITAIN = 7;
+Constant DREAMING = 8;
+
+! final_state
+Constant DIED = 1;
+Constant WON = 2;
+Constant FAILED = 3;
+Constant DESTROYED_UNIVERSE = 4;
+Constant AUSTRALIA = 5;
+Constant PARADOX = 6;
+Constant MYTH = 7;
+Constant PRISON = 8;
+
+Constant TASKS_PROVIDED;
+Constant NUMBER_TASKS = 18;
+Constant MAX_SCORE = 300;
+
+Array task_scores -> 3 7 7 10 3 3 5 5 2 2 3 50 3 1 8 4 0 0;
+
+Constant SCORE_HAMBURG = 0;
+Constant SCORE_TORCH = 1;
+Constant SCORE_JOSHUA = 2;
+Constant SCORE_SECRETDOOR = 3;
+Constant SCORE_DEMIJOHN = 4;
+Constant SCORE_WAITER = 5;
+Constant SCORE_WAND = 6;
+Constant SCORE_AIMWAND = 7;
+Constant SCORE_WIRELESS = 8;
+Constant SCORE_CALENDAR = 9;
+Constant SCORE_CHOCOLATE = 10;
+Constant SCORE_ANDROMEDA = 11;
+Constant SCORE_BATTERY = 12;
+Constant SCORE_TOURIST = 13;
+Constant SCORE_INFINITY = 14;
+Constant SCORE_TRICLINIUM = 15;
+Constant SCORE_DOLEMN = 16;
+Constant SCORE_BISCUIT = 17;
+
+Global MazeX;
+Global MazeY;
+Global game_section = MODERN;
+Global deterministic_transport = false;
+Global good_try_bonus;
+
 ! The devil's knowledgebase:
 Constant T_DREAM = 1;
 Constant T_FLASHLIGHT = 2;
@@ -60,6 +111,8 @@ Attribute rod_charged;
 Attribute card;
 Attribute wire;
 
+Replace BurnSub;
+Replace PraySub;
 Replace DrinkSub;
 Replace SingSub;
 Replace DigSub;
@@ -71,11 +124,19 @@ Replace MildSub;
 Replace SorrySub;
 
 Include "Parser";
-Include "variables.inf";
 Include "VerbLib";
 
+Global debug_mode;
 Global rod_score;
 Global KnowLanguages;
+
+[ BurnSub;
+    "In this game, arson is (usually) forbidden.";
+];
+
+[ PraySub;
+    "The heavenly host can be quite helpful in this game, but you'll have to ask them directly.";
+];
 
 [ SorrySub;
     if( carbolic_soap has concealed )
@@ -102,80 +163,162 @@ Global KnowLanguages;
 [ HelpSpecialSub  ;
     new_line;
     if( noun == 'instructions' )
-        "Welcome to CURSES, an interactive adventure game set initially in and around Meldrew House, an old family seat in the shires of England. You play the part of the current heir to the house. As for what you should do, try to keep in mind that your aim is simply to find that map of Paris so you can go on holiday - you certainly haven't any enormous quests in mind. Still, it would be interesting to find out:^", "^  Just how real is what the Tarot cards show?^  What do sixth century politics have to do with you?^  Surely Greek myths can't come into this?^  What on earth is wrong with your entire family?^  Do the National Trust have sinister motives?^  Can modernist poetry really be bad for you?^  What are daisies for?  Or goats, for that matter?^  Should you rescue someone who doesn't want you to?^^", "To finally understand the secret, you will need to reach the Master Game, a concluding game-within-a-game buried deep in the past. A quick solution takes about 700 turns. Good luck!";
-    if( noun == 'credit' )
-        "^Release 7 is the earliest version to be posted to the interactive-fiction archive. Updated versions may be posted if enough small improvements are made.^", "^The author wishes to thank Richard Tucker, Gareth Rees, David Moore, Mark Knibbs and Toby Nelson for helpful comments. He also wishes to apologise to the late Mr T. S. Eliot and to acknowledge the editors of the Oxford History of England for helping to provide a thin veneer of intellectual respectability.^^Inform, the compiler which produced this file, could not have been written without the archaeological investigations of the InfoTaskForce.";
+        "Welcome to CURSES, an interactive adventure game set initially in 
+         and around Meldrew House, an old family seat in the shires of England.
+         You play the part of the current heir to the house. As for what you 
+         should do, try to keep in mind that your aim is simply to find that 
+         map of Paris so you can go on holiday - you certainly haven't any 
+         enormous quests in mind. Still, it would be interesting to find 
+         out:^", "^  Just how real is what the Tarot cards show?^  What do 
+         sixth century politics have to do with you?^  Surely Greek myths 
+         can't come into this?^  What on earth is wrong with your entire 
+         family?^  Do the National Trust have sinister motives?^  Can modernist 
+         poetry really be bad for you?^  What are daisies for?  Or goats, 
+         for that matter?^  Should you rescue someone who doesn't want you to?^^", 
+         "To finally understand the secret, you will need to reach the Master 
+         Game, a concluding game-within-a-game buried deep in the past. 
+         A quick solution takes about 700 turns. Good luck!";
+    if( noun == 'credits' )
+        "^Release 7 is the earliest version to be posted to the 
+         interactive-fiction archive. Updated versions may be posted if 
+         enough small improvements are made.^", "^The author wishes to
+         thank Richard Tucker, Gareth Rees, David Moore, Mark Knibbs and
+         Toby Nelson for helpful comments. He also wishes to apologise
+         to the late Mr T. S. Eliot and to acknowledge the editors of
+         the Oxford History of England for helping to provide a thin
+         veneer of intellectual respectability.^^Inform, the compiler
+         which produced this file, could not have been written without
+         the archaeological investigations of the InfoTaskForce.";
     if( noun == 'legal' )
-        "^This story file is copyright (c) Graham Nelson 1993, but may be freely distributed and used provided no profit is involved and provided it is not modified in any way. Although it conforms to some (not quite all) file standards previously used by a certain computing company, it contains no fragments of code written by anyone other than the author. It was not produced by modification of any existing story file. The author was extremely tempted to hide an important clue here, but thought better of it. No trade marks are (knowingly) used. All characters and locations are imaginary, and any resemblance to real persons or places is accidental.";
-    if( noun == 'command' )
-        "Basic commands consist either of a verb on its own, or a verb with one or more nouns. For instance, to see where you are type ~look~. Some verbs can also have more elaborate forms; for instance you could also look at, inside or under something. There are about 675 English words understood by ~Curses~, so most reasonable synonyms are allowed.^^To pick something up, ~take thing~ and to drop it again, ~drop thing~. To see what you have, type ~take inventory~ or just ~inventory~. You can move about with commands such as ~go west~, or just ~west~ for short. (It is assumed that you are blessed with an excellent sense of direction.)^^", "Some commands can act on more than one thing. You can ~drop all~, which will drop everything (except things you're wearing), for instance. Or if you found a packing case with a number of things in, you could type such things as:^^    remove everything but the blue key^    get all the coins except ten, twenty and fifty^^(Containers may also be emptied or emptied into each other.)  If you are not explicit enough, sometimes the game can infer what you mean, but at other times it will ask for further details. It might have replied to the first line above by saying^^    (from the yellow packing case)^^", "so that you know what has been assumed on your behalf. If there had been two blue keys you might reasonably have meant, it would reply with something like^^    Which do you mean, the blue doorkey or the Blue Moon Agency key?^^You may either tell it which, or else give up and do something else instead. If you don't mind which key, you can always say something such as:^^    drop a key into the slot^^and the game will make a sensible choice and tell you what it was.^^", "~Curses~ sometimes assumes commands which you implicitly make, but always tells you what they are in brackets. For instance:^^    >look up bach in book^    (first taking the Encyclopaedia of Composers)^    (putting the tuning fork in the rucksack to make room)^    ~J. S. Bach (1685-1750) had a pet aardvark called Nigel...^^", "~it~ refers to the last thing manipulated and ~again~ repeats the last command.^^You can ~save~, ~restore~ or ~restart~ the game at any time, or indeed ~quit~ or ask for your ~score~, which also tells the time and thus will be consulted every so often by alert players. ~fullscore~ or ~full~ gives a breakdown of the score. As an aide-memoire the command ~objects~ tells you where you left things you once had, and ~places~ says where you have been. These commands do not take up any game time, and nor does anything the game didn't understand.^^", "Some jaundiced players get tired of the long descriptions of places, and they can type ~short~ (or ~superbrief~) to make the game only give short ones. Amnesiac players, on the other hand, may like to use ~long~ (or ~verbose~) to give only long ones. Either kind can go back to the usual state of affairs with ~normal~ (or ~brief~).^^", "Simple typing mistakes can sometimes be corrected just by typing ~oops~ followed by the word you had intended to type, so for instance:^^    drop fish in buket^    oops bucket^^The game knows several useful abbreviations: i for inventory, ne for northeast (and so on), l for look, g for again, o for oops, x for examine, z for wait (short for ~zzz~ - sorry about that).^^", "You can sometimes enter larger objects you find. You might well be able to get in a tractor, for instance, though driving it around might be harder.^^", "From time to time, you will wish to speak to other people. If you only have a single word to say, you could use commands like^^    answer yes^    say boo to goose^^(Text in quotation marks is not allowed.)  The game will usually guess who you want to talk to if you miss off the name. A better way to talk, which allows more complicated remarks, is to use commands such as^", "^    goose, boo^    wine waiter, give me the bill^^though, of course, the waiter may have better things to do.^Some documents may be consulted in this game. For this, try commands such as^^    look up chlorine^    consult periodic table about argon^^", "There are, of course, many other commands for more specialised circumstances. A final word of warning: cursing is strictly forbidden in this game.";
+        "^This story file is copyright (c) Graham Nelson 1993, but may be 
+         freely distributed and used provided no profit is involved and
+         provided it is not modified in any way. Although it conforms
+         to some (not quite all) file standards previously used by a
+         certain computing company, it contains no fragments of code
+         written by anyone other than the author. It was not produced by
+         modification of any existing story file. The author was extremely
+         tempted to hide an important clue here, but thought better of
+         it. No trade marks are (knowingly) used. All characters and
+         locations are imaginary, and any resemblance to real persons
+         or places is accidental.";
+    if( noun == 'commands' )
+        "Basic commands consist either of a verb on its own, or a verb with
+         one or more nouns. For instance, to see where you are type ~look~. 
+         Some verbs can also have more elaborate forms; for instance you could 
+         also look at, inside or under something. There are about 675 English 
+         words understood by ~Curses~, so most reasonable synonyms are allowed.^^
+         To pick something up, ~take thing~ and to drop it again, ~drop thing~. 
+         To see what you have, type ~take inventory~ or just ~inventory~. You can 
+         move about with commands such as ~go west~, or just ~west~ for short. 
+         (It is assumed that you are blessed with an excellent sense of 
+         direction.)^^", "Some commands can act on more than one thing. You can 
+         ~drop all~, which will drop everything (except things you're wearing), 
+         for instance. Or if you found a packing case with a number of things in, 
+         you could type such things as:^^    remove everything but the blue 
+         key^    get all the coins except ten, twenty and fifty^^(Containers 
+         may also be emptied or emptied into each other.)  If you are not explicit 
+         enough, sometimes the game can infer what you mean, but at other times 
+         it will ask for further details. It might have replied to the first 
+         line above by saying^^    (from the yellow packing case)^^", "so that 
+         you know what has been assumed on your behalf. If there had been two 
+         blue keys you might reasonably have meant, it would reply with something 
+         like^^    Which do you mean, the blue doorkey or the Blue Moon Agency 
+         key?^^You may either tell it which, or else give up and do something 
+         else instead. If you don't mind which key, you can always say 
+         something such as:^^    drop a key into the slot^^and the game will 
+         make a sensible choice and tell you what it was.^^", "~Curses~ sometimes 
+         assumes commands which you implicitly make, but always tells you what 
+         they are in brackets. For instance:^^    >look up bach in book^    (first 
+         taking the Encyclopaedia of Composers)^    (putting the tuning fork in 
+         the rucksack to make room)^    ~J. S. Bach (1685-1750) had a pet 
+         aardvark called Nigel...^^", "~it~ refers to the last thing manipulated 
+         and ~again~ repeats the last command.^^You can ~save~, ~restore~ or 
+         ~restart~ the game at any time, or indeed ~quit~ or ask for your 
+         ~score~, which also tells the time and thus will be consulted every so 
+         often by alert players. ~fullscore~ or ~full~ gives a breakdown of the 
+         score. As an aide-memoire the command ~objects~ tells you where you 
+         left things you once had, and ~places~ says where you have been. 
+         These commands do not take up any game time, and nor does anything 
+         the game didn't understand.^^", "Some jaundiced players get tired of 
+         the long descriptions of places, and they can type ~short~ (or 
+         ~superbrief~) to make the game only give short ones. Amnesiac players, 
+         on the other hand, may like to use ~long~ (or ~verbose~) to give only long 
+         ones. Either kind can go back to the usual state of affairs with ~normal~ 
+         (or ~brief~).^^", "Simple typing mistakes can sometimes be corrected 
+         just by typing ~oops~ followed by the word you had intended to type, 
+         so for instance:^^    drop fish in buket^    oops bucket^^The game 
+         knows several useful abbreviations: i for inventory, ne for northeast 
+         (and so on), l for look, g for again, o for oops, x for examine, z 
+         for wait (short for ~zzz~ - sorry about that).^^", "You can sometimes 
+         enter larger objects you find. You might well be able to get in a 
+         tractor, for instance, though driving it around might be harder.^^", 
+         "From time to time, you will wish to speak to other people. If 
+         you only have a single word to say, you could use commands 
+         like^^    answer yes^    say boo to goose^^(Text in quotation marks is 
+         not allowed.)  The game will usually guess who you want to talk to 
+         if you miss off the name. A better way to talk, which allows more 
+         complicated remarks, is to use commands such as^", "^    goose, 
+         boo^    wine waiter, give me the bill^^though, of course, the 
+         waiter may have better things to do.^Some documents may be consulted 
+         in this game. For this, try commands such as^^    look up 
+         chlorine^    consult periodic table about argon^^", "There are, of 
+         course, many other commands for more specialised circumstances. 
+         A final word of warning: cursing is strictly forbidden in this game.";
     "There's no help on that, sorry.";
 ];
 
 [ XMasterSub;
+    if( ~~debug_mode )
+        "You can't do that.";
     TriggerEndgame();
-
 ];
 
 [ XAsncSub; 
+    if( ~~debug_mode )
+        "You can't do that.";
     KnowLanguages = true;
     turns = turns + 300;
     "You spend 300 minutes learning to speak Anglo-Saxon, Norse and Celtic.";
 ];
 
 [ XCheatSub obj ;
+    if( ~~debug_mode )
+        "You can't do that.";
     obj = rod_of_fire;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = rod_of_returning;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = rod_of_luck;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = rod_of_bronze;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = rod_of_infinity;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = rod_of_stalking;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = rod_of_sacrifice;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = rod_of_husbandry;
-    remove obj;
     move obj to Infinity_Symbol;
     obj = Star_card;
-    remove obj;
     move obj to Grahams_Lair;
     obj = Maiden_card;
-    remove obj;
     move obj to Grahams_Lair;
     obj = Castle_card;
-    remove obj;
     move obj to Grahams_Lair;
     obj = tourist_map_of_Paris;
-    remove obj;
     move obj to Grahams_Lair;
     obj = flash;
-    remove obj;
     move obj to Grahams_Lair;
     obj = nasty_battery;
-    remove obj;
     move obj to flash;
     obj = timer_detonater;
-    remove obj;
     move obj to flash;
     give timer_detonater ~static;
     obj.number = 0;
     obj = canvas_rucksack;
-    remove obj;
     move obj to Grahams_Lair;
     obj = Tarot_box;
-    remove obj;
     move obj to Grahams_Lair;
     "Ok.";
 ];
@@ -217,6 +360,14 @@ Global KnowLanguages;
     if( game_section == DREAMING )
         "You are unable to shake off the dream.";
     "The dreadful truth is, this is not a dream.";
+];
+
+[ XDebugSub ;
+    if( noun == 57 ) {
+        debug_mode = true;
+        "Ok.";
+    }
+    "You can't do that.";
 ];
 
 [ StrikeSub ;
@@ -296,6 +447,32 @@ Global KnowLanguages;
     if (0 == 99 + score_var) 
         "highly negligent deity.";
     "accursed Tourist.";
+];
+
+[ PrintTaskName task_number;
+    if( task_number == SCORE_DOLEMN )
+        score = -50;
+    switch( task_number ) {
+        SCORE_HAMBURG: "reading postcard";
+        SCORE_TORCH: "recharging torch";
+        SCORE_JOSHUA: "exorcism";
+        SCORE_SECRETDOOR: "opening secret door";
+        SCORE_DEMIJOHN: "opening demijohn";
+        SCORE_WAITER: "using dumbwaiter";
+        SCORE_WAND: "charging a rod";
+        SCORE_AIMWAND: "firing a rod";
+        SCORE_WIRELESS: "exposing radio";
+        SCORE_CALENDAR: "turning calendar";
+        SCORE_CHOCOLATE: "placating Aunt Jemima";
+        SCORE_ANDROMEDA: "rescuing Andromeda";
+        SCORE_BATTERY: "uncovering battery";
+        SCORE_TOURIST: "buying map of Paris";
+        SCORE_INFINITY: "filling the arc";
+        SCORE_TRICLINIUM: "getting into the well";
+        SCORE_DOLEMN: "acquiring the mascot";
+        SCORE_BISCUIT: "eating between meals";
+    }
+    "(something else)";
 ];
 
 [ LieSub;
