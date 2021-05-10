@@ -1369,7 +1369,7 @@ Object Family_Tree "Family Tree"
 Object plane_tree "Lawn Ornaments"	
   with	name 'gnomes' 'nymphs' 'windmi',
 	description "Several hundred years of rolling have made this a rather fine patch of grass, between the privet hedge (north), the plane tree (west) and the mosaic (east). Unfortunately, it is adorned with all the really ugly ornaments (gnomes, plaster nymphs, stone windmills to grow flowers in), this being the corner of the garden least visible from the house.",
-	after routine71146,
+	after TreeAfter,
 	e_to Mosaic,
 	w_to Family_Tree,
 	d_to Mosaic,
@@ -2302,11 +2302,11 @@ Constant CATACOMBS = 9;
 Global location = Attic;
 Global global1;
 Global turns = 1;
-Global global3 = 22[yourself?];
+Global player = yourself;
 Global global4;
 Global global5;
 Global global6;
-Global global7 = 1[?];
+Global light_lvl = true;
 Global deadflag;
 Global global9;
 Global global10 = 9511[?];
@@ -2315,39 +2315,37 @@ Global global12 = 9697[?];
 Global global13 = 9818[?];
 Global global14 = 9883[?];
 Global global15 = 9948[?];
-Global global16;
+Global verb;
 Global noun;
 Global second;
 Global global19 = 9964[?];
 Global global20;
 Global global21;
 Global game_section = MODERN;
-Global global23 = 10028[?];
-Global global24;
+Global card_ptr;
 Global global25 = 10036[?];
 Global global26 = 4[e_obj?];
 Global global27 = 6[ne_obj?];
 Global global28 = 100[hole_in_the_wall?];
 Global global29 = 100[hole_in_the_wall?];
 Global global30 = 10099[?];
-Global global31 = 8[se_obj?];
-Global global32 = 3[s_obj?];
-Global global33;
+Global Mouse_x = 8;
+Global Mouse_y = 3;
+Global BombTicking;
 Global global34 = 10162[?];
-Global global35 = 10185[?];
+Global score_array2 = 10185[?];
 Global global36;
 Global global37;
 Global global38;
 Global global39;
-Global global40 = 10208[?];
 Global global41 = 10213[?];
 Global global42 = 10228[?];
-Global global43;
-Global global44;
+Global CouncilCnt;
+Global KnowLanguages;
 Global global45;
-Global global46;
+Global transcript_mode;
 Global global47;
-Global global48 = 1[?];
+Global lookmode = 1;
 Global global49;
 Global global50;
 Global global51;
@@ -2357,7 +2355,7 @@ Global global54;
 Global global55;
 Global global56;
 Global global57;
-Global global58;
+Global notheld_mode;
 Global global59;
 Global global60;
 Global global61;
@@ -2541,15 +2539,30 @@ Global global238;
 Global global239;
 
 ! Arrays
+Array card_deck -->	! 10028 (0x272c)
+    nothing
+    nothing
+    nothing
+    nothing
+    invalidObj12593
+    invalidObj12593
+    invalidObj12593
+;
+Array BombWires -->	! 10208 (0x27e0)
+    nothing
+    nothing
+    se_obj
+    invalidObj528
+;
 
 ! Routines
 
 [ Main ;	
-    routine66786(178[Drowned_Sailor_card?]);	! not popped
+    InsertCardIntoDeck(Drowned_Sailor_card);	! not popped
     @pop;
-    routine66786(177[Fool_card?]);	! not popped
+    InsertCardIntoDeck(Fool_card);	! not popped
     @pop;
-    routine66786(176[Death_card?]);	! not popped
+    InsertCardIntoDeck(Death_card);	! not popped
     @pop;
     routine90520(37[medicine_bottle?],63817["guarante..."?]);	! not popped
     @pop;
@@ -2587,11 +2600,11 @@ Global global239;
       .label18075;
         noun = nothing;
         second = nothing;
-        global16 = 0;
+        verb = ##Exit;
         routine94512(global15);	! not popped
         @pop;
-        global59 = global58;
-        global58 = 0;
+        global59 = notheld_mode;
+        notheld_mode = false;
         if (global6 == 100[hole_in_the_wall?]) {
             i = 98[robot_mouse?];
             i = parent(i);
@@ -2600,17 +2613,17 @@ Global global239;
             }
         }
         if (global6 == 13[misc_obj?] or 136[bronze_mural?]) {
-            global16 = global15->0;
-            routine43276();	! not popped
+            verb = global15->0;
+            LegachTransport();	! not popped
             @pop;
         } else if (global6 == 98[robot_mouse?]) {
             noun = global15->2;
             second = global15->3;
-            global16 = global15->0;
+            verb = global15->0;
             MouseMove();	! not popped
             @pop;
-        } else if (global6 ~= global3) {
-            routine56478(global6);	! not popped
+        } else if (global6 ~= player) {
+            CDefart(global6);	! not popped
             @pop;
             print " has better things to do.^";
         } else {
@@ -2619,65 +2632,65 @@ Global global239;
                 print "(taking the first sixteen objects only)^";
             }
             local5 = 0;
-            if (global16 ~= 0) {
+            if (verb ~= ##Exit) {
                 local5 = 1[?];
             }
-            if (global16 == 0) {
-                global16 = global15->0;
+            if (verb == ##Exit) {
+                verb = global15->0;
             }
             global60 = 0;
-            if (global16 == 19[antique_jewellery_box?]) {
+            if (verb == ##Score) {
                 global60 = 1[?];
             }
-            if (global16 == 20[four_leafed_clover?]) {
+            if (verb == ##FullScore) {
                 global60 = 1[?];
             }
-            if (global16 == 40[Dark_Room?]) {
+            if (verb == ##Script) {
                 global60 = 1[?];
             }
-            if (global16 == 41[hanging_cord?]) {
+            if (verb == ##Unscript) {
                 global60 = 1[?];
             }
-            if (global16 == 38[red_tablet?]) {
+            if (verb == ##Save) {
                 global60 = 1[?];
             }
-            if (global16 == 39[Over_the_East_Wing?]) {
+            if (verb == ##Verify) {
                 global60 = 1[?];
             }
-            if (global16 == 36[postcard?]) {
+            if (verb == ##Restore) {
                 global60 = 1[?];
             }
-            if (global16 == 35[wrapping_paper?]) {
+            if (verb == ##Quit) {
                 global60 = 1[?];
             }
-            if (global16 == 66[Sir_Joshua_Meldrewe?]) {
+            if (verb == ##HelpSpecial) {
                 global60 = 1[?];
             }
-            if (global16 == 65[iron_key?]) {
+            if (verb == ##Help) {
                 global60 = 1[?];
             }
-            if (global16 == 47[poetry_book?]) {
+            if (verb == ##Objects) {
                 global60 = 1[?];
             }
-            if (global16 == 48[Souvenirs_Room?]) {
+            if (verb == ##Places) {
                 global60 = 1[?];
             }
-            if (global16 >= 107 && global47 == 0) {
+            if (verb >= 107 && global47 == 0) {
                 print "You can't do that.^";
                 global60 = 1[?];
             } else {
                 if (game_section == DREAMING && global60 == 0) {
-                    if (global16 == 18[Meldrews_History?]) {
+                    if (verb == ##Go) {
                         ! no code
-                    } else if (global16 == 2[?]) {
+                    } else if (verb == ##Take) {
                         ! no code
-                    } else if (global16 == 8[se_obj?]) {
+                    } else if (verb == ##Drop) {
                         ! no code
-                    } else if (global16 == 21[rod_of_luck?]) {
+                    } else if (verb == ##Look) {
                         ! no code
-                    } else if (global16 == 1[?]) {
+                    } else if (verb == ##Inv) {
                         ! no code
-                    } else if (global16 == 82[tourist_map?]) {
+                    } else if (verb == ##Wake) {
                         ! no code
                     } else {
                         print "You seem unable to concentrate sufficiently.^";
@@ -2694,12 +2707,12 @@ Global global239;
                 }
                 global57 = 0;
                 if (i == 0) {
-                    routine19166(0,0,global16);	! not popped
+                    RunRoutines(nothing,nothing,verb);	! not popped
                     @pop;
                 }
                 if (i > 0) {
                     if (noun ~= nothing) {
-                        routine19166(noun,second,global16);	! not popped
+                        RunRoutines(noun,second,verb);	! not popped
                         @pop;
                     }
                     if (noun == nothing) {
@@ -2716,7 +2729,7 @@ Global global239;
                             ++k;
                             l = global19->k;
                             print (name) l, ": ";
-                            routine19166(l,second,global16);	! not popped
+                            RunRoutines(l,second,verb);	! not popped
                             @pop;
                             jump label18564;
                         }
@@ -2725,7 +2738,7 @@ Global global239;
             }
         }
       .label18592;
-        if (global58 == 1[?]) {
+        if (notheld_mode == true) {
             global60 = 1[?];
         }
         if (deadflag == 0 && global60 == 0) {
@@ -2814,33 +2827,33 @@ Global global239;
     jump label18983;
 ];
 
-[ routine19166 var1 var2 var3 ;	
-    noun = var1;
-    second = var2;
-    global16 = var3;
+[ RunRoutines n s v ;	
+    noun = n;
+    second = s;
+    verb = v;
     if (global60 == 1[?]) {
         ! no code
     } else {
         if (location ~= nothing) {
-            var1 = location.before;
-            if (var1 ~= 65535[?] && var1() ~= 0) {
+            n = location.before;
+            if (n ~= invalidObj65535 && n() ~= 0) {
                 rtrue;
             }
         }
         if (noun ~= nothing) {
-            var1 = noun.before;
-            if (var1 ~= 65535[?] && var1() ~= 0) {
+            n = noun.before;
+            if (n ~= invalidObj65535 && n() ~= 0) {
                 rtrue;
             }
         }
     }
-    var2 = invalidArray12088-->var3;
-    var2();	! not popped
+    s = invalidArray12088-->v;
+    s();	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine19254 var1 var2 ;	
+[ AfterRoutines var1 var2 ;	
     var2 = location;
     var1 = var2.after;
     if (var1 == 65535[?]) {
@@ -2896,7 +2909,7 @@ Global global239;
     if (heavy_iron_mascot has moved) {
         i = 118[heavy_iron_mascot?];
         i = parent(i);
-        if (i == global3) {
+        if (i == player) {
             if (0 ~= ResetTimer(heavy_iron_mascot)) {
                 deadflag = 1;
                 print "^In an astonishing freak accident, ";
@@ -3372,42 +3385,42 @@ Global global239;
     }
     if (game_section == ANCIENT_BRITAIN) {
         if (0 ~= ResetTimer(kitchen_well)) {
-            i = parent(global3);
+            i = parent(player);
             if (i == 237[Triclinium?]) {
                 give kitchen_well general;
                 print "^You hear a splash from far down in the depths of the well.^";
             }
         }
-        if (global43 == 1[?]) {
+        if (CouncilCnt == 1) {
             print "^From up on the hill you hear the blowing of a horn.^";
         }
-        if (global43 == 2[?]) {
+        if (CouncilCnt == 2) {
             print "^Horses are approaching the villa, coming down the hill.^";
         }
-        if (global43 == 3[s_obj?]) {
+        if (CouncilCnt == 3) {
             print "^The sound of horses draws nearer.^";
         }
-        if (global43 == 4[e_obj?] && location == Entrance) {
+        if (CouncilCnt == 4 && location == Entrance) {
             print "^Horsemen suddenly gallop into the courtyard and you are soon ringed by guards!^";
-            routine84322();	! not popped
+            Capture();	! not popped
             @pop;
         }
-        if (global43 == 4[e_obj?]) {
+        if (CouncilCnt == 4) {
             print "^There is definitely activity outside the villa.^";
         }
-        if (global43 >= 5) {
+        if (CouncilCnt >= 5) {
             if (location == Entrance) {
                 print "^You walk straight into the guards.^";
-                routine84322();	! not popped
+                Capture();	! not popped
                 @pop;
             }
             if (location == Roman_Villa) {
                 print "^You walk straight into the guards at the back door.^";
-                routine84322();	! not popped
+                Capture();	! not popped
                 @pop;
             }
         }
-        if (global43 == 7[nw_obj?]) {
+        if (CouncilCnt == 7) {
             print "^There is sudden activity as the guards make a thorough search of the villa, just to be on the safe side. ";
             if (location == Hypocaust) {
                 print "Luckily, they don't even think of looking down in here.^";
@@ -3418,70 +3431,70 @@ Global global239;
                 if (location ~= Inside_Well) {
                     print "The virtue of doing so is demonstrated when they find you without difficulty.^";
                 }
-                routine84322();	! not popped
+                Capture();	! not popped
                 @pop;
             }
         }
-        if (global43 > 7 && location == Triclinium) {
+        if (CouncilCnt > 7 && location == Triclinium) {
             print "^An industrious-looking slave (who cooks for the horsemen) is rather surprised to see you, but with creditable presence of mind he summons the guard at once.^";
-            routine84322();	! not popped
+            Capture();	! not popped
             @pop;
         }
         if (location == Hypocaust) {
-            if (global43 == 8[se_obj?]) {
+            if (CouncilCnt == 8) {
                 print "^You hear men walking across the mosaic just above your head.^";
             }
-            if (global43 == 9[sw_obj?]) {
+            if (CouncilCnt == 9) {
                 print "^A voice, which can just be heard through the vent, says ";
-                if (global44 == 0) {
+                if (KnowLanguages == false) {
                     print "something in Anglo-Saxon or Celtic (hard to say which).^";
                     jump label28007;
                 }
                 print "~Welcome, great masters. We are convened in secret conclave to decide the fate of Britain. Lament, for the old ways are passing!  There will be a dark age, a collapse into many monarchies, and any man who can hold a town will call himself King and heir to Vortigern.~^";
             }
-            if (global43 == 10[u_obj?]) {
+            if (CouncilCnt == 10) {
                 print "^A younger, more impatient voice, says ";
-                if (global44 == 0) {
+                if (KnowLanguages == false) {
                     print "something else.^";
                     jump label28007;
                 }
                 print "~This is an opportunity!  We must be the power behind the thrones, we will in secret unite and be the true force of the land...~^";
             }
-            if (global43 == 11[d_obj?]) {
+            if (CouncilCnt == 11) {
                 print "^There is cynical laughter for a moment, and a third voice interjects ";
-                if (global44 == 0) {
+                if (KnowLanguages == false) {
                     print "something.^";
                     jump label28007;
                 }
                 print "~And who will lead this, this unity?  We take all sides and none, you know that. There are potent druids in the tents of each general down there in the rabble. They'd kill each other without hesitation on the battlefield.~^";
             }
-            if (global43 == 12[thedark?]) {
+            if (CouncilCnt == 12) {
                 print "^The first voice speaks once more. ";
-                if (global44 == 0) {
+                if (KnowLanguages == false) {
                     new_line;
                     jump label28007;
                 }
                 print "~Far worse is to come. The jumped-up kings and their new men will no longer believe in the ancient powers. Already I can feel the druidic magic weakening away, and we are perilously close to the nexus now. In the valleys below, armies wait to fight the decisive battle. Whichever side wins, they will no longer need us. In a matter of hours, the power will be broken forever.~^";
             }
-            if (global43 == 13[misc_obj?]) {
+            if (CouncilCnt == 13) {
                 print "^After a sombre silence, a much older voice says ";
-                if (global44 == 0) {
+                if (KnowLanguages == false) {
                     print "something wise. It really is a pity you can't understand them.^";
                     jump label28007;
                 }
                 print "~You did right to call us together. There is a path prepared for us, but the sacrifice will be terrible. We must concentrate all the remaining druidical energy into this sacred hill, that it may last through all time, and we must ensure that druids live on this site forever and keep the faith.~^";
             }
-            if (global43 == 14[Grahams_Lair?]) {
+            if (CouncilCnt == 14) {
                 print "^The younger voice speaks again. ";
-                if (global44 == 0) {
+                if (KnowLanguages == false) {
                     new_line;
                     jump label28007;
                 }
                 print "~For now, yes, for a century or two, yes, but what then?  They will forget the old ways, they will no longer truly be druids.~^";
             }
-            if (global43 == 15[Attic?]) {
+            if (CouncilCnt == 15) {
                 print "^The older voice replies triumphantly. ";
-                if (global44 == 0) {
+                if (KnowLanguages == false) {
                     new_line;
                 } else {
                     print "~This is what must be done. They will forget, so we must give them a substitute. We shall accurse them to always seek after this magical stone, which it will be all but impossible for them to find. It will take the form of whatever they most desire. In six hundred years, by my prophecy, religious wars in the East will capture men's hearts, and then they will think it is the Holy Grail, the cup which held the blood of Christ. A thousand years later they will think it is -~  But at this moment the voices move away.^";
@@ -3489,8 +3502,8 @@ Global global239;
             }
         }
       .label28007;
-        if (global43 ~= 0) {
-            ++global43;
+        if (CouncilCnt ~= 0) {
+            ++CouncilCnt;
         }
         if (0 ~= ResetTimer(tent_pole)) {
             print "^Without warning a Saxon spy (or, as the guards would no doubt put it, another Saxon spy) is thrown bodily into the tent, careering into the central pole and slumping unconscious on the ground as a result. For a moment the whole tent rocks with the force - the pole was nearly broken.^";
@@ -3526,14 +3539,14 @@ Global global239;
         Achieved(9);	! not popped
         @pop;
         i = 114[daisy_chain?];
-        move i to global3;
+        move i to player;
         give daisy_chain worn;
     }
     if (deadflag ~= 0) {
         ! no code
-    } else if (global33 == 1[?]) {
+    } else if (BombTicking == true) {
         if (0 ~= DecrementTimer(timer_detonater)) {
-            global33 = 0;
+            BombTicking = false;
             i = 192[timer_detonater?];
             j = parent(i);
           .label28864;
@@ -3569,13 +3582,13 @@ Global global239;
                         Achieved(11);	! not popped
                         @pop;
                         location = Family_Tree;
-                        remove global3;
+                        remove player;
                         routine90520(8[se_obj?],63907["Much tra..."?]);	! not popped
                         @pop;
                         routine90520(9[sw_obj?],63939["The Medi..."?]);	! not popped
                         @pop;
                         give Lighthouse ~visited;
-                        i = child(global3);
+                        i = child(player);
                       .label29701;
                         if (i ~= 0) {
                             j = sibling(i);
@@ -3584,7 +3597,7 @@ Global global239;
                             i = j;
                             jump label29701;
                         }
-                        move global3 to location;
+                        move player to location;
                         game_section = GARDEN;
                         LookSub(1[?]);	! not popped
                         @pop;
@@ -3620,7 +3633,7 @@ Global global239;
             if (complicated_looking_bomb hasnt edible) {
                 if (complicated_looking_bomb hasnt concealed) {
                     new_line;
-                    routine82324();	! not popped
+                    DescribeDetonator();	! not popped
                     @pop;
                 }
                 if (complicated_looking_bomb has concealed) {
@@ -3630,19 +3643,19 @@ Global global239;
             if (0 ~= DecrementTimer(timer_detonater)) {
                 give complicated_looking_bomb edible;
                 if (complicated_looking_bomb has general) {
-                    if (195[blue_wire?] ~= global40->0) {
+                    if (195[blue_wire?] ~= BombWires->0) {
                         ! no code
-                    } else if (193[green_wire?] ~= global40->1) {
+                    } else if (193[green_wire?] ~= BombWires->1) {
                         ! no code
-                    } else if (196[black_wire?] ~= global40->2) {
+                    } else if (196[black_wire?] ~= BombWires->2) {
                         ! no code
-                    } else if (194[red_wire?] ~= global40->3) {
+                    } else if (194[red_wire?] ~= BombWires->3) {
                         ! no code
                     } else {
                         print "^Click!  The timer runs out, but the bomb was disarmed. You pocket the timer and hide the rest of the evidence under the table.^";
                         i = 192[timer_detonater?];
                         remove i;
-                        move i to global3;
+                        move i to player;
                         give timer_detonater ~static;
                         i = 191[complicated_looking_bomb?];
                         remove i;
@@ -3660,9 +3673,9 @@ Global global239;
         if (location == Museum_of_Arcana) {
             print "^Doktor Stein appears and steps toward you, clapping his hands sharply. Suddenly dozens of robed figures leap out of the darkness. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^Stein forces your mouth open and makes you swallow a violet pill. ~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
             location = Coven_Cell;
-            remove global3;
-            move global3 to Coven_Cell;
-            give global3 general;
+            remove player;
+            move player to Coven_Cell;
+            give player general;
             StartTimer(Coven_Cell,5);	! not popped
             @pop;
             LookSub();	! not popped
@@ -3670,29 +3683,29 @@ Global global239;
         } else if (location == Coven_Cell) {
             print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
             deadflag = 1;
-            if (global3 has general) {
+            if (player has general) {
                 "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
             }
             "^Kicking and screaming, you are are dragged off to a grisly sacrifice...";
         }
     }
-    i = global7;
-    global7 = HasLightSource(parent(global3));
-    if (i == 0 && global7 == 1[?]) {
+    i = light_lvl;
+    light_lvl = HasLightSource(parent(player));
+    if (i == 0 && light_lvl == true) {
         new_line;
         if (global50 ~= 0) {
             location = parent(global50);
-            move global3 to global50;
+            move player to global50;
         } else {
-            location = parent(global3);
+            location = parent(player);
         }
         LookSub(1[?]);	! not popped
         @pop;
     }
-    if (i == 1[?] && global7 == 0) {
+    if (i == 1[?] && light_lvl == false) {
         new_line;
         print "It is now pitch dark in here!^";
-        global50 = parent(global3);
+        global50 = parent(player);
         if (global50 == location) {
             global50 = 0;
         }
@@ -3797,9 +3810,9 @@ Global global239;
 ];
 
 [ Achieved ndx i ;	
-    i = global35->ndx;
+    i = score_array2->ndx;
     if (i == 0) {
-        global35->ndx = 1[?];
+        score_array2->ndx = 1[?];
         if (ndx ~= 21) {
             global1 = global1 + global34->ndx;
         }
@@ -3811,7 +3824,7 @@ Global global239;
 ];
 
 [ MouseMove o rm var3 x1 y1 ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         "The mouse emits a querulous, unhappy bleep.";
     }
     if (noun == ne_obj) {
@@ -3841,8 +3854,8 @@ Global global239;
         }
         if (noun == w_obj) {
             rm = hole_in_the_wall;
-            global31 = 8[se_obj?];
-            global32 = 3[s_obj?];
+            Mouse_x = 8;
+            Mouse_y = 3;
             jump label32523;
         }
     } else if (o == Cellar_West) {
@@ -3861,32 +3874,32 @@ Global global239;
         }
     } else {
         if (o == hole_in_the_wall) {
-            if (global31 == 8[se_obj?] && global32 == 3[s_obj?] && noun == e_obj) {
+            if (Mouse_x == 8 && Mouse_y == 3 && noun == e_obj) {
                 rm = Cellars_South;
                 jump label32523;
             }
             if (noun == n_obj) {
-                x1 = global31;
-                y1 = global32 - 1;
+                x1 = Mouse_x;
+                y1 = Mouse_y - 1;
             }
             if (noun == e_obj) {
-                x1 = global31 + 1;
-                y1 = global32;
+                x1 = Mouse_x + 1;
+                y1 = Mouse_y;
             }
             if (noun == s_obj) {
-                x1 = global31;
-                y1 = global32 + 1;
+                x1 = Mouse_x;
+                y1 = Mouse_y + 1;
             }
             if (noun == w_obj) {
-                x1 = global31 - 1;
-                y1 = global32;
+                x1 = Mouse_x - 1;
+                y1 = Mouse_y;
             }
             if (routine78628(x1,y1) == 1[?]) {
                 "From somewhere inside the hole, you hear a disconsolate bleep.";
             }
-            global31 = x1;
-            global32 = y1;
-            if (global31 == 4[e_obj?] && global32 == 1[?]) {
+            Mouse_x = x1;
+            Mouse_y = y1;
+            if (Mouse_x == 4 && Mouse_y == 1) {
                 o = small_brass_key;
                 o = parent(o);
                 if (o == hole_in_the_wall) {
@@ -3974,7 +3987,7 @@ Global global239;
     }
     print ", earning you the rank of ";
     score_var = global1;
-    if (0 ~= global35->11) {
+    if (0 ~= score_array2->11) {
         score_var = score_var - 50;
     }
     if (score_var >= 350) {
@@ -4030,7 +4043,7 @@ Global global239;
 
 ! References: rod_of_stalking.name
 
-[ routine33722 var1 var2 ;	
+[ PadInteger var1 var2 ;	
     print "  ";
     var2 = var1;
     if (var2 < 0) {
@@ -4048,80 +4061,80 @@ Global global239;
     rtrue;
 ];
 
-[ routine33786 var1 var2 ;	
-    if (var1 == 21[rod_of_luck?]) {
-        var2 = 0;
-        var2 = var2 - 50;
+[ PrintTaskName task_number final_score ;	
+    if (task_number == 21[rod_of_luck?]) {
+        final_score = 0;
+        final_score = final_score - 50;
     }
-    routine33722(var2);	! not popped
+    PadInteger(final_score);	! not popped
     @pop;
-    if (var1 == 0) {
+    if (task_number == 0) {
         "reading postcard";
     }
-    if (var1 == 1[?]) {
+    if (task_number == 1[?]) {
         "recharging torch";
     }
-    if (var1 == 2[?]) {
+    if (task_number == 2[?]) {
         "exorcism";
     }
-    if (var1 == 3[s_obj?]) {
+    if (task_number == 3[s_obj?]) {
         "opening secret door";
     }
-    if (var1 == 4[e_obj?]) {
+    if (task_number == 4[e_obj?]) {
         "opening demijohn";
     }
-    if (var1 == 5[w_obj?]) {
+    if (task_number == 5[w_obj?]) {
         "using dumbwaiter";
     }
-    if (var1 == 6[ne_obj?]) {
+    if (task_number == 6[ne_obj?]) {
         "charging a rod";
     }
-    if (var1 == 7[nw_obj?]) {
+    if (task_number == 7[nw_obj?]) {
         "firing a rod";
     }
-    if (var1 == 8[se_obj?]) {
+    if (task_number == 8[se_obj?]) {
         "exposing radio";
     }
-    if (var1 == 9[sw_obj?]) {
+    if (task_number == 9[sw_obj?]) {
         "sporting a daisy chain";
     }
-    if (var1 == 10[u_obj?]) {
+    if (task_number == 10[u_obj?]) {
         "placating Aunt Jemima";
     }
-    if (var1 == 11[d_obj?]) {
+    if (task_number == 11[d_obj?]) {
         "rescuing Andromeda";
     }
-    if (var1 == 12[thedark?]) {
+    if (task_number == 12[thedark?]) {
         "uncovering battery";
     }
-    if (var1 == 13[misc_obj?]) {
+    if (task_number == 13[misc_obj?]) {
         "mending the plumbing";
     }
-    if (var1 == 14[Grahams_Lair?]) {
+    if (task_number == 14[Grahams_Lair?]) {
         "scenting a passage";
     }
-    if (var1 == 15[Attic?]) {
+    if (task_number == 15[Attic?]) {
         "reflecting";
     }
-    if (var1 == 16[hinged_trapdoor?]) {
+    if (task_number == 16[hinged_trapdoor?]) {
         "solving the grid";
     }
-    if (var1 == 17[teachests?]) {
+    if (task_number == 17[teachests?]) {
         "winning the orb";
     }
-    if (var1 == 18[Meldrews_History?]) {
+    if (task_number == 18[Meldrews_History?]) {
         "buying map of Paris";
     }
-    if (var1 == 19[antique_jewellery_box?]) {
+    if (task_number == 19[antique_jewellery_box?]) {
         "filling the arc";
     }
-    if (var1 == 20[four_leafed_clover?]) {
+    if (task_number == 20[four_leafed_clover?]) {
         "getting into the well";
     }
-    if (var1 == 21[rod_of_luck?]) {
+    if (task_number == 21[rod_of_luck?]) {
         "acquiring the mascot";
     }
-    if (var1 == 22[yourself?]) {
+    if (task_number == 22[yourself?]) {
         "eating between meals";
     }
     "(something else)";
@@ -4148,31 +4161,31 @@ Global global239;
     if (local1 < 22) {
         ++local1;
         local2 = global34->local1;
-        local3 = global35->local1;
+        local3 = score_array2->local1;
         if (local3 == 1[?]) {
-            routine33786(local1,local2);	! not popped
+            PrintTaskName(local1,local2);	! not popped
             @pop;
             local4 = local4 + local2;
         }
         jump label34295;
     }
     if (global38 ~= 0) {
-        routine33722(global38);	! not popped
+        PadInteger(global38);	! not popped
         @pop;
         print "discovering rods^";
     }
     if (global36 ~= 0) {
-        routine33722(global36);	! not popped
+        PadInteger(global36);	! not popped
         @pop;
         print "finding sundry items^";
     }
     if (global37 ~= 0) {
-        routine33722(global37);	! not popped
+        PadInteger(global37);	! not popped
         @pop;
         print "visiting various places^";
     }
     if (global39 ~= 0) {
-        routine33722(5[w_obj?]);	! not popped
+        PadInteger(5[w_obj?]);	! not popped
         @pop;
         print "bonus for a good try^";
     }
@@ -4183,15 +4196,15 @@ Global global239;
     if (global1 + 99 == 0) {
         local4 = local4 + 99;
         local4 = 0 - local4;
-        routine33722(local4);	! not popped
+        PadInteger(local4);	! not popped
         @pop;
         print "destroying universe^";
     }
     new_line;
-    routine33722(global1);	! not popped
+    PadInteger(global1);	! not popped
     @pop;
     print "total (out of 350)^";
-    if (deadflag == 2 && 0 == global35->11) {
+    if (deadflag == 2 && 0 == score_array2->11) {
         print "^Sadly, you missed out on the 50-point bonus for rescuing Andromeda.^";
     }
     rfalse;
@@ -4230,7 +4243,7 @@ Global global239;
     @sread global10 global11;
     local1 = global11-->1;
     if (local1 == 17722['yes'?] or 17708['y//'?]) {
-        global46 = 0;
+        transcript_mode = false;
         local1 = 0-->8 & 65534;
         0-->8 = local1;
         @restart;
@@ -4274,10 +4287,10 @@ Global global239;
 ];
 
 [ ScriptSub local1 ;	
-    if (global46 == 1[?]) {
+    if (transcript_mode == true) {
         "Transcripting is already on.";
     }
-    global46 = 1[?];
+    transcript_mode = true;
     local1 = 0-->8 | 1;
     0-->8 = local1;
     print "Start of a transcript of^";
@@ -4287,11 +4300,11 @@ Global global239;
 ];
 
 [ UnscriptSub local1 ;	
-    if (global46 == 0) {
+    if (transcript_mode == false) {
         "Transcripting is already off.";
     }
     print "^End of transcript.^";
-    global46 = 0;
+    transcript_mode = false;
     local1 = 0-->8 & 65534;
     0-->8 = local1;
     rtrue;
@@ -4312,7 +4325,7 @@ Global global239;
 ];
 
 [ InvSub local1 ;	
-    local1 = child(global3);
+    local1 = child(player);
     print "You are ";
     if (location == Universe_Maintenance_Room) {
         print "bathed in a curious white light, and ";
@@ -4321,7 +4334,7 @@ Global global239;
         "carrying nothing.";
     }
     print "carrying:^";
-    routine35264(global3);	! not popped
+    routine35264(player);	! not popped
     @pop;
     rtrue;
 ];
@@ -4359,28 +4372,28 @@ Global global239;
     if (local1 ~= 0) {
         rtrue;
     }
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
-    global58 = global59;
-    if (global58 == 0) {
+    notheld_mode = global59;
+    if (notheld_mode == false) {
         print "Taken.^";
     }
     rtrue;
 ];
 
 [ routine35386 var1 var2 var3 var4 ;	
-    if (noun == global3) {
+    if (noun == player) {
         "As the bishop said to the actress.";
     }
     if (noun has animate) {
         print "I don't suppose ";
-        routine56464(noun);	! not popped
+        Defart(noun);	! not popped
         @pop;
         " would care for that.";
     }
     var2 = parent(noun);
-    if (var2 == global3) {
+    if (var2 == player) {
         "You already have that.";
     }
   .label35484;
@@ -4392,7 +4405,7 @@ Global global239;
             "Unfortunately the ", (name) var2, " isn't open.";
         }
         var2 = parent(var2);
-        if (var2 == global3) {
+        if (var2 == player) {
             var2 = var1;
         }
         jump label35484;
@@ -4406,7 +4419,7 @@ Global global239;
     if (noun has static) {
         "Fixed in place.";
     }
-    var3 = child(global3);
+    var3 = child(player);
     var4 = 0;
   .label35637;
     if (var3 ~= 0) {
@@ -4417,10 +4430,10 @@ Global global239;
         jump label35637;
     }
     if (var4 > 4) {
-        if (parent(canvas_rucksack) ~= global3) {
+        if (parent(canvas_rucksack) ~= player) {
             "You're carrying too many things already.";
         }
-        var4 = child(global3);
+        var4 = child(player);
         var3 = 0;
       .label35707;
         if (var4 ~= 0) {
@@ -4432,7 +4445,7 @@ Global global239;
         }
         if (var3 ~= 0) {
             print "(putting ";
-            routine56464(var3);	! not popped
+            Defart(var3);	! not popped
             @pop;
             print " into the rucksack to make room)^";
             remove var3;
@@ -4442,7 +4455,7 @@ Global global239;
         }
     }
     remove noun;
-    move noun to global3;
+    move noun to player;
     give noun ~concealed;
     if (noun hasnt moved) {
         give noun moved;
@@ -4459,7 +4472,7 @@ Global global239;
     if (local1 == location) {
         "Already on the floor.";
     }
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
         "You haven't got that.";
     }
     if (noun has worn) {
@@ -4467,9 +4480,9 @@ Global global239;
         give noun ~worn;
     }
     remove noun;
-    local1 = parent(global3);
+    local1 = parent(player);
     move noun to local1;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "Dropped.^";
@@ -4491,12 +4504,12 @@ Global global239;
     if (local1 ~= 0) {
         rtrue;
     }
-    global16 = 2[?];
-    if (1[?] == routine19254()) {
+    verb = ##Take;
+    if (1 == AfterRoutines()) {
         rtrue;
     }
-    global16 = 3[s_obj?];
-    if (1[?] == routine19254()) {
+    verb = ##Remove;
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "Removed.^";
@@ -4505,13 +4518,13 @@ Global global239;
 
 [ InsertSub local1 ;	
     if (second == d_obj) {
-        global16 = 8[se_obj?];
-        routine19166(noun,0,global16);	! not popped
+        verb = ##Drop;
+        RunRoutines(noun,nothing,verb);	! not popped
         @pop;
         rfalse;
     }
     local1 = parent(noun);
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
         "You need to be holding it before you can put it into something else.";
     }
     if (second hasnt container) {
@@ -4531,13 +4544,13 @@ Global global239;
         "Only cards will fit.";
     }
     if (second == electric_torch) {
-        local1 = routine72452();
+        local1 = FlashInsert();
         if (local1 ~= 0) {
             rtrue;
         }
     }
     if (second == flash) {
-        local1 = routine72272();
+        local1 = FlashCheck();
         if (local1 ~= 0) {
             rtrue;
         }
@@ -4559,14 +4572,14 @@ Global global239;
         local2 = 8[se_obj?];
     }
     local1 = parent(noun);
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
       .label36366;
         if (local1 ~= 0) {
             if (local1 hasnt open) {
                 "That isn't in your possession.";
             }
             local1 = parent(local1);
-            if (local1 == global3) {
+            if (local1 == player) {
                 jump label36426;
             }
             jump label36366;
@@ -4575,9 +4588,9 @@ Global global239;
     }
   .label36426;
     remove noun;
-    move noun to global3;
-    global16 = local2;
-    routine19166(noun,second,global16);	! not popped
+    move noun to player;
+    verb = local2;
+    RunRoutines(noun,second,verb);	! not popped
     @pop;
     rfalse;
 ];
@@ -4591,23 +4604,23 @@ Global global239;
 
 [ EmptyTSub local1 local2 ;	
     if (noun hasnt container) {
-        routine56478(noun);	! not popped
+        CDefart(noun);	! not popped
         @pop;
         " can't contain things.";
     }
     if (noun hasnt open) {
-        routine56478(noun);	! not popped
+        CDefart(noun);	! not popped
         @pop;
         " is closed.";
     }
     if (second ~= d_obj) {
         if (second hasnt container) {
-            routine56478(second);	! not popped
+            CDefart(second);	! not popped
             @pop;
             " can't contain things.";
         }
         if (second hasnt open) {
-            routine56478(second);	! not popped
+            CDefart(second);	! not popped
             @pop;
             " is closed.";
         }
@@ -4615,7 +4628,7 @@ Global global239;
     local1 = noun;
     local1 = child(local1);
     if (local1 == 0) {
-        routine56464(noun);	! not popped
+        Defart(noun);	! not popped
         @pop;
         " is empty already.";
     }
@@ -4623,8 +4636,8 @@ Global global239;
     if (local1 ~= 0) {
         local2 = sibling(local1);
         print (name) local1, ": ";
-        global16 = 11[d_obj?];
-        routine19166(local1,second,global16);	! not popped
+        verb = ##Transfer;
+        RunRoutines(local1,second,verb);	! not popped
         @pop;
         local1 = local2;
         jump label36586;
@@ -4663,7 +4676,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    local1 = parent(global3);
+    local1 = parent(player);
     if (local1 ~= location) {
         "But you're already in the ", (name) local1, ".";
     }
@@ -4674,26 +4687,26 @@ Global global239;
     if (local1 ~= location) {
         "You can only get into something on the floor.";
     }
-    remove global3;
-    move global3 to noun;
+    remove player;
+    move player to noun;
     "You get into the ", (name) noun, ".";
 ];
 
 [ ExitSub ;	
-    if (parent(global3) == location) {
+    if (parent(player) == location) {
         "But you aren't in anything at the moment.";
     }
     if (location == thedark) {
         if (global50 ~= 0) {
             "You can't see what you're doing. It's dark.";
         }
-        if (parent(global3) == Chimney) {
+        if (parent(player) == Chimney) {
             "~Exit~ should be used only to get out of things like dumbwaiters. Since you're stuck here in the dark, why not go back east into the cupboard.";
         }
         "You'll have to say exactly how to exit the darkness...";
     }
-    remove global3;
-    move global3 to location;
+    remove player;
+    move player to location;
     print "You are on your own two feet again.^";
     LookSub(1[?]);	! not popped
     @pop;
@@ -4715,7 +4728,7 @@ Global global239;
         "You're going nowhere until you make amends for that nasty bad language.";
     }
     local4 = 0;
-    local1 = parent(global3);
+    local1 = parent(player);
     if (location ~= thedark) {
         if (local1 == 130[garden_roller?]) {
             if (garden_roller has on) {
@@ -4752,13 +4765,13 @@ Global global239;
         if (local2 hasnt open) {
             if (noun == u_obj) {
                 print "You are unable to climb ";
-                routine56464(local2);	! not popped
+                Defart(local2);	! not popped
                 @pop;
                 ".";
             }
             if (noun == d_obj) {
                 print "You are unable to descend ";
-                routine56464(local2);	! not popped
+                Defart(local2);	! not popped
                 @pop;
                 ".";
             }
@@ -4769,7 +4782,7 @@ Global global239;
                 "You can't, since the windows are in the way.";
             }
             print "You can't, since ";
-            routine56464(local2);	! not popped
+            Defart(local2);	! not popped
             @pop;
             " is in the way.";
         }
@@ -4827,14 +4840,14 @@ Global global239;
         local2 = local2.door_to;
         if (local2 == 0) {
             print "You can't, since ";
-            routine56464(local2);	! not popped
+            Defart(local2);	! not popped
             @pop;
             " leads nowhere.";
         }
     }
     if (local4 == 0) {
-        remove global3;
-        move global3 to local2;
+        remove player;
+        move player to local2;
     }
     if (local4 ~= 0) {
         if (noun == d_obj) {
@@ -4861,7 +4874,7 @@ Global global239;
     local3 = HasLightSource(local2);
     if (local3 ~= 0) {
         location = local2;
-        global7 = 1[?];
+        light_lvl = true;
     }
     if (local3 == 0) {
         if (location == thedark) {
@@ -4880,7 +4893,7 @@ Global global239;
             "put a foot wrong and crash through a thin plaster roof into one of the upstairs bedrooms, happily landing on the bed. In later years it becomes a family joke that you demolished half the house for a tatty old tourist map.";
         }
         location = thedark;
-        global7 = 0;
+        light_lvl = false;
     }
     if (1[?] == routine19326()) {
         rtrue;
@@ -4901,17 +4914,17 @@ Global global239;
 ];
 
 [ BriefSub ;	
-    global48 = 1[?];
+    lookmode = 1;
     "~Curses~ is now in its normal ~brief~ printing mode, which gives long descriptions of places never before visited and short descriptions otherwise.";
 ];
 
 [ VerboseSub ;	
-    global48 = 2[?];
+    lookmode = 2;
     "~Curses~ is now in its ~verbose~ mode, which always gives long descriptions of locations (even places you've been before).";
 ];
 
 [ SuperbriefSub ;	
-    global48 = 3[s_obj?];
+    lookmode = 3;
     "~Curses~ is now in its ~superbrief~ mode, which always gives short descriptions of locations (even places you've never been before).";
 ];
 
@@ -4919,7 +4932,7 @@ Global global239;
     local7 = location;
     new_line;
     print (name) location;
-    local2 = parent(global3);
+    local2 = parent(player);
     if (location ~= thedark && local2 ~= location) {
         print " (in the ", (name) local2, ")";
         local7 = local2;
@@ -4936,10 +4949,10 @@ Global global239;
     }
     if (local1 ~= 1[?]) {
         ! no code
-    } else if (global48 == 2[?]) {
+    } else if (lookmode == 2) {
         ! no code
     } else {
-        if (global48 == 3[s_obj?]) {
+        if (lookmode == 3) {
             jump label39577;
         }
         if (location has visited && local1 == 1[?]) {
@@ -5028,7 +5041,7 @@ Global global239;
             print " here.^";
         }
     }
-    global16 = 21[rod_of_luck?];
+    verb = ##Look;
     if (1[?] == routine19326()) {
         rtrue;
     }
@@ -5092,7 +5105,7 @@ Global global239;
             rfalse;
         }
         print "You see nothing special about ";
-        routine56464(noun);	! not popped
+        Defart(noun);	! not popped
         @pop;
         ".";
     }
@@ -5107,7 +5120,7 @@ Global global239;
             print "off.^";
         }
     }
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     rtrue;
@@ -5119,7 +5132,7 @@ Global global239;
         @pop;
     }
     if (var2 == 2[?]) {
-        routine56464(var1);	! not popped
+        Defart(var1);	! not popped
         @pop;
     }
     if (var1 has light) {
@@ -5132,7 +5145,7 @@ Global global239;
         print " (charged)";
     }
     if (var1 == 114[daisy_chain?]) {
-        var5 = child(global3);
+        var5 = child(player);
       .label40386;
         if (var5 ~= 0) {
             if (var5 has hidden_rod) {
@@ -5202,9 +5215,9 @@ Global global239;
 
 [ ShowSub local1 ;	
     if (second == demon) {
-        if (routine56828() == 0) {
+        if (DemonHint() == 0) {
             print "The demon glances lazily at ";
-            routine56464(noun);	! not popped
+            Defart(noun);	! not popped
             @pop;
             print " and rouses himself to say: ~";
             local1 = noun.devil_hint;
@@ -5227,9 +5240,9 @@ Global global239;
         rfalse;
     }
     if (second == angel) {
-        if (routine56980() == 0) {
+        if (AngelHint() == 0) {
             print "The angel looks conscientiously at ";
-            routine56464(noun);	! not popped
+            Defart(noun);	! not popped
             @pop;
             print " and rouses herself to say: ~";
             local1 = noun.angel_hint;
@@ -5238,7 +5251,7 @@ Global global239;
                     print "I suppose you could ask, um, that tailed gentleman.";
                 } else {
                     print "I'm afraid I'm don't know much about ";
-                    routine56464(noun);	! not popped
+                    Defart(noun);	! not popped
                     @pop;
                     print ".";
                 }
@@ -5250,7 +5263,7 @@ Global global239;
         }
         rfalse;
     }
-    routine56478(second);	! not popped
+    CDefart(second);	! not popped
     @pop;
     " makes no comment.";
 ];
@@ -5259,7 +5272,7 @@ Global global239;
     local1 = noun;
     noun = second;
     second = local1;
-    global16 = 14[Grahams_Lair?];
+    verb = ##Give;
     GiveSub();	! not popped
     @pop;
     rtrue;
@@ -5291,7 +5304,7 @@ Global global239;
         print "A peace offering is a nice idea, but somehow the ", (name) noun;
         if (noun == gift_wrapped_parcel) {
             print " lacks style... after all, it isn't Christmas.^";
-            routine66028();	! not popped
+            OneTimeBonusScore();	! not popped
             @pop;
             rtrue;
         }
@@ -5317,7 +5330,7 @@ Global global239;
             give local1 ~static;
             give local1 moved;
             remove local1;
-            move local1 to global3;
+            move local1 to player;
             "She smiles as if to say there's not much point watching her waist-line any more, and hungrily wolfs down her favourite dessert. As a gesture of thanks, she takes off her amber hairband and hands it you. Quickly she readopts her noble pose, however, just in case anyone else is looking.";
         }
         "She looks with obvious hunger, but her sense of duty wins out and she refuses.";
@@ -5331,7 +5344,7 @@ Global global239;
         if (noun has edible) {
             remove noun;
             print "The goat happily munches down ";
-            routine56464(noun);	! not popped
+            Defart(noun);	! not popped
             @pop;
             ".";
         }
@@ -5354,7 +5367,7 @@ Global global239;
         "That doesn't seem to fit the lock.";
     }
     give noun ~locked;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You unlock the ", (name) noun, ".^";
@@ -5376,7 +5389,7 @@ Global global239;
         "That doesn't seem to fit the lock.";
     }
     give noun locked;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You lock the ", (name) noun, ".^";
@@ -5394,7 +5407,7 @@ Global global239;
         "It's already on.";
     }
     give noun on;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You switch the ", (name) noun, " on.^";
@@ -5412,7 +5425,7 @@ Global global239;
         "It's already off.";
     }
     give noun ~on;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You switch the ", (name) noun, " off.^";
@@ -5439,7 +5452,7 @@ Global global239;
         "It's already open.";
     }
     give noun open;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You open the ", (name) noun, ".^";
@@ -5462,7 +5475,7 @@ Global global239;
         "It's already closed.";
     }
     give noun ~open;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You close the ", (name) noun, ".^";
@@ -5483,11 +5496,11 @@ Global global239;
         "You can't wear that!";
     }
     local1 = parent(noun);
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
         "You're not holding that!";
     }
     give noun worn;
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You put on the ", (name) noun, ".^";
@@ -5500,10 +5513,10 @@ Global global239;
   .label42891;
     if (local1 <= 255) {
         if (local1 has moved) {
-            routine56464(local1);	! not popped
+            Defart(local1);	! not popped
             @pop;
             local2 = parent(local1);
-            if (local2 == global3) {
+            if (local2 == player) {
                 print "   (held)";
             } else if (local2 has animate) {
                 print "   (given away)";
@@ -5571,8 +5584,8 @@ Global global239;
     "You feel inexplicably powerful, but nothing happens. Perhaps you should have addressed yourself more precisely.";
 ];
 
-[ routine43276 var1 var2 var3 ;	
-    if (global16 ~= 105[circular_arc?]) {
+[ LegachTransport var1 r var3 ;	
+    if (verb ~= ##Legach) {
         "There is, unsurprisingly, no reply.";
     }
     var1 = 0;
@@ -5597,33 +5610,33 @@ Global global239;
         var1 = 1[?];
     }
     if (var1 == 1[?]) {
-        var2 = 216[Greek_Frieze?];
+        r = Greek_Frieze;
         var3 = 4[e_obj?];
     }
     if (var1 == 2[?]) {
-        var2 = 125[Mosaic?];
+        r = Mosaic;
         var3 = 5[w_obj?];
     }
     if (var1 == 3[s_obj?]) {
-        var2 = 135[Crypt?];
+        r = Crypt;
         var3 = 9[sw_obj?];
     }
     if (var1 == 4[e_obj?]) {
-        var2 = 170[Bohemia?];
+        r = Bohemia;
         var3 = 2[?];
     }
-    if (var2 hasnt visited) {
+    if (r hasnt visited) {
         jump label43360;
     }
-    if (var2 == location) {
+    if (r == location) {
         "A swirl of wind almost bowls you over, but nothing else happens.";
     }
-    remove global3;
-    move global3 to var2;
-    location = var2;
+    remove player;
+    move player to r;
+    location = r;
     game_section = var3;
     print "A swirl of wind snakes out from ";
-    routine56464(global6);	! not popped
+    Defart(global6);	! not popped
     @pop;
     print " and whisks you away to...^";
     LookSub();	! not popped
@@ -5660,7 +5673,7 @@ Global global239;
 [ KissSub ;	
     if (noun == Jemima) {
         print "She is slightly mollified, but only slightly.^";
-        routine66028();	! not popped
+        OneTimeBonusScore();	! not popped
         @pop;
         rtrue;
     }
@@ -5904,7 +5917,7 @@ Global global239;
 ! References: Catacombs.before
 
 [ CatacombsBefore var1 ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= d_obj) {
@@ -5914,7 +5927,7 @@ Global global239;
     if (var1 == 0) {
         rfalse;
     }
-    if (parent(glowing_orb) == global3) {
+    if (parent(glowing_orb) == player) {
         print "With the orb glowing in your hand, you descend the stairs, passing through a wall of golden light...^^";
         rfalse;
     }
@@ -5924,10 +5937,10 @@ Global global239;
 ! References: Contraption.before
 
 [ ContraptionBefore ;	
-    if (global16 == 18[Meldrews_History?] && noun == e_obj && metal_wall has general) {
+    if (verb == ##Go && noun == e_obj && metal_wall has general) {
         "You bump into an invisible barrier - perhaps the edge of the reflection.";
     }
-    if (global16 ~= 22[yourself?]) {
+    if (verb ~= ##Examine) {
         rfalse;
     }
     if (noun ~= misc_obj) {
@@ -6105,7 +6118,7 @@ Global global239;
 [ StrongSub local1 ;	
     local1 = 255[carbolic_soap?];
     remove local1;
-    move local1 to global3;
+    move local1 to player;
     give carbolic_soap ~concealed;
     "Now, that sort of language is an absolute disgrace, and you're going to have to pay the price for it.";
 ];
@@ -6167,7 +6180,7 @@ Global global239;
         "You can't usefully blow that.";
     }
     print "You blow the horn, and it gives a great clarion call out to the hills which is promptly answered by a large number of annoyed guardsmen.^";
-    routine84322();	! not popped
+    Capture();	! not popped
     @pop;
     rtrue;
 ];
@@ -6183,11 +6196,11 @@ Global global239;
         print "Bewilderingly, the condensation dissolves your hand away, and the water rushes up over your body as if it were blotting paper. You feel nothing except disorientation, but your confusion soon resolves to...^";
         remove glowing_orb;
         move glowing_orb to location;
-        global55 = parent(global3);
+        global55 = parent(player);
         global56 = location;
         location = Universe_Maintenance_Room;
-        remove global3;
-        move global3 to Universe_Maintenance_Room;
+        remove player;
+        move player to Universe_Maintenance_Room;
         LookSub(1[?]);	! not popped
         @pop;
         rtrue;
@@ -6216,7 +6229,7 @@ Global global239;
     }
     local1.number = 10;
     print "You wind back the timer to 10 minutes, and off it goes.^";
-    global33 = 1[?];
+    BombTicking = true;
     rtrue;
 ];
 
@@ -6226,7 +6239,7 @@ Global global239;
     }
     remove noun;
     if (noun == red_tablet) {
-        give global3 ~general;
+        give player ~general;
         "It tastes alarmingly of chocolate.";
     }
     Achieved(22);	! not popped
@@ -6240,7 +6253,7 @@ Global global239;
 
 [ WaveSub local1 ;	
     local1 = parent(noun);
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
         "But you aren't holding it.";
     }
     local1 = noun;
@@ -6255,7 +6268,7 @@ Global global239;
                 remove noun;
                 local1 = noun.rod_assoc;
                 global4 = local1;
-                move local1 to global3;
+                move local1 to player;
                 (name) local1, "!";
             }
         }
@@ -6266,9 +6279,9 @@ Global global239;
             remove noun;
             local1 = noun.rod_assoc;
             global4 = local1;
-            move local1 to global3;
+            move local1 to player;
             if (local1 has rod_attr) {
-                routine56464(local1);	! not popped
+                Defart(local1);	! not popped
                 @pop;
             }
             if (local1 hasnt rod_attr) {
@@ -6288,7 +6301,7 @@ Global global239;
     }
     if (local1 == 169[poster?] && location == Down_by_River && tourist_boat hasnt open) {
         print "You wave the poster at the boat, but the boat remains unmoved.^";
-        routine66028();	! not popped
+        OneTimeBonusScore();	! not popped
         @pop;
         rfalse;
     }
@@ -6297,7 +6310,7 @@ Global global239;
 
 [ StrikeSub local1 ;	
     local1 = parent(noun);
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
         "But you aren't holding it.";
     }
     local1 = noun;
@@ -6322,11 +6335,11 @@ Global global239;
 
 [ PointSub local1 local2 ;	
     local1 = parent(noun);
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
         "But you aren't holding it.";
     }
     local1 = parent(second);
-    if (local1 == global3) {
+    if (local1 == player) {
         "It's too fiddly pointing it at something you're holding.";
     }
     local1 = noun;
@@ -6358,8 +6371,8 @@ Global global239;
         @pop;
         rfalse;
     }
-    global16 = 2[?];
-    routine19166(noun,0,global16);	! not popped
+    verb = ##Take;
+    RunRoutines(noun,nothing,verb);	! not popped
     @pop;
     rtrue;
 ];
@@ -6374,12 +6387,12 @@ Global global239;
         }
         give noun general;
         print "You pull out ";
-        routine56464(noun);	! not popped
+        Defart(noun);	! not popped
         @pop;
         print ". ";
         local1 = 191[complicated_looking_bomb?];
         local2 = local1.number;
-        global40->local2 = noun;
+        BombWires->local2 = noun;
         ++local2;
         local1.number = local2;
         if (local2 == 4[e_obj?]) {
@@ -6390,11 +6403,11 @@ Global global239;
     }
     if (noun has switchable) {
         if (noun has on) {
-            global16 = 58[Inside_Cupboard?];
+            verb = ##SwitchOn;
         } else {
-            global16 = 59[painting_of_Mad_Isaac_Meldrewe?];
+            verb = ##SwitchOff;
         }
-        routine19166(noun,0,global16);	! not popped
+        RunRoutines(noun,nothing,verb);	! not popped
         @pop;
         rfalse;
     }
@@ -6422,7 +6435,7 @@ Global global239;
                 "Madame Sosostris, the famous clairvoyante, breezes in through the hanging curtain and sits behind the table, making waving gestures with her hands.^^~First, this I must know, were you born in an even, or an odd, year?~";
             }
             print "Madame Sosostris breezes in once more. ~You again,~ she says warily. ~Let us see how your fortunes have changed.~^^";
-            routine66798();	! not popped
+            SosostrisDeals();	! not popped
             @pop;
             rtrue;
         }
@@ -6430,11 +6443,11 @@ Global global239;
     }
     if (noun has switchable) {
         if (noun has on) {
-            global16 = 59[painting_of_Mad_Isaac_Meldrewe?];
+            verb = ##SwitchOff;
         } else {
-            global16 = 58[Inside_Cupboard?];
+            verb = ##SwitchOn;
         }
-        routine19166(noun,0,global16);	! not popped
+        RunRoutines(noun,nothing,verb);	! not popped
         @pop;
         rfalse;
     }
@@ -6593,7 +6606,7 @@ Global global239;
             print ", and there's nothing there but that boring old book. You pick it up anyway, bored as you are";
             give Meldrews_History ~concealed;
             remove Meldrews_History;
-            move Meldrews_History to global3;
+            move Meldrews_History to player;
         }
         ".";
     }
@@ -6626,7 +6639,7 @@ Global global239;
     if (noun has transparent && noun hasnt open) {
         "You can't see inside, since it is closed.";
     }
-    if (1[?] == routine19254()) {
+    if (1 == AfterRoutines()) {
         rtrue;
     }
     print "You peer at ";
@@ -6658,15 +6671,15 @@ Global global239;
     }
     local1 = 18[Meldrews_History?];
     local1 = parent(local1);
-    if (local1 ~= global3) {
+    if (local1 ~= player) {
         local1 = 82[tourist_map?];
         local1 = parent(local1);
-        if (local1 == global3) {
+        if (local1 == player) {
             jump label55324;
         }
         local1 = 72[ancient_prayer_book?];
         local1 = parent(local1);
-        if (local1 == global3) {
+        if (local1 == player) {
             jump label55633;
         }
         "I don't know what you want to look it up in.";
@@ -6729,8 +6742,8 @@ Global global239;
         move local1 to location;
         game_section = HAMBURG;
         location = Museum_of_Arcana;
-        remove global3;
-        move global3 to Museum_of_Arcana;
+        remove player;
+        move player to Museum_of_Arcana;
         LookSub(0);	! not popped
         @pop;
         rtrue;
@@ -6785,15 +6798,15 @@ Global global239;
     rtrue;
 ];
 
-[ routine56464 var1 ;	
-    if (var1 hasnt proper) {
+[ Defart obj ;	
+    if (obj hasnt proper) {
         print "the ";
     }
-    print (name) var1;
+    print (name) obj;
     rtrue;
 ];
 
-[ routine56478 var1 ;	
+[ CDefart var1 ;	
     if (var1 hasnt proper) {
         print "The ";
     }
@@ -6825,7 +6838,7 @@ Global global239;
     "You lack the nerve when it comes to the crucial moment.";
 ];
 
-[ routine56828 var1 ;	
+[ DemonHint var1 ;	
     if (demon hasnt general) {
         var1 = demon.number;
         if (var1 == 0) {
@@ -6836,7 +6849,7 @@ Global global239;
     rfalse;
 ];
 
-[ routine56980 var1 ;	
+[ AngelHint var1 ;	
     if (angel hasnt general) {
         var1 = 254[angel?];
         var1 = angel.number;
@@ -6895,7 +6908,7 @@ Global global239;
         }
         if (global20 == 13270['carte//p'?]) {
             local1 = 189[tourist_map_of_Paris?];
-            move local1 to global3;
+            move local1 to player;
             Achieved(18);	! not popped
             @pop;
             give tourist_map_of_Paris moved;
@@ -6909,7 +6922,7 @@ Global global239;
         } else if (global20 ~= 15510['odd//p'?]) {
             "~You must answer my question!~  She does seem anxious.";
         }
-        routine66798();	! not popped
+        SosostrisDeals();	! not popped
         @pop;
         local1 = 175[Madame_Sosostris?];
         remove local1;
@@ -6928,13 +6941,13 @@ Global global239;
             if (tourist_map_of_Paris hasnt moved) {
                 location = Garden_Stream;
             }
-            remove global3;
-            move global3 to location;
+            remove player;
+            move player to location;
             LookSub(1[?]);	! not popped
             @pop;
             if (hollow_man hasnt general) {
                 give hollow_man general;
-                move Ace_of_Cups_card to global3;
+                move Ace_of_Cups_card to player;
                 print "^Was any of that real? you wonder, as you relax in the sunshine. But then you realise you are clutching a tarot card which certainly is.^";
             }
             rtrue;
@@ -6970,7 +6983,7 @@ Global global239;
         "Being an educated person, the bartender speaks a little Latin and some Aramaic. Being an uneducated one, you don't, and communication proves impossible.";
     }
     if (second == demon) {
-        if (routine56828() ~= 0) {
+        if (DemonHint() ~= 0) {
             rfalse;
         }
         if (0 ~= routine90106(global20)) {
@@ -6979,7 +6992,7 @@ Global global239;
         rfalse;
     }
     if (second == angel) {
-        if (routine56980() ~= 0) {
+        if (AngelHint() ~= 0) {
             rfalse;
         }
         if (0 ~= routine90314(global20)) {
@@ -7155,10 +7168,10 @@ Global global239;
 [ XasncSub ;	
     routine91728();	! not popped
     @pop;
-    global44 = 1[?];
+    KnowLanguages = true;
     turns = turns + 300;
     remove glowing_orb;
-    move glowing_orb to global3;
+    move glowing_orb to player;
     "Ok.";
 ];
 
@@ -7168,8 +7181,8 @@ Global global239;
 ];
 
 [ XtravelSub ;	
-    remove global3;
-    move global3 to Grahams_Lair;
+    remove player;
+    move player to Grahams_Lair;
     location = Grahams_Lair;
     LookSub(1[?]);	! not popped
     @pop;
@@ -7188,7 +7201,7 @@ Global global239;
     if (carbolic_soap hasnt concealed) {
         "Racked with guilt over your bad language, you are unable to nod off.";
     }
-    local1 = parent(global3);
+    local1 = parent(player);
     if (local1 == 28[servants_bed?]) {
         ! no code
     } else {
@@ -7202,7 +7215,7 @@ Global global239;
     }
     give servants_bed general;
     print "You sleep unexpectedly deeply, but just as you think you are starting to wake up, you experience a sudden...^";
-    local1 = child(global3);
+    local1 = child(player);
   .label65989;
     if (local1 ~= 0) {
         local2 = sibling(local1);
@@ -7213,14 +7226,14 @@ Global global239;
     }
     game_section = DREAMING;
     location = Premonition;
-    remove global3;
-    move global3 to Premonition;
+    remove player;
+    move player to Premonition;
     LookSub();	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine66028 ;	
+[ OneTimeBonusScore ;	
     if (Old_Winery has general) {
         rtrue;
     }
@@ -7267,8 +7280,8 @@ Global global239;
     rtrue;
 ];
 
-[ routine66218 var1 var2 var3 ;	
-    if (global24 == 0) {
+[ DealCard var1 var2 var3 ;	
+    if (card_ptr == 0) {
       .label66230;
         var3 = random(50);
         if (var3 == var1) {
@@ -7362,51 +7375,51 @@ Global global239;
         return var3;
         return var3;
     }
-    --global24;
-    var3 = global23->global24;
+    --card_ptr;
+    var3 = card_deck->card_ptr;
     move var3 to Consulting_Room;
-    routine56464(var3);	! not popped
+    Defart(var3);	! not popped
     @pop;
     return var3;
 ];
 
-[ routine66786 var1 ;	
-    global23->global24 = var1;
-    ++global24;
+[ InsertCardIntoDeck card ;	
+    card_deck->card_ptr = card;
+    ++card_ptr;
     rtrue;
 ];
 
-[ routine66798 var1 var2 var3 ;	
+[ SosostrisDeals card3 card2 card1 ;	
     print "Madame Sosostris picks up the cards and deals them onto the table. She frowns in concentration as ";
-    var1 = routine66218(0,0);
+    card3 = DealCard(0,0);
     print ", ";
-    var2 = routine66218(var1,0);
+    card2 = DealCard(card3,0);
     print " and then ";
-    var3 = routine66218(var1,var2);
+    card1 = DealCard(card3,card2);
     print " show. ";
-    if (var1 == 176[Death_card?]) {
+    if (card3 == Death_card) {
         print "She blanches with alarm, then recovers and jabbers something about not taking the cards too literally, the images being symbolic and so on. As rapidly as she possibly can, she warns you to fear death by water and then hustles you out onto the street.^";
     } else {
-        if (var1 ~= 157[Star_card?]) {
+        if (card3 ~= Star_card) {
             ! no code
-        } else if (var2 ~= 160[Maiden_card?]) {
+        } else if (card2 ~= Maiden_card) {
             ! no code
-        } else if (var3 ~= 158[Eight_of_Wands_card?]) {
+        } else if (card1 ~= Eight_of_Wands_card) {
             ! no code
         } else {
             print "~You have come!  At last, after all these centuries!  But there is little I can do to ease your way, save to return the staff you left with me for safe keeping.~  And she shows you out. You feel rather bewildered.^";
-            var1 = 179[oak_quarterstaff?];
-            move var1 to global3;
+            card3 = oak_quarterstaff;
+            move card3 to player;
             jump label67403;
         }
-        if (var3 < 50) {
+        if (card1 < 50) {
             print "~Curse it, another nobody,~ she hisses in an unguarded moment, as she tidies the pack absentmindedly with her hands. Then she recovers her poise and advises about handsome strangers, fearing death by water, crossing palms with gold and so on. Eventually she ushers you out.^";
         }
     }
   .label67403;
-    remove global3;
+    remove player;
     location = Unreal_City;
-    move global3 to Unreal_City;
+    move player to Unreal_City;
     LookSub(1[?]);	! not popped
     @pop;
     rtrue;
@@ -7415,7 +7428,7 @@ Global global239;
 ! References: rod_of_fire.rod_action
 
 [ FireRodAction ;	
-    if (second == global3) {
+    if (second == player) {
         deadflag = 1;
         "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
     }
@@ -7436,13 +7449,13 @@ Global global239;
     } else {
         if (second == medicine_bottle) {
             print "The melting point of this glass is very high, and amazingly it withstands the bolt of fire.^";
-            routine66028();	! not popped
+            OneTimeBonusScore();	! not popped
             @pop;
             rfalse;
         }
         remove second;
         print "A bolt of fire leaps from the rod and consumes ";
-        routine56464(second);	! not popped
+        Defart(second);	! not popped
         @pop;
         " utterly!";
     }
@@ -7452,16 +7465,16 @@ Global global239;
 
 ! References: rod_of_returning.rod_action, rod_of_returning2.rod_action
 
-[ transport_player var1 var2 ;	
-    if (second ~= global3) {
+[ transport_player n dest ;	
+    if (second ~= player) {
         "Nothing obvious happens.";
     }
     if (location == Universe_Maintenance_Room) {
         location = global56;
-        remove global3;
-        move global3 to global55;
+        remove player;
+        move player to global55;
         remove glowing_orb;
-        move glowing_orb to global3;
+        move glowing_orb to player;
         print "Although nothing seems to happen to you, the whole golden sphere gracefully contracts, pulling itself tight until it sits comfortably in the palm of your hand. You blink.^";
         LookSub(1[?]);	! not popped
         @pop;
@@ -7469,30 +7482,30 @@ Global global239;
     }
     print "You are engulfed in a cloud of spinning white lights, like insects. When the swarm clears, you find yourself transported...^";
     if (game_section == ANCIENT_BRITAIN) {
-        var2 = 104[Infinity_Symbol?];
-        var1 = 244[rod_of_returning2?];
-        remove var1;
+        dest = Infinity_Symbol;
+        n = 244[rod_of_returning2?];
+        remove n;
     }
     if (game_section ~= ANCIENT_BRITAIN) {
-        var1 = random(4);
-        var2 = 15[Attic?];
-        if (var1 == 2[?]) {
-            var2 = 31[Old_Furniture?];
+        n = random(4);
+        dest = Attic;
+        if (n == 2[?]) {
+            dest = Old_Furniture;
         }
-        if (var1 == 3[s_obj?]) {
-            var2 = 79[Old_Winery?];
+        if (n == 3[s_obj?]) {
+            dest = Old_Winery;
         }
-        if (var1 == 4[e_obj?]) {
-            var2 = 39[Over_the_East_Wing?];
+        if (n == 4[e_obj?]) {
+            dest = Over_the_East_Wing;
         }
         if (global45 == 1[?]) {
-            var2 = 15[Attic?];
+            dest = Attic;
         }
     }
     game_section = MODERN;
-    remove global3;
-    move global3 to var2;
-    location = var2;
+    remove player;
+    move player to dest;
+    location = dest;
     LookSub();	! not popped
     @pop;
     rtrue;
@@ -7501,7 +7514,7 @@ Global global239;
 ! References: rod_of_husbandry.rod_action
 
 [ RodOfHusbandryAction ;	
-    if (second == global3) {
+    if (second == player) {
         "You feel suddenly obedient, and briefly fancy a dog biscuit.";
     }
     if (second ~= herd_of_goats) {
@@ -7514,7 +7527,7 @@ Global global239;
 ! References: rod_of_bronze.rod_action
 
 [ RodOfBronzeAction ;	
-    if (second == global3) {
+    if (second == player) {
         "You acquire a sudden sun tan, but it soon fades.";
     }
     if (second == metal_wall) {
@@ -7534,7 +7547,7 @@ Global global239;
 ! References: rod_of_luck.rod_action
 
 [ routine68638 ;	
-    if (second == global3) {
+    if (second == player) {
         if (Viewpoint_Ledge has on) {
             "You feel no different. Perhaps there's no such thing as luck.";
         }
@@ -7553,7 +7566,7 @@ Global global239;
     if (second has moved) {
         remove second;
         print "You decide you can manage without ";
-        routine56464(second);	! not popped
+        Defart(second);	! not popped
         @pop;
         ", which you annihilate with the Rod of Sacrifice.";
     }
@@ -7563,10 +7576,10 @@ Global global239;
             "The Black pieces make a rash break out of their defences, sacrificing a piece in vain and going down to a rapid defeat as a result.^^The White Queen rises from the board, an avenging angel's smile on her face, and swings a broadsword of burning light across your body...";
         }
         location = global56;
-        remove global3;
-        move global3 to global55;
+        remove player;
+        move player to global55;
         remove glowing_orb;
-        move glowing_orb to global3;
+        move glowing_orb to player;
         give glowing_orb general;
         Achieved(17);	! not popped
         @pop;
@@ -7576,7 +7589,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (second == global3) {
+    if (second == player) {
         deadflag = 1;
         "You feel a noble surge of pride as your body is incinerated by the Rod of Sacrifice. At least you died for some terribly important cause, although exactly what it was seems to have slipped your mind.";
     }
@@ -7586,8 +7599,8 @@ Global global239;
 ! References: rod_of_language.rod_action
 
 [ RodOfLanguageAction ;	
-    if (second == global3) {
-        global44 = 1[?];
+    if (second == player) {
+        KnowLanguages = true;
         "Nothing obvious happens. You curse eloquently in Celtic.";
     }
     if (second == surly_shopkeeper) {
@@ -7599,7 +7612,7 @@ Global global239;
 ! References: rod_of_stalking.rod_action
 
 [ stalking_rod_action ;	
-    if (second == global3) {
+    if (second == player) {
         "Your hair stands momentarily on end, as if it wants to stalk up out of your head, but happily it decides against.";
     }
     if (second == misc_obj) {
@@ -7624,7 +7637,7 @@ Global global239;
 ! References: rod_of_infinity.rod_action
 
 [ RodOfInfinityAction var1 var2 ;	
-    if (second == global3) {
+    if (second == player) {
         "You acquire no especial sense of the infinite.";
     }
     if (location ~= Infinity_Symbol) {
@@ -7654,7 +7667,7 @@ Global global239;
 
 [ XmasterSub local1 local2 ;	
     game_section = ANCIENT_BRITAIN;
-    local1 = child(global3);
+    local1 = child(player);
   .label70548;
     if (local1 ~= 0) {
         local2 = sibling(local1);
@@ -7665,10 +7678,10 @@ Global global239;
         jump label70548;
     }
     location = Murky_Cave;
-    remove global3;
-    move global3 to Murky_Cave;
+    remove player;
+    move player to Murky_Cave;
     local1 = 219[historical_pamphlet?];
-    move local1 to global3;
+    move local1 to player;
     LookSub();	! not popped
     @pop;
     rtrue;
@@ -7679,7 +7692,7 @@ Global global239;
 [ routine70592 var1 ;	
     var1 = 189[tourist_map_of_Paris?];
     var1 = parent(var1);
-    if (var1 == global3) {
+    if (var1 == player) {
         deadflag = 2;
         "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty generations, a Meldrew has found the useless object he was doomed to seek!  Unfortunately on the way to the airport you realise that you left the map on the kitchen table in all the rush, but never mind, you're on holiday now.";
     }
@@ -7690,7 +7703,7 @@ Global global239;
 ! References: Old_Winery.after
 
 [ WineryAfter ;	
-    if (global16 ~= 21[rod_of_luck?]) {
+    if (verb ~= ##Look) {
         rfalse;
     }
     if (Old_Winery has general) {
@@ -7703,12 +7716,12 @@ Global global239;
 
 ! References: East_Annexe.after
 
-[ EastAnnexeAfter var1 var2 ;	
-    if (global16 == 18[Meldrews_History?]) {
-        var1 = 25[old_smudged_battery?];
-        var2 = var1.number;
-        if (var2 > 3) {
-            var1.number = 3;
+[ EastAnnexeAfter o n ;	
+    if (verb == ##Go) {
+        o = old_smudged_battery;
+        n = o.number;
+        if (n > 3) {
+            o.number = 3;
         }
     }
     rfalse;
@@ -7717,7 +7730,7 @@ Global global239;
 ! References: Inside_Cupboard.after
 
 [ InsideCupboardAfter var1 ;	
-    if (global16 == 7[nw_obj?] && second == big_iron_fireplace) {
+    if (verb == ##Insert && second == big_iron_fireplace) {
         remove noun;
         move noun to Priests_Hole;
         if (sooty_old_stick hasnt moved) {
@@ -7733,8 +7746,8 @@ Global global239;
 
 ! References: plane_tree.after
 
-[ routine71146 ;	
-    if (global16 == 7[nw_obj?] && second == misc_obj) {
+[ TreeAfter ;	
+    if (verb == ##Insert && second == misc_obj) {
         remove noun;
         move noun to hanging_cord;
         routine45130();	! not popped
@@ -7746,13 +7759,13 @@ Global global239;
 
 ! References: Storage_Room.after
 
-[ StorageRoomAfter var1 ;	
-    if (global16 == 7[nw_obj?] && second == dark_shaft_obj) {
+[ StorageRoomAfter o ;	
+    if (verb == ##Insert && second == dark_shaft_obj) {
         remove noun;
         move noun to dumbwaiter;
-        var1 = 85[dumbwaiter?];
-        var1 = parent(var1);
-        if (var1 == location) {
+        o = dumbwaiter;
+        o = parent(o);
+        if (o == location) {
             "Put on the dumbwaiter.";
         }
         if (noun == medicine_bottle) {
@@ -7769,11 +7782,11 @@ Global global239;
 
 ! References: Storage_Room.before
 
-[ StorageRoomBefore var1 ;	
-    if (global16 == 4[e_obj?]) {
-        var1 = 85[dumbwaiter?];
-        var1 = parent(var1);
-        if (var1 == 83[Storage_Room?]) {
+[ StorageRoomBefore o ;	
+    if (verb == ##Enter) {
+        o = dumbwaiter;
+        o = parent(o);
+        if (o == Storage_Room) {
             noun = dumbwaiter;
             rfalse;
         }
@@ -7784,11 +7797,11 @@ Global global239;
 
 ! References: Cellars.before
 
-[ CellarsBefore var1 ;	
-    if (global16 == 4[e_obj?]) {
-        var1 = 85[dumbwaiter?];
-        var1 = parent(var1);
-        if (var1 == 93[Cellars?]) {
+[ CellarsBefore o ;	
+    if (verb == ##Enter) {
+        o = dumbwaiter;
+        o = parent(o);
+        if (o == Cellars) {
             noun = dumbwaiter;
             rfalse;
         }
@@ -7798,7 +7811,7 @@ Global global239;
 ];
 
 [ routine71486 ;	
-    if (global16 == 0) {
+    if (verb == ##Exit) {
         "Far, far too dangerous to contemplate. Besides, you're a coward.";
     }
     rfalse;
@@ -7807,9 +7820,9 @@ Global global239;
 ! References: Chimney.before
 
 [ ChimneyBefore var1 ;	
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         if (noun == d_obj) {
-            var1 = child(global3);
+            var1 = child(player);
             if (var1 ~= 0) {
                 "It's too narrow a squeeze for you at present.";
             }
@@ -7824,9 +7837,9 @@ Global global239;
 ! References: Priests_Hole.before
 
 [ PriestsHoleBefore var1 ;	
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         if (noun == u_obj) {
-            var1 = child(global3);
+            var1 = child(player);
             if (var1 ~= 0) {
                 "It's too narrow a squeeze for you at present.";
             }
@@ -7844,7 +7857,7 @@ Global global239;
 ! References: painting_of_Mad_Isaac_Meldrewe.after
 
 [ IsaacPaintingAfter ;	
-    if (global16 == 2[?] && big_iron_fireplace has concealed) {
+    if (verb == ##Take && big_iron_fireplace has concealed) {
         give big_iron_fireplace ~concealed;
         "Taken. (There's a fireplace behind it, by the way.)";
     }
@@ -7854,7 +7867,7 @@ Global global239;
 ! References: Dark_Room.after
 
 [ DarkRoomAfter ;	
-    if (global16 == 21[rod_of_luck?] && Dark_Room has light) {
+    if (verb == ##Look && Dark_Room has light) {
         print "^The room is filled with an eerie, reddish light. You feel gloomy and can't help thinking about aviation accident statistics.^";
     }
     rfalse;
@@ -7863,7 +7876,7 @@ Global global239;
 ! References: Dark_Shaft.after
 
 [ DarkShaftAfter ;	
-    if (global16 == 21[rod_of_luck?] && parent(dumbwaiter) ~= Dark_Shaft) {
+    if (verb == ##Look && parent(dumbwaiter) ~= Dark_Shaft) {
         print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the cellars.^";
     }
     rfalse;
@@ -7872,7 +7885,7 @@ Global global239;
 ! References: Dark_Shaft.before
 
 [ DarkShaftBefore ;	
-    if (global16 == 18[Meldrews_History?] && noun == d_obj && parent(dumbwaiter) == Dark_Shaft) {
+    if (verb == ##Go && noun == d_obj && parent(dumbwaiter) == Dark_Shaft) {
         "Since the dumbwaiter is here, why not travel in that instead.";
     }
     rfalse;
@@ -7881,7 +7894,7 @@ Global global239;
 ! References: postcard.after
 
 [ PostcardAfter ;	
-    if (global16 == 22[yourself?] && location == Dark_Room && Dark_Room has light) {
+    if (verb == ##Examine && location == Dark_Room && Dark_Room has light) {
         Achieved(0);	! not popped
         @pop;
         "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
@@ -7889,14 +7902,14 @@ Global global239;
     rfalse;
 ];
 
-[ routine72272 var1 var2 ;	
-    var1 = 42[flash?];
-    var2 = 0;
-    var1 = child(var1);
-    if (var1 ~= 0) {
-        var2 = sibling(var1);
+[ FlashCheck obj sib ;	
+    obj = flash;
+    sib = nothing;
+    obj = child(obj);
+    if (obj ~= nothing) {
+        sib = sibling(obj);
     }
-    if (0 ~= var1 * var2) {
+    if (0 ~= obj * sib) {
         "The flash is full already.";
     }
     if (noun == new_battery) {
@@ -7911,11 +7924,11 @@ Global global239;
         }
         rfalse;
     }
-    if (var1 == 53[new_battery?]) {
+    if (obj == new_battery) {
         ! no code
-    } else if (var1 == 25[old_smudged_battery?]) {
+    } else if (obj == old_smudged_battery) {
         ! no code
-    } else if (var1 == 81[nasty_battery?]) {
+    } else if (obj == nasty_battery) {
         ! no code
     } else {
         rfalse;
@@ -7923,10 +7936,10 @@ Global global239;
     "There is already a battery inside, and there's only room now for a timer.";
 ];
 
-[ routine72452 var1 ;	
-    var1 = 24[electric_torch?];
-    var1 = child(var1);
-    if (var1 ~= 0) {
+[ FlashInsert o ;	
+    o = electric_torch;
+    o = child(o);
+    if (o ~= nothing) {
         "There's a battery in already.";
     }
     if (noun == new_battery) {
@@ -7943,8 +7956,8 @@ Global global239;
 
 ! References: electric_torch.after
 
-[ TorchAfter var1 ;	
-    if (global16 == 30[House?]) {
+[ TorchAfter o ;	
+    if (verb == ##Open) {
         if (electric_torch has light) {
             print "The torch goes out as you open the battery compartment.^";
         }
@@ -7954,15 +7967,15 @@ Global global239;
         give electric_torch ~light;
         rtrue;
     }
-    if (global16 == 32[scratched_cupboard?]) {
-        var1 = 24[electric_torch?];
-        var1 = child(var1);
+    if (verb == ##Close) {
+        o = electric_torch;
+        o = child(o);
         print "You close the battery compartment of the torch";
-        if (var1 == 53[new_battery?]) {
+        if (o == new_battery) {
             Achieved(1);	! not popped
             @pop;
         } else {
-            if (var1 == 81[nasty_battery?]) {
+            if (o == nasty_battery) {
                 if (game_section == MODERN) {
                     deadflag = 3;
                     ", and it explodes with light, becomes hot enough to melt, falls to the floor, catches fire and burns down most of the attic...^^It may be some consolation that since you spend your holiday in the local hospital burns unit, you are never inconvenienced much by not finding the map.";
@@ -7971,16 +7984,16 @@ Global global239;
                     ", and it explodes with light, becomes hot enough to melt, falls from your grasp and perishes away to nothing.";
                 }
             }
-            if (var1 ~= 25[old_smudged_battery?]) {
+            if (o ~= old_smudged_battery) {
                 ".";
             }
         }
-        var1 = var1.number;
-        if (var1 == 0) {
+        o = o.number;
+        if (o == nothing) {
             ", but the battery must be dead because nothing happens.";
         }
         give electric_torch light;
-        if (var1 > 5) {
+        if (o > 5) {
             ", and it lights up brightly.";
         }
         ", and it lights up feebly.";
@@ -7992,7 +8005,7 @@ Global global239;
 ! References: hanging_cord.before
 
 [ HangingCordBefore ;	
-    if (global16 == 53[new_battery?]) {
+    if (verb == ##Pull) {
         print "Click!  ";
         if (Dark_Room has light) {
             give Dark_Room ~light;
@@ -8007,7 +8020,7 @@ Global global239;
 ! References: solid_glass_ball.before
 
 [ GlassBallBefore var1 ;	
-    if (global16 ~= 22[yourself?]) {
+    if (verb ~= ##Examine) {
         rfalse;
     }
     if (solid_glass_ball hasnt general) {
@@ -8045,16 +8058,16 @@ Global global239;
 ! References: metal_door.after
 
 [ MetalDoorAfter ;	
-    if (global16 == 31[Old_Furniture?]) {
+    if (verb == ##Unlock) {
         give coal_bunker ~locked;
     }
-    if (global16 == 60[big_iron_fireplace?]) {
+    if (verb == ##Lock) {
         give coal_bunker locked;
     }
-    if (global16 == 30[House?]) {
+    if (verb == ##Open) {
         give coal_bunker open;
     }
-    if (global16 == 32[scratched_cupboard?]) {
+    if (verb == ##Close) {
         give coal_bunker ~open;
     }
     rfalse;
@@ -8063,16 +8076,16 @@ Global global239;
 ! References: coal_bunker.after
 
 [ CoalBunkerAfter ;	
-    if (global16 == 31[Old_Furniture?]) {
+    if (verb == ##Unlock) {
         give metal_door ~locked;
     }
-    if (global16 == 60[big_iron_fireplace?]) {
+    if (verb == ##Lock) {
         give metal_door locked;
     }
-    if (global16 == 30[House?]) {
+    if (verb == ##Open) {
         give metal_door open;
     }
-    if (global16 == 32[scratched_cupboard?]) {
+    if (verb == ##Close) {
         give metal_door ~open;
     }
     rfalse;
@@ -8081,8 +8094,8 @@ Global global239;
 ! References: pulley_ropes.before
 
 [ PulleyBefore var1 var2 ;	
-    if (global16 == 53[new_battery?]) {
-        var1 = parent(global3);
+    if (verb == ##Pull) {
+        var1 = parent(player);
         if (var1 ~= 85[dumbwaiter?]) {
             "You can't reach them!";
         }
@@ -8108,7 +8121,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (global16 == 73[Alisons_Writing_Room?]) {
+    if (verb == ##Climb) {
         "If only you didn't suffer from such dreadful vertigo...";
     }
     rfalse;
@@ -8117,7 +8130,7 @@ Global global239;
 ! References: windows.before
 
 [ WindowsBefore ;	
-    if (global16 == 61[cranked_skylight?]) {
+    if (verb == ##Attack) {
         if (windows has open) {
             rfalse;
         }
@@ -8130,10 +8143,10 @@ Global global239;
 ! References: medicine_bottle.before
 
 [ routine73944 ;	
-    if (global16 == 61[cranked_skylight?]) {
+    if (verb == ##Attack) {
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
-    if (global16 == 30[House?]) {
+    if (verb == ##Open) {
         if (medicine_bottle hasnt locked) {
             rfalse;
         }
@@ -8145,11 +8158,11 @@ Global global239;
 ! References: hinged_trapdoor.after
 
 [ TrapdoorAfter ;	
-    if (global16 == 30[House?]) {
+    if (verb == ##Open) {
         give hinged_trapdoor light;
         rfalse;
     }
-    if (global16 == 32[scratched_cupboard?]) {
+    if (verb == ##Close) {
         give hinged_trapdoor ~light;
         if (antique_jewellery_box has concealed) {
             give antique_jewellery_box ~concealed;
@@ -8164,7 +8177,7 @@ Global global239;
 ! References: demijohn.before
 
 [ DemijohnBefore ;	
-    if (global16 == 30[House?]) {
+    if (verb == ##Open) {
         if (old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
         }
@@ -8177,13 +8190,13 @@ Global global239;
 ! References: gift_wrapped_parcel.before
 
 [ routine74360 var1 ;	
-    if (global16 == 30[House?]) {
+    if (verb == ##Open) {
         var1 = 33[gift_wrapped_parcel?];
         remove var1;
         var1 = 36[postcard?];
-        move var1 to global3;
+        move var1 to player;
         var1 = 34[box_of_chocolates?];
-        move var1 to global3;
+        move var1 to player;
         var1 = 35[wrapping_paper?];
         move var1 to location;
         "You tear open the parcel to find a box of chocolates and a card.";
@@ -8194,7 +8207,7 @@ Global global239;
 ! References: iron_key.before
 
 [ IronKeyBefore var1 ;	
-    if (global16 == 2[?]) {
+    if (verb == ##Take) {
         if (iron_key has general) {
             rfalse;
         }
@@ -8212,7 +8225,7 @@ Global global239;
 ! References: Potting_Room.after
 
 [ PottingRoomAfter var1 ;	
-    if (global16 == 21[rod_of_luck?] && antiquated_wireless has general) {
+    if (verb == ##Look && antiquated_wireless has general) {
         var1 = 110[antiquated_wireless?];
         var1 = parent(var1);
         if (var1 == 106[Conservatory?]) {
@@ -8225,7 +8238,7 @@ Global global239;
 ! References: old_gardeners__gloves.before
 
 [ GlovesBefore ;	
-    if (global16 == 2[?] && old_gardeners__gloves hasnt moved) {
+    if (verb == ##Take && old_gardeners__gloves hasnt moved) {
         if (antiquated_wireless has general) {
             rfalse;
         }
@@ -8238,7 +8251,7 @@ Global global239;
 ! References: calendar.before
 
 [ CalendarBefore var1 ;	
-    if (global16 == 22[yourself?]) {
+    if (verb == ##Examine) {
         var1 = 107[calendar?];
         var1 = var1.number;
         print "The calendar is turned to ";
@@ -8284,7 +8297,7 @@ Global global239;
         @pop;
         " daisies.";
     }
-    if (global16 == 57[secret_door?]) {
+    if (verb == ##Turn) {
         var1 = 107[calendar?];
         var1 = var1.number;
         ++var1;
@@ -8301,7 +8314,7 @@ Global global239;
 ! References: daisy_chain.before
 
 [ daiy_chain_after var1 ;	
-    if (global16 == 22[yourself?]) {
+    if (verb == ##Examine) {
         var1 = 114[daisy_chain?];
         var1 = var1.number;
         print "A delicate, pretty chain of ";
@@ -8309,7 +8322,7 @@ Global global239;
         @pop;
         " daisies.";
     }
-    if (global16 == 8[se_obj?]) {
+    if (verb == ##Drop) {
         var1 = 114[daisy_chain?];
         remove var1;
         "The daisychain falls to pieces in your hands!";
@@ -8360,10 +8373,10 @@ Global global239;
 ! References: Coven_Cell.before
 
 [ CellBefore ;	
-    if (global16 == 63[Roof?]) {
+    if (verb == ##Wait) {
         rfalse;
     }
-    if (global3 has general && 5 > CountDown(Coven_Cell)) {
+    if (player has general && 5 > CountDown(Coven_Cell)) {
         "You seem to lack the will any more. The drug must have taken hold.";
     }
     rfalse;
@@ -8372,20 +8385,20 @@ Global global239;
 ! References: steel_wrench.after
 
 [ SteelWrenchAfter ;	
-    if (global16 == 2[?]) {
+    if (verb == ##Take) {
         "It's a wrench, but you take it.";
     }
     rfalse;
 ];
 
 [ routine75482 ;	
-    if (global16 ~= 57[secret_door?]) {
+    if (verb ~= ##Turn) {
         rfalse;
     }
     if (steel_wrench has general) {
         "The joint is fairly safe already.";
     }
-    if (parent(steel_wrench) ~= global3) {
+    if (parent(steel_wrench) ~= player) {
         "With your bare hands, you are unable to tighten the joint.";
     }
     give steel_wrench general;
@@ -8406,12 +8419,12 @@ Global global239;
 ! References: poetry_book.before
 
 [ PoetryBefore var1 ;	
-    if (global16 == 2[?] && steel_wrench hasnt general) {
+    if (verb == ##Take && steel_wrench hasnt general) {
         routine75652();	! not popped
         @pop;
         rtrue;
     }
-    if (global16 == 22[yourself?]) {
+    if (verb == ##Examine) {
         if (steel_wrench hasnt general) {
             "You can't read it while it's holding the pipe up.";
         }
@@ -8424,8 +8437,8 @@ Global global239;
         move var1 to location;
         game_section = UNREAL;
         location = Unreal_City;
-        remove global3;
-        move global3 to Unreal_City;
+        remove player;
+        move player to Unreal_City;
         LookSub();	! not popped
         @pop;
         rtrue;
@@ -8436,19 +8449,19 @@ Global global239;
 ! References: romantic_novel.before
 
 [ NovelBefore ;	
-    if (global16 == 2[?] && steel_wrench hasnt general) {
+    if (verb == ##Take && steel_wrench hasnt general) {
         routine75652();	! not popped
         @pop;
         rtrue;
     }
-    if (global16 == 22[yourself?] && steel_wrench hasnt general) {
+    if (verb == ##Examine && steel_wrench hasnt general) {
         "You can't read it while it's holding the pipe up.";
     }
     rfalse;
 ];
 
 [ routine76128 ;	
-    if (global16 == 57[secret_door?]) {
+    if (verb == ##Turn) {
         if (global51 == 0) {
             global51 = 1[?];
             "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
@@ -8471,8 +8484,8 @@ Global global239;
 ! References: wheel2.before
 
 [ Wheel2Before var1 ;	
-    if (global16 == 57[secret_door?]) {
-        var1 = parent(global3);
+    if (verb == ##Turn) {
+        var1 = parent(player);
         if (var1 == 85[dumbwaiter?]) {
             "If you could only reach the wheel from here...";
         }
@@ -8506,10 +8519,10 @@ Global global239;
 ! References: Viewpoint_Ledge.after
 
 [ routine76554 ;	
-    if (global16 == 58[Inside_Cupboard?]) {
+    if (verb == ##SwitchOn) {
         "Click-clunk!  The world looks precisely the same.";
     }
-    if (global16 == 59[painting_of_Mad_Isaac_Meldrewe?]) {
+    if (verb == ##SwitchOff) {
         "Clunk-click!  Probably nothing very much has changed.";
     }
     rfalse;
@@ -8518,12 +8531,12 @@ Global global239;
 ! References: antiquated_wireless.after
 
 [ RadioAfter ;	
-    if (global16 == 58[Inside_Cupboard?]) {
+    if (verb == ##SwitchOn) {
         StartTimer(antiquated_wireless,6);	! not popped
         @pop;
         "Nothing happens.";
     }
-    if (global16 == 59[painting_of_Mad_Isaac_Meldrewe?] && antiquated_wireless has general) {
+    if (verb == ##SwitchOff && antiquated_wireless has general) {
         give antiquated_wireless ~general;
         "Thank heaven for that.";
     }
@@ -8532,7 +8545,7 @@ Global global239;
 
 [ routine76690 var1 var2 ;	
     print "the picture on ";
-    routine56464(var1);	! not popped
+    Defart(var1);	! not popped
     @pop;
     var2 = var1.door_to;
     if (var2 == 0) {
@@ -8561,7 +8574,7 @@ Global global239;
 ! References: slide_projector.after
 
 [ routine76874 var1 ;	
-    if (global16 == 58[Inside_Cupboard?]) {
+    if (verb == ##SwitchOn) {
         give Souvenirs_Room light;
         if (global53 == 1[?]) {
             give Disused_Observatory light;
@@ -8580,7 +8593,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (global16 == 59[painting_of_Mad_Isaac_Meldrewe?]) {
+    if (verb == ##SwitchOff) {
         give Souvenirs_Room ~light;
         give Disused_Observatory ~light;
         give south_wall concealed;
@@ -8591,7 +8604,7 @@ Global global239;
 ! References: Souvenirs_Room.before
 
 [ SouvenirRoomBefore var1 ;	
-    if (global16 == 7[nw_obj?]) {
+    if (verb == ##Insert) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -8602,7 +8615,7 @@ Global global239;
         }
         if (noun == postcard) {
             print "The postcard is just too large to fit.^";
-            routine66028();	! not popped
+            OneTimeBonusScore();	! not popped
             @pop;
             rtrue;
         }
@@ -8622,7 +8635,7 @@ Global global239;
     if (slide_projector hasnt on) {
         rfalse;
     }
-    if (global16 == 21[rod_of_luck?]) {
+    if (verb == ##Look) {
         var1 = 49[slide_projector?];
         var1 = child(var1);
         if (var1 == 0) {
@@ -8637,7 +8650,7 @@ Global global239;
         }
         rtrue;
     }
-    if (global16 == 7[nw_obj?]) {
+    if (verb == ##Insert) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -8645,7 +8658,7 @@ Global global239;
         @pop;
         rtrue;
     }
-    if (global16 == 2[?]) {
+    if (verb == ##Take) {
         var1 = parent(noun);
         if (var1 == 49[slide_projector?]) {
             if (second ~= slide_projector) {
@@ -8656,7 +8669,7 @@ Global global239;
             rtrue;
         }
     }
-    if (global16 == 3[s_obj?]) {
+    if (verb == ##Remove) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -8673,7 +8686,7 @@ Global global239;
     if (slide_projector hasnt on) {
         rfalse;
     }
-    if (global16 ~= 21[rod_of_luck?]) {
+    if (verb ~= ##Look) {
         rfalse;
     }
     if (global53 == 0) {
@@ -8728,13 +8741,13 @@ Global global239;
 ! References: Consulting_Room.before
 
 [ ConsultingRoomBefore ;	
-    if (global16 == 18[Meldrews_History?] && noun == w_obj) {
+    if (verb == ##Go && noun == w_obj) {
         "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.";
     }
-    if (global16 == 2[?] && noun == Tarot_pack) {
+    if (verb == ##Take && noun == Tarot_pack) {
         "That's funny. For a moment there your hand seemed to go straight through the pack of cards without touching it!";
     }
-    if (global16 == 7[nw_obj?] && second == Tarot_pack) {
+    if (verb == ##Insert && second == Tarot_pack) {
         if (parent(Madame_Sosostris) == Consulting_Room) {
             "Madame Sosostris won't let you.";
         }
@@ -8742,10 +8755,10 @@ Global global239;
             "That would look rather incongruous, surely?";
         }
         remove noun;
-        routine66786(noun);	! not popped
+        InsertCardIntoDeck(noun);	! not popped
         @pop;
         print "You carefully lay ";
-        routine56464(noun);	! not popped
+        Defart(noun);	! not popped
         @pop;
         " face down on the tarot pack.";
     }
@@ -8755,7 +8768,7 @@ Global global239;
 ! References: poster.before
 
 [ PosterBefore ;	
-    if (global16 == 2[?] && poster has scenery) {
+    if (verb == ##Take && poster has scenery) {
         give poster ~scenery;
         "You hastily tear down the poster, but there's nothing interesting behind it, only painted graffiti: ~Shantih Shantih Shantih~.";
     }
@@ -8765,7 +8778,7 @@ Global global239;
 ! References: heavy_iron_mascot.after
 
 [ routine78168 ;	
-    if (global16 == 2[?] && Beside_Table hasnt general) {
+    if (verb == ##Take && Beside_Table hasnt general) {
         give Beside_Table general;
         remove misc_obj;
         "The Druid catches sight of your ghostly hand taking the mascot, and immediately begins her occultations, cursing you and your ill-gotten gains. But she is unable to make contact with you, and turns furiously to the tapestry, hissing ~lagach~ to the Bear. At once a sudden swirl of wind seems to pull her into the rough cloth, dissolving her to nothing.";
@@ -8776,7 +8789,7 @@ Global global239;
 ! References: gas_mask.after
 
 [ MaskAfter ;	
-    if (global16 == 6[ne_obj?]) {
+    if (verb == ##Wear) {
         "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of World War II leftover cork.";
     }
     rfalse;
@@ -8788,7 +8801,7 @@ Global global239;
     if (gas_mask has worn) {
         rfalse;
     }
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         rfalse;
     }
     "The coal dust makes you cough and splutter, and your eyes stream. You are unable to concentrate on doing anything here.";
@@ -8889,7 +8902,7 @@ Global global239;
 ];
 
 [ routine78830 var1 var2 var3 ;	
-    if (global16 ~= 22[yourself?]) {
+    if (verb ~= ##Examine) {
         rfalse;
     }
     print "The layout is roughly as follows:^^";
@@ -8928,13 +8941,13 @@ Global global239;
 [ FamilyTreeBefore var1 ;	
     global26 = 4[e_obj?];
     global27 = 6[ne_obj?];
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= n_obj) {
         rfalse;
     }
-    var1 = parent(global3);
+    var1 = parent(player);
     if (var1 == 130[garden_roller?]) {
         rfalse;
     }
@@ -8944,10 +8957,10 @@ Global global239;
 ! References: Maze.before
 
 [ MazeBefore var1 var2 var3 ;	
-    if (global16 == 0) {
+    if (verb == ##Exit) {
         "Remember the poor grass!";
     }
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         if (garden_roller hasnt on) {
             "But the garden roller is switched off, and won't drive.";
         }
@@ -9005,7 +9018,7 @@ Global global239;
 ! References: Maze_Foundations.before
 
 [ MazeFoundationsBefore var1 var2 ;	
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         if (global26 == 4[e_obj?] && global27 == 6[ne_obj?] && noun == s_obj) {
             rfalse;
         }
@@ -9048,11 +9061,11 @@ Global global239;
 ! References: Patio_in_Maze.before
 
 [ PatioBefore var1 ;	
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         if (noun == d_obj) {
             rfalse;
         }
-        if (garden_roller ~= parent(global3)) {
+        if (garden_roller ~= parent(player)) {
             "Mustn't tread on the grass now!";
         }
         var1 = MazeBefore();
@@ -9264,7 +9277,7 @@ Global global239;
 ! References: Maze.after, Patio_in_Maze.after
 
 [ MazeAfter var1 ;	
-    if (global16 == 21[rod_of_luck?]) {
+    if (verb == ##Look) {
         var1 = routine79800();
         return var1;
     }
@@ -9274,11 +9287,11 @@ Global global239;
 ! References: Maze_Foundations.after
 
 [ MazeFoundationsAfter var1 ;	
-    if (global16 == 21[rod_of_luck?]) {
+    if (verb == ##Look) {
         var1 = routine80092();
         return var1;
     }
-    if (global16 == 8[se_obj?]) {
+    if (verb == ##Drop) {
         print "You feel an alarming wrench in your insides.^";
         deadflag = 6;
         rtrue;
@@ -9289,20 +9302,20 @@ Global global239;
 ! References: plaque.before
 
 [ routine80796 var1 ;	
-    if (global16 == 22[yourself?]) {
-        var1 = parent(global3);
+    if (verb == ##Examine) {
+        var1 = parent(player);
         if (var1 == 130[garden_roller?] && noun == misc_obj) {
             "The writing's too small from here.";
             rfalse;
         }
     }
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= e_obj) {
         rfalse;
     }
-    var1 = parent(global3);
+    var1 = parent(player);
     if (var1 == 130[garden_roller?]) {
         rfalse;
     }
@@ -9312,7 +9325,7 @@ Global global239;
 ! References: bean_pole.after
 
 [ BeanPoleAfter ;	
-    if (global16 == 2[?]) {
+    if (verb == ##Take) {
         if (bean_pole has general) {
             rfalse;
         }
@@ -9326,7 +9339,7 @@ Global global239;
 ! References: old_timber_prop.after
 
 [ routine80916 ;	
-    if (global16 == 2[?]) {
+    if (verb == ##Take) {
         if (old_timber_prop hasnt general) {
             rfalse;
         }
@@ -9355,7 +9368,7 @@ Global global239;
 ! References: Clifftop_Walk.before
 
 [ ClifftopWalkBefore ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= e_obj) {
@@ -9371,7 +9384,7 @@ Global global239;
 ! References: Sacred_Earth.before
 
 [ SacredEarthBefore ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= s_obj) {
@@ -9393,7 +9406,7 @@ Global global239;
 ! References: Temple_of_Zeus.before
 
 [ TempleBefore ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= n_obj) {
@@ -9409,7 +9422,7 @@ Global global239;
     if (Ekmek_Special has moved) {
         rfalse;
     }
-    if (global16 ~= 2[?]) {
+    if (verb ~= ##Take) {
         rfalse;
     }
     if (copper_coin has general) {
@@ -9421,7 +9434,7 @@ Global global239;
 ! References: Andromeda.before
 
 [ AndromedaBefore ;	
-    if (global16 ~= 22[yourself?]) {
+    if (verb ~= ##Examine) {
         rfalse;
     }
     print "Avert your eyes. She is naked";
@@ -9434,7 +9447,7 @@ Global global239;
 ! References: Ruined_Castle_Cafe.after
 
 [ RuinedCastleCafeAfter ;	
-    if (global16 == 21[rod_of_luck?]) {
+    if (verb == ##Look) {
         if (Cups_and_Glasses hasnt visited) {
             rfalse;
         }
@@ -9448,7 +9461,7 @@ Global global239;
 ! References: complicated_looking_bomb.after
 
 [ BombAfter ;	
-    if (global16 == 2[?]) {
+    if (verb == ##Take) {
         deadflag = 8;
         "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and twenty-five years isn't all that long.";
     }
@@ -9458,24 +9471,24 @@ Global global239;
 ! References: timer_detonater.before
 
 [ DetonatorBefore var1 var2 ;	
-    if (global16 ~= 22[yourself?]) {
+    if (verb ~= ##Examine) {
         rfalse;
     }
     print "The timer seems quite simple to set. ";
     var2 = 192[timer_detonater?];
     var1 = var2.number;
-    if (global33 == 1[?]) {
+    if (BombTicking == true) {
         "The clock is running, and currently at ", var1, " minutes.";
     }
     if (var1 ~= 0) {
-        routine82324();	! not popped
+        DescribeDetonator();	! not popped
         @pop;
         rtrue;
     }
     "At present the clock is reset to 0.";
 ];
 
-[ routine82324 var1 var2 var3 ;	
+[ DescribeDetonator var1 var2 var3 ;	
     print "The clock is ticking downwards, and has only ";
     var2 = 192[timer_detonater?];
     var1 = var2.number;
@@ -9554,7 +9567,7 @@ Global global239;
 ! References: Infinity_Symbol.after
 
 [ InfinityAfter var1 var2 ;	
-    if (global16 == 21[rod_of_luck?]) {
+    if (verb == ##Look) {
         print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through seven equally spaced sockets or cylindrical wells.";
         var1 = 105[circular_arc?];
         var2 = var1.number;
@@ -9590,7 +9603,7 @@ Global global239;
 ! References: Infinity_Symbol.before
 
 [ InfinityBefore var1 ;	
-    if (global16 == 7[nw_obj?]) {
+    if (verb == ##Insert) {
         if (second ~= circular_arc) {
             rfalse;
         }
@@ -9621,7 +9634,7 @@ Global global239;
 ! References: Stream.before
 
 [ StreamBefore ;	
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         if (noun ~= u_obj) {
             rfalse;
         }
@@ -9633,7 +9646,7 @@ Global global239;
 ! References: bone_die.after
 
 [ DieAfter var1 ;	
-    if (global16 == 8[se_obj?]) {
+    if (verb == ##Drop) {
         var1 = 6[ne_obj?];
         var1 = random(var1);
         "Alea iacta est. It comes up ", var1, ".";
@@ -9644,7 +9657,7 @@ Global global239;
 ! References: Inside_Well.before
 
 [ InsideWellBefore ;	
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         rfalse;
     }
     "There's not enough room in this confined space to do anything much!";
@@ -9653,10 +9666,10 @@ Global global239;
 ! References: Triclinium.before
 
 [ TricliniumBefore ;	
-    if (global16 == 4[e_obj?] && noun == kitchen_well) {
+    if (verb == ##Enter && noun == kitchen_well) {
         ! no code
     } else {
-        if (global16 ~= 18[Meldrews_History?]) {
+        if (verb ~= ##Go) {
             rfalse;
         }
         if (noun ~= d_obj) {
@@ -9679,7 +9692,7 @@ Global global239;
 ! References: Triclinium.after
 
 [ TricliniumAfter ;	
-    if (global16 == 7[nw_obj?] && second == kitchen_well) {
+    if (verb == ##Insert && second == kitchen_well) {
         remove noun;
         if (noun has light) {
             give kitchen_well general;
@@ -9697,7 +9710,7 @@ Global global239;
 ! References: Entrance.before
 
 [ EntranceBefore ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun == s_obj) {
@@ -9710,7 +9723,7 @@ Global global239;
         rfalse;
     }
     print "You walk out into the courtyard and are immediately set upon by guards, who drag you away.^";
-    routine84322();	! not popped
+    Capture();	! not popped
     @pop;
     rtrue;
 ];
@@ -9718,8 +9731,8 @@ Global global239;
 ! References: Entrance.after
 
 [ EntranceAfter ;	
-    if (global43 == 0) {
-        global43 = 1[?];
+    if (CouncilCnt == 0) {
+        CouncilCnt = 1;
     }
     rfalse;
 ];
@@ -9727,10 +9740,10 @@ Global global239;
 ! References: yellow_daisy.after
 
 [ DaisyAfter ;	
-    if (global16 == 6[ne_obj?]) {
+    if (verb == ##Wear) {
         "You tuck the daisy behind your ear, almost out of sight.";
     }
-    if (global16 == 2[?] && yellow_daisy hasnt general) {
+    if (verb == ##Take && yellow_daisy hasnt general) {
         give yellow_daisy general;
         "Aided by the swinging of the rope, you pick the daisy.";
     }
@@ -9740,7 +9753,7 @@ Global global239;
 ! References: yellow_daisy.before
 
 [ DaisyBefore ;	
-    if (global16 ~= 2[?]) {
+    if (verb ~= ##Take) {
         rfalse;
     }
     if (yellow_daisy has moved) {
@@ -9755,32 +9768,32 @@ Global global239;
 ! References: Hanging_on_Rope.before
 
 [ HangingBefore ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= d_obj) {
         rfalse;
     }
     print "You clamber down the rope, straight into a patrol of guards who capture you!^";
-    routine84322();	! not popped
+    Capture();	! not popped
     @pop;
     rtrue;
 ];
 
 [ routine84132 ;	
-    if (global16 == 22[yourself?]) {
+    if (verb == ##Examine) {
         ! no code
-    } else if (global16 ~= 23[crumpled_piece_of_paper?]) {
+    } else if (verb ~= ##Search) {
         rfalse;
     }
-    if (global43 > 7) {
+    if (CouncilCnt > 7) {
         "Four men in druidic furs are standing on the corners of the mosaic, in some kind of sinister conference. This old villa must be some kind of rendezvous point. Between the men a bluish stone rests on the mosaic floor.";
     }
     "You see across the mosaic floor of the moonlit atrium.";
 ];
 
-[ routine84322 var1 ;	
-    if (global43 < 8) {
+[ Capture var1 ;	
+    if (CouncilCnt < 8) {
         deadflag = 1;
         print "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and anyway if they had they would probably just have done you in more unpleasantly.^";
         rtrue;
@@ -9788,7 +9801,7 @@ Global global239;
     print "^Suddenly you are thrust before a druidical figure. He seems to recognise you, and is troubled. Perhaps because of this, your life is saved and you are taken away into custody, down in the valley among the army encampments.^";
     StartTimer(tent_pole,4);	! not popped
     @pop;
-    var1 = child(global3);
+    var1 = child(player);
   .label84652;
     if (var1 ~= 0) {
         if (var1 hasnt worn) {
@@ -9797,10 +9810,10 @@ Global global239;
         var1 = sibling(var1);
         jump label84652;
     }
-    global43 = 0;
+    CouncilCnt = 0;
     location = Rough_Tent;
-    remove global3;
-    move global3 to Rough_Tent;
+    remove player;
+    move player to Rough_Tent;
     LookSub();	! not popped
     @pop;
     rtrue;
@@ -9809,7 +9822,7 @@ Global global239;
 ! References: saxon_spy.before
 
 [ SaxonBefore ;	
-    if (global16 ~= 23[crumpled_piece_of_paper?]) {
+    if (verb ~= ##Search) {
         rfalse;
     }
     "Not only are the guards better at searching suspects than you, they also did so first.";
@@ -9818,7 +9831,7 @@ Global global239;
 ! References: tent_pole.after
 
 [ TentPoleAfter ;	
-    if (global16 ~= 2[?]) {
+    if (verb ~= ##Take) {
         rfalse;
     }
     if (tent_pole hasnt general) {
@@ -9827,8 +9840,8 @@ Global global239;
         StartTimer(Encampment,10);	! not popped
         @pop;
         location = Encampment;
-        remove global3;
-        move global3 to Encampment;
+        remove player;
+        move player to Encampment;
         LookSub();	! not popped
         @pop;
         rtrue;
@@ -9839,7 +9852,7 @@ Global global239;
 ! References: Encampment.before
 
 [ EncampmentBefore ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= e_obj) {
@@ -9855,12 +9868,12 @@ Global global239;
 ! References: Near_Dolmen.after
 
 [ NearDolemnAfter var1 var2 ;	
-    if (global16 ~= 21[rod_of_luck?]) {
+    if (verb ~= ##Look) {
         rfalse;
     }
     location = Servants_Room;
-    remove global3;
-    move global3 to servants_bed;
+    remove player;
+    move player to servants_bed;
     game_section = MODERN;
     var1 = 4[e_obj?];
     var1 = child(var1);
@@ -9868,13 +9881,13 @@ Global global239;
     if (var1 ~= 0) {
         var2 = sibling(var1);
         remove var1;
-        move var1 to global3;
+        move var1 to player;
         var1 = var2;
         jump label85021;
     }
     var1 = 118[heavy_iron_mascot?];
     var1 = parent(var1);
-    if (var1 == global3) {
+    if (var1 == player) {
         StartTimer(heavy_iron_mascot,15);	! not popped
         @pop;
         Achieved(21);	! not popped
@@ -9886,7 +9899,7 @@ Global global239;
 ! References: Contraption.after
 
 [ ContraptionAfter var1 var2 var3 ;	
-    if (global16 == 18[Meldrews_History?]) {
+    if (verb == ##Go) {
         if (noun == n_obj or s_obj) {
             print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly the same...^^";
             Achieved(15);	! not popped
@@ -9903,7 +9916,7 @@ Global global239;
             rfalse;
         }
     }
-    if (global16 == 21[rod_of_luck?]) {
+    if (verb == ##Look) {
         if (Contraption has general) {
             print "^The lower basket contains a cannonball, and the upper is empty.^";
             rfalse;
@@ -9952,7 +9965,7 @@ Global global239;
 ! References: Heavenly_Place.after
 
 [ Heavenly_Place_After var1 var2 ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     LookSub(1[?]);	! not popped
@@ -9985,7 +9998,7 @@ Global global239;
 ! References: Hellish_Place.after
 
 [ Hellish_Place_After var1 var2 ;	
-    if (global16 ~= 18[Meldrews_History?]) {
+    if (verb ~= ##Go) {
         rfalse;
     }
     LookSub(1[?]);	! not popped
@@ -10813,7 +10826,7 @@ Global global239;
 ];
 
 [ routine94512 var1 var2 var3 var4 var5 var6 var7 var8 var9 var10 var11 var12 var13 var14 var15 ;	
-    if (global58 == 1[?]) {
+    if (notheld_mode == true) {
         var6 = 0;
         --var6;
       .label94553;
@@ -10822,7 +10835,7 @@ Global global239;
             var1->var6 = global83->var6;
             jump label94553;
         }
-        global58 = 0;
+        notheld_mode = false;
         rtrue;
     }
   .label94576;
@@ -10832,7 +10845,7 @@ Global global239;
     global62 = global11->1;
     var12 = 1[?];
     global81 = 1[?];
-    global6 = global3;
+    global6 = player;
   .label94597;
     global61 = global81;
     global66 = routine98666();
@@ -10883,7 +10896,7 @@ Global global239;
                 var1->2 = var9;
                 rtrue;
             }
-            if (global6 == global3) {
+            if (global6 == player) {
                 var7 = 2[?];
                 --var7;
               .label94789;
@@ -10906,7 +10919,7 @@ Global global239;
                 jump label94576;
             }
             global61 = 1[?];
-            var9 = routine97122(global3,location,var8);
+            var9 = routine97122(player,location,var8);
             if (var9 == 1000[?]) {
                 jump label94584;
             }
@@ -10918,7 +10931,7 @@ Global global239;
                 ! no code
             } else if (var9 hasnt animate) {
                 print "You can't talk to ";
-                routine56464(var9);	! not popped
+                Defart(var9);	! not popped
                 @pop;
                 print ".^";
                 jump label94576;
@@ -11005,7 +11018,7 @@ Global global239;
                         }
                         global73 = 0;
                         if (global82 ~= 0) {
-                            global58 = 1[?];
+                            notheld_mode = true;
                             var6 = 0;
                             --var6;
                           .label95313;
@@ -11018,7 +11031,7 @@ Global global239;
                             var1->0 = 2[?];
                             var1->2 = global82;
                             print "(first taking ";
-                            routine56464(global82);	! not popped
+                            Defart(global82);	! not popped
                             @pop;
                             print ")^";
                             rtrue;
@@ -11106,7 +11119,7 @@ Global global239;
                                         routine96900(location);	! not popped
                                         @pop;
                                     } else {
-                                        routine96900(parent(global3));	! not popped
+                                        routine96900(parent(player));	! not popped
                                         @pop;
                                     }
                                 }
@@ -11170,7 +11183,7 @@ Global global239;
                             }
                             var11 = parent(var9);
                             if (var11 ~= global6) {
-                                if (global58 == 1[?]) {
+                                if (notheld_mode == true) {
                                     global74 = global73;
                                     var12 = 5[w_obj?];
                                     jump label96057;
@@ -11228,14 +11241,14 @@ Global global239;
         }
     }
   .label96060;
-    if (global6 ~= global3) {
+    if (global6 ~= player) {
         global21 = routine98840(global81);
         global61 = global81;
         global20 = routine98666();
-        global16 = 67[Chimney?];
+        verb = ##Answer;
         noun = compass;
         second = global6;
-        global6 = global3;
+        global6 = player;
         rtrue;
     }
     if (var12 == 1[?]) {
@@ -11538,7 +11551,7 @@ Global global239;
         if (local4 < local5) {
             ++local4;
             local6 = global76->local4;
-            routine56464(local6);	! not popped
+            Defart(local6);	! not popped
             @pop;
             if (local4 < local5 - 1) {
                 print ", ";
@@ -11596,8 +11609,8 @@ Global global239;
         return local6;
     }
     print "What do you want ";
-    if (global6 ~= global3) {
-        routine56464(global6);	! not popped
+    if (global6 ~= player) {
+        Defart(global6);	! not popped
         @pop;
         print " ";
     }
@@ -11715,7 +11728,7 @@ Global global239;
             print "that";
         } else {
             if (local3 < 256) {
-                routine56464(local3);	! not popped
+                Defart(local3);	! not popped
                 @pop;
             }
             if (local3 >= 1000) {
