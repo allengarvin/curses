@@ -20,18 +20,6 @@ Object 8 se_obj
 Object 9 sw_obj
 Object 10 u_obj
 Object 11 d_obj
-
-Object 20 rod_of_luck
-Object 70 rod_of_fire
-Object 201 rod_of_sacrifice
-Object 164 rod_of_husbandry
-Object 158 rod_of_infinity
-Object 149 rod_of_stalking
-Object 97 rod_of_returning
-Object 178 rod_of_bronze
-Object 230 rod_of_language
-Object 244 rod_of_returning2
-
 Object 12 thedark
 Object 13 Grahams_Lair
 Object 14 Attic
@@ -40,6 +28,7 @@ Object 16 teachests
 Object 17 Meldrews_History
 Object 18 antique_jewellery_box
 Object 19 four_leafed_clover
+Object 20 rod_of_luck
 Object 21 yourself
 Object 22 crumpled_piece_of_paper
 Object 23 electric_torch
@@ -89,6 +78,7 @@ Object 66 iron_key
 Object 67 Sir_Joshua_Meldrewe
 Object 68 Chimney
 Object 69 sooty_old_stick
+Object 70 rod_of_fire
 Object 71 Priests_Hole
 Object 72 hatch
 Object 73 ancient_prayer_book
@@ -115,6 +105,7 @@ Object 93 Cellars
 Object 94 wheel
 Object 95 dark_shaft
 Object 96 old_timber_prop
+Object 97 rod_of_returning
 Object 98 robot_mouse
 Object 99 Cellars_South
 Object 100 hole_in_the_wall
@@ -166,6 +157,7 @@ Object 145 plaque
 Object 146 miniature
 Object 147 Folly
 Object 148 bean_pole
+Object 149 rod_of_stalking
 Object 150 Up_the_Beanstalk
 Object 151 Maze_Foundations
 Object 152 Tree_Planting
@@ -174,11 +166,13 @@ Object 154 Tarot_box
 Object 155 Castle_card
 Object 156 Star_card
 Object 157 Eight_of_Wands_card
+Object 158 rod_of_infinity
 Object 159 Maiden_card
 Object 160 Ace_of_Cups_card
 Object 161 Coven_Cell
 Object 162 goat
 Object 163 crook
+Object 164 rod_of_husbandry
 Object 165 cell_door
 Object 166 Unreal_City
 Object 167 Shadowy_Hallway
@@ -192,6 +186,7 @@ Object 174 Death_card
 Object 175 Fool_card
 Object 176 Drowned_Sailor_card
 Object 177 oak_quarterstaff
+Object 178 rod_of_bronze
 Object 179 Down_by_River
 Object 180 silk_handkerchief
 Object 181 tourist_boat
@@ -214,6 +209,7 @@ Object 197 windowed_door
 Object 198 Sea_Shore
 Object 199 Andromeda
 Object 200 amber_hairband
+Object 201 rod_of_sacrifice
 Object 202 Cliffs
 Object 203 Clifftop_Walk
 Object 204 herd_of_goats
@@ -242,6 +238,7 @@ Object 226 Stream
 Object 227 ladder
 Object 228 Cloister
 Object 229 summoning_horn
+Object 230 rod_of_language
 Object 231 Atrium
 Object 232 mosaic
 Object 233 Guard_Quarters
@@ -255,6 +252,7 @@ Object 240 hypocaust_vents
 Object 241 Entrance
 Object 242 Rough_Tent
 Object 243 tent_pole
+Object 244 rod_of_returning2
 Object 245 saxon_spy
 Object 246 Encampment
 Object 247 dolmen
@@ -674,7 +672,7 @@ Routine 0x7288 TorchTimer o:object i:int
 Routine 0x72e0 JoshuaDaemon who:object num:int
 Routine 0x7554 HasLightSource:bool i:object
 Routine 0x758a Achieved ndx:score_index i:int
-Routine 0x75b4 MouseMove o:object rm:object local3 x1:int x2:int
+Routine 0x75b4 MouseMove o:object rm:object local3 x1:int y1:int
 Routine 0x794e ScoreSub score_var:int
 Routine 0x7ccc PadInteger i:int j:int
 Routine 0x7d0c PrintTaskName task_number:score_index final_score:int
@@ -706,7 +704,7 @@ Routine 0x8ea8 BriefSub
 Routine 0x8f16 VerboseSub
 Routine 0x8f76 SuperSub
 Routine 0x8fdc LookSub verbose:bool env:object str:string local4 chld:object local6 local7 
-Routine 0x9156 Describe o:object
+Routine 0x9156 ExamineSub o:object
 Routine 0x9320 DescribeObj obj:object n:int
 Routine 0x946e ShowSub
 Routine 0x963c GiveRSub obj:object
