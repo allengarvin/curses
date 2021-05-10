@@ -2297,6 +2297,17 @@ Constant ANCIENT_BRITAIN = 7;
 Constant DREAMING = 8;
 Constant CATACOMBS = 9;
 
+! final_state
+Constant DIED = 1;
+Constant WON = 2;
+Constant FAILED = 3;
+Constant DESTROYED_UNIVERSE = 4;
+Constant AUSTRALIA = 5;
+Constant PARADOX = 6;
+Constant MYTH = 7;
+Constant PRISON = 8;
+Constant CHECKMATED = 9;
+
 ! Globals
 
 Global location = Attic;
@@ -2356,8 +2367,8 @@ Global global55;
 Global global56;
 Global global57;
 Global notheld_mode;
-Global global59;
-Global global60;
+Global onotheld_mode;
+Global metaverb;
 Global global61;
 Global global62;
 Global global63;
@@ -2603,7 +2614,7 @@ Array BombWires -->	! 10208 (0x27e0)
         verb = ##Exit;
         routine94512(global15);	! not popped
         @pop;
-        global59 = notheld_mode;
+        onotheld_mode = notheld_mode;
         notheld_mode = false;
         if (global6 == 100[hole_in_the_wall?]) {
             i = 98[robot_mouse?];
@@ -2638,48 +2649,48 @@ Array BombWires -->	! 10208 (0x27e0)
             if (verb == ##Exit) {
                 verb = global15->0;
             }
-            global60 = 0;
+            metaverb = false;
             if (verb == ##Score) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##FullScore) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Script) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Unscript) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Save) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Verify) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Restore) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Quit) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##HelpSpecial) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Help) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Objects) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb == ##Places) {
-                global60 = 1[?];
+                metaverb = true;
             }
             if (verb >= 107 && global47 == 0) {
                 print "You can't do that.^";
-                global60 = 1[?];
+                metaverb = true;
             } else {
-                if (game_section == DREAMING && global60 == 0) {
+                if (game_section == DREAMING && metaverb == false) {
                     if (verb == ##Go) {
                         ! no code
                     } else if (verb == ##Take) {
@@ -2739,40 +2750,40 @@ Array BombWires -->	! 10208 (0x27e0)
         }
       .label18592;
         if (notheld_mode == true) {
-            global60 = 1[?];
+            metaverb = true;
         }
-        if (deadflag == 0 && global60 == 0) {
+        if (deadflag == 0 && metaverb == false) {
             Time();	! not popped
             @pop;
         }
         jump label18070;
     }
     print "^^    ***";
-    if (deadflag == 1) {
+    if (deadflag == DIED) {
         print " You have died ";
     }
-    if (deadflag == 2) {
+    if (deadflag == WON) {
         print " You have won ";
     }
-    if (deadflag == 3) {
+    if (deadflag == FAILED) {
         print " You have missed the point entirely ";
     }
-    if (deadflag == 4) {
+    if (deadflag == DESTROYED_UNIVERSE) {
         print " You have disembodied the entire universe ";
     }
-    if (deadflag == 5) {
+    if (deadflag == AUSTRALIA) {
         print " You have been transported to Australia ";
     }
-    if (deadflag == 6) {
+    if (deadflag == PARADOX) {
         print " You have been annihilated by a temporal paradox ";
     }
-    if (deadflag == 7) {
+    if (deadflag == MYTH) {
         print " You have become a constellation ";
     }
-    if (deadflag == 8) {
+    if (deadflag == PRISON) {
         print " You have been imprisoned as a terrorist ";
     }
-    if (deadflag == 9) {
+    if (deadflag == CHECKMATED) {
         print " You have been checkmated ";
     }
     print "***^^^";
@@ -2780,7 +2791,7 @@ Array BombWires -->	! 10208 (0x27e0)
     @pop;
   .label18865;
     print "^Would you like to RESTART, RESTORE a saved game, give the FULL score for that game";
-    if (deadflag == 2) {
+    if (deadflag == WON) {
         print ", see some suggestions for AMUSING things to do";
     }
     print " or QUIT?^";
@@ -2807,7 +2818,7 @@ Array BombWires -->	! 10208 (0x27e0)
         @pop;
         jump label18865;
     }
-    if (deadflag == 2 && i == 12703['amusin//p'?]) {
+    if (deadflag == WON && i == 12703['amusin//p'?]) {
         new_line;
         routine91728();	! not popped
         @pop;
@@ -2820,7 +2831,7 @@ Array BombWires -->	! 10208 (0x27e0)
         jump label18865;
     }
     print "Please answer RESTART, RESTORE, FULL";
-    if (deadflag == 2) {
+    if (deadflag == WON) {
         print ", AMUSING";
     }
     print " or QUIT.^";
@@ -2831,7 +2842,7 @@ Array BombWires -->	! 10208 (0x27e0)
     noun = n;
     second = s;
     verb = v;
-    if (global60 == 1[?]) {
+    if (metaverb == true) {
         ! no code
     } else {
         if (location ~= nothing) {
@@ -2853,28 +2864,28 @@ Array BombWires -->	! 10208 (0x27e0)
     rtrue;
 ];
 
-[ AfterRoutines var1 var2 ;	
-    var2 = location;
-    var1 = var2.after;
-    if (var1 == 65535[?]) {
+[ AfterRoutines i o ;	
+    o = location;
+    i = o.after;
+    if (i == 65535[?]) {
         ! no code
-    } else if (var1() ~= 0) {
+    } else if (i() ~= 0) {
         rtrue;
     }
-    var2 = 0;
-    var1 = global15->1;
-    if (var1 ~= 0) {
-        var2 = noun;
+    o = nothing;
+    i = global15->1;
+    if (i ~= 0) {
+        o = noun;
     }
-    if (var2 == 0) {
+    if (o == nothing) {
         rfalse;
     }
-    var1 = var2.after;
-    if (var1 == 65535[?]) {
+    i = o.after;
+    if (i == 65535[?]) {
         rfalse;
     }
-    var1 = var1();
-    return var1;
+    i = i();
+    return i;
 ];
 
 [ routine19326 var1 var2 ;	
@@ -2911,7 +2922,7 @@ Array BombWires -->	! 10208 (0x27e0)
         i = parent(i);
         if (i == player) {
             if (0 ~= ResetTimer(heavy_iron_mascot)) {
-                deadflag = 1;
+                deadflag = DIED;
                 print "^In an astonishing freak accident, ";
                 i = random(5);
                 if (i == 1[?]) {
@@ -2966,7 +2977,7 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (0 ~= ResetTimer(bean_pole) && game_section == GARDEN_PAST) {
         print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come running to investigate. In the ensuing confusion, they come across you and, of course, blame you for their incompetent masonry. You are hauled up before the county assizes...^";
-        deadflag = 5;
+        deadflag = AUSTRALIA;
     }
     if (game_section ~= GARDEN_PAST && global28 < 100) {
         i = global28 + 9 * global29;
@@ -3525,13 +3536,13 @@ Array BombWires -->	! 10208 (0x27e0)
                 @pop;
             }
             if (i == 0) {
-                deadflag = 1;
+                deadflag = DIED;
                 print "^The men arrive once more and this time they securely grab you by the arms. If you were an anthropologist, you'd be fascinated by the ritual in which you are bound up, then garotted with a cord and laid into a peat swamp. Instead, your last thought is to remember the celebrated body they found when they drained the marshes in 1974 to build a motorway service station.^";
             }
         }
         if (0 ~= ResetTimer(Encampment)) {
             print "^It had to happen sooner or later. One of the druids looks round, sees you and raises an instant alarm. It is absolutely hopeless and you are dragged away screaming to your fate.^";
-            deadflag = 1;
+            deadflag = DIED;
         }
     }
     if (location == Potting_Room && 0 ~= ResetTimer(Jemima)) {
@@ -3664,7 +3675,7 @@ Array BombWires -->	! 10208 (0x27e0)
                     print "Click!  Perhaps there's more to bomb disposal than you thought.^";
                 }
                 print "^In a sudden cataclysm, there is an enormous explosion from your table, blowing out all the arrowslit windows, making a thunderous noise, starting a minor fire, and of course having one other consequence:^";
-                deadflag = 1;
+                deadflag = DIED;
             }
         }
     }
@@ -3682,7 +3693,7 @@ Array BombWires -->	! 10208 (0x27e0)
             @pop;
         } else if (location == Coven_Cell) {
             print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
-            deadflag = 1;
+            deadflag = DIED;
             if (player has general) {
                 "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
             }
@@ -3785,7 +3796,7 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (num == 0) {
         print "^The ghost swoops around and through you, making you scream with panic. Somehow you manage to run back to safety, where your family (who never believe a word of it) give you plenty of tea and occupy you with holiday arrangements. As for you, you are so traumatised that you never venture into the attic again.^";
-        deadflag = 3;
+        deadflag = FAILED;
     }
     rtrue;
 ];
@@ -4204,7 +4215,7 @@ Array BombWires -->	! 10208 (0x27e0)
     PadInteger(global1);	! not popped
     @pop;
     print "total (out of 350)^";
-    if (deadflag == 2 && 0 == score_array2->11) {
+    if (deadflag == WON && 0 == score_array2->11) {
         print "^Sadly, you missed out on the 50-point bonus for rescuing Andromeda.^";
     }
     rfalse;
@@ -4375,7 +4386,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (1 == AfterRoutines()) {
         rtrue;
     }
-    notheld_mode = global59;
+    notheld_mode = onotheld_mode;
     if (notheld_mode == false) {
         print "Taken.^";
     }
@@ -4878,11 +4889,11 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (local3 == 0) {
         if (location == thedark) {
-            deadflag = 1;
+            deadflag = DIED;
             if (game_section ~= MODERN) {
                 "As you step falteringly through the darkness, cowardly but evil creatures devour you whole!";
             }
-            deadflag = 3;
+            deadflag = FAILED;
             print "As you unwisely blunder about in the dark, you ";
             if (local2 == 70[Priests_Hole?]) {
                 "slip down a side passage of the chimney, further and further, blindly landing in a cloud of soot in the fireplace of the lounge downstairs. Fortunately your family is on hand to clean you up and put you back to work packing.";
@@ -6160,7 +6171,7 @@ Array BombWires -->	! 10208 (0x27e0)
         global52 = 1[?];
         "Mmm. Here is your first and only warning: the sea is the domain of Poseidon, and he's not what you'd call a gentleman.";
     }
-    deadflag = 7;
+    deadflag = MYTH;
     "As you dive into the sea, you catch sight of Andromeda looking suddenly cheerful. It soon becomes apparent why, as a Kraken wakes from the depths of the ocean and swipes you for a quick snack. You seem to have replaced her as sacrifice... a Pyrrhic victory.";
 ];
 
@@ -6318,7 +6329,7 @@ Array BombWires -->	! 10208 (0x27e0)
         "You ineffectually bash the ", (name) local1, " on the ground.";
     }
     if (local1 has rod_charged) {
-        deadflag = 1;
+        deadflag = DIED;
         "The already-charged rod explodes with cataclysmic violence, burying everything nearby in rubble!";
     }
     give local1 rod_charged;
@@ -6491,7 +6502,7 @@ Array BombWires -->	! 10208 (0x27e0)
     remove local1;
     move local1 to location;
     if (location == Potting_Room) {
-        deadflag = 3;
+        deadflag = FAILED;
         "Aunt Jemima spends the next four hours explaining to you exactly why she put the radio into storage. The reason is awfully convoluted and due to her firm conviction that magnetic fields influence the growth of plants. By that time you have to leave for the airport...";
     }
     rtrue;
@@ -7429,7 +7440,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ FireRodAction ;	
     if (second == player) {
-        deadflag = 1;
+        deadflag = DIED;
         "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
     }
     if (second has animate) {
@@ -7459,7 +7470,7 @@ Array BombWires -->	! 10208 (0x27e0)
         @pop;
         " utterly!";
     }
-    deadflag = 1;
+    deadflag = DIED;
     "You start a great conflagration, and then perish in it!";
 ];
 
@@ -7572,7 +7583,7 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (location == Universe_Maintenance_Room && second == misc_obj) {
         if (Universe_Maintenance_Room hasnt general) {
-            deadflag = 9;
+            deadflag = CHECKMATED;
             "The Black pieces make a rash break out of their defences, sacrificing a piece in vain and going down to a rapid defeat as a result.^^The White Queen rises from the board, an avenging angel's smile on her face, and swings a broadsword of burning light across your body...";
         }
         location = global56;
@@ -7590,7 +7601,7 @@ Array BombWires -->	! 10208 (0x27e0)
         rtrue;
     }
     if (second == player) {
-        deadflag = 1;
+        deadflag = DIED;
         "You feel a noble surge of pride as your body is incinerated by the Rod of Sacrifice. At least you died for some terribly important cause, although exactly what it was seems to have slipped your mind.";
     }
     "Nothing obvious happens.";
@@ -7693,10 +7704,10 @@ Array BombWires -->	! 10208 (0x27e0)
     var1 = 189[tourist_map_of_Paris?];
     var1 = parent(var1);
     if (var1 == player) {
-        deadflag = 2;
+        deadflag = WON;
         "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty generations, a Meldrew has found the useless object he was doomed to seek!  Unfortunately on the way to the airport you realise that you left the map on the kitchen table in all the rush, but never mind, you're on holiday now.";
     }
-    deadflag = 3;
+    deadflag = FAILED;
     "Yes, probably just as well to give up looking, and heaven knows there's enough packing to do, what with the rest of the family in uproar. Oh well.";
 ];
 
@@ -7977,7 +7988,7 @@ Array BombWires -->	! 10208 (0x27e0)
         } else {
             if (o == nasty_battery) {
                 if (game_section == MODERN) {
-                    deadflag = 3;
+                    deadflag = FAILED;
                     ", and it explodes with light, becomes hot enough to melt, falls to the floor, catches fire and burns down most of the attic...^^It may be some consolation that since you spend your holiday in the local hospital burns unit, you are never inconvenienced much by not finding the map.";
                 } else {
                     remove electric_torch;
@@ -8242,7 +8253,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (antiquated_wireless has general) {
             rfalse;
         }
-        deadflag = 3;
+        deadflag = FAILED;
         "Aunt Jemima suddenly hears you, spins round to see you filching her gloves and screeches with irritation, eventually summoning the entire family. You volunteer to shift some suitcases about just to get away from her.";
     }
     rfalse;
@@ -8412,7 +8423,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ routine75652 ;	
-    deadflag = 3;
+    deadflag = FAILED;
     "As you pull the book away, the pipe bursts and sprays water everywhere, drenching you, rendering the book unreadable, leaking through the ceiling into the bedrooms below and causing an enormous furore. You are obliged to spend the rest of the afternoon getting a plumber at short notice.";
 ];
 
@@ -8466,7 +8477,7 @@ Array BombWires -->	! 10208 (0x27e0)
             global51 = 1[?];
             "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
         }
-        deadflag = 4;
+        deadflag = DESTROYED_UNIVERSE;
         global1 = 0;
         global1 = global1 - 99;
         "Mmm. On the whole, it's probably best not to alter one of the fundamental constants of the physical universe while still inside it. On the bright side, for once you are unlikely to get the blame.";
@@ -9293,7 +9304,7 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (verb == ##Drop) {
         print "You feel an alarming wrench in your insides.^";
-        deadflag = 6;
+        deadflag = PARADOX;
         rtrue;
     }
     rfalse;
@@ -9353,7 +9364,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ! References: Tree_Planting.after
 
 [ TreePlantingAfter ;	
-    deadflag = 5;
+    deadflag = AUSTRALIA;
     rfalse;
 ];
 
@@ -9392,14 +9403,14 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     print "Zeus, who is after all the chief of all the gods, appears and hurls a thunderbolt down just before you begin to cross into the Temple. ";
     if (Viewpoint_Ledge has on) {
-        deadflag = 1;
+        deadflag = DIED;
         "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave about. Pretty impressive prediction, is your last thought.";
     }
     if (rod_of_luck has general) {
         print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
         rfalse;
     }
-    deadflag = 1;
+    deadflag = DIED;
     "With the luck of the gods, Zeus' thunderbolt strikes you just about exactly in the back, despite your attempts to weave about.";
 ];
 
@@ -9462,7 +9473,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ BombAfter ;	
     if (verb == ##Take) {
-        deadflag = 8;
+        deadflag = PRISON;
         "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and twenty-five years isn't all that long.";
     }
     rtrue;
@@ -9685,7 +9696,7 @@ Array BombWires -->	! 10208 (0x27e0)
         @pop;
         rfalse;
     }
-    deadflag = 1;
+    deadflag = DIED;
     "Having no reason to suppose the well is very deep, you cheerfully lower yourself in. This turns out to be something of a misjudgement and you soon lose your grip and fall, endlessly banging against the walls until finally...";
 ];
 
@@ -9794,7 +9805,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ Capture var1 ;	
     if (CouncilCnt < 8) {
-        deadflag = 1;
+        deadflag = DIED;
         print "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and anyway if they had they would probably just have done you in more unpleasantly.^";
         rtrue;
     }
