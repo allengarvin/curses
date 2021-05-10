@@ -4688,7 +4688,7 @@ Global global239;
             if (local5 hasnt moved) {
                 local3 = local5.initial;
                 if (local5 == 111[antiquated_wireless?] && antiquated_wireless has general) {
-                    local3 = 63094[?];
+                    local3 = 63094["The wire..."?];
                 }
                 if (local5 has door && local5 hasnt open) {
                     local3 = local5.describe;
@@ -9991,64 +9991,83 @@ Global global239;
     }
     global53 = global53 - 1;
     jump label91620;
+    local6 = 1[?];
+    --local6;
+  .label92261;
+    if (local6 < global54) {
+        ++local6;
+        local7 = global10-->(2 * local6 - 1);
+        if (local7 == 0) {
+            print "unknown ";
+        }
+        if (local7 ~= 0) {
+            print (address) local7, ' ';
+        }
+        jump label92261;
+    }
+    new_line;
+    rtrue;
 ];
 
-[ routine92256 local1=1537[?] local2=38406[?] local3=25094[?] local4=17920[?] local5=10645[?] local6=1590[?] local7=518[?] local8=85[wheel2?] local9=1[?] local10=111[antiquated_wireless?] local11=6656[?] local12=1857[?] local13=1792[?] ;	! 92256 / 0x16860
-    @2OP:0 9[sw_obj?] 178[rod_of_bronze?];
-    if (global96 has global62) jump label99661;
-    if (++global49 <= 7) jump label92422;
-    if (167 & 7 == 7) jump label92335;
-    @2OP:31 global16 global124;
-    @check_arg_count ?label91201;
-    @2OP:0 3[s_obj?] 0;
-    @2OP:0 0 0;
-    @2OP:0 0 45[solid_glass_ball?];
-    global6 = global65.&prop163;
-    if (74[Alisons_Writing_Room?] ~= 1[?]) jump label96803;
-    if (++global124 <= 0) jump label99581;
-    @inc_chk local1 69 ?label92364;
-    @2OP:31 184[Near_Ring_Road?] global12;
-    if (224 < 43) jump label90243;
-    if (2[?] ~= 0) jump label84409;
-    @2OP:0 128[Clearing?] 7[nw_obj?];
-    local3 = 12[thedark?];
-    return local3;
+[ routine92308 local1 local2 local3 ;	! 92308 / 0x16894
+    global66 = global65;
+    local1 = parent(global6);
+    if (local1 hasnt visited) {
+        ! no code
+    } else {
+        global53 = global53 - 1;
+        local2 = routine94264();
+        if (0 ~= routine94110(local1,local2)) {
+            local3 = 12[thedark?];
+            return local3;
+        }
+    }
     local3 = 3[s_obj?];
     return local3;
-    if (0 <= 0) rfalse;
-    @2OP:0 0 80[Old_Winery?];
-    if (0 ~= local2) rtrue;
-    if (16 >= 0) jump label93924;
-    local13 = 1 - 176;
-  .label92381;
-    if (1 <= 150) jump label93250;
-    if (2 <= 0) jump label96890;
-    if (112 <= 33) jump label93162;
-    @je local1 SP ?~label92402;
-    rtrue;
-  .label92402;
-    jump label92385;
+];
+
+[ routine92360 local1 local2 local3 ;	! 92360 / 0x168c8
+    local2 = global17->0;
+    if (local2 == 16[teachests?]) {
+        global5 = 1[?];
+        rtrue;
+    }
+    local3 = 1[?];
+    --local3;
+  .label92385;
+    if (local3 < local2) {
+        ++local3;
+        if (local1 == global17->local3) {
+            rtrue;
+        }
+        jump label92385;
+    }
     local2 = local2 + 1;
     global17->local2 = local1;
     global17->0 = local2;
     rtrue;
-    @dec_chk 0 0 ?~rfalse;
-    @2OP:0 0 0;
-    @2OP:0 80[Old_Winery?] 33[gift_wrapped_parcel?];
-    @2OP:0 2[?] 13[Grahams_Lair?];
-    if (1 <= 150) jump label93303;
-    if (2 <= 0) jump label99247;
-    if (112 <= 33) jump label93219;
-    if (local4 hasnt local1) {
-        routine92468(local4);	! not popped
-        @pop;
-        jump label92429;
+];
+
+[ routine92420 local1 local2 local3 local4 ;	! 92420 / 0x16904
+  .label92429;
+    local2 = global17->0;
+    local3 = 1[?];
+    --local3;
+  .label92438;
+    if (local3 < local2) {
+        ++local3;
+        local4 = global17->local3;
+        if (local4 hasnt local1) {
+            routine92468(local4);	! not popped
+            @pop;
+            jump label92429;
+        }
+        jump label92438;
     }
-    jump label92438;
     rtrue;
-    @inc_chk 0 0 ?~rfalse;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
+];
+
+[ routine92468 local1 local2 local3 local4 local5 ;	! 92468 / 0x16934
     local2 = global17->0;
     local3 = 1[?];
     --local3;
@@ -10073,7 +10092,9 @@ Global global239;
     }
     local5 = 9[sw_obj?];
     return local5;
-    if (0 >= 0) rfalse;
+];
+
+[ routine92554 local1 local2 ;	! 92554 / 0x1698a
     global55 = 1[?];
     global17->0 = 0;
     local1 = child(local1);
@@ -10087,177 +10108,130 @@ Global global239;
         jump label92571;
     }
     rtrue;
-    @2OP:0 7[nw_obj?] 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 85[wheel2?] 85[wheel2?];
-    if (3[s_obj?] == 13[Grahams_Lair?]) {
-        local5 = global68->0;
-        local2 = 0;
-        --local2;
-      .label92633;
-        if (local2 < local3) {
-            ++local2;
-            local7 = global68->local2;
-            if (local7 has concealed) {
-                ! no code
-            } else {
-                local6 = parent(local7);
-                if (local1 == 1[?] && local6 == global6) {
-                    ++local4;
-                    local5 = local7;
-                }
-                if (local1 == 3[s_obj?] && local6 == global6) {
-                    ++local4;
-                    local5 = local7;
-                }
-                if (local1 == 4[e_obj?] && local6 == global6) {
-                    ++local4;
-                    local5 = local7;
-                }
-                if (local1 == 5[w_obj?] && local6 == global6) {
-                    ++local4;
-                    local5 = local7;
-                }
-                if (local1 == 6[ne_obj?] && local7 has animate) {
-                    ++local4;
-                    local5 = local7;
-                }
-                if (local1 == 0 && local6 == global0) {
-                    ++local4;
-                    local5 = local7;
-                }
-                if (local1 == 2[?] && local6 == global0) {
-                    ++local4;
-                    local5 = local7;
-                }
+];
+
+[ routine92602 local1 local2 local3 local4 local5 local6 local7 ;	! 92602 / 0x169ba
+    local3 = global69 - 1;
+    local4 = 0;
+    local5 = global68->0;
+    local2 = 0;
+    --local2;
+  .label92633;
+    if (local2 < local3) {
+        ++local2;
+        local7 = global68->local2;
+        if (local7 has concealed) {
+            ! no code
+        } else {
+            local6 = parent(local7);
+            if (local1 == 1[?] && local6 == global6) {
+                ++local4;
+                local5 = local7;
             }
-            jump label92633;
+            if (local1 == 3[s_obj?] && local6 == global6) {
+                ++local4;
+                local5 = local7;
+            }
+            if (local1 == 4[e_obj?] && local6 == global6) {
+                ++local4;
+                local5 = local7;
+            }
+            if (local1 == 5[w_obj?] && local6 == global6) {
+                ++local4;
+                local5 = local7;
+            }
+            if (local1 == 6[ne_obj?] && local7 has animate) {
+                ++local4;
+                local5 = local7;
+            }
+            if (local1 == 0 && local6 == global0) {
+                ++local4;
+                local5 = local7;
+            }
+            if (local1 == 2[?] && local6 == global0) {
+                ++local4;
+                local5 = local7;
+            }
         }
-        if (local4 == 1[?]) {
-            return local5;
-        }
-        if (global72 == 1[?]) {
-            return local5;
-        }
-        rfalse;
-        0 | 0;	! not popped
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 13[Grahams_Lair?] 86[dumbwaiter?];
-        @2OP:0 13[Grahams_Lair?] 85[wheel2?];
-        @2OP:0 45[solid_glass_ball?] 87[dark_shaft_obj?];
-        @inc_chk global208 47 ?label90624;
-        if (0 == 185[Chatelet_les_Halles?]) jump label92842;
-        local2 = invalidArray183-->global106;
-        @2OP:0 185[Chatelet_les_Halles?] 116[Premonition?];
-        global49 = global70 / 69;
-        @sub SP 0 -> local5;
+        jump label92633;
+    }
+    if (local4 == 1[?]) {
+        return local5;
+    }
+    if (global72 == 1[?]) {
+        return local5;
+    }
+    rfalse;
+];
+
+[ routine92778 local1 local2 local3 local4 local5 local6 local7 local8 ;	! 92778 / 0x16a6a
+    global70 = 0;
+    global69 = 0;
+    global71 = global53;
+    routine93940(local1);	! not popped
+    @pop;
+    routine93940(local2);	! not popped
+    @pop;
+    global53 = global71 + global70;
+    if (global69 == 0) {
         ++global53;
         rfalse;
-        if (global71 <= global54) {
-            local4 = global68->0;
-            if (global69 == 1[?]) {
-                return local4;
-            }
-        }
-        if (global69 > 1) {
-            local4 = routine92602(local3);
-        }
-        if (local4 ~= 0) {
-            if (global63 == 0) {
-                global63 = global61;
-            }
-            global59-->global61 = local4;
-            print "(";
-            routine93380(global63,0);	! not popped
-            @pop;
-            print ")^";
+    }
+    if (global71 <= global54) {
+        local4 = global68->0;
+        if (global69 == 1[?]) {
             return local4;
         }
-        if (global71 > global54) {
-          .label92898;
-        } else {
-            print "Which do you mean, ";
-            local5 = global69 - 1;
-            local4 = 0;
-            --local4;
-          .label92925;
-            if (local4 < local5) {
-                ++local4;
-                local6 = global68->local4;
-                routine53306(local6);	! not popped
-                @pop;
-                if (local4 < local5 - 1) {
-                    print ", ";
-                }
-                if (local4 == local5 - 1) {
-                    print " or ";
-                }
-                jump label92925;
-            }
-            print "?^";
-          .label92977;
-            local8 = routine89956(global11,global12);
-            local5 = global12-->1;
-            if (local5 == 12863['both//p'?]) {
-                local5 = 12492['all//p'?];
-            }
-            if (local5 == 13773['everything//p'?]) {
-                local5 = 12492['all//p'?];
-            }
-            if (local5 == 12492['all//p'?]) {
-                print "Sorry, that's beyond my abilities. Which one exactly?^";
-                jump label92977;
-            }
-            local5 = local5->4;
-            if (0 ~= local5 & 1) {
-                routine94706(global9,global11);	! not popped
-                @pop;
-                routine94706(global10,global12);	! not popped
-                @pop;
-                local6 = 1000[?];
-                return local6;
-            }
-            local7 = global10->1;
-            global10->1 = local8 + local7;
-            local6 = local7 + local8;
-          .label93118;
-            if (local6 > global71) {
-                local4 = local6 - local8;
-                routine93860(local6,global10,local4);	! not popped
-                @pop;
-                --local6;
-                jump label93118;
-            }
-            local6 = 1[?];
-            --local6;
-          .label93146;
-            if (local6 < local8) {
-                ++local6;
-                local4 = global71 + (local6 - 1);
-                routine93860(local4,global12,local6);	! not popped
-                @pop;
-                jump label93146;
-            }
-            local6 = 1000[?];
-            return local6;
+    }
+    if (global69 > 1) {
+        local4 = routine92602(local3);
+    }
+    if (local4 ~= 0) {
+        if (global63 == 0) {
+            global63 = global61;
         }
-        print "What do you want ";
-        if (global6 ~= global3) {
-            routine53306(global6);	! not popped
-            @pop;
-        }
-        print "to ";
-        routine93380(0,1[?]);	! not popped
+        global59-->global61 = local4;
+        print "(";
+        routine93380(global63,0);	! not popped
         @pop;
+        print ")^";
+        return local4;
+    }
+    if (global71 > global54) {
+        ! no code
+    } else {
+        print "Which do you mean, ";
+        local5 = global69 - 1;
+        local4 = 0;
+        --local4;
+      .label92925;
+        if (local4 < local5) {
+            ++local4;
+            local6 = global68->local4;
+            routine53306(local6);	! not popped
+            @pop;
+            if (local4 < local5 - 1) {
+                print ", ";
+            }
+            if (local4 == local5 - 1) {
+                print " or ";
+            }
+            jump label92925;
+        }
         print "?^";
+      .label92977;
         local8 = routine89956(global11,global12);
         local5 = global12-->1;
+        if (local5 == 12863['both//p'?]) {
+            local5 = 12492['all//p'?];
+        }
+        if (local5 == 13773['everything//p'?]) {
+            local5 = 12492['all//p'?];
+        }
+        if (local5 == 12492['all//p'?]) {
+            print "Sorry, that's beyond my abilities. Which one exactly?^";
+            jump label92977;
+        }
         local5 = local5->4;
         if (0 ~= local5 & 1) {
             routine94706(global9,global11);	! not popped
@@ -10268,113 +10242,124 @@ Global global239;
             return local6;
         }
         local7 = global10->1;
-        if (global63 == 0) {
-            local6 = 1[?];
-            --local6;
-          .label93282;
-            if (local6 < local8) {
-                ++local6;
-                local4 = global71 + (local6 - 1);
-                routine93860(local4,global12,local6);	! not popped
-                @pop;
-                jump label93282;
-            }
-        }
-        if (global63 ~= 0) {
-            local6 = 1[?];
-            --local6;
-          .label93319;
-            if (local6 < local8) {
-                ++local6;
-                local4 = global71 + local6;
-                routine93860(local4,global12,local6);	! not popped
-                @pop;
-                jump label93319;
-            }
-            global12-->1 = routine93792(global64);
-            routine93860(global71,global12,1[?]);	! not popped
-            @pop;
-            ++local8;
-        }
         global10->1 = local8 + local7;
+        local6 = local7 + local8;
+      .label93118;
+        if (local6 > global71) {
+            local4 = local6 - local8;
+            routine93860(local6,global10,local4);	! not popped
+            @pop;
+            --local6;
+            jump label93118;
+        }
+        local6 = 1[?];
+        --local6;
+      .label93146;
+        if (local6 < local8) {
+            ++local6;
+            local4 = global71 + (local6 - 1);
+            routine93860(local4,global12,local6);	! not popped
+            @pop;
+            jump label93146;
+        }
         local6 = 1000[?];
         return local6;
-        0 | 0;	! not popped
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 65[Battlements?] 1[?];
-        @2OP:0 1[?] 36[postcard?];
+    }
+    print "What do you want ";
+    if (global6 ~= global3) {
+        routine53306(global6);	! not popped
+        @pop;
+    }
+    print "to ";
+    routine93380(0,1[?]);	! not popped
+    @pop;
+    print "?^";
+    local8 = routine89956(global11,global12);
+    local5 = global12-->1;
+    local5 = local5->4;
+    if (0 ~= local5 & 1) {
+        routine94706(global9,global11);	! not popped
+        @pop;
+        routine94706(global10,global12);	! not popped
+        @pop;
+        local6 = 1000[?];
+        return local6;
+    }
+    local7 = global10->1;
+    if (global63 == 0) {
+        local6 = 1[?];
+        --local6;
+      .label93282;
+        if (local6 < local8) {
+            ++local6;
+            local4 = global71 + (local6 - 1);
+            routine93860(local4,global12,local6);	! not popped
+            @pop;
+            jump label93282;
+        }
+    }
+    if (global63 ~= 0) {
+        local6 = 1[?];
+        --local6;
+      .label93319;
+        if (local6 < local8) {
+            ++local6;
+            local4 = global71 + local6;
+            routine93860(local4,global12,local6);	! not popped
+            @pop;
+            jump label93319;
+        }
+        global12-->1 = routine93792(global64);
+        routine93860(global71,global12,1[?]);	! not popped
+        @pop;
+        ++local8;
+    }
+    global10->1 = local8 + local7;
+    local6 = 1000[?];
+    return local6;
+];
+
+[ routine93380 local1 local2 local3 local4 local5 local6 local7 local8 ;	! 93380 / 0x16cc4
+    if (local1 == 0) {
         local3 = global10-->1;
         local1 = 1[?];
         local6 = 1[?];
         if (local3 == 14508['inventory'?]) {
             print "take an inventory";
-            jump label93692;
-        }
-        if (local3 == 13780['examine'?]) {
+        } else if (local3 == 13780['examine'?]) {
             print "examine";
-            jump label93692;
-        }
-        if (local3 == 13815['extract'?]) {
+        } else if (local3 == 13815['extract'?]) {
             print "extract";
-            jump label93692;
-        }
-        if (local3 == 13556['discard'?]) {
+        } else if (local3 == 13556['discard'?]) {
             print "discard";
-            jump label93692;
-        }
-        if (local3 == 16503['swallow'?]) {
+        } else if (local3 == 16503['swallow'?]) {
             print "swallow";
-            jump label93692;
-        }
-        if (local3 == 13731['embrace'?]) {
+        } else if (local3 == 13731['embrace'?]) {
             print "embrace";
-            jump label93692;
-        }
-        if (local3 == 16391['squeeze'?]) {
+        } else if (local3 == 16391['squeeze'?]) {
             print "squeeze";
-            jump label93692;
-        }
-        if (local3 == 15530['purchase'?]) {
+        } else if (local3 == 15530['purchase'?]) {
             print "purchase";
-            jump label93692;
-        }
-        if (local3 == 13234['consult'?]) {
+        } else if (local3 == 13234['consult'?]) {
             print "consult";
-            jump label93692;
-        }
-        if (local3 == 16825['unscrew'?]) {
-          .label93578;
+        } else if (local3 == 16825['unscrew'?]) {
             print "unscrew";
-            jump label93692;
-        }
-        if (local3 == 13458['describe'?]) {
+        } else if (local3 == 13458['describe'?]) {
             print "describe";
-            jump label93692;
-        }
-        if (local3 == 16797['uncover'?]) {
+        } else if (local3 == 16797['uncover'?]) {
             print "uncover";
-            jump label93692;
-        }
-        if (local3 == 13556['discard'?]) {
+        } else if (local3 == 13556['discard'?]) {
             print "discard";
-            jump label93692;
+        } else if (local3 == 13794['exhibition'?]) {
+            print "exhibit";
+        } else if (local3 == 13563['disrobe'?]) {
+            print "disrobe";
+        } else if (local3 == 16734['transfer'?]) {
+            print "transfer";
+        } else {
+            print (address) local3;
         }
-        if (local3 ~= 13794['exhibition'?]) jump label93656;
     }
-    print "exhibit";
-    jump label93692;
-  .label93656;
-    if (local3 == 13563['disrobe'?]) {
-        print "disrobe";
-    } else if (local3 == 16734['transfer'?]) {
-        print "transfer";
-    } else {
-        print (address) local3;
-    }
-  .label93692;
     local4 = global61 - local2;
     local5 = local1;
     --local5;
@@ -10403,9 +10388,10 @@ Global global239;
         jump label93701;
     }
     rtrue;
-    if (0 <= 0) rfalse;
-    @2OP:0 0 205[Wall_of_Thorns?];
-    global67 = local3-->48;
+];
+
+[ routine93792 local1 local2 local3 ;	! 93792 / 0x16e60
+    local3 = 12371[?];
   .label93804;
     if (1[?] == 1[?]) {
         local2 = local3-->1;
@@ -10418,12 +10404,10 @@ Global global239;
     }
     local3 = 12371[?];
     print "<Adjective not found>";
-  .label93857;
     return local3;
-    @2OP:0 5[w_obj?] 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
+];
+
+[ routine93860 local1 local2 local3 local4 local5 ;	! 93860 / 0x16ea4
     local4 = local1 * 2 - 1;
     local5 = local3 * 2 - 1;
     global10-->local4 = local2-->local5;
@@ -10431,7 +10415,9 @@ Global global239;
     ++local5;
     global10-->local4 = local2-->local5;
     rtrue;
-    if (0 >= 0) rfalse;
+];
+
+[ routine93910 local1 local2 ;	! 93910 / 0x16ed6
     if (local2 < global70) {
         rtrue;
     }
@@ -10442,261 +10428,676 @@ Global global239;
     global68->global69 = local1;
     ++global69;
     rtrue;
-    if (0 & 0 ~= 0) rfalse;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 97[rod_of_returning?] 1[?];
-    global208 = 0->8;
-    @2OP:31 183[hollow_man?] 122[Garden_Stream?];
-    if (2[?] ~= 162[goat?]) jump label94224;
-    if (1 >= 128 or 34659 or 87) jump label93982;
-    @2OP:0 13[Grahams_Lair?] 224[Valley_Prospect?];
-    if (183 & global91 ~= global91) jump label94241;
-    @2OP:0 185[Chatelet_les_Halles?] 140[Catacomb_Passage?];
-    @2OP:0 76[windows?] 45[solid_glass_ball?];
-    @inc_chk global71 224 ?~label93922;
-    @split_window 16642 256[?] 3937[?] global4;
-    if (0 == 10[ceiling?]) jump label94040;
-    if (183 & global91 ~= global91) jump label99134;
-    @2OP:0 185[Chatelet_les_Halles?] 224[Valley_Prospect?];
-    give hollow_man global191;
-    if (2[?] ~= 0) jump label86088;
-    @2OP:0 0 5[w_obj?];
-    jump label94065;
-    local7 = 0;
-  .label94035;
-    ++local7;
-    local5 = routine94264();
-    if (0 ~= routine94110(local1,local5)) {
-        jump label94035;
+];
+
+[ routine93940 local1 local2 local3 local4 local5 local6 local7 ;	! 93940 / 0x16ef4
+    if (local1 == global0) {
+        local2 = routine93940(1[?]);
     }
-    routine93910(local1,local7);	! not popped
-    @pop;
-  .label94065;
-    if (local1 has container) {
-        if (local1 has open) {
-            ! no code
-        } else if (local1 has transparent) {
-            jump label94101;
+    local1 = child(local1);
+  .label93970;
+    if (local1 ~= 0) {
+        if (global71 > global54) {
+            routine93910(local1,1[?]);	! not popped
+            @pop;
+        } else {
+            global53 = global71;
+            local2 = routine94164();
+            if (local2 == 1[?] && global4 == local1) {
+                routine93910(global4,1[?]);	! not popped
+                @pop;
+            }
+            if (0 == routine94110(local1,local2)) {
+                ! no code
+            } else {
+                local7 = 0;
+              .label94035;
+                ++local7;
+                local5 = routine94264();
+                if (0 ~= routine94110(local1,local5)) {
+                    jump label94035;
+                }
+                routine93910(local1,local7);	! not popped
+                @pop;
+            }
         }
-        local4 = child(local1);
-        if (local4 ~= 0) {
-            local4 = routine93940(local1);
+        if (local1 has container) {
+            if (local1 has open) {
+                ! no code
+            } else if (local1 has transparent) {
+                jump label94101;
+            }
+            local4 = child(local1);
+            if (local4 ~= 0) {
+                local4 = routine93940(local1);
+            }
         }
+      .label94101;
+        local1 = sibling(local1);
+        jump label93970;
     }
-  .label94101;
-    local1 = sibling(local1);
-    jump label93970;
     rfalse;
-    @2OP:0 6[ne_obj?] 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 0 0;
-    @2OP:0 0 82[nasty_battery?];
-    if (1[?] == 4[e_obj?]) jump label86963;
-    @2OP:0 87[dark_shaft_obj?] 0;
-    if (0 >= 85) rtrue;
-  .label94137;
-    if (++local13 <= 6) jump label94290;
-    if (robot_mouse in ne_obj) {
-        global95 = rod_of_stalking.after;
-        if (--local6 >= 3) jump label94186;
-        if (3 >= 0) jump label95102;
+];
+
+[ routine94110 local1 local2 local3 local4 local5 local6 ;	! 94110 / 0x16f9e
+    local4 = local1.&name;
+    local5 = get_prop_len(local4) / 2 - 1;
+    local6 = 0;
+    --local6;
+  .label94143;
+    if (local6 < local5) {
+        ++local6;
+        local3 = local4-->local6;
+        if (local2 == local3) {
+            rtrue;
+        }
         jump label94143;
+    }
+    rfalse;
+];
+
+[ routine94164 local1 local2 local3 ;	! 94164 / 0x16fd4
+    local1 = 0;
+    local2 = routine94264();
+    if (local2 == 14529['it//p'?]) {
+        local3 = 1[?];
+        return local3;
+    }
+    if (local2 == 16615['them//p'?]) {
+        local3 = 1[?];
+        return local3;
+    }
+    if (local2 == 0) {
         rfalse;
-        if (0 <= 0) rfalse;
-        @2OP:0 0 13[Grahams_Lair?];
-        if (0 ~= 224[Valley_Prospect?]) jump label94103;
-        @throw 2[?] 193[red_wire?];
-        global177 = ~568;
-        @2OP:0 7[nw_obj?] 13[Grahams_Lair?];
-        if (1 <= 171) jump label95151;
-        global215 = ~576;
-        @2OP:0 7[nw_obj?] 13[Grahams_Lair?];
-        if (1 <= 171) jump label95035;
-        if (0 >= 0) jump label95152;
-        local3 = local2-->4;
-        if (local3 & 128 == 0) {
+    }
+    local3 = local2-->4;
+    if (local3 & 128 == 0) {
+        rfalse;
+    }
+    return local2;
+];
+
+[ routine94226 local1 local2 local3 ;	! 94226 / 0x17012
+    local3 = routine94264();
+    if (local3 == 0) {
+        rfalse;
+    }
+    local2 = local3->4;
+    if (local2 & 8 == 0) {
+        rfalse;
+    }
+    return local3->6;
+];
+
+[ routine94264 local1 local2 local3 ;	! 94264 / 0x17038
+    if (global53 > global10->1) {
+        global53 = global53 + 1;
+        rfalse;
+    }
+    local1 = global53 * 2 - 1;
+    global53 = global53 + 1;
+    local2 = global10-->local1;
+    if (local2 == 0) {
+        local3 = global53 * 4 - 3;
+        local1 = global9->(global10->local3);
+        if (local1 == 44[Disused_Observatory?]) {
+            local2 = 17133['xcommand//p'?];
+        }
+    }
+    return local2;
+];
+
+[ routine94334 local1 local2 local3 local4 ;	! 94334 / 0x1707e
+    local4 = global53 - 1;
+    if (local4 > global10->1) {
+        rfalse;
+    }
+    local1 = local4 * 4;
+    local2 = global10->local1;
+    local3 = global10->(local1 + 1);
+    local3 = local3 + local2;
+    print "Word ", local4, " ends with ";
+  .label94394;
+    local1 = global9->local3;
+    if (local1 == 32[scratched_cupboard?]) {
+        ++local3;
+        jump label94394;
+    }
+    if (local1 == 44[Disused_Observatory?]) {
+        print "a comma^";
+        local3 = 1[?];
+        return local3;
+    }
+    print "no comma^";
+    local3 = 0;
+    return local3;
+];
+
+[ routine94440 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 ;	! 94440 / 0x170e8
+    local2 = local1 * 4 + 1;
+    local3 = global10->local2;
+    local5 = local3 + global9;
+    local6 = global10->(local2 - 1);
+    if (local6 >= 4) {
+        local7 = 1000[?];
+    }
+    if (local6 == 3[s_obj?]) {
+        local7 = 100[hole_in_the_wall?];
+    }
+    if (local6 == 2[?]) {
+        local7 = 10[ceiling?];
+    }
+    if (local6 == 1[?]) {
+        local7 = 1[?];
+    }
+    local8 = 0;
+    local4 = 0;
+    local6 = local6 - 1;
+    local4 = 0;
+    --local4;
+  .label94534;
+    if (local4 < local6) {
+        ++local4;
+        local10 = local5->local4;
+        if (local10 == 48[poetry_book?]) {
+            local9 = 0;
+        } else if (local10 == 49[Souvenirs_Room?]) {
+            local9 = 1[?];
+        } else if (local10 == 50[slide_projector?]) {
+            local9 = 2[?];
+        } else if (local10 == 51[south_wall?]) {
+            local9 = 3[s_obj?];
+        } else if (local10 == 52[East_Annexe?]) {
+            local9 = 4[e_obj?];
+        } else if (local10 == 53[insulation_rolls?]) {
+            local9 = 5[w_obj?];
+        } else if (local10 == 54[new_battery?]) {
+            local9 = 6[ne_obj?];
+        } else if (local10 == 55[cupboard_door?]) {
+            local9 = 7[nw_obj?];
+        } else if (local10 == 56[Dead_End?]) {
+            local9 = 8[se_obj?];
+        } else if (local10 == 57[canvas_rucksack?]) {
+            local9 = 9[sw_obj?];
+        } else {
             rfalse;
         }
-        return local2;
-        @2OP:0 3[s_obj?] 0;
-        @2OP:0 0 0;
-        @2OP:0 0 224[Valley_Prospect?];
-        @2OP:31 184[Near_Ring_Road?] global12;
-        if (65 <= 3) rfalse;
-        if (177 <= 80) jump label95017;
-        if (73 >= 2) jump label96298;
-        @je SP 0 ?~label94258;
-        rfalse;
-      .label94258;
-        return local3->6;
-        if (0 <= 0) rfalse;
-        @2OP:0 0 80[Old_Winery?];
-        routine2(0);
-        @jg global53 SP ?~label94285;
-        global53 = global53 + 1;
-        rfalse;
-      .label94285;
-        local1 = global53 * 2 - 1;
-        global53 = global53 + 1;
-        local2 = global10-->local1;
-        if (local2 == 0) {
-            local3 = global53 * 4 - 3;
-            local1 = global9->(global10->local3);
-            if (local1 == 44[Disused_Observatory?]) {
-                local2 = 17133['xcommand//p'?];
-            }
-        }
-        return local2;
-        @dec_chk 0 0 ?~rfalse;
-        @2OP:0 0 0;
-      .label94342;
-        @2OP:0 85[wheel2?] 69[sooty_old_stick?];
-        if (4[e_obj?] ~= 80[Old_Winery?]) jump label101005;
-        @2OP:0 99[Cellars_South?] 4[e_obj?];
-        @2OP:0 0 3[s_obj?];
-        rfalse;
-        local1 = local4 * 4;
-        local2 = global10->local1;
-        local3 = global10->(local1 + 1);
-        local3 = local3 + local2;
-        print "Word ", local4, " ends with ";
-      .label94394;
-        local1 = global9->local3;
-        if (local1 == 32[scratched_cupboard?]) {
-            ++local3;
-            jump label94394;
-        }
-        if (local1 == 44[Disused_Observatory?]) {
-            print "a comma^";
-            local3 = 1[?];
-            return local3;
-        }
-        print "no comma^";
-        local3 = 0;
-        return local3;
-        @2OP:0 10[ceiling?] 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 86[dumbwaiter?] 1[?];
-        @dec_chk 0 84 ?~label1;
-        if (112 >= 26) jump label94986;
-        local5 = local3 + global9;
-        local6 = global10->(local2 - 1);
-        if (local6 >= 4) {
-            local7 = 1000[?];
-        }
-        if (local6 == 3[s_obj?]) {
-            local7 = 100[hole_in_the_wall?];
-        }
-        if (local6 == 2[?]) {
-            local7 = 10[ceiling?];
-        }
-        if (local6 == 1[?]) {
-            local7 = 1[?];
-        }
-        local8 = 0;
-        local4 = 0;
-        local6 = local6 - 1;
-        local4 = 0;
-        --local4;
-      .label94534;
-        if (local4 < local6) {
-            ++local4;
-            local10 = local5->local4;
-            if (local10 == 48[poetry_book?]) {
-                local9 = 0;
-            } else if (local10 == 49[Souvenirs_Room?]) {
-                local9 = 1[?];
-            } else if (local10 == 50[slide_projector?]) {
-                local9 = 2[?];
-            } else if (local10 == 51[south_wall?]) {
-                local9 = 3[s_obj?];
-            } else if (local10 == 52[East_Annexe?]) {
-                local9 = 4[e_obj?];
-            } else if (local10 == 53[insulation_rolls?]) {
-                local9 = 5[w_obj?];
-            } else if (local10 == 54[new_battery?]) {
-                local9 = 6[ne_obj?];
-            } else if (local10 == 55[cupboard_door?]) {
-                local9 = 7[nw_obj?];
-            } else if (local10 == 56[Dead_End?]) {
-                local9 = 8[se_obj?];
-            } else if (local10 == 57[canvas_rucksack?]) {
-                local9 = 9[sw_obj?];
-            } else {
-                rfalse;
-            }
-            local8 = local8 + local7 * local9;
-            local7 = local7 / 10;
-            jump label94534;
-        }
-        return local8;
-        @2OP:0 3[s_obj?] 0;
-        @2OP:0 0 0;
-        @2OP:0 0 80[Old_Winery?];
-        if (0 ~= 3[s_obj?]) jump label98015;
-        if (150[Up_the_Beanstalk?] ~= 2[?]) jump label94723;
-        if (3 >= 0) jump label97915;
-        if (226 >= 167) jump label94957;
-        @2OP:0 140[Catacomb_Passage?] 255[carbolic_soap?];
-        @output_stream local4;
-        @2OP:0 0 0;
-        @2OP:0 0 0;
-        @2OP:0 0 80[Old_Winery?];
-        if (0 ~= 4[e_obj?]) jump label98050;
-        if (150[Up_the_Beanstalk?] ~= 3[s_obj?]) jump label94757;
-        if (4 <= 0) jump label98973;
-        if (112 <= 2) jump label95501;
-        @storeb local1 local3 SP;
+        local8 = local8 + local7 * local9;
+        local7 = local7 / 10;
+        jump label94534;
+    }
+    return local8;
+];
+
+[ routine94674 local1 local2 local3 ;	! 94674 / 0x171d2
+    local3 = local1->0;
+    local2 = 1[?];
+    --local2;
+  .label94690;
+    if (local2 < local3) {
+        ++local2;
+        local1->local2 = 0;
+        jump label94690;
+    }
+    rtrue;
+];
+
+[ routine94706 local1 local2 local3 local4 ;	! 94706 / 0x171f2
+    local4 = local1->0;
+    local3 = 1[?];
+    --local3;
+  .label94724;
+    if (local3 < local4) {
+        ++local3;
+        local1->local3 = local2->local3;
         jump label94724;
-        rtrue;
-        if (0 >= 0) rfalse;
-        print "Dump at ";
-        routine94796(local1);	! not popped
+    }
+    rtrue;
+];
+
+[ routine94744 local1 local2 ;	! 94744 / 0x17218
+    print "Dump at ";
+    routine94796(local1);	! not popped
+    @pop;
+    new_line;
+    local2 = 0;
+    --local2;
+  .label94769;
+    if (local2 < 31) {
+        ++local2;
+        routine94796(local1->local2);	! not popped
         @pop;
-        new_line;
-        local2 = 0;
-        --local2;
-      .label94769;
-        if (local2 < 31) {
-            ++local2;
-            routine94796(local1->local2);	! not popped
-            @pop;
-            print " ";
-            jump label94769;
-        }
-        new_line;
-        rtrue;
-        @2OP:0 2[?] 0;
-        @2OP:0 0 0;
-        local2 = local1 / 16 / 16;
-        if (local2 ~= 0) {
-            routine94852(local2 / 16);	! not popped
-            @pop;
-            routine94852(local2);	! not popped
-            @pop;
-        }
-        routine94852(local1 / 16);	! not popped
+        print " ";
+        jump label94769;
+    }
+    new_line;
+    rtrue;
+];
+
+[ routine94796 local1 local2 ;	! 94796 / 0x1724c
+    local2 = local1 / 16 / 16;
+    if (local2 ~= 0) {
+        routine94852(local2 / 16);	! not popped
         @pop;
-        routine94852(local1);	! not popped
+        routine94852(local2);	! not popped
         @pop;
+    }
+    routine94852(local1 / 16);	! not popped
+    @pop;
+    routine94852(local1);	! not popped
+    @pop;
+    rtrue;
+];
+
+[ routine94852 local1 ;	! 94852 / 0x17284
+    local1 = local1 % 16;
+    if (local1 < 10) {
+        print (char) local1 + 48;
         rtrue;
-        @2OP:0 1[?] 0;
-        @2OP:0 88[pulley_ropes?] 1[?];
-        local1 = 1->66;
-        if (nothing has open) {
-            if (48[poetry_book?] == 0) jump label94904;
-            @piracy ?~label95046;
-            print (char) local1 + (97 - 10);
-        }
-        rtrue;
-        global135 = e_obj.prop104;
-        global136 = get_next_prop(e_obj,prop168);
-        global3 = routine330();
+    }
+    print (char) local1 + (97 - 10);
+    rtrue;
+];
+
+! Code appears to end here. If the strings below look like
+! garbage, try adding this directive to the symbol file:
+!   FalseEnd	0x17284	1
+
+! 94884 (0x172a4): "CURSES"
+! 94892 (0x172ac): "a"
+! 94894 (0x172ae): "You can't go that way."
+! 94912 (0x172c0): "the"
+! 94914 (0x172c2): "the"
+! 94916 (0x172c4): "the"
+! 94918 (0x172c6): "the"
+! 94920 (0x172c8): "the"
+! 94922 (0x172ca): "the"
+! 94924 (0x172cc): "the"
+! 94926 (0x172ce): "the"
+! 94928 (0x172d0): "the"
+! 94930 (0x172d2): "the"
+! 94932 (0x172d4): "It is pitch dark, and you can't see a thing."
+! 94964 (0x172f4): "A home for the bewildered. NE to stream, NW to lighthouse, SE to cupboard, SW to Folly, N to onboat, S to projector room, E to Shaftmid, W to Infroom, U to cliffs, D to cave."
+! 95100 (0x1737c): "The attics, full of low beams and awkward angles, begin here in a relatively tidy area which extends north, south and east. The wooden floorboards seem fairly sound, just as well considering how heavy all these teachests are. But the old wiring went years ago, and there's no electric light."
+! 95302 (0x17446): "A hinged trapdoor in the floor stands open, and light streams in from below."
+! 95356 (0x1747c): "There is a closed trapdoor in the middle of the floor."
+! 95394 (0x174a2): "some"
+! 95398 (0x174a6): "Open-topped. You could easily look inside, if so minded."
+! 95440 (0x174d0): "the"
+! 95442 (0x174d2): "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends of the earth, he never could find a detail he wanted for volume I, and it was never published. Somehow, this typifies your family, and consulting this worthy book about your ancestors makes you realise what an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an awful lot of children. So many Meldrews are listed here that you'll have to look them up individually."
+! 95868 (0x1767c): "What a boring old book!  There's nobody worth looking up."
+! 95910 (0x176a6): "an"
+! 95912 (0x176a8): "A graceful lady's box, bearing the initials A. M. and engraved with a drawing of what seems to be a rabbit's foot."
+! 95994 (0x176fa): "In one corner is a jewellery box, which had previously been hidden by the open trapdoor."
+! 96056 (0x17738): "Try investigating the world of the romantic novel, out on the balconies of life."
+! 96112 (0x17770): "The fabulously lucky plant has a long stalk."
+! 96144 (0x17790): "Not much use as it is, is it?"
+! 96166 (0x177a6): "the"
+! 96168 (0x177a8): "Well, if there's such a thing as luck, maybe this would help."
+! 96212 (0x177d4): "the"
+! 96214 (0x177d6): "Perfect for little pointy forks."
+! 96238 (0x177ee): "Please, please. This isn't that kind of afterlife."
+! 96276 (0x17814): "   Things to do:^   1. Find map^   2. Phone airport to check parking^   3. Health forms...^and so on. Let's face it, 1. is more enticing than the rest put together."
+! 96402 (0x17892): "Immensely useful, that."
+! 96420 (0x178a4): "an"
+! 96422 (0x178a6): "The torch has a battery compartment which can be reached by opening it up."
+! 96474 (0x178da): "Pity you can't change the batteries."
+! 96500 (0x178f4): "an"
+! 96502 (0x178f6): "Oatmeal covered with plain chocolate, since you ask."
+! 96540 (0x1791c): "I bet you didn't know that chocolate biscuit manufacturers are damned in perpetuity?  I'm afraid the chapters about that in the Old Testaments were lost, though, and now no-one can remember why."
+! 96678 (0x179a6): "Once upon a time, servants in great houses lived in awful little crevices and excuses for rooms like this one. They must have been in permanent danger of suffocation, for there are no windows and only a doorway to the west. A bed is still kept here, and the sight of it brings on drowsiness in all this warm stuffy air. All you want to do is curl up and sleep."
+! 96926 (0x17a9e): "an"
+! 96928 (0x17aa0): "Made by Dunn and Co., naturally, with four stripes: royal blue, emerald, dark grey and scarlet."
+! 96998 (0x17ae6): "An old striped scarf is hung up behind the doorway."
+! 97034 (0x17b0a): "The very height of fashion, if you ignore the colours and wear it regardless."
+! 97088 (0x17b40): "Scruffy old furniture is piled up here: armchairs with springs coming out, umbrella stands, a badly scratched cupboard, a table with one leg missing... You try to remember why you keep all this rubbish, and fail. Anyway the attic continues to the southeast."
+! 97268 (0x17bf4): "Nothing there, but that cupboard looks interesting."
+! 97304 (0x17c18): "Shame the wrapping paper won't come off."
+! 97334 (0x17c36): "Far too nice to give to anybody else. In fact..."
+! 97370 (0x17c5a): "some"
+! 97374 (0x17c5e): "The reindeer have enormous significance."
+! 97402 (0x17c7a): "It is addressed to the house, and postmarked 1963, but has no message. Odd, that."
+! 97464 (0x17cb8): "There's no message there to read."
+! 97488 (0x17cd0): "These bottles can even survive long drops, so perhaps you should try fire."
+! 97540 (0x17d04): "This drug is for fun, it isn't an antidote. And it tastes gorgeous..."
+! 97592 (0x17d38): "The air is dusty and warm, almost making you choke in this rather empty area. The attic turns from northwest to east, and there is also a tight doorway leading west. A short flight of wooden steps leads down and to the south."
+! 97748 (0x17dd4): "This is a roughly-furnished photographer's dark room, used by your grandfather years ago. There's nothing much here now, since you threw the chemicals out in case the children found them."
+! 97880 (0x17e58): "The only doorway is back east."
+! 97902 (0x17e6e): "It is attached to the ceiling."
+! 97924 (0x17e84): "You bump your head on the cord hanging from the ceiling, for the umpteenth time."
+! 97980 (0x17ebc): "the old"
+! 97986 (0x17ec2): "Mounted on a plaque is an old sepia photograph of a man."
+! 98026 (0x17eea): "The photograph is one of the very early ones which looks as if it was taken in the dark because the chemicals have gradually oxidised. The poor man in the frame (Mr Roger Meldrew, Esquire) looks as if he was propped up by a big clamp to hold him still for five minutes, and that's because he was."
+! 98232 (0x17fb8): "When you can get this working, perhaps you should take it somewhere prominent."
+! 98286 (0x17fee): "It has an openable compartment on the side to hold a battery and a timer mechanism."
+! 98344 (0x18028): "A rather more modern photographer's flash lies on a shelf to one side."
+! 98394 (0x1805a): "Once upon a time, this small circular room had a dome and a telescope, but it leaked dreadfully and so now there's a proper roof. A circular mural painted with the signs of the zodiac is interrupted by a short flight of stairs leading up to the north, a west doorway to a shadowy alcove and the continuation of the stairs down and to the south."
+! 98630 (0x18146): "Mounted on the old telescope stand is what looks like a solid glass ball."
+! 98680 (0x18178): "The ball is scratched and misted up."
+! 98706 (0x18192): "Once upon a time, the house library was used as a gun-room, and all the unwanted books kept up here. Now this is just another awkward cranny."
+! 98806 (0x181f6): "From here, you can only squeeze back east to the observatory."
+! 98850 (0x18222): "Don't bother reading or thinking about it. Nothing to do with your family."
+! 98904 (0x18258): "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy."
+! 99052 (0x182ec): "My my, a golden age for clear, simple poetry. At last, the dreary obscurity of Tennyson, Kipling, and [frothing at the mouth] Hardy gives way..."
+! 99162 (0x1835a): "This is where you ought to have left the wretched map, in the family lumber-room of souvenirs and holiday snaps. You checked it thoroughly earlier, and can't bear the thought of searching it all again. A slide projector is aimed at the whitewashed south wall, one of the outside walls of the house. The only way to go is back up to the observatory."
+! 99404 (0x1844c): "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There is also a little dial on the back, perhaps for the focus."
+! 99510 (0x184b6): "This tight annexe at the eastern end of the house is piled up with old loft insulation rolls, left over from the last time the job was done (whenever that was). A gap between the tiles of the roof (which you really must mend before winter) lets a little natural light in, but the attics to the west and south are dark."
+! 99730 (0x18592): "some"
+! 99734 (0x18596): "That is a difficult puzzle, yes."
+! 99758 (0x185ae): "In the north wall is an open cupboard door, large enough to step inside."
+! 99808 (0x185e0): "In the north wall is an intriguing closed cupboard door."
+! 99848 (0x18608): "The winding attic comes to a dead end here, and particularly dirty it is too, what with soot everywhere from the broken old chimney-sweeping gear."
+! 99950 (0x1866e): "It might be handy, if only it could carry anything."
+! 99986 (0x18692): "Great Scott!  That old canvas rucksack must be the very one your famous ancestor, the African explorer Ebenezer Meldrew, brought back from the Zambeze Expedition of 1882!"
+! 100110 (0x1870e): "On second thoughts, now you look at more closely, it seems to be the rucksack you bought to go to Paris with five years ago."
+! 100196 (0x18764): "A secret door stands open in the south wall!"
+! 100228 (0x18784): "The secret door is closed."
+! 100248 (0x18798): "This is a surprisingly spacious cupboard, which you can't recall ever visiting before today. You really ought to use this convenient empty room for something..."
+! 100360 (0x18808): "Carry this with you everywhere you go."
+! 100388 (0x18824): "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall."
+! 100468 (0x18874): "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here."
+! 100658 (0x18932): "There is a big iron fireplace in the west wall."
+! 100692 (0x18954): "The skylight above is open, and the sky does indeed light the room."
+! 100740 (0x18984): "Above you is a blacked-out skylight with a crank handle."
+! 100780 (0x189ac): "It was painted out black during the first wave of Zeppelin air raids in World War One. This is completely irrelevant, but you did ask."
+! 100876 (0x18a0c): "The cork filters have gone. It's useless now."
+! 100910 (0x18a2e): "This is a recessed area of the roof, open to the skies but screened from below. There used to be a flagpole here, but not any more. An open skylight leads down, and a fairly safe catwalk leads northwest. However, the red-tiled roof is vertiginous and you have vertigo, which makes it especially annoying that there's an odd little balcony too far away to the south."
+! 101164 (0x18b2c): "William Wordsworth once described poetry as emotion recollected in tranquillity. If so, hospitals must be full of people turning out verses about what it was like to fall off the roof of a high building. Perhaps it might be better not to join them."
+! 101336 (0x18bd8): "The old crenellated battlements of the house. An Englishman's home is, of course, his castle, but Meldrew Hall never saw much fighting and these military-looking features were just a seventeenth-century fashion. They also weren't intended for standing on, and the only safe way to proceed is back southeast.^^It is peculiarly cold here."
+! 101574 (0x18cc6): "The rooftop is far too dangerous in that direction."
+! 101610 (0x18cea): "Unfortunately, what you need this for is a very long way away."
+! 101654 (0x18d16): "He is dressed in a grey shadow of Georgian finery."
+! 101690 (0x18d3a): "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard."
+! 101822 (0x18dbe): "Not a chance!"
+! 101832 (0x18dc8): "Wedged loosely in beside you is a sooty old stick."
+! 101868 (0x18dec): "It's exactly what it seems."
+! 101888 (0x18e00): "the"
+! 101890 (0x18e02): "This is rather dangerous, I'm afraid. Use only on vegetative matter."
+! 101940 (0x18e34): "Good heavens, so the house has a priest hole after all!  It was always a family legend but nobody seemed to know quite where it was. Apart from a cross painted on one wall and a padded floor (to absorb the noise), this spartan cranny is featureless. Nevertheless there is a spooky air of the supernatural about... A narrow crawl leads up into the chimney."
+! 102188 (0x18f2c): "An open hatch-door in the floor reveals a chute leading down into darkness."
+! 102240 (0x18f60): "Low down on one wall is little hatch door, which if it were open would be large enough to enter."
+! 102306 (0x18fa2): "Perhaps the attic key might unlock it?  It does look modern compared to everything else here."
+! 102372 (0x18fe4): "The really good research was in his earlier years."
+! 102408 (0x19008): "The dust and grime on the floor almost obscures an ancient prayer book."
+! 102458 (0x1903a): "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years."
+! 102654 (0x190fe): "A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^The room is provided with a comfortable bed, which looks very inviting."
+! 102942 (0x1921e): "There's just the secret north door, unless of course you count the windows."
+! 102996 (0x19254): "Black-latticed windows open on a beautiful summer's day."
+! 103036 (0x1927c): "Blue skies can be seen through south-facing windows, latticed with black lead and shut tight."
+! 103102 (0x192be): "A tiny balcony around Miss Alison's windows, offering fresh air, blue skies and a magnificent view over the gardens down to the droning motorway in the distance. The roof is too perilous to scale even if you had a good reason (which you haven't), so you had better go back north."
+! 103298 (0x19382): "The rooftop is far too dangerous in that direction."
+! 103334 (0x193a6): "The balcony is only a foot or so beneath the window-sill, and only about four feet square."
+! 103398 (0x193e6): "Gold and lead are naturally related, so you want to find a lead box to open."
+! 103452 (0x1941c): "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east."
+! 103632 (0x194d0): "Faded ink on the label reads: Elderberry '63."
+! 103668 (0x194f4): "It's provided for your torch, and not for anything else."
+! 103708 (0x1951c): "On the side is the word ~Achtung~."
+! 103734 (0x19536): "Purely decorative."
+! 103748 (0x19544): "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg."
+! 103842 (0x195a2): "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on."
+! 103960 (0x19618): "The only doorway is back west to the winery."
+! 103992 (0x19638): "There is a concealed safety catch (poorly) hidden on the wheel."
+! 104038 (0x19666): "the old"
+! 104044 (0x1966c): "Inside the dark shaft is the old dumbwaiter."
+! 104076 (0x1968c): "Uninviting."
+! 104086 (0x19696): "the"
+! 104088 (0x19698): "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here."
+! 104144 (0x196d0): "It isn't even mentioned in any of the books I've read."
+! 104184 (0x196f8): "The half which didn't get the wish, actually."
+! 104218 (0x1971a): "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor leading north."
+! 104292 (0x19764): "A passage which slants very slightly down to the south, which is full of coal dust, to which you are unfortunately allergic. Not somewhere to linger."
+! 104396 (0x197cc): "At the north end is a metal door, standing open."
+! 104430 (0x197ee): "At the north end is a closed metal door."
+! 104458 (0x1980a): "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues west and south."
+! 104602 (0x1989a): "There is a concealed safety catch on the wheel axle."
+! 104638 (0x198be): "Uninviting."
+! 104648 (0x198c8): "an"
+! 104650 (0x198ca): "A plain old piece of timber."
+! 104670 (0x198de): "the"
+! 104672 (0x198e0): "Well, that's not very useful, is it?  I'd go on strike if I were you."
+! 104724 (0x19914): "It can't even follow orders."
+! 104746 (0x1992a): "In one corner is a dust-covered robot mouse."
+! 104778 (0x1994a): "Remember the late 1970s, when a craze for home-made robots swept the home computing world?  No, perhaps not, but here is a left-over from it anyway. The mouse is quite large (almost a foot wide and tall), and has a big smile painted on its metal chassis. It has surprisingly modern circuitry in, though, and is even humming very faintly, so someone must have put some work in on it recently."
+! 105054 (0x19a5e): "The bricking-up of this cellar seems incomplete, because there is a hole about ten or eleven inches across in the west wall. You peer at this with interest but nothing is within reach inside, and it is far too small for you to wriggle through. The cellars go back north, and so, it would appear, do you."
+! 105264 (0x19b30): "It isn't the attic key, I fear."
+! 105288 (0x19b48): "Lying where the mouse dropped it is a small brass key."
+! 105326 (0x19b6e): "The west end of a disused and shadowy old cellar. It used to be a wine cellar, but was bricked up when you were a child - you never did find out why. Perhaps the golden, jewelled staircase leading down into smoky mists to the south might be something to do with it."
+! 105510 (0x19c26): "In the northwest wall the iron door stands open."
+! 105544 (0x19c48): "In the northwest wall is a heavy, imposing Gothic iron door."
+! 105588 (0x19c74): "An eerie, dark cave carved from crystal icicles of rock and strewn with great spiders' webs hung from the ragged stone, inhabited only by dead white insects. A narrow crevice opens out to an iron doorway and the warmth of the house.^^The rough stone floor levels out to a perfectly round, smooth white marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.^^You shiver with foreboding, but inexplicably feel that the map you're looking for must be somewhere near here."
+! 105940 (0x19dd4): "This used to be called the Conservatory, before Aunt Jemima took it over to potter about with plants, painting and indeed (on occasion) pottery. She has filled the place with objets trouves and bric-a-brac, and hung up a home-made calendar of watercolours. Even the old airing cupboard to the south is cluttered.^^An open doorway leads back southwest onto the upstairs landing, and you can hear the chaotic noise of suitcases being manhandled about - good thing nobody's seen you. A narrow staircase leads up and to the east into the attic.^^Jemima herself seems to be in the potting room to the west."
+! 106362 (0x19f7a): "A space about six feet square. The old drying racks now contain odd ceramic sculptures almost but not quite unrecognisable as coffee mugs. One corner is filled with an enormous pile of tie-dyed sheets, from Aunt Jemima's infamous Sixties Revival period of last October."
+! 106552 (0x1a038): "The only way to go from here is back north."
+! 106582 (0x1a056): "an"
+! 106584 (0x1a058): "It rolls on casters, and has a bakelite on/off switch."
+! 106624 (0x1a080): "To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with glowing valves inside. On the top is a bakelite on-off switch."
+! 106730 (0x1a0ea): "To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with valves inside. On the top is a bakelite on-off switch."
+! 106832 (0x1a150): "This light room is full of pot plants, flowers, seeds, ornamental trowels and other miscellaneous garden implements."
+! 106914 (0x1a1a2): "The only exit is back east to the conservatory."
+! 106948 (0x1a1c4): "some"
+! 106952 (0x1a1c8): "Good for nothing. Why would you want gloves on?"
+! 106986 (0x1a1ea): "A pair of yellow rubber gloves hangs from a hook on one wall."
+! 107028 (0x1a214): "Aunt"
+! 107032 (0x1a218): "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow."
+! 107192 (0x1a2b8): "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains."
+! 107296 (0x1a320): "Dangerous to wear. But at least any sort of daisies will do."
+! 107340 (0x1a34c): "It is a frosty, clear night, but there is a scent of camp-fires burning in the distance. You are passing through the landscape as if a ghost, and all seems faintly unreal. To the east is one side of an animal-hide tent, but there is no way in from here. To southwest, some soldiers sit around the embers of a fire. There is a terrible sense of something about to happen."
+! 107598 (0x1a44e): "This is the tent of a thin, reedy man who wears no uniform but has an obvious and commanding presence. He has an aquiline, patrician nose and, at five feet four, is taller than anyone else present. The others are advisers, junior officers, scheming politicians and their like. A strange, more solid figure stands by a trestle table at the north end of the tent."
+! 107850 (0x1a54a): "Beside the table is a more substantial adviser, as if she too walks in this strange spirit plane. She is wearing frightening druidical robes, of strange pelts and furs, with nasty-looking charms around her neck. Every so often, she seems to catch sight of you out of the corner of her eye, but then look round and see nothing. The military men do not believe in her power, and yet... they treat her with respect."
+! 108138 (0x1a66a): "An absolute essential."
+! 108154 (0x1a67a): "On the table is a heavy iron mascot of some kind."
+! 108188 (0x1a69c): "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it."
+! 108254 (0x1a6de): "You can almost smell fear here. A motley platoon of soldiers are sitting about the embers of a fire. None are talking or sleeping, and the false good humour of the evening has died away. At first light, you realise, there will be a battle. It isn't a risk you'd like to run in their place. And there is a strange light already in the east... not yet a dawn, for the soldiers seem unaware of it."
+! 108532 (0x1a7f4): "A standing stone, perhaps a glacial erratic, stands here and on top of it is a shining blue stone, whose brightness almost blinds you. You feel irresistably drawn to it, and your hand reaches out..."
+! 108672 (0x1a880): "In the lush, verdant (which is to say, under-cared for) gardens of Meldrew House, where a stream gurgles pleasantly as it meanders through reeds. The house rises up high above you to the south and you do not dare go east for fear of being recaptured by the rest of the family, so you'll have to go northwest, deeper into the gardens."
+! 108904 (0x1a968): "Better not go that way... you might get caught."
+! 108940 (0x1a98c): "On the house wall is a coal bunker, whose door stands open."
+! 108982 (0x1a9b6): "On the house wall is a coal bunker, whose loading door is shut."
+! 109026 (0x1a9e2): "You stand in the shade of a great plane tree, seedlings for which were brought back from Spain by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and to the north a single break in the green privet hedge marks the entrance to the famously difficult Meldrew House Maze. A signpost reading ~To the Mosaic~ points east."
+! 109280 (0x1aae0): "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitor's shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists."
+! 109516 (0x1abcc): "From here you can only climb back up to the plane tree."
+! 109554 (0x1abf2): "Made of terra-cotta and ceramic fragments, it has held together surprisingly well."
+! 109612 (0x1ac2c): "A clearing at the edge of the garden, surrounded by walls and the privet hedges of the maze. To the east is the plane tree, to the west an opening in the wall makes a garage entrance and to the south is a small vegetable garden."
+! 109768 (0x1acc8): "A recently-turned vegetable garden, using up a shady corner of the garden. The patch testifies more to good intentions than horticulture."
+! 109864 (0x1ad28): "From this corner, you can only go back to the clearing."
+! 109904 (0x1ad50): "A giant runner-bean plant leads up vertiginously into the sky from here."
+! 109954 (0x1ad82): "Only a runner-bean plant graces the vegetable garden."
+! 109992 (0x1ada8): "A modest brick garage, built into the garden walls. A big open doorway leads east onto the clearing."
+! 110062 (0x1adee): "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch."
+! 110136 (0x1ae38): "The garden roller sits here, its engine still running."
+! 110174 (0x1ae5e): "A big motorised garden roller is parked here."
+! 110206 (0x1ae7e): "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens."
+! 110298 (0x1aeda): "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands."
+! 110380 (0x1af2c): "In the shadows is a weed killer bottle."
+! 110408 (0x1af48): "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at the conservatory window, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches."
+! 110604 (0x1b00c): "No, don't go out on a limb."
+! 110626 (0x1b022): "A maze of green privet passages, all alike."
+! 110658 (0x1b042): "The privet hedges are in the way."
+! 110682 (0x1b05a): "This is an old stone patio in the heart of the garden maze. A missing flagstone offers an intriguing dark prospect beneath."
+! 110768 (0x1b0b0): "The privet hedges are in the way."
+! 110792 (0x1b0c8): "A dismal crypt, disused, full of leaves and rainswept. Light streams in from the square hole in the roof. There are no bones or urns on show."
+! 110892 (0x1b12c): "The mural stands slightly to one side, revealing a passage leading downward."
+! 110946 (0x1b162): "The north wall forms a giant bronze mural, which has stood the test of time."
+! 111000 (0x1b198): "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations."
+! 111194 (0x1b25a): "An eerie passage, running down from an opening at the south to murky depths in the north. The walls are jagged, uneven and decorated with bones."
+! 111294 (0x1b2be): "You really should try to be more awestruck, for this is Merlin's cave, the hub of Creation. Every visitor perceives this place differently, according to his or her own myths and beliefs. Your particular creed being science, it is an unimpressive collection of gauges, dials and machines. A single passage leads up and out to the south."
+! 111528 (0x1b3a8): "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print."
+! 111642 (0x1b41a): "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness."
+! 111778 (0x1b4a2): "The lower, on, position is labelled ~Determinism~. The upper, off, position is labelled ~Chance~."
+! 111852 (0x1b4ec): "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque."
+! 112066 (0x1b5c2): "The hillside is too steep."
+! 112086 (0x1b5d6): "~This viewpoint, one of the finest in the county, was laid down by Capability Meldrew, a well-known landscape gardener of his day. It was intended as one of the rewards of the garden maze, and was constructed c. 1808 after an earlier folly on the site collapsed.~"
+! 112274 (0x1b692): "A miniature plastic etching rests on the plaque."
+! 112308 (0x1b6b4): "What's the point of a drawing so small it might almost be a playing card?"
+! 112360 (0x1b6e8): "No larger than a playing card, it depicts the Folly which used to stand on the hillside outcrop."
+! 112428 (0x1b72c): "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across the river far below.^^Towering over you is a monstrously awful piece of architecture, a Folly. The freestanding tower has no appreciable purpose and no apparent entrance. The latter is just as well since it looks extremely unsafe."
+! 112724 (0x1b854): "The hillside is too steep."
+! 112744 (0x1b868): "Whatever you do, it'll always be a bean pole."
+! 112778 (0x1b88a): "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower."
+! 112842 (0x1b8ca): "the"
+! 112844 (0x1b8cc): "It has no horticultural application."
+! 112870 (0x1b8e6): "At the top of the beanstalk, in amongst the clouds. There is no safe way to go from here except back down, not surprisingly. A dangerous way might be to step out onto the clouds to the north, but even if this is a fairy-tale it would be taking a lot on trust."
+! 113050 (0x1b99a): "The clouds are too tenuous that way."
+! 113076 (0x1b9b4): "A square grid of plots of grass and seedbeds, all alike."
+! 113116 (0x1b9dc): "Capability Meldrew and his gang of workmen are delicately planting a sapling plane tree here. Your disturbance annoys them immensely and you are immediately arrested for vagrancy and theft. After a few months in prison, you are hauled up before the County Assizes and sentenced..."
+! 113312 (0x1baa0): "A dark hall, deserted after nightfall. Outside it is a stormy October night, and rain beats against the windowpanes. Shadows swoop and dive in the air like bats."
+! 113426 (0x1bb12): "There's no apparent way out of here."
+! 113452 (0x1bb2c): "There's nothing worthwhile in it."
+! 113476 (0x1bb44): "the"
+! 113478 (0x1bb46): "A stone castle on a hill."
+! 113496 (0x1bb58): "It leads nowhere."
+! 113510 (0x1bb66): "the"
+! 113512 (0x1bb68): "A single bright light in the darkness."
+! 113540 (0x1bb84): "Ugh, what a nasty bright light. Good thing you'll never go there."
+! 113588 (0x1bbb4): "the"
+! 113590 (0x1bbb6): "There's less to this card than meets the eye."
+! 113622 (0x1bbd6): "the"
+! 113624 (0x1bbd8): "Well, where might you have seen infinity before?"
+! 113658 (0x1bbfa): "the"
+! 113660 (0x1bbfc): "Andromeda chained to a rock on the sea-shore."
+! 113692 (0x1bc1c): "What an ugly girl!  Bet she's good for a laugh though."
+! 113732 (0x1bc44): "the"
+! 113734 (0x1bc46): "It leads nowhere."
+! 113748 (0x1bc54): "It shows a great many crystal-glass cups and glasses."
+! 113786 (0x1bc7a): "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective."
+! 113858 (0x1bcc2): "There's definitely no way out of here."
+! 113886 (0x1bcde): "an"
+! 113888 (0x1bce0): "Just a crook. And what's wrong with crooks, that's what I say."
+! 113936 (0x1bd10): "the"
+! 113938 (0x1bd12): "Perhaps you should look up ~husbandry~ in a dictionary."
+! 113978 (0x1bd3a): "The door to the south stands open."
+! 114002 (0x1bd52): "As you might expect, the cell door is closed."
+! 114034 (0x1bd72): "This is a city side street, but as if seen through the grey of despair. People stream by, some of whom you almost recognise, as if dead. The street runs east-west, and to the north is a doorway into a grubby tenement building."
+! 114192 (0x1be10): "A filthy wooden staircase leads up from here, off the street to the south. Peeling-away posters have been stuck up on top of each other on the walls, in such a way that you can only read the most recent."
+! 114332 (0x1be9c): "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish you had a dog called Toto, so as to be able to say ~Toto, I've got a feeling we're not in England any more.~"
+! 114458 (0x1bf1a): "What a very useful piece of paper. Pity there's writing on it."
+! 114504 (0x1bf48): "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table, on which is an electric bell push and a wicked Tarot pack."
+! 114680 (0x1bff8): "She has a bad cold, but nevertheless is known to be the wisest woman in Europe."
+! 114736 (0x1c030): "the"
+! 114738 (0x1c032): "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right."
+! 114792 (0x1c068): "It's vital you slide right along with this one."
+! 114826 (0x1c08a): "the"
+! 114828 (0x1c08c): "Don't worry, he won't slide down the cliff."
+! 114860 (0x1c0ac): "The Fool is a man looking directly ahead as he steps off the edge of a cliff."
+! 114914 (0x1c0e2): "the"
+! 114916 (0x1c0e4): "He's one of my colleagues now, of course."
+! 114946 (0x1c102): "Those are pearls that were his eyes..."
+! 114974 (0x1c11e): "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?"
+! 115034 (0x1c15a): "the"
+! 115036 (0x1c15c): "Bronze is the key here. Have you seen any other bronze anywhere?"
+! 115082 (0x1c18a): "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you."
+! 115182 (0x1c1ee): "People had no style in those days, before they invented paper tissues. I mean this tatty cloth wouldn't attract anyone, would it?"
+! 115274 (0x1c24a): "On one especially repellent mound is, of all things, a fine silk handkerchief."
+! 115330 (0x1c282): "Monogrammed J. A. P., but that's no great matter."
+! 115370 (0x1c2aa): "The side reads: PHLEBAS."
+! 115394 (0x1c2c2): "Moored close to the bank is a glass-roofed tourist boat."
+! 115434 (0x1c2ea): "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention."
+! 115522 (0x1c342): "A tourist river-boat, glass-roofed. You can climb out to the shore to the east. At the helm is a very strange man, at times almost a straw dummy, almost perhaps a hollow cut-out made of paper. He (or it) turns the wheel and casts his eyes to windward."
+! 115700 (0x1c3f4): "the"
+! 115702 (0x1c3f6): "Every now and then he whimpers."
+! 115724 (0x1c40c): "The hollow man mechanically says: ~Where to, guv'nor?  Me with my big mouth, I gone and done it again, calling you the guv'nor. I was down Margate Sands way once, had a bloke come on board, he thought any old destination would do, like a real place, like anywhere was real... We are the hollow men, I says, he didn't like that... Hurry up, please, it's time.~"
+! 115988 (0x1c514): "A dry, desolate waste of buildings borders here on a main road, so full of black-suited pedestrians off to work at banks that you can't force your way any further east. Once in a while a few of the bowler-hatted army step into the street and down some steps below a Metropolitan sign."
+! 116184 (0x1c5d8): "You can't force your way through the tide of bankers."
+! 116222 (0x1c5fe): "This is a vast underground station in great rectangular caverns, deep beneath the streets. You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't a ticket you're likely to stay that way."
+! 116382 (0x1c69e): "Back up the stairs for you. Call yourself a traveller..."
+! 116424 (0x1c6c8): "Behind a kiosk, a surly-looking man is selling guide books and maps."
+! 116472 (0x1c6f8): "His jumper is unstriped, and there are no onions around his neck. Nonetheless he has a rather Gallic, disgruntled look to him. Perhaps he's a former Socialist cabinet minister."
+! 116598 (0x1c776): "Burn it!  Burn it at once!"
+! 116618 (0x1c78a): "What a very useful map!  Now you can go on holiday."
+! 116656 (0x1c7b0): "Just the way you remember yours having been."
+! 116688 (0x1c7d0): "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight."
+! 116956 (0x1c8dc): "The crowd is lively and exciting, but also inconsiderate and bulky."
+! 117004 (0x1c90c): "It contains a timer-detonater, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out."
+! 117198 (0x1c9ce): "Taped loosely to the underside of the table is a complicated-looking bomb."
+! 117250 (0x1ca02): "Time flies down here, you know. Eternity simply breezes by."
+! 117294 (0x1ca2e): "Good photographic gear that. You didn't get it from a... well, a bomb, I hope."
+! 117354 (0x1ca6a): "This basement room is filled with crate after crate of glasses and cups, enough for an entire hotel, or restaurant perhaps. A little light comes in from an opaque skylight which is at street level outdoors. There is no way out of here, since the only door is shut tight."
+! 117540 (0x1cb24): "There's no apparent way out of here."
+! 117566 (0x1cb3e): "Through the square window in the door you can see a bar at which staff are serving, and a very crowded and lively cafe-restaurant beyond. The cabaret act has her back to you, and a considerable amount of her front to the diners."
+! 117724 (0x1cbdc): "A rough rocky sea shore below barely-climbable cliffs, against which an inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water."
+! 117854 (0x1cc5e): "The rocks are too dangerous. You'll have to scale the cliff."
+! 117898 (0x1cc8a): "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate."
+! 117970 (0x1ccd2): "Andromeda's"
+! 117980 (0x1ccdc): "A long clasp of amber, pefect for long straggly Greek hair."
+! 118022 (0x1cd06): "Mmm... it still has her perfume on it. Hehehehe. Bet she's dead now."
+! 118074 (0x1cd3a): "the"
+! 118076 (0x1cd3c): "Far, far too dangerous. The age of martyrs in the church is long gone, you know."
+! 118134 (0x1cd76): "On top of some exposed cliffs on the Mediterranean. A dangerous slither down leads on one side to the shore, all other ways down being even more hazardous. Atop the cliffs is the Pharos tower, a round stone pinnacle lighthouse, but there is no way in from here. A grassy walk leads east."
+! 118334 (0x1ce3e): "There's only dull grassland that way."
+! 118362 (0x1ce5a): "A long clifftop walk by the sea, from the lighthouse to the west to the village not far east. These fields are occupied by herds of hardy mountain goats, continually butting each other and frisking. To the south a path leads across sparse grassland to a great outgrowth of some kind."
+! 118556 (0x1cf1c): "There's only dull grassland that way."
+! 118584 (0x1cf38): "The rather sparse rolling landscape is dominated here by a massive, and suspiciously unnatural, wall of thorns, which forms a great ring about an area perhaps a hundred yards in diameter. There are goat pastures to the north."
+! 118740 (0x1cfd4): "There's only dull grassland that way."
+! 118768 (0x1cff0): "A ragged gap in the wall has been burnt out to the south."
+! 118808 (0x1d018): "The wall rustles and clashes its thorns like a beast alive."
+! 118850 (0x1d042): "It's hard to imagine what could possibly shift a wall like that."
+! 118896 (0x1d070): "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number of myths about gods getting cross about that sort of thing."
+! 119072 (0x1d120): "The wall of thorns hems you in."
+! 119094 (0x1d136): "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and featureless save for the entrance at the north. So much for all the rumours about hoards of treasure - it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along."
+! 119294 (0x1d1fe): "Unfortunately for you (since Zeus is watching it), the temple has only one entrance."
+! 119354 (0x1d23a): "one"
+! 119356 (0x1d23c): "This currency is only valid in ancient Greece. Where on earth have you been?"
+! 119410 (0x1d272): "A long walk along the cliffs from the lighthouse leads naturally here, just outside the Eraina Taverna, whose open doorway lies to the south."
+! 119508 (0x1d2d4): "There's only dull grassland that way."
+! 119536 (0x1d2f0): "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight."
+! 119682 (0x1d382): "The tavern entrance is to the north."
+! 119708 (0x1d39c): "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste."
+! 119780 (0x1d3e4): "Left untouched on one table is an Ekmek Special dessert."
+! 119820 (0x1d40c): "Better with chocolate ice cream, I think."
+! 119850 (0x1d42a): "Doesn't somebody else need this more than you?"
+! 119884 (0x1d44c): "Morose and unconvivial at the best of times. This is not the best of times."
+! 119938 (0x1d482): "Behind the bar, a depressed bartender polishes glasses."
+! 119978 (0x1d4aa): "You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Inconsiderately enough, the builders have provided no obvious way down from here. Still, there's a fine view out across the Mediterranean sea into the dim dawning sun. It's going to be a nice day, you can't help thinking.^^In the centre of the pinnacle is a marvellous device of polished bronze mirrors, its open end pointed out across the bay. There seems to be very little traffic at the moment, though a smudge on the horizon might possibly be a quinquireme."
+! 120350 (0x1d61e): "Being a lighthouse, this pinnacle is way up in the air. Point taken?"
+! 120400 (0x1d650): "This is a murky hillside cave, whose mouth opens to the northeast, though a tight squeeze might lead a little way west. Outside is a clear starry night. There is no traffic noise, and the air smells fresh."
+! 120544 (0x1d6e0): "Hanging up on an iron bracket is a flaming torch."
+! 120578 (0x1d702): "an"
+! 120580 (0x1d704): "It is a summary of the writings of a polemical monk called Gildas, and relates to events following the fall of the tyrant Vortigern at the turn of the fifth century A.D. After dark decades of pillage by Saxon mercenaries, Britain was reunited by Ambrosius Aurelianus and then defended at the Battle of Badon Hill, some time in the early years of the sixth century.^^This remarkable victory was of no religious significance, so Gildas does not dwell upon it. He tends only to mention bad kings and leaders, and then only to insult them. (Talking about Gildas is an excellent way to annoy an Anglo-Saxon historian.)  Nobody even knows where Badon Hill is any more, or anything else about it, although some students of Welsh poetry believe Ambrosius was the source of the legend of King Arthur."
+! 121138 (0x1d932): "An uncomfortable spur of rock on the hillside crags. The only natural access to this spot is a crevice in the hill to the east, but there is also a securely fastened rope hanging down into the darkness."
+! 121276 (0x1d9bc): "The crags are too precipitous."
+! 121298 (0x1d9d2): "You are hanging perilously on a hemp rope, suspended from an overhang of rock above, which drops down into the darkness of the valley. On the tracks below, patrols of men can be heard, and you feel instinctively that they are not friendly."
+! 121464 (0x1da78): "Up and down are it, quite frankly."
+! 121490 (0x1da92): "A single yellow daisy grows from a little tuft of grass on the crags."
+! 121538 (0x1dac2): "The geography is strangely familiar here. You are on a natural shelf on the hillside, overlooking the valley below. An all-but invisible cleft in the rock leads to a cave to the southwest, and the slope can safely be traversed to the east.^^It is a brightly moonlit night, cool as in late spring. There will be a sharp frost tomorrow. Down in the valley, a great cartwheel circle of camp fires illuminate some dark shapes, perhaps crude encampments. There is no other sign of civilisation."
+! 121880 (0x1dc18): "The hillside is too steep."
+! 121900 (0x1dc2c): "You stand beside a Roman villa, whose columns cast shadows of an Empire in the moonlight. It is thirty years since the fall of the West, and Britain is cut off from the continent, where soon even the existence of the Anglis will become a myth. This villa has survived the pestilence and devastation of the civil war, and although it must be a couple of centuries old, it is still standing. From here you could cut across the hillside east to west, or slip in through a none-too-secure timber door."
+! 122246 (0x1dd86): "A stream runs past the villa and cascades down the hillside here, to join the river far below, near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from your back garden. A rough ladder of wood lashed together with leather rests against the villa at the lowest point of the tiled roof."
+! 122474 (0x1de6a): "The shadowy cloisters of the villa's atrium. You disturb a fieldmouse, and hear the scratching of tiny claws on stone. Moonlight filters in from the central courtyard to the south, and a rotten timber door leads back north."
+! 122630 (0x1df06): "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole."
+! 122692 (0x1df44): "the"
+! 122694 (0x1df46): "The central well of the villa, ringed with columns. On the north side is a cloister and stone-linteled doorways lead east, south and west. The central floor area is commanded by a beautiful Roman mosaic, quartered into individual scenes, around the edges of which are vents from the hypocaust. There is no roof over the courtyard, and the atrium is lit by moonlight."
+! 122948 (0x1e044): "The four quarters show white-beards in the Forum, farmers in Italian fields, a military fortification and a grain ship unloading at Ossia."
+! 123046 (0x1e0a6): "Whatever function this spacious room once had, now it is evidently home to military men, for it is filled with crude armour, spears, rough blankets which are little more than animal hides. Fortunately for you the guards are absent."
+! 123206 (0x1e146): "A crude six-sided die made from animal bone."
+! 123238 (0x1e166): "a pair of"
+! 123244 (0x1e16c): "What was once the villa's triclinium, or kitchen, is now deserted and long since ransacked for metal. (Nobody lives on their own in this century, and this villa wouldn't be easy to defend.)  A doorway to the west gives onto the atrium."
+! 123410 (0x1e212): "The well has a hinged wooden cover. You can't tell by looking how deep it is."
+! 123466 (0x1e24a): "The hinged wooden cover is raised, revealing a circular well about a yard in diameter. It is very dark inside."
+! 123544 (0x1e298): "In one corner is a hinged wooden cover of some kind, which is shut."
+! 123592 (0x1e2c8): "You are clinging perilously to the walls of the deep and dangerous well. You can hardly see a thing, even with the aid of the torch, but curiously enough you feel warm air blowing across you from the west."
+! 123734 (0x1e356): "Too risky. There might not be anything that way, for all you know."
+! 123782 (0x1e386): "This very low almost-cellar underneath the atrium is a tiny access space for log fires which are kept going to provide a form of central heating for the villa. They are lit and going away nicely, interestingly. It isn't very warm by twentieth-century standards, but you have to admit it works. A tiny amount of light filters in from the vents in the roof, but nowhere near enough to see by. The only way in seems to be the way you came."
+! 124084 (0x1e4b4): "The log fires are hot, and anyway the only way out large enough for you is back east."
+! 124144 (0x1e4f0): "A well-flagstoned forecourt at the villa entrance, surrounded by lesser wooden buildings. Some of these are in use as stables, and figures of men slip between them. You hide from sight, not wishing to draw attention to yourself. Up on the hill, where Meldrew House will one day be built, men on horseback can be seen circling the access track. For a deserted villa, this is certainly well-guarded."
+! 124422 (0x1e606): "Well, here you are, imprisoned again. This time the cell is a tent of stitched animal hides, perhaps twenty feet in diameter, supported by a central pole. You have no idea where the entrance is, because you were blindfolded on the way in. There is at least a dim light from the camp-fires outside the tent."
+! 124636 (0x1e6dc): "This tent doesn't seem to have an exit, either."
+! 124670 (0x1e6fe): "the"
+! 124672 (0x1e700): "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours."
+! 124772 (0x1e764): "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him."
+! 124842 (0x1e7aa): "Luckily for you the tent, now collapsed, was hardly being watched at all, because all the attention is diverted to a ghastly ritual being carried out over beyond the camp-fires. But your luck cannot hold for long. You are so surrounded by hostile territory that you simply have nowhere to run or hide. Things are, not to put too fine a point on it, looking grim."
+! 125094 (0x1e8a6): "Far, far too risky."
+! 125110 (0x1e8b6): "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be made out to the east, on the other side of an almost-extinguished campfire of hot coals."
+! 125238 (0x1e936): "You stand beside the eerie dolmen, surrounded by the terrible noises and incantations of a druidic rite."
+! 125310 (0x1e97e): "Far, far too risky."
+! 125326 (0x1e98e): "Resting on top of the dolmen is a polished blue stone."
+! 125364 (0x1e9b4): "Hell, you always imagined, would contain fiery, sulphurous pits and a great many gentlemen with forked tails. You were right about the last part. A demon is sitting behind a flame-proofed desk at the bottom of the stairs. There are some disconcerting screams from further away, but nothing to worry about. Not in this life, anyway."
+! 125596 (0x1ea9c): "That direction is not for the living."
+! 125622 (0x1eab6): "If you were to cast a film of your adventures so far, you would hire Donald Sutherland to play this gentleman."
+! 125700 (0x1eb04): "Heaven, you always imagined, would be a world of marble pillars, fluffy clouds, harps and angelic ladies with serene expressions. You were right about the last part. An angel is sitting here behind some new office furniture, next to a blue Tourist Information sign. A bridge of cloud extends south across the sky to the beanstalk. There is some choral singing going on somewhere, but not loud enough for you to hear properly. Not in this life, anyway."
+! 126016 (0x1ec40): "That direction is not for the living."
+! 126042 (0x1ec5a): "If you were to cast a film of your adventures so far, you would hire Dame Judi Dench to play this lady."
+! 126116 (0x1eca4): "a cake of"
+! 126122 (0x1ecaa): "That's the spirit, keep it up!"
+! 126146 (0x1ecc2): "Really!  How disgraceful!"
+! 126166 (0x1ecd6): "~For foulmouths everywhere~."
+! 126188 (0x1ecec): "The wireless fills the air with Jemima's favourite station, ~Mild-n-Breezy FM~, about which the least said the better."
