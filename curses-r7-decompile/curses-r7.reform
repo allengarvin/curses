@@ -370,7 +370,7 @@ GlobalArray 38 BombWires:array(4*object)
 Global 39 CouncilCnt:int
 Global 40 KnowLanguages:bool
 Global 41 debug_deterministic_transportation:bool
-Global 42 transcript_mode:int
+Global 42 transcript_mode:bool
 Global 43 debug_mode:bool
 Global 44 lookmode:int
 Global 45 hollowman_cnt:int
@@ -645,15 +645,15 @@ Action 96 JumpOver
 Action 97 Xyzzy
 
 ! Cheat/debug commands
-Action 98 XAllow ! 'xallow' special
-Action 99 XCheat ! 'xcheat'
-Action 100 XAttic  ! 'xattic' special
-Action 101 XTravel ! 'xtrave'
-Action 102 XMaster ! 'xmaste'
-Action 103 XLanguageLearn
-Action 104 XDevilHint
-Action 105 XAngelHint
-Action 106 XDeterministic
+Action 98 Xallow ! 'xallow' special
+Action 99 Xcheat ! 'xcheat'
+Action 100 Xattic  ! 'xattic' special
+Action 101 Xtravel ! 'xtrave'
+Action 102 Xmaster ! 'xmaste'
+Action 103 XlanguageLearn
+Action 104 XdevilHint
+Action 105 XangelHint
+Action 106 Xdeterministic
 
 
 Routine 0x7a07 LeaveAttic
@@ -717,16 +717,16 @@ Routine 0x9c8a CloseSub
 Routine 0x9cf4 DisrobeSub
 Routine 0x9d26 WearSub
 Routine 0x9d7e HandleSub i:int obj:object
-Routine 0x9e26 routine_9e26
-Routine 0x9e90 YesSub
+Routine 0x9e26 PlacesSub
+Routine 0x9e90 YesNoSub
 Routine 0x9ea8 XyzzySub
 Routine 0x9ee6 BurnSub
 Routine 0x9f08 PraySub
 Routine 0x9f4a WakeSub
-Routine 0x9f8e WakeUpSub
-Routine 0x9fc4 routine_9fc4
-Routine 0xa06e routine_a06e
-Routine 0xa08c SmellSub
+Routine 0x9f8e WakeOtherSub
+Routine 0x9fc4 KissSub
+Routine 0xa06e ThinkSub
+Routine 0xa08c SmellSub 
 Routine 0xa0a4 ListenSub
 Routine 0xa0ba TasteSub
 Routine 0xa0d2 FeelSub
@@ -749,12 +749,12 @@ Routine 0xa72c BlowSub
 Routine 0xa7b0 CleanSub
 Routine 0xa7ea SetSub
 Routine 0xa858 EatSub
-Routine 0xa8b6 routine_a8b6
+Routine 0xa8b6 WaveHandsSub
 Routine 0xa8cc WaveSub o:object
-Routine 0xaa60 StrikeWand env:object
-Routine 0xabb2 PointWand env:object local2:int
-Routine 0xac5c routine_ac5c
-Routine 0xacfc routine_acfc
+Routine 0xaa60 StrikeSub env:object
+Routine 0xabb2 PointSub env:object par:object
+Routine 0xac5c TearSub
+Routine 0xacfc PullDownSub
 Routine 0xad16 PullSub
 Routine 0xae0a PushSub who:object
 Routine 0xaf9a PushDir o:object
@@ -772,22 +772,22 @@ Routine 0xc67c CDefart
 Routine 0xc68c ThrowAtSub
 Routine 0xc806 DemonHint hints_left:int
 Routine 0xc8ae AngelHint hints_left:int
-Routine 0xc956 AnswerQuestion
+Routine 0xc956 AnswerSub o:object i:int j:int
 Routine 0xcfb4 BuySub
 Routine 0xd01e routine_d01e
 Routine 0xd04c SingSub
 Routine 0xd0f0 ClimbSub
 Routine 0xd122 WaitSub
 Routine 0xd12e routine_d12e
-Routine 0xd150 HintSub
+Routine 0xd150 HintsSub
 Routine 0xd196 HelpSub
 Routine 0xd254 HelpSpecialSub word:dictword
 Routine 0xe4a8 XDebugSub
 Routine 0xe4c6 XCheatSub obj:object
 Routine 0xe55e SOMETHIMGSub
 Routine 0xe5a0 routine_e5a0
-Routine 0xe5bc DebugXTravelSub
-Routine 0xe5d0 routine_e5d0
+Routine 0xe5bc XtravelSub
+Routine 0xe5d0 XatticSub
 Routine 0xe5de SleepSub env:object sib:object
 Routine 0xe7c8 OneTimeBonusScore unused
 Routine 0xe822 DealCard:object 
@@ -835,7 +835,7 @@ Routine 0x103de IronKeyBefore o:object
 Routine 0x10494 PottingRoomAfter o:object
 Routine 0x104d2 GlovesBefore unused
 Routine 0x10580 CalendarBefore i
-Routine 0x10686 daiy_chain_after obj:object
+Routine 0x10686 daisy_chain_after obj:object
 Routine 0x106e6 DescFlower n:int
 Routine 0x107de CellBefore
 Routine 0x10828 PoetryBefore
