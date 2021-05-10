@@ -329,7 +329,7 @@ Property 25 devil_hint:string
 Property 26 angel_hint:string
 
 Global 0 location:object
-Global 1 global1:?
+Global 1 score:int
 Global 2 turns:int
 Global 3 player:object
 Global 4 global4:?
@@ -348,26 +348,26 @@ Global 16 verb:action
 Global 17 noun:object
 Global 18 second:object
 Global 19 global19:?
-Global 20 global20:?
-Global 21 global21:?
+Global 20 noun_word:dictword
+Global 21 noun_number:int
 Global 22 game_section:game_area
 GlobalArray 23 card_deck:array(7*object)
 Global 24 card_ptr:int
 Global 25 global25:?
-Global 26 global26:?
-Global 27 global27:?
+Global 26 MazeX:int
+Global 27 MazyY:int
 Global 28 global28:?
 Global 29 global29:?
 Global 30 global30:?
 Global 31 Mouse_x:int
 Global 32 Mouse_y:int
 Global 33 BombTicking:bool
-Global 34 global34:?
+Global 34 task_scores:?
 Global 35 score_array2:?
-Global 36 global36:?
-Global 37 global37:?
-Global 38 global38:?
-Global 39 global39:?
+Global 36 things_score:int
+Global 37 places_score:int
+Global 38 rod_score:int
+Global 39 good_try_bonus:bool
 GlobalArray 40 BombWires:array(4*object)
 Global 41 global41:?
 Global 42 global42:?
@@ -375,13 +375,13 @@ Global 43 CouncilCnt:int
 Global 44 KnowLanguages:bool
 Global 45 global45:?
 Global 46 transcript_mode:bool
-Global 47 global47:?
+Global 47 debug_mode:bool
 Global 48 lookmode:int
-Global 49 global49:?
+Global 49 hollowman_cnt:int
 Global 50 global50:?
-Global 51 global51:?
+Global 51 dial_warning:bool
 Global 52 global52:?
-Global 53 global53:?
+Global 53 reverse_plight:bool
 Global 54 global54:?
 Global 55 global55:?
 Global 56 global56:?
@@ -569,6 +569,7 @@ Global 237 global237:?
 Global 238 global238:?
 Global 239 global239:?
 
+Array 12088 verb_routine_array:array(114*routine)
 Action 0    Exit
 Action 1    Inv
 Action 2    Take
@@ -848,18 +849,18 @@ Routine  0x79fa StartTimer o:object i:int
 Routine  0x7a0a CountDown o:object i:int
 Routine  0x7a1a TorchTimer o:object i:int
 Routine  0x7a6c JoshuaDaemon who:object num:int
-Routine  0x7ca4 HasLightSource i:object
+Routine  0x7ca4 HasLightSource:bool i:object
 Routine  0x7cda Achieved ndx:int i:int
-Routine  0x7d04 MouseMove o:object rm:object var3 x1 y1
+Routine  0x7d04 MouseMove o:object rm:object where:object x1 y1
 Routine  0x803e ScoreSub score_var:int
 Routine  0x83ba PadInteger var1 var2
-Routine  0x83fa PrintTaskName task_number final_score:int
+Routine  0x83fa PrintTaskName task_number:int final_score:int
 Routine  0x894e routine35150 var1
 Routine  0x8960 routine35168 var1
 Routine  0x89c0 routine35264 var1 var2 var3 var4
 Routine  0x8a3a routine35386 var1 var2 var3 var4
 Routine  0x9100 routine37120 var1
-Routine  0x9d60 routine40288 var1 var2 var3 var4 var5 var6 var7
+Routine  0x9d60 DescribeObj obj:object n local3 local4 local5 local6 local7
 Routine  0xa90c LegachTransport var1 r:object var3
 Routine  0xaf5a routine44890 var1 var2
 Routine  0xaf7e routine44926 
@@ -909,51 +910,51 @@ Routine 0x11a50 FlashCheck obj:object sib:object
 Routine 0x11b04 FlashInsert o:object
 Routine 0x11b64 TorchAfter o:object
 Routine 0x11d4c HangingCordBefore
-Routine 0x11d9c GlassBallBefore var1
+Routine 0x11d9c GlassBallBefore i:int
 Routine 0x11f38 MetalDoorAfter
 Routine 0x11f5a CoalBunkerAfter
-Routine 0x11f7c PulleyBefore var1 var2
+Routine 0x11f7c PulleyBefore env:object dst:object
 Routine 0x12088 WindowsBefore
-Routine 0x120d8 routine73944 
+Routine 0x120d8 MedicineBefore
 Routine 0x121c2 TrapdoorAfter
 Routine 0x1223a DemijohnBefore
-Routine 0x12278 routine74360 var1
-Routine 0x122c0 IronKeyBefore var1
-Routine 0x12362 PottingRoomAfter var1
+Routine 0x12278 ParcelBefore o:object
+Routine 0x122c0 IronKeyBefore o:object
+Routine 0x12362 PottingRoomAfter o:object
 Routine 0x1239e GlovesBefore
-Routine 0x1243a CalendarBefore var1
-Routine 0x12534 daiy_chain_after var1
-Routine 0x1258e routine75150 var1
+Routine 0x1243a CalendarBefore i
+Routine 0x12534 daisy_chain_after obj:object
+Routine 0x1258e DescFlower n:int
 Routine 0x1267c CellBefore 
 Routine 0x126be SteelWrenchAfter
-Routine 0x126da routine75482 
-Routine 0x12784 routine75652 
+Routine 0x126da UseWrench
+Routine 0x12784 BreakPipes
 Routine 0x12832 PoetryBefore var1
 Routine 0x12926 NovelBefore
-Routine 0x12960 routine76128 
-Routine 0x12a40 WheelBefore var1
-Routine 0x12a4a Wheel2Before var1
-Routine 0x12b0a routine76554 
+Routine 0x12960 DialBefore
+Routine 0x12a40 WheelBefore r
+Routine 0x12a4a Wheel2Before obj:object
+Routine 0x12b0a ChanceSwitchAfter
 Routine 0x12b60 RadioAfter
-Routine 0x12b92 routine76690 var1 var2
-Routine 0x12bf8 routine76792 var1 var2 var3
-Routine 0x12c4a routine76874 var1
-Routine 0x12ce2 SouvenirRoomBefore var1
-Routine 0x12d7a SouvenirRoomAfter var1
-Routine 0x12e4c routine77388 
-Routine 0x12eb4 routine77492 var1
+Routine 0x12b92 routine76690 o:object dst:object 
+Routine 0x12bf8 DisplayProjector o:object dto:object wall:object
+Routine 0x12c4a ProjectorAfter o:object
+Routine 0x12ce2 SouvenirRoomBefore o:object
+Routine 0x12d7a SouvenirRoomAfter o:object
+Routine 0x12e4c DisusedObservatoryAfter
+Routine 0x12eb4 ProjectorRefraction o:object
 Routine 0x12fec ConsultingRoomBefore
 Routine 0x130f6 PosterBefore
-Routine 0x13158 routine78168 
+Routine 0x13158 MascotAfter
 Routine 0x13242 MaskAfter
 Routine 0x13290 PassageBefore
-Routine 0x132e4 routine78564 var1 var2 var3
-Routine 0x13324 routine78628 var1 var2 var3
-Routine 0x13364 routine78692 var1 var2 var3
-Routine 0x133b6 routine78774 var1 var2 var3
-Routine 0x133ce routine78798 var1 var2 var3
-Routine 0x133ee routine78830 var1 var2 var3
-Routine 0x13464 FamilyTreeBefore var1
+Routine 0x132e4 MazeBoundary x:int y:int ndx:int
+Routine 0x13324 MouseMove2 x:int y:int pos:int
+Routine 0x13364 SeedText x:int y:int ndx:int
+Routine 0x133b6 SeedBounary x:int y:int ndx:int
+Routine 0x133ce OldMazeBoundary x:int y:int ndx:int
+Routine 0x133ee MazeLayoutBefore y:int x:int wallp:bool
+Routine 0x13464 FamilyTreeBefore env:object
 Routine 0x1357a MazeBefore var1 var2 var3
 Routine 0x136b0 MazeFoundationsBefore var1 var2
 Routine 0x13782 PatioBefore var1
@@ -1001,9 +1002,9 @@ Routine 0x151a0 routine86432 var1
 Routine 0x1595a routine88410 var1
 Routine 0x15d2a routine89386 var1 var2
 Routine 0x15f1e routine89886 var1 var2
-Routine 0x15ffa routine90106 var1 var2
-Routine 0x160ca routine90314 var1 var2
-Routine 0x16198 routine90520 var1 var2 var3
+Routine 0x15ffa DemonQuestion var1 var2
+Routine 0x160ca AngelQuestion var1 var2
+Routine 0x16198 routine90520 o:object str:string var3
 Routine 0x161f2 routine90610 var1 var2
 Routine 0x16650 routine91728 var1
 Routine 0x1703c routine94268 var1 var2 var3 var4 var5 var6 var7

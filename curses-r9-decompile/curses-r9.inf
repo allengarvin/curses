@@ -712,13 +712,13 @@ Object -> scratched_cupboard "scratched cupboard"
 
 Object -> -> gift_wrapped_parcel "gift-wrapped parcel"	
   with	name 'gift' 'parcel',
-	before routine74360,
+	before ParcelBefore,
 	devil_hint "Shame the wrapping paper won't come off.",
   has	;
 
 Object -> -> medicine_bottle "   "	
   with	name 'medicine' 'bottle',
-	before routine73944,
+	before MedicineBefore,
 	devil_hint "These bottles can even survive long drops, so perhaps you should try fire.",
   has	container openable locked;
 
@@ -786,7 +786,7 @@ Object -> flash "photographer's flash"
 Object Disused_Observatory "Disused Observatory"	
   with	name 'mural' 'zodiac' 'beam' 'stand',
 	description "Once upon a time, this small circular room had a dome and a telescope, but it leaked dreadfully and so now there's a proper roof. A circular mural painted with the signs of the zodiac is interrupted by a short flight of stairs leading up to the north, a west doorway to a shadowy alcove and the continuation of the stairs down and to the south.",
-	after routine77388,
+	after DisusedObservatoryAfter,
 	n_to Over_the_East_Wing,
 	s_to Souvenirs_Room,
 	w_to Library_Storage,
@@ -835,7 +835,7 @@ Object Souvenirs_Room "Souvenirs Room"
 Object -> slide_projector "slide projector"	
   with	name 'slide' 'projector' 'switch' 'dial',
 	description "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There is also a little dial on the back, perhaps for the focus.",
-	after routine76874,
+	after ProjectorAfter,
   has	container open scenery switchable;
 
 Object -> south_wall "south wall"	
@@ -1055,9 +1055,9 @@ Object Old_Winery "Old Winery"
 	number 0,
   has	;
 
-Object -> demijohn "labelled glass demijohn"	
-  with	name 'demijohn' 'glass' 'bottle' 'label',
-	description "Faded ink on the label reads: Elderberry '63.",
+Object -> demijohn "labelXXXled glass demijohn"	
+  with	name 'demijohn' 'glass' 'bottle' 'labelXXX',
+	description "Faded ink on the labelXXX reads: Elderberry '63.",
 	before DemijohnBefore,
   has	container openable static;
 
@@ -1293,7 +1293,7 @@ Object -> Jemima "Jemima"
 
 Object daisy_chain "daisy chain"	
   with	name 'daisy' 'chain' 'daisychain',
-	before daiy_chain_after,
+	before daisy_chain_after,
 	number 11,
 	devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has	clothing;
@@ -1320,7 +1320,7 @@ Object -> heavy_iron_mascot "heavy iron mascot"
   with	name 'heavy' 'iron' 'mascot',
 	description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
 	initial "On the table is a heavy iron mascot of some kind.",
-	after routine78168,
+	after MascotAfter,
 	number 0,
 	devil_hint "An absolute essential.",
   has	;
@@ -1421,7 +1421,7 @@ Object -> garden_roller "garden roller"
 
 Object -> weed_killer "weed killer bottle"	
   with	name 'weed' 'killer' 'bottle',
-	description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
+	description "If squeezed, it squirts weed killer over the ground. There are many warning labelXXXs about getting it on one's hands.",
 	initial "In the shadows is a weed killer bottle.",
 	angel_hint "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens.",
   has	;
@@ -1534,8 +1534,8 @@ Object big_electricians_switch "Universe Maintenance Room"
 
 Object -> Viewpoint_Ledge "big electrician's switch"	
   with	name 'big' 'electric' 'switch',
-	description "The lower, on, position is labelled ~Determinism~. The upper, off, position is labelled ~Chance~.",
-	after routine76554,
+	description "The lower, on, position is labelXXXled ~Determinism~. The upper, off, position is labelled ~Chance~.",
+	after ChanceSwitchAfter,
   has	scenery static switchable on;
 
 Object plaque "Viewpoint Ledge"	
@@ -2311,7 +2311,7 @@ Constant CHECKMATED = 9;
 ! Globals
 
 Global location = Attic;
-Global global1;
+Global score;
 Global turns = 1;
 Global player = yourself;
 Global global4;
@@ -2330,38 +2330,38 @@ Global verb;
 Global noun;
 Global second;
 Global global19 = 9964[?];
-Global global20;
-Global global21;
+Global noun_word;
+Global noun_number;
 Global game_section = MODERN;
 Global card_ptr;
 Global global25 = 10036[?];
-Global global26 = 4[e_obj?];
-Global global27 = 6[ne_obj?];
+Global MazeX = 4;
+Global MazyY = 6;
 Global global28 = 100[hole_in_the_wall?];
 Global global29 = 100[hole_in_the_wall?];
 Global global30 = 10099[?];
 Global Mouse_x = 8;
 Global Mouse_y = 3;
 Global BombTicking;
-Global global34 = 10162[?];
+Global task_scores = 10162[?];
 Global score_array2 = 10185[?];
-Global global36;
-Global global37;
-Global global38;
-Global global39;
+Global things_score;
+Global places_score;
+Global rod_score;
+Global good_try_bonus;
 Global global41 = 10213[?];
 Global global42 = 10228[?];
 Global CouncilCnt;
 Global KnowLanguages;
 Global global45;
 Global transcript_mode;
-Global global47;
+Global debug_mode;
 Global lookmode = 1;
-Global global49;
+Global hollowman_cnt;
 Global global50;
-Global global51;
+Global dial_warning;
 Global global52;
-Global global53;
+Global reverse_plight;
 Global global54;
 Global global55;
 Global global56;
@@ -2565,6 +2565,122 @@ Array BombWires -->	! 10208 (0x27e0)
     se_obj
     invalidObj528
 ;
+Array verb_routine_array -->	! 12088 (0x2f38)
+    ExitSub
+    InvSub
+    TakeSub
+    RemoveSub
+    EnterSub
+    GetOffSub
+    WearSub
+    InsertSub
+    DropSub
+    EmptySub
+    EmptyTSub
+    TransferSub
+    ThrowSub
+    GiveRSub
+    GiveSub
+    ShowRSub
+    ShowSub
+    VagueGoSub
+    GoSub
+    ScoreSub
+    FullScoreSub
+    LookSub
+    ExamineSub
+    SearchSub
+    LookUnderSub
+    ConsultSub
+    ConsultInSub
+    SuperbriefSub
+    VerboseSub
+    BriefSub
+    OpenSub
+    UnlockSub
+    CloseSub
+    LieSub
+    LieDownSub
+    QuitSub
+    RestoreSub
+    RestartSub
+    SaveSub
+    VerifySub
+    ScriptSub
+    UnscriptSub
+    YesNoSub
+    SorrySub
+    StrongSub
+    MildSub
+    WashSub
+    ObjectsSub
+    PlacesSub
+    WaveHandsSub
+    WaveSub
+    SetSub
+    DigSub
+    PullSub
+    PullDownSub
+    PushSub
+    PushDirSub
+    TurnSub
+    SwitchOnSub
+    SwitchOffSub
+    LockSub
+    AttackSub
+    TearSub
+    WaitSub
+    HintsSub
+    HelpSub
+    HelpSpecialSub
+    AnswerSub
+    AskSub
+    EatSub
+    SleepSub
+    StrikeSub
+    PointSub
+    ClimbSub
+    RamSub
+    UnconditionalQuitSub
+    BuySub
+    SqueezeSub
+    SwimSub
+    SwingSub
+    BlowSub
+    PraySub
+    WakeSub
+    WakeOtherSub
+    KissSub
+    ThinkSub
+    SmellSub
+    ListenSub
+    DiagnoseSub
+    TasteSub
+    FeelSub
+    TouchSub
+    CleanSub
+    TieSub
+    BurnSub
+    DrinkSub
+    FillSub
+    CutSub
+    JumpSub
+    JumpOverSub
+    LeanSub
+    PropWithSub
+    SlideSub
+    XyzzySub
+    ShantySub
+    LegachSub
+    XallowSub
+    XcheatSub
+    XatticSub
+    XtravelSub
+    XmasterSub
+    XasncSub
+    XDemonHintSub
+    XAngelHintSub
+;
 
 ! Routines
 
@@ -2575,15 +2691,15 @@ Array BombWires -->	! 10208 (0x27e0)
     @pop;
     InsertCardIntoDeck(Death_card);	! not popped
     @pop;
-    routine90520(37[medicine_bottle?],63817["guarante..."?]);	! not popped
+    routine90520(medicine_bottle,"guaranteed-unbreakable medicine bottle with a child-proof lock");	! not popped
     @pop;
     routine45130();	! not popped
     @pop;
-    routine90520(5[w_obj?],63837["dark hol..."?]);	! not popped
+    routine90520(w_obj,"dark hole");	! not popped
     @pop;
-    routine90520(8[se_obj?],63840["There se..."?]);	! not popped
+    routine90520(se_obj,"There seems to be very little traffic at the moment, though a smudge on the horizon might possibly be a quinquireme.");	! not popped
     @pop;
-    routine90520(9[sw_obj?],63875["The sun ..."?]);	! not popped
+    routine90520(sw_obj,"The sun is rising and the sky is clear blue over the Mediterranean: it's going to be a beautiful day. ");	! not popped
     @pop;
     routine45254();	! not popped
     @pop;
@@ -2600,15 +2716,15 @@ Array BombWires -->	! 10208 (0x27e0)
 [ PlayTheGame i j k l local5 ;	
     i = 1[?];
     --i;
-  .label18056;
+  .labelXXX;
     if (i < 100) {
         ++i;
         j = random(i);
-        jump label18056;
+        jump labelXXX;
     }
-  .label18070;
+  .labelXXX;
     if (deadflag == 0) {
-      .label18075;
+      .labelXXX;
         noun = nothing;
         second = nothing;
         verb = ##Exit;
@@ -2686,7 +2802,7 @@ Array BombWires -->	! 10208 (0x27e0)
             if (verb == ##Places) {
                 metaverb = true;
             }
-            if (verb >= 107 && global47 == 0) {
+            if (verb >= 107 && debug_mode == false) {
                 print "You can't do that.^";
                 metaverb = true;
             } else {
@@ -2705,7 +2821,7 @@ Array BombWires -->	! 10208 (0x27e0)
                         ! no code
                     } else {
                         print "You seem unable to concentrate sufficiently.^";
-                        jump label18592;
+                        jump labelXXX;
                     }
                 }
                 if (local5 == 0) {
@@ -2731,24 +2847,24 @@ Array BombWires -->	! 10208 (0x27e0)
                         j = global19->0;
                         if (j == 0) {
                             print "Nothing to do!^";
-                            jump label18075;
+                            jump labelXXX;
                         }
                         k = 1[?];
                         --k;
-                      .label18564;
+                      .labelXXX;
                         if (k < j) {
                             ++k;
                             l = global19->k;
                             print (name) l, ": ";
                             RunRoutines(l,second,verb);	! not popped
                             @pop;
-                            jump label18564;
+                            jump labelXXX;
                         }
                     }
                 }
             }
         }
-      .label18592;
+      .labelXXX;
         if (notheld_mode == true) {
             metaverb = true;
         }
@@ -2756,7 +2872,7 @@ Array BombWires -->	! 10208 (0x27e0)
             Time();	! not popped
             @pop;
         }
-        jump label18070;
+        jump labelXXX;
     }
     print "^^    ***";
     if (deadflag == DIED) {
@@ -2789,13 +2905,13 @@ Array BombWires -->	! 10208 (0x27e0)
     print "***^^^";
     ScoreSub();	! not popped
     @pop;
-  .label18865;
+  .labelXXX;
     print "^Would you like to RESTART, RESTORE a saved game, give the FULL score for that game";
     if (deadflag == WON) {
         print ", see some suggestions for AMUSING things to do";
     }
     print " or QUIT?^";
-  .label18983;
+  .labelXXX;
     print '?', ' ';
     @sread global10 global11;
     i = global11-->1;
@@ -2811,31 +2927,31 @@ Array BombWires -->	! 10208 (0x27e0)
     if (i == 16112['restore'?]) {
         RestoreSub();	! not popped
         @pop;
-        jump label18865;
+        jump labelXXX;
     }
     if (i == 14299['fullscore'?]) {
         FullScoreSub();	! not popped
         @pop;
-        jump label18865;
+        jump labelXXX;
     }
     if (deadflag == WON && i == 12703['amusin//p'?]) {
         new_line;
         routine91728();	! not popped
         @pop;
-        jump label18865;
+        jump labelXXX;
     }
     if (i == 14292['full'?]) {
         new_line;
         FullScoreSub();	! not popped
         @pop;
-        jump label18865;
+        jump labelXXX;
     }
     print "Please answer RESTART, RESTORE, FULL";
     if (deadflag == WON) {
         print ", AMUSING";
     }
     print " or QUIT.^";
-    jump label18983;
+    jump labelXXX;
 ];
 
 [ RunRoutines n s v ;	
@@ -2858,7 +2974,7 @@ Array BombWires -->	! 10208 (0x27e0)
             }
         }
     }
-    s = invalidArray12088-->v;
+    s = verb_routine_array-->v;
     s();	! not popped
     @pop;
     rtrue;
@@ -2905,11 +3021,11 @@ Array BombWires -->	! 10208 (0x27e0)
     print "CURSES", "^An Interactive Diversion^Copyright (c) 1993 by Graham Nelson. New players should type ~help~.^Release ", 0-->1 & 1023, " / Serial number ";
     i = 18;
     --i;
-  .label19482;
+  .labelXXX;
     if (i < 23) {
         ++i;
         print (char) 0->i;
-        jump label19482;
+        jump labelXXX;
     }
     print "  (Compiled by Inform v", "784", ")^";
     rtrue;
@@ -2955,11 +3071,11 @@ Array BombWires -->	! 10208 (0x27e0)
         }
     }
     i = 24[electric_torch?];
-  .label20364;
+  .labelXXX;
     if (i ~= 0) {
         j = i;
         i = parent(i);
-        jump label20364;
+        jump labelXXX;
     }
     if (j == location && electric_torch has light) {
         i = 24[electric_torch?];
@@ -2972,8 +3088,8 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (0 ~= ResetTimer(Old_Winery)) {
         print "^Sorry. Thinking about it again, the score only gets in a muddle this way, so the bonus points had better go after all.^";
-        global39 = 0;
-        global1 = global1 - 5;
+        good_try_bonus = false;
+        score = score - 5;
     }
     if (0 ~= ResetTimer(bean_pole) && game_section == GARDEN_PAST) {
         print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come running to investigate. In the ensuing confusion, they come across you and, of course, blame you for their incompetent masonry. You are hauled up before the county assizes...^";
@@ -3459,7 +3575,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 print "^A voice, which can just be heard through the vent, says ";
                 if (KnowLanguages == false) {
                     print "something in Anglo-Saxon or Celtic (hard to say which).^";
-                    jump label28007;
+                    jump labelXXX;
                 }
                 print "~Welcome, great masters. We are convened in secret conclave to decide the fate of Britain. Lament, for the old ways are passing!  There will be a dark age, a collapse into many monarchies, and any man who can hold a town will call himself King and heir to Vortigern.~^";
             }
@@ -3467,7 +3583,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 print "^A younger, more impatient voice, says ";
                 if (KnowLanguages == false) {
                     print "something else.^";
-                    jump label28007;
+                    jump labelXXX;
                 }
                 print "~This is an opportunity!  We must be the power behind the thrones, we will in secret unite and be the true force of the land...~^";
             }
@@ -3475,7 +3591,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 print "^There is cynical laughter for a moment, and a third voice interjects ";
                 if (KnowLanguages == false) {
                     print "something.^";
-                    jump label28007;
+                    jump labelXXX;
                 }
                 print "~And who will lead this, this unity?  We take all sides and none, you know that. There are potent druids in the tents of each general down there in the rabble. They'd kill each other without hesitation on the battlefield.~^";
             }
@@ -3483,7 +3599,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 print "^The first voice speaks once more. ";
                 if (KnowLanguages == false) {
                     new_line;
-                    jump label28007;
+                    jump labelXXX;
                 }
                 print "~Far worse is to come. The jumped-up kings and their new men will no longer believe in the ancient powers. Already I can feel the druidic magic weakening away, and we are perilously close to the nexus now. In the valleys below, armies wait to fight the decisive battle. Whichever side wins, they will no longer need us. In a matter of hours, the power will be broken forever.~^";
             }
@@ -3491,7 +3607,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 print "^After a sombre silence, a much older voice says ";
                 if (KnowLanguages == false) {
                     print "something wise. It really is a pity you can't understand them.^";
-                    jump label28007;
+                    jump labelXXX;
                 }
                 print "~You did right to call us together. There is a path prepared for us, but the sacrifice will be terrible. We must concentrate all the remaining druidical energy into this sacred hill, that it may last through all time, and we must ensure that druids live on this site forever and keep the faith.~^";
             }
@@ -3499,7 +3615,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 print "^The younger voice speaks again. ";
                 if (KnowLanguages == false) {
                     new_line;
-                    jump label28007;
+                    jump labelXXX;
                 }
                 print "~For now, yes, for a century or two, yes, but what then?  They will forget the old ways, they will no longer truly be druids.~^";
             }
@@ -3512,7 +3628,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 }
             }
         }
-      .label28007;
+      .labelXXX;
         if (CouncilCnt ~= 0) {
             ++CouncilCnt;
         }
@@ -3560,10 +3676,10 @@ Array BombWires -->	! 10208 (0x27e0)
             BombTicking = false;
             i = 192[timer_detonater?];
             j = parent(i);
-          .label28864;
+          .labelXXX;
             if (nothing ~= parent(i)) {
                 i = parent(i);
-                jump label28864;
+                jump labelXXX;
             }
             if (location == i) {
                 print "^You hear a sharp click!^";
@@ -3575,11 +3691,11 @@ Array BombWires -->	! 10208 (0x27e0)
                     }
                     if (k == 0) {
                         print "But the flash does nothing.^";
-                        jump label30431;
+                        jump labelXXX;
                     }
                     if (k ~= 81[nasty_battery?]) {
                         print "And the flash gives a pathetically small flash of light.^";
-                        jump label30431;
+                        jump labelXXX;
                     }
                     print "The flash suddenly gives an enormous magnesium-flare flash, almost blinding in its intensity. Your eyes take a little while to adjust. ";
                     if (location == Ruined_Castle_Cafe) {
@@ -3594,25 +3710,25 @@ Array BombWires -->	! 10208 (0x27e0)
                         @pop;
                         location = Family_Tree;
                         remove player;
-                        routine90520(8[se_obj?],63907["Much tra..."?]);	! not popped
+                        routine90520(se_obj,"Much traffic plies across the bay, and trade seems to be picking up again now that the Kraken has gone.");	! not popped
                         @pop;
-                        routine90520(9[sw_obj?],63939["The Medi..."?]);	! not popped
+                        routine90520(sw_obj,"The Mediterranean sparkles in the hot afternoon sun. ");	! not popped
                         @pop;
                         give Lighthouse ~visited;
                         i = child(player);
-                      .label29701;
+                      .labelXXX;
                         if (i ~= 0) {
                             j = sibling(i);
                             remove i;
                             move i to Lighthouse;
                             i = j;
-                            jump label29701;
+                            jump labelXXX;
                         }
                         move player to location;
                         game_section = GARDEN;
                         LookSub(1[?]);	! not popped
                         @pop;
-                        jump label30431;
+                        jump labelXXX;
                     }
                     new_line;
                 }
@@ -3670,7 +3786,7 @@ Array BombWires -->	! 10208 (0x27e0)
                         give timer_detonater ~static;
                         i = 191[complicated_looking_bomb?];
                         remove i;
-                        jump label30431;
+                        jump labelXXX;
                     }
                     print "Click!  Perhaps there's more to bomb disposal than you thought.^";
                 }
@@ -3679,7 +3795,7 @@ Array BombWires -->	! 10208 (0x27e0)
             }
         }
     }
-  .label30431;
+  .labelXXX;
     if (0 ~= ResetTimer(Coven_Cell)) {
         if (location == Museum_of_Arcana) {
             print "^Doktor Stein appears and steps toward you, clapping his hands sharply. Suddenly dozens of robed figures leap out of the darkness. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^Stein forces your mouth open and makes you swallow a violet pill. ~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
@@ -3809,13 +3925,13 @@ Array BombWires -->	! 10208 (0x27e0)
         rfalse;
     }
     i = child(i);
-  .label31937;
+  .labelXXX;
     if (i ~= nothing) {
-        if (1[?] == HasLightSource(i)) {
+        if (true == HasLightSource(i)) {
             rtrue;
         }
         i = sibling(i);
-        jump label31937;
+        jump labelXXX;
     }
     rfalse;
 ];
@@ -3825,16 +3941,16 @@ Array BombWires -->	! 10208 (0x27e0)
     if (i == 0) {
         score_array2->ndx = 1[?];
         if (ndx ~= 21) {
-            global1 = global1 + global34->ndx;
+            score = score + task_scores->ndx;
         }
         if (ndx == 21) {
-            global1 = global1 - 50;
+            score = score - 50;
         }
     }
     rtrue;
 ];
 
-[ MouseMove o rm var3 x1 y1 ;	
+[ MouseMove o rm where x1 y1 ;	
     if (verb ~= ##Go) {
         "The mouse emits a querulous, unhappy bleep.";
     }
@@ -3861,33 +3977,33 @@ Array BombWires -->	! 10208 (0x27e0)
     if (o == Cellars_South) {
         if (noun == n_obj) {
             rm = Cellars;
-            jump label32523;
+            jump labelXXX;
         }
         if (noun == w_obj) {
             rm = hole_in_the_wall;
             Mouse_x = 8;
             Mouse_y = 3;
-            jump label32523;
+            jump labelXXX;
         }
     } else if (o == Cellar_West) {
         if (noun == e_obj) {
             rm = Cellars;
-            jump label32523;
+            jump labelXXX;
         }
     } else if (o == Cellars) {
         if (noun == w_obj) {
             rm = Cellar_West;
-            jump label32523;
+            jump labelXXX;
         }
         if (noun == s_obj) {
             rm = Cellars_South;
-            jump label32523;
+            jump labelXXX;
         }
     } else {
         if (o == hole_in_the_wall) {
             if (Mouse_x == 8 && Mouse_y == 3 && noun == e_obj) {
                 rm = Cellars_South;
-                jump label32523;
+                jump labelXXX;
             }
             if (noun == n_obj) {
                 x1 = Mouse_x;
@@ -3905,7 +4021,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 x1 = Mouse_x - 1;
                 y1 = Mouse_y;
             }
-            if (routine78628(x1,y1) == 1[?]) {
+            if (MouseMove2(x1,y1) == 1[?]) {
                 "From somewhere inside the hole, you hear a disconsolate bleep.";
             }
             Mouse_x = x1;
@@ -3923,13 +4039,13 @@ Array BombWires -->	! 10208 (0x27e0)
             "From somewhere inside the hole, you hear tiny wheels spin.";
         }
         "The mouse wheels spin, but can't get a good enough grip to move.";
-      .label32523;
-        var3 = o;
+      .labelXXX;
+        where = o;
         o = robot_mouse;
         remove o;
         move o to rm;
         give robot_mouse moved;
-        if (location == var3) {
+        if (location == where) {
             if (rm == hole_in_the_wall) {
                 "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
             }
@@ -3992,12 +4108,12 @@ Array BombWires -->	! 10208 (0x27e0)
     if (deadflag > 0) {
         print "In that game you scored ";
     }
-    print global1, " out of a possible 350, in ", turns, " turn";
+    print score, " out of a possible 350, in ", turns, " turn";
     if (turns ~= 1) {
         print "s";
     }
     print ", earning you the rank of ";
-    score_var = global1;
+    score_var = score;
     if (0 ~= score_array2->11) {
         score_var = score_var - 50;
     }
@@ -4073,7 +4189,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ PrintTaskName task_number final_score ;	
-    if (task_number == 21[rod_of_luck?]) {
+    if (task_number == 21) {
         final_score = 0;
         final_score = final_score - 50;
     }
@@ -4082,70 +4198,70 @@ Array BombWires -->	! 10208 (0x27e0)
     if (task_number == 0) {
         "reading postcard";
     }
-    if (task_number == 1[?]) {
+    if (task_number == 1) {
         "recharging torch";
     }
-    if (task_number == 2[?]) {
+    if (task_number == 2) {
         "exorcism";
     }
-    if (task_number == 3[s_obj?]) {
+    if (task_number == 3) {
         "opening secret door";
     }
-    if (task_number == 4[e_obj?]) {
+    if (task_number == 4) {
         "opening demijohn";
     }
-    if (task_number == 5[w_obj?]) {
+    if (task_number == 5) {
         "using dumbwaiter";
     }
-    if (task_number == 6[ne_obj?]) {
+    if (task_number == 6) {
         "charging a rod";
     }
-    if (task_number == 7[nw_obj?]) {
+    if (task_number == 7) {
         "firing a rod";
     }
-    if (task_number == 8[se_obj?]) {
+    if (task_number == 8) {
         "exposing radio";
     }
-    if (task_number == 9[sw_obj?]) {
+    if (task_number == 9) {
         "sporting a daisy chain";
     }
-    if (task_number == 10[u_obj?]) {
+    if (task_number == 10) {
         "placating Aunt Jemima";
     }
-    if (task_number == 11[d_obj?]) {
+    if (task_number == 11) {
         "rescuing Andromeda";
     }
-    if (task_number == 12[thedark?]) {
+    if (task_number == 12) {
         "uncovering battery";
     }
-    if (task_number == 13[misc_obj?]) {
+    if (task_number == 13) {
         "mending the plumbing";
     }
-    if (task_number == 14[Grahams_Lair?]) {
+    if (task_number == 14) {
         "scenting a passage";
     }
-    if (task_number == 15[Attic?]) {
+    if (task_number == 15) {
         "reflecting";
     }
-    if (task_number == 16[hinged_trapdoor?]) {
+    if (task_number == 16) {
         "solving the grid";
     }
-    if (task_number == 17[teachests?]) {
+    if (task_number == 17) {
         "winning the orb";
     }
-    if (task_number == 18[Meldrews_History?]) {
+    if (task_number == 18) {
         "buying map of Paris";
     }
-    if (task_number == 19[antique_jewellery_box?]) {
+    if (task_number == 19) {
         "filling the arc";
     }
-    if (task_number == 20[four_leafed_clover?]) {
+    if (task_number == 20) {
         "getting into the well";
     }
-    if (task_number == 21[rod_of_luck?]) {
+    if (task_number == 21) {
         "acquiring the mascot";
     }
-    if (task_number == 22[yourself?]) {
+    if (task_number == 22) {
         "eating between meals";
     }
     "(something else)";
@@ -4154,7 +4270,7 @@ Array BombWires -->	! 10208 (0x27e0)
 [ FullScoreSub local1 local2 local3 local4 ;	
     ScoreSub();	! not popped
     @pop;
-    if (global1 == 0) {
+    if (score == 0) {
         rfalse;
     }
     new_line;
@@ -4168,43 +4284,43 @@ Array BombWires -->	! 10208 (0x27e0)
     print "made up as follows:^^";
     local1 = 0;
     --local1;
-  .label34295;
+  .labelXXX;
     if (local1 < 22) {
         ++local1;
-        local2 = global34->local1;
+        local2 = task_scores->local1;
         local3 = score_array2->local1;
         if (local3 == 1[?]) {
             PrintTaskName(local1,local2);	! not popped
             @pop;
             local4 = local4 + local2;
         }
-        jump label34295;
+        jump labelXXX;
     }
-    if (global38 ~= 0) {
-        PadInteger(global38);	! not popped
+    if (rod_score ~= 0) {
+        PadInteger(rod_score);	! not popped
         @pop;
         print "discovering rods^";
     }
-    if (global36 ~= 0) {
-        PadInteger(global36);	! not popped
+    if (things_score ~= 0) {
+        PadInteger(things_score);	! not popped
         @pop;
         print "finding sundry items^";
     }
-    if (global37 ~= 0) {
-        PadInteger(global37);	! not popped
+    if (places_score ~= 0) {
+        PadInteger(places_score);	! not popped
         @pop;
         print "visiting various places^";
     }
-    if (global39 ~= 0) {
+    if (good_try_bonus ~= false) {
         PadInteger(5[w_obj?]);	! not popped
         @pop;
         print "bonus for a good try^";
     }
-    local4 = local4 + (global38 + (global36 + global37));
-    if (global39 ~= 0) {
+    local4 = local4 + (rod_score + (things_score + places_score));
+    if (good_try_bonus ~= false) {
         local4 = local4 + 5;
     }
-    if (global1 + 99 == 0) {
+    if (score + 99 == 0) {
         local4 = local4 + 99;
         local4 = 0 - local4;
         PadInteger(local4);	! not popped
@@ -4212,7 +4328,7 @@ Array BombWires -->	! 10208 (0x27e0)
         print "destroying universe^";
     }
     new_line;
-    PadInteger(global1);	! not popped
+    PadInteger(score);	! not popped
     @pop;
     print "total (out of 350)^";
     if (deadflag == WON && 0 == score_array2->11) {
@@ -4223,7 +4339,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ QuitSub local1 ;	
     print "Are you sure you want to quit? ";
-  .label34618;
+  .labelXXX;
     @sread global10 global11;
     local1 = global11-->1;
     if (local1 == 17722['yes'?]) {
@@ -4239,7 +4355,7 @@ Array BombWires -->	! 10208 (0x27e0)
         rtrue;
     }
     print "Please answer yes or no.", '>', ' ';
-    jump label34618;
+    jump labelXXX;
     rtrue;
 ];
 
@@ -4250,7 +4366,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ RestartSub local1 ;	
     print "Are you sure you want to restart? ";
-  .label34718;
+  .labelXXX;
     @sread global10 global11;
     local1 = global11-->1;
     if (local1 == 17722['yes'?] or 17708['y//'?]) {
@@ -4266,14 +4382,14 @@ Array BombWires -->	! 10208 (0x27e0)
         rtrue;
     }
     print "Please answer yes or no.", '>', ' ';
-    jump label34718;
+    jump labelXXX;
     rtrue;
 ];
 
 [ RestoreSub ;	
-    @restore ?label34810;
+    @restore ?labelXXX;
     "Failed.";
-  .label34810;
+  .labelXXX;
     new_line;
     LookSub();	! not popped
     @pop;
@@ -4281,19 +4397,19 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ SaveSub ;	
-    @save ?label34828;
+    @save ?labelXXX;
     "Failed.";
-  .label34828;
+  .labelXXX;
     print "Ok.^";
     rtrue;
 ];
 
 [ VerifySub ;	
-    @verify ?label34842;
-    jump label34867;
-  .label34842;
+    @verify ?labelXXX;
+    jump labelXXX;
+  .labelXXX;
     "The game file has verified as intact.";
-  .label34867;
+  .labelXXX;
     "The game file did not verify properly, and may be corrupted (unless you are running it on a primitive interpreter which does not properly implement the VERIFY code: the InfoTaskForce one does implement it, but some may not).";
 ];
 
@@ -4355,25 +4471,25 @@ Array BombWires -->	! 10208 (0x27e0)
     if (var2 ~= 0) {
         var4 = 1[?];
         --var4;
-      .label35286;
+      .labelXXX;
         if (var4 < var2) {
             ++var4;
             print "  ";
-            jump label35286;
+            jump labelXXX;
         }
-        var3 = routine40288(var1,0);
+        var3 = DescribeObj(var1,0);
         new_line;
     }
     if (var3 == 0) {
         rtrue;
     }
     var3 = child(var1);
-  .label35317;
+  .labelXXX;
     if (var3 ~= 0) {
         routine35264(var3,var2 + 1);	! not popped
         @pop;
         var3 = sibling(var3);
-        jump label35317;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -4407,7 +4523,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (var2 == player) {
         "You already have that.";
     }
-  .label35484;
+  .labelXXX;
     if (var2 ~= var1) {
         if (var2 hasnt container) {
             "That isn't available.";
@@ -4419,7 +4535,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (var2 == player) {
             var2 = var1;
         }
-        jump label35484;
+        jump labelXXX;
     }
     if (noun has scenery) {
         "That's hardly portable.";
@@ -4432,13 +4548,13 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     var3 = child(player);
     var4 = 0;
-  .label35637;
+  .labelXXX;
     if (var3 ~= 0) {
         if (var3 hasnt worn) {
             var4 = var4 + 1;
         }
         var3 = sibling(var3);
-        jump label35637;
+        jump labelXXX;
     }
     if (var4 > 4) {
         if (parent(canvas_rucksack) ~= player) {
@@ -4446,13 +4562,13 @@ Array BombWires -->	! 10208 (0x27e0)
         }
         var4 = child(player);
         var3 = 0;
-      .label35707;
+      .labelXXX;
         if (var4 ~= 0) {
             if (var4 ~= 56[canvas_rucksack?] && var4 hasnt worn && var4 ~= 24[electric_torch?]) {
                 var3 = var4;
             }
             var4 = sibling(var4);
-            jump label35707;
+            jump labelXXX;
         }
         if (var3 ~= 0) {
             print "(putting ";
@@ -4471,8 +4587,8 @@ Array BombWires -->	! 10208 (0x27e0)
     if (noun hasnt moved) {
         give noun moved;
         if (noun has scored) {
-            global1 = global1 + 4;
-            global36 = global36 + 4;
+            score = score + 4;
+            things_score = things_score + 4;
         }
     }
     rfalse;
@@ -4584,20 +4700,20 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     local1 = parent(noun);
     if (local1 ~= player) {
-      .label36366;
+      .labelXXX;
         if (local1 ~= 0) {
             if (local1 hasnt open) {
                 "That isn't in your possession.";
             }
             local1 = parent(local1);
             if (local1 == player) {
-                jump label36426;
+                jump labelXXX;
             }
-            jump label36366;
+            jump labelXXX;
         }
         "First pick that up.";
     }
-  .label36426;
+  .labelXXX;
     remove noun;
     move noun to player;
     verb = local2;
@@ -4643,7 +4759,7 @@ Array BombWires -->	! 10208 (0x27e0)
         @pop;
         " is empty already.";
     }
-  .label36586;
+  .labelXXX;
     if (local1 ~= 0) {
         local2 = sibling(local1);
         print (name) local1, ": ";
@@ -4651,7 +4767,7 @@ Array BombWires -->	! 10208 (0x27e0)
         RunRoutines(local1,second,verb);	! not popped
         @pop;
         local1 = local2;
-        jump label36586;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -4746,7 +4862,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 local4 = 130[garden_roller?];
                 local1 = 130[garden_roller?];
                 local1 = parent(local1);
-                jump label37436;
+                jump labelXXX;
             }
             "The motor isn't on at the moment.";
         }
@@ -4754,7 +4870,7 @@ Array BombWires -->	! 10208 (0x27e0)
             "You'll have to get out of the ", (name) local1, " first.";
         }
     }
-  .label37436;
+  .labelXXX;
     local2 = noun.door_dir;
     if (local2 == 0) {
         "That doesn't seem to be something you can walk into.";
@@ -4874,7 +4990,7 @@ Array BombWires -->	! 10208 (0x27e0)
             if (local2 == 124[plane_tree?]) {
                 print "Crunch!  The garden roller ran into something there.^";
                 give Contraption light;
-                routine90520(5[w_obj?],63956["hole thr..."?]);	! not popped
+                routine90520(w_obj,"hole through which dim natural light emanates");	! not popped
                 @pop;
                 give plane_tree general;
             }
@@ -4964,26 +5080,26 @@ Array BombWires -->	! 10208 (0x27e0)
         ! no code
     } else {
         if (lookmode == 3) {
-            jump label39577;
+            jump labelXXX;
         }
         if (location has visited && local1 == 1[?]) {
-            jump label39577;
+            jump labelXXX;
         }
     }
     local2 = location.description;
     print (string) local2;
     new_line;
-  .label39577;
+  .labelXXX;
     if (location hasnt visited) {
         give location visited;
         if (location has scored) {
-            global1 = global1 + 5;
-            global37 = global37 + 5;
+            score = score + 5;
+            places_score = places_score + 5;
         }
     }
     local5 = child(local7);
     local4 = 0;
-  .label39605;
+  .labelXXX;
     if (local5 ~= 0) {
         if (local5 hasnt concealed && local5 hasnt scenery) {
             give local5 workflag;
@@ -5010,7 +5126,7 @@ Array BombWires -->	! 10208 (0x27e0)
             }
         }
         local5 = sibling(local5);
-        jump label39605;
+        jump labelXXX;
     }
     if (local4 == 0) {
         ! no code
@@ -5029,11 +5145,11 @@ Array BombWires -->	! 10208 (0x27e0)
         print "see ";
         local2 = 0;
         local5 = child(local7);
-      .label39764;
+      .labelXXX;
         if (local5 ~= 0) {
             if (local5 has workflag) {
                 local2 = local2 + 1;
-                routine40288(local5,1[?]);	! not popped
+                DescribeObj(local5,1[?]);	! not popped
                 @pop;
                 if (local2 == local4 - 1) {
                     print " and ";
@@ -5043,7 +5159,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 }
             }
             local5 = sibling(local5);
-            jump label39764;
+            jump labelXXX;
         }
         if (local7 ~= location) {
             print ".^";
@@ -5137,91 +5253,91 @@ Array BombWires -->	! 10208 (0x27e0)
     rtrue;
 ];
 
-[ routine40288 var1 var2 var3 var4 var5 var6 var7 ;	
-    if (var2 ~= 2[?]) {
-        routine56420(var1);	! not popped
+[ DescribeObj obj n local3 local4 local5 local6 local7 ;	
+    if (n ~= 2[?]) {
+        routine56420(obj);	! not popped
         @pop;
     }
-    if (var2 == 2[?]) {
-        Defart(var1);	! not popped
+    if (n == 2[?]) {
+        Defart(obj);	! not popped
         @pop;
     }
-    if (var1 has light) {
+    if (obj has light) {
         print " (providing light)";
     }
-    if (var1 has worn) {
+    if (obj has worn) {
         print " (being worn)";
     }
-    if (var1 has rod_charged) {
+    if (obj has rod_charged) {
         print " (charged)";
     }
-    if (var1 == 114[daisy_chain?]) {
-        var5 = child(player);
-      .label40386;
-        if (var5 ~= 0) {
-            if (var5 has hidden_rod) {
+    if (obj == daisy_chain) {
+        local5 = child(player);
+      .labelXXX;
+        if (local5 ~= 0) {
+            if (local5 has hidden_rod) {
                 print " (which rustles as if with a magical wind)";
             } else {
-                var5 = sibling(var5);
-                jump label40386;
+                local5 = sibling(local5);
+                jump labelXXX;
             }
         }
     }
-    if (var1 == 24[electric_torch?] && var1 hasnt open) {
+    if (obj == electric_torch && obj hasnt open) {
         ! no code
-    } else if (var1 has container) {
-        if (var2 ~= 2[?]) {
+    } else if (obj has container) {
+        if (n ~= 2[?]) {
             print " (which is ";
         }
-        if (var2 == 2[?]) {
+        if (n == 2[?]) {
             print ", which is ";
         }
-        if (var1 hasnt open) {
+        if (obj hasnt open) {
             print "closed";
-            if (var1 has transparent) {
-                jump label40607;
+            if (obj has transparent) {
+                jump labelXXX;
             }
         }
-        if (var1 has open) {
+        if (obj has open) {
             print "open";
         }
-        var3 = child(var1);
-        if (var3 == 0) {
+        local3 = child(obj);
+        if (local3 == 0) {
             print " but empty";
-        } else if (var2 == 0) {
-            var7 = 1[?];
+        } else if (n == 0) {
+            local7 = 1[?];
         } else {
             print " and contains ";
-            var6 = 0;
-            var4 = var3;
-          .label40544;
-            if (var4 ~= 0) {
-                var4 = sibling(var4);
-                ++var6;
-                jump label40544;
+            local6 = 0;
+            local4 = local3;
+          .labelXXX;
+            if (local4 ~= 0) {
+                local4 = sibling(local4);
+                ++local6;
+                jump labelXXX;
             }
-            var5 = 0;
-          .label40561;
-            if (var3 ~= 0) {
-                ++var5;
-                routine40288(var3,1[?]);	! not popped
+            local5 = 0;
+          .labelXXX;
+            if (local3 ~= 0) {
+                ++local5;
+                DescribeObj(local3,1[?]);	! not popped
                 @pop;
-                if (var5 == var6 - 1) {
+                if (local5 == local6 - 1) {
                     print " and ";
                 }
-                if (var5 < var6 - 1) {
+                if (local5 < local6 - 1) {
                     print ", ";
                 }
-                var3 = sibling(var3);
-                jump label40561;
+                local3 = sibling(local3);
+                jump labelXXX;
             }
         }
-      .label40607;
-        if (var2 ~= 2[?]) {
+      .labelXXX;
+        if (n ~= 2[?]) {
             print ")";
         }
     }
-    return var7;
+    return local7;
 ];
 
 [ ShowSub local1 ;	
@@ -5521,7 +5637,7 @@ Array BombWires -->	! 10208 (0x27e0)
 [ ObjectsSub local1 local2 ;	
     print "Objects you have handled:^^";
     local1 = 1[?];
-  .label42891;
+  .labelXXX;
     if (local1 <= 255) {
         if (local1 has moved) {
             Defart(local1);	! not popped
@@ -5543,7 +5659,7 @@ Array BombWires -->	! 10208 (0x27e0)
             new_line;
         }
         ++local1;
-        jump label42891;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -5552,17 +5668,17 @@ Array BombWires -->	! 10208 (0x27e0)
     print "You have visited: ";
     local1 = 15[Attic?];
     local2 = 0;
-  .label43052;
+  .labelXXX;
     if (local1 < 255) {
         if (local1 has visited) {
             ++local2;
         }
         ++local1;
-        jump label43052;
+        jump labelXXX;
     }
     local1 = 15[Attic?];
     local3 = 0;
-  .label43075;
+  .labelXXX;
     if (local1 < 255) {
         if (local1 has visited) {
             print (name) local1;
@@ -5578,7 +5694,7 @@ Array BombWires -->	! 10208 (0x27e0)
             }
         }
         ++local1;
-        jump label43075;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -5615,7 +5731,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (var1 == 0) {
         "No reply.";
     }
-  .label43360;
+  .labelXXX;
     ++var1;
     if (var1 == 5[w_obj?]) {
         var1 = 1[?];
@@ -5637,7 +5753,7 @@ Array BombWires -->	! 10208 (0x27e0)
         var3 = 2[?];
     }
     if (r hasnt visited) {
-        jump label43360;
+        jump labelXXX;
     }
     if (r == location) {
         "A swirl of wind almost bowls you over, but nothing else happens.";
@@ -5860,14 +5976,14 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ routine45130 ;	
-    routine90520(4[e_obj?],64023["grasps a..."?]);	! not popped
+    routine90520(e_obj,"grasps a cannonball in mid-air.");	! not popped
     @pop;
     give Contraption ~general;
     rtrue;
 ];
 
 [ routine45144 ;	
-    routine90520(4[e_obj?],64034["grasps e..."?]);	! not popped
+    routine90520(e_obj,"grasps empty air.");	! not popped
     @pop;
     give Contraption general;
     rtrue;
@@ -5898,9 +6014,9 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ routine45254 ;	
-    routine90520(6[ne_obj?],64040["north"?]);	! not popped
+    routine90520(ne_obj,"north");	! not popped
     @pop;
-    routine90520(7[nw_obj?],64041["Room"?]);	! not popped
+    routine90520(nw_obj,"Room");	! not popped
     @pop;
     give metal_wall ~general;
     Contraption.n_to = metal_wall;
@@ -5912,9 +6028,9 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ routine45298 ;	
-    routine90520(6[ne_obj?],64043["south"?]);	! not popped
+    routine90520(ne_obj,"south");	! not popped
     @pop;
-    routine90520(7[nw_obj?],64044["Reflecti..."?]);	! not popped
+    routine90520(nw_obj,"Reflection");	! not popped
     @pop;
     give metal_wall general;
     Contraption.s_to = metal_wall;
@@ -5972,68 +6088,68 @@ Array BombWires -->	! 10208 (0x27e0)
         "~Slide~ is inappropriate here.";
     }
     if (global9 == 1[?]) {
-        global21 = 1[?];
+        noun_number = 1;
     }
-    if (global21 == 0) {
+    if (noun_number == 0) {
         "What piece was that?";
     }
     local1 = 0;
     --local1;
-  .label45786;
+  .labelXXX;
     if (local1 < 14) {
         ++local1;
-        if (global41->local1 == global21) {
+        if (global41->local1 == noun_number) {
             if (local1 >= 3) {
                 local2 = local1 - 3;
                 if (global41->local2 == 0) {
-                    jump label45934;
+                    jump labelXXX;
                 }
             }
             if (local1 < 12) {
                 local2 = local1 + 3;
                 if (global41->local2 == 0) {
-                    jump label45934;
+                    jump labelXXX;
                 }
             }
             local3 = local1 % 3;
             if (local3 ~= 0) {
                 local2 = local1 - 1;
                 if (global41->local2 == 0) {
-                    jump label45934;
+                    jump labelXXX;
                 }
             }
             if (local3 ~= 2[?]) {
                 local2 = local1 + 1;
                 if (global41->local2 == 0) {
-                    jump label45934;
+                    jump labelXXX;
                 }
             }
         }
-        jump label45786;
+        jump labelXXX;
     }
     print "Unfortunately, ";
-    local1 = global21 + (65 - 1);
+    local1 = noun_number + (65 - 1);
     (char) local1, " is not adjacent to the gap.";
-  .label45934;
+  .labelXXX;
     local3 = global41->local1;
     global41->local2 = local3;
     global41->local1 = 0;
     print "You slide '";
-    local1 = global21 + (65 - 1);
+    local1 = noun_number + (65 - 1);
     print (char) local1, "' into the gap, leaving the grid looking like:^^";
     routine44926();	! not popped
     @pop;
     new_line;
     local1 = 0;
     --local1;
-  .label46007;
+  .labelXXX;
     if (local1 < 14) {
         ++local1;
         local2 = global41->local1;
         if (local2 ~= global42->local1) {
             rfalse;
         }
-        jump label46007;
+        jump labelXXX;
     }
     Achieved(16);	! not popped
     @pop;
@@ -6057,13 +6173,13 @@ Array BombWires -->	! 10208 (0x27e0)
         new_line;
         if (Contraption has light) {
             local2 = child(hanging_cord);
-          .label46279;
+          .labelXXX;
             if (local2 ~= 0) {
                 local1 = sibling(local2);
                 remove local2;
                 move local2 to plane_tree;
                 local2 = local1;
-                jump label46279;
+                jump labelXXX;
             }
         }
         if (Contraption hasnt light) {
@@ -6117,7 +6233,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (second ~= carbolic_soap) {
         "That's not something you can wash with.";
     }
-    if (global20 ~= 15321['mouth//p'?]) {
+    if (noun_word ~= 'mouth//p') {
         "You're on the right lines there.";
     }
     local1 = 255[carbolic_soap?];
@@ -6220,9 +6336,9 @@ Array BombWires -->	! 10208 (0x27e0)
         "You achieve nothing by this.";
     }
     give solid_glass_ball general;
-    if (global53 == 1[?] && slide_projector has on) {
+    if (reverse_plight == true && slide_projector has on) {
         print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
-        routine77492();	! not popped
+        ProjectorRefraction();	! not popped
         @pop;
         rtrue;
     }
@@ -6273,8 +6389,8 @@ Array BombWires -->	! 10208 (0x27e0)
             local1 = 114[daisy_chain?];
             local1 = local1.number;
             if (local1 == 1[?]) {
-                global1 = global1 + 6;
-                global38 = global38 + 6;
+                score = score + 6;
+                rod_score = rod_score + 6;
                 print "Light pulses around the daisy chain, then leaps out to engulf the ", (name) noun, " which melts into the ";
                 remove noun;
                 local1 = noun.rod_assoc;
@@ -6284,8 +6400,8 @@ Array BombWires -->	! 10208 (0x27e0)
             }
         }
         if (yellow_daisy has worn) {
-            global1 = global1 + 6;
-            global38 = global38 + 6;
+            score = score + 6;
+            rod_score = rod_score + 6;
             print "Light pulses from the daisy behind your ear, leaping out to engulf the ", (name) noun, " which melts into ";
             remove noun;
             local1 = noun.rod_assoc;
@@ -6521,15 +6637,15 @@ Array BombWires -->	! 10208 (0x27e0)
         "winds open the skylight, flooding the room with sunshine.";
     }
     if (noun == slide_projector) {
-        if (global53 == 1[?]) {
-            global53 = 0;
+        if (reverse_plight == true) {
+            reverse_plight = false;
             if (slide_projector has on) {
                 give Disused_Observatory ~light;
                 "The sharp beam of light cuts out again.";
             }
             "Click.";
         }
-        global53 = 1[?];
+        reverse_plight = true;
         if (slide_projector has on) {
             give Disused_Observatory light;
             "A sharp beam of white light appears backward out of the projector. As you step out of the beam, it extends dead straight through the north doorway.";
@@ -6578,12 +6694,12 @@ Array BombWires -->	! 10208 (0x27e0)
         if (location ~= Maze_Foundations) {
             ! no code
         } else {
-            local1 = routine78564(global26,global27);
+            local1 = MazeBoundary(MazeX,MazyY);
             if (local1 == 0) {
                 "A stream of weed-killer soaks into the grass, and does nothing obvious.";
             }
-            global28 = global26;
-            global29 = global27;
+            global28 = MazeX;
+            global29 = MazyY;
             "A stream of weed-killer soaks into the seedbed, and does nothing obvious.";
         }
     }
@@ -6654,7 +6770,7 @@ Array BombWires -->	! 10208 (0x27e0)
         rtrue;
     }
     print "You peer at ";
-    routine40288(noun,2[?]);	! not popped
+    DescribeObj(noun,2[?]);	! not popped
     @pop;
     ".";
 ];
@@ -6671,10 +6787,10 @@ Array BombWires -->	! 10208 (0x27e0)
 [ ConsultSub local1 ;	
     if (2[?] == global15->1) {
         if (noun == tourist_map) {
-            jump label55324;
+            jump labelXXX;
         }
         if (noun == ancient_prayer_book) {
-            jump label55633;
+            jump labelXXX;
         }
         if (noun ~= Meldrews_History) {
             "You can't look things up in that.";
@@ -6686,16 +6802,16 @@ Array BombWires -->	! 10208 (0x27e0)
         local1 = 82[tourist_map?];
         local1 = parent(local1);
         if (local1 == player) {
-            jump label55324;
+            jump labelXXX;
         }
         local1 = 72[ancient_prayer_book?];
         local1 = parent(local1);
         if (local1 == player) {
-            jump label55633;
+            jump labelXXX;
         }
         "I don't know what you want to look it up in.";
     }
-    local1 = global20;
+    local1 = noun_word;
     if (local1 == 15216['me'?]) {
         local1 = 1[?];
     }
@@ -6742,8 +6858,8 @@ Array BombWires -->	! 10208 (0x27e0)
         "^Perhaps you may one day earn a place in vol. III.";
     }
     "^Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find what you want.";
-  .label55324;
-    local1 = global21;
+  .labelXXX;
+    local1 = noun_number;
     if (local1 == 1420[?]) {
         print "^At that exact grid reference is Meldreustrasse, a minor back street which houses a museum of arcana.^^Suddenly you remember!  You visited the place once, and the curator Doktor Stein showed you round... and he hypnotised you into a swirl of unconsciousness...^^";
         StartTimer(Coven_Cell,7);	! not popped
@@ -6760,8 +6876,8 @@ Array BombWires -->	! 10208 (0x27e0)
         rtrue;
     }
     "Just some anonymous streets. The detail of this map is so tiny that unless you have the exact four-digit grid reference for what you want, you'll never find it.";
-  .label55633;
-    local1 = global21;
+  .labelXXX;
+    local1 = noun_number;
     if (local1 < 1725) {
         "He didn't seem to be experimenting in those days.";
     }
@@ -6771,8 +6887,8 @@ Array BombWires -->	! 10208 (0x27e0)
     if (local1 == 1792[?]) {
         "In 1792, the last year of his life, ol' red-eyes becomes very excited about his new discovery. This time he claims that Merlyn bounde uppe the mystic estate (by this he means the back garden - Isaac never did have any sense of proportion) wyth great Roddes of Power. These are dangerous and sometimes useful for themselves, but are really part of a great key... the usual nonsense. Of course you never actually see these rods, because they disguise themselves until waved by someone wearing Merlyn's hat.^^", "The funny thing is that Isaac died (legend has it, by spontaneous combustion) only a week after this breakthrough, preventing him from sending yet another paper to the Royal Society. But since Merlyn supposedly lived in about the sixth century A.D., there can't be a lot left of his hat, so the matter may be academic.";
     }
-    print "In the year ", global21, ", Isaac was mainly concerned with ";
-    local1 = global21 % 6;
+    print "In the year ", noun_number, ", Isaac was mainly concerned with ";
+    local1 = noun_number % 6;
     if (local1 == 0) {
         "alchemy.";
     }
@@ -6882,22 +6998,22 @@ Array BombWires -->	! 10208 (0x27e0)
         }
         give Jemima ~general;
         local2 = 0;
-        if (global20 == 17715['yellow//p'?]) {
+        if (noun_word == 'yellow//p') {
             local2 = 1[?];
         }
-        if (global20 == 13046['blue//p'?]) {
+        if (noun_word == 'blue//p') {
             local2 = 2[?];
         }
-        if (global20 == 16070['red//p'?]) {
+        if (noun_word == 'red//p') {
             local2 = 4[e_obj?];
         }
-        if (global20 == 17519['white//p'?]) {
+        if (noun_word == 'white//p') {
             local2 = 5[w_obj?];
         }
-        if (global20 == 14488['green//p'?]) {
+        if (noun_word == 'green//p') {
             local2 = 6[ne_obj?];
         }
-        if (global20 == 15566['orange//p'?]) {
+        if (noun_word == 'orange//p') {
             local2 = 9[sw_obj?];
         }
         if (local2 ~= 0) {
@@ -6917,7 +7033,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (fifty_franc_note hasnt general) {
             "It's not that he doesn't understand you, he's just obstructive for the sake of it.";
         }
-        if (global20 == 13270['carte//p'?]) {
+        if (noun_word == 'carte//p') {
             local1 = 189[tourist_map_of_Paris?];
             move local1 to player;
             Achieved(18);	! not popped
@@ -6928,9 +7044,9 @@ Array BombWires -->	! 10208 (0x27e0)
         "~Non.~  And he folds his arms defiantly. Perhaps he has no such thing.";
     }
     if (second == Madame_Sosostris) {
-        if (global20 == 14040['even//p'?]) {
+        if (noun_word == 'even//p') {
             ! no code
-        } else if (global20 ~= 15510['odd//p'?]) {
+        } else if (noun_word ~= 'odd//p') {
             "~You must answer my question!~  She does seem anxious.";
         }
         SosostrisDeals();	! not popped
@@ -6942,7 +7058,7 @@ Array BombWires -->	! 10208 (0x27e0)
         rtrue;
     }
     if (second == hollow_man) {
-        if (global20 == 17155['time//p'?]) {
+        if (noun_word == 'time//p') {
             game_section = GARDEN;
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
             if (tourist_map_of_Paris has moved) {
@@ -6963,26 +7079,26 @@ Array BombWires -->	! 10208 (0x27e0)
             }
             rtrue;
         }
-        global49 = global49 + 1;
-        if (global49 == 1[?]) {
+        hollowman_cnt = hollowman_cnt + 1;
+        if (hollowman_cnt == 1) {
             "~I don't believe in that place any more. Hurry up please it's time!~";
         }
-        if (global49 == 2[?]) {
+        if (hollowman_cnt == 2) {
             "~Hurry up please it's time!~";
         }
-        if (global49 == 3[s_obj?]) {
+        if (hollowman_cnt == 3) {
             "~HURRY UP PLEASE IT'S TIME!~";
         }
-        if (global49 == 4[e_obj?]) {
+        if (hollowman_cnt == 4) {
             "He can't be bothered to say anything this time.";
         }
-        if (global49 == 5[w_obj?]) {
+        if (hollowman_cnt == 5) {
             "It really is time you thought of something.";
         }
-        if (global49 == 6[ne_obj?]) {
+        if (hollowman_cnt == 6) {
             "Time and time again you haven't guessed correctly.";
         }
-        if (global49 == 7[nw_obj?]) {
+        if (hollowman_cnt == 7) {
             "The hollow man must be beginning to think you can't take a hint.";
         }
         "~It's time!~ repeats the hollow man.";
@@ -6997,7 +7113,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (DemonHint() ~= 0) {
             rfalse;
         }
-        if (0 ~= routine90106(global20)) {
+        if (0 ~= DemonQuestion(noun_word)) {
             give demon ~general;
         }
         rfalse;
@@ -7006,7 +7122,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (AngelHint() ~= 0) {
             rfalse;
         }
-        if (0 ~= routine90314(global20)) {
+        if (0 ~= AngelQuestion(noun_word)) {
             give angel ~general;
         }
         rfalse;
@@ -7084,7 +7200,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ HelpSpecialSub local1 ;	
-    local1 = global20;
+    local1 = noun_word;
     new_line;
     if (local1 == 14845['instructions//p'?]) {
         "Welcome to CURSES, an interactive adventure game...^^     Nine times she waved the fluttering wimple round,^     And made a little plot of magic ground.^     And in that daisied circle, as men say,^     Is Merlin prisoner till the judgement day;^^     --  Matthew Arnold, Tristram and Iseult III 219-22 (1852)^^", "The scene is set initially in the present day, at Meldrew House, an old family seat in the shires of England. You play the part of the current heir to the house. (This doesn't make your family rich aristocrats - just people who suffer very badly from inheritance tax.) Remember, your only aim is to find that map of Paris so you can go on holiday - try not to get diverted by any enormous quests. Still, it would be interesting to find out:^", "^  Just how real is what the Tarot cards show?^  What do sixth century politics have to do with you?^  Surely Greek myths can't come into this?^  What on earth is wrong with your entire family?^  Do the National Trust have sinister motives?^  Can modernist poetry really be bad for you?^  What are daisies for?  Or goats, for that matter?^  Should you rescue someone who doesn't want you to?^^", "To finally understand the secret, you will need to reach the Master Game, a concluding game-within-a-game buried deep in the past. (A typical solution takes about 700 turns.) Good luck!";
@@ -7112,8 +7228,8 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ XallowSub ;	
-    if (global21 == 57[secret_door?]) {
-        global47 = 1[?];
+    if (noun_number == 57) {
+        debug_mode = true;
         "Ok.";
     }
     "No.";
@@ -7201,7 +7317,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ XatticSub ;	
-    game_section = global21;
+    game_section = noun_number;
     give weed_killer ~general;
     ScoreSub();	! not popped
     @pop;
@@ -7227,13 +7343,13 @@ Array BombWires -->	! 10208 (0x27e0)
     give servants_bed general;
     print "You sleep unexpectedly deeply, but just as you think you are starting to wake up, you experience a sudden...^";
     local1 = child(player);
-  .label65989;
+  .labelXXX;
     if (local1 ~= 0) {
         local2 = sibling(local1);
         remove local1;
         move local1 to e_obj;
         local1 = local2;
-        jump label65989;
+        jump labelXXX;
     }
     game_section = DREAMING;
     location = Premonition;
@@ -7251,8 +7367,8 @@ Array BombWires -->	! 10208 (0x27e0)
     give Old_Winery general;
     StartTimer(Old_Winery,4);	! not popped
     @pop;
-    global1 = global1 + 5;
-    global39 = 1[?];
+    score = score + 5;
+    good_try_bonus = true;
     "^A shame to see such a good try unrewarded... oh, go on, have an extra five points.";
 ];
 
@@ -7293,13 +7409,13 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ DealCard var1 var2 var3 ;	
     if (card_ptr == 0) {
-      .label66230;
+      .labelXXX;
         var3 = random(50);
         if (var3 == var1) {
-            jump label66230;
+            jump labelXXX;
         }
         if (var3 == var2) {
-            jump label66230;
+            jump labelXXX;
         }
         if (var3 == 1[?]) {
             print "the Blank Card (~which I am forbidden to see~)";
@@ -7421,13 +7537,13 @@ Array BombWires -->	! 10208 (0x27e0)
             print "~You have come!  At last, after all these centuries!  But there is little I can do to ease your way, save to return the staff you left with me for safe keeping.~  And she shows you out. You feel rather bewildered.^";
             card3 = oak_quarterstaff;
             move card3 to player;
-            jump label67403;
+            jump labelXXX;
         }
         if (card1 < 50) {
             print "~Curse it, another nobody,~ she hisses in an unguarded moment, as she tidies the pack absentmindedly with her hands. Then she recovers her poise and advises about handsome strangers, fearing death by water, crossing palms with gold and so on. Eventually she ushers you out.^";
         }
     }
-  .label67403;
+  .labelXXX;
     remove player;
     location = Unreal_City;
     move player to Unreal_City;
@@ -7679,14 +7795,14 @@ Array BombWires -->	! 10208 (0x27e0)
 [ XmasterSub local1 local2 ;	
     game_section = ANCIENT_BRITAIN;
     local1 = child(player);
-  .label70548;
+  .labelXXX;
     if (local1 ~= 0) {
         local2 = sibling(local1);
         give local1 ~worn;
         remove local1;
         move local1 to Infinity_Symbol;
         local1 = local2;
-        jump label70548;
+        jump labelXXX;
     }
     location = Murky_Cave;
     remove player;
@@ -7782,7 +7898,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (noun == medicine_bottle) {
             give medicine_bottle ~locked;
             give medicine_bottle open;
-            routine90520(37[medicine_bottle?],64069["cracked ..."?]);	! not popped
+            routine90520(medicine_bottle,"cracked medicine bottle");	! not popped
             @pop;
             "It disappears into the darkness, and there is a slight cracking noise.";
         }
@@ -8030,37 +8146,37 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: solid_glass_ball.before
 
-[ GlassBallBefore var1 ;	
+[ GlassBallBefore i ;	
     if (verb ~= ##Examine) {
         rfalse;
     }
     if (solid_glass_ball hasnt general) {
         "The ball is scratched and misted up.";
     }
-    var1 = random(9);
+    i = random(9);
     print "In the ball mists swirl, then part to give ";
-    if (var1 == 1[?]) {
+    if (i == 1) {
         "a reflection of your face.";
     }
-    if (var1 == 2[?]) {
+    if (i == 2) {
         "a dizzying aerial view of Meldrew House gardens.";
     }
-    if (var1 == 3[s_obj?]) {
+    if (i == 3) {
         "confused pictures of a tree being planted.";
     }
-    if (var1 == 4[e_obj?]) {
+    if (i == 4) {
         "an image of a typist, home from work and wandering about her bedsit room.";
     }
-    if (var1 == 5[w_obj?]) {
+    if (i == 5) {
         "a dark picture of a museum display case.";
     }
-    if (var1 == 6[ne_obj?]) {
+    if (i == 6) {
         "an Old Master painting, perhaps a Watteau, of a scene from classical mythology.";
     }
-    if (var1 == 7[nw_obj?]) {
+    if (i == 7) {
         "an oddly-angled view of a Roman villa half in ruins.";
     }
-    if (var1 == 9[sw_obj?]) {
+    if (i == 9) {
         "a dark, spooky view of a crypt.";
     }
     "flames of camp-fires, mixed up with faces around them.";
@@ -8104,30 +8220,30 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: pulley_ropes.before
 
-[ PulleyBefore var1 var2 ;	
+[ PulleyBefore env dst ;	
     if (verb == ##Pull) {
-        var1 = parent(player);
-        if (var1 ~= 85[dumbwaiter?]) {
+        env = parent(player);
+        if (env ~= dumbwaiter) {
             "You can't reach them!";
         }
         Achieved(5);	! not popped
         @pop;
         if (location == Storage_Room) {
-            var2 = 93[Cellars?];
+            dst = Cellars;
             print "You begin moving, and then plummet, but friction gradually slows you down and you land without too much of a thump...^";
         }
         if (location == Dark_Shaft) {
-            var2 = 83[Storage_Room?];
+            dst = Storage_Room;
             print "You heave yourself up to the attic again...^";
         }
         if (location == Cellars) {
-            var2 = 90[Dark_Shaft?];
+            dst = Dark_Shaft;
             print "You heave yourself half-way up, and then need to stop for a rest.^";
         }
-        var1 = 85[dumbwaiter?];
-        remove var1;
-        move var1 to var2;
-        location = var2;
+        env = dumbwaiter;
+        remove env;
+        move env to dst;
+        location = dst;
         LookSub();	! not popped
         @pop;
         rtrue;
@@ -8153,7 +8269,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: medicine_bottle.before
 
-[ routine73944 ;	
+[ MedicineBefore ;	
     if (verb == ##Attack) {
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
@@ -8200,16 +8316,16 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: gift_wrapped_parcel.before
 
-[ routine74360 var1 ;	
+[ ParcelBefore o ;	
     if (verb == ##Open) {
-        var1 = 33[gift_wrapped_parcel?];
-        remove var1;
-        var1 = 36[postcard?];
-        move var1 to player;
-        var1 = 34[box_of_chocolates?];
-        move var1 to player;
-        var1 = 35[wrapping_paper?];
-        move var1 to location;
+        o = gift_wrapped_parcel;
+        remove o;
+        o = postcard;
+        move o to player;
+        o = box_of_chocolates;
+        move o to player;
+        o = wrapping_paper;
+        move o to location;
         "You tear open the parcel to find a box of chocolates and a card.";
     }
     rfalse;
@@ -8217,17 +8333,17 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: iron_key.before
 
-[ IronKeyBefore var1 ;	
+[ IronKeyBefore o ;	
     if (verb == ##Take) {
         if (iron_key has general) {
             rfalse;
         }
         give Sir_Joshua_Meldrewe ~concealed;
-        var1 = 65[iron_key?];
-        remove var1;
-        move var1 to Sir_Joshua_Meldrewe;
-        var1 = 66[Sir_Joshua_Meldrewe?];
-        var1.number = 5;
+        o = iron_key;
+        remove o;
+        move o to Sir_Joshua_Meldrewe;
+        o = Sir_Joshua_Meldrewe;
+        o.number = 5;
         "As you reach for the key, a swirling mist condenses about it, into a ghostly head which opens its mouth and eats up the key!  The rest of the ghostly body solidifies about the head and rises to swagger before you.";
     }
     rfalse;
@@ -8235,11 +8351,11 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: Potting_Room.after
 
-[ PottingRoomAfter var1 ;	
+[ PottingRoomAfter o ;	
     if (verb == ##Look && antiquated_wireless has general) {
-        var1 = 110[antiquated_wireless?];
-        var1 = parent(var1);
-        if (var1 == 106[Conservatory?]) {
+        o = antiquated_wireless;
+        o = parent(o);
+        if (o == Conservatory) {
             print "^Execrable music drifts in from the conservatory.^";
         }
     }
@@ -8261,121 +8377,121 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: calendar.before
 
-[ CalendarBefore var1 ;	
+[ CalendarBefore i ;	
     if (verb == ##Examine) {
-        var1 = 107[calendar?];
-        var1 = var1.number;
+        i = 107[calendar?];
+        i = i.number;
         print "The calendar is turned to ";
-      .label74842;
-        if (var1 == 0) {
+      .labelXXX;
+        if (i == 0) {
             print "January";
         }
-        if (var1 == 1[?]) {
+        if (i == 1[?]) {
             print "February";
         }
-        if (var1 == 2[?]) {
+        if (i == 2[?]) {
             print "March";
         }
-        if (var1 == 3[s_obj?]) {
+        if (i == 3[s_obj?]) {
             print "April";
         }
-        if (var1 == 4[e_obj?]) {
+        if (i == 4[e_obj?]) {
             print "May";
         }
-        if (var1 == 5[w_obj?]) {
+        if (i == 5[w_obj?]) {
             print "June";
         }
-        if (var1 == 6[ne_obj?]) {
+        if (i == 6[ne_obj?]) {
             print "July";
         }
-        if (var1 == 7[nw_obj?]) {
+        if (i == 7[nw_obj?]) {
             print "August";
         }
-        if (var1 == 8[se_obj?]) {
+        if (i == 8[se_obj?]) {
             print "September";
         }
-        if (var1 == 9[sw_obj?]) {
+        if (i == 9[sw_obj?]) {
             print "October";
         }
-        if (var1 == 10[u_obj?]) {
+        if (i == 10[u_obj?]) {
             print "November";
         }
-        if (var1 == 11[d_obj?]) {
+        if (i == 11[d_obj?]) {
             print "December";
         }
         print " and a watercolour painting of some ";
-        routine75150(var1);	! not popped
+        DescFlower(i);	! not popped
         @pop;
         " daisies.";
     }
     if (verb == ##Turn) {
-        var1 = 107[calendar?];
-        var1 = var1.number;
-        ++var1;
-        if (var1 == 12[thedark?]) {
-            var1 = 0;
+        i = 107[calendar?];
+        i = i.number;
+        ++i;
+        if (i == 12[thedark?]) {
+            i = 0;
         }
-        calendar.number = var1;
+        calendar.number = i;
         print "You turn over to ";
-        jump label74842;
+        jump labelXXX;
     }
     rfalse;
 ];
 
 ! References: daisy_chain.before
 
-[ daiy_chain_after var1 ;	
+[ daisy_chain_after obj ;	
     if (verb == ##Examine) {
-        var1 = 114[daisy_chain?];
-        var1 = var1.number;
+        obj = daisy_chain;
+        obj = obj.number;
         print "A delicate, pretty chain of ";
-        routine75150(var1);	! not popped
+        DescFlower(obj);	! not popped
         @pop;
         " daisies.";
     }
     if (verb == ##Drop) {
-        var1 = 114[daisy_chain?];
-        remove var1;
+        obj = daisy_chain;
+        remove obj;
         "The daisychain falls to pieces in your hands!";
     }
     rfalse;
 ];
 
-[ routine75150 var1 ;	
-    if (var1 == 0) {
+[ DescFlower n ;	
+    if (n == 0) {
         print "speckled Jemima's Pride";
     }
-    if (var1 == 1[?]) {
+    if (n == 1) {
         print "yellowish Merlyn's Hat";
     }
-    if (var1 == 2[?]) {
+    if (n == 2) {
         print "blue-tinted bell";
     }
-    if (var1 == 3[s_obj?]) {
+    if (n == 3) {
         print "heavy-headed Dorset Pride";
     }
-    if (var1 == 4[e_obj?]) {
+    if (n == 4) {
         print "reddish meadow-heart";
     }
-    if (var1 == 5[w_obj?]) {
+    if (n == 5) {
         print "wild white common";
     }
-    if (var1 == 6[ne_obj?]) {
+    if (n == 6) {
         print "green-edged hedgerow";
     }
-    if (var1 == 7[nw_obj?]) {
+    if (n == 7) {
         print "plain Russian Steppe";
     }
-    if (var1 == 8[se_obj?]) {
+    if (n == 8) {
         print "tall-stemmed Breton";
     }
-    if (var1 == 9[sw_obj?]) {
+    if (n == 9) {
         print "orange meadow";
     }
-    if (var1 == 10[u_obj?]) {
+    if (n == 10) {
         print "short-leaved Meldrew";
     }
-    if (var1 == 11[d_obj?]) {
+    if (n == 11) {
         print "tiny bonsai";
     }
     rtrue;
@@ -8402,7 +8518,7 @@ Array BombWires -->	! 10208 (0x27e0)
     rfalse;
 ];
 
-[ routine75482 ;	
+[ UseWrench ;	
     if (verb ~= ##Turn) {
         rfalse;
     }
@@ -8422,7 +8538,7 @@ Array BombWires -->	! 10208 (0x27e0)
     "You tighten the joint with the wrench, just enough for the books to fall away without a gushing explosion of water.";
 ];
 
-[ routine75652 ;	
+[ BreakPipes ;	
     deadflag = FAILED;
     "As you pull the book away, the pipe bursts and sprays water everywhere, drenching you, rendering the book unreadable, leaking through the ceiling into the bedrooms below and causing an enormous furore. You are obliged to spend the rest of the afternoon getting a plumber at short notice.";
 ];
@@ -8431,7 +8547,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ PoetryBefore var1 ;	
     if (verb == ##Take && steel_wrench hasnt general) {
-        routine75652();	! not popped
+        BreakPipes();	! not popped
         @pop;
         rtrue;
     }
@@ -8461,7 +8577,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ NovelBefore ;	
     if (verb == ##Take && steel_wrench hasnt general) {
-        routine75652();	! not popped
+        BreakPipes();	! not popped
         @pop;
         rtrue;
     }
@@ -8471,15 +8587,15 @@ Array BombWires -->	! 10208 (0x27e0)
     rfalse;
 ];
 
-[ routine76128 ;	
+[ DialBefore ;	
     if (verb == ##Turn) {
-        if (global51 == 0) {
-            global51 = 1[?];
+        if (dial_warning == false) {
+            dial_warning = true;
             "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
         }
         deadflag = DESTROYED_UNIVERSE;
-        global1 = 0;
-        global1 = global1 - 99;
+        score = 0;
+        score = score - 99;
         "Mmm. On the whole, it's probably best not to alter one of the fundamental constants of the physical universe while still inside it. On the bright side, for once you are unlikely to get the blame.";
     }
     rfalse;
@@ -8487,38 +8603,38 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: wheel.before
 
-[ WheelBefore var1 ;	
-    var1 = Wheel2Before();
-    return var1;
+[ WheelBefore r ;	
+    r = Wheel2Before();
+    return r;
 ];
 
 ! References: wheel2.before
 
-[ Wheel2Before var1 ;	
+[ Wheel2Before obj ;	
     if (verb == ##Turn) {
-        var1 = parent(player);
-        if (var1 == 85[dumbwaiter?]) {
+        obj = parent(player);
+        if (obj == dumbwaiter) {
             "If you could only reach the wheel from here...";
         }
         if (noun has on) {
             "It won't turn. Perhaps it's broken, or perhaps only rusty.";
         }
         print "It spins round smoothly, and the dumbwaiter is hoisted ";
-        var1 = 85[dumbwaiter?];
-        var1 = parent(var1);
-        if (var1 == location) {
+        obj = dumbwaiter;
+        obj = parent(obj);
+        if (obj == location) {
             print "away out of sight.";
         }
-        if (var1 ~= location) {
+        if (obj ~= location) {
             print "into view.";
         }
-        if (var1 == 83[Storage_Room?]) {
+        if (obj == Storage_Room) {
             move dumbwaiter to Cellars;
         }
-        if (var1 == 90[Dark_Shaft?]) {
+        if (obj == Dark_Shaft) {
             move dumbwaiter to location;
         }
-        if (var1 == 93[Cellars?]) {
+        if (obj == Cellars) {
             move dumbwaiter to Storage_Room;
         }
         new_line;
@@ -8529,7 +8645,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: Viewpoint_Ledge.after
 
-[ routine76554 ;	
+[ ChanceSwitchAfter ;	
     if (verb == ##SwitchOn) {
         "Click-clunk!  The world looks precisely the same.";
     }
@@ -8554,27 +8670,27 @@ Array BombWires -->	! 10208 (0x27e0)
     rfalse;
 ];
 
-[ routine76690 var1 var2 ;	
+[ routine76690 o dst ;	
     print "the picture on ";
-    Defart(var1);	! not popped
+    Defart(o);	! not popped
     @pop;
-    var2 = var1.door_to;
-    if (var2 == 0) {
+    dst = o.door_to;
+    if (dst == nothing) {
         ".";
     }
     ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
 ];
 
-[ routine76792 var1 var2 var3 ;	
-    if (var1 ~= 0) {
-        var2 = var1.door_to;
-        if (var2 ~= 0) {
-            var3 = 50[south_wall?];
-            var3.door_to = var2;
+[ DisplayProjector o dto wall ;	
+    if (o ~= nothing) {
+        dto = o.door_to;
+        if (dto ~= nothing) {
+            wall = south_wall;
+            wall.door_to = dto;
             give south_wall ~concealed;
         }
         print "The south wall lights up with ";
-        routine76690(var1);	! not popped
+        routine76690(o);	! not popped
         @pop;
         rtrue;
     }
@@ -8584,23 +8700,23 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: slide_projector.after
 
-[ routine76874 var1 ;	
+[ ProjectorAfter o ;	
     if (verb == ##SwitchOn) {
         give Souvenirs_Room light;
-        if (global53 == 1[?]) {
+        if (reverse_plight == true) {
             give Disused_Observatory light;
         }
-        var1 = 49[slide_projector?];
-        var1 = child(var1);
-        if (var1 == 0) {
+        o = slide_projector;
+        o = child(o);
+        if (o == nothing) {
             print "The south wall is lit up. ";
-            if (global53 == 1[?]) {
+            if (reverse_plight == true) {
                 print "Also, a narrow white beam of light extends backwards from the projector, pointing out up through the Observatory doorway to the north.";
             }
             new_line;
             rtrue;
         }
-        routine76792(var1);	! not popped
+        DisplayProjector(o);	! not popped
         @pop;
         rtrue;
     }
@@ -8614,14 +8730,14 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: Souvenirs_Room.before
 
-[ SouvenirRoomBefore var1 ;	
+[ SouvenirRoomBefore o ;	
     if (verb == ##Insert) {
         if (second ~= slide_projector) {
             rfalse;
         }
-        var1 = 49[slide_projector?];
-        var1 = child(var1);
-        if (var1 ~= 0) {
+        o = slide_projector;
+        o = child(o);
+        if (o ~= nothing) {
             "There's a slide in already.";
         }
         if (noun == postcard) {
@@ -8642,21 +8758,21 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: Souvenirs_Room.after
 
-[ SouvenirRoomAfter var1 ;	
+[ SouvenirRoomAfter o ;	
     if (slide_projector hasnt on) {
         rfalse;
     }
     if (verb == ##Look) {
-        var1 = 49[slide_projector?];
-        var1 = child(var1);
-        if (var1 == 0) {
+        o = slide_projector;
+        o = child(o);
+        if (o == nothing) {
             print "^The south wall is lit up by the projector.^";
         } else {
             print "^The south wall displays ";
-            routine76690(var1);	! not popped
+            routine76690(o);	! not popped
             @pop;
         }
-        if (global53 == 1[?]) {
+        if (reverse_plight == true) {
             print "^A beam of white light points directly backward from the projector, through the north doorway into the Observatory.^";
         }
         rtrue;
@@ -8665,17 +8781,17 @@ Array BombWires -->	! 10208 (0x27e0)
         if (second ~= slide_projector) {
             rfalse;
         }
-        routine76792(noun);	! not popped
+        DisplayProjector(noun);	! not popped
         @pop;
         rtrue;
     }
     if (verb == ##Take) {
-        var1 = parent(noun);
-        if (var1 == 49[slide_projector?]) {
+        o = parent(noun);
+        if (o == slide_projector) {
             if (second ~= slide_projector) {
                 rfalse;
             }
-            routine76792(0);	! not popped
+            DisplayProjector(nothing);	! not popped
             @pop;
             rtrue;
         }
@@ -8684,7 +8800,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (second ~= slide_projector) {
             rfalse;
         }
-        routine76792(0);	! not popped
+        DisplayProjector(nothing);	! not popped
         @pop;
         rtrue;
     }
@@ -8693,14 +8809,14 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: Disused_Observatory.after
 
-[ routine77388 ;	
+[ DisusedObservatoryAfter ;	
     if (slide_projector hasnt on) {
         rfalse;
     }
     if (verb ~= ##Look) {
         rfalse;
     }
-    if (global53 == 0) {
+    if (reverse_plight == false) {
         rfalse;
     }
     print "^A beam of white light runs into the room from the slide projector to the south, and hits the ";
@@ -8708,42 +8824,42 @@ Array BombWires -->	! 10208 (0x27e0)
         "opaque glass ball.";
     }
     print "glass ball, which ";
-    routine77492();	! not popped
+    ProjectorRefraction();	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine77492 var1 ;	
-    var1 = child(slide_projector);
-    if (var1 == 0) {
+[ ProjectorRefraction o ;	
+    o = child(slide_projector);
+    if (o == nothing) {
         "diffracts it into a beautiful spectrum across the ceiling.";
     }
-    if (var1 == 158[Eight_of_Wands_card?]) {
+    if (o == Eight_of_Wands_card) {
         "throws it into a straight rod of white light across one wall.";
     }
-    if (var1 == 156[Castle_card?]) {
+    if (o == Castle_card) {
         "spins it about wildly, as if it were a strobe light at a discotheque.";
     }
-    if (var1 == 157[Star_card?]) {
+    if (o == Star_card) {
         "amplifies it into a powerful yellow searchlight which slowly turns about the room.";
     }
     print "somehow bends it so that it strikes the mural at the sign of ";
-    if (var1 == 147[miniature?]) {
+    if (o == miniature) {
         "Scorpio.";
     }
-    if (var1 == 160[Maiden_card?]) {
+    if (o == Maiden_card) {
         "Virgo.";
     }
-    if (var1 == 161[Ace_of_Cups_card?]) {
+    if (o == Ace_of_Cups_card) {
         "Aquarius.";
     }
-    if (var1 == 176[Death_card?]) {
+    if (o == Death_card) {
         "Cancer.";
     }
-    if (var1 == 178[Drowned_Sailor_card?]) {
+    if (o == Drowned_Sailor_card) {
         "Pisces.";
     }
-    if (var1 == 177[Fool_card?]) {
+    if (o == Fool_card) {
         "Capricorn.";
     }
     rtrue;
@@ -8788,7 +8904,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: heavy_iron_mascot.after
 
-[ routine78168 ;	
+[ MascotAfter ;	
     if (verb == ##Take && Beside_Table hasnt general) {
         give Beside_Table general;
         remove misc_obj;
@@ -8818,129 +8934,129 @@ Array BombWires -->	! 10208 (0x27e0)
     "The coal dust makes you cough and splutter, and your eyes stream. You are unable to concentrate on doing anything here.";
 ];
 
-[ routine78564 var1 var2 var3 ;	
-    if (var1 < 0) {
+[ MazeBoundary x y ndx ;	
+    if (x < 0) {
         rfalse;
     }
-    if (var1 > 8) {
+    if (x > 8) {
         rfalse;
     }
-    if (var2 < 0) {
+    if (y < 0) {
         rfalse;
     }
-    if (var2 > 6) {
+    if (y > 6) {
         rfalse;
     }
-    var3 = global25->(9 * var2 + var1);
-    if (var3 == 48[Souvenirs_Room?]) {
-        var3 = 0;
-        return var3;
+    ndx = global25->(9 * y + x);
+    if (ndx == 48) {
+        ndx = 0;
+        return ndx;
     }
-    if (var3 == 49[slide_projector?]) {
-        var3 = 1[?];
-        return var3;
+    if (ndx == 49) {
+        ndx = 1;
+        return ndx;
     }
     rtrue;
 ];
 
-[ routine78628 var1 var2 var3 ;	
-    if (var1 < 0) {
+[ MouseMove2 x y pos ;	
+    if (x < 0) {
         rfalse;
     }
-    if (var1 > 8) {
+    if (x > 8) {
         rfalse;
     }
-    if (var2 < 0) {
+    if (y < 0) {
         rfalse;
     }
-    if (var2 > 6) {
+    if (y > 6) {
         rfalse;
     }
-    var3 = global30->(9 * var2 + var1);
-    if (var3 == 48[Souvenirs_Room?]) {
-        var3 = 0;
-        return var3;
+    pos = global30->(9 * y + x);
+    if (pos == 48) {
+        pos = 0;
+        return pos;
     }
-    if (var3 == 49[slide_projector?]) {
-        var3 = 1[?];
-        return var3;
+    if (pos == 49) {
+        pos = 1;
+        return pos;
     }
     rtrue;
 ];
 
-[ routine78692 var1 var2 var3 ;	
-    if (var1 == 0) {
+[ SeedText x y ndx ;	
+    if (x == 0) {
         ! no code
-    } else if (var1 == 8[se_obj?]) {
+    } else if (x == 8) {
         ! no code
-    } else if (var2 == 0) {
+    } else if (y == 0) {
         ! no code
-    } else if (var2 == 6[ne_obj?]) {
+    } else if (y == 6) {
         ! no code
     } else {
-        var3 = routine78564(var1,var2);
-        return var3;
+        ndx = MazeBoundary(x,y);
+        return ndx;
     }
-    var3 = global25->(9 * var2 + var1);
-    if (var3 == 48[Souvenirs_Room?]) {
-        var3 = 0;
-        return var3;
+    ndx = global25->(9 * y + x);
+    if (ndx == 48) {
+        ndx = 0;
+        return ndx;
     }
-    if (var3 == 49[slide_projector?]) {
-        var3 = 2[?];
-        return var3;
+    if (ndx == 49) {
+        ndx = 2;
+        return ndx;
     }
     rtrue;
 ];
 
-[ routine78774 var1 var2 var3 ;	
-    var3 = routine78692(var1,var2);
-    if (var3 == 2[?]) {
-        var3 = 0;
+[ SeedBounary x y ndx ;	
+    ndx = SeedText(x,y);
+    if (ndx == 2) {
+        ndx = 0;
     }
-    return var3;
+    return ndx;
 ];
 
-[ routine78798 var1 var2 var3 ;	
-    var3 = routine78692(var1,var2);
-    if (var3 == 1[?]) {
-        var3 = 0;
+[ OldMazeBoundary x y ndx ;	
+    ndx = SeedText(x,y);
+    if (ndx == 1) {
+        ndx = 0;
     }
-    if (var3 == 2[?]) {
-        var3 = 1[?];
+    if (ndx == 2) {
+        ndx = 1;
     }
-    return var3;
+    return ndx;
 ];
 
-[ routine78830 var1 var2 var3 ;	
+[ MazeLayoutBefore y x wallp ;	
     if (verb ~= ##Examine) {
         rfalse;
     }
     print "The layout is roughly as follows:^^";
     routine35150();	! not popped
     @pop;
-    var1 = 0;
-    --var1;
-  .label78879;
-    if (var1 < 6) {
-        ++var1;
+    y = 0;
+    --y;
+  .labelXXX;
+    if (y < 6) {
+        ++y;
         print "    ";
-        var2 = 0;
-        --var2;
-      .label78896;
-        if (var2 < 8) {
-            ++var2;
-            var3 = routine78564(var2,var1);
-            if (var3 == 0) {
+        x = 0;
+        --x;
+      .labelXXX;
+        if (x < 8) {
+            ++x;
+            wallp = MazeBoundary(x,y);
+            if (wallp == false) {
                 print "...";
             }
-            if (var3 == 1[?]) {
+            if (wallp == true) {
                 print '#', '#', '#';
             }
-            jump label78896;
+            jump labelXXX;
         }
         new_line;
-        jump label78879;
+        jump labelXXX;
     }
     routine35168();	! not popped
     @pop;
@@ -8949,17 +9065,17 @@ Array BombWires -->	! 10208 (0x27e0)
 
 ! References: Family_Tree.before
 
-[ FamilyTreeBefore var1 ;	
-    global26 = 4[e_obj?];
-    global27 = 6[ne_obj?];
+[ FamilyTreeBefore env ;	
+    MazeX = 4;
+    MazyY = 6;
     if (verb ~= ##Go) {
         rfalse;
     }
     if (noun ~= n_obj) {
         rfalse;
     }
-    var1 = parent(player);
-    if (var1 == 130[garden_roller?]) {
+    env = parent(player);
+    if (env == garden_roller) {
         rfalse;
     }
     "You can't go that way.^^Now, this takes a little explaining... These days, it isn't easy to keep up a house the size of Meldrew House, and your family has had to strike a bargain with the National Trust that the house should be open to the public in the summer months. The maze is so popular with visitors that the grass has worn away, and it's being reseeded at the moment, so you shouldn't go treading all over it.";
@@ -8975,45 +9091,45 @@ Array BombWires -->	! 10208 (0x27e0)
         if (garden_roller hasnt on) {
             "But the garden roller is switched off, and won't drive.";
         }
-        if (global26 == 4[e_obj?] && global27 == 6[ne_obj?] && noun == s_obj) {
+        if (MazeX == 4 && MazyY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (global26 == 0 && global27 == 1[?] && noun == w_obj) {
+        if (MazeX == 0 && MazyY == 1 && noun == w_obj) {
             rfalse;
         }
         var2 = 100[hole_in_the_wall?];
         var3 = 100[hole_in_the_wall?];
         if (noun == n_obj) {
-            var2 = global26;
-            var3 = global27 - 1;
+            var2 = MazeX;
+            var3 = MazyY - 1;
         }
         if (noun == e_obj) {
-            var2 = global26 + 1;
-            var3 = global27;
+            var2 = MazeX + 1;
+            var3 = MazyY;
         }
         if (noun == s_obj) {
-            var2 = global26;
-            var3 = global27 + 1;
+            var2 = MazeX;
+            var3 = MazyY + 1;
         }
         if (noun == w_obj) {
-            var2 = global26 - 1;
-            var3 = global27;
+            var2 = MazeX - 1;
+            var3 = MazyY;
         }
         if (var2 == 100[hole_in_the_wall?]) {
             "The maze is constructed with rectangular grid-lines of privet, so you can only proceed north, east, south or west.";
         }
-        if (routine78564(var2,var3) == 1[?]) {
+        if (MazeBoundary(var2,var3) == 1[?]) {
             "The privet hedge is in the way.";
         }
-        global26 = var2;
-        global27 = var3;
+        MazeX = var2;
+        MazyY = var3;
         if (location == Patio_in_Maze) {
             location = Maze;
             var1 = 130[garden_roller?];
             remove var1;
             move var1 to Maze;
         }
-        if (global26 == 7[nw_obj?] && global27 == 5[w_obj?]) {
+        if (MazeX == 7 && MazyY == 5) {
             location = Patio_in_Maze;
             var1 = 130[garden_roller?];
             remove var1;
@@ -9030,38 +9146,38 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ MazeFoundationsBefore var1 var2 ;	
     if (verb == ##Go) {
-        if (global26 == 4[e_obj?] && global27 == 6[ne_obj?] && noun == s_obj) {
+        if (MazeX == 4 && MazyY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (global26 == 0 && global27 == 1[?] && noun == w_obj) {
+        if (MazeX == 0 && MazyY == 1 && noun == w_obj) {
             rfalse;
         }
         var1 = 100[hole_in_the_wall?];
         var2 = 100[hole_in_the_wall?];
         if (noun == n_obj) {
-            var1 = global26;
-            var2 = global27 - 1;
+            var1 = MazeX;
+            var2 = MazyY - 1;
         }
         if (noun == e_obj) {
-            var1 = global26 + 1;
-            var2 = global27;
+            var1 = MazeX + 1;
+            var2 = MazyY;
         }
         if (noun == s_obj) {
-            var1 = global26;
-            var2 = global27 + 1;
+            var1 = MazeX;
+            var2 = MazyY + 1;
         }
         if (noun == w_obj) {
-            var1 = global26 - 1;
-            var2 = global27;
+            var1 = MazeX - 1;
+            var2 = MazyY;
         }
         if (var1 == 100[hole_in_the_wall?]) {
             "The maze is constructed along rectangular grid-lines, so you can only proceed north, east, south or west.";
         }
-        if (routine78798(var1,var2) ~= 0) {
+        if (OldMazeBoundary(var1,var2) ~= 0) {
             "The wooden fence is in the way.";
         }
-        global26 = var1;
-        global27 = var2;
+        MazeX = var1;
+        MazyY = var2;
         LookSub(1[?]);	! not popped
         @pop;
         rtrue;
@@ -9086,18 +9202,18 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ routine79800 var1 var2 var3 var4 var5 ;	
-    --global27;
-    var2 = routine78564(global26,global27);
-    ++global27;
-    ++global26;
-    var4 = routine78564(global26,global27);
-    --global26;
-    ++global27;
-    var3 = routine78564(global26,global27);
-    --global27;
-    --global26;
-    var5 = routine78564(global26,global27);
-    ++global26;
+    --MazyY;
+    var2 = MazeBoundary(MazeX,MazyY);
+    ++MazyY;
+    ++MazeX;
+    var4 = MazeBoundary(MazeX,MazyY);
+    --MazeX;
+    ++MazyY;
+    var3 = MazeBoundary(MazeX,MazyY);
+    --MazyY;
+    --MazeX;
+    var5 = MazeBoundary(MazeX,MazyY);
+    ++MazeX;
     var1 = var2 + (var4 + (var3 + var5));
     if (var1 == 4[e_obj?]) {
         "^You are hedged in on all sides.";
@@ -9114,7 +9230,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (var1 == 0) {
         "^This is a crossroads in the maze.";
     }
-  .label79993;
+  .labelXXX;
     if (var1 < 4) {
         if (var2 == 0) {
             print "north";
@@ -9142,14 +9258,14 @@ Array BombWires -->	! 10208 (0x27e0)
         if (var1 == 1[?]) {
             print ", ";
         }
-        jump label79993;
+        jump labelXXX;
     }
     rtrue;
 ];
 
 [ routine80092 var1 var2 var3 var4 var5 ;	
-    var1 = routine78564(global26,global27);
-    if (global26 == 7[nw_obj?] && global27 == 5[w_obj?]) {
+    var1 = MazeBoundary(MazeX,MazyY);
+    if (MazeX == 7 && MazyY == 5) {
         var1 = 2[?];
     }
     new_line;
@@ -9162,18 +9278,18 @@ Array BombWires -->	! 10208 (0x27e0)
     if (var1 == 2[?]) {
         print "You stand on a rough patch of grass, marked out with whitewash. ";
     }
-    --global27;
-    var2 = routine78774(global26,global27);
-    ++global27;
-    ++global26;
-    var4 = routine78774(global26,global27);
-    --global26;
-    ++global27;
-    var3 = routine78774(global26,global27);
-    --global27;
-    --global26;
-    var5 = routine78774(global26,global27);
-    ++global26;
+    --MazyY;
+    var2 = SeedBounary(MazeX,MazyY);
+    ++MazyY;
+    ++MazeX;
+    var4 = SeedBounary(MazeX,MazyY);
+    --MazeX;
+    ++MazyY;
+    var3 = SeedBounary(MazeX,MazyY);
+    --MazyY;
+    --MazeX;
+    var5 = SeedBounary(MazeX,MazyY);
+    ++MazeX;
     var1 = var2 + (var4 + (var3 + var5));
     if (var1 == 4[e_obj?]) {
         print "There are seedbeds on all sides. ";
@@ -9188,9 +9304,9 @@ Array BombWires -->	! 10208 (0x27e0)
             print "There is a seedbed to the ";
         }
         if (var1 == 0) {
-            jump label80488;
+            jump labelXXX;
         }
-      .label80387;
+      .labelXXX;
         if (var1 > 0) {
             if (var2 == 1[?]) {
                 print "north";
@@ -9218,23 +9334,23 @@ Array BombWires -->	! 10208 (0x27e0)
                 if (var1 == 3[s_obj?]) {
                     print ", ";
                 }
-                jump label80387;
+                jump labelXXX;
             }
         }
     }
-  .label80488;
-    --global27;
-    var2 = routine78798(global26,global27);
-    ++global27;
-    ++global26;
-    var4 = routine78798(global26,global27);
-    --global26;
-    ++global27;
-    var3 = routine78798(global26,global27);
-    --global27;
-    --global26;
-    var5 = routine78798(global26,global27);
-    ++global26;
+  .labelXXX;
+    --MazyY;
+    var2 = OldMazeBoundary(MazeX,MazyY);
+    ++MazyY;
+    ++MazeX;
+    var4 = OldMazeBoundary(MazeX,MazyY);
+    --MazeX;
+    ++MazyY;
+    var3 = OldMazeBoundary(MazeX,MazyY);
+    --MazyY;
+    --MazeX;
+    var5 = OldMazeBoundary(MazeX,MazyY);
+    ++MazeX;
     var1 = var2 + (var4 + (var3 + var5));
     if (var1 == 0) {
         new_line;
@@ -9252,7 +9368,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (var1 == 4[e_obj?]) {
         "This is a fenced-in area.";
     }
-  .label80625;
+  .labelXXX;
     if (var1 > 0) {
         if (var2 == 1[?]) {
             print "north";
@@ -9280,7 +9396,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (var1 == 3[s_obj?]) {
             print ", ";
         }
-        jump label80625;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -9371,8 +9487,8 @@ Array BombWires -->	! 10208 (0x27e0)
 ! References: Folly.after
 
 [ routine80946 ;	
-    global26 = 0;
-    global27 = 1[?];
+    MazeX = 0;
+    MazyY = 1;
     rfalse;
 ];
 
@@ -9813,13 +9929,13 @@ Array BombWires -->	! 10208 (0x27e0)
     StartTimer(tent_pole,4);	! not popped
     @pop;
     var1 = child(player);
-  .label84652;
+  .labelXXX;
     if (var1 ~= 0) {
         if (var1 hasnt worn) {
             remove var1;
         }
         var1 = sibling(var1);
-        jump label84652;
+        jump labelXXX;
     }
     CouncilCnt = 0;
     location = Rough_Tent;
@@ -9888,13 +10004,13 @@ Array BombWires -->	! 10208 (0x27e0)
     game_section = MODERN;
     var1 = 4[e_obj?];
     var1 = child(var1);
-  .label85021;
+  .labelXXX;
     if (var1 ~= 0) {
         var2 = sibling(var1);
         remove var1;
         move var1 to player;
         var1 = var2;
-        jump label85021;
+        jump labelXXX;
     }
     var1 = 118[heavy_iron_mascot?];
     var1 = parent(var1);
@@ -9936,24 +10052,24 @@ Array BombWires -->	! 10208 (0x27e0)
         if (var1 ~= 0) {
             print "^The lower basket contains ";
             var1 = child(hanging_cord);
-          .label85289;
+          .labelXXX;
             if (var1 ~= 0) {
                 ++var1;
                 ++var2;
                 var1 = sibling(var1);
-                jump label85289;
+                jump labelXXX;
             }
             var1 = child(hanging_cord);
             var2 = 0;
-          .label85312;
+          .labelXXX;
             if (var1 ~= 0) {
                 var1 = sibling(var1);
                 ++var2;
-                jump label85312;
+                jump labelXXX;
             }
             var1 = child(hanging_cord);
             var3 = 0;
-          .label85333;
+          .labelXXX;
             if (var1 ~= 0) {
                 routine56420(var1);	! not popped
                 @pop;
@@ -9965,7 +10081,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 }
                 var1 = sibling(var1);
                 ++var3;
-                jump label85333;
+                jump labelXXX;
             }
             print ".^";
         }
@@ -10382,18 +10498,18 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ XDemonHintSub ;	
-    routine90106(global20);	! not popped
+    DemonQuestion(noun_word);	! not popped
     @pop;
     rtrue;
 ];
 
 [ XAngelHintSub ;	
-    routine90314(global20);	! not popped
+    AngelQuestion(noun_word);	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine90106 var1 var2 ;	
+[ DemonQuestion var1 var2 ;	
     var2 = routine89386(var1);
     if (var2 ~= 0) {
         routine86432(var2);	! not popped
@@ -10412,7 +10528,7 @@ Array BombWires -->	! 10208 (0x27e0)
     return var2;
 ];
 
-[ routine90314 var1 var2 ;	
+[ AngelQuestion var1 var2 ;	
     var2 = routine89886(var1);
     if (var2 ~= 0) {
         routine88410(var2);	! not popped
@@ -10431,36 +10547,36 @@ Array BombWires -->	! 10208 (0x27e0)
     return var2;
 ];
 
-[ routine90520 var1 var2 var3 ;	
+[ routine90520 o str var3 ;	
     var3 = 0;
-    if (var1 == 13[misc_obj?]) {
+    if (o == misc_obj) {
         var3 = 66[Sir_Joshua_Meldrewe?];
     }
-    if (var1 == 37[medicine_bottle?]) {
+    if (o == medicine_bottle) {
         var3 = 68[sooty_old_stick?];
     }
-    if (var1 == 4[e_obj?]) {
+    if (o == e_obj) {
         var3 = 74[comfortable_bed?];
     }
-    if (var1 == 5[w_obj?]) {
+    if (o == w_obj) {
         var3 = 76[Tiny_Balcony?];
     }
-    if (var1 == 6[ne_obj?]) {
+    if (o == ne_obj) {
         var3 = 78[delicate_gold_key?];
     }
-    if (var1 == 7[nw_obj?]) {
+    if (o == nw_obj) {
         var3 = 80[demijohn?];
     }
-    if (var1 == 8[se_obj?]) {
+    if (o == se_obj) {
         var3 = 82[tourist_map?];
     }
-    if (var1 == 9[sw_obj?]) {
+    if (o == sw_obj) {
         var3 = 84[wheel2?];
     }
     if (var3 == 0) {
         "???";
     }
-    var3-->0 = var2;
+    var3-->0 = str;
     rtrue;
 ];
 
@@ -10468,11 +10584,11 @@ Array BombWires -->	! 10208 (0x27e0)
     remove misc_obj;
     var2 = 0;
     --var2;
-  .label90622;
+  .labelXXX;
     if (var2 < 31) {
         ++var2;
         give misc_obj ~var2;
-        jump label90622;
+        jump labelXXX;
     }
     misc_obj.article = "a";
     misc_obj.initial = 0;
@@ -10486,7 +10602,7 @@ Array BombWires -->	! 10208 (0x27e0)
     var1-->3 = 17750['zzzzzz//p'?];
     move misc_obj to location;
     if (location == Mosaic) {
-        routine90520(13[misc_obj?],64078["mosaic"?]);	! not popped
+        routine90520(misc_obj,"mosaic");	! not popped
         @pop;
         misc_obj.description = "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.";
         give misc_obj scenery;
@@ -10494,14 +10610,14 @@ Array BombWires -->	! 10208 (0x27e0)
         var1-->0 = 15286['mosaic'?];
     }
     if (location == Old_Furniture) {
-        routine90520(13[misc_obj?],64107["furnitur..."?]);	! not popped
+        routine90520(misc_obj,"furniture");	! not popped
         @pop;
         misc_obj.description = "Nothing there, but that cupboard looks interesting.";
         give misc_obj scenery;
         var1-->0 = 14306['furniture'?];
     }
     if (location == Infinity_Symbol) {
-        routine90520(13[misc_obj?],64124["lemniscu..."?]);	! not popped
+        routine90520(misc_obj,"lemniscus");	! not popped
         @pop;
         give misc_obj scenery;
         var1-->0 = 14810['infinity'?];
@@ -10509,7 +10625,7 @@ Array BombWires -->	! 10208 (0x27e0)
         var1-->2 = 17015['symbol'?];
     }
     if (location == Family_Tree) {
-        routine90520(13[misc_obj?],64127["plane tr..."?]);	! not popped
+        routine90520(misc_obj,"plane tree");	! not popped
         @pop;
         give misc_obj scenery;
         var1-->0 = 15790['plane'?];
@@ -10517,15 +10633,15 @@ Array BombWires -->	! 10208 (0x27e0)
         var1-->2 = 14096['family'?];
     }
     if (location == Up_the_Plane_Tree) {
-        routine90520(13[misc_obj?],64131["maze lay..."?]);	! not popped
+        routine90520(misc_obj,"maze layout");	! not popped
         @pop;
         give misc_obj scenery;
         var1-->0 = 15209['maze'?];
         var1-->1 = 14999['layout'?];
-        misc_obj.before = routine78830;
+        misc_obj.before = MazeLayoutBefore;
     }
     if (location == Folly) {
-        routine90520(13[misc_obj?],64135["folly to..."?]);	! not popped
+        routine90520(misc_obj,"folly tower");	! not popped
         @pop;
         give misc_obj scenery;
         var1-->0 = 14222['folly//p'?];
@@ -10534,14 +10650,14 @@ Array BombWires -->	! 10208 (0x27e0)
         misc_obj.description = "Decidedly unsteady.";
     }
     if (location == plaque) {
-        routine90520(13[misc_obj?],64146["plaque"?]);	! not popped
+        routine90520(misc_obj,"plaque");	! not popped
         @pop;
         give misc_obj scenery;
         var1-->0 = 15811['plaque'?];
         misc_obj.description = "~This viewpoint, one of the finest in the county, was laid down by Capability Meldrew, a well-known landscape gardener of his day. It was intended as one of the rewards of the garden maze, and was constructed c. 1808 after an earlier folly on the site collapsed.~";
     }
     if (location == Sarcophagus) {
-        routine90520(13[misc_obj?],64228["tombston..."?]);	! not popped
+        routine90520(misc_obj,"tombstone");	! not popped
         @pop;
         give misc_obj static;
         var1-->0 = 17183['tomb'?];
@@ -10551,7 +10667,7 @@ Array BombWires -->	! 10208 (0x27e0)
         misc_obj.description = "The gist of the inscription is: ~Henri Maladreue, obiit mcdlvi.~";
     }
     if (location == Catacombs) {
-        routine90520(13[misc_obj?],64273["aluminiu..."?]);	! not popped
+        routine90520(misc_obj,"aluminium staircase");	! not popped
         @pop;
         give misc_obj static;
         var1-->0 = 16854['stairc'?];
@@ -10564,7 +10680,7 @@ Array BombWires -->	! 10208 (0x27e0)
         give metal_wall ~general;
     }
     if (location == Bohemia) {
-        routine90520(13[misc_obj?],64316["Impressi..."?]);	! not popped
+        routine90520(misc_obj,"Impressionist painting");	! not popped
         @pop;
         give misc_obj static;
         give misc_obj talkable;
@@ -10607,7 +10723,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (location == plane_tree) {
         give misc_obj static;
         if (plane_tree has general) {
-            routine90520(13[misc_obj?],64589["ancient ..."?]);	! not popped
+            routine90520(misc_obj,"ancient well amongst broken plaster");	! not popped
             @pop;
             var1-->0 = 12717['ancient'?];
             var1-->1 = 17491['well'?];
@@ -10616,7 +10732,7 @@ Array BombWires -->	! 10208 (0x27e0)
             give misc_obj container;
             give misc_obj open;
         } else {
-            routine90520(13[misc_obj?],64658["plaster ..."?]);	! not popped
+            routine90520(misc_obj,"plaster statuette");	! not popped
             @pop;
             var1-->0 = 15818['plaste'?];
             var1-->1 = 16882['statue'?];
@@ -10627,7 +10743,7 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (location == Dark_Room) {
         give misc_obj static;
-        routine90520(13[misc_obj?],64737["sepia ph..."?]);	! not popped
+        routine90520(misc_obj,"sepia photograph");	! not popped
         @pop;
         var1-->0 = 16448['sepia'?];
         var1-->1 = 15734['photo'?];
@@ -10638,7 +10754,7 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (location == Contraption) {
         give misc_obj static;
-        routine90520(13[misc_obj?],64853["contrapt..."?]);	! not popped
+        routine90520(misc_obj,"contraption");	! not popped
         @pop;
         var1-->0 = 13501['contra'?];
         var1-->1 = 15643['panel'?];
@@ -10648,7 +10764,7 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (location == Universe_Maintenance_Room) {
         give misc_obj static;
-        routine90520(13[misc_obj?],64955["array of..."?]);	! not popped
+        routine90520(misc_obj,"array of oblong crystals");	! not popped
         @pop;
         var1-->0 = 12815['array'?];
         var1-->1 = 15503['oblong'?];
@@ -10659,20 +10775,20 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (location == big_electricians_switch) {
         give misc_obj static;
-        routine90520(13[misc_obj?],65015["large di..."?]);	! not popped
+        routine90520(misc_obj,"large dial");	! not popped
         @pop;
         var1-->0 = 14992['large'?];
         var1-->1 = 13781['dial'?];
-        misc_obj.initial = "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.";
+        misc_obj.initial = "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelXXXled in small print.";
         misc_obj.description = "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.";
-        misc_obj.before = routine76128;
+        misc_obj.before = DialBefore;
     }
     if (location == Shadowy_Hallway) {
         remove misc_obj;
     }
     if (location == Ruined_Castle_Cafe) {
         give misc_obj scenery;
-        routine90520(13[misc_obj?],65131["cafe tab..."?]);	! not popped
+        routine90520(misc_obj,"cafe table");	! not popped
         @pop;
         var1-->0 = 17022['table'?];
     }
@@ -10681,7 +10797,7 @@ Array BombWires -->	! 10208 (0x27e0)
         give misc_obj door;
         give misc_obj openable;
         give misc_obj locked;
-        routine90520(13[misc_obj?],65135["windowed..."?]);	! not popped
+        routine90520(misc_obj,"windowed door");	! not popped
         @pop;
         var1-->0 = 13872['door'?];
         var1-->1 = 17547['window'?];
@@ -10692,17 +10808,17 @@ Array BombWires -->	! 10208 (0x27e0)
     if (location == Library_Storage) {
         give misc_obj concealed;
         give misc_obj static;
-        routine90520(13[misc_obj?],65204["water pi..."?]);	! not popped
+        routine90520(misc_obj,"water pipe");	! not popped
         @pop;
         var1-->0 = 17456['water'?];
         var1-->1 = 15776['pipe'?];
         var1-->2 = 14908['joint'?];
         misc_obj.description = "The joint on the water pipe looks none too sturdy.";
-        misc_obj.before = routine75482;
+        misc_obj.before = UseWrench;
     }
     if (location == Hypocaust) {
         give misc_obj scenery;
-        routine90520(13[misc_obj?],65224["hypocaus..."?]);	! not popped
+        routine90520(misc_obj,"hypocaust vents");	! not popped
         @pop;
         var1-->0 = 14768['hypoca'?];
         var1-->1 = 17365['vents'?];
@@ -10711,7 +10827,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (location == Greek_Frieze) {
         give misc_obj scenery;
         give misc_obj talkable;
-        routine90520(13[misc_obj?],65229["Greek fr..."?]);	! not popped
+        routine90520(misc_obj,"Greek frieze");	! not popped
         @pop;
         var1-->0 = 14481['greek'?];
         var1-->1 = 14264['frieze'?];
@@ -10720,7 +10836,7 @@ Array BombWires -->	! 10208 (0x27e0)
     if (location == Beside_Table) {
         give misc_obj animate;
         give misc_obj proper;
-        routine90520(13[misc_obj?],65279["Druid"?]);	! not popped
+        routine90520(misc_obj,"Druid");	! not popped
         @pop;
         var1-->0 = 13928['druid'?];
         misc_obj.initial = "Beside the table is a more substantial adviser, as if she too walks in this strange spirit plane. She is wearing frightening druidical robes, of strange pelts and furs, with nasty-looking charms around her neck. Every so often, she seems to catch sight of you out of the corner of her eye, but then look round and see nothing. The military men do not believe in her power, and yet... they treat her with respect.";
@@ -10733,7 +10849,7 @@ Array BombWires -->	! 10208 (0x27e0)
 
 [ routine91728 var1 ;	
     print "Congratulations once again on winning ~Curses~. Before you go, though, have you ever...^^  seen the maze layout from up the tree?^  asked the demon and angel about Heaven and Hell?^  showed them all the objects you can carry around?^  tried singing, swimming, swearing or ramming doors?^  tried casting all the rods on yourself?^", "  shown the demon something edible?^  tried walking on the roof?^  tried magic words like xyzzy, plugh, shantih or the Zork verb diagnose?^^or considered getting your revenge, by writing your own Adventure game?^^", "Which only leaves one final diversion, the ~Curses~ trivia quiz. And the questions are:^", "^   1. What are the five ~good but wrong guesses~ which deserve reward?^   2. How many different songs can play on the wireless?^   3. What are the nine *** ways the game can end ***?^   4. When does the daisy chain rustle?^   5. What can you see in the crystal ball?^   6. How do Dame Judi Dench and Donald Sutherland appear?^   7. Explain two of the initials on the handkerchief, and the graffiti.^   8. How many Tarot cards are there altogether?  (Hint: more than eight!)^   9. What are the four puzzles which need not be solved to win?^  10. What is the mascot for in the premonition?^", "^To see one of the answers, type its question number; or press ENTER to go back to the menu.^";
-  .label92594;
+  .labelXXX;
     print ':', ' ';
     @sread global10 global11;
     if (global11->1 == 0) {
@@ -10779,19 +10895,19 @@ Array BombWires -->	! 10208 (0x27e0)
         print "There are only ten questions.^";
     }
     new_line;
-    jump label92594;
+    jump labelXXX;
     rtrue;
 ];
 
 [ routine94268 var1 var2 var3 var4 var5 var6 var7 ;	
-  .label94283;
+  .labelXXX;
     var4 = 0;
     --var4;
-  .label94288;
+  .labelXXX;
     if (var4 < 9) {
         ++var4;
         global75->var4 = var2->var4;
-        jump label94288;
+        jump labelXXX;
     }
     new_line;
     print '>';
@@ -10800,7 +10916,7 @@ Array BombWires -->	! 10208 (0x27e0)
     var5 = var2-->1;
     if (var3 == 0) {
         print "I beg your pardon?^";
-        jump label94283;
+        jump labelXXX;
     }
     if (var5 == 15552['oops//p'?]) {
         ! no code
@@ -10809,25 +10925,25 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     if (global73 == 0) {
         print "Sorry, that can't be corrected.^";
-        jump label94283;
+        jump labelXXX;
     }
     if (var3 == 1[?]) {
         print "Think nothing of it.^";
-        jump label94283;
+        jump labelXXX;
     }
     if (var3 > 2) {
         print "~Oops~ can only correct a single word.^";
-        jump label94283;
+        jump labelXXX;
     }
     var6 = var2-->3;
     var7 = var2-->4;
     var4 = 0;
     --var4;
-  .label94471;
+  .labelXXX;
     if (var4 < 9) {
         ++var4;
         var2->var4 = global75->var4;
-        jump label94471;
+        jump labelXXX;
     }
     var5 = 2 * global73 - 1;
     var2-->var5 = var6;
@@ -10840,24 +10956,24 @@ Array BombWires -->	! 10208 (0x27e0)
     if (notheld_mode == true) {
         var6 = 0;
         --var6;
-      .label94553;
+      .labelXXX;
         if (var6 < 7) {
             ++var6;
             var1->var6 = global83->var6;
-            jump label94553;
+            jump labelXXX;
         }
         notheld_mode = false;
         rtrue;
     }
-  .label94576;
+  .labelXXX;
     routine94268(global10,global11);	! not popped
     @pop;
-  .label94584;
+  .labelXXX;
     global62 = global11->1;
     var12 = 1[?];
     global81 = 1[?];
     global6 = player;
-  .label94597;
+  .labelXXX;
     global61 = global81;
     global66 = routine98666();
     if (global66 == 14313['g//p'?]) {
@@ -10867,28 +10983,28 @@ Array BombWires -->	! 10208 (0x27e0)
         var7 = global14->1;
         if (var7 == 0) {
             print "You can hardly repeat that.^";
-            jump label94576;
+            jump labelXXX;
         }
         var6 = 0;
         --var6;
-      .label94660;
+      .labelXXX;
         if (var6 < 63) {
             ++var6;
             var7 = global14->var6;
             global11->var6 = var7;
-            jump label94660;
+            jump labelXXX;
         }
-        jump label94584;
+        jump labelXXX;
     }
     if (global66 ~= 12654['again//p'?]) {
         var6 = 0;
         --var6;
-      .label94694;
+      .labelXXX;
         if (var6 < 63) {
             ++var6;
             var7 = global11->var6;
             global14->var6 = var7;
-            jump label94694;
+            jump labelXXX;
         }
     }
     if (global66 == 0) {
@@ -10899,7 +11015,7 @@ Array BombWires -->	! 10208 (0x27e0)
             global61 = global81;
             var9 = routine97122(1[?],0,0);
             if (var9 == 1000[?]) {
-                jump label94584;
+                jump labelXXX;
             }
             if (var9 ~= 0) {
                 var1->1 = 1[?];
@@ -10910,33 +11026,33 @@ Array BombWires -->	! 10208 (0x27e0)
             if (global6 == player) {
                 var7 = 2[?];
                 --var7;
-              .label94789;
+              .labelXXX;
                 if (var7 < global62) {
                     ++var7;
                     var6 = routine98666();
                     if (var6 == 17666['xcommand//p'?]) {
-                        jump label94820;
+                        jump labelXXX;
                     }
-                    jump label94789;
+                    jump labelXXX;
                 }
             }
             var12 = 11[d_obj?];
-            jump label96060;
-          .label94820;
+            jump labelXXX;
+          .labelXXX;
             var7 = global61 - 1;
             var8 = 6[ne_obj?];
             if (var7 == 1[?]) {
                 print "You can't begin with a comma.^";
-                jump label94576;
+                jump labelXXX;
             }
             global61 = 1[?];
             var9 = routine97122(player,location,var8);
             if (var9 == 1000[?]) {
-                jump label94584;
+                jump labelXXX;
             }
             if (var9 == 0) {
                 print "You seem to want to talk to someone, but I can't see whom.^";
-                jump label94576;
+                jump labelXXX;
             }
             if (var9 has talkable) {
                 ! no code
@@ -10945,22 +11061,22 @@ Array BombWires -->	! 10208 (0x27e0)
                 Defart(var9);	! not popped
                 @pop;
                 print ".^";
-                jump label94576;
+                jump labelXXX;
             }
             if (global61 ~= var7) {
                 print "To talk to someone, try ~someone, hello~ or some such.^";
-                jump label94576;
+                jump labelXXX;
             }
             global81 = var7 + 1;
             global6 = var9;
-            jump label94597;
+            jump labelXXX;
         }
         var6 = 255 - global66->5;
         var2 = 0-->7-->var6;
         var4 = var2->0 - 1;
         var3 = 0;
         --var3;
-      .label95041;
+      .labelXXX;
         if (var3 < var4) {
             ++var3;
             global82 = 0;
@@ -10971,7 +11087,7 @@ Array BombWires -->	! 10208 (0x27e0)
             global65 = 0;
             global69 = 1[?];
             --global69;
-          .label95081;
+          .labelXXX;
             if (global69 < 6) {
                 ++global69;
                 global67-->global69 = 0;
@@ -10989,33 +11105,33 @@ Array BombWires -->	! 10208 (0x27e0)
                             global72 = var8;
                         }
                         if (global71 == 0) {
-                            jump label96057;
+                            jump labelXXX;
                         }
                     }
                     if (global61 <= global62 && var8 ~= routine98630(global11)) {
-                        jump label96057;
+                        jump labelXXX;
                     }
                 } else {
                     if (var7 == var5->0) {
                         if (global61 < global62 + 1) {
                             var10 = 0;
                             --var10;
-                          .label95207;
+                          .labelXXX;
                             if (var10 < 7) {
                                 ++var10;
                                 global68-->var10 = global67-->var10;
-                                jump label95207;
+                                jump labelXXX;
                             }
                             global70 = global69;
                             var12 = 2[?];
-                            jump label96057;
+                            jump labelXXX;
                         }
                         if (global65 == 1[?]) {
                             global61 = var14;
                             var8 = var15;
-                            jump label95378;
+                            jump labelXXX;
                         }
-                      .label95249;
+                      .labelXXX;
                         if (global71 ~= 0) {
                             print "(";
                             routine97734(global71,1[?]);	! not popped
@@ -11032,11 +11148,11 @@ Array BombWires -->	! 10208 (0x27e0)
                             notheld_mode = true;
                             var6 = 0;
                             --var6;
-                          .label95313;
+                          .labelXXX;
                             if (var6 < 7) {
                                 ++var6;
                                 global83->var6 = var1->var6;
-                                jump label95313;
+                                jump labelXXX;
                             }
                             var1->1 = 1[?];
                             var1->0 = 2[?];
@@ -11051,21 +11167,21 @@ Array BombWires -->	! 10208 (0x27e0)
                     }
                     global63 = 0;
                     var13 = 0;
-                  .label95378;
+                  .labelXXX;
                     var11 = routine98666();
                     --global61;
                     if (var11 == 14887['it//p'?] && global4 == 0) {
                         var12 = 8[se_obj?];
-                        jump label96057;
+                        jump labelXXX;
                     }
                     if (var11 == 17092['them//p'?] && global4 == 0) {
                         var12 = 8[se_obj?];
-                        jump label96057;
+                        jump labelXXX;
                     }
                     global9 = 0;
                     if (var11 == 17085['the//p'?]) {
                         ++global61;
-                        jump label95378;
+                        jump labelXXX;
                     }
                     if (var11 == 12633['a//p'?]) {
                         ++global61;
@@ -11076,8 +11192,8 @@ Array BombWires -->	! 10208 (0x27e0)
                         global9 = 1[?];
                     }
                     if (var8 == 7[nw_obj?]) {
-                        global21 = routine98840(global61);
-                        global20 = routine98666();
+                        noun_number = routine98840(global61);
+                        noun_word = routine98666();
                         var1->(var7 + 2) = 255[carbolic_soap?];
                         var7 = var7 + 1;
                         global67-->global69 = 255[carbolic_soap?];
@@ -11100,16 +11216,16 @@ Array BombWires -->	! 10208 (0x27e0)
                         if (var11 == 12682['all//p'?]) {
                             if (var8 < 2) {
                                 var12 = 6[ne_obj?];
-                                jump label96057;
+                                jump labelXXX;
                             }
                             if (var8 >= 6) {
                                 var12 = 6[ne_obj?];
-                                jump label96057;
+                                jump labelXXX;
                             }
                             ++global65;
                             if (global65 > 2) {
                                 var12 = 7[nw_obj?];
-                                jump label96057;
+                                jump labelXXX;
                             }
                             if (global65 == 2[?]) {
                                 if (var8 == 5[w_obj?]) {
@@ -11150,21 +11266,21 @@ Array BombWires -->	! 10208 (0x27e0)
                                 @pop;
                             }
                             ++global61;
-                            jump label96522;
+                            jump labelXXX;
                         }
                         global73 = global61;
                         if (var8 ~= 1[?]) {
                             var9 = routine97122(location,global6,var8);
                             if (var9 == 1000[?]) {
-                                jump label94584;
+                                jump labelXXX;
                             }
                             if (var9 == 0) {
                                 var12 = routine96654();
-                                jump label96057;
+                                jump labelXXX;
                             }
                             if (var8 == 6[ne_obj?] && var9 hasnt animate) {
                                 var12 = 10[u_obj?];
-                                jump label96057;
+                                jump labelXXX;
                             }
                             if (var13 == 0) {
                                 var1->(var7 + 2) = var9;
@@ -11179,25 +11295,25 @@ Array BombWires -->	! 10208 (0x27e0)
                                 var10 = routine96814(var9);
                                 if (global65 ~= 1[?] && var10 ~= 0) {
                                     var12 = var10;
-                                    jump label96057;
+                                    jump labelXXX;
                                 }
                             }
                         }
                         if (var8 == 1[?]) {
                             var9 = routine97122(global6,location,var8);
                             if (var9 == 1000[?]) {
-                                jump label94584;
+                                jump labelXXX;
                             }
                             if (var9 == 0) {
                                 var12 = routine96654();
-                                jump label96057;
+                                jump labelXXX;
                             }
                             var11 = parent(var9);
                             if (var11 ~= global6) {
                                 if (notheld_mode == true) {
                                     global74 = global73;
                                     var12 = 5[w_obj?];
-                                    jump label96057;
+                                    jump labelXXX;
                                 }
                                 global82 = var9;
                             }
@@ -11206,10 +11322,10 @@ Array BombWires -->	! 10208 (0x27e0)
                             global67-->global69 = var9;
                         }
                     }
-                  .label95925;
+                  .labelXXX;
                     var11 = routine98666();
                     if (0 ~= routine98514(var9,var11)) {
-                        jump label95925;
+                        jump labelXXX;
                     }
                     if (var11 == 17666['xcommand//p'?]) {
                         var11 = 12724['and//p'?];
@@ -11217,11 +11333,11 @@ Array BombWires -->	! 10208 (0x27e0)
                     if (var11 == 12724['and//p'?]) {
                         if (var8 < 2) {
                             var12 = 6[ne_obj?];
-                            jump label96057;
+                            jump labelXXX;
                         }
                         if (var8 >= 6) {
                             var12 = 6[ne_obj?];
-                            jump label96057;
+                            jump labelXXX;
                         }
                         if (global63 == 0) {
                             global19->0 = 1[?];
@@ -11232,12 +11348,12 @@ Array BombWires -->	! 10208 (0x27e0)
                         if (var13 == 0) {
                             var13 = 1[?];
                         }
-                        jump label95378;
+                        jump labelXXX;
                     }
                     global61 = global61 - 1;
-                  .label96023;
+                  .labelXXX;
                     if (global65 == 2[?]) {
-                        jump label95249;
+                        jump labelXXX;
                     }
                     if (global63 == 1[?]) {
                         var1->(var7 + 2) = 0;
@@ -11245,17 +11361,17 @@ Array BombWires -->	! 10208 (0x27e0)
                         var7 = var7 + 1;
                     }
                 }
-                jump label95081;
+                jump labelXXX;
             }
-          .label96057;
-            jump label95041;
+          .labelXXX;
+            jump labelXXX;
         }
     }
-  .label96060;
+  .labelXXX;
     if (global6 ~= player) {
-        global21 = routine98840(global81);
+        noun_number = routine98840(global81);
         global61 = global81;
-        global20 = routine98666();
+        noun_word = routine98666();
         verb = ##Answer;
         noun = compass;
         second = global6;
@@ -11270,11 +11386,11 @@ Array BombWires -->	! 10208 (0x27e0)
         print "I only understood you as far as wanting to ";
         var10 = 0;
         --var10;
-      .label96164;
+      .labelXXX;
         if (var10 < 7) {
             ++var10;
             global67-->var10 = global68-->var10;
-            jump label96164;
+            jump labelXXX;
         }
         global69 = global70;
         routine97734(0,1[?]);	! not popped
@@ -11313,34 +11429,34 @@ Array BombWires -->	! 10208 (0x27e0)
     if (var12 == 12[thedark?]) {
         print "That's not something you need to refer to in the course of this game.^";
     }
-    jump label94576;
-  .label96522;
+    jump labelXXX;
+  .labelXXX;
     var11 = routine98666();
     if (var11 == 17085['the//p'?]) {
-        jump label96522;
+        jump labelXXX;
     }
     if (var11 == 16175['rods//p'?]) {
         routine96766(18[Meldrews_History?]);	! not popped
         @pop;
-        jump label96522;
+        jump labelXXX;
     }
     if (var11 == 13263['cards//p'?]) {
         routine96766(27[Servants_Room?]);	! not popped
         @pop;
-        jump label96522;
+        jump labelXXX;
     }
     if (var11 == 14061['except//p'?]) {
         var11 = 13186['but//p'?];
     }
     if (var11 == 13186['but//p'?]) {
         var13 = 2[?];
-        jump label95378;
+        jump labelXXX;
     }
     global61 = global61 - 1;
-    jump label96023;
+    jump labelXXX;
     var6 = 1[?];
     --var6;
-  .label96608;
+  .labelXXX;
     if (var6 < global62) {
         ++var6;
         var7 = global11-->(2 * var6 - 1);
@@ -11350,7 +11466,7 @@ Array BombWires -->	! 10208 (0x27e0)
         if (var7 ~= 0) {
             print (address) var7, ' ';
         }
-        jump label96608;
+        jump labelXXX;
     }
     new_line;
     rtrue;
@@ -11381,13 +11497,13 @@ Array BombWires -->	! 10208 (0x27e0)
     }
     local3 = 1[?];
     --local3;
-  .label96731;
+  .labelXXX;
     if (local3 < local2) {
         ++local3;
         if (local1 == global19->local3) {
             rtrue;
         }
-        jump label96731;
+        jump labelXXX;
     }
     local2 = local2 + 1;
     global19->local2 = local1;
@@ -11396,20 +11512,20 @@ Array BombWires -->	! 10208 (0x27e0)
 ];
 
 [ routine96766 local1 local2 local3 local4 ;	
-  .label96775;
+  .labelXXX;
     local2 = global19->0;
     local3 = 1[?];
     --local3;
-  .label96784;
+  .labelXXX;
     if (local3 < local2) {
         ++local3;
         local4 = global19->local3;
         if (local4 hasnt local1) {
             routine96814(local4);	! not popped
             @pop;
-            jump label96775;
+            jump labelXXX;
         }
-        jump label96784;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -11418,24 +11534,24 @@ Array BombWires -->	! 10208 (0x27e0)
     local2 = global19->0;
     local3 = 1[?];
     --local3;
-  .label96834;
+  .labelXXX;
     if (local3 < local2) {
         ++local3;
         if (local1 == global19->local3) {
             local4 = local3;
             --local4;
-          .label96855;
+          .labelXXX;
             if (local4 < local2) {
                 ++local4;
                 global19->local4 = global19->(local4 + 1);
-                jump label96855;
+                jump labelXXX;
             }
             local2 = local2 - 1;
             global19->0 = local2;
             local5 = 0;
             return local5;
         }
-        jump label96834;
+        jump labelXXX;
     }
     local5 = 9[sw_obj?];
     return local5;
@@ -11445,14 +11561,14 @@ Array BombWires -->	! 10208 (0x27e0)
     global63 = 1[?];
     global19->0 = 0;
     local1 = child(local1);
-  .label96915;
+  .labelXXX;
     if (local1 ~= 0) {
         if (local1 hasnt concealed && local1 hasnt worn) {
             routine96706(local1);	! not popped
             @pop;
         }
         local1 = sibling(local1);
-        jump label96915;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -11463,7 +11579,7 @@ Array BombWires -->	! 10208 (0x27e0)
     local5 = global76->0;
     local2 = 0;
     --local2;
-  .label96977;
+  .labelXXX;
     if (local2 < local3) {
         ++local2;
         local7 = global76->local2;
@@ -11500,7 +11616,7 @@ Array BombWires -->	! 10208 (0x27e0)
                 local5 = local7;
             }
         }
-        jump label96977;
+        jump labelXXX;
     }
     if (local4 == 1[?]) {
         return local5;
@@ -11558,7 +11674,7 @@ Array BombWires -->	! 10208 (0x27e0)
         local5 = global77 - 1;
         local4 = 0;
         --local4;
-      .label97281;
+      .labelXXX;
         if (local4 < local5) {
             ++local4;
             local6 = global76->local4;
@@ -11570,10 +11686,10 @@ Array BombWires -->	! 10208 (0x27e0)
             if (local4 == local5 - 1) {
                 print " or ";
             }
-            jump label97281;
+            jump labelXXX;
         }
         print "?^";
-      .label97333;
+      .labelXXX;
         local8 = routine94268(global12,global13);
         local5 = global13-->1;
         if (local5 == 13095['both//p'?]) {
@@ -11584,7 +11700,7 @@ Array BombWires -->	! 10208 (0x27e0)
         }
         if (local5 == 12682['all//p'?]) {
             print "Sorry, that's beyond my abilities. Which one exactly?^";
-            jump label97333;
+            jump labelXXX;
         }
         local5 = local5->4;
         if (0 ~= local5 & 1) {
@@ -11598,23 +11714,23 @@ Array BombWires -->	! 10208 (0x27e0)
         local7 = global11->1;
         global11->1 = local8 + local7;
         local6 = local7 + local8;
-      .label97472;
+      .labelXXX;
         if (local6 > global79) {
             local4 = local6 - local8;
             routine98268(local6,global11,local4);	! not popped
             @pop;
             --local6;
-            jump label97472;
+            jump labelXXX;
         }
         local6 = 1[?];
         --local6;
-      .label97500;
+      .labelXXX;
         if (local6 < local8) {
             ++local6;
             local4 = global79 + (local6 - 1);
             routine98268(local4,global13,local6);	! not popped
             @pop;
-            jump label97500;
+            jump labelXXX;
         }
         local6 = 1000[?];
         return local6;
@@ -11644,25 +11760,25 @@ Array BombWires -->	! 10208 (0x27e0)
     if (global71 == 0) {
         local6 = 1[?];
         --local6;
-      .label97635;
+      .labelXXX;
         if (local6 < local8) {
             ++local6;
             local4 = global79 + (local6 - 1);
             routine98268(local4,global13,local6);	! not popped
             @pop;
-            jump label97635;
+            jump labelXXX;
         }
     }
     if (global71 ~= 0) {
         local6 = 1[?];
         --local6;
-      .label97672;
+      .labelXXX;
         if (local6 < local8) {
             ++local6;
             local4 = global79 + local6;
             routine98268(local4,global13,local6);	! not popped
             @pop;
-            jump label97672;
+            jump labelXXX;
         }
         global13-->1 = routine98212(global72);
         routine98268(global79,global13,1[?]);	! not popped
@@ -11726,7 +11842,7 @@ Array BombWires -->	! 10208 (0x27e0)
     local4 = global69 - local2;
     local5 = local1;
     --local5;
-  .label98122;
+  .labelXXX;
     if (local5 < local4) {
         ++local5;
         if (local6 == 1[?]) {
@@ -11748,14 +11864,14 @@ Array BombWires -->	! 10208 (0x27e0)
             }
         }
         local6 = 1[?];
-        jump label98122;
+        jump labelXXX;
     }
     rtrue;
 ];
 
 [ routine98212 local1 local2 local3 ;	
     local3 = 12550[?];
-  .label98224;
+  .labelXXX;
     if (1[?] == 1[?]) {
         local2 = local3-->1;
         if (local2 == local1) {
@@ -11763,7 +11879,7 @@ Array BombWires -->	! 10208 (0x27e0)
             return local3;
         }
         local3 = local3 + 4;
-        jump label98224;
+        jump labelXXX;
     }
     local3 = 12550[?];
     print "<Anf>";
@@ -11798,7 +11914,7 @@ Array BombWires -->	! 10208 (0x27e0)
         local2 = routine98348(1[?]);
     }
     local1 = child(local1);
-  .label98374;
+  .labelXXX;
     if (local1 ~= 0) {
         if (global79 > global62) {
             routine98318(local1,1[?]);	! not popped
@@ -11814,11 +11930,11 @@ Array BombWires -->	! 10208 (0x27e0)
                 ! no code
             } else {
                 local5 = 0;
-              .label98439;
+              .labelXXX;
                 ++local5;
                 local4 = routine98666();
                 if (0 ~= routine98514(local1,local4)) {
-                    jump label98439;
+                    jump labelXXX;
                 }
                 routine98318(local1,local5);	! not popped
                 @pop;
@@ -11828,16 +11944,16 @@ Array BombWires -->	! 10208 (0x27e0)
             if (local1 has open) {
                 ! no code
             } else if (local1 has transparent) {
-                jump label98505;
+                jump labelXXX;
             }
             local3 = child(local1);
             if (local3 ~= 0) {
                 local3 = routine98348(local1);
             }
         }
-      .label98505;
+      .labelXXX;
         local1 = sibling(local1);
-        jump label98374;
+        jump labelXXX;
     }
     rfalse;
 ];
@@ -11847,14 +11963,14 @@ Array BombWires -->	! 10208 (0x27e0)
     local5 = get_prop_len(local4) / 2 - 1;
     local6 = 0;
     --local6;
-  .label98547;
+  .labelXXX;
     if (local6 < local5) {
         ++local6;
         local3 = local4-->local6;
         if (local2 == local3) {
             rtrue;
         }
-        jump label98547;
+        jump labelXXX;
     }
     rfalse;
 ];
@@ -11920,11 +12036,11 @@ Array BombWires -->	! 10208 (0x27e0)
     local3 = global11->(local1 + 1);
     local3 = local3 + local2;
     print "Word ", local4, " ends with ";
-  .label98794;
+  .labelXXX;
     local1 = global10->local3;
     if (local1 == 32[scratched_cupboard?]) {
         ++local3;
-        jump label98794;
+        jump labelXXX;
     }
     if (local1 == 44[solid_glass_ball?]) {
         print "a comma^";
@@ -11972,7 +12088,7 @@ Array BombWires -->	! 10208 (0x27e0)
     local6 = local6 - 1;
     local4 = 0;
     --local4;
-  .label98979;
+  .labelXXX;
     if (local4 < local6) {
         ++local4;
         local10 = local5->local4;
@@ -12001,7 +12117,7 @@ Array BombWires -->	! 10208 (0x27e0)
         }
         local8 = local8 + local7 * local9;
         local7 = local7 / 10;
-        jump label98979;
+        jump labelXXX;
     }
     return local8;
 ];
@@ -12010,11 +12126,11 @@ Array BombWires -->	! 10208 (0x27e0)
     local3 = local1->0;
     local2 = 1[?];
     --local2;
-  .label99134;
+  .labelXXX;
     if (local2 < local3) {
         ++local2;
         local1->local2 = 0;
-        jump label99134;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -12023,11 +12139,11 @@ Array BombWires -->	! 10208 (0x27e0)
     local4 = local1->0;
     local3 = 1[?];
     --local3;
-  .label99168;
+  .labelXXX;
     if (local3 < local4) {
         ++local3;
         local1->local3 = local2->local3;
-        jump label99168;
+        jump labelXXX;
     }
     rtrue;
 ];
@@ -12218,7 +12334,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ! 106800 (0x1a130): "The balcony is only a foot or so beneath the window-sill, and only about four feet square."
 ! 106856 (0x1a168): "Gold and lead are naturally related, so you want to find a lead box to open."
 ! 106904 (0x1a198): "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east."
-! 107060 (0x1a234): "Faded ink on the label reads: Elderberry '63."
+! 107060 (0x1a234): "Faded ink on the labelXXX reads: Elderberry '63."
 ! 107094 (0x1a256): "It's provided for your torch, and not for anything else."
 ! 107130 (0x1a27a): "On the side is the word ~Achtung~."
 ! 107154 (0x1a292): "Purely decorative."
@@ -12294,7 +12410,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ! 112792 (0x1b898): "The garden roller sits here, its engine still running."
 ! 112822 (0x1b8b6): "A big motorised garden roller is parked here."
 ! 112848 (0x1b8d0): "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens."
-! 112926 (0x1b91e): "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands."
+! 112926 (0x1b91e): "If squeezed, it squirts weed killer over the ground. There are many warning labelXXXs about getting it on one's hands."
 ! 112998 (0x1b966): "In the shadows is a weed killer bottle."
 ! 113024 (0x1b980): "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at the conservatory window, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches."
 ! 113190 (0x1ba26): "No, don't go out on a limb."
@@ -12318,7 +12434,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ! 114726 (0x1c026): "Sitting on the grass, beside the well, is a glowing golden orb."
 ! 114766 (0x1c04e): "You half-stand, half-float in a golden, misty sphere perhaps ten yards across, which slowly spins. The centre, out of reach and somehow insubstantial, is an eight-by-eight lattice of oblong crystals, bathed in warm pearly light."
 ! 114910 (0x1c0de): "You really should try to be more awestruck, for this is Merlin's cave, the hub of Creation. Every visitor perceives this place differently, according to his or her own myths and beliefs. Your particular creed being science, it is an unimpressive collection of gauges, dials and machines. An aluminium staircase leads up."
-! 115116 (0x1c1ac): "The lower, on, position is labelled ~Determinism~. The upper, off, position is labelled ~Chance~."
+! 115116 (0x1c1ac): "The lower, on, position is labelXXXled ~Determinism~. The upper, off, position is labelled ~Chance~."
 ! 115182 (0x1c1ee): "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque."
 ! 115366 (0x1c2a6): "The hillside is too steep."
 ! 115382 (0x1c2b6): "A miniature plastic etching rests on the plaque."
@@ -12540,7 +12656,7 @@ Array BombWires -->	! 10208 (0x27e0)
 ! 129926 (0x1fb86): "Images lurk about the array of oblong crystals."
 ! 129956 (0x1fba4): "They are extremely hard to see and impossible to touch, as if you can only catch anything at all through the corner of your eye."
 ! 130030 (0x1fbee): "large dial"
-! 130038 (0x1fbf6): "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print."
+! 130038 (0x1fbf6): "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelXXXled in small print."
 ! 130144 (0x1fc60): "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness."
 ! 130262 (0x1fcd6): "cafe table"
 ! 130270 (0x1fcde): "windowed door"
