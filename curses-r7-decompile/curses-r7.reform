@@ -334,7 +334,7 @@ Global 2 turns:int
 Global 3 player:object
 Global 4 global4:?
 Global 5 global5:?
-Global 6 global6:?
+Global 6 actor:object
 Global 7 light_lvl:bool
 Global 8 deadflag:final_state
 GlobalArray 9 buffer:array(?)
@@ -571,18 +571,18 @@ Action 8 Drop
 Action 9 Empty
 Action 10 EmptyT
 Action 11 Transfer
-Action 12 ThrowAt
-Action 13 GiveR
+Action 12 Throw
+Action 13 Give
 Action 14 Sing
 Action 15 Show
 Action 16 VagueGo
 Action 17 Go
 Action 20 Look
 Action 21 Examine
-Action 22 SearchSub
+Action 22 Search
 Action 23 LookUnder
-Action 24 Consult2
-Action 25 Consult
+Action 24 Consult
+Action 25 ConsultT
 Action 29 Open
 Action 30 Unlock
 Action 31 Close
@@ -606,9 +606,9 @@ Action 56 SwitchOn
 Action 57 SwitchOff
 Action 58 Lock
 Action 59 Attack
-Action 60 Rip
+Action 60 Tear
 Action 61 Wait
-Action 62 Hint
+Action 62 Hints
 Action 63 Help
 Action 64 HelpSpecial
 Action 65 Answer
@@ -632,15 +632,15 @@ Action 83 Think
 Action 84 Smell
 Action 85 Listen
 Action 86 Taste
-Action 87 Touch
-Action 88 TouchThing
-Action 89 Rub
+Action 87 Feel
+Action 88 Touch
+Action 89 Clean
 Action 90 Tie
 Action 91 Burn
 Action 92 Drink
 Action 93 Fill
 Action 94 Cut
-Action 95   Jump
+Action 95 Jump
 Action 96 JumpOver
 Action 97 Xyzzy
 
@@ -650,29 +650,29 @@ Action 99 Xcheat ! 'xcheat'
 Action 100 Xattic  ! 'xattic' special
 Action 101 Xtravel ! 'xtrave'
 Action 102 Xmaster ! 'xmaste'
-Action 103 XlanguageLearn
-Action 104 XdevilHint
-Action 105 XangelHint
+Action 103 Xasnc
+Action 104 XDemonHint
+Action 105 XAngelHint
 Action 106 Xdeterministic
 
 
 Routine 0x7a07 LeaveAttic
 Routine 0x42b0 Main
-Routine 0x43aa PlayTheGame i j k l aflag metaverb:bool nonexit:bool
-Routine 0x47fc RunRoutines i j k
+Routine 0x43aa PlayTheGame i j:dictword k l aflag metaverb:bool nonexit:bool
+Routine 0x47fc RunRoutines i:object j:object k:action
 Routine 0x484c AfterRoutines:int i:int o:object
-Routine 0x4894 routine_4894
+Routine 0x4894 routine_4894:bool
 Routine 0x48b4 Banner i:int
 Routine 0x4960 Time i:? j k:object 
 Routine 0x722e ResetTimer obj:object i:int
 Routine 0x724a DecrementTimer o:object i:int
 Routine 0x7268 StartTimer o:object i:int
 Routine 0x7278 CountDown o:object i:int
-Routine 0x7288 TorchTimer o:object i:int
-Routine 0x72e0 JoshuaDaemon who:object num:int
+Routine 0x7288 TorchTimer o:object i:int var3
+Routine 0x72e0 JoshuaDaemon who:object num:int var3
 Routine 0x7554 HasLightSource:bool i:object
 Routine 0x758a Achieved ndx:score_index i:int
-Routine 0x75b4 MouseMove o:object rm:object local3 x1:int y1:int
+Routine 0x75b4 MouseMove o:object rm:object var3 x1:int y1:int
 Routine 0x794e ScoreSub score_var:int
 Routine 0x7ccc PadInteger i:int j:int
 Routine 0x7d0c PrintTaskName task_number:score_index final_score:int
@@ -687,7 +687,7 @@ Routine 0x812c ScriptOffSub
 Routine 0x8170 InvSub
 Routine 0x81a6 routine_81a6
 Routine 0x81f4 TakeSub
-Routine 0x8220 routine_8220
+Routine 0x8220 routine_8220 var1 var2 var3 var4
 Routine 0x8400 DropSub env:object unused unused2
 Routine 0x846e RemoveSub
 Routine 0x84f2 InsertSub env:object
@@ -696,18 +696,18 @@ Routine 0x8684 EmptySub
 Routine 0x8690 EmptyTSub
 Routine 0x8742 LieSub
 Routine 0x8760 LieDownSub
-Routine 0x87b8 ExitSub env:object
-Routine 0x8848 ExitSub
+Routine 0x87b8 EnterSub env:object
+Routine 0x8848 ExitSub env:object
 Routine 0x889c VagueGoSub
-Routine 0x88c4 GoSub env:object prop:property unused has_light:bool o:object
+Routine 0x88c4 GoSub env:object prop:object unused has_light:bool o:object
 Routine 0x8ea8 BriefSub
 Routine 0x8f16 VerboseSub
-Routine 0x8f76 SuperSub
-Routine 0x8fdc LookSub verbose:bool env:object str:string local4 chld:object local6 local7 
+Routine 0x8f76 SuperbriefSub
+Routine 0x8fdc LookSub verbose:bool env:object str:string var4 chld:object var6 var7 
 Routine 0x9156 ExamineSub o:object
 Routine 0x9320 DescribeObj obj:object n:int
 Routine 0x946e ShowSub
-Routine 0x963c GiveRSub obj:object
+Routine 0x963c GiveSub obj:object
 Routine 0x999e UnlockSub
 Routine 0x9a20 LockSub
 Routine 0x9ab8 SwitchOnSub
@@ -716,7 +716,7 @@ Routine 0x9bbc OpenSub
 Routine 0x9c8a CloseSub
 Routine 0x9cf4 DisrobeSub
 Routine 0x9d26 WearSub
-Routine 0x9d7e HandleSub i:int obj:object
+Routine 0x9d7e ObjectSub i:int obj:object
 Routine 0x9e26 PlacesSub
 Routine 0x9e90 YesNoSub
 Routine 0x9ea8 XyzzySub
@@ -741,10 +741,10 @@ Routine 0xa2ac FillSub
 Routine 0xa34a SorrySub
 Routine 0xa374 WashSub soap:object
 Routine 0xa3f0 StrongSub soap:object
-Routine 0xa448 MildSub;
+Routine 0xa448 MildSub
 Routine 0xa47a AttackSub
 Routine 0xa5e4 SwimSub
-Routine 0xa6c0 routine_a6c0
+Routine 0xa6c0 SwingSub
 Routine 0xa72c BlowSub
 Routine 0xa7b0 CleanSub
 Routine 0xa7ea SetSub
@@ -757,34 +757,34 @@ Routine 0xac5c TearSub
 Routine 0xacfc PullDownSub
 Routine 0xad16 PullSub
 Routine 0xae0a PushSub who:object
-Routine 0xaf9a PushDir o:object
+Routine 0xaf9a PushDirSub o:object
 Routine 0xb10c TurnSub
 Routine 0xb1ba SqueezeSub i:object
-Routine 0xb3f0 routine_b3f0
+Routine 0xb3f0 LookUnderSub
 Routine 0xb3fa SearchSub o1:object o2:object
-Routine 0xb6de routine_b6de
-Routine 0xb6f2 routine_b6f2 i
+Routine 0xb6de ConsutTSub
+Routine 0xb6f2 ConsultSub i
 Routine 0xc658 Indefart
 Routine 0xc66c Defart
 Routine 0xc67c CDefart
 !!! - end of parser.h
 
-Routine 0xc68c ThrowAtSub
+Routine 0xc68c ThrowSub
 Routine 0xc806 DemonHint hints_left:int
 Routine 0xc8ae AngelHint hints_left:int
 Routine 0xc956 AnswerSub o:object i:int j:int
 Routine 0xcfb4 BuySub
-Routine 0xd01e routine_d01e
+Routine 0xd01e AskSub
 Routine 0xd04c SingSub
 Routine 0xd0f0 ClimbSub
 Routine 0xd122 WaitSub
-Routine 0xd12e routine_d12e
+Routine 0xd12e RamSub
 Routine 0xd150 HintsSub
 Routine 0xd196 HelpSub
 Routine 0xd254 HelpSpecialSub word:dictword
 Routine 0xe4a8 XDebugSub
 Routine 0xe4c6 XCheatSub obj:object
-Routine 0xe55e SOMETHIMGSub
+Routine 0xe55e XasncSub
 Routine 0xe5a0 routine_e5a0
 Routine 0xe5bc XtravelSub
 Routine 0xe5d0 XatticSub
@@ -809,10 +809,10 @@ Routine 0xf630 EastAnnexeAfter o:object n:int
 Routine 0xf64c InsideCupboardAfter i:object
 Routine 0xf68e StorageRoomBefore
 Routine 0xf714 StorageRoomBefore
-Routine 0xf770 CellarsBefore
+Routine 0xf770 CellarsBefore i:object
 Routine 0xf7d0 orphan_room_routine
 Routine 0xf808 ChimneyBefore o:object
-Routine 0xf8c2 PriestsHoleBefore
+Routine 0xf8c2 PriestsHoleBefore i:object
 Routine 0xf968 IsaacPaintingAfter
 Routine 0xf9a0 DarkRoomAfter
 Routine 0xfa08 DarkShaftAfter
@@ -846,7 +846,7 @@ Routine 0x10a14 ChanceSwitchAfter
 Routine 0x10a6e RadioAfter
 Routine 0x10aa6 ShowProjectorImage o:object
 Routine 0x10b14 DisplayProjector o:object dto:object wall:object
-Routine 0x10b72 ProjectorAfter
+Routine 0x10b72 ProjectorAfter o:object
 Routine 0x10b98 SouvenirRoomBefore
 Routine 0x10c3e SouvenirRoomAfter
 Routine 0x10cd4 ConsultingRoomBefore
@@ -860,8 +860,8 @@ Routine 0x10fe6 SeedBoundary:bool x:int y:int ndx:int
 Routine 0x10ffe OldMazeBoundary:bool x:int y:int ndx:int 
 Routine 0x1101e MazeLayoutBefore y:int x:int wallp:bool
 Routine 0x1108a FamilyTreeBefore env:object
-Routine 0x111cc MazeBefore local1 newx:int newy:int
-Routine 0x112f4 MazeFoundationsBefore local1 newx:int newy:int
+Routine 0x111cc MazeBefore var1 newx:int newy:int
+Routine 0x112f4 MazeFoundationsBefore var1 newx:int newy:int
 Routine 0x113d8 PatioBefore
 Routine 0x11410 MazeDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
 Routine 0x11552 MazeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
@@ -905,14 +905,14 @@ Routine 0x12f90 DevilAnswer topic:topic_enum
 Routine 0x13792 AngelAnswer topic:angel_topic_enum
 Routine 0x13bd8 DevilConsultTopic:int wrd:dictword topic:topic_enum
 Routine 0x13dae AngelConsultTopic:int wrd:dictword topic:angel_topic_enum
-Routine 0x13e76 routine_13e76
-Routine 0x13e80 routine_13e80
-Routine 0x13e8a DemonQuestion local1 local2
+Routine 0x13e76 XDemonHintSub
+Routine 0x13e80 XAngelHintSub
+Routine 0x13e8a DemonQuestion var1 var2
 Routine 0x13f70 AngelQuestion
 Routine 0x14054 Keyboard
-Routine 0x14150 Parser results syntax line num_lines line_address i j token l m local11 etype_local:int
+Routine 0x14150 Parser results syntax line num_lines line_address i j token l m var11 etype_local:int
 Routine 0x14972 routine_14972
-Routine 0x1493e routine_1493e local1 local2 local3:dictword local4:dictword local5 local6 local7 local8 local9 local10 local11 local12 local13
+Routine 0x1493e routine_1493e var1 var2 var3:dictword var4:dictword var5 var6 var7 var8 var9 var10 var11 var12 var13
 Routine 0x149a6 routine_149a6
 Routine 0x149e2 routine_149e2
 Routine 0x14a12 routine_14a12
