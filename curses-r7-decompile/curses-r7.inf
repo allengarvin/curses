@@ -7,19 +7,19 @@
 ! Grammar
 
 Verb 'xdetermine'
-    * 							-> XDeter
+    * 							-> XDeterministic
 ;
 
 Verb 'xah'
-    * special						-> XAh
+    * special						-> XAngelHint
 ;
 
 Verb 'xdh'
-    * special						-> XDh
+    * special						-> XDevilHint
 ;
 
 Verb 'xasnc'
-    * 							-> XAsnc
+    * 							-> XLanguageLearn
 ;
 
 Verb 'xmaster'
@@ -2288,7 +2288,7 @@ Global verb;
 Global noun;
 Global second;
 Global noun_word;
-Global current_year;
+Global noun_number;
 Global game_section = MODERN;
 Global card_ptr;
 Global MazeX = 4;
@@ -2664,7 +2664,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     JumpSub
     JumpOverSub
     XyzzySub
-    routine_e4a8
+    XDebugSub
     XCheatSub
     routine_e5d0
     DebugXTravelSub
@@ -6063,7 +6063,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     "^Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find what you want.";
   .label49570;
-    i = current_year;
+    i = noun_number;
     if (i == 1420[?]) {
         print "^At that exact grid reference is Meldreustrasse, a minor back street which houses a museum of arcana.^^Suddenly you remember!  You visited the place once, and the curator Doktor Stein showed you round... and he hypnotised you into a swirl of unconsciousness...^^";
         StartTimer(Coven_Cell,7);	! not popped
@@ -6081,7 +6081,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     "Just some anonymous streets. The detail of this map is so tiny that unless you have the exact four-digit grid reference for what you want, you'll never find it.";
   .label49919;
-    i = current_year;
+    i = noun_number;
     if (i < 1725) {
         "He didn't seem to be experimenting in those days.";
     }
@@ -6091,8 +6091,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     if (i == 1792[?]) {
         "In 1792, the last year of his life, ol' red-eyes becomes very excited about his new discovery. This time he claims that Merlyn bounde uppe the mystic estate (by this he means the back garden - Isaac never did have any sense of proportion) wyth great Roddes of Power. These are dangerous and sometimes useful for themselves, but are really part of a great key... the usual nonsense. Of course you never actually see these rods, because they disguise themselves until waved by someone wearing Merlyn's hat.^^", "The funny thing is that Isaac died (legend has it, by spontaneous combustion) only a week after this breakthrough, preventing him from sending yet another paper to the Royal Society. But since Merlyn supposedly lived in about the sixth century A.D., there can't be a lot left of his hat, so the matter may be academic.";
     }
-    print "In the year ", current_year, ", Isaac was mainly concerned with ";
-    i = current_year % 6;
+    print "In the year ", noun_number, ", Isaac was mainly concerned with ";
+    i = noun_number % 6;
     if (i == 0) {
         "alchemy.";
     }
@@ -6406,8 +6406,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "There's no help on that, sorry.";
 ];
 
-[ routine_e4a8 ;	! 58536 / 0xe4a8
-    if (current_year == 57) {
+[ XDebugSub ;	! 58536 / 0xe4a8
+    if (noun_number == 57) {
         debug_mode = true;
         "Ok.";
     }
@@ -6492,7 +6492,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ routine_e5d0 ;	! 58832 / 0xe5d0
-    game_section = current_year;
+    game_section = noun_number;
     give weed_killer ~general;
     ScoreSub();	! not popped
     @pop;
@@ -9520,7 +9520,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                         global68 = 1[?];
                     }
                     if (token == 7[nw_obj?]) {
-                        current_year = routine_151aa(global49);
+                        noun_number = routine_151aa(global49);
                         noun_word = routine_150fa();
                         results->(j + 2) = 255[carbolic_soap?];
                         j = j + 1;
@@ -9692,7 +9692,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
   .label83687;
     if (global6 ~= player) {
-        current_year = routine_151aa(global69);
+        noun_number = routine_151aa(global69);
         global49 = global69;
         noun_word = routine_150fa();
         verb = ##Answer;

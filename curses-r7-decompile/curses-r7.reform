@@ -349,7 +349,7 @@ Global 15 noun:object
 Global 16 second:object
 GlobalArray 17 global17:array(?)
 Global 18 noun_word:dictword
-Global 19 current_year:int
+Global 19 noun_number:int
 Global 20 game_section:game_area
 GlobalArray 21 card_deck:array(6*object)
 Global 22 card_ptr:int
@@ -652,10 +652,10 @@ Action 99 XCheat ! 'xcheat'
 Action 100 XAttic  ! 'xattic' special
 Action 101 XTravel ! 'xtrave'
 Action 102 XMaster ! 'xmaste'
-Action 103 XAsnc ! 'xasnc'
-Action 104 XDh ! 'xdh' special
-Action 105 XAh ! 'xah' special
-Action 106 XDeter ! 'xdeter'
+Action 103 XLanguageLearn
+Action 104 XDevilHint
+Action 105 XAngelHint
+Action 106 XDeterministic
 
 
 Routine 0x7a07 LeaveAttic
@@ -784,7 +784,7 @@ Routine 0xd12e routine_d12e
 Routine 0xd150 HintSub
 Routine 0xd196 HelpSub
 Routine 0xd254 HelpSpecialSub word:dictword
-Routine 0xe4a8 routine_e4a8
+Routine 0xe4a8 XDebugSub
 Routine 0xe4c6 XCheatSub obj:object
 Routine 0xe55e SOMETHIMGSub
 Routine 0xe5a0 routine_e5a0
