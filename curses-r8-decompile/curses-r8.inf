@@ -2292,7 +2292,7 @@ Global score;
 Global turns = 1;
 Global player = yourself;
 Global global4;
-Global global5;
+Global toomany_flag;
 Global actor;
 Global light_lvl = true;
 Global deadflag;
@@ -2356,9 +2356,9 @@ Global global73;
 Global global74;
 Global global75 = 10284[?];
 
-Array inputobjs --> 16;	! 9910 (0x26b6)
-Array multiple_object --> 16;	! 9926 (0x26c6)
-Array card_deck -->	! 9990 (0x2706)
+Array inputobjs --> 16;	
+Array multiple_object --> 16;	
+Array card_deck -->	
     nothing
     nothing
     nothing
@@ -2366,7 +2366,7 @@ Array card_deck -->	! 9990 (0x2706)
     invalidObj12593
     invalidObj12593
 ;
-Array garden_array -->	! 9998 (0x270e)
+Array garden_array -->	
     12593
     12593
     12593
@@ -2392,7 +2392,7 @@ Array garden_array -->	! 9998 (0x270e)
     12593
     12336
 ;
-Array mouse_maze -->	! 10061 (0x274d)
+Array mouse_maze -->	
     12593
     12593
     12593
@@ -2421,7 +2421,7 @@ Array mouse_maze -->	! 10061 (0x274d)
     12336
     12593
 ;
-Array task_scores -->	! 10124 (0x278c)
+Array task_scores -->	
     775
     1802
     771
@@ -2441,9 +2441,9 @@ Array task_scores -->	! 10124 (0x278c)
     0
     0
 ;
-Array score_array2 --> 18;	! 10142 (0x279e)
-Array BombWires --> 4;	! 10167 (0x27b7)
-Array verb_routine_array -->	! 11933 (0x2e9d)
+Array score_array2 --> 18;	
+Array BombWires --> 4;	
+Array verb_routine_array -->	
     ExitSub
     InvSub
     TakeSub
@@ -2614,8 +2614,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
             @pop;
             print " has better things to do.^";
         } else {
-            if (global5 == 1[?]) {
-                global5 = 0;
+            if (toomany_flag == true) {
+                toomany_flag = false;
                 print "(taking the first sixteen objects only)^";
             }
             nonexit = false;
@@ -2791,7 +2791,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         @pop;
         jump labelXXX;
     }
-    if (deadflag == WON && j == 'amusin//p') {
+    if (deadflag == WON && j == 'amusing//p') {
         new_line;
         GameWon();	! not popped
         @pop;
@@ -4937,7 +4937,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     rtrue;
 ];
 
-[ WriteAfterEntry obj n var3 var4 r var6 var7 ;	
+[ WriteAfterEntry obj n c var4 r var6 var7 ;	
     if (n ~= 2) {
         Indefart(obj);	! not popped
         @pop;
@@ -4983,15 +4983,15 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         if (obj has open) {
             print "open";
         }
-        var3 = child(obj);
-        if (var3 == 0) {
+        c = child(obj);
+        if (c == nothing) {
             print " but empty";
         } else if (n == 0) {
             var7 = 1[?];
         } else {
             print " and contains ";
             var6 = 0;
-            var4 = var3;
+            var4 = c;
           .labelXXX;
             if (var4 ~= 0) {
                 var4 = sibling(var4);
@@ -5000,9 +5000,9 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
             }
             r = nothing;
           .labelXXX;
-            if (var3 ~= 0) {
+            if (c ~= nothing) {
                 ++r;
-                WriteAfterEntry(var3,1);	! not popped
+                WriteAfterEntry(c,1);	! not popped
                 @pop;
                 if (r == var6 - 1) {
                     print " and ";
@@ -5010,7 +5010,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
                 if (r < var6 - 1) {
                     print ", ";
                 }
-                var3 = sibling(var3);
+                c = sibling(c);
                 jump labelXXX;
             }
         }
@@ -5797,7 +5797,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     "Nothing obvious happens.";
 ];
 
-[ PushSub local1 ;	
+[ PushSub who ;	
     if (noun == s_obj && location == Dead_End && secret_door has concealed) {
         give secret_door ~concealed;
         move secret_door to Dead_End;
@@ -5959,13 +5959,13 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     rtrue;
 ];
 
-[ SearchSub local1 local2 ;	
+[ SearchSub o1 o2 ;	
     if (noun == cafe_table) {
         if (complicated_looking_bomb has concealed) {
             give complicated_looking_bomb ~concealed;
-            local1 = 190[complicated_looking_bomb?];
-            remove local1;
-            move local1 to Ruined_Castle_Cafe;
+            o1 = complicated_looking_bomb;
+            remove o1;
+            move o1 to Ruined_Castle_Cafe;
             "Now don't panic, but there's a ticking bomb loosely taped to the underside of the table you're sitting at!";
         }
         "You make no further alarming discoveries.";
@@ -5997,12 +5997,12 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         if (old_gardeners__gloves hasnt worn) {
             "A rash act. The itchy fibres of the insulation soon deter you.";
         }
-        local1 = 54[new_battery?];
-        if (insulation_rolls ~= parent(local1)) {
+        o1 = new_battery;
+        if (insulation_rolls ~= parent(o1)) {
             "Nothing else there, unfortunately.";
         }
-        remove local1;
-        move local1 to East_Annexe;
+        remove o1;
+        move o1 to East_Annexe;
         Achieved(SCORE_BATTERY);	! not popped
         @pop;
         "You uncover a shiny new battery. It must have been dropped by accident when the loft insulation was being done.";
@@ -7789,18 +7789,18 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ SouvenirRoomAfter var1 ;	
+[ SouvenirRoomAfter o ;	
     if (slide_projector hasnt on) {
         rfalse;
     }
     if (action == ##Look) {
-        var1 = 50[slide_projector?];
-        var1 = child(var1);
-        if (var1 == 0) {
+        o = slide_projector;
+        o = child(o);
+        if (o == nothing) {
             print "^The south wall is lit up by the projector.^";
         } else {
             print "^The south wall displays ";
-            ShowProjectorImage(var1);	! not popped
+            ShowProjectorImage(o);	! not popped
             @pop;
         }
         if (projector_on == true) {
@@ -7817,8 +7817,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         rtrue;
     }
     if (action == ##Take) {
-        var1 = parent(noun);
-        if (var1 == 50[slide_projector?]) {
+        o = parent(noun);
+        if (o == slide_projector) {
             if (second ~= slide_projector) {
                 rfalse;
             }
@@ -8080,7 +8080,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ FamilyTreeBefore var1 ;	
+[ FamilyTreeBefore env ;	
     MazeX = 4;
     MazeY = 6;
     if (action ~= ##Go) {
@@ -8089,8 +8089,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     if (noun ~= n_obj) {
         rfalse;
     }
-    var1 = parent(player);
-    if (var1 == 132[garden_roller?]) {
+    env = parent(player);
+    if (env == garden_roller) {
         rfalse;
     }
     "You can't go that way. Now, this takes a little explaining. These days, it isn't easy to keep up a house the size of Meldrew House, and your family has had to strike a bargain with the National Trust that the house should be open to the public in the summer months. The maze is so popular with visitors that the grass has worn away, and it's being reseeded at the moment, so you shouldn't go treading all over it.";
@@ -8199,7 +8199,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ PatioBefore var1 ;	
+[ PatioBefore i ;	
     if (action == ##Go) {
         if (noun == d_obj) {
             rfalse;
@@ -8207,8 +8207,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         if (garden_roller ~= parent(player)) {
             "Mustn't tread on the grass now!";
         }
-        var1 = MazeBefore();
-        return var1;
+        i = MazeBefore();
+        return i;
     }
     rfalse;
 ];
@@ -8244,18 +8244,18 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     }
   .labelXXX;
     if (numwalls < 4) {
-        if (n_side == 0) {
+        if (n_side == false) {
             print "north";
-            n_side = 1[?];
-        } else if (s_side == 0) {
+            n_side = true;
+        } else if (s_side == false) {
             print "east";
-            s_side = 1[?];
-        } else if (e_side == 0) {
+            s_side = true;
+        } else if (e_side == false) {
             print "south";
-            e_side = 1[?];
-        } else if (w_side == 0) {
+            e_side = true;
+        } else if (w_side == false) {
             print "west";
-            w_side = 1[?];
+            w_side = true;
         }
         ++numwalls;
         if (numwalls == 4) {
@@ -8320,18 +8320,18 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         }
       .labelXXX;
         if (numwalls > 0) {
-            if (n_side == 1[?]) {
+            if (n_side == true) {
                 print "north";
-                n_side = 0;
-            } else if (s_side == 1[?]) {
+                n_side = false;
+            } else if (s_side == true) {
                 print "east";
-                s_side = 0;
-            } else if (e_side == 1[?]) {
+                s_side = false;
+            } else if (e_side == true) {
                 print "south";
-                e_side = 0;
-            } else if (w_side == 1[?]) {
+                e_side = false;
+            } else if (w_side == true) {
                 print "west";
-                w_side = 0;
+                w_side = false;
             }
             --numwalls;
             if (numwalls == 0) {
@@ -8382,18 +8382,18 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     }
   .labelXXX;
     if (numwalls > 0) {
-        if (n_side == 1[?]) {
+        if (n_side == true) {
             print "north";
-            n_side = 0;
-        } else if (s_side == 1[?]) {
+            n_side = false;
+        } else if (s_side == true) {
             print "east";
-            s_side = 0;
-        } else if (e_side == 1[?]) {
+            s_side = false;
+        } else if (e_side == true) {
             print "south";
-            e_side = 0;
-        } else if (w_side == 1[?]) {
+            e_side = false;
+        } else if (w_side == true) {
             print "west";
-            w_side = 0;
+            w_side = false;
         }
         --numwalls;
         if (numwalls == 0) {
@@ -8414,10 +8414,10 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ MazeAfter var1 ;	
+[ MazeAfter ret ;	
     if (action == ##Look) {
-        var1 = MazeDescribe();
-        return var1;
+        ret = MazeDescribe();
+        return ret;
     }
     rfalse;
 ];
@@ -8437,10 +8437,10 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ LedgeBefore var1 ;	
+[ LedgeBefore env ;	
     if (action == ##Examine) {
-        var1 = parent(player);
-        if (var1 == 132[garden_roller?] && noun == plaque) {
+        env = parent(player);
+        if (env == garden_roller && noun == plaque) {
             "The writing's too small from here.";
             rfalse;
         }
@@ -8451,15 +8451,15 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     if (noun ~= e_obj) {
         rfalse;
     }
-    var1 = parent(player);
-    if (var1 == 132[garden_roller?]) {
+    env = parent(player);
+    if (env == garden_roller) {
         rfalse;
     }
     "For the sake of the grass, you can't go that way.";
 ];
 
 
-[ BeanPoleAfter var1 ;	
+[ BeanPoleAfter unused ;	
     if (action == ##Take) {
         if (bean_pole has general) {
             rfalse;
@@ -8472,7 +8472,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ TreePlantingAfter var1 ;	
+[ TreePlantingAfter unused ;	
     deadflag = AUSTRALIA;
     rfalse;
 ];
@@ -8581,17 +8581,17 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ DetonatorBefore var1 var2 ;	
+[ DetonatorBefore ticks obj ;	
     if (action ~= ##Examine) {
         rfalse;
     }
     print "The timer seems quite simple to set. ";
-    var2 = 191[timer_detonater?];
-    var1 = var2.number;
+    obj = timer_detonater;
+    ticks = obj.number;
     if (BombTicking == true) {
-        "The clock is running, and currently at ", var1, " minutes.";
+        "The clock is running, and currently at ", ticks, " minutes.";
     }
-    if (var1 ~= 0) {
+    if (ticks ~= 0) {
         DescribeDetonator();	! not popped
         @pop;
         rtrue;
@@ -9057,125 +9057,125 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 [ DevilAnswer topic ;	
-    if (topic == 1[?]) {
+    if (topic == T_DREAM) {
         "~In the premonition, it is vital to get hold of the mascot for later use.~";
     }
-    if (topic == 2[?]) {
+    if (topic == T_FLASHLIGHT) {
         "~It's no use poking about on the attic floor for fresh torch batteries, because there aren't any.~";
     }
-    if (topic == 3[s_obj?]) {
+    if (topic == T_JEMIMA) {
         "~Your Aunt Jemima is not the kind of woman to be distracted by music or frivolous presents, mark my words.~";
     }
-    if (topic == 4[e_obj?]) {
+    if (topic == T_NOVEL) {
         "~Novels are, of course, invariably written by people using their real names, not disguised in any way.~";
     }
-    if (topic == 5[w_obj?]) {
+    if (topic == T_FLOWERS) {
         "~The thing about daisies is, they are the same all year round, not changing with the calendar.~";
     }
-    if (topic == 6[ne_obj?]) {
+    if (topic == T_MEDICINE) {
         "~Modern medicine bottles can even withstand falls from a great height. I should try heat if I were you.~";
     }
-    if (topic == 7[nw_obj?]) {
+    if (topic == T_WINE) {
         "~You can easily get a grip on the demijohn with your bare hands.~";
     }
-    if (topic == 8[se_obj?]) {
+    if (topic == T_BOTTLE) {
         "~The answer's the same, whichever bottle you meant. That counts as your hint, I'm afraid. Not very fair, but then I am a demon.~";
     }
-    if (topic == 9[sw_obj?]) {
+    if (topic == T_HEAVEN) {
         "The demon acknowledges the question, but cannot bring himself to speak of Heaven.";
     }
-    if (topic == 10[u_obj?]) {
+    if (topic == T_HELL) {
         "~Hell?  Oh this isn't your eternal damnation, it's mine, having to answer all these wretched questions. No, Hell itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~";
     }
-    if (topic == 11[d_obj?]) {
+    if (topic == T_POSTCARD) {
         "~Don't worry, there's nothing written there. No need to look at the problem in a fresh light.~";
     }
-    if (topic == 12[thedark?]) {
+    if (topic == T_JOSHUA) {
         "~History never repeats itself, so it's pointless looking him up in the book.~";
     }
-    if (topic == 13[Grahams_Lair?]) {
+    if (topic == T_ISAAC) {
         "~The really interesting stuff is at the very start of his working life.~";
     }
-    if (topic == 14[Attic?]) {
+    if (topic == T_ARCANUM) {
         "~Forget it, there's no way to return from the museum, and Doktor Stein's medicine has no antidote.~";
     }
-    if (topic == 15[hinged_trapdoor?]) {
+    if (topic == T_MERLIN) {
         "~Merlyn doesn't really come into this. Try working on something else.~";
     }
-    if (topic == 16[teachests?]) {
+    if (topic == T_HAT) {
         "~Literally, Merlyn's actual hat. Green pointy felt, I wouldn't wonder.~";
     }
-    if (topic == 17[Meldrews_History?]) {
+    if (topic == T_BOOK) {
         "~The answer's the same, whichever book you meant. That counts as your hint, I'm afraid. Not very fair, but then I am a demon.~";
     }
-    if (topic == 18[antique_jewellery_box?]) {
+    if (topic == T_EBENEZER) {
         "~Ebenezer?  He's absolutely central to this. Concentrate on him, definitely.~";
     }
-    if (topic == 19[four_leafed_clover?]) {
+    if (topic == T_CARDS) {
         "~Trouble with holiday snaps is, once somebody gets the old slide projector going, a boring time is on the cards for all.~";
     }
-    if (topic == 20[rod_of_luck?]) {
+    if (topic == T_RODS) {
         "~You'll need to be wide awake and alert to work out what to do with them. Finding them is easy - just remember to keep an eye out for short, fat things.~";
     }
-    if (topic == 21[yourself?]) {
+    if (topic == T_TAROT) {
         "~Clairvoyantes are expert at detecting stacked decks, so it's no good cheating.~";
     }
-    if (topic == 22[crumpled_piece_of_paper?]) {
+    if (topic == T_BOAT) {
         "~Phlebas runs a very badly-advertised service, I'm afraid. I've got no time for him.~";
     }
-    if (topic == 23[electric_torch?]) {
+    if (topic == T_MOUSE) {
         "~Once the mouse is in the hole, forget it, it couldn't hear you even if you talked to the hole instead. But there is an alternative method.~";
     }
-    if (topic == 24[old_smudged_battery?]) {
+    if (topic == T_KEY) {
         "~Your fault for letting the key get into the foundations - nothing can get in there to retrieve it.~";
     }
-    if (topic == 25[chocolate_biscuit?]) {
+    if (topic == T_RADIO) {
         "~Marvellous, marvellous contraption. Starts the moment you switch it on, and then nothing but solid gold classics all the way. You can really concentrate when that's playing.~";
     }
     rtrue;
 ];
 
 [ AngelAnswer topic ;	
-    if (topic == 2[?]) {
+    if (topic == AT_HELL) {
         "The angel acknowledges the question, but cannot bring herself to speak of Hell.";
     }
-    if (topic == 1[?]) {
+    if (topic == AT_HEAVEN) {
         "~Heaven?  Oh this isn't your eternal salvation, it's mine, able to serve by answering all these delightful questions. No, Heaven itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~";
     }
-    if (topic == 3[s_obj?]) {
+    if (topic == AT_RODS) {
         "~The rods definitely fit into all this somewhere.~";
     }
-    if (topic == 4[e_obj?]) {
+    if (topic == AT_MAZE) {
         "~If only you could have been there when the maze was being laid out!~";
     }
-    if (topic == 5[w_obj?]) {
+    if (topic == AT_MASTER) {
         "~The master game is like a point at infinity to we mortals,~ the angel says wistfully.";
     }
-    if (topic == 6[ne_obj?]) {
+    if (topic == AT_INFINITY) {
         "~All a matter of fitting the rods in somewhere.~";
     }
-    if (topic == 7[nw_obj?]) {
+    if (topic == AT_ANDROMEDA) {
         "~How she must long to let her hair down now, instead of being chained to that rock,~ the angel says sorrowfully. ~But in deference to her wishes, I cannot help you rescue her.~";
     }
-    if (topic == 8[se_obj?]) {
+    if (topic == AT_MURAL) {
         "~Amazing fortune you must have in finding it, I can tell.~";
     }
-    if (topic == 9[sw_obj?]) {
+    if (topic == AT_FOLLY) {
         "~Ah yes, we must all lament for human folly,~ says the angel, misunderstanding completely.";
     }
-    if (topic == 10[u_obj?]) {
+    if (topic == AT_ZEUS) {
         "~Zeus wasn't a true god, of course,~ the angel predictably insists, ~just a manifestation of the laws of physics to an Ancient Greek, a kind of symbol for the way the universe fundamentally worked.~";
     }
-    if (topic == 11[d_obj?]) {
+    if (topic == AT_BOMB) {
         "The angel maintains a tight-lipped silence.";
     }
-    if (topic == 12[thedark?]) {
+    if (topic == AT_SACRIFICE) {
         "~That's too dangerous a rod to actually use, of course, and the Church no longer approves of martyrs.~";
     }
-    if (topic == 13[Grahams_Lair?]) {
+    if (topic == AT_LUCK) {
         "~Is there really such a thing as luck, or free will?  It's a theological grey area,~ says the angel with fine casuistry.";
     }
-    if (topic == 14[Attic?]) {
+    if (topic == AT_FIRE) {
         "~Certainly a thorny problem, that.~";
     }
     rtrue;
@@ -9184,142 +9184,142 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 [ DevilConsultTopic wrd topic ;	
     topic = 0;
     if (wrd == 'premoninition//p') {
-        topic = 1[?];
+        topic = T_DREAM;
     }
     if (wrd == 'dream//p') {
-        topic = 1[?];
+        topic = T_DREAM;
     }
     if (wrd == 'torch') {
-        topic = 2[?];
+        topic = T_FLASHLIGHT;
     }
     if (wrd == 'battery') {
-        topic = 2[?];
+        topic = T_FLASHLIGHT;
     }
     if (wrd == 'aunt') {
-        topic = 3[s_obj?];
+        topic = T_JEMIMA;
     }
     if (wrd == 'jemima//p') {
-        topic = 3[s_obj?];
+        topic = T_JEMIMA;
     }
     if (wrd == 'gloves') {
-        topic = 3[s_obj?];
+        topic = T_JEMIMA;
     }
     if (wrd == 'romance') {
-        topic = 4[e_obj?];
+        topic = T_NOVEL;
     }
     if (wrd == 'marie//p') {
-        topic = 4[e_obj?];
+        topic = T_NOVEL;
     }
     if (wrd == 'daisy') {
-        topic = 5[w_obj?];
+        topic = T_FLOWERS;
     }
     if (wrd == 'daisychain') {
-        topic = 5[w_obj?];
+        topic = T_FLOWERS;
     }
     if (wrd == 'daisies//p') {
-        topic = 5[w_obj?];
+        topic = T_FLOWERS;
     }
     if (wrd == 'medicine') {
-        topic = 6[ne_obj?];
+        topic = T_MEDICINE;
     }
     if (wrd == 'demijohn') {
-        topic = 7[nw_obj?];
+        topic = T_WINE;
     }
     if (wrd == 'bottle') {
-        topic = 8[se_obj?];
+        topic = T_BOTTLE;
     }
     if (wrd == 'heaven//p') {
-        topic = 9[sw_obj?];
+        topic = T_HEAVEN;
     }
     if (wrd == 'hell//p') {
-        topic = 10[u_obj?];
+        topic = T_HELL;
     }
     if (wrd == 'card') {
-        topic = 11[d_obj?];
+        topic = T_POSTCARD;
     }
     if (wrd == 'postcard') {
-        topic = 11[d_obj?];
+        topic = T_POSTCARD;
     }
     if (wrd == 'ghost') {
-        topic = 12[thedark?];
+        topic = T_JOSHUA;
     }
     if (wrd == 'joshua//p') {
-        topic = 12[thedark?];
+        topic = T_JOSHUA;
     }
     if (wrd == 'prayer') {
-        topic = 13[Grahams_Lair?];
+        topic = T_ISAAC;
     }
     if (wrd == 'isaac//p') {
-        topic = 13[Grahams_Lair?];
+        topic = T_ISAAC;
     }
     if (wrd == 'museum//p') {
-        topic = 14[Attic?];
+        topic = T_ARCANUM;
     }
     if (wrd == 'arcana//p') {
-        topic = 14[Attic?];
+        topic = T_ARCANUM;
     }
     if (wrd == 'doktor//p') {
-        topic = 14[Attic?];
+        topic = T_ARCANUM;
     }
     if (wrd == 'stein//p') {
-        topic = 14[Attic?];
+        topic = T_ARCANUM;
     }
     if (wrd == 'merlyn//p') {
-        topic = 15[hinged_trapdoor?];
+        topic = T_MERLIN;
     }
     if (wrd == 'hat//p') {
-        topic = 16[teachests?];
+        topic = T_HAT;
     }
     if (wrd == 'book') {
-        topic = 17[Meldrews_History?];
+        topic = T_BOOK;
     }
     if (wrd == 'ebenezer//p') {
-        topic = 18[antique_jewellery_box?];
+        topic = T_EBENEZER;
     }
     if (wrd == 'projector') {
-        topic = 19[four_leafed_clover?];
+        topic = T_CARDS;
     }
     if (wrd == 'slide') {
-        topic = 19[four_leafed_clover?];
+        topic = T_CARDS;
     }
     if (wrd == 'cards//p') {
-        topic = 19[four_leafed_clover?];
+        topic = T_CARDS;
     }
     if (wrd == 'rod') {
-        topic = 20[rod_of_luck?];
+        topic = T_RODS;
     }
     if (wrd == 'rods//p') {
-        topic = 20[rod_of_luck?];
+        topic = T_RODS;
     }
     if (wrd == 'tarot') {
-        topic = 21[yourself?];
+        topic = T_TAROT;
     }
     if (wrd == 'sosostris') {
-        topic = 21[yourself?];
+        topic = T_TAROT;
     }
     if (wrd == 'boat') {
-        topic = 22[crumpled_piece_of_paper?];
+        topic = T_BOAT;
     }
     if (wrd == 'hollow//p') {
-        topic = 22[crumpled_piece_of_paper?];
+        topic = T_BOAT;
     }
     if (wrd == 'mouse') {
-        topic = 23[electric_torch?];
+        topic = T_MOUSE;
     }
     if (wrd == 'robot') {
-        topic = 23[electric_torch?];
+        topic = T_MOUSE;
     }
     if (wrd == 'hole') {
-        topic = 23[electric_torch?];
+        topic = T_MOUSE;
     }
     if (wrd == 'key') {
-        topic = 24[old_smudged_battery?];
+        topic = T_KEY;
     }
     if (wrd == 'radio') {
-        topic = 25[chocolate_biscuit?];
+        topic = T_RADIO;
     }
     if (wrd == 'wireless') {
-        topic = 25[chocolate_biscuit?];
+        topic = T_RADIO;
     }
     return topic;
 ];
@@ -9327,61 +9327,61 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 [ AngelConsultTopic wrd topic ;	
     topic = 0;
     if (wrd == 'heaven//p') {
-        topic = 1[?];
+        topic = AT_HEAVEN;
     }
     if (wrd == 'hell//p') {
-        topic = 2[?];
+        topic = AT_HELL;
     }
     if (wrd == 'rods//p') {
-        topic = 3[s_obj?];
+        topic = AT_RODS;
     }
     if (wrd == 'maze') {
-        topic = 4[e_obj?];
+        topic = AT_MAZE;
     }
     if (wrd == 'master//p') {
-        topic = 5[w_obj?];
+        topic = AT_MASTER;
     }
     if (wrd == 'infinity') {
-        topic = 6[ne_obj?];
+        topic = AT_INFINITY;
     }
     if (wrd == 'lemniscus') {
-        topic = 6[ne_obj?];
+        topic = AT_INFINITY;
     }
     if (wrd == 'arc') {
-        topic = 6[ne_obj?];
+        topic = AT_INFINITY;
     }
     if (wrd == 'andromeda') {
-        topic = 7[nw_obj?];
+        topic = AT_ANDROMEDA;
     }
     if (wrd == 'mural') {
-        topic = 8[se_obj?];
+        topic = AT_MURAL;
     }
     if (wrd == 'folly//p') {
-        topic = 9[sw_obj?];
+        topic = AT_FOLLY;
     }
     if (wrd == 'zeus//p') {
-        topic = 10[u_obj?];
+        topic = AT_ZEUS;
     }
     if (wrd == 'bomb') {
-        topic = 11[d_obj?];
+        topic = AT_BOMB;
     }
     if (wrd == 'lighthouse//p') {
-        topic = 11[d_obj?];
+        topic = AT_BOMB;
     }
     if (wrd == 'pharos//p') {
-        topic = 11[d_obj?];
+        topic = AT_BOMB;
     }
     if (wrd == 'device//p') {
-        topic = 11[d_obj?];
+        topic = AT_BOMB;
     }
     if (wrd == 'sacrifice') {
-        topic = 12[thedark?];
+        topic = AT_SACRIFICE;
     }
     if (wrd == 'luck') {
-        topic = 13[Grahams_Lair?];
+        topic = AT_LUCK;
     }
     if (wrd == 'fire') {
-        topic = 14[Attic?];
+        topic = AT_FIRE;
     }
     return topic;
 ];
@@ -9445,7 +9445,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         new_line;
         rtrue;
     }
-    n = routine94440(1[?]);
+    n = TryNumber(1[?]);
     new_line;
     if (n == 0) {
         print "There is no question zero.^";
@@ -9488,60 +9488,60 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     rtrue;
 ];
 
-[ Keyboard var1 var2 var3 var4 var5 var6 var7 ;	
+[ Keyboard a_buffer a_table nw i w w2 x1 ;	
   .labelXXX;
-    var4 = 0;
-    --var4;
+    i = 0;
+    --i;
   .labelXXX;
-    if (var4 < 9) {
-        ++var4;
-        global67->var4 = var2->var4;
+    if (i < 9) {
+        ++i;
+        global67->i = a_table->i;
         jump labelXXX;
     }
     new_line;
     print '>';
-    @sread var1 var2;
-    var3 = var2->1;
-    var5 = var2-->1;
-    if (var3 == 0) {
+    @sread a_buffer a_table;
+    nw = a_table->1;
+    w = a_table-->1;
+    if (nw == 0) {
         print "I beg your pardon?^";
         jump labelXXX;
     }
-    if (var5 == 15152['oops//p'?]) {
+    if (w == 'oops//p') {
         ! no code
-    } else if (var5 ~= 15089['o//p'?]) {
-        return var3;
+    } else if (w ~= 'o//p') {
+        return nw;
     }
     if (oops_from == 0) {
         print "Sorry, that can't be corrected.^";
         jump labelXXX;
     }
-    if (var3 == 1[?]) {
+    if (nw == 1) {
         print "Think nothing of it.^";
         jump labelXXX;
     }
-    if (var3 > 2) {
+    if (nw > 2) {
         print "~Oops~ can only correct a single word.^";
         jump labelXXX;
     }
-    var6 = var2-->3;
-    var7 = var2-->4;
-    var4 = 0;
-    --var4;
+    w2 = a_table-->3;
+    x1 = a_table-->4;
+    i = 0;
+    --i;
   .labelXXX;
-    if (var4 < 9) {
-        ++var4;
-        var2->var4 = global67->var4;
+    if (i < 9) {
+        ++i;
+        a_table->i = global67->i;
         jump labelXXX;
     }
-    var5 = 2 * oops_from - 1;
-    var2-->var5 = var6;
-    ++var5;
-    var2-->var5 = var6;
-    return var3;
+    w = 2 * oops_from - 1;
+    a_table-->w = w2;
+    ++w;
+    a_table-->w = w2;
+    return nw;
 ];
 
-[ Parser results syntax line num_lines line_address i j token l m var11 etype_local local13 local14 local15 ;	
+[ Parser results syntax line num_lines line_address i j token l m w etype_local local13 local14 local15 ;	
     if (notheld_mode == true) {
         i = 0;
         --i;
@@ -9721,52 +9721,52 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
                     global55 = 0;
                     local13 = 0;
                   .labelXXX;
-                    var11 = routine94264();
+                    w = routine94264();
                     --global53;
-                    if (var11 == 14529['it//p'?] && global4 == 0) {
+                    if (w == 'it//p' && global4 == 0) {
                         etype_local = VAGUE_PE;
                         jump labelXXX;
                     }
-                    if (var11 == 16615['them//p'?] && global4 == 0) {
+                    if (w == 'them//p' && global4 == 0) {
                         etype_local = VAGUE_PE;
                         jump labelXXX;
                     }
                     global72 = 0;
-                    if (var11 == 16608['the//p'?]) {
+                    if (w == 'the//p') {
                         ++global53;
                         jump labelXXX;
                     }
-                    if (var11 == 12450['a//p'?]) {
+                    if (w == 'a//p') {
                         ++global53;
                         global72 = 1[?];
                     }
-                    if (var11 == 12513['an//p'?]) {
+                    if (w == 'an//p') {
                         ++global53;
                         global72 = 1[?];
                     }
                     if (token == 7[nw_obj?]) {
-                        noun_number = routine94440(global53);
+                        noun_number = TryNumber(global53);
                         noun_word = routine94264();
                         results->(j + 2) = 255[carbolic_soap?];
                         j = j + 1;
                         global59-->global61 = 255[carbolic_soap?];
                     } else {
                         global56 = 0;
-                        if (var11 == 15740['rods//p'?]) {
-                            var11 = 12492['all//p'?];
+                        if (w == 'rods//p') {
+                            w = 'all//p';
                             global56 = 18[antique_jewellery_box?];
                         }
-                        if (var11 == 13010['cards//p'?]) {
-                            var11 = 12492['all//p'?];
+                        if (w == 'cards//p') {
+                            w = 'all//p';
                             global56 = 27[servants_bed?];
                         }
-                        if (var11 == 13773['everything//p'?]) {
-                            var11 = 12492['all//p'?];
+                        if (w == 'everything//p') {
+                            w = 'all//p';
                         }
-                        if (var11 == 12863['both//p'?]) {
-                            var11 = 12492['all//p'?];
+                        if (w == 'both//p') {
+                            w = 'all//p';
                         }
-                        if (var11 == 12492['all//p'?]) {
+                        if (w == 'all//p') {
                             if (token < 2) {
                                 etype_local = MULTI_PE;
                                 jump labelXXX;
@@ -9788,8 +9788,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
                                 if (token == 4[e_obj?]) {
                                     routine92554(actor);	! not popped
                                     @pop;
-                                    var11 = parent(results->3);
-                                    if (var11 == actor) {
+                                    w = parent(results->3);
+                                    if (w == actor) {
                                         routine92468(results->3);	! not popped
                                         @pop;
                                     }
@@ -9841,7 +9841,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
                                 global59-->global61 = l;
                             }
                             if (local13 == 1[?]) {
-                                routine92360(l);	! not popped
+                                MultiAdd(l);	! not popped
                                 @pop;
                             }
                             if (local13 == 2[?]) {
@@ -9861,8 +9861,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
                                 etype_local = routine92308();
                                 jump labelXXX;
                             }
-                            var11 = parent(l);
-                            if (var11 ~= actor) {
+                            w = parent(l);
+                            if (w ~= actor) {
                                 if (notheld_mode == true) {
                                     save_oops = oops_from;
                                     etype_local = NOTHELD_PE;
@@ -9876,14 +9876,14 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
                         }
                     }
                   .labelXXX;
-                    var11 = routine94264();
-                    if (0 ~= routine94110(l,var11)) {
+                    w = routine94264();
+                    if (0 ~= routine94110(l,w)) {
                         jump labelXXX;
                     }
-                    if (var11 == 17133['xcommand//p'?]) {
-                        var11 = 12527['and//p'?];
+                    if (w == 'xcommand//p') {
+                        w = 'and//p';
                     }
-                    if (var11 == 12527['and//p'?]) {
+                    if (w == 'and//p') {
                         if (token < 2) {
                             etype_local = MULTI_PE;
                             jump labelXXX;
@@ -9922,7 +9922,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     }
   .labelXXX;
     if (actor ~= player) {
-        noun_number = routine94440(global73);
+        noun_number = TryNumber(global73);
         global53 = global73;
         noun_word = routine94264();
         action = ##Answer;
@@ -9946,7 +9946,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
             jump labelXXX;
         }
         global61 = global62;
-        routine93380(0,1[?]);	! not popped
+        PrintCommand(0,1[?]);	! not popped
         @pop;
         print ".^";
     }
@@ -9984,24 +9984,24 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     }
     jump labelXXX;
   .labelXXX;
-    var11 = routine94264();
-    if (var11 == 16608['the//p'?]) {
+    w = routine94264();
+    if (w == 'the//p') {
         jump labelXXX;
     }
-    if (var11 == 15740['rods//p'?]) {
+    if (w == 'rods//p') {
         routine92420(18[antique_jewellery_box?]);	! not popped
         @pop;
         jump labelXXX;
     }
-    if (var11 == 13010['cards//p'?]) {
+    if (w == 'cards//p') {
         routine92420(27[servants_bed?]);	! not popped
         @pop;
         jump labelXXX;
     }
-    if (var11 == 13787['except//p'?]) {
-        var11 = 12940['but//p'?];
+    if (w == 'except//p') {
+        w = 'but//p';
     }
-    if (var11 == 12940['but//p'?]) {
+    if (w == 'but//p') {
         local13 = 2[?];
         jump labelXXX;
     }
@@ -10042,25 +10042,25 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     return var3;
 ];
 
-[ routine92360 var1 var2 var3 ;	
-    var2 = multiple_object->0;
-    if (var2 == 16[teachests?]) {
-        global5 = 1[?];
+[ MultiAdd o i j ;	
+    i = multiple_object->0;
+    if (i == 16) {
+        toomany_flag = true;
         rtrue;
     }
-    var3 = 1[?];
-    --var3;
+    j = 1;
+    --j;
   .labelXXX;
-    if (var3 < var2) {
-        ++var3;
-        if (var1 == multiple_object->var3) {
+    if (j < i) {
+        ++j;
+        if (o == multiple_object->j) {
             rtrue;
         }
         jump labelXXX;
     }
-    var2 = var2 + 1;
-    multiple_object->var2 = var1;
-    multiple_object->0 = var2;
+    i = i + 1;
+    multiple_object->i = o;
+    multiple_object->0 = i;
     rtrue;
 ];
 
@@ -10117,7 +10117,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
   .labelXXX;
     if (var1 ~= 0) {
         if (var1 hasnt concealed && var1 hasnt worn) {
-            routine92360(var1);	! not popped
+            MultiAdd(var1);	! not popped
             @pop;
         }
         var1 = sibling(var1);
@@ -10208,7 +10208,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         }
         global59-->global61 = var4;
         print "(";
-        routine93380(global63,0);	! not popped
+        PrintCommand(global63,0);	! not popped
         @pop;
         print ")^";
         return var4;
@@ -10250,9 +10250,9 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         }
         var5 = var5->4;
         if (0 ~= var5 & 1) {
-            routine94706(buffer,global11);	! not popped
+            CopyTable(buffer,global11);	! not popped
             @pop;
-            routine94706(parse,global12);	! not popped
+            CopyTable(parse,global12);	! not popped
             @pop;
             var6 = 1000[?];
             return var6;
@@ -10287,16 +10287,16 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         @pop;
     }
     print "to ";
-    routine93380(0,1[?]);	! not popped
+    PrintCommand(0,1[?]);	! not popped
     @pop;
     print "?^";
     var8 = Keyboard(global11,global12);
     var5 = global12-->1;
     var5 = var5->4;
     if (0 ~= var5 & 1) {
-        routine94706(buffer,global11);	! not popped
+        CopyTable(buffer,global11);	! not popped
         @pop;
-        routine94706(parse,global12);	! not popped
+        CopyTable(parse,global12);	! not popped
         @pop;
         var6 = 1000[?];
         return var6;
@@ -10335,69 +10335,69 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     return var6;
 ];
 
-[ routine93380 var1 var2 var3 var4 var5 var6 var7 var8 ;	
-    if (var1 == 0) {
-        var3 = parse-->1;
-        var1 = 1[?];
+[ PrintCommand from var2 w k pcount var6 var7 var8 ;	
+    if (from == 0) {
+        w = parse-->1;
+        from = 1[?];
         var6 = 1[?];
-        if (var3 == 14508['inventory'?]) {
+        if (w == 'inventory') {
             print "take an inventory";
-        } else if (var3 == 13780['examine'?]) {
+        } else if (w == 'examine') {
             print "examine";
-        } else if (var3 == 13815['extract'?]) {
+        } else if (w == 'extract') {
             print "extract";
-        } else if (var3 == 13556['discard'?]) {
+        } else if (w == 'discard') {
             print "discard";
-        } else if (var3 == 16503['swallow'?]) {
+        } else if (w == 'swallow') {
             print "swallow";
-        } else if (var3 == 13731['embrace'?]) {
+        } else if (w == 'embrace') {
             print "embrace";
-        } else if (var3 == 16391['squeeze'?]) {
+        } else if (w == 'squeeze') {
             print "squeeze";
-        } else if (var3 == 15530['purchase'?]) {
+        } else if (w == 'purchase') {
             print "purchase";
-        } else if (var3 == 13234['consult'?]) {
+        } else if (w == 'consult') {
             print "consult";
-        } else if (var3 == 16825['unscrew'?]) {
+        } else if (w == 'unscrew') {
             print "unscrew";
-        } else if (var3 == 13458['describe'?]) {
+        } else if (w == 'describe') {
             print "describe";
-        } else if (var3 == 16797['uncover'?]) {
+        } else if (w == 'uncover') {
             print "uncover";
-        } else if (var3 == 13556['discard'?]) {
+        } else if (w == 'discard') {
             print "discard";
-        } else if (var3 == 13794['exhibition'?]) {
+        } else if (w == 'exhibition') {
             print "exhibit";
-        } else if (var3 == 13563['disrobe'?]) {
+        } else if (w == 'disrobe') {
             print "disrobe";
-        } else if (var3 == 16734['transfer'?]) {
+        } else if (w == 'transfer') {
             print "transfer";
         } else {
-            print (address) var3;
+            print (address) w;
         }
     }
-    var4 = global61 - var2;
-    var5 = var1;
-    --var5;
+    k = global61 - var2;
+    pcount = from;
+    --pcount;
   .labelXXX;
-    if (var5 < var4) {
-        ++var5;
+    if (pcount < k) {
+        ++pcount;
         if (var6 == 1[?]) {
             print ' ';
         }
-        var3 = global59-->var5;
-        if (var3 == 0) {
+        w = global59-->pcount;
+        if (w == 0) {
             print "those things";
-        } else if (var3 == 255[carbolic_soap?]) {
+        } else if (w == 'invalidDictWord255') {
             print "that";
         } else {
-            if (var3 < 256) {
-                Defart(var3);	! not popped
+            if (w < 256) {
+                Defart(w);	! not popped
                 @pop;
             }
-            if (var3 >= 1000) {
-                var3 = var3 - 1000;
-                print (address) routine93792(var3);
+            if (w >= 1000) {
+                w = w - 1000;
+                print (address) routine93792(w);
             }
         }
         var6 = 1[?];
@@ -10545,143 +10545,143 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     return var3->6;
 ];
 
-[ routine94264 var1 var2 var3 ;	
+[ routine94264 var1 d var3 ;	
     if (global53 > parse->1) {
         global53 = global53 + 1;
         rfalse;
     }
     var1 = global53 * 2 - 1;
     global53 = global53 + 1;
-    var2 = parse-->var1;
-    if (var2 == 0) {
+    d = parse-->var1;
+    if (d == 0) {
         var3 = global53 * 4 - 3;
         var1 = buffer->(parse->var3);
         if (var1 == 44[Disused_Observatory?]) {
-            var2 = 17133['xcommand//p'?];
+            d = 'xcommand//p';
         }
     }
-    return var2;
+    return d;
 ];
 
-[ routine94334 var1 var2 var3 var4 ;	
-    var4 = global53 - 1;
-    if (var4 > parse->1) {
+[ DebugParse xlen i inext len ;	
+    len = global53 - 1;
+    if (len > parse->1) {
         rfalse;
     }
-    var1 = var4 * 4;
-    var2 = parse->var1;
-    var3 = parse->(var1 + 1);
-    var3 = var3 + var2;
-    print "Word ", var4, " ends with ";
+    xlen = len * 4;
+    i = parse->xlen;
+    inext = parse->(xlen + 1);
+    inext = inext + i;
+    print "Word ", len, " ends with ";
   .labelXXX;
-    var1 = buffer->var3;
-    if (var1 == 32[scratched_cupboard?]) {
-        ++var3;
+    xlen = buffer->inext;
+    if (xlen == 32[scratched_cupboard?]) {
+        ++inext;
         jump labelXXX;
     }
-    if (var1 == 44[Disused_Observatory?]) {
+    if (xlen == 44[Disused_Observatory?]) {
         print "a comma^";
-        var3 = 1[?];
-        return var3;
+        inext = 1[?];
+        return inext;
     }
     print "no comma^";
-    var3 = 0;
-    return var3;
+    inext = 0;
+    return inext;
 ];
 
-[ routine94440 var1 var2 var3 var4 var5 var6 var7 var8 var9 var10 ;	
-    var2 = var1 * 4 + 1;
-    var3 = parse->var2;
-    var5 = var3 + buffer;
-    var6 = parse->(var2 - 1);
-    if (var6 >= 4) {
-        var7 = 1000[?];
+[ TryNumber i j k c num len mul tot i n ;	
+    j = i * 4 + 1;
+    k = parse->j;
+    num = k + buffer;
+    len = parse->(j - 1);
+    if (len >= 4) {
+        mul = 1000;
     }
-    if (var6 == 3[s_obj?]) {
-        var7 = 100[hole_in_the_wall?];
+    if (len == 3) {
+        mul = 100;
     }
-    if (var6 == 2[?]) {
-        var7 = 10[u_obj?];
+    if (len == 2) {
+        mul = 10;
     }
-    if (var6 == 1[?]) {
-        var7 = 1[?];
+    if (len == 1) {
+        mul = 1;
     }
-    var8 = 0;
-    var4 = 0;
-    var6 = var6 - 1;
-    var4 = 0;
-    --var4;
+    tot = 0;
+    c = 0;
+    len = len - 1;
+    c = 0;
+    --c;
   .labelXXX;
-    if (var4 < var6) {
-        ++var4;
-        var10 = var5->var4;
-        if (var10 == 48[poetry_book?]) {
-            var9 = 0;
-        } else if (var10 == 49[Souvenirs_Room?]) {
-            var9 = 1[?];
-        } else if (var10 == 50[slide_projector?]) {
-            var9 = 2[?];
-        } else if (var10 == 51[south_wall?]) {
-            var9 = 3[s_obj?];
-        } else if (var10 == 52[East_Annexe?]) {
-            var9 = 4[e_obj?];
-        } else if (var10 == 53[insulation_rolls?]) {
-            var9 = 5[w_obj?];
-        } else if (var10 == 54[new_battery?]) {
-            var9 = 6[ne_obj?];
-        } else if (var10 == 55[cupboard_door?]) {
-            var9 = 7[nw_obj?];
-        } else if (var10 == 56[Dead_End?]) {
-            var9 = 8[se_obj?];
-        } else if (var10 == 57[canvas_rucksack?]) {
-            var9 = 9[sw_obj?];
+    if (c < len) {
+        ++c;
+        n = num->c;
+        if (n == 48) {
+            i = 0;
+        } else if (n == 49) {
+            i = 1;
+        } else if (n == 50) {
+            i = 2;
+        } else if (n == 51) {
+            i = 3;
+        } else if (n == 52) {
+            i = 4;
+        } else if (n == 53) {
+            i = 5;
+        } else if (n == 54) {
+            i = 6;
+        } else if (n == 55) {
+            i = 7;
+        } else if (n == 56) {
+            i = 8;
+        } else if (n == 57) {
+            i = 9;
         } else {
             rfalse;
         }
-        var8 = var8 + var7 * var9;
-        var7 = var7 / 10;
+        tot = tot + mul * i;
+        mul = mul / 10;
         jump labelXXX;
     }
-    return var8;
+    return tot;
 ];
 
-[ routine94674 var1 var2 var3 ;	
-    var3 = var1->0;
-    var2 = 1[?];
-    --var2;
+[ ZeroTable from i len ;	
+    len = from->0;
+    i = 1;
+    --i;
   .labelXXX;
-    if (var2 < var3) {
-        ++var2;
-        var1->var2 = 0;
+    if (i < len) {
+        ++i;
+        from->i = 0;
         jump labelXXX;
     }
     rtrue;
 ];
 
-[ routine94706 var1 var2 var3 var4 ;	
-    var4 = var1->0;
-    var3 = 1[?];
-    --var3;
+[ CopyTable from dst i len ;	
+    len = from->0;
+    i = 1;
+    --i;
   .labelXXX;
-    if (var3 < var4) {
-        ++var3;
-        var1->var3 = var2->var3;
+    if (i < len) {
+        ++i;
+        from->i = dst->i;
         jump labelXXX;
     }
     rtrue;
 ];
 
-[ routine0x17218 card var2 ;	
+[ DumpDebug addr i ;	
     print "Dump at ";
-    routine94796(card);	! not popped
+    PrintHexByte(addr);	! not popped
     @pop;
     new_line;
-    var2 = 0;
-    --var2;
+    i = 0;
+    --i;
   .labelXXX;
-    if (var2 < 31) {
-        ++var2;
-        routine94796(card->var2);	! not popped
+    if (i < 31) {
+        ++i;
+        PrintHexByte(addr->i);	! not popped
         @pop;
         print " ";
         jump labelXXX;
@@ -10690,28 +10690,28 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     rtrue;
 ];
 
-[ routine94796 var1 var2 ;	
-    var2 = var1 / 16 / 16;
-    if (var2 ~= 0) {
-        routine94852(var2 / 16);	! not popped
+[ PrintHexByte dig1 dig2 ;	
+    dig2 = dig1 / 16 / 16;
+    if (dig2 ~= 0) {
+        PrintHex(dig2 / 16);	! not popped
         @pop;
-        routine94852(var2);	! not popped
+        PrintHex(dig2);	! not popped
         @pop;
     }
-    routine94852(var1 / 16);	! not popped
+    PrintHex(dig1 / 16);	! not popped
     @pop;
-    routine94852(var1);	! not popped
+    PrintHex(dig1);	! not popped
     @pop;
     rtrue;
 ];
 
-[ routine94852 var1 ;	
-    var1 = var1 % 16;
-    if (var1 < 10) {
-        print (char) var1 + 48;
+[ PrintHex n ;	
+    n = n % 16;
+    if (n < 10) {
+        print (char) n + 48;
         rtrue;
     }
-    print (char) var1 + (97 - 10);
+    print (char) n + (97 - 10);
     rtrue;
 ];
 

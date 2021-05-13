@@ -341,7 +341,7 @@ Global 1	score:int
 Global 2	turns:int
 Global 3	player:object
 Global 4	global4:?
-Global 5	global5:?
+Global 5	toomany_flag:bool
 Global 6	actor:object
 Global 7	light_lvl:bool
 Global 8	deadflag:final_state
@@ -529,6 +529,7 @@ Action 107	XAngelHint
 Action 108	Xdeterministic
 
 
+Word amusin amusing
 Word outlin outline
 Word meldre meldrewe
 Word engrav engravings
@@ -734,7 +735,7 @@ Routine  0x9656 VerboseSub
 Routine  0x96b6 SuperbriefSub
 Routine  0x971c LookSub verbose:bool env str:string var4 chld:object var6 var7
 Routine  0x9896 ExamineSub o:object
-Routine  0x9a60 WriteAfterEntry obj:object n:int var3 var4 r:object var6 var7
+Routine  0x9a60 WriteAfterEntry obj:object n:int c:object var4 r:object var6 var7
 Routine  0x9bae ShowSub
 Routine  0x9d7c GiveSub obj:object
 Routine  0xa0de UnlockSub
@@ -787,12 +788,12 @@ Routine  0xb47c PointSub env:object par:object
 Routine  0xb526 TearSub
 Routine  0xb5c6 PullDownSub
 Routine  0xb5e0 PullSub
-Routine  0xb6d4 PushSub
+Routine  0xb6d4 PushSub who:object
 Routine  0xb8b6 PushDirSub o:object
 Routine  0xba28 TurnSub
 Routine  0xbb88 SqueezeSub i:object
 Routine  0xbdbe LookUnderSub
-Routine  0xbdc8 SearchSub
+Routine  0xbdc8 SearchSub o1:object o2:object
 Routine  0xc0ac ConsultTSub w:dictword
 Routine  0xc0c0 ConsultSub i
 Routine  0xd026 Indefart o:object
@@ -877,7 +878,7 @@ Routine 0x11b90 ShowProjectorImage o:object dto:object
 Routine 0x11bfe DisplayProjector o:object dto:object wall:object
 Routine 0x11c5c ProjectorAfter o:object
 Routine 0x11d0e SouvenirRoomBefore o:object
-Routine 0x11db4 SouvenirRoomAfter var1
+Routine 0x11db4 SouvenirRoomAfter o:object
 Routine 0x11ea8 DisusedObservatoryAfter
 Routine 0x11f28 Diffraction o:object
 Routine 0x1207c ConsultingRoomBefore 
@@ -890,17 +891,17 @@ Routine 0x12340 SeedText x:int y:int ndx:int
 Routine 0x12392 SeedBoundary x:int y:int ndx:int
 Routine 0x123aa OldMazeBoundary x:int y:int ndx:int
 Routine 0x123ca MazeLayoutBefore y:int x:int wallp:bool
-Routine 0x12442 FamilyTreeBefore var1
+Routine 0x12442 FamilyTreeBefore env:object
 Routine 0x12584 MazeBefore var1 newx:int newy:int
 Routine 0x126da MazeFoundationsBefore var1 newx:int newy:int
-Routine 0x127be PatioBefore var1
-Routine 0x127f6 MazeDescribe numwalls:int n_side e_side s_side w_side
-Routine 0x12938 MazeOldDescribe numwalls:int n_side e_side s_side w_side
-Routine 0x12bfe MazeAfter var1
+Routine 0x127be PatioBefore i:int
+Routine 0x127f6 MazeDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
+Routine 0x12938 MazeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
+Routine 0x12bfe MazeAfter ret
 Routine 0x12c0e MazeFoundationsAfter var1
-Routine 0x12c48 LedgeBefore var1
-Routine 0x12cb4 BeanPoleAfter var1
-Routine 0x12cce TreePlantingAfter var1
+Routine 0x12c48 LedgeBefore env:object
+Routine 0x12cb4 BeanPoleAfter unused
+Routine 0x12cce TreePlantingAfter unused
 Routine 0x12cd6 FollyAfter 
 Routine 0x12cde ClifftopWalkBefore 
 Routine 0x12d44 SacredEarthBefore 
@@ -909,7 +910,7 @@ Routine 0x12fae EkmekSpecialBefore
 Routine 0x13012 AndromedaBefore 
 Routine 0x130ce RuinedCastleCafeAfter 
 Routine 0x131b6 BombAfter 
-Routine 0x13262 DetonatorBefore var1 var2
+Routine 0x13262 DetonatorBefore ticks:int obj:object
 Routine 0x132e4 DescribeDetonator ticks:int wires_unplugged:int wire_num
 Routine 0x1341e WireList n:int
 Routine 0x13436 InfinityAfter obj:object i:int
@@ -932,23 +933,23 @@ Routine 0x13e24 EncampmentBefore
 Routine 0x13e80 NearDolemnAfter o:object sib:object
 Routine 0x13ee6 Heavenly_Place_After angel_obj:object hints:int
 Routine 0x14136 Hellish_Place_After demon_obj:object hints:int
-Routine 0x14382 DevilAnswer topic
-Routine 0x14b84 AngelAnswer topic
-Routine 0x14fca DevilConsultTopic wrd:dictword topic
-Routine 0x151a0 AngelConsultTopic wrd:dictword topic
+Routine 0x14382 DevilAnswer topic:topic_enum
+Routine 0x14b84 AngelAnswer topic:angel_topic_enum
+Routine 0x14fca DevilConsultTopic wrd:dictword topic:topic_enum
+Routine 0x151a0 AngelConsultTopic wrd:dictword topic:angel_topic_enum
 Routine 0x1527c DemonQuestion wrd:dictword topic:int
 Routine 0x15362 AngelQuestion wrd:dictword topic:int
 Routine 0x15446 GameWon n:int
-Routine 0x15f64 Keyboard var1 var2 var3 var4 var5 var6 var7
-Routine 0x16060 Parser results syntax line num_lines line_address i j token l m var11 etype_local:etype_enum local13 local14 local15
+Routine 0x15f64 Keyboard a_buffer a_table  nw:int i w:dictword w2 x1 x2
+Routine 0x16060 Parser results syntax line num_lines line_address i j token l m w:dictword etype_local:etype_enum local13 local14 local15
 Routine 0x16894 routine92308 var1 var2 var3
-Routine 0x168c8 routine92360 var1 var2 var3
+Routine 0x168c8 MultiAdd o i:int j:int
 Routine 0x16904 routine92420 var1 var2 var3 var4
 Routine 0x16934 routine92468 var1 var2 var3 var4 var5
 Routine 0x1698a routine92554 var1 var2
 Routine 0x169ba routine92602 var1 var2 var3 var4 var5 var6 var7
 Routine 0x16a6a routine92778 var1 var2 var3 var4 var5 var6 var7 var8
-Routine 0x16cc4 routine93380 var1 var2 var3 var4 var5 var6 var7 var8
+Routine 0x16cc4 PrintCommand from var2 w:dictword k:int pcount:int var6 var7 var8
 Routine 0x16e60 routine93792 var1 var2 var3
 Routine 0x16ea4 routine93860 var1 var2 var3 var4 var5
 Routine 0x16ed6 routine93910 var1 var2
@@ -956,14 +957,14 @@ Routine 0x16ef4 routine93940 var1 var2 var3 var4 var5 var6 var7
 Routine 0x16f9e routine94110 var1 var2 var3 var4 var5 var6
 Routine 0x16fd4 routine94164 var1 var2 var3
 Routine 0x17012 routine94226 var1 var2 var3
-Routine 0x17038 routine94264 var1 var2 var3
-Routine 0x1707e routine94334 var1 var2 var3 var4
-Routine 0x170e8 routine94440 var1 var2 var3 var4 var5 var6 var7 var8 var9 var10
-Routine 0x171d2 routine94674 var1 var2 var3
-Routine 0x171f2 routine94706 var1 var2 var3 var4
-Routine 0x17218 routine0x17218 card:object var2
-Routine 0x1724c routine94796 var1 var2
-Routine 0x17284 routine94852 var1
+Routine 0x17038 routine94264 var1 d:dictword var3
+Routine 0x1707e DebugParse xlen i inext len
+Routine 0x170e8 TryNumber i j k c:int num len:int mul:int tot:int i:int n:int
+Routine 0x171d2 ZeroTable from i:int len:int
+Routine 0x171f2 CopyTable from dst i:int len:int
+Routine 0x17218 DumpDebug addr:int i:int
+Routine 0x1724c PrintHexByte dig1:int dig2:int
+Routine 0x17284 PrintHex n:int
 Routine 0x103de XMasterSub i:object j:object
 Routine 0x15268 XDemonHintSub
 Routine 0x15272 XAngelHintSub
