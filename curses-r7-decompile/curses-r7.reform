@@ -661,7 +661,7 @@ Routine 0x42b0 Main
 Routine 0x43aa PlayTheGame i j:dictword k l aflag metaverb:bool nonexit:bool
 Routine 0x47fc RunRoutines i:object j:object k:action
 Routine 0x484c AfterRoutines:int i:int o:object
-Routine 0x4894 routine_4894:bool
+Routine 0x4894 RunAfter:bool l:object func
 Routine 0x48b4 Banner i:int
 Routine 0x4960 Time i:? j k:object 
 Routine 0x722e ResetTimer obj:object i:int
@@ -685,9 +685,9 @@ Routine 0x80d2 SaveSub
 Routine 0x80e4 ScriptOnSub
 Routine 0x812c ScriptOffSub
 Routine 0x8170 InvSub
-Routine 0x81a6 routine_81a6
+Routine 0x81a6 ListInventory p:object depth:int o:object c:object
 Routine 0x81f4 TakeSub
-Routine 0x8220 routine_8220 var1 var2 var3 var4
+Routine 0x8220 TakeTest i:object j:object k:object cnt:int
 Routine 0x8400 DropSub env:object unused unused2
 Routine 0x846e RemoveSub
 Routine 0x84f2 InsertSub env:object
@@ -762,11 +762,11 @@ Routine 0xb10c TurnSub
 Routine 0xb1ba SqueezeSub i:object
 Routine 0xb3f0 LookUnderSub
 Routine 0xb3fa SearchSub o1:object o2:object
-Routine 0xb6de ConsutTSub
+Routine 0xb6de ConsultTSub w:dictword
 Routine 0xb6f2 ConsultSub i
-Routine 0xc658 Indefart
-Routine 0xc66c Defart
-Routine 0xc67c CDefart
+Routine 0xc658 Indefart o:object
+Routine 0xc66c Defart o:object
+Routine 0xc67c CDefart o:object
 !!! - end of parser.h
 
 Routine 0xc68c ThrowSub
@@ -785,7 +785,7 @@ Routine 0xd254 HelpSpecialSub word:dictword
 Routine 0xe4a8 XDebugSub
 Routine 0xe4c6 XCheatSub obj:object
 Routine 0xe55e XasncSub
-Routine 0xe5a0 routine_e5a0
+Routine 0xe5a0 XdeterministicSub
 Routine 0xe5bc XtravelSub
 Routine 0xe5d0 XatticSub
 Routine 0xe5de SleepSub env:object sib:object
@@ -793,7 +793,7 @@ Routine 0xe7c8 OneTimeBonusScore unused
 Routine 0xe822 DealCard:object 
 Routine 0xe838 InsertCardIntoDeck card:object
 Routine 0xe844 SosostrisDeals card3:object card2:object card1:object
-Routine 0xead4 FireRodAction
+Routine 0xead4 FireRodAction unused
 Routine 0xed4c transport_player n:int dest:object
 Routine 0xee10 RodOfHusbandryAction
 Routine 0xeeb6 RodOfBronzeAction
@@ -804,11 +804,11 @@ Routine 0xf0fa stalking_rod_action
 Routine 0xf282 RodOfInfinityAction
 Routine 0xf3d6 XMasterSub i:object j:object
 Routine 0xf40e HouseAfter
-Routine 0xf566 WineryAfter
+Routine 0xf566 WineryAfter i
 Routine 0xf630 EastAnnexeAfter o:object n:int
 Routine 0xf64c InsideCupboardAfter i:object
-Routine 0xf68e StorageRoomBefore
-Routine 0xf714 StorageRoomBefore
+Routine 0xf68e StorageRoomBefore i
+Routine 0xf714 StorageRoomAfter
 Routine 0xf770 CellarsBefore i:object
 Routine 0xf7d0 orphan_room_routine
 Routine 0xf808 ChimneyBefore o:object
@@ -838,12 +838,12 @@ Routine 0x10580 CalendarBefore i
 Routine 0x10686 daisy_chain_after obj:object
 Routine 0x106e6 DescFlower n:int
 Routine 0x107de CellBefore
-Routine 0x10828 PoetryBefore
+Routine 0x10828 PoetryBefore o:object
 Routine 0x108a0 DialBefore
 Routine 0x1093a WheelBefore r:object
 Routine 0x10944 Wheel2Before obj:object
 Routine 0x10a14 ChanceSwitchAfter
-Routine 0x10a6e RadioAfter
+Routine 0x10a6e RadioAfter o:object
 Routine 0x10aa6 ShowProjectorImage o:object
 Routine 0x10b14 DisplayProjector o:object dto:object wall:object
 Routine 0x10b72 ProjectorAfter o:object
@@ -1089,7 +1089,4 @@ Word xcheat xcheat
 
 FalseEnd    0x7ffa  1
 FalseEnd    0x805a  1
-FalseEnd    0x805e  1
-
-
-
+! FalseEnd    0x805e  1
