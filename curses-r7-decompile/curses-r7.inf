@@ -4081,7 +4081,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
             print "  ";
             jump labelXXX;
         }
-        o = DescribeObj(p,0);
+        o = WriteAfterEntry(p,0);
         new_line;
     }
     if (o == nothing) {
@@ -4695,7 +4695,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (chld ~= nothing) {
             if (chld has attrib12) {
                 env = env + 1;
-                DescribeObj(chld,1);	! not popped
+                WriteAfterEntry(chld,1);	! not popped
                 @pop;
                 if (env == var4 - 1) {
                     print " and ";
@@ -4794,7 +4794,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rtrue;
 ];
 
-[ DescribeObj obj n local3 local4 local5 local6 local7 ;	
+[ WriteAfterEntry obj n c local4 r local6 local7 ;	
     if (n ~= 2) {
         Indefart(obj);	! not popped
         @pop;
@@ -4813,13 +4813,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         print " (charged)";
     }
     if (obj == daisy_chain) {
-        local5 = child(player);
+        r = child(player);
       .labelXXX;
-        if (local5 ~= 0) {
-            if (local5 has hidden_rod) {
+        if (r ~= nothing) {
+            if (r has hidden_rod) {
                 print " (which rustles as if with a magical wind)";
             } else {
-                local5 = sibling(local5);
+                r = sibling(r);
                 jump labelXXX;
             }
         }
@@ -4840,34 +4840,34 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (obj has open) {
             print "open";
         }
-        local3 = child(obj);
-        if (local3 == 0) {
+        c = child(obj);
+        if (c == nothing) {
             print " but empty";
         } else if (n == 0) {
             local7 = 1[?];
         } else {
             print " and contains ";
             local6 = 0;
-            local4 = local3;
+            local4 = c;
           .labelXXX;
             if (local4 ~= 0) {
                 local4 = sibling(local4);
                 ++local6;
                 jump labelXXX;
             }
-            local5 = 0;
+            r = nothing;
           .labelXXX;
-            if (local3 ~= 0) {
-                ++local5;
-                DescribeObj(local3,1);	! not popped
+            if (c ~= nothing) {
+                ++r;
+                WriteAfterEntry(c,1);	! not popped
                 @pop;
-                if (local5 == local6 - 1) {
+                if (r == local6 - 1) {
                     print " and ";
                 }
-                if (local5 < local6 - 1) {
+                if (r < local6 - 1) {
                     print ", ";
                 }
-                local3 = sibling(local3);
+                c = sibling(c);
                 jump labelXXX;
             }
         }
@@ -5828,7 +5828,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         rtrue;
     }
     print "You peer at ";
-    DescribeObj(noun,2);	! not popped
+    WriteAfterEntry(noun,2);	! not popped
     @pop;
     ".";
 ];

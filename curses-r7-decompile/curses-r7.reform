@@ -380,6 +380,7 @@ Global 48 onotheld_mode
 !Global 49 global49:?
 Global 50 num_words
 Global 54 verb_word:dictword
+Global 61 oops_from
 !GlobalArray 55 global55:array(?)
 !GlobalArray 56 global56:array(?)
 LastGlobal 71
@@ -550,7 +551,7 @@ Routine 0x8f16 VerboseSub
 Routine 0x8f76 SuperbriefSub
 Routine 0x8fdc LookSub verbose:bool env:object str:string var4 chld:object var6 var7 
 Routine 0x9156 ExamineSub o:object
-Routine 0x9320 DescribeObj obj:object n:int
+Routine 0x9320 WriteAfterEntry obj:object n:int c:object local4 r:object local6 
 Routine 0x946e ShowSub
 Routine 0x963c GiveSub obj:object
 Routine 0x999e UnlockSub
@@ -645,7 +646,7 @@ Routine 0xeeb6 RodOfBronzeAction i j
 Routine 0xef82 RodOfLuckAction i j 
 Routine 0xf006 RodOfSacrificeAction i j 
 Routine 0xf0b2 RodOfLanguageAction i j 
-Routine 0xf0fa stalking_rod_action i j 
+Routine 0xf0fa RodOfStalkingAction i j 
 Routine 0xf282 RodOfInfinityAction i j 
 Routine 0xf3d6 XMasterSub i:object j:object
 Routine 0xf40e HouseAfter
@@ -693,7 +694,7 @@ Routine 0x10aa6 ShowProjectorImage o:object
 Routine 0x10b14 DisplayProjector o:object dto:object wall:object
 Routine 0x10b72 ProjectorAfter o:object
 Routine 0x10b98 SouvenirRoomBefore
-Routine 0x10c3e SouvenirRoomAfter
+Routine 0x10c3e SouvenirRoomAfter o:object
 Routine 0x10cd4 ConsultingRoomBefore
 Routine 0x10df2 PosterBefore
 Routine 0x10e5e MaskAfter
