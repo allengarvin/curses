@@ -649,12 +649,12 @@ Routine 0xf0b2 RodOfLanguageAction i j
 Routine 0xf0fa RodOfStalkingAction i j 
 Routine 0xf282 RodOfInfinityAction i j 
 Routine 0xf3d6 XMasterSub i:object j:object
-Routine 0xf40e HouseAfter
+Routine 0xf40e HouseAfter o:object
 Routine 0xf566 WineryAfter i
 Routine 0xf630 EastAnnexeAfter o:object n:int
 Routine 0xf64c InsideCupboardAfter i:object
 Routine 0xf68e StorageRoomBefore i
-Routine 0xf714 StorageRoomAfter
+Routine 0xf714 StorageRoomAfter o:object
 Routine 0xf770 CellarsBefore i:object
 Routine 0xf7d0 orphan_room_routine
 Routine 0xf808 ChimneyBefore o:object
@@ -690,10 +690,10 @@ Routine 0x1093a WheelBefore r:object
 Routine 0x10944 Wheel2Before obj:object
 Routine 0x10a14 ChanceSwitchAfter
 Routine 0x10a6e RadioAfter o:object
-Routine 0x10aa6 ShowProjectorImage o:object
+Routine 0x10aa6 ShowProjectorImage o:object dto:object
 Routine 0x10b14 DisplayProjector o:object dto:object wall:object
 Routine 0x10b72 ProjectorAfter o:object
-Routine 0x10b98 SouvenirRoomBefore
+Routine 0x10b98 SouvenirRoomBefore o:object
 Routine 0x10c3e SouvenirRoomAfter o:object
 Routine 0x10cd4 ConsultingRoomBefore
 Routine 0x10df2 PosterBefore
@@ -708,7 +708,7 @@ Routine 0x1101e MazeLayoutBefore y:int x:int wallp:bool
 Routine 0x1108a FamilyTreeBefore env:object
 Routine 0x111cc MazeBefore var1 newx:int newy:int
 Routine 0x112f4 MazeFoundationsBefore var1 newx:int newy:int
-Routine 0x113d8 PatioBefore
+Routine 0x113d8 PatioBefore i:int
 Routine 0x11410 MazeDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
 Routine 0x11552 MazeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
 Routine 0x11818 MazeAfter ret:bool
@@ -731,16 +731,16 @@ Routine 0x12050 InfinityAfter:bool obj:object i:int
 Routine 0x121e2 InfinityBefore:bool unused cnt:int
 Routine 0x12294 StreamBefore
 Routine 0x12370 DieAfter n:int
-Routine 0x1239e InsideWellBefore
-Routine 0x123d8 TricliniumBefore
+Routine 0x1239e InsideWellBefore i
+Routine 0x123d8 TricliniumBefore o
 Routine 0x124c8 TricliniumAfter
 Routine 0x12552 EntranceBefore
 Routine 0x125ba EntranceAfter
 Routine 0x125c4 DaisyAfter
 Routine 0x12628 DaisyBefore
 Routine 0x1267e HangingBefore
-Routine 0x126ca HypocaustBefore
-Routine 0x1279e Capture
+Routine 0x126ca HypocaustBeforE o
+Routine 0x1279e Capture o:object
 Routine 0x12942 SaxonBefore
 Routine 0x12986 TentPoleAfter
 Routine 0x12a32 EncampmentBefore

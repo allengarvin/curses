@@ -1475,7 +1475,7 @@ Object -> bean_pole "bean pole"
 Object rod_of_stalking "Rod of Stalking"	
   with	name 'rod' 'of' 'stalking',
 	article "the",
-	rod_action stalking_rod_action,
+	rod_action RodOfStalkingAction,
 	devil_hint "It has no horticultural application.",
   has	rod_attr;
 
@@ -2074,7 +2074,7 @@ Object Hypocaust "Hypocaust"
 
 Object -> hypocaust_vents "hypocaust vents"	
   with	name 'vents',
-	before HypocaustBefore,
+	before HypocaustBeforE,
   has	scenery;
 
 Object Entrance "Entrance"	
@@ -2312,7 +2312,7 @@ Global global57;
 Global global58;
 Global global59;
 Global global60;
-Global global61;
+Global oops_from;
 Global global62;
 Global global63 = 10186[?];
 Global global64 = 10202[?];
@@ -2324,11 +2324,11 @@ Global global69;
 Global global70;
 Global global71 = 10266[?];
 
-Array buffer --> 30720[?];	! 9520 (0x2530)
-Array parse --> 16384[?];	! 9641 (0x25a9)
-Array inputobjs --> 16;	! 9892 (0x26a4)
-Array multiple_object --> 16;	! 9908 (0x26b4)
-Array card_deck -->	! 9972 (0x26f4)
+Array buffer --> 30720[?];	
+Array parse --> 16384[?];	
+Array inputobjs --> 16;	
+Array multiple_object --> 16;	
+Array card_deck -->	
     nothing
     nothing
     nothing
@@ -2336,7 +2336,7 @@ Array card_deck -->	! 9972 (0x26f4)
     invalidObj12593
     invalidObj12593
 ;
-Array garden_array -->	! 9980 (0x26fc)
+Array garden_array -->	
     12593
     12593
     12593
@@ -2362,7 +2362,7 @@ Array garden_array -->	! 9980 (0x26fc)
     12593
     12336
 ;
-Array mouse_maze -->	! 10043 (0x273b)
+Array mouse_maze -->	
     12593
     12593
     12593
@@ -2391,7 +2391,7 @@ Array mouse_maze -->	! 10043 (0x273b)
     12336
     12593
 ;
-Array task_scores -->	! 10106 (0x277a)
+Array task_scores -->	
     775
     1802
     771
@@ -2411,9 +2411,9 @@ Array task_scores -->	! 10106 (0x277a)
     0
     0
 ;
-Array score_array2 --> 18;	! 10124 (0x278c)
-Array BombWires --> 4;	! 10149 (0x27a5)
-Array verb_routine_array -->	! 11869 (0x2e5d)
+Array score_array2 --> 18;	
+Array BombWires --> 4;	
+Array verb_routine_array -->	
     ExitSub
     InvSub
     TakeSub
@@ -6569,7 +6569,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ stalking_rod_action i j ;	
+[ RodOfStalkingAction i j ;	
     if (second == player) {
         "Your hair stands momentarily on end, as if it wants to stalk up out of your head, but happily it decides against.";
     }
@@ -6635,10 +6635,10 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ HouseAfter local1 ;	
-    local1 = 187[tourist_map_of_Paris?];
-    local1 = parent(local1);
-    if (local1 == player) {
+[ HouseAfter o ;	
+    o = tourist_map_of_Paris;
+    o = parent(o);
+    if (o == player) {
         deadflag = WON;
         "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty generations, a Meldrew has found the useless object he was doomed to seek!  Unfortunately on the way to the airport you realise that you left the map on the kitchen table in all the rush, but never mind, you're on holiday now.";
     }
@@ -6708,11 +6708,11 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ StorageRoomAfter local1 ;	
+[ StorageRoomAfter o ;	
     if (action == ##Enter) {
-        local1 = 86[dumbwaiter?];
-        local1 = parent(local1);
-        if (local1 == 84[Storage_Room?]) {
+        o = dumbwaiter;
+        o = parent(o);
+        if (o == Storage_Room) {
             noun = dumbwaiter;
             rfalse;
         }
@@ -7368,12 +7368,12 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     rfalse;
 ];
 
-[ ShowProjectorImage o local2 ;	
+[ ShowProjectorImage o dto ;	
     print "the picture on ";
     Defart(o);	! not popped
     @pop;
-    local2 = o.door_to;
-    if (local2 == 0) {
+    dto = o.door_to;
+    if (dto == nothing) {
         ".";
     }
     ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
@@ -7415,14 +7415,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ SouvenirRoomBefore local1 ;	
+[ SouvenirRoomBefore o ;	
     if (action == ##Insert) {
         if (second ~= slide_projector) {
             rfalse;
         }
-        local1 = 50[slide_projector?];
-        local1 = child(local1);
-        if (local1 ~= 0) {
+        o = slide_projector;
+        o = child(o);
+        if (o ~= nothing) {
             "There's a slide in already.";
         }
         if (noun == postcard) {
@@ -7442,18 +7442,18 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ SouvenirRoomAfter local1 ;	
+[ SouvenirRoomAfter o ;	
     if (slide_projector hasnt on) {
         rfalse;
     }
     if (action == ##Look) {
-        local1 = 50[slide_projector?];
-        local1 = child(local1);
-        if (local1 == 0) {
+        o = slide_projector;
+        o = child(o);
+        if (o == nothing) {
             "The south wall is lit up by the projector.";
         }
         print "The south wall displays ";
-        ShowProjectorImage(local1);	! not popped
+        ShowProjectorImage(o);	! not popped
         @pop;
         rtrue;
     }
@@ -7466,8 +7466,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         rtrue;
     }
     if (action == ##Take) {
-        local1 = parent(noun);
-        if (local1 == 50[slide_projector?]) {
+        o = parent(noun);
+        if (o == slide_projector) {
             if (second ~= slide_projector) {
                 rfalse;
             }
@@ -7784,7 +7784,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ PatioBefore local1 ;	
+[ PatioBefore i ;	
     if (action == ##Go) {
         if (noun == d_obj) {
             rfalse;
@@ -7792,8 +7792,8 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         if (garden_roller ~= parent(player)) {
             "Mustn't tread on the grass now!";
         }
-        local1 = MazeBefore();
-        return local1;
+        i = MazeBefore();
+        return i;
     }
     rfalse;
 ];
@@ -8347,7 +8347,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ InsideWellBefore local1 ;	
+[ InsideWellBefore i ;	
     if (action == ##Go) {
         rfalse;
     }
@@ -8355,7 +8355,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ TricliniumBefore local1 ;	
+[ TricliniumBefore o ;	
     if (action ~= ##Go) {
         rfalse;
     }
@@ -8461,7 +8461,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 
-[ HypocaustBefore local1 ;	
+[ HypocaustBeforE o ;	
     if (action == ##Examine) {
         ! no code
     } else if (action ~= ##Search) {
@@ -8473,7 +8473,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     "You see across the mosaic floor of the moonlit atrium.";
 ];
 
-[ Capture local1 ;	
+[ Capture o ;	
     if (CouncilCnt < 8) {
         deadflag = DIED;
         print "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and anyway if they had they would probably just have done you in more unpleasantly.^";
@@ -8482,13 +8482,13 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     print "^Suddenly you are thrust before a druidical figure. He seems to recognise you, and is troubled. Perhaps because of this, your life is saved and you are taken away into custody, down in the valley among the army encampments.^";
     StartTimer(tent_pole,4);	! not popped
     @pop;
-    local1 = child(player);
+    o = child(player);
   .labelXXX;
-    if (local1 ~= 0) {
-        if (local1 hasnt worn) {
-            remove local1;
+    if (o ~= nothing) {
+        if (o hasnt worn) {
+            remove o;
         }
-        local1 = sibling(local1);
+        o = sibling(o);
         jump labelXXX;
     }
     CouncilCnt = 0;
@@ -9041,7 +9041,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     } else if (local5 ~= 14971['o//p'?]) {
         return local3;
     }
-    if (global61 == 0) {
+    if (oops_from == 0) {
         print "Sorry, that can't be corrected.^";
         jump labelXXX;
     }
@@ -9063,7 +9063,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
         local2->local4 = global63->local4;
         jump labelXXX;
     }
-    local5 = 2 * global61 - 1;
+    local5 = 2 * oops_from - 1;
     local2-->local5 = local6;
     ++local5;
     local2-->local5 = local6;
@@ -9232,7 +9232,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                         if (local7 > 0) {
                             global4 = local1->2;
                         }
-                        global61 = 0;
+                        oops_from = 0;
                         if (global70 ~= 0) {
                             notheld_mode = true;
                             local6 = 0;
@@ -9352,7 +9352,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                             ++global49;
                             jump labelXXX;
                         }
-                        global61 = global49;
+                        oops_from = global49;
                         if (local8 ~= 1[?]) {
                             local9 = routine_14b48(location,actor,local8);
                             if (local9 == 1000[?]) {
@@ -9395,7 +9395,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
                             local11 = parent(local9);
                             if (local11 ~= actor) {
                                 if (notheld_mode == true) {
-                                    global62 = global61;
+                                    global62 = oops_from;
                                     local12 = 5[w_obj?];
                                     jump labelXXX;
                                 }
@@ -9464,7 +9464,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     if (local12 == 1[?]) {
         print "I didn't understand that sentence.^";
-        global61 = 1[?];
+        oops_from = 1[?];
     }
     if (local12 == 2[?]) {
         print "I only understood you as far as wanting to ";
@@ -9483,14 +9483,14 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
     }
     if (local12 == 3[s_obj?]) {
         print "You can't see any such thing.^";
-        global61 = global62;
+        oops_from = global62;
     }
     if (local12 == 4[e_obj?]) {
         print "You seem to have said too little!^";
     }
     if (local12 == 5[w_obj?]) {
         print "You aren't holding that!^";
-        global61 = global62;
+        oops_from = global62;
     }
     if (local12 == 6[ne_obj?]) {
         print "You can't use multiple objects with that verb.^";
@@ -9557,7 +9557,7 @@ Array verb_routine_array -->	! 11869 (0x2e5d)
 ];
 
 [ routine_14972 local1 local2 local3 ;	
-    global62 = global61;
+    global62 = oops_from;
     local1 = parent(actor);
     if (local1 hasnt visited) {
         ! no code
