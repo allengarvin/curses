@@ -531,7 +531,7 @@ Routine 0x80e4 ScriptOnSub
 Routine 0x812c ScriptOffSub
 Routine 0x8170 InvSub
 Routine 0x81a6 ListInventory p:object depth:int o:object c:object
-Routine 0x81f4 TakeSub
+Routine 0x81f4 TakeSub o:object
 Routine 0x8220 TakeTest i:object j:object k:object cnt:int
 Routine 0x8400 DropSub env:object unused unused2
 Routine 0x846e RemoveSub
@@ -640,13 +640,13 @@ Routine 0xe838 InsertCardIntoDeck card:object
 Routine 0xe844 SosostrisDeals card3:object card2:object card1:object
 Routine 0xead4 FireRodAction unused
 Routine 0xed4c transport_player n:int dest:object
-Routine 0xee10 RodOfHusbandryAction
-Routine 0xeeb6 RodOfBronzeAction
-Routine 0xef82 RodOfLuckAction
-Routine 0xf006 RodOfSAcrificeAction
-Routine 0xf0b2 RodOfLanguageAction
-Routine 0xf0fa stalking_rod_action
-Routine 0xf282 RodOfInfinityAction
+Routine 0xee10 RodOfHusbandryAction i j 
+Routine 0xeeb6 RodOfBronzeAction i j 
+Routine 0xef82 RodOfLuckAction i j 
+Routine 0xf006 RodOfSacrificeAction i j 
+Routine 0xf0b2 RodOfLanguageAction i j 
+Routine 0xf0fa stalking_rod_action i j 
+Routine 0xf282 RodOfInfinityAction i j 
 Routine 0xf3d6 XMasterSub i:object j:object
 Routine 0xf40e HouseAfter
 Routine 0xf566 WineryAfter i
