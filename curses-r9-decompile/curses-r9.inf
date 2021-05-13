@@ -586,7 +586,7 @@ Object Grahams_Lair "Graham's Lair"
 	nw_to Lighthouse,
 	sw_to Folly,
 	u_to Cliffs,
-	d_to big_electricians_switch,
+	d_to Universe_Maintenance_Room,
   has	light;
 
 Object Attic "Attic"	
@@ -771,7 +771,7 @@ Object -> hanging_cord "hanging cord"
   has	static;
 
 Object -> -> glowing_orb "glowing golden orb"	
-  with	name 'glowin' 'golden' 'orb',
+  with	name 'glowing' 'golden' 'orb',
 	description "A treasure in every sense, but misted over, like condensation on a cold window. Odd shapes seem visible through the haze: a horse's head, castle walls, a priest's crook.",
 	initial "Sitting on the grass, beside the well, is a glowing golden orb.",
   has	scored;
@@ -1439,7 +1439,7 @@ Object Maze "Maze"
 	before MazeBefore,
 	after MazeAfter,
 	s_to Family_Tree,
-	w_to plaque,
+	w_to Viewpoint_Ledge,
 	cant_go "The privet hedges are in the way.",
   has	light scored;
 
@@ -1518,27 +1518,27 @@ Object -> metal_wall "metal wall"
 	describe "The north edge of the room is a big sheet of dull amber-coloured metal.",
   has	door static;
 
-Object Universe_Maintenance_Room "Inside the Orb"	
+Object Inside_the_Orb "Inside the Orb"	
   with	name 'light',
 	description "You half-stand, half-float in a golden, misty sphere perhaps ten yards across, which slowly spins. The centre, out of reach and somehow insubstantial, is an eight-by-eight lattice of oblong crystals, bathed in warm pearly light.",
 	number 0,
 	prop27 [1],
   has	light;
 
-Object big_electricians_switch "Universe Maintenance Room"	
+Object Universe_Maintenance_Room "Universe Maintenance Room"	
   with	name 'gauges' 'machine',
 	description "You really should try to be more awestruck, for this is Merlin's cave, the hub of Creation. Every visitor perceives this place differently, according to his or her own myths and beliefs. Your particular creed being science, it is an unimpressive collection of gauges, dials and machines. An aluminium staircase leads up.",
 	u_to Catacombs,
 	prop27 [1],
   has	scored;
 
-Object -> Viewpoint_Ledge "big electrician's switch"	
+Object -> big_electricians_switch "big electrician's switch"	
   with	name 'big' 'electric' 'switch',
 	description "The lower, on, position is labelXXXled ~Determinism~. The upper, off, position is labelled ~Chance~.",
 	after ChanceSwitchAfter,
   has	scenery static switchable on;
 
-Object plaque "Viewpoint Ledge"	
+Object Viewpoint_Ledge "Viewpoint Ledge"	
   with	name 'motorway' 'coaches',
 	description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
 	before routine80796,
@@ -2337,8 +2337,8 @@ Global card_ptr;
 Global global25 = 10036[?];
 Global MazeX = 4;
 Global MazyY = 6;
-Global global28 = 100[hole_in_the_wall?];
-Global global29 = 100[hole_in_the_wall?];
+Global WeedkillerX = 100;
+Global WeedkillerY = 100;
 Global global30 = 10099[?];
 Global Mouse_x = 8;
 Global Mouse_y = 3;
@@ -3095,15 +3095,15 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come running to investigate. In the ensuing confusion, they come across you and, of course, blame you for their incompetent masonry. You are hauled up before the county assizes...^";
         deadflag = AUSTRALIA;
     }
-    if (game_section ~= GARDEN_PAST && global28 < 100) {
-        i = global28 + 9 * global29;
+    if (game_section ~= GARDEN_PAST && WeedkillerX < 100) {
+        i = WeedkillerX + 9 * WeedkillerY;
         global25->i = 48[Souvenirs_Room?];
-        global28 = 100[hole_in_the_wall?];
+        WeedkillerX = 100;
     }
-    if (location == Universe_Maintenance_Room) {
-        i = Universe_Maintenance_Room.number;
+    if (location == Inside_the_Orb) {
+        i = Inside_the_Orb.number;
         ++i;
-        Universe_Maintenance_Room.number = i;
+        Inside_the_Orb.number = i;
         if (i == 1[?]) {
             rtrue;
         }
@@ -3130,13 +3130,13 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         }
         j = i % 4;
         if (j == 0) {
-            give Universe_Maintenance_Room ~general;
+            give Inside_the_Orb ~general;
             if (i > 12) {
                 print "^(The sphere rotates.)  Black still looks safe.^";
             }
         }
         if (j == 2[?]) {
-            give Universe_Maintenance_Room general;
+            give Inside_the_Orb general;
             if (i > 14) {
                 print "^(The sphere rotates.)  White must break out somehow.^";
             }
@@ -4072,7 +4072,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 
 [ ScoreSub score_var ;	
     if (deadflag == 0) {
-        if (location == Universe_Maintenance_Room) {
+        if (location == Inside_the_Orb) {
             print "Inside the golden orb. ";
         } else {
             if (game_section == MODERN) {
@@ -4454,7 +4454,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 [ InvSub local1 ;	
     local1 = child(player);
     print "You are ";
-    if (location == Universe_Maintenance_Room) {
+    if (location == Inside_the_Orb) {
         print "bathed in a curious white light, and ";
     }
     if (local1 == 0) {
@@ -5838,7 +5838,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         }
         if (local1 == 2[?]) {
             move misc_obj to Catacombs;
-            Catacombs.d_to = big_electricians_switch;
+            Catacombs.d_to = Universe_Maintenance_Room;
             global54 = 1[?];
             Achieved(14);	! not popped
             @pop;
@@ -6325,9 +6325,9 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         move glowing_orb to location;
         global55 = parent(player);
         global56 = location;
-        location = Universe_Maintenance_Room;
+        location = Inside_the_Orb;
         remove player;
-        move player to Universe_Maintenance_Room;
+        move player to Inside_the_Orb;
         LookSub(1[?]);	! not popped
         @pop;
         rtrue;
@@ -6454,7 +6454,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (location == Ruined_Castle_Cafe) {
         "You look rather conspicuous striking the rod on the cafe table, but everyone else assumes you're part of the cabaret. Anyway, the rod charges up as usual.";
     }
-    if (location == Universe_Maintenance_Room) {
+    if (location == Inside_the_Orb) {
         "The sphere rings with a hollow noise, but the rod charges up.";
     }
     "The rod charges up with etherial power, drawn up from the earth through ley lines...";
@@ -6698,8 +6698,8 @@ Array verb_routine_array -->	! 12088 (0x2f38)
             if (local1 == 0) {
                 "A stream of weed-killer soaks into the grass, and does nothing obvious.";
             }
-            global28 = MazeX;
-            global29 = MazyY;
+            WeedkillerX = MazeX;
+            WeedkillerY = MazyY;
             "A stream of weed-killer soaks into the seedbed, and does nothing obvious.";
         }
     }
@@ -7596,7 +7596,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (second ~= player) {
         "Nothing obvious happens.";
     }
-    if (location == Universe_Maintenance_Room) {
+    if (location == Inside_the_Orb) {
         location = global56;
         remove player;
         move player to global55;
@@ -7675,7 +7675,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 
 [ routine68638 ;	
     if (second == player) {
-        if (Viewpoint_Ledge has on) {
+        if (big_electricians_switch has on) {
             "You feel no different. Perhaps there's no such thing as luck.";
         }
         give noun general;
@@ -7697,8 +7697,8 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         @pop;
         ", which you annihilate with the Rod of Sacrifice.";
     }
-    if (location == Universe_Maintenance_Room && second == misc_obj) {
-        if (Universe_Maintenance_Room hasnt general) {
+    if (location == Inside_the_Orb && second == misc_obj) {
+        if (Inside_the_Orb hasnt general) {
             deadflag = CHECKMATED;
             "The Black pieces make a rash break out of their defences, sacrificing a piece in vain and going down to a rapid defeat as a result.^^The White Queen rises from the board, an avenging angel's smile on her face, and swings a broadsword of burning light across your body...";
         }
@@ -8643,7 +8643,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     rfalse;
 ];
 
-! References: Viewpoint_Ledge.after
+! References: big_electricians_switch.after
 
 [ ChanceSwitchAfter ;	
     if (verb == ##SwitchOn) {
@@ -9426,7 +9426,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     rfalse;
 ];
 
-! References: plaque.before
+! References: Viewpoint_Ledge.before
 
 [ routine80796 var1 ;	
     if (verb == ##Examine) {
@@ -9518,7 +9518,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         rfalse;
     }
     print "Zeus, who is after all the chief of all the gods, appears and hurls a thunderbolt down just before you begin to cross into the Temple. ";
-    if (Viewpoint_Ledge has on) {
+    if (big_electricians_switch has on) {
         deadflag = DIED;
         "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave about. Pretty impressive prediction, is your last thought.";
     }
@@ -10649,7 +10649,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         var1-->2 = 13137['bricks'?];
         misc_obj.description = "Decidedly unsteady.";
     }
-    if (location == plaque) {
+    if (location == Viewpoint_Ledge) {
         routine90520(misc_obj,"plaque");	! not popped
         @pop;
         give misc_obj scenery;
@@ -10762,7 +10762,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         var1-->3 = 14495['grid'?];
         misc_obj.initial = "Amid the glass wall is an iron panel divided into a three-by-five grid.^^Behind the glass is a kind of see-saw of two leather baskets at opposite ends of an oak pivot.^^Projecting out of the back of the panel mechanism is a metal hand, which    ^^In one corner of the roof, above the other end of the see-saw, is a    .";
     }
-    if (location == Universe_Maintenance_Room) {
+    if (location == Inside_the_Orb) {
         give misc_obj static;
         routine90520(misc_obj,"array of oblong crystals");	! not popped
         @pop;
@@ -10773,7 +10773,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         misc_obj.initial = "Images lurk about the array of oblong crystals.";
         misc_obj.description = "They are extremely hard to see and impossible to touch, as if you can only catch anything at all through the corner of your eye.";
     }
-    if (location == big_electricians_switch) {
+    if (location == Universe_Maintenance_Room) {
         give misc_obj static;
         routine90520(misc_obj,"large dial");	! not popped
         @pop;
