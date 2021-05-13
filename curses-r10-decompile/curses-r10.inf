@@ -2296,7 +2296,7 @@ Object obj255_carbolic_soap "carbolic soap"	! 255 / 0xff
 
 ! Globals
 
-Global global0 = 25[obj25_Attic?];
+Global location = obj25_Attic;
 Global global1;
 Global global2 = 1[?];
 Global global3 = 31[obj31_yourself?];
@@ -2708,7 +2708,7 @@ Global global239;
             }
             global60 = 1[?];
             global86 = 1[?];
-            local9 = routine22346(global3,global0,6[obj6_northeast_wall?]);
+            local9 = routine22346(global3,location,6[obj6_northeast_wall?]);
             if (local9 == 1000[?]) {
                 jump label19297;
             }
@@ -3050,12 +3050,12 @@ Global global239;
             if (global66 == 1[?]) {
                 global90 = global60;
                 global91 = local2;
-                global239 = routine22118(global0);
+                global239 = routine22118(location);
             }
             if (global66 == 2[?]) {
                 if (local2 == 2[?]) {
-                    if (global0 == 12[obj12_Darkness?]) {
-                        global239 = routine22118(global0);
+                    if (location == obj12_Darkness) {
+                        global239 = routine22118(location);
                     } else {
                         global239 = routine22118(parent(global3));
                     }
@@ -3102,7 +3102,7 @@ Global global239;
         }
         global74 = global60;
         if (local2 ~= 1[?]) {
-            local3 = routine22346(global0,global45,local2);
+            local3 = routine22346(location,global45,local2);
             if (local3 == 1000[?]) {
                 return local3;
             }
@@ -3137,7 +3137,7 @@ Global global239;
             }
         }
         if (local2 == 1[?]) {
-            local3 = routine22346(global45,global0,local2);
+            local3 = routine22346(global45,location,local2);
             if (local3 == 1000[?]) {
                 return local3;
             }
@@ -3515,8 +3515,8 @@ Global global239;
             local7 = local6;
           .label23034;
             local7 = parent(local7);
-            if (local7 ~= global0 or global45 or 0) jump label23034;
-            if (local1 == 0 && local7 == global0) {
+            if (local7 ~= location or global45 or nothing) jump label23034;
+            if (local1 == 0 && local7 == location) {
                 ++local4;
                 local5 = local6;
             }
@@ -3524,7 +3524,7 @@ Global global239;
                 ++local4;
                 local5 = local6;
             }
-            if (local1 == 2[?] && local7 == global0) {
+            if (local1 == 2[?] && local7 == location) {
                 ++local4;
                 local5 = local6;
             }
@@ -3566,7 +3566,7 @@ Global global239;
     if (local1 == 0) {
         rtrue;
     }
-    if (local1 == global0) {
+    if (local1 == location) {
         global239 = routine23238(1[?]);
     }
     local1 = child(local1);
@@ -4034,8 +4034,8 @@ Global global239;
     if (global55 == 1[?]) {
         ! no code
     } else {
-        if (global0 ~= 0) {
-            local1 = global0.prop5;
+        if (location ~= nothing) {
+            local1 = location.prop5;
             if (local1 ~= 65535[?] && local1() ~= 0) {
                 rtrue;
             }
@@ -4053,7 +4053,7 @@ Global global239;
 ];
 
 [ routine25312 local1 local2 ;	! 25312 / 0x62e0
-    local2 = global0;
+    local2 = location;
     local1 = local2.prop6;
     if (local1 == 65535[?]) {
         ! no code
@@ -4077,7 +4077,7 @@ Global global239;
 ];
 
 [ routine25384 local1 local2 ;	! 25384 / 0x6328
-    local2 = global0;
+    local2 = location;
     if (local2 == 0) {
         rfalse;
     }
@@ -4154,11 +4154,11 @@ Global global239;
         local1 = parent(local1);
         jump label26424;
     }
-    if (local2 == global0 && obj33_electric_torch has attrib0) {
+    if (local2 == location && obj33_electric_torch has attrib0) {
         local1 = 33[obj33_electric_torch?];
         global239 = routine37060(child(local1));
     }
-    if (obj75_Sir_Joshua_Meldrewe hasnt attrib1 && global0 == 73[obj73_Battlements?]) {
+    if (obj75_Sir_Joshua_Meldrewe hasnt attrib1 && location == obj73_Battlements) {
         global239 = routine37146();
     }
     if (0 ~= routine36970(87[obj87_Old_Winery?])) {
@@ -4175,7 +4175,7 @@ Global global239;
         global9->local1 = 48[obj48_Over_the_East_Wing?];
         global12 = 100[obj100_metal_door?];
     }
-    if (global0 == 150[obj150_Inside_the_Orb?]) {
+    if (location == obj150_Inside_the_Orb) {
         local1 = obj150_Inside_the_Orb.prop21;
         ++local1;
         obj150_Inside_the_Orb.prop21 = local1;
@@ -4218,7 +4218,7 @@ Global global239;
             }
         }
     }
-    if (global0 == 251[obj251_Hellish_Place?]) {
+    if (location == obj251_Hellish_Place) {
         local1 = random(10);
         if (local1 == 1[?]) {
             print "^There is a horrid grinding noise from far away.^";
@@ -4233,7 +4233,7 @@ Global global239;
             print "^Thunder and lightning can be heard from the fiery depths.^";
         }
     }
-    if (global0 == 253[obj253_Heavenly_Place?]) {
+    if (location == obj253_Heavenly_Place) {
         local1 = random(10);
         if (local1 == 1[?]) {
             print "^Angels with harps float by, gossiping about you in a kindly way.^";
@@ -4248,7 +4248,7 @@ Global global239;
             print "^The choir invisible almost, for a moment, becomes audible.^";
         }
     }
-    if (global0 == 171[obj171_Unreal_City?] or 189[obj189_Near_Ring_Road?]) {
+    if (location == obj171_Unreal_City or obj189_Near_Ring_Road) {
         local1 = random(10);
         if (local1 == 1[?]) {
             print "^A clock keeps the hours, with a dead sound on the final stroke of nine.^";
@@ -4263,7 +4263,7 @@ Global global239;
             print "^Drifting through the streets from some distant bar comes the sound of one of Scott Joplin's newfangled piano pieces, accompanying song settings from ~Romeo and Juliet~.^";
         }
     }
-    if (global0 == 213[obj213_Eraina_Taverna?]) {
+    if (location == obj213_Eraina_Taverna) {
         local1 = random(13);
         if (local1 == 1[?]) {
             print "^The diners grumble and play backgammon viciously.^";
@@ -4278,7 +4278,7 @@ Global global239;
             print "^The gentle sound of bazouki music strikes up in the background, and gradually rises to an intolerable pitch. After a moment comes a dull thud and a strangled noise, then blessed quiet.^";
         }
     }
-    if (global0 == parent(obj117_antiquated_wireless)) {
+    if (location == parent(obj117_antiquated_wireless)) {
         if (obj117_antiquated_wireless hasnt attrib24) {
             give obj117_antiquated_wireless ~attrib25;
         }
@@ -4579,10 +4579,10 @@ Global global239;
         give obj117_antiquated_wireless attrib25;
         local1 = 117[obj117_antiquated_wireless?];
         local1 = parent(local1);
-        if (global0 == local1) {
+        if (location == local1) {
             print "^The radio valves glow, and execrable so-called easy listening music fills the air with a sort of bland aural candy-floss.^";
         }
-        if (global0 == 118[obj118_Potting_Room?] && local1 == 113[obj113_Aunt_Jemima_s_Lair?]) {
+        if (location == obj118_Potting_Room && local1 == 113[obj113_Aunt_Jemima_s_Lair?]) {
             print "^Execrable music begins to sound from the conservatory, and Aunt Jemima hums vacantly.^";
         }
     }
@@ -4605,7 +4605,7 @@ Global global239;
             print "^The sound of horses draws nearer.^";
         }
         if (global27 == 4[obj4_east_wall?]) {
-            if (global0 == 242[obj242_Entrance?]) {
+            if (location == obj242_Entrance) {
                 print "^Horsemen suddenly gallop into the courtyard and you are soon ringed by guards!^";
                 global239 = routine92034();
             } else {
@@ -4613,34 +4613,34 @@ Global global239;
             }
         }
         if (global27 >= 5) {
-            if (global0 == 242[obj242_Entrance?]) {
+            if (location == obj242_Entrance) {
                 print "^You walk straight into the guards.^";
                 global239 = routine92034();
             }
-            if (global0 == 228[obj228_Roman_Villa?]) {
+            if (location == obj228_Roman_Villa) {
                 print "^You walk straight into the guards at the back door.^";
                 global239 = routine92034();
             }
         }
         if (global27 == 7[obj7_northwest_wall?]) {
             print "^There is sudden activity as the guards make a thorough search of the villa, just to be on the safe side. ";
-            if (global0 == 241[obj241_Hypocaust?]) {
+            if (location == obj241_Hypocaust) {
                 print "Luckily, they don't even think of looking down in here.^";
             } else {
-                if (global0 == 240[obj240_Inside_Well?]) {
+                if (location == obj240_Inside_Well) {
                     print "Unfortunately, they do think of looking into the kitchen well, and drag you out onto the triclinium floor.^";
                 }
-                if (global0 ~= 240[obj240_Inside_Well?]) {
+                if (location ~= obj240_Inside_Well) {
                     print "The virtue of doing so is demonstrated when they find you without difficulty.^";
                 }
                 global239 = routine92034();
             }
         }
-        if (global27 > 7 && global0 == 238[obj238_Triclinium?]) {
+        if (global27 > 7 && location == obj238_Triclinium) {
             print "^An industrious-looking slave (who cooks for the horsemen) is rather surprised to see you, but with creditable presence of mind he summons the guard at once.^";
             global239 = routine92034();
         }
-        if (global0 == 241[obj241_Hypocaust?]) {
+        if (location == obj241_Hypocaust) {
             if (global27 == 8[obj8_southeast_wall?]) {
                 print "^You hear men walking across the mosaic just above your head.^";
             }
@@ -4713,7 +4713,7 @@ Global global239;
             move local1 to obj243_Rough_Tent;
             global239 = routine37028(245[obj245_unconscious_Saxon_spy?],5[obj5_west_wall?]);
         }
-        if (global0 == 243[obj243_Rough_Tent?] && 0 ~= routine36970(245[obj245_unconscious_Saxon_spy?])) {
+        if (location == obj243_Rough_Tent && 0 ~= routine36970(245[obj245_unconscious_Saxon_spy?])) {
             local1 = 245[obj245_unconscious_Saxon_spy?];
             local1 = parent(local1);
             if (local1 == 243[obj243_Rough_Tent?]) {
@@ -4732,7 +4732,7 @@ Global global239;
             global5 = 1[?];
         }
     }
-    if (global0 == 118[obj118_Potting_Room?] && 0 ~= routine36970(120[obj120_Jemima?])) {
+    if (location == obj118_Potting_Room && 0 ~= routine36970(120[obj120_Jemima?])) {
         print "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
         global239 = routine37760(9[obj9_southwest_wall?]);
         local1 = 121[obj121_daisy_chain?];
@@ -4752,7 +4752,7 @@ Global global239;
                 local1 = parent(local1);
                 jump label34727;
             }
-            if (global0 == local1) {
+            if (location == local1) {
                 print "^You hear a sharp click!^";
                 if (local2 == 51[obj51_photographer_s_flash?]) {
                     new_line;
@@ -4769,7 +4769,7 @@ Global global239;
                         jump label36248;
                     }
                     print "The flash suddenly gives an enormous magnesium-flare flash, almost blinding in its intensity. Your eyes take a little while to adjust. ";
-                    if (global0 == 193[obj193_Ruined_Castle_Cafe?]) {
+                    if (location == obj193_Ruined_Castle_Cafe) {
                         print "Consequently you can only hear as the cabaret audience gives you a round of applause for what they think is a magic trick.";
                     }
                     local3 = 51[obj51_photographer_s_flash?];
@@ -4778,7 +4778,7 @@ Global global239;
                         give obj51_photographer_s_flash attrib25;
                         print "Consequently you can only hear as the smudge on the horizon rises from the waves, becomes an enormous Kraken sea monster and lunges for the stone tower. (Considering this is supposed to be a Greek myth it feels surprisingly like a Japanese 1960s creature film.)  The Kraken swipes at you, overreaches itself and falls over forward, impaling itself extremely messily on the pharos. Your eyes just about recover by the time the rest of your body is crushed by its weight.^^Up on Mount Olympus, Zeus is still cross. ~Take me to your Leda~, you wittily demand, but this does not seem to improve matters. Poseidon also looks rather fed up, but luckily a sizeable faction of goddesses takes your side and arranges to have you resurrected...^";
                         global239 = routine37760(11[obj11_floor?]);
-                        global0 = 130[obj130_Family_Tree?];
+                        location = obj130_Family_Tree;
                         remove global3;
                         global239 = routine39352(8[obj8_southeast_wall?],120[obj120_Jemima?]);
                         global239 = routine39352(9[obj9_southwest_wall?],185[obj185_silk_handkerchief?]);
@@ -4794,7 +4794,7 @@ Global global239;
                             local1 = local2;
                             jump label35535;
                         }
-                        move global3 to global0;
+                        move global3 to location;
                         global6 = 5[obj5_west_wall?];
                         global239 = Action21Sub(1[?]);
                         jump label36248;
@@ -4804,7 +4804,7 @@ Global global239;
             }
         }
     } else {
-        if (global0 == 200[obj200_Cups_and_Glasses?]) {
+        if (location == obj200_Cups_and_Glasses) {
             if (obj200_Cups_and_Glasses hasnt attrib25) {
                 local1 = 200[obj200_Cups_and_Glasses?];
                 local1.prop21 = global2;
@@ -4825,7 +4825,7 @@ Global global239;
                 print "^The men walk away, perhaps a few feet, perhaps a mile.^";
             }
         }
-        if (global0 == 193[obj193_Ruined_Castle_Cafe?]) {
+        if (location == obj193_Ruined_Castle_Cafe) {
             if (obj194_complicated_looking_bomb hasnt attrib26) {
                 if (obj194_complicated_looking_bomb hasnt attrib1) {
                     new_line;
@@ -4865,15 +4865,15 @@ Global global239;
     }
   .label36248;
     if (0 ~= routine36970(167[obj167_Coven_Cell?])) {
-        if (global0 == 160[obj160_Museum_of_Arcana?]) {
+        if (location == obj160_Museum_of_Arcana) {
             print "^Doktor Stein appears and steps toward you, clapping his hands sharply. Suddenly dozens of robed figures leap out of the darkness. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^Stein forces your mouth open and makes you swallow a violet pill. ~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
-            global0 = 167[obj167_Coven_Cell?];
+            location = obj167_Coven_Cell;
             remove global3;
             move global3 to obj167_Coven_Cell;
             give global3 attrib25;
             global239 = routine37028(167[obj167_Coven_Cell?],5[obj5_west_wall?]);
             global239 = Action21Sub();
-        } else if (global0 == 167[obj167_Coven_Cell?]) {
+        } else if (location == obj167_Coven_Cell) {
             print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
             global5 = 1[?];
             if (global3 has attrib25) {
@@ -4887,10 +4887,10 @@ Global global239;
     if (local1 == 0 && global4 == 1[?]) {
         new_line;
         if (global34 ~= 0) {
-            global0 = parent(global34);
+            location = parent(global34);
             move global3 to global34;
         } else {
-            global0 = parent(global3);
+            location = parent(global3);
         }
         global239 = Action21Sub(1[?]);
     }
@@ -4898,10 +4898,10 @@ Global global239;
         new_line;
         print "It is now pitch dark in here!^";
         global34 = parent(global3);
-        if (global34 == global0) {
+        if (global34 == location) {
             global34 = 0;
         }
-        global0 = 12[obj12_Darkness?];
+        location = obj12_Darkness;
     }
     rtrue;
 ];
@@ -5113,7 +5113,7 @@ Global global239;
         remove local1;
         move local1 to local2;
         give obj105_robot_mouse attrib6;
-        if (global0 == local3) {
+        if (location == local3) {
             if (local2 == 107[obj107_hole_in_the_wall?]) {
                 global239 = routine37800(1[?]);
                 "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
@@ -5122,7 +5122,7 @@ Global global239;
                 "The mouse runs off as ordered.";
             }
         }
-        if (global0 == local2) {
+        if (location == local2) {
             print "The mouse runs back out of the hole, looking dustier but none the worse for its adventure";
             local1 = 108[obj108_small_brass_key?];
             local1 = parent(local1);
@@ -5247,42 +5247,42 @@ Global global239;
     local1-->1 = 18700['zzzzzz//p'?];
     local1-->2 = 18700['zzzzzz//p'?];
     local1-->3 = 18700['zzzzzz//p'?];
-    move obj13____ to global0;
-    if (global0 == 132[obj132_Mosaic?]) {
+    move obj13____ to location;
+    if (location == obj132_Mosaic) {
         global239 = routine39352(0,263[?]);
         obj13____.prop2 = "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.";
         give obj13____ attrib14;
         give obj13____ attrib31;
         local1-->0 = 16208['mosaic'?];
     }
-    if (global0 == 40[obj40_Old_Furniture?]) {
+    if (location == obj40_Old_Furniture) {
         global239 = routine39352(0,265[?]);
         obj13____.prop2 = "Nothing there, but that cupboard looks interesting.";
         give obj13____ attrib14;
         local1-->0 = 15193['furnit'?];
     }
-    if (global0 == 111[obj111_Infinity_Symbol?]) {
+    if (location == obj111_Infinity_Symbol) {
         global239 = routine39352(0,268[?]);
         give obj13____ attrib14;
         local1-->0 = 15711['infini'?];
         local1-->1 = 15949['lemnis'?];
         local1-->2 = 17951['symbol'?];
     }
-    if (global0 == 130[obj130_Family_Tree?]) {
+    if (location == obj130_Family_Tree) {
         global239 = routine39352(0,271[?]);
         give obj13____ attrib14;
         local1-->0 = 16719['plane'?];
         local1-->1 = 18203['tree'?];
         local1-->2 = 14983['family'?];
     }
-    if (global0 == 139[obj139_Up_the_Plane_Tree?]) {
+    if (location == obj139_Up_the_Plane_Tree) {
         global239 = routine39352(0,275[?]);
         give obj13____ attrib14;
         local1-->0 = 16117['maze'?];
         local1-->1 = 15907['layout'?];
         obj13____.prop5 = routine38664;
     }
-    if (global0 == 155[obj155_Folly?]) {
+    if (location == obj155_Folly) {
         global239 = routine39352(0,279[?]);
         give obj13____ attrib14;
         local1-->0 = 15109['folly//p'?];
@@ -5290,13 +5290,13 @@ Global global239;
         local1-->2 = 14010['bricks'?];
         obj13____.prop2 = "Decidedly unsteady.";
     }
-    if (global0 == 153[obj153_Viewpoint_Ledge?]) {
+    if (location == obj153_Viewpoint_Ledge) {
         global239 = routine39352(0,283[?]);
         give obj13____ attrib14;
         local1-->0 = 16740['plaque'?];
         obj13____.prop2 = "~This viewpoint, one of the finest in the county, was laid down by Capability Meldrew, a well-known landscape gardener of his day. It was intended as one of the rewards of the garden maze, and was constructed c. 1808 after an earlier folly on the site collapsed.~";
     }
-    if (global0 == 145[obj145_Sarcophagus?]) {
+    if (location == obj145_Sarcophagus) {
         global239 = routine39352(0,285[?]);
         give obj13____ attrib15;
         local1-->0 = 18133['tomb'?];
@@ -5305,7 +5305,7 @@ Global global239;
         obj13____.prop4 = "Nightmarishly, even the floor you kneel on is a fallen tombstone.";
         obj13____.prop2 = "The gist of the inscription is: ~Henri Maladreue, obiit mcdlvi.~";
     }
-    if (global0 == 146[obj146_Catacombs?]) {
+    if (location == obj146_Catacombs) {
         global239 = routine39352(0,288[?]);
         give obj13____ attrib15;
         local1-->0 = 17783['stairc'?];
@@ -5317,7 +5317,7 @@ Global global239;
         }
         give obj148_metal_wall ~attrib25;
     }
-    if (global0 == 174[obj174_Bohemia?]) {
+    if (location == obj174_Bohemia) {
         global239 = routine39352(0,295[?]);
         give obj13____ attrib15;
         give obj13____ attrib31;
@@ -5357,7 +5357,7 @@ Global global239;
             obj13____.prop4 = "One whole wall is an pointillist mural painting of a scene in a park by a lake.";
         }
     }
-    if (global0 == 131[obj131_Lawn_Ornaments?]) {
+    if (location == obj131_Lawn_Ornaments) {
         give obj13____ attrib15;
         if (obj131_Lawn_Ornaments has attrib25) {
             global239 = routine39352(0,303[?]);
@@ -5376,7 +5376,7 @@ Global global239;
             obj13____.prop2 = "It stands four feet high. At the base is an engraving: ~Self-Portrait, H.M. '54~. (It's presumably not by Her Majesty the Queen, though.)";
         }
     }
-    if (global0 == 49[obj49_Dark_Room?]) {
+    if (location == obj49_Dark_Room) {
         give obj13____ attrib15;
         global239 = routine39352(0,320[?]);
         local1-->0 = 17384['sepia'?];
@@ -5386,7 +5386,7 @@ Global global239;
         obj13____.prop4 = "Mounted on a plaque is an old sepia photograph of a man.";
         obj13____.prop2 = "The photograph is one of the very early ones which looks as if it was taken in the dark because the chemicals have gradually oxidised. The poor man in the frame (Mr Roger Meldrew, Esquire) looks as if he was propped up by a big clamp to hold him still for five minutes, and that's because he was.";
     }
-    if (global0 == 147[obj147_Contraption____?]) {
+    if (location == obj147_Contraption____) {
         give obj13____ attrib15;
         global239 = routine39352(0,326[?]);
         local1-->0 = 14374['contra'?];
@@ -5395,7 +5395,7 @@ Global global239;
         local1-->3 = 15382['grid'?];
         obj13____.prop4 = "Amid the glass wall is an iron panel divided into a three-by-five grid.^^Behind the glass is a kind of see-saw of two leather baskets at opposite ends of an oak pivot.^^Projecting out of the back of the panel mechanism is a metal hand, which    ^^In one corner of the roof, above the other end of the see-saw, is a    .";
     }
-    if (global0 == 150[obj150_Inside_the_Orb?]) {
+    if (location == obj150_Inside_the_Orb) {
         give obj13____ attrib15;
         global239 = routine39352(0,329[?]);
         local1-->0 = 13688['array'?];
@@ -5405,7 +5405,7 @@ Global global239;
         obj13____.prop4 = "Images lurk about the array of oblong crystals.";
         obj13____.prop2 = "They are extremely hard to see and impossible to touch, as if you can only catch anything at all through the corner of your eye.";
     }
-    if (global0 == 151[obj151_Universe_Maintenance_Room?]) {
+    if (location == obj151_Universe_Maintenance_Room) {
         give obj13____ attrib15;
         global239 = routine39352(0,337[?]);
         local1-->0 = 15900['large'?];
@@ -5414,15 +5414,15 @@ Global global239;
         obj13____.prop2 = "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.";
         obj13____.prop5 = routine38780;
     }
-    if (global0 == 172[obj172_Shadowy_Hallway?]) {
+    if (location == obj172_Shadowy_Hallway) {
         remove obj13____;
     }
-    if (global0 == 193[obj193_Ruined_Castle_Cafe?]) {
+    if (location == obj193_Ruined_Castle_Cafe) {
         give obj13____ attrib14;
         global239 = routine39352(0,340[?]);
         local1-->0 = 17958['table'?];
     }
-    if (global0 == 200[obj200_Cups_and_Glasses?]) {
+    if (location == obj200_Cups_and_Glasses) {
         give obj13____ attrib14;
         give obj13____ attrib7;
         give obj13____ attrib11;
@@ -5434,7 +5434,7 @@ Global global239;
         obj13____.prop19 = 200[obj200_Cups_and_Glasses?];
         obj13____.prop8 = 9[obj9_southwest_wall?];
     }
-    if (global0 == 54[obj54_Library_Storage?]) {
+    if (location == obj54_Library_Storage) {
         give obj13____ attrib1;
         give obj13____ attrib15;
         global239 = routine39352(0,348[?]);
@@ -5444,14 +5444,14 @@ Global global239;
         obj13____.prop2 = "The joint on the water pipe looks none too sturdy.";
         obj13____.prop5 = routine38998;
     }
-    if (global0 == 241[obj241_Hypocaust?]) {
+    if (location == obj241_Hypocaust) {
         give obj13____ attrib14;
         global239 = routine39352(0,351[?]);
         local1-->0 = 15669['hypoca'?];
         local1-->1 = 18315['vents'?];
         obj13____.prop5 = routine39168;
     }
-    if (global0 == 218[obj218_Greek_Frieze?]) {
+    if (location == obj218_Greek_Frieze) {
         give obj13____ attrib14;
         give obj13____ attrib31;
         global239 = routine39352(0,356[?]);
@@ -5459,7 +5459,7 @@ Global global239;
         local1-->1 = 15151['frieze'?];
         obj13____.prop2 = "The decorated strip of entablature between the architrave and the cornice, in the Attic style circa fifth century B.C.^^Well, you did ask.";
     }
-    if (global0 == 124[obj124_Shrine_of_the_Bear?]) {
+    if (location == obj124_Shrine_of_the_Bear) {
         give obj13____ attrib4;
         give obj13____ attrib5;
         global239 = routine39352(0,361[?]);
@@ -5474,7 +5474,7 @@ Global global239;
 
 [ Action19Sub local1 ;	! 40464 / 0x9e10
     if (global5 == 0) {
-        if (global0 == 150[obj150_Inside_the_Orb?]) {
+        if (location == obj150_Inside_the_Orb) {
             print "Inside the golden orb. ";
         } else {
             if (global6 == 1[?]) {
@@ -5836,7 +5836,7 @@ Global global239;
 [ Action1Sub local1 ;	! 42760 / 0xa708
     local1 = child(global3);
     print "You are ";
-    if (global0 == 150[obj150_Inside_the_Orb?]) {
+    if (location == obj150_Inside_the_Orb) {
         print "bathed in a curious white light, and ";
     }
     if (local1 == 0) {
@@ -5876,7 +5876,7 @@ Global global239;
 ];
 
 [ Action2Sub local1 ;	! 42918 / 0xa7a6
-    local1 = routine42962(global0);
+    local1 = routine42962(location);
     if (local1 ~= 0) {
         rtrue;
     }
@@ -5975,7 +5975,7 @@ Global global239;
 
 [ Action8Sub local1 ;	! 43406 / 0xa98e
     local1 = parent(global47);
-    if (local1 == global0) {
+    if (local1 == location) {
         "Already on the floor.";
     }
     if (local1 ~= global3) {
@@ -5991,7 +5991,7 @@ Global global239;
     if (1[?] == routine25312()) {
         rtrue;
     }
-    if (global0 == 12[obj12_Darkness?]) {
+    if (location == obj12_Darkness) {
         "Dropped and lost among the darkness.";
     }
     "Dropped.";
@@ -6153,10 +6153,10 @@ Global global239;
 
 [ Action34Sub ;	! 44246 / 0xacd6
     global47 = 0;
-    if (global0 == 36[obj36_Servant_s_Room?]) {
+    if (location == obj36_Servant_s_Room) {
         global47 = 37[obj37_camp_bed?];
     }
-    if (global0 == 81[obj81_Alison_s_Writing_Room?]) {
+    if (location == obj81_Alison_s_Writing_Room) {
         global47 = 82[obj82_comfortable_bed?];
     }
     if (global47 == 0) {
@@ -6176,14 +6176,14 @@ Global global239;
         rtrue;
     }
     local1 = parent(global3);
-    if (local1 ~= global0) {
+    if (local1 ~= location) {
         "But you're already in the ", (name) local1, ".";
     }
     if (global47 hasnt attrib13) {
         "A surreal idea.";
     }
     local1 = parent(global47);
-    if (local1 ~= global0) {
+    if (local1 ~= location) {
         "You can only get into something on the floor.";
     }
     remove global3;
@@ -6192,10 +6192,10 @@ Global global239;
 ];
 
 [ Action0Sub ;	! 44452 / 0xada4
-    if (parent(global3) == global0) {
+    if (parent(global3) == location) {
         "But you aren't in anything at the moment.";
     }
-    if (global0 == 12[obj12_Darkness?]) {
+    if (location == obj12_Darkness) {
         if (global34 ~= 0) {
             "You can't see what you're doing. It's dark.";
         }
@@ -6205,7 +6205,7 @@ Global global239;
         "You'll have to say exactly how to exit the darkness...";
     }
     remove global3;
-    move global3 to global0;
+    move global3 to location;
     print "You are on your own two feet again.^";
     global239 = Action21Sub(1[?]);
     rtrue;
@@ -6228,7 +6228,7 @@ Global global239;
     }
     local4 = 0;
     local1 = parent(global3);
-    if (global0 ~= 12[obj12_Darkness?]) {
+    if (location ~= obj12_Darkness) {
         if (local1 == 137[obj137_garden_roller?]) {
             if (obj137_garden_roller has attrib24) {
                 local4 = 137[obj137_garden_roller?];
@@ -6238,7 +6238,7 @@ Global global239;
             }
             "The motor isn't on at the moment.";
         }
-        if (local1 ~= global0) {
+        if (local1 ~= location) {
             "You'll have to get out of the ", (name) local1, " first.";
         }
     }
@@ -6370,11 +6370,11 @@ Global global239;
     }
     local3 = routine37706(local2);
     if (local3 ~= 0) {
-        global0 = local2;
+        location = local2;
         global4 = 1[?];
     }
     if (local3 == 0) {
-        if (global0 == 12[obj12_Darkness?]) {
+        if (location == obj12_Darkness) {
             global5 = 1[?];
             if (global6 ~= 1[?]) {
                 "As you step falteringly through the darkness, cowardly but evil creatures devour you whole!";
@@ -6389,14 +6389,14 @@ Global global239;
             }
             "put a foot wrong and crash through a thin plaster roof into one of the upstairs bedrooms, happily landing on the bed. In later years it becomes a family joke that you demolished half the house for a tatty old tourist map.";
         }
-        global0 = 12[obj12_Darkness?];
+        location = obj12_Darkness;
         global4 = 0;
     }
     if (1[?] == routine25384()) {
         rtrue;
     }
     if (global6 == 8[obj8_southeast_wall?]) {
-        if (global0 == 127[obj127_Near_Dolmen?]) {
+        if (location == obj127_Near_Dolmen) {
             global239 = Action21Sub();
             rfalse;
         }
@@ -6425,20 +6425,20 @@ Global global239;
 ];
 
 [ Action21Sub local1 local2 local3 local4 local5 local6 local7 ;	! 47154 / 0xb832
-    local7 = global0;
+    local7 = location;
     new_line;
-    print (name) global0;
+    print (name) location;
     local2 = parent(global3);
-    if (global0 ~= 12[obj12_Darkness?] && local2 ~= global0) {
+    if (location ~= obj12_Darkness && local2 ~= location) {
         print " (in the ", (name) local2, ")";
         local7 = local2;
     }
     new_line;
-    local3 = global0.prop27;
-    if (local3 == 1[?] && parent(obj13____) ~= global0) {
+    local3 = location.prop27;
+    if (local3 == 1[?] && parent(obj13____) ~= location) {
         global239 = routine39368();
     }
-    local3 = global0.prop28;
+    local3 = location.prop28;
     if (local3 ~= 0) {
         global6 = local3;
     }
@@ -6450,17 +6450,17 @@ Global global239;
         if (global32 == 3[obj3_south_wall?]) {
             jump label47282;
         }
-        if (global0 has attrib17 && local1 == 1[?]) {
+        if (location has attrib17 && local1 == 1[?]) {
             jump label47282;
         }
     }
-    local2 = global0.prop2;
+    local2 = location.prop2;
     print (string) local2;
     new_line;
   .label47282;
-    if (global0 hasnt attrib17) {
-        give global0 attrib17;
-        if (global0 has attrib30) {
+    if (location hasnt attrib17) {
+        give location attrib17;
+        if (location has attrib30) {
             global1 = global1 + 5;
             global21 = global21 + 5;
         }
@@ -6500,10 +6500,10 @@ Global global239;
         ! no code
     } else {
         new_line;
-        if (local7 ~= global0) {
+        if (local7 ~= location) {
             print "In the ", (name) local7, " you";
         }
-        if (local7 == global0) {
+        if (local7 == location) {
             print "You";
         }
         print " can ";
@@ -6528,50 +6528,50 @@ Global global239;
             local5 = sibling(local5);
             jump label47463;
         }
-        if (local7 ~= global0) {
+        if (local7 ~= location) {
             print ".^";
         }
-        if (local7 == global0) {
+        if (local7 == location) {
             print " here.^";
         }
     }
     global46 = 21[obj21_Rod_of_Sacrifice?];
-    if (global0 == 201[obj201_Sea_Shore?]) {
+    if (location == obj201_Sea_Shore) {
         global85 = 202[obj202_Andromeda?];
         if (obj216_Lighthouse has attrib17 && obj216_Lighthouse hasnt attrib25) {
             give obj216_Lighthouse attrib25;
             print "^You can just make out the Pharos atop the cliffs. But it seems to be earlier, nearer dawn, than your last visit.^";
         }
     }
-    if (global0 == 216[obj216_Lighthouse?] && obj201_Sea_Shore has attrib17 && obj201_Sea_Shore hasnt attrib25) {
+    if (location == obj216_Lighthouse && obj201_Sea_Shore has attrib17 && obj201_Sea_Shore hasnt attrib25) {
         give obj201_Sea_Shore attrib25;
         print "^The cliffs below are familiar, but it's a little later in the day than your arrival on the sea shore.^";
     }
-    if (global0 == 118[obj118_Potting_Room?]) {
+    if (location == obj118_Potting_Room) {
         global85 = 120[obj120_Jemima?];
     }
-    if (global0 == 175[obj175_Consulting_Room?]) {
+    if (location == obj175_Consulting_Room) {
         global85 = 179[obj179_Madame_Sosostris__famous_clairvoyante?];
     }
-    if (global0 == 190[obj190_Chatelet_les_Halles?]) {
+    if (location == obj190_Chatelet_les_Halles) {
         global84 = 191[obj191_surly_shopkeeper?];
     }
-    if (global0 == 73[obj73_Battlements?]) {
+    if (location == obj73_Battlements) {
         global84 = 75[obj75_Sir_Joshua_Meldrewe?];
     }
-    if (global0 == 187[obj187_On_board_the_Phlebas?]) {
+    if (location == obj187_On_board_the_Phlebas) {
         global84 = 188[obj188_hollow_man?];
     }
-    if (global0 == 213[obj213_Eraina_Taverna?]) {
+    if (location == obj213_Eraina_Taverna) {
         global84 = 215[obj215_bartender?];
     }
-    if (global0 == 243[obj243_Rough_Tent?]) {
+    if (location == obj243_Rough_Tent) {
         global84 = 245[obj245_unconscious_Saxon_spy?];
     }
-    if (global0 == 251[obj251_Hellish_Place?]) {
+    if (location == obj251_Hellish_Place) {
         global84 = 252[obj252_demon?];
     }
-    if (global0 == 253[obj253_Heavenly_Place?]) {
+    if (location == obj253_Heavenly_Place) {
         global85 = 254[obj254_angel?];
     }
     if (1[?] == routine25384()) {
@@ -6581,7 +6581,7 @@ Global global239;
 ];
 
 [ Action22Sub local1 ;	! 47800 / 0xbab8
-    if (global0 == 12[obj12_Darkness?]) {
+    if (location == obj12_Darkness) {
         "Darkness, noun. An absence of light to see by.";
     }
     if (global47 == 31[obj31_yourself?]) {
@@ -6605,7 +6605,7 @@ Global global239;
         }
     }
     if (global47 == 3[obj3_south_wall?]) {
-        if (global0 == 57[obj57_Souvenirs_Room?] && obj58_slide_projector has attrib24) {
+        if (location == obj57_Souvenirs_Room && obj58_slide_projector has attrib24) {
             local1 = child(obj58_slide_projector);
             if (local1 == 0) {
                 "The south wall is lit up by the projector.";
@@ -6614,7 +6614,7 @@ Global global239;
             global239 = routine84618(local1);
             rfalse;
         }
-        if (global0 == 64[obj64_Dead_End?] && obj66_secret_door hasnt attrib1) {
+        if (location == obj64_Dead_End && obj66_secret_door hasnt attrib1) {
             if (obj66_secret_door has attrib10) {
                 "There is a secret door in it, standing open.";
             } else {
@@ -7121,16 +7121,16 @@ Global global239;
         "There is, unsurprisingly, no reply.";
     }
     local1 = 0;
-    if (global0 == 218[obj218_Greek_Frieze?]) {
+    if (location == obj218_Greek_Frieze) {
         local1 = 1[?];
     }
-    if (global0 == 132[obj132_Mosaic?]) {
+    if (location == obj132_Mosaic) {
         local1 = 2[?];
     }
-    if (global0 == 142[obj142_Crypt?]) {
+    if (location == obj142_Crypt) {
         local1 = 3[obj3_south_wall?];
     }
-    if (global0 == 174[obj174_Bohemia?]) {
+    if (location == obj174_Bohemia) {
         local1 = 4[obj4_east_wall?];
     }
     if (local1 == 0) {
@@ -7160,12 +7160,12 @@ Global global239;
     if (local2 hasnt attrib17) {
         jump label51452;
     }
-    if (local2 == global0) {
+    if (local2 == location) {
         "A swirl of wind almost bowls you over, but nothing else happens.";
     }
     remove global3;
     move global3 to local2;
-    global0 = local2;
+    location = local2;
     global6 = local3;
     print "A swirl of wind snakes out from ";
     global239 = routine64614(global45);
@@ -7225,13 +7225,13 @@ Global global239;
     if (obj71_gas_mask has attrib2) {
         "You can't smell much with the gas mask on.";
     }
-    if (global0 == 175[obj175_Consulting_Room?]) {
+    if (location == obj175_Consulting_Room) {
         "You feel briefly incensed.";
     }
-    if (global0 == 145[obj145_Sarcophagus?] or 144[obj144_Jagged_Passage?]) {
+    if (location == obj145_Sarcophagus or obj144_Jagged_Passage) {
         "Ugh.";
     }
-    if (global0 == 146[obj146_Catacombs?]) {
+    if (location == obj146_Catacombs) {
         local1 = obj146_Catacombs.prop21;
         ++local1;
         obj146_Catacombs.prop21 = local1;
@@ -7282,7 +7282,7 @@ Global global239;
 ];
 
 [ Action98Sub ;	! 52658 / 0xcdb2
-    if (global0 == 139[obj139_Up_the_Plane_Tree?] or 157[obj157_Up_the_Beanstalk?]) {
+    if (location == obj139_Up_the_Plane_Tree or obj157_Up_the_Beanstalk) {
         global5 = 1[?];
         "You fall and break your neck!";
     }
@@ -7302,7 +7302,7 @@ Global global239;
 ];
 
 [ Action100Sub ;	! 52802 / 0xce42
-    if (global0 ~= 155[obj155_Folly?]) {
+    if (location ~= obj155_Folly) {
         "That won't achieve anything very much.";
     }
     if (global48 ~= 13[obj13____?]) {
@@ -7468,7 +7468,7 @@ Global global239;
 ];
 
 [ Action102Sub local1 local2 local3 ;	! 53838 / 0xd24e
-    if (global0 ~= 147[obj147_Contraption____?]) {
+    if (location ~= obj147_Contraption____) {
         "~Slide~ is inappropriate here.";
     }
     if (global87 == 1[?]) {
@@ -7572,29 +7572,29 @@ Global global239;
 ];
 
 [ Action95Sub ;	! 54614 / 0xd556
-    if (global0 == 184[obj184_Down_by_River?]) {
+    if (location == obj184_Down_by_River) {
         "Ugh!  What foul water.";
     }
-    if (global0 == 128[obj128_Garden_Stream?]) {
+    if (location == obj128_Garden_Stream) {
         "Just about drinkable. Not much fun, though.";
     }
-    if (global0 == 229[obj229_Stream?]) {
+    if (location == obj229_Stream) {
         "Delicious clear and unpolluted.";
     }
-    if (global0 == 201[obj201_Sea_Shore?]) {
+    if (location == obj201_Sea_Shore) {
         "Salt water!  You must be joking.";
     }
     "There's nothing suitable to drink here.";
 ];
 
 [ Action96Sub ;	! 54754 / 0xd5e2
-    if (global0 == 184[obj184_Down_by_River?]) {
+    if (location == obj184_Down_by_River) {
         ! no code
-    } else if (global0 == 128[obj128_Garden_Stream?]) {
+    } else if (location == obj128_Garden_Stream) {
         ! no code
-    } else if (global0 == 229[obj229_Stream?]) {
+    } else if (location == obj229_Stream) {
         ! no code
-    } else if (global0 == 201[obj201_Sea_Shore?]) {
+    } else if (location == obj201_Sea_Shore) {
         ! no code
     } else {
         "Try ~get all~ and then ~put all in...~.";
@@ -7661,10 +7661,10 @@ Global global239;
 ];
 
 [ Action78Sub ;	! 55502 / 0xd8ce
-    if (global0 == 184[obj184_Down_by_River?]) {
+    if (location == obj184_Down_by_River) {
         "Swim in that?  No thanks.";
     }
-    if (global0 ~= 201[obj201_Sea_Shore?]) {
+    if (location ~= obj201_Sea_Shore) {
         "There's not enough water to swim in.";
     }
     if (global36 == 0) {
@@ -7676,7 +7676,7 @@ Global global239;
 ];
 
 [ Action79Sub ;	! 55794 / 0xd9f2
-    if (global0 ~= 224[obj224_Hanging_on_Rope?]) {
+    if (location ~= obj224_Hanging_on_Rope) {
         "There's nothing sensible to swing here.";
     }
     if (global47 ~= 225[obj225_hemp_rope?]) {
@@ -7711,10 +7711,10 @@ Global global239;
         }
         print "Bewilderingly, the condensation dissolves your hand away, and the water rushes up over your body as if it were blotting paper. You feel nothing except disorientation, but your confusion soon resolves to...^";
         remove obj149_glowing_golden_orb;
-        move obj149_glowing_golden_orb to global0;
+        move obj149_glowing_golden_orb to location;
         global39 = parent(global3);
-        global40 = global0;
-        global0 = 150[obj150_Inside_the_Orb?];
+        global40 = location;
+        location = obj150_Inside_the_Orb;
         remove global3;
         move global3 to obj150_Inside_the_Orb;
         global239 = Action21Sub(1[?]);
@@ -7810,11 +7810,11 @@ Global global239;
     if (local1 has attrib18) {
         "That seems to be not quite how they work...";
     }
-    if (local1 == 185[obj185_silk_handkerchief?] && global0 == 184[obj184_Down_by_River?] && obj186_tourist_boat hasnt attrib10) {
+    if (local1 == 185[obj185_silk_handkerchief?] && location == obj184_Down_by_River && obj186_tourist_boat hasnt attrib10) {
         give obj186_tourist_boat attrib10;
         "You wave the handkerchief, and the boat glides smoothly across the river toward you.";
     }
-    if (local1 == 173[obj173_poster?] && global0 == 184[obj184_Down_by_River?] && obj186_tourist_boat hasnt attrib10) {
+    if (local1 == 173[obj173_poster?] && location == obj184_Down_by_River && obj186_tourist_boat hasnt attrib10) {
         print "You wave the poster at the boat, but the boat remains unmoved.^";
         global239 = routine74156();
         rfalse;
@@ -7837,10 +7837,10 @@ Global global239;
     }
     give local1 attrib20;
     global239 = routine37760(6[obj6_northeast_wall?]);
-    if (global0 == 193[obj193_Ruined_Castle_Cafe?]) {
+    if (location == obj193_Ruined_Castle_Cafe) {
         "You look rather conspicuous striking the rod on the cafe table, but everyone else assumes you're part of the cabaret. Anyway, the rod charges up as usual.";
     }
-    if (global0 == 150[obj150_Inside_the_Orb?]) {
+    if (location == obj150_Inside_the_Orb) {
         "The sphere rings with a hollow noise, but the rod charges up.";
     }
     global239 = routine37800(15[obj15_Rod_of_Fire?]);
@@ -7932,7 +7932,7 @@ Global global239;
     if (global47 has attrib4) {
         "How vulgar.";
     }
-    if (global47 == 3[obj3_south_wall?] && global0 == 64[obj64_Dead_End?] && obj66_secret_door has attrib1) {
+    if (global47 == 3[obj3_south_wall?] && location == obj64_Dead_End && obj66_secret_door has attrib1) {
         give obj66_secret_door ~attrib1;
         move obj66_secret_door to obj64_Dead_End;
         global239 = routine37760(3[obj3_south_wall?]);
@@ -7999,8 +7999,8 @@ Global global239;
     global47 = global48;
     global239 = Action18Sub();
     remove local1;
-    move local1 to global0;
-    if (global0 == 118[obj118_Potting_Room?]) {
+    move local1 to location;
+    if (location == obj118_Potting_Room) {
         global5 = 3[obj3_south_wall?];
         "Aunt Jemima spends the next four hours explaining to you exactly why she put the radio into storage. The reason is awfully convoluted and due to her firm conviction that magnetic fields influence the growth of plants. By that time you have to leave for the airport...";
     }
@@ -8055,17 +8055,17 @@ Global global239;
         "Nothing emerges. The bottle must be empty.";
     }
     give obj138_weed_killer_bottle attrib25;
-    if (global0 == 207[obj207_Wall_of_Thorns?]) {
+    if (location == obj207_Wall_of_Thorns) {
         "A valiant, but obviously utterly hopeless idea. The weed killer does not harm a single tendril of the wall.";
     }
-    if (global0 == 134[obj134_Vegetable_Garden?]) {
+    if (location == obj134_Vegetable_Garden) {
         local1 = 135[obj135_runner_bean_plant?];
         remove local1;
         local1 = 134[obj134_Vegetable_Garden?];
         local1.prop17 = 0;
         "Congratulations. You have devastated the runner-bean plant.";
     }
-    if (global0 == 130[obj130_Family_Tree?]) {
+    if (location == obj130_Family_Tree) {
         "Happily, the weed killer makes no impression on the beautiful old tree.";
     }
     if (global6 == 5[obj5_west_wall?]) {
@@ -8074,7 +8074,7 @@ Global global239;
         if (global6 ~= 6[obj6_northeast_wall?]) {
             "A stream of weed-killer emerges, but evaporates almost at once, just as well considering the vile smell.";
         }
-        if (global0 ~= 158[obj158_Maze_Foundations?]) {
+        if (location ~= obj158_Maze_Foundations) {
             ! no code
         } else {
             local1 = routine86488(global10,global11);
@@ -8095,7 +8095,7 @@ Global global239;
 ];
 
 [ Action23Sub local1 ;	! 59530 / 0xe88a
-    if (global0 == 193[obj193_Ruined_Castle_Cafe?] && global47 == 13[obj13____?]) {
+    if (location == obj193_Ruined_Castle_Cafe && global47 == 13[obj13____?]) {
         if (obj194_complicated_looking_bomb has attrib1) {
             give obj194_complicated_looking_bomb ~attrib1;
             local1 = 194[obj194_complicated_looking_bomb?];
@@ -8248,9 +8248,9 @@ Global global239;
         global239 = routine37028(167[obj167_Coven_Cell?],7[obj7_northwest_wall?]);
         local1 = 90[obj90_tourist_map?];
         remove local1;
-        move local1 to global0;
+        move local1 to location;
         global6 = 3[obj3_south_wall?];
-        global0 = 160[obj160_Museum_of_Arcana?];
+        location = obj160_Museum_of_Arcana;
         remove global3;
         move global3 to obj160_Museum_of_Arcana;
         global239 = Action21Sub(0);
@@ -8442,13 +8442,13 @@ Global global239;
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
             if (obj192_tourist_map_of_Paris has attrib6) {
                 global6 = 1[?];
-                global0 = 25[obj25_Attic?];
+                location = obj25_Attic;
             }
             if (obj192_tourist_map_of_Paris hasnt attrib6) {
-                global0 = 128[obj128_Garden_Stream?];
+                location = obj128_Garden_Stream;
             }
             remove global3;
-            move global3 to global0;
+            move global3 to location;
             global239 = Action21Sub(1[?]);
             if (obj188_hollow_man hasnt attrib25) {
                 give obj188_hollow_man attrib25;
@@ -8509,10 +8509,10 @@ Global global239;
 ];
 
 [ Action76Sub ;	! 66776 / 0x104d8
-    if (global0 == 213[obj213_Eraina_Taverna?]) {
+    if (location == obj213_Eraina_Taverna) {
         "Given the language difficulty, you'd better resort to barter.";
     }
-    if (global0 ~= 190[obj190_Chatelet_les_Halles?]) {
+    if (location ~= obj190_Chatelet_les_Halles) {
         "There's nothing on sale.";
     }
     "~Q'est-ce que vous voulez acheter?~";
@@ -8540,12 +8540,12 @@ Global global239;
 
 [ Action74Sub ;	! 67058 / 0x105f2
     if (global47 == 13[obj13____?]) {
-        if (global0 == 130[obj130_Family_Tree?]) {
+        if (location == obj130_Family_Tree) {
             global47 = 10[obj10_ceiling?];
             global239 = Action18Sub();
             rfalse;
         }
-        if (global0 == 155[obj155_Folly?]) {
+        if (location == obj155_Folly) {
             "It's far, far too crumbly.";
         }
     }
@@ -8560,7 +8560,7 @@ Global global239;
     if (global6 == 1[?]) {
         "For heaven's sake, this is your own house.";
     }
-    if (global0 == 167[obj167_Coven_Cell?]) {
+    if (location == obj167_Coven_Cell) {
         "No, this is a goat. A ~ram~ is a kind of sheep.";
     }
     "Please don't ram anything. This computer only has limited RAM.";
@@ -8682,7 +8682,7 @@ Global global239;
 [ Action110Sub ;	! 73648 / 0x11fb0
     remove global3;
     move global3 to obj14_Graham_s_Lair;
-    global0 = 14[obj14_Graham_s_Lair?];
+    location = obj14_Graham_s_Lair;
     global239 = Action21Sub(1[?]);
     rtrue;
 ];
@@ -8722,7 +8722,7 @@ Global global239;
         jump label74119;
     }
     global6 = 8[obj8_southeast_wall?];
-    global0 = 122[obj122_Premonition?];
+    location = obj122_Premonition;
     remove global3;
     move global3 to obj122_Premonition;
     global239 = Action21Sub();
@@ -8908,7 +8908,7 @@ Global global239;
     }
   .label75560;
     remove global3;
-    global0 = 171[obj171_Unreal_City?];
+    location = obj171_Unreal_City;
     move global3 to obj171_Unreal_City;
     global239 = Action21Sub(1[?]);
     rtrue;
@@ -8961,8 +8961,8 @@ Global global239;
     if (global48 ~= global3) {
         "Nothing obvious happens.";
     }
-    if (global0 == 150[obj150_Inside_the_Orb?]) {
-        global0 = global40;
+    if (location == obj150_Inside_the_Orb) {
+        location = global40;
         remove global3;
         move global3 to global39;
         remove obj149_glowing_golden_orb;
@@ -8997,7 +8997,7 @@ Global global239;
     global6 = 1[?];
     remove global3;
     move global3 to local2;
-    global0 = local2;
+    location = local2;
     global239 = Action21Sub();
     rtrue;
 ];
@@ -9062,12 +9062,12 @@ Global global239;
         global239 = routine64614(global48);
         ", which you annihilate with the Rod of Sacrifice.";
     }
-    if (global0 == 150[obj150_Inside_the_Orb?] && global48 == 13[obj13____?]) {
+    if (location == obj150_Inside_the_Orb && global48 == 13[obj13____?]) {
         if (obj150_Inside_the_Orb hasnt attrib25) {
             global5 = 9[obj9_southwest_wall?];
             "The Black pieces make a rash break out of their defences, sacrificing a piece in vain and going down to a rapid defeat as a result.^^The White Queen rises from the board, an avenging angel's smile on her face, and swings a broadsword of burning light across your body...";
         }
-        global0 = global40;
+        location = global40;
         remove global3;
         move global3 to global39;
         remove obj149_glowing_golden_orb;
@@ -9130,7 +9130,7 @@ Global global239;
     if (global48 == global3) {
         "You acquire no especial sense of the infinite.";
     }
-    if (global0 ~= 111[obj111_Infinity_Symbol?]) {
+    if (location ~= obj111_Infinity_Symbol) {
         "Nothing obvious happens.";
     }
     if (global48 ~= 13[obj13____?]) {
@@ -9167,7 +9167,7 @@ Global global239;
         local1 = local2;
         jump label78796;
     }
-    global0 = 219[obj219_Murky_Cave?];
+    location = obj219_Murky_Cave;
     remove global3;
     move global3 to obj219_Murky_Cave;
     local1 = 221[obj221_historical_pamphlet?];
@@ -9253,7 +9253,7 @@ Global global239;
         move global47 to obj93_dumbwaiter;
         local1 = 93[obj93_dumbwaiter?];
         local1 = parent(local1);
-        if (local1 == global0) {
+        if (local1 == location) {
             "Put on the dumbwaiter.";
         }
         if (global47 == 46[obj46____?]) {
@@ -9387,7 +9387,7 @@ Global global239;
 ! References: obj45_postcard_of_the_Champs_Elysees.prop6
 
 [ routine80382 ;	! 80382 / 0x139fe
-    if (global46 == 22[obj22_Rod_of_Luck?] && global0 == 49[obj49_Dark_Room?] && obj49_Dark_Room has attrib0) {
+    if (global46 == 22[obj22_Rod_of_Luck?] && location == obj49_Dark_Room && obj49_Dark_Room has attrib0) {
         global239 = routine37760(0);
         global239 = routine37800(31[obj31_yourself?]);
         "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
@@ -9593,22 +9593,22 @@ Global global239;
             "You can't reach them!";
         }
         global239 = routine37760(5[obj5_west_wall?]);
-        if (global0 == 91[obj91_Storage_Room?]) {
+        if (location == obj91_Storage_Room) {
             local2 = 101[obj101_Cellars?];
             print "You begin moving, and then plummet, but friction gradually slows you down and you land without too much of a thump...^";
         }
-        if (global0 == 98[obj98_Dark_Shaft?]) {
+        if (location == obj98_Dark_Shaft) {
             local2 = 91[obj91_Storage_Room?];
             print "You heave yourself up to the attic again...^";
         }
-        if (global0 == 101[obj101_Cellars?]) {
+        if (location == obj101_Cellars) {
             local2 = 98[obj98_Dark_Shaft?];
             print "You heave yourself half-way up, and then need to stop for a rest.^";
         }
         local1 = 93[obj93_dumbwaiter?];
         remove local1;
         move local1 to local2;
-        global0 = local2;
+        location = local2;
         global239 = Action21Sub();
         rtrue;
     }
@@ -9688,7 +9688,7 @@ Global global239;
         local1 = 43[obj43_box_of_chocolates?];
         move local1 to global3;
         local1 = 44[obj44_wrapping_paper_with_reindeer_on?];
-        move local1 to global0;
+        move local1 to location;
         "You tear open the parcel to find a box of chocolates and a card.";
     }
     rfalse;
@@ -9895,15 +9895,15 @@ Global global239;
         if (obj97_steel_wrench hasnt attrib25) {
             "You can't read it while it's holding the pipe up.";
         }
-        if (global0 == 12[obj12_Darkness?]) {
+        if (location == obj12_Darkness) {
             "1920s poetry may be literarily enlightening, but not literally. It is, in fact, too dark to make out the print.";
         }
         print "Publishers talk a lot of nonsense about readers being transported away by books, but somehow you have arrived in the...^";
         local1 = 56[obj56_book_of_Twenties_poetry?];
         remove local1;
-        move local1 to global0;
+        move local1 to location;
         global6 = 2[?];
-        global0 = 171[obj171_Unreal_City?];
+        location = obj171_Unreal_City;
         remove global3;
         move global3 to obj171_Unreal_City;
         global239 = Action21Sub();
@@ -9946,10 +9946,10 @@ Global global239;
         print "It spins round smoothly, and the dumbwaiter is hoisted ";
         local1 = 93[obj93_dumbwaiter?];
         local1 = parent(local1);
-        if (local1 == global0) {
+        if (local1 == location) {
             print "away out of sight.";
         }
-        if (local1 ~= global0) {
+        if (local1 ~= location) {
             print "into view. ";
             if (parent(obj46____) == obj103_dark_shaft && obj46____ has attrib22) {
                 give obj46____ ~attrib22;
@@ -9962,7 +9962,7 @@ Global global239;
             move obj93_dumbwaiter to obj101_Cellars;
         }
         if (local1 == 98[obj98_Dark_Shaft?]) {
-            move obj93_dumbwaiter to global0;
+            move obj93_dumbwaiter to location;
         }
         if (local1 == 101[obj101_Cellars?]) {
             move obj93_dumbwaiter to obj91_Storage_Room;
@@ -10406,14 +10406,14 @@ Global global239;
         }
         global10 = local2;
         global11 = local3;
-        if (global0 == 141[obj141_Patio_in_Maze?]) {
-            global0 = 140[obj140_Maze?];
+        if (location == obj141_Patio_in_Maze) {
+            location = obj140_Maze;
             local1 = 137[obj137_garden_roller?];
             remove local1;
             move local1 to obj140_Maze;
         }
         if (global10 == 7[obj7_northwest_wall?] && global11 == 5[obj5_west_wall?]) {
-            global0 = 141[obj141_Patio_in_Maze?];
+            location = obj141_Patio_in_Maze;
             local1 = 137[obj137_garden_roller?];
             remove local1;
             move local1 to obj141_Patio_in_Maze;
@@ -11226,7 +11226,7 @@ Global global239;
         jump label92371;
     }
     global27 = 0;
-    global0 = 243[obj243_Rough_Tent?];
+    location = obj243_Rough_Tent;
     remove global3;
     move global3 to obj243_Rough_Tent;
     global239 = Action21Sub();
@@ -11252,7 +11252,7 @@ Global global239;
         give obj244_tent_pole attrib25;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
         global239 = routine37028(246[obj246_Encampment?],10[obj10_ceiling?]);
-        global0 = 246[obj246_Encampment?];
+        location = obj246_Encampment;
         remove global3;
         move global3 to obj246_Encampment;
         global239 = Action21Sub();
@@ -11283,7 +11283,7 @@ Global global239;
     if (global46 ~= 21[obj21_Rod_of_Sacrifice?]) {
         rfalse;
     }
-    global0 = 36[obj36_Servant_s_Room?];
+    location = obj36_Servant_s_Room;
     remove global3;
     move global3 to obj37_camp_bed;
     global6 = 1[?];
