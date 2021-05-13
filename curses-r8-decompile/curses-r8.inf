@@ -2217,7 +2217,7 @@ Constant SCORE_WAITER = 5;
 Constant SCORE_WAND = 6;
 Constant SCORE_AIMWAND = 7;
 Constant SCORE_WIRELESS = 8;
-Constant SCORE_CALENDAR = 9;
+Constant SCORE_DAISY = 9;
 Constant SCORE_CHOCOLATE = 10;
 Constant SCORE_ANDROMEDA = 11;
 Constant SCORE_BATTERY = 12;
@@ -2326,9 +2326,9 @@ Global debug_mode;
 Global lookmode = 1;
 Global hollowman_cnt;
 Global visibility_ceiling;
-Global water_warning;
-Global global48;
-Global global49;
+Global dial_warning;
+Global swim_warning;
+Global projector_on;
 Global multiflag;
 Global notheld_mode;
 Global onotheld_mode;
@@ -3439,7 +3439,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     }
     if (location == Potting_Room && 0 ~= ResetTimer(Jemima)) {
         print "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
-        Achieved(SCORE_CALENDAR);	! not popped
+        Achieved(SCORE_DAISY);	! not popped
         @pop;
         i = 115[daisy_chain?];
         move i to player;
@@ -3966,7 +3966,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     if (task_number == SCORE_WIRELESS) {
         "exposing radio";
     }
-    if (task_number == SCORE_CALENDAR) {
+    if (task_number == SCORE_DAISY) {
         "sporting a daisy chain";
     }
     if (task_number == SCORE_CHOCOLATE) {
@@ -4191,7 +4191,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
             print "  ";
             jump labelXXX;
         }
-        o = DescribeObj(p,0);
+        o = WriteAfterEntry(p,0);
         new_line;
     }
     if (o == nothing) {
@@ -4838,7 +4838,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         if (chld ~= nothing) {
             if (chld has attrib12) {
                 env = env + 1;
-                DescribeObj(chld,1);	! not popped
+                WriteAfterEntry(chld,1);	! not popped
                 @pop;
                 if (env == var4 - 1) {
                     print " and ";
@@ -4937,7 +4937,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     rtrue;
 ];
 
-[ DescribeObj obj n var3 var4 var5 var6 var7 ;	
+[ WriteAfterEntry obj n var3 var4 r var6 var7 ;	
     if (n ~= 2) {
         Indefart(obj);	! not popped
         @pop;
@@ -4956,13 +4956,13 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         print " (charged)";
     }
     if (obj == daisy_chain) {
-        var5 = child(player);
+        r = child(player);
       .labelXXX;
-        if (var5 ~= 0) {
-            if (var5 has hidden_rod) {
+        if (r ~= nothing) {
+            if (r has hidden_rod) {
                 print " (which rustles as if with a magical wind)";
             } else {
-                var5 = sibling(var5);
+                r = sibling(r);
                 jump labelXXX;
             }
         }
@@ -4998,16 +4998,16 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
                 ++var6;
                 jump labelXXX;
             }
-            var5 = 0;
+            r = nothing;
           .labelXXX;
             if (var3 ~= 0) {
-                ++var5;
-                DescribeObj(var3,1);	! not popped
+                ++r;
+                WriteAfterEntry(var3,1);	! not popped
                 @pop;
-                if (var5 == var6 - 1) {
+                if (r == var6 - 1) {
                     print " and ";
                 }
-                if (var5 < var6 - 1) {
+                if (r < var6 - 1) {
                     print ", ";
                 }
                 var3 = sibling(var3);
@@ -5516,10 +5516,10 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     "Ugh, it tastes absolutely ghastly. But you feel better for it.";
 ];
 
-[ StrongSub local1 ;	
-    local1 = 255[carbolic_soap?];
-    remove local1;
-    move local1 to player;
+[ StrongSub soap ;	
+    soap = carbolic_soap;
+    remove soap;
+    move soap to player;
     give carbolic_soap ~concealed;
     "Now, that sort of language is an absolute disgrace, and you're going to have to pay the price for it.";
 ];
@@ -5557,8 +5557,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     if (location ~= Sea_Shore) {
         "There's not enough water to swim in.";
     }
-    if (global48 == 0) {
-        global48 = 1[?];
+    if (swim_warning == false) {
+        swim_warning = true;
         "Mmm. Here is your first and only warning: the sea is the domain of Poseidon, and he's not what you'd call a gentleman.";
     }
     deadflag = MYTH;
@@ -5591,7 +5591,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         "You achieve nothing by this.";
     }
     give solid_glass_ball general;
-    if (global49 == 1[?] && slide_projector has on) {
+    if (projector_on == true && slide_projector has on) {
         print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
         Diffraction();	! not popped
         @pop;
@@ -5884,15 +5884,15 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         "winds open the skylight, flooding the room with sunshine.";
     }
     if (noun == slide_projector) {
-        if (global49 == 1[?]) {
-            global49 = 0;
+        if (projector_on == true) {
+            projector_on = false;
             if (slide_projector has on) {
                 give Disused_Observatory ~light;
                 "The sharp beam of light cuts out again.";
             }
             "Click.";
         }
-        global49 = 1[?];
+        projector_on = true;
         if (slide_projector has on) {
             give Disused_Observatory light;
             "A sharp beam of white light appears backward out of the projector. As you step out of the beam, it extends dead straight through the north doorway.";
@@ -6017,7 +6017,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         rtrue;
     }
     print "You peer at ";
-    DescribeObj(noun,2);	! not popped
+    WriteAfterEntry(noun,2);	! not popped
     @pop;
     ".";
 ];
@@ -6571,7 +6571,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     rtrue;
 ];
 
-[ OneTimeBonusScore var1 ;	
+[ OneTimeBonusScore unused ;	
     if (Old_Winery has general) {
         rtrue;
     }
@@ -6960,10 +6960,10 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ HouseAfter var1 ;	
-    var1 = 187[tourist_map_of_Paris?];
-    var1 = parent(var1);
-    if (var1 == player) {
+[ HouseAfter o ;	
+    o = tourist_map_of_Paris;
+    o = parent(o);
+    if (o == player) {
         deadflag = WON;
         "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty generations, a Meldrew has found the useless object he was doomed to seek!  Unfortunately on the way to the airport you realise that you left the map on the kitchen table in all the rush, but never mind, you're on holiday now.";
     }
@@ -7627,8 +7627,8 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 
 [ DialBefore ;	
     if (action == ##Turn) {
-        if (water_warning == false) {
-            water_warning = true;
+        if (dial_warning == false) {
+            dial_warning = true;
             "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
         }
         deadflag = DESTROYED_UNIVERSE;
@@ -7719,7 +7719,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     if (o ~= nothing) {
         dto = o.door_to;
         if (dto ~= nothing) {
-            wall = 51[south_wall?];
+            wall = south_wall;
             wall.door_to = dto;
             give south_wall ~concealed;
         }
@@ -7736,14 +7736,14 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 [ ProjectorAfter o ;	
     if (action == ##SwitchOn) {
         give Souvenirs_Room light;
-        if (global49 == 1[?]) {
+        if (projector_on == true) {
             give Disused_Observatory light;
         }
         o = slide_projector;
         o = child(o);
         if (o == nothing) {
             print "The south wall is lit up. ";
-            if (global49 == 1[?]) {
+            if (projector_on == true) {
                 print "Also, a narrow white beam of light extends backwards from the projector, pointing out up through the Observatory doorway to the north.";
             }
             new_line;
@@ -7803,7 +7803,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
             ShowProjectorImage(var1);	! not popped
             @pop;
         }
-        if (global49 == 1[?]) {
+        if (projector_on == true) {
             print "^A beam of white light points directly backward from the projector, through the north doorway into the Observatory.^";
         }
         rtrue;
@@ -7846,7 +7846,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
     if (action ~= ##Look) {
         rfalse;
     }
-    if (global49 == 0) {
+    if (projector_on == false) {
         rfalse;
     }
     print "^A beam of white light runs into the room from the slide projector to the south, and hits the ";
@@ -8157,7 +8157,7 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ MazeFoundationsBefore var1 var2 var3 ;	
+[ MazeFoundationsBefore var1 newx newy ;	
     if (action == ##Go) {
         if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
@@ -8165,32 +8165,32 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
         if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
-        var2 = 100[hole_in_the_wall?];
-        var3 = 100[hole_in_the_wall?];
+        newx = 100;
+        newy = 100;
         if (noun == n_obj) {
-            var2 = MazeX;
-            var3 = MazeY - 1;
+            newx = MazeX;
+            newy = MazeY - 1;
         }
         if (noun == e_obj) {
-            var2 = MazeX + 1;
-            var3 = MazeY;
+            newx = MazeX + 1;
+            newy = MazeY;
         }
         if (noun == s_obj) {
-            var2 = MazeX;
-            var3 = MazeY + 1;
+            newx = MazeX;
+            newy = MazeY + 1;
         }
         if (noun == w_obj) {
-            var2 = MazeX - 1;
-            var3 = MazeY;
+            newx = MazeX - 1;
+            newy = MazeY;
         }
-        if (var2 == 100[hole_in_the_wall?]) {
+        if (newx == 100) {
             "The maze is constructed along rectangular grid-lines, so you can only proceed north, east, south or west.";
         }
-        if (OldMazeBoundary(var2,var3) ~= 0) {
+        if (OldMazeBoundary(newx,newy) ~= 0) {
             "The wooden fence is in the way.";
         }
-        MazeX = var2;
-        MazeY = var3;
+        MazeX = newx;
+        MazeY = newy;
         LookSub(true);	! not popped
         @pop;
         rtrue;
@@ -8752,17 +8752,17 @@ Array verb_routine_array -->	! 11933 (0x2e9d)
 ];
 
 
-[ DieAfter var1 ;	
+[ DieAfter n ;	
     if (action == ##Drop) {
-        var1 = 6[ne_obj?];
-        var1 = random(var1);
-        "Alea iacta est. It comes up ", var1, ".";
+        n = 6;
+        n = random(n);
+        "Alea iacta est. It comes up ", n, ".";
     }
     rfalse;
 ];
 
 
-[ InsideWellBefore var1 ;	
+[ InsideWellBefore i ;	
     if (action == ##Go) {
         rfalse;
     }
