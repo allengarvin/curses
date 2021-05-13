@@ -1007,7 +1007,7 @@ Object -> ancient_prayer_book "ancient prayer book"
   has	;
 
 Object Alisons_Writing_Room "Alison's Writing Room"	
-  with	name 'engrav' 'dice' 'outlin' 'sixes',
+  with	name 'engravings' 'dice' 'outline' 'sixes',
 	description "A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^The room is provided with a comfortable bed, which looks very inviting.",
 	n_to Dead_End,
 	s_to windows,
@@ -2326,7 +2326,7 @@ Global global12 = 9697[?];
 Global global13 = 9818[?];
 Global global14 = 9883[?];
 Global global15 = 9948[?];
-Global verb;
+Global action;
 Global noun;
 Global second;
 Global global19 = 9964[?];
@@ -2727,7 +2727,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
       .labelXXX;
         noun = nothing;
         second = nothing;
-        verb = ##Exit;
+        action = ##Exit;
         routine94512(global15);	! not popped
         @pop;
         onotheld_mode = notheld_mode;
@@ -2740,13 +2740,13 @@ Array verb_routine_array -->	! 12088 (0x2f38)
             }
         }
         if (global6 == 13[misc_obj?] or 136[bronze_mural?]) {
-            verb = global15->0;
+            action = global15->0;
             LegachTransport();	! not popped
             @pop;
         } else if (global6 == 98[robot_mouse?]) {
             noun = global15->2;
             second = global15->3;
-            verb = global15->0;
+            action = global15->0;
             MouseMove();	! not popped
             @pop;
         } else if (global6 ~= player) {
@@ -2759,65 +2759,65 @@ Array verb_routine_array -->	! 12088 (0x2f38)
                 print "(taking the first sixteen objects only)^";
             }
             local5 = 0;
-            if (verb ~= ##Exit) {
+            if (action ~= ##Exit) {
                 local5 = 1[?];
             }
-            if (verb == ##Exit) {
-                verb = global15->0;
+            if (action == ##Exit) {
+                action = global15->0;
             }
             metaverb = false;
-            if (verb == ##Score) {
+            if (action == ##Score) {
                 metaverb = true;
             }
-            if (verb == ##FullScore) {
+            if (action == ##FullScore) {
                 metaverb = true;
             }
-            if (verb == ##Script) {
+            if (action == ##Script) {
                 metaverb = true;
             }
-            if (verb == ##Unscript) {
+            if (action == ##Unscript) {
                 metaverb = true;
             }
-            if (verb == ##Save) {
+            if (action == ##Save) {
                 metaverb = true;
             }
-            if (verb == ##Verify) {
+            if (action == ##Verify) {
                 metaverb = true;
             }
-            if (verb == ##Restore) {
+            if (action == ##Restore) {
                 metaverb = true;
             }
-            if (verb == ##Quit) {
+            if (action == ##Quit) {
                 metaverb = true;
             }
-            if (verb == ##HelpSpecial) {
+            if (action == ##HelpSpecial) {
                 metaverb = true;
             }
-            if (verb == ##Help) {
+            if (action == ##Help) {
                 metaverb = true;
             }
-            if (verb == ##Objects) {
+            if (action == ##Objects) {
                 metaverb = true;
             }
-            if (verb == ##Places) {
+            if (action == ##Places) {
                 metaverb = true;
             }
-            if (verb >= 107 && debug_mode == false) {
+            if (action >= 107 && debug_mode == false) {
                 print "You can't do that.^";
                 metaverb = true;
             } else {
                 if (game_section == DREAMING && metaverb == false) {
-                    if (verb == ##Go) {
+                    if (action == ##Go) {
                         ! no code
-                    } else if (verb == ##Take) {
+                    } else if (action == ##Take) {
                         ! no code
-                    } else if (verb == ##Drop) {
+                    } else if (action == ##Drop) {
                         ! no code
-                    } else if (verb == ##Look) {
+                    } else if (action == ##Look) {
                         ! no code
-                    } else if (verb == ##Inv) {
+                    } else if (action == ##Inv) {
                         ! no code
-                    } else if (verb == ##Wake) {
+                    } else if (action == ##Wake) {
                         ! no code
                     } else {
                         print "You seem unable to concentrate sufficiently.^";
@@ -2834,12 +2834,12 @@ Array verb_routine_array -->	! 12088 (0x2f38)
                 }
                 global57 = 0;
                 if (i == 0) {
-                    RunRoutines(nothing,nothing,verb);	! not popped
+                    RunRoutines(nothing,nothing,action);	! not popped
                     @pop;
                 }
                 if (i > 0) {
                     if (noun ~= nothing) {
-                        RunRoutines(noun,second,verb);	! not popped
+                        RunRoutines(noun,second,action);	! not popped
                         @pop;
                     }
                     if (noun == nothing) {
@@ -2856,7 +2856,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
                             ++k;
                             l = global19->k;
                             print (name) l, ": ";
-                            RunRoutines(l,second,verb);	! not popped
+                            RunRoutines(l,second,action);	! not popped
                             @pop;
                             jump labelXXX;
                         }
@@ -2957,7 +2957,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 [ RunRoutines n s v ;	
     noun = n;
     second = s;
-    verb = v;
+    action = v;
     if (metaverb == true) {
         ! no code
     } else {
@@ -3951,7 +3951,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ];
 
 [ MouseMove o rm where x1 y1 ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         "The mouse emits a querulous, unhappy bleep.";
     }
     if (noun == ne_obj) {
@@ -4477,7 +4477,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
             print "  ";
             jump labelXXX;
         }
-        var3 = DescribeObj(var1,0);
+        var3 = WriteAfterEntry(var1,0);
         new_line;
     }
     if (var3 == 0) {
@@ -4631,11 +4631,11 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (local1 ~= 0) {
         rtrue;
     }
-    verb = ##Take;
+    action = ##Take;
     if (1 == AfterRoutines()) {
         rtrue;
     }
-    verb = ##Remove;
+    action = ##Remove;
     if (1 == AfterRoutines()) {
         rtrue;
     }
@@ -4645,8 +4645,8 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 
 [ InsertSub local1 ;	
     if (second == d_obj) {
-        verb = ##Drop;
-        RunRoutines(noun,nothing,verb);	! not popped
+        action = ##Drop;
+        RunRoutines(noun,nothing,action);	! not popped
         @pop;
         rfalse;
     }
@@ -4716,8 +4716,8 @@ Array verb_routine_array -->	! 12088 (0x2f38)
   .labelXXX;
     remove noun;
     move noun to player;
-    verb = local2;
-    RunRoutines(noun,second,verb);	! not popped
+    action = local2;
+    RunRoutines(noun,second,action);	! not popped
     @pop;
     rfalse;
 ];
@@ -4763,8 +4763,8 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (local1 ~= 0) {
         local2 = sibling(local1);
         print (name) local1, ": ";
-        verb = ##Transfer;
-        RunRoutines(local1,second,verb);	! not popped
+        action = ##Transfer;
+        RunRoutines(local1,second,action);	! not popped
         @pop;
         local1 = local2;
         jump labelXXX;
@@ -5149,7 +5149,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         if (local5 ~= 0) {
             if (local5 has workflag) {
                 local2 = local2 + 1;
-                DescribeObj(local5,1[?]);	! not popped
+                WriteAfterEntry(local5,1[?]);	! not popped
                 @pop;
                 if (local2 == local4 - 1) {
                     print " and ";
@@ -5168,7 +5168,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
             print " here.^";
         }
     }
-    verb = ##Look;
+    action = ##Look;
     if (1[?] == routine19326()) {
         rtrue;
     }
@@ -5253,7 +5253,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     rtrue;
 ];
 
-[ DescribeObj obj n local3 local4 local5 local6 local7 ;	
+[ WriteAfterEntry obj n local3 local4 local5 local6 local7 ;	
     if (n ~= 2[?]) {
         routine56420(obj);	! not popped
         @pop;
@@ -5320,7 +5320,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
           .labelXXX;
             if (local3 ~= 0) {
                 ++local5;
-                DescribeObj(local3,1[?]);	! not popped
+                WriteAfterEntry(local3,1[?]);	! not popped
                 @pop;
                 if (local5 == local6 - 1) {
                     print " and ";
@@ -5399,7 +5399,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     local1 = noun;
     noun = second;
     second = local1;
-    verb = ##Give;
+    action = ##Give;
     GiveSub();	! not popped
     @pop;
     rtrue;
@@ -5712,7 +5712,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ];
 
 [ LegachTransport var1 r var3 ;	
-    if (verb ~= ##Legach) {
+    if (action ~= ##Legach) {
         "There is, unsurprisingly, no reply.";
     }
     var1 = 0;
@@ -6044,7 +6044,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Catacombs.before
 
 [ CatacombsBefore var1 ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= d_obj) {
@@ -6064,10 +6064,10 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Contraption.before
 
 [ ContraptionBefore ;	
-    if (verb == ##Go && noun == e_obj && metal_wall has general) {
+    if (action == ##Go && noun == e_obj && metal_wall has general) {
         "You bump into an invisible barrier - perhaps the edge of the reflection.";
     }
-    if (verb ~= ##Examine) {
+    if (action ~= ##Examine) {
         rfalse;
     }
     if (noun ~= misc_obj) {
@@ -6498,8 +6498,8 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         @pop;
         rfalse;
     }
-    verb = ##Take;
-    RunRoutines(noun,nothing,verb);	! not popped
+    action = ##Take;
+    RunRoutines(noun,nothing,action);	! not popped
     @pop;
     rtrue;
 ];
@@ -6530,11 +6530,11 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     }
     if (noun has switchable) {
         if (noun has on) {
-            verb = ##SwitchOn;
+            action = ##SwitchOn;
         } else {
-            verb = ##SwitchOff;
+            action = ##SwitchOff;
         }
-        RunRoutines(noun,nothing,verb);	! not popped
+        RunRoutines(noun,nothing,action);	! not popped
         @pop;
         rfalse;
     }
@@ -6570,11 +6570,11 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     }
     if (noun has switchable) {
         if (noun has on) {
-            verb = ##SwitchOff;
+            action = ##SwitchOff;
         } else {
-            verb = ##SwitchOn;
+            action = ##SwitchOn;
         }
-        RunRoutines(noun,nothing,verb);	! not popped
+        RunRoutines(noun,nothing,action);	! not popped
         @pop;
         rfalse;
     }
@@ -6770,7 +6770,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         rtrue;
     }
     print "You peer at ";
-    DescribeObj(noun,2[?]);	! not popped
+    WriteAfterEntry(noun,2[?]);	! not popped
     @pop;
     ".";
 ];
@@ -7830,7 +7830,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Old_Winery.after
 
 [ WineryAfter ;	
-    if (verb ~= ##Look) {
+    if (action ~= ##Look) {
         rfalse;
     }
     if (Old_Winery has general) {
@@ -7844,7 +7844,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: East_Annexe.after
 
 [ EastAnnexeAfter o n ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         o = old_smudged_battery;
         n = o.number;
         if (n > 3) {
@@ -7857,7 +7857,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Inside_Cupboard.after
 
 [ InsideCupboardAfter var1 ;	
-    if (verb == ##Insert && second == big_iron_fireplace) {
+    if (action == ##Insert && second == big_iron_fireplace) {
         remove noun;
         move noun to Priests_Hole;
         if (sooty_old_stick hasnt moved) {
@@ -7874,7 +7874,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: plane_tree.after
 
 [ TreeAfter ;	
-    if (verb == ##Insert && second == misc_obj) {
+    if (action == ##Insert && second == misc_obj) {
         remove noun;
         move noun to hanging_cord;
         routine45130();	! not popped
@@ -7887,7 +7887,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Storage_Room.after
 
 [ StorageRoomAfter o ;	
-    if (verb == ##Insert && second == dark_shaft_obj) {
+    if (action == ##Insert && second == dark_shaft_obj) {
         remove noun;
         move noun to dumbwaiter;
         o = dumbwaiter;
@@ -7910,7 +7910,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Storage_Room.before
 
 [ StorageRoomBefore o ;	
-    if (verb == ##Enter) {
+    if (action == ##Enter) {
         o = dumbwaiter;
         o = parent(o);
         if (o == Storage_Room) {
@@ -7925,7 +7925,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Cellars.before
 
 [ CellarsBefore o ;	
-    if (verb == ##Enter) {
+    if (action == ##Enter) {
         o = dumbwaiter;
         o = parent(o);
         if (o == Cellars) {
@@ -7938,7 +7938,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ];
 
 [ routine71486 ;	
-    if (verb == ##Exit) {
+    if (action == ##Exit) {
         "Far, far too dangerous to contemplate. Besides, you're a coward.";
     }
     rfalse;
@@ -7947,7 +7947,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Chimney.before
 
 [ ChimneyBefore var1 ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         if (noun == d_obj) {
             var1 = child(player);
             if (var1 ~= 0) {
@@ -7964,7 +7964,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Priests_Hole.before
 
 [ PriestsHoleBefore var1 ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         if (noun == u_obj) {
             var1 = child(player);
             if (var1 ~= 0) {
@@ -7984,7 +7984,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: painting_of_Mad_Isaac_Meldrewe.after
 
 [ IsaacPaintingAfter ;	
-    if (verb == ##Take && big_iron_fireplace has concealed) {
+    if (action == ##Take && big_iron_fireplace has concealed) {
         give big_iron_fireplace ~concealed;
         "Taken. (There's a fireplace behind it, by the way.)";
     }
@@ -7994,7 +7994,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Dark_Room.after
 
 [ DarkRoomAfter ;	
-    if (verb == ##Look && Dark_Room has light) {
+    if (action == ##Look && Dark_Room has light) {
         print "^The room is filled with an eerie, reddish light. You feel gloomy and can't help thinking about aviation accident statistics.^";
     }
     rfalse;
@@ -8003,7 +8003,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Dark_Shaft.after
 
 [ DarkShaftAfter ;	
-    if (verb == ##Look && parent(dumbwaiter) ~= Dark_Shaft) {
+    if (action == ##Look && parent(dumbwaiter) ~= Dark_Shaft) {
         print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the cellars.^";
     }
     rfalse;
@@ -8012,7 +8012,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Dark_Shaft.before
 
 [ DarkShaftBefore ;	
-    if (verb == ##Go && noun == d_obj && parent(dumbwaiter) == Dark_Shaft) {
+    if (action == ##Go && noun == d_obj && parent(dumbwaiter) == Dark_Shaft) {
         "Since the dumbwaiter is here, why not travel in that instead.";
     }
     rfalse;
@@ -8021,7 +8021,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: postcard.after
 
 [ PostcardAfter ;	
-    if (verb == ##Examine && location == Dark_Room && Dark_Room has light) {
+    if (action == ##Examine && location == Dark_Room && Dark_Room has light) {
         Achieved(0);	! not popped
         @pop;
         "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
@@ -8084,7 +8084,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: electric_torch.after
 
 [ TorchAfter o ;	
-    if (verb == ##Open) {
+    if (action == ##Open) {
         if (electric_torch has light) {
             print "The torch goes out as you open the battery compartment.^";
         }
@@ -8094,7 +8094,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         give electric_torch ~light;
         rtrue;
     }
-    if (verb == ##Close) {
+    if (action == ##Close) {
         o = electric_torch;
         o = child(o);
         print "You close the battery compartment of the torch";
@@ -8132,7 +8132,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: hanging_cord.before
 
 [ HangingCordBefore ;	
-    if (verb == ##Pull) {
+    if (action == ##Pull) {
         print "Click!  ";
         if (Dark_Room has light) {
             give Dark_Room ~light;
@@ -8147,7 +8147,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: solid_glass_ball.before
 
 [ GlassBallBefore i ;	
-    if (verb ~= ##Examine) {
+    if (action ~= ##Examine) {
         rfalse;
     }
     if (solid_glass_ball hasnt general) {
@@ -8185,16 +8185,16 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: metal_door.after
 
 [ MetalDoorAfter ;	
-    if (verb == ##Unlock) {
+    if (action == ##Unlock) {
         give coal_bunker ~locked;
     }
-    if (verb == ##Lock) {
+    if (action == ##Lock) {
         give coal_bunker locked;
     }
-    if (verb == ##Open) {
+    if (action == ##Open) {
         give coal_bunker open;
     }
-    if (verb == ##Close) {
+    if (action == ##Close) {
         give coal_bunker ~open;
     }
     rfalse;
@@ -8203,16 +8203,16 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: coal_bunker.after
 
 [ CoalBunkerAfter ;	
-    if (verb == ##Unlock) {
+    if (action == ##Unlock) {
         give metal_door ~locked;
     }
-    if (verb == ##Lock) {
+    if (action == ##Lock) {
         give metal_door locked;
     }
-    if (verb == ##Open) {
+    if (action == ##Open) {
         give metal_door open;
     }
-    if (verb == ##Close) {
+    if (action == ##Close) {
         give metal_door ~open;
     }
     rfalse;
@@ -8221,7 +8221,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: pulley_ropes.before
 
 [ PulleyBefore env dst ;	
-    if (verb == ##Pull) {
+    if (action == ##Pull) {
         env = parent(player);
         if (env ~= dumbwaiter) {
             "You can't reach them!";
@@ -8248,7 +8248,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         @pop;
         rtrue;
     }
-    if (verb == ##Climb) {
+    if (action == ##Climb) {
         "If only you didn't suffer from such dreadful vertigo...";
     }
     rfalse;
@@ -8257,7 +8257,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: windows.before
 
 [ WindowsBefore ;	
-    if (verb == ##Attack) {
+    if (action == ##Attack) {
         if (windows has open) {
             rfalse;
         }
@@ -8270,10 +8270,10 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: medicine_bottle.before
 
 [ MedicineBefore ;	
-    if (verb == ##Attack) {
+    if (action == ##Attack) {
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
-    if (verb == ##Open) {
+    if (action == ##Open) {
         if (medicine_bottle hasnt locked) {
             rfalse;
         }
@@ -8285,11 +8285,11 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: hinged_trapdoor.after
 
 [ TrapdoorAfter ;	
-    if (verb == ##Open) {
+    if (action == ##Open) {
         give hinged_trapdoor light;
         rfalse;
     }
-    if (verb == ##Close) {
+    if (action == ##Close) {
         give hinged_trapdoor ~light;
         if (antique_jewellery_box has concealed) {
             give antique_jewellery_box ~concealed;
@@ -8304,7 +8304,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: demijohn.before
 
 [ DemijohnBefore ;	
-    if (verb == ##Open) {
+    if (action == ##Open) {
         if (old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
         }
@@ -8317,7 +8317,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: gift_wrapped_parcel.before
 
 [ ParcelBefore o ;	
-    if (verb == ##Open) {
+    if (action == ##Open) {
         o = gift_wrapped_parcel;
         remove o;
         o = postcard;
@@ -8334,7 +8334,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: iron_key.before
 
 [ IronKeyBefore o ;	
-    if (verb == ##Take) {
+    if (action == ##Take) {
         if (iron_key has general) {
             rfalse;
         }
@@ -8352,7 +8352,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Potting_Room.after
 
 [ PottingRoomAfter o ;	
-    if (verb == ##Look && antiquated_wireless has general) {
+    if (action == ##Look && antiquated_wireless has general) {
         o = antiquated_wireless;
         o = parent(o);
         if (o == Conservatory) {
@@ -8365,7 +8365,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: old_gardeners__gloves.before
 
 [ GlovesBefore ;	
-    if (verb == ##Take && old_gardeners__gloves hasnt moved) {
+    if (action == ##Take && old_gardeners__gloves hasnt moved) {
         if (antiquated_wireless has general) {
             rfalse;
         }
@@ -8378,7 +8378,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: calendar.before
 
 [ CalendarBefore i ;	
-    if (verb == ##Examine) {
+    if (action == ##Examine) {
         i = 107[calendar?];
         i = i.number;
         print "The calendar is turned to ";
@@ -8424,7 +8424,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         @pop;
         " daisies.";
     }
-    if (verb == ##Turn) {
+    if (action == ##Turn) {
         i = 107[calendar?];
         i = i.number;
         ++i;
@@ -8441,7 +8441,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: daisy_chain.before
 
 [ daisy_chain_after obj ;	
-    if (verb == ##Examine) {
+    if (action == ##Examine) {
         obj = daisy_chain;
         obj = obj.number;
         print "A delicate, pretty chain of ";
@@ -8449,7 +8449,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         @pop;
         " daisies.";
     }
-    if (verb == ##Drop) {
+    if (action == ##Drop) {
         obj = daisy_chain;
         remove obj;
         "The daisychain falls to pieces in your hands!";
@@ -8500,7 +8500,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Coven_Cell.before
 
 [ CellBefore ;	
-    if (verb == ##Wait) {
+    if (action == ##Wait) {
         rfalse;
     }
     if (player has general && 5 > CountDown(Coven_Cell)) {
@@ -8512,14 +8512,14 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: steel_wrench.after
 
 [ SteelWrenchAfter ;	
-    if (verb == ##Take) {
+    if (action == ##Take) {
         "It's a wrench, but you take it.";
     }
     rfalse;
 ];
 
 [ UseWrench ;	
-    if (verb ~= ##Turn) {
+    if (action ~= ##Turn) {
         rfalse;
     }
     if (steel_wrench has general) {
@@ -8546,12 +8546,12 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: poetry_book.before
 
 [ PoetryBefore var1 ;	
-    if (verb == ##Take && steel_wrench hasnt general) {
+    if (action == ##Take && steel_wrench hasnt general) {
         BreakPipes();	! not popped
         @pop;
         rtrue;
     }
-    if (verb == ##Examine) {
+    if (action == ##Examine) {
         if (steel_wrench hasnt general) {
             "You can't read it while it's holding the pipe up.";
         }
@@ -8576,19 +8576,19 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: romantic_novel.before
 
 [ NovelBefore ;	
-    if (verb == ##Take && steel_wrench hasnt general) {
+    if (action == ##Take && steel_wrench hasnt general) {
         BreakPipes();	! not popped
         @pop;
         rtrue;
     }
-    if (verb == ##Examine && steel_wrench hasnt general) {
+    if (action == ##Examine && steel_wrench hasnt general) {
         "You can't read it while it's holding the pipe up.";
     }
     rfalse;
 ];
 
 [ DialBefore ;	
-    if (verb == ##Turn) {
+    if (action == ##Turn) {
         if (dial_warning == false) {
             dial_warning = true;
             "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
@@ -8611,7 +8611,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: wheel2.before
 
 [ Wheel2Before obj ;	
-    if (verb == ##Turn) {
+    if (action == ##Turn) {
         obj = parent(player);
         if (obj == dumbwaiter) {
             "If you could only reach the wheel from here...";
@@ -8646,10 +8646,10 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: big_electricians_switch.after
 
 [ ChanceSwitchAfter ;	
-    if (verb == ##SwitchOn) {
+    if (action == ##SwitchOn) {
         "Click-clunk!  The world looks precisely the same.";
     }
-    if (verb == ##SwitchOff) {
+    if (action == ##SwitchOff) {
         "Clunk-click!  Probably nothing very much has changed.";
     }
     rfalse;
@@ -8658,12 +8658,12 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: antiquated_wireless.after
 
 [ RadioAfter ;	
-    if (verb == ##SwitchOn) {
+    if (action == ##SwitchOn) {
         StartTimer(antiquated_wireless,6);	! not popped
         @pop;
         "Nothing happens.";
     }
-    if (verb == ##SwitchOff && antiquated_wireless has general) {
+    if (action == ##SwitchOff && antiquated_wireless has general) {
         give antiquated_wireless ~general;
         "Thank heaven for that.";
     }
@@ -8701,7 +8701,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: slide_projector.after
 
 [ ProjectorAfter o ;	
-    if (verb == ##SwitchOn) {
+    if (action == ##SwitchOn) {
         give Souvenirs_Room light;
         if (reverse_plight == true) {
             give Disused_Observatory light;
@@ -8720,7 +8720,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         @pop;
         rtrue;
     }
-    if (verb == ##SwitchOff) {
+    if (action == ##SwitchOff) {
         give Souvenirs_Room ~light;
         give Disused_Observatory ~light;
         give south_wall concealed;
@@ -8731,7 +8731,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Souvenirs_Room.before
 
 [ SouvenirRoomBefore o ;	
-    if (verb == ##Insert) {
+    if (action == ##Insert) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -8762,7 +8762,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (slide_projector hasnt on) {
         rfalse;
     }
-    if (verb == ##Look) {
+    if (action == ##Look) {
         o = slide_projector;
         o = child(o);
         if (o == nothing) {
@@ -8777,7 +8777,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         }
         rtrue;
     }
-    if (verb == ##Insert) {
+    if (action == ##Insert) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -8785,7 +8785,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         @pop;
         rtrue;
     }
-    if (verb == ##Take) {
+    if (action == ##Take) {
         o = parent(noun);
         if (o == slide_projector) {
             if (second ~= slide_projector) {
@@ -8796,7 +8796,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
             rtrue;
         }
     }
-    if (verb == ##Remove) {
+    if (action == ##Remove) {
         if (second ~= slide_projector) {
             rfalse;
         }
@@ -8813,7 +8813,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (slide_projector hasnt on) {
         rfalse;
     }
-    if (verb ~= ##Look) {
+    if (action ~= ##Look) {
         rfalse;
     }
     if (reverse_plight == false) {
@@ -8868,13 +8868,13 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Consulting_Room.before
 
 [ ConsultingRoomBefore ;	
-    if (verb == ##Go && noun == w_obj) {
+    if (action == ##Go && noun == w_obj) {
         "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.";
     }
-    if (verb == ##Take && noun == Tarot_pack) {
+    if (action == ##Take && noun == Tarot_pack) {
         "That's funny. For a moment there your hand seemed to go straight through the pack of cards without touching it!";
     }
-    if (verb == ##Insert && second == Tarot_pack) {
+    if (action == ##Insert && second == Tarot_pack) {
         if (parent(Madame_Sosostris) == Consulting_Room) {
             "Madame Sosostris won't let you.";
         }
@@ -8895,7 +8895,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: poster.before
 
 [ PosterBefore ;	
-    if (verb == ##Take && poster has scenery) {
+    if (action == ##Take && poster has scenery) {
         give poster ~scenery;
         "You hastily tear down the poster, but there's nothing interesting behind it, only painted graffiti: ~Shantih Shantih Shantih~.";
     }
@@ -8905,7 +8905,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: heavy_iron_mascot.after
 
 [ MascotAfter ;	
-    if (verb == ##Take && Beside_Table hasnt general) {
+    if (action == ##Take && Beside_Table hasnt general) {
         give Beside_Table general;
         remove misc_obj;
         "The Druid catches sight of your ghostly hand taking the mascot, and immediately begins her occultations, cursing you and your ill-gotten gains. But she is unable to make contact with you, and turns furiously to the tapestry, hissing ~lagach~ to the Bear. At once a sudden swirl of wind seems to pull her into the rough cloth, dissolving her to nothing.";
@@ -8916,7 +8916,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: gas_mask.after
 
 [ MaskAfter ;	
-    if (verb == ##Wear) {
+    if (action == ##Wear) {
         "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of World War II leftover cork.";
     }
     rfalse;
@@ -8928,7 +8928,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (gas_mask has worn) {
         rfalse;
     }
-    if (verb == ##Go) {
+    if (action == ##Go) {
         rfalse;
     }
     "The coal dust makes you cough and splutter, and your eyes stream. You are unable to concentrate on doing anything here.";
@@ -9029,7 +9029,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ];
 
 [ MazeLayoutBefore y x wallp ;	
-    if (verb ~= ##Examine) {
+    if (action ~= ##Examine) {
         rfalse;
     }
     print "The layout is roughly as follows:^^";
@@ -9068,7 +9068,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 [ FamilyTreeBefore env ;	
     MazeX = 4;
     MazyY = 6;
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= n_obj) {
@@ -9084,10 +9084,10 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Maze.before
 
 [ MazeBefore var1 var2 var3 ;	
-    if (verb == ##Exit) {
+    if (action == ##Exit) {
         "Remember the poor grass!";
     }
-    if (verb == ##Go) {
+    if (action == ##Go) {
         if (garden_roller hasnt on) {
             "But the garden roller is switched off, and won't drive.";
         }
@@ -9145,7 +9145,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Maze_Foundations.before
 
 [ MazeFoundationsBefore var1 var2 ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         if (MazeX == 4 && MazyY == 6 && noun == s_obj) {
             rfalse;
         }
@@ -9188,7 +9188,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Patio_in_Maze.before
 
 [ PatioBefore var1 ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         if (noun == d_obj) {
             rfalse;
         }
@@ -9404,7 +9404,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Maze.after, Patio_in_Maze.after
 
 [ MazeAfter var1 ;	
-    if (verb == ##Look) {
+    if (action == ##Look) {
         var1 = routine79800();
         return var1;
     }
@@ -9414,11 +9414,11 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Maze_Foundations.after
 
 [ MazeFoundationsAfter var1 ;	
-    if (verb == ##Look) {
+    if (action == ##Look) {
         var1 = routine80092();
         return var1;
     }
-    if (verb == ##Drop) {
+    if (action == ##Drop) {
         print "You feel an alarming wrench in your insides.^";
         deadflag = PARADOX;
         rtrue;
@@ -9429,14 +9429,14 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Viewpoint_Ledge.before
 
 [ routine80796 var1 ;	
-    if (verb == ##Examine) {
+    if (action == ##Examine) {
         var1 = parent(player);
         if (var1 == 130[garden_roller?] && noun == misc_obj) {
             "The writing's too small from here.";
             rfalse;
         }
     }
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= e_obj) {
@@ -9452,7 +9452,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: bean_pole.after
 
 [ BeanPoleAfter ;	
-    if (verb == ##Take) {
+    if (action == ##Take) {
         if (bean_pole has general) {
             rfalse;
         }
@@ -9466,7 +9466,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: old_timber_prop.after
 
 [ routine80916 ;	
-    if (verb == ##Take) {
+    if (action == ##Take) {
         if (old_timber_prop hasnt general) {
             rfalse;
         }
@@ -9495,7 +9495,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Clifftop_Walk.before
 
 [ ClifftopWalkBefore ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= e_obj) {
@@ -9511,7 +9511,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Sacred_Earth.before
 
 [ SacredEarthBefore ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= s_obj) {
@@ -9533,7 +9533,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Temple_of_Zeus.before
 
 [ TempleBefore ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= n_obj) {
@@ -9549,7 +9549,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
     if (Ekmek_Special has moved) {
         rfalse;
     }
-    if (verb ~= ##Take) {
+    if (action ~= ##Take) {
         rfalse;
     }
     if (copper_coin has general) {
@@ -9561,7 +9561,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Andromeda.before
 
 [ AndromedaBefore ;	
-    if (verb ~= ##Examine) {
+    if (action ~= ##Examine) {
         rfalse;
     }
     print "Avert your eyes. She is naked";
@@ -9574,7 +9574,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Ruined_Castle_Cafe.after
 
 [ RuinedCastleCafeAfter ;	
-    if (verb == ##Look) {
+    if (action == ##Look) {
         if (Cups_and_Glasses hasnt visited) {
             rfalse;
         }
@@ -9588,7 +9588,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: complicated_looking_bomb.after
 
 [ BombAfter ;	
-    if (verb == ##Take) {
+    if (action == ##Take) {
         deadflag = PRISON;
         "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and twenty-five years isn't all that long.";
     }
@@ -9598,7 +9598,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: timer_detonater.before
 
 [ DetonatorBefore var1 var2 ;	
-    if (verb ~= ##Examine) {
+    if (action ~= ##Examine) {
         rfalse;
     }
     print "The timer seems quite simple to set. ";
@@ -9694,7 +9694,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Infinity_Symbol.after
 
 [ InfinityAfter var1 var2 ;	
-    if (verb == ##Look) {
+    if (action == ##Look) {
         print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through seven equally spaced sockets or cylindrical wells.";
         var1 = 105[circular_arc?];
         var2 = var1.number;
@@ -9730,7 +9730,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Infinity_Symbol.before
 
 [ InfinityBefore var1 ;	
-    if (verb == ##Insert) {
+    if (action == ##Insert) {
         if (second ~= circular_arc) {
             rfalse;
         }
@@ -9761,7 +9761,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Stream.before
 
 [ StreamBefore ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         if (noun ~= u_obj) {
             rfalse;
         }
@@ -9773,7 +9773,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: bone_die.after
 
 [ DieAfter var1 ;	
-    if (verb == ##Drop) {
+    if (action == ##Drop) {
         var1 = 6[ne_obj?];
         var1 = random(var1);
         "Alea iacta est. It comes up ", var1, ".";
@@ -9784,7 +9784,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Inside_Well.before
 
 [ InsideWellBefore ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         rfalse;
     }
     "There's not enough room in this confined space to do anything much!";
@@ -9793,10 +9793,10 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Triclinium.before
 
 [ TricliniumBefore ;	
-    if (verb == ##Enter && noun == kitchen_well) {
+    if (action == ##Enter && noun == kitchen_well) {
         ! no code
     } else {
-        if (verb ~= ##Go) {
+        if (action ~= ##Go) {
             rfalse;
         }
         if (noun ~= d_obj) {
@@ -9819,7 +9819,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Triclinium.after
 
 [ TricliniumAfter ;	
-    if (verb == ##Insert && second == kitchen_well) {
+    if (action == ##Insert && second == kitchen_well) {
         remove noun;
         if (noun has light) {
             give kitchen_well general;
@@ -9837,7 +9837,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Entrance.before
 
 [ EntranceBefore ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun == s_obj) {
@@ -9867,10 +9867,10 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: yellow_daisy.after
 
 [ DaisyAfter ;	
-    if (verb == ##Wear) {
+    if (action == ##Wear) {
         "You tuck the daisy behind your ear, almost out of sight.";
     }
-    if (verb == ##Take && yellow_daisy hasnt general) {
+    if (action == ##Take && yellow_daisy hasnt general) {
         give yellow_daisy general;
         "Aided by the swinging of the rope, you pick the daisy.";
     }
@@ -9880,7 +9880,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: yellow_daisy.before
 
 [ DaisyBefore ;	
-    if (verb ~= ##Take) {
+    if (action ~= ##Take) {
         rfalse;
     }
     if (yellow_daisy has moved) {
@@ -9895,7 +9895,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Hanging_on_Rope.before
 
 [ HangingBefore ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= d_obj) {
@@ -9908,9 +9908,9 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ];
 
 [ routine84132 ;	
-    if (verb == ##Examine) {
+    if (action == ##Examine) {
         ! no code
-    } else if (verb ~= ##Search) {
+    } else if (action ~= ##Search) {
         rfalse;
     }
     if (CouncilCnt > 7) {
@@ -9949,7 +9949,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: saxon_spy.before
 
 [ SaxonBefore ;	
-    if (verb ~= ##Search) {
+    if (action ~= ##Search) {
         rfalse;
     }
     "Not only are the guards better at searching suspects than you, they also did so first.";
@@ -9958,7 +9958,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: tent_pole.after
 
 [ TentPoleAfter ;	
-    if (verb ~= ##Take) {
+    if (action ~= ##Take) {
         rfalse;
     }
     if (tent_pole hasnt general) {
@@ -9979,7 +9979,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Encampment.before
 
 [ EncampmentBefore ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     if (noun ~= e_obj) {
@@ -9995,7 +9995,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Near_Dolmen.after
 
 [ NearDolemnAfter var1 var2 ;	
-    if (verb ~= ##Look) {
+    if (action ~= ##Look) {
         rfalse;
     }
     location = Servants_Room;
@@ -10026,7 +10026,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Contraption.after
 
 [ ContraptionAfter var1 var2 var3 ;	
-    if (verb == ##Go) {
+    if (action == ##Go) {
         if (noun == n_obj or s_obj) {
             print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly the same...^^";
             Achieved(15);	! not popped
@@ -10043,7 +10043,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
             rfalse;
         }
     }
-    if (verb == ##Look) {
+    if (action == ##Look) {
         if (Contraption has general) {
             print "^The lower basket contains a cannonball, and the upper is empty.^";
             rfalse;
@@ -10092,7 +10092,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Heavenly_Place.after
 
 [ Heavenly_Place_After var1 var2 ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     LookSub(1[?]);	! not popped
@@ -10125,7 +10125,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
 ! References: Hellish_Place.after
 
 [ Hellish_Place_After var1 var2 ;	
-    if (verb ~= ##Go) {
+    if (action ~= ##Go) {
         rfalse;
     }
     LookSub(1[?]);	! not popped
@@ -11372,7 +11372,7 @@ Array verb_routine_array -->	! 12088 (0x2f38)
         noun_number = routine98840(global81);
         global61 = global81;
         noun_word = routine98666();
-        verb = ##Answer;
+        action = ##Answer;
         noun = compass;
         second = global6;
         global6 = player;

@@ -1,0 +1,60 @@
+Changes from Curses r8 to r9
+============================
+The version of Inform is now 784, instead of 634 in r8
+----------------------------
+New Meldrewes:
+    Henri
+    Helene
+    Anton
+
+----------------------------
+Several new objects and puzzles were added. Since Curses was already at the 255 object limit, this is handled by moving several objects into a floating "miscillaneous" object that is reconfigured for each use.
+Objects moved to this: the plane tree, the sepia photograph, the mosaic, the planck constant dial, the hypocaust vents
+
+New puzzles/objects:
+The steel wrench in the dumbwaiter
+The leaky pipe puzzle in the Library, requiring the wrench
+
+Related:
+Henri Black Post contraption puzzle beneath the maze
+The golden orb that one wins there, and when cleaned, the chess puzzle, with new functionality for the previous useless Rod of Sacrifice
+The Sarcophagus Room beneath the maze, with a scent puzzle, needing the golden orb to get to the Universe Maintenance Room
+The Lawn Ornaments room, where one must run over the ornaments to solve the contraption puzzle
+The Jagged Passage has been renamed to "The Catacomb Passage"
+
+This adds a new way to die: being checkmated
+
+There's a new verb to accommodate the contraption puzzle: "slide"
+Also, this is the first version of curses where the magic word "Legach" appears.
+Legach Works from:
+    Greek_Frieze (new room in Andromeda section)
+    Mosaic
+    Crypt (new room in Catacombs)
+    Bohemia (new room in the Unreal City)
+
+The Catacombs section is now a full new section of the game (showing up when youtype "score").
+
+The score you can achieve increases from 300 to 350.
+
+There are also 23 tasks that generate scores instead of 18.
+----------------------------
+Bohemia in the Unreal City now has random descriptions of the wall.
+----------------------------
+The Roman Villa in the Master game is now reversed along the n-s axis (the kitchen is to the west, the guard quarters to the east).
+----------------------------
+There's a room connected to the top of the lighthouse now: The Greek Frieze
+
+The Rescue Andromeda puzzle now takes everything you're carrying, necessitating putting it off until you have two light sources, so you can drop everything before and still get back to the Souvenir Room, or else using legach
+
+Andromeda now speaks "Attic, not Demotic" (instead of "Demotic, not Attic").
+----------------------------
+There are numerous library improvements, including a new way to handle grammatical articles (previously it used strings, which probably took up additional space)
+----------------------------
+The bug where the radio still comes on if turned off while the timer countdown is going has been fixed.
+----------------------------
+There are two additional ways to die when moving through the dark in the attic.
+----------------------------
+In the premonition, the General's Tent is now Beside the Bear Shrine. There's also flavor text when you take the mascot, along with the druid whispering "legach" to the shrine.
+----------------------------
+There are a couple painful puns on the verb 'ram' now.
+----------------------------
