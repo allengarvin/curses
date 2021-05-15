@@ -4880,7 +4880,7 @@ Global global54;
 Global global55;
 Global global56;
 Global global57;
-Global global58;
+Global pcount;
 Global global59;
 Global global60;
 Global global61;
@@ -5565,12 +5565,12 @@ Array array_29185 -->	! 29185 (0x7201)
                 line_address = syntax + 1 + line * 8;
                 if (parser_trace >= 1) {
                     print "[Line ", line, ": ", line_address->0, " parameters: ";
-                    global58 = 1[?];
+                    pcount = 1;
                   .label43213;
-                    if (global58 <= 6) {
-                        token = line_address->global58;
+                    if (pcount <= 6) {
+                        token = line_address->pcount;
                         print token, " ";
-                        ++global58;
+                        ++pcount;
                         jump label43213;
                     }
                     print " -> action ", line_address->7, "]^";
@@ -5591,11 +5591,11 @@ Array array_29185 -->	! 29185 (0x7201)
                 global80 = 0;
                 i = 0;
                 m = 0;
-                global58 = 1[?];
+                pcount = 1;
               .label43315;
-                if (global58 <= 6) {
+                if (pcount <= 6) {
                     scope_token = 0;
-                    token = line_address->global58;
+                    token = line_address->pcount;
                     if (token == 2[?]) {
                         ++m;
                     }
@@ -5606,13 +5606,13 @@ Array array_29185 -->	! 29185 (0x7201)
                         if (parser_trace >= 2) {
                             print " [Trying look-ahead]^";
                         }
-                        ++global58;
+                        ++pcount;
                       .label43381;
-                        if (global58 <= 6 && line_address->global58 >= 180) {
-                            ++global58;
+                        if (pcount <= 6 && line_address->pcount >= 180) {
+                            ++pcount;
                             jump label43381;
                         }
-                        token = line_address->(global58 - 1);
+                        token = line_address->(pcount - 1);
                         if (token >= 180) {
                             j = routine52916(token);
                           .label43419;
@@ -5646,7 +5646,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             }
                         }
                     }
-                    ++global58;
+                    ++pcount;
                     jump label43315;
                 }
                 global106 = 0;
@@ -5663,14 +5663,14 @@ Array array_29185 -->	! 29185 (0x7201)
                 global91 = 1[?];
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
-                global58 = 1[?];
+                pcount = 1;
               .label43635;
-                if (global58 <= 6) {
-                    array_24618-->global58 = 0;
+                if (pcount <= 6) {
+                    array_24618-->pcount = 0;
                     scope_token = 0;
-                    token = line_address->global58;
+                    token = line_address->pcount;
                     if (parser_trace >= 2) {
-                        print " [Token ", global58, " is ", token, ": ";
+                        print " [Token ", pcount, " is ", token, ": ";
                         if (token < 16) {
                             if (token == 0) {
                                 print "<noun> or null";
@@ -5717,7 +5717,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         }
                         print " at word number ", wn, "]^";
                     }
-                    m = global58 + 1;
+                    m = pcount + 1;
                     lookahead = 8;
                     if (m <= 6) {
                         lookahead = line_address->m;
@@ -5732,10 +5732,10 @@ Array array_29185 -->	! 29185 (0x7201)
                         }
                     }
                     if (token > 180) {
-                        array_24618-->global58 = 10000 + token;
+                        array_24618-->pcount = 10000 + token;
                         if (wn > num_words) {
                             if (interfrom == 0 && global60 < global61) {
-                                interfrom = global58;
+                                interfrom = pcount;
                                 global64 = token;
                             }
                             if (interfrom == 0) {
@@ -5760,7 +5760,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                         ++m;
                                         jump label44207;
                                     }
-                                    global59 = global58;
+                                    global59 = pcount;
                                     global91 = 2[?];
                                     jump label44659;
                                 }
@@ -5843,7 +5843,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             jump label44659;
                         }
                     }
-                    ++global58;
+                    ++pcount;
                     jump label43635;
                 }
               .label44659;
@@ -5898,7 +5898,7 @@ Array array_29185 -->	! 29185 (0x7201)
             ++m;
             jump label44846;
         }
-        global58 = global59;
+        pcount = global59;
         PrintCommand(0,1[?]);
         print ".^";
     }
@@ -6473,7 +6473,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local1-->(global60 + 2) = local9;
     ++global60;
-    array_24618-->global58 = local9;
+    array_24618-->pcount = local9;
     return 1[?];
   .label47741;
     if (global84 == 1[?] && global83 == 1[?]) {
@@ -6544,9 +6544,9 @@ Array array_29185 -->	! 29185 (0x7201)
             return local5;
         }
         if (interfrom == 0) {
-            interfrom = global58;
+            interfrom = pcount;
         }
-        array_24618-->global58 = local5;
+        array_24618-->pcount = local5;
         return local5;
     }
     if (global70 > num_words) {
@@ -6659,7 +6659,7 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label48556;
         }
     } else {
-        local6 = global58 - interfrom;
+        local6 = pcount - interfrom;
         local7 = 1[?];
       .label48588;
         if (local7 <= local10) {
@@ -6669,7 +6669,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         local6 = interfrom;
       .label48617;
-        if (local6 < global58) {
+        if (local6 < pcount) {
             if (array_24618-->local6 >= 2 && array_24618-->local6 < 10000) {
                 array_24488-->1 = 34860['it'?];
                 itobj = array_24618-->local6;
@@ -7158,7 +7158,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print (address) local3;
         }
     }
-    local4 = global58 - local2;
+    local4 = pcount - local2;
     local5 = local1;
   .label51001;
     if (local5 <= local4) {
