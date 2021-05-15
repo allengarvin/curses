@@ -6231,7 +6231,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ ParseObjectList results token l o i j k and_parity single_object desc_wn many_flag ;	! 46408 / 0xb548
     many_flag = 0;
-    and_parity = 1[?];
+    and_parity = 1;
     dont_infer = 0;
   .label46418;
     if (parser_trace >= 3) {
@@ -6395,7 +6395,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     j = i + 1;
                   .label47254;
                     if (j <= k) {
-                        if (and_parity == 1[?]) {
+                        if (and_parity == 1) {
                             routine51152(multiple_object-->j);
                         } else {
                             routine51208(multiple_object-->j);
@@ -6415,7 +6415,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (many_flag == 0) {
                     single_object = l;
                 } else {
-                    if (and_parity == 1[?]) {
+                    if (and_parity == 1) {
                         routine51152(l);
                     } else {
                         routine51208(l);
