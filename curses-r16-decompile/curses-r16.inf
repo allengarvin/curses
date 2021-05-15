@@ -6267,7 +6267,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_word = o;
         vague_obj = player;
     }
-    if (token == 7[se_obj?]) {
+    if (token == 7) {
         l = routine53120(wn);
         if (l ~= 64536[?]) {
             if (nsns == 0) {
@@ -6286,7 +6286,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         special_word = routine52976();
         single_object = 1[?];
-    } else if (token == 8[nw_obj?]) {
+    } else if (token == 8) {
         l = routine53120(wn++);
         if (l == 64536[?]) {
             etype = NUMBER_PE;
@@ -6334,7 +6334,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 print "  [Scope routine returned multiple-flag of ", l, "]^";
             }
             if (l == 1[?]) {
-                token = 2[?];
+                token = 2;
             } else {
                 token = 0;
             }
@@ -6353,7 +6353,7 @@ Array array_29185 -->	! 29185 (0x7201)
             return 0;
         }
         oops_from = wn;
-        if (token ~= 1[?]) {
+        if (token ~= 1) {
             i = multiple_object-->0;
             if (parser_trace >= 3) {
                 print "  [Calling NounDomain on location and actor]^";
@@ -6408,7 +6408,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     }
                 }
             } else {
-                if (token == 6[ne_obj?] && CreatureTest(l) == 0) {
+                if (token == 6 && CreatureTest(l) == 0) {
                     etype = ANIMA_PE;
                     jump label47741;
                 }
@@ -6428,7 +6428,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
             }
         }
-        if (token == 1[?]) {
+        if (token == 1) {
             l = NounDomain(actor,actor_location,token);
             if (l == 10000[?]) {
                 return l;
