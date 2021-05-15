@@ -5353,7 +5353,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (i == 2) {
             style bold;
-            PSN__(location);
+            PrintShortName(location);
             print "^";
             style roman;
             L__M(##Miscellany,13);
@@ -5582,7 +5582,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 print "[Actor is ";
                 Defart(actor);
                 print " in ";
-                PSN__(actor_location);
+                PrintShortName(actor_location);
                 print "]^";
             }
             jump label42348;
@@ -8019,7 +8019,7 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label54119;
     }
     if (j ~= 2[?]) {
-        routine57960();
+        Banner();
     }
     lightflag = OffersLight(parent(player));
     if (lightflag == false) {
@@ -8142,7 +8142,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 } else {
                     l = multiple_object-->k;
                     routine53392(l);
-                    PSN__(l);
+                    PrintShortName(l);
                     print ": ";
                     inp1 = l;
                     noun = l;
@@ -8584,13 +8584,13 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ TimerE2 local1 ;	! 56336 / 0xdc10
     print "** Object ";
-    PSN__(local1);
+    PrintShortName(local1);
     " has no time_left property! **";
 ];
 
 [ TimerE3 local1 ;	! 56380 / 0xdc3c
     print "** Object ";
-    PSN__(local1);
+    PrintShortName(local1);
     " both timer and daemon! **";
 ];
 
@@ -8944,7 +8944,7 @@ Array array_29185 -->	! 29185 (0x7201)
         PrintOrRun(o,20[rod_of_infinity?],1[?]);
         print " ";
     }
-    PSN__(o);
+    PrintShortName(o);
     rtrue;
 ];
 
@@ -8952,7 +8952,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (o hasnt proper) {
         print "the ";
     }
-    PSN__(o);
+    PrintShortName(o);
     rtrue;
 ];
 
@@ -8960,11 +8960,11 @@ Array array_29185 -->	! 29185 (0x7201)
     if (o hasnt proper) {
         print "The ";
     }
-    PSN__(o);
+    PrintShortName(o);
     rtrue;
 ];
 
-[ PSN__ o ;	! 57692 / 0xe15c
+[ PrintShortName o ;	! 57692 / 0xe15c
     if (o == nothing) {
         print "nothing";
         rtrue;
@@ -8984,7 +8984,7 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ PrintDir local1 ;	! 57772 / 0xe1ac
+[ DirectionName local1 ;	! 57772 / 0xe1ac
     generic_globvar = local1;
     if (generic_globvar == 5[w_obj?]) {
         print "north";
@@ -9016,16 +9016,16 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine57960 local1 ;	! 57960 / 0xe268
+[ Banner i ;	! 57960 / 0xe268
     style bold;
     print "CURSES";
     style roman;
     print "^An Interactive Diversion^Copyright (c) 1993, 1994, 1995 by Graham Nelson.^", "Release ", 0-->1 & 1023, " / Serial number ";
-    local1 = 18[rod_of_returning?];
+    i = 18;
   .label58011;
-    if (local1 < 24) {
-        print (char) 0->local1;
-        ++local1;
+    if (i < 24) {
+        print (char) 0->i;
+        ++i;
         jump label58011;
     }
     print " / Inform v", "1600", " Library ", "5/12";
@@ -9037,7 +9037,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ VersionSub ;	! 58104 / 0xe2f8
-    routine57960();
+    Banner();
     print "Interpreter ", 0->30, " Version ", (char) 0->31, " / ", "Library serial number ", "951024", "^";
     rtrue;
 ];
@@ -13735,22 +13735,22 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local2 = local1;
     if (obj208_red_wire has attrib8) {
-        PSN__(obj208_red_wire);
+        PrintShortName(obj208_red_wire);
         --local2;
         routine103900(local2);
     }
     if (obj207_green_wire has attrib8) {
-        PSN__(obj207_green_wire);
+        PrintShortName(obj207_green_wire);
         --local2;
         routine103900(local2);
     }
     if (obj209_blue_wire has attrib8) {
-        PSN__(obj209_blue_wire);
+        PrintShortName(obj209_blue_wire);
         --local2;
         routine103900(local2);
     }
     if (obj210_black_wire has attrib8) {
-        PSN__(obj210_black_wire);
+        PrintShortName(obj210_black_wire);
         --local2;
         routine103900(local2);
     }
@@ -18789,11 +18789,11 @@ Array array_29185 -->	! 29185 (0x7201)
         "An Interactive Diversion by Graham Nelson^^Play-testing by Michael Kinyon, Gareth Rees and Richard Tucker^^Together with informers: ", "Torbjorn Andersson, Julian Arnold, Jonathan Badger, Greg Bakker, Richard Barnett, Joachim Baumann, Richard Beigel, Don Blaheta, Martin Braun, Allen Braunsdorf, Otto Christenson, Tomas Clark, Andrew Clover, Alan Cox, Richard Develyn, Robert Dickau, Paul David Doherty, Roger Dominick, Koen van der Drift, Ivan Drucker, Jon Drukman, Martin N. Dunstan, Paul Fletcher, Richard Forster, Ron Galicia, Allen Garvin, Chris Goedde, Peter Grundy, Mark ~Guido~ Guidarelli, David Horowitz, Will Hurwood, Hakan Huss, Randy Hutson, Darin Johnson, Stefan Jokisch, Brad Jones, Jose Kahan, Darius Katz, Dennis S. Keeler, Andrew Kemp, John W. Kennedy, Peter Killworth, Marnix Klooster, Mark Knibbs, Teo Kwang Liak, Matthew J. MacKenzie, Chris Mann, Chris Markwyn, David McGrath, M. Sean Molley, Byron Montgomerie, David Moore, Carl Muckenhoupt, Christine Nelson, Toby Nelson, Carrie O'Grady, Michael A. Patton, Morten Holm Pederson, Mark Phillips, Neil Querengesser, Mason Reed, Robert Rendell, Loren Rittle, Luke Roberts, John Rodriguez, Kathleen Rudden, Bryan Scattergood, Bernd Schmitt, Rene Schneer, Alison Scott, Mike Scott, Matthew Selby, Dilip Sequeira, David Sinclair, Suzanne Skinner, David Stephenson, Robert Stone, Nyko Tyni, David VanBronkhorst, Andrew Vesperman, Hao-yang Wang, Robin Watts, John West, Christopher A. Wichura, Graham Willmott, Andrew Wren, Brendon Wyber, Jeff Zahn and Zhang Genglue.^^", "Apologies and acknowledgements to: the late Mr T. S. Eliot, the Oxford History of England, Philip Vellacott's translations of the Greek plays and the guidebooks of the British Museum; ", "Edouard Poor, for porting interpreters to the Acorn Archimedes; ", "and Volker Blasius, for keeping the if-archive.^^", "Coffee mugs fired by: Helena Verrill.^^", "Genealogy and photography associate: Peter Nelson.^^", "Ancient Greek cultural attache and daisy chain consultant: Dr L. J. Coventry.^^", "Archaeology: the InfoTaskForce, Paul David Doherty and Mark Howell, without whose excavations Inform could not have been written. If I have hacked deeper than them, it is because I stand in their trenches.";
     }
     if (menu_item == 4) {
-        routine57960();
+        Banner();
         "^Release 16 is the eighth public release of ~Curses~. Its major previous releases were as follows:^^", "   Release 7 / 930428   (the original and still the worst)^   Release 8 / 930603   (much enhanced, slightly larger)^   Release 9 / 931111   (extended by about 20%)^   Release 10 / 940120  (tidied up a little)^   Release 12 / 940601  (a major extension)^   Release 14 / 950522  (first edition of the rewrite)^^", "For Release 14 the entire source code was ~digitally remastered~, so to speak: rewritten and tidied up into Inform 5 code which properly uses the Library. Since then, the author has only been maintaining and correcting.";
     }
     if (menu_item == 5) {
-        routine57960();
+        Banner();
         "^This story file is copyright (c) Graham Nelson 1993, 1994, 1995, but may be freely distributed and used provided no profit is involved and provided it is not modified in any way. ", "It contains no fragments of code written by anyone other than the author. The author was extremely tempted to hide an important clue here, but thought better of it. No trade marks are (knowingly) used. All characters and locations are imaginary, and any resemblance to real persons (living after 1900) or places (except in antiquity) is accidental.";
     }
     if (menu_item == 6) {
@@ -19709,7 +19709,7 @@ Array array_29185 -->	! 29185 (0x7201)
             } else {
                 if (sizes_p->i == 1[?]) {
                     if (c_style & 4096 ~= 0) {
-                        PSN__(j);
+                        PrintShortName(j);
                     } else if (c_style & 256 ~= 0) {
                         Defart(j);
                     } else {
@@ -19836,7 +19836,7 @@ Array array_29185 -->	! 29185 (0x7201)
             ! no code
         } else {
             if (c_style & 4096 ~= 0) {
-                PSN__(j);
+                PrintShortName(j);
             } else if (c_style & 256 ~= 0) {
                 Defart(j);
             } else {
@@ -20206,7 +20206,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label161245;
     if (local1 <= top_object) {
         if (local1 has visited) {
-            PSN__(local1);
+            PrintShortName(local1);
             ++local3;
             if (local3 == local2) {
                 ".";
@@ -20242,7 +20242,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 print "   (given away)";
             } else if (local2 has visited) {
                 print "   (in ";
-                PSN__(local2);
+                PrintShortName(local2);
                 print ")";
             } else if (local2 has enterable) {
                 print "   (in ";
@@ -20250,11 +20250,11 @@ Array array_29185 -->	! 29185 (0x7201)
                 print ")";
             } else if (local2 has container) {
                 print "   (inside ";
-                PSN__(local2);
+                PrintShortName(local2);
                 print ")";
             } else if (local2 has supporter) {
                 print "   (on ";
-                PSN__(local2);
+                PrintShortName(local2);
                 print ")";
             } else {
                 print "   (lost)";
@@ -20746,7 +20746,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label163225;
     if (local1 ~= 0) {
         local2 = sibling(local1);
-        PSN__(local1);
+        PrintShortName(local1);
         print ": ";
         routine55348(##Transfer,local1,second);
         local1 = local2;
@@ -21121,7 +21121,7 @@ Array array_29185 -->	! 29185 (0x7201)
     routine164468();
     new_line;
     style bold;
-    PSN__(location);
+    PrintShortName(location);
     style roman;
     env = parent(player);
     if (location ~= thedark && env ~= location) {
@@ -22117,7 +22117,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (n == 3) {
             print "You can't get into the closed ";
-            PSN__(x1);
+            PrintShortName(x1);
             ".";
         }
         if (n == 4) {
@@ -22143,7 +22143,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (n == 2) {
             print "You can't get out of the closed ";
-            PSN__(x1);
+            PrintShortName(x1);
             ".";
         }
         print "You get ";
@@ -24464,7 +24464,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (displaying_quote == true || global130 ~= location) {
         @set_cursor 1 2;
         global129 = 1[?];
-        PSN__(location);
+        PrintShortName(location);
         global129 = 0;
         generic_globvar = 20[rod_of_infinity?];
         if (generic_globvar >= 1) {
