@@ -803,7 +803,7 @@ Object yourself "yourself"	! 15 / 0xf
 	prop24 [0 0],
 	daemon routine262140,
 	each_turn routine262140,
-	prop27 [0 64],
+	capacity 100,
 	short nothing,
 	prop29 nothing,
   has	animate concealed proper transparent;
@@ -3608,7 +3608,7 @@ Object ghost_of_yourself "ghost of yourself"	! 360 / 0x168
   with	prop2 routine124596,
 	description "You are transparent like a ghost.",
 	prop24 [0 0],
-	prop27 [0 1],
+	capacity 1,
   has	;
 
 Object Premonition "Premonition"	! 361 / 0x169
@@ -8001,7 +8001,7 @@ Array array_29185 -->	! 29185 (0x7201)
     standard_interpreter = 50-->0;
     player = yourself;
     top_object = 757 - 255;
-    yourself.prop27 = 5[w_obj?];
+    yourself.capacity = 5;
     j = Initialise;();
     global15 = score;
     move player to location;
