@@ -4846,7 +4846,7 @@ Global location = Compass;
 Global global2;
 Global global3;
 Global the_time = 65535;
-Global global5 = 1[?];
+Global time_rate = 1;
 Global global6;
 Global score;
 Global turns = 1;
@@ -7970,7 +7970,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine53972 local1 local2 ;	! 53972 / 0xd2d4
     the_time = local1;
-    global5 = local2;
+    time_rate = local2;
     global6 = 0;
     if (local2 < 0) {
         global6 = 0 - local2;
@@ -8701,13 +8701,13 @@ Array array_29185 -->	! 29185 (0x7201)
 [ EndTurnSequence i j ;	! 56744 / 0xdda8
     ++turns;
     if (the_time ~= 65535) {
-        if (global5 >= 0) {
-            the_time = the_time + global5;
+        if (time_rate >= 0) {
+            the_time = the_time + time_rate;
         } else {
             --global6;
             if (global6 == 0) {
                 ++the_time;
-                global6 = 0 - global5;
+                global6 = 0 - time_rate;
             }
         }
         the_time = the_time % 1440;
