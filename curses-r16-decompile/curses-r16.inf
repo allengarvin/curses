@@ -5293,13 +5293,13 @@ Array array_29185 -->	! 29185 (0x7201)
         @save_undo -> i;
         undone_flag = 0;
         undo_flag = 2;
-        if (i == 65535[?]) {
+        if (i == 65535) {
             undo_flag = 0;
         }
         if (i == 0) {
             undo_flag = 1;
         }
-        if (i == 2[?]) {
+        if (i == 2) {
             style bold;
             PSN__(location);
             print "^";
