@@ -20258,7 +20258,7 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ RTakeSub o local2 local3 local4 local5 ;	! 161808 / 0x27810
+[ RTakeSub fromobj i j k postonobj ;	! 161808 / 0x27810
     if (noun == player) {
         return routine166408(19[rod_of_stalking?],2[?]);
     }
@@ -20268,37 +20268,37 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parent(player) == noun) {
         return routine166408(19[rod_of_stalking?],4[e_obj?],noun);
     }
-    local2 = parent(noun);
-    if (local2 == player) {
+    i = parent(noun);
+    if (i == player) {
         return routine166408(19[rod_of_stalking?],5[w_obj?]);
     }
-    if (local2 has container || local2 has supporter) {
-        local5 = local2;
-        local4 = verb;
+    if (i has container || i has supporter) {
+        postonobj = i;
+        k = verb;
         verb = ##Action256;
-        if (routine53736(local2,2[?]) ~= 0) {
-            verb = local4;
+        if (routine53736(i,2[?]) ~= 0) {
+            verb = k;
             rtrue;
         }
-        verb = local4;
+        verb = k;
     }
   .label161913;
-    if (local2 ~= o or nothing) {
-        if (local2 hasnt container && local2 hasnt supporter) {
-            if (local2 has animate) {
-                return routine166408(19[rod_of_stalking?],6[ne_obj?],local2);
+    if (i ~= fromobj or nothing) {
+        if (i hasnt container && i hasnt supporter) {
+            if (i has animate) {
+                return routine166408(19[rod_of_stalking?],6[ne_obj?],i);
             }
-            if (local2 has transparent) {
-                return routine166408(19[rod_of_stalking?],7[se_obj?],local2);
+            if (i has transparent) {
+                return routine166408(19[rod_of_stalking?],7[se_obj?],i);
             }
             return routine166408(19[rod_of_stalking?],8[nw_obj?]);
         }
-        if (local2 has container && local2 hasnt open) {
-            return routine166408(19[rod_of_stalking?],9[sw_obj?],local2);
+        if (i has container && i hasnt open) {
+            return routine166408(19[rod_of_stalking?],9[sw_obj?],i);
         }
-        local2 = parent(local2);
-        if (local2 == player) {
-            local2 = o;
+        i = parent(i);
+        if (i == player) {
+            i = fromobj;
         }
         jump label161913;
     }
@@ -20308,37 +20308,37 @@ Array array_29185 -->	! 29185 (0x7201)
     if (noun has static) {
         return routine166408(19[rod_of_stalking?],11[d_obj?]);
     }
-    local4 = 0;
-    local3 = child(player);
+    k = 0;
+    j = child(player);
   .label162041;
-    if (local3 ~= 0) {
-        if (local3 hasnt attrib26) {
-            ++local4;
+    if (j ~= 0) {
+        if (j hasnt attrib26) {
+            ++k;
         }
-        local3 = sibling(local3);
+        j = sibling(j);
         jump label162041;
     }
-    if (local4 >= routine53704(player,27[rod_of_returning2?])) {
+    if (k >= routine53704(player,27[rod_of_returning2?])) {
         if (79[obj79_canvas_rucksack?] ~= 0) {
             if (parent(obj79_canvas_rucksack) ~= player) {
                 return routine166408(19[rod_of_stalking?],12[obj12_outside?]);
             }
-            local3 = 0;
-            local4 = child(player);
+            j = 0;
+            k = child(player);
           .label162101;
-            if (local4 ~= 0) {
-                if (local4 ~= 79[obj79_canvas_rucksack?] && local4 hasnt attrib26 && local4 hasnt light) {
-                    local3 = local4;
+            if (k ~= 0) {
+                if (k ~= 79[obj79_canvas_rucksack?] && k hasnt attrib26 && k hasnt light) {
+                    j = k;
                 }
-                local4 = sibling(local4);
+                k = sibling(k);
                 jump label162101;
             }
-            if (local3 ~= 0) {
-                routine166408(19[rod_of_stalking?],13[obj13_inside?],local3);
+            if (j ~= 0) {
+                routine166408(19[rod_of_stalking?],13[obj13_inside?],j);
                 keep_silent = true;
-                routine55348(26[rod_of_language?],local3,79[obj79_canvas_rucksack?]);
+                routine55348(26[rod_of_language?],j,79[obj79_canvas_rucksack?]);
                 keep_silent = false;
-                if (local3 notin obj79_canvas_rucksack) {
+                if (j notin obj79_canvas_rucksack) {
                     rtrue;
                 }
             } else {
@@ -20349,14 +20349,14 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     move noun to player;
-    if (local5 ~= 0) {
-        local4 = verb;
+    if (postonobj ~= 0) {
+        k = verb;
         verb = ##Action256;
-        if (routine53736(local5,3[s_obj?]) ~= 0) {
-            verb = local4;
+        if (routine53736(postonobj,3[s_obj?]) ~= 0) {
+            verb = k;
             rtrue;
         }
-        verb = local4;
+        verb = k;
     }
     rfalse;
 ];
