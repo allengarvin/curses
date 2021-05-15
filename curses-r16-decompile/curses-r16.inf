@@ -4721,6 +4721,26 @@ Object carbolic_soap "carbolic soap"	! 502 / 0x1f6
 
 ! Constants
 
+! etype_enum
+Constant STUCK_PE = 1;
+Constant UPTO_PE = 2;
+Constant NUMBER_PE = 3;
+Constant CANTSEE_PE = 4;
+Constant TOOLIT_PE = 5;
+Constant NOTHELD_PE = 6;
+Constant MULTI_PE = 7;
+Constant MMULTI_PE = 8;
+Constant VAGUE_PE = 9;
+Constant EXCEPT_PE = 10;
+Constant ANIMA_PE = 11;
+Constant VERB_PE = 12;
+Constant SCENERY_PE = 13;
+Constant ITGONE_PE = 14;
+Constant JUNKAFTER_PE = 15;
+Constant TOOFEW_PE = 16;
+Constant NOTHING_PE = 17;
+Constant ASKSCOPE_PE = 18;
+
 ! reason_type
 Constant PARSING_REASON = 0;
 Constant TALKING_REASON = 1;
@@ -5584,7 +5604,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 special_number = 0;
                 multiple_object-->0 = 0;
                 multi_context = 0;
-                etype = 1[?];
+                etype = STUCK_PE;
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
                 advance_warning = 65535;
@@ -5660,7 +5680,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 special_word = 0;
                 special_number = 0;
                 multiple_object-->0 = 0;
-                etype = 1[?];
+                etype = STUCK_PE;
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
                 pcount = 1;
@@ -5761,7 +5781,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                         jump label44207;
                                     }
                                     global59 = pcount;
-                                    etype = 2[?];
+                                    etype = UPTO_PE;
                                     jump label44659;
                                 }
                             }
@@ -5850,7 +5870,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (etype > pcount2) {
                     pcount2 = etype;
                 }
-                if (global106 == 2[?] && etype == 17[rod_of_fire?]) {
+                if (global106 == 2[?] && etype == NOTHING_PE) {
                     ! no code
                 } else {
                     ++line;
@@ -5885,11 +5905,11 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine181248(etype) ~= 0) {
         jump label42187;
     }
-    if (etype == 1[?]) {
+    if (etype == STUCK_PE) {
         print "I didn't understand that sentence.^";
         oops_from = 1;
     }
-    if (etype == 2[?]) {
+    if (etype == UPTO_PE) {
         print "I only understood you as far as wanting to ";
         m = 0;
       .label44846;
@@ -5902,50 +5922,50 @@ Array array_29185 -->	! 29185 (0x7201)
         PrintCommand(0,1[?]);
         print ".^";
     }
-    if (etype == 3[s_obj?]) {
+    if (etype == NUMBER_PE) {
         print "I didn't understand that number.^";
     }
-    if (etype == 4[e_obj?]) {
+    if (etype == CANTSEE_PE) {
         print "You can't see any such thing.^";
         oops_from = global66;
     }
-    if (etype == 5[w_obj?]) {
+    if (etype == TOOLIT_PE) {
         print "You seem to have said too little!^";
     }
-    if (etype == 6[ne_obj?]) {
+    if (etype == NOTHELD_PE) {
         print "You aren't holding that!^";
         oops_from = global66;
     }
-    if (etype == 7[se_obj?]) {
+    if (etype == MULTI_PE) {
         print "You can't use multiple objects with that verb.^";
     }
-    if (etype == 8[nw_obj?]) {
+    if (etype == MMULTI_PE) {
         print "You can only use multiple objects once on a line.^";
     }
-    if (etype == 9[sw_obj?]) {
+    if (etype == VAGUE_PE) {
         print "I'm not sure what ~", (address) vague_word, "~ refers to.^";
     }
-    if (etype == 10[u_obj?]) {
+    if (etype == EXCEPT_PE) {
         print "You excepted something not included anyway!^";
     }
-    if (etype == 11[d_obj?]) {
+    if (etype == ANIMA_PE) {
         print "You can only do that to something animate.^";
     }
-    if (etype == 12[obj12_outside?]) {
+    if (etype == VERB_PE) {
         print "That's not a verb I recognise.^";
     }
-    if (etype == 13[obj13_inside?]) {
+    if (etype == SCENERY_PE) {
         print "That's not something you need to refer to in the course of this game.^";
     }
-    if (etype == 14[thedark?]) {
+    if (etype == ITGONE_PE) {
         print "You can't see ~", (address) vague_word, "~ (";
         Defart(vague_obj);
         print ") at the moment.^";
     }
-    if (etype == 15[yourself?]) {
+    if (etype == JUNKAFTER_PE) {
         print "I didn't understand the way that finished.^";
     }
-    if (etype == 16[obj16_lm?]) {
+    if (etype == TOOFEW_PE) {
         if (global56 == 0) {
             print "None";
         } else {
@@ -5960,14 +5980,14 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         print " available.^";
     }
-    if (etype == 17[rod_of_fire?]) {
+    if (etype == NOTHING_PE) {
         if (global55 == 100[obj100_Tiny_Balcony?]) {
             print "Nothing to do!^";
         } else {
             print "There are none at all available!^";
         }
     }
-    if (etype == 18[rod_of_returning?]) {
+    if (etype == ASKSCOPE_PE) {
         global103 = 3[s_obj?];
         generic_global = global102();
     }
@@ -6223,7 +6243,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_word = local4;
         vague_obj = itobj;
         if (itobj == nothing) {
-            etype = 9[sw_obj?];
+            etype = VAGUE_PE;
             return 0;
         }
     }
@@ -6231,7 +6251,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_word = local4;
         vague_obj = global77;
         if (global77 == 0) {
-            etype = 9[sw_obj?];
+            etype = VAGUE_PE;
             return 0;
         }
     }
@@ -6239,7 +6259,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_word = local4;
         vague_obj = global78;
         if (global78 == 0) {
-            etype = 9[sw_obj?];
+            etype = VAGUE_PE;
             return 0;
         }
     }
@@ -6269,7 +6289,7 @@ Array array_29185 -->	! 29185 (0x7201)
     } else if (local2 == 8[nw_obj?]) {
         local3 = routine53120(wn++);
         if (local3 == 64536[?]) {
-            etype = 3[s_obj?];
+            etype = NUMBER_PE;
             rfalse;
         }
         if (parser_trace >= 3) {
@@ -6389,7 +6409,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
             } else {
                 if (local2 == 6[ne_obj?] && routine46380(local3) == 0) {
-                    etype = 11[d_obj?];
+                    etype = ANIMA_PE;
                     jump label47741;
                 }
                 if (local11 == 0) {
@@ -6421,7 +6441,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (local4 ~= actor) {
                 if (notheld_mode == 1) {
                     global66 = oops_from;
-                    etype = 6[ne_obj?];
+                    etype = NOTHELD_PE;
                     jump label47741;
                 }
                 notholding = local3;
@@ -6440,7 +6460,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 print "  [Read '", (address) local4, "']^";
             }
             if (local2 < 2 || local2 >= 6) {
-                etype = 7[se_obj?];
+                etype = MULTI_PE;
                 jump label47741;
             }
             if (local4 == 30927['but'?] or 32916['except'?]) {
@@ -6468,7 +6488,7 @@ Array array_29185 -->	! 29185 (0x7201)
     } else if (indef_mode == 1[?] && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
         global56 = 1[?];
         global55 = global82;
-        etype = 16[obj16_lm?];
+        etype = TOOFEW_PE;
         jump label47741;
     }
     local1-->(parameters + 2) = local9;
@@ -6751,7 +6771,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (indef_mode == 1[?] && global81 & 8 ~= 0) {
         if (local1 < 2 || local1 > 5) {
-            etype = 7[se_obj?];
+            etype = MULTI_PE;
             return 65535[?];
         }
         local2 = 0;
@@ -6786,7 +6806,7 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label49068;
         }
         if (local2 < global82 && global82 < 100) {
-            etype = 16[obj16_lm?];
+            etype = TOOFEW_PE;
             global55 = global82;
             global56 = multiple_object-->0;
             return 65535[?];
