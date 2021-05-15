@@ -5377,7 +5377,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (j == 0) {
                 print "? ";
             } else {
-                if (routine53468(j,0-->4) >= 0 && routine53468(j,0-->2) < 0) {
+                if (UnsignedCompare(j,0-->4) >= 0 && UnsignedCompare(j,0-->2) < 0) {
                     print (address) j;
                 } else {
                     print j;
@@ -7429,7 +7429,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local5 = local1.&prop10;
     if (local5 ~= 0) {
-        if (routine53468(local5-->0,global21) > 0) {
+        if (UnsignedCompare(local5-->0,global21) > 0) {
             global104 = 2 + local3;
             routine53736(local1,10[u_obj?]);
             global104 = 0;
@@ -7787,7 +7787,7 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine53468 local1 local2 local3 local4 ;	! 53468 / 0xd0dc
+[ UnsignedCompare local1 local2 local3 local4 ;	! 53468 / 0xd0dc
     if (local1 == local2) {
         return 0;
     }
@@ -7812,10 +7812,10 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local1 >= 1 && local1 <= global21) {
         return 1[?];
     }
-    if (routine53468(local1,46697["CURSES"?]) >= 0) {
+    if (UnsignedCompare(local1,46697["CURSES"?]) >= 0) {
         return 3[s_obj?];
     }
-    if (routine53468(local1,10439[routine41756?]) >= 0) {
+    if (UnsignedCompare(local1,10439[routine41756?]) >= 0) {
         return 2[?];
     }
     return 0;
