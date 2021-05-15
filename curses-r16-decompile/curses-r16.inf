@@ -4881,7 +4881,7 @@ Global global36;
 Global global37;
 Global notheld_mode;
 Global onotheld_mode;
-Global global40;
+Global meta;
 Global global41;
 Global action;
 Global global43;
@@ -5588,10 +5588,10 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label42348;
         }
       .label43039;
-        global40 = verb_word->6 & 2 / 2;
-        if (global40 == 1[?] && actor ~= player) {
+        meta = verb_word->6 & 2 / 2;
+        if (meta == 1 && actor ~= player) {
             pcount2 = 12[obj12_outside?];
-            global40 = 0;
+            meta = 0;
         } else {
             i = 255 - verb_word->7;
             syntax = 0-->7-->i;
@@ -8047,7 +8047,7 @@ Array array_29185 -->	! 29185 (0x7201)
         array_24207-->1 = 0;
         array_24207-->2 = 0;
         array_24207-->3 = 0;
-        global40 = 0;
+        meta = 0;
         Parser(24207[?]);
         noun = nothing;
         second = nothing;
@@ -8119,7 +8119,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
             }
         } else if (local1 == 0 || global27 ~= 0) {
-            routine55012();
+            Process();
         } else {
             global37 = 1[?];
             local2 = multiple_object-->0;
@@ -8146,7 +8146,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     print ": ";
                     global27 = local4;
                     noun = local4;
-                    routine55012();
+                    Process();
                     global27 = 0;
                     noun = nothing;
                     ++local3;
@@ -8155,9 +8155,9 @@ Array array_29185 -->	! 29185 (0x7201)
             }
         }
         if (notheld_mode == 1) {
-            global40 = 1[?];
+            meta = 1;
         }
-        if (deadflag == 0 && global40 == 0) {
+        if (deadflag == 0 && meta == 0) {
             routine56744();
         }
         jump label54187;
@@ -8235,8 +8235,8 @@ Array array_29185 -->	! 29185 (0x7201)
     jump label54845;
 ];
 
-[ routine55012 ;	! 55012 / 0xd6e4
-    if (global40 == 1[?] || BeforeRoutines() == 0) {
+[ Process ;	! 55012 / 0xd6e4
+    if (meta == 1 || BeforeRoutines() == 0) {
         generic_global = (array_28893-->verb)();
     }
     rtrue;
@@ -8348,7 +8348,7 @@ Array array_29185 -->	! 29185 (0x7201)
     noun = local2;
     second = local3;
     verb = a;
-    if (global40 == 1[?] || BeforeRoutines() == 0 && verb < 256) {
+    if (meta == 1 || BeforeRoutines() == 0 && verb < 256) {
         generic_global = (array_28893-->verb)();
         selfobj = local7;
         global27 = local4;
