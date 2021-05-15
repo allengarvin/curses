@@ -8236,25 +8236,25 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine55012 ;	! 55012 / 0xd6e4
-    if (global40 == 1[?] || routine55196() == 0) {
+    if (global40 == 1[?] || BeforeRoutines() == 0) {
         generic_global = (array_28893-->verb)();
     }
     rtrue;
 ];
 
-[ routine55040 local1 local2 local3 local4 local5 local6 local7 ;	! 55040 / 0xd700
-    local6 = global72;
-    local7 = global73;
-    global72 = local1;
+[ TestScope obj act a al sr x y ;	! 55040 / 0xd700
+    x = global72;
+    y = global73;
+    global72 = obj;
     global73 = 0;
-    local3 = actor;
-    local4 = actor_location;
-    local5 = scope_reason;
+    a = actor;
+    al = actor_location;
+    sr = scope_reason;
     scope_reason = TESTSCOPE_REASON;
-    if (local2 == 0) {
+    if (act == 0) {
         actor = player;
     } else {
-        actor = local2;
+        actor = act;
     }
     actor_location = actor;
   .label55082;
@@ -8263,25 +8263,25 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label55082;
     }
     routine51412(location,player,0);
-    scope_reason = local5;
-    actor = local3;
-    actor_location = local4;
-    global72 = local6;
-    local6 = global73;
-    global73 = local7;
-    return local6;
+    scope_reason = sr;
+    actor = a;
+    actor_location = al;
+    global72 = x;
+    x = global73;
+    global73 = y;
+    return x;
 ];
 
-[ routine55124 local1 local2 local3 local4 local5 local6 ;	! 55124 / 0xd754
-    local3 = global72;
-    local4 = scope_reason;
-    local5 = actor;
-    local6 = actor_location;
-    global72 = local1;
-    if (local2 == 0) {
+[ LoopOverScope routine act x y a al ;	! 55124 / 0xd754
+    x = global72;
+    y = scope_reason;
+    a = actor;
+    al = actor_location;
+    global72 = routine;
+    if (act == 0) {
         actor = player;
     } else {
-        actor = local2;
+        actor = act;
     }
     actor_location = actor;
   .label55157;
@@ -8291,14 +8291,14 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     scope_reason = LOOPOVERSCOPE_REASON;
     routine51412(actor_location,actor,0);
-    global72 = local3;
-    scope_reason = local4;
-    actor = local5;
-    actor_location = local6;
+    global72 = x;
+    scope_reason = y;
+    actor = a;
+    actor_location = al;
     rtrue;
 ];
 
-[ routine55196 ;	! 55196 / 0xd79c
+[ BeforeRoutines ;	! 55196 / 0xd79c
     if (routine172644() ~= 0) {
         rtrue;
     }
@@ -8348,7 +8348,7 @@ Array array_29185 -->	! 29185 (0x7201)
     noun = local2;
     second = local3;
     verb = a;
-    if (global40 == 1[?] || routine55196() == 0 && verb < 256) {
+    if (global40 == 1[?] || BeforeRoutines() == 0 && verb < 256) {
         generic_global = (array_28893-->verb)();
         selfobj = local7;
         global27 = local4;
