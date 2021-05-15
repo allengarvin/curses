@@ -19296,7 +19296,7 @@ Array array_29185 -->	! 29185 (0x7201)
     return o1;
 ];
 
-[ IsSeeThrough o ;	! 157960 / 0x26908
+[ WillRecurse o ;	! 157960 / 0x26908
     if (c_style & 32 ~= 0) {
         rtrue;
     }
@@ -19310,10 +19310,10 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine158004 local1 local2 ;	! 158004 / 0x26934
-    if (child(local1) ~= nothing && IsSeeThrough(local1) ~= 0) {
+    if (child(local1) ~= nothing && WillRecurse(local1) ~= 0) {
         rfalse;
     }
-    if (child(local2) ~= nothing && IsSeeThrough(local2) ~= 0) {
+    if (child(local2) ~= nothing && WillRecurse(local2) ~= 0) {
         rfalse;
     }
     if (c_style & (4 + 128) ~= 0) {
