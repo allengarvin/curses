@@ -4913,8 +4913,8 @@ Global global68;
 Global global69;
 Global global70;
 Global global71;
-Global global72;
-Global global73;
+Global parser_one;
+Global parser_two;
 Global vague_word;
 Global vague_obj;
 Global itobj;
@@ -7119,8 +7119,8 @@ Array array_29185 -->	! 29185 (0x7201)
             rfalse;
         }
         global71 = 260[obj260_Greek_frieze?];
-        global72 = local1;
-        global73 = local2;
+        parser_one = local1;
+        parser_two = local2;
         local8 = wn;
         local7 = routine53736(local1,29[rod_of_death?]);
         wn = local8;
@@ -7372,11 +7372,11 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine51556 local1 local2 local3 ;	! 51556 / 0xc964
     local2 = scope_reason;
-    local3 = global72;
+    local3 = parser_one;
     if (parser_trace >= 5) {
         print "[DSA on ";
         Defart(local1);
-        print " with reason = ", scope_reason, " p1 = ", global72, " p2 = ", global73, "]^";
+        print " with reason = ", scope_reason, " p1 = ", parser_one, " p2 = ", parser_two, "]^";
     }
     generic_global = scope_reason;
     if (generic_global == 3[s_obj?]) {
@@ -7388,8 +7388,8 @@ Array array_29185 -->	! 29185 (0x7201)
             Defart(local1);
             print "]^";
         }
-        if (global72 == 0) {
-            global72 = routine53736(local1,9[sw_obj?]);
+        if (parser_one == 0) {
+            parser_one = routine53736(local1,9[sw_obj?]);
         }
     } else if (generic_global == 4[e_obj?]) {
         if (local1.nw_to == nothing or NULL) {
@@ -7400,8 +7400,8 @@ Array array_29185 -->	! 29185 (0x7201)
             Defart(local1);
             print "]^";
         }
-        if (global72 == 0) {
-            global72 = routine53736(local1,11[d_obj?]);
+        if (parser_one == 0) {
+            parser_one = routine53736(local1,11[d_obj?]);
         }
     } else if (generic_global == 2[?]) {
         if (local1.&each_turn == 0) {
@@ -7414,12 +7414,12 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         PrintOrRun(local1,26[rod_of_language?]);
     } else if (generic_global == 6[ne_obj?]) {
-        if (local1 == global72) {
-            global73 = 1[?];
+        if (local1 == parser_one) {
+            parser_two = 1[?];
         }
     } else if (generic_global == 5[w_obj?]) {
-        generic_global = global72(local1);
-        global72 = local3;
+        generic_global = parser_one(local1);
+        parser_one = local3;
     }
     scope_reason = local2;
     rtrue;
@@ -8243,10 +8243,10 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ TestScope obj act a al sr x y ;	! 55040 / 0xd700
-    x = global72;
-    y = global73;
-    global72 = obj;
-    global73 = 0;
+    x = parser_one;
+    y = parser_two;
+    parser_one = obj;
+    parser_two = 0;
     a = actor;
     al = actor_location;
     sr = scope_reason;
@@ -8266,18 +8266,18 @@ Array array_29185 -->	! 29185 (0x7201)
     scope_reason = sr;
     actor = a;
     actor_location = al;
-    global72 = x;
-    x = global73;
-    global73 = y;
+    parser_one = x;
+    x = parser_two;
+    parser_two = y;
     return x;
 ];
 
 [ LoopOverScope routine act x y a al ;	! 55124 / 0xd754
-    x = global72;
+    x = parser_one;
     y = scope_reason;
     a = actor;
     al = actor_location;
-    global72 = routine;
+    parser_one = routine;
     if (act == 0) {
         actor = player;
     } else {
@@ -8291,7 +8291,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     scope_reason = LOOPOVERSCOPE_REASON;
     routine51412(actor_location,actor,0);
-    global72 = x;
+    parser_one = x;
     scope_reason = y;
     actor = a;
     actor_location = al;
@@ -8309,10 +8309,10 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     scope_reason = REACT_BEFORE_REASON;
-    global72 = 0;
+    parser_one = 0;
     routine51412(location,player,0);
     scope_reason = PARSING_REASON;
-    if (global72 ~= 0) {
+    if (parser_one ~= 0) {
         rtrue;
     }
     if (global27 > 1 && routine53736(global27,2[?]) ~= 0) {
@@ -8323,10 +8323,10 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ AfterRoutines ;	! 55280 / 0xd7f0
     scope_reason = REACT_AFTER_REASON;
-    global72 = 0;
+    parser_one = 0;
     routine51412(location,player,0);
     scope_reason = PARSING_REASON;
-    if (global72 ~= 0) {
+    if (parser_one ~= 0) {
         rtrue;
     }
     if (location ~= nothing && routine53736(location,3[s_obj?]) ~= 0) {
@@ -9126,7 +9126,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine58728 local1 local2 ;	! 58728 / 0xe568
     if (global71 == 260[obj260_Greek_frieze?]) {
-        if (global72 has attrib34 && global73 has attrib34) {
+        if (parser_one has attrib34 && parser_two has attrib34) {
             return 65535[?];
         }
         return 65534[?];
@@ -19670,8 +19670,8 @@ Array array_29185 -->	! 29185 (0x7201)
                             q = c_style;
                             if (k2 ~= 3[s_obj?]) {
                                 global115 = 1[?];
-                                global72 = j;
-                                global73 = depth + global120;
+                                parser_one = j;
+                                parser_two = depth + global120;
                                 if (routine53736(j,12[obj12_outside?]) == 1[?]) {
                                     jump label159226;
                                 }
@@ -19689,8 +19689,8 @@ Array array_29185 -->	! 29185 (0x7201)
                                 }
                             } else {
                                 global115 = 2[?];
-                                global72 = j;
-                                global73 = depth + global120;
+                                parser_one = j;
+                                parser_two = depth + global120;
                                 routine53736(j,12[obj12_outside?]);
                             }
                           .label159226;
@@ -19799,8 +19799,8 @@ Array array_29185 -->	! 29185 (0x7201)
                     q = c_style;
                     if (k ~= 3[s_obj?]) {
                         global115 = 1[?];
-                        global72 = j;
-                        global73 = depth + global120;
+                        parser_one = j;
+                        parser_two = depth + global120;
                         if (routine53736(j,12[obj12_outside?]) == 1[?]) {
                             jump label159760;
                         }
@@ -19818,8 +19818,8 @@ Array array_29185 -->	! 29185 (0x7201)
                         }
                     } else {
                         global115 = 2[?];
-                        global72 = j;
-                        global73 = depth + global120;
+                        parser_one = j;
+                        parser_two = depth + global120;
                         routine53736(j,12[obj12_outside?]);
                     }
                   .label159760;
