@@ -21634,41 +21634,41 @@ Array array_29185 -->	! 29185 (0x7201)
     if (n == 0) {
         n = 1;
     }
-    routine166436(n,x1);
+    L___M(n,x1);
     action = s;
     rtrue;
 ];
 
-[ routine166436 local1 local2 local3 ;	! 166436 / 0x28a24
-    local3 = verb;
-    global48 = local1;
-    global49 = local2;
+[ L___M n x1 s ;	! 166436 / 0x28a24
+    s = verb;
+    global48 = n;
+    global49 = x1;
     verb = action;
     if (routine53736(16[obj16_lm?],2[?]) ~= 0) {
-        verb = local3;
+        verb = s;
         rfalse;
     }
-    verb = local3;
+    verb = s;
     if (action == ##Action263) {
         print "^>";
         rtrue;
     }
     if (action == ##Action262) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "(considering the first sixteen objects only)^";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "Nothing to do!";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print " You have died ";
             rtrue;
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             print " You have won ";
             rtrue;
         }
-        if (local1 == 5[w_obj?]) {
+        if (n == 5) {
             print "^Would you like to RESTART, RESTORE a saved game";
             if (0 == 0) {
                 print ", give the FULL score for that game";
@@ -21678,47 +21678,47 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             " or QUIT?";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (n == 6) {
             "[Your interpreter does not provide ~undo~. Sorry!]";
         }
-        if (local1 == 7[se_obj?]) {
+        if (n == 7) {
             "~Undo~ failed. [Not all interpreters provide it.]";
         }
-        if (local1 == 8[nw_obj?]) {
+        if (n == 8) {
             "Please give one of the answers above.";
         }
-        if (local1 == 9[sw_obj?]) {
+        if (n == 9) {
             "^It is now pitch dark in here!";
         }
-        if (local1 == 10[u_obj?]) {
+        if (n == 10) {
             "I beg your pardon?";
         }
-        if (local1 == 11[d_obj?]) {
+        if (n == 11) {
             "[You can't ~undo~ what hasn't been done!]";
         }
-        if (local1 == 12[obj12_outside?]) {
+        if (n == 12) {
             "[Can't ~undo~ twice in succession. Sorry!]";
         }
-        if (local1 == 13[obj13_inside?]) {
+        if (n == 13) {
             "[Previous turn undone.]";
         }
-        if (local1 == 14[thedark?]) {
+        if (n == 14) {
             "Sorry, that can't be corrected.";
         }
-        if (local1 == 15[yourself?]) {
+        if (n == 15) {
             "Think nothing of it.";
         }
-        if (local1 == 16[obj16_lm?]) {
+        if (n == 16) {
             "~Oops~ can only correct a single word.";
         }
         rfalse;
     }
     if (action == ##Action259) {
-        CDefart(local2);
+        CDefart(x1);
         " has better things to do.";
     }
     if (action == ##Quit) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "Please answer yes or no.";
             rtrue;
         }
@@ -21726,38 +21726,38 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (action == ##Restart) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "Are you sure you want to restart? ";
             rtrue;
         }
         "Failed.";
     }
     if (action == ##Restore) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Restore failed.";
         }
         "Ok.";
     }
     if (action == ##Save) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Save failed.";
         }
         "Ok.";
     }
     if (action == ##Verify) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "The game file has verified as intact.";
         }
         "The game file did not verify properly, and may be corrupted (or you may be running it on a very primitive interpreter which is unable properly to perform the test).";
     }
     if (action == ##ScriptOn) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Transcripting is already on.";
         }
         "Start of a transcript of";
     }
     if (action == ##ScriptOff) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Transcripting is already off.";
         }
         "^End of transcript.";
@@ -21773,7 +21773,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (action == ##Objects) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Objects you have handled:^";
         }
         "None.";
@@ -21791,7 +21791,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (action == ##FullScore) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             if (deadflag == 0) {
                 print "The score is ";
             } else {
@@ -21799,297 +21799,297 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             "made up as follows:^";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "finding sundry items";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             "visiting various places";
         }
         "total (out of ", 550, ")";
     }
     if (action == ##Inv) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "You are carrying nothing.";
         }
         print "You are carrying";
         rtrue;
     }
     if (action == ##Take) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Taken.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "You are always self-possessed.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print "I don't suppose ";
-            Defart(local2);
+            Defart(x1);
             " would care for that.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             print "You'd have to get ";
-            if (local2 has supporter) {
+            if (x1 has supporter) {
                 print "off ";
             } else {
                 print "out of ";
             }
-            Defart(local2);
+            Defart(x1);
             " first.";
         }
-        if (local1 == 5[w_obj?]) {
+        if (n == 5) {
             "You already have that.";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (n == 6) {
             print "That seems to belong to ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 7[se_obj?]) {
+        if (n == 7) {
             print "That seems to be a part of ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 8[nw_obj?]) {
+        if (n == 8) {
             "That isn't available.";
         }
-        if (local1 == 9[sw_obj?]) {
-            CDefart(local2);
+        if (n == 9) {
+            CDefart(x1);
             " is not open.";
         }
-        if (local1 == 10[u_obj?]) {
+        if (n == 10) {
             "That's hardly portable.";
         }
-        if (local1 == 11[d_obj?]) {
+        if (n == 11) {
             "That's fixed in place.";
         }
-        if (local1 == 12[obj12_outside?]) {
+        if (n == 12) {
             "You're carrying too many things already.";
         }
         print "(putting ";
-        Defart(local2);
+        Defart(x1);
         print " into ";
         Defart(obj79_canvas_rucksack);
         " to make room)";
     }
     if (action == ##Drop) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Already on the floor.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "You haven't got that.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print "(first taking ";
-            Defart(local2);
+            Defart(x1);
             " off)";
         }
         "Dropped.";
     }
     if (action == ##Remove) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "It is unfortunately closed.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "But it isn't there now.";
         }
         "Removed.";
     }
     if (action == ##PutOn) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "You need to be holding ";
-            Defart(local2);
+            Defart(x1);
             " before you can put it on top of something else.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "You can't put something on top of itself.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print "Putting things on ";
-            Defart(local2);
+            Defart(x1);
             " would achieve nothing.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             "You lack the dexterity.";
         }
-        if (local1 == 5[w_obj?]) {
+        if (n == 5) {
             "(first taking it off)^";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (n == 6) {
             print "There is no more room on ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 7[se_obj?]) {
+        if (n == 7) {
             "Done.";
         }
         print "You put ";
-        Defart(local2);
+        Defart(x1);
         print " on ";
         Defart(second);
         ".";
     }
     if (action == ##Insert) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "You need to be holding it before you can put it into something else.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "That can't contain things.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             "Alas, it is closed.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             "You'll need to take it off first.";
         }
-        if (local1 == 5[w_obj?]) {
+        if (n == 5) {
             "You can't put something inside itself.";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (n == 6) {
             "(first taking it off)^";
         }
-        if (local1 == 7[se_obj?]) {
+        if (n == 7) {
             print "There is no more room in ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 8[nw_obj?]) {
+        if (n == 8) {
             "Done.";
         }
         print "You put ";
-        Defart(local2);
+        Defart(x1);
         print " into ";
         Defart(second);
         ".";
     }
     if (action == ##Transfer) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That isn't in your possession.";
         }
         "First pick that up.";
     }
     if (action == ##EmptyT) {
-        if (local1 == 1[?]) {
-            CDefart(local2);
+        if (n == 1) {
+            CDefart(x1);
             " can't contain things.";
         }
-        if (local1 == 2[?]) {
-            CDefart(local2);
+        if (n == 2) {
+            CDefart(x1);
             " is closed.";
         }
-        CDefart(local2);
+        CDefart(x1);
         " is empty already.";
     }
     if (action == ##Give) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "You aren't holding ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             print "You juggle ";
-            Defart(local2);
+            Defart(x1);
             " for a while, but don't achieve much.";
         }
-        CDefart(local2);
+        CDefart(x1);
         " doesn't seem interested.";
     }
     if (action == ##Show) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "You aren't holding ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        CDefart(local2);
+        CDefart(x1);
         " is unimpressed.";
     }
     if (action == ##Enter) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "But you're already ";
-            if (local2 has supporter) {
+            if (x1 has supporter) {
                 print "on ";
             } else {
                 print "in ";
             }
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "That's not something you can enter.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print "You can't get into the closed ";
-            PSN__(local2);
+            PSN__(x1);
             ".";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             "You can only get into something on the floor.";
         }
         print "You get ";
-        if (local2 has supporter) {
+        if (x1 has supporter) {
             print "onto ";
         } else {
             print "into ";
         }
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##TakeOff) {
         print "But you aren't on ";
-        Defart(local2);
+        Defart(x1);
         " at the moment.";
     }
     if (action == ##Exit) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "But you aren't in anything at the moment.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             print "You can't get out of the closed ";
-            PSN__(local2);
+            PSN__(x1);
             ".";
         }
         print "You get ";
-        if (local2 has supporter) {
+        if (x1 has supporter) {
             print "off ";
         } else {
             print "out of ";
         }
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##VagueGo) {
         "You'll have to say which compass direction to go in.";
     }
     if (action == ##Go) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "You'll have to get ";
-            if (local2 has supporter) {
+            if (x1 has supporter) {
                 print "off ";
             } else {
                 print "out of ";
             }
-            Defart(local2);
+            Defart(x1);
             " first.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "You can't go that way.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print "You are unable to climb ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             print "You are unable to descend ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 5[w_obj?]) {
+        if (n == 5) {
             print "You can't, since ";
-            Defart(local2);
+            Defart(x1);
             " is in the way.";
         }
         print "You can't, since ";
-        Defart(local2);
+        Defart(x1);
         " leads nowhere.";
     }
     if (action == ##Brief) {
@@ -22102,58 +22102,58 @@ Array array_29185 -->	! 29185 (0x7201)
         " is now in its ~superbrief~ mode, which always gives short descriptions of locations (even if you haven't been there before).";
     }
     if (action == ##Look) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             print "on";
             rfalse;
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             print "in";
             rfalse;
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print "as";
             rfalse;
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             print "^On ";
-            Defart(local2);
-            WriteListFrom(child(local2),8 + 16 + 128 + 64 + 1024 + 2048);
+            Defart(x1);
+            WriteListFrom(child(x1),8 + 16 + 128 + 64 + 1024 + 2048);
             ".";
         }
-        if (local2 ~= location) {
-            if (local2 has supporter) {
+        if (x1 ~= location) {
+            if (x1 has supporter) {
                 print "^On ";
             } else {
                 print "^In ";
             }
-            Defart(local2);
+            Defart(x1);
             print " you";
         } else {
             print "^You";
         }
         print " can ";
-        if (local1 == 5[w_obj?]) {
+        if (n == 5) {
             print "also ";
         }
         print "see ";
-        WriteListFrom(child(local2),8 + 512 + 16 + 128 + 64 + 2048);
-        if (local2 ~= location) {
+        WriteListFrom(child(x1),8 + 512 + 16 + 128 + 64 + 2048);
+        if (x1 ~= location) {
             ".";
         }
         " here.";
     }
     if (action == ##Read) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Darkness, noun. An absence of light to see by.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             print "You see nothing special about ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        CDefart(local2);
+        CDefart(x1);
         print " is currently switched ";
-        if (local2 has on) {
+        if (x1 has on) {
             "on.";
         } else {
             "off.";
@@ -22161,156 +22161,156 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##LookUnder) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "But it's dark.";
         }
         "You find nothing of interest.";
     }
     if (action == ##Search) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "But it's dark.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             print "There is nothing on ";
-            Defart(local2);
+            Defart(x1);
             ".";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             print "On ";
-            Defart(local2);
-            WriteListFrom(child(local2),64 + 8 + 1024 + 2048);
+            Defart(x1);
+            WriteListFrom(child(x1),64 + 8 + 1024 + 2048);
             ".";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             "You find nothing of interest.";
         }
-        if (local1 == 5[w_obj?]) {
+        if (n == 5) {
             "You can't see inside, since it is closed.";
         }
-        if (local1 == 6[ne_obj?]) {
-            CDefart(local2);
+        if (n == 6) {
+            CDefart(x1);
             " is empty.";
         }
         print "In ";
-        Defart(local2);
-        WriteListFrom(child(local2),64 + 8 + 1024 + 2048);
+        Defart(x1);
+        WriteListFrom(child(x1),64 + 8 + 1024 + 2048);
         ".";
     }
     if (action == ##Unlock) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That doesn't seem to be something you can unlock.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "It's unlocked at the moment.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             "That doesn't seem to fit the lock.";
         }
         print "You unlock ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##Lock) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That doesn't seem to be something you can lock.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "It's locked at the moment.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             "First you'll have to close it.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             "That doesn't seem to fit the lock.";
         }
         print "You lock ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##SwitchOn) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That's not something you can switch.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "That's already on.";
         }
         print "You switch ";
-        Defart(local2);
+        Defart(x1);
         " on.";
     }
     if (action == ##SwitchOff) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That's not something you can switch.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "That's already off.";
         }
         print "You switch ";
-        Defart(local2);
+        Defart(x1);
         " off.";
     }
     if (action == ##Open) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That's not something you can open.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "It seems to be locked.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             "It's already open.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             print "You open ";
-            Defart(local2);
+            Defart(x1);
             print ", revealing ";
-            if (WriteListFrom(child(local2),8 + 64 + 2048) == 0) {
+            if (WriteListFrom(child(x1),8 + 64 + 2048) == 0) {
                 "nothing.";
             }
             ".";
         }
         print "You open ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##Close) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That's not something you can close.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "It's already closed.";
         }
         print "You close ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##Disrobe) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "You're not wearing that.";
         }
         print "You take off ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##Wear) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "You can't wear that!";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "You're not holding that!";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             "You're already wearing that!";
         }
         print "You put on ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##Eat) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "That's plainly inedible.";
         }
         print "You eat ";
-        Defart(local2);
+        Defart(x1);
         ". Not bad.";
     }
     if (action == ##Yes or ##No) {
@@ -22344,10 +22344,10 @@ Array array_29185 -->	! 29185 (0x7201)
         "You taste nothing unexpected.";
     }
     if (action == ##Touch) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Keep your hands to yourself!";
         }
-        if (local1 == 3[s_obj?]) {
+        if (n == 3) {
             "If you think that'll help.";
         }
         "You feel nothing unexpected.";
@@ -22404,48 +22404,48 @@ Array array_29185 -->	! 29185 (0x7201)
         "You wave, feeling foolish.";
     }
     if (action == ##Wave) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "But you aren't holding that.";
         }
         print "You look ridiculous waving ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     if (action == ##Pull or ##Push or ##Turn) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "It is fixed in place.";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "You are unable to.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (n == 4) {
             "That would be less than courteous.";
         }
         "Nothing obvious happens.";
     }
     if (action == ##PushDir) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Is that the best you can think of?";
         }
-        if (local1 == 2[?]) {
+        if (n == 2) {
             "That's not a direction.";
         }
         "Not that way you can't.";
     }
     if (action == ##Squeeze) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Keep your hands to yourself.";
         }
         "You achieve nothing by this.";
     }
     if (action == ##ThrowAt) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "Futile.";
         }
         "You lack the nerve when it comes to the crucial moment.";
     }
     if (action == ##Tell) {
-        if (local1 == 1[?]) {
+        if (n == 1) {
             "You talk to yourself a while.";
         }
         "This provokes no reaction.";
@@ -22470,7 +22470,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (action == ##Consult) {
         print "You discover nothing of interest in ";
-        Defart(local2);
+        Defart(x1);
         ".";
     }
     rtrue;
