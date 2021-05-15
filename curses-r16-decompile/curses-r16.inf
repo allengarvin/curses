@@ -5425,7 +5425,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label42337;
     token_was = 0;
     scope_token = 0;
-    action_to_be = 65535[?];
+    action_to_be = ##Action65535;
   .label42348;
     wn = verb_wordnum;
     verb_word = routine53056();
@@ -5670,7 +5670,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     jump label43315;
                 }
                 global106 = 0;
-                if (m == 1[?] && params_wanted == 1[?] && action_to_be == 19[rod_of_stalking?]) {
+                if (m == 1[?] && params_wanted == 1[?] && action_to_be == ##Take) {
                     global106 = 1[?];
                 }
                 notholding = 0;
@@ -5839,7 +5839,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             }
                             rtrue;
                         }
-                        if (token == 6 && action_to_be == 68[obj68_water_pipe?] or 70[obj70_book_of_Twenties_poetry?] or 71[obj71_Souvenirs_Room?] or 69[obj69_romantic_novel?]) {
+                        if (token == 6 && action_to_be == ##Answer or ##Ask or ##AskFor or ##Tell) {
                             scope_reason = TALKING_REASON;
                         }
                         l = ParseObjectList(results,token);
@@ -6223,7 +6223,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (obj hasnt talkable) {
         rfalse;
     }
-    if (action_to_be == 70[obj70_book_of_Twenties_poetry?] or 68[obj68_water_pipe?] or 69[obj69_romantic_novel?] or 71[obj71_Souvenirs_Room?]) {
+    if (action_to_be == ##Ask or ##Answer or ##Tell or ##AskFor) {
         rtrue;
     }
     rfalse;
@@ -6985,7 +6985,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local6 = 30[rod_of_love?];
     local7 = 20[rod_of_infinity?];
-    if (action_to_be == 19[rod_of_stalking?] or 20[rod_of_infinity?]) {
+    if (action_to_be == ##Take or ##Remove) {
         local6 = 20[rod_of_infinity?];
         local7 = 30[rod_of_love?];
     }
@@ -22944,7 +22944,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local2 < 2) {
         rfalse;
     }
-    if (action_to_be == 118[obj118_dumbwaiter?] && local1 has attrib28) {
+    if (action_to_be == ##Strike && local1 has attrib28) {
         return 2[?];
     }
     return 1[?];
@@ -23685,13 +23685,13 @@ Array array_29185 -->	! 29185 (0x7201)
     global43 = wn;
   .label181080;
     local1 = routine53056();
-    if (local1 ~= 65535[?] && (local1 ~= 40503['to'?] || action_to_be ~= 68[obj68_water_pipe?])) jump label181080;
+    if (local1 ~= 65535[?] && (local1 ~= 40503['to'?] || action_to_be ~= ##Answer)) jump label181080;
     --wn;
     global44 = wn - global43;
     if (global44 == 0) {
         return 65535[?];
     }
-    if (action_to_be == 70[obj70_book_of_Twenties_poetry?] or 68[obj68_water_pipe?] or 69[obj69_romantic_novel?]) {
+    if (action_to_be == ##Ask or ##Answer or ##Tell) {
         local1 = wn;
         wn = global43;
         global36 = routine52976();
