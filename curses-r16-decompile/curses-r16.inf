@@ -4879,12 +4879,12 @@ Global verb_wordnum;
 Global global54;
 Global global55;
 Global global56;
-Global global57;
+Global multi_context;
 Global pcount;
 Global global59;
 Global parameters;
 Global params_wanted;
-Global multi_context;
+Global nsns;
 Global interfrom;
 Global global64;
 Global oops_from;
@@ -4913,7 +4913,7 @@ Global global87;
 Global held_back_mode;
 Global global89;
 Global pcount2;
-Global global91;
+Global etype;
 Global global92;
 Global global93;
 Global token_was;
@@ -5579,12 +5579,12 @@ Array array_29185 -->	! 29185 (0x7201)
                 interfrom = 0;
                 parameters = 0;
                 params_wanted = line_address->0;
-                multi_context = 0;
+                nsns = 0;
                 special_word = 0;
                 special_number = 0;
                 multiple_object-->0 = 0;
-                global57 = 0;
-                global91 = 1[?];
+                multi_context = 0;
+                etype = 1[?];
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
                 global95 = 65535[?];
@@ -5628,7 +5628,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                             print "but multiple found]^";
                                         }
                                         if (l == 0) {
-                                            print "hit error ", global91, "]^";
+                                            print "hit error ", etype, "]^";
                                         }
                                     }
                                     if (l == 10000[?]) {
@@ -5656,11 +5656,11 @@ Array array_29185 -->	! 29185 (0x7201)
                 notholding = 0;
                 interfrom = 0;
                 parameters = 0;
-                multi_context = 0;
+                nsns = 0;
                 special_word = 0;
                 special_number = 0;
                 multiple_object-->0 = 0;
-                global91 = 1[?];
+                etype = 1[?];
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
                 pcount = 1;
@@ -5761,21 +5761,21 @@ Array array_29185 -->	! 29185 (0x7201)
                                         jump label44207;
                                     }
                                     global59 = pcount;
-                                    global91 = 2[?];
+                                    etype = 2[?];
                                     jump label44659;
                                 }
                             }
                             if (parameters >= 1 && results-->2 == 0) {
                                 l = routine49704(results-->3);
                                 if (l ~= 0) {
-                                    global91 = l;
+                                    etype = l;
                                     jump label44659;
                                 }
                             }
                             if (parameters >= 2 && results-->3 == 0) {
                                 l = routine49704(results-->2);
                                 if (l ~= 0) {
-                                    global91 = l;
+                                    etype = l;
                                     jump label44659;
                                 }
                             }
@@ -5830,7 +5830,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                 print " re-parse request]^";
                             }
                             if (l == 0) {
-                                print " token failed, error type ", global91, "]^";
+                                print " token failed, error type ", etype, "]^";
                             }
                             if (l == 1[?]) {
                                 print " token accepted]^";
@@ -5847,10 +5847,10 @@ Array array_29185 -->	! 29185 (0x7201)
                     jump label43635;
                 }
               .label44659;
-                if (global91 > pcount2) {
-                    pcount2 = global91;
+                if (etype > pcount2) {
+                    pcount2 = etype;
                 }
-                if (global106 == 2[?] && global91 == 17[rod_of_fire?]) {
+                if (global106 == 2[?] && etype == 17[rod_of_fire?]) {
                     ! no code
                 } else {
                     ++line;
@@ -5860,7 +5860,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
   .label44685;
-    global91 = pcount2;
+    etype = pcount2;
     if (actor ~= player) {
         if (usual_grammar_after > 0) {
             verb_wordnum = usual_grammar_after;
@@ -5882,14 +5882,14 @@ Array array_29185 -->	! 29185 (0x7201)
         global44 = num_words - global43 + 1;
         rtrue;
     }
-    if (routine181248(global91) ~= 0) {
+    if (routine181248(etype) ~= 0) {
         jump label42187;
     }
-    if (global91 == 1[?]) {
+    if (etype == 1[?]) {
         print "I didn't understand that sentence.^";
         oops_from = 1;
     }
-    if (global91 == 2[?]) {
+    if (etype == 2[?]) {
         print "I only understood you as far as wanting to ";
         m = 0;
       .label44846;
@@ -5902,50 +5902,50 @@ Array array_29185 -->	! 29185 (0x7201)
         PrintCommand(0,1[?]);
         print ".^";
     }
-    if (global91 == 3[s_obj?]) {
+    if (etype == 3[s_obj?]) {
         print "I didn't understand that number.^";
     }
-    if (global91 == 4[e_obj?]) {
+    if (etype == 4[e_obj?]) {
         print "You can't see any such thing.^";
         oops_from = global66;
     }
-    if (global91 == 5[w_obj?]) {
+    if (etype == 5[w_obj?]) {
         print "You seem to have said too little!^";
     }
-    if (global91 == 6[ne_obj?]) {
+    if (etype == 6[ne_obj?]) {
         print "You aren't holding that!^";
         oops_from = global66;
     }
-    if (global91 == 7[se_obj?]) {
+    if (etype == 7[se_obj?]) {
         print "You can't use multiple objects with that verb.^";
     }
-    if (global91 == 8[nw_obj?]) {
+    if (etype == 8[nw_obj?]) {
         print "You can only use multiple objects once on a line.^";
     }
-    if (global91 == 9[sw_obj?]) {
+    if (etype == 9[sw_obj?]) {
         print "I'm not sure what ~", (address) vague_word, "~ refers to.^";
     }
-    if (global91 == 10[u_obj?]) {
+    if (etype == 10[u_obj?]) {
         print "You excepted something not included anyway!^";
     }
-    if (global91 == 11[d_obj?]) {
+    if (etype == 11[d_obj?]) {
         print "You can only do that to something animate.^";
     }
-    if (global91 == 12[obj12_outside?]) {
+    if (etype == 12[obj12_outside?]) {
         print "That's not a verb I recognise.^";
     }
-    if (global91 == 13[obj13_inside?]) {
+    if (etype == 13[obj13_inside?]) {
         print "That's not something you need to refer to in the course of this game.^";
     }
-    if (global91 == 14[thedark?]) {
+    if (etype == 14[thedark?]) {
         print "You can't see ~", (address) vague_word, "~ (";
         Defart(vague_obj);
         print ") at the moment.^";
     }
-    if (global91 == 15[yourself?]) {
+    if (etype == 15[yourself?]) {
         print "I didn't understand the way that finished.^";
     }
-    if (global91 == 16[obj16_lm?]) {
+    if (etype == 16[obj16_lm?]) {
         if (global56 == 0) {
             print "None";
         } else {
@@ -5960,14 +5960,14 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         print " available.^";
     }
-    if (global91 == 17[rod_of_fire?]) {
+    if (etype == 17[rod_of_fire?]) {
         if (global55 == 100[obj100_Tiny_Balcony?]) {
             print "Nothing to do!^";
         } else {
             print "There are none at all available!^";
         }
     }
-    if (global91 == 18[rod_of_returning?]) {
+    if (etype == 18[rod_of_returning?]) {
         global103 = 3[s_obj?];
         generic_global = global102();
     }
@@ -6223,7 +6223,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_word = local4;
         vague_obj = itobj;
         if (itobj == nothing) {
-            global91 = 9[sw_obj?];
+            etype = 9[sw_obj?];
             return 0;
         }
     }
@@ -6231,7 +6231,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_word = local4;
         vague_obj = global77;
         if (global77 == 0) {
-            global91 = 9[sw_obj?];
+            etype = 9[sw_obj?];
             return 0;
         }
     }
@@ -6239,7 +6239,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_word = local4;
         vague_obj = global78;
         if (global78 == 0) {
-            global91 = 9[sw_obj?];
+            etype = 9[sw_obj?];
             return 0;
         }
     }
@@ -6250,13 +6250,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local2 == 7[se_obj?]) {
         local3 = routine53120(wn);
         if (local3 ~= 64536[?]) {
-            if (multi_context == 0) {
+            if (nsns == 0) {
                 global29 = local3;
             } else {
                 global30 = local3;
             }
             special_number = local3;
-            ++multi_context;
+            ++nsns;
             if (parser_trace >= 3) {
                 print "  [Read special as the number ", local3, "]^";
             }
@@ -6269,13 +6269,13 @@ Array array_29185 -->	! 29185 (0x7201)
     } else if (local2 == 8[nw_obj?]) {
         local3 = routine53120(wn++);
         if (local3 == 64536[?]) {
-            global91 = 3[s_obj?];
+            etype = 3[s_obj?];
             rfalse;
         }
         if (parser_trace >= 3) {
             print "  [Read number as ", local3, "]^";
         }
-        if (multi_context++ == 0) {
+        if (nsns++ == 0) {
             global29 = local3;
         } else {
             global30 = local3;
@@ -6294,12 +6294,12 @@ Array array_29185 -->	! 29185 (0x7201)
             rtrue;
         }
         if (local3 == 1[?]) {
-            if (multi_context == 0) {
+            if (nsns == 0) {
                 global29 = global36;
             } else {
                 global30 = global36;
             }
-            ++multi_context;
+            ++nsns;
         }
         if (local3 == 10000[?]) {
             return local3;
@@ -6329,7 +6329,7 @@ Array array_29185 -->	! 29185 (0x7201)
       .label46968;
         local3 = routine46072(local2);
         if (local3 ~= 0) {
-            global91 = local3;
+            etype = local3;
             return 0;
         }
         oops_from = wn;
@@ -6343,7 +6343,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 return local3;
             }
             if (local3 == 0) {
-                global91 = routine51088();
+                etype = routine51088();
                 jump label47741;
             }
             if (parser_trace >= 3) {
@@ -6389,7 +6389,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
             } else {
                 if (local2 == 6[ne_obj?] && routine46380(local3) == 0) {
-                    global91 = 11[d_obj?];
+                    etype = 11[d_obj?];
                     jump label47741;
                 }
                 if (local11 == 0) {
@@ -6414,14 +6414,14 @@ Array array_29185 -->	! 29185 (0x7201)
                 return local3;
             }
             if (local3 == 0) {
-                global91 = routine51088();
+                etype = routine51088();
                 return local3;
             }
             local4 = parent(local3);
             if (local4 ~= actor) {
                 if (notheld_mode == 1) {
                     global66 = oops_from;
-                    global91 = 6[ne_obj?];
+                    etype = 6[ne_obj?];
                     jump label47741;
                 }
                 notholding = local3;
@@ -6440,7 +6440,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 print "  [Read '", (address) local4, "']^";
             }
             if (local2 < 2 || local2 >= 6) {
-                global91 = 7[se_obj?];
+                etype = 7[se_obj?];
                 jump label47741;
             }
             if (local4 == 30927['but'?] or 32916['except'?]) {
@@ -6464,11 +6464,11 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local11 == 1[?]) {
         local9 = 0;
-        global57 = local2;
+        multi_context = local2;
     } else if (global80 == 1[?] && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
         global56 = 1[?];
         global55 = global82;
-        global91 = 16[obj16_lm?];
+        etype = 16[obj16_lm?];
         jump label47741;
     }
     local1-->(parameters + 2) = local9;
@@ -6751,7 +6751,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (global80 == 1[?] && global81 & 8 ~= 0) {
         if (local1 < 2 || local1 > 5) {
-            global91 = 7[se_obj?];
+            etype = 7[se_obj?];
             return 65535[?];
         }
         local2 = 0;
@@ -6786,13 +6786,13 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label49068;
         }
         if (local2 < global82 && global82 < 100) {
-            global91 = 16[obj16_lm?];
+            etype = 16[obj16_lm?];
             global55 = global82;
             global56 = multiple_object-->0;
             return 65535[?];
         }
         multiple_object-->0 = local2 + local10;
-        global57 = local1;
+        multi_context = local1;
         if (parser_trace >= 4) {
             print "   Made multiple object of size ", local2, "]^";
         }
@@ -6885,12 +6885,12 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 4) {
         print "   Revising multiple object list of size ", multiple_object-->0, " with 2nd ", (name) local1, "^";
     }
-    if (global57 == 4[e_obj?] or 5[w_obj?]) {
+    if (multi_context == 4 or 5) {
         local2 = 1[?];
         local3 = 0;
       .label49771;
         if (local2 <= multiple_object-->0) {
-            if (global57 == 4[e_obj?] && multiple_object-->local2 ~= local1 || (global57 == 5[w_obj?] && multiple_object-->local2 in local1)) {
+            if (multi_context == 4 && multiple_object-->local2 ~= local1 || (multi_context == 5 && multiple_object-->local2 in local1)) {
                 ++local3;
                 multiple_object-->local3 = multiple_object-->local2;
             }
@@ -6899,7 +6899,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         multiple_object-->0 = local3;
     }
-    if (global57 == 2[?]) {
+    if (multi_context == 2) {
         local2 = 1[?];
         local3 = 0;
       .label49850;
@@ -7199,8 +7199,8 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local1 has visited && routine52752(local1,local2) == 1[?]) {
         local3 = 13[obj13_inside?];
     }
-    if (global91 > local3) {
-        return global91;
+    if (etype > local3) {
+        return etype;
     }
     return local3;
 ];
