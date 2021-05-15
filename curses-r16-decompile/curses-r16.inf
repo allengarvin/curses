@@ -5842,7 +5842,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         if (token == 6 && action_to_be == 68[obj68_water_pipe?] or 70[obj70_book_of_Twenties_poetry?] or 71[obj71_Souvenirs_Room?] or 69[obj69_romantic_novel?]) {
                             scope_reason = TALKING_REASON;
                         }
-                        l = routine46408(results,token);
+                        l = ParseObjectList(results,token);
                         scope_reason = PARSING_REASON;
                         if (parser_trace >= 3) {
                             print "  [Parse object list replied with";
@@ -6216,11 +6216,11 @@ Array array_29185 -->	! 29185 (0x7201)
     return 0;
 ];
 
-[ routine46380 local1 ;	! 46380 / 0xb52c
-    if (local1 has animate) {
+[ CreatureTest obj ;	! 46380 / 0xb52c
+    if (obj has animate) {
         rtrue;
     }
-    if (local1 hasnt talkable) {
+    if (obj hasnt talkable) {
         rfalse;
     }
     if (action_to_be == 70[obj70_book_of_Twenties_poetry?] or 68[obj68_water_pipe?] or 69[obj69_romantic_novel?] or 71[obj71_Souvenirs_Room?]) {
@@ -6229,91 +6229,91 @@ Array array_29185 -->	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine46408 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 local11 ;	! 46408 / 0xb548
-    local11 = 0;
-    local8 = 1[?];
+[ ParseObjectList results token l o i j k and_parity single_object desc_wn many_flag ;	! 46408 / 0xb548
+    many_flag = 0;
+    and_parity = 1[?];
     global99 = 0;
   .label46418;
     if (parser_trace >= 3) {
         print "  [Object list from word ", wn, "]^";
     }
-    local4 = routine52976();
+    o = routine52976();
     --wn;
-    if (local4 == 34860['it'?] or 40287['them'?]) {
-        vague_word = local4;
+    if (o == 34860['it'?] or 40287['them'?]) {
+        vague_word = o;
         vague_obj = itobj;
         if (itobj == nothing) {
             etype = VAGUE_PE;
             return 0;
         }
     }
-    if (local4 == 34374['him'?]) {
-        vague_word = local4;
+    if (o == 34374['him'?]) {
+        vague_word = o;
         vague_obj = global77;
         if (global77 == 0) {
             etype = VAGUE_PE;
             return 0;
         }
     }
-    if (local4 == 34293['her'?]) {
-        vague_word = local4;
+    if (o == 34293['her'?]) {
+        vague_word = o;
         vague_obj = global78;
         if (global78 == 0) {
             etype = VAGUE_PE;
             return 0;
         }
     }
-    if (local4 == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
-        vague_word = local4;
+    if (o == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
+        vague_word = o;
         vague_obj = player;
     }
-    if (local2 == 7[se_obj?]) {
-        local3 = routine53120(wn);
-        if (local3 ~= 64536[?]) {
+    if (token == 7[se_obj?]) {
+        l = routine53120(wn);
+        if (l ~= 64536[?]) {
             if (nsns == 0) {
-                global29 = local3;
+                global29 = l;
             } else {
-                global30 = local3;
+                global30 = l;
             }
-            special_number = local3;
+            special_number = l;
             ++nsns;
             if (parser_trace >= 3) {
-                print "  [Read special as the number ", local3, "]^";
+                print "  [Read special as the number ", l, "]^";
             }
         }
         if (parser_trace >= 3) {
             print "  [Read special word at word number ", wn, "]^";
         }
         special_word = routine52976();
-        local9 = 1[?];
-    } else if (local2 == 8[nw_obj?]) {
-        local3 = routine53120(wn++);
-        if (local3 == 64536[?]) {
+        single_object = 1[?];
+    } else if (token == 8[nw_obj?]) {
+        l = routine53120(wn++);
+        if (l == 64536[?]) {
             etype = NUMBER_PE;
             rfalse;
         }
         if (parser_trace >= 3) {
-            print "  [Read number as ", local3, "]^";
+            print "  [Read number as ", l, "]^";
         }
         if (nsns++ == 0) {
-            global29 = local3;
+            global29 = l;
         } else {
-            global30 = local3;
+            global30 = l;
         }
-        local9 = 1[?];
-    } else if (local2 >= 48 && local2 < 80) {
-        local3 = (array_29185-->(local2 - 48))();
+        single_object = 1[?];
+    } else if (token >= 48 && token < 80) {
+        l = (array_29185-->(token - 48))();
         if (parser_trace >= 3) {
-            print "  [Outside parsing routine returned ", local3, "]^";
+            print "  [Outside parsing routine returned ", l, "]^";
         }
-        if (local3 < 0) {
+        if (l < 0) {
             rfalse;
         }
-        if (local3 == 0) {
+        if (l == 0) {
             --params_wanted;
             rtrue;
         }
-        if (local3 == 1[?]) {
+        if (l == 1[?]) {
             if (nsns == 0) {
                 global29 = global36;
             } else {
@@ -6321,158 +6321,158 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             ++nsns;
         }
-        if (local3 == 10000[?]) {
-            return local3;
+        if (l == 10000[?]) {
+            return l;
         }
-        local9 = local3;
+        single_object = l;
     } else {
-        if (local2 >= 80 && local2 < 128) {
-            scope_token = array_29185-->(local2 - 80);
+        if (token >= 80 && token < 128) {
+            scope_token = array_29185-->(token - 80);
             global103 = 1[?];
-            local3 = scope_token();
+            l = scope_token();
             if (parser_trace >= 3) {
-                print "  [Scope routine returned multiple-flag of ", local3, "]^";
+                print "  [Scope routine returned multiple-flag of ", l, "]^";
             }
-            if (local3 == 1[?]) {
-                local2 = 2[?];
+            if (l == 1[?]) {
+                token = 2[?];
             } else {
-                local2 = 0;
+                token = 0;
             }
         }
         token_was = 0;
-        if (local2 >= 16) {
-            token_was = local2;
-            local2 = 0;
+        if (token >= 16) {
+            token_was = token;
+            token = 0;
         }
         global84 = 1[?];
-        local10 = wn;
+        desc_wn = wn;
       .label46968;
-        local3 = Descriptors(local2);
-        if (local3 ~= 0) {
-            etype = local3;
+        l = Descriptors(token);
+        if (l ~= 0) {
+            etype = l;
             return 0;
         }
         oops_from = wn;
-        if (local2 ~= 1[?]) {
-            local5 = multiple_object-->0;
+        if (token ~= 1[?]) {
+            i = multiple_object-->0;
             if (parser_trace >= 3) {
                 print "  [Calling NounDomain on location and actor]^";
             }
-            local3 = NounDomain(actor_location,actor,local2);
-            if (local3 == 10000[?]) {
-                return local3;
+            l = NounDomain(actor_location,actor,token);
+            if (l == 10000[?]) {
+                return l;
             }
-            if (local3 == 0) {
+            if (l == 0) {
                 etype = routine51088();
                 jump label47741;
             }
             if (parser_trace >= 3) {
-                if (local3 > 1) {
+                if (l > 1) {
                     print "  [ND returned ";
-                    Defart(local3);
+                    Defart(l);
                     print "]^";
                 } else {
                     print "  [ND appended to the multiple object list:^";
-                    local7 = multiple_object-->0;
-                    local6 = local5 + 1;
+                    k = multiple_object-->0;
+                    j = i + 1;
                   .label47148;
-                    if (local6 <= local7) {
-                        print "  Entry ", local6, ": ";
-                        CDefart(multiple_object-->local6);
-                        print " (", multiple_object-->local6, ")^";
-                        ++local6;
+                    if (j <= k) {
+                        print "  Entry ", j, ": ";
+                        CDefart(multiple_object-->j);
+                        print " (", multiple_object-->j, ")^";
+                        ++j;
                         jump label47148;
                     }
-                    print "  List now has size ", local7, "]^";
+                    print "  List now has size ", k, "]^";
                 }
             }
-            if (local3 == 1[?]) {
-                if (local11 == 0) {
-                    local11 = 1[?];
+            if (l == 1[?]) {
+                if (many_flag == 0) {
+                    many_flag = 1[?];
                 } else {
-                    local7 = multiple_object-->0;
-                    multiple_object-->0 = local5;
-                    local6 = local5 + 1;
+                    k = multiple_object-->0;
+                    multiple_object-->0 = i;
+                    j = i + 1;
                   .label47254;
-                    if (local6 <= local7) {
-                        if (local8 == 1[?]) {
-                            routine51152(multiple_object-->local6);
+                    if (j <= k) {
+                        if (and_parity == 1[?]) {
+                            routine51152(multiple_object-->j);
                         } else {
-                            routine51208(multiple_object-->local6);
+                            routine51208(multiple_object-->j);
                         }
-                        ++local6;
+                        ++j;
                         jump label47254;
                     }
                     if (parser_trace >= 3) {
-                        print "  [Merging ", local7 - local5, " new objects to the ", local5, " old ones]^";
+                        print "  [Merging ", k - i, " new objects to the ", i, " old ones]^";
                     }
                 }
             } else {
-                if (local2 == 6[ne_obj?] && routine46380(local3) == 0) {
+                if (token == 6[ne_obj?] && CreatureTest(l) == 0) {
                     etype = ANIMA_PE;
                     jump label47741;
                 }
-                if (local11 == 0) {
-                    local9 = local3;
+                if (many_flag == 0) {
+                    single_object = l;
                 } else {
-                    if (local8 == 1[?]) {
-                        routine51152(local3);
+                    if (and_parity == 1[?]) {
+                        routine51152(l);
                     } else {
-                        routine51208(local3);
+                        routine51208(l);
                     }
                     if (parser_trace >= 3) {
                         print "  [Combining ";
-                        Defart(local3);
+                        Defart(l);
                         print " with list]^";
                     }
                 }
             }
         }
-        if (local2 == 1[?]) {
-            local3 = NounDomain(actor,actor_location,local2);
-            if (local3 == 10000[?]) {
-                return local3;
+        if (token == 1[?]) {
+            l = NounDomain(actor,actor_location,token);
+            if (l == 10000[?]) {
+                return l;
             }
-            if (local3 == 0) {
+            if (l == 0) {
                 etype = routine51088();
-                return local3;
+                return l;
             }
-            local4 = parent(local3);
-            if (local4 ~= actor) {
+            o = parent(l);
+            if (o ~= actor) {
                 if (notheld_mode == 1) {
                     global66 = oops_from;
                     etype = NOTHELD_PE;
                     jump label47741;
                 }
-                notholding = local3;
+                notholding = l;
                 if (parser_trace >= 3) {
                     print "  [Allowing object ";
-                    Defart(local3);
+                    Defart(l);
                     print " for now]^";
                 }
             }
-            local9 = local3;
+            single_object = l;
         }
         wn = oops_from + global69;
-        local4 = routine52976();
-        if (local4 == 29874['and'?] or 30927['but'?] or 32916['except'?] or 41628['xcomma'?]) {
+        o = routine52976();
+        if (o == 29874['and'?] or 30927['but'?] or 32916['except'?] or 41628['xcomma'?]) {
             if (parser_trace >= 3) {
-                print "  [Read '", (address) local4, "']^";
+                print "  [Read '", (address) o, "']^";
             }
-            if (local2 < 2 || local2 >= 6) {
+            if (token < 2 || token >= 6) {
                 etype = MULTI_PE;
                 jump label47741;
             }
-            if (local4 == 30927['but'?] or 32916['except'?]) {
-                local8 = 1 - local8;
+            if (o == 30927['but'?] or 32916['except'?]) {
+                and_parity = 1 - and_parity;
             }
-            if (local11 == 0) {
+            if (many_flag == 0) {
                 multiple_object-->0 = 1[?];
-                multiple_object-->1 = local9;
-                local11 = 1[?];
+                multiple_object-->1 = single_object;
+                many_flag = 1[?];
                 if (parser_trace >= 3) {
                     print "  [Making new list from ";
-                    Defart(local9);
+                    Defart(single_object);
                     print "]^";
                 }
             }
@@ -6482,23 +6482,23 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         --wn;
     }
-    if (local11 == 1[?]) {
-        local9 = 0;
-        multi_context = local2;
+    if (many_flag == 1[?]) {
+        single_object = 0;
+        multi_context = token;
     } else if (indef_mode == 1[?] && indef_type & 8 ~= 0 && (indef_wanted < 100 && indef_wanted > 1)) {
         multihad = 1;
         global55 = indef_wanted;
         etype = TOOFEW_PE;
         jump label47741;
     }
-    local1-->(parameters + 2) = local9;
+    results-->(parameters + 2) = single_object;
     ++parameters;
-    array_24618-->pcount = local9;
+    array_24618-->pcount = single_object;
     return 1[?];
   .label47741;
     if (global84 == 1[?] && indef_guess_p == 1[?]) {
         global84 = 0;
-        wn = local10;
+        wn = desc_wn;
         jump label46968;
     }
     return 0;
@@ -6755,7 +6755,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     }
                 }
             }
-            if (local1 == 6[ne_obj?] && routine46380(local7) == 1[?]) {
+            if (local1 == 6[ne_obj?] && CreatureTest(local7) == 1[?]) {
                 ++local5;
                 local6 = local7;
             }
