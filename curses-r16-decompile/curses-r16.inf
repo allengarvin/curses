@@ -5272,14 +5272,14 @@ Array array_29185 -->	! 29185 (0x7201)
                 L__M(262,11);
                 jump label41768;
             }
-            if (undo_flag == false) {
+            if (undo_flag == 0) {
                 L__M(262,6);
                 jump label41768;
             }
-            if (undo_flag == true) {
+            if (undo_flag == 1) {
                 ! no code
             } else {
-                if (undone_flag == true) {
+                if (undone_flag == 1) {
                     L__M(262,12);
                     jump label41768;
                 }
@@ -5291,13 +5291,13 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label41768;
         }
         @save_undo -> i;
-        undone_flag = false;
-        undo_flag = invalidBool2;
+        undone_flag = 0;
+        undo_flag = 2;
         if (i == 65535[?]) {
-            undo_flag = false;
+            undo_flag = 0;
         }
         if (i == 0) {
-            undo_flag = true;
+            undo_flag = 1;
         }
         if (i == 2[?]) {
             style bold;
@@ -5305,7 +5305,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print "^";
             style roman;
             L__M(262,13);
-            undone_flag = true;
+            undone_flag = 1;
             jump label41768;
         }
         return nw;
@@ -8165,11 +8165,11 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label54838;
     }
     if (local1 == 40836['undo'?]) {
-        if (undo_flag == false) {
+        if (undo_flag == 0) {
             L__M(262,6);
             jump label54838;
         }
-        if (undo_flag == true) {
+        if (undo_flag == 1) {
             ! no code
         } else {
             @restore_undo -> local1;
@@ -24386,7 +24386,7 @@ Array array_29185 -->	! 29185 (0x7201)
         displaying_quote = true;
     }
     global181 = location.section;
-    if (deadflag > 0 || undone_flag == true) {
+    if (deadflag > 0 || undone_flag == 1) {
         displaying_quote = true;
     }
     if (displaying_quote == true) {
