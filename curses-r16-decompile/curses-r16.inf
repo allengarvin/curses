@@ -4919,8 +4919,8 @@ Global global73;
 Global vague_word;
 Global vague_obj;
 Global itobj;
-Global global77;
-Global global78;
+Global himobj;
+Global herobj;
 Global lookahead;
 Global indef_mode;
 Global indef_type;
@@ -6249,16 +6249,16 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (o == 'him') {
         vague_word = o;
-        vague_obj = global77;
-        if (global77 == 0) {
+        vague_obj = himobj;
+        if (himobj == nothing) {
             etype = VAGUE_PE;
             return 0;
         }
     }
     if (o == 'her') {
         vague_word = o;
-        vague_obj = global78;
-        if (global78 == 0) {
+        vague_obj = herobj;
+        if (herobj == nothing) {
             etype = VAGUE_PE;
             return 0;
         }
@@ -7004,7 +7004,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (local2 == 0 && local1 ~= 1[?]) {
             local2 = 10[u_obj?];
         }
-        if (indef_type & 1 ~= 0 && local3 ~= itobj or global77 or global78) {
+        if (indef_type & 1 ~= 0 && local3 ~= itobj or himobj or herobj) {
             local2 = local2 + 40;
         }
         if (indef_type & 2 ~= 0 && local1 == actor) {
@@ -7441,11 +7441,11 @@ Array array_29185 -->	! 29185 (0x7201)
         if (local4 == 1[?] && itobj == local1) {
             routine52240(itobj,1[?]);
         }
-        if (local4 == 2[?] && global77 == local1) {
-            routine52240(global77,1[?]);
+        if (local4 == 2[?] && himobj == local1) {
+            routine52240(himobj,1[?]);
         }
-        if (local4 == 3[s_obj?] && global78 == local1) {
-            routine52240(global78,1[?]);
+        if (local4 == 3[s_obj?] && herobj == local1) {
+            routine52240(herobj,1[?]);
         }
         if (local4 == 4[e_obj?] && player == local1) {
             routine52240(player,1[?]);
@@ -7566,7 +7566,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     local4 = routine52812();
-    if (local4 == 1[?] && local1 == itobj || (local4 == 2[?] && local1 == global77) || (local4 == 3[s_obj?] && local1 == global78) || (local4 == 4[e_obj?] && local1 == player)) {
+    if (local4 == 1[?] && local1 == itobj || (local4 == 2[?] && local1 == himobj) || (local4 == 3[s_obj?] && local1 == herobj) || (local4 == 4[e_obj?] && local1 == player)) {
         routine52240(local1,1[?]);
         rfalse;
     }
@@ -7787,9 +7787,9 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine53392 local1 ;	! 53392 / 0xd090
     if (local1 has animate && local1 ~= player) {
         if (routine53432(local1) == 1[?]) {
-            global77 = local1;
+            himobj = local1;
         } else {
-            global78 = local1;
+            herobj = local1;
         }
     } else {
         itobj = local1;
@@ -8841,14 +8841,14 @@ Array array_29185 -->	! 29185 (0x7201)
     print "At the moment, ~it~ ";
     PronounsSub(itobj);
     print ", ~him~ ";
-    PronounsSub(global77);
+    PronounsSub(himobj);
     if (player == yourself) {
         print " and";
     } else {
         print ",";
     }
     print " ~her~ ";
-    PronounsSub(global78);
+    PronounsSub(herobj);
     if (player == yourself) {
         ".";
     }
@@ -9225,7 +9225,7 @@ Array array_29185 -->	! 29185 (0x7201)
         remove adamantine_statue;
         move adamantine_knight to West_Side_Chapel;
         Achieved(42);
-        global77 = 490[adamantine_knight?];
+        himobj = adamantine_knight;
         "The adamantine knight leaps up, invigorated by the fire in his skeletal eyes, a new spark in his belly!  He bows gravely, in the elaborate style of a mime artist.";
     }
     if (second == adamantine_knight) {
@@ -22859,61 +22859,61 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     game_section = local1.section;
     if (local1 == 112[obj112_Potting_Room?]) {
-        global78 = 114[obj114_Jemima?];
+        herobj = obj114_Jemima;
     }
     if (local1 == 159[obj159_Consulting_Room?]) {
-        global78 = 163[obj163_Madame_Sosostris__famous_clairvoyante?];
+        herobj = obj163_Madame_Sosostris__famous_clairvoyante;
     }
     if (local1 == 174[obj174_Chatelet_les_Halles?]) {
-        global77 = 175[obj175_surly_shopkeeper?];
+        himobj = obj175_surly_shopkeeper;
     }
     if (local1 == 88[obj88_Battlements?]) {
-        global77 = 90[obj90_Sir_Joshua_Meldrewe?];
+        himobj = obj90_Sir_Joshua_Meldrewe;
     }
     if (local1 == 171[obj171_On_board_the_Phlebas?]) {
-        global77 = 172[obj172_hollow_man?];
+        himobj = obj172_hollow_man;
     }
     if (local1 == 227[obj227_Eraina_Taverna?]) {
-        global77 = 229[obj229_bartender?];
+        himobj = obj229_bartender;
     }
     if (local1 == 352[Rough_Tent?]) {
-        global77 = 354[unconscious_Saxon_spy?];
+        himobj = unconscious_Saxon_spy;
     }
     if (local1 == 498[Hellish_Place?]) {
-        global77 = 499[demon?];
+        himobj = demon;
     }
     if (local1 == 500[Heavenly_Place?]) {
-        global78 = 501[angel?];
+        herobj = angel;
     }
     if (local1 == 254[obj254_Cave_Mouth?]) {
-        global78 = 255[obj255_Oracle?];
+        herobj = obj255_Oracle;
     }
     if (local1 == 239[obj239_Inner_Sanctum?]) {
-        global77 = 240[obj240_Homer?];
+        himobj = obj240_Homer;
     }
     if (local1 == 445[Warehouses_and_Port?]) {
-        global77 = 446[gambling_sailor?];
+        himobj = gambling_sailor;
     }
     if (local1 == 318[Behind_Summer_House?]) {
-        global77 = 321[irate_squirrel_friend?];
+        himobj = irate_squirrel_friend;
     }
     if (local1 == 473[Hollow?]) {
-        global78 = 476[corn_crake?];
+        herobj = corn_crake;
     }
     if (local1 == 477[Stone_Cross?]) {
-        global77 = 478[Old_Evans?];
+        himobj = Old_Evans;
     }
     if (local1 == 439[Consulting_Room?]) {
-        global78 = 442[Madame_Sosostris?];
+        herobj = Madame_Sosostris;
     }
     if (local1 == 458[Reading_Corridor?]) {
-        global77 = 460[Callimachus?];
+        himobj = Callimachus;
     }
     if (local1 == 463[Librarians_Office?]) {
-        global77 = 464[Apollonius?];
+        himobj = Apollonius;
     }
     if (local1 == 466[Lost_inside_the_Palace?]) {
-        global77 = 467[slave?];
+        himobj = slave;
     }
     rtrue;
 ];
