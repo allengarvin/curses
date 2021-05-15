@@ -4901,7 +4901,7 @@ Global global84;
 Global interfrom;
 Global global86;
 Global global87;
-Global global88;
+Global held_back_mode;
 Global global89;
 Global pcount2;
 Global global91;
@@ -5349,8 +5349,8 @@ Array array_29185 -->	! 29185 (0x7201)
         notheld_mode = 0;
         rtrue;
     }
-    if (global88 == 1[?]) {
-        global88 = 0;
+    if (held_back_mode == 1) {
+        held_back_mode = 0;
         i = 0;
       .label42161;
         if (i < 64) {
@@ -5741,7 +5741,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             if (global50 <= global51) {
                                 l = routine52976();
                                 if (l == 40296['then'?] or 41628['xcomma'?]) {
-                                    global88 = 1[?];
+                                    held_back_mode = 1;
                                     global89 = global50 - 1;
                                 } else {
                                     m = 0;
@@ -5804,7 +5804,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                 Defart(interfrom);
                                 print ")^";
                             }
-                            if (global88 == 1[?]) {
+                            if (held_back_mode == 1) {
                                 global50 = global89;
                                 jump label45430;
                             }
@@ -5971,7 +5971,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (i == 40296['then'?] or 41628['xcomma'?]) {
         if (global50 > global51) {
             array_24488->1 = array_24488->1 - 1;
-            global88 = 0;
+            held_back_mode = 0;
             rtrue;
         }
         if (global24 == player) {
@@ -6010,7 +6010,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 jump label45654;
             }
             array_24488->1 = j;
-            global88 = 1[?];
+            held_back_mode = 1;
             rtrue;
         } else {
             --global50;
@@ -6033,7 +6033,7 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label45805;
         }
         array_24488->1 = j;
-        global88 = 1[?];
+        held_back_mode = 1;
         rtrue;
     }
     pcount2 = 2[?];
