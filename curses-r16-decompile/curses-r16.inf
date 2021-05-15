@@ -4941,7 +4941,7 @@ Global advance_warning;
 Global global96;
 Global global97;
 Global action_to_be;
-Global global99;
+Global dont_infer;
 Global scope_reason;
 Global scope_token;
 Global global102;
@@ -6232,7 +6232,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ ParseObjectList results token l o i j k and_parity single_object desc_wn many_flag ;	! 46408 / 0xb548
     many_flag = 0;
     and_parity = 1[?];
-    global99 = 0;
+    dont_infer = 0;
   .label46418;
     if (parser_trace >= 3) {
         print "  [Object list from word ", wn, "]^";
@@ -6476,7 +6476,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     print "]^";
                 }
             }
-            global99 = 1[?];
+            dont_infer = 1;
             interfrom = 0;
             jump label46418;
         }
@@ -6560,7 +6560,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     if (local5 ~= 0) {
-        if (global99 == 1[?]) {
+        if (dont_infer == 1) {
             return local5;
         }
         if (interfrom == 0) {
@@ -6896,7 +6896,7 @@ Array array_29185 -->	! 29185 (0x7201)
         indef_type = 0;
     }
     if (local7 == 1[?]) {
-        global99 = 1[?];
+        dont_infer = 1;
     }
     return routine50480();
 ];
