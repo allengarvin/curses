@@ -5252,7 +5252,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     a_buffer->0 = 120[obj120_steel_wrench?];
     a_table->0 = 64[obj64_Disused_Observatory?];
-    L__M(263);
+    L__M(##Action263);
     routine181216();
     generic_global = 0;
     a_buffer->1 = 0;
@@ -5260,7 +5260,7 @@ Array array_29185 -->	! 29185 (0x7201)
     @aread a_buffer a_table -> generic_global;
     nw = a_table->1;
     if (nw == 0) {
-        L__M(262,10);
+        L__M(##Miscellany,10);
         jump label41768;
     }
     w = a_table-->1;
@@ -5269,24 +5269,24 @@ Array array_29185 -->	! 29185 (0x7201)
     } else {
         if (w == 'undo' && array_24142->1 == 1[?]) {
             if (turns == 1) {
-                L__M(262,11);
+                L__M(##Miscellany,11);
                 jump label41768;
             }
             if (undo_flag == 0) {
-                L__M(262,6);
+                L__M(##Miscellany,6);
                 jump label41768;
             }
             if (undo_flag == 1) {
                 ! no code
             } else {
                 if (undone_flag == 1) {
-                    L__M(262,12);
+                    L__M(##Miscellany,12);
                     jump label41768;
                 }
                 @restore_undo -> i;
                 if (i ~= 0) jump label41948;
             }
-            L__M(262,7);
+            L__M(##Miscellany,7);
           .label41948;
             jump label41768;
         }
@@ -5304,22 +5304,22 @@ Array array_29185 -->	! 29185 (0x7201)
             PSN__(location);
             print "^";
             style roman;
-            L__M(262,13);
+            L__M(##Miscellany,13);
             undone_flag = 1;
             jump label41768;
         }
         return nw;
     }
     if (oops_from == 0) {
-        L__M(262,14);
+        L__M(##Miscellany,14);
         jump label41768;
     }
     if (nw == 1[?]) {
-        L__M(262,15);
+        L__M(##Miscellany,15);
         jump label41768;
     }
     if (nw > 2) {
-        L__M(262,16);
+        L__M(##Miscellany,16);
         jump label41768;
     }
     x1 = a_table-->3;
@@ -8062,7 +8062,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         jump label54402;
                     }
                     if (routine55448(global24,259[obj259_Greek_Frieze?]) == 0) {
-                        L__M(259,1,global24);
+                        L__M(##Action259,1,global24);
                     }
                 }
             }
@@ -8072,12 +8072,12 @@ Array array_29185 -->	! 29185 (0x7201)
             global37 = 1[?];
             local2 = array_24239-->0;
             if (local2 == 0) {
-                L__M(262,2);
+                L__M(##Miscellany,2);
                 jump label54208;
             }
             if (global23 == 1[?]) {
                 global23 = 0;
-                L__M(262,1);
+                L__M(##Miscellany,1);
             }
             local1 = location;
             local3 = 1[?];
@@ -8120,10 +8120,10 @@ Array array_29185 -->	! 29185 (0x7201)
     style bold;
     print "***";
     if (deadflag == DIED) {
-        L__M(262,3);
+        L__M(##Miscellany,3);
     }
     if (deadflag == WON) {
-        L__M(262,4);
+        L__M(##Miscellany,4);
     }
     if (deadflag > 2) {
         print " ";
@@ -8136,7 +8136,7 @@ Array array_29185 -->	! 29185 (0x7201)
     ScoreSub();
     routine53944();
   .label54838;
-    L__M(262,5);
+    L__M(##Miscellany,5);
   .label54845;
     print "> ";
     generic_global = 0;
@@ -8166,7 +8166,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local1 == 40836['undo'?]) {
         if (undo_flag == 0) {
-            L__M(262,6);
+            L__M(##Miscellany,6);
             jump label54838;
         }
         if (undo_flag == 1) {
@@ -8175,11 +8175,11 @@ Array array_29185 -->	! 29185 (0x7201)
             @restore_undo -> local1;
             if (local1 ~= 0) jump label54997;
         }
-        L__M(262,7);
+        L__M(##Miscellany,7);
       .label54997;
         jump label54838;
     }
-    L__M(262,8);
+    L__M(##Miscellany,8);
     jump label54845;
 ];
 
@@ -8720,7 +8720,7 @@ Array array_29185 -->	! 29185 (0x7201)
         location = thedark;
         if (local1 == 0) {
             routine164468();
-            return L__M(262,9);
+            return L__M(##Miscellany,9);
         }
     }
     if (local2 == 0 && global10 == 0) {
@@ -20072,7 +20072,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (i == 'no' or 'n//') {
             rfalse;
         }
-        L__M(2,1);
+        L__M(##Quit,1);
         print "> ";
         jump label160977;
     }
@@ -20080,7 +20080,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ QuitSub ;	! 161040 / 0x27510
-    L__M(2,2);
+    L__M(##Quit,2);
     if (YesOrNo() ~= 0) {
         @quit;
     }
@@ -20088,10 +20088,10 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ RestartSub ;	! 161060 / 0x27524
-    L__M(4,1);
+    L__M(##Restart,1);
     if (YesOrNo() ~= 0) {
         @restart;
-        L__M(4,2);
+        L__M(##Restart,2);
     }
     rtrue;
 ];
@@ -20100,28 +20100,28 @@ Array array_29185 -->	! 29185 (0x7201)
     @verify ?label161090;
     jump label161099;
   .label161090;
-    return L__M(5,1);
+    return L__M(##Verify,1);
   .label161099;
-    L__M(5,2);
+    L__M(##Verify,2);
     rtrue;
 ];
 
 [ ScriptOnSub ;	! 161108 / 0x27554
     if (global14 == 1[?]) {
-        return L__M(7,1);
+        return L__M(##ScriptOn,1);
     }
     global14 = 1[?];
     0-->8 = 0-->8 | 1;
-    L__M(7,2);
+    L__M(##ScriptOn,2);
     VersionSub();
     rtrue;
 ];
 
 [ ScriptOffSub ;	! 161152 / 0x27580
     if (global14 == 0) {
-        return L__M(8,1);
+        return L__M(##ScriptOff,1);
     }
-    L__M(8,2);
+    L__M(##ScriptOff,2);
     global14 = 0;
     0-->8 = 0-->8 & 65534;
     rtrue;
@@ -20129,18 +20129,18 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ NotifyOnSub ;	! 161192 / 0x275a8
     global16 = 1[?];
-    L__M(13);
+    L__M(##NotifyOn);
     rtrue;
 ];
 
 [ NotifyOffSub ;	! 161204 / 0x275b4
     global16 = 0;
-    L__M(14);
+    L__M(##NotifyOff);
     rtrue;
 ];
 
 [ PlacesSub local1 local2 local3 ;	! 161216 / 0x275c0
-    L__M(16);
+    L__M(##Places);
     local1 = 15[yourself?];
   .label161225;
     if (local1 <= global21) {
@@ -20172,7 +20172,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ ObjectsSub local1 local2 local3 ;	! 161296 / 0x27610
-    L__M(17,1);
+    L__M(##Objects,1);
     local1 = 15[yourself?];
   .label161306;
     if (local1 <= global21) {
@@ -20213,13 +20213,13 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label161306;
     }
     if (local3 == 0) {
-        L__M(17,2);
+        L__M(##Objects,2);
     }
     rtrue;
 ];
 
 [ ScoreSub ;	! 161504 / 0x276e0
-    L__M(0);
+    L__M(##Score);
     PrintRank();
     rtrue;
 ];
@@ -20264,13 +20264,13 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ InvSub ;	! 161640 / 0x27768
     if (child(player) == nothing) {
-        return L__M(24,1);
+        return L__M(##Inv,1);
     }
     if (inventory_style == 0) {
         routine55348(39[obj39_antique_jewellery_box?]);
         rtrue;
     }
-    L__M(24,2);
+    L__M(##Inv,2);
     if (inventory_style & 1 ~= 0) {
         print ":^";
     } else {
@@ -20301,23 +20301,23 @@ Array array_29185 -->	! 29185 (0x7201)
     if (notheld_mode == 1 || keep_silent == true) {
         rtrue;
     }
-    L__M(19,1);
+    L__M(##Take,1);
     rtrue;
 ];
 
 [ RTakeSub fromobj i j k postonobj ;	! 161808 / 0x27810
     if (noun == player) {
-        return L__M(19,2);
+        return L__M(##Take,2);
     }
     if (noun has animate) {
-        return L__M(19,3,noun);
+        return L__M(##Take,3,noun);
     }
     if (parent(player) == noun) {
-        return L__M(19,4,noun);
+        return L__M(##Take,4,noun);
     }
     i = parent(noun);
     if (i == player) {
-        return L__M(19,5);
+        return L__M(##Take,5);
     }
     if (i has container || i has supporter) {
         postonobj = i;
@@ -20333,15 +20333,15 @@ Array array_29185 -->	! 29185 (0x7201)
     if (i ~= fromobj or nothing) {
         if (i hasnt container && i hasnt supporter) {
             if (i has animate) {
-                return L__M(19,6,i);
+                return L__M(##Take,6,i);
             }
             if (i has transparent) {
-                return L__M(19,7,i);
+                return L__M(##Take,7,i);
             }
-            return L__M(19,8);
+            return L__M(##Take,8);
         }
         if (i has container && i hasnt open) {
-            return L__M(19,9,i);
+            return L__M(##Take,9,i);
         }
         i = parent(i);
         if (i == player) {
@@ -20350,10 +20350,10 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label161913;
     }
     if (noun has scenery) {
-        return L__M(19,10);
+        return L__M(##Take,10);
     }
     if (noun has static) {
-        return L__M(19,11);
+        return L__M(##Take,11);
     }
     k = 0;
     j = child(player);
@@ -20368,7 +20368,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (k >= routine53704(player,27[rod_of_returning2?])) {
         if (79[obj79_canvas_rucksack?] ~= 0) {
             if (parent(obj79_canvas_rucksack) ~= player) {
-                return L__M(19,12);
+                return L__M(##Take,12);
             }
             j = 0;
             k = child(player);
@@ -20381,7 +20381,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 jump label162101;
             }
             if (j ~= 0) {
-                L__M(19,13,j);
+                L__M(##Take,13,j);
                 keep_silent = true;
                 routine55348(26[rod_of_language?],j,79[obj79_canvas_rucksack?]);
                 keep_silent = false;
@@ -20389,10 +20389,10 @@ Array array_29185 -->	! 29185 (0x7201)
                     rtrue;
                 }
             } else {
-                return L__M(19,12);
+                return L__M(##Take,12);
             }
         } else {
-            return L__M(19,12);
+            return L__M(##Take,12);
         }
     }
     move noun to player;
@@ -20411,13 +20411,13 @@ Array array_29185 -->	! 29185 (0x7201)
 [ DropSub local1 ;	! 162224 / 0x279b0
     local1 = parent(noun);
     if (local1 == location) {
-        return L__M(28,1);
+        return L__M(##Drop,1);
     }
     if (local1 ~= player) {
-        return L__M(28,2);
+        return L__M(##Drop,2);
     }
     if (noun has attrib26) {
-        L__M(28,3,noun);
+        L__M(##Drop,3,noun);
         routine55348(22[rod_of_bronze?],noun);
         if (noun has attrib26) {
             rtrue;
@@ -20430,19 +20430,19 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    return L__M(28,4);
+    return L__M(##Drop,4);
 ];
 
 [ RemoveSub local1 ;	! 162312 / 0x27a08
     local1 = parent(noun);
     if (local1 has container && local1 hasnt open) {
-        return L__M(20,1);
+        return L__M(##Remove,1);
     }
     if (local1 ~= second) {
-        return L__M(20,2);
+        return L__M(##Remove,2);
     }
     if (local1 has animate) {
-        return L__M(19,6,local1);
+        return L__M(##Take,6,local1);
     }
     if (RTakeSub(second) ~= 0) {
         rtrue;
@@ -20458,7 +20458,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    return L__M(20,4);
+    return L__M(##Remove,4);
 ];
 
 [ routine162420 local1 local2 ;	! 162420 / 0x27a74
@@ -20480,7 +20480,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     if (parent(noun) ~= player) {
-        return L__M(27,1,noun);
+        return L__M(##PutOn,1,noun);
     }
     if (second > 1) {
         verb = ##Action257;
@@ -20491,16 +20491,16 @@ Array array_29185 -->	! 29185 (0x7201)
         verb = ##PutOn;
     }
     if (routine162420(noun,second) == 1[?]) {
-        return L__M(27,2);
+        return L__M(##PutOn,2);
     }
     if (second hasnt supporter) {
-        return L__M(27,3,second);
+        return L__M(##PutOn,3,second);
     }
     if (parent(second) == player) {
-        return L__M(27,4);
+        return L__M(##PutOn,4);
     }
     if (noun has attrib26) {
-        L__M(27,5);
+        L__M(##PutOn,5);
         routine55348(22[rod_of_bronze?],noun);
         if (noun has attrib26) {
             rtrue;
@@ -20515,7 +20515,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     @add SP generic_global -> SP;
     @jl SP SP ?label162619;
-    return L__M(27,6,second);
+    return L__M(##PutOn,6,second);
   .label162619;
     move noun to second;
     if (AfterRoutines() == true) {
@@ -20533,9 +20533,9 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (global37 == 1[?]) {
-        return L__M(27,7);
+        return L__M(##PutOn,7);
     }
-    L__M(27,8,noun);
+    L__M(##PutOn,8,noun);
     rtrue;
 ];
 
@@ -20546,7 +20546,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (parent(noun) ~= player) {
-        return L__M(26,1);
+        return L__M(##Insert,1);
     }
     if (second > 1) {
         verb = ##Action257;
@@ -20557,16 +20557,16 @@ Array array_29185 -->	! 29185 (0x7201)
         verb = ##Insert;
     }
     if (second hasnt container) {
-        return L__M(26,2);
+        return L__M(##Insert,2);
     }
     if (second hasnt open) {
-        return L__M(26,3);
+        return L__M(##Insert,3);
     }
     if (routine162420(noun,second) == 1[?]) {
-        return L__M(26,5);
+        return L__M(##Insert,5);
     }
     if (noun has attrib26) {
-        L__M(26,6);
+        L__M(##Insert,6);
         routine55348(22[rod_of_bronze?],noun);
         if (noun has attrib26) {
             rtrue;
@@ -20581,7 +20581,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     @add SP generic_global -> SP;
     @jl SP SP ?label162866;
-    return L__M(26,7,second);
+    return L__M(##Insert,7,second);
   .label162866;
     move noun to second;
     if (AfterRoutines() == true) {
@@ -20599,9 +20599,9 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (global37 == 1[?]) {
-        return L__M(26,8);
+        return L__M(##Insert,8);
     }
-    L__M(26,9,noun);
+    L__M(##Insert,9,noun);
     rtrue;
 ];
 
@@ -20617,7 +20617,7 @@ Array array_29185 -->	! 29185 (0x7201)
       .label162967;
         if (local1 ~= 0) {
             if (local1 hasnt open) {
-                return L__M(31,1);
+                return L__M(##Transfer,1);
             }
             local1 = parent(local1);
             if (local1 == player) {
@@ -20625,7 +20625,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             jump label162967;
         }
-        return L__M(31,2);
+        return L__M(##Transfer,2);
     }
   .label163009;
     if (noun notin player) {
@@ -20674,22 +20674,22 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ EmptyTSub local1 local2 ;	! 163140 / 0x27d44
     if (noun hasnt container) {
-        return L__M(30,1,noun);
+        return L__M(##EmptyT,1,noun);
     }
     if (noun hasnt open) {
-        return L__M(30,2,noun);
+        return L__M(##EmptyT,2,noun);
     }
     if (second ~= d_obj) {
         if (second hasnt container) {
-            return L__M(30,1,second);
+            return L__M(##EmptyT,1,second);
         }
         if (second hasnt open) {
-            return L__M(30,2,second);
+            return L__M(##EmptyT,2,second);
         }
     }
     local1 = child(noun);
     if (local1 == 0) {
-        return L__M(30,3,noun);
+        return L__M(##EmptyT,3,noun);
     }
   .label163225;
     if (local1 ~= 0) {
@@ -20705,15 +20705,15 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ GiveSub ;	! 163256 / 0x27db8
     if (parent(noun) ~= player) {
-        return L__M(34,1,noun);
+        return L__M(##Give,1,noun);
     }
     if (second == player) {
-        return L__M(34,2,noun);
+        return L__M(##Give,2,noun);
     }
     if (routine55448(second,34[obj34_chocolate_biscuit?]) ~= 0) {
         rfalse;
     }
-    L__M(34,3,second);
+    L__M(##Give,3,second);
     rtrue;
 ];
 
@@ -20724,7 +20724,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ ShowSub ;	! 163324 / 0x27dfc
     if (parent(noun) ~= player) {
-        return L__M(36,1,noun);
+        return L__M(##Show,1,noun);
     }
     if (second == player) {
         routine55348(42[obj42_Servant_s_Room?],noun);
@@ -20733,7 +20733,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(second,36[obj36_hinged_trapdoor?]) ~= 0) {
         rfalse;
     }
-    L__M(36,2,second);
+    L__M(##Show,2,second);
     rtrue;
 ];
 
@@ -20749,7 +20749,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local1 = parent(player);
     if (local1 ~= location) {
-        return L__M(21,1,local1);
+        return L__M(##Enter,1,local1);
     }
     local1 = parent(noun);
     if (local1 == 1[?]) {
@@ -20757,13 +20757,13 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (noun hasnt enterable) {
-        return L__M(21,2);
+        return L__M(##Enter,2);
     }
     if (noun has container && noun hasnt open) {
-        return L__M(21,3,noun);
+        return L__M(##Enter,3,noun);
     }
     if (local1 ~= location) {
-        return L__M(21,4);
+        return L__M(##Enter,4);
     }
     move player to noun;
     if (AfterRoutines() == true) {
@@ -20772,7 +20772,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(21,5,noun);
+    L__M(##Enter,5,noun);
     routine164088(noun);
     rtrue;
 ];
@@ -20782,7 +20782,7 @@ Array array_29185 -->	! 29185 (0x7201)
         routine55348(18[rod_of_returning?]);
         rtrue;
     }
-    L__M(23,1,noun);
+    L__M(##TakeOff,1,noun);
     rtrue;
 ];
 
@@ -20793,10 +20793,10 @@ Array array_29185 -->	! 29185 (0x7201)
             routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],12[obj12_outside?]);
             rtrue;
         }
-        return L__M(18,1);
+        return L__M(##Exit,1);
     }
     if (local1 has container && local1 hasnt open) {
-        return L__M(18,2,local1);
+        return L__M(##Exit,2,local1);
     }
     if (location == thedark) {
         move player to real_location;
@@ -20809,13 +20809,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(18,3,local1);
+    L__M(##Exit,3,local1);
     LookSub(true);
     rtrue;
 ];
 
 [ VagueGoSub ;	! 163664 / 0x27f50
-    L__M(37);
+    L__M(##VagueGo);
     rtrue;
 ];
 
@@ -20841,7 +20841,7 @@ Array array_29185 -->	! 29185 (0x7201)
             local1 = parent(local1);
         } else {
             if (local3 == 0) {
-                L__M(38,1,local1);
+                L__M(##Go,1,local1);
             }
             rtrue;
         }
@@ -20871,16 +20871,16 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local2 has door) {
         if (local2 has concealed) {
-            return L__M(38,2);
+            return L__M(##Go,2);
         }
         if (local2 hasnt open) {
             if (noun == u_obj) {
-                return L__M(38,3,local2);
+                return L__M(##Go,3,local2);
             }
             if (noun == d_obj) {
-                return L__M(38,4,local2);
+                return L__M(##Go,4,local2);
             }
-            return L__M(38,5,local2);
+            return L__M(##Go,5,local2);
         }
         if (routine53524(local2.n_to) == 2[?]) {
             local2 = routine53736(local2,5[w_obj?]);
@@ -20888,7 +20888,7 @@ Array array_29185 -->	! 29185 (0x7201)
             local2 = local2.n_to;
         }
         if (local2 == 0) {
-            return L__M(38,6,local2);
+            return L__M(##Go,6,local2);
         }
         if (local2 == 1[?]) {
             rtrue;
@@ -20937,7 +20937,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local3 == 0) {
         rfalse;
     }
-    L__M(41,4,local1);
+    L__M(##Look,4,local1);
     rtrue;
 ];
 
@@ -21010,9 +21010,9 @@ Array array_29185 -->	! 29185 (0x7201)
         return local6;
     }
     if (local8 == 1[?]) {
-        L__M(41,5,local1);
+        L__M(##Look,5,local1);
     } else {
-        L__M(41,6,local1);
+        L__M(##Look,6,local1);
     }
     rtrue;
 ];
@@ -21020,21 +21020,21 @@ Array array_29185 -->	! 29185 (0x7201)
 [ BriefSub ;	! 164420 / 0x28244
     global19 = 1[?];
     print "CURSES";
-    L__M(11);
+    L__M(##Brief);
     rtrue;
 ];
 
 [ VerboseSub ;	! 164436 / 0x28254
     global19 = 2[?];
     print "CURSES";
-    L__M(10);
+    L__M(##Verbose);
     rtrue;
 ];
 
 [ SuperbriefSub ;	! 164452 / 0x28264
     global19 = 3[s_obj?];
     print "CURSES";
-    L__M(9);
+    L__M(##Superbrief);
     rtrue;
 ];
 
@@ -21075,11 +21075,11 @@ Array array_29185 -->	! 29185 (0x7201)
     if (location ~= thedark && env ~= location) {
         if (env has supporter) {
             print " (";
-            L__M(41,1);
+            L__M(##Look,1);
             print " ";
         } else {
             print " (";
-            L__M(41,2);
+            L__M(##Look,2);
             print " ";
         }
         Defart(env);
@@ -21088,7 +21088,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (global12 == 1[?]) {
         print " (";
-        L__M(41,3);
+        L__M(##Look,3);
         print " ", (name) player, ")";
     }
     new_line;
@@ -21118,7 +21118,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ ReadSub local1 ;	! 164784 / 0x283b0
     if (location == thedark) {
-        return L__M(42,1);
+        return L__M(##Read,1);
     }
     local1 = noun.description;
     if (local1 == 0) {
@@ -21127,14 +21127,14 @@ Array array_29185 -->	! 29185 (0x7201)
             rtrue;
         }
         if (noun has switchable) {
-            L__M(42,3,noun);
+            L__M(##Read,3,noun);
             rfalse;
         }
-        return L__M(42,2,noun);
+        return L__M(##Read,2,noun);
     }
     PrintOrRun(noun,18[rod_of_returning?]);
     if (noun has switchable) {
-        L__M(42,3,noun);
+        L__M(##Read,3,noun);
     }
     if (AfterRoutines() == true) {
         rtrue;
@@ -21144,15 +21144,15 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ LookUnderSub ;	! 164872 / 0x28408
     if (location == thedark) {
-        return L__M(44,1);
+        return L__M(##LookUnder,1);
     }
-    L__M(44,2);
+    L__M(##LookUnder,2);
     rtrue;
 ];
 
 [ SearchSub local1 local2 ;	! 164896 / 0x28420
     if (location == thedark) {
-        return L__M(43,1);
+        return L__M(##Search,1);
     }
     local1 = child(noun);
   .label164915;
@@ -21165,15 +21165,15 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (noun has supporter) {
         if (local2 == 0) {
-            return L__M(43,2,noun);
+            return L__M(##Search,2,noun);
         }
-        return L__M(43,3,noun);
+        return L__M(##Search,3,noun);
     }
     if (noun hasnt container) {
-        return L__M(43,4);
+        return L__M(##Search,4);
     }
     if (noun hasnt transparent && noun hasnt open) {
-        return L__M(43,5);
+        return L__M(##Search,5);
     }
     if (AfterRoutines() == true) {
         rtrue;
@@ -21187,21 +21187,21 @@ Array array_29185 -->	! 29185 (0x7201)
     @add SP generic_global -> SP;
     @store 1 SP;
     if (local2 == 0) {
-        return L__M(43,6,noun);
+        return L__M(##Search,6,noun);
     }
-    L__M(43,7,noun);
+    L__M(##Search,7,noun);
     rtrue;
 ];
 
 [ UnlockSub ;	! 165052 / 0x284bc
     if (noun hasnt lockable) {
-        return L__M(47,1);
+        return L__M(##Unlock,1);
     }
     if (noun hasnt locked) {
-        return L__M(47,2);
+        return L__M(##Unlock,2);
     }
     if (noun.e_to ~= second) {
-        return L__M(47,3);
+        return L__M(##Unlock,3);
     }
     give noun ~locked;
     if (AfterRoutines() == true) {
@@ -21210,22 +21210,22 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(47,4,noun);
+    L__M(##Unlock,4,noun);
     rtrue;
 ];
 
 [ LockSub ;	! 165128 / 0x28508
     if (noun hasnt lockable) {
-        return L__M(65,1);
+        return L__M(##Lock,1);
     }
     if (noun has locked) {
-        return L__M(65,2);
+        return L__M(##Lock,2);
     }
     if (noun has open) {
-        return L__M(65,3);
+        return L__M(##Lock,3);
     }
     if (noun.e_to ~= second) {
-        return L__M(65,4);
+        return L__M(##Lock,4);
     }
     give noun locked;
     if (AfterRoutines() == true) {
@@ -21234,7 +21234,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(65,5,noun);
+    L__M(##Lock,5,noun);
     rtrue;
 ];
 
@@ -21242,10 +21242,10 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ SwitchOnSub ;	! 165216 / 0x28560
     if (noun hasnt switchable) {
-        return L__M(64,1);
+        return L__M(##SwitchOn,1);
     }
     if (noun has on) {
-        return L__M(64,2);
+        return L__M(##SwitchOn,2);
     }
     give noun on;
     if (AfterRoutines() == true) {
@@ -21254,16 +21254,16 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(64,3,noun);
+    L__M(##SwitchOn,3,noun);
     rtrue;
 ];
 
 [ SwitchOffSub ;	! 165272 / 0x28598
     if (noun hasnt switchable) {
-        return L__M(49,1);
+        return L__M(##SwitchOff,1);
     }
     if (noun hasnt on) {
-        return L__M(49,2);
+        return L__M(##SwitchOff,2);
     }
     give noun ~on;
     if (AfterRoutines() == true) {
@@ -21272,19 +21272,19 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(49,3,noun);
+    L__M(##SwitchOff,3,noun);
     rtrue;
 ];
 
 [ OpenSub ;	! 165328 / 0x285d0
     if (noun hasnt openable) {
-        return L__M(46,1);
+        return L__M(##Open,1);
     }
     if (noun has locked) {
-        return L__M(46,2);
+        return L__M(##Open,2);
     }
     if (noun has open) {
-        return L__M(46,3);
+        return L__M(##Open,3);
     }
     give noun open;
     if (AfterRoutines() == true) {
@@ -21294,18 +21294,18 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (noun has container && noun hasnt transparent && child(noun) ~= nothing) {
-        return L__M(46,4,noun);
+        return L__M(##Open,4,noun);
     }
-    L__M(46,5,noun);
+    L__M(##Open,5,noun);
     rtrue;
 ];
 
 [ CloseSub ;	! 165428 / 0x28634
     if (noun hasnt openable) {
-        return L__M(48,1);
+        return L__M(##Close,1);
     }
     if (noun hasnt open) {
-        return L__M(48,2);
+        return L__M(##Close,2);
     }
     give noun ~open;
     if (AfterRoutines() == true) {
@@ -21314,13 +21314,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(48,3,noun);
+    L__M(##Close,3,noun);
     rtrue;
 ];
 
 [ DisrobeSub ;	! 165484 / 0x2866c
     if (noun hasnt attrib26) {
-        return L__M(22,1);
+        return L__M(##Disrobe,1);
     }
     give noun ~attrib26;
     if (AfterRoutines() == true) {
@@ -21329,19 +21329,19 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(22,2,noun);
+    L__M(##Disrobe,2,noun);
     rtrue;
 ];
 
 [ WearSub ;	! 165528 / 0x28698
     if (noun hasnt clothing) {
-        return L__M(25,1);
+        return L__M(##Wear,1);
     }
     if (parent(noun) ~= player) {
-        return L__M(25,2);
+        return L__M(##Wear,2);
     }
     if (noun has attrib26) {
-        return L__M(25,3);
+        return L__M(##Wear,3);
     }
     give noun attrib26;
     if (AfterRoutines() == true) {
@@ -21350,13 +21350,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(25,4,noun);
+    L__M(##Wear,4,noun);
     rtrue;
 ];
 
 [ EatSub ;	! 165604 / 0x286e4
     if (noun hasnt edible) {
-        return L__M(72,1);
+        return L__M(##Eat,1);
     }
     remove noun;
     if (AfterRoutines() == true) {
@@ -21365,34 +21365,34 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(72,2,noun);
+    L__M(##Eat,2,noun);
     rtrue;
 ];
 
 ! References: obj132_Wine_Cellars.name
 
 [ YesSub ;	! 165648 / 0x28710
-    L__M(51);
+    L__M(##Yes);
     rtrue;
 ];
 
 [ NoSub ;	! 165656 / 0x28718
-    L__M(52);
+    L__M(##No);
     rtrue;
 ];
 
 [ BurnSub ;	! 165664 / 0x28720
-    L__M(92);
+    L__M(##Burn);
     rtrue;
 ];
 
 [ PraySub ;	! 165672 / 0x28728
-    L__M(81);
+    L__M(##Pray);
     rtrue;
 ];
 
 [ WakeSub ;	! 165680 / 0x28730
-    L__M(82);
+    L__M(##Wake);
     rtrue;
 ];
 
@@ -21400,164 +21400,164 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(noun,83[obj83_painting_of_Mad_Isaac_Meldrewe?]) ~= 0) {
         rfalse;
     }
-    L__M(83);
+    L__M(##WakeOther);
     rtrue;
 ];
 
 [ ThinkSub ;	! 165708 / 0x2874c
-    L__M(85);
+    L__M(##Think);
     rtrue;
 ];
 
 [ SmellSub ;	! 165716 / 0x28754
-    L__M(86);
+    L__M(##Smell);
     rtrue;
 ];
 
 [ ListenSub ;	! 165724 / 0x2875c
-    L__M(87);
+    L__M(##Listen);
     rtrue;
 ];
 
 [ TasteSub ;	! 165732 / 0x28764
-    L__M(88);
+    L__M(##Taste);
     rtrue;
 ];
 
 [ CutSub ;	! 165740 / 0x2876c
-    L__M(95);
+    L__M(##Cut);
     rtrue;
 ];
 
 [ JumpOverSub ;	! 165748 / 0x28774
-    L__M(97);
+    L__M(##JumpOver);
     rtrue;
 ];
 
 ! References: obj207_green_wire.name, obj208_red_wire.name, obj209_blue_wire.name, obj210_black_wire.name
 
 [ Action91Sub ;	! 165756 / 0x2877c
-    L__M(91);
+    L__M(##Action91);
     rtrue;
 ];
 
 [ DrinkSub ;	! 165764 / 0x28784
-    L__M(93);
+    L__M(##Drink);
     rtrue;
 ];
 
 [ SwimSub ;	! 165772 / 0x2878c
-    L__M(78);
+    L__M(##Swim);
     rtrue;
 ];
 
 [ SwingSub ;	! 165780 / 0x28794
-    L__M(79);
+    L__M(##Swing);
     rtrue;
 ];
 
 [ BlowSub ;	! 165788 / 0x2879c
-    L__M(80);
+    L__M(##Blow);
     rtrue;
 ];
 
 [ CleanSub ;	! 165796 / 0x287a4
-    L__M(90);
+    L__M(##Clean);
     rtrue;
 ];
 
 [ SetSub ;	! 165804 / 0x287ac
-    L__M(58);
+    L__M(##Set);
     rtrue;
 ];
 
 [ SetToSub ;	! 165812 / 0x287b4
-    L__M(59);
+    L__M(##SetTo);
     rtrue;
 ];
 
 [ WaveHandsSub ;	! 165820 / 0x287bc
-    L__M(56);
+    L__M(##WaveHands);
     rtrue;
 ];
 
 ! References: obj35_Attic.name
 
 [ BuySub ;	! 165828 / 0x287c4
-    L__M(76);
+    L__M(##Buy);
     rtrue;
 ];
 
 [ SingSub ;	! 165836 / 0x287cc
-    L__M(74);
+    L__M(##Sing);
     rtrue;
 ];
 
 [ ClimbSub ;	! 165844 / 0x287d4
-    L__M(75);
+    L__M(##Climb);
     rtrue;
 ];
 
 [ SleepSub ;	! 165852 / 0x287dc
-    L__M(73);
+    L__M(##Sleep);
     rtrue;
 ];
 
 [ ConsultSub ;	! 165860 / 0x287e4
-    L__M(45,1,noun);
+    L__M(##Consult,1,noun);
     rtrue;
 ];
 
 [ TouchSub ;	! 165872 / 0x287f0
     if (noun == player) {
-        return L__M(89,3);
+        return L__M(##Touch,3);
     }
     if (noun has animate) {
-        return L__M(89,1);
+        return L__M(##Touch,1);
     }
-    L__M(89,2);
+    L__M(##Touch,2);
     rtrue;
 ];
 
 [ PullSub ;	! 165908 / 0x28814
     if (noun has static) {
-        return L__M(60,1);
+        return L__M(##Pull,1);
     }
     if (noun has scenery) {
-        return L__M(60,2);
+        return L__M(##Pull,2);
     }
     if (noun has animate) {
-        return L__M(60,4);
+        return L__M(##Pull,4);
     }
-    L__M(60,3);
+    L__M(##Pull,3);
     rtrue;
 ];
 
 [ PushSub ;	! 165960 / 0x28848
     if (noun has static) {
-        return L__M(61,1);
+        return L__M(##Push,1);
     }
     if (noun has scenery) {
-        return L__M(61,2);
+        return L__M(##Push,2);
     }
     if (noun has animate) {
-        return L__M(60,4);
+        return L__M(##Pull,4);
     }
-    L__M(61,3);
+    L__M(##Push,3);
     rtrue;
 ];
 
 [ TurnSub ;	! 166012 / 0x2887c
     if (noun has static) {
-        return L__M(63,1);
+        return L__M(##Turn,1);
     }
     if (noun has scenery) {
-        return L__M(63,2);
+        return L__M(##Turn,2);
     }
     if (noun has animate) {
-        return L__M(60,4);
+        return L__M(##Pull,4);
     }
-    L__M(63,3);
+    L__M(##Turn,3);
     rtrue;
 ];
 
@@ -21565,21 +21565,21 @@ Array array_29185 -->	! 29185 (0x7201)
     if (AfterRoutines() == true) {
         rtrue;
     }
-    L__M(67);
+    L__M(##Wait);
     rtrue;
 ];
 
 [ PushDirSub ;	! 166084 / 0x288c4
-    L__M(62,1);
+    L__M(##PushDir,1);
     rtrue;
 ];
 
 [ routine166092 local1 ;	! 166092 / 0x288cc
     if (parent(second) ~= Compass) {
-        return L__M(62,2);
+        return L__M(##PushDir,2);
     }
     if (second == u_obj or d_obj) {
-        return L__M(62,3);
+        return L__M(##PushDir,3);
     }
     AfterRoutines();
     local1 = noun;
@@ -21595,9 +21595,9 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ SqueezeSub ;	! 166156 / 0x2890c
     if (noun has animate) {
-        return L__M(77,1);
+        return L__M(##Squeeze,1);
     }
-    L__M(77,2);
+    L__M(##Squeeze,2);
     rtrue;
 ];
 
@@ -21611,12 +21611,12 @@ Array array_29185 -->	! 29185 (0x7201)
         verb = ##ThrowAt;
     }
     if (second hasnt animate) {
-        return L__M(32,1);
+        return L__M(##ThrowAt,1);
     }
     if (routine55448(second,32[obj32_electric_torch?]) ~= 0) {
         rfalse;
     }
-    L__M(32,2);
+    L__M(##ThrowAt,2);
     rtrue;
 ];
 
@@ -21624,7 +21624,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (noun has animate && routine55448(noun,66[obj66_solid_glass_ball?]) ~= 0) {
         rfalse;
     }
-    L__M(66);
+    L__M(##Attack);
     rtrue;
 ];
 
@@ -21633,9 +21633,9 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     if (noun == player) {
-        return L__M(89,3);
+        return L__M(##Touch,3);
     }
-    L__M(84);
+    L__M(##Kiss);
     rtrue;
 ];
 
@@ -21643,18 +21643,18 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(second,68[obj68_water_pipe?]) ~= 0) {
         rfalse;
     }
-    L__M(68);
+    L__M(##Answer);
     rtrue;
 ];
 
 [ TellSub ;	! 166328 / 0x289b8
     if (noun == player) {
-        return L__M(69);
+        return L__M(##Tell);
     }
     if (routine55448(noun,69[obj69_romantic_novel?]) ~= 0) {
         rfalse;
     }
-    L__M(69,2);
+    L__M(##Tell,2);
     rtrue;
 ];
 
@@ -21662,7 +21662,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(noun,70[obj70_book_of_Twenties_poetry?]) ~= 0) {
         rfalse;
     }
-    L__M(70);
+    L__M(##Ask);
     rtrue;
 ];
 
@@ -21671,7 +21671,7 @@ Array array_29185 -->	! 29185 (0x7201)
         routine55348(24[rod_of_luck?]);
         rtrue;
     }
-    L__M(259,1,noun);
+    L__M(##Action259,1,noun);
     rtrue;
 ];
 
@@ -21700,7 +21700,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "^>";
         rtrue;
     }
-    if (action == ##Action262) {
+    if (action == ##Miscellany) {
         if (n == 1) {
             "(considering the first sixteen objects only)^";
         }
@@ -22750,7 +22750,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     new_line;
-    L__M(1,1);
+    L__M(##FullScore,1);
     ndx = 0;
   .label173944;
     if (ndx < 45) {
@@ -22773,11 +22773,11 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (things_score ~= 0) {
         PANum(things_score);
-        L__M(1,2);
+        L__M(##FullScore,2);
     }
     if (places_score ~= 0) {
         PANum(places_score);
-        L__M(1,3);
+        L__M(##FullScore,3);
     }
     if (good_try_bonus ~= 0) {
         PANum(5);
@@ -22792,7 +22792,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     new_line;
     PANum(score);
-    L__M(1,4);
+    L__M(##FullScore,4);
     if (deadflag == WON && task_scores->11 == 0) {
         "^Sadly, you missed out on the 50-point bonus for rescuing Andromeda.";
     }
@@ -23056,7 +23056,7 @@ Array array_29185 -->	! 29185 (0x7201)
         routine74232(1[?]);
         rfalse;
     }
-    L__M(96);
+    L__M(##Jump);
     rtrue;
 ];
 
