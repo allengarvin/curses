@@ -557,7 +557,7 @@ Property 8	d_to:thing
 Property 9	prop9:thing
 Property 10	prop10:thing
 Property 11	nw_to:thing
-Property 12	prop12:thing
+Property 12	list_together:thing
 Property 13	u_to:thing
 Property 14	d_to:thing
 Property 16	prop16:?
@@ -2090,9 +2090,8 @@ Routine 0x26848	routine157768:?
 Routine 0x26908	IsSeeThrough o:object
 Routine 0x26934	routine158004:?
 Routine 0x269a0	routine158112:?
-! References: obj228_Ekmek_Special.prop1
-Routine 0x269f4	routine158196:?
-Routine 0x26a5c	routine158300:?
+Routine 0x269f4	SortOutList obj i k l
+Routine 0x26a5c	WriteListFrom o style depth
 Routine 0x26ac8	WriteListR o depth stack_pointer  classes_p sizes_p i j k k2 l m n q senc mr
 Routine 0x270a0	WriteBeforeEntry o depth  flag
 Routine 0x270f4	WriteAfterEntry o depth stack_p  flag flag2 flag3 p comb
