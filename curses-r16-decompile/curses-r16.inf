@@ -19409,31 +19409,31 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     global120 = 0;
-    routine158408(local1,local3);
+    WriteListR(local1,local3);
     rtrue;
 ];
 
-[ routine158408 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 local11 local12 local13 local14 local15 ;	! 158408 / 0x26ac8
-    if (local2 > 0 && local1 == child(parent(local1))) {
-        routine158196(local1);
-        local1 = child(parent(local1));
+[ WriteListR o depth stack_pointer classes_p sizes_p i j k k2 l m n q senc mr ;	! 158408 / 0x26ac8
+    if (depth > 0 && o == child(parent(o))) {
+        routine158196(o);
+        o = child(parent(o));
     }
-    local4 = 24788 + local3;
-    local5 = 24660 + local3;
-    local6 = local1;
-    local7 = 0;
+    classes_p = 24788 + stack_pointer;
+    sizes_p = 24660 + stack_pointer;
+    i = o;
+    j = 0;
   .label158456;
-    if (local6 ~= 0 && local7 + local3 < 128) {
-        local4->local7 = 0;
-        if (local6.d_to ~= nothing) {
-            ++local8;
+    if (i ~= 0 && j + stack_pointer < 128) {
+        classes_p->j = 0;
+        if (i.d_to ~= nothing) {
+            ++k;
         }
-        local6 = routine157768(local6,local2);
-        ++local7;
+        i = routine157768(i,depth);
+        ++j;
         jump label158456;
     }
     if (c_style & 1024 ~= 0) {
-        if (local7 == 1[?]) {
+        if (j == 1[?]) {
             print " is";
         } else {
             print " are";
@@ -19445,95 +19445,95 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         c_style = c_style - 1024;
     }
-    local3 = local3 + local7 + 1;
-    if (local8 < 2) {
+    stack_pointer = stack_pointer + j + 1;
+    if (k < 2) {
         ! no code
     } else {
-        local12 = 1[?];
-        local6 = local1;
-        local8 = 0;
+        n = 1[?];
+        i = o;
+        k = 0;
       .label158576;
-        if (local8 < local7) {
-            if (local4->local8 == 0) {
-                local4->local8 = local12;
-                local5->local12 = 1[?];
-                local10 = routine157768(local6,local2);
-                local11 = local8 + 1;
+        if (k < j) {
+            if (classes_p->k == 0) {
+                classes_p->k = n;
+                sizes_p->n = 1[?];
+                l = routine157768(i,depth);
+                m = k + 1;
               .label158611;
-                if (local10 ~= 0 && local11 < local7) {
-                    if (local4->local11 == 0 && local6.d_to ~= nothing && local10.d_to ~= nothing && routine158004(local6,local10) == 1[?]) {
-                        local5->local12 = local5->local12 + 1;
-                        local4->local11 = local12;
+                if (l ~= 0 && m < j) {
+                    if (classes_p->m == 0 && i.d_to ~= nothing && l.d_to ~= nothing && routine158004(i,l) == 1[?]) {
+                        sizes_p->n = sizes_p->n + 1;
+                        classes_p->m = n;
                     }
-                    local10 = routine157768(local10,local2);
-                    ++local11;
+                    l = routine157768(l,depth);
+                    ++m;
                     jump label158611;
                 }
-                ++local12;
+                ++n;
             }
-            local6 = routine157768(local6,local2);
-            ++local8;
+            i = routine157768(i,depth);
+            ++k;
             jump label158576;
         }
-        --local12;
-        local6 = 1[?];
-        local7 = local1;
-        local8 = 0;
+        --n;
+        i = 1[?];
+        j = o;
+        k = 0;
       .label158715;
-        if (local6 <= local12) {
+        if (i <= n) {
           .label158720;
-            if (local4->local8 ~= local6 && local4->local8 ~= 0 - local6) {
-                ++local8;
-                local7 = routine157768(local7,local2);
+            if (classes_p->k ~= i && classes_p->k ~= 0 - i) {
+                ++k;
+                j = routine157768(j,depth);
                 jump label158720;
             }
-            local11 = local5->local6;
-            if (local7.prop12 ~= nothing or global117 && routine53524(local7.prop12) == 2[?] or 3[s_obj?] && local7.prop12 == local15) {
-                --local14;
+            m = sizes_p->i;
+            if (j.prop12 ~= nothing or global117 && routine53524(j.prop12) == 2[?] or 3[s_obj?] && j.prop12 == mr) {
+                --senc;
             }
-            local15 = local7.prop12;
-            ++local6;
-            ++local14;
+            mr = j.prop12;
+            ++i;
+            ++senc;
             jump label158715;
         }
-        --local14;
-        local6 = 1[?];
-        local7 = local1;
-        local8 = 0;
-        local15 = 0;
+        --senc;
+        i = 1[?];
+        j = o;
+        k = 0;
+        mr = 0;
       .label158822;
-        if (local14 >= 0) {
+        if (senc >= 0) {
           .label158827;
-            if (local4->local8 ~= local6 && local4->local8 ~= 0 - local6) {
-                ++local8;
-                local7 = routine157768(local7,local2);
+            if (classes_p->k ~= i && classes_p->k ~= 0 - i) {
+                ++k;
+                j = routine157768(j,depth);
                 jump label158827;
             }
-            if (local7.prop12 ~= nothing or global117) {
-                if (local7.prop12 == local15) {
-                    ++local14;
+            if (j.prop12 ~= nothing or global117) {
+                if (j.prop12 == mr) {
+                    ++senc;
                     jump label159394;
                 }
-                local9 = routine157768(local7,local2);
-                if (local9 == 0 || local9.prop12 ~= local7.prop12) {
+                k2 = routine157768(j,depth);
+                if (k2 == 0 || k2.prop12 ~= j.prop12) {
                     ! no code
                 } else {
-                    local9 = routine53524(local7.prop12);
-                    if (local9 == 2[?] or 3[s_obj?]) {
-                        local13 = local7;
+                    k2 = routine53524(j.prop12);
+                    if (k2 == 2[?] or 3[s_obj?]) {
+                        q = j;
                         global119 = 1[?];
-                        local10 = local8;
-                        local11 = local6;
+                        l = k;
+                        m = i;
                       .label158943;
-                        if (local11 < local12 && local13.prop12 == local7.prop12) {
-                            ++local11;
+                        if (m < n && q.prop12 == j.prop12) {
+                            ++m;
                           .label158963;
-                            if (local4->local10 ~= local11 && local4->local10 ~= 0 - local11) {
-                                ++local10;
-                                local13 = routine157768(local13,local2);
+                            if (classes_p->l ~= m && classes_p->l ~= 0 - m) {
+                                ++l;
+                                q = routine157768(q,depth);
                                 jump label158963;
                             }
-                            if (local13.prop12 == local7.prop12) {
+                            if (q.prop12 == j.prop12) {
                                 ++global119;
                             }
                             jump label158943;
@@ -19542,7 +19542,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             ! no code
                         } else {
                             if (c_style & 2 ~= 0) {
-                                generic_global = 2 * (local2 + global120);
+                                generic_global = 2 * (depth + global120);
                                 if (generic_global >= 1) {
                                   .label159048;
                                     print ' ';
@@ -19550,17 +19550,17 @@ Array array_29185 -->	! 29185 (0x7201)
                                     if (generic_global ~= 0) jump label159048;
                                 }
                             }
-                            if (local9 == 3[s_obj?]) {
-                                local13 = 0;
-                                local10 = 0;
+                            if (k2 == 3[s_obj?]) {
+                                q = 0;
+                                l = 0;
                               .label159071;
-                                if (local10 < global119) {
-                                    local13 = local13 + local5->(local10 + local6);
-                                    ++local10;
+                                if (l < global119) {
+                                    q = q + sizes_p->(l + i);
+                                    ++l;
                                     jump label159071;
                                 }
-                                routine157320(local13);
-                                print " ", (string) local7.prop12;
+                                routine157320(q);
+                                print " ", (string) j.prop12;
                                 if (c_style & 8 ~= 0) {
                                     print " (";
                                 }
@@ -19568,112 +19568,112 @@ Array array_29185 -->	! 29185 (0x7201)
                                     print ":^";
                                 }
                             }
-                            local13 = c_style;
-                            if (local9 ~= 3[s_obj?]) {
+                            q = c_style;
+                            if (k2 ~= 3[s_obj?]) {
                                 global115 = 1[?];
-                                global72 = local7;
-                                global73 = local2 + global120;
-                                if (routine53736(local7,12[obj12_outside?]) == 1[?]) {
+                                global72 = j;
+                                global73 = depth + global120;
+                                if (routine53736(j,12[obj12_outside?]) == 1[?]) {
                                     jump label159226;
                                 }
                             }
-                            global117 = local7.prop12;
-                            global118 = local7;
+                            global117 = j.prop12;
+                            global118 = j;
                             ++global120;
-                            routine158408(local7,local2,local3);
+                            WriteListR(j,depth,stack_pointer);
                             --global120;
                             global117 = 0;
                             global118 = 0;
-                            if (local9 == 3[s_obj?]) {
+                            if (k2 == 3[s_obj?]) {
                                 if (c_style & 8 ~= 0) {
                                     print ")";
                                 }
                             } else {
                                 global115 = 2[?];
-                                global72 = local7;
-                                global73 = local2 + global120;
-                                routine53736(local7,12[obj12_outside?]);
+                                global72 = j;
+                                global73 = depth + global120;
+                                routine53736(j,12[obj12_outside?]);
                             }
                           .label159226;
-                            if (local13 & 1 ~= 0 && c_style & 1 == 0) {
+                            if (q & 1 ~= 0 && c_style & 1 == 0) {
                                 new_line;
                             }
-                            c_style = local13;
-                            local15 = local7.prop12;
+                            c_style = q;
+                            mr = j.prop12;
                             jump label159367;
                         }
                     }
                 }
             }
-            if (WriteBeforeEntry(local7,local2) == 1[?]) {
+            if (WriteBeforeEntry(j,depth) == 1[?]) {
                 ! no code
             } else {
-                if (local5->local6 == 1[?]) {
+                if (sizes_p->i == 1[?]) {
                     if (c_style & 4096 ~= 0) {
-                        PSN__(local7);
+                        PSN__(j);
                     } else if (c_style & 256 ~= 0) {
-                        Defart(local7);
+                        Defart(j);
                     } else {
-                        routine57632(local7);
+                        routine57632(j);
                     }
                 } else {
                     if (c_style & 256 ~= 0) {
                         print "the ";
                     }
-                    routine157320(local5->local6);
+                    routine157320(sizes_p->i);
                     print " ";
-                    PrintOrRun(local7,14[thedark?],1[?]);
+                    PrintOrRun(j,14[thedark?],1[?]);
                 }
-                WriteAfterEntry(local7,local2,local3);
+                WriteAfterEntry(j,depth,stack_pointer);
               .label159367;
                 if (c_style & 8 ~= 0) {
-                    if (local14 == 1[?]) {
+                    if (senc == 1[?]) {
                         print " and ";
                     }
-                    if (local14 > 1) {
+                    if (senc > 1) {
                         print ", ";
                     }
                 }
             }
           .label159394;
-            ++local6;
-            --local14;
+            ++i;
+            --senc;
             jump label158822;
         }
         rtrue;
     }
-    local12 = local7;
-    local6 = 1[?];
-    local7 = local1;
+    n = j;
+    i = 1[?];
+    j = o;
   .label159411;
-    if (local6 <= local12) {
-        if (local7.prop12 ~= nothing or global117 && routine53524(local7.prop12) == 2[?] or 3[s_obj?] && local7.prop12 == local15) {
-            --local14;
+    if (i <= n) {
+        if (j.prop12 ~= nothing or global117 && routine53524(j.prop12) == 2[?] or 3[s_obj?] && j.prop12 == mr) {
+            --senc;
         }
-        local15 = local7.prop12;
-        local7 = routine157768(local7,local2);
-        ++local6;
-        ++local14;
+        mr = j.prop12;
+        j = routine157768(j,depth);
+        ++i;
+        ++senc;
         jump label159411;
     }
-    local6 = 1[?];
-    local7 = local1;
-    local15 = 0;
+    i = 1[?];
+    j = o;
+    mr = 0;
   .label159482;
-    if (local6 <= local14) {
-        if (local7.prop12 ~= nothing or global117) {
-            if (local7.prop12 == local15) {
-                --local6;
+    if (i <= senc) {
+        if (j.prop12 ~= nothing or global117) {
+            if (j.prop12 == mr) {
+                --i;
                 jump label159889;
             }
-            local8 = routine157768(local7,local2);
-            if (local8 == 0 || local8.prop12 ~= local7.prop12) {
+            k = routine157768(j,depth);
+            if (k == 0 || k.prop12 ~= j.prop12) {
                 ! no code
             } else {
-                local8 = routine53524(local7.prop12);
-                if (local8 == 2[?] or 3[s_obj?]) {
+                k = routine53524(j.prop12);
+                if (k == 2[?] or 3[s_obj?]) {
                     if (c_style & 2 ~= 0) {
-                        generic_global = 2 * (local2 + global120);
+                        generic_global = 2 * (depth + global120);
                         if (generic_global >= 1) {
                           .label159582;
                             print ' ';
@@ -19681,15 +19681,15 @@ Array array_29185 -->	! 29185 (0x7201)
                             if (generic_global ~= 0) jump label159582;
                         }
                     }
-                    if (local8 == 3[s_obj?]) {
-                        local13 = local7;
-                        local10 = 0;
+                    if (k == 3[s_obj?]) {
+                        q = j;
+                        l = 0;
                       .label159605;
-                        local13 = routine157768(local13,local2);
-                        ++local10;
-                        if (local13.prop12 == local7.prop12) jump label159605;
-                        routine157320(local10);
-                        print " ", (string) local7.prop12;
+                        q = routine157768(q,depth);
+                        ++l;
+                        if (q.prop12 == j.prop12) jump label159605;
+                        routine157320(l);
+                        print " ", (string) j.prop12;
                         if (c_style & 8 ~= 0) {
                             print " (";
                         }
@@ -19697,66 +19697,66 @@ Array array_29185 -->	! 29185 (0x7201)
                             print ":^";
                         }
                     }
-                    local13 = c_style;
-                    if (local8 ~= 3[s_obj?]) {
+                    q = c_style;
+                    if (k ~= 3[s_obj?]) {
                         global115 = 1[?];
-                        global72 = local7;
-                        global73 = local2 + global120;
-                        if (routine53736(local7,12[obj12_outside?]) == 1[?]) {
+                        global72 = j;
+                        global73 = depth + global120;
+                        if (routine53736(j,12[obj12_outside?]) == 1[?]) {
                             jump label159760;
                         }
                     }
-                    global117 = local7.prop12;
-                    global118 = local7;
+                    global117 = j.prop12;
+                    global118 = j;
                     ++global120;
-                    routine158408(local7,local2,local3);
+                    WriteListR(j,depth,stack_pointer);
                     --global120;
                     global117 = 0;
                     global118 = 0;
-                    if (local8 == 3[s_obj?]) {
-                        if (local13 & 8 ~= 0) {
+                    if (k == 3[s_obj?]) {
+                        if (q & 8 ~= 0) {
                             print ")";
                         }
                     } else {
                         global115 = 2[?];
-                        global72 = local7;
-                        global73 = local2 + global120;
-                        routine53736(local7,12[obj12_outside?]);
+                        global72 = j;
+                        global73 = depth + global120;
+                        routine53736(j,12[obj12_outside?]);
                     }
                   .label159760;
-                    if (local13 & 1 ~= 0 && c_style & 1 == 0) {
+                    if (q & 1 ~= 0 && c_style & 1 == 0) {
                         new_line;
                     }
-                    c_style = local13;
-                    local15 = local7.prop12;
+                    c_style = q;
+                    mr = j.prop12;
                     jump label159854;
                 }
             }
         }
-        if (WriteBeforeEntry(local7,local2) == 1[?]) {
+        if (WriteBeforeEntry(j,depth) == 1[?]) {
             ! no code
         } else {
             if (c_style & 4096 ~= 0) {
-                PSN__(local7);
+                PSN__(j);
             } else if (c_style & 256 ~= 0) {
-                Defart(local7);
+                Defart(j);
             } else {
-                routine57632(local7);
+                routine57632(j);
             }
-            WriteAfterEntry(local7,local2,local3);
+            WriteAfterEntry(j,depth,stack_pointer);
           .label159854;
             if (c_style & 8 ~= 0) {
-                if (local6 == local14 - 1) {
+                if (i == senc - 1) {
                     print " and ";
                 }
-                if (local6 < local14 - 1) {
+                if (i < senc - 1) {
                     print ", ";
                 }
             }
         }
       .label159889;
-        local7 = routine157768(local7,local2);
-        ++local6;
+        j = routine157768(j,depth);
+        ++i;
         jump label159482;
     }
     rtrue;
@@ -19941,7 +19941,7 @@ Array array_29185 -->	! 29185 (0x7201)
         new_line;
     }
     if (flag == 1[?]) {
-        routine158408(child(o),depth + 1,stack_p);
+        WriteListR(child(o),depth + 1,stack_p);
     }
     if (flag == 1[?] && c_style & 64 ~= 0) {
         print ")";
