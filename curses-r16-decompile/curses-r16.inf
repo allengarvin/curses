@@ -6239,7 +6239,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     o = routine52976();
     --wn;
-    if (o == 34860['it'?] or 40287['them'?]) {
+    if (o == 'it' or 'them') {
         vague_word = o;
         vague_obj = itobj;
         if (itobj == nothing) {
@@ -6247,7 +6247,7 @@ Array array_29185 -->	! 29185 (0x7201)
             return 0;
         }
     }
-    if (o == 34374['him'?]) {
+    if (o == 'him') {
         vague_word = o;
         vague_obj = global77;
         if (global77 == 0) {
@@ -6255,7 +6255,7 @@ Array array_29185 -->	! 29185 (0x7201)
             return 0;
         }
     }
-    if (o == 34293['her'?]) {
+    if (o == 'her') {
         vague_word = o;
         vague_obj = global78;
         if (global78 == 0) {
@@ -6263,7 +6263,7 @@ Array array_29185 -->	! 29185 (0x7201)
             return 0;
         }
     }
-    if (o == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
+    if (o == 'me' or 'myself' or 'self') {
         vague_word = o;
         vague_obj = player;
     }
@@ -6455,7 +6455,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         wn = oops_from + global69;
         o = routine52976();
-        if (o == 29874['and'?] or 30927['but'?] or 32916['except'?] or 41628['xcomma'?]) {
+        if (o == 'and' or 'but' or 'except' or 'xcomma') {
             if (parser_trace >= 3) {
                 print "  [Read '", (address) o, "']^";
             }
@@ -6463,7 +6463,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 etype = MULTI_PE;
                 jump label47741;
             }
-            if (o == 30927['but'?] or 32916['except'?]) {
+            if (o == 'but' or 'except') {
                 and_parity = 1 - and_parity;
             }
             if (many_flag == 0) {
