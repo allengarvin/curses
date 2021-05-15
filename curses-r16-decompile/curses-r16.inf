@@ -4862,7 +4862,7 @@ Global places_score;
 Global things_score;
 Global global19 = 1[?];
 Global global20;
-Global global21;
+Global top_object;
 Global global23;
 Global actor;
 Global actor_location;
@@ -7481,7 +7481,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local5 = local1.&prop10;
     if (local5 ~= 0) {
-        if (UnsignedCompare(local5-->0,global21) > 0) {
+        if (UnsignedCompare(local5-->0,top_object) > 0) {
             global104 = 2 + local3;
             routine53736(local1,10[u_obj?]);
             global104 = 0;
@@ -7861,7 +7861,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local1 == 0) {
         return 0;
     }
-    if (local1 >= 1 && local1 <= global21) {
+    if (local1 >= 1 && local1 <= top_object) {
         return 1[?];
     }
     if (UnsignedCompare(local1,46697["CURSES"?]) >= 0) {
@@ -8000,7 +8000,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ PlayTheGame i j k l ;	! 54072 / 0xd338
     standard_interpreter = 50-->0;
     player = yourself;
-    global21 = 757 - 255;
+    top_object = 757 - 255;
     yourself.prop27 = 5[w_obj?];
     j = Initialise;();
     global15 = score;
@@ -8823,7 +8823,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local3 = local1.&prop10;
     if (parent(local1) ~= nothing && local3 ~= 0) {
-        if (local3-->0 > global21) {
+        if (local3-->0 > top_object) {
             global105 = 0;
             global104 = 1[?];
             routine53736(local1,10[u_obj?]);
@@ -8969,7 +8969,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "nothing";
         rtrue;
     }
-    if (o > global21 || o < 0) {
+    if (o > top_object || o < 0) {
         print "<no such object>";
         rtrue;
     }
@@ -20051,7 +20051,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ MoveFloatingObjects i k l m address ;	! 160780 / 0x2740c
     i = 15 + 1;
   .label160785;
-    if (i <= global21) {
+    if (i <= top_object) {
         address = i.&prop22;
         if (address ~= 0 && i hasnt attrib7) {
             if (routine53524(address-->0) == 2[?]) {
@@ -20195,7 +20195,7 @@ Array array_29185 -->	! 29185 (0x7201)
     L__M(##Places);
     local1 = 15[yourself?];
   .label161225;
-    if (local1 <= global21) {
+    if (local1 <= top_object) {
         if (local1 has visited) {
             ++local2;
         }
@@ -20204,7 +20204,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local1 = 15[yourself?];
   .label161245;
-    if (local1 <= global21) {
+    if (local1 <= top_object) {
         if (local1 has visited) {
             PSN__(local1);
             ++local3;
@@ -20227,7 +20227,7 @@ Array array_29185 -->	! 29185 (0x7201)
     L__M(##Objects,1);
     local1 = 15[yourself?];
   .label161306;
-    if (local1 <= global21) {
+    if (local1 <= top_object) {
         if (local1 has moved) {
             local3 = 1[?];
             Defart(local1);
@@ -23892,7 +23892,7 @@ Array array_29185 -->	! 29185 (0x7201)
     } else {
         local4 = 65535[?];
     }
-    if (local4 <= global21 && local4 > 0) {
+    if (local4 <= top_object && local4 > 0) {
         local5 = local4;
     } else {
         wn = local2;
