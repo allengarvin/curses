@@ -4907,7 +4907,7 @@ Global global81;
 Global global82;
 Global global83;
 Global global84;
-Global interfrom;
+Global Pinterfrom;
 Global global86;
 Global global87;
 Global held_back_mode;
@@ -5575,7 +5575,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     }
                     print " -> action ", line_address->7, "]^";
                 }
-                interfrom = 0;
+                Pinterfrom = 0;
                 interfrom = 0;
                 global60 = 0;
                 global61 = line_address->0;
@@ -5653,7 +5653,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (m == 1[?] && global61 == 1[?] && action_to_be == 19[rod_of_stalking?]) {
                     global106 = 1[?];
                 }
-                interfrom = 0;
+                Pinterfrom = 0;
                 interfrom = 0;
                 global60 = 0;
                 global62 = 0;
@@ -5797,7 +5797,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                 routine53392(results-->2);
                             }
                             oops_from = 0;
-                            if (interfrom ~= 0 && actor == player) {
+                            if (Pinterfrom ~= 0 && actor == player) {
                                 notheld_mode = 1;
                                 i = 0;
                               .label44433;
@@ -5808,9 +5808,9 @@ Array array_29185 -->	! 29185 (0x7201)
                                 }
                                 results-->0 = 19[rod_of_stalking?];
                                 results-->1 = 1[?];
-                                results-->2 = interfrom;
+                                results-->2 = Pinterfrom;
                                 print "(first taking ";
-                                Defart(interfrom);
+                                Defart(Pinterfrom);
                                 print ")^";
                             }
                             if (held_back_mode == 1) {
@@ -6424,7 +6424,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     global91 = 6[ne_obj?];
                     jump label47741;
                 }
-                interfrom = local3;
+                Pinterfrom = local3;
                 if (parser_trace >= 3) {
                     print "  [Allowing object ";
                     Defart(local3);
