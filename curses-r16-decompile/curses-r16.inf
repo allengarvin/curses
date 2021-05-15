@@ -4869,7 +4869,7 @@ Global actor_location;
 Global verb;
 Global global27;
 Global global28;
-Global global29;
+Global special_number1;
 Global global30;
 Global selfobj;
 Global noun;
@@ -5919,7 +5919,7 @@ Array array_29185 -->	! 29185 (0x7201)
         results-->0 = 264[obj264_aft_wall?];
         results-->1 = 2[?];
         results-->2 = 1[?];
-        global29 = special_word;
+        special_number1 = special_word;
         results-->3 = actor;
         global43 = verb_wordnum;
         global44 = num_words - global43 + 1;
@@ -6294,7 +6294,7 @@ Array array_29185 -->	! 29185 (0x7201)
         l = routine53120(wn);
         if (l ~= 64536[?]) {
             if (nsns == 0) {
-                global29 = l;
+                special_number1 = l;
             } else {
                 global30 = l;
             }
@@ -6319,7 +6319,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print "  [Read number as ", l, "]^";
         }
         if (nsns++ == 0) {
-            global29 = l;
+            special_number1 = l;
         } else {
             global30 = l;
         }
@@ -6338,7 +6338,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (l == 1[?]) {
             if (nsns == 0) {
-                global29 = global36;
+                special_number1 = global36;
             } else {
                 global30 = global36;
             }
@@ -8078,7 +8078,7 @@ Array array_29185 -->	! 29185 (0x7201)
             verb = ##Give;
         }
         if (verb == ##Ask or ##Tell or ##Answer) {
-            special_word = global29;
+            special_word = special_number1;
         }
       .label54402;
         global27 = 0;
@@ -8093,13 +8093,13 @@ Array array_29185 -->	! 29185 (0x7201)
         noun = global27;
         second = global28;
         if (global27 == 1[?]) {
-            noun = global29;
+            noun = special_number1;
         }
         if (global28 == 1[?]) {
             if (global27 == 1[?]) {
                 second = global30;
             } else {
-                second = global29;
+                second = special_number1;
             }
         }
         if (actor ~= player) {
