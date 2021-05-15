@@ -5470,7 +5470,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (verb_word == 0 || verb_word->6 & 1 == 0) {
             wn = verb_wordnum;
-            l = routine47764(1[?],0,0);
+            l = NounDomain(Compass,nothing,0);
             if (l == 10000[?]) {
                 jump label42195;
             }
@@ -5507,7 +5507,7 @@ Array array_29185 -->	! 29185 (0x7201)
             wn = 1;
             lookahead = 1;
             scope_reason = TALKING_REASON;
-            l = routine47764(player,actor_location,6[ne_obj?]);
+            l = NounDomain(player,actor_location,6);
             scope_reason = PARSING_REASON;
             if (l == 10000[?]) {
                 jump label42195;
@@ -5618,7 +5618,7 @@ Array array_29185 -->	! 29185 (0x7201)
                           .label43419;
                             if (wn <= num_words) {
                                 if (routine52976() == j) {
-                                    l = routine47764(actor_location,actor,token);
+                                    l = NounDomain(actor_location,actor,token);
                                     if (parser_trace >= 2) {
                                         print " [Forward token parsed: ";
                                         if (l == 10000[?]) {
@@ -6338,7 +6338,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (parser_trace >= 3) {
                 print "  [Calling NounDomain on location and actor]^";
             }
-            local3 = routine47764(actor_location,actor,local2);
+            local3 = NounDomain(actor_location,actor,local2);
             if (local3 == 10000[?]) {
                 return local3;
             }
@@ -6409,7 +6409,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
         }
         if (local2 == 1[?]) {
-            local3 = routine47764(actor,actor_location,local2);
+            local3 = NounDomain(actor,actor_location,local2);
             if (local3 == 10000[?]) {
                 return local3;
             }
@@ -6484,7 +6484,7 @@ Array array_29185 -->	! 29185 (0x7201)
     return 0;
 ];
 
-[ routine47764 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 local11 ;	! 47764 / 0xba94
+[ NounDomain who where i local4 local5 local6 local7 local8 local9 local10 local11 ;	! 47764 / 0xba94
     if (parser_trace >= 4) {
         print "   [NounDomain called at word ", wn, "^";
     }
@@ -6492,7 +6492,7 @@ Array array_29185 -->	! 29185 (0x7201)
     global67 = 0;
     global70 = wn;
     global96 = 0;
-    routine51412(local1,local2,local3);
+    routine51412(who,where,i);
     if (parser_trace >= 4) {
         print "   [ND made ", global67, " matches]^";
     }
@@ -6531,7 +6531,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local5 = array_24660-->0;
     }
     if (global67 > 1) {
-        local5 = routine48728(local3);
+        local5 = routine48728(i);
         if (local5 == 65535[?]) {
             rfalse;
         }
@@ -6552,7 +6552,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (global70 > num_words) {
         ! no code
     } else {
-        if (local3 == 6[ne_obj?]) {
+        if (i == 6) {
             print "Who";
         } else {
             print "Which";
@@ -6588,7 +6588,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local10 = Keyboard(24367[?],24488[?]);
         local4 = array_24488-->1;
         if (local4 == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
-            if (local3 >= 2 && local3 <= 5) {
+            if (i >= 2 && i <= 5) {
                 local8 = array_24239-->0;
                 local5 = 0;
               .label48243;
@@ -6628,7 +6628,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         return 10000[?];
     }
-    if (local3 == 6[ne_obj?]) {
+    if (i == 6) {
         print "Whom";
     } else {
         print "What";
@@ -23845,7 +23845,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local2 = wn;
     if (local1 ~= 65535[?]) {
-        local4 = routine47764(1[?],0,0);
+        local4 = NounDomain(Compass,nothing,0);
     } else {
         local4 = 65535[?];
     }
