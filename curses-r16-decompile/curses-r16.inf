@@ -9243,7 +9243,7 @@ Array array_29185 -->	! 29185 (0x7201)
             local2 = 57[obj57_Over_the_East_Wing?];
         }
     }
-    routine160896(local2);
+    PlayerTo(local2);
     rtrue;
 ];
 
@@ -9464,7 +9464,7 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label63713;
     }
     move historical_pamphlet to player;
-    routine160896(327[Murky_Cave?]);
+    PlayerTo(327[Murky_Cave?]);
     rtrue;
 ];
 
@@ -9545,7 +9545,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "A swirl of wind snakes out from ";
         Defart(selfobj);
         print " and whisks you away to...^";
-        routine160896(local2);
+        PlayerTo(local2);
         rtrue;
     }
     if (action == ##Ask or ##Answer) {
@@ -10775,7 +10775,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         print "Publishers talk a lot of nonsense about readers being transported away by books, but somehow you have arrived in the...^";
         move obj70_book_of_Twenties_poetry to location;
-        routine160896(154[obj154_Unreal_City?]);
+        PlayerTo(154[obj154_Unreal_City?]);
         rtrue;
     }
     rfalse;
@@ -10960,7 +10960,7 @@ Array array_29185 -->	! 29185 (0x7201)
             rtrue;
         }
         give local1 attrib8;
-        routine160896(local1.n_to);
+        PlayerTo(local1.n_to);
         rtrue;
     }
     rfalse;
@@ -11540,7 +11540,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             print "^At that exact grid reference is Meldreustrasse, a minor back street which houses a museum of arcana.^^Suddenly you remember!  You visited the place once, and the curator Doktor Stein showed you round... and he hypnotised you into a swirl of unconsciousness...^^";
             move obj106_tourist_map to location;
-            routine160896(177[obj177_Museum_Foyer?]);
+            PlayerTo(177[obj177_Museum_Foyer?]);
             rtrue;
         }
         "Just some anonymous streets. The detail of this map is so tiny that unless you have the exact four-digit grid reference for what you want, you'll never find it.";
@@ -12923,7 +12923,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "~Curse it, another nobody,~ she hisses in an unguarded moment, as she tidies the pack absentmindedly with her hands. Then she recovers her poise and advises about handsome strangers, fearing death by water, crossing palms with gold and so on. Eventually she ushers you out.^";
     }
   .label96853;
-    routine160896(154[obj154_Unreal_City?]);
+    PlayerTo(154[obj154_Unreal_City?]);
     rtrue;
 ];
 
@@ -13075,10 +13075,10 @@ Array array_29185 -->	! 29185 (0x7201)
         if (global34 == 40476['time'?] || verb == ##Time) {
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
             if (obj176_tourist_map_of_Paris has moved) {
-                routine160896(138[obj138_Infinity_Symbol?]);
+                PlayerTo(138[obj138_Infinity_Symbol?]);
                 rtrue;
             }
-            routine160896(276[obj276_Garden_Stream?]);
+            PlayerTo(276[obj276_Garden_Stream?]);
             if (obj172_hollow_man hasnt attrib8) {
                 give obj172_hollow_man attrib8;
                 move obj194_Ace_of_Cups to player;
@@ -13223,7 +13223,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print "You pass between the steel walls and a light passes over you. Suddenly barriers spring out across the corridor, thumping into the beach ball which rapidly begins to deflate.^^There is a sharp hiss as you nimbly jump over the ball, and then a horrid clang as the barriers come together behind you.^";
             remove obj184_beach_ball;
             Achieved(31);
-            routine160896(185[obj185_Hall_of_Exhibits?]);
+            PlayerTo(185[obj185_Hall_of_Exhibits?]);
             rtrue;
         }
         routine166092();
@@ -13385,7 +13385,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "^Finally reacting to the alarm you set off, Doktor Stein appears and steps toward you, clapping his hands sharply. And dozens of robed figures leap out of the darkness - but these are no security guards. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^~So, Meldrew. It is all as it was prophesied,~ says Stein in a perfectly conversational tone as he forces your mouth open and makes you swallow a violet pill.^^~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
         routine56424(195[obj195_Coven_Cell?],0);
         global140 = 0;
-        routine160896(195[obj195_Coven_Cell?]);
+        PlayerTo(195[obj195_Coven_Cell?]);
         rtrue;
     }
     rfalse;
@@ -13537,7 +13537,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     local1 = local2;
                     jump label103161;
                 }
-                routine160896(283[obj283_Family_Tree?]);
+                PlayerTo(283[obj283_Family_Tree?]);
                 rtrue;
             }
             new_line;
@@ -13725,7 +13725,7 @@ Array array_29185 -->	! 29185 (0x7201)
             "Bright sunshine glints off the glass bottle, making it impossible to see detail within.";
         }
         move obj215_ship_in_a_bottle to obj71_Souvenirs_Room;
-        routine160896(266[obj266_Aboard_Ship?],1[?]);
+        PlayerTo(266[obj266_Aboard_Ship?],1[?]);
         "You look very closely at the fine detail on the model sailing ship. Perhaps it's the distorting glass of the bottle, perhaps your romantic imagination, but the deck seems more detailed, the rigging might almost be swaying, the little figure by one mast might almost be alive...^^In fact, the closer you look the more sea-sick you feel.^^Thank heavens for the deck rail, something to hang on to while this moment of queasiness passes.";
     }
     rfalse;
@@ -15572,7 +15572,7 @@ Array array_29185 -->	! 29185 (0x7201)
             "You catch a fascinating, but all too brief, glimpse of something grey, angular and tall... which slips out of view as your unsteady hand shakes.";
         }
         print "Through the golden eyepiece you see, not the moon (for the astrolabe is tilted too low), but a curious, sunlit, grey triangle.^^Fascinated, you strain closer to the vision... closer...^";
-        routine160896(495[Out_on_the_Spire?]);
+        PlayerTo(495[Out_on_the_Spire?]);
         rtrue;
     }
     rfalse;
@@ -15983,7 +15983,7 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label123494;
     }
     global160 = 0;
-    routine160896(352[Rough_Tent?]);
+    PlayerTo(352[Rough_Tent?]);
     rtrue;
 ];
 
@@ -16019,7 +16019,7 @@ Array array_29185 -->	! 29185 (0x7201)
         give selfobj attrib8;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
         routine56424(355[Encampment?],10[u_obj?]);
-        routine160896(355[Encampment?]);
+        PlayerTo(355[Encampment?]);
         rtrue;
     }
     rfalse;
@@ -16129,7 +16129,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine124836 ;	! 124836 / 0x1e7a4
     routine57384(360[ghost_of_yourself?]);
-    routine160896(361[Premonition?]);
+    PlayerTo(361[Premonition?]);
     rtrue;
 ];
 
@@ -16252,7 +16252,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine126184 ;	! 126184 / 0x1ece8
     routine57384(360[ghost_of_yourself?]);
-    routine160896(369[Melancholy_Dream?]);
+    PlayerTo(369[Melancholy_Dream?]);
     rtrue;
 ];
 
@@ -16663,7 +16663,7 @@ Array array_29185 -->	! 29185 (0x7201)
         move golden_orb to location;
         global138 = parent(player);
         global137 = location;
-        routine160896(394[Inside_the_Orb?]);
+        PlayerTo(394[Inside_the_Orb?]);
         rtrue;
     }
     rfalse;
@@ -16982,7 +16982,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (player in wooden_couch) {
             print "The heavy weave mattings feel so restful that you slide into...^";
             The_Spirit_World.number = 1;
-            routine160896(417[The_Spirit_World?]);
+            PlayerTo(417[The_Spirit_World?]);
             rtrue;
         }
         rfalse;
@@ -17059,7 +17059,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             print "The heavy weave mattings draw you deeper into...^";
             The_Spirit_World.number = The_Spirit_World.number + 1;
-            routine160896(417[The_Spirit_World?]);
+            PlayerTo(417[The_Spirit_World?]);
             rtrue;
         }
         rfalse;
@@ -17196,7 +17196,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 "That seems an awfully... final decision. Here's a chance to reconsider.";
             }
             print "The lid slams down on you with a very terminal sound indeed.^^^   *** You have ...^^^But - something more is happening. The coffin's delicate balance has been altered, and it is sliding, slipping away down the square passage, endlessly, endlessly...^^And even that is not the end, for you suddenly crash into buffers at one end. What a lucky escape, you think... for a moment...^";
-            routine160896(431[Buried_Alive?]);
+            PlayerTo(431[Buried_Alive?]);
             rtrue;
         }
         if (selfobj has open) {
@@ -17391,7 +17391,7 @@ Array array_29185 -->	! 29185 (0x7201)
             give defaced_door lockable;
             give defaced_door locked;
             print "Madame Sosostris looks up, startled. ~Yes,~ she says, ~yes... this has potential.~^^She mutters incantations over the green wood and it begins to straighten out in a quite Freudian way. ~It will be ready in two thousand years. Come back then.~^^And she slips something into your palm as she bustles you out.^";
-            routine160896(437[A_Tower?]);
+            PlayerTo(437[A_Tower?]);
             move silver_keepsake to player;
             Achieved(40);
             rtrue;
@@ -17690,7 +17690,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print " to find ";
             routine57632(local1);
             print ", which, to say the least, comes as a surprise. Such a fuss is kicked up that you are quickly thrown out into the street.^";
-            routine160896(435[Outside_the_Royal_Museum?],1[?]);
+            PlayerTo(435[Outside_the_Royal_Museum?],1[?]);
             rfalse;
         }
         "How could you bribe such disinterested men of learning as the librarians?";
@@ -17789,7 +17789,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine140220 ;	! 140220 / 0x223bc
     print "The slave here, a senior adviser merely disguised as a deaf mute, reacts at once, taking you by the arm and leading you on a convoluted path through the Palace to the...^";
-    routine160896(468[Palace_Balustrade?]);
+    PlayerTo(468[Palace_Balustrade?]);
     rtrue;
 ];
 
@@ -19949,58 +19949,58 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine160780 local1 local2 local3 local4 local5 ;	! 160780 / 0x2740c
-    local1 = 15 + 1;
+[ MoveFloatingObjects i k l m address ;	! 160780 / 0x2740c
+    i = 15 + 1;
   .label160785;
-    if (local1 <= global21) {
-        local5 = local1.&prop22;
-        if (local5 ~= 0 && local1 hasnt attrib7) {
-            if (routine53524(local5-->0) == 2[?]) {
-                if ((local5-->0)() ~= 0) {
-                    move local1 to location;
+    if (i <= global21) {
+        address = i.&prop22;
+        if (address ~= 0 && i hasnt attrib7) {
+            if (routine53524(address-->0) == 2[?]) {
+                if ((address-->0)() ~= 0) {
+                    move i to location;
                 }
             } else {
-                generic_global = local1.&prop22;
+                generic_global = i.&prop22;
                 if (generic_global) {
                     generic_global = get_prop_len(generic_global);
                 }
-                local2 = generic_global;
-                local3 = 0;
+                k = generic_global;
+                l = 0;
               .label160857;
-                if (local3 < local2 / 2) {
-                    local4 = local5-->local3;
-                    if (local4 == location || local4 in location) {
-                        move local1 to location;
+                if (l < k / 2) {
+                    m = address-->l;
+                    if (m == location || m in location) {
+                        move i to location;
                     }
-                    ++local3;
+                    ++l;
                     jump label160857;
                 }
             }
         }
-        ++local1;
+        ++i;
         jump label160785;
     }
     rtrue;
 ];
 
-[ routine160896 local1 local2 ;	! 160896 / 0x27480
-    move player to local1;
+[ PlayerTo newplace flag ;	! 160896 / 0x27480
+    move player to newplace;
   .label160900;
-    if (parent(local1) ~= nothing) {
-        local1 = parent(local1);
+    if (parent(newplace) ~= nothing) {
+        newplace = parent(newplace);
         jump label160900;
     }
-    location = local1;
+    location = newplace;
     global11 = location;
     routine56952(1[?]);
-    if (local2 == 0) {
+    if (flag == 0) {
         routine55348(41[obj41_House?]);
     }
-    if (local2 == 1[?]) {
+    if (flag == 1[?]) {
         routine164468();
         routine164504();
     }
-    if (local2 == 2[?]) {
+    if (flag == 2[?]) {
         LookSub(true);
     }
     rtrue;
@@ -20998,7 +20998,7 @@ Array array_29185 -->	! 29185 (0x7201)
             PrintOrRun(local1,17[rod_of_fire?]);
         }
         routine174348();
-        routine160780();
+        MoveFloatingObjects();
         global20 = local1;
     }
     rtrue;
