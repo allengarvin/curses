@@ -671,9 +671,9 @@ Global 77	global77:?
 Global 78	global78:?
 Global 79	lookahead:int
 Global 80	indef_mode
-Global 81	global81:?
-Global 82	global82:?
-Global 83	global83:?
+Global 81	indef_type:int
+Global 82	indef_wanted:int
+Global 83	indef_guess_p
 Global 84	global84:?
 Global 85	notholding
 Global 86	global86:?
@@ -1116,7 +1116,7 @@ Routine 0xa31c	routine41756:?
 Routine 0xa324	Keyboard a_buffer a_table nw i:int w:dictword x1 x2
 Routine 0xa484	Parser  results   syntax line num_lines line_address i j token:int l m
 Routine 0xb340	NumberWord:int w:dictword
-Routine 0xb3f8	routine46072:?
+Routine 0xb3f8	Descriptors context  o flag n
 Routine 0xb52c	routine46380:?
 Routine 0xb548	routine46408:?
 Routine 0xba94	NounDomain who:object where:object i:int

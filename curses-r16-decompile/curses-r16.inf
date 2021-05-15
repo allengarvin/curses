@@ -4923,9 +4923,9 @@ Global global77;
 Global global78;
 Global lookahead;
 Global indef_mode;
-Global global81;
-Global global82;
-Global global83;
+Global indef_type;
+Global indef_wanted;
+Global indef_guess_p;
 Global global84;
 Global notholding;
 Global global86;
@@ -6133,84 +6133,84 @@ Array array_29185 -->	! 29185 (0x7201)
     return 0;
 ];
 
-[ routine46072 local1 local2 local3 local4 ;	! 46072 / 0xb3f8
+[ Descriptors context o flag n ;	! 46072 / 0xb3f8
     indef_mode = 0;
-    global81 = 0;
-    global82 = 0;
-    global83 = 0;
-    local3 = 1[?];
+    indef_type = 0;
+    indef_wanted = 0;
+    indef_guess_p = 0;
+    flag = 1[?];
   .label46088;
-    if (local3 == 1[?]) {
-        local2 = routine52976();
-        local3 = 0;
-        if (local2 == 40278['the'?]) {
-            local3 = 1[?];
+    if (flag == 1[?]) {
+        o = routine52976();
+        flag = 0;
+        if (o == 40278['the'?]) {
+            flag = 1[?];
         }
-        if (local2 == 29622['a//'?] or 29847['an'?] or 29982['any'?] or 32682['either'?] or 29991['anything'?]) {
+        if (o == 29622['a//'?] or 29847['an'?] or 29982['any'?] or 32682['either'?] or 29991['anything'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
+            flag = 1[?];
         }
-        if (local2 == 29937['another'?] or 36723['other'?]) {
+        if (o == 29937['another'?] or 36723['other'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global81 = global81 | 1;
+            flag = 1[?];
+            indef_type = indef_type | 1;
         }
-        if (local2 == 36147['my'?] or 40341['this'?] or 40305['these'?]) {
+        if (o == 36147['my'?] or 40341['this'?] or 40305['these'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global81 = global81 | 2;
+            flag = 1[?];
+            indef_type = indef_type | 2;
         }
-        if (local2 == 40269['that'?] or 40368['those'?]) {
+        if (o == 40269['that'?] or 40368['those'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global81 = global81 | 4;
+            flag = 1[?];
+            indef_type = indef_type | 4;
         }
-        if (local2 == 34869['its'?]) {
+        if (o == 34869['its'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global81 = global81 | 16;
+            flag = 1[?];
+            indef_type = indef_type | 16;
         }
-        if (local2 == 34410['his'?] or 41691['your'?]) {
+        if (o == 34410['his'?] or 41691['your'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global81 = global81 | 32;
+            flag = 1[?];
+            indef_type = indef_type | 32;
         }
-        if (local2 == 35391['lit'?] or 35364['lighted'?]) {
+        if (o == 35391['lit'?] or 35364['lighted'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global81 = global81 | 64;
+            flag = 1[?];
+            indef_type = indef_type | 64;
         }
-        if (local2 == 40854['unlit'?]) {
+        if (o == 40854['unlit'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global81 = global81 | 128;
+            flag = 1[?];
+            indef_type = indef_type | 128;
         }
-        if (local2 == 29793['all'?] or 32601['each'?] or 32889['every'?] or 32898['everything'?]) {
+        if (o == 29793['all'?] or 32601['each'?] or 32889['every'?] or 32898['everything'?]) {
             indef_mode = 1[?];
-            local3 = 1[?];
-            global82 = 100[obj100_Tiny_Balcony?];
+            flag = 1[?];
+            indef_wanted = 100;
             if (global106 == 1[?]) {
                 global106 = 2[?];
             }
-            global81 = global81 | 8;
+            indef_type = indef_type | 8;
         }
         if (global84 == 1[?]) {
-            local4 = NumberWord(local2);
-            if (local4 > 1) {
-                global83 = 1[?];
+            n = NumberWord(o);
+            if (n > 1) {
+                indef_guess_p = 1[?];
                 indef_mode = 1[?];
-                local3 = 1[?];
-                global82 = local4;
-                global81 = global81 | 8;
+                flag = 1[?];
+                indef_wanted = n;
+                indef_type = indef_type | 8;
             }
         }
-        if (local3 == 1[?] && routine52976() ~= 36552['of'?]) {
+        if (flag == 1[?] && routine52976() ~= 36552['of'?]) {
             --wn;
         }
         jump label46088;
     }
     --wn;
-    if (global82 > 0 && (local1 < 2 || local1 > 5)) {
+    if (indef_wanted > 0 && (context < 2 || context > 5)) {
         return 7[se_obj?];
     }
     return 0;
@@ -6347,7 +6347,7 @@ Array array_29185 -->	! 29185 (0x7201)
         global84 = 1[?];
         local10 = wn;
       .label46968;
-        local3 = routine46072(local2);
+        local3 = Descriptors(local2);
         if (local3 ~= 0) {
             etype = local3;
             return 0;
@@ -6485,9 +6485,9 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local11 == 1[?]) {
         local9 = 0;
         multi_context = local2;
-    } else if (indef_mode == 1[?] && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
+    } else if (indef_mode == 1[?] && indef_type & 8 ~= 0 && (indef_wanted < 100 && indef_wanted > 1)) {
         multihad = 1;
-        global55 = global82;
+        global55 = indef_wanted;
         etype = TOOFEW_PE;
         jump label47741;
     }
@@ -6496,7 +6496,7 @@ Array array_29185 -->	! 29185 (0x7201)
     array_24618-->pcount = local9;
     return 1[?];
   .label47741;
-    if (global84 == 1[?] && global83 == 1[?]) {
+    if (global84 == 1[?] && indef_guess_p == 1[?]) {
         global84 = 0;
         wn = local10;
         jump label46968;
@@ -6769,7 +6769,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local1 == 6[ne_obj?] && local5 == 0) {
         return array_24660-->0;
     }
-    if (indef_mode == 1[?] && global81 & 8 ~= 0) {
+    if (indef_mode == 1[?] && indef_type & 8 ~= 0) {
         if (local1 < 2 || local1 > 5) {
             etype = MULTI_PE;
             return 65535[?];
@@ -6779,7 +6779,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local10 = multiple_object-->0;
         local3 = routine50480();
       .label49068;
-        if (local3 ~= 65535[?] && local2 < global82 && local2 + local10 < 63) {
+        if (local3 ~= 65535[?] && local2 < indef_wanted && local2 + local10 < 63) {
             local9 = 0;
             if (local3 hasnt concealed && local3 hasnt attrib26) {
                 local9 = 1[?];
@@ -6805,9 +6805,9 @@ Array array_29185 -->	! 29185 (0x7201)
             local3 = routine50480();
             jump label49068;
         }
-        if (local2 < global82 && global82 < 100) {
+        if (local2 < indef_wanted && indef_wanted < 100) {
             etype = TOOFEW_PE;
-            global55 = global82;
+            global55 = indef_wanted;
             multihad = multiple_object-->0;
             return 65535[?];
         }
@@ -6893,7 +6893,7 @@ Array array_29185 -->	! 29185 (0x7201)
         return 0;
     }
     if (indef_mode == 0) {
-        global81 = 0;
+        indef_type = 0;
     }
     if (local7 == 1[?]) {
         global99 = 1[?];
@@ -6959,29 +6959,29 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine50040 local1 local2 local3 local4 local5 local6 local7 ;	! 50040 / 0xc378
-    if (global81 & 1 ~= 0) {
+    if (indef_type & 1 ~= 0) {
         local5 = 40[obj40_four_leafed_clover?];
     }
-    if (global81 & 2 ~= 0) {
+    if (indef_type & 2 ~= 0) {
         local5 = local5 + 40;
     }
-    if (global81 & 4 ~= 0) {
+    if (indef_type & 4 ~= 0) {
         local5 = local5 + 40;
     }
-    if (global81 & 16 ~= 0) {
+    if (indef_type & 16 ~= 0) {
         local5 = local5 + 40;
     }
-    if (global81 & 32 ~= 0) {
+    if (indef_type & 32 ~= 0) {
         local5 = local5 + 40;
     }
-    if (global81 & 64 ~= 0) {
+    if (indef_type & 64 ~= 0) {
         local5 = local5 + 40;
     }
-    if (global81 & 128 ~= 0) {
+    if (indef_type & 128 ~= 0) {
         local5 = local5 + 40;
     }
     if (parser_trace >= 4) {
-        print "   Scoring match list with type ", global81, ", threshold ", local5, ":^";
+        print "   Scoring match list with type ", indef_type, ", threshold ", local5, ":^";
     }
     local6 = 30[rod_of_love?];
     local7 = 20[rod_of_infinity?];
@@ -7004,25 +7004,25 @@ Array array_29185 -->	! 29185 (0x7201)
         if (local2 == 0 && local1 ~= 1[?]) {
             local2 = 10[u_obj?];
         }
-        if (global81 & 1 ~= 0 && local3 ~= itobj or global77 or global78) {
+        if (indef_type & 1 ~= 0 && local3 ~= itobj or global77 or global78) {
             local2 = local2 + 40;
         }
-        if (global81 & 2 ~= 0 && local1 == actor) {
+        if (indef_type & 2 ~= 0 && local1 == actor) {
             local2 = local2 + 40;
         }
-        if (global81 & 4 ~= 0 && local1 == actor_location) {
+        if (indef_type & 4 ~= 0 && local1 == actor_location) {
             local2 = local2 + 40;
         }
-        if (global81 & 64 ~= 0 && local3 has light) {
+        if (indef_type & 64 ~= 0 && local3 has light) {
             local2 = local2 + 40;
         }
-        if (global81 & 128 ~= 0 && local3 hasnt light) {
+        if (indef_type & 128 ~= 0 && local3 hasnt light) {
             local2 = local2 + 40;
         }
-        if (global81 & 16 ~= 0 && local1 == itobj) {
+        if (indef_type & 16 ~= 0 && local1 == itobj) {
             local2 = local2 + 40;
         }
-        if (global81 & 32 ~= 0 && local1 has animate && routine53432(local1) == 1[?]) {
+        if (indef_type & 32 ~= 0 && local1 has animate && routine53432(local1) == 1[?]) {
             local2 = local2 + 40;
         }
         local2 = local2 + routine175160(local3,2[?]);
@@ -7550,12 +7550,12 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
                 if (indef_mode == 0) {
                     indef_mode = 1[?];
-                    global81 = 0;
-                    global82 = 0;
+                    indef_type = 0;
+                    indef_wanted = 0;
                 }
-                global81 = global81 | 8;
-                if (global82 == 0) {
-                    global82 = 100[obj100_Tiny_Balcony?];
+                indef_type = indef_type | 8;
+                if (indef_wanted == 0) {
+                    indef_wanted = 100;
                 }
             }
             routine52240(local1,local3);
