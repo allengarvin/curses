@@ -19605,7 +19605,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     }
                 }
             }
-            if (WriteAfterEntry(local7,local2) == 1[?]) {
+            if (routine159904(local7,local2) == 1[?]) {
                 ! no code
             } else {
                 if (local5->local6 == 1[?]) {
@@ -19624,7 +19624,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     print " ";
                     PrintOrRun(local7,14[thedark?],1[?]);
                 }
-                routine159988(local7,local2,local3);
+                WriteAfterEntry(local7,local2,local3);
               .label159367;
                 if (global116 & 8 ~= 0) {
                     if (local14 == 1[?]) {
@@ -19733,7 +19733,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
             }
         }
-        if (WriteAfterEntry(local7,local2) == 1[?]) {
+        if (routine159904(local7,local2) == 1[?]) {
             ! no code
         } else {
             if (global116 & 4096 ~= 0) {
@@ -19743,7 +19743,7 @@ Array array_29185 -->	! 29185 (0x7201)
             } else {
                 routine57632(local7);
             }
-            routine159988(local7,local2,local3);
+            WriteAfterEntry(local7,local2,local3);
           .label159854;
             if (global116 & 8 ~= 0) {
                 if (local6 == local14 - 1) {
@@ -19762,9 +19762,9 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ WriteAfterEntry o depth stack_p ;	! 159904 / 0x270a0
+[ routine159904 local1 local2 local3 ;	! 159904 / 0x270a0
     if (global116 & 2 ~= 0) {
-        generic_global = 2 * (depth + global120);
+        generic_global = 2 * (local2 + global120);
         if (generic_global >= 1) {
           .label159930;
             print ' ';
@@ -19772,108 +19772,108 @@ Array array_29185 -->	! 29185 (0x7201)
             if (generic_global ~= 0) jump label159930;
         }
     }
-    if (global116 & 4 ~= 0 && o.u_to ~= nothing) {
+    if (global116 & 4 ~= 0 && local1.u_to ~= nothing) {
         global115 = 1[?];
-        stack_p = PrintOrRun(o,13[obj13_inside?],1[?]);
-        if (stack_p == 1[?] && global116 & 1 ~= 0) {
+        local3 = PrintOrRun(local1,13[obj13_inside?],1[?]);
+        if (local3 == 1[?] && global116 & 1 ~= 0) {
             new_line;
         }
     }
-    return stack_p;
+    return local3;
 ];
 
-[ routine159988 local1 local2 local3 local4 local5 local6 local7 local8 ;	! 159988 / 0x270f4
+[ WriteAfterEntry o depth stack_p flag flag2 flag3 p com ;	! 159988 / 0x270f4
     if (global116 & 128 ~= 0) {
-        local8 = 0;
-        if (local1 has light && location hasnt light) {
-            local8 = local8 + 1;
+        com = 0;
+        if (o has light && location hasnt light) {
+            com = com + 1;
         }
-        if (local1 has container && local1 hasnt open) {
-            local8 = local8 + 2;
+        if (o has container && o hasnt open) {
+            com = com + 2;
         }
-        if (local1 has container && (local1 has open || local1 has transparent) && child(local1) == nothing) {
-            local8 = local8 + 4;
+        if (o has container && (o has open || o has transparent) && child(o) == nothing) {
+            com = com + 4;
         }
-        if (local8 == 1[?]) {
+        if (com == 1[?]) {
             print " (providing light)";
         }
-        if (local8 == 2[?]) {
+        if (com == 2[?]) {
             print " (which is closed)";
         }
-        if (local8 == 3[s_obj?]) {
+        if (com == 3[s_obj?]) {
             print " (closed and providing light)";
         }
-        if (local8 == 4[e_obj?]) {
+        if (com == 4[e_obj?]) {
             print " (which is empty)";
         }
-        if (local8 == 5[w_obj?]) {
+        if (com == 5[w_obj?]) {
             print " (empty and providing light)";
         }
-        if (local8 == 6[ne_obj?]) {
+        if (com == 6[ne_obj?]) {
             print " (which is closed and empty)";
         }
-        if (local8 == 7[se_obj?]) {
+        if (com == 7[se_obj?]) {
             print " (closed, empty and providing light)";
         }
     }
     if (global116 & 4 ~= 0) {
-        if (local1.u_to ~= nothing) {
+        if (o.u_to ~= nothing) {
             global115 = 2[?];
-            if (routine53736(local1,13[obj13_inside?]) ~= 0) {
+            if (routine53736(o,13[obj13_inside?]) ~= 0) {
                 if (global116 & 1 ~= 0) {
                     new_line;
                 }
                 rtrue;
             }
         }
-        if (local1 has light && local1 has attrib26) {
+        if (o has light && o has attrib26) {
             print " (providing light and being worn";
-            local5 = 1[?];
+            flag2 = 1[?];
         } else {
-            if (local1 has light) {
+            if (o has light) {
                 print " (providing light";
-                local5 = 1[?];
+                flag2 = 1[?];
             }
-            if (local1 has attrib26) {
+            if (o has attrib26) {
                 print " (being worn";
-                local5 = 1[?];
+                flag2 = 1[?];
             }
         }
-        if (local1 has container) {
-            if (local1 has openable) {
-                if (local5 == 1[?]) {
+        if (o has container) {
+            if (o has openable) {
+                if (flag2 == 1[?]) {
                     print " and ";
                 } else {
                     print " (which is ";
                 }
-                if (local1 has open) {
+                if (o has open) {
                     print "open";
-                    if (child(local1) == nothing) {
+                    if (child(o) == nothing) {
                         print " but empty";
                     }
                 } else {
                     print "closed";
                 }
-                if (local1 has lockable && local1 has locked) {
+                if (o has lockable && o has locked) {
                     print " and locked";
                 }
-                local5 = 1[?];
-            } else if (child(local1) == nothing) {
-                if (local5 == 1[?]) {
+                flag2 = 1[?];
+            } else if (child(o) == nothing) {
+                if (flag2 == 1[?]) {
                     print " and empty";
                 } else {
                     print " (which is empty)";
                 }
             }
         }
-        if (local5 == 1[?]) {
+        if (flag2 == 1[?]) {
             print ")";
         }
     }
     if (global116 & 2048 == 0) {
-        if (child(local1) ~= nothing) {
+        if (child(o) ~= nothing) {
             generic_global = 0;
-            if (child(local1) ~= nothing) {
+            if (child(o) ~= nothing) {
               .label160489;
                 ++generic_global;
                 @get_sibling SP -> SP ?label160489;
@@ -19882,56 +19882,56 @@ Array array_29185 -->	! 29185 (0x7201)
             @store 6 SP;
         }
     } else {
-        local7 = child(local1);
+        p = child(o);
       .label160510;
-        if (local7 ~= 0) {
-            if (local7 hasnt concealed) {
-                ++local6;
+        if (p ~= 0) {
+            if (p hasnt concealed) {
+                ++flag3;
             }
-            local7 = sibling(local7);
+            p = sibling(p);
             jump label160510;
         }
     }
-    if (global116 & 32 ~= 0 && local6 > 0) {
+    if (global116 & 32 ~= 0 && flag3 > 0) {
         if (global116 & 8 ~= 0) {
             print " containing ";
         }
-        local4 = 1[?];
+        flag = 1[?];
     }
-    if (global116 & 16 ~= 0 && local6 > 0) {
-        if (local1 has supporter) {
+    if (global116 & 16 ~= 0 && flag3 > 0) {
+        if (o has supporter) {
             if (global116 & 8 ~= 0) {
                 if (global116 & 64 ~= 0) {
                     print " (on ";
                 } else {
                     print ", on top of ";
                 }
-                if (local1 has animate) {
+                if (o has animate) {
                     print "whom ";
                 } else {
                     print "which ";
                 }
             }
-            local4 = 1[?];
+            flag = 1[?];
         }
-        if (local1 has container && (local1 has open || local1 has transparent)) {
+        if (o has container && (o has open || o has transparent)) {
             if (global116 & 8 ~= 0) {
                 if (global116 & 64 ~= 0) {
                     print " (in ";
                 } else {
                     print ", inside ";
                 }
-                if (local1 has animate) {
+                if (o has animate) {
                     print "whom ";
                 } else {
                     print "which ";
                 }
             }
-            local4 = 1[?];
+            flag = 1[?];
         }
     }
-    if (local4 == 1[?] && global116 & 8 ~= 0) {
-        if (local6 > 1) {
+    if (flag == 1[?] && global116 & 8 ~= 0) {
+        if (flag3 > 1) {
             print "are ";
         } else {
             print "is ";
@@ -19940,10 +19940,10 @@ Array array_29185 -->	! 29185 (0x7201)
     if (global116 & 1 ~= 0) {
         new_line;
     }
-    if (local4 == 1[?]) {
-        routine158408(child(local1),local2 + 1,local3);
+    if (flag == 1[?]) {
+        routine158408(child(o),depth + 1,stack_p);
     }
-    if (local4 == 1[?] && global116 & 64 ~= 0) {
+    if (flag == 1[?] && global116 & 64 ~= 0) {
         print ")";
     }
     rtrue;
