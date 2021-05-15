@@ -5070,7 +5070,7 @@ Array array_24021 --> 30720;	! 24021 (0x5dd5)
 Array parse --> 16384[?];	! 24142 (0x5e4e)
 Array array_24142 --> 16384[?];	! 24142 (0x5e4e)
 Array array_24207 --> 1;	! 24207 (0x5e8f)
-Array array_24239 --> 1;	! 24239 (0x5eaf)
+Array multiple_object --> 1;	! 24239 (0x5eaf)
 Array array_24488 --> 16384[?];	! 24488 (0x5fa8)
 Array array_24553 --> 16384[?];	! 24553 (0x5fe9)
 Array array_24618 --> 1;	! 24618 (0x602a)
@@ -5582,7 +5582,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 nsns = 0;
                 special_word = 0;
                 special_number = 0;
-                array_24239-->0 = 0;
+                multiple_object-->0 = 0;
                 global57 = 0;
                 global91 = 1[?];
                 action_to_be = line_address->7;
@@ -5659,7 +5659,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 nsns = 0;
                 special_word = 0;
                 special_number = 0;
-                array_24239-->0 = 0;
+                multiple_object-->0 = 0;
                 global91 = 1[?];
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
@@ -6334,7 +6334,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         oops_from = wn;
         if (local2 ~= 1[?]) {
-            local5 = array_24239-->0;
+            local5 = multiple_object-->0;
             if (parser_trace >= 3) {
                 print "  [Calling NounDomain on location and actor]^";
             }
@@ -6353,13 +6353,13 @@ Array array_29185 -->	! 29185 (0x7201)
                     print "]^";
                 } else {
                     print "  [ND appended to the multiple object list:^";
-                    local7 = array_24239-->0;
+                    local7 = multiple_object-->0;
                     local6 = local5 + 1;
                   .label47148;
                     if (local6 <= local7) {
                         print "  Entry ", local6, ": ";
-                        CDefart(array_24239-->local6);
-                        print " (", array_24239-->local6, ")^";
+                        CDefart(multiple_object-->local6);
+                        print " (", multiple_object-->local6, ")^";
                         ++local6;
                         jump label47148;
                     }
@@ -6370,15 +6370,15 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (local11 == 0) {
                     local11 = 1[?];
                 } else {
-                    local7 = array_24239-->0;
-                    array_24239-->0 = local5;
+                    local7 = multiple_object-->0;
+                    multiple_object-->0 = local5;
                     local6 = local5 + 1;
                   .label47254;
                     if (local6 <= local7) {
                         if (local8 == 1[?]) {
-                            routine51152(array_24239-->local6);
+                            routine51152(multiple_object-->local6);
                         } else {
-                            routine51208(array_24239-->local6);
+                            routine51208(multiple_object-->local6);
                         }
                         ++local6;
                         jump label47254;
@@ -6447,8 +6447,8 @@ Array array_29185 -->	! 29185 (0x7201)
                 local8 = 1 - local8;
             }
             if (local11 == 0) {
-                array_24239-->0 = 1[?];
-                array_24239-->1 = local9;
+                multiple_object-->0 = 1[?];
+                multiple_object-->1 = local9;
                 local11 = 1[?];
                 if (parser_trace >= 3) {
                     print "  [Making new list from ";
@@ -6589,16 +6589,16 @@ Array array_29185 -->	! 29185 (0x7201)
         local4 = array_24488-->1;
         if (local4 == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
             if (i >= 2 && i <= 5) {
-                local8 = array_24239-->0;
+                local8 = multiple_object-->0;
                 local5 = 0;
               .label48243;
                 if (local5 < global67 && local8 + local5 < 63) {
                     local7 = array_24660-->local5;
-                    array_24239-->(local5 + 1 + local8) = local7;
+                    multiple_object-->(local5 + 1 + local8) = local7;
                     ++local5;
                     jump label48243;
                 }
-                array_24239-->0 = local5 + local8;
+                multiple_object-->0 = local5 + local8;
                 rtrue;
             }
             print "Sorry, you can only have one item here. Which one exactly?^";
@@ -6756,7 +6756,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         local2 = 0;
         global68 = 1[?];
-        local10 = array_24239-->0;
+        local10 = multiple_object-->0;
         local3 = routine50480();
       .label49068;
         if (local3 ~= 65535[?] && local2 < global82 && local2 + local10 < 63) {
@@ -6775,7 +6775,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             if (local9 == 1[?]) {
                 ++local2;
-                array_24239-->(local2 + local10) = local3;
+                multiple_object-->(local2 + local10) = local3;
                 if (parser_trace >= 4) {
                     print "   Accepting it^";
                 }
@@ -6788,10 +6788,10 @@ Array array_29185 -->	! 29185 (0x7201)
         if (local2 < global82 && global82 < 100) {
             global91 = 16[obj16_lm?];
             global55 = global82;
-            global56 = array_24239-->0;
+            global56 = multiple_object-->0;
             return 65535[?];
         }
-        array_24239-->0 = local2 + local10;
+        multiple_object-->0 = local2 + local10;
         global57 = local1;
         if (parser_trace >= 4) {
             print "   Made multiple object of size ", local2, "]^";
@@ -6883,28 +6883,28 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine49704 local1 local2 local3 ;	! 49704 / 0xc228
     if (parser_trace >= 4) {
-        print "   Revising multiple object list of size ", array_24239-->0, " with 2nd ", (name) local1, "^";
+        print "   Revising multiple object list of size ", multiple_object-->0, " with 2nd ", (name) local1, "^";
     }
     if (global57 == 4[e_obj?] or 5[w_obj?]) {
         local2 = 1[?];
         local3 = 0;
       .label49771;
-        if (local2 <= array_24239-->0) {
-            if (global57 == 4[e_obj?] && array_24239-->local2 ~= local1 || (global57 == 5[w_obj?] && array_24239-->local2 in local1)) {
+        if (local2 <= multiple_object-->0) {
+            if (global57 == 4[e_obj?] && multiple_object-->local2 ~= local1 || (global57 == 5[w_obj?] && multiple_object-->local2 in local1)) {
                 ++local3;
-                array_24239-->local3 = array_24239-->local2;
+                multiple_object-->local3 = multiple_object-->local2;
             }
             ++local2;
             jump label49771;
         }
-        array_24239-->0 = local3;
+        multiple_object-->0 = local3;
     }
     if (global57 == 2[?]) {
         local2 = 1[?];
         local3 = 0;
       .label49850;
-        if (local2 <= array_24239-->0) {
-            if (parent(array_24239-->local2) == parent(actor)) {
+        if (local2 <= multiple_object-->0) {
+            if (parent(multiple_object-->local2) == parent(actor)) {
                 ++local3;
             }
             ++local2;
@@ -6917,18 +6917,18 @@ Array array_29185 -->	! 29185 (0x7201)
             local2 = 1[?];
             local3 = 0;
           .label49943;
-            if (local2 <= array_24239-->0) {
-                if (parent(array_24239-->local2) == parent(actor)) {
+            if (local2 <= multiple_object-->0) {
+                if (parent(multiple_object-->local2) == parent(actor)) {
                     ++local3;
-                    array_24239-->local3 = array_24239-->local2;
+                    multiple_object-->local3 = multiple_object-->local2;
                 }
                 ++local2;
                 jump label49943;
             }
-            array_24239-->0 = local3;
+            multiple_object-->0 = local3;
         }
     }
-    local2 = array_24239-->0;
+    local2 = multiple_object-->0;
     if (parser_trace >= 4) {
         print "   Done: new size ", local2, "^";
     }
@@ -7206,7 +7206,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine51152 local1 local2 local3 ;	! 51152 / 0xc7d0
-    local2 = array_24239-->0;
+    local2 = multiple_object-->0;
     if (local2 == 63[obj63_photographer_s_flash?]) {
         global23 = 1[?];
         rtrue;
@@ -7214,34 +7214,34 @@ Array array_29185 -->	! 29185 (0x7201)
     local3 = 1[?];
   .label51171;
     if (local3 <= local2) {
-        if (local1 == array_24239-->local3) {
+        if (local1 == multiple_object-->local3) {
             rtrue;
         }
         ++local3;
         jump label51171;
     }
     ++local2;
-    array_24239-->local2 = local1;
-    array_24239-->0 = local2;
+    multiple_object-->local2 = local1;
+    multiple_object-->0 = local2;
     rtrue;
 ];
 
 [ routine51208 local1 local2 local3 local4 local5 ;	! 51208 / 0xc808
-    local2 = array_24239-->0;
+    local2 = multiple_object-->0;
     local5 = 0;
     local3 = 1[?];
   .label51221;
     if (local3 <= local2) {
-        if (local1 == array_24239-->local3) {
+        if (local1 == multiple_object-->local3) {
             local4 = local3;
           .label51240;
             if (local4 <= local2) {
-                array_24239-->local4 = array_24239-->(local4 + 1);
+                multiple_object-->local4 = multiple_object-->(local4 + 1);
                 ++local4;
                 jump label51240;
             }
             --local2;
-            array_24239-->0 = local2;
+            multiple_object-->0 = local2;
             return local5;
         }
         ++local3;
@@ -7253,11 +7253,11 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine51288 local1 local2 local3 local4 ;	! 51288 / 0xc858
   .label51289;
-    local2 = array_24239-->0;
+    local2 = multiple_object-->0;
     local3 = 1[?];
   .label51298;
     if (local3 <= local2) {
-        local4 = array_24239-->local3;
+        local4 = multiple_object-->local3;
         if (local4 hasnt local1) {
             routine51208(local4);
             jump label51289;
@@ -8079,7 +8079,7 @@ Array array_29185 -->	! 29185 (0x7201)
             routine55012();
         } else {
             global37 = 1[?];
-            local2 = array_24239-->0;
+            local2 = multiple_object-->0;
             if (local2 == 0) {
                 L__M(##Miscellany,2);
                 jump label54208;
@@ -8097,7 +8097,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 } else if (location ~= local1) {
                     print "(Since something dramatic has happened, your list of commands has been cut short.)^";
                 } else {
-                    local4 = array_24239-->local3;
+                    local4 = multiple_object-->local3;
                     routine53392(local4);
                     PSN__(local4);
                     print ": ";
