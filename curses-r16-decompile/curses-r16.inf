@@ -6615,7 +6615,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (array_24788-->local11 > 0) {
                 Defart(local7);
             } else {
-                routine57632(local7);
+                Indefart(local7);
             }
             if (local5 < local6 - 1) {
                 print ", ";
@@ -8878,29 +8878,29 @@ Array array_29185 -->	! 29185 (0x7201)
     " and ~me~ means ", (name) player, ".";
 ];
 
-[ routine57384 local1 local2 local3 ;	! 57384 / 0xe028
-    if (local1.&prop24 == 0) {
+[ ChangePlayer obj flag i ;	! 57384 / 0xe028
+    if (obj.&prop24 == 0) {
         "** Player objects must have ~number~ prop **";
     }
     if (actor == player) {
-        actor = local1;
+        actor = obj;
     }
     give player ~transparent;
     give player ~concealed;
-    local3 = local1;
+    i = obj;
   .label57450;
-    if (parent(local3) ~= nothing) {
-        if (local3 has animate) {
-            give local3 transparent;
+    if (parent(i) ~= nothing) {
+        if (i has animate) {
+            give i transparent;
         }
-        local3 = parent(local3);
+        i = parent(i);
         jump label57450;
     }
     if (player == yourself) {
         player.short = "your former self";
     }
     player.prop24 = real_location;
-    player = local1;
+    player = obj;
     if (player == yourself) {
         player.short = NULL;
     }
@@ -8908,13 +8908,13 @@ Array array_29185 -->	! 29185 (0x7201)
     give player concealed;
     give player animate;
     give player proper;
-    local3 = player;
+    i = player;
   .label57517;
-    if (parent(local3) ~= nothing) {
-        local3 = parent(local3);
+    if (parent(i) ~= nothing) {
+        i = parent(i);
         jump label57517;
     }
-    location = local3;
+    location = i;
     real_location = player.prop24;
     if (real_location == nothing) {
         real_location = location;
@@ -8923,28 +8923,28 @@ Array array_29185 -->	! 29185 (0x7201)
     if (lightflag == false) {
         location = thedark;
     }
-    global12 = local2;
+    global12 = flag;
     rtrue;
 ];
 
-[ routine57568 local1 local2 ;	! 57568 / 0xe0e0
-    0-->5-->(local1 - 1) = local2;
+[ ChangeDefault prop val ;	! 57568 / 0xe0e0
+    0-->5-->(prop - 1) = val;
     rtrue;
 ];
 
-[ routine57584 local1 ;	! 57584 / 0xe0f0
-    if (local1-->0 == 0) {
+[ RandomEntry tab ;	! 57584 / 0xe0f0
+    if (tab-->0 == 0) {
         "** Table size 0 **";
     }
-    return local1-->random(local1-->0);
+    return tab-->random(tab-->0);
 ];
 
-[ routine57632 local1 ;	! 57632 / 0xe120
-    if (local1 hasnt proper) {
-        PrintOrRun(local1,20[rod_of_infinity?],1[?]);
+[ Indefart o ;	! 57632 / 0xe120
+    if (o hasnt proper) {
+        PrintOrRun(o,20[rod_of_infinity?],1[?]);
         print " ";
     }
-    PSN__(local1);
+    PSN__(o);
     rtrue;
 ];
 
@@ -11808,7 +11808,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (random(81) == 1) {
         "a splendid concert of the Sibelius Violin Concerto by the Minot Symphony Orchestra of North Dakota.";
     }
-    print (string) routine57584(24948[?]), (string) routine57584(24974[?]), (string) routine57584(24986[?]);
+    print (string) RandomEntry(24948[?]), (string) RandomEntry(24974[?]), (string) RandomEntry(24986[?]);
     new_line;
     rtrue;
 ];
@@ -16203,7 +16203,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Attack && noun == selfobj) {
         print "Ouch!  You wake up, smarting.^";
-        routine57384(15[yourself?]);
+        ChangePlayer(15[yourself?]);
         routine55348(##Look);
         rtrue;
     }
@@ -16227,7 +16227,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine124836 ;	! 124836 / 0x1e7a4
-    routine57384(360[ghost_of_yourself?]);
+    ChangePlayer(360[ghost_of_yourself?]);
     PlayerTo(361[Premonition?]);
     rtrue;
 ];
@@ -16336,7 +16336,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine126112 ;	! 126112 / 0x1eca0
     if (action == ##Look) {
-        routine57384(15[yourself?]);
+        ChangePlayer(15[yourself?]);
         if (heavy_iron_mascot in ghost_of_yourself) {
             move heavy_iron_mascot to player;
             StartDaemon(365[heavy_iron_mascot?]);
@@ -16350,7 +16350,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine126184 ;	! 126184 / 0x1ece8
-    routine57384(360[ghost_of_yourself?]);
+    ChangePlayer(360[ghost_of_yourself?]);
     PlayerTo(369[Melancholy_Dream?]);
     rtrue;
 ];
@@ -17787,7 +17787,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 "he finishes, puts the scroll back into the tube with the habit of a trained librarian, and drops it absentmindedly on the floor.";
             }
             print " to find ";
-            routine57632(local1);
+            Indefart(local1);
             print ", which, to say the least, comes as a surprise. Such a fuss is kicked up that you are quickly thrown out into the street.^";
             PlayerTo(435[Outside_the_Royal_Museum?],1[?]);
             rfalse;
@@ -19713,7 +19713,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     } else if (c_style & 256 ~= 0) {
                         Defart(j);
                     } else {
-                        routine57632(j);
+                        Indefart(j);
                     }
                 } else {
                     if (c_style & 256 ~= 0) {
@@ -19840,7 +19840,7 @@ Array array_29185 -->	! 29185 (0x7201)
             } else if (c_style & 256 ~= 0) {
                 Defart(j);
             } else {
-                routine57632(j);
+                Indefart(j);
             }
             WriteAfterEntry(j,depth,stack_pointer);
           .label159854;
@@ -23419,7 +23419,7 @@ Array array_29185 -->	! 29185 (0x7201)
             give local1 moved;
             give local1 attrib34;
             move local1 to player;
-            routine57632(local1);
+            Indefart(local1);
             "!";
         }
         if (yellow_daisy in player && yellow_daisy has attrib26) {
@@ -23436,7 +23436,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (local1 has attrib28) {
                 Defart(local1);
             } else {
-                routine57632(local1);
+                Indefart(local1);
             }
             "!";
         }
