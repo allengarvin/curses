@@ -4864,7 +4864,7 @@ Global global47;
 Global lm_n;
 Global lm_o;
 Global global50;
-Global global51;
+Global num_words;
 Global global52;
 Global global53;
 Global global54;
@@ -5364,15 +5364,15 @@ Array array_29185 -->	! 29185 (0x7201)
   .label42187;
     Keyboard(24021[?],24142[?]);
   .label42195;
-    global51 = parse->1;
+    num_words = parse->1;
     global50 = 1[?];
     routine181220();
-    global51 = parse->1;
+    num_words = parse->1;
     if (parser_trace >= 4) {
-        print "[ ", global51, " to parse: ";
+        print "[ ", num_words, " to parse: ";
         i = 1[?];
       .label42238;
-        if (i <= global51) {
+        if (i <= num_words) {
             j = parse-->((i - 1) * 2 + 1);
             if (j == 0) {
                 print "? ";
@@ -5474,7 +5474,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (global24 == player) {
                 j = 2[?];
               .label42736;
-                if (j <= global51) {
+                if (j <= num_words) {
                     i = routine52976();
                     if (i == 41628['xcomma'?]) {
                         jump label42780;
@@ -5607,7 +5607,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         if (token >= 180) {
                             j = routine52916(token);
                           .label43419;
-                            if (global50 <= global51) {
+                            if (global50 <= num_words) {
                                 if (routine52976() == j) {
                                     l = routine47764(global25,global24,token);
                                     if (parser_trace >= 2) {
@@ -5724,7 +5724,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     }
                     if (token > 180) {
                         array_24618-->global58 = 10000 + token;
-                        if (global50 > global51) {
+                        if (global50 > num_words) {
                             if (interfrom == 0 && global60 < global61) {
                                 interfrom = global58;
                                 global64 = token;
@@ -5733,12 +5733,12 @@ Array array_29185 -->	! 29185 (0x7201)
                                 jump label44659;
                             }
                         }
-                        if (global50 <= global51 && token ~= routine52884()) {
+                        if (global50 <= num_words && token ~= routine52884()) {
                             jump label44659;
                         }
                     } else {
                         if (global60 == global61) {
-                            if (global50 <= global51) {
+                            if (global50 <= num_words) {
                                 l = routine52976();
                                 if (l == 40296['then'?] or 41628['xcomma'?]) {
                                     held_back_mode = 1;
@@ -5870,7 +5870,7 @@ Array array_29185 -->	! 29185 (0x7201)
         global29 = global34;
         results-->3 = global24;
         global43 = global53;
-        global44 = global51 - global43 + 1;
+        global44 = num_words - global43 + 1;
         rtrue;
     }
     if (routine181248(global91) ~= 0) {
@@ -5964,12 +5964,12 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     jump label42187;
   .label45430;
-    if (global50 > global51) {
+    if (global50 > num_words) {
         rtrue;
     }
     i = routine52976();
     if (i == 40296['then'?] or 41628['xcomma'?]) {
-        if (global50 > global51) {
+        if (global50 > num_words) {
             array_24488->1 = array_24488->1 - 1;
             held_back_mode = 0;
             rtrue;
@@ -6002,7 +6002,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             i = global50;
           .label45654;
-            if (i <= global51) {
+            if (i <= num_words) {
                 array_24488-->(2 + 2 * j) = parse-->(2 * i);
                 array_24488-->(1 + 2 * j) = parse-->(2 * i - 1);
                 ++i;
@@ -6025,7 +6025,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         i = global50;
       .label45805;
-        if (i <= global51) {
+        if (i <= num_words) {
             array_24488-->(2 + 2 * j) = parse-->(2 * i);
             array_24488-->(1 + 2 * j) = parse-->(2 * i - 1);
             ++i;
@@ -6492,12 +6492,12 @@ Array array_29185 -->	! 29185 (0x7201)
         ++global50;
         rfalse;
     }
-    if (global70 <= global51) {
+    if (global70 <= num_words) {
         if (global67 == 1[?]) {
             local5 = array_24660-->0;
             return local5;
         }
-        if (global50 <= global51) {
+        if (global50 <= num_words) {
             local5 = routine52976();
             --global50;
             if (local5 ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
@@ -6540,7 +6540,7 @@ Array array_29185 -->	! 29185 (0x7201)
         array_24618-->global58 = local5;
         return local5;
     }
-    if (global70 > global51) {
+    if (global70 > num_words) {
         ! no code
     } else {
         if (local3 == 6[ne_obj?]) {
@@ -7396,7 +7396,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine51932 local1 local2 local3 local4 local5 local6 ;	! 51932 / 0xcadc
     if (global100 ~= 0 or 1[?]) {
         routine51556(local1);
-    } else if (global70 > global51) {
+    } else if (global70 > num_words) {
         local4 = parser_trace;
         parser_trace = 0;
         if (local4 >= 5) {
