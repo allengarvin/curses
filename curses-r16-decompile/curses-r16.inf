@@ -4950,7 +4950,7 @@ Global global106 = 1[?];
 Global usual_grammar_after;
 Global undone_flag;
 Global pretty_mode = true;
-Global global110;
+Global menu_nesting;
 Global submenu_number = 8;
 Global submenu_header = "Nameless item";
 Global menu_selection;
@@ -8372,28 +8372,28 @@ Array array_29185 -->	! 29185 (0x7201)
     return routine53736(local1,4[e_obj?]);
 ];
 
-[ routine55464 local1 local2 local3 local4 local5 local6 local7 ;	! 55464 / 0xd8a8
-    ++global110;
+[ LowKey_Menu menu_choices EntryR ChoiceR lines main_title i j ;	! 55464 / 0xd8a8
+    ++menu_nesting;
   .label55467;
     menu_selection = 0;
-    local4 = local2();
-    local5 = submenu_header;
-    print "--- ", (string) local5, " ---^^";
-    if (routine53524(local1) == 3[s_obj?]) {
-        print (string) local1;
+    lines = EntryR();
+    main_title = submenu_header;
+    print "--- ", (string) main_title, " ---^^";
+    if (routine53524(menu_choices) == 3[s_obj?]) {
+        print (string) menu_choices;
     } else {
-        generic_globvar = local1();
+        generic_globvar = menu_choices();
     }
   .label55515;
-    print "^Type a number from 1 to ", local4, ", 0 to redisplay or press ENTER.^> ";
+    print "^Type a number from 1 to ", lines, ", 0 to redisplay or press ENTER.^> ";
     generic_globvar = 0;
     array_24021->1 = 0;
     routine185684();
     @aread array_24021 parse -> generic_globvar;
-    local6 = parse-->1;
-    if (local6 == 37839['quit'?] or 37767['q//'?] || parse->1 == 0) {
-        --global110;
-        if (global110 > 0) {
+    i = parse-->1;
+    if (i == 37839['quit'?] or 37767['q//'?] || parse->1 == 0) {
+        --menu_nesting;
+        if (menu_nesting > 0) {
             rfalse;
         }
         if (deadflag == 0) {
@@ -8402,16 +8402,16 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         rfalse;
     }
-    local6 = routine53120(1[?]);
-    if (local6 < 1 || local6 > local4) {
+    i = routine53120(1[?]);
+    if (i < 1 || i > lines) {
         jump label55515;
     }
-    menu_selection = local6;
-    local7 = local3();
-    if (local7 == 2[?]) {
+    menu_selection = i;
+    j = ChoiceR();
+    if (j == 2[?]) {
         jump label55467;
     }
-    if (local7 == 3[s_obj?]) {
+    if (j == 3[s_obj?]) {
         rfalse;
     }
     jump label55515;
@@ -8419,10 +8419,10 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine55676 s local2 local3 local4 local5 local6 local7 local8 local9 local10 local11 ;	! 55676 / 0xd97c
     if (pretty_mode == false) {
-        routine55464(s,local2,local3);
+        LowKey_Menu(s,local2,local3);
         rfalse;
     }
-    ++global110;
+    ++menu_nesting;
     menu_selection = 0;
     local4 = local2();
     local5 = submenu_header;
@@ -8475,7 +8475,7 @@ Array array_29185 -->	! 29185 (0x7201)
     print "RETURN = read subject";
     local9 = local8 - 17;
     @set_cursor 3 local9;
-    if (global110 == 1[?]) {
+    if (menu_nesting == 1) {
         print "  Q = resume game";
     } else {
         print "Q = previous menu";
@@ -8560,8 +8560,8 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label55975;
     }
   .label56233;
-    --global110;
-    if (global110 > 0) {
+    --menu_nesting;
+    if (menu_nesting > 0) {
         rfalse;
     }
     0-->8 = 65533 & 0-->8;
