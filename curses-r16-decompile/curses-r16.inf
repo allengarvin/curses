@@ -4907,20 +4907,20 @@ Global pcount2;
 Global global91;
 Global global92;
 Global global93;
-Global global94;
+Global token_was;
 Global global95;
 Global global96;
 Global global97;
-Global global98;
+Global action_to_be;
 Global global99;
 Global global100;
-Global global101;
+Global scope_token;
 Global global102;
 Global global103;
 Global global104;
 Global global105;
 Global global106 = 1[?];
-Global global107;
+Global usual_grammar_after;
 Global undone_flag;
 Global pretty_mode = true;
 Global global110;
@@ -5392,11 +5392,11 @@ Array array_29185 -->	! 29185 (0x7201)
     verb_wordnum = 1[?];
     actor = player;
     actor_location = location;
-    global107 = 0;
+    usual_grammar_after = 0;
   .label42337;
-    global94 = 0;
-    global101 = 0;
-    global98 = 65535[?];
+    token_was = 0;
+    scope_token = 0;
+    action_to_be = 65535[?];
   .label42348;
     global50 = verb_wordnum;
     global52 = routine53056();
@@ -5433,13 +5433,13 @@ Array array_29185 -->	! 29185 (0x7201)
                 jump label42523;
             }
         }
-        if (global107 == 0) {
+        if (usual_grammar_after == 0) {
             i = routine53736(actor,15[yourself?]);
             if (parser_trace >= 2 && actor.prop15 ~= 0 or 65535[?]) {
                 print " [Grammar property returned ", i, "]^";
             }
             if (i < 0) {
-                global107 = verb_wordnum;
+                usual_grammar_after = verb_wordnum;
                 i = 0 - i;
             }
             if (i == 1[?]) {
@@ -5457,7 +5457,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 global52 = routine52976();
             }
         } else {
-            global107 = 0;
+            usual_grammar_after = 0;
         }
         if (global52 == 0 || global52->6 & 1 == 0) {
             global50 = verb_wordnum;
@@ -5576,7 +5576,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 array_24239-->0 = 0;
                 global57 = 0;
                 global91 = 1[?];
-                global98 = line_address->7;
+                action_to_be = line_address->7;
                 global50 = verb_wordnum + 1;
                 global95 = 65535[?];
                 global80 = 0;
@@ -5585,7 +5585,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 global58 = 1[?];
               .label43315;
                 if (global58 <= 6) {
-                    global101 = 0;
+                    scope_token = 0;
                     token = line_address->global58;
                     if (token == 2[?]) {
                         ++m;
@@ -5641,7 +5641,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     jump label43315;
                 }
                 global106 = 0;
-                if (m == 1[?] && global61 == 1[?] && global98 == 19[rod_of_stalking?]) {
+                if (m == 1[?] && global61 == 1[?] && action_to_be == 19[rod_of_stalking?]) {
                     global106 = 1[?];
                 }
                 interfrom = 0;
@@ -5652,13 +5652,13 @@ Array array_29185 -->	! 29185 (0x7201)
                 global35 = 0;
                 array_24239-->0 = 0;
                 global91 = 1[?];
-                global98 = line_address->7;
+                action_to_be = line_address->7;
                 global50 = verb_wordnum + 1;
                 global58 = 1[?];
               .label43635;
                 if (global58 <= 6) {
                     array_24618-->global58 = 0;
-                    global101 = 0;
+                    scope_token = 0;
                     token = line_address->global58;
                     if (parser_trace >= 2) {
                         print " [Token ", global58, " is ", token, ": ";
@@ -5810,7 +5810,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             }
                             rtrue;
                         }
-                        if (token == 6[ne_obj?] && global98 == 68[obj68_water_pipe?] or 70[obj70_book_of_Twenties_poetry?] or 71[obj71_Souvenirs_Room?] or 69[obj69_romantic_novel?]) {
+                        if (token == 6[ne_obj?] && action_to_be == 68[obj68_water_pipe?] or 70[obj70_book_of_Twenties_poetry?] or 71[obj71_Souvenirs_Room?] or 69[obj69_romantic_novel?]) {
                             global100 = 1[?];
                         }
                         l = routine46408(results,token);
@@ -5853,8 +5853,8 @@ Array array_29185 -->	! 29185 (0x7201)
   .label44685;
     global91 = pcount2;
     if (actor ~= player) {
-        if (global107 > 0) {
-            verb_wordnum = global107;
+        if (usual_grammar_after > 0) {
+            verb_wordnum = usual_grammar_after;
             jump label42337;
         }
         global50 = verb_wordnum;
@@ -6194,7 +6194,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local1 hasnt talkable) {
         rfalse;
     }
-    if (global98 == 70[obj70_book_of_Twenties_poetry?] or 68[obj68_water_pipe?] or 69[obj69_romantic_novel?] or 71[obj71_Souvenirs_Room?]) {
+    if (action_to_be == 70[obj70_book_of_Twenties_poetry?] or 68[obj68_water_pipe?] or 69[obj69_romantic_novel?] or 71[obj71_Souvenirs_Room?]) {
         rtrue;
     }
     rfalse;
@@ -6298,9 +6298,9 @@ Array array_29185 -->	! 29185 (0x7201)
         local9 = local3;
     } else {
         if (local2 >= 80 && local2 < 128) {
-            global101 = array_29185-->(local2 - 80);
+            scope_token = array_29185-->(local2 - 80);
             global103 = 1[?];
-            local3 = global101();
+            local3 = scope_token();
             if (parser_trace >= 3) {
                 print "  [Scope routine returned multiple-flag of ", local3, "]^";
             }
@@ -6310,9 +6310,9 @@ Array array_29185 -->	! 29185 (0x7201)
                 local2 = 0;
             }
         }
-        global94 = 0;
+        token_was = 0;
         if (local2 >= 16) {
-            global94 = local2;
+            token_was = local2;
             local2 = 0;
         }
         global84 = 1[?];
@@ -6693,7 +6693,7 @@ Array array_29185 -->	! 29185 (0x7201)
           .label48802;
             local8 = parent(local8);
             if (local8 ~= actor_location or actor or nothing) jump label48802;
-            if (local1 == 0 && local8 == actor_location && (global94 == 0 || routine51328(local7) == 1[?])) {
+            if (local1 == 0 && local8 == actor_location && (token_was == 0 || routine51328(local7) == 1[?])) {
                 ++local5;
                 local6 = local7;
             }
@@ -6956,7 +6956,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local6 = 30[rod_of_love?];
     local7 = 20[rod_of_infinity?];
-    if (global98 == 19[rod_of_stalking?] or 20[rod_of_infinity?]) {
+    if (action_to_be == 19[rod_of_stalking?] or 20[rod_of_infinity?]) {
         local6 = 20[rod_of_infinity?];
         local7 = 30[rod_of_love?];
     }
@@ -7176,8 +7176,8 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine51088 local1 local2 local3 ;	! 51088 / 0xc790
     global66 = oops_from;
-    if (global101 ~= 0) {
-        global102 = global101;
+    if (scope_token ~= 0) {
+        global102 = scope_token;
         return 18[rod_of_returning?];
     }
     --global50;
@@ -7260,14 +7260,14 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine51328 local1 ;	! 51328 / 0xc880
-    if (global94 >= 128) {
-        if (local1 has global94 - 128) {
+    if (token_was >= 128) {
+        if (local1 has token_was - 128) {
             rtrue;
         }
         rfalse;
     }
     noun = local1;
-    return (array_29185-->(global94 - 16))();
+    return (array_29185-->(token_was - 16))();
 ];
 
 [ routine51364 local1 local2 local3 local4 local5 ;	! 51364 / 0xc8a4
@@ -7280,9 +7280,9 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine51412 local1 local2 local3 local4 ;	! 51412 / 0xc8d4
     local4 = 0;
-    if (global101 ~= 0) {
+    if (scope_token ~= 0) {
         global103 = 2[?];
-        if (global101() ~= 0) {
+        if (scope_token() ~= 0) {
             rtrue;
         }
     }
@@ -7465,7 +7465,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 5) {
         print "    Match with quality ", local2, "^";
     }
-    if (global94 ~= 0 && routine51328(local1) == 0) {
+    if (token_was ~= 0 && routine51328(local1) == 0) {
         if (parser_trace >= 5) {
             print "    Match filtered out^";
         }
@@ -22915,7 +22915,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local2 < 2) {
         rfalse;
     }
-    if (global98 == 118[obj118_dumbwaiter?] && local1 has attrib28) {
+    if (action_to_be == 118[obj118_dumbwaiter?] && local1 has attrib28) {
         return 2[?];
     }
     return 1[?];
@@ -23656,13 +23656,13 @@ Array array_29185 -->	! 29185 (0x7201)
     global43 = global50;
   .label181080;
     local1 = routine53056();
-    if (local1 ~= 65535[?] && (local1 ~= 40503['to'?] || global98 ~= 68[obj68_water_pipe?])) jump label181080;
+    if (local1 ~= 65535[?] && (local1 ~= 40503['to'?] || action_to_be ~= 68[obj68_water_pipe?])) jump label181080;
     --global50;
     global44 = global50 - global43;
     if (global44 == 0) {
         return 65535[?];
     }
-    if (global98 == 70[obj70_book_of_Twenties_poetry?] or 68[obj68_water_pipe?] or 69[obj69_romantic_novel?]) {
+    if (action_to_be == 70[obj70_book_of_Twenties_poetry?] or 68[obj68_water_pipe?] or 69[obj69_romantic_novel?]) {
         local1 = global50;
         global50 = global43;
         global36 = routine52976();
