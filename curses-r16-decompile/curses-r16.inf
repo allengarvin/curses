@@ -8391,7 +8391,7 @@ Array array_29185 -->	! 29185 (0x7201)
     routine185684();
     @aread array_24021 parse -> generic_globvar;
     i = parse-->1;
-    if (i == 37839['quit'?] or 37767['q//'?] || parse->1 == 0) {
+    if (i == 'quit' or 'q//' || parse->1 == 0) {
         --menu_nesting;
         if (menu_nesting > 0) {
             rfalse;
