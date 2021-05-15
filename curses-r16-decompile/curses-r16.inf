@@ -5107,7 +5107,7 @@ Array task_scores -->	! 23848 (0x5d28)
 ;
 Array standard_interpreter --> 1280[?];	! 0 (0x0)
 Array quote_line --> 10;	! 25943 (0x6557)
-Array array_23893 --> 1;	! 23893 (0x5d55)
+Array the_timers --> 1;	! 23893 (0x5d55)
 Array array_23957 --> 1;	! 23957 (0x5d95)
 Array array_24021 --> 30720;	! 24021 (0x5dd5)
 Array parse --> 16384[?];	! 24142 (0x5e4e)
@@ -8598,7 +8598,7 @@ Array array_29185 -->	! 29185 (0x7201)
     i = 0;
   .label56428;
     if (i < active_timers) {
-        if (array_23893-->i == obj) {
+        if (the_timers-->i == obj) {
             if (array_23957->i == 2[?]) {
                 TimerE3(obj);
             }
@@ -8610,7 +8610,7 @@ Array array_29185 -->	! 29185 (0x7201)
     i = 0;
   .label56469;
     if (i < active_timers) {
-        if (array_23893-->i == 0) {
+        if (the_timers-->i == 0) {
             jump label56513;
         }
         ++i;
@@ -8624,7 +8624,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (obj.&number == 0) {
         TimerE2(obj);
     }
-    array_23893-->i = obj;
+    the_timers-->i = obj;
     array_23957->i = 1[?];
     obj.number = timer;
     rtrue;
@@ -8634,7 +8634,7 @@ Array array_29185 -->	! 29185 (0x7201)
     i = 0;
   .label56552;
     if (i < active_timers) {
-        if (array_23893-->i == obj) {
+        if (the_timers-->i == obj) {
             jump label56577;
         }
         ++i;
@@ -8645,7 +8645,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (obj.&number == 0) {
         TimerE2(obj);
     }
-    array_23893-->i = 0;
+    the_timers-->i = 0;
     obj.number = 0;
     rtrue;
 ];
@@ -8654,7 +8654,7 @@ Array array_29185 -->	! 29185 (0x7201)
     i = 0;
   .label56608;
     if (i < active_timers) {
-        if (array_23893-->i == obj) {
+        if (the_timers-->i == obj) {
             if (array_23957->i == 1[?]) {
                 TimerE3(obj);
             }
@@ -8666,7 +8666,7 @@ Array array_29185 -->	! 29185 (0x7201)
     i = 0;
   .label56649;
     if (i < active_timers) {
-        if (array_23893-->i == 0) {
+        if (the_timers-->i == 0) {
             jump label56693;
         }
         ++i;
@@ -8677,7 +8677,7 @@ Array array_29185 -->	! 29185 (0x7201)
         TimerE();
     }
   .label56693;
-    array_23893-->i = obj;
+    the_timers-->i = obj;
     array_23957->i = 2[?];
     rtrue;
 ];
@@ -8686,7 +8686,7 @@ Array array_29185 -->	! 29185 (0x7201)
     local2 = 0;
   .label56712;
     if (local2 < active_timers) {
-        if (array_23893-->local2 == local1) {
+        if (the_timers-->local2 == local1) {
             jump label56737;
         }
         ++local2;
@@ -8694,7 +8694,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     rfalse;
   .label56737;
-    array_23893-->local2 = 0;
+    the_timers-->local2 = 0;
     rtrue;
 ];
 
@@ -8715,7 +8715,7 @@ Array array_29185 -->	! 29185 (0x7201)
     local1 = 0;
   .label56788;
     if (deadflag == 0 && local1 < active_timers) {
-        local2 = array_23893-->local1;
+        local2 = the_timers-->local1;
         if (local2 ~= 0) {
             if (array_23957->local1 == 2[?]) {
                 routine53736(local2,25[rod_of_ice?]);
