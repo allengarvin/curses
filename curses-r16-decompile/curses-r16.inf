@@ -6143,49 +6143,49 @@ Array array_29185 -->	! 29185 (0x7201)
     if (flag == 1[?]) {
         o = routine52976();
         flag = 0;
-        if (o == 40278['the'?]) {
+        if (o == 'the') {
             flag = 1[?];
         }
-        if (o == 29622['a//'?] or 29847['an'?] or 29982['any'?] or 32682['either'?] or 29991['anything'?]) {
+        if (o == 'a//' or 'an' or 'any' or 'either' or 'anything') {
             indef_mode = 1[?];
             flag = 1[?];
         }
-        if (o == 29937['another'?] or 36723['other'?]) {
+        if (o == 'another' or 'other') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_type = indef_type | 1;
         }
-        if (o == 36147['my'?] or 40341['this'?] or 40305['these'?]) {
+        if (o == 'my' or 'this' or 'these') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_type = indef_type | 2;
         }
-        if (o == 40269['that'?] or 40368['those'?]) {
+        if (o == 'that' or 'those') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_type = indef_type | 4;
         }
-        if (o == 34869['its'?]) {
+        if (o == 'its') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_type = indef_type | 16;
         }
-        if (o == 34410['his'?] or 41691['your'?]) {
+        if (o == 'his' or 'your') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_type = indef_type | 32;
         }
-        if (o == 35391['lit'?] or 35364['lighted'?]) {
+        if (o == 'lit' or 'lighted') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_type = indef_type | 64;
         }
-        if (o == 40854['unlit'?]) {
+        if (o == 'unlit') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_type = indef_type | 128;
         }
-        if (o == 29793['all'?] or 32601['each'?] or 32889['every'?] or 32898['everything'?]) {
+        if (o == 'all' or 'each' or 'every' or 'everything') {
             indef_mode = 1[?];
             flag = 1[?];
             indef_wanted = 100;
