@@ -4954,7 +4954,7 @@ Global menu_nesting;
 Global submenu_number = 8;
 Global submenu_header = "Nameless item";
 Global menu_item;
-Global global114;
+Global active_timers;
 Global global115 = 1[?];
 Global c_style;
 Global global117;
@@ -8597,7 +8597,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ StartTimer obj timer i ;	! 56424 / 0xdc68
     i = 0;
   .label56428;
-    if (i < global114) {
+    if (i < active_timers) {
         if (array_23893-->i == obj) {
             if (array_23957->i == 2[?]) {
                 TimerE3(obj);
@@ -8609,14 +8609,14 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     i = 0;
   .label56469;
-    if (i < global114) {
+    if (i < active_timers) {
         if (array_23893-->i == 0) {
             jump label56513;
         }
         ++i;
         jump label56469;
     }
-    i = global114++;
+    i = active_timers++;
     if (i * 2 >= 64) {
         TimerE();
     }
@@ -8633,7 +8633,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ StopTimer obj i ;	! 56548 / 0xdce4
     i = 0;
   .label56552;
-    if (i < global114) {
+    if (i < active_timers) {
         if (array_23893-->i == obj) {
             jump label56577;
         }
@@ -8653,7 +8653,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ StartDaemon obj i ;	! 56604 / 0xdd1c
     i = 0;
   .label56608;
-    if (i < global114) {
+    if (i < active_timers) {
         if (array_23893-->i == obj) {
             if (array_23957->i == 1[?]) {
                 TimerE3(obj);
@@ -8665,14 +8665,14 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     i = 0;
   .label56649;
-    if (i < global114) {
+    if (i < active_timers) {
         if (array_23893-->i == 0) {
             jump label56693;
         }
         ++i;
         jump label56649;
     }
-    i = global114++;
+    i = active_timers++;
     if (i * 2 >= 64) {
         TimerE();
     }
@@ -8685,7 +8685,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine56708 local1 local2 ;	! 56708 / 0xdd84
     local2 = 0;
   .label56712;
-    if (local2 < global114) {
+    if (local2 < active_timers) {
         if (array_23893-->local2 == local1) {
             jump label56737;
         }
@@ -8714,7 +8714,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local1 = 0;
   .label56788;
-    if (deadflag == 0 && local1 < global114) {
+    if (deadflag == 0 && local1 < active_timers) {
         local2 = array_23893-->local1;
         if (local2 ~= 0) {
             if (array_23957->local1 == 2[?]) {
