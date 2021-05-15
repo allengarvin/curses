@@ -4857,7 +4857,7 @@ Global global12;
 Global deadflag;
 Global global14;
 Global last_score;
-Global global16 = 1[?];
+Global notify_mode = true;
 Global places_score;
 Global things_score;
 Global global19 = 1[?];
@@ -8037,7 +8037,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label54187;
     if (deadflag == 0) {
         if (score ~= last_score) {
-            if (global16 == 1[?]) {
+            if (notify_mode == true) {
                 routine53992();
             }
             last_score = score;
@@ -20180,13 +20180,13 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ NotifyOnSub ;	! 161192 / 0x275a8
-    global16 = 1[?];
+    notify_mode = true;
     L__M(##NotifyOn);
     rtrue;
 ];
 
 [ NotifyOffSub ;	! 161204 / 0x275b4
-    global16 = 0;
+    notify_mode = false;
     L__M(##NotifyOff);
     rtrue;
 ];
