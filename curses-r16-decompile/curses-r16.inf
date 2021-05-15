@@ -4925,7 +4925,7 @@ Global global108;
 Global pretty_mode = true;
 Global global110;
 Global global111 = 8[nw_obj?];
-Global global112 = 46750["Nameless..."?];
+Global global112 = "Nameless item";
 Global global113;
 Global global114;
 Global global115 = 1[?];
@@ -18654,36 +18654,36 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine147836 ;	! 147836 / 0x2417c
     if (global113 == 0) {
         global111 = 3[s_obj?];
-        global112 = 62572["Curses"?];
+        global112 = "Curses";
         return 7[se_obj?];
     }
     if (global113 == 1[?]) {
         global111 = 6[ne_obj?];
-        global112 = 62573["Instruct..."?];
+        global112 = "Instructions";
     }
     if (global113 == 2[?]) {
         global111 = 4[e_obj?];
-        global112 = 62575["Commands"?];
+        global112 = "Commands";
     }
     if (global113 == 3[s_obj?]) {
         global111 = 8[nw_obj?];
-        global112 = 62577["Cast of ..."?];
+        global112 = "Cast of Thousands";
     }
     if (global113 == 4[e_obj?]) {
         global111 = 6[ne_obj?];
-        global112 = 62580["Release ..."?];
+        global112 = "Release Notes";
     }
     if (global113 == 5[w_obj?]) {
         global111 = 5[w_obj?];
-        global112 = 62583["Legal No..."?];
+        global112 = "Legal Notes";
     }
     if (global113 == 6[ne_obj?]) {
         global111 = 3[s_obj?];
-        global112 = 62586["Inform"?];
+        global112 = "Inform";
     }
     if (global113 == 7[se_obj?]) {
         global111 = 5[w_obj?];
-        global112 = 62588["ftp.gmd...."?];
+        global112 = "ftp.gmd.de";
     }
     rtrue;
 ];
@@ -24067,36 +24067,36 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine183792 ;	! 183792 / 0x2cdf0
     if (global113 == 0) {
-        global112 = 64161["For your..."?];
+        global112 = "For your amusement";
         global111 = 9[sw_obj?];
         return 7[se_obj?];
     }
     if (global113 == 1[?]) {
-        global112 = 64164["Frivolou..."?];
+        global112 = "Frivolous things to do";
         global111 = 11[d_obj?];
     }
     if (global113 == 2[?]) {
-        global112 = 64168["About Ca..."?];
+        global112 = "About Callimachus and Apollonius";
         global111 = 16[obj16_lm?];
     }
     if (global113 == 3[s_obj?]) {
-        global112 = 64174["An epigr..."?];
+        global112 = "An epigram by Callimachus";
         global111 = 12[obj12_outside?];
     }
     if (global113 == 4[e_obj?]) {
-        global112 = 64179["Salmon W..."?];
+        global112 = "Salmon Wielder";
         global111 = 7[se_obj?];
     }
     if (global113 == 5[w_obj?]) {
-        global112 = 64182["Wistaria..."?];
+        global112 = "Wistaria or wisteria?";
         global111 = 10[u_obj?];
     }
     if (global113 == 6[ne_obj?]) {
-        global112 = 64186["Great Cu..."?];
+        global112 = "Great Curses mistakes";
         global111 = 10[u_obj?];
     }
     if (global113 == 7[se_obj?]) {
-        global112 = 64190["The anci..."?];
+        global112 = "The ancient languages";
         global111 = 10[u_obj?];
     }
     rtrue;
@@ -24221,48 +24221,48 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine185108 ;	! 185108 / 0x2d314
     if (global113 == 0) {
-        global112 = 64571["Trivia q..."?];
+        global112 = "Trivia questions";
         global111 = 8[nw_obj?];
         return 10[u_obj?];
     }
     if (global113 == 1[?]) {
-        global112 = 64574["1. What ..."?];
+        global112 = "1. What are the ~good but wrong guesses~?";
         global111 = 20[rod_of_infinity?];
     }
     if (global113 == 2[?]) {
-        global112 = 64581["2. How m..."?];
+        global112 = "2. How many songs does the radio play?";
         global111 = 19[rod_of_stalking?];
     }
     if (global113 == 3[s_obj?]) {
-        global112 = 64588["3. In wh..."?];
+        global112 = "3. In what *** ways *** can the game end?";
         global111 = 20[rod_of_infinity?];
     }
     if (global113 == 4[e_obj?]) {
-        global112 = 64598["4. What ..."?];
+        global112 = "4. What are the secret ways to detect a Rod?";
         global111 = 22[rod_of_bronze?];
     }
     if (global113 == 5[w_obj?]) {
-        global112 = 64605["5. What ..."?];
+        global112 = "5. What can you see in the crystal ball?";
         global111 = 20[rod_of_infinity?];
     }
     if (global113 == 6[ne_obj?]) {
-        global112 = 64611["6. Where..."?];
+        global112 = "6. Where are Dame Judi Dench and Donald Sutherland?";
         global111 = 25[rod_of_ice?];
     }
     if (global113 == 7[se_obj?]) {
-        global112 = 64620["7. Expla..."?];
+        global112 = "7. Explain the handkerchief initials and the graffiti.";
         global111 = 27[rod_of_returning2?];
     }
     if (global113 == 8[nw_obj?]) {
-        global112 = 64629["8. How m..."?];
+        global112 = "8. How many tarot cards are there altogether?";
         global111 = 22[rod_of_bronze?];
     }
     if (global113 == 9[sw_obj?]) {
-        global112 = 64637["9. How c..."?];
+        global112 = "9. How can the medicine bottle be opened?";
         global111 = 20[rod_of_infinity?];
     }
     if (global113 == 10[u_obj?]) {
-        global112 = 64644["10. What..."?];
+        global112 = "10. What is the mascot for in the premonition?";
         global111 = 23[rod_of_sacrifice?];
     }
     rtrue;
@@ -24287,16 +24287,16 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine185292 ;	! 185292 / 0x2d3cc
     if (global113 == 0) {
-        global112 = 64660["Amusemen..."?];
+        global112 = "Amusements";
         global111 = 5[w_obj?];
         return 2[?];
     }
     if (global113 == 1[?]) {
-        global112 = 64662["For your..."?];
+        global112 = "For your amusement";
         global111 = 9[sw_obj?];
     }
     if (global113 == 2[?]) {
-        global112 = 64665["Trivia q..."?];
+        global112 = "Trivia questions";
         global111 = 8[nw_obj?];
     }
     rtrue;
