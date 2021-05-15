@@ -4882,7 +4882,7 @@ Global global112 = 46750["Nameless..."?];
 Global global113;
 Global global114;
 Global global115 = 1[?];
-Global global116;
+Global c_style;
 Global global117;
 Global global118;
 Global global119;
@@ -9104,12 +9104,12 @@ Array array_29185 -->	! 29185 (0x7201)
         } else {
             print "the Rods of ";
         }
-        global116 = global116 | (8 + 4096);
-        if (global116 & 1 ~= 0) {
-            global116 = global116 - 1;
+        c_style = c_style | (8 + 4096);
+        if (c_style & 1 ~= 0) {
+            c_style = c_style - 1;
         }
-        if (global116 & 2 ~= 0) {
-            global116 = global116 - 2;
+        if (c_style & 2 ~= 0) {
+            c_style = c_style - 2;
         }
     }
     rfalse;
@@ -9592,13 +9592,13 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: Grim_Reaper_card.short, Fool_card.short, Drowned_Sailor_card.short, obj190_Castle.short, obj191_Star.short, obj192_Eight_of_Wands.short, obj193_Maiden.short, obj194_Ace_of_Cups.short, Crescent_Moon.short
 
 [ routine64336 ;	! 64336 / 0xfb50
-    if (global118 has card && global116 & 4096 == 0) {
-        global116 = global116 | (4096 + 8);
-        if (global116 & 2 ~= 0) {
-            global116 = global116 - 2;
+    if (global118 has card && c_style & 4096 == 0) {
+        c_style = c_style | (4096 + 8);
+        if (c_style & 2 ~= 0) {
+            c_style = c_style - 2;
         }
-        if (global116 & 1 ~= 0) {
-            global116 = global116 - 1;
+        if (c_style & 1 ~= 0) {
+            c_style = c_style - 1;
         }
     }
     rfalse;
@@ -19255,7 +19255,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine157768 local1 local2 ;	! 157768 / 0x26848
     local1 = sibling(local1);
     if (global117 ~= 0) {
-        if (global116 & 512 ~= 0 && local2 == 0) {
+        if (c_style & 512 ~= 0 && local2 == 0) {
           .label157794;
             if (local1 ~= 0 && (local1.prop12 ~= global117 || local1 hasnt attrib25)) {
                 local1 = sibling(local1);
@@ -19263,7 +19263,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             return local1;
         }
-        if (global116 & 2048 ~= 0) {
+        if (c_style & 2048 ~= 0) {
           .label157833;
             if (local1 ~= 0 && (local1 has concealed || local1 has scenery || local1.prop12 ~= global117)) {
                 local1 = sibling(local1);
@@ -19278,7 +19278,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         return local1;
     }
-    if (global116 & 512 ~= 0 && local2 == 0) {
+    if (c_style & 512 ~= 0 && local2 == 0) {
       .label157905;
         if (local1 ~= 0 && local1 hasnt attrib25) {
             local1 = sibling(local1);
@@ -19286,7 +19286,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         return local1;
     }
-    if (global116 & 2048 ~= 0) {
+    if (c_style & 2048 ~= 0) {
       .label157935;
         if (local1 ~= 0 && (local1 has concealed || local1 has scenery)) {
             local1 = sibling(local1);
@@ -19297,10 +19297,10 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ IsSeeThrough o ;	! 157960 / 0x26908
-    if (global116 & 32 ~= 0) {
+    if (c_style & 32 ~= 0) {
         rtrue;
     }
-    if (global116 & 16 == 0) {
+    if (c_style & 16 == 0) {
         rfalse;
     }
     if (o has transparent || o has supporter || (o has container && o has open)) {
@@ -19316,7 +19316,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (child(local2) ~= nothing && IsSeeThrough(local2) ~= 0) {
         rfalse;
     }
-    if (global116 & (4 + 128) ~= 0) {
+    if (c_style & (4 + 128) ~= 0) {
         if (local1 hasnt attrib26 && local2 has attrib26 || (local2 hasnt attrib26 && local1 has attrib26)) {
             rfalse;
         }
@@ -19391,14 +19391,14 @@ Array array_29185 -->	! 29185 (0x7201)
         routine158196(local1);
         local1 = child(parent(local1));
     }
-    global116 = local2;
+    c_style = local2;
     if (local2 & 512 ~= 0) {
       .label158339;
         if (local1 ~= 0 && local1 hasnt attrib25) {
             local1 = sibling(local1);
             jump label158339;
         }
-    } else if (global116 & 2048 ~= 0) {
+    } else if (c_style & 2048 ~= 0) {
       .label158370;
         if (local1 ~= 0 && (local1 has concealed || local1 has scenery)) {
             local1 = sibling(local1);
@@ -19432,18 +19432,18 @@ Array array_29185 -->	! 29185 (0x7201)
         ++local7;
         jump label158456;
     }
-    if (global116 & 1024 ~= 0) {
+    if (c_style & 1024 ~= 0) {
         if (local7 == 1[?]) {
             print " is";
         } else {
             print " are";
         }
-        if (global116 & 1 ~= 0) {
+        if (c_style & 1 ~= 0) {
             print ":^";
         } else {
             print ' ';
         }
-        global116 = global116 - 1024;
+        c_style = c_style - 1024;
     }
     local3 = local3 + local7 + 1;
     if (local8 < 2) {
@@ -19541,7 +19541,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         if (global119 == 1[?]) {
                             ! no code
                         } else {
-                            if (global116 & 2 ~= 0) {
+                            if (c_style & 2 ~= 0) {
                                 generic_global = 2 * (local2 + global120);
                                 if (generic_global >= 1) {
                                   .label159048;
@@ -19561,14 +19561,14 @@ Array array_29185 -->	! 29185 (0x7201)
                                 }
                                 routine157320(local13);
                                 print " ", (string) local7.prop12;
-                                if (global116 & 8 ~= 0) {
+                                if (c_style & 8 ~= 0) {
                                     print " (";
                                 }
-                                if (global116 & 2 ~= 0) {
+                                if (c_style & 2 ~= 0) {
                                     print ":^";
                                 }
                             }
-                            local13 = global116;
+                            local13 = c_style;
                             if (local9 ~= 3[s_obj?]) {
                                 global115 = 1[?];
                                 global72 = local7;
@@ -19585,7 +19585,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             global117 = 0;
                             global118 = 0;
                             if (local9 == 3[s_obj?]) {
-                                if (global116 & 8 ~= 0) {
+                                if (c_style & 8 ~= 0) {
                                     print ")";
                                 }
                             } else {
@@ -19595,29 +19595,29 @@ Array array_29185 -->	! 29185 (0x7201)
                                 routine53736(local7,12[obj12_outside?]);
                             }
                           .label159226;
-                            if (local13 & 1 ~= 0 && global116 & 1 == 0) {
+                            if (local13 & 1 ~= 0 && c_style & 1 == 0) {
                                 new_line;
                             }
-                            global116 = local13;
+                            c_style = local13;
                             local15 = local7.prop12;
                             jump label159367;
                         }
                     }
                 }
             }
-            if (routine159904(local7,local2) == 1[?]) {
+            if (WriteBeforeEntry(local7,local2) == 1[?]) {
                 ! no code
             } else {
                 if (local5->local6 == 1[?]) {
-                    if (global116 & 4096 ~= 0) {
+                    if (c_style & 4096 ~= 0) {
                         PSN__(local7);
-                    } else if (global116 & 256 ~= 0) {
+                    } else if (c_style & 256 ~= 0) {
                         Defart(local7);
                     } else {
                         routine57632(local7);
                     }
                 } else {
-                    if (global116 & 256 ~= 0) {
+                    if (c_style & 256 ~= 0) {
                         print "the ";
                     }
                     routine157320(local5->local6);
@@ -19626,7 +19626,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
                 WriteAfterEntry(local7,local2,local3);
               .label159367;
-                if (global116 & 8 ~= 0) {
+                if (c_style & 8 ~= 0) {
                     if (local14 == 1[?]) {
                         print " and ";
                     }
@@ -19672,7 +19672,7 @@ Array array_29185 -->	! 29185 (0x7201)
             } else {
                 local8 = routine53524(local7.prop12);
                 if (local8 == 2[?] or 3[s_obj?]) {
-                    if (global116 & 2 ~= 0) {
+                    if (c_style & 2 ~= 0) {
                         generic_global = 2 * (local2 + global120);
                         if (generic_global >= 1) {
                           .label159582;
@@ -19690,14 +19690,14 @@ Array array_29185 -->	! 29185 (0x7201)
                         if (local13.prop12 == local7.prop12) jump label159605;
                         routine157320(local10);
                         print " ", (string) local7.prop12;
-                        if (global116 & 8 ~= 0) {
+                        if (c_style & 8 ~= 0) {
                             print " (";
                         }
-                        if (global116 & 2 ~= 0) {
+                        if (c_style & 2 ~= 0) {
                             print ":^";
                         }
                     }
-                    local13 = global116;
+                    local13 = c_style;
                     if (local8 ~= 3[s_obj?]) {
                         global115 = 1[?];
                         global72 = local7;
@@ -19724,28 +19724,28 @@ Array array_29185 -->	! 29185 (0x7201)
                         routine53736(local7,12[obj12_outside?]);
                     }
                   .label159760;
-                    if (local13 & 1 ~= 0 && global116 & 1 == 0) {
+                    if (local13 & 1 ~= 0 && c_style & 1 == 0) {
                         new_line;
                     }
-                    global116 = local13;
+                    c_style = local13;
                     local15 = local7.prop12;
                     jump label159854;
                 }
             }
         }
-        if (routine159904(local7,local2) == 1[?]) {
+        if (WriteBeforeEntry(local7,local2) == 1[?]) {
             ! no code
         } else {
-            if (global116 & 4096 ~= 0) {
+            if (c_style & 4096 ~= 0) {
                 PSN__(local7);
-            } else if (global116 & 256 ~= 0) {
+            } else if (c_style & 256 ~= 0) {
                 Defart(local7);
             } else {
                 routine57632(local7);
             }
             WriteAfterEntry(local7,local2,local3);
           .label159854;
-            if (global116 & 8 ~= 0) {
+            if (c_style & 8 ~= 0) {
                 if (local6 == local14 - 1) {
                     print " and ";
                 }
@@ -19762,9 +19762,9 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine159904 local1 local2 local3 ;	! 159904 / 0x270a0
-    if (global116 & 2 ~= 0) {
-        generic_global = 2 * (local2 + global120);
+[ WriteBeforeEntry o depth flag ;	! 159904 / 0x270a0
+    if (c_style & 2 ~= 0) {
+        generic_global = 2 * (depth + global120);
         if (generic_global >= 1) {
           .label159930;
             print ' ';
@@ -19772,55 +19772,55 @@ Array array_29185 -->	! 29185 (0x7201)
             if (generic_global ~= 0) jump label159930;
         }
     }
-    if (global116 & 4 ~= 0 && local1.u_to ~= nothing) {
+    if (c_style & 4 ~= 0 && o.u_to ~= nothing) {
         global115 = 1[?];
-        local3 = PrintOrRun(local1,13[obj13_inside?],1[?]);
-        if (local3 == 1[?] && global116 & 1 ~= 0) {
+        flag = PrintOrRun(o,13[obj13_inside?],1[?]);
+        if (flag == 1[?] && c_style & 1 ~= 0) {
             new_line;
         }
     }
-    return local3;
+    return flag;
 ];
 
-[ WriteAfterEntry o depth stack_p flag flag2 flag3 p com ;	! 159988 / 0x270f4
-    if (global116 & 128 ~= 0) {
-        com = 0;
+[ WriteAfterEntry o depth stack_p flag flag2 flag3 p comb ;	! 159988 / 0x270f4
+    if (c_style & 128 ~= 0) {
+        comb = 0;
         if (o has light && location hasnt light) {
-            com = com + 1;
+            comb = comb + 1;
         }
         if (o has container && o hasnt open) {
-            com = com + 2;
+            comb = comb + 2;
         }
         if (o has container && (o has open || o has transparent) && child(o) == nothing) {
-            com = com + 4;
+            comb = comb + 4;
         }
-        if (com == 1[?]) {
+        if (comb == 1[?]) {
             print " (providing light)";
         }
-        if (com == 2[?]) {
+        if (comb == 2[?]) {
             print " (which is closed)";
         }
-        if (com == 3[s_obj?]) {
+        if (comb == 3[s_obj?]) {
             print " (closed and providing light)";
         }
-        if (com == 4[e_obj?]) {
+        if (comb == 4[e_obj?]) {
             print " (which is empty)";
         }
-        if (com == 5[w_obj?]) {
+        if (comb == 5[w_obj?]) {
             print " (empty and providing light)";
         }
-        if (com == 6[ne_obj?]) {
+        if (comb == 6[ne_obj?]) {
             print " (which is closed and empty)";
         }
-        if (com == 7[se_obj?]) {
+        if (comb == 7[se_obj?]) {
             print " (closed, empty and providing light)";
         }
     }
-    if (global116 & 4 ~= 0) {
+    if (c_style & 4 ~= 0) {
         if (o.u_to ~= nothing) {
             global115 = 2[?];
             if (routine53736(o,13[obj13_inside?]) ~= 0) {
-                if (global116 & 1 ~= 0) {
+                if (c_style & 1 ~= 0) {
                     new_line;
                 }
                 rtrue;
@@ -19870,7 +19870,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print ")";
         }
     }
-    if (global116 & 2048 == 0) {
+    if (c_style & 2048 == 0) {
         if (child(o) ~= nothing) {
             generic_global = 0;
             if (child(o) ~= nothing) {
@@ -19892,16 +19892,16 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label160510;
         }
     }
-    if (global116 & 32 ~= 0 && flag3 > 0) {
-        if (global116 & 8 ~= 0) {
+    if (c_style & 32 ~= 0 && flag3 > 0) {
+        if (c_style & 8 ~= 0) {
             print " containing ";
         }
         flag = 1[?];
     }
-    if (global116 & 16 ~= 0 && flag3 > 0) {
+    if (c_style & 16 ~= 0 && flag3 > 0) {
         if (o has supporter) {
-            if (global116 & 8 ~= 0) {
-                if (global116 & 64 ~= 0) {
+            if (c_style & 8 ~= 0) {
+                if (c_style & 64 ~= 0) {
                     print " (on ";
                 } else {
                     print ", on top of ";
@@ -19915,8 +19915,8 @@ Array array_29185 -->	! 29185 (0x7201)
             flag = 1[?];
         }
         if (o has container && (o has open || o has transparent)) {
-            if (global116 & 8 ~= 0) {
-                if (global116 & 64 ~= 0) {
+            if (c_style & 8 ~= 0) {
+                if (c_style & 64 ~= 0) {
                     print " (in ";
                 } else {
                     print ", inside ";
@@ -19930,20 +19930,20 @@ Array array_29185 -->	! 29185 (0x7201)
             flag = 1[?];
         }
     }
-    if (flag == 1[?] && global116 & 8 ~= 0) {
+    if (flag == 1[?] && c_style & 8 ~= 0) {
         if (flag3 > 1) {
             print "are ";
         } else {
             print "is ";
         }
     }
-    if (global116 & 1 ~= 0) {
+    if (c_style & 1 ~= 0) {
         new_line;
     }
     if (flag == 1[?]) {
         routine158408(child(o),depth + 1,stack_p);
     }
-    if (flag == 1[?] && global116 & 64 ~= 0) {
+    if (flag == 1[?] && c_style & 64 ~= 0) {
         print ")";
     }
     rtrue;
