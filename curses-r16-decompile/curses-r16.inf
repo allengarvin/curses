@@ -5112,7 +5112,7 @@ Array array_23957 --> 1;	! 23957 (0x5d95)
 Array array_24021 --> 30720;	! 24021 (0x5dd5)
 Array parse --> 16384[?];	! 24142 (0x5e4e)
 Array array_24142 --> 16384[?];	! 24142 (0x5e4e)
-Array array_24207 --> 1;	! 24207 (0x5e8f)
+Array inputobjs --> 1;	! 24207 (0x5e8f)
 Array multiple_object --> 1;	! 24239 (0x5eaf)
 Array array_24488 --> 16384[?];	! 24488 (0x5fa8)
 Array array_24553 --> 16384[?];	! 24553 (0x5fe9)
@@ -8043,10 +8043,10 @@ Array array_29185 -->	! 29185 (0x7201)
             last_score = score;
         }
       .label54208;
-        array_24207-->0 = 0;
-        array_24207-->1 = 0;
-        array_24207-->2 = 0;
-        array_24207-->3 = 0;
+        inputobjs-->0 = 0;
+        inputobjs-->1 = 0;
+        inputobjs-->2 = 0;
+        inputobjs-->3 = 0;
         meta = 0;
         Parser(24207[?]);
         noun = nothing;
@@ -8055,26 +8055,26 @@ Array array_29185 -->	! 29185 (0x7201)
         global37 = 0;
         onotheld_mode = notheld_mode;
         notheld_mode = 0;
-        verb = array_24207-->0;
+        verb = inputobjs-->0;
         if (verb == ##GiveR or ##ShowR) {
-            i = array_24207-->2;
-            array_24207-->2 = array_24207-->3;
-            array_24207-->3 = i;
+            i = inputobjs-->2;
+            inputobjs-->2 = inputobjs-->3;
+            inputobjs-->3 = i;
             if (verb == ##GiveR) {
                 verb = ##Give;
             } else {
                 verb = ##Show;
             }
         }
-        if (verb == ##Tell && array_24207-->2 == player && actor ~= player) {
-            array_24207-->2 = actor;
+        if (verb == ##Tell && inputobjs-->2 == player && actor ~= player) {
+            inputobjs-->2 = actor;
             actor = player;
             verb = ##Ask;
         }
-        if (verb == ##AskFor && array_24207-->2 ~= player && actor == player) {
-            actor = array_24207-->2;
-            array_24207-->2 = array_24207-->3;
-            array_24207-->3 = player;
+        if (verb == ##AskFor && inputobjs-->2 ~= player && actor == player) {
+            actor = inputobjs-->2;
+            inputobjs-->2 = inputobjs-->3;
+            inputobjs-->3 = player;
             verb = ##Give;
         }
         if (verb == ##Ask or ##Tell or ##Answer) {
@@ -8083,12 +8083,12 @@ Array array_29185 -->	! 29185 (0x7201)
       .label54402;
         global27 = 0;
         global28 = 0;
-        i = array_24207-->1;
+        i = inputobjs-->1;
         if (i >= 1) {
-            global27 = array_24207-->2;
+            global27 = inputobjs-->2;
         }
         if (i >= 2) {
-            global28 = array_24207-->3;
+            global28 = inputobjs-->3;
         }
         noun = global27;
         second = global28;
@@ -8108,7 +8108,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 j = routine53736(actor,16[obj16_lm?]);
                 if (j == 0) {
                     if (verb == ##Action264) {
-                        array_24207-->3 = actor;
+                        inputobjs-->3 = actor;
                         actor = player;
                         verb = ##Answer;
                         jump label54402;
