@@ -5128,7 +5128,7 @@ Array array_25306 --> 2050[?];	! 25306 (0x62da)
 Array array_25893 --> 1;	! 25893 (0x6525)
 Array task_done --> 22;	! 25975 (0x6577)
 Array array_26065 --> 48[obj48_furniture?];	! 26065 (0x65d1)
-Array array_28893 -->	! 28893 (0x70dd)
+Array actions_table -->	! 28893 (0x70dd)
     ScoreSub
     FullScoreSub
     QuitSub
@@ -8237,7 +8237,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ Process ;	! 55012 / 0xd6e4
     if (meta == 1 || BeforeRoutines() == 0) {
-        generic_global = (array_28893-->verb)();
+        generic_global = (actions_table-->verb)();
     }
     rtrue;
 ];
@@ -8349,7 +8349,7 @@ Array array_29185 -->	! 29185 (0x7201)
     second = local3;
     verb = a;
     if (meta == 1 || BeforeRoutines() == 0 && verb < 256) {
-        generic_global = (array_28893-->verb)();
+        generic_global = (actions_table-->verb)();
         selfobj = local7;
         global27 = local4;
         noun = local4;
