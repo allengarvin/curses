@@ -4851,7 +4851,7 @@ Global global6;
 Global score;
 Global turns = 1;
 Global player;
-Global global10 = 1[?];
+Global lightflag = true;
 Global real_location = thedark;
 Global global12;
 Global deadflag;
@@ -8021,8 +8021,8 @@ Array array_29185 -->	! 29185 (0x7201)
     if (j ~= 2[?]) {
         routine57960();
     }
-    global10 = routine57036(parent(player));
-    if (global10 == 0) {
+    lightflag = OffersLight(parent(player));
+    if (lightflag == false) {
         real_location = location;
         location = thedark;
     }
@@ -8759,15 +8759,15 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine56952 local1 local2 ;	! 56952 / 0xde78
-    local2 = global10;
-    global10 = routine57036(parent(player));
-    if (local2 == 0 && global10 == 1[?]) {
+    local2 = lightflag;
+    lightflag = OffersLight(parent(player));
+    if (local2 == 0 && lightflag == true) {
         location = real_location;
         if (local1 == 0) {
             routine55348(##Look);
         }
     }
-    if (local2 == 1[?] && global10 == 0) {
+    if (local2 == 1[?] && lightflag == false) {
         real_location = location;
         location = thedark;
         if (local1 == 0) {
@@ -8775,20 +8775,20 @@ Array array_29185 -->	! 29185 (0x7201)
             return L__M(##Miscellany,9);
         }
     }
-    if (local2 == 0 && global10 == 0) {
+    if (local2 == 0 && lightflag == false) {
         location = thedark;
     }
     rtrue;
 ];
 
-[ routine57036 local1 local2 ;	! 57036 / 0xdecc
-    if (local1 == 0) {
+[ OffersLight o local2 ;	! 57036 / 0xdecc
+    if (o == nothing) {
         rfalse;
     }
-    if (local1 has light) {
+    if (o has light) {
         rtrue;
     }
-    local2 = child(local1);
+    local2 = child(o);
   .label57053;
     if (local2 ~= 0) {
         if (routine57108(local2) == 1[?]) {
@@ -8797,8 +8797,8 @@ Array array_29185 -->	! 29185 (0x7201)
         local2 = sibling(local2);
         jump label57053;
     }
-    if (local1 has enterable || routine51504(local1) == 1[?]) {
-        return routine57036(parent(local1));
+    if (o has enterable || routine51504(o) == 1[?]) {
+        return OffersLight(parent(o));
     }
     rfalse;
 ];
@@ -8919,8 +8919,8 @@ Array array_29185 -->	! 29185 (0x7201)
     if (real_location == nothing) {
         real_location = location;
     }
-    global10 = routine57036(parent(player));
-    if (global10 == 0) {
+    lightflag = OffersLight(parent(player));
+    if (lightflag == false) {
         location = thedark;
     }
     global12 = local2;
@@ -20951,17 +20951,17 @@ Array array_29185 -->	! 29185 (0x7201)
     } else {
         move local5 to local2;
     }
-    local4 = routine57036(local2);
+    local4 = OffersLight(local2);
     if (local4 ~= 0) {
         location = local2;
-        global10 = 1[?];
+        lightflag = true;
     } else {
         if (location == thedark) {
             routine174596();
         }
         real_location = local2;
         location = thedark;
-        global10 = 0;
+        lightflag = false;
     }
     if (AfterRoutines() == true) {
         rtrue;
