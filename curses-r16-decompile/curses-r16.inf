@@ -4877,7 +4877,7 @@ Global second;
 Global special_word;
 Global special_number;
 Global global36;
-Global global37;
+Global multiflag;
 Global notheld_mode;
 Global onotheld_mode;
 Global meta;
@@ -8052,7 +8052,7 @@ Array array_29185 -->	! 29185 (0x7201)
         noun = nothing;
         second = nothing;
         verb = ##Score;
-        global37 = 0;
+        multiflag = 0;
         onotheld_mode = notheld_mode;
         notheld_mode = 0;
         verb = inputobjs-->0;
@@ -8121,7 +8121,7 @@ Array array_29185 -->	! 29185 (0x7201)
         } else if (i == 0 || global27 ~= 0) {
             Process();
         } else {
-            global37 = 1[?];
+            multiflag = 1;
             j = multiple_object-->0;
             if (j == 0) {
                 L__M(##Miscellany,2);
@@ -20584,7 +20584,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    if (global37 == 1[?]) {
+    if (multiflag == 1) {
         return L__M(##PutOn,7);
     }
     L__M(##PutOn,8,noun);
@@ -20650,7 +20650,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    if (global37 == 1[?]) {
+    if (multiflag == 1) {
         return L__M(##Insert,8);
     }
     L__M(##Insert,9,noun);
