@@ -7507,7 +7507,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (global104 >= 2) {
         routine51932(local1,0,global104 - 2);
     }
-    if (global104 == 1[?] && routine57108(local1) == 1[?]) {
+    if (global104 == 1[?] && HasLightSource(local1) == 1[?]) {
         global105 = 1[?];
     }
     rtrue;
@@ -8791,7 +8791,7 @@ Array array_29185 -->	! 29185 (0x7201)
     local2 = child(o);
   .label57053;
     if (local2 ~= 0) {
-        if (routine57108(local2) == 1[?]) {
+        if (HasLightSource(local2) == 1[?]) {
             rtrue;
         }
         local2 = sibling(local2);
@@ -8803,46 +8803,46 @@ Array array_29185 -->	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine57108 local1 local2 local3 ;	! 57108 / 0xdf14
-    if (local1 == 0) {
+[ HasLightSource i j ad ;	! 57108 / 0xdf14
+    if (i == 0) {
         rfalse;
     }
-    if (local1 has light) {
+    if (i has light) {
         rtrue;
     }
-    if (local1 has enterable || routine51504(local1) == 1[?]) {
-        local1 = child(local1);
+    if (i has enterable || routine51504(i) == 1[?]) {
+        i = child(i);
       .label57141;
-        if (local1 ~= 0) {
-            if (routine57108(local1) == 1[?]) {
+        if (i ~= 0) {
+            if (HasLightSource(i) == 1[?]) {
                 rtrue;
             }
-            local1 = sibling(local1);
+            i = sibling(i);
             jump label57141;
         }
     }
-    local3 = local1.&prop10;
-    if (parent(local1) ~= nothing && local3 ~= 0) {
-        if (local3-->0 > top_object) {
+    ad = i.&prop10;
+    if (parent(i) ~= nothing && ad ~= 0) {
+        if (ad-->0 > top_object) {
             global105 = 0;
             global104 = 1[?];
-            routine53736(local1,10[u_obj?]);
+            routine53736(i,10[u_obj?]);
             global104 = 0;
             if (global105 == 1[?]) {
                 rtrue;
             }
         } else {
-            local2 = 0;
+            j = 0;
           .label57218;
-            generic_globvar = local1.&prop10;
+            generic_globvar = i.&prop10;
             if (generic_globvar) {
                 generic_globvar = get_prop_len(generic_globvar);
             }
-            if (2 * local2 < generic_globvar) {
-                if (routine57108(local3-->local2) == 1[?]) {
+            if (2 * j < generic_globvar) {
+                if (HasLightSource(ad-->j) == 1[?]) {
                     rtrue;
                 }
-                ++local2;
+                ++j;
                 jump label57218;
             }
         }
