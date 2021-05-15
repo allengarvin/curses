@@ -8740,7 +8740,7 @@ Array array_29185 -->	! 29185 (0x7201)
         routine181204();
     }
     if (deadflag == 0) {
-        routine56952();
+        AdjustLight();
         i = child(player);
       .label56916;
         if (i ~= 0) {
@@ -8758,24 +8758,24 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine56952 local1 local2 ;	! 56952 / 0xde78
-    local2 = lightflag;
+[ AdjustLight flag i ;	! 56952 / 0xde78
+    i = lightflag;
     lightflag = OffersLight(parent(player));
-    if (local2 == 0 && lightflag == true) {
+    if (i == 0 && lightflag == true) {
         location = real_location;
-        if (local1 == 0) {
+        if (flag == 0) {
             routine55348(##Look);
         }
     }
-    if (local2 == 1[?] && lightflag == false) {
+    if (i == 1[?] && lightflag == false) {
         real_location = location;
         location = thedark;
-        if (local1 == 0) {
+        if (flag == 0) {
             routine164468();
             return L__M(##Miscellany,9);
         }
     }
-    if (local2 == 0 && lightflag == false) {
+    if (i == 0 && lightflag == false) {
         location = thedark;
     }
     rtrue;
@@ -20091,7 +20091,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     location = newplace;
     real_location = location;
-    routine56952(1[?]);
+    AdjustLight(1[?]);
     if (flag == 0) {
         routine55348(##Look);
     }
