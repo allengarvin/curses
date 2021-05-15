@@ -5288,7 +5288,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! Routines
 
 [ routine41756 ;	! 41756 / 0xa31c
-    routine54072();
+    PlayTheGame();
     rtrue;
 ];
 
@@ -7997,12 +7997,12 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine54072 local1 local2 local3 local4 ;	! 54072 / 0xd338
+[ PlayTheGame i j k l ;	! 54072 / 0xd338
     global22 = 50-->0;
     player = yourself;
     global21 = 757 - 255;
     yourself.prop27 = 5[w_obj?];
-    local2 = Initialise;();
+    j = Initialise;();
     global15 = score;
     move player to location;
   .label54101;
@@ -8010,15 +8010,15 @@ Array array_29185 -->	! 29185 (0x7201)
         location = parent(location);
         jump label54101;
     }
-    local1 = child(player);
+    i = child(player);
   .label54119;
-    if (local1 ~= 0) {
-        give local1 moved;
-        give local1 ~concealed;
-        local1 = sibling(local1);
+    if (i ~= 0) {
+        give i moved;
+        give i ~concealed;
+        i = sibling(i);
         jump label54119;
     }
-    if (local2 ~= 2[?]) {
+    if (j ~= 2[?]) {
         routine57960();
     }
     global10 = routine57036(parent(player));
@@ -8027,11 +8027,11 @@ Array array_29185 -->	! 29185 (0x7201)
         location = thedark;
     }
     routine55348(##Look);
-    local1 = 1[?];
+    i = 1[?];
   .label54173;
-    if (local1 <= 100) {
-        local2 = random(local1);
-        ++local1;
+    if (i <= 100) {
+        j = random(i);
+        ++i;
         jump label54173;
     }
   .label54187;
@@ -8057,9 +8057,9 @@ Array array_29185 -->	! 29185 (0x7201)
         notheld_mode = 0;
         verb = array_24207-->0;
         if (verb == ##GiveR or ##ShowR) {
-            local1 = array_24207-->2;
+            i = array_24207-->2;
             array_24207-->2 = array_24207-->3;
-            array_24207-->3 = local1;
+            array_24207-->3 = i;
             if (verb == ##GiveR) {
                 verb = ##Give;
             } else {
@@ -8083,11 +8083,11 @@ Array array_29185 -->	! 29185 (0x7201)
       .label54402;
         global27 = 0;
         global28 = 0;
-        local1 = array_24207-->1;
-        if (local1 >= 1) {
+        i = array_24207-->1;
+        if (i >= 1) {
             global27 = array_24207-->2;
         }
-        if (local1 >= 2) {
+        if (i >= 2) {
             global28 = array_24207-->3;
         }
         noun = global27;
@@ -8103,10 +8103,10 @@ Array array_29185 -->	! 29185 (0x7201)
             }
         }
         if (actor ~= player) {
-            local2 = routine53736(player,16[obj16_lm?]);
-            if (local2 == 0) {
-                local2 = routine53736(actor,16[obj16_lm?]);
-                if (local2 == 0) {
+            j = routine53736(player,16[obj16_lm?]);
+            if (j == 0) {
+                j = routine53736(actor,16[obj16_lm?]);
+                if (j == 0) {
                     if (verb == ##Action264) {
                         array_24207-->3 = actor;
                         actor = player;
@@ -8118,12 +8118,12 @@ Array array_29185 -->	! 29185 (0x7201)
                     }
                 }
             }
-        } else if (local1 == 0 || global27 ~= 0) {
+        } else if (i == 0 || global27 ~= 0) {
             Process();
         } else {
             global37 = 1[?];
-            local2 = multiple_object-->0;
-            if (local2 == 0) {
+            j = multiple_object-->0;
+            if (j == 0) {
                 L__M(##Miscellany,2);
                 jump label54208;
             }
@@ -8131,25 +8131,25 @@ Array array_29185 -->	! 29185 (0x7201)
                 global23 = 0;
                 L__M(##Miscellany,1);
             }
-            local1 = location;
-            local3 = 1[?];
+            i = location;
+            k = 1[?];
           .label54605;
-            if (local3 <= local2) {
+            if (k <= j) {
                 if (deadflag ~= 0) {
                     ! no code
-                } else if (location ~= local1) {
+                } else if (location ~= i) {
                     print "(Since something dramatic has happened, your list of commands has been cut short.)^";
                 } else {
-                    local4 = multiple_object-->local3;
-                    routine53392(local4);
-                    PSN__(local4);
+                    l = multiple_object-->k;
+                    routine53392(l);
+                    PSN__(l);
                     print ": ";
-                    global27 = local4;
-                    noun = local4;
+                    global27 = l;
+                    noun = l;
                     Process();
                     global27 = 0;
                     noun = nothing;
-                    ++local3;
+                    ++k;
                     jump label54605;
                 }
             }
@@ -8195,28 +8195,28 @@ Array array_29185 -->	! 29185 (0x7201)
     array_24021->1 = 0;
     routine185684();
     @aread array_24021 parse -> generic_global;
-    local1 = parse-->1;
-    if (local1 == 37839['quit'?] or 37767['q//'?]) {
+    i = parse-->1;
+    if (i == 37839['quit'?] or 37767['q//'?]) {
         @quit;
     }
-    if (local1 == 38037['restart'?]) {
+    if (i == 38037['restart'?]) {
         @restart;
     }
-    if (local1 == 38046['restore'?]) {
+    if (i == 38046['restore'?]) {
         RestoreSub();
         jump label54838;
     }
-    if (local1 == 33501['fullscore'?] or 33492['full'?] && 0 == 0) {
+    if (i == 33501['fullscore'?] or 33492['full'?] && 0 == 0) {
         new_line;
         FullScoreSub();
         jump label54838;
     }
-    if (deadflag == WON && local1 == 29838['amusing'?] && 0 == 0) {
+    if (deadflag == WON && i == 29838['amusing'?] && 0 == 0) {
         new_line;
         routine175152();
         jump label54838;
     }
-    if (local1 == 40836['undo'?]) {
+    if (i == 40836['undo'?]) {
         if (undo_flag == 0) {
             L__M(##Miscellany,6);
             jump label54838;
@@ -8224,8 +8224,8 @@ Array array_29185 -->	! 29185 (0x7201)
         if (undo_flag == 1) {
             ! no code
         } else {
-            @restore_undo -> local1;
-            if (local1 ~= 0) jump label54997;
+            @restore_undo -> i;
+            if (i ~= 0) jump label54997;
         }
         L__M(##Miscellany,7);
       .label54997;
