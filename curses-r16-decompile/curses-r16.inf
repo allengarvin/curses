@@ -5205,7 +5205,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local1->0 = 120[obj120_steel_wrench?];
     local2->0 = 64[obj64_Disused_Observatory?];
-    routine166408(263[obj263_fore_wall?]);
+    L__M(##Action263);
     routine181216();
     generic_global = 0;
     local1->1 = 0;
@@ -5213,7 +5213,7 @@ Array array_29185 -->	! 29185 (0x7201)
     @aread local1 local2 -> generic_global;
     local3 = local2->1;
     if (local3 == 0) {
-        routine166408(262[obj262_starboard_wall?],10[u_obj?]);
+        L__M(##Action262,10);
         jump label41768;
     }
     local5 = local2-->1;
@@ -5222,24 +5222,24 @@ Array array_29185 -->	! 29185 (0x7201)
     } else {
         if (local5 == 40836['undo'?] && array_24142->1 == 1[?]) {
             if (global8 == 1[?]) {
-                routine166408(262[obj262_starboard_wall?],11[d_obj?]);
+                L__M(##Action262,11);
                 jump label41768;
             }
             if (global45 == 0) {
-                routine166408(262[obj262_starboard_wall?],6[ne_obj?]);
+                L__M(##Action262,6);
                 jump label41768;
             }
             if (global45 == 1[?]) {
                 ! no code
             } else {
                 if (global108 == 1[?]) {
-                    routine166408(262[obj262_starboard_wall?],12[obj12_outside?]);
+                    L__M(##Action262,12);
                     jump label41768;
                 }
                 @restore_undo -> local4;
                 if (local4 ~= 0) jump label41948;
             }
-            routine166408(262[obj262_starboard_wall?],7[se_obj?]);
+            L__M(##Action262,7);
           .label41948;
             jump label41768;
         }
@@ -5257,22 +5257,22 @@ Array array_29185 -->	! 29185 (0x7201)
             PSN__(location);
             print "^";
             style roman;
-            routine166408(262[obj262_starboard_wall?],13[obj13_inside?]);
+            L__M(##Action262,13);
             global108 = 1[?];
             jump label41768;
         }
         return local3;
     }
     if (oops_from == 0) {
-        routine166408(262[obj262_starboard_wall?],14[thedark?]);
+        L__M(##Action262,14);
         jump label41768;
     }
     if (local3 == 1[?]) {
-        routine166408(262[obj262_starboard_wall?],15[yourself?]);
+        L__M(##Action262,15);
         jump label41768;
     }
     if (local3 > 2) {
-        routine166408(262[obj262_starboard_wall?],16[obj16_lm?]);
+        L__M(##Action262,16);
         jump label41768;
     }
     local6 = local2-->3;
@@ -8015,7 +8015,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         jump label54402;
                     }
                     if (routine55448(global24,259[obj259_Greek_Frieze?]) == 0) {
-                        routine166408(259[obj259_Greek_Frieze?],1[?],global24);
+                        L__M(##Action259,1,global24);
                     }
                 }
             }
@@ -8025,12 +8025,12 @@ Array array_29185 -->	! 29185 (0x7201)
             global37 = 1[?];
             local2 = array_24239-->0;
             if (local2 == 0) {
-                routine166408(262[obj262_starboard_wall?],2[?]);
+                L__M(##Action262,2);
                 jump label54208;
             }
             if (global23 == 1[?]) {
                 global23 = 0;
-                routine166408(262[obj262_starboard_wall?],1[?]);
+                L__M(##Action262,1);
             }
             local1 = location;
             local3 = 1[?];
@@ -8073,10 +8073,10 @@ Array array_29185 -->	! 29185 (0x7201)
     style bold;
     print "***";
     if (deadflag == DIED) {
-        routine166408(262[obj262_starboard_wall?],3[s_obj?]);
+        L__M(##Action262,3);
     }
     if (deadflag == WON) {
-        routine166408(262[obj262_starboard_wall?],4[e_obj?]);
+        L__M(##Action262,4);
     }
     if (deadflag > 2) {
         print " ";
@@ -8089,7 +8089,7 @@ Array array_29185 -->	! 29185 (0x7201)
     ScoreSub();
     routine53944();
   .label54838;
-    routine166408(262[obj262_starboard_wall?],5[w_obj?]);
+    L__M(##Action262,5);
   .label54845;
     print "> ";
     generic_global = 0;
@@ -8119,7 +8119,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local1 == 40836['undo'?]) {
         if (global45 == 0) {
-            routine166408(262[obj262_starboard_wall?],6[ne_obj?]);
+            L__M(##Action262,6);
             jump label54838;
         }
         if (global45 == 1[?]) {
@@ -8128,11 +8128,11 @@ Array array_29185 -->	! 29185 (0x7201)
             @restore_undo -> local1;
             if (local1 ~= 0) jump label54997;
         }
-        routine166408(262[obj262_starboard_wall?],7[se_obj?]);
+        L__M(##Action262,7);
       .label54997;
         jump label54838;
     }
-    routine166408(262[obj262_starboard_wall?],8[nw_obj?]);
+    L__M(##Action262,8);
     jump label54845;
 ];
 
@@ -8673,7 +8673,7 @@ Array array_29185 -->	! 29185 (0x7201)
         location = thedark;
         if (local1 == 0) {
             routine164468();
-            return routine166408(262[obj262_starboard_wall?],9[sw_obj?]);
+            return L__M(##Action262,9);
         }
     }
     if (local2 == 0 && global10 == 0) {
@@ -20025,7 +20025,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (i == 'no' or 'n//') {
             rfalse;
         }
-        routine166408(2[?],1[?]);
+        L__M(##Quit,1);
         print "> ";
         jump label160977;
     }
@@ -20033,7 +20033,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ QuitSub ;	! 161040 / 0x27510
-    routine166408(2[?],2[?]);
+    L__M(##Quit,2);
     if (YesOrNo() ~= 0) {
         @quit;
     }
@@ -20041,10 +20041,10 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ RestartSub ;	! 161060 / 0x27524
-    routine166408(4[e_obj?],1[?]);
+    L__M(##Restart,1);
     if (YesOrNo() ~= 0) {
         @restart;
-        routine166408(4[e_obj?],2[?]);
+        L__M(##Restart,2);
     }
     rtrue;
 ];
@@ -20053,28 +20053,28 @@ Array array_29185 -->	! 29185 (0x7201)
     @verify ?label161090;
     jump label161099;
   .label161090;
-    return routine166408(5[w_obj?],1[?]);
+    return L__M(##Verify,1);
   .label161099;
-    routine166408(5[w_obj?],2[?]);
+    L__M(##Verify,2);
     rtrue;
 ];
 
 [ ScriptOnSub ;	! 161108 / 0x27554
     if (global14 == 1[?]) {
-        return routine166408(7[se_obj?],1[?]);
+        return L__M(##ScriptOn,1);
     }
     global14 = 1[?];
     0-->8 = 0-->8 | 1;
-    routine166408(7[se_obj?],2[?]);
+    L__M(##ScriptOn,2);
     VersionSub();
     rtrue;
 ];
 
 [ ScriptOffSub ;	! 161152 / 0x27580
     if (global14 == 0) {
-        return routine166408(8[nw_obj?],1[?]);
+        return L__M(##ScriptOff,1);
     }
-    routine166408(8[nw_obj?],2[?]);
+    L__M(##ScriptOff,2);
     global14 = 0;
     0-->8 = 0-->8 & 65534;
     rtrue;
@@ -20082,18 +20082,18 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ NotifyOnSub ;	! 161192 / 0x275a8
     global16 = 1[?];
-    routine166408(13[obj13_inside?]);
+    L__M(##NotifyOn);
     rtrue;
 ];
 
 [ NotifyOffSub ;	! 161204 / 0x275b4
     global16 = 0;
-    routine166408(14[thedark?]);
+    L__M(##NotifyOff);
     rtrue;
 ];
 
 [ PlacesSub local1 local2 local3 ;	! 161216 / 0x275c0
-    routine166408(16[obj16_lm?]);
+    L__M(##Places);
     local1 = 15[yourself?];
   .label161225;
     if (local1 <= global21) {
@@ -20125,7 +20125,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ ObjectsSub local1 local2 local3 ;	! 161296 / 0x27610
-    routine166408(17[rod_of_fire?],1[?]);
+    L__M(##Objects,1);
     local1 = 15[yourself?];
   .label161306;
     if (local1 <= global21) {
@@ -20166,13 +20166,13 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label161306;
     }
     if (local3 == 0) {
-        routine166408(17[rod_of_fire?],2[?]);
+        L__M(##Objects,2);
     }
     rtrue;
 ];
 
 [ ScoreSub ;	! 161504 / 0x276e0
-    routine166408(0);
+    L__M(##Score);
     PrintRank();
     rtrue;
 ];
@@ -20217,13 +20217,13 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ InvSub ;	! 161640 / 0x27768
     if (child(player) == nothing) {
-        return routine166408(24[rod_of_luck?],1[?]);
+        return L__M(##Inv,1);
     }
     if (inventory_style == 0) {
         routine55348(39[obj39_antique_jewellery_box?]);
         rtrue;
     }
-    routine166408(24[rod_of_luck?],2[?]);
+    L__M(##Inv,2);
     if (inventory_style & 1 ~= 0) {
         print ":^";
     } else {
@@ -20254,23 +20254,23 @@ Array array_29185 -->	! 29185 (0x7201)
     if (notheld_mode == 1 || keep_silent == true) {
         rtrue;
     }
-    routine166408(19[rod_of_stalking?],1[?]);
+    L__M(##Take,1);
     rtrue;
 ];
 
 [ RTakeSub fromobj i j k postonobj ;	! 161808 / 0x27810
     if (noun == player) {
-        return routine166408(19[rod_of_stalking?],2[?]);
+        return L__M(##Take,2);
     }
     if (noun has animate) {
-        return routine166408(19[rod_of_stalking?],3[s_obj?],noun);
+        return L__M(##Take,3,noun);
     }
     if (parent(player) == noun) {
-        return routine166408(19[rod_of_stalking?],4[e_obj?],noun);
+        return L__M(##Take,4,noun);
     }
     i = parent(noun);
     if (i == player) {
-        return routine166408(19[rod_of_stalking?],5[w_obj?]);
+        return L__M(##Take,5);
     }
     if (i has container || i has supporter) {
         postonobj = i;
@@ -20286,15 +20286,15 @@ Array array_29185 -->	! 29185 (0x7201)
     if (i ~= fromobj or nothing) {
         if (i hasnt container && i hasnt supporter) {
             if (i has animate) {
-                return routine166408(19[rod_of_stalking?],6[ne_obj?],i);
+                return L__M(##Take,6,i);
             }
             if (i has transparent) {
-                return routine166408(19[rod_of_stalking?],7[se_obj?],i);
+                return L__M(##Take,7,i);
             }
-            return routine166408(19[rod_of_stalking?],8[nw_obj?]);
+            return L__M(##Take,8);
         }
         if (i has container && i hasnt open) {
-            return routine166408(19[rod_of_stalking?],9[sw_obj?],i);
+            return L__M(##Take,9,i);
         }
         i = parent(i);
         if (i == player) {
@@ -20303,10 +20303,10 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label161913;
     }
     if (noun has scenery) {
-        return routine166408(19[rod_of_stalking?],10[u_obj?]);
+        return L__M(##Take,10);
     }
     if (noun has static) {
-        return routine166408(19[rod_of_stalking?],11[d_obj?]);
+        return L__M(##Take,11);
     }
     k = 0;
     j = child(player);
@@ -20321,7 +20321,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (k >= routine53704(player,27[rod_of_returning2?])) {
         if (79[obj79_canvas_rucksack?] ~= 0) {
             if (parent(obj79_canvas_rucksack) ~= player) {
-                return routine166408(19[rod_of_stalking?],12[obj12_outside?]);
+                return L__M(##Take,12);
             }
             j = 0;
             k = child(player);
@@ -20334,7 +20334,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 jump label162101;
             }
             if (j ~= 0) {
-                routine166408(19[rod_of_stalking?],13[obj13_inside?],j);
+                L__M(##Take,13,j);
                 keep_silent = true;
                 routine55348(26[rod_of_language?],j,79[obj79_canvas_rucksack?]);
                 keep_silent = false;
@@ -20342,10 +20342,10 @@ Array array_29185 -->	! 29185 (0x7201)
                     rtrue;
                 }
             } else {
-                return routine166408(19[rod_of_stalking?],12[obj12_outside?]);
+                return L__M(##Take,12);
             }
         } else {
-            return routine166408(19[rod_of_stalking?],12[obj12_outside?]);
+            return L__M(##Take,12);
         }
     }
     move noun to player;
@@ -20364,13 +20364,13 @@ Array array_29185 -->	! 29185 (0x7201)
 [ DropSub local1 ;	! 162224 / 0x279b0
     local1 = parent(noun);
     if (local1 == location) {
-        return routine166408(28[rod_of_life?],1[?]);
+        return L__M(##Drop,1);
     }
     if (local1 ~= player) {
-        return routine166408(28[rod_of_life?],2[?]);
+        return L__M(##Drop,2);
     }
     if (noun has attrib26) {
-        routine166408(28[rod_of_life?],3[s_obj?],noun);
+        L__M(##Drop,3,noun);
         routine55348(22[rod_of_bronze?],noun);
         if (noun has attrib26) {
             rtrue;
@@ -20383,19 +20383,19 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    return routine166408(28[rod_of_life?],4[e_obj?]);
+    return L__M(##Drop,4);
 ];
 
 [ RemoveSub local1 ;	! 162312 / 0x27a08
     local1 = parent(noun);
     if (local1 has container && local1 hasnt open) {
-        return routine166408(20[rod_of_infinity?],1[?]);
+        return L__M(##Remove,1);
     }
     if (local1 ~= second) {
-        return routine166408(20[rod_of_infinity?],2[?]);
+        return L__M(##Remove,2);
     }
     if (local1 has animate) {
-        return routine166408(19[rod_of_stalking?],6[ne_obj?],local1);
+        return L__M(##Take,6,local1);
     }
     if (RTakeSub(second) ~= 0) {
         rtrue;
@@ -20411,7 +20411,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    return routine166408(20[rod_of_infinity?],4[e_obj?]);
+    return L__M(##Remove,4);
 ];
 
 [ routine162420 local1 local2 ;	! 162420 / 0x27a74
@@ -20433,7 +20433,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     if (parent(noun) ~= player) {
-        return routine166408(27[rod_of_returning2?],1[?],noun);
+        return L__M(##PutOn,1,noun);
     }
     if (second > 1) {
         verb = ##Action257;
@@ -20444,16 +20444,16 @@ Array array_29185 -->	! 29185 (0x7201)
         verb = ##PutOn;
     }
     if (routine162420(noun,second) == 1[?]) {
-        return routine166408(27[rod_of_returning2?],2[?]);
+        return L__M(##PutOn,2);
     }
     if (second hasnt supporter) {
-        return routine166408(27[rod_of_returning2?],3[s_obj?],second);
+        return L__M(##PutOn,3,second);
     }
     if (parent(second) == player) {
-        return routine166408(27[rod_of_returning2?],4[e_obj?]);
+        return L__M(##PutOn,4);
     }
     if (noun has attrib26) {
-        routine166408(27[rod_of_returning2?],5[w_obj?]);
+        L__M(##PutOn,5);
         routine55348(22[rod_of_bronze?],noun);
         if (noun has attrib26) {
             rtrue;
@@ -20468,7 +20468,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     @add SP generic_global -> SP;
     @jl SP SP ?label162619;
-    return routine166408(27[rod_of_returning2?],6[ne_obj?],second);
+    return L__M(##PutOn,6,second);
   .label162619;
     move noun to second;
     if (AfterRoutines() == true) {
@@ -20486,9 +20486,9 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (global37 == 1[?]) {
-        return routine166408(27[rod_of_returning2?],7[se_obj?]);
+        return L__M(##PutOn,7);
     }
-    routine166408(27[rod_of_returning2?],8[nw_obj?],noun);
+    L__M(##PutOn,8,noun);
     rtrue;
 ];
 
@@ -20499,7 +20499,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (parent(noun) ~= player) {
-        return routine166408(26[rod_of_language?],1[?]);
+        return L__M(##Insert,1);
     }
     if (second > 1) {
         verb = ##Action257;
@@ -20510,16 +20510,16 @@ Array array_29185 -->	! 29185 (0x7201)
         verb = ##Insert;
     }
     if (second hasnt container) {
-        return routine166408(26[rod_of_language?],2[?]);
+        return L__M(##Insert,2);
     }
     if (second hasnt open) {
-        return routine166408(26[rod_of_language?],3[s_obj?]);
+        return L__M(##Insert,3);
     }
     if (routine162420(noun,second) == 1[?]) {
-        return routine166408(26[rod_of_language?],5[w_obj?]);
+        return L__M(##Insert,5);
     }
     if (noun has attrib26) {
-        routine166408(26[rod_of_language?],6[ne_obj?]);
+        L__M(##Insert,6);
         routine55348(22[rod_of_bronze?],noun);
         if (noun has attrib26) {
             rtrue;
@@ -20534,7 +20534,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     @add SP generic_global -> SP;
     @jl SP SP ?label162866;
-    return routine166408(26[rod_of_language?],7[se_obj?],second);
+    return L__M(##Insert,7,second);
   .label162866;
     move noun to second;
     if (AfterRoutines() == true) {
@@ -20552,9 +20552,9 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (global37 == 1[?]) {
-        return routine166408(26[rod_of_language?],8[nw_obj?]);
+        return L__M(##Insert,8);
     }
-    routine166408(26[rod_of_language?],9[sw_obj?],noun);
+    L__M(##Insert,9,noun);
     rtrue;
 ];
 
@@ -20570,7 +20570,7 @@ Array array_29185 -->	! 29185 (0x7201)
       .label162967;
         if (local1 ~= 0) {
             if (local1 hasnt open) {
-                return routine166408(31[obj31_crumpled_piece_of_paper?],1[?]);
+                return L__M(##Transfer,1);
             }
             local1 = parent(local1);
             if (local1 == player) {
@@ -20578,7 +20578,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             jump label162967;
         }
-        return routine166408(31[obj31_crumpled_piece_of_paper?],2[?]);
+        return L__M(##Transfer,2);
     }
   .label163009;
     if (noun notin player) {
@@ -20627,22 +20627,22 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ EmptyTSub local1 local2 ;	! 163140 / 0x27d44
     if (noun hasnt container) {
-        return routine166408(30[rod_of_love?],1[?],noun);
+        return L__M(##EmptyT,1,noun);
     }
     if (noun hasnt open) {
-        return routine166408(30[rod_of_love?],2[?],noun);
+        return L__M(##EmptyT,2,noun);
     }
     if (second ~= d_obj) {
         if (second hasnt container) {
-            return routine166408(30[rod_of_love?],1[?],second);
+            return L__M(##EmptyT,1,second);
         }
         if (second hasnt open) {
-            return routine166408(30[rod_of_love?],2[?],second);
+            return L__M(##EmptyT,2,second);
         }
     }
     local1 = child(noun);
     if (local1 == 0) {
-        return routine166408(30[rod_of_love?],3[s_obj?],noun);
+        return L__M(##EmptyT,3,noun);
     }
   .label163225;
     if (local1 ~= 0) {
@@ -20658,15 +20658,15 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ GiveSub ;	! 163256 / 0x27db8
     if (parent(noun) ~= player) {
-        return routine166408(34[obj34_chocolate_biscuit?],1[?],noun);
+        return L__M(##Give,1,noun);
     }
     if (second == player) {
-        return routine166408(34[obj34_chocolate_biscuit?],2[?],noun);
+        return L__M(##Give,2,noun);
     }
     if (routine55448(second,34[obj34_chocolate_biscuit?]) ~= 0) {
         rfalse;
     }
-    routine166408(34[obj34_chocolate_biscuit?],3[s_obj?],second);
+    L__M(##Give,3,second);
     rtrue;
 ];
 
@@ -20677,7 +20677,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ ShowSub ;	! 163324 / 0x27dfc
     if (parent(noun) ~= player) {
-        return routine166408(36[obj36_hinged_trapdoor?],1[?],noun);
+        return L__M(##Show,1,noun);
     }
     if (second == player) {
         routine55348(42[obj42_Servant_s_Room?],noun);
@@ -20686,7 +20686,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(second,36[obj36_hinged_trapdoor?]) ~= 0) {
         rfalse;
     }
-    routine166408(36[obj36_hinged_trapdoor?],2[?],second);
+    L__M(##Show,2,second);
     rtrue;
 ];
 
@@ -20702,7 +20702,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local1 = parent(player);
     if (local1 ~= location) {
-        return routine166408(21[rod_of_husbandry?],1[?],local1);
+        return L__M(##Enter,1,local1);
     }
     local1 = parent(noun);
     if (local1 == 1[?]) {
@@ -20710,13 +20710,13 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (noun hasnt enterable) {
-        return routine166408(21[rod_of_husbandry?],2[?]);
+        return L__M(##Enter,2);
     }
     if (noun has container && noun hasnt open) {
-        return routine166408(21[rod_of_husbandry?],3[s_obj?],noun);
+        return L__M(##Enter,3,noun);
     }
     if (local1 ~= location) {
-        return routine166408(21[rod_of_husbandry?],4[e_obj?]);
+        return L__M(##Enter,4);
     }
     move player to noun;
     if (AfterRoutines() == true) {
@@ -20725,7 +20725,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(21[rod_of_husbandry?],5[w_obj?],noun);
+    L__M(##Enter,5,noun);
     routine164088(noun);
     rtrue;
 ];
@@ -20735,7 +20735,7 @@ Array array_29185 -->	! 29185 (0x7201)
         routine55348(18[rod_of_returning?]);
         rtrue;
     }
-    routine166408(23[rod_of_sacrifice?],1[?],noun);
+    L__M(##TakeOff,1,noun);
     rtrue;
 ];
 
@@ -20746,10 +20746,10 @@ Array array_29185 -->	! 29185 (0x7201)
             routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],12[obj12_outside?]);
             rtrue;
         }
-        return routine166408(18[rod_of_returning?],1[?]);
+        return L__M(##Exit,1);
     }
     if (local1 has container && local1 hasnt open) {
-        return routine166408(18[rod_of_returning?],2[?],local1);
+        return L__M(##Exit,2,local1);
     }
     if (location == thedark) {
         move player to real_location;
@@ -20762,13 +20762,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(18[rod_of_returning?],3[s_obj?],local1);
+    L__M(##Exit,3,local1);
     LookSub(true);
     rtrue;
 ];
 
 [ VagueGoSub ;	! 163664 / 0x27f50
-    routine166408(37[obj37_teachests?]);
+    L__M(##VagueGo);
     rtrue;
 ];
 
@@ -20794,7 +20794,7 @@ Array array_29185 -->	! 29185 (0x7201)
             local1 = parent(local1);
         } else {
             if (local3 == 0) {
-                routine166408(38[obj38_History_of_the_Meldrews__vol__II_?],1[?],local1);
+                L__M(##Go,1,local1);
             }
             rtrue;
         }
@@ -20824,16 +20824,16 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local2 has door) {
         if (local2 has concealed) {
-            return routine166408(38[obj38_History_of_the_Meldrews__vol__II_?],2[?]);
+            return L__M(##Go,2);
         }
         if (local2 hasnt open) {
             if (noun == u_obj) {
-                return routine166408(38[obj38_History_of_the_Meldrews__vol__II_?],3[s_obj?],local2);
+                return L__M(##Go,3,local2);
             }
             if (noun == d_obj) {
-                return routine166408(38[obj38_History_of_the_Meldrews__vol__II_?],4[e_obj?],local2);
+                return L__M(##Go,4,local2);
             }
-            return routine166408(38[obj38_History_of_the_Meldrews__vol__II_?],5[w_obj?],local2);
+            return L__M(##Go,5,local2);
         }
         if (routine53524(local2.n_to) == 2[?]) {
             local2 = routine53736(local2,5[w_obj?]);
@@ -20841,7 +20841,7 @@ Array array_29185 -->	! 29185 (0x7201)
             local2 = local2.n_to;
         }
         if (local2 == 0) {
-            return routine166408(38[obj38_History_of_the_Meldrews__vol__II_?],6[ne_obj?],local2);
+            return L__M(##Go,6,local2);
         }
         if (local2 == 1[?]) {
             rtrue;
@@ -20890,7 +20890,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local3 == 0) {
         rfalse;
     }
-    routine166408(41[obj41_House?],4[e_obj?],local1);
+    L__M(##Look,4,local1);
     rtrue;
 ];
 
@@ -20963,9 +20963,9 @@ Array array_29185 -->	! 29185 (0x7201)
         return local6;
     }
     if (local8 == 1[?]) {
-        routine166408(41[obj41_House?],5[w_obj?],local1);
+        L__M(##Look,5,local1);
     } else {
-        routine166408(41[obj41_House?],6[ne_obj?],local1);
+        L__M(##Look,6,local1);
     }
     rtrue;
 ];
@@ -20973,21 +20973,21 @@ Array array_29185 -->	! 29185 (0x7201)
 [ BriefSub ;	! 164420 / 0x28244
     global19 = 1[?];
     print "CURSES";
-    routine166408(11[d_obj?]);
+    L__M(##Brief);
     rtrue;
 ];
 
 [ VerboseSub ;	! 164436 / 0x28254
     global19 = 2[?];
     print "CURSES";
-    routine166408(10[u_obj?]);
+    L__M(##Verbose);
     rtrue;
 ];
 
 [ SuperbriefSub ;	! 164452 / 0x28264
     global19 = 3[s_obj?];
     print "CURSES";
-    routine166408(9[sw_obj?]);
+    L__M(##Superbrief);
     rtrue;
 ];
 
@@ -21028,11 +21028,11 @@ Array array_29185 -->	! 29185 (0x7201)
     if (location ~= thedark && env ~= location) {
         if (env has supporter) {
             print " (";
-            routine166408(41[obj41_House?],1[?]);
+            L__M(##Look,1);
             print " ";
         } else {
             print " (";
-            routine166408(41[obj41_House?],2[?]);
+            L__M(##Look,2);
             print " ";
         }
         Defart(env);
@@ -21041,7 +21041,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (global12 == 1[?]) {
         print " (";
-        routine166408(41[obj41_House?],3[s_obj?]);
+        L__M(##Look,3);
         print " ", (name) player, ")";
     }
     new_line;
@@ -21071,7 +21071,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ ReadSub local1 ;	! 164784 / 0x283b0
     if (location == thedark) {
-        return routine166408(42[obj42_Servant_s_Room?],1[?]);
+        return L__M(##Read,1);
     }
     local1 = noun.description;
     if (local1 == 0) {
@@ -21080,14 +21080,14 @@ Array array_29185 -->	! 29185 (0x7201)
             rtrue;
         }
         if (noun has switchable) {
-            routine166408(42[obj42_Servant_s_Room?],3[s_obj?],noun);
+            L__M(##Read,3,noun);
             rfalse;
         }
-        return routine166408(42[obj42_Servant_s_Room?],2[?],noun);
+        return L__M(##Read,2,noun);
     }
     PrintOrRun(noun,18[rod_of_returning?]);
     if (noun has switchable) {
-        routine166408(42[obj42_Servant_s_Room?],3[s_obj?],noun);
+        L__M(##Read,3,noun);
     }
     if (AfterRoutines() == true) {
         rtrue;
@@ -21097,15 +21097,15 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ LookUnderSub ;	! 164872 / 0x28408
     if (location == thedark) {
-        return routine166408(44[obj44_camp_bed?],1[?]);
+        return L__M(##LookUnder,1);
     }
-    routine166408(44[obj44_camp_bed?],2[?]);
+    L__M(##LookUnder,2);
     rtrue;
 ];
 
 [ SearchSub local1 local2 ;	! 164896 / 0x28420
     if (location == thedark) {
-        return routine166408(43[obj43_classical_dictionary?],1[?]);
+        return L__M(##Search,1);
     }
     local1 = child(noun);
   .label164915;
@@ -21118,15 +21118,15 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (noun has supporter) {
         if (local2 == 0) {
-            return routine166408(43[obj43_classical_dictionary?],2[?],noun);
+            return L__M(##Search,2,noun);
         }
-        return routine166408(43[obj43_classical_dictionary?],3[s_obj?],noun);
+        return L__M(##Search,3,noun);
     }
     if (noun hasnt container) {
-        return routine166408(43[obj43_classical_dictionary?],4[e_obj?]);
+        return L__M(##Search,4);
     }
     if (noun hasnt transparent && noun hasnt open) {
-        return routine166408(43[obj43_classical_dictionary?],5[w_obj?]);
+        return L__M(##Search,5);
     }
     if (AfterRoutines() == true) {
         rtrue;
@@ -21140,21 +21140,21 @@ Array array_29185 -->	! 29185 (0x7201)
     @add SP generic_global -> SP;
     @store 1 SP;
     if (local2 == 0) {
-        return routine166408(43[obj43_classical_dictionary?],6[ne_obj?],noun);
+        return L__M(##Search,6,noun);
     }
-    routine166408(43[obj43_classical_dictionary?],7[se_obj?],noun);
+    L__M(##Search,7,noun);
     rtrue;
 ];
 
 [ UnlockSub ;	! 165052 / 0x284bc
     if (noun hasnt lockable) {
-        return routine166408(47[obj47_Old_Furniture?],1[?]);
+        return L__M(##Unlock,1);
     }
     if (noun hasnt locked) {
-        return routine166408(47[obj47_Old_Furniture?],2[?]);
+        return L__M(##Unlock,2);
     }
     if (noun.e_to ~= second) {
-        return routine166408(47[obj47_Old_Furniture?],3[s_obj?]);
+        return L__M(##Unlock,3);
     }
     give noun ~locked;
     if (AfterRoutines() == true) {
@@ -21163,22 +21163,22 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(47[obj47_Old_Furniture?],4[e_obj?],noun);
+    L__M(##Unlock,4,noun);
     rtrue;
 ];
 
 [ LockSub ;	! 165128 / 0x28508
     if (noun hasnt lockable) {
-        return routine166408(65[obj65_smoke_detector?],1[?]);
+        return L__M(##Lock,1);
     }
     if (noun has locked) {
-        return routine166408(65[obj65_smoke_detector?],2[?]);
+        return L__M(##Lock,2);
     }
     if (noun has open) {
-        return routine166408(65[obj65_smoke_detector?],3[s_obj?]);
+        return L__M(##Lock,3);
     }
     if (noun.e_to ~= second) {
-        return routine166408(65[obj65_smoke_detector?],4[e_obj?]);
+        return L__M(##Lock,4);
     }
     give noun locked;
     if (AfterRoutines() == true) {
@@ -21187,7 +21187,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(65[obj65_smoke_detector?],5[w_obj?],noun);
+    L__M(##Lock,5,noun);
     rtrue;
 ];
 
@@ -21195,10 +21195,10 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ SwitchOnSub ;	! 165216 / 0x28560
     if (noun hasnt switchable) {
-        return routine166408(64[obj64_Disused_Observatory?],1[?]);
+        return L__M(##SwitchOn,1);
     }
     if (noun has on) {
-        return routine166408(64[obj64_Disused_Observatory?],2[?]);
+        return L__M(##SwitchOn,2);
     }
     give noun on;
     if (AfterRoutines() == true) {
@@ -21207,16 +21207,16 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(64[obj64_Disused_Observatory?],3[s_obj?],noun);
+    L__M(##SwitchOn,3,noun);
     rtrue;
 ];
 
 [ SwitchOffSub ;	! 165272 / 0x28598
     if (noun hasnt switchable) {
-        return routine166408(49[obj49_scratched_cupboard?],1[?]);
+        return L__M(##SwitchOff,1);
     }
     if (noun hasnt on) {
-        return routine166408(49[obj49_scratched_cupboard?],2[?]);
+        return L__M(##SwitchOff,2);
     }
     give noun ~on;
     if (AfterRoutines() == true) {
@@ -21225,19 +21225,19 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(49[obj49_scratched_cupboard?],3[s_obj?],noun);
+    L__M(##SwitchOff,3,noun);
     rtrue;
 ];
 
 [ OpenSub ;	! 165328 / 0x285d0
     if (noun hasnt openable) {
-        return routine166408(46[obj46_tight_door?],1[?]);
+        return L__M(##Open,1);
     }
     if (noun has locked) {
-        return routine166408(46[obj46_tight_door?],2[?]);
+        return L__M(##Open,2);
     }
     if (noun has open) {
-        return routine166408(46[obj46_tight_door?],3[s_obj?]);
+        return L__M(##Open,3);
     }
     give noun open;
     if (AfterRoutines() == true) {
@@ -21247,18 +21247,18 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (noun has container && noun hasnt transparent && child(noun) ~= nothing) {
-        return routine166408(46[obj46_tight_door?],4[e_obj?],noun);
+        return L__M(##Open,4,noun);
     }
-    routine166408(46[obj46_tight_door?],5[w_obj?],noun);
+    L__M(##Open,5,noun);
     rtrue;
 ];
 
 [ CloseSub ;	! 165428 / 0x28634
     if (noun hasnt openable) {
-        return routine166408(48[obj48_furniture?],1[?]);
+        return L__M(##Close,1);
     }
     if (noun hasnt open) {
-        return routine166408(48[obj48_furniture?],2[?]);
+        return L__M(##Close,2);
     }
     give noun ~open;
     if (AfterRoutines() == true) {
@@ -21267,13 +21267,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(48[obj48_furniture?],3[s_obj?],noun);
+    L__M(##Close,3,noun);
     rtrue;
 ];
 
 [ DisrobeSub ;	! 165484 / 0x2866c
     if (noun hasnt attrib26) {
-        return routine166408(22[rod_of_bronze?],1[?]);
+        return L__M(##Disrobe,1);
     }
     give noun ~attrib26;
     if (AfterRoutines() == true) {
@@ -21282,19 +21282,19 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(22[rod_of_bronze?],2[?],noun);
+    L__M(##Disrobe,2,noun);
     rtrue;
 ];
 
 [ WearSub ;	! 165528 / 0x28698
     if (noun hasnt clothing) {
-        return routine166408(25[rod_of_ice?],1[?]);
+        return L__M(##Wear,1);
     }
     if (parent(noun) ~= player) {
-        return routine166408(25[rod_of_ice?],2[?]);
+        return L__M(##Wear,2);
     }
     if (noun has attrib26) {
-        return routine166408(25[rod_of_ice?],3[s_obj?]);
+        return L__M(##Wear,3);
     }
     give noun attrib26;
     if (AfterRoutines() == true) {
@@ -21303,13 +21303,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(25[rod_of_ice?],4[e_obj?],noun);
+    L__M(##Wear,4,noun);
     rtrue;
 ];
 
 [ EatSub ;	! 165604 / 0x286e4
     if (noun hasnt edible) {
-        return routine166408(72[obj72_slide_projector?],1[?]);
+        return L__M(##Eat,1);
     }
     remove noun;
     if (AfterRoutines() == true) {
@@ -21318,34 +21318,34 @@ Array array_29185 -->	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    routine166408(72[obj72_slide_projector?],2[?],noun);
+    L__M(##Eat,2,noun);
     rtrue;
 ];
 
 ! References: obj132_Wine_Cellars.name
 
 [ YesSub ;	! 165648 / 0x28710
-    routine166408(51[obj51_gift_wrapped_parcel?]);
+    L__M(##Yes);
     rtrue;
 ];
 
 [ NoSub ;	! 165656 / 0x28718
-    routine166408(52[obj52_box_of_chocolates?]);
+    L__M(##No);
     rtrue;
 ];
 
 [ BurnSub ;	! 165664 / 0x28720
-    routine166408(92[obj92_sooty_old_stick?]);
+    L__M(##Burn);
     rtrue;
 ];
 
 [ PraySub ;	! 165672 / 0x28728
-    routine166408(81[obj81_fire_escape?]);
+    L__M(##Pray);
     rtrue;
 ];
 
 [ WakeSub ;	! 165680 / 0x28730
-    routine166408(82[obj82_Inside_Cupboard?]);
+    L__M(##Wake);
     rtrue;
 ];
 
@@ -21353,164 +21353,164 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(noun,83[obj83_painting_of_Mad_Isaac_Meldrewe?]) ~= 0) {
         rfalse;
     }
-    routine166408(83[obj83_painting_of_Mad_Isaac_Meldrewe?]);
+    L__M(##WakeOther);
     rtrue;
 ];
 
 [ ThinkSub ;	! 165708 / 0x2874c
-    routine166408(85[obj85_cranked_skylight?]);
+    L__M(##Think);
     rtrue;
 ];
 
 [ SmellSub ;	! 165716 / 0x28754
-    routine166408(86[obj86_gas_mask?]);
+    L__M(##Smell);
     rtrue;
 ];
 
 [ ListenSub ;	! 165724 / 0x2875c
-    routine166408(87[obj87_Roof?]);
+    L__M(##Listen);
     rtrue;
 ];
 
 [ TasteSub ;	! 165732 / 0x28764
-    routine166408(88[obj88_Battlements?]);
+    L__M(##Taste);
     rtrue;
 ];
 
 [ CutSub ;	! 165740 / 0x2876c
-    routine166408(95[obj95_ancient_prayer_book?]);
+    L__M(##Cut);
     rtrue;
 ];
 
 [ JumpOverSub ;	! 165748 / 0x28774
-    routine166408(97[obj97_comfortable_bed?]);
+    L__M(##JumpOver);
     rtrue;
 ];
 
 ! References: obj207_green_wire.name, obj208_red_wire.name, obj209_blue_wire.name, obj210_black_wire.name
 
 [ Action91Sub ;	! 165756 / 0x2877c
-    routine166408(91[obj91_Chimney?]);
+    L__M(##Action91);
     rtrue;
 ];
 
 [ DrinkSub ;	! 165764 / 0x28784
-    routine166408(93[obj93_Priest_s_Hole?]);
+    L__M(##Drink);
     rtrue;
 ];
 
 [ SwimSub ;	! 165772 / 0x2878c
-    routine166408(78[obj78_Dead_End?]);
+    L__M(##Swim);
     rtrue;
 ];
 
 [ SwingSub ;	! 165780 / 0x28794
-    routine166408(79[obj79_canvas_rucksack?]);
+    L__M(##Swing);
     rtrue;
 ];
 
 [ BlowSub ;	! 165788 / 0x2879c
-    routine166408(80[obj80_secret_door?]);
+    L__M(##Blow);
     rtrue;
 ];
 
 [ CleanSub ;	! 165796 / 0x287a4
-    routine166408(90[obj90_Sir_Joshua_Meldrewe?]);
+    L__M(##Clean);
     rtrue;
 ];
 
 [ SetSub ;	! 165804 / 0x287ac
-    routine166408(58[obj58_Austin?]);
+    L__M(##Set);
     rtrue;
 ];
 
 [ SetToSub ;	! 165812 / 0x287b4
-    routine166408(59[obj59_Dark_Room?]);
+    L__M(##SetTo);
     rtrue;
 ];
 
 [ WaveHandsSub ;	! 165820 / 0x287bc
-    routine166408(56[obj56_red_tablet?]);
+    L__M(##WaveHands);
     rtrue;
 ];
 
 ! References: obj35_Attic.name
 
 [ BuySub ;	! 165828 / 0x287c4
-    routine166408(76[obj76_new_looking_battery?]);
+    L__M(##Buy);
     rtrue;
 ];
 
 [ SingSub ;	! 165836 / 0x287cc
-    routine166408(74[obj74_East_Annexe?]);
+    L__M(##Sing);
     rtrue;
 ];
 
 [ ClimbSub ;	! 165844 / 0x287d4
-    routine166408(75[obj75_insulation_rolls?]);
+    L__M(##Climb);
     rtrue;
 ];
 
 [ SleepSub ;	! 165852 / 0x287dc
-    routine166408(73[obj73_south_wall?]);
+    L__M(##Sleep);
     rtrue;
 ];
 
 [ ConsultSub ;	! 165860 / 0x287e4
-    routine166408(45[obj45_old_striped_scarf?],1[?],noun);
+    L__M(##Consult,1,noun);
     rtrue;
 ];
 
 [ TouchSub ;	! 165872 / 0x287f0
     if (noun == player) {
-        return routine166408(89[obj89_gothic_looking_iron_key?],3[s_obj?]);
+        return L__M(##Touch,3);
     }
     if (noun has animate) {
-        return routine166408(89[obj89_gothic_looking_iron_key?],1[?]);
+        return L__M(##Touch,1);
     }
-    routine166408(89[obj89_gothic_looking_iron_key?],2[?]);
+    L__M(##Touch,2);
     rtrue;
 ];
 
 [ PullSub ;	! 165908 / 0x28814
     if (noun has static) {
-        return routine166408(60[obj60_sepia_photograph?],1[?]);
+        return L__M(##Pull,1);
     }
     if (noun has scenery) {
-        return routine166408(60[obj60_sepia_photograph?],2[?]);
+        return L__M(##Pull,2);
     }
     if (noun has animate) {
-        return routine166408(60[obj60_sepia_photograph?],4[e_obj?]);
+        return L__M(##Pull,4);
     }
-    routine166408(60[obj60_sepia_photograph?],3[s_obj?]);
+    L__M(##Pull,3);
     rtrue;
 ];
 
 [ PushSub ;	! 165960 / 0x28848
     if (noun has static) {
-        return routine166408(61[obj61_hanging_cord?],1[?]);
+        return L__M(##Push,1);
     }
     if (noun has scenery) {
-        return routine166408(61[obj61_hanging_cord?],2[?]);
+        return L__M(##Push,2);
     }
     if (noun has animate) {
-        return routine166408(60[obj60_sepia_photograph?],4[e_obj?]);
+        return L__M(##Pull,4);
     }
-    routine166408(61[obj61_hanging_cord?],3[s_obj?]);
+    L__M(##Push,3);
     rtrue;
 ];
 
 [ TurnSub ;	! 166012 / 0x2887c
     if (noun has static) {
-        return routine166408(63[obj63_photographer_s_flash?],1[?]);
+        return L__M(##Turn,1);
     }
     if (noun has scenery) {
-        return routine166408(63[obj63_photographer_s_flash?],2[?]);
+        return L__M(##Turn,2);
     }
     if (noun has animate) {
-        return routine166408(60[obj60_sepia_photograph?],4[e_obj?]);
+        return L__M(##Pull,4);
     }
-    routine166408(63[obj63_photographer_s_flash?],3[s_obj?]);
+    L__M(##Turn,3);
     rtrue;
 ];
 
@@ -21518,21 +21518,21 @@ Array array_29185 -->	! 29185 (0x7201)
     if (AfterRoutines() == true) {
         rtrue;
     }
-    routine166408(67[obj67_Library_Storage?]);
+    L__M(##Wait);
     rtrue;
 ];
 
 [ PushDirSub ;	! 166084 / 0x288c4
-    routine166408(62[obj62_red_lamp?],1[?]);
+    L__M(##PushDir,1);
     rtrue;
 ];
 
 [ routine166092 local1 ;	! 166092 / 0x288cc
     if (parent(second) ~= Compass) {
-        return routine166408(62[obj62_red_lamp?],2[?]);
+        return L__M(##PushDir,2);
     }
     if (second == u_obj or d_obj) {
-        return routine166408(62[obj62_red_lamp?],3[s_obj?]);
+        return L__M(##PushDir,3);
     }
     AfterRoutines();
     local1 = noun;
@@ -21548,9 +21548,9 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ SqueezeSub ;	! 166156 / 0x2890c
     if (noun has animate) {
-        return routine166408(77[obj77_cupboard_door?],1[?]);
+        return L__M(##Squeeze,1);
     }
-    routine166408(77[obj77_cupboard_door?],2[?]);
+    L__M(##Squeeze,2);
     rtrue;
 ];
 
@@ -21564,12 +21564,12 @@ Array array_29185 -->	! 29185 (0x7201)
         verb = ##ThrowAt;
     }
     if (second hasnt animate) {
-        return routine166408(32[obj32_electric_torch?],1[?]);
+        return L__M(##ThrowAt,1);
     }
     if (routine55448(second,32[obj32_electric_torch?]) ~= 0) {
         rfalse;
     }
-    routine166408(32[obj32_electric_torch?],2[?]);
+    L__M(##ThrowAt,2);
     rtrue;
 ];
 
@@ -21577,7 +21577,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (noun has animate && routine55448(noun,66[obj66_solid_glass_ball?]) ~= 0) {
         rfalse;
     }
-    routine166408(66[obj66_solid_glass_ball?]);
+    L__M(##Attack);
     rtrue;
 ];
 
@@ -21586,9 +21586,9 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     if (noun == player) {
-        return routine166408(89[obj89_gothic_looking_iron_key?],3[s_obj?]);
+        return L__M(##Touch,3);
     }
-    routine166408(84[obj84_big_iron_fireplace?]);
+    L__M(##Kiss);
     rtrue;
 ];
 
@@ -21596,18 +21596,18 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(second,68[obj68_water_pipe?]) ~= 0) {
         rfalse;
     }
-    routine166408(68[obj68_water_pipe?]);
+    L__M(##Answer);
     rtrue;
 ];
 
 [ TellSub ;	! 166328 / 0x289b8
     if (noun == player) {
-        return routine166408(69[obj69_romantic_novel?]);
+        return L__M(##Tell);
     }
     if (routine55448(noun,69[obj69_romantic_novel?]) ~= 0) {
         rfalse;
     }
-    routine166408(69[obj69_romantic_novel?],2[?]);
+    L__M(##Tell,2);
     rtrue;
 ];
 
@@ -21615,7 +21615,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (routine55448(noun,70[obj70_book_of_Twenties_poetry?]) ~= 0) {
         rfalse;
     }
-    routine166408(70[obj70_book_of_Twenties_poetry?]);
+    L__M(##Ask);
     rtrue;
 ];
 
@@ -21624,18 +21624,18 @@ Array array_29185 -->	! 29185 (0x7201)
         routine55348(24[rod_of_luck?]);
         rtrue;
     }
-    routine166408(259[obj259_Greek_Frieze?],1[?],noun);
+    L__M(##Action259,1,noun);
     rtrue;
 ];
 
-[ routine166408 local1 local2 local3 local4 ;	! 166408 / 0x28a08
-    local4 = action;
-    action = local1;
-    if (local2 == 0) {
-        local2 = 1[?];
+[ L__M act n x1 s ;	! 166408 / 0x28a08
+    s = action;
+    action = act;
+    if (n == 0) {
+        n = 1;
     }
-    routine166436(local2,local3);
-    action = local4;
+    routine166436(n,x1);
+    action = s;
     rtrue;
 ];
 
@@ -22703,7 +22703,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     new_line;
-    routine166408(1[?],1[?]);
+    L__M(##FullScore,1);
     ndx = 0;
   .label173944;
     if (ndx < 45) {
@@ -22726,11 +22726,11 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (things_score ~= 0) {
         PANum(things_score);
-        routine166408(1[?],2[?]);
+        L__M(##FullScore,2);
     }
     if (places_score ~= 0) {
         PANum(places_score);
-        routine166408(1[?],3[s_obj?]);
+        L__M(##FullScore,3);
     }
     if (good_try_bonus ~= 0) {
         PANum(5[w_obj?]);
@@ -22745,7 +22745,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     new_line;
     PANum(score);
-    routine166408(1[?],4[e_obj?]);
+    L__M(##FullScore,4);
     if (deadflag == WON && task_scores->11 == 0) {
         "^Sadly, you missed out on the 50-point bonus for rescuing Andromeda.";
     }
@@ -23009,7 +23009,7 @@ Array array_29185 -->	! 29185 (0x7201)
         routine74232(1[?]);
         rfalse;
     }
-    routine166408(96[obj96_Alison_s_Writing_Room?]);
+    L__M(##Jump);
     rtrue;
 ];
 
