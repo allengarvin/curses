@@ -4924,7 +4924,7 @@ Global global107;
 Global global108;
 Global pretty_mode = true;
 Global global110;
-Global global111 = 8[nw_obj?];
+Global submenu_number = 8;
 Global submenu_header = "Nameless item";
 Global menu_selection;
 Global global114;
@@ -5240,34 +5240,34 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine41764 local1 local2 local3 local4 local5 local6 local7 ;	! 41764 / 0xa324
+[ Keyboard a_buffer a_table nw i w x1 x2 ;	! 41764 / 0xa324
     routine53944();
   .label41768;
-    local4 = 0;
+    i = 0;
   .label41771;
-    if (local4 < 10) {
-        array_24650->local4 = local2->local4;
-        ++local4;
+    if (i < 10) {
+        array_24650->i = a_table->i;
+        ++i;
         jump label41771;
     }
-    local1->0 = 120[obj120_steel_wrench?];
-    local2->0 = 64[obj64_Disused_Observatory?];
+    a_buffer->0 = 120[obj120_steel_wrench?];
+    a_table->0 = 64[obj64_Disused_Observatory?];
     L__M(263);
     routine181216();
     generic_global = 0;
-    local1->1 = 0;
+    a_buffer->1 = 0;
     routine185684();
-    @aread local1 local2 -> generic_global;
-    local3 = local2->1;
-    if (local3 == 0) {
+    @aread a_buffer a_table -> generic_global;
+    nw = a_table->1;
+    if (nw == 0) {
         L__M(262,10);
         jump label41768;
     }
-    local5 = local2-->1;
-    if (local5 == 36444['o//'?] or 36651['oops'?]) {
+    w = a_table-->1;
+    if (w == 36444['o//'?] or 36651['oops'?]) {
         ! no code
     } else {
-        if (local5 == 40836['undo'?] && array_24142->1 == 1[?]) {
+        if (w == 40836['undo'?] && array_24142->1 == 1[?]) {
             if (global8 == 1[?]) {
                 L__M(262,11);
                 jump label41768;
@@ -5283,23 +5283,23 @@ Array array_29185 -->	! 29185 (0x7201)
                     L__M(262,12);
                     jump label41768;
                 }
-                @restore_undo -> local4;
-                if (local4 ~= 0) jump label41948;
+                @restore_undo -> i;
+                if (i ~= 0) jump label41948;
             }
             L__M(262,7);
           .label41948;
             jump label41768;
         }
-        @save_undo -> local4;
+        @save_undo -> i;
         global108 = 0;
         global45 = 2[?];
-        if (local4 == 65535[?]) {
+        if (i == 65535[?]) {
             global45 = 0;
         }
-        if (local4 == 0) {
+        if (i == 0) {
             global45 = 1[?];
         }
-        if (local4 == 2[?]) {
+        if (i == 2[?]) {
             style bold;
             PSN__(location);
             print "^";
@@ -5308,33 +5308,33 @@ Array array_29185 -->	! 29185 (0x7201)
             global108 = 1[?];
             jump label41768;
         }
-        return local3;
+        return nw;
     }
     if (oops_from == 0) {
         L__M(262,14);
         jump label41768;
     }
-    if (local3 == 1[?]) {
+    if (nw == 1[?]) {
         L__M(262,15);
         jump label41768;
     }
-    if (local3 > 2) {
+    if (nw > 2) {
         L__M(262,16);
         jump label41768;
     }
-    local6 = local2-->3;
-    local7 = local2-->4;
-    local4 = 0;
+    x1 = a_table-->3;
+    x2 = a_table-->4;
+    i = 0;
   .label42069;
-    if (local4 < 10) {
-        local2->local4 = array_24650->local4;
-        ++local4;
+    if (i < 10) {
+        a_table->i = array_24650->i;
+        ++i;
         jump label42069;
     }
-    local5 = 2 * oops_from - 1;
-    local2-->local5 = local6;
-    local2-->(local5 + 1) = local7;
-    return local3;
+    w = 2 * oops_from - 1;
+    a_table-->w = x1;
+    a_table-->(w + 1) = x2;
+    return nw;
 ];
 
 [ routine42116 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 ;	! 42116 / 0xa484
@@ -5362,7 +5362,7 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label42195;
     }
   .label42187;
-    routine41764(24021[?],24142[?]);
+    Keyboard(24021[?],24142[?]);
   .label42195;
     global51 = array_24142->1;
     global50 = 1[?];
@@ -6576,7 +6576,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         print "?^";
       .label48189;
-        local10 = routine41764(24367[?],24488[?]);
+        local10 = Keyboard(24367[?],24488[?]);
         local4 = array_24488-->1;
         if (local4 == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
             if (local3 >= 2 && local3 <= 5) {
@@ -6632,7 +6632,7 @@ Array array_29185 -->	! 29185 (0x7201)
     print " to ";
     PrintCommand(0,1[?]);
     print "?^";
-    local10 = routine41764(24367[?],24488[?]);
+    local10 = Keyboard(24367[?],24488[?]);
     local4 = array_24488-->1;
     local6 = local4->6;
     if (0 ~= local6 & 1) {
@@ -8374,7 +8374,7 @@ Array array_29185 -->	! 29185 (0x7201)
     menu_selection = 0;
     local4 = local2();
     local5 = submenu_header;
-    local6 = global111;
+    local6 = submenu_number;
     local7 = 7[se_obj?];
   .label55708;
     local10 = 0;
@@ -8488,7 +8488,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 generic_global = generic_global - 1;
                 if (generic_global ~= 0) jump label56141;
             }
-            local9 = local8 / 2 - global111;
+            local9 = local8 / 2 - submenu_number;
             @set_cursor 1 local9;
             print (string) submenu_header;
             style roman;
@@ -18653,36 +18653,36 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine147836 ;	! 147836 / 0x2417c
     if (menu_selection == 0) {
-        global111 = 3[s_obj?];
+        submenu_number = 3;
         submenu_header = "Curses";
         return 7[se_obj?];
     }
     if (menu_selection == 1[?]) {
-        global111 = 6[ne_obj?];
+        submenu_number = 6;
         submenu_header = "Instructions";
     }
     if (menu_selection == 2[?]) {
-        global111 = 4[e_obj?];
+        submenu_number = 4;
         submenu_header = "Commands";
     }
     if (menu_selection == 3[s_obj?]) {
-        global111 = 8[nw_obj?];
+        submenu_number = 8;
         submenu_header = "Cast of Thousands";
     }
     if (menu_selection == 4[e_obj?]) {
-        global111 = 6[ne_obj?];
+        submenu_number = 6;
         submenu_header = "Release Notes";
     }
     if (menu_selection == 5[w_obj?]) {
-        global111 = 5[w_obj?];
+        submenu_number = 5;
         submenu_header = "Legal Notes";
     }
     if (menu_selection == 6[ne_obj?]) {
-        global111 = 3[s_obj?];
+        submenu_number = 3;
         submenu_header = "Inform";
     }
     if (menu_selection == 7[se_obj?]) {
-        global111 = 5[w_obj?];
+        submenu_number = 5;
         submenu_header = "ftp.gmd.de";
     }
     rtrue;
@@ -24068,36 +24068,36 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine183792 ;	! 183792 / 0x2cdf0
     if (menu_selection == 0) {
         submenu_header = "For your amusement";
-        global111 = 9[sw_obj?];
+        submenu_number = 9;
         return 7[se_obj?];
     }
     if (menu_selection == 1[?]) {
         submenu_header = "Frivolous things to do";
-        global111 = 11[d_obj?];
+        submenu_number = 11;
     }
     if (menu_selection == 2[?]) {
         submenu_header = "About Callimachus and Apollonius";
-        global111 = 16[obj16_lm?];
+        submenu_number = 16;
     }
     if (menu_selection == 3[s_obj?]) {
         submenu_header = "An epigram by Callimachus";
-        global111 = 12[obj12_outside?];
+        submenu_number = 12;
     }
     if (menu_selection == 4[e_obj?]) {
         submenu_header = "Salmon Wielder";
-        global111 = 7[se_obj?];
+        submenu_number = 7;
     }
     if (menu_selection == 5[w_obj?]) {
         submenu_header = "Wistaria or wisteria?";
-        global111 = 10[u_obj?];
+        submenu_number = 10;
     }
     if (menu_selection == 6[ne_obj?]) {
         submenu_header = "Great Curses mistakes";
-        global111 = 10[u_obj?];
+        submenu_number = 10;
     }
     if (menu_selection == 7[se_obj?]) {
         submenu_header = "The ancient languages";
-        global111 = 10[u_obj?];
+        submenu_number = 10;
     }
     rtrue;
 ];
@@ -24222,48 +24222,48 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine185108 ;	! 185108 / 0x2d314
     if (menu_selection == 0) {
         submenu_header = "Trivia questions";
-        global111 = 8[nw_obj?];
+        submenu_number = 8;
         return 10[u_obj?];
     }
     if (menu_selection == 1[?]) {
         submenu_header = "1. What are the ~good but wrong guesses~?";
-        global111 = 20[rod_of_infinity?];
+        submenu_number = 20;
     }
     if (menu_selection == 2[?]) {
         submenu_header = "2. How many songs does the radio play?";
-        global111 = 19[rod_of_stalking?];
+        submenu_number = 19;
     }
     if (menu_selection == 3[s_obj?]) {
         submenu_header = "3. In what *** ways *** can the game end?";
-        global111 = 20[rod_of_infinity?];
+        submenu_number = 20;
     }
     if (menu_selection == 4[e_obj?]) {
         submenu_header = "4. What are the secret ways to detect a Rod?";
-        global111 = 22[rod_of_bronze?];
+        submenu_number = 22;
     }
     if (menu_selection == 5[w_obj?]) {
         submenu_header = "5. What can you see in the crystal ball?";
-        global111 = 20[rod_of_infinity?];
+        submenu_number = 20;
     }
     if (menu_selection == 6[ne_obj?]) {
         submenu_header = "6. Where are Dame Judi Dench and Donald Sutherland?";
-        global111 = 25[rod_of_ice?];
+        submenu_number = 25;
     }
     if (menu_selection == 7[se_obj?]) {
         submenu_header = "7. Explain the handkerchief initials and the graffiti.";
-        global111 = 27[rod_of_returning2?];
+        submenu_number = 27;
     }
     if (menu_selection == 8[nw_obj?]) {
         submenu_header = "8. How many tarot cards are there altogether?";
-        global111 = 22[rod_of_bronze?];
+        submenu_number = 22;
     }
     if (menu_selection == 9[sw_obj?]) {
         submenu_header = "9. How can the medicine bottle be opened?";
-        global111 = 20[rod_of_infinity?];
+        submenu_number = 20;
     }
     if (menu_selection == 10[u_obj?]) {
         submenu_header = "10. What is the mascot for in the premonition?";
-        global111 = 23[rod_of_sacrifice?];
+        submenu_number = 23;
     }
     rtrue;
 ];
@@ -24288,16 +24288,16 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine185292 ;	! 185292 / 0x2d3cc
     if (menu_selection == 0) {
         submenu_header = "Amusements";
-        global111 = 5[w_obj?];
+        submenu_number = 5;
         return 2[?];
     }
     if (menu_selection == 1[?]) {
         submenu_header = "For your amusement";
-        global111 = 9[sw_obj?];
+        submenu_number = 9;
     }
     if (menu_selection == 2[?]) {
         submenu_header = "Trivia questions";
-        global111 = 8[nw_obj?];
+        submenu_number = 8;
     }
     rtrue;
 ];
