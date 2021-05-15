@@ -4879,11 +4879,11 @@ Global verb_wordnum;
 Global global54;
 Global global55;
 Global global56;
-Global global57;
+Global nsns;
 Global pcount;
 Global global59;
-Global global60;
-Global global61;
+Global parameters;
+Global params_wanted;
 Global global62;
 Global interfrom;
 Global global64;
@@ -5577,13 +5577,13 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
                 notholding = 0;
                 interfrom = 0;
-                global60 = 0;
-                global61 = line_address->0;
+                parameters = 0;
+                params_wanted = line_address->0;
                 global62 = 0;
                 global34 = 0;
                 global35 = 0;
                 array_24239-->0 = 0;
-                global57 = 0;
+                nsns = 0;
                 global91 = 1[?];
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
@@ -5650,12 +5650,12 @@ Array array_29185 -->	! 29185 (0x7201)
                     jump label43315;
                 }
                 global106 = 0;
-                if (m == 1[?] && global61 == 1[?] && action_to_be == 19[rod_of_stalking?]) {
+                if (m == 1[?] && params_wanted == 1[?] && action_to_be == 19[rod_of_stalking?]) {
                     global106 = 1[?];
                 }
                 notholding = 0;
                 interfrom = 0;
-                global60 = 0;
+                parameters = 0;
                 global62 = 0;
                 global34 = 0;
                 global35 = 0;
@@ -5723,18 +5723,18 @@ Array array_29185 -->	! 29185 (0x7201)
                         lookahead = line_address->m;
                     }
                     if (lookahead == 0) {
-                        m = global60;
+                        m = parameters;
                         if (token <= 7) {
                             ++m;
                         }
-                        if (m >= global61) {
+                        if (m >= params_wanted) {
                             lookahead = 8;
                         }
                     }
                     if (token > 180) {
                         array_24618-->pcount = 10000 + token;
                         if (wn > num_words) {
-                            if (interfrom == 0 && global60 < global61) {
+                            if (interfrom == 0 && parameters < params_wanted) {
                                 interfrom = pcount;
                                 global64 = token;
                             }
@@ -5746,7 +5746,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             jump label44659;
                         }
                     } else {
-                        if (global60 == global61) {
+                        if (parameters == params_wanted) {
                             if (wn <= num_words) {
                                 l = routine52976();
                                 if (l == 40296['then'?] or 41628['xcomma'?]) {
@@ -5765,14 +5765,14 @@ Array array_29185 -->	! 29185 (0x7201)
                                     jump label44659;
                                 }
                             }
-                            if (global60 >= 1 && results-->2 == 0) {
+                            if (parameters >= 1 && results-->2 == 0) {
                                 l = routine49704(results-->3);
                                 if (l ~= 0) {
                                     global91 = l;
                                     jump label44659;
                                 }
                             }
-                            if (global60 >= 2 && results-->3 == 0) {
+                            if (parameters >= 2 && results-->3 == 0) {
                                 l = routine49704(results-->2);
                                 if (l ~= 0) {
                                     global91 = l;
@@ -5791,9 +5791,9 @@ Array array_29185 -->	! 29185 (0x7201)
                                 PrintCommand(interfrom,1[?]);
                                 print ")^";
                             }
-                            results-->1 = global61;
+                            results-->1 = params_wanted;
                             results-->0 = line_address->7;
-                            if (global60 > 0 && results-->2 >= 2) {
+                            if (parameters > 0 && results-->2 >= 2) {
                                 routine53392(results-->2);
                             }
                             oops_from = 0;
@@ -6290,7 +6290,7 @@ Array array_29185 -->	! 29185 (0x7201)
             rfalse;
         }
         if (local3 == 0) {
-            --global61;
+            --params_wanted;
             rtrue;
         }
         if (local3 == 1[?]) {
@@ -6464,15 +6464,15 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local11 == 1[?]) {
         local9 = 0;
-        global57 = local2;
+        nsns = local2;
     } else if (global80 == 1[?] && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
         global56 = 1[?];
         global55 = global82;
         global91 = 16[obj16_lm?];
         jump label47741;
     }
-    local1-->(global60 + 2) = local9;
-    ++global60;
+    local1-->(parameters + 2) = local9;
+    ++parameters;
     array_24618-->pcount = local9;
     return 1[?];
   .label47741;
@@ -6792,7 +6792,7 @@ Array array_29185 -->	! 29185 (0x7201)
             return 65535[?];
         }
         array_24239-->0 = local2 + local10;
-        global57 = local1;
+        nsns = local1;
         if (parser_trace >= 4) {
             print "   Made multiple object of size ", local2, "]^";
         }
@@ -6885,12 +6885,12 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 4) {
         print "   Revising multiple object list of size ", array_24239-->0, " with 2nd ", (name) local1, "^";
     }
-    if (global57 == 4[e_obj?] or 5[w_obj?]) {
+    if (nsns == 4 or 5) {
         local2 = 1[?];
         local3 = 0;
       .label49771;
         if (local2 <= array_24239-->0) {
-            if (global57 == 4[e_obj?] && array_24239-->local2 ~= local1 || (global57 == 5[w_obj?] && array_24239-->local2 in local1)) {
+            if (nsns == 4 && array_24239-->local2 ~= local1 || (nsns == 5 && array_24239-->local2 in local1)) {
                 ++local3;
                 array_24239-->local3 = array_24239-->local2;
             }
@@ -6899,7 +6899,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         array_24239-->0 = local3;
     }
-    if (global57 == 2[?]) {
+    if (nsns == 2) {
         local2 = 1[?];
         local3 = 0;
       .label49850;
