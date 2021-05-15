@@ -6138,56 +6138,56 @@ Array array_29185 -->	! 29185 (0x7201)
     indef_type = 0;
     indef_wanted = 0;
     indef_guess_p = 0;
-    flag = 1[?];
+    flag = 1;
   .label46088;
-    if (flag == 1[?]) {
+    if (flag == 1) {
         o = routine52976();
         flag = 0;
         if (o == 'the') {
-            flag = 1[?];
+            flag = 1;
         }
         if (o == 'a//' or 'an' or 'any' or 'either' or 'anything') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
         }
         if (o == 'another' or 'other') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_type = indef_type | 1;
         }
         if (o == 'my' or 'this' or 'these') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_type = indef_type | 2;
         }
         if (o == 'that' or 'those') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_type = indef_type | 4;
         }
         if (o == 'its') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_type = indef_type | 16;
         }
         if (o == 'his' or 'your') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_type = indef_type | 32;
         }
         if (o == 'lit' or 'lighted') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_type = indef_type | 64;
         }
         if (o == 'unlit') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_type = indef_type | 128;
         }
         if (o == 'all' or 'each' or 'every' or 'everything') {
             indef_mode = 1[?];
-            flag = 1[?];
+            flag = 1;
             indef_wanted = 100;
             if (global106 == 1[?]) {
                 global106 = 2[?];
@@ -6199,12 +6199,12 @@ Array array_29185 -->	! 29185 (0x7201)
             if (n > 1) {
                 indef_guess_p = 1[?];
                 indef_mode = 1[?];
-                flag = 1[?];
+                flag = 1;
                 indef_wanted = n;
                 indef_type = indef_type | 8;
             }
         }
-        if (flag == 1[?] && routine52976() ~= 36552['of'?]) {
+        if (flag == 1 && routine52976() ~= 36552['of'?]) {
             --wn;
         }
         jump label46088;
