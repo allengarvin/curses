@@ -8682,19 +8682,19 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine56708 local1 local2 ;	! 56708 / 0xdd84
-    local2 = 0;
+[ StopDaemon obj i ;	! 56708 / 0xdd84
+    i = 0;
   .label56712;
-    if (local2 < active_timers) {
-        if (the_timers-->local2 == local1) {
+    if (i < active_timers) {
+        if (the_timers-->i == obj) {
             jump label56737;
         }
-        ++local2;
+        ++i;
         jump label56712;
     }
     rfalse;
   .label56737;
-    the_timers-->local2 = 0;
+    the_timers-->i = 0;
     rtrue;
 ];
 
@@ -11298,7 +11298,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine81944 ;	! 81944 / 0x14018
     if (action == ##Give or ##ThrowAt) {
         remove noun;
-        routine56708(selfobj);
+        StopDaemon(selfobj);
         if (noun == obj122_chicken_wishbone) {
             move obj89_gothic_looking_iron_key to obj93_Priest_s_Hole;
             give obj89_gothic_looking_iron_key attrib8;
@@ -11794,7 +11794,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine86420 ;	! 86420 / 0x15194
     if (obj111_antiquated_wireless hasnt on) {
-        routine56708(selfobj);
+        StopDaemon(selfobj);
         give obj111_antiquated_wireless ~attrib8;
         rtrue;
     }
@@ -14077,7 +14077,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: obj239_Inner_Sanctum.initial
 
 [ routine108336 ;	! 108336 / 0x1a730
-    routine56708(242[obj242_Cross_Centre?]);
+    StopDaemon(242[obj242_Cross_Centre?]);
     rfalse;
 ];
 
@@ -14473,7 +14473,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (location has ship_flag) {
         rfalse;
     }
-    routine56708(selfobj);
+    StopDaemon(selfobj);
     remove obj261_port_wall;
     remove obj262_starboard_wall;
     remove obj264_aft_wall;
@@ -14926,7 +14926,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (game_section ~= T_GARDEN_PAST) {
         local1 = global154 + 9 * global155;
         global151->local1 = 48[obj48_furniture?];
-        routine56708(selfobj);
+        StopDaemon(selfobj);
     }
     rfalse;
 ];
@@ -15718,7 +15718,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine119480 local1 ;	! 119480 / 0x1d2b8
     if (game_section ~= T_ANCIENT_BRITAIN) {
-        routine56708(selfobj);
+        StopDaemon(selfobj);
     }
     local1 = global160;
     if (local1 > 0) {
@@ -16921,7 +16921,7 @@ Array array_29185 -->	! 29185 (0x7201)
             "^A wave splashes up under the grating, throwing up the strange stone, which bounces back off the grating and washes away down the passage out of sight.^^Well, you didn't think it was going to be that easy, did you?^";
         }
     } else {
-        routine56708(selfobj);
+        StopDaemon(selfobj);
     }
     rfalse;
 ];
@@ -17448,8 +17448,8 @@ Array array_29185 -->	! 29185 (0x7201)
     if (obj58_Austin in location) {
         print "The Museum guards are so busy abasing themselves before the sacred Cat (incredibly, that's Austin) that you are able to slip inside.^^Austin, having at long last found owners even more gullible and undemanding than yourself, ambles away to a life of extreme cossetting and luxury.^";
         remove obj58_Austin;
-        routine56708(58[obj58_Austin?]);
-        routine56708(selfobj);
+        StopDaemon(58[obj58_Austin?]);
+        StopDaemon(selfobj);
         return 448[The_Birdcage_of_the_Muses?];
     }
     "Museum guards tactfully nudge drunken louts away from the Museum.";
