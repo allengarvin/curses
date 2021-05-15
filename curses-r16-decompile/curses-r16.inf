@@ -4867,8 +4867,8 @@ Global global23;
 Global actor;
 Global actor_location;
 Global verb;
-Global global27;
-Global global28;
+Global inp1;
+Global inp2;
 Global special_number1;
 Global global30;
 Global selfobj;
@@ -8081,22 +8081,22 @@ Array array_29185 -->	! 29185 (0x7201)
             special_word = special_number1;
         }
       .label54402;
-        global27 = 0;
-        global28 = 0;
+        inp1 = 0;
+        inp2 = 0;
         i = inputobjs-->1;
         if (i >= 1) {
-            global27 = inputobjs-->2;
+            inp1 = inputobjs-->2;
         }
         if (i >= 2) {
-            global28 = inputobjs-->3;
+            inp2 = inputobjs-->3;
         }
-        noun = global27;
-        second = global28;
-        if (global27 == 1[?]) {
+        noun = inp1;
+        second = inp2;
+        if (inp1 == 1[?]) {
             noun = special_number1;
         }
-        if (global28 == 1[?]) {
-            if (global27 == 1[?]) {
+        if (inp2 == 1[?]) {
+            if (inp1 == 1[?]) {
                 second = global30;
             } else {
                 second = special_number1;
@@ -8118,7 +8118,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     }
                 }
             }
-        } else if (i == 0 || global27 ~= 0) {
+        } else if (i == 0 || inp1 ~= 0) {
             Process();
         } else {
             multiflag = 1;
@@ -8144,10 +8144,10 @@ Array array_29185 -->	! 29185 (0x7201)
                     routine53392(l);
                     PSN__(l);
                     print ": ";
-                    global27 = l;
+                    inp1 = l;
                     noun = l;
                     Process();
-                    global27 = 0;
+                    inp1 = 0;
                     noun = nothing;
                     ++k;
                     jump label54605;
@@ -8315,7 +8315,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_one ~= 0) {
         rtrue;
     }
-    if (global27 > 1 && routine53736(global27,2[?]) ~= 0) {
+    if (inp1 > 1 && routine53736(inp1,2[?]) ~= 0) {
         rtrue;
     }
     rfalse;
@@ -8332,36 +8332,36 @@ Array array_29185 -->	! 29185 (0x7201)
     if (location ~= nothing && routine53736(location,3[s_obj?]) ~= 0) {
         rtrue;
     }
-    if (global27 > 1 && routine53736(global27,3[s_obj?]) ~= 0) {
+    if (inp1 > 1 && routine53736(inp1,3[s_obj?]) ~= 0) {
         rtrue;
     }
     return routine181212();
 ];
 
 [ routine55348 a local2 local3 local4 local5 local6 local7 ;	! 55348 / 0xd834
-    local4 = global27;
-    local5 = global28;
+    local4 = inp1;
+    local5 = inp2;
     local6 = verb;
     local7 = selfobj;
-    global27 = local2;
-    global28 = local3;
+    inp1 = local2;
+    inp2 = local3;
     noun = local2;
     second = local3;
     verb = a;
     if (meta == 1 || BeforeRoutines() == 0 && verb < 256) {
         generic_global = (actions_table-->verb)();
         selfobj = local7;
-        global27 = local4;
+        inp1 = local4;
         noun = local4;
-        global28 = local5;
+        inp2 = local5;
         second = local5;
         verb = local6;
         rfalse;
     }
     selfobj = local7;
-    global27 = local4;
+    inp1 = local4;
     noun = local4;
-    global28 = local5;
+    inp2 = local5;
     second = local5;
     verb = local6;
     rtrue;
@@ -10240,25 +10240,25 @@ Array array_29185 -->	! 29185 (0x7201)
         "Perhaps you should say which way to push Austin.";
     }
     if (action == ##PushDir) {
-        if (location == obj35_Attic && global28 == 2[?] or 4[e_obj?] or 3[s_obj?]) {
+        if (location == obj35_Attic && inp2 == 2[?] or 4[e_obj?] or 3[s_obj?]) {
             ! no code
-        } else if (location == obj103_Old_Winery && global28 == 5[w_obj?] or 3[s_obj?]) {
+        } else if (location == obj103_Old_Winery && inp2 == 5[w_obj?] or 3[s_obj?]) {
             ! no code
-        } else if (location == obj107_Aunt_Jemima_s_Lair && global28 == 5[w_obj?] or 4[e_obj?]) {
+        } else if (location == obj107_Aunt_Jemima_s_Lair && inp2 == 5[w_obj?] or 4[e_obj?]) {
             ! no code
-        } else if (location == obj47_Old_Furniture && global28 == 2[?] or 7[se_obj?]) {
+        } else if (location == obj47_Old_Furniture && inp2 == 2[?] or 7[se_obj?]) {
             ! no code
-        } else if (location == obj42_Servant_s_Room && global28 == 5[w_obj?]) {
+        } else if (location == obj42_Servant_s_Room && inp2 == 5[w_obj?]) {
             ! no code
-        } else if (location == obj57_Over_the_East_Wing && global28 == 8[nw_obj?] or 3[s_obj?] or 5[w_obj?]) {
+        } else if (location == obj57_Over_the_East_Wing && inp2 == 8[nw_obj?] or 3[s_obj?] or 5[w_obj?]) {
             ! no code
-        } else if (location == obj57_Over_the_East_Wing or obj59_Dark_Room && global28 == 4[e_obj?]) {
+        } else if (location == obj57_Over_the_East_Wing or obj59_Dark_Room && inp2 == 4[e_obj?]) {
             ! no code
-        } else if (location == obj74_East_Annexe && global28 == 5[w_obj?]) {
+        } else if (location == obj74_East_Annexe && inp2 == 5[w_obj?]) {
             ! no code
-        } else if (location == obj64_Disused_Observatory && global28 == 2[?] or 3[s_obj?]) {
+        } else if (location == obj64_Disused_Observatory && inp2 == 2[?] or 3[s_obj?]) {
             ! no code
-        } else if (location == obj71_Souvenirs_Room && global28 == 2[?]) {
+        } else if (location == obj71_Souvenirs_Room && inp2 == 2[?]) {
             ! no code
         } else {
             "Austin refuses to go that way.";
@@ -13058,7 +13058,7 @@ Array array_29185 -->	! 29185 (0x7201)
         remove noun;
         InsertCardIntoDeck(noun);
         print "You carefully lay ";
-        Defart(global27);
+        Defart(inp1);
         " face down on the tarot pack.";
     }
     if (action == ##Search or ##Read or ##LookUnder) {
@@ -13415,7 +13415,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (noun has edible) {
             remove noun;
             print "The goat happily munches down ";
-            Defart(global27);
+            Defart(inp1);
             ".";
         }
         if (noun == obj55_mb && obj55_mb has locked) {
@@ -13688,7 +13688,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         give selfobj attrib8;
         print "You pull out ";
-        Defart(global27);
+        Defart(inp1);
         print ". ";
         local1 = obj205_complicated_looking_bomb.prop24;
         obj205_complicated_looking_bomb.prop24 = local1 + 1;
@@ -14824,7 +14824,7 @@ Array array_29185 -->	! 29185 (0x7201)
             give obj55_mb open;
             rtrue;
         }
-        CDefart(global27);
+        CDefart(inp1);
         " plummets to the earth below.";
     }
     rfalse;
@@ -15267,35 +15267,35 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         local1 = 100[obj100_Tiny_Balcony?];
         local2 = 100[obj100_Tiny_Balcony?];
-        if (global27 == 2[?]) {
+        if (inp1 == 2[?]) {
             local1 = global152;
             local2 = global153 - 1;
         }
-        if (global27 == 4[e_obj?]) {
+        if (inp1 == 4[e_obj?]) {
             local1 = global152 + 1;
             local2 = global153;
         }
-        if (global27 == 3[s_obj?]) {
+        if (inp1 == 3[s_obj?]) {
             local1 = global152;
             local2 = global153 + 1;
         }
-        if (global27 == 5[w_obj?]) {
+        if (inp1 == 5[w_obj?]) {
             local1 = global152 - 1;
             local2 = global153;
         }
-        if (global27 == 6[ne_obj?]) {
+        if (inp1 == 6[ne_obj?]) {
             local1 = global152 + 1;
             local2 = global153 - 1;
         }
-        if (global27 == 8[nw_obj?]) {
+        if (inp1 == 8[nw_obj?]) {
             local1 = global152 - 1;
             local2 = global153 - 1;
         }
-        if (global27 == 7[se_obj?]) {
+        if (inp1 == 7[se_obj?]) {
             local1 = global152 + 1;
             local2 = global153 + 1;
         }
-        if (global27 == 9[sw_obj?]) {
+        if (inp1 == 9[sw_obj?]) {
             local1 = global152 - 1;
             local2 = global153 + 1;
         }
@@ -17335,7 +17335,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (selfobj == second_socket) {
                 model_golden_sceptre.initial = "The sceptre projects from the second socket like a handle.";
             }
-            if (global28 == 429[third_socket?]) {
+            if (inp2 == 429[third_socket?]) {
                 model_golden_sceptre.initial = "The sceptre projects from the third socket like a handle.";
             }
             move model_golden_sceptre to Quite_an_Undertaking;
@@ -17407,7 +17407,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (verb ~= ##Go) {
         "There's very little room, and the air is running out.";
     }
-    if (mummy_case hasnt attrib8 || global27 ~= 10[u_obj?]) {
+    if (mummy_case hasnt attrib8 || inp1 ~= 10[u_obj?]) {
         "There's nowhere to go.";
     }
     if (selfobj has attrib8) {
@@ -17741,7 +17741,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine138656 local1 ;	! 138656 / 0x21da0
     if (action == ##Give) {
-        if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && global27 == 451[tube_with_a_kappa_on?])) {
+        if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && inp1 == 451[tube_with_a_kappa_on?])) {
             "He takes the tube, sees the letter on it, looks exasperated, clouts you over the head with the tube and pushes it back into your arms.";
         }
         if (noun == tube_with_an_alpha_on or tube_with_a_kappa_on) {
