@@ -4858,7 +4858,7 @@ Global global41;
 Global action;
 Global global43;
 Global global44;
-Global global45;
+Global undo_flag;
 Global parser_trace;
 Global global47;
 Global lm_n;
@@ -4921,7 +4921,7 @@ Global global104;
 Global global105;
 Global global106 = 1[?];
 Global global107;
-Global global108;
+Global undone_flag;
 Global pretty_mode = true;
 Global global110;
 Global submenu_number = 8;
@@ -5272,14 +5272,14 @@ Array array_29185 -->	! 29185 (0x7201)
                 L__M(262,11);
                 jump label41768;
             }
-            if (global45 == 0) {
+            if (undo_flag == false) {
                 L__M(262,6);
                 jump label41768;
             }
-            if (global45 == 1[?]) {
+            if (undo_flag == true) {
                 ! no code
             } else {
-                if (global108 == 1[?]) {
+                if (undone_flag == true) {
                     L__M(262,12);
                     jump label41768;
                 }
@@ -5291,13 +5291,13 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label41768;
         }
         @save_undo -> i;
-        global108 = 0;
-        global45 = 2[?];
+        undone_flag = false;
+        undo_flag = invalidBool2;
         if (i == 65535[?]) {
-            global45 = 0;
+            undo_flag = false;
         }
         if (i == 0) {
-            global45 = 1[?];
+            undo_flag = true;
         }
         if (i == 2[?]) {
             style bold;
@@ -5305,7 +5305,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print "^";
             style roman;
             L__M(262,13);
-            global108 = 1[?];
+            undone_flag = true;
             jump label41768;
         }
         return nw;
@@ -8165,11 +8165,11 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label54838;
     }
     if (local1 == 40836['undo'?]) {
-        if (global45 == 0) {
+        if (undo_flag == false) {
             L__M(262,6);
             jump label54838;
         }
-        if (global45 == 1[?]) {
+        if (undo_flag == true) {
             ! no code
         } else {
             @restore_undo -> local1;
@@ -24386,7 +24386,7 @@ Array array_29185 -->	! 29185 (0x7201)
         displaying_quote = true;
     }
     global181 = location.section;
-    if (deadflag > 0 || global108 == 1[?]) {
+    if (deadflag > 0 || undone_flag == true) {
         displaying_quote = true;
     }
     if (displaying_quote == true) {
