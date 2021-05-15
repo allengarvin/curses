@@ -4804,7 +4804,7 @@ Global global34;
 Global global35;
 Global global36;
 Global global37;
-Global global38;
+Global notheld_mode;
 Global onotheld_mode;
 Global global40;
 Global global41;
@@ -4888,7 +4888,7 @@ Global global118;
 Global global119;
 Global global120;
 Global inventory_style;
-Global global122;
+Global keep_silent;
 Global global123;
 Global game_section = T_MODERN;
 Global good_try_bonus;
@@ -5291,7 +5291,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine42116 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 ;	! 42116 / 0xa484
-    if (global38 == 1[?]) {
+    if (notheld_mode == 1) {
         local6 = 0;
       .label42125;
         if (local6 < 8) {
@@ -5299,7 +5299,7 @@ Array array_29185 -->	! 29185 (0x7201)
             ++local6;
             jump label42125;
         }
-        global38 = 0;
+        notheld_mode = 0;
         rtrue;
     }
     if (global88 == 1[?]) {
@@ -5742,7 +5742,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             }
                             oops_from = 0;
                             if (interfrom ~= 0 && global24 == player) {
-                                global38 = 1[?];
+                                notheld_mode = 1;
                                 local6 = 0;
                               .label44433;
                                 if (local6 < 8) {
@@ -6363,7 +6363,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             local4 = parent(local3);
             if (local4 ~= global24) {
-                if (global38 == 1[?]) {
+                if (notheld_mode == 1) {
                     global66 = oops_from;
                     global91 = 6[ne_obj?];
                     jump label47741;
@@ -7954,8 +7954,8 @@ Array array_29185 -->	! 29185 (0x7201)
         second = nothing;
         verb = ##Score;
         global37 = 0;
-        onotheld_mode = global38;
-        global38 = 0;
+        onotheld_mode = notheld_mode;
+        notheld_mode = 0;
         verb = array_24207-->0;
         if (verb == ##GiveR or ##ShowR) {
             local1 = array_24207-->2;
@@ -8055,7 +8055,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 }
             }
         }
-        if (global38 == 1[?]) {
+        if (notheld_mode == 1) {
             global40 = 1[?];
         }
         if (deadflag == 0 && global40 == 0) {
@@ -8222,7 +8222,7 @@ Array array_29185 -->	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine55280 ;	! 55280 / 0xd7f0
+[ AfterRoutines ;	! 55280 / 0xd7f0
     global100 = 4[e_obj?];
     global72 = 0;
     routine51412(location,player,0);
@@ -20233,7 +20233,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (inventory_style & 8 ~= 0) {
         print ".^";
     }
-    routine55280();
+    AfterRoutines();
     rtrue;
 ];
 
@@ -20247,11 +20247,11 @@ Array array_29185 -->	! 29185 (0x7201)
             rtrue;
         }
     }
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    global38 = onotheld_mode;
-    if (global38 == 1[?] || global122 == 1[?]) {
+    notheld_mode = onotheld_mode;
+    if (notheld_mode == 1 || keep_silent == true) {
         rtrue;
     }
     routine166408(19[rod_of_stalking?],1[?]);
@@ -20335,9 +20335,9 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             if (local3 ~= 0) {
                 routine166408(19[rod_of_stalking?],13[obj13_inside?],local3);
-                global122 = 1[?];
+                keep_silent = true;
                 routine55348(26[rod_of_language?],local3,79[obj79_canvas_rucksack?]);
-                global122 = 0;
+                keep_silent = false;
                 if (local3 notin obj79_canvas_rucksack) {
                     rtrue;
                 }
@@ -20377,10 +20377,10 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     move noun to parent(player);
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     return routine166408(28[rod_of_life?],4[e_obj?]);
@@ -20401,14 +20401,14 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     verb = ##Take;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     verb = ##Remove;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     return routine166408(20[rod_of_infinity?],4[e_obj?]);
@@ -20471,7 +20471,7 @@ Array array_29185 -->	! 29185 (0x7201)
     return routine166408(27[rod_of_returning2?],6[ne_obj?],second);
   .label162619;
     move noun to second;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     if (second > 1) {
@@ -20482,7 +20482,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         verb = ##PutOn;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     if (global37 == 1[?]) {
@@ -20537,7 +20537,7 @@ Array array_29185 -->	! 29185 (0x7201)
     return routine166408(26[rod_of_language?],7[se_obj?],second);
   .label162866;
     move noun to second;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     if (second > 1) {
@@ -20548,7 +20548,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         verb = ##Insert;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     if (global37 == 1[?]) {
@@ -20719,10 +20719,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(21[rod_of_husbandry?],4[e_obj?]);
     }
     move player to noun;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(21[rod_of_husbandry?],5[w_obj?],noun);
@@ -20756,10 +20756,10 @@ Array array_29185 -->	! 29185 (0x7201)
     } else {
         move player to location;
     }
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(18[rod_of_returning?],3[s_obj?],local1);
@@ -20864,10 +20864,10 @@ Array array_29185 -->	! 29185 (0x7201)
         location = thedark;
         global10 = 0;
     }
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     LookSub(true);
@@ -21061,7 +21061,7 @@ Array array_29185 -->	! 29185 (0x7201)
     routine181208();
     routine164504();
     verb = ##Look;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     rtrue;
@@ -21089,7 +21089,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (noun has switchable) {
         routine166408(42[obj42_Servant_s_Room?],3[s_obj?],noun);
     }
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     rtrue;
@@ -21128,7 +21128,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (noun hasnt transparent && noun hasnt open) {
         return routine166408(43[obj43_classical_dictionary?],5[w_obj?]);
     }
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     generic_global = 0;
@@ -21157,10 +21157,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(47[obj47_Old_Furniture?],3[s_obj?]);
     }
     give noun ~locked;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(47[obj47_Old_Furniture?],4[e_obj?],noun);
@@ -21181,10 +21181,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(65[obj65_smoke_detector?],4[e_obj?]);
     }
     give noun locked;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(65[obj65_smoke_detector?],5[w_obj?],noun);
@@ -21201,10 +21201,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(64[obj64_Disused_Observatory?],2[?]);
     }
     give noun on;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(64[obj64_Disused_Observatory?],3[s_obj?],noun);
@@ -21219,10 +21219,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(49[obj49_scratched_cupboard?],2[?]);
     }
     give noun ~on;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(49[obj49_scratched_cupboard?],3[s_obj?],noun);
@@ -21240,10 +21240,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(46[obj46_tight_door?],3[s_obj?]);
     }
     give noun open;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     if (noun has container && noun hasnt transparent && child(noun) ~= nothing) {
@@ -21261,10 +21261,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(48[obj48_furniture?],2[?]);
     }
     give noun ~open;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(48[obj48_furniture?],3[s_obj?],noun);
@@ -21276,10 +21276,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(22[rod_of_bronze?],1[?]);
     }
     give noun ~attrib26;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(22[rod_of_bronze?],2[?],noun);
@@ -21297,10 +21297,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(25[rod_of_ice?],3[s_obj?]);
     }
     give noun attrib26;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(25[rod_of_ice?],4[e_obj?],noun);
@@ -21312,10 +21312,10 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(72[obj72_slide_projector?],1[?]);
     }
     remove noun;
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
-    if (global122 == 1[?]) {
+    if (keep_silent == true) {
         rtrue;
     }
     routine166408(72[obj72_slide_projector?],2[?],noun);
@@ -21515,7 +21515,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ WaitSub ;	! 166064 / 0x288b0
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     routine166408(67[obj67_Library_Storage?]);
@@ -21534,7 +21534,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (second == u_obj or d_obj) {
         return routine166408(62[obj62_red_lamp?],3[s_obj?]);
     }
-    routine55280();
+    AfterRoutines();
     local1 = noun;
     move local1 to player;
     routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],second);
@@ -23368,7 +23368,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     give noun attrib38;
     Achieved(6);
-    if (routine55280() == 1[?]) {
+    if (AfterRoutines() == true) {
         rtrue;
     }
     "The rod charges with etherial power, drawn up from the earth through ley lines...";
