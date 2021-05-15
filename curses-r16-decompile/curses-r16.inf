@@ -5058,7 +5058,7 @@ Array quote_line --> 10;	! 25943 (0x6557)
 Array array_23893 --> 1;	! 23893 (0x5d55)
 Array array_23957 --> 1;	! 23957 (0x5d95)
 Array array_24021 --> 30720;	! 24021 (0x5dd5)
-Array array_24142 --> 16384[?];	! 24142 (0x5e4e)
+Array parse --> 16384[?];	! 24142 (0x5e4e)
 Array array_24142 --> 16384[?];	! 24142 (0x5e4e)
 Array array_24207 --> 1;	! 24207 (0x5e8f)
 Array array_24239 --> 1;	! 24239 (0x5eaf)
@@ -5267,7 +5267,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (w == 'o//' or 'oops') {
         ! no code
     } else {
-        if (w == 'undo' && array_24142->1 == 1[?]) {
+        if (w == 'undo' && parse->1 == 1[?]) {
             if (turns == 1) {
                 L__M(##Miscellany,11);
                 jump label41768;
@@ -5354,7 +5354,7 @@ Array array_29185 -->	! 29185 (0x7201)
         i = 0;
       .label42161;
         if (i < 64) {
-            array_24142->i = array_24488->i;
+            parse->i = array_24488->i;
             ++i;
             jump label42161;
         }
@@ -5364,16 +5364,16 @@ Array array_29185 -->	! 29185 (0x7201)
   .label42187;
     Keyboard(24021[?],24142[?]);
   .label42195;
-    global51 = array_24142->1;
+    global51 = parse->1;
     global50 = 1[?];
     routine181220();
-    global51 = array_24142->1;
+    global51 = parse->1;
     if (parser_trace >= 4) {
         print "[ ", global51, " to parse: ";
         i = 1[?];
       .label42238;
         if (i <= global51) {
-            j = array_24142-->((i - 1) * 2 + 1);
+            j = parse-->((i - 1) * 2 + 1);
             if (j == 0) {
                 print "? ";
             } else {
@@ -5418,7 +5418,7 @@ Array array_29185 -->	! 29185 (0x7201)
             i = 0;
           .label42488;
             if (i < 64) {
-                array_24142->i = array_24553->i;
+                parse->i = array_24553->i;
                 ++i;
                 jump label42488;
             }
@@ -5428,7 +5428,7 @@ Array array_29185 -->	! 29185 (0x7201)
             i = 0;
           .label42523;
             if (i < 64) {
-                array_24553->i = array_24142->i;
+                array_24553->i = parse->i;
                 ++i;
                 jump label42523;
             }
@@ -5986,16 +5986,16 @@ Array array_29185 -->	! 29185 (0x7201)
             i = 0;
           .label45518;
             if (i < j) {
-                array_24488-->(2 * i + 1) = array_24142-->(2 * i + 1);
-                array_24488-->(2 * i + 2) = array_24142-->(2 * i + 2);
+                array_24488-->(2 * i + 1) = parse-->(2 * i + 1);
+                array_24488-->(2 * i + 2) = parse-->(2 * i + 2);
                 ++i;
                 jump label45518;
             }
             i = global92;
           .label45587;
             if (i <= global93) {
-                array_24488-->(2 + 2 * j) = array_24142-->(2 * i);
-                array_24488-->(1 + 2 * j) = array_24142-->(2 * i - 1);
+                array_24488-->(2 + 2 * j) = parse-->(2 * i);
+                array_24488-->(1 + 2 * j) = parse-->(2 * i - 1);
                 ++i;
                 ++j;
                 jump label45587;
@@ -6003,8 +6003,8 @@ Array array_29185 -->	! 29185 (0x7201)
             i = global50;
           .label45654;
             if (i <= global51) {
-                array_24488-->(2 + 2 * j) = array_24142-->(2 * i);
-                array_24488-->(1 + 2 * j) = array_24142-->(2 * i - 1);
+                array_24488-->(2 + 2 * j) = parse-->(2 * i);
+                array_24488-->(1 + 2 * j) = parse-->(2 * i - 1);
                 ++i;
                 ++j;
                 jump label45654;
@@ -6018,16 +6018,16 @@ Array array_29185 -->	! 29185 (0x7201)
         i = 0;
       .label45736;
         if (i < j) {
-            array_24488-->(2 * i + 1) = array_24142-->(2 * i + 1);
-            array_24488-->(2 * i + 2) = array_24142-->(2 * i + 2);
+            array_24488-->(2 * i + 1) = parse-->(2 * i + 1);
+            array_24488-->(2 * i + 2) = parse-->(2 * i + 2);
             ++i;
             jump label45736;
         }
         i = global50;
       .label45805;
         if (i <= global51) {
-            array_24488-->(2 + 2 * j) = array_24142-->(2 * i);
-            array_24488-->(1 + 2 * j) = array_24142-->(2 * i - 1);
+            array_24488-->(2 + 2 * j) = parse-->(2 * i);
+            array_24488-->(1 + 2 * j) = parse-->(2 * i - 1);
             ++i;
             ++j;
             jump label45805;
@@ -6601,8 +6601,8 @@ Array array_29185 -->	! 29185 (0x7201)
             routine53440(24142[?],24488[?]);
             return 10000[?];
         }
-        local9 = array_24142->1;
-        array_24142->1 = local10 + local9;
+        local9 = parse->1;
+        parse->1 = local10 + local9;
         local7 = local9 + local10;
       .label48387;
         if (local7 > global70) {
@@ -6640,7 +6640,7 @@ Array array_29185 -->	! 29185 (0x7201)
         routine53440(24142[?],24488[?]);
         return 10000[?];
     }
-    local9 = array_24142->1;
+    local9 = parse->1;
     if (interfrom == 0) {
         local7 = 1[?];
       .label48556;
@@ -6673,7 +6673,7 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label48617;
         }
     }
-    array_24142->1 = local10 + local9;
+    parse->1 = local10 + local9;
     return 10000[?];
 ];
 
@@ -7273,8 +7273,8 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine51364 local1 local2 local3 local4 local5 ;	! 51364 / 0xc8a4
     local4 = local1 * 2 - 1;
     local5 = local3 * 2 - 1;
-    array_24142-->local4++ = local2-->local5++;
-    array_24142-->local4 = local2-->local5;
+    parse-->local4++ = local2-->local5++;
+    parse-->local4 = local2-->local5;
     rtrue;
 ];
 
@@ -7504,7 +7504,7 @@ Array array_29185 -->	! 29185 (0x7201)
         Defart(local1);
         print " (", local1, ") at word ", global50, "^";
     }
-    if (global80 ~= 0 && global50 > array_24142->1) {
+    if (global80 ~= 0 && global50 > parse->1) {
         routine52240(local1,0);
         rfalse;
     }
@@ -7649,16 +7649,16 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine52976 local1 local2 local3 ;	! 52976 / 0xcef0
-    if (global50 > array_24142->1) {
+    if (global50 > parse->1) {
         ++global50;
         rfalse;
     }
     local1 = global50 * 2 - 1;
     ++global50;
-    local2 = array_24142-->local1;
+    local2 = parse-->local1;
     if (local2 == 0) {
         local3 = global50 * 4 - 3;
-        local1 = array_24021->(array_24142->local3);
+        local1 = array_24021->(parse->local3);
         if (local1 == 44[obj44_camp_bed?]) {
             local2 = 41628['xcomma'?];
         }
@@ -7670,7 +7670,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine53056 ;	! 53056 / 0xcf40
-    if (global50 > array_24142->1) {
+    if (global50 > parse->1) {
         ++global50;
         return 65535[?];
     }
@@ -7678,11 +7678,11 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine53080 local1 ;	! 53080 / 0xcf58
-    return 24021 + array_24142->(local1 * 4 + 1);
+    return 24021 + parse->(local1 * 4 + 1);
 ];
 
 [ routine53104 local1 ;	! 53104 / 0xcf70
-    return array_24142->(local1 * 4);
+    return parse->(local1 * 4);
 ];
 
 [ routine53120 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 ;	! 53120 / 0xcf80
@@ -7695,9 +7695,9 @@ Array array_29185 -->	! 29185 (0x7201)
         return local3;
     }
     local2 = local1 * 4 + 1;
-    local3 = array_24142->local2;
+    local3 = parse->local2;
     local5 = local3 + 24021;
-    local6 = array_24142->(local2 - 1);
+    local6 = parse->(local2 - 1);
     local8 = routine181256(local5,local6);
     if (local8 ~= 0) {
         return local8;
@@ -8142,8 +8142,8 @@ Array array_29185 -->	! 29185 (0x7201)
     generic_global = 0;
     array_24021->1 = 0;
     routine185684();
-    @aread array_24021 array_24142 -> generic_global;
-    local1 = array_24142-->1;
+    @aread array_24021 parse -> generic_global;
+    local1 = parse-->1;
     if (local1 == 37839['quit'?] or 37767['q//'?]) {
         @quit;
     }
@@ -8337,9 +8337,9 @@ Array array_29185 -->	! 29185 (0x7201)
     generic_global = 0;
     array_24021->1 = 0;
     routine185684();
-    @aread array_24021 array_24142 -> generic_global;
-    local6 = array_24142-->1;
-    if (local6 == 37839['quit'?] or 37767['q//'?] || array_24142->1 == 0) {
+    @aread array_24021 parse -> generic_global;
+    local6 = parse-->1;
+    if (local6 == 37839['quit'?] or 37767['q//'?] || parse->1 == 0) {
         --global110;
         if (global110 > 0) {
             rfalse;
@@ -9463,7 +9463,7 @@ Array array_29185 -->	! 29185 (0x7201)
     print "^Warning: something extremely cliched is about to happen. When you think you have composed yourself and can stand it, press ENTER. ", '>';
     array_24021->1 = 0;
     routine185684();
-    @aread array_24021 array_24142 -> generic_global;
+    @aread array_24021 parse -> generic_global;
     new_line;
     "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reaching up high into the sky!  You yawn convulsively.";
 ];
@@ -20064,8 +20064,8 @@ Array array_29185 -->	! 29185 (0x7201)
     if (1[?] == 1[?]) {
         array_24021->1 = 0;
         routine185684();
-        @aread array_24021 array_24142 -> generic_global;
-        i = array_24142-->1;
+        @aread array_24021 parse -> generic_global;
+        i = parse-->1;
         if (i == 'yes' or 'y//') {
             rtrue;
         }
@@ -23913,9 +23913,9 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine181828 local1 local2 local3 local4 ;	! 181828 / 0x2c644
     local3 = global50 * 4 + 1;
-    local4 = array_24142->local3;
+    local4 = parse->local3;
     local1 = local4 + 24021;
-    local2 = array_24142->(local3 - 1);
+    local2 = parse->(local3 - 1);
     if (local2 ~= 1[?]) {
         return 65535[?];
     }
