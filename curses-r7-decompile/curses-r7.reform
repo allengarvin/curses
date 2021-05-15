@@ -339,8 +339,8 @@ Global 7 light_lvl:bool
 Global 8 deadflag:final_state
 GlobalArray 9 buffer:array(?)
 GlobalArray 10 parse:array(?)
-!GlobalArray 11 global11:array(?)
-!GlobalArray 12 global12:array(?)
+GlobalArray 11 some_array1:array(?)
+GlobalArray 12 some_array2:array(?)
 GlobalArray 13 inputobjs:array(16*dictword)
 Global 14 action:action
 Global 15 noun:object
@@ -377,12 +377,12 @@ Global 45 hollowman_cnt:int
 Global 46 multiflag:bool
 Global 47 notheld_mode:bool
 Global 48 onotheld_mode
-!Global 49 global49:?
+Global 49 phrase_len:int
 Global 50 num_words
 Global 54 verb_word:dictword
 Global 61 oops_from
-!GlobalArray 55 global55:array(?)
-!GlobalArray 56 global56:array(?)
+GlobalArray 55 some_array3:array(?)
+GlobalArray 56 some_array2:array(?)
 LastGlobal 71
 
 Array 11869 verb_routine_array:array(110*routine)
@@ -647,7 +647,7 @@ Routine 0xef82 RodOfLuckAction i j
 Routine 0xf006 RodOfSacrificeAction i j 
 Routine 0xf0b2 RodOfLanguageAction i j 
 Routine 0xf0fa RodOfStalkingAction i j 
-Routine 0xf282 RodOfInfinityAction i j 
+Routine 0xf282 RodOfInfinityAction i:object j 
 Routine 0xf3d6 XMasterSub i:object j:object
 Routine 0xf40e HouseAfter o:object
 Routine 0xf566 WineryAfter i
@@ -714,8 +714,8 @@ Routine 0x11552 MazeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool
 Routine 0x11818 MazeAfter ret:bool
 Routine 0x11828 MazeFoundationsAfter:bool
 Routine 0x11862 LedgeBefore env:object
-Routine 0x118ce BeanPoleAfter
-Routine 0x118e8 TreePlantingAfter:bool
+Routine 0x118ce BeanPoleAfter unused
+Routine 0x118e8 TreePlantingAfter:bool unused
 Routine 0x118f0 FollyAfter:bool
 Routine 0x118f8 ClifftopWalkBefore:bool
 Routine 0x1195e SacredEarthBefore:bool
@@ -733,13 +733,13 @@ Routine 0x12294 StreamBefore
 Routine 0x12370 DieAfter n:int
 Routine 0x1239e InsideWellBefore i
 Routine 0x123d8 TricliniumBefore o
-Routine 0x124c8 TricliniumAfter
+Routine 0x124c8 TricliniumAfter o
 Routine 0x12552 EntranceBefore
 Routine 0x125ba EntranceAfter
 Routine 0x125c4 DaisyAfter
 Routine 0x12628 DaisyBefore
 Routine 0x1267e HangingBefore
-Routine 0x126ca HypocaustBeforE o
+Routine 0x126ca HypocaustBefore var1
 Routine 0x1279e Capture o:object
 Routine 0x12942 SaxonBefore
 Routine 0x12986 TentPoleAfter
@@ -753,9 +753,9 @@ Routine 0x13bd8 DevilConsultTopic:int wrd:dictword topic:topic_enum
 Routine 0x13dae AngelConsultTopic:int wrd:dictword topic:angel_topic_enum
 Routine 0x13e76 XDemonHintSub
 Routine 0x13e80 XAngelHintSub
-Routine 0x13e8a DemonQuestion var1 var2
-Routine 0x13f70 AngelQuestion
-Routine 0x14054 Keyboard
+Routine 0x13e8a DemonQuestion wrd:dictword topic
+Routine 0x13f70 AngelQuestion wrd:dictword topic
+Routine 0x14054 Keyboard  a_buffer a_table  nw i w w2 x1 x2
 Routine 0x14150 Parser results syntax line num_lines line_address i j token l m var11 etype_local:int
 Routine 0x14972 routine_14972
 Routine 0x1493e routine_1493e var1 var2 var3:dictword var4:dictword var5 var6 var7 var8 var9 var10 var11 var12 var13
@@ -770,17 +770,17 @@ Routine 0x14f3e routine_14f3e
 Routine 0x14f66 routine_14f66
 Routine 0x14f98 routine_14f98
 Routine 0x14fb6 routine_14fb6
-Routine 0x15060 routine_15060
-Routine 0x15096 routine_15096
+Routine 0x15060 ParseName o w1 w2 addr len i
+Routine 0x15096 PronounFunc i j:dictword k
 Routine 0x150d4 routine_150d4
 Routine 0x150fa routine_150fa
-Routine 0x15140 routine_15140
-Routine 0x151aa routine_151aa
-Routine 0x15294 routine_15294
-Routine 0x152b4 routine_152b4
-Routine 0x152da routine_152da
-Routine 0x1530e routine_1530e
-Routine 0x15346 routine_15346
+Routine 0x15140 DebugParse xlen:int i inext len:int
+Routine 0x151aa TryNumber i:int j k c num:int len:int mul:int tot:int i2:int n:int
+Routine 0x15294 ZeroTable from i len
+Routine 0x152b4 CopyTable from dst i:int len
+Routine 0x152da DumpDebug addr i
+Routine 0x1530e PrintHexByte dig1 dig2
+Routine 0x15346 PrintHex n:int
 
 Word ancien ancient
 Word androm andromeda
