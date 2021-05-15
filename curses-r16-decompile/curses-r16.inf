@@ -4821,7 +4821,7 @@ Global global4 = 65535[?];
 Global global5 = 1[?];
 Global global6;
 Global score;
-Global global8 = 1[?];
+Global turns = 1;
 Global player;
 Global global10 = 1[?];
 Global real_location = thedark;
@@ -5268,7 +5268,7 @@ Array array_29185 -->	! 29185 (0x7201)
         ! no code
     } else {
         if (w == 'undo' && array_24142->1 == 1[?]) {
-            if (global8 == 1[?]) {
+            if (turns == 1) {
                 L__M(262,11);
                 jump label41768;
             }
@@ -7908,7 +7908,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine53944 ;	! 53944 / 0xd2b8
     if (global4 == 65535[?]) {
         global2 = score;
-        global3 = global8;
+        global3 = turns;
     } else {
         global2 = global4 / 60;
         global3 = global4 % 60;
@@ -8647,7 +8647,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine56744 local1 local2 ;	! 56744 / 0xdda8
-    ++global8;
+    ++turns;
     if (global4 ~= 65535[?]) {
         if (global5 >= 0) {
             global4 = global4 + global5;
@@ -21831,8 +21831,8 @@ Array array_29185 -->	! 29185 (0x7201)
         } else {
             print "In that game you scored ";
         }
-        print score, " out of a possible ", 550, ", in ", global8, " turn";
-        if (global8 > 1) {
+        print score, " out of a possible ", 550, ", in ", turns, " turn";
+        if (turns > 1) {
             print "s";
         }
         rtrue;
@@ -24428,7 +24428,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local2 = local1 - 15;
         @set_cursor 1 local2;
         global132 = score;
-        print score, "/", global8, "   ";
+        print score, "/", turns, "   ";
     } else {
         if (displaying_quote == true) {
             local2 = local1 - 35;
@@ -24452,7 +24452,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (displaying_quote == true) {
             print "Turns: ";
         }
-        print global8;
+        print turns;
         if (displaying_quote == true || global131 ~= game_section) {
             game_section = location.section;
             local2 = local1 - 20;
