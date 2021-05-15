@@ -4896,8 +4896,8 @@ Global global70;
 Global global71;
 Global global72;
 Global global73;
-Global global74;
-Global global75;
+Global vague_word;
+Global vague_obj;
 Global global76;
 Global global77;
 Global global78;
@@ -5553,8 +5553,8 @@ Array array_29185 -->	! 29185 (0x7201)
             i = 255 - verb_word->7;
             syntax = 0-->7-->i;
             num_lines = syntax->0 - 1;
-            global74 = 34860['it'?];
-            global75 = global76;
+            vague_word = 'it';
+            vague_obj = global76;
             if (parser_trace >= 1) {
                 print "[Parsing for the verb '", (address) verb_word, "' (", num_lines + 1, " lines)]^";
             }
@@ -5923,7 +5923,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "You can only use multiple objects once on a line.^";
     }
     if (global91 == 9[sw_obj?]) {
-        print "I'm not sure what ~", (address) global74, "~ refers to.^";
+        print "I'm not sure what ~", (address) vague_word, "~ refers to.^";
     }
     if (global91 == 10[u_obj?]) {
         print "You excepted something not included anyway!^";
@@ -5938,8 +5938,8 @@ Array array_29185 -->	! 29185 (0x7201)
         print "That's not something you need to refer to in the course of this game.^";
     }
     if (global91 == 14[thedark?]) {
-        print "You can't see ~", (address) global74, "~ (";
-        Defart(global75);
+        print "You can't see ~", (address) vague_word, "~ (";
+        Defart(vague_obj);
         print ") at the moment.^";
     }
     if (global91 == 15[yourself?]) {
@@ -6220,32 +6220,32 @@ Array array_29185 -->	! 29185 (0x7201)
     local4 = routine52976();
     --wn;
     if (local4 == 34860['it'?] or 40287['them'?]) {
-        global74 = local4;
-        global75 = global76;
+        vague_word = local4;
+        vague_obj = global76;
         if (global76 == 0) {
             global91 = 9[sw_obj?];
             return 0;
         }
     }
     if (local4 == 34374['him'?]) {
-        global74 = local4;
-        global75 = global77;
+        vague_word = local4;
+        vague_obj = global77;
         if (global77 == 0) {
             global91 = 9[sw_obj?];
             return 0;
         }
     }
     if (local4 == 34293['her'?]) {
-        global74 = local4;
-        global75 = global78;
+        vague_word = local4;
+        vague_obj = global78;
         if (global78 == 0) {
             global91 = 9[sw_obj?];
             return 0;
         }
     }
     if (local4 == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
-        global74 = local4;
-        global75 = player;
+        vague_word = local4;
+        vague_obj = player;
     }
     if (local2 == 7[se_obj?]) {
         local3 = routine53120(wn);
@@ -7192,7 +7192,7 @@ Array array_29185 -->	! 29185 (0x7201)
     --wn;
     local2 = routine52976();
     local3 = 4[e_obj?];
-    if (local2 == global74) {
+    if (local2 == vague_word) {
         local3 = 14[thedark?];
     }
     local1 = parent(actor);
