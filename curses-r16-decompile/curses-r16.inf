@@ -4898,7 +4898,7 @@ Global verb_word;
 Global verb_wordnum;
 Global global54;
 Global global55;
-Global global56;
+Global multihad;
 Global multi_context;
 Global pcount;
 Global global59;
@@ -5966,14 +5966,14 @@ Array array_29185 -->	! 29185 (0x7201)
         print "I didn't understand the way that finished.^";
     }
     if (etype == TOOFEW_PE) {
-        if (global56 == 0) {
+        if (multihad == 0) {
             print "None";
         } else {
             print "Only ";
-            EnglishNumber(global56);
+            EnglishNumber(multihad);
         }
         print " of those ";
-        if (global56 == 1[?]) {
+        if (multihad == 1) {
             print "is";
         } else {
             print "are";
@@ -6486,7 +6486,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local9 = 0;
         multi_context = local2;
     } else if (indef_mode == 1[?] && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
-        global56 = 1[?];
+        multihad = 1;
         global55 = global82;
         etype = TOOFEW_PE;
         jump label47741;
@@ -6808,7 +6808,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (local2 < global82 && global82 < 100) {
             etype = TOOFEW_PE;
             global55 = global82;
-            global56 = multiple_object-->0;
+            multihad = multiple_object-->0;
             return 65535[?];
         }
         multiple_object-->0 = local2 + local10;
