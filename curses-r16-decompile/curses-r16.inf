@@ -7978,7 +7978,7 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine53992 local1 ;	! 53992 / 0xd2e8
+[ NotifyTheScore local1 ;	! 53992 / 0xd2e8
     print "^[Your score has just gone ";
     if (last_score > score) {
         local1 = last_score - score;
@@ -8038,7 +8038,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (deadflag == 0) {
         if (score ~= last_score) {
             if (notify_mode == true) {
-                routine53992();
+                NotifyTheScore();
             }
             last_score = score;
         }
