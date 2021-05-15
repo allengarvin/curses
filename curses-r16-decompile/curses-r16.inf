@@ -4856,8 +4856,8 @@ Global global30;
 Global selfobj;
 Global noun;
 Global second;
-Global global34;
-Global global35;
+Global special_word;
+Global special_number;
 Global global36;
 Global global37;
 Global notheld_mode;
@@ -4879,12 +4879,12 @@ Global verb_wordnum;
 Global global54;
 Global global55;
 Global global56;
-Global nsns;
+Global global57;
 Global pcount;
 Global global59;
 Global parameters;
 Global params_wanted;
-Global global62;
+Global nsns;
 Global interfrom;
 Global global64;
 Global oops_from;
@@ -5579,11 +5579,11 @@ Array array_29185 -->	! 29185 (0x7201)
                 interfrom = 0;
                 parameters = 0;
                 params_wanted = line_address->0;
-                global62 = 0;
-                global34 = 0;
-                global35 = 0;
-                array_24239-->0 = 0;
                 nsns = 0;
+                special_word = 0;
+                special_number = 0;
+                array_24239-->0 = 0;
+                global57 = 0;
                 global91 = 1[?];
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
@@ -5656,9 +5656,9 @@ Array array_29185 -->	! 29185 (0x7201)
                 notholding = 0;
                 interfrom = 0;
                 parameters = 0;
-                global62 = 0;
-                global34 = 0;
-                global35 = 0;
+                nsns = 0;
+                special_word = 0;
+                special_number = 0;
                 array_24239-->0 = 0;
                 global91 = 1[?];
                 action_to_be = line_address->7;
@@ -5867,16 +5867,16 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label42337;
         }
         wn = verb_wordnum;
-        global34 = routine52976();
-        if (global34 == 41628['xcomma'?]) {
-            global34 = routine52976();
+        special_word = routine52976();
+        if (special_word == 41628) {
+            special_word = routine52976();
             ++verb_wordnum;
         }
-        global35 = routine53120(verb_wordnum);
+        special_number = routine53120(verb_wordnum);
         results-->0 = 264[obj264_aft_wall?];
         results-->1 = 2[?];
         results-->2 = 1[?];
-        global29 = global34;
+        global29 = special_word;
         results-->3 = actor;
         global43 = verb_wordnum;
         global44 = num_words - global43 + 1;
@@ -6250,13 +6250,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local2 == 7[se_obj?]) {
         local3 = routine53120(wn);
         if (local3 ~= 64536[?]) {
-            if (global62 == 0) {
+            if (nsns == 0) {
                 global29 = local3;
             } else {
                 global30 = local3;
             }
-            global35 = local3;
-            ++global62;
+            special_number = local3;
+            ++nsns;
             if (parser_trace >= 3) {
                 print "  [Read special as the number ", local3, "]^";
             }
@@ -6264,7 +6264,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (parser_trace >= 3) {
             print "  [Read special word at word number ", wn, "]^";
         }
-        global34 = routine52976();
+        special_word = routine52976();
         local9 = 1[?];
     } else if (local2 == 8[nw_obj?]) {
         local3 = routine53120(wn++);
@@ -6275,7 +6275,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (parser_trace >= 3) {
             print "  [Read number as ", local3, "]^";
         }
-        if (global62++ == 0) {
+        if (nsns++ == 0) {
             global29 = local3;
         } else {
             global30 = local3;
@@ -6294,12 +6294,12 @@ Array array_29185 -->	! 29185 (0x7201)
             rtrue;
         }
         if (local3 == 1[?]) {
-            if (global62 == 0) {
+            if (nsns == 0) {
                 global29 = global36;
             } else {
                 global30 = global36;
             }
-            ++global62;
+            ++nsns;
         }
         if (local3 == 10000[?]) {
             return local3;
@@ -6464,7 +6464,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local11 == 1[?]) {
         local9 = 0;
-        nsns = local2;
+        global57 = local2;
     } else if (global80 == 1[?] && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
         global56 = 1[?];
         global55 = global82;
@@ -6792,7 +6792,7 @@ Array array_29185 -->	! 29185 (0x7201)
             return 65535[?];
         }
         array_24239-->0 = local2 + local10;
-        nsns = local1;
+        global57 = local1;
         if (parser_trace >= 4) {
             print "   Made multiple object of size ", local2, "]^";
         }
@@ -6885,12 +6885,12 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 4) {
         print "   Revising multiple object list of size ", array_24239-->0, " with 2nd ", (name) local1, "^";
     }
-    if (nsns == 4 or 5) {
+    if (global57 == 4[e_obj?] or 5[w_obj?]) {
         local2 = 1[?];
         local3 = 0;
       .label49771;
         if (local2 <= array_24239-->0) {
-            if (nsns == 4 && array_24239-->local2 ~= local1 || (nsns == 5 && array_24239-->local2 in local1)) {
+            if (global57 == 4[e_obj?] && array_24239-->local2 ~= local1 || (global57 == 5[w_obj?] && array_24239-->local2 in local1)) {
                 ++local3;
                 array_24239-->local3 = array_24239-->local2;
             }
@@ -6899,7 +6899,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         array_24239-->0 = local3;
     }
-    if (nsns == 2) {
+    if (global57 == 2[?]) {
         local2 = 1[?];
         local3 = 0;
       .label49850;
@@ -8035,7 +8035,7 @@ Array array_29185 -->	! 29185 (0x7201)
             verb = ##Give;
         }
         if (verb == ##Ask or ##Tell or ##Answer) {
-            global34 = global29;
+            special_word = global29;
         }
       .label54402;
         global27 = 0;
@@ -13067,7 +13067,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (obj161_curtain hasnt attrib8) {
             "She is startled and stares.";
         }
-        if (global34 == 32880['even'?] or 36525['odd'?]) {
+        if (special_word == 32880 or 36525) {
             routine96248();
             remove obj163_Madame_Sosostris__famous_clairvoyante;
             give obj161_curtain ~attrib8;
@@ -13128,7 +13128,7 @@ Array array_29185 -->	! 29185 (0x7201)
         "You are unable to touch the man. It is as if he isn't there.";
     }
     if (action == ##Action259 or ##Answer) {
-        if (global34 == 40476['time'?] || verb == ##Time) {
+        if (special_word == 40476 || verb == ##Time) {
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
             if (obj176_tourist_map_of_Paris has moved) {
                 PlayerTo(138[obj138_Infinity_Symbol?]);
@@ -13196,13 +13196,13 @@ Array array_29185 -->	! 29185 (0x7201)
         if (fifty_franc_note hasnt attrib8) {
             "It's not that he doesn't understand you, he's just obstructive for the sake of it.";
         }
-        if (global34 == 31107['carte'?]) {
+        if (special_word == 31107) {
             move obj176_tourist_map_of_Paris to player;
             Achieved(18);
             give obj176_tourist_map_of_Paris moved;
             "Extremely reluctantly he serves you, giving you a tourist map of Paris.";
         }
-        if (global34 == 35625['map'?]) {
+        if (special_word == 35625) {
             "He refuses to understand you, on principle.";
         }
         "~Non.~  And he folds his arms defiantly. Perhaps he has no such thing.";
@@ -13386,7 +13386,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Action259 or ##Answer or ##Ask) {
-        if (global34 == 31926['curses'?]) {
+        if (special_word == 31926) {
             print "In a harsh voice, the goat intones:^^";
             VersionSub();
             rtrue;
@@ -14069,7 +14069,7 @@ Array array_29185 -->	! 29185 (0x7201)
             "Homer glares back.";
         }
         if (obj240_Homer.prop24 == 0) {
-            if (global34 == 29730['agamemnon'?]) {
+            if (special_word == 29730) {
                 obj240_Homer.prop24 = 1[?];
                 "~Mph,~ he says (untranslatably). ~But can ya see the future?  Who's gonna rule Alexandria after the fall of the guy they're gonna call Alexander the Big?~";
             }
@@ -14078,13 +14078,13 @@ Array array_29185 -->	! 29185 (0x7201)
             "~Hopeless,~ he says dismissively and falls asleep.";
         }
         if (obj240_Homer.prop24 == 1[?]) {
-            if (global34 == 37650['ptolemy'?]) {
+            if (special_word == 37650) {
                 obj240_Homer.prop24 = 2[?];
                 "~What's your favorite color?~";
             }
             jump label108857;
         }
-        if (global34 == 41664['yellow'?]) {
+        if (special_word == 41664) {
             obj240_Homer.initial = "Homer glares at you through sightless eyes.";
             move obj241_Pan_pipes to player;
             obj240_Homer.prop24 = 3[s_obj?];
@@ -18499,7 +18499,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (routine145968() ~= 0) {
             rtrue;
         }
-        if (routine144884(global34) ~= 0) {
+        if (routine144884(special_word) ~= 0) {
             give demon ~attrib8;
         }
         rtrue;
@@ -18613,7 +18613,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (routine147164() ~= 0) {
             rtrue;
         }
-        if (routine145076(global34) ~= 0) {
+        if (routine145076(special_word) ~= 0) {
             give demon ~attrib8;
         }
         rtrue;
@@ -18699,25 +18699,25 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ HelpSpecialSub ;	! 147944 / 0x241e8
     menu_selection = 0;
-    if (global34 == 34770['instruction'?]) {
+    if (special_word == 34770) {
         menu_selection = 1[?];
     }
-    if (global34 == 31611['commands'?]) {
+    if (special_word == 31611) {
         menu_selection = 2[?];
     }
-    if (global34 == 31800['credits'?]) {
+    if (special_word == 31800) {
         menu_selection = 3[s_obj?];
     }
-    if (global34 == 37983['release'?]) {
+    if (special_word == 37983) {
         menu_selection = 4[e_obj?];
     }
-    if (global34 == 35274['legal'?]) {
+    if (special_word == 35274) {
         menu_selection = 5[w_obj?];
     }
-    if (global34 == 34716['inform'?]) {
+    if (special_word == 34716) {
         menu_selection = 6[ne_obj?];
     }
-    if (global34 == 30054['archive'?]) {
+    if (special_word == 30054) {
         menu_selection = 7[se_obj?];
     }
     if (menu_selection == 0) {
