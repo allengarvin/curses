@@ -4842,7 +4842,6 @@ Constant SCORE_HIGHROD = 44;
 
 ! Globals
 
-Global global0 = 23848[?];
 Global location = Compass;
 Global global2;
 Global global3;
@@ -5083,6 +5082,30 @@ Global global238;
 Global generic_global;
 
 ! Arrays
+Array task_scores -->	! 23848 (0x5d28)
+    775
+    1802
+    771
+    1285
+    514
+    818
+    772
+    1542
+    3850
+    264
+    1024
+    3
+    774
+    1290
+    1799
+    771
+    774
+    776
+    771
+    1795
+    783
+    3843
+;
 Array quote_line --> 10;	! 25943 (0x6557)
 Array array_23893 --> 1;	! 23893 (0x5d55)
 Array array_23957 --> 1;	! 23957 (0x5d95)
@@ -5103,7 +5126,7 @@ Array array_25223 --> 1;	! 25223 (0x6287)
 Array array_25291 --> 2050[?];	! 25291 (0x62cb)
 Array array_25306 --> 2050[?];	! 25306 (0x62da)
 Array array_25893 --> 1;	! 25893 (0x6525)
-Array task_scores --> 22;	! 25975 (0x6577)
+Array task_done --> 22;	! 25975 (0x6577)
 Array array_26065 --> 48[obj48_furniture?];	! 26065 (0x65d1)
 Array array_28893 -->	! 28893 (0x70dd)
     ScoreSub
@@ -20254,9 +20277,9 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ Achieved num ;	! 161516 / 0x276ec
-    if (task_scores->num == 0) {
-        task_scores->num = 1[?];
-        score = score + global0->num;
+    if (task_done->num == 0) {
+        task_done->num = 1[?];
+        score = score + task_scores->num;
     }
     rtrue;
 ];
@@ -22617,7 +22640,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ PrintRank local1 local2 ;	! 173036 / 0x2a3ec
     print ", giving you the rank of ";
     local1 = score;
-    if (local1 ~= 65437[?] && task_scores->11 ~= 0) {
+    if (local1 ~= 65437[?] && task_done->11 ~= 0) {
         local1 = local1 - 50;
     }
     local2 = 1[?];
@@ -22783,13 +22806,13 @@ Array array_29185 -->	! 29185 (0x7201)
     ndx = 0;
   .label173944;
     if (ndx < 45) {
-        if (task_scores->ndx == 1[?]) {
+        if (task_done->ndx == 1[?]) {
             if (ndx == 21) {
                 PANum(65486);
                 score_var = score_var - 50;
             } else {
-                PANum(global0->ndx);
-                score_var = score_var + global0->ndx;
+                PANum(task_scores->ndx);
+                score_var = score_var + task_scores->ndx;
             }
             PrintTaskName(ndx);
         }
@@ -22822,7 +22845,7 @@ Array array_29185 -->	! 29185 (0x7201)
     new_line;
     PANum(score);
     L__M(##FullScore,4);
-    if (deadflag == WON && task_scores->11 == 0) {
+    if (deadflag == WON && task_done->11 == 0) {
         "^Sadly, you missed out on the 50-point bonus for rescuing Andromeda.";
     }
     rtrue;
