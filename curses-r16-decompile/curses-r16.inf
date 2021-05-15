@@ -5894,7 +5894,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print "None";
         } else {
             print "Only ";
-            routine157320(global56);
+            EnglishNumber(global56);
         }
         print " of those ";
         if (global56 == 1[?]) {
@@ -7889,7 +7889,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "up";
     }
     print " by ";
-    routine157320(local1);
+    EnglishNumber(local1);
     print " point";
     if (local1 > 1) {
         print "s";
@@ -11295,7 +11295,7 @@ Array array_29185 -->	! 29185 (0x7201)
             "In 1792, the last year of his life, ol' red-eyes becomes very excited about his new discovery. This time he claims that Merlyn bounde uppe the mystic estate (by this he means the back garden - Isaac never did have any sense of proportion) wyth great Roddes of Power. These are dangerous, yet also useful in themselves, but are really part of a great key... the usual nonsense. Of course you never actually see these rods, because they disguise themselves until waved by someone wearing Merlyn's hat.^^", "The funny thing is that Isaac died (legend has it, by spontaneous combustion) only a week after this breakthrough, preventing him from sending yet another paper to the Royal Society. But since Merlyn supposedly lived in about the sixth century A.D., there can't be a lot left of his hat, so the matter may be academic.";
         }
         print "In the year ";
-        routine157320(local1);
+        EnglishNumber(local1);
         print ", Isaac was mainly concerned with ";
         local1 = local1 % 6;
         if (local1 == 0) {
@@ -13560,7 +13560,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local1 = selfobj.number;
         if (selfobj.prop24 ~= 0) {
             print "The clock is running, and currently at ";
-            routine157320(local1);
+            EnglishNumber(local1);
             " minutes.";
         }
         if (local1 ~= 0) {
@@ -13608,7 +13608,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (obj205_complicated_looking_bomb.number == 0) {
         print "right on the red zone!  ";
     } else {
-        routine157320(obj205_complicated_looking_bomb.number);
+        EnglishNumber(obj205_complicated_looking_bomb.number);
         print " minute";
         if (obj205_complicated_looking_bomb.number ~= 1) {
             print "s";
@@ -14231,7 +14231,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     if (local1 >= 2) {
-        routine157320(local1);
+        EnglishNumber(local1);
     }
     print " paces";
     rtrue;
@@ -15869,7 +15869,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine122416 ;	! 122416 / 0x1de30
     if (action == ##Drop) {
         print "Alea iacta est. It comes up ";
-        routine157320(random(6));
+        EnglishNumber(random(6));
         ".";
     }
     rfalse;
@@ -19105,106 +19105,106 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine157320 local1 local2 local3 ;	! 157320 / 0x26688
-    if (local1 == 0) {
+[ EnglishNumber n m f ;	! 157320 / 0x26688
+    if (n == 0) {
         print "zero";
         rfalse;
     }
-    if (local1 < 0) {
+    if (n < 0) {
         print "minus ";
-        local1 = 0 - local1;
+        n = 0 - n;
     }
-    if (local1 >= 1000) {
-        routine157320(local1 / 1000);
+    if (n >= 1000) {
+        EnglishNumber(n / 1000);
         print " thousand";
-        local1 = local1 % 1000;
-        local3 = 1[?];
+        n = n % 1000;
+        f = true;
     }
-    if (local1 >= 100) {
-        if (local3 == 1[?]) {
+    if (n >= 100) {
+        if (f == true) {
             print ", ";
         }
-        routine157320(local1 / 100);
+        EnglishNumber(n / 100);
         print " hundred";
-        local1 = local1 % 100;
-        local3 = 1[?];
+        n = n % 100;
+        f = true;
     }
-    if (local1 == 0) {
+    if (n == 0) {
         rfalse;
     }
-    if (local3 == 1[?]) {
+    if (f == true) {
         print " and ";
     }
-    if (local1 < 10) {
-        routine157672(local1);
+    if (n < 10) {
+        EnglishDigit(n);
         rfalse;
     }
-    if (local1 >= 20) {
-        local2 = local1 / 10;
-        if (local2 == 2[?]) {
+    if (n >= 20) {
+        m = n / 10;
+        if (m == 2) {
             print "twenty";
         }
-        if (local2 == 3[s_obj?]) {
+        if (m == 3) {
             print "thirty";
         }
-        if (local2 == 4[e_obj?]) {
+        if (m == 4) {
             print "forty";
         }
-        if (local2 == 5[w_obj?]) {
+        if (m == 5) {
             print "fifty";
         }
-        if (local2 == 6[ne_obj?]) {
+        if (m == 6) {
             print "sixty";
         }
-        if (local2 == 7[se_obj?]) {
+        if (m == 7) {
             print "seventy";
         }
-        if (local2 == 8[nw_obj?]) {
+        if (m == 8) {
             print "eighty";
         }
-        if (local2 == 9[sw_obj?]) {
+        if (m == 9) {
             print "ninety";
         }
-        if (local1 % 10 == 0) {
+        if (n % 10 == 0) {
             rfalse;
         }
         print "-";
-        routine157672(local1 % 10);
+        EnglishDigit(n % 10);
         rfalse;
     }
-    if (local1 == 10[u_obj?]) {
+    if (n == 10) {
         print "ten";
         rfalse;
     }
-    if (local1 == 11[d_obj?]) {
+    if (n == 11) {
         print "eleven";
         rfalse;
     }
-    if (local1 == 12[obj12_outside?]) {
+    if (n == 12) {
         print "twelve";
         rfalse;
     }
-    if (local1 == 13[obj13_inside?]) {
+    if (n == 13) {
         print "thirteen";
         rfalse;
     }
-    if (local1 == 14[thedark?]) {
+    if (n == 14) {
         print "fourteen";
         rfalse;
     }
-    if (local1 == 15[yourself?]) {
+    if (n == 15) {
         print "fifteen";
         rfalse;
     }
-    if (local1 == 16[obj16_lm?]) {
+    if (n == 16) {
         print "sixteen";
         rfalse;
     }
-    if (local1 == 17[rod_of_fire?]) {
+    if (n == 17) {
         print "seventeen";
         rfalse;
     }
-    if (local1 == 18[rod_of_returning?]) {
+    if (n == 18) {
         print "eighteen";
         rfalse;
     }
@@ -19212,40 +19212,40 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine157672 local1 ;	! 157672 / 0x267e8
-    if (local1 == 1[?]) {
+[ EnglishDigit n ;	! 157672 / 0x267e8
+    if (n == 1) {
         print "one";
         rfalse;
     }
-    if (local1 == 2[?]) {
+    if (n == 2) {
         print "two";
         rfalse;
     }
-    if (local1 == 3[s_obj?]) {
+    if (n == 3) {
         print "three";
         rfalse;
     }
-    if (local1 == 4[e_obj?]) {
+    if (n == 4) {
         print "four";
         rfalse;
     }
-    if (local1 == 5[w_obj?]) {
+    if (n == 5) {
         print "five";
         rfalse;
     }
-    if (local1 == 6[ne_obj?]) {
+    if (n == 6) {
         print "six";
         rfalse;
     }
-    if (local1 == 7[se_obj?]) {
+    if (n == 7) {
         print "seven";
         rfalse;
     }
-    if (local1 == 8[nw_obj?]) {
+    if (n == 8) {
         print "eight";
         rfalse;
     }
-    if (local1 == 9[sw_obj?]) {
+    if (n == 9) {
         print "nine";
         rfalse;
     }
@@ -19559,7 +19559,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                     ++l;
                                     jump label159071;
                                 }
-                                routine157320(q);
+                                EnglishNumber(q);
                                 print " ", (string) j.list_together;
                                 if (c_style & 8 ~= 0) {
                                     print " (";
@@ -19620,7 +19620,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     if (c_style & 256 ~= 0) {
                         print "the ";
                     }
-                    routine157320(sizes_p->i);
+                    EnglishNumber(sizes_p->i);
                     print " ";
                     PrintOrRun(j,14[thedark?],1[?]);
                 }
@@ -19688,7 +19688,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         q = NextEntry(q,depth);
                         ++l;
                         if (q.list_together == j.list_together) jump label159605;
-                        routine157320(l);
+                        EnglishNumber(l);
                         print " ", (string) j.list_together;
                         if (c_style & 8 ~= 0) {
                             print " (";
