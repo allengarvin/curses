@@ -4853,7 +4853,7 @@ Global turns = 1;
 Global player;
 Global lightflag = true;
 Global real_location = thedark;
-Global global12;
+Global print_player_flag;
 Global deadflag;
 Global global14;
 Global last_score;
@@ -8923,7 +8923,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (lightflag == false) {
         location = thedark;
     }
-    global12 = flag;
+    print_player_flag = flag;
     rtrue;
 ];
 
@@ -21138,7 +21138,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print ")";
         local3 = env;
     }
-    if (global12 == 1[?]) {
+    if (print_player_flag == 1[?]) {
         print " (";
         L__M(##Look,3);
         print " ", (name) player, ")";
