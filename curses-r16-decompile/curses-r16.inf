@@ -5287,7 +5287,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 ! Routines
 
-[ routine41756 ;	! 41756 / 0xa31c
+[ Main ;	! 41756 / 0xa31c
     PlayTheGame();
     rtrue;
 ];
@@ -7867,7 +7867,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (UnsignedCompare(local1,46697["CURSES"?]) >= 0) {
         return 3[s_obj?];
     }
-    if (UnsignedCompare(local1,10439[routine41756?]) >= 0) {
+    if (UnsignedCompare(local1,10439[Main?]) >= 0) {
         return 2[?];
     }
     return 0;
