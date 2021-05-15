@@ -5616,13 +5616,13 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (pcount <= 6) {
                     scope_token = 0;
                     token = line_address->pcount;
-                    if (token == 2[?]) {
+                    if (token == 2) {
                         ++m;
                     }
                     if (token < 180) {
                         ++i;
                     }
-                    if (token == 4[e_obj?] or 5[w_obj?] && i == 1[?]) {
+                    if (token == 4 or 5 && i == 1[?]) {
                         if (parser_trace >= 2) {
                             print " [Trying look-ahead]^";
                         }
@@ -5695,28 +5695,28 @@ Array array_29185 -->	! 29185 (0x7201)
                             if (token == 0) {
                                 print "<noun> or null";
                             }
-                            if (token == 1[?]) {
+                            if (token == 1) {
                                 print "<held>";
                             }
-                            if (token == 2[?]) {
+                            if (token == 2) {
                                 print "<multi>";
                             }
-                            if (token == 3[s_obj?]) {
+                            if (token == 3) {
                                 print "<multiheld>";
                             }
-                            if (token == 4[e_obj?]) {
+                            if (token == 4) {
                                 print "<multiexcept>";
                             }
-                            if (token == 5[w_obj?]) {
+                            if (token == 5) {
                                 print "<multiinside>";
                             }
-                            if (token == 6[ne_obj?]) {
+                            if (token == 6) {
                                 print "<creature>";
                             }
-                            if (token == 7[se_obj?]) {
+                            if (token == 7) {
                                 print "<special>";
                             }
-                            if (token == 8[nw_obj?]) {
+                            if (token == 8) {
                                 print "<number>";
                             }
                         }
@@ -5839,7 +5839,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             }
                             rtrue;
                         }
-                        if (token == 6[ne_obj?] && action_to_be == 68[obj68_water_pipe?] or 70[obj70_book_of_Twenties_poetry?] or 71[obj71_Souvenirs_Room?] or 69[obj69_romantic_novel?]) {
+                        if (token == 6 && action_to_be == 68[obj68_water_pipe?] or 70[obj70_book_of_Twenties_poetry?] or 71[obj71_Souvenirs_Room?] or 69[obj69_romantic_novel?]) {
                             scope_reason = TALKING_REASON;
                         }
                         l = routine46408(results,token);
