@@ -4845,7 +4845,7 @@ Constant SCORE_HIGHROD = 44;
 Global location = Compass;
 Global global2;
 Global global3;
-Global global4 = 65535[?];
+Global the_time = 65535;
 Global global5 = 1[?];
 Global global6;
 Global score;
@@ -7958,18 +7958,18 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine53944 ;	! 53944 / 0xd2b8
-    if (global4 == 65535[?]) {
+    if (the_time == 65535) {
         global2 = score;
         global3 = turns;
     } else {
-        global2 = global4 / 60;
-        global3 = global4 % 60;
+        global2 = the_time / 60;
+        global3 = the_time % 60;
     }
     rtrue;
 ];
 
 [ routine53972 local1 local2 ;	! 53972 / 0xd2d4
-    global4 = local1;
+    the_time = local1;
     global5 = local2;
     global6 = 0;
     if (local2 < 0) {
@@ -8158,7 +8158,7 @@ Array array_29185 -->	! 29185 (0x7201)
             meta = 1;
         }
         if (deadflag == 0 && meta == 0) {
-            routine56744();
+            EndTurnSequence();
         }
         jump label54187;
     }
@@ -8698,35 +8698,35 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine56744 local1 local2 ;	! 56744 / 0xdda8
+[ EndTurnSequence i j ;	! 56744 / 0xdda8
     ++turns;
-    if (global4 ~= 65535[?]) {
+    if (the_time ~= 65535) {
         if (global5 >= 0) {
-            global4 = global4 + global5;
+            the_time = the_time + global5;
         } else {
             --global6;
             if (global6 == 0) {
-                ++global4;
+                ++the_time;
                 global6 = 0 - global5;
             }
         }
-        global4 = global4 % 1440;
+        the_time = the_time % 1440;
     }
-    local1 = 0;
+    i = 0;
   .label56788;
-    if (deadflag == 0 && local1 < active_timers) {
-        local2 = the_timers-->local1;
-        if (local2 ~= 0) {
-            if (array_23957->local1 == 2[?]) {
-                routine53736(local2,25[rod_of_ice?]);
-            } else if (local2.number == 0) {
-                StopTimer(local2);
-                routine53736(local2,25[rod_of_ice?]);
+    if (deadflag == 0 && i < active_timers) {
+        j = the_timers-->i;
+        if (j ~= 0) {
+            if (array_23957->i == 2[?]) {
+                routine53736(j,25[rod_of_ice?]);
+            } else if (j.number == 0) {
+                StopTimer(j);
+                routine53736(j,25[rod_of_ice?]);
             } else {
-                local2.number = local2.number - 1;
+                j.number = j.number - 1;
             }
         }
-        ++local1;
+        ++i;
         jump label56788;
     }
     if (deadflag == 0) {
@@ -8741,17 +8741,17 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (deadflag == 0) {
         routine56952();
-        local1 = child(player);
+        i = child(player);
       .label56916;
-        if (local1 ~= 0) {
-            if (local1 hasnt moved) {
-                give local1 moved;
-                if (local1 has scored) {
+        if (i ~= 0) {
+            if (i hasnt moved) {
+                give i moved;
+                if (i has scored) {
                     score = score + 4;
                     things_score = things_score + 4;
                 }
             }
-            local1 = sibling(local1);
+            i = sibling(i);
             jump label56916;
         }
     }
