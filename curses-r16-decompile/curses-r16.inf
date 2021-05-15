@@ -5400,13 +5400,13 @@ Array array_29185 -->	! 29185 (0x7201)
   .label42348;
     wn = verb_wordnum;
     verb_word = routine53056();
-    if (verb_word == 65535[?]) {
+    if (verb_word == 'invalidDictWord65535') {
         pcount2 = 1[?];
     } else {
-        if (verb_word == 33528['g//'?]) {
-            verb_word = 29712['again'?];
+        if (verb_word == 'g//') {
+            verb_word = 'again';
         }
-        if (verb_word == 29712['again'?]) {
+        if (verb_word == 'again') {
             if (actor ~= player) {
                 print "To repeat a command like ~frog, jump~, just say ~again~, not ~frog, again~.^";
                 jump label42187;
@@ -5424,7 +5424,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             jump label42195;
         }
-        if (verb_word ~= 29712['again'?]) {
+        if (verb_word ~= 'again') {
             i = 0;
           .label42523;
             if (i < 64) {
