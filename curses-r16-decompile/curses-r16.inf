@@ -4721,6 +4721,15 @@ Object carbolic_soap "carbolic soap"	! 502 / 0x1f6
 
 ! Constants
 
+! reason_type
+Constant PARSING_REASON = 0;
+Constant TALKING_REASON = 1;
+Constant EACH_TURN_REASON = 2;
+Constant REACT_BEFORE_REASON = 3;
+Constant REACT_AFTER_REASON = 4;
+Constant LOOPOVERSCOPE_REASON = 5;
+Constant TESTSCOPE_REASON = 6;
+
 ! display_bit
 Constant NEWLINE_BIT = 1;
 Constant INDENT_BIT = 2;
@@ -4892,8 +4901,8 @@ Global global75;
 Global global76;
 Global global77;
 Global global78;
-Global global79;
-Global global80;
+Global lookahead;
+Global scope_reason;
 Global global81;
 Global global82;
 Global global83;
@@ -5365,7 +5374,7 @@ Array array_29185 -->	! 29185 (0x7201)
     Keyboard(24021[?],24142[?]);
   .label42195;
     num_words = parse->1;
-    wn = 1[?];
+    wn = 1;
     routine181220();
     num_words = parse->1;
     if (parser_trace >= 4) {
@@ -5495,8 +5504,8 @@ Array array_29185 -->	! 29185 (0x7201)
                 print "You can't begin with a comma.^";
                 jump label42187;
             }
-            wn = 1[?];
-            global79 = 1[?];
+            wn = 1;
+            lookahead = 1;
             global100 = 1[?];
             l = routine47764(player,actor_location,6[ne_obj?]);
             global100 = 0;
@@ -5579,7 +5588,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 action_to_be = line_address->7;
                 wn = verb_wordnum + 1;
                 global95 = 65535[?];
-                global80 = 0;
+                scope_reason = PARSING_REASON;
                 i = 0;
                 m = 0;
                 global58 = 1[?];
@@ -5709,17 +5718,17 @@ Array array_29185 -->	! 29185 (0x7201)
                         print " at word number ", wn, "]^";
                     }
                     m = global58 + 1;
-                    global79 = 8[nw_obj?];
+                    lookahead = 8;
                     if (m <= 6) {
-                        global79 = line_address->m;
+                        lookahead = line_address->m;
                     }
-                    if (global79 == 0) {
+                    if (lookahead == 0) {
                         m = global60;
                         if (token <= 7) {
                             ++m;
                         }
                         if (m >= global61) {
-                            global79 = 8[nw_obj?];
+                            lookahead = 8;
                         }
                     }
                     if (token > 180) {
@@ -6105,7 +6114,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine46072 local1 local2 local3 local4 ;	! 46072 / 0xb3f8
-    global80 = 0;
+    scope_reason = PARSING_REASON;
     global81 = 0;
     global82 = 0;
     global83 = 0;
@@ -6118,46 +6127,46 @@ Array array_29185 -->	! 29185 (0x7201)
             local3 = 1[?];
         }
         if (local2 == 29622['a//'?] or 29847['an'?] or 29982['any'?] or 32682['either'?] or 29991['anything'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
         }
         if (local2 == 29937['another'?] or 36723['other'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global81 = global81 | 1;
         }
         if (local2 == 36147['my'?] or 40341['this'?] or 40305['these'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global81 = global81 | 2;
         }
         if (local2 == 40269['that'?] or 40368['those'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global81 = global81 | 4;
         }
         if (local2 == 34869['its'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global81 = global81 | 16;
         }
         if (local2 == 34410['his'?] or 41691['your'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global81 = global81 | 32;
         }
         if (local2 == 35391['lit'?] or 35364['lighted'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global81 = global81 | 64;
         }
         if (local2 == 40854['unlit'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global81 = global81 | 128;
         }
         if (local2 == 29793['all'?] or 32601['each'?] or 32889['every'?] or 32898['everything'?]) {
-            global80 = 1[?];
+            scope_reason = TALKING_REASON;
             local3 = 1[?];
             global82 = 100[obj100_Tiny_Balcony?];
             if (global106 == 1[?]) {
@@ -6169,7 +6178,7 @@ Array array_29185 -->	! 29185 (0x7201)
             local4 = NumberWord(local2);
             if (local4 > 1) {
                 global83 = 1[?];
-                global80 = 1[?];
+                scope_reason = TALKING_REASON;
                 local3 = 1[?];
                 global82 = local4;
                 global81 = global81 | 8;
@@ -6456,7 +6465,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local11 == 1[?]) {
         local9 = 0;
         global57 = local2;
-    } else if (global80 == 1[?] && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
+    } else if (scope_reason == TALKING_REASON && global81 & 8 ~= 0 && (global82 < 100 && global82 > 1)) {
         global56 = 1[?];
         global55 = global82;
         global91 = 16[obj16_lm?];
@@ -6501,11 +6510,11 @@ Array array_29185 -->	! 29185 (0x7201)
             local5 = routine52976();
             --wn;
             if (local5 ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
-                if (global79 == 8[nw_obj?]) {
+                if (lookahead == 8) {
                     rfalse;
                 }
-                if (global79 > 8) {
-                    if (global79 ~= routine52884()) {
+                if (lookahead > 8) {
+                    if (lookahead ~= routine52884()) {
                         --wn;
                         if (parser_trace >= 3) {
                             print "   [ND failed at lookahead at word ", wn, "]^";
@@ -6740,7 +6749,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local1 == 6[ne_obj?] && local5 == 0) {
         return array_24660-->0;
     }
-    if (global80 == 1[?] && global81 & 8 ~= 0) {
+    if (scope_reason == TALKING_REASON && global81 & 8 ~= 0) {
         if (local1 < 2 || local1 > 5) {
             global91 = 7[se_obj?];
             return 65535[?];
@@ -6834,7 +6843,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     global68 = local7;
-    if (local7 > 1 && global80 == 0) {
+    if (local7 > 1 && scope_reason == PARSING_REASON) {
         local3 = 0;
         local5 = 0;
         local2 = 0;
@@ -6863,7 +6872,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         return 0;
     }
-    if (global80 == 0) {
+    if (scope_reason == PARSING_REASON) {
         global81 = 0;
     }
     if (local7 == 1[?]) {
@@ -7380,7 +7389,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local3 == 4[e_obj?] && local1 == global95) {
         rtrue;
     }
-    if (global80 == 0 && local1 == actor_location && global100 == 0 && local3 ~= 6[ne_obj?]) {
+    if (scope_reason == PARSING_REASON && local1 == actor_location && global100 == 0 && local3 ~= 6[ne_obj?]) {
         routine51864(1[?]);
     }
     local1 = child(local1);
@@ -7504,7 +7513,7 @@ Array array_29185 -->	! 29185 (0x7201)
         Defart(local1);
         print " (", local1, ") at word ", wn, "^";
     }
-    if (global80 ~= 0 && wn > parse->1) {
+    if (scope_reason ~= PARSING_REASON && wn > parse->1) {
         routine52240(local1,0);
         rfalse;
     }
@@ -7519,8 +7528,8 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (global84 == 0) {
                     jump label52685;
                 }
-                if (global80 == 0) {
-                    global80 = 1[?];
+                if (scope_reason == PARSING_REASON) {
+                    scope_reason = TALKING_REASON;
                     global81 = 0;
                     global82 = 0;
                 }
@@ -7556,7 +7565,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local2 == 0 || routine52752(local1,local4) == 0) {
       .label52685;
-        if (global80 ~= 0) {
+        if (scope_reason ~= PARSING_REASON) {
             routine52240(local1,0);
         }
         rfalse;
