@@ -4847,7 +4847,7 @@ Global global2;
 Global global3;
 Global the_time = 65535;
 Global time_rate = 1;
-Global global6;
+Global time_step;
 Global score;
 Global turns = 1;
 Global player;
@@ -7971,9 +7971,9 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine53972 local1 local2 ;	! 53972 / 0xd2d4
     the_time = local1;
     time_rate = local2;
-    global6 = 0;
+    time_step = 0;
     if (local2 < 0) {
-        global6 = 0 - local2;
+        time_step = 0 - local2;
     }
     rtrue;
 ];
@@ -8704,10 +8704,10 @@ Array array_29185 -->	! 29185 (0x7201)
         if (time_rate >= 0) {
             the_time = the_time + time_rate;
         } else {
-            --global6;
-            if (global6 == 0) {
+            --time_step;
+            if (time_step == 0) {
                 ++the_time;
-                global6 = 0 - time_rate;
+                time_step = 0 - time_rate;
             }
         }
         the_time = the_time % 1440;
