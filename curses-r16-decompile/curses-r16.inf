@@ -8026,7 +8026,7 @@ Array array_29185 -->	! 29185 (0x7201)
         real_location = location;
         location = thedark;
     }
-    routine55348(41[obj41_House?]);
+    routine55348(##Look);
     local1 = 1[?];
   .label54173;
     if (local1 <= 100) {
@@ -8338,7 +8338,7 @@ Array array_29185 -->	! 29185 (0x7201)
     return routine181212();
 ];
 
-[ routine55348 local1 local2 local3 local4 local5 local6 local7 ;	! 55348 / 0xd834
+[ routine55348 a local2 local3 local4 local5 local6 local7 ;	! 55348 / 0xd834
     local4 = global27;
     local5 = global28;
     local6 = verb;
@@ -8347,7 +8347,7 @@ Array array_29185 -->	! 29185 (0x7201)
     global28 = local3;
     noun = local2;
     second = local3;
-    verb = local1;
+    verb = a;
     if (global40 == 1[?] || routine55196() == 0 && verb < 256) {
         generic_global = (array_28893-->verb)();
         selfobj = local7;
@@ -8397,7 +8397,7 @@ Array array_29185 -->	! 29185 (0x7201)
             rfalse;
         }
         if (deadflag == 0) {
-            routine55348(41[obj41_House?]);
+            routine55348(##Look);
             rtrue;
         }
         rfalse;
@@ -8572,7 +8572,7 @@ Array array_29185 -->	! 29185 (0x7201)
     new_line;
     new_line;
     if (deadflag == 0) {
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     rtrue;
@@ -8764,7 +8764,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local2 == 0 && global10 == 1[?]) {
         location = real_location;
         if (local1 == 0) {
-            routine55348(41[obj41_House?]);
+            routine55348(##Look);
         }
     }
     if (local2 == 1[?] && global10 == 0) {
@@ -9318,7 +9318,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "Although nothing seems to happen to you, the whole golden sphere gracefully contracts, pulling itself tight until it sits comfortably in the palm of your hand. You blink.^";
         location = global137;
         move player to global138;
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     routine111612();
@@ -9453,7 +9453,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "The White pieces advance: first a bishop, then a knight is sacrificed, clearing away the wall of pawns which surround the Black king so that a dazzling checkmate can be executed!^^You fade out of the orb as oddly as you came, struck by the way it now almost pulsates in your palm.^";
         move player to global138;
         location = global137;
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     if (second == player) {
@@ -10808,7 +10808,7 @@ Array array_29185 -->	! 29185 (0x7201)
             CDefart(second);
             " proves inadequate as a plumbing tool.";
         }
-        routine55348(63[obj63_photographer_s_flash?],selfobj);
+        routine55348(##Turn,selfobj);
         rtrue;
     }
     if (action == ##Action91 or ##Turn) {
@@ -10937,7 +10937,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: obj71_Souvenirs_Room.s_to
 
 [ routine78480 ;	! 78480 / 0x13290
-    routine55348(21[rod_of_husbandry?],73[obj73_south_wall?]);
+    routine55348(##Enter,73[obj73_south_wall?]);
     rtrue;
 ];
 
@@ -11707,7 +11707,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (action == ##Turn or ##SwitchOn) {
         selfobj.prop24 = (selfobj.prop24 + 1) % 12;
-        routine55348(42[obj42_Servant_s_Room?],selfobj);
+        routine55348(##Read,selfobj);
         rtrue;
     }
     if (action == ##Consult) {
@@ -11753,7 +11753,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             if (local1 >= 0) {
                 selfobj.prop24 = local1;
-                routine55348(42[obj42_Servant_s_Room?],selfobj);
+                routine55348(##Read,selfobj);
                 rtrue;
             }
         }
@@ -12158,7 +12158,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (action == ##Enter) {
         if (noun == obj119_dark_shaft) {
             if (obj118_dumbwaiter in obj119_dark_shaft) {
-                routine55348(21[rod_of_husbandry?],118[obj118_dumbwaiter?]);
+                routine55348(##Enter,118[obj118_dumbwaiter?]);
                 rtrue;
             }
             "But you suffer from vertigo. Even the thought of the plane journey tomorrow is nerve-wracking.";
@@ -12260,7 +12260,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         move obj118_dumbwaiter to local1;
         location = local1;
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     if (action == ##Climb) {
@@ -12347,7 +12347,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (action == ##Enter) {
         if (noun == obj129_dark_shaft) {
             if (obj118_dumbwaiter in obj127_Cellars) {
-                routine55348(21[rod_of_husbandry?],118[obj118_dumbwaiter?]);
+                routine55348(##Enter,118[obj118_dumbwaiter?]);
                 rtrue;
             }
             "No, don't. There's nothing there and it's nasty and dirty. Bring the dumbwaiter down instead.";
@@ -13045,7 +13045,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (second == nothing) {
             "An intriguing idea, but you'll have to be more explicit about how to do it.";
         }
-        routine55348(26[rod_of_language?],second,selfobj);
+        routine55348(##Insert,second,selfobj);
         rtrue;
     }
     if (action == ##Action257) {
@@ -13136,7 +13136,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine97832 ;	! 97832 / 0x17e28
     if (obj170_tourist_boat hasnt open) {
-        routine55348(21[rod_of_husbandry?],170[obj170_tourist_boat?]);
+        routine55348(##Enter,170[obj170_tourist_boat?]);
         rtrue;
     }
     return 170[obj170_tourist_boat?];
@@ -13289,7 +13289,7 @@ Array array_29185 -->	! 29185 (0x7201)
         "Interestingly, there's something inside this segment of it.";
     }
     if (action == ##Enter) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],6[ne_obj?]);
+        routine55348(##Go,6[ne_obj?]);
         rtrue;
     }
     rfalse;
@@ -13298,7 +13298,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: obj180_Revolving_Door.n_to, obj182_Revolving_Door.n_to
 
 [ routine99336 ;	! 99336 / 0x18408
-    routine55348(61[obj61_hanging_cord?],181[obj181_door?]);
+    routine55348(##Push,181[obj181_door?]);
     rtrue;
 ];
 
@@ -14371,7 +14371,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine110880 ;	! 110880 / 0x1b120
     if (action == ##Action257) {
         if (noun == player) {
-            routine55348(21[rod_of_husbandry?],selfobj);
+            routine55348(##Enter,selfobj);
             rtrue;
         }
         remove noun;
@@ -14494,7 +14494,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine111872 ;	! 111872 / 0x1b500
     if (action == ##Enter or ##Climb) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],10[u_obj?]);
+        routine55348(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -14653,7 +14653,7 @@ Array array_29185 -->	! 29185 (0x7201)
         "winding the great anchor chain.";
     }
     if (action == ##Climb or ##Enter) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],11[d_obj?]);
+        routine55348(##Go,11[d_obj?]);
         rtrue;
     }
     rfalse;
@@ -14700,7 +14700,7 @@ Array array_29185 -->	! 29185 (0x7201)
         "It's a warm, not unpleasant taste, silt and algae.";
     }
     if (action == ##Enter) {
-        routine55348(78[obj78_Dead_End?]);
+        routine55348(##Swim);
         rtrue;
     }
     rfalse;
@@ -14786,7 +14786,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine114192 ;	! 114192 / 0x1be10
     if (action == ##Climb) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],10[u_obj?]);
+        routine55348(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -15155,7 +15155,7 @@ Array array_29185 -->	! 29185 (0x7201)
             move obj296_garden_roller to obj302_Patio_in_Maze;
         }
         routine155280(39[obj39_antique_jewellery_box?]);
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     rfalse;
@@ -15838,7 +15838,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine121808 ;	! 121808 / 0x1dbd0
     if (action == ##Climb) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],11[d_obj?]);
+        routine55348(##Go,11[d_obj?]);
         rtrue;
     }
     rfalse;
@@ -15940,7 +15940,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine122272 ;	! 122272 / 0x1dda0
     if (action == ##Climb or ##Enter) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],10[u_obj?]);
+        routine55348(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -16204,7 +16204,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Attack && noun == selfobj) {
         print "Ouch!  You wake up, smarting.^";
         routine57384(15[yourself?]);
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Turn or ##Attack or ##Read) {
@@ -16443,7 +16443,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine127192 ;	! 127192 / 0x1f0d8
     if (action == ##Climb or ##Enter) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],11[d_obj?]);
+        routine55348(##Go,11[d_obj?]);
         rtrue;
     }
     rfalse;
@@ -16988,7 +16988,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "^The sails billow, then slacken...^";
         move skiff to Drifting;
         location = Drifting;
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     } else {
         give Harbour_Mouth attrib8;
@@ -17002,7 +17002,7 @@ Array array_29185 -->	! 29185 (0x7201)
     print "^Light brightens into day. The skiff drifts, drifts upon...^";
     move skiff to obj276_Garden_Stream;
     location = obj276_Garden_Stream;
-    routine55348(41[obj41_House?]);
+    routine55348(##Look);
     rtrue;
 ];
 
@@ -17132,7 +17132,7 @@ Array array_29185 -->	! 29185 (0x7201)
         move player to wooden_couch;
         remove Napoleonic_officers;
     }
-    routine55348(41[obj41_House?]);
+    routine55348(##Look);
     rtrue;
 ];
 
@@ -17531,7 +17531,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine137476 ;	! 137476 / 0x21904
     if (action == ##Gamble) {
-        routine55348(28[rod_of_life?],447[inscribed_die?]);
+        routine55348(##Drop,447[inscribed_die?]);
         rtrue;
     }
     rfalse;
@@ -17717,7 +17717,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine138528 ;	! 138528 / 0x21d20
     if (action == ##Pull) {
-        routine55348(19[rod_of_stalking?],selfobj);
+        routine55348(##Take,selfobj);
         rtrue;
     }
     rfalse;
@@ -17871,14 +17871,14 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine140144 ;	! 140144 / 0x22370
     if (action == ##Action259) {
         if (verb == ##Anoppe && location has attrib8) {
-            routine55348(135[obj135_small_brass_key?]);
+            routine55348(##Anoppe);
             rtrue;
         }
         "The slave doesn't seem to notice.";
     }
     if (action == ##Ask) {
         if (second == invalidObj29928 or invalidObj32817 && location has attrib8) {
-            routine55348(135[obj135_small_brass_key?]);
+            routine55348(##Anoppe);
             rtrue;
         }
         rfalse;
@@ -17937,7 +17937,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine140724 ;	! 140724 / 0x225b4
     if (action == ##Climb or ##Enter) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],10[u_obj?]);
+        routine55348(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -18688,7 +18688,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine147544 ;	! 147544 / 0x24058
     if (action == ##Eat) {
-        routine55348(111[obj111_antiquated_wireless?],selfobj);
+        routine55348(##Wash,selfobj);
         rtrue;
     }
     rfalse;
@@ -20093,7 +20093,7 @@ Array array_29185 -->	! 29185 (0x7201)
     real_location = location;
     routine56952(1[?]);
     if (flag == 0) {
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
     }
     if (flag == 1[?]) {
         routine164468();
@@ -20106,8 +20106,8 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ MovePlayer direc ;	! 160960 / 0x274c0
-    routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],direc);
-    routine55348(41[obj41_House?]);
+    routine55348(##Go,direc);
+    routine55348(##Look);
     rtrue;
 ];
 
@@ -20304,13 +20304,13 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ InvWideSub ;	! 161604 / 0x27744
     inventory_style = 4 + 8 + 16;
-    routine55348(24[rod_of_luck?]);
+    routine55348(##Inv);
     rtrue;
 ];
 
 [ InvTallSub ;	! 161620 / 0x27754
     inventory_style = 4 + 2 + 1 + 16;
-    routine55348(24[rod_of_luck?]);
+    routine55348(##Inv);
     rtrue;
 ];
 
@@ -20319,7 +20319,7 @@ Array array_29185 -->	! 29185 (0x7201)
         return L__M(##Inv,1);
     }
     if (inventory_style == 0) {
-        routine55348(39[obj39_antique_jewellery_box?]);
+        routine55348(##InvTall);
         rtrue;
     }
     L__M(##Inv,2);
@@ -20435,7 +20435,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (j ~= 0) {
                 L__M(##Take,13,j);
                 keep_silent = true;
-                routine55348(26[rod_of_language?],j,79[obj79_canvas_rucksack?]);
+                routine55348(##Insert,j,79[obj79_canvas_rucksack?]);
                 keep_silent = false;
                 if (j notin obj79_canvas_rucksack) {
                     rtrue;
@@ -20470,7 +20470,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (noun has attrib26) {
         L__M(##Drop,3,noun);
-        routine55348(22[rod_of_bronze?],noun);
+        routine55348(##Disrobe,noun);
         if (noun has attrib26) {
             rtrue;
         }
@@ -20528,7 +20528,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ PutOnSub ;	! 162440 / 0x27a88
     global123 = 27[rod_of_returning2?];
     if (second == d_obj) {
-        routine55348(28[rod_of_life?],noun);
+        routine55348(##Drop,noun);
         rfalse;
     }
     if (parent(noun) ~= player) {
@@ -20553,7 +20553,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (noun has attrib26) {
         L__M(##PutOn,5);
-        routine55348(22[rod_of_bronze?],noun);
+        routine55348(##Disrobe,noun);
         if (noun has attrib26) {
             rtrue;
         }
@@ -20594,7 +20594,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ InsertSub ;	! 162692 / 0x27b84
     global123 = 26[rod_of_language?];
     if (second == d_obj) {
-        routine55348(28[rod_of_life?],noun);
+        routine55348(##Drop,noun);
         rtrue;
     }
     if (parent(noun) ~= player) {
@@ -20619,7 +20619,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (noun has attrib26) {
         L__M(##Insert,6);
-        routine55348(22[rod_of_bronze?],noun);
+        routine55348(##Disrobe,noun);
         if (noun has attrib26) {
             rtrue;
         }
@@ -20704,15 +20704,15 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     if (local2 == 28[rod_of_life?]) {
-        routine55348(28[rod_of_life?],noun);
+        routine55348(##Drop,noun);
         rtrue;
     }
     if (local2 == 26[rod_of_language?]) {
-        routine55348(26[rod_of_language?],noun,second);
+        routine55348(##Insert,noun,second);
         rtrue;
     }
     if (local2 == 27[rod_of_returning2?]) {
-        routine55348(27[rod_of_returning2?],noun,second);
+        routine55348(##PutOn,noun,second);
         rtrue;
     }
     rtrue;
@@ -20748,7 +20748,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local2 = sibling(local1);
         PSN__(local1);
         print ": ";
-        routine55348(31[obj31_crumpled_piece_of_paper?],local1,second);
+        routine55348(##Transfer,local1,second);
         local1 = local2;
         jump label163225;
     }
@@ -20770,7 +20770,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ GiveRSub ;	! 163312 / 0x27df0
-    routine55348(34[obj34_chocolate_biscuit?],second,noun);
+    routine55348(##Give,second,noun);
     rtrue;
 ];
 
@@ -20779,7 +20779,7 @@ Array array_29185 -->	! 29185 (0x7201)
         return L__M(##Show,1,noun);
     }
     if (second == player) {
-        routine55348(42[obj42_Servant_s_Room?],noun);
+        routine55348(##Read,noun);
         rtrue;
     }
     if (routine55448(second,36[obj36_hinged_trapdoor?]) ~= 0) {
@@ -20790,13 +20790,13 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ ShowRSub ;	! 163376 / 0x27e30
-    routine55348(36[obj36_hinged_trapdoor?],second,noun);
+    routine55348(##Show,second,noun);
     rtrue;
 ];
 
 [ EnterSub local1 ;	! 163388 / 0x27e3c
     if (noun has door) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],noun);
+        routine55348(##Go,noun);
         rtrue;
     }
     local1 = parent(player);
@@ -20805,7 +20805,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local1 = parent(noun);
     if (local1 == 1[?]) {
-        routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],noun);
+        routine55348(##Go,noun);
         rtrue;
     }
     if (noun hasnt enterable) {
@@ -20831,7 +20831,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ TakeOffSub ;	! 163516 / 0x27ebc
     if (parent(player) == noun) {
-        routine55348(18[rod_of_returning?]);
+        routine55348(##Exit);
         rtrue;
     }
     L__M(##TakeOff,1,noun);
@@ -20842,7 +20842,7 @@ Array array_29185 -->	! 29185 (0x7201)
     local1 = parent(player);
     if (local1 == location || (location == thedark && local1 == real_location)) {
         if (location.prop16 ~= 0 || (location == thedark && real_location.prop16 ~= 0)) {
-            routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],12[obj12_outside?]);
+            routine55348(##Go,12[obj12_outside?]);
             rtrue;
         }
         return L__M(##Exit,1);
@@ -20872,7 +20872,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ EnterSub ;	! 163672 / 0x27f58
-    routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],13[obj13_inside?]);
+    routine55348(##Go,13[obj13_inside?]);
     rtrue;
 ];
 
@@ -21175,7 +21175,7 @@ Array array_29185 -->	! 29185 (0x7201)
     local1 = noun.description;
     if (local1 == 0) {
         if (noun has container) {
-            routine55348(43[obj43_classical_dictionary?],noun);
+            routine55348(##Search,noun);
             rtrue;
         }
         if (noun has switchable) {
@@ -21636,7 +21636,7 @@ Array array_29185 -->	! 29185 (0x7201)
     AfterRoutines();
     local1 = noun;
     move local1 to player;
-    routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],second);
+    routine55348(##Go,second);
     if (location == thedark) {
         move local1 to real_location;
     } else {
@@ -21720,7 +21720,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ AskForSub ;	! 166384 / 0x289f0
     if (noun == player) {
-        routine55348(24[rod_of_luck?]);
+        routine55348(##Inv);
         rtrue;
     }
     L__M(##Action259,1,noun);
@@ -23009,7 +23009,7 @@ Array array_29185 -->	! 29185 (0x7201)
     print "(consulting ";
     Defart(local1);
     print ")^";
-    routine55348(45[obj45_old_striped_scarf?],local1);
+    routine55348(##Consult,local1);
     rtrue;
 ];
 
@@ -23143,7 +23143,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ KillSub ;	! 176576 / 0x2b1c0
     if (noun ~= obj290_hard_wooden_ball || second ~= obj316_croquet_mallet) {
-        routine55348(66[obj66_solid_glass_ball?],noun);
+        routine55348(##Attack,noun);
         rtrue;
     }
     if (parent(obj290_hard_wooden_ball) ~= location) {
@@ -23206,13 +23206,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local2 == 65535[?]) {
         global156 = 0;
         global157 = 0;
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     if (local2 == 65534[?]) {
         global156 = global158;
         global157 = global159;
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     if (location ~= Croquet_Lawn) {
@@ -23262,7 +23262,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     global156 = local5;
     global157 = local6;
-    routine55348(41[obj41_House?]);
+    routine55348(##Look);
     rtrue;
 ];
 
@@ -23382,7 +23382,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ RipDownSub ;	! 178592 / 0x2b9a0
-    routine55348(114[obj114_Jemima?]);
+    routine55348(##Rip);
     rtrue;
 ];
 
@@ -23568,7 +23568,7 @@ Array array_29185 -->	! 29185 (0x7201)
         "Old Evans, who is nine-tenths hypnotised most of the time anyway, succumbs easily.";
     }
     if (noun == player) {
-        routine55348(73[obj73_south_wall?]);
+        routine55348(##Sleep);
         rtrue;
     }
     print "But ";
@@ -23597,7 +23597,7 @@ Array array_29185 -->	! 29185 (0x7201)
             location = Warehouses_and_Port;
         }
         print "The skiff gathers wind from somewhere, which whistles past you until your eyes are blurred and watery. When you look around, you find that you are moored once again...^";
-        routine55348(41[obj41_House?]);
+        routine55348(##Look);
         rtrue;
     }
     if (skiff has attrib8) {
@@ -23607,7 +23607,7 @@ Array array_29185 -->	! 29185 (0x7201)
     move skiff to Harbour_Mouth;
     location = Harbour_Mouth;
     print "You set sail, and a light breeze propels your skiff...^";
-    routine55348(41[obj41_House?]);
+    routine55348(##Look);
     rtrue;
 ];
 
@@ -23647,11 +23647,11 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ LieDownSub ;	! 180732 / 0x2c1fc
     if (location == obj42_Servant_s_Room) {
-        routine55348(21[rod_of_husbandry?],44[obj44_camp_bed?]);
+        routine55348(##Enter,44[obj44_camp_bed?]);
         rtrue;
     }
     if (location == obj96_Alison_s_Writing_Room) {
-        routine55348(21[rod_of_husbandry?],97[obj97_comfortable_bed?]);
+        routine55348(##Enter,97[obj97_comfortable_bed?]);
         rtrue;
     }
     "You lie down on the floor for a while and then get up again, feeling foolish.";
@@ -23672,12 +23672,12 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ CloseWithSub ;	! 180936 / 0x2c2c8
-    routine55348(27[rod_of_returning2?],second,noun);
+    routine55348(##PutOn,second,noun);
     rtrue;
 ];
 
 [ StackSub ;	! 180948 / 0x2c2d4
-    routine55348(28[rod_of_life?],noun);
+    routine55348(##Drop,noun);
     rtrue;
 ];
 
@@ -23689,7 +23689,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (location ~= obj67_Library_Storage) {
         print "(The wrench seems unnecessary, so you use bare hands.)^";
     }
-    routine55348(63[obj63_photographer_s_flash?],noun);
+    routine55348(##Turn,noun);
     rtrue;
 ];
 
