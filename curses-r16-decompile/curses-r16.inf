@@ -4764,6 +4764,53 @@ Constant PRISON = 8;
 Constant CHECKMATED = 9;
 Constant SPOOKED = 10;
 
+! score_index
+Constant SCORE_HAMBURG = 0;
+Constant SCORE_TORCH = 1;
+Constant SCORE_JOSHUA = 2;
+Constant SCORE_SECRETDOOR = 3;
+Constant SCORE_DEMIJOHN = 4;
+Constant SCORE_WAITER = 5;
+Constant SCORE_WAND = 6;
+Constant SCORE_AIMWAND = 7;
+Constant SCORE_WIRELESS = 8;
+Constant SCORE_DAISY = 9;
+Constant SCORE_CHOCOLATE = 10;
+Constant SCORE_ANDROMEDA = 11;
+Constant SCORE_BATTERY = 12;
+Constant SCORE_PLUMBING = 13;
+Constant SCORE_SMELL = 14;
+Constant SCORE_REFLECTING = 15;
+Constant SCORE_HENRIPOST = 16;
+Constant SCORE_ORB = 17;
+Constant SCORE_MAP = 18;
+Constant SCORE_ARC = 19;
+Constant SCORE_WELL = 20;
+Constant SCORE_MASCOT = 21;
+Constant SCORE_BISCUIT = 22;
+Constant SCORE_SMOKE = 23;
+Constant SCORE_SHIP = 24;
+Constant SCORE_FLAG = 25;
+Constant SCORE_SLEEP = 26;
+Constant SCORE_SECRET_PASS = 27;
+Constant SCORE_ROD_IDENT = 28;
+Constant SCORE_WATCH = 29;
+Constant SCORE_HYPNOSIS = 30;
+Constant SCORE_SECURITY = 31;
+Constant SCORE_TEMPLE = 32;
+Constant SCORE_HOMER = 33;
+Constant SCORE_ORACLE = 34;
+Constant SCORE_STRONGBOX = 35;
+Constant SCORE_AUSTIN = 36;
+Constant SCORE_WASH = 37;
+Constant SCORE_LIBRARY = 38;
+Constant SCORE_SPHINX = 39;
+Constant SCORE_QUARTERSTAFF = 40;
+Constant SCORE_AFTERLIFE = 41;
+Constant SCORE_KNIGHT = 42;
+Constant SCORE_KNIGHT_ENCOURAGE = 43;
+Constant SCORE_HIGHROD = 44;
+
 ! Globals
 
 Global global0 = 23848[?];
@@ -4814,8 +4861,8 @@ Global global44;
 Global global45;
 Global parser_trace;
 Global global47;
-Global global48;
-Global global49;
+Global lm_n;
+Global lm_o;
 Global global50;
 Global global51;
 Global global52;
@@ -8959,20 +9006,20 @@ Array array_29185 -->	! 29185 (0x7201)
         if (location == Inside_the_Orb) {
             print "bathed in a curious white light, and ";
         }
-        if (global48 == 1[?]) {
+        if (lm_n == Compass) {
             "carrying nothing.";
         }
         print "carrying";
         rtrue;
     }
     if (action == ##Drop) {
-        if (global48 == 4[e_obj?] && noun has attrib28) {
+        if (lm_n == e_obj && noun has attrib28) {
             routine155280(16[obj16_lm?]);
         }
         rfalse;
     }
     if (action == ##Go) {
-        if (global48 == 2[?] && game_section == T_DREAMING or (T_DREAMING|T_UNREAL)) {
+        if (lm_n == n_obj && game_section == T_DREAMING or (T_DREAMING|T_UNREAL)) {
             "You drift in that direction, but without gaining any ground.";
         }
         rfalse;
@@ -21641,8 +21688,8 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ L___M n x1 s ;	! 166436 / 0x28a24
     s = verb;
-    global48 = n;
-    global49 = x1;
+    lm_n = n;
+    lm_o = x1;
     verb = action;
     if (routine53736(16[obj16_lm?],2[?]) ~= 0) {
         verb = s;
@@ -22558,140 +22605,140 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine173128 local1 ;	! 173128 / 0x2a448
-    if (local1 == 0) {
+[ PrintTaskName n ;	! 173128 / 0x2a448
+    if (n == SCORE_HAMBURG) {
         "reading postcard";
     }
-    if (local1 == 1[?]) {
+    if (n == SCORE_TORCH) {
         "recharging torch";
     }
-    if (local1 == 2[?]) {
+    if (n == SCORE_JOSHUA) {
         "exorcism";
     }
-    if (local1 == 3[s_obj?]) {
+    if (n == SCORE_SECRETDOOR) {
         "opening secret door";
     }
-    if (local1 == 4[e_obj?]) {
+    if (n == SCORE_DEMIJOHN) {
         "opening demijohn";
     }
-    if (local1 == 5[w_obj?]) {
+    if (n == SCORE_WAITER) {
         "using dumbwaiter";
     }
-    if (local1 == 6[ne_obj?]) {
+    if (n == SCORE_WAND) {
         "charging a rod";
     }
-    if (local1 == 7[se_obj?]) {
+    if (n == SCORE_AIMWAND) {
         "firing a rod";
     }
-    if (local1 == 8[nw_obj?]) {
+    if (n == SCORE_WIRELESS) {
         "exposing radio";
     }
-    if (local1 == 9[sw_obj?]) {
+    if (n == SCORE_DAISY) {
         "sporting a daisy chain";
     }
-    if (local1 == 10[u_obj?]) {
+    if (n == SCORE_CHOCOLATE) {
         "placating Aunt Jemima";
     }
-    if (local1 == 11[d_obj?]) {
+    if (n == SCORE_ANDROMEDA) {
         "rescuing Andromeda";
     }
-    if (local1 == 12[obj12_outside?]) {
+    if (n == SCORE_BATTERY) {
         "uncovering battery";
     }
-    if (local1 == 13[obj13_inside?]) {
+    if (n == SCORE_PLUMBING) {
         "mending the plumbing";
     }
-    if (local1 == 14[thedark?]) {
+    if (n == SCORE_SMELL) {
         "scenting a passage";
     }
-    if (local1 == 15[yourself?]) {
+    if (n == SCORE_REFLECTING) {
         "reflecting";
     }
-    if (local1 == 16[obj16_lm?]) {
+    if (n == SCORE_HENRIPOST) {
         "solving the grid";
     }
-    if (local1 == 17[rod_of_fire?]) {
+    if (n == SCORE_ORB) {
         "winning the orb";
     }
-    if (local1 == 18[rod_of_returning?]) {
+    if (n == SCORE_MAP) {
         "buying map of Paris";
     }
-    if (local1 == 19[rod_of_stalking?]) {
+    if (n == SCORE_ARC) {
         "filling the arc";
     }
-    if (local1 == 20[rod_of_infinity?]) {
+    if (n == SCORE_WELL) {
         "getting into the well";
     }
-    if (local1 == 21[rod_of_husbandry?]) {
+    if (n == SCORE_MASCOT) {
         "acquiring the mascot";
     }
-    if (local1 == 22[rod_of_bronze?]) {
+    if (n == SCORE_BISCUIT) {
         "eating between meals";
     }
-    if (local1 == 23[rod_of_sacrifice?]) {
+    if (n == SCORE_SMOKE) {
         "smoke detecting";
     }
-    if (local1 == 24[rod_of_luck?]) {
+    if (n == SCORE_SHIP) {
         "putting a ship in a bottle";
     }
-    if (local1 == 25[rod_of_ice?]) {
+    if (n == SCORE_FLAG) {
         "parachuting on deck";
     }
-    if (local1 == 26[rod_of_language?]) {
+    if (n == SCORE_SLEEP) {
         "sleeping in Alison's bed";
     }
-    if (local1 == 27[rod_of_returning2?]) {
+    if (n == SCORE_SECRET_PASS) {
         "opening sandstone crevice";
     }
-    if (local1 == 28[rod_of_life?]) {
+    if (n == SCORE_ROD_IDENT) {
         "identifying a rod";
     }
-    if (local1 == 29[rod_of_death?]) {
+    if (n == SCORE_WATCH) {
         "dislodging the watch";
     }
-    if (local1 == 30[rod_of_love?]) {
+    if (n == SCORE_HYPNOSIS) {
         "hypnosis";
     }
-    if (local1 == 31[obj31_crumpled_piece_of_paper?]) {
+    if (n == SCORE_SECURITY) {
         "passing security";
     }
-    if (local1 == 32[obj32_electric_torch?]) {
+    if (n == SCORE_TEMPLE) {
         "restoring the Temple";
     }
-    if (local1 == 33[obj33_old_smudged_battery?]) {
+    if (n == SCORE_HOMER) {
         "answering Homer";
     }
-    if (local1 == 34[obj34_chocolate_biscuit?]) {
+    if (n == SCORE_ORACLE) {
         "summoning the oracle";
     }
-    if (local1 == 35[obj35_Attic?]) {
+    if (n == SCORE_STRONGBOX) {
         "unearthing strongbox";
     }
-    if (local1 == 36[obj36_hinged_trapdoor?]) {
+    if (n == SCORE_AUSTIN) {
         "startling Austin";
     }
-    if (local1 == 37[obj37_teachests?]) {
+    if (n == SCORE_WASH) {
         "washing away the stone";
     }
-    if (local1 == 38[obj38_History_of_the_Meldrews__vol__II_?]) {
+    if (n == SCORE_LIBRARY) {
         "provoking the librarians";
     }
-    if (local1 == 39[obj39_antique_jewellery_box?]) {
+    if (n == SCORE_SPHINX) {
         "twisting the sphinx's nose";
     }
-    if (local1 == 40[obj40_four_leafed_clover?]) {
+    if (n == SCORE_QUARTERSTAFF) {
         "depositing the quarterstaff";
     }
-    if (local1 == 41[obj41_House?]) {
+    if (n == SCORE_AFTERLIFE) {
         "rising in the afterlife";
     }
-    if (local1 == 42[obj42_Servant_s_Room?]) {
+    if (n == SCORE_KNIGHT) {
         "reviving the knight";
     }
-    if (local1 == 43[obj43_classical_dictionary?]) {
+    if (n == SCORE_KNIGHT_ENCOURAGE) {
         "encouraging the knight";
     }
-    if (local1 == 44[obj44_camp_bed?]) {
+    if (n == SCORE_HIGHROD) {
         "choosing a High Rod";
     }
     "** Nameless task **";
@@ -22715,7 +22762,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 PANum(global0->ndx);
                 score_var = score_var + global0->ndx;
             }
-            routine173128(ndx);
+            PrintTaskName(ndx);
         }
         ++ndx;
         jump label173944;
