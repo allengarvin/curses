@@ -4777,7 +4777,7 @@ Global score;
 Global global8 = 1[?];
 Global player;
 Global global10 = 1[?];
-Global global11 = 14[thedark?];
+Global real_location = thedark;
 Global global12;
 Global deadflag;
 Global global14;
@@ -4805,7 +4805,7 @@ Global global35;
 Global global36;
 Global global37;
 Global global38;
-Global global39;
+Global onotheld_mode;
 Global global40;
 Global global41;
 Global action;
@@ -7809,7 +7809,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine53736 local1 local2 local3 local4 local5 local6 local7 local8 ;	! 53736 / 0xd1e8
     if (local1 == 14[thedark?] && local2 ~= 17[rod_of_fire?]) {
-        local1 = global11;
+        local1 = real_location;
     }
     if (local1.local2 == 65535[?] or 0) {
         rfalse;
@@ -7924,7 +7924,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     global10 = routine57036(parent(player));
     if (global10 == 0) {
-        global11 = location;
+        real_location = location;
         location = thedark;
     }
     routine55348(41[obj41_House?]);
@@ -7954,7 +7954,7 @@ Array array_29185 -->	! 29185 (0x7201)
         second = nothing;
         verb = ##Score;
         global37 = 0;
-        global39 = global38;
+        onotheld_mode = global38;
         global38 = 0;
         verb = array_24207-->0;
         if (verb == ##GiveR or ##ShowR) {
@@ -8663,13 +8663,13 @@ Array array_29185 -->	! 29185 (0x7201)
     local2 = global10;
     global10 = routine57036(parent(player));
     if (local2 == 0 && global10 == 1[?]) {
-        location = global11;
+        location = real_location;
         if (local1 == 0) {
             routine55348(41[obj41_House?]);
         }
     }
     if (local2 == 1[?] && global10 == 0) {
-        global11 = location;
+        real_location = location;
         location = thedark;
         if (local1 == 0) {
             routine164468();
@@ -8800,7 +8800,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (player == yourself) {
         player.short = "your former self";
     }
-    player.prop24 = global11;
+    player.prop24 = real_location;
     player = local1;
     if (player == yourself) {
         player.short = NULL;
@@ -8816,9 +8816,9 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label57517;
     }
     location = local3;
-    global11 = player.prop24;
-    if (global11 == 0) {
-        global11 = location;
+    real_location = player.prop24;
+    if (real_location == nothing) {
+        real_location = location;
     }
     global10 = routine57036(parent(player));
     if (global10 == 0) {
@@ -19991,7 +19991,7 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label160900;
     }
     location = newplace;
-    global11 = location;
+    real_location = location;
     routine56952(1[?]);
     if (flag == 0) {
         routine55348(41[obj41_House?]);
@@ -20012,17 +20012,17 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine160976 local1 ;	! 160976 / 0x274d0
+[ YesOrNo i ;	! 160976 / 0x274d0
   .label160977;
     if (1[?] == 1[?]) {
         array_24021->1 = 0;
         routine185684();
         @aread array_24021 array_24142 -> generic_global;
-        local1 = array_24142-->1;
-        if (local1 == 41682['yes'?] or 41646['y//'?]) {
+        i = array_24142-->1;
+        if (i == 'yes' or 'y//') {
             rtrue;
         }
-        if (local1 == 36300['no'?] or 36174['n//'?]) {
+        if (i == 'no' or 'n//') {
             rfalse;
         }
         routine166408(2[?],1[?]);
@@ -20034,7 +20034,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ QuitSub ;	! 161040 / 0x27510
     routine166408(2[?],2[?]);
-    if (routine160976() ~= 0) {
+    if (YesOrNo() ~= 0) {
         @quit;
     }
     rtrue;
@@ -20042,7 +20042,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ RestartSub ;	! 161060 / 0x27524
     routine166408(4[e_obj?],1[?]);
-    if (routine160976() ~= 0) {
+    if (YesOrNo() ~= 0) {
         @restart;
         routine166408(4[e_obj?],2[?]);
     }
@@ -20173,7 +20173,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ ScoreSub ;	! 161504 / 0x276e0
     routine166408(0);
-    routine173036();
+    PrintRank();
     rtrue;
 ];
 
@@ -20185,21 +20185,21 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine161544 local1 local2 ;	! 161544 / 0x27708
+[ PANum m n ;	! 161544 / 0x27708
     print "  ";
-    local2 = local1;
-    if (local2 < 0) {
-        local2 = 0 - local1;
-        local2 = local2 * 10;
+    n = m;
+    if (n < 0) {
+        n = 0 - m;
+        n = n * 10;
     }
-    if (local2 < 10) {
+    if (n < 10) {
         print "   ";
-    } else if (local2 < 100) {
+    } else if (n < 100) {
         print "  ";
-    } else if (local2 < 1000) {
+    } else if (n < 1000) {
         print " ";
     }
-    print local1, " ";
+    print m, " ";
     rtrue;
 ];
 
@@ -20238,19 +20238,19 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ TakeSub ;	! 161728 / 0x277c0
-    if (global39 == 0 || parent(noun) ~= player) {
+    if (onotheld_mode == 0 || parent(noun) ~= player) {
         if (location == thedark) {
-            if (routine161808(global11) ~= 0) {
+            if (RTakeSub(real_location) ~= 0) {
                 rtrue;
             }
-        } else if (routine161808(location) ~= 0) {
+        } else if (RTakeSub(location) ~= 0) {
             rtrue;
         }
     }
     if (routine55280() == 1[?]) {
         rtrue;
     }
-    global38 = global39;
+    global38 = onotheld_mode;
     if (global38 == 1[?] || global122 == 1[?]) {
         rtrue;
     }
@@ -20258,7 +20258,7 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine161808 local1 local2 local3 local4 local5 ;	! 161808 / 0x27810
+[ RTakeSub o local2 local3 local4 local5 ;	! 161808 / 0x27810
     if (noun == player) {
         return routine166408(19[rod_of_stalking?],2[?]);
     }
@@ -20283,7 +20283,7 @@ Array array_29185 -->	! 29185 (0x7201)
         verb = local4;
     }
   .label161913;
-    if (local2 ~= local1 or 0) {
+    if (local2 ~= o or nothing) {
         if (local2 hasnt container && local2 hasnt supporter) {
             if (local2 has animate) {
                 return routine166408(19[rod_of_stalking?],6[ne_obj?],local2);
@@ -20298,7 +20298,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         local2 = parent(local2);
         if (local2 == player) {
-            local2 = local1;
+            local2 = o;
         }
         jump label161913;
     }
@@ -20397,7 +20397,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local1 has animate) {
         return routine166408(19[rod_of_stalking?],6[ne_obj?],local1);
     }
-    if (routine161808(second) ~= 0) {
+    if (RTakeSub(second) ~= 0) {
         rtrue;
     }
     verb = ##Take;
@@ -20741,8 +20741,8 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ ExitSub local1 ;	! 163540 / 0x27ed4
     local1 = parent(player);
-    if (local1 == location || (location == thedark && local1 == global11)) {
-        if (location.prop16 ~= 0 || (location == thedark && global11.prop16 ~= 0)) {
+    if (local1 == location || (location == thedark && local1 == real_location)) {
+        if (location.prop16 ~= 0 || (location == thedark && real_location.prop16 ~= 0)) {
             routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],12[obj12_outside?]);
             rtrue;
         }
@@ -20752,7 +20752,7 @@ Array array_29185 -->	! 29185 (0x7201)
         return routine166408(18[rod_of_returning?],2[?],local1);
     }
     if (location == thedark) {
-        move player to global11;
+        move player to real_location;
     } else {
         move player to location;
     }
@@ -20780,10 +20780,10 @@ Array array_29185 -->	! 29185 (0x7201)
 [ GoSub local1 local2 local3 local4 local5 local6 ;	! 163680 / 0x27f60
     local5 = 0;
     local1 = parent(player);
-    if (location ~= thedark && local1 ~= location || (location == thedark && local1 ~= global11)) {
+    if (location ~= thedark && local1 ~= location || (location == thedark && local1 ~= real_location)) {
         local2 = location;
         if (location == thedark) {
-            location = global11;
+            location = real_location;
         }
         local3 = routine53736(local1,2[?]);
         if (local3 ~= 3[s_obj?]) {
@@ -20860,7 +20860,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (location == thedark) {
             routine174596();
         }
-        global11 = local2;
+        real_location = local2;
         location = thedark;
         global10 = 0;
     }
@@ -21539,7 +21539,7 @@ Array array_29185 -->	! 29185 (0x7201)
     move local1 to player;
     routine55348(38[obj38_History_of_the_Meldrews__vol__II_?],second);
     if (location == thedark) {
-        move local1 to global11;
+        move local1 to real_location;
     } else {
         move local1 to location;
     }
@@ -22538,7 +22538,7 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine173036 local1 local2 ;	! 173036 / 0x2a3ec
+[ PrintRank local1 local2 ;	! 173036 / 0x2a3ec
     print ", giving you the rank of ";
     local1 = score;
     if (local1 ~= 65437[?] && task_scores->11 ~= 0) {
@@ -22709,10 +22709,10 @@ Array array_29185 -->	! 29185 (0x7201)
     if (ndx < 45) {
         if (task_scores->ndx == 1[?]) {
             if (ndx == 21) {
-                routine161544(65486[?]);
+                PANum(65486[?]);
                 score_var = score_var - 50;
             } else {
-                routine161544(global0->ndx);
+                PANum(global0->ndx);
                 score_var = score_var + global0->ndx;
             }
             routine173128(ndx);
@@ -22721,30 +22721,30 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label173944;
     }
     if (rod_score ~= 0) {
-        routine161544(rod_score);
+        PANum(rod_score);
         print "discovering rods^";
     }
     if (things_score ~= 0) {
-        routine161544(things_score);
+        PANum(things_score);
         routine166408(1[?],2[?]);
     }
     if (places_score ~= 0) {
-        routine161544(places_score);
+        PANum(places_score);
         routine166408(1[?],3[s_obj?]);
     }
     if (good_try_bonus ~= 0) {
-        routine161544(5[w_obj?]);
+        PANum(5[w_obj?]);
         print "bonus for a good try^";
         score_var = score_var + 5;
     }
     score_var = score_var + rod_score + things_score + places_score;
     if (score == 65437) {
         score_var = 0 - score_var - 99;
-        routine161544(score_var);
+        PANum(score_var);
         print "destroying universe^";
     }
     new_line;
-    routine161544(score);
+    PANum(score);
     routine166408(1[?],4[e_obj?]);
     if (deadflag == WON && task_scores->11 == 0) {
         "^Sadly, you missed out on the 50-point bonus for rescuing Andromeda.";
@@ -22776,7 +22776,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine174348 local1 ;	! 174348 / 0x2a90c
     local1 = location;
     if (local1 == 14[thedark?]) {
-        local1 = global11;
+        local1 = real_location;
     }
     if (local1.section == 0) {
         "** Room has no zone **";
