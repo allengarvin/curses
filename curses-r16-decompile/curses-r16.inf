@@ -19252,48 +19252,48 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine157768 local1 local2 ;	! 157768 / 0x26848
-    local1 = sibling(local1);
+[ ListEqual o1 o ;	! 157768 / 0x26848
+    o1 = sibling(o1);
     if (global117 ~= 0) {
-        if (c_style & 512 ~= 0 && local2 == 0) {
+        if (c_style & 512 ~= 0 && o == 0) {
           .label157794;
-            if (local1 ~= 0 && (local1.list_together ~= global117 || local1 hasnt attrib25)) {
-                local1 = sibling(local1);
+            if (o1 ~= 0 && (o1.list_together ~= global117 || o1 hasnt attrib25)) {
+                o1 = sibling(o1);
                 jump label157794;
             }
-            return local1;
+            return o1;
         }
         if (c_style & 2048 ~= 0) {
           .label157833;
-            if (local1 ~= 0 && (local1 has concealed || local1 has scenery || local1.list_together ~= global117)) {
-                local1 = sibling(local1);
+            if (o1 ~= 0 && (o1 has concealed || o1 has scenery || o1.list_together ~= global117)) {
+                o1 = sibling(o1);
                 jump label157833;
             }
-            return local1;
+            return o1;
         }
       .label157866;
-        if (local1 ~= 0 && local1.list_together ~= global117) {
-            local1 = sibling(local1);
+        if (o1 ~= 0 && o1.list_together ~= global117) {
+            o1 = sibling(o1);
             jump label157866;
         }
-        return local1;
+        return o1;
     }
-    if (c_style & 512 ~= 0 && local2 == 0) {
+    if (c_style & 512 ~= 0 && o == 0) {
       .label157905;
-        if (local1 ~= 0 && local1 hasnt attrib25) {
-            local1 = sibling(local1);
+        if (o1 ~= 0 && o1 hasnt attrib25) {
+            o1 = sibling(o1);
             jump label157905;
         }
-        return local1;
+        return o1;
     }
     if (c_style & 2048 ~= 0) {
       .label157935;
-        if (local1 ~= 0 && (local1 has concealed || local1 has scenery)) {
-            local1 = sibling(local1);
+        if (o1 ~= 0 && (o1 has concealed || o1 has scenery)) {
+            o1 = sibling(o1);
             jump label157935;
         }
     }
-    return local1;
+    return o1;
 ];
 
 [ IsSeeThrough o ;	! 157960 / 0x26908
@@ -19327,24 +19327,24 @@ Array array_29185 -->	! 29185 (0x7201)
     return routine50640(local1,local2);
 ];
 
-[ routine158112 local1 local2 ;	! 158112 / 0x269a0
+[ SortTogether obj value ;	! 158112 / 0x269a0
   .label158113;
-    if (child(local1) ~= nothing) {
-        if (child(local1).list_together ~= local2) {
-            move child(local1) to obj12_outside;
+    if (child(obj) ~= nothing) {
+        if (child(obj).list_together ~= value) {
+            move child(obj) to obj12_outside;
         } else {
-            move child(local1) to obj13_inside;
+            move child(obj) to obj13_inside;
         }
         jump label158113;
     }
   .label158155;
     if (child(obj13_inside) ~= nothing) {
-        move child(obj13_inside) to local1;
+        move child(obj13_inside) to obj;
         jump label158155;
     }
   .label158174;
     if (child(obj12_outside) ~= nothing) {
-        move child(obj12_outside) to local1;
+        move child(obj12_outside) to obj;
         jump label158174;
     }
     rtrue;
@@ -19372,7 +19372,7 @@ Array array_29185 -->	! 29185 (0x7201)
           .label158249;
             if (l ~= 0) {
                 if (l.list_together == k) {
-                    routine158112(parent(obj),k);
+                    SortTogether(parent(obj),k);
                     obj = child(parent(obj));
                     jump label158197;
                 }
@@ -19428,7 +19428,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (i.d_to ~= nothing) {
             ++k;
         }
-        i = routine157768(i,depth);
+        i = ListEqual(i,depth);
         ++j;
         jump label158456;
     }
@@ -19457,7 +19457,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (classes_p->k == 0) {
                 classes_p->k = n;
                 sizes_p->n = 1[?];
-                l = routine157768(i,depth);
+                l = ListEqual(i,depth);
                 m = k + 1;
               .label158611;
                 if (l ~= 0 && m < j) {
@@ -19465,13 +19465,13 @@ Array array_29185 -->	! 29185 (0x7201)
                         sizes_p->n = sizes_p->n + 1;
                         classes_p->m = n;
                     }
-                    l = routine157768(l,depth);
+                    l = ListEqual(l,depth);
                     ++m;
                     jump label158611;
                 }
                 ++n;
             }
-            i = routine157768(i,depth);
+            i = ListEqual(i,depth);
             ++k;
             jump label158576;
         }
@@ -19484,7 +19484,7 @@ Array array_29185 -->	! 29185 (0x7201)
           .label158720;
             if (classes_p->k ~= i && classes_p->k ~= 0 - i) {
                 ++k;
-                j = routine157768(j,depth);
+                j = ListEqual(j,depth);
                 jump label158720;
             }
             m = sizes_p->i;
@@ -19506,7 +19506,7 @@ Array array_29185 -->	! 29185 (0x7201)
           .label158827;
             if (classes_p->k ~= i && classes_p->k ~= 0 - i) {
                 ++k;
-                j = routine157768(j,depth);
+                j = ListEqual(j,depth);
                 jump label158827;
             }
             if (j.list_together ~= nothing or global117) {
@@ -19514,7 +19514,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     ++senc;
                     jump label159394;
                 }
-                k2 = routine157768(j,depth);
+                k2 = ListEqual(j,depth);
                 if (k2 == 0 || k2.list_together ~= j.list_together) {
                     ! no code
                 } else {
@@ -19530,7 +19530,7 @@ Array array_29185 -->	! 29185 (0x7201)
                           .label158963;
                             if (classes_p->l ~= m && classes_p->l ~= 0 - m) {
                                 ++l;
-                                q = routine157768(q,depth);
+                                q = ListEqual(q,depth);
                                 jump label158963;
                             }
                             if (q.list_together == j.list_together) {
@@ -19651,7 +19651,7 @@ Array array_29185 -->	! 29185 (0x7201)
             --senc;
         }
         mr = j.list_together;
-        j = routine157768(j,depth);
+        j = ListEqual(j,depth);
         ++i;
         ++senc;
         jump label159411;
@@ -19666,7 +19666,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 --i;
                 jump label159889;
             }
-            k = routine157768(j,depth);
+            k = ListEqual(j,depth);
             if (k == 0 || k.list_together ~= j.list_together) {
                 ! no code
             } else {
@@ -19685,7 +19685,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         q = j;
                         l = 0;
                       .label159605;
-                        q = routine157768(q,depth);
+                        q = ListEqual(q,depth);
                         ++l;
                         if (q.list_together == j.list_together) jump label159605;
                         routine157320(l);
@@ -19755,7 +19755,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
         }
       .label159889;
-        j = routine157768(j,depth);
+        j = ListEqual(j,depth);
         ++i;
         jump label159482;
     }
