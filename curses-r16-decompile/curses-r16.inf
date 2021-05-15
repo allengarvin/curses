@@ -4856,7 +4856,7 @@ Global real_location = thedark;
 Global global12;
 Global deadflag;
 Global global14;
-Global global15;
+Global last_score;
 Global global16 = 1[?];
 Global places_score;
 Global things_score;
@@ -7980,11 +7980,11 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine53992 local1 ;	! 53992 / 0xd2e8
     print "^[Your score has just gone ";
-    if (global15 > score) {
-        local1 = global15 - score;
+    if (last_score > score) {
+        local1 = last_score - score;
         print "down";
     } else {
-        local1 = score - global15;
+        local1 = score - last_score;
         print "up";
     }
     print " by ";
@@ -8003,7 +8003,7 @@ Array array_29185 -->	! 29185 (0x7201)
     top_object = 757 - 255;
     yourself.capacity = 5;
     j = Initialise;();
-    global15 = score;
+    last_score = score;
     move player to location;
   .label54101;
     if (parent(location) ~= nothing) {
@@ -8036,11 +8036,11 @@ Array array_29185 -->	! 29185 (0x7201)
     }
   .label54187;
     if (deadflag == 0) {
-        if (score ~= global15) {
+        if (score ~= last_score) {
             if (global16 == 1[?]) {
                 routine53992();
             }
-            global15 = score;
+            last_score = score;
         }
       .label54208;
         array_24207-->0 = 0;
