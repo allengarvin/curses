@@ -5435,7 +5435,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (usual_grammar_after == 0) {
             i = routine53736(actor,15[yourself?]);
-            if (parser_trace >= 2 && actor.prop15 ~= 0 or 65535[?]) {
+            if (parser_trace >= 2 && actor.grammar ~= 0 or 65535[?]) {
                 print " [Grammar property returned ", i, "]^";
             }
             if (i < 0) {
