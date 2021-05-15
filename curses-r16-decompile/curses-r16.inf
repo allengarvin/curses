@@ -4863,7 +4863,6 @@ Global things_score;
 Global global19 = 1[?];
 Global global20;
 Global global21;
-Global global22;
 Global global23;
 Global actor;
 Global actor_location;
@@ -5106,6 +5105,7 @@ Array task_scores -->	! 23848 (0x5d28)
     783
     3843
 ;
+Array standard_interpreter --> 1280[?];	! 0 (0x0)
 Array quote_line --> 10;	! 25943 (0x6557)
 Array array_23893 --> 1;	! 23893 (0x5d55)
 Array array_23957 --> 1;	! 23957 (0x5d95)
@@ -7998,7 +7998,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ PlayTheGame i j k l ;	! 54072 / 0xd338
-    global22 = 50-->0;
+    standard_interpreter = 50-->0;
     player = yourself;
     global21 = 757 - 255;
     yourself.prop27 = 5[w_obj?];
@@ -9030,8 +9030,8 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     print " / Inform v", "1600", " Library ", "5/12";
     new_line;
-    if (global22 > 0) {
-        print "Standard interpreter ", global22 / 256, ".", global22 % 256, "^";
+    if (standard_interpreter > 0) {
+        print "Standard interpreter ", standard_interpreter / 256, ".", standard_interpreter % 256, "^";
     }
     rtrue;
 ];
