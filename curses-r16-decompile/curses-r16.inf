@@ -4953,7 +4953,7 @@ Global pretty_mode = true;
 Global menu_nesting;
 Global submenu_number = 8;
 Global submenu_header = "Nameless item";
-Global menu_selection;
+Global menu_item;
 Global global114;
 Global global115 = 1[?];
 Global c_style;
@@ -7857,7 +7857,7 @@ Array array_29185 -->	! 29185 (0x7201)
     return 65535[?];
 ];
 
-[ routine53524 local1 ;	! 53524 / 0xd114
+[ ZRegion local1 ;	! 53524 / 0xd114
     if (local1 == 0) {
         return 0;
     }
@@ -7884,7 +7884,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (o.local2 == 65535[?]) {
         rfalse;
     }
-    local4 = routine53524(o.local2);
+    local4 = ZRegion(o.local2);
     if (local4 == 0 or 1[?]) {
         "** Expected string/routine as prop value! **";
     }
@@ -7899,7 +7899,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine53704 local1 local2 local3 ;	! 53704 / 0xd1c8
-    local3 = routine53524(local1.local2);
+    local3 = ZRegion(local1.local2);
     if (local3 == 2[?]) {
         return routine53736(local1,local2);
     }
@@ -7935,7 +7935,7 @@ Array array_29185 -->	! 29185 (0x7201)
             action = local8;
             rfalse;
         }
-        local6 = routine53524(local4-->local3);
+        local6 = ZRegion(local4-->local3);
         if (local6 == 2[?]) {
             local6 = (local4-->local3)();
             if (local6 ~= 0) {
@@ -8375,11 +8375,11 @@ Array array_29185 -->	! 29185 (0x7201)
 [ LowKey_Menu menu_choices EntryR ChoiceR lines main_title i j ;	! 55464 / 0xd8a8
     ++menu_nesting;
   .label55467;
-    menu_selection = 0;
+    menu_item = 0;
     lines = EntryR();
     main_title = submenu_header;
     print "--- ", (string) main_title, " ---^^";
-    if (routine53524(menu_choices) == 3[s_obj?]) {
+    if (ZRegion(menu_choices) == 3[s_obj?]) {
         print (string) menu_choices;
     } else {
         generic_globvar = menu_choices();
@@ -8406,7 +8406,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (i < 1 || i > lines) {
         jump label55515;
     }
-    menu_selection = i;
+    menu_item = i;
     j = ChoiceR();
     if (j == 2[?]) {
         jump label55467;
@@ -8423,7 +8423,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     ++menu_nesting;
-    menu_selection = 0;
+    menu_item = 0;
     local4 = local2();
     local5 = submenu_header;
     local6 = submenu_number;
@@ -8483,7 +8483,7 @@ Array array_29185 -->	! 29185 (0x7201)
     style roman;
     @set_cursor 5 2;
     0-->8 = 2 | 0-->8;
-    if (routine53524(s) == 3[s_obj?]) {
+    if (ZRegion(s) == 3[s_obj?]) {
         print (string) s;
     } else {
         generic_globvar = s();
@@ -8522,7 +8522,7 @@ Array array_29185 -->	! 29185 (0x7201)
             new_line;
             new_line;
             new_line;
-            menu_selection = local7 - 6;
+            menu_item = local7 - 6;
             generic_globvar = local2();
             @erase_window 65535;
             @split_window 1;
@@ -18704,36 +18704,36 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine147836 ;	! 147836 / 0x2417c
-    if (menu_selection == 0) {
+    if (menu_item == 0) {
         submenu_number = 3;
         submenu_header = "Curses";
         return 7[se_obj?];
     }
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         submenu_number = 6;
         submenu_header = "Instructions";
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         submenu_number = 4;
         submenu_header = "Commands";
     }
-    if (menu_selection == 3[s_obj?]) {
+    if (menu_item == 3) {
         submenu_number = 8;
         submenu_header = "Cast of Thousands";
     }
-    if (menu_selection == 4[e_obj?]) {
+    if (menu_item == 4) {
         submenu_number = 6;
         submenu_header = "Release Notes";
     }
-    if (menu_selection == 5[w_obj?]) {
+    if (menu_item == 5) {
         submenu_number = 5;
         submenu_header = "Legal Notes";
     }
-    if (menu_selection == 6[ne_obj?]) {
+    if (menu_item == 6) {
         submenu_number = 3;
         submenu_header = "Inform";
     }
-    if (menu_selection == 7[se_obj?]) {
+    if (menu_item == 7) {
         submenu_number = 5;
         submenu_header = "ftp.gmd.de";
     }
@@ -18741,65 +18741,65 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ HelpSpecialSub ;	! 147944 / 0x241e8
-    menu_selection = 0;
+    menu_item = 0;
     if (special_word == 34770) {
-        menu_selection = 1[?];
+        menu_item = 1;
     }
     if (special_word == 31611) {
-        menu_selection = 2[?];
+        menu_item = 2;
     }
     if (special_word == 31800) {
-        menu_selection = 3[s_obj?];
+        menu_item = 3;
     }
     if (special_word == 37983) {
-        menu_selection = 4[e_obj?];
+        menu_item = 4;
     }
     if (special_word == 35274) {
-        menu_selection = 5[w_obj?];
+        menu_item = 5;
     }
     if (special_word == 34716) {
-        menu_selection = 6[ne_obj?];
+        menu_item = 6;
     }
     if (special_word == 30054) {
-        menu_selection = 7[se_obj?];
+        menu_item = 7;
     }
-    if (menu_selection == 0) {
+    if (menu_item == 0) {
         HelpSub();
     } else {
-        routine148036(menu_selection);
+        routine148036(menu_item);
     }
     rtrue;
 ];
 
 [ routine148036 ;	! 148036 / 0x24244
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         "^Welcome to the world of CURSES, an Advanced interactive Adventure game...^^", "The scene is set initially in the present day, at Meldrew Hall, an old family seat in the shires of England. You play the part of the current heir to the house. (This doesn't make your family rich aristocrats - just people who suffer very badly from inheritance tax.)^^Remember, your only aim is to find that map of Paris so you can go on holiday - try not to get diverted by any enormous quests. Still, it would be interesting to find out:^", "^  Just how realistic are the Tarot cards?^  What do sixth century politics have to do with you?^  Surely Greek myths can't come into this?^  What on earth is wrong with your entire family?^  Do the National Trust have sinister motives?^  Why is it so hard to go to church these days?^  What are daisies for?  Or goats, for that matter?^  Can modernist poetry really be bad for you?^  Should you rescue someone who doesn't want you to?^^", "To finally understand the secret, you will need to reach the Master Game, a concluding game-within-a-game buried deep in the past. Good luck!";
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         print "Basic commands consist either of a verb on its own, or a verb with one or more nouns. For instance, to see where you are type ~look~. Some verbs can also have more elaborate forms; for instance you could also look at, inside or under something. ~Curses~ understands about 1200 English words, so most reasonable synonyms are allowed.^^To pick something up, ~take thing~ and to drop it again, ~drop thing~. To see what you have, type ~take inventory~ or just ~inventory~. You can move about with commands such as ~go west~, or just ~west~ for short. (It is assumed that you are blessed with an excellent sense of direction.)^^", "Some commands can act on more than one thing. You can ~drop all~, which will drop everything (except things you're wearing), for instance. Or if you found a packing case with a number of things in, you could type such things as:^^    remove everything but the blue key^    get all the coins except ten, twenty and fifty^^(Containers may also be emptied or emptied into each other.)  If you are not explicit enough, sometimes the game can infer what you mean, but at other times it will ask for further details. It might have replied to the first line above by saying^^    (from the yellow packing case)^^", "so that you know what has been assumed on your behalf. If there had been two blue keys you might reasonably have meant, it would reply with something like^^    Which do you mean, the blue doorkey or the Blue Moon Agency key?^^You may either tell it which, or else give up and do something else instead. If you don't mind which key, you can always say something such as:^^    drop a key into the slot^^and the game will make a sensible choice and tell you what it was.^^", "~Curses~ sometimes assumes commands which you implicitly make, but always tells you what they are in brackets. For instance:^^    >look up bach in book^    (first taking the Encyclopaedia of Composers)^    (putting the tuning fork in the rucksack to make room)^    ~J. S. Bach (1685-1750) had a pet aardvark called Nigel...^^", "~it~ refers to the last thing manipulated, ~him~ and ~her~ to anyone obvious in the room; ~pronouns~ will tell you what they currently mean, if in doubt. ~again~ repeats the last command.^^You can ~save~, ~restore~ or ~restart~ the game at any time, or indeed ~quit~ or ask for your ~score~, which also tells the time. ~fullscore~ or ~full~ gives a breakdown of the score. As an aide-memoire the command ~objects~ tells you where you left things you once had, and ~places~ says where you have been. ", "If you want to check that your copy of the game file is intact (and not, for instance, corrupted by some file-transfer process you used to get it), you can ~verify~ it. These commands do not take up any game time, and nor does anything the game didn't understand.^^", "Some jaundiced players tire of long descriptions of places, and they can type ~short~ (or ~superbrief~) to make the game only give short ones. Amnesiac players, on the other hand, may like to use ~long~ (or ~verbose~) to give only long ones. Either kind can go back to the usual state of affairs with ~normal~ (or ~brief~). There are also two kinds of inventory: ~inventory wide~ and ~inventory tall~.^^", "This Advanced story file employs special effects such as ";
         style bold;
         print "bold face";
         style roman;
         " names of rooms and a more elaborate status line than usual. Also, less than altogether relevant quotations pop up from time to time. If these effects do not seem to work properly on your machine, or are just downright annoying, they can be turned off with ~plain~ and on again with ~pretty~.^^", "From time to time you will be told that your score has changed: this can be turned off with ~notify off~, turned on again with ~notify on~ or made even more common by ~notify full~ (which even tells you about scores accruing from visits to places, unusual items discovered and the like).^^", "Simple typing mistakes can sometimes be corrected just by typing ~oops~ followed by the word you had intended to type, so for instance:^^    drop fish in buket^    oops bucket^^The game knows several useful abbreviations: i for inventory, ne for northeast (and so on), l for look, g for again, o for oops, x for examine, z for wait (short for ~zzz~ - sorry about that).^^", "You can sometimes enter larger objects you find. You might well be able to get in a tractor, for instance, though driving it around might be harder.^^", "From time to time, you will wish to speak to other people. If you only have a single word to say, you could use commands like^^    answer yes^    say boo to goose^^(Text in quotation marks is not allowed.)  The game will usually guess who you want to talk to if you miss off the name. A better way to talk, which allows more complicated remarks, is to use commands such as^", "^    goose, boo^    wine waiter, give me the bill^    ask professor about turtles^^though the waiter may have better things to do, and the professor might be quite mad. Some documents may be consulted in this game. For this, try commands such as^^    look up chlorine^    consult periodic table about argon^^", "You can give several commands in a row by use of ~then~ (or full stops, commas or ~and~ in some contexts): so, for instance,^^    e, s, get fish then inventory^    e.e.open door.s^^", "There are, of course, many other commands for more specialised circumstances. A final word of warning: cursing is strictly forbidden in this game.";
     }
-    if (menu_selection == 3[s_obj?]) {
+    if (menu_item == 3) {
         style bold;
         print "CURSES^";
         style roman;
         "An Interactive Diversion by Graham Nelson^^Play-testing by Michael Kinyon, Gareth Rees and Richard Tucker^^Together with informers: ", "Torbjorn Andersson, Julian Arnold, Jonathan Badger, Greg Bakker, Richard Barnett, Joachim Baumann, Richard Beigel, Don Blaheta, Martin Braun, Allen Braunsdorf, Otto Christenson, Tomas Clark, Andrew Clover, Alan Cox, Richard Develyn, Robert Dickau, Paul David Doherty, Roger Dominick, Koen van der Drift, Ivan Drucker, Jon Drukman, Martin N. Dunstan, Paul Fletcher, Richard Forster, Ron Galicia, Allen Garvin, Chris Goedde, Peter Grundy, Mark ~Guido~ Guidarelli, David Horowitz, Will Hurwood, Hakan Huss, Randy Hutson, Darin Johnson, Stefan Jokisch, Brad Jones, Jose Kahan, Darius Katz, Dennis S. Keeler, Andrew Kemp, John W. Kennedy, Peter Killworth, Marnix Klooster, Mark Knibbs, Teo Kwang Liak, Matthew J. MacKenzie, Chris Mann, Chris Markwyn, David McGrath, M. Sean Molley, Byron Montgomerie, David Moore, Carl Muckenhoupt, Christine Nelson, Toby Nelson, Carrie O'Grady, Michael A. Patton, Morten Holm Pederson, Mark Phillips, Neil Querengesser, Mason Reed, Robert Rendell, Loren Rittle, Luke Roberts, John Rodriguez, Kathleen Rudden, Bryan Scattergood, Bernd Schmitt, Rene Schneer, Alison Scott, Mike Scott, Matthew Selby, Dilip Sequeira, David Sinclair, Suzanne Skinner, David Stephenson, Robert Stone, Nyko Tyni, David VanBronkhorst, Andrew Vesperman, Hao-yang Wang, Robin Watts, John West, Christopher A. Wichura, Graham Willmott, Andrew Wren, Brendon Wyber, Jeff Zahn and Zhang Genglue.^^", "Apologies and acknowledgements to: the late Mr T. S. Eliot, the Oxford History of England, Philip Vellacott's translations of the Greek plays and the guidebooks of the British Museum; ", "Edouard Poor, for porting interpreters to the Acorn Archimedes; ", "and Volker Blasius, for keeping the if-archive.^^", "Coffee mugs fired by: Helena Verrill.^^", "Genealogy and photography associate: Peter Nelson.^^", "Ancient Greek cultural attache and daisy chain consultant: Dr L. J. Coventry.^^", "Archaeology: the InfoTaskForce, Paul David Doherty and Mark Howell, without whose excavations Inform could not have been written. If I have hacked deeper than them, it is because I stand in their trenches.";
     }
-    if (menu_selection == 4[e_obj?]) {
+    if (menu_item == 4) {
         routine57960();
         "^Release 16 is the eighth public release of ~Curses~. Its major previous releases were as follows:^^", "   Release 7 / 930428   (the original and still the worst)^   Release 8 / 930603   (much enhanced, slightly larger)^   Release 9 / 931111   (extended by about 20%)^   Release 10 / 940120  (tidied up a little)^   Release 12 / 940601  (a major extension)^   Release 14 / 950522  (first edition of the rewrite)^^", "For Release 14 the entire source code was ~digitally remastered~, so to speak: rewritten and tidied up into Inform 5 code which properly uses the Library. Since then, the author has only been maintaining and correcting.";
     }
-    if (menu_selection == 5[w_obj?]) {
+    if (menu_item == 5) {
         routine57960();
         "^This story file is copyright (c) Graham Nelson 1993, 1994, 1995, but may be freely distributed and used provided no profit is involved and provided it is not modified in any way. ", "It contains no fragments of code written by anyone other than the author. The author was extremely tempted to hide an important clue here, but thought better of it. No trade marks are (knowingly) used. All characters and locations are imaginary, and any resemblance to real persons (living after 1900) or places (except in antiquity) is accidental.";
     }
-    if (menu_selection == 6[ne_obj?]) {
+    if (menu_item == 6) {
         "~Inform~ is an Adventure game compiler written by the author, and was once ~Curses~' Siamese twin but has now taken on an independent life of its own. It takes a C-like source (this game takes up about 18600 lines, or 750K) to produce story files which can be played on almost any modern computer. (~Curses~ has been played on Acorns, PCs, Macs, Amigas, Ataris, Suns, NeXTs, Psions, VAX and IBM mainframes and many other machines.)^^", "Documentation, source code (in ANSI C) and examples for Inform are available to the public: see ~help archive~.";
     }
-    if (menu_selection == 7[se_obj?]) {
+    if (menu_item == 7) {
         "There is an archive of ~interactive fiction~ like this at the anonymous FTP site ~ftp.gmd.de~, in its ~if-archive~, currently maintained by Volker Blasius. The archive contains the work of many people, including source for interpreters capable of playing games like this on almost any computer.^^~Curses~ itself, and the ANSI C source for its compiler ~Inform~, together with manuals in a choice of formats and code for several example games, are archived there.";
     }
     rtrue;
@@ -19587,7 +19587,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 jump label158720;
             }
             m = sizes_p->i;
-            if (j.list_together ~= nothing or global117 && routine53524(j.list_together) == 2[?] or 3[s_obj?] && j.list_together == mr) {
+            if (j.list_together ~= nothing or global117 && ZRegion(j.list_together) == 2[?] or 3[s_obj?] && j.list_together == mr) {
                 --senc;
             }
             mr = j.list_together;
@@ -19617,7 +19617,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (k2 == 0 || k2.list_together ~= j.list_together) {
                     ! no code
                 } else {
-                    k2 = routine53524(j.list_together);
+                    k2 = ZRegion(j.list_together);
                     if (k2 == 2[?] or 3[s_obj?]) {
                         q = j;
                         global119 = 1[?];
@@ -19746,7 +19746,7 @@ Array array_29185 -->	! 29185 (0x7201)
     j = o;
   .label159411;
     if (i <= n) {
-        if (j.list_together ~= nothing or global117 && routine53524(j.list_together) == 2[?] or 3[s_obj?] && j.list_together == mr) {
+        if (j.list_together ~= nothing or global117 && ZRegion(j.list_together) == 2[?] or 3[s_obj?] && j.list_together == mr) {
             --senc;
         }
         mr = j.list_together;
@@ -19769,7 +19769,7 @@ Array array_29185 -->	! 29185 (0x7201)
             if (k == 0 || k.list_together ~= j.list_together) {
                 ! no code
             } else {
-                k = routine53524(j.list_together);
+                k = ZRegion(j.list_together);
                 if (k == 2[?] or 3[s_obj?]) {
                     if (c_style & 2 ~= 0) {
                         generic_globvar = 2 * (depth + global120);
@@ -20054,7 +20054,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (i <= top_object) {
         address = i.&prop22;
         if (address ~= 0 && i hasnt attrib7) {
-            if (routine53524(address-->0) == 2[?]) {
+            if (ZRegion(address-->0) == 2[?]) {
                 if ((address-->0)() ~= 0) {
                     move i to location;
                 }
@@ -20899,11 +20899,11 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     local6 = noun.d_to;
-    if (routine53524(local6) == 2[?]) {
+    if (ZRegion(local6) == 2[?]) {
         local6 = routine53736(noun,8[nw_obj?]);
     }
     local2 = local1.local6;
-    local3 = routine53524(local2);
+    local3 = ZRegion(local2);
     if (local3 == 3[s_obj?]) {
         print (string) local2;
         new_line;
@@ -20934,7 +20934,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             return L__M(##Go,5,local2);
         }
-        if (routine53524(local2.n_to) == 2[?]) {
+        if (ZRegion(local2.n_to) == 2[?]) {
             local2 = routine53736(local2,5[w_obj?]);
         } else {
             local2 = local2.n_to;
@@ -24001,7 +24001,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine182012 ;	! 182012 / 0x2c6fc
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         if (routine181952("Drop the robot mouse where Austin can get at it",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24022,13 +24022,13 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "Write your own Inform adventure, and so revenge yourself on the author";
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         "Callimachus (c. 300-240 BC), a former schoolteacher in Alexandria, produced the first library catalogue: a 120-part organised history of literature to date (almost all lost now, like much of its subject matter). He was favoured at court and celebrated for his epigrams (about 60 of which survive in the ~Greek Anthology~) but denounced by critics for being unable to write epics, which he detested (~big book, big bore~). Apollonius, the head librarian c. 260-247, was a former pupil with exactly opposite views, who brought out a 6000-line epic on the Argonauts, whereupon the quarrel grew so personal and bitter that Apollonius was driven into retirement.";
     }
-    if (menu_selection == 3[s_obj?]) {
+    if (menu_item == 3) {
         "Sleep cold at someone's ^Door as, shivering, ^I lie tonight at ^Yours. The neighbours weep ^To see me here, but ^Who will weep for you, ^Crouched on a doorstep ^When the grey hairs come? ^^ -- translation by Edward Lucie-Smith";
     }
-    if (menu_selection == 4[e_obj?]) {
+    if (menu_item == 4) {
         if (routine181952("Other anagrams of ~Marie Swelldon~, found by Michael Kinyon, include...",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24085,10 +24085,10 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "Swollen Admire";
     }
-    if (menu_selection == 5[w_obj?]) {
+    if (menu_item == 5) {
         "To those who wrote to suggest ~wistaria~ be spelt ~wisteria~: ^The genus is named after the American anatomist Caspar Wistar (1761-1818), so ~wistaria~ is correct, but the mistake was introduced by Thomas Nuttall, who originally christened the family. Ironically, American dictionaries side with Nuttall and English ones with Wistar, as far as I can tell.";
     }
-    if (menu_selection == 6[ne_obj?]) {
+    if (menu_item == 6) {
         if (routine181952("The 1970s robot mouse is capable of speech recognition.",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24106,7 +24106,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "Not really a mistake, just the pace of history: the English pub licensing laws which close the village pub in the afternoon have, since June 1993, been repealed.";
     }
-    if (menu_selection == 7[se_obj?]) {
+    if (menu_item == 7) {
         "There are two ancient languages: a hieroglyphic and a demotic script, the important clue being the Rosetta stone to compare the two. ^^The hieroglyphics are loosely based on the beautiful system devised by Michael Berlyn and Patricia Fogleman for their excellent game, ~Infidel~, though I have taken care not to reveal any of their answers. ^^The demotic script (written right to left) is my own invention, but the numbers are Etruscan. (And are just about the only Etruscan words deciphered - they were found on a gambler's die.)";
     }
     rtrue;
@@ -24118,36 +24118,36 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine183792 ;	! 183792 / 0x2cdf0
-    if (menu_selection == 0) {
+    if (menu_item == 0) {
         submenu_header = "For your amusement";
         submenu_number = 9;
         return 7[se_obj?];
     }
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         submenu_header = "Frivolous things to do";
         submenu_number = 11;
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         submenu_header = "About Callimachus and Apollonius";
         submenu_number = 16;
     }
-    if (menu_selection == 3[s_obj?]) {
+    if (menu_item == 3) {
         submenu_header = "An epigram by Callimachus";
         submenu_number = 12;
     }
-    if (menu_selection == 4[e_obj?]) {
+    if (menu_item == 4) {
         submenu_header = "Salmon Wielder";
         submenu_number = 7;
     }
-    if (menu_selection == 5[w_obj?]) {
+    if (menu_item == 5) {
         submenu_header = "Wistaria or wisteria?";
         submenu_number = 10;
     }
-    if (menu_selection == 6[ne_obj?]) {
+    if (menu_item == 6) {
         submenu_header = "Great Curses mistakes";
         submenu_number = 10;
     }
-    if (menu_selection == 7[se_obj?]) {
+    if (menu_item == 7) {
         submenu_header = "The ancient languages";
         submenu_number = 10;
     }
@@ -24155,7 +24155,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine183900 ;	! 183900 / 0x2ce5c
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         if (routine181952("Giving Aunt Jemima the wrapped parcel;",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24179,13 +24179,13 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "Feeding Austin the chicken wishbone.";
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         if (routine181952("Eighty-one. The inspiration for the radio station came about when the author was driving at midnight through Oxfordshire and the local station played, in succession, the Moonlight Sonata, the Four Seasons, You Take My Breath Away and Gold. So the radio plays the 80 most hackneyed radio tunes the author could think of.",1[?]) == 1[?]) {
             return 2[?];
         }
         "For the eighty-first, the Sibelius violin concerto, see the Inform technical manual.";
     }
-    if (menu_selection == 3[s_obj?]) {
+    if (menu_item == 3) {
         if (routine181952("Not counting everyday death, winning or the various ways of almost but not quite coming to an end...",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24212,7 +24212,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "Disembodying the entire universe";
     }
-    if (menu_selection == 4[e_obj?]) {
+    if (menu_item == 4) {
         if (routine181952("If magic, the daisy chain rustles (according to inventories) when you are carrying something which could turn into a rod if waved.",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24221,13 +24221,13 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "The vanity mirror does not reflect rods or things which become rods (unless you're so vain as to polish it, after which it reflects everything).";
     }
-    if (menu_selection == 5[w_obj?]) {
+    if (menu_item == 5) {
         "Apart from the projector beam's effects, looking into the ball shows one of twelve little scenes, corresponding to the twelve main areas of the game.";
     }
-    if (menu_selection == 6[ne_obj?]) {
+    if (menu_item == 6) {
         "The angel and the demon bear a surprising resemblance to them. ^^Sadly, Donald Sutherland died a few days ago (as I write this). I'm slightly sorry now to have typecast him.";
     }
-    if (menu_selection == 7[se_obj?]) {
+    if (menu_item == 7) {
         if (routine181952("Not only the title, but the plan and a good deal of the incidental symbolism of the Unreal City were taken from early poems of T. S. Eliot (which owed a bit to Baudelaire), and I recommend them (apart from the great interest of the poems themselves) to any who think such elucidation worth the trouble.",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24236,10 +24236,10 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "The graffiti behind the poster is the closing words of ~The Waste Land~, which the Thunder said. ~Shantih~ is not, as one inspired player guessed, meant as an anagram of ~has hint~.";
     }
-    if (menu_selection == 8[nw_obj?]) {
+    if (menu_item == 8) {
         "59. Nine can be carried, plus another 21 trumps and 29 plainer cards in the pack. I have obviously departed from the exact constitution of the Tarot pack (with which I am not familiar) to suit my own convenience.";
     }
-    if (menu_selection == 9[sw_obj?]) {
+    if (menu_item == 9) {
         if (routine181952("By dropping it down the empty dumbwaiter shaft;",1[?]) == 1[?]) {
             return 2[?];
         }
@@ -24260,7 +24260,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         "...and so can the jaws of Dobbin (Doktor Stein's goat).";
     }
-    if (menu_selection == 10[u_obj?]) {
+    if (menu_item == 10) {
         "Annoyance of the player: it's the biggest red herring in the game. It scores -50, the demon advises you to hang onto it at all times - and it was cursed.";
     }
     rtrue;
@@ -24272,48 +24272,48 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine185108 ;	! 185108 / 0x2d314
-    if (menu_selection == 0) {
+    if (menu_item == 0) {
         submenu_header = "Trivia questions";
         submenu_number = 8;
         return 10[u_obj?];
     }
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         submenu_header = "1. What are the ~good but wrong guesses~?";
         submenu_number = 20;
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         submenu_header = "2. How many songs does the radio play?";
         submenu_number = 19;
     }
-    if (menu_selection == 3[s_obj?]) {
+    if (menu_item == 3) {
         submenu_header = "3. In what *** ways *** can the game end?";
         submenu_number = 20;
     }
-    if (menu_selection == 4[e_obj?]) {
+    if (menu_item == 4) {
         submenu_header = "4. What are the secret ways to detect a Rod?";
         submenu_number = 22;
     }
-    if (menu_selection == 5[w_obj?]) {
+    if (menu_item == 5) {
         submenu_header = "5. What can you see in the crystal ball?";
         submenu_number = 20;
     }
-    if (menu_selection == 6[ne_obj?]) {
+    if (menu_item == 6) {
         submenu_header = "6. Where are Dame Judi Dench and Donald Sutherland?";
         submenu_number = 25;
     }
-    if (menu_selection == 7[se_obj?]) {
+    if (menu_item == 7) {
         submenu_header = "7. Explain the handkerchief initials and the graffiti.";
         submenu_number = 27;
     }
-    if (menu_selection == 8[nw_obj?]) {
+    if (menu_item == 8) {
         submenu_header = "8. How many tarot cards are there altogether?";
         submenu_number = 22;
     }
-    if (menu_selection == 9[sw_obj?]) {
+    if (menu_item == 9) {
         submenu_header = "9. How can the medicine bottle be opened?";
         submenu_number = 20;
     }
-    if (menu_selection == 10[u_obj?]) {
+    if (menu_item == 10) {
         submenu_header = "10. What is the mascot for in the premonition?";
         submenu_number = 23;
     }
@@ -24321,11 +24321,11 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine185256 ;	! 185256 / 0x2d3a8
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         routine183780();
         return 2[?];
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         routine185096();
         return 2[?];
     }
@@ -24338,16 +24338,16 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine185292 ;	! 185292 / 0x2d3cc
-    if (menu_selection == 0) {
+    if (menu_item == 0) {
         submenu_header = "Amusements";
         submenu_number = 5;
         return 2[?];
     }
-    if (menu_selection == 1[?]) {
+    if (menu_item == 1) {
         submenu_header = "For your amusement";
         submenu_number = 9;
     }
-    if (menu_selection == 2[?]) {
+    if (menu_item == 2) {
         submenu_header = "Trivia questions";
         submenu_number = 8;
     }
