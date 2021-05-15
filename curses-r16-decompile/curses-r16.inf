@@ -4884,7 +4884,7 @@ Global pcount;
 Global global59;
 Global parameters;
 Global params_wanted;
-Global nsns;
+Global multi_context;
 Global interfrom;
 Global global64;
 Global oops_from;
@@ -5579,7 +5579,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 interfrom = 0;
                 parameters = 0;
                 params_wanted = line_address->0;
-                nsns = 0;
+                multi_context = 0;
                 special_word = 0;
                 special_number = 0;
                 multiple_object-->0 = 0;
@@ -5656,7 +5656,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 notholding = 0;
                 interfrom = 0;
                 parameters = 0;
-                nsns = 0;
+                multi_context = 0;
                 special_word = 0;
                 special_number = 0;
                 multiple_object-->0 = 0;
@@ -6250,13 +6250,13 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local2 == 7[se_obj?]) {
         local3 = routine53120(wn);
         if (local3 ~= 64536[?]) {
-            if (nsns == 0) {
+            if (multi_context == 0) {
                 global29 = local3;
             } else {
                 global30 = local3;
             }
             special_number = local3;
-            ++nsns;
+            ++multi_context;
             if (parser_trace >= 3) {
                 print "  [Read special as the number ", local3, "]^";
             }
@@ -6275,7 +6275,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (parser_trace >= 3) {
             print "  [Read number as ", local3, "]^";
         }
-        if (nsns++ == 0) {
+        if (multi_context++ == 0) {
             global29 = local3;
         } else {
             global30 = local3;
@@ -6294,12 +6294,12 @@ Array array_29185 -->	! 29185 (0x7201)
             rtrue;
         }
         if (local3 == 1[?]) {
-            if (nsns == 0) {
+            if (multi_context == 0) {
                 global29 = global36;
             } else {
                 global30 = global36;
             }
-            ++nsns;
+            ++multi_context;
         }
         if (local3 == 10000[?]) {
             return local3;
