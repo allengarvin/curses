@@ -4898,7 +4898,7 @@ Global global72;
 Global global73;
 Global vague_word;
 Global vague_obj;
-Global global76;
+Global itobj;
 Global global77;
 Global global78;
 Global lookahead;
@@ -5554,7 +5554,7 @@ Array array_29185 -->	! 29185 (0x7201)
             syntax = 0-->7-->i;
             num_lines = syntax->0 - 1;
             vague_word = 'it';
-            vague_obj = global76;
+            vague_obj = itobj;
             if (parser_trace >= 1) {
                 print "[Parsing for the verb '", (address) verb_word, "' (", num_lines + 1, " lines)]^";
             }
@@ -6221,8 +6221,8 @@ Array array_29185 -->	! 29185 (0x7201)
     --wn;
     if (local4 == 34860['it'?] or 40287['them'?]) {
         vague_word = local4;
-        vague_obj = global76;
-        if (global76 == 0) {
+        vague_obj = itobj;
+        if (itobj == nothing) {
             global91 = 9[sw_obj?];
             return 0;
         }
@@ -6672,7 +6672,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (local6 < global58) {
             if (array_24618-->local6 >= 2 && array_24618-->local6 < 10000) {
                 array_24488-->1 = 34860['it'?];
-                global76 = array_24618-->local6;
+                itobj = array_24618-->local6;
             } else {
                 array_24488-->1 = routine52916(array_24618-->local6 - 10000);
             }
@@ -6984,7 +6984,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (local2 == 0 && local1 ~= 1[?]) {
             local2 = 10[u_obj?];
         }
-        if (global81 & 1 ~= 0 && local3 ~= global76 or global77 or global78) {
+        if (global81 & 1 ~= 0 && local3 ~= itobj or global77 or global78) {
             local2 = local2 + 40;
         }
         if (global81 & 2 ~= 0 && local1 == actor) {
@@ -6999,7 +6999,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (global81 & 128 ~= 0 && local3 hasnt light) {
             local2 = local2 + 40;
         }
-        if (global81 & 16 ~= 0 && local1 == global76) {
+        if (global81 & 16 ~= 0 && local1 == itobj) {
             local2 = local2 + 40;
         }
         if (global81 & 32 ~= 0 && local1 has animate && routine53432(local1) == 1[?]) {
@@ -7418,8 +7418,8 @@ Array array_29185 -->	! 29185 (0x7201)
     } else {
         wn = global70;
         local4 = routine52812();
-        if (local4 == 1[?] && global76 == local1) {
-            routine52240(global76,1[?]);
+        if (local4 == 1[?] && itobj == local1) {
+            routine52240(itobj,1[?]);
         }
         if (local4 == 2[?] && global77 == local1) {
             routine52240(global77,1[?]);
@@ -7546,7 +7546,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     local4 = routine52812();
-    if (local4 == 1[?] && local1 == global76 || (local4 == 2[?] && local1 == global77) || (local4 == 3[s_obj?] && local1 == global78) || (local4 == 4[e_obj?] && local1 == player)) {
+    if (local4 == 1[?] && local1 == itobj || (local4 == 2[?] && local1 == global77) || (local4 == 3[s_obj?] && local1 == global78) || (local4 == 4[e_obj?] && local1 == player)) {
         routine52240(local1,1[?]);
         rfalse;
     }
@@ -7772,7 +7772,7 @@ Array array_29185 -->	! 29185 (0x7201)
             global78 = local1;
         }
     } else {
-        global76 = local1;
+        itobj = local1;
     }
     rtrue;
 ];
@@ -8819,7 +8819,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ NounsSub ;	! 57296 / 0xdfd0
     print "At the moment, ~it~ ";
-    PronounsSub(global76);
+    PronounsSub(itobj);
     print ", ~him~ ";
     PronounsSub(global77);
     if (player == yourself) {
@@ -13794,13 +13794,13 @@ Array array_29185 -->	! 29185 (0x7201)
         if (noun == obj216_model_ship) {
             remove obj216_model_ship;
             move obj217_stick_with_an_anchor to player;
-            global76 = 217[obj217_stick_with_an_anchor?];
-            give global76 moved;
+            itobj = obj217_stick_with_an_anchor;
+            give itobj moved;
             "As you pull the anchor chain, the masts fold inwards and the decks concertina back, until you're holding no more than a tight bundle of sticks.";
         }
         remove obj217_stick_with_an_anchor;
         move obj216_model_ship to player;
-        global76 = 216[obj216_model_ship?];
+        itobj = obj216_model_ship;
         "As you pull the anchor chain, the sticks spring back outwards into the fully-rigged model sailing ship you knew of old.";
     }
     if (verb == ##Insert && second == obj214_mounted_bottle) {
@@ -17011,11 +17011,11 @@ Array array_29185 -->	! 29185 (0x7201)
         if (noun == cloak_of_many_colours) {
             move grey_cloak to player;
             remove cloak_of_many_colours;
-            global76 = 410[grey_cloak?];
+            itobj = grey_cloak;
         } else {
             move cloak_of_many_colours to player;
             remove grey_cloak;
-            global76 = 409[cloak_of_many_colours?];
+            itobj = cloak_of_many_colours;
         }
         "You turn the cloak inside out.";
     }
@@ -23372,7 +23372,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print " which melts into ";
             remove noun;
             local1 = noun.rod_assoc;
-            global76 = local1;
+            itobj = local1;
             give local1 moved;
             give local1 attrib34;
             move local1 to player;
@@ -23387,7 +23387,7 @@ Array array_29185 -->	! 29185 (0x7201)
             print " which melts into ";
             remove noun;
             local1 = noun.rod_assoc;
-            global76 = local1;
+            itobj = local1;
             give local1 moved;
             move local1 to player;
             if (local1 has attrib28) {
