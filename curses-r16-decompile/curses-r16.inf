@@ -4934,8 +4934,8 @@ Global held_back_mode;
 Global global89;
 Global pcount2;
 Global etype;
-Global global92;
-Global global93;
+Global last_command_from;
+Global last_command_to;
 Global token_was;
 Global advance_warning;
 Global global96;
@@ -6008,8 +6008,8 @@ Array array_29185 -->	! 29185 (0x7201)
         } else {
             j = verb_wordnum - 1;
         }
-        global92 = j + 1;
-        global93 = wn - 2;
+        last_command_from = j + 1;
+        last_command_to = wn - 2;
         i = routine52976();
         if (i == 29712['again'?] or 33528['g//'?]) {
             i = 0;
@@ -6020,9 +6020,9 @@ Array array_29185 -->	! 29185 (0x7201)
                 ++i;
                 jump label45518;
             }
-            i = global92;
+            i = last_command_from;
           .label45587;
-            if (i <= global93) {
+            if (i <= last_command_to) {
                 array_24488-->(2 + 2 * j) = parse-->(2 * i);
                 array_24488-->(1 + 2 * j) = parse-->(2 * i - 1);
                 ++i;
