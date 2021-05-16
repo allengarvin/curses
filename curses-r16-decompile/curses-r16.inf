@@ -7239,7 +7239,7 @@ Array array_29185 -->	! 29185 (0x7201)
         e = 14[thedark?];
     }
     i = parent(actor);
-    if (i has visited && routine52752(i,w) == 1[?]) {
+    if (i has visited && Refers(i,w) == 1[?]) {
         e = 13[obj13_inside?];
     }
     if (etype > e) {
@@ -7365,7 +7365,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     wn = global70;
-    routine52400(thing);
+    TryGivenObject(thing);
     global96 = 1[?];
     rtrue;
 ];
@@ -7456,25 +7456,25 @@ Array array_29185 -->	! 29185 (0x7201)
             Defart(domain);
             new_line;
         }
-        routine52240(domain,1[?]);
+        MakeMatch(domain,1[?]);
         parser_trace = i;
     } else {
         wn = global70;
         i = routine52812();
         if (i == 1[?] && itobj == domain) {
-            routine52240(itobj,1[?]);
+            MakeMatch(itobj,1[?]);
         }
         if (i == 2[?] && himobj == domain) {
-            routine52240(himobj,1[?]);
+            MakeMatch(himobj,1[?]);
         }
         if (i == 3[s_obj?] && herobj == domain) {
-            routine52240(herobj,1[?]);
+            MakeMatch(herobj,1[?]);
         }
         if (i == 4[e_obj?] && player == domain) {
-            routine52240(player,1[?]);
+            MakeMatch(player,1[?]);
         }
         --wn;
-        routine52400(domain);
+        TryGivenObject(domain);
     }
     if (child(domain) ~= nothing && domain ~= nosearch && IsSeeThrough(domain) == 1[?]) {
         ScopeWithin(domain,0,context);
@@ -7503,69 +7503,69 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine52200 local1 ;	! 52200 / 0xcbe8
+[ AddToScope obj ;	! 52200 / 0xcbe8
     if (global104 >= 2) {
-        ScopeWithin_O(local1,0,global104 - 2);
+        ScopeWithin_O(obj,0,global104 - 2);
     }
-    if (global104 == 1[?] && HasLightSource(local1) == 1[?]) {
+    if (global104 == 1[?] && HasLightSource(obj) == 1[?]) {
         global105 = 1[?];
     }
     rtrue;
 ];
 
-[ routine52240 local1 local2 local3 ;	! 52240 / 0xcc10
+[ MakeMatch obj quality i ;	! 52240 / 0xcc10
     if (parser_trace >= 5) {
-        print "    Match with quality ", local2, "^";
+        print "    Match with quality ", quality, "^";
     }
-    if (token_was ~= 0 && UserFilter(local1) == 0) {
+    if (token_was ~= 0 && UserFilter(obj) == 0) {
         if (parser_trace >= 5) {
             print "    Match filtered out^";
         }
         rtrue;
     }
-    if (local2 < global69) {
+    if (quality < global69) {
         rtrue;
     }
-    if (local2 > global69) {
-        global69 = local2;
+    if (quality > global69) {
+        global69 = quality;
         number_matched = 0;
     } else {
         if (2 * number_matched >= 128) {
             rtrue;
         }
-        local3 = 0;
+        i = 0;
       .label52341;
-        if (local3 < number_matched) {
-            if (match_list-->local3 == local1) {
+        if (i < number_matched) {
+            if (match_list-->i == obj) {
                 rtrue;
             }
-            ++local3;
+            ++i;
             jump label52341;
         }
     }
-    match_list-->number_matched++ = local1;
+    match_list-->number_matched++ = obj;
     if (parser_trace >= 5) {
         print "    Match added to list^";
     }
     rtrue;
 ];
 
-[ routine52400 local1 local2 local3 local4 local5 ;	! 52400 / 0xccb0
+[ TryGivenObject obj threshold k w j ;	! 52400 / 0xccb0
     if (parser_trace >= 5) {
         print "    Trying ";
-        Defart(local1);
-        print " (", local1, ") at word ", wn, "^";
+        Defart(obj);
+        print " (", obj, ") at word ", wn, "^";
     }
     if (indef_mode ~= 0 && wn > parse->1) {
-        routine52240(local1,0);
+        MakeMatch(obj,0);
         rfalse;
     }
-    if (local1.prop29 ~= nothing) {
+    if (obj.prop29 ~= nothing) {
         global71 = 65535[?];
-        local5 = wn;
-        local3 = routine53736(local1,29[rod_of_death?]);
-        if (local3 > 0) {
-            wn = local5 + local3;
+        j = wn;
+        k = routine53736(obj,29[rod_of_death?]);
+        if (k > 0) {
+            wn = j + k;
           .label52497;
             if (global71 == 261[obj261_port_wall?]) {
                 if (global84 == 0) {
@@ -7581,70 +7581,70 @@ Array array_29185 -->	! 29185 (0x7201)
                     indef_wanted = 100;
                 }
             }
-            routine52240(local1,local3);
+            MakeMatch(obj,k);
             rfalse;
         }
-        if (local3 == 0) {
+        if (k == 0) {
             jump label52685;
         }
     }
-    local4 = routine52812();
-    if (local4 == 1[?] && local1 == itobj || (local4 == 2[?] && local1 == himobj) || (local4 == 3[s_obj?] && local1 == herobj) || (local4 == 4[e_obj?] && local1 == player)) {
-        routine52240(local1,1[?]);
+    w = routine52812();
+    if (w == 1[?] && obj == itobj || (w == 2[?] && obj == himobj) || (w == 3[s_obj?] && obj == herobj) || (w == 4[e_obj?] && obj == player)) {
+        MakeMatch(obj,1[?]);
         rfalse;
     }
     --wn;
-    local5 = wn;
-    local2 = routine181264(local1);
-    if (local2 >= 0 && parser_trace >= 5) {
-        print "    ParseNoun returned ", local2, "^";
+    j = wn;
+    threshold = routine181264(obj);
+    if (threshold >= 0 && parser_trace >= 5) {
+        print "    ParseNoun returned ", threshold, "^";
     }
-    if (local2 < 0) {
+    if (threshold < 0) {
         ++wn;
     }
-    if (local2 > 0) {
-        local3 = local2;
+    if (threshold > 0) {
+        k = threshold;
         jump label52497;
     }
-    if (local2 == 0 || routine52752(local1,local4) == 0) {
+    if (threshold == 0 || Refers(obj,w) == 0) {
       .label52685;
         if (indef_mode ~= 0) {
-            routine52240(local1,0);
+            MakeMatch(obj,0);
         }
         rfalse;
     }
-    if (local2 < 0) {
-        local2 = 1[?];
+    if (threshold < 0) {
+        threshold = 1[?];
       .label52705;
-        if (0 ~= routine52752(local1,routine52976())) {
-            ++local2;
+        if (0 ~= Refers(obj,routine52976())) {
+            ++threshold;
             jump label52705;
         }
     }
-    routine52240(local1,local2);
+    MakeMatch(obj,threshold);
     if (parser_trace >= 5) {
         print "    Matched^";
     }
     rtrue;
 ];
 
-[ routine52752 local1 local2 local3 local4 local5 ;	! 52752 / 0xce10
-    if (local1 == 0) {
+[ Refers obj wd k l m ;	! 52752 / 0xce10
+    if (obj == 0) {
         rfalse;
     }
-    local3 = local1.&name;
-    generic_globvar = local1.&name;
+    k = obj.&name;
+    generic_globvar = obj.&name;
     if (generic_globvar) {
         generic_globvar = get_prop_len(generic_globvar);
     }
-    local4 = generic_globvar / 2 - 1;
-    local5 = 0;
+    l = generic_globvar / 2 - 1;
+    m = 0;
   .label52790;
-    if (local5 <= local4) {
-        if (local2 == local3-->local5) {
+    if (m <= l) {
+        if (wd == k-->m) {
             rtrue;
         }
-        ++local5;
+        ++m;
         jump label52790;
     }
     rfalse;
@@ -9134,7 +9134,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label58752;
     if (1[?] == 1[?]) {
         local2 = routine52976();
-        if (routine52752(selfobj,local2) == 1[?]) {
+        if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 38208['rods'?]) {
             global71 = 261[obj261_port_wall?];
@@ -9675,7 +9675,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label64287;
     if (1[?] == 1[?]) {
         local2 = routine52976();
-        if (routine52752(selfobj,local2) == 1[?]) {
+        if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 31089['cards'?]) {
             global71 = 261[obj261_port_wall?];
@@ -17656,7 +17656,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label138251;
     if (1[?] == 1[?]) {
         local2 = routine52976();
-        if (routine52752(selfobj,local2) == 1[?]) {
+        if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 40719['tubes'?]) {
             global71 = 261[obj261_port_wall?];
@@ -17678,7 +17678,7 @@ Array array_29185 -->	! 29185 (0x7201)
   .label138311;
     if (1[?] == 1[?]) {
         local2 = routine52976();
-        if (routine52752(selfobj,local2) == 1[?]) {
+        if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 37344['poems'?] or 38703['scrolls'?]) {
             global71 = 261[obj261_port_wall?];
