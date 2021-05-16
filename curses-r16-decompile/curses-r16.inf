@@ -6386,7 +6386,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 return l;
             }
             if (l == 0) {
-                etype = routine51088();
+                etype = CantSee();
                 jump label47741;
             }
             if (parser_trace >= 3) {
@@ -6457,7 +6457,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 return l;
             }
             if (l == 0) {
-                etype = routine51088();
+                etype = CantSee();
                 return l;
             }
             o = parent(l);
@@ -7184,68 +7184,68 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ PrintCommand local1 local2 local3 local4 local5 local6 ;	! 50900 / 0xc6d4
-    if (local1 == 0) {
-        local3 = verb_word;
-        local1 = 1[?];
-        local6 = 1[?];
-        if (local3 == 35076['l//'?]) {
+[ PrintCommand from emptyf i j k f ;	! 50900 / 0xc6d4
+    if (from == 0) {
+        i = verb_word;
+        from = 1[?];
+        f = 1[?];
+        if (i == 35076['l//'?]) {
             print "look";
-        } else if (local3 == 41709['z//'?]) {
+        } else if (i == 41709['z//'?]) {
             print "wait";
-        } else if (local3 == 41619['x//'?]) {
+        } else if (i == 41619['x//'?]) {
             print "examine";
-        } else if (local3 == 34626['i//'?] or 34797['inv'?]) {
+        } else if (i == 34626['i//'?] or 34797['inv'?]) {
             print "inventory";
-        } else if (routine181240(local3) == 0) {
-            print (address) local3;
+        } else if (routine181240(i) == 0) {
+            print (address) i;
         }
     }
-    local4 = pcount - local2;
-    local5 = local1;
+    j = pcount - emptyf;
+    k = from;
   .label51001;
-    if (local5 <= local4) {
-        if (local6 == 1[?]) {
+    if (k <= j) {
+        if (f == 1[?]) {
             print ' ';
         }
-        local3 = array_24618-->local5;
-        if (local3 == 0) {
+        i = array_24618-->k;
+        if (i == 0) {
             print "those things";
-        } else if (local3 == 1[?]) {
+        } else if (i == 1[?]) {
             print "that";
-        } else if (local3 >= 10000) {
-            local3 = routine52916(local3 - 10000);
-            print (address) local3;
+        } else if (i >= 10000) {
+            i = routine52916(i - 10000);
+            print (address) i;
         } else {
-            Defart(local3);
+            Defart(i);
         }
-        local6 = 1[?];
-        ++local5;
+        f = 1[?];
+        ++k;
         jump label51001;
     }
     rtrue;
 ];
 
-[ routine51088 local1 local2 local3 ;	! 51088 / 0xc790
+[ CantSee i w e ;	! 51088 / 0xc790
     global66 = oops_from;
     if (scope_token ~= 0) {
         global102 = scope_token;
         return 18[rod_of_returning?];
     }
     --wn;
-    local2 = routine52976();
-    local3 = 4[e_obj?];
-    if (local2 == vague_word) {
-        local3 = 14[thedark?];
+    w = routine52976();
+    e = 4[e_obj?];
+    if (w == vague_word) {
+        e = 14[thedark?];
     }
-    local1 = parent(actor);
-    if (local1 has visited && routine52752(local1,local2) == 1[?]) {
-        local3 = 13[obj13_inside?];
+    i = parent(actor);
+    if (i has visited && routine52752(i,w) == 1[?]) {
+        e = 13[obj13_inside?];
     }
-    if (etype > local3) {
+    if (etype > e) {
         return etype;
     }
-    return local3;
+    return e;
 ];
 
 [ routine51152 local1 local2 local3 ;	! 51152 / 0xc7d0
