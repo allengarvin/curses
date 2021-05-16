@@ -5451,7 +5451,7 @@ Array array_29185 -->	! 29185 (0x7201)
     action_to_be = ##Action65535;
   .label42348;
     wn = verb_wordnum;
-    verb_word = routine53056();
+    verb_word = NextWordStopped();
     if (verb_word == 'invalidDictWord65535') {
         pcount2 = 1[?];
     } else {
@@ -5506,7 +5506,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 --verb_wordnum;
             } else {
                 wn = verb_wordnum;
-                verb_word = routine52976();
+                verb_word = NextWord();
             }
         } else {
             usual_grammar_after = 0;
@@ -5527,7 +5527,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 j = 2[?];
               .label42736;
                 if (j <= num_words) {
-                    i = routine52976();
+                    i = NextWord();
                     if (i == 41628['xcomma'?]) {
                         jump label42780;
                     }
@@ -5657,10 +5657,10 @@ Array array_29185 -->	! 29185 (0x7201)
                         }
                         token = line_address->(pcount - 1);
                         if (token >= 180) {
-                            j = routine52916(token);
+                            j = AdjectiveAddress(token);
                           .label43419;
                             if (wn <= num_words) {
-                                if (routine52976() == j) {
+                                if (NextWord() == j) {
                                     l = NounDomain(actor_location,actor,token);
                                     if (parser_trace >= 2) {
                                         print " [Forward token parsed: ";
@@ -5756,7 +5756,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             print "<noun filter by attribute ", token - 128, ">";
                         }
                         if (token > 180) {
-                            print "<adjective ", 255 - token, " '", (address) routine52916(token), "'>";
+                            print "<adjective ", 255 - token, " '", (address) AdjectiveAddress(token), "'>";
                         }
                         print " at word number ", wn, "]^";
                     }
@@ -5785,13 +5785,13 @@ Array array_29185 -->	! 29185 (0x7201)
                                 jump label44659;
                             }
                         }
-                        if (wn <= num_words && token ~= routine52884()) {
+                        if (wn <= num_words && token ~= AdjectiveWord()) {
                             jump label44659;
                         }
                     } else {
                         if (parameters == params_wanted) {
                             if (wn <= num_words) {
-                                l = routine52976();
+                                l = NextWord();
                                 if (l == 40296['then'?] or 41628['xcomma'?]) {
                                     held_back_mode = 1;
                                     global89 = wn - 1;
@@ -5910,9 +5910,9 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label42337;
         }
         wn = verb_wordnum;
-        special_word = routine52976();
+        special_word = NextWord();
         if (special_word == 41628) {
-            special_word = routine52976();
+            special_word = NextWord();
             ++verb_wordnum;
         }
         special_number = routine53120(verb_wordnum);
@@ -6019,7 +6019,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (wn > num_words) {
         rtrue;
     }
-    i = routine52976();
+    i = NextWord();
     if (i == 40296['then'?] or 41628['xcomma'?]) {
         if (wn > num_words) {
             array_24488->1 = array_24488->1 - 1;
@@ -6033,7 +6033,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         last_command_from = j + 1;
         last_command_to = wn - 2;
-        i = routine52976();
+        i = NextWord();
         if (i == 29712['again'?] or 33528['g//'?]) {
             i = 0;
           .label45518;
@@ -6164,7 +6164,7 @@ Array array_29185 -->	! 29185 (0x7201)
     flag = 1;
   .label46088;
     if (flag == 1) {
-        o = routine52976();
+        o = NextWord();
         flag = 0;
         if (o == 'the') {
             flag = 1;
@@ -6227,7 +6227,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 indef_type = indef_type | 8;
             }
         }
-        if (flag == 1 && routine52976() ~= 36552['of'?]) {
+        if (flag == 1 && NextWord() ~= 36552['of'?]) {
             --wn;
         }
         jump label46088;
@@ -6260,7 +6260,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 3) {
         print "  [Object list from word ", wn, "]^";
     }
-    o = routine52976();
+    o = NextWord();
     --wn;
     if (o == 'it' or 'them') {
         vague_word = o;
@@ -6307,7 +6307,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (parser_trace >= 3) {
             print "  [Read special word at word number ", wn, "]^";
         }
-        special_word = routine52976();
+        special_word = NextWord();
         single_object = 1[?];
     } else if (token == 8) {
         l = routine53120(wn++);
@@ -6477,7 +6477,7 @@ Array array_29185 -->	! 29185 (0x7201)
             single_object = l;
         }
         wn = oops_from + global69;
-        o = routine52976();
+        o = NextWord();
         if (o == 'and' or 'but' or 'except' or 'xcomma') {
             if (parser_trace >= 3) {
                 print "  [Read '", (address) o, "']^";
@@ -6550,14 +6550,14 @@ Array array_29185 -->	! 29185 (0x7201)
             return i;
         }
         if (wn <= num_words) {
-            i = routine52976();
+            i = NextWord();
             --wn;
             if (i ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
                 if (lookahead == 8) {
                     rfalse;
                 }
                 if (lookahead > 8) {
-                    if (lookahead ~= routine52884()) {
+                    if (lookahead ~= AdjectiveWord()) {
                         --wn;
                         if (parser_trace >= 3) {
                             print "   [ND failed at lookahead at word ", wn, "]^";
@@ -6717,7 +6717,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 array_24488-->1 = 34860['it'?];
                 itobj = array_24618-->j;
             } else {
-                array_24488-->1 = routine52916(array_24618-->j - 10000);
+                array_24488-->1 = AdjectiveAddress(array_24618-->j - 10000);
             }
             MoveWord(oldw + 1 + j - interfrom,24488[?],1[?]);
             ++answer_words;
@@ -7214,7 +7214,7 @@ Array array_29185 -->	! 29185 (0x7201)
         } else if (i == 1[?]) {
             print "that";
         } else if (i >= 10000) {
-            i = routine52916(i - 10000);
+            i = AdjectiveAddress(i - 10000);
             print (address) i;
         } else {
             Defart(i);
@@ -7233,7 +7233,7 @@ Array array_29185 -->	! 29185 (0x7201)
         return 18[rod_of_returning?];
     }
     --wn;
-    w = routine52976();
+    w = NextWord();
     e = 4[e_obj?];
     if (w == vague_word) {
         e = 14[thedark?];
@@ -7460,7 +7460,7 @@ Array array_29185 -->	! 29185 (0x7201)
         parser_trace = i;
     } else {
         wn = global70;
-        i = routine52812();
+        i = NounWord();
         if (i == 1[?] && itobj == domain) {
             MakeMatch(itobj,1[?]);
         }
@@ -7588,7 +7588,7 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label52685;
         }
     }
-    w = routine52812();
+    w = NounWord();
     if (w == 1[?] && obj == itobj || (w == 2[?] && obj == himobj) || (w == 3[s_obj?] && obj == herobj) || (w == 4[e_obj?] && obj == player)) {
         MakeMatch(obj,1[?]);
         rfalse;
@@ -7616,7 +7616,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (threshold < 0) {
         threshold = 1[?];
       .label52705;
-        if (0 ~= Refers(obj,routine52976())) {
+        if (0 ~= Refers(obj,NextWord())) {
             ++threshold;
             jump label52705;
         }
@@ -7650,83 +7650,83 @@ Array array_29185 -->	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine52812 local1 ;	! 52812 / 0xce4c
-    local1 = routine52976();
-    if (local1 == 34860['it'?] or 40287['them'?]) {
+[ NounWord i ;	! 52812 / 0xce4c
+    i = NextWord();
+    if (i == 34860['it'?] or 40287['them'?]) {
         return 1[?];
     }
-    if (local1 == 34374['him'?]) {
+    if (i == 34374['him'?]) {
         return 2[?];
     }
-    if (local1 == 34293['her'?]) {
+    if (i == 34293['her'?]) {
         return 3[s_obj?];
     }
-    if (local1 == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
+    if (i == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
         return 4[e_obj?];
     }
-    if (local1 == 0) {
+    if (i == 0) {
         rfalse;
     }
-    if (local1->6 & 128 == 0) {
+    if (i->6 & 128 == 0) {
         rfalse;
     }
-    return local1;
+    return i;
 ];
 
-[ routine52884 local1 local2 ;	! 52884 / 0xce94
-    local2 = routine52976();
-    if (local2 == 0) {
+[ AdjectiveWord i j ;	! 52884 / 0xce94
+    j = NextWord();
+    if (j == 0) {
         rfalse;
     }
-    local1 = local2->6;
-    if (local1 & 8 == 0) {
+    i = j->6;
+    if (i & 8 == 0) {
         rfalse;
     }
-    return local2->8;
+    return j->8;
 ];
 
-[ routine52916 local1 local2 ;	! 52916 / 0xceb4
-    local2 = 29479[routine117916?];
+[ AdjectiveAddress number m ;	! 52916 / 0xceb4
+    m = 29479[routine117916?];
   .label52922;
     if (1[?] == 1[?]) {
-        if (local1 == local2-->1) {
-            return local2-->0;
+        if (number == m-->1) {
+            return m-->0;
         }
-        local2 = local2 + 4;
+        m = m + 4;
         jump label52922;
     }
-    local2 = 29479[routine117916?];
+    m = 29479[routine117916?];
     print "<Adjective not found>";
-    return local2;
+    return m;
 ];
 
-[ routine52976 local1 local2 local3 ;	! 52976 / 0xcef0
+[ NextWord i j k ;	! 52976 / 0xcef0
     if (wn > parse->1) {
         ++wn;
         rfalse;
     }
-    local1 = wn * 2 - 1;
+    i = wn * 2 - 1;
     ++wn;
-    local2 = parse-->local1;
-    if (local2 == 0) {
-        local3 = wn * 4 - 3;
-        local1 = array_24021->(parse->local3);
-        if (local1 == 44[obj44_camp_bed?]) {
-            local2 = 41628['xcomma'?];
+    j = parse-->i;
+    if (j == 0) {
+        k = wn * 4 - 3;
+        i = array_24021->(parse->k);
+        if (i == 44[obj44_camp_bed?]) {
+            j = 41628['xcomma'?];
         }
-        if (local1 == 46[obj46_tight_door?]) {
-            local2 = 40296['then'?];
+        if (i == 46[obj46_tight_door?]) {
+            j = 40296['then'?];
         }
     }
-    return local2;
+    return j;
 ];
 
-[ routine53056 ;	! 53056 / 0xcf40
+[ NextWordStopped ;	! 53056 / 0xcf40
     if (wn > parse->1) {
         ++wn;
         return 65535[?];
     }
-    return routine52976();
+    return NextWord();
 ];
 
 [ routine53080 local1 ;	! 53080 / 0xcf58
@@ -7740,7 +7740,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine53120 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 ;	! 53120 / 0xcf80
     local2 = wn;
     wn = local1;
-    local3 = routine52976();
+    local3 = NextWord();
     wn = local2;
     local3 = NumberWord(local3);
     if (local3 >= 1) {
@@ -9133,7 +9133,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
   .label58752;
     if (1[?] == 1[?]) {
-        local2 = routine52976();
+        local2 = NextWord();
         if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 38208['rods'?]) {
@@ -9674,7 +9674,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
   .label64287;
     if (1[?] == 1[?]) {
-        local2 = routine52976();
+        local2 = NextWord();
         if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 31089['cards'?]) {
@@ -9706,7 +9706,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: obj38_History_of_the_Meldrews__vol__II_.prop29, obj43_classical_dictionary.prop29, obj69_romantic_novel.prop29, obj70_book_of_Twenties_poetry.prop29, obj95_ancient_prayer_book.prop29
 
 [ routine64400 ;	! 64400 / 0xfb90
-    if (routine52976() == 30738['books'?] or 41025['volumes'?] or 40539['tomes'?]) {
+    if (NextWord() == 30738['books'?] or 41025['volumes'?] or 40539['tomes'?]) {
         global71 = 261[obj261_port_wall?];
         return 1[?];
     }
@@ -9862,9 +9862,9 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine65440 local1 ;	! 65440 / 0xffa0
     if (action == ##Consult) {
         wn = global43;
-        local1 = routine52976();
+        local1 = NextWord();
         if (local1 == 35544['mad'?] or 39135['sir'?] or 34500['honourable'?]) {
-            local1 = routine52976();
+            local1 = NextWord();
         }
         generic_globvar = local1;
         if (generic_globvar == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
@@ -9962,7 +9962,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine69840 local1 ;	! 69840 / 0x110d0
     if (action == ##Consult) {
         wn = global43;
-        local1 = routine52976();
+        local1 = NextWord();
         if (obj240_Homer has attrib8 && obj240_Homer.number < 3 && obj240_Homer in location) {
             routine109044();
             print "~Well, if you're going to cheat, forget it,~ says Homer loudly as he falls asleep.^^";
@@ -11713,7 +11713,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (action == ##Consult) {
         if (global44 == 1[?]) {
             wn = global43;
-            local2 = routine52976();
+            local2 = NextWord();
             local1 = 65535[?];
             if (local2 == 34878['january'?]) {
                 local1 = 0;
@@ -17655,7 +17655,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
   .label138251;
     if (1[?] == 1[?]) {
-        local2 = routine52976();
+        local2 = NextWord();
         if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 40719['tubes'?]) {
@@ -17677,7 +17677,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
   .label138311;
     if (1[?] == 1[?]) {
-        local2 = routine52976();
+        local2 = NextWord();
         if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 37344['poems'?] or 38703['scrolls'?]) {
@@ -23707,7 +23707,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine181076 local1 ;	! 181076 / 0x2c354
     global43 = wn;
   .label181080;
-    local1 = routine53056();
+    local1 = NextWordStopped();
     if (local1 ~= 65535[?] && (local1 ~= 40503['to'?] || action_to_be ~= ##Answer)) jump label181080;
     --wn;
     global44 = wn - global43;
@@ -23717,9 +23717,9 @@ Array array_29185 -->	! 29185 (0x7201)
     if (action_to_be == ##Ask or ##Answer or ##Tell) {
         local1 = wn;
         wn = global43;
-        global36 = routine52976();
+        global36 = NextWord();
         if (global36 == 40278['the'?] && global44 > 1) {
-            global36 = routine52976();
+            global36 = NextWord();
         }
         wn = local1;
         return 1[?];
@@ -23730,7 +23730,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine181160 local1 ;	! 181160 / 0x2c3a8
     global43 = wn;
   .label181164;
-    local1 = routine53056();
+    local1 = NextWordStopped();
     if (local1 ~= 34698['in'?] or 65535[?]) jump label181164;
     if (local1 == 65535[?]) {
         return 65535[?];
@@ -23796,7 +23796,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ routine181268 local1 ;	! 181268 / 0x2c414
     global43 = wn;
   .label181272;
-    local1 = routine53056();
+    local1 = NextWordStopped();
     if (local1 ~= 36624['on'?] or 65535[?]) jump label181272;
     if (local1 == 65535[?]) {
         return 65535[?];
@@ -23810,7 +23810,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine181312 local1 ;	! 181312 / 0x2c440
-    local1 = routine53056();
+    local1 = NextWordStopped();
     --wn;
     return local1;
 ];
