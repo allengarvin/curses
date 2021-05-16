@@ -6419,9 +6419,9 @@ Array array_29185 -->	! 29185 (0x7201)
                   .label47254;
                     if (j <= k) {
                         if (and_parity == 1) {
-                            routine51152(multiple_object-->j);
+                            MultiAdd(multiple_object-->j);
                         } else {
-                            routine51208(multiple_object-->j);
+                            MultiSub(multiple_object-->j);
                         }
                         ++j;
                         jump label47254;
@@ -6439,9 +6439,9 @@ Array array_29185 -->	! 29185 (0x7201)
                     single_object = l;
                 } else {
                     if (and_parity == 1) {
-                        routine51152(l);
+                        MultiAdd(l);
                     } else {
-                        routine51208(l);
+                        MultiSub(l);
                     }
                     if (parser_trace >= 3) {
                         print "  [Combining ";
@@ -6745,7 +6745,7 @@ Array array_29185 -->	! 29185 (0x7201)
           .label48802;
             ultimate = parent(ultimate);
             if (ultimate ~= actor_location or actor or nothing) jump label48802;
-            if (context == 0 && ultimate == actor_location && (token_was == 0 || routine51328(n) == 1[?])) {
+            if (context == 0 && ultimate == actor_location && (token_was == 0 || UserFilter(n) == 1[?])) {
                 ++good_ones;
                 last = n;
             }
@@ -7248,77 +7248,77 @@ Array array_29185 -->	! 29185 (0x7201)
     return e;
 ];
 
-[ routine51152 local1 local2 local3 ;	! 51152 / 0xc7d0
-    local2 = multiple_object-->0;
-    if (local2 == 63[obj63_photographer_s_flash?]) {
+[ MultiAdd o i j ;	! 51152 / 0xc7d0
+    i = multiple_object-->0;
+    if (i == 63[obj63_photographer_s_flash?]) {
         global23 = 1[?];
         rtrue;
     }
-    local3 = 1[?];
+    j = 1[?];
   .label51171;
-    if (local3 <= local2) {
-        if (local1 == multiple_object-->local3) {
+    if (j <= i) {
+        if (o == multiple_object-->j) {
             rtrue;
         }
-        ++local3;
+        ++j;
         jump label51171;
     }
-    ++local2;
-    multiple_object-->local2 = local1;
-    multiple_object-->0 = local2;
+    ++i;
+    multiple_object-->i = o;
+    multiple_object-->0 = i;
     rtrue;
 ];
 
-[ routine51208 local1 local2 local3 local4 local5 ;	! 51208 / 0xc808
-    local2 = multiple_object-->0;
-    local5 = 0;
-    local3 = 1[?];
+[ MultiSub o i j k et ;	! 51208 / 0xc808
+    i = multiple_object-->0;
+    et = 0;
+    j = 1[?];
   .label51221;
-    if (local3 <= local2) {
-        if (local1 == multiple_object-->local3) {
-            local4 = local3;
+    if (j <= i) {
+        if (o == multiple_object-->j) {
+            k = j;
           .label51240;
-            if (local4 <= local2) {
-                multiple_object-->local4 = multiple_object-->(local4 + 1);
-                ++local4;
+            if (k <= i) {
+                multiple_object-->k = multiple_object-->(k + 1);
+                ++k;
                 jump label51240;
             }
-            --local2;
-            multiple_object-->0 = local2;
-            return local5;
+            --i;
+            multiple_object-->0 = i;
+            return et;
         }
-        ++local3;
+        ++j;
         jump label51221;
     }
-    local5 = 9[sw_obj?];
-    return local5;
+    et = 9[sw_obj?];
+    return et;
 ];
 
-[ routine51288 local1 local2 local3 local4 ;	! 51288 / 0xc858
+[ MultiFilter attr i j o ;	! 51288 / 0xc858
   .label51289;
-    local2 = multiple_object-->0;
-    local3 = 1[?];
+    i = multiple_object-->0;
+    j = 1[?];
   .label51298;
-    if (local3 <= local2) {
-        local4 = multiple_object-->local3;
-        if (local4 hasnt local1) {
-            routine51208(local4);
+    if (j <= i) {
+        o = multiple_object-->j;
+        if (o hasnt attr) {
+            MultiSub(o);
             jump label51289;
         }
-        ++local3;
+        ++j;
         jump label51298;
     }
     rtrue;
 ];
 
-[ routine51328 local1 ;	! 51328 / 0xc880
+[ UserFilter obj ;	! 51328 / 0xc880
     if (token_was >= 128) {
-        if (local1 has token_was - 128) {
+        if (obj has token_was - 128) {
             rtrue;
         }
         rfalse;
     }
-    noun = local1;
+    noun = obj;
     return (array_29185-->(token_was - 16))();
 ];
 
@@ -7517,7 +7517,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 5) {
         print "    Match with quality ", local2, "^";
     }
-    if (token_was ~= 0 && routine51328(local1) == 0) {
+    if (token_was ~= 0 && UserFilter(local1) == 0) {
         if (parser_trace >= 5) {
             print "    Match filtered out^";
         }
