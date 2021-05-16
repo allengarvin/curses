@@ -819,12 +819,12 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'fire',
 	prop33 routine59192,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_returning "Returning"	! 18 / 0x12
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -833,12 +833,12 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'returning',
 	prop33 routine60256,
 	devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_stalking "Stalking"	! 19 / 0x13
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -847,12 +847,12 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'stalking',
 	prop33 routine62456,
 	devil_hint "It has no horticultural application.",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_infinity "Infinity"	! 20 / 0x14
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -861,12 +861,12 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'infinity',
 	prop33 routine63240,
 	angel_hint "Well, where might you have seen infinity before?",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_husbandry "Husbandry"	! 21 / 0x15
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -875,12 +875,12 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'husbandry',
 	prop33 routine60552,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_bronze "Bronze"	! 22 / 0x16
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -889,12 +889,12 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'bronze',
 	prop33 routine60812,
 	angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -903,12 +903,12 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'sacrifice',
 	prop33 routine61400,
 	angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_luck "Luck"	! 24 / 0x18
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -917,12 +917,12 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'luck',
 	prop33 routine61136,
 	angel_hint "Well, if there's such a thing as luck, maybe this would help.",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_ice "Ice"	! 25 / 0x19
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -931,12 +931,12 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 	u_to routine58852,
 	d_to "featureless mahogany rods",
 	article "a",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop32 'ice',
 	prop33 routine60068,
 	angel_hint "Use only at heated moments, when affairs are delicately balanced.",
-  has	attrib28 attrib34;
+  has	rod_attr hidden_rod;
 
 Object rod_of_language "Language"	! 26 / 0x1a
   with	name 'rod' 'of' 'language',
@@ -944,10 +944,10 @@ Object rod_of_language "Language"	! 26 / 0x1a
 	list_together routine59044,
 	u_to routine58852,
 	article "the",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop33 routine62260,
-  has	attrib28;
+  has	rod_attr;
 
 Object rod_of_returning2 "Returning"	! 27 / 0x1b
   with	name 'rod' 'of' 'returning',
@@ -955,10 +955,10 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 	list_together routine59044,
 	u_to routine58852,
 	article "the",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop33 routine60256,
-  has	attrib28;
+  has	rod_attr;
 
 Object rod_of_life "Life"	! 28 / 0x1c
   with	name 'life' 'high' 'rod' 'of',
@@ -969,11 +969,11 @@ Object rod_of_life "Life"	! 28 / 0x1c
 	initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop33 routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
-  has	attrib28 attrib29;
+  has	rod_attr high_rod;
 
 Object rod_of_death "Death"	! 29 / 0x1d
   with	name 'death' 'high' 'rod' 'of',
@@ -983,11 +983,11 @@ Object rod_of_death "Death"	! 29 / 0x1d
 	u_to routine58852,
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop33 routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
-  has	concealed attrib28 attrib29;
+  has	concealed rod_attr high_rod;
 
 Object rod_of_love "Love"	! 30 / 0x1e
   with	name 'love' 'high' 'rod' 'of',
@@ -997,11 +997,11 @@ Object rod_of_love "Love"	! 30 / 0x1e
 	u_to routine58852,
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
-	short routine58804,
+	short rod_short,
 	prop29 routine58728,
 	prop33 routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
-  has	concealed attrib28 attrib29;
+  has	concealed rod_attr high_rod;
 
 Object obj31_crumpled_piece_of_paper "crumpled piece of paper"	! 31 / 0x1f
   with	name 'crumpled' 'paper',
@@ -9057,7 +9057,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     if (action == ##Drop) {
-        if (lm_n == e_obj && noun has attrib28) {
+        if (lm_n == e_obj && noun has rod_attr) {
             routine155280(16[obj16_lm?]);
         }
         rfalse;
@@ -9096,10 +9096,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine58560 ;	! 58560 / 0xe4c0
     if (action == ##Read) {
-        if (selfobj has attrib34) {
+        if (selfobj has hidden_rod) {
             "A featureless mahogany rod, whose purpose is oblique. Or almost featureless: a little silver plaque is left blank at one end.";
         }
-        if (selfobj has attrib29) {
+        if (selfobj has high_rod) {
             rfalse;
         }
         print "The silver plaque on this mahogany rod proclaims it as ";
@@ -9118,7 +9118,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine58728 local1 local2 ;	! 58728 / 0xe568
     if (parser_action == ##TheSame) {
-        if (parser_one has attrib34 && parser_two has attrib34) {
+        if (parser_one has hidden_rod && parser_two has hidden_rod) {
             return 65535[?];
         }
         return 65534[?];
@@ -9141,13 +9141,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_fire.short, rod_of_returning.short, rod_of_stalking.short, rod_of_infinity.short, rod_of_husbandry.short, rod_of_bronze.short, rod_of_sacrifice.short, rod_of_luck.short, rod_of_ice.short, rod_of_language.short, rod_of_returning2.short, rod_of_life.short, rod_of_death.short, rod_of_love.short
 
-[ routine58804 ;	! 58804 / 0xe5b4
-    if (selfobj has attrib34) {
+[ rod_short ;	! 58804 / 0xe5b4
+    if (selfobj has hidden_rod) {
         print "featureless mahogany rod";
         rtrue;
     }
-    if (global118 hasnt attrib28) {
-        if (selfobj has attrib29) {
+    if (global118 hasnt rod_attr) {
+        if (selfobj has high_rod) {
             print "High ";
         }
         print "Rod of ";
@@ -9213,7 +9213,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine59144 local1 ;	! 59144 / 0xe708
-    give local1 ~attrib34;
+    give local1 ~hidden_rod;
     local1.&name-->2 = local1.prop32;
     local1.&name-->3 = local1.prop32;
     local1.article = "the";
@@ -9289,7 +9289,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         Defart(second);
         " freezes up.";
     }
-    if (second has attrib29) {
+    if (second has high_rod) {
         if (second has attrib8) {
             "It's already cold.";
         }
@@ -11491,7 +11491,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (obj99_long_vanity_mirror has attrib8) {
         rfalse;
     }
-    if (local1 in player or obj79_canvas_rucksack && (local1 has attrib28 || local1 has attrib33 || local1 has attrib34)) {
+    if (local1 in player or obj79_canvas_rucksack && (local1 has rod_attr || local1 has attrib33 || local1 has hidden_rod)) {
         rtrue;
     }
     rfalse;
@@ -12606,11 +12606,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local1 == 9[sw_obj?]) {
             "The sockets are all full.";
         }
-        if (noun hasnt attrib28) {
+        if (noun hasnt rod_attr) {
             "That won't fit in a socket.";
         }
         if (noun == rod_of_infinity) {
-            if (noun has attrib34) {
+            if (noun has hidden_rod) {
                 "For some reason, that rod is just too large to fit.";
             }
             "The Rod of Infinity is just slightly too large to fit.";
@@ -12658,7 +12658,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine93900 ;	! 93900 / 0x16ecc
     if (action == ##Take or ##Remove) {
-        if (noun has attrib28 && noun hasnt attrib34) {
+        if (noun has rod_attr && noun hasnt hidden_rod) {
             Achieved(28);
         }
         rfalse;
@@ -12670,7 +12670,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine93928 local1 ;	! 93928 / 0x16ee8
     if (action == ##Action257) {
-        if (noun has attrib28) {
+        if (noun has rod_attr) {
             "The mahogany rod fits in perfectly.";
         }
         rfalse;
@@ -12680,7 +12680,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local1 = child(obj145_gilded_model_coffin);
       .label93977;
         if (local1 ~= 0) {
-            if (local1 has attrib34) {
+            if (local1 has hidden_rod) {
                 routine59144(local1);
                 give obj145_gilded_model_coffin attrib8;
             }
@@ -22959,7 +22959,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local2 < 2) {
         rfalse;
     }
-    if (action_to_be == ##Strike && local1 has attrib28) {
+    if (action_to_be == ##Strike && local1 has rod_attr) {
         return 2[?];
     }
     return 1[?];
@@ -23409,7 +23409,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local1 = noun.rod_assoc;
             itobj = local1;
             give local1 moved;
-            give local1 attrib34;
+            give local1 hidden_rod;
             move local1 to player;
             Indefart(local1);
             "!";
@@ -23425,7 +23425,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             itobj = local1;
             give local1 moved;
             move local1 to player;
-            if (local1 has attrib28) {
+            if (local1 has rod_attr) {
                 Defart(local1);
             } else {
                 Indefart(local1);
@@ -23433,7 +23433,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "!";
         }
     }
-    if (noun has attrib28) {
+    if (noun has rod_attr) {
         "That seems to be not quite how they work...";
     }
     if (noun has attrib26) {
@@ -23448,7 +23448,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun notin player) {
         "But you aren't holding it.";
     }
-    if (noun hasnt attrib28) {
+    if (noun hasnt rod_attr) {
         print "You ineffectually bash ";
         Defart(noun);
         " on the ground.";
@@ -23476,7 +23476,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         routine143448();
         rfalse;
     }
-    if (noun has attrib28) {
+    if (noun has rod_attr) {
         "Please point it at something.";
     }
     "A useless gesture.";
@@ -23489,7 +23489,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (second in player) {
         "It's too fiddly pointing it at something you're holding.";
     }
-    if (noun hasnt attrib28) {
+    if (noun hasnt rod_attr) {
         "Ok. (Why?)";
     }
     if (noun hasnt attrib38) {
@@ -23626,7 +23626,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ InscribeOnSub ;	! 180644 / 0x2c1a4
-    if (second has attrib34) {
+    if (second has hidden_rod) {
         "The silver plaque is extremely strong, and resists all attempts to mark it.";
     }
     InscribeSub();
