@@ -822,7 +822,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 	short rod_short,
 	prop29 routine58728,
 	prop32 'fire',
-	rod_action routine59192,
+	rod_action RodOfFireAction,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
   has	rod_attr hidden_rod;
 
@@ -836,7 +836,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 	short rod_short,
 	prop29 routine58728,
 	prop32 'returning',
-	rod_action routine60256,
+	rod_action RodOfReturningAction,
 	devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
   has	rod_attr hidden_rod;
 
@@ -850,7 +850,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 	short rod_short,
 	prop29 routine58728,
 	prop32 'stalking',
-	rod_action routine62456,
+	rod_action RodOfStalkingAction,
 	devil_hint "It has no horticultural application.",
   has	rod_attr hidden_rod;
 
@@ -864,7 +864,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 	short rod_short,
 	prop29 routine58728,
 	prop32 'infinity',
-	rod_action routine63240,
+	rod_action RodOfInfinityAction,
 	angel_hint "Well, where might you have seen infinity before?",
   has	rod_attr hidden_rod;
 
@@ -878,7 +878,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 	short rod_short,
 	prop29 routine58728,
 	prop32 'husbandry',
-	rod_action routine60552,
+	rod_action RodOfHusbandryAction,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
   has	rod_attr hidden_rod;
 
@@ -892,7 +892,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 	short rod_short,
 	prop29 routine58728,
 	prop32 'bronze',
-	rod_action routine60812,
+	rod_action RodOfBronzeAction,
 	angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
   has	rod_attr hidden_rod;
 
@@ -906,7 +906,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 	short rod_short,
 	prop29 routine58728,
 	prop32 'sacrifice',
-	rod_action routine61400,
+	rod_action RodOfSacrificeAction,
 	angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
   has	rod_attr hidden_rod;
 
@@ -920,7 +920,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 	short rod_short,
 	prop29 routine58728,
 	prop32 'luck',
-	rod_action routine61136,
+	rod_action RodOfLuckAction,
 	angel_hint "Well, if there's such a thing as luck, maybe this would help.",
   has	rod_attr hidden_rod;
 
@@ -934,7 +934,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 	short rod_short,
 	prop29 routine58728,
 	prop32 'ice',
-	rod_action IceRodAction,
+	rod_action RodOfIceAction,
 	angel_hint "Use only at heated moments, when affairs are delicately balanced.",
   has	rod_attr hidden_rod;
 
@@ -946,7 +946,7 @@ Object rod_of_language "Language"	! 26 / 0x1a
 	article "the",
 	short rod_short,
 	prop29 routine58728,
-	rod_action routine62260,
+	rod_action RodOfLanguageAction,
   has	rod_attr;
 
 Object rod_of_returning2 "Returning"	! 27 / 0x1b
@@ -957,7 +957,7 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 	article "the",
 	short rod_short,
 	prop29 routine58728,
-	rod_action routine60256,
+	rod_action RodOfReturningAction,
   has	rod_attr;
 
 Object rod_of_life "Life"	! 28 / 0x1c
@@ -9224,7 +9224,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_fire.rod_action
 
-[ routine59192 ;	! 59192 / 0xe738
+[ RodOfFireAction ;	! 59192 / 0xe738
     if (second == player) {
         deadflag = DIED;
         "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
@@ -9280,7 +9280,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_ice.rod_action
 
-[ IceRodAction ;	! 60068 / 0xeaa4
+[ RodOfIceAction ;	! 60068 / 0xeaa4
     if (second == player) {
         "You feel a sudden chill.";
     }
@@ -9301,7 +9301,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_returning.rod_action, rod_of_returning2.rod_action
 
-[ routine60256 local1 local2 ;	! 60256 / 0xeb60
+[ RodOfReturningAction local1 local2 ;	! 60256 / 0xeb60
     if (second ~= player) {
         "Nothing obvious happens.";
     }
@@ -9340,7 +9340,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_husbandry.rod_action
 
-[ routine60552 ;	! 60552 / 0xec88
+[ RodOfHusbandryAction ;	! 60552 / 0xec88
     if (second == player) {
         "You feel suddenly obedient, and briefly fancy a dog biscuit.";
     }
@@ -9360,7 +9360,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_bronze.rod_action
 
-[ routine60812 ;	! 60812 / 0xed8c
+[ RodOfBronzeAction ;	! 60812 / 0xed8c
     if (second == player) {
         "You acquire a sudden sun tan, but it soon fades.";
     }
@@ -9386,7 +9386,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_luck.rod_action
 
-[ routine61136 ;	! 61136 / 0xeed0
+[ RodOfLuckAction ;	! 61136 / 0xeed0
     if (second == player) {
         if (big_electricians_switch has on) {
             "You feel no different. Perhaps there's no such thing as luck.";
@@ -9413,7 +9413,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_sacrifice.rod_action
 
-[ routine61400 ;	! 61400 / 0xefd8
+[ RodOfSacrificeAction ;	! 61400 / 0xefd8
     if (second == obj223_herd_of_goats) {
         if (obj223_herd_of_goats hasnt attrib8) {
             "The goats mill around too much to aim at one accurately.";
@@ -9457,7 +9457,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_language.rod_action
 
-[ routine62260 ;	! 62260 / 0xf334
+[ RodOfLanguageAction ;	! 62260 / 0xf334
     if (second == player) {
         global127 = 1[?];
         "Nothing obvious happens. You curse eloquently in Celtic.";
@@ -9470,7 +9470,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_stalking.rod_action
 
-[ routine62456 ;	! 62456 / 0xf3f8
+[ RodOfStalkingAction ;	! 62456 / 0xf3f8
     if (second == adamantine_knight) {
         "The knight jumps on the spot (landing loudly).";
     }
@@ -9514,7 +9514,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_infinity.rod_action
 
-[ routine63240 local1 ;	! 63240 / 0xf708
+[ RodOfInfinityAction local1 ;	! 63240 / 0xf708
     if (second == adamantine_knight) {
         "Oh, the knight has been nearer the infinite than you could ever take him.";
     }
