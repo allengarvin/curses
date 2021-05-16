@@ -822,7 +822,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 	short rod_short,
 	prop29 routine58728,
 	prop32 'fire',
-	prop33 routine59192,
+	rod_action routine59192,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
   has	rod_attr hidden_rod;
 
@@ -836,7 +836,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 	short rod_short,
 	prop29 routine58728,
 	prop32 'returning',
-	prop33 routine60256,
+	rod_action routine60256,
 	devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
   has	rod_attr hidden_rod;
 
@@ -850,7 +850,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 	short rod_short,
 	prop29 routine58728,
 	prop32 'stalking',
-	prop33 routine62456,
+	rod_action routine62456,
 	devil_hint "It has no horticultural application.",
   has	rod_attr hidden_rod;
 
@@ -864,7 +864,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 	short rod_short,
 	prop29 routine58728,
 	prop32 'infinity',
-	prop33 routine63240,
+	rod_action routine63240,
 	angel_hint "Well, where might you have seen infinity before?",
   has	rod_attr hidden_rod;
 
@@ -878,7 +878,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 	short rod_short,
 	prop29 routine58728,
 	prop32 'husbandry',
-	prop33 routine60552,
+	rod_action routine60552,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
   has	rod_attr hidden_rod;
 
@@ -892,7 +892,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 	short rod_short,
 	prop29 routine58728,
 	prop32 'bronze',
-	prop33 routine60812,
+	rod_action routine60812,
 	angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
   has	rod_attr hidden_rod;
 
@@ -906,7 +906,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 	short rod_short,
 	prop29 routine58728,
 	prop32 'sacrifice',
-	prop33 routine61400,
+	rod_action routine61400,
 	angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
   has	rod_attr hidden_rod;
 
@@ -920,7 +920,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 	short rod_short,
 	prop29 routine58728,
 	prop32 'luck',
-	prop33 routine61136,
+	rod_action routine61136,
 	angel_hint "Well, if there's such a thing as luck, maybe this would help.",
   has	rod_attr hidden_rod;
 
@@ -934,7 +934,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 	short rod_short,
 	prop29 routine58728,
 	prop32 'ice',
-	prop33 routine60068,
+	rod_action IceRodAction,
 	angel_hint "Use only at heated moments, when affairs are delicately balanced.",
   has	rod_attr hidden_rod;
 
@@ -946,7 +946,7 @@ Object rod_of_language "Language"	! 26 / 0x1a
 	article "the",
 	short rod_short,
 	prop29 routine58728,
-	prop33 routine62260,
+	rod_action routine62260,
   has	rod_attr;
 
 Object rod_of_returning2 "Returning"	! 27 / 0x1b
@@ -957,7 +957,7 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 	article "the",
 	short rod_short,
 	prop29 routine58728,
-	prop33 routine60256,
+	rod_action routine60256,
   has	rod_attr;
 
 Object rod_of_life "Life"	! 28 / 0x1c
@@ -971,7 +971,7 @@ Object rod_of_life "Life"	! 28 / 0x1c
 	article "the",
 	short rod_short,
 	prop29 routine58728,
-	prop33 routine58968,
+	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	rod_attr high_rod;
 
@@ -985,7 +985,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
 	article "the",
 	short rod_short,
 	prop29 routine58728,
-	prop33 routine58968,
+	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
 
@@ -999,7 +999,7 @@ Object rod_of_love "Love"	! 30 / 0x1e
 	article "the",
 	short rod_short,
 	prop29 routine58728,
-	prop33 routine58968,
+	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
 
@@ -9180,7 +9180,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     " on one end, and inscribed with its title.";
 ];
 
-! References: rod_of_life.prop33, rod_of_death.prop33, rod_of_love.prop33
+! References: rod_of_life.rod_action, rod_of_death.rod_action, rod_of_love.rod_action
 
 [ routine58968 ;	! 58968 / 0xe658
     "You are knocked off your feet with the power of one of the High Rods, but it is too puissant for a mortal such as you are.";
@@ -9222,7 +9222,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: rod_of_fire.prop33
+! References: rod_of_fire.rod_action
 
 [ routine59192 ;	! 59192 / 0xe738
     if (second == player) {
@@ -9278,9 +9278,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     " utterly!";
 ];
 
-! References: rod_of_ice.prop33
+! References: rod_of_ice.rod_action
 
-[ routine60068 ;	! 60068 / 0xeaa4
+[ IceRodAction ;	! 60068 / 0xeaa4
     if (second == player) {
         "You feel a sudden chill.";
     }
@@ -9299,7 +9299,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Nothing obvious happens.";
 ];
 
-! References: rod_of_returning.prop33, rod_of_returning2.prop33
+! References: rod_of_returning.rod_action, rod_of_returning2.rod_action
 
 [ routine60256 local1 local2 ;	! 60256 / 0xeb60
     if (second ~= player) {
@@ -9338,7 +9338,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: rod_of_husbandry.prop33
+! References: rod_of_husbandry.rod_action
 
 [ routine60552 ;	! 60552 / 0xec88
     if (second == player) {
@@ -9358,7 +9358,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "The goats suddenly look up at you with awe, although they resume their former interest in eating the grass quite quickly.";
 ];
 
-! References: rod_of_bronze.prop33
+! References: rod_of_bronze.rod_action
 
 [ routine60812 ;	! 60812 / 0xed8c
     if (second == player) {
@@ -9384,7 +9384,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "With an awful heaving, wrenching noise, the mural slides a little sideways, opening up a murky downward passage which can't have been used for centuries.";
 ];
 
-! References: rod_of_luck.prop33
+! References: rod_of_luck.rod_action
 
 [ routine61136 ;	! 61136 / 0xeed0
     if (second == player) {
@@ -9411,7 +9411,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Nothing obvious happens.";
 ];
 
-! References: rod_of_sacrifice.prop33
+! References: rod_of_sacrifice.rod_action
 
 [ routine61400 ;	! 61400 / 0xefd8
     if (second == obj223_herd_of_goats) {
@@ -9455,7 +9455,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Nothing obvious happens.";
 ];
 
-! References: rod_of_language.prop33
+! References: rod_of_language.rod_action
 
 [ routine62260 ;	! 62260 / 0xf334
     if (second == player) {
@@ -9468,7 +9468,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Nothing obvious happens.";
 ];
 
-! References: rod_of_stalking.prop33
+! References: rod_of_stalking.rod_action
 
 [ routine62456 ;	! 62456 / 0xf3f8
     if (second == adamantine_knight) {
@@ -9512,7 +9512,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reaching up high into the sky!  You yawn convulsively.";
 ];
 
-! References: rod_of_infinity.prop33
+! References: rod_of_infinity.rod_action
 
 [ routine63240 local1 ;	! 63240 / 0xf708
     if (second == adamantine_knight) {
@@ -23496,7 +23496,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Nothing happens.";
     }
     Achieved(7);
-    local1 = noun.prop33;
+    local1 = noun.rod_action;
     if (local1 == 65535[?]) {
         "** No rod routine **";
     }
