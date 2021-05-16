@@ -4908,7 +4908,7 @@ Global inferword;
 Global oops_from;
 Global saved_oops;
 Global number_matched;
-Global global68;
+Global number_of_classes;
 Global match_length;
 Global match_from;
 Global global71;
@@ -6569,7 +6569,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
         }
     }
-    global68 = 0;
+    number_of_classes = 0;
     if (number_matched == 1[?]) {
         i = match_list-->0;
     }
@@ -6601,11 +6601,11 @@ Array array_29185 -->	! 29185 (0x7201)
             print "Which";
         }
         print " do you mean, ";
-        j = global68;
+        j = number_of_classes;
         marker = 0;
         i = 1[?];
       .label48087;
-        if (i <= global68) {
+        if (i <= number_of_classes) {
           .label48092;
             if (array_24788-->marker ~= i && array_24788-->marker ~= 0 - i) {
                 ++marker;
@@ -6798,7 +6798,7 @@ Array array_29185 -->	! 29185 (0x7201)
             return 65535[?];
         }
         i = 0;
-        global68 = 1[?];
+        number_of_classes = 1;
         offset = multiple_object-->0;
         j = BestGuess();
       .label49068;
@@ -6885,7 +6885,7 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label49478;
         }
     }
-    global68 = n;
+    number_of_classes = n;
     if (n > 1 && indef_mode == 0) {
         j = 0;
         good_ones = 0;
@@ -7064,12 +7064,12 @@ Array array_29185 -->	! 29185 (0x7201)
         ++i;
         jump label50199;
     }
-    global68 = 2[?];
+    number_of_classes = 2;
     rtrue;
 ];
 
 [ BestGuess earliest its_score best i ;	! 50480 / 0xc530
-    if (global68 ~= 1[?]) {
+    if (number_of_classes ~= 1) {
         ScoreMatchL();
     }
     earliest = 0;
