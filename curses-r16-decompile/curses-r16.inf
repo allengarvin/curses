@@ -4883,8 +4883,8 @@ Global onotheld_mode;
 Global meta;
 Global global41;
 Global action;
-Global global43;
-Global global44;
+Global consult_from;
+Global consult_words;
 Global undo_flag;
 Global parser_trace;
 Global global47;
@@ -5921,8 +5921,8 @@ Array array_29185 -->	! 29185 (0x7201)
         results-->2 = 1[?];
         special_number1 = special_word;
         results-->3 = actor;
-        global43 = verb_wordnum;
-        global44 = num_words - global43 + 1;
+        consult_from = verb_wordnum;
+        consult_words = num_words - consult_from + 1;
         rtrue;
     }
     if (routine181248(etype) ~= 0) {
@@ -9861,7 +9861,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine65440 local1 ;	! 65440 / 0xffa0
     if (action == ##Consult) {
-        wn = global43;
+        wn = consult_from;
         local1 = NextWord();
         if (local1 == 35544['mad'?] or 39135['sir'?] or 34500['honourable'?]) {
             local1 = NextWord();
@@ -9961,7 +9961,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine69840 local1 ;	! 69840 / 0x110d0
     if (action == ##Consult) {
-        wn = global43;
+        wn = consult_from;
         local1 = NextWord();
         if (obj240_Homer has attrib8 && obj240_Homer.number < 3 && obj240_Homer in location) {
             routine109044();
@@ -11386,7 +11386,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine82652 local1 ;	! 82652 / 0x142dc
     if (action == ##Consult) {
-        local1 = TryNumber(global43);
+        local1 = TryNumber(consult_from);
         if (local1 < 1725 || local1 > 1792) {
             "He didn't seem to be experimenting in those days.";
         }
@@ -11632,7 +11632,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (selfobj in obj104_labelled_glass_demijohn) {
             "You can't get a close enough look.";
         }
-        local1 = TryNumber(global43);
+        local1 = TryNumber(consult_from);
         if (local1 == 1420[?]) {
             if (obj177_Museum_Foyer has visited) {
                 "You remember, the museum.";
@@ -11711,8 +11711,8 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (action == ##Consult) {
-        if (global44 == 1[?]) {
-            wn = global43;
+        if (consult_words == 1[?]) {
+            wn = consult_from;
             local2 = NextWord();
             local1 = 65535[?];
             if (local2 == 34878['january'?]) {
@@ -22990,7 +22990,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ LookUpSub local1 local2 ;	! 175216 / 0x2ac70
-    local2 = TryNumber(global43);
+    local2 = TryNumber(consult_from);
     if (local2 >= 0 && (obj106_tourist_map in player || obj106_tourist_map in location)) {
         local1 = 106[obj106_tourist_map?];
     }
@@ -23705,20 +23705,20 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine181076 local1 ;	! 181076 / 0x2c354
-    global43 = wn;
+    consult_from = wn;
   .label181080;
     local1 = NextWordStopped();
     if (local1 ~= 65535[?] && (local1 ~= 40503['to'?] || action_to_be ~= ##Answer)) jump label181080;
     --wn;
-    global44 = wn - global43;
-    if (global44 == 0) {
+    consult_words = wn - consult_from;
+    if (consult_words == 0) {
         return 65535[?];
     }
     if (action_to_be == ##Ask or ##Answer or ##Tell) {
         local1 = wn;
-        wn = global43;
+        wn = consult_from;
         global36 = NextWord();
-        if (global36 == 40278['the'?] && global44 > 1) {
+        if (global36 == 40278['the'?] && consult_words > 1) {
             global36 = NextWord();
         }
         wn = local1;
@@ -23728,7 +23728,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine181160 local1 ;	! 181160 / 0x2c3a8
-    global43 = wn;
+    consult_from = wn;
   .label181164;
     local1 = NextWordStopped();
     if (local1 ~= 34698['in'?] or 65535[?]) jump label181164;
@@ -23736,8 +23736,8 @@ Array array_29185 -->	! 29185 (0x7201)
         return 65535[?];
     }
     --wn;
-    global44 = wn - global43;
-    if (global44 == 0) {
+    consult_words = wn - consult_from;
+    if (consult_words == 0) {
         return 65535[?];
     }
     return 0;
@@ -23794,7 +23794,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine181268 local1 ;	! 181268 / 0x2c414
-    global43 = wn;
+    consult_from = wn;
   .label181272;
     local1 = NextWordStopped();
     if (local1 ~= 36624['on'?] or 65535[?]) jump label181272;
@@ -23802,8 +23802,8 @@ Array array_29185 -->	! 29185 (0x7201)
         return 65535[?];
     }
     --wn;
-    global44 = wn - global43;
-    if (global44 == 0) {
+    consult_words = wn - consult_from;
+    if (consult_words == 0) {
         return 65535[?];
     }
     return 0;
