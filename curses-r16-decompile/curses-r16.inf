@@ -4274,7 +4274,7 @@ Object -> gambling_sailor "gambling sailor"	! 446 / 0x1be
 	after routine137476,
 	life routine137492,
 	initial "A grizzled sailor sits at a harbourside table.",
-	each_turn routine137616,
+	each_turn GamblingSailorEachTurn,
   has	animate;
 
 Object -> inscribed_die "inscribed die"	! 447 / 0x1bf
@@ -17546,27 +17546,27 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gambling_sailor.each_turn
 
-[ routine137616 local1 ;	! 137616 / 0x21990
+[ GamblingSailorEachTurn n ;	! 137616 / 0x21990
     if (gambling_sailor has general) {
-        local1 = random(5);
-        if (local1 < 3) {
+        n = random(5);
+        if (n < 3) {
             print "^The sailor grabs the die and throws a ~";
-            local1 = random(6);
+            n = random(6);
             if (gambling_sailor has lucky || inscribed_die has lucky) {
-                local1 = 6[ne_obj?];
+                n = 6;
             }
-            routine138004(local1);
+            routine138004(n);
             print "~, ";
-            if (local1 > inscribed_die.time_left) {
+            if (n > inscribed_die.time_left) {
                 print "and grins.^";
             }
-            if (local1 < inscribed_die.time_left) {
+            if (n < inscribed_die.time_left) {
                 print "and sighs.^";
             }
-            if (local1 == inscribed_die.time_left) {
+            if (n == inscribed_die.time_left) {
                 print "and shrugs.^";
             }
-            inscribed_die.time_left = local1;
+            inscribed_die.time_left = n;
             give gambling_sailor ~general;
         } else {
             "^The sailor stares at the die thoughtfully.";
