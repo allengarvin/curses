@@ -7234,13 +7234,13 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     --wn;
     w = NextWord();
-    e = 4[e_obj?];
+    e = CANTSEE_PE;
     if (w == vague_word) {
-        e = 14[thedark?];
+        e = ITGONE_PE;
     }
     i = parent(actor);
     if (i has visited && Refers(i,w) == 1[?]) {
-        e = 13[obj13_inside?];
+        e = SCENERY_PE;
     }
     if (etype > e) {
         return etype;
