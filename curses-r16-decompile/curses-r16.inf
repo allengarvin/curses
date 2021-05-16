@@ -4946,7 +4946,7 @@ Global global102;
 Global global103;
 Global global104;
 Global global105;
-Global global106 = 1[?];
+Global take_all_rule = 1;
 Global usual_grammar_after;
 Global undone_flag;
 Global pretty_mode = true;
@@ -5692,9 +5692,9 @@ Array array_29185 -->	! 29185 (0x7201)
                     ++pcount;
                     jump label43315;
                 }
-                global106 = 0;
+                take_all_rule = 0;
                 if (m == 1[?] && params_wanted == 1[?] && action_to_be == ##Take) {
-                    global106 = 1[?];
+                    take_all_rule = 1;
                 }
                 notholding = 0;
                 interfrom = 0;
@@ -5822,7 +5822,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                     jump label44659;
                                 }
                             }
-                            if (global106 == 2[?] && results-->2 == actor) {
+                            if (take_all_rule == 2 && results-->2 == actor) {
                                 pcount2 = 17[rod_of_fire?];
                                 jump label44685;
                             }
@@ -5893,7 +5893,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 if (etype > pcount2) {
                     pcount2 = etype;
                 }
-                if (global106 == 2[?] && etype == NOTHING_PE) {
+                if (take_all_rule == 2 && etype == NOTHING_PE) {
                     ! no code
                 } else {
                     ++line;
@@ -6212,8 +6212,8 @@ Array array_29185 -->	! 29185 (0x7201)
             indef_mode = 1[?];
             flag = 1;
             indef_wanted = 100;
-            if (global106 == 1[?]) {
-                global106 = 2[?];
+            if (take_all_rule == 1) {
+                take_all_rule = 2;
             }
             indef_type = indef_type | 8;
         }
@@ -6956,7 +6956,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (parser_trace >= 4) {
             print "   Token 2 plural case: number with actor ", low, "^";
         }
-        if (global106 == 2[?] || low > 0) {
+        if (take_all_rule == 2 || low > 0) {
             i = 1[?];
             low = 0;
           .label49943;
