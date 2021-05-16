@@ -4907,7 +4907,7 @@ Global interfrom;
 Global global64;
 Global oops_from;
 Global global66;
-Global global67;
+Global number_matched;
 Global global68;
 Global global69;
 Global global70;
@@ -6532,20 +6532,20 @@ Array array_29185 -->	! 29185 (0x7201)
         print "   [NounDomain called at word ", wn, "^";
     }
     global69 = 0;
-    global67 = 0;
+    number_matched = 0;
     global70 = wn;
     global96 = 0;
     routine51412(domain1,domain2,context);
     if (parser_trace >= 4) {
-        print "   [ND made ", global67, " matches]^";
+        print "   [ND made ", number_matched, " matches]^";
     }
     wn = global70 + global69;
-    if (global67 == 0) {
+    if (number_matched == 0) {
         ++wn;
         rfalse;
     }
     if (global70 <= num_words) {
-        if (global67 == 1[?]) {
+        if (number_matched == 1[?]) {
             i = array_24660-->0;
             return i;
         }
@@ -6570,10 +6570,10 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     global68 = 0;
-    if (global67 == 1[?]) {
+    if (number_matched == 1[?]) {
         i = array_24660-->0;
     }
-    if (global67 > 1) {
+    if (number_matched > 1) {
         i = Adjudicate(context);
         if (i == 65535[?]) {
             rfalse;
@@ -6635,7 +6635,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 l = multiple_object-->0;
                 i = 0;
               .label48243;
-                if (i < global67 && l + i < 63) {
+                if (i < number_matched && l + i < 63) {
                     k = array_24660-->i;
                     multiple_object-->(i + 1 + l) = k;
                     ++i;
@@ -6731,9 +6731,9 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ Adjudicate context i j k good_ones last n ultimate flag offset ;	! 48728 / 0xbe58
     if (parser_trace >= 4) {
-        print "   [Adjudicating match list of size ", global67, "^";
+        print "   [Adjudicating match list of size ", number_matched, "^";
     }
-    j = global67 - 1;
+    j = number_matched - 1;
     good_ones = 0;
     last = array_24660-->0;
     i = 0;
@@ -6843,7 +6843,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     i = 0;
   .label49291;
-    if (i < global67) {
+    if (i < number_matched) {
         array_24788-->i = 0;
         ++i;
         jump label49291;
@@ -6851,13 +6851,13 @@ Array array_29185 -->	! 29185 (0x7201)
     n = 1[?];
     i = 0;
   .label49313;
-    if (i < global67) {
+    if (i < number_matched) {
         if (array_24788-->i == 0) {
             array_24788-->i = n++;
             flag = 0;
             j = i + 1;
           .label49347;
-            if (j < global67) {
+            if (j < number_matched) {
                 if (array_24788-->j == 0 && routine50640(array_24660-->i,array_24660-->j) == 1[?]) {
                     flag = 1[?];
                     array_24788-->j = array_24788-->i;
@@ -6877,7 +6877,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print "   Difficult adjudication with ", n, " equivalence classes:^";
         i = 0;
       .label49478;
-        if (i < global67) {
+        if (i < number_matched) {
             print "   ";
             CDefart(array_24660-->i);
             print " (", array_24660-->i, ")  ---  ", array_24788-->i, "^";
@@ -6891,7 +6891,7 @@ Array array_29185 -->	! 29185 (0x7201)
         good_ones = 0;
         i = 0;
       .label49557;
-        if (i < global67) {
+        if (i < number_matched) {
             k = routine175160(array_24660-->i,2[?]);
             if (k == j) {
                 ++good_ones;
@@ -7014,7 +7014,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     i = 0;
   .label50199;
-    if (i < global67) {
+    if (i < number_matched) {
         obj = array_24660-->i;
         its_owner = parent(obj);
         its_score = 0;
@@ -7076,7 +7076,7 @@ Array array_29185 -->	! 29185 (0x7201)
     local3 = 65535[?];
     local4 = 0;
   .label50500;
-    if (local4 < global67) {
+    if (local4 < number_matched) {
         if (array_24660-->local4 >= 0) {
             local2 = array_24788-->local4;
             if (local2 > local3) {
@@ -7528,14 +7528,14 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (local2 > global69) {
         global69 = local2;
-        global67 = 0;
+        number_matched = 0;
     } else {
-        if (2 * global67 >= 128) {
+        if (2 * number_matched >= 128) {
             rtrue;
         }
         local3 = 0;
       .label52341;
-        if (local3 < global67) {
+        if (local3 < number_matched) {
             if (array_24660-->local3 == local1) {
                 rtrue;
             }
@@ -7543,7 +7543,7 @@ Array array_29185 -->	! 29185 (0x7201)
             jump label52341;
         }
     }
-    array_24660-->global67++ = local1;
+    array_24660-->number_matched++ = local1;
     if (parser_trace >= 5) {
         print "    Match added to list^";
     }
