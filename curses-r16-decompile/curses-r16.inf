@@ -1025,7 +1025,7 @@ Object -> obj33_old_smudged_battery "old smudged battery"	! 33 / 0x21
   with	name 'old' 'smudged' 'battery',
 	nw_to s_obj,
 	article "an",
-	number 200,
+	time_left 200,
   has	attrib31;
 
 Object obj34_chocolate_biscuit "chocolate biscuit"	! 34 / 0x22
@@ -1359,7 +1359,7 @@ Object -> obj75_insulation_rolls "insulation rolls"	! 75 / 0x4b
 Object -> -> obj76_new_looking_battery "new-looking battery"	! 76 / 0x4c
   with	name 'new' 'battery',
 	nw_to s_obj,
-	number 300,
+	time_left 300,
 	devil_hint "That is a difficult puzzle, yes.",
   has	attrib31;
 
@@ -1477,7 +1477,7 @@ Object -> obj90_Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"	! 90 / 0x5a
 	life routine81944,
 	description "He is dressed in a grey shadow of Georgian finery.",
 	article "the ghost of",
-	number 0,
+	time_left 0,
 	daemon JoshuaMeldreweDaemon,
   has	animate concealed;
 
@@ -1588,7 +1588,7 @@ Object obj103_Old_Winery "Old Winery"	! 103 / 0x67
 	w_to obj107_Aunt_Jemima_s_Lair,
 	d_to obj107_Aunt_Jemima_s_Lair,
 	description "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east.",
-	number 0,
+	time_left 0,
 	daemon routine84996,
 	section T_MODERN,
   has	;
@@ -1653,7 +1653,7 @@ Object -> obj111_antiquated_wireless "antiquated wireless"	! 111 / 0x6f
 	description "It rolls on casters, and has a bakelite on/off switch.",
 	prop19 routine87156,
 	article "an",
-	number 0,
+	time_left 0,
 	daemon routine86996,
   has	concealed static switchable;
 
@@ -1680,7 +1680,7 @@ Object -> obj114_Jemima "Jemima"	! 114 / 0x72
 	initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
 	description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow.",
 	article "Aunt",
-	number 0,
+	time_left 0,
 	daemon routine87700,
   has	animate proper;
 
@@ -1688,7 +1688,7 @@ Object obj115_daisy_chain "daisy chain"	! 115 / 0x73
   with	name 'daisy' 'chain' 'daisychain',
 	after routine89704,
 	u_to routine89828,
-	number 11,
+	time_left 11,
 	devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has	clothing;
 
@@ -1755,7 +1755,7 @@ Object obj124_Dark_Passage "Dark Passage"	! 124 / 0x7c
 	e_to obj125_sandstone_recess,
 	d_to obj125_sandstone_recess,
 	description "A passage which slants very slightly down to the south, which is full of coal dust, to which you are unfortunately allergic. Not somewhere to linger.",
-	number 2,
+	time_left 2,
 	section T_MODERN,
   has	;
 
@@ -1873,7 +1873,7 @@ Object obj138_Infinity_Symbol "Infinity Symbol"	! 138 / 0x8a
 Object -> obj139_circular_arc "circular arc"	! 139 / 0x8b
   with	name 'wells' 'circular' 'arc' 'socket' 'sockets' 'well',
 	after routine93356,
-	number 0,
+	time_left 0,
   has	scenery;
 
 Object -> obj140_lemniscus "lemniscus"	! 140 / 0x8c
@@ -1978,7 +1978,7 @@ Object -> -> model_golden_sceptre "model golden sceptre"	! 430 / 0x1ae
 	before routine135656,
 	initial nothing,
 	description "A copy, half-size, of the one from Tutenkhamun's sarcophagus. It isn't real gold, either.",
-	number 0,
+	time_left 0,
 	angel_hint "Of no use to anyone these last two thousand years, sorry!",
   has	;
 
@@ -2335,7 +2335,7 @@ Object obj195_Coven_Cell "Coven Cell"	! 195 / 0xc3
   with	after routine100348,
 	description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
 	cant_go "There's definitely no way out of here.",
-	number 0,
+	time_left 0,
 	daemon routine100016,
 	section T_HAMBURG,
   has	light;
@@ -2372,7 +2372,7 @@ Object -> obj200_glass_cabinet "glass cabinet"	! 200 / 0xc8
 	after routine100752,
 	s_to "One cabinet looks particularly vulnerable.",
 	initial "You could just look inside the broken glass cabinet.",
-	number 0,
+	time_left 0,
 	daemon routine100868,
   has	container static transparent;
 
@@ -2410,7 +2410,7 @@ Object obj205_complicated_looking_bomb "complicated-looking bomb"	! 205 / 0xcd
 	before routine102212,
 	initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
 	description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
-	number 0,
+	time_left 0,
 	prop24 [0 0],
 	daemon routine101884,
   has	concealed container open;
@@ -2418,7 +2418,7 @@ Object obj205_complicated_looking_bomb "complicated-looking bomb"	! 205 / 0xcd
 Object -> obj206_timer_detonator "timer-detonator"	! 206 / 0xce
   with	name 'timer' 'detonater' 'detonator',
 	after routine103296,
-	number 10,
+	time_left 10,
 	prop24 [0 0],
 	daemon routine102360,
 	devil_hint "Time flies down here, you know. Eternity simply breezes by.",
@@ -2450,7 +2450,7 @@ Object obj211_Cups_and_Glasses "Cups and Glasses"	! 211 / 0xd3
 	n_to obj212_windowed_door,
 	description "This basement room is filled with crate after crate of glasses and cups, enough for an entire hotel, or restaurant perhaps. Almost anything might be hidden among them. A little light comes in from an opaque skylight which is at street level outdoors. There is no way out of here, since the only door is shut tight.",
 	cant_go "There's no apparent way out of here.",
-	number 0,
+	time_left 0,
 	each_turn routine103924,
 	section T_TAROT,
   has	light;
@@ -2996,7 +2996,7 @@ Object -> obj281_stone_wall "stone wall"	! 281 / 0x119
 	after routine113724,
 	life routine113824,
 	description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
-	prop22 [1 17 1 d6],
+	number [1 17 1 d6],
   has	scenery talkable;
 
 Object obj282_timber_hatch "timber hatch"	! 282 / 0x11a
@@ -3220,7 +3220,7 @@ Object -> obj309_bean_pole "bean pole"	! 309 / 0x135
   with	name 'bean' 'pole' 'beanpole',
 	before routine116512,
 	initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
-	number 0,
+	time_left 0,
 	daemon routine116536,
 	rod_assoc rod_of_stalking,
 	devil_hint "Whatever you do, it'll always be a bean pole.",
@@ -3506,7 +3506,7 @@ Object -> kitchen_well "kitchen well"	! 347 / 0x15b
 	w_to thedark,
 	initial "The hinged wooden cover is raised, revealing a circular well about a yard in diameter. It is very dark inside.",
 	description "The well has a hinged wooden cover. You can't tell by looking how deep it is.",
-	number 0,
+	time_left 0,
 	daemon routine122672,
   has	container door openable static;
 
@@ -3553,7 +3553,7 @@ Object -> tent_pole "tent pole"	! 353 / 0x161
   with	name 'tent' 'pole' 'central',
 	after routine123720,
 	before routine123768,
-	number 0,
+	time_left 0,
 	daemon routine123528,
 	rod_assoc rod_of_returning2,
   has	concealed static attrib33;
@@ -3564,7 +3564,7 @@ Object unconscious_Saxon_spy "unconscious Saxon spy"	! 354 / 0x162
 	life routine124316,
 	initial "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
 	description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours.",
-	number 0,
+	time_left 0,
 	daemon routine123920,
   has	animate;
 
@@ -3573,7 +3573,7 @@ Object Encampment "Encampment"	! 355 / 0x163
 	e_to routine124520,
 	description "Luckily for you the tent, now collapsed, was hardly being watched at all, because all the attention is diverted to a ghastly ritual being carried out over beyond the camp-fires. But your luck cannot hold for long. You are so surrounded by hostile territory that you simply have nowhere to run or hide. Things are, not to put too fine a point on it, looking grim.",
 	cant_go "Far, far too risky.",
-	number 0,
+	time_left 0,
 	daemon routine124400,
 	section T_ANCIENT_BRITAIN,
   has	light scored;
@@ -3646,7 +3646,7 @@ Object -> heavy_iron_mascot "heavy iron mascot"	! 365 / 0x16d
 	before routine124964,
 	initial "On the table is a heavy iron mascot of some kind.",
 	description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
-	number 0,
+	time_left 0,
 	daemon routine125232,
 	devil_hint "An absolute essential.",
   has	;
@@ -3867,7 +3867,7 @@ Object Inside_the_Orb "Inside the Orb"	! 394 / 0x18a
   with	name 'light',
 	before routine129760,
 	description "You half-stand, half-float in a golden, misty sphere perhaps ten yards across, which slowly spins. The centre, out of reach and somehow insubstantial, is an eight-by-eight lattice of oblong crystals, bathed in warm pearly light.",
-	number 0,
+	time_left 0,
 	each_turn routine129804,
 	section T_CATACOMBS,
   has	light;
@@ -3885,7 +3885,7 @@ Object Causeway "Causeway"	! 396 / 0x18c
 	se_to Crossroads,
 	initial routine130540,
 	description "A warm winter's night in the ancient city of Alexandria, on the Heptastadion causeway across the harbour to the Island of Pharos (to north). The Mediterranean waters lap against the land bridge, and the whole city (southeast) is lit up with torches: it is a night of celebration.",
-	number 2,
+	time_left 2,
 	daemon routine130560,
 	section T_ALEXANDRIA,
   has	light;
@@ -4059,7 +4059,7 @@ Object The_Spirit_World "The Spirit World"	! 417 / 0x1a1
 	before routine133704,
 	w_to routine133240,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling, at the foot of a flight of steps which leads only to a sealed wall.",
-	number 1,
+	time_left 1,
 	each_turn routine133912,
 	section T_SPIRIT_WORLD,
   has	light scored;
@@ -4138,7 +4138,7 @@ Object -> first_socket "first socket"	! 427 / 0x1ab
 	after routine135524,
 	description " .Above ",
 	article "the",
-	number 1,
+	time_left 1,
   has	scenery;
 
 Object -> second_socket "second socket"	! 428 / 0x1ac
@@ -4146,7 +4146,7 @@ Object -> second_socket "second socket"	! 428 / 0x1ac
 	after routine135524,
 	description " .Above ",
 	article "the",
-	number 1,
+	time_left 1,
   has	scenery;
 
 Object -> third_socket "third socket"	! 429 / 0x1ad
@@ -4154,14 +4154,14 @@ Object -> third_socket "third socket"	! 429 / 0x1ad
 	after routine135524,
 	description " .Above ",
 	article "the",
-	number 1,
+	time_left 1,
   has	scenery;
 
 Object Buried_Alive "Buried Alive"	! 431 / 0x1af
   with	after routine136036,
 	u_to Sarcophagus,
 	description "You lie in the mummy case, your arms folded across each other, face grimaced, running out of air rapidly and with almost no room to maneouvre. The coffin lid is about ten times heavier than you, and its seal is very good.",
-	number 5,
+	time_left 5,
 	each_turn routine136372,
 	section T_ALEXANDRIA,
   has	light attrib39;
@@ -4283,7 +4283,7 @@ Object -> inscribed_die "inscribed die"	! 447 / 0x1bf
 	initial "An inscribed six-sided die lies on the table in front of him.",
 	description "The sides you can see are labelled with short words.",
 	article "an",
-	number 3,
+	time_left 3,
   has	static;
 
 Object The_Birdcage_of_the_Muses "The Birdcage of the Muses"	! 448 / 0x1c0
@@ -4294,7 +4294,7 @@ Object The_Birdcage_of_the_Muses "The Birdcage of the Muses"	! 448 / 0x1c0
 	nw_to Outside_the_Royal_Museum,
 	nw_to Outside_the_Royal_Museum,
 	description "The celebrated Library of Alexandria, finest in the entire world, possessed of hundreds of thousands of books: where the ruling Ptolemies keep fanatic, infighting scholars almost imprisoned as they turn out rival commentaries on the ancient poems - hence the nickname.^^There is a little door to the south; a dusty corridor southeast; a thoroughfare east, and a grand entrance northwest.",
-	number 0,
+	time_left 0,
 	each_turn routine138060,
 	section T_ALEXANDRIA,
   has	light scored;
@@ -4689,7 +4689,7 @@ Object -> demon "demon"	! 499 / 0x1f3
   with	name 'devil' 'demon' 'demonic' 'gentleman',
 	life routine146120,
 	description "If you were to cast a film of your adventures so far, you would hire Donald Sutherland to play this gentleman.",
-	number 4,
+	time_left 4,
   has	animate scenery;
 
 Object Heavenly_Place "Heavenly Place"	! 500 / 0x1f4
@@ -4707,7 +4707,7 @@ Object -> angel "angel"	! 501 / 0x1f5
   with	name 'angel' 'lady' 'angelic',
 	life routine147316,
 	description "If you were to cast a film of your adventures so far, you would hire Dame Judi Dench to play this lady.",
-	number 4,
+	time_left 4,
   has	animate scenery;
 
 Object carbolic_soap "carbolic soap"	! 502 / 0x1f6
@@ -8613,12 +8613,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         TimerE();
     }
   .label56513;
-    if (obj.&number == 0) {
+    if (obj.&time_left == 0) {
         TimerE2(obj);
     }
     the_timers-->i = obj;
     array_23957->i = 1[?];
-    obj.number = timer;
+    obj.time_left = timer;
     rtrue;
 ];
 
@@ -8634,11 +8634,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     rfalse;
   .label56577;
-    if (obj.&number == 0) {
+    if (obj.&time_left == 0) {
         TimerE2(obj);
     }
     the_timers-->i = 0;
-    obj.number = 0;
+    obj.time_left = 0;
     rtrue;
 ];
 
@@ -8711,11 +8711,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (j ~= 0) {
             if (array_23957->i == 2[?]) {
                 RunRoutines(j,daemon);
-            } else if (j.number == 0) {
+            } else if (j.time_left == 0) {
                 StopTimer(j);
                 RunRoutines(j,daemon);
             } else {
-                j.number = j.number - 1;
+                j.time_left = j.time_left - 1;
             }
         }
         ++i;
@@ -9524,7 +9524,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= obj138_Infinity_Symbol || second ~= obj140_lemniscus) {
         "Nothing obvious happens.";
     }
-    local1 = obj139_circular_arc.number;
+    local1 = obj139_circular_arc.time_left;
     routine155280(30[rod_of_love?]);
     if (local1 < 9) {
         "You feel the air charge with excitement, and the symbol glows fiercely gold for a moment, but then the power drains away into one of the empty sockets in the arc.";
@@ -9750,7 +9750,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Achieved(1);
         }
         if (local1 == 33[obj33_old_smudged_battery?] or 76[obj76_new_looking_battery?]) {
-            local2 = local1.number;
+            local2 = local1.time_left;
             if (local2 == 0) {
                 ", but the battery must be dead because nothing happens.";
             }
@@ -9775,9 +9775,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (o == nothing) {
         rfalse;
     }
-    n = o.number - 1;
+    n = o.time_left - 1;
     if (n < 200) {
-        o.number = n;
+        o.time_left = n;
     }
     if (n == 2) {
         print "^The torch flickers ominously.^";
@@ -9955,7 +9955,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Consult) {
         wn = consult_from;
         local1 = NextWord();
-        if (obj240_Homer has attrib8 && obj240_Homer.number < 3 && obj240_Homer in location) {
+        if (obj240_Homer has attrib8 && obj240_Homer.time_left < 3 && obj240_Homer in location) {
             routine109044();
             print "~Well, if you're going to cheat, forget it,~ says Homer loudly as he falls asleep.^^";
         }
@@ -11245,7 +11245,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         give obj90_Sir_Joshua_Meldrewe ~concealed;
         move selfobj to obj90_Sir_Joshua_Meldrewe;
-        obj90_Sir_Joshua_Meldrewe.number = 5;
+        obj90_Sir_Joshua_Meldrewe.time_left = 5;
         StartDaemon(90[obj90_Sir_Joshua_Meldrewe?]);
         "As you reach for the key, a swirling mist condenses about it, into a ghostly head which opens its mouth and eats up the key!  The rest of the ghostly body solidifies about the head and rises to swagger before you.";
     }
@@ -11267,8 +11267,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= obj88_Battlements) {
         rfalse;
     }
-    n = selfobj.number - 1;
-    selfobj.number = n;
+    n = selfobj.time_left - 1;
+    selfobj.time_left = n;
     if (n == 4) {
         "^The ghost laughs in a gurgling kind of way, as it were always coughing and spluttering.";
     }
@@ -12022,7 +12022,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
         }
         StartTimer(114[obj114_Jemima?],7[se_obj?]);
-        obj115_daisy_chain.number = local1;
+        obj115_daisy_chain.time_left = local1;
         "After a moment she notices you're still here. ~Come back later, it'll be done soon.~  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.";
     }
     if (action == ##Ask) {
@@ -12073,7 +12073,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine89704 ;	! 89704 / 0x15e68
     if (action == ##Read) {
         print "A delicate, pretty chain of ";
-        routine89908(selfobj.number);
+        routine89908(selfobj.time_left);
         " daisies.";
     }
     if (action == ##Drop) {
@@ -12561,7 +12561,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine92944 local1 ;	! 92944 / 0x16b10
     if (action == ##Look) {
         print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through nine equally spaced sockets or cylindrical wells.";
-        local1 = obj139_circular_arc.number;
+        local1 = obj139_circular_arc.time_left;
         if (local1 == 0) {
             new_line;
             rfalse;
@@ -12602,7 +12602,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine93356 local1 ;	! 93356 / 0x16cac
     if (action == ##Action257) {
-        local1 = selfobj.number;
+        local1 = selfobj.time_left;
         if (local1 == 9[sw_obj?]) {
             "The sockets are all full.";
         }
@@ -12618,7 +12618,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         move noun to selfobj;
         give noun static;
         ++local1;
-        selfobj.number = local1;
+        selfobj.time_left = local1;
         print "It fits perfectly in one of the arc sockets.^";
         if (parent(obj141_spherical_opening) == nothing) {
             move obj141_spherical_opening to obj138_Infinity_Symbol;
@@ -13648,7 +13648,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine103296 local1 ;	! 103296 / 0x19380
     if (action == ##Read) {
         print "The timer seems quite simple to set. ";
-        local1 = selfobj.number;
+        local1 = selfobj.time_left;
         if (selfobj.prop24 ~= 0) {
             print "The clock is running, and currently at ";
             EnglishNumber(local1);
@@ -13696,16 +13696,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine103600 local1 local2 ;	! 103600 / 0x194b0
     print "The clock is ticking downwards, and is ";
-    if (obj205_complicated_looking_bomb.number == 0) {
+    if (obj205_complicated_looking_bomb.time_left == 0) {
         print "right on the red zone!  ";
     } else {
-        EnglishNumber(obj205_complicated_looking_bomb.number);
+        EnglishNumber(obj205_complicated_looking_bomb.time_left);
         print " minute";
-        if (obj205_complicated_looking_bomb.number ~= 1) {
+        if (obj205_complicated_looking_bomb.time_left ~= 1) {
             print "s";
         }
         print " short of the red zone. ";
-        if (obj205_complicated_looking_bomb.number == 5) {
+        if (obj205_complicated_looking_bomb.time_left == 5) {
             routine155280(10[u_obj?]);
         }
     }
@@ -13767,8 +13767,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj211_Cups_and_Glasses.each_turn
 
 [ routine103924 local1 ;	! 103924 / 0x195f4
-    selfobj.number = selfobj.number + 1;
-    local1 = selfobj.number;
+    selfobj.time_left = selfobj.time_left + 1;
+    local1 = selfobj.time_left;
     if (local1 == 2[?]) {
         "^There is a scuffling noise as some people gather up on the pavement outside the skylight.";
     }
@@ -16276,8 +16276,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (heavy_iron_mascot notin player) {
         rfalse;
     }
-    local1 = selfobj.number - 1;
-    selfobj.number = local1;
+    local1 = selfobj.time_left - 1;
+    selfobj.time_left = local1;
     if (local1 == 0) {
         deadflag = DIED;
         print "^In an astonishing freak accident, ";
@@ -16332,7 +16332,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (heavy_iron_mascot in ghost_of_yourself) {
             move heavy_iron_mascot to player;
             StartDaemon(365[heavy_iron_mascot?]);
-            heavy_iron_mascot.number = 15;
+            heavy_iron_mascot.time_left = 15;
             Achieved(21);
             score = score - 50;
         }
@@ -16772,8 +16772,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Inside_the_Orb.each_turn
 
 [ routine129804 local1 local2 ;	! 129804 / 0x1fb0c
-    local1 = Inside_the_Orb.number + 1;
-    Inside_the_Orb.number = local1;
+    local1 = Inside_the_Orb.time_left + 1;
+    Inside_the_Orb.time_left = local1;
     if (local1 == 1[?]) {
         rtrue;
     }
@@ -16843,11 +16843,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (game_section ~= T_ALEXANDRIA) {
         rfalse;
     }
-    selfobj.number = (selfobj.number + 1) % 12;
+    selfobj.time_left = (selfobj.time_left + 1) % 12;
     if (location ~= Crossroads or Outside_the_Royal_Museum or Stadium) {
         rfalse;
     }
-    local1 = Causeway.number;
+    local1 = Causeway.time_left;
     if (location == Outside_the_Royal_Museum) {
         --local1;
     }
@@ -17072,7 +17072,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Sleep) {
         if (player in wooden_couch) {
             print "The heavy weave mattings feel so restful that you slide into...^";
-            The_Spirit_World.number = 1;
+            The_Spirit_World.time_left = 1;
             PlayerTo(417[The_Spirit_World?]);
             rtrue;
         }
@@ -17116,11 +17116,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine133240 ;	! 133240 / 0x20878
     print "The spirits of the sphinxes prowl across the doorway, paws raised, and then lunge towards you. Their claws rake across your skin, tearing off a layer, unwrapping you in a curiously painless way... and you wake...^";
-    if (The_Spirit_World.number == 1) {
+    if (The_Spirit_World.time_left == 1) {
         move player to wooden_couch;
         location = The_Height_of_Fashion;
     } else {
-        The_Spirit_World.number = The_Spirit_World.number - 1;
+        The_Spirit_World.time_left = The_Spirit_World.time_left - 1;
         move player to wooden_couch;
         remove Napoleonic_officers;
     }
@@ -17135,7 +17135,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == w_obj) {
             rfalse;
         }
-        if (The_Spirit_World.number == 4) {
+        if (The_Spirit_World.time_left == 4) {
             "You somehow cannot leave the tomb. Your spirit is anchored still to your body, sleeping two thousand years before.";
         }
         "The tomb is sealed, apparently forever.";
@@ -17145,11 +17145,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Sleep) {
         if (player in wooden_couch) {
-            if (The_Spirit_World.number == 4) {
+            if (The_Spirit_World.time_left == 4) {
                 "The spell of the tomb is broken now, and you cannot sleep.";
             }
             print "The heavy weave mattings draw you deeper into...^";
-            The_Spirit_World.number = The_Spirit_World.number + 1;
+            The_Spirit_World.time_left = The_Spirit_World.time_left + 1;
             PlayerTo(417[The_Spirit_World?]);
             rtrue;
         }
@@ -17162,7 +17162,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine133704 local1 ;	! 133704 / 0x20a48
     if (action == ##Look) {
-        local1 = The_Spirit_World.number;
+        local1 = The_Spirit_World.time_left;
         if (local1 == 1[?]) {
             "^The tomb seems older now, weighed under with centuries.";
         }
@@ -17186,7 +17186,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: The_Spirit_World.each_turn
 
 [ routine133912 ;	! 133912 / 0x20b18
-    if (The_Spirit_World.number < 4) {
+    if (The_Spirit_World.time_left < 4) {
         rfalse;
     }
     ++global165;
@@ -17311,7 +17311,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "Above ";
     Defart(selfobj);
     print " is the single word ~";
-    routine138004(selfobj.number);
+    routine138004(selfobj.time_left);
     "~.";
 ];
 
@@ -17320,7 +17320,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine135524 ;	! 135524 / 0x21164
     if (action == ##Action257) {
         if (noun == model_golden_sceptre) {
-            model_golden_sceptre.number = selfobj;
+            model_golden_sceptre.time_left = selfobj;
             if (selfobj == first_socket) {
                 model_golden_sceptre.initial = "The sceptre projects from the first socket like a handle.";
             }
@@ -17346,7 +17346,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine135656 ;	! 135656 / 0x211e8
     if (action == ##Take or ##Remove) {
         if (location == Quite_an_Undertaking) {
-            selfobj.number = 0;
+            selfobj.time_left = 0;
         }
         rfalse;
     }
@@ -17363,7 +17363,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (selfobj notin Quite_an_Undertaking || selfobj has moved) {
             rfalse;
         }
-        if (selfobj.number ~= 0 && mummy_case has open) {
+        if (selfobj.time_left ~= 0 && mummy_case has open) {
             give mummy_case ~open;
             print "With a crash, the coffin slams shut.^^";
         }
@@ -17371,13 +17371,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local1 = random(6);
         routine138004(local1);
         print "~.^";
-        selfobj.number.number = local1;
+        selfobj.time_left.time_left = local1;
         if (global126 == 1[?]) {
-            first_socket.number = 3;
-            second_socket.number = 6;
-            third_socket.number = 1;
+            first_socket.time_left = 3;
+            second_socket.time_left = 6;
+            third_socket.time_left = 1;
         }
-        if (first_socket.number == 3 && second_socket.number == 6 && third_socket.number == 1 || (first_socket.number == 1 && second_socket.number == 6 && third_socket.number == 3)) {
+        if (first_socket.time_left == 3 && second_socket.time_left == 6 && third_socket.time_left == 1 || (first_socket.time_left == 1 && second_socket.time_left == 6 && third_socket.time_left == 3)) {
             give mummy_case open;
             mummy_case.initial = "The great lid of the coffin is open.";
             "^With an awful groaning noise, the coffin lid heaves open. And it is...^^Empty!";
@@ -17415,8 +17415,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Buried_Alive.each_turn
 
 [ routine136372 local1 ;	! 136372 / 0x214b4
-    local1 = Buried_Alive.number - 1;
-    Buried_Alive.number = local1;
+    local1 = Buried_Alive.time_left - 1;
+    Buried_Alive.time_left = local1;
     if (local1 == 0) {
         deadflag = DIED;
         "^The air runs out, and you expire. Few corpses as so considerate as to bury themselves in advance - hopefully this thought is some consolation.";
@@ -17557,16 +17557,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             routine138004(local1);
             print "~, ";
-            if (local1 > inscribed_die.number) {
+            if (local1 > inscribed_die.time_left) {
                 print "and grins.^";
             }
-            if (local1 < inscribed_die.number) {
+            if (local1 < inscribed_die.time_left) {
                 print "and sighs.^";
             }
-            if (local1 == inscribed_die.number) {
+            if (local1 == inscribed_die.time_left) {
                 print "and shrugs.^";
             }
-            inscribed_die.number = local1;
+            inscribed_die.time_left = local1;
             give gambling_sailor ~attrib8;
         } else {
             "^The sailor stares at the die thoughtfully.";
@@ -17585,7 +17585,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Read) {
         print "Each side has a word inscribed on it. The word on top is ~";
-        routine138004(selfobj.number);
+        routine138004(selfobj.time_left);
         "~.";
     }
     if (action == ##Drop or ##ThrowAt or ##Gamble) {
@@ -17594,7 +17594,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local1 = 6[ne_obj?];
         }
         give gambling_sailor attrib8;
-        inscribed_die.number = local1;
+        inscribed_die.time_left = local1;
         print "You throw a ~";
         routine138004(local1);
         "~, whatever that means.";
@@ -17627,14 +17627,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: The_Birdcage_of_the_Muses.each_turn
 
 [ routine138060 local1 ;	! 138060 / 0x21b4c
-    local1 = The_Birdcage_of_the_Muses.number;
+    local1 = The_Birdcage_of_the_Muses.time_left;
     if (local1 == 3[s_obj?]) {
         print "^A messenger-boy in a plain white tunic slips into the library and places a couple of tubes in the pigeonhole. So resentful is he of missing the party outside that he fails to notice you, and runs back out again at once.^";
         move tube_with_an_alpha_on to pigeonhole;
         move tube_with_a_kappa_on to pigeonhole;
     }
     if (local1 < 4) {
-        The_Birdcage_of_the_Muses.number = local1 + 1;
+        The_Birdcage_of_the_Muses.time_left = local1 + 1;
     }
     rfalse;
 ];
@@ -18476,10 +18476,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (demon has attrib8) {
             "~Thought what you wanted to ask yet?~ says the demon.";
         }
-        local1 = demon.number;
+        local1 = demon.time_left;
         if (local1 > 0) {
             --local1;
-            demon.number = local1;
+            demon.time_left = local1;
             if (local1 > 0) {
                 give demon attrib8;
             }
@@ -18519,7 +18519,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine145968 ;	! 145968 / 0x23a30
     if (demon hasnt attrib8) {
-        if (demon.number == 0) {
+        if (demon.time_left == 0) {
             "~No hints left, sucker.~";
         }
         "~Under Regulation 3, paragraph 15 (i) clause (f), only one hint per visit to the infernal domain. You'll have to go away again and come back if you want another. So sorry.~";
@@ -18590,10 +18590,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (angel has attrib8) {
             "~Take all the time you need,~ says the angel kindly.";
         }
-        local1 = angel.number;
+        local1 = angel.time_left;
         if (local1 > 0) {
             --local1;
-            angel.number = local1;
+            angel.time_left = local1;
             if (local1 > 0) {
                 give angel attrib8;
             }
@@ -18633,7 +18633,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine147164 ;	! 147164 / 0x23edc
     if (angel hasnt attrib8) {
-        if (angel.number == 0) {
+        if (angel.time_left == 0) {
             "~No hints left, alas.~";
         }
         "~Under Regulation 3, paragraph 15 (i) clause (f), only one hint per visit to the sacred domain. You'll have to go away again and come back if you want another. So sorry.~";
@@ -20044,14 +20044,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     i = 15 + 1;
   .label160785;
     if (i <= top_object) {
-        address = i.&prop22;
+        address = i.&number;
         if (address ~= 0 && i hasnt attrib7) {
             if (ZRegion(address-->0) == 2[?]) {
                 if ((address-->0)() ~= 0) {
                     move i to location;
                 }
             } else {
-                generic_globvar = i.&prop22;
+                generic_globvar = i.&number;
                 if (generic_globvar) {
                     generic_globvar = get_prop_len(generic_globvar);
                 }
@@ -23399,7 +23399,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "But you aren't holding it.";
     }
     if (noun has attrib33) {
-        if (obj115_daisy_chain in player && obj115_daisy_chain has attrib26 && obj115_daisy_chain.number == 1) {
+        if (obj115_daisy_chain in player && obj115_daisy_chain has attrib26 && obj115_daisy_chain.time_left == 1) {
             score = score + 6;
             rod_score = rod_score + 6;
             print "Light pulses around the daisy chain, then leaps out to engulf ";
@@ -23526,7 +23526,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     move obj271_old_timber_spar to obj307_Folly;
     obj271_old_timber_spar.initial = "The timber prop leans against the tottering Folly, supporting it.";
     give obj271_old_timber_spar ~moved;
-    obj309_bean_pole.number = 0;
+    obj309_bean_pole.time_left = 0;
     give obj271_old_timber_spar attrib8;
     give obj309_bean_pole ~attrib8;
     "You lean the timber prop against the Folly tower, supporting it. (Better just hope you won't be needing the prop for anything else!)";
