@@ -794,10 +794,10 @@ Object thedark "Darkness"	! 14 / 0xe
   has	;
 
 Object yourself "yourself"	! 15 / 0xf
-  with	prop2 routine262140,
+  with	after routine262140,
 	before routine262140,
 	life routine262140,
-	prop16 [0 0],
+	orders nothing,
 	description "As good-looking as ever.",
 	prop19 routine262140,
 	prop24 [0 0],
@@ -809,12 +809,12 @@ Object yourself "yourself"	! 15 / 0xf
   has	animate concealed proper transparent;
 
 Object obj16_lm "lm"	! 16 / 0x10
-  with	prop2 routine58172,
+  with	after routine58172,
   has	;
 
 Object rod_of_fire "Fire"	! 17 / 0x11
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -828,7 +828,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 
 Object rod_of_returning "Returning"	! 18 / 0x12
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -842,7 +842,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 
 Object rod_of_stalking "Stalking"	! 19 / 0x13
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -856,7 +856,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 
 Object rod_of_infinity "Infinity"	! 20 / 0x14
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -870,7 +870,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 
 Object rod_of_husbandry "Husbandry"	! 21 / 0x15
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -884,7 +884,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 
 Object rod_of_bronze "Bronze"	! 22 / 0x16
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -898,7 +898,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 
 Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -912,7 +912,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 
 Object rod_of_luck "Luck"	! 24 / 0x18
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -926,7 +926,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 
 Object rod_of_ice "Ice"	! 25 / 0x19
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	prop2 routine58560,
+	after routine58560,
 	list_together nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -940,7 +940,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 
 Object rod_of_language "Language"	! 26 / 0x1a
   with	name 'rod' 'of' 'language',
-	prop2 routine58560,
+	after routine58560,
 	list_together routine59044,
 	u_to routine58852,
 	article "the",
@@ -951,7 +951,7 @@ Object rod_of_language "Language"	! 26 / 0x1a
 
 Object rod_of_returning2 "Returning"	! 27 / 0x1b
   with	name 'rod' 'of' 'returning',
-	prop2 routine58560,
+	after routine58560,
 	list_together routine59044,
 	u_to routine58852,
 	article "the",
@@ -962,7 +962,7 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 
 Object rod_of_life "Life"	! 28 / 0x1c
   with	name 'life' 'high' 'rod' 'of',
-	prop2 routine141892 routine58560,
+	after routine141892 routine58560,
 	before routine142064,
 	list_together routine59132,
 	u_to routine58852,
@@ -977,7 +977,7 @@ Object rod_of_life "Life"	! 28 / 0x1c
 
 Object rod_of_death "Death"	! 29 / 0x1d
   with	name 'death' 'high' 'rod' 'of',
-	prop2 routine141892 routine58560,
+	after routine141892 routine58560,
 	before routine142064,
 	list_together routine59132,
 	u_to routine58852,
@@ -991,7 +991,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
 
 Object rod_of_love "Love"	! 30 / 0x1e
   with	name 'love' 'high' 'rod' 'of',
-	prop2 routine141892 routine58560,
+	after routine141892 routine58560,
 	before routine142064,
 	list_together routine59132,
 	u_to routine58852,
@@ -1012,7 +1012,7 @@ Object obj31_crumpled_piece_of_paper "crumpled piece of paper"	! 31 / 0x1f
 
 Object obj32_electric_torch "electric torch"	! 32 / 0x20
   with	name 'electric' 'torch' 'compartment',
-	prop2 routine64428,
+	after routine64428,
 	before routine64544,
 	list_together s_obj,
 	description "The torch has a battery compartment which can be reached by opening it up.",
@@ -1047,7 +1047,7 @@ Object obj35_Attic "Attic"	! 35 / 0x23
 
 Object -> obj36_hinged_trapdoor "hinged trapdoor"	! 36 / 0x24
   with	name 'hinged' 'trap' 'door' 'trapdoor',
-	prop2 routine65124,
+	after routine65124,
 	before routine65184,
 	n_to obj41_House,
 	s_to "There is a closed trapdoor in the middle of the floor.",
@@ -1057,14 +1057,14 @@ Object -> obj36_hinged_trapdoor "hinged trapdoor"	! 36 / 0x24
 
 Object -> obj37_teachests "teachests"	! 37 / 0x25
   with	name 'tea' 'chests' 'teachests' 'chest' 'teachest',
-	prop2 routine65316,
+	after routine65316,
 	description "Open-topped. You could easily look inside, if so minded.",
 	article "some",
   has	container open scenery;
 
 Object -> -> obj38_History_of_the_Meldrews__vol__II_ "History of the Meldrews (vol. II)"	! 38 / 0x26
   with	name 'book' 'history',
-	prop2 routine65440,
+	after routine65440,
 	list_together n_obj,
 	description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends of the earth, he never could find a detail he wanted for volume I, and it was never published. Somehow, this typifies your family, and consulting this worthy book about your ancestors makes you realise what an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an awful lot of children. So many Meldrews are listed here that you'll have to look them up individually.",
 	article "the",
@@ -1095,7 +1095,7 @@ Object obj41_House "House"	! 41 / 0x29
 
 Object obj42_Servant_s_Room "Servant's Room"	! 42 / 0x2a
   with	name 'bedside' 'table',
-	prop2 routine69588,
+	after routine69588,
 	n_to nothing,
 	d_to obj35_Attic,
 	d_to nothing,
@@ -1105,7 +1105,7 @@ Object obj42_Servant_s_Room "Servant's Room"	! 42 / 0x2a
 
 Object -> obj43_classical_dictionary "classical dictionary"	! 43 / 0x2b
   with	name 'hobsons' 'choice' 'classical' 'dictionary' 'book',
-	prop2 routine69840,
+	after routine69840,
 	list_together n_obj,
 	initial "There's a little book on the tiny bedside table.",
 	description "~Hobson's: A Choice Classical Dictionary~. It claims to have numerous entries.",
@@ -1151,20 +1151,20 @@ Object -> obj49_scratched_cupboard "scratched cupboard"	! 49 / 0x31
 
 Object -> -> obj50_bird_whistle "bird whistle"	! 50 / 0x32
   with	name 'bird' 'whistle' 'harrison',
-	prop2 routine71948,
+	after routine71948,
 	description "A patent ~Harrison~ bird-whistle, according to the slogan on one side.",
 	devil_hint "It has a calm, soothing effect.",
   has	;
 
 Object -> -> obj51_gift_wrapped_parcel "gift-wrapped parcel"	! 51 / 0x33
   with	name 'gift' 'parcel',
-	prop2 routine72724,
+	after routine72724,
 	devil_hint "Shame the wrapping paper won't come off.",
   has	;
 
 Object -> -> obj55_mb "mb"	! 55 / 0x37
   with	name 'medicine' 'bottle',
-	prop2 routine73008,
+	after routine73008,
 	initial nothing,
 	description "~Antidote only: no preventative effect.~",
 	short routine72936,
@@ -1210,7 +1210,7 @@ Object obj57_Over_the_East_Wing "Over the East Wing"	! 57 / 0x39
 
 Object -> obj58_Austin "Austin"	! 58 / 0x3a
   with	name 'austin' 'cat' 'ginger' 'tail',
-	prop2 routine73352,
+	after routine73352,
 	before routine73696,
 	life routine73728,
 	initial "Austin, your incorrigible ginger cat, lounges around here.",
@@ -1235,21 +1235,21 @@ Object -> obj60_sepia_photograph "sepia photograph"	! 60 / 0x3c
 
 Object -> obj61_hanging_cord "hanging cord"	! 61 / 0x3d
   with	name 'hanging' 'cord',
-	prop2 routine75752,
+	after routine75752,
 	initial "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
 	description "It is attached to the ceiling.",
   has	static;
 
 Object -> -> golden_orb "glowing golden orb"	! 393 / 0x189
   with	name 'glowing' 'golden' 'orb',
-	prop2 routine129592,
+	after routine129592,
 	initial "Sitting on the grass, beside the well, is a glowing golden orb.",
 	description "A treasure in every sense, but misted over, like condensation on a cold window. Odd shapes seem visible through the haze: a horse's head, castle walls, a priest's crook.",
   has	scored;
 
 Object -> obj63_photographer_s_flash "photographer's flash"	! 63 / 0x3f
   with	name 'photograp' 'flash' 'compartment',
-	prop2 routine75840,
+	after routine75840,
 	list_together s_obj,
 	initial "A rather more modern photographer's flash lies on a shelf to one side.",
 	description "The kind of black box which often sits on top of a camera, used to illuminate otherwise dim scenes. It has an openable compartment on the side, with room left inside for a battery and a timer mechanism (which seem to be optional extras).",
@@ -1280,7 +1280,7 @@ Object -> obj65_smoke_detector "smoke detector"	! 65 / 0x41
 
 Object -> obj66_solid_glass_ball "solid glass ball"	! 66 / 0x42
   with	name 'glass' 'ball',
-	prop2 routine76752,
+	after routine76752,
 	initial "Mounted on the old telescope stand is what looks like a solid glass ball.",
   has	static;
 
@@ -1294,13 +1294,13 @@ Object obj67_Library_Storage "Library Storage"	! 67 / 0x43
 
 Object -> obj68_water_pipe "water pipe"	! 68 / 0x44
   with	name 'water' 'pipe' 'joint' 'pipes',
-	prop2 routine77352,
+	after routine77352,
 	description "The joint on the water pipe looks none too sturdy.",
   has	concealed static;
 
 Object -> obj69_romantic_novel "romantic novel"	! 69 / 0x45
   with	name 'romance' 'romantic' 'novel' 'book',
-	prop2 routine77636,
+	after routine77636,
 	list_together n_obj,
 	initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
 	description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
@@ -1310,7 +1310,7 @@ Object -> obj69_romantic_novel "romantic novel"	! 69 / 0x45
 
 Object -> obj70_book_of_Twenties_poetry "book of Twenties poetry"	! 70 / 0x46
   with	name 'poetry' 'book',
-	prop2 routine77704,
+	after routine77704,
 	list_together n_obj,
 	prop29 routine64400,
 	devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
@@ -1318,7 +1318,7 @@ Object -> obj70_book_of_Twenties_poetry "book of Twenties poetry"	! 70 / 0x46
 
 Object obj71_Souvenirs_Room "Souvenirs Room"	! 71 / 0x47
   with	name 'souvenirs' 'holiday' 'snaps' 'beam',
-	prop2 routine78248,
+	after routine78248,
 	before routine78328,
 	n_to obj64_Disused_Observatory,
 	s_to routine78480,
@@ -1329,20 +1329,20 @@ Object obj71_Souvenirs_Room "Souvenirs Room"	! 71 / 0x47
 
 Object -> obj72_slide_projector "slide projector"	! 72 / 0x48
   with	name 'slide' 'projector' 'switch' 'dial' 'slot' 'focus',
-	prop2 routine78492,
+	after routine78492,
 	before routine78820,
 	description "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There is also a little dial on the back, perhaps for the focus.",
   has	container open scenery switchable;
 
 Object -> obj73_south_wall "south wall"	! 73 / 0x49
-  with	prop2 routine79012,
+  with	after routine79012,
 	n_to nothing,
 	d_to ne_obj,
   has	concealed door open scenery static;
 
 Object obj74_East_Annexe "East Annexe"	! 74 / 0x4a
   with	name 'gap' 'tiles' 'roof',
-	prop2 routine80144,
+	after routine80144,
 	n_to obj77_cupboard_door,
 	s_to obj78_Dead_End,
 	d_to obj57_Over_the_East_Wing,
@@ -1352,7 +1352,7 @@ Object obj74_East_Annexe "East Annexe"	! 74 / 0x4a
 
 Object -> obj75_insulation_rolls "insulation rolls"	! 75 / 0x4b
   with	name 'insulation' 'rolls' 'roll',
-	prop2 routine80320,
+	after routine80320,
 	article "some",
   has	scenery;
 
@@ -1365,7 +1365,7 @@ Object -> -> obj76_new_looking_battery "new-looking battery"	! 76 / 0x4c
 
 Object -> obj77_cupboard_door "cupboard door"	! 77 / 0x4d
   with	name 'cupboard' 'door',
-	prop2 routine80488,
+	after routine80488,
 	n_to obj82_Inside_Cupboard,
 	s_to "In the north wall is an intriguing closed cupboard door.",
 	e_to obj135_small_brass_key,
@@ -1375,7 +1375,7 @@ Object -> obj77_cupboard_door "cupboard door"	! 77 / 0x4d
 
 Object obj78_Dead_End "Dead End"	! 78 / 0x4e
   with	name 'soot' 'chimney' 'sweeping' 'gear',
-	prop2 routine80540,
+	after routine80540,
 	n_to obj74_East_Annexe,
 	s_to obj80_secret_door,
 	e_to nothing,
@@ -1433,7 +1433,7 @@ Object -> obj84_big_iron_fireplace "big iron fireplace"	! 84 / 0x54
 
 Object -> obj85_cranked_skylight "cranked skylight"	! 85 / 0x55
   with	name 'crank' 'cranked' 'skylight' 'handle',
-	prop2 routine80924,
+	after routine80924,
 	n_to obj87_Roof,
 	s_to "Above you is a blacked-out skylight with a crank handle.",
 	d_to obj13_inside,
@@ -1466,7 +1466,7 @@ Object obj88_Battlements "Battlements"	! 88 / 0x58
 
 Object -> obj89_gothic_looking_iron_key "gothic-looking iron key"	! 89 / 0x59
   with	name 'gothic' 'looking' 'iron' 'key' 'gothic-looking',
-	prop2 routine81140,
+	after routine81140,
 	list_together Compass,
 	initial IronKeyInitial,
 	devil_hint "Unfortunately, what you need this for is up in the clouds.",
@@ -1482,7 +1482,7 @@ Object -> obj90_Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"	! 90 / 0x5a
   has	animate concealed;
 
 Object obj91_Chimney "Chimney"	! 91 / 0x5b
-  with	prop2 routine82264,
+  with	after routine82264,
 	e_to obj82_Inside_Cupboard,
 	d_to obj93_Priest_s_Hole,
 	description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
@@ -1499,7 +1499,7 @@ Object -> obj92_sooty_old_stick "sooty old stick"	! 92 / 0x5c
 
 Object obj93_Priest_s_Hole "Priest's Hole"	! 93 / 0x5d
   with	name 'cross' 'padded' 'chute' 'crawl',
-	prop2 routine82456,
+	after routine82456,
 	u_to obj91_Chimney,
 	d_to obj94_hatch,
 	description "Good heavens, so the house has a priest hole after all!  It was always a family legend but nobody seemed to know quite where it was. Apart from a cross painted on one wall and a padded floor (to absorb the noise), this spartan cranny is featureless. Nevertheless there is a spooky air of the supernatural about... A narrow crawl leads up into the chimney.",
@@ -1518,7 +1518,7 @@ Object -> obj94_hatch "hatch"	! 94 / 0x5e
 
 Object -> obj95_ancient_prayer_book "ancient prayer book"	! 95 / 0x5f
   with	name 'diary' 'ancient' 'prayer' 'book',
-	prop2 routine82652,
+	after routine82652,
 	list_together n_obj,
 	initial "The dust and grime on the floor almost obscures an ancient prayer book.",
 	description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
@@ -1529,7 +1529,7 @@ Object -> obj95_ancient_prayer_book "ancient prayer book"	! 95 / 0x5f
 
 Object obj96_Alison_s_Writing_Room "Alison's Writing Room"	! 96 / 0x60
   with	name 'engraving' 'dice' 'outline' 'sixes' 'door',
-	prop2 routine83696,
+	after routine83696,
 	before routine83944,
 	n_to obj78_Dead_End,
 	s_to obj98_windows,
@@ -1540,12 +1540,12 @@ Object obj96_Alison_s_Writing_Room "Alison's Writing Room"	! 96 / 0x60
 
 Object -> obj97_comfortable_bed "comfortable bed"	! 97 / 0x61
   with	name 'comfortable' 'bed',
-	prop2 routine83964,
+	after routine83964,
   has	enterable light scenery supporter;
 
 Object -> obj98_windows "windows"	! 98 / 0x62
   with	name 'windows' 'window' 'latticed' 'glass' 'lattice',
-	prop2 routine84044,
+	after routine84044,
 	n_to obj100_Tiny_Balcony,
 	s_to "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
 	d_to ne_obj,
@@ -1554,7 +1554,7 @@ Object -> obj98_windows "windows"	! 98 / 0x62
 
 Object -> obj99_long_vanity_mirror "long vanity mirror"	! 99 / 0x63
   with	name 'long' 'vanity' 'mirror',
-	prop2 routine84524,
+	after routine84524,
 	initial "There is a long vanity mirror beside the bed.",
   has	static;
 
@@ -1568,7 +1568,7 @@ Object obj100_Tiny_Balcony "Tiny Balcony"	! 100 / 0x64
 
 Object -> obj101_window_sill "window sill"	! 101 / 0x65
   with	name 'window' 'sill',
-	prop2 routine84776,
+	after routine84776,
 	initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
 	description "You look down on a low, bare window-sill.",
   has	static;
@@ -1581,7 +1581,7 @@ Object -> obj102_delicate_gold_key "delicate gold key"	! 102 / 0x66
 
 Object obj103_Old_Winery "Old Winery"	! 103 / 0x67
   with	name 'banister' 'rail' 'crack' 'paraphern',
-	prop2 routine85084,
+	after routine85084,
 	before routine84820,
 	s_to obj35_Attic,
 	e_to obj116_Storage_Room,
@@ -1595,7 +1595,7 @@ Object obj103_Old_Winery "Old Winery"	! 103 / 0x67
 
 Object -> obj104_labelled_glass_demijohn "labelled glass demijohn"	! 104 / 0x68
   with	name 'demijohn' 'glass' 'bottle' 'label',
-	prop2 routine85140,
+	after routine85140,
 	description "Faded ink on the label reads: Elderberry '63.",
   has	container openable static transparent;
 
@@ -1608,7 +1608,7 @@ Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"	! 105 
 
 Object -> -> obj106_tourist_map "tourist map"	! 106 / 0x6a
   with	name 'hamburg' 'tourist' 'map',
-	prop2 routine85276,
+	after routine85276,
 	list_together n_obj,
 	description "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg.",
 	devil_hint "Purely decorative.",
@@ -1628,7 +1628,7 @@ Object obj107_Aunt_Jemima_s_Lair "Aunt Jemima's Lair"	! 107 / 0x6b
 
 Object -> obj108_daisy_calendar "daisy calendar"	! 108 / 0x6c
   with	name 'calendar' 'page' 'pages' 'daisy',
-	prop2 routine85692,
+	after routine85692,
 	prop24 [0 5],
   has	scenery;
 
@@ -1642,13 +1642,13 @@ Object obj109_Airing_Cupboard "Airing Cupboard"	! 109 / 0x6d
 
 Object -> obj110_pile_of_sheets "pile of sheets"	! 110 / 0x6e
   with	name 'pile' 'of' 'sheets' 'sheet',
-	prop2 routine86108,
+	after routine86108,
 	daemon routine86420,
   has	scenery;
 
 Object -> obj111_antiquated_wireless "antiquated wireless"	! 111 / 0x6f
   with	name 'switch' 'cabinet' 'radio' 'wireless',
-	prop2 routine86604,
+	after routine86604,
 	before routine86892,
 	description "It rolls on casters, and has a bakelite on/off switch.",
 	prop19 routine87156,
@@ -1668,7 +1668,7 @@ Object obj112_Potting_Room "Potting Room"	! 112 / 0x70
 
 Object -> obj113_old_gardeners__gloves "old gardeners' gloves"	! 113 / 0x71
   with	name 'old' 'gardeners' 'gloves',
-	prop2 routine87548,
+	after routine87548,
 	initial "A pair of yellow rubber gloves hangs from a hook on one wall.",
 	article "some",
 	devil_hint "Good for nothing. Why would you want gloves on?",
@@ -1686,14 +1686,14 @@ Object -> obj114_Jemima "Jemima"	! 114 / 0x72
 
 Object obj115_daisy_chain "daisy chain"	! 115 / 0x73
   with	name 'daisy' 'chain' 'daisychain',
-	prop2 routine89704,
+	after routine89704,
 	u_to routine89828,
 	number 11,
 	devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has	clothing;
 
 Object obj116_Storage_Room "Storage Room"	! 116 / 0x74
-  with	prop2 routine90148,
+  with	after routine90148,
 	d_to obj103_Old_Winery,
 	description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
 	cant_go "The only doorway is back west to the winery.",
@@ -1702,7 +1702,7 @@ Object obj116_Storage_Room "Storage Room"	! 116 / 0x74
 
 Object -> obj117_wheel "wheel"	! 117 / 0x75
   with	name 'wheel' 'handle' 'catch' 'safety',
-	prop2 routine90240,
+	after routine90240,
 	description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has	on scenery switchable;
 
@@ -1714,14 +1714,14 @@ Object -> obj118_dumbwaiter "dumbwaiter"	! 118 / 0x76
 
 Object -> -> obj121_pulley_ropes "pulley ropes"	! 121 / 0x79
   with	name 'pulley' 'rope' 'ropes',
-	prop2 routine90736,
+	after routine90736,
 	initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
 	article "the",
   has	static;
 
 Object -> -> obj122_chicken_wishbone "chicken wishbone"	! 122 / 0x7a
   with	name 'wish' 'bone' 'wishbone' 'chicken',
-	prop2 routine91000,
+	after routine91000,
 	description "The half which didn't get the wish, actually.",
 	devil_hint "It isn't even mentioned in any of the books I've read.",
   has	;
@@ -1739,7 +1739,7 @@ Object -> obj120_steel_wrench "steel wrench"	! 120 / 0x78
   has	;
 
 Object obj123_Dark_Shaft "Dark Shaft"	! 123 / 0x7b
-  with	prop2 routine91112,
+  with	after routine91112,
 	before routine91040,
 	n_to obj124_Dark_Passage,
 	d_to obj127_Cellars,
@@ -1749,7 +1749,7 @@ Object obj123_Dark_Shaft "Dark Shaft"	! 123 / 0x7b
 
 Object obj124_Dark_Passage "Dark Passage"	! 124 / 0x7c
   with	name 'coal' 'dust',
-	prop2 routine91172,
+	after routine91172,
 	n_to obj126_metal_door,
 	s_to obj123_Dark_Shaft,
 	e_to obj125_sandstone_recess,
@@ -1778,7 +1778,7 @@ Object -> obj126_metal_door "metal door"	! 126 / 0x7e
   has	door lockable locked openable static;
 
 Object obj127_Cellars "Cellars"	! 127 / 0x7f
-  with	prop2 routine91352,
+  with	after routine91352,
 	s_to obj133_Cellars_South,
 	e_to obj132_Wine_Cellars,
 	d_to obj136_Cellar_West,
@@ -1788,7 +1788,7 @@ Object obj127_Cellars "Cellars"	! 127 / 0x7f
 
 Object -> obj128_wheel "wheel"	! 128 / 0x80
   with	name 'wheel' 'handle' 'catch' 'safety',
-	prop2 routine90240,
+	after routine90240,
 	description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has	on scenery switchable;
 
@@ -1813,7 +1813,7 @@ Object -> obj131_robot_mouse "robot mouse"	! 131 / 0x83
 
 Object obj132_Wine_Cellars "Wine Cellars"	! 132 / 0x84
   with	name 'wine' 'woodlice' 'hexagonal' 'racks' 'shaft',
-	prop2 routine92688,
+	after routine92688,
 	d_to obj127_Cellars,
 	u_to routine92740,
 	description " .The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked",
@@ -1829,7 +1829,7 @@ Object obj133_Cellars_South "Cellars South"	! 133 / 0x85
 
 Object -> obj134_hole_in_the_wall "hole in the wall"	! 134 / 0x86
   with	name 'hole' 'mousehole',
-	prop2 routine92808,
+	after routine92808,
 	life routine92872,
   has	scenery talkable;
 
@@ -1852,7 +1852,7 @@ Object obj136_Cellar_West "Cellar West"	! 136 / 0x88
 
 Object -> obj137_ironbound_door "ironbound door"	! 137 / 0x89
   with	name 'iron' 'ironbound' 'door',
-	prop2 routine92900,
+	after routine92900,
 	n_to obj138_Infinity_Symbol,
 	s_to "In the northwest wall is a heavy, imposing ironbound door.",
 	e_to wrought_iron_key,
@@ -1872,7 +1872,7 @@ Object obj138_Infinity_Symbol "Infinity Symbol"	! 138 / 0x8a
 
 Object -> obj139_circular_arc "circular arc"	! 139 / 0x8b
   with	name 'wells' 'circular' 'arc' 'socket' 'sockets' 'well',
-	prop2 routine93356,
+	after routine93356,
 	number 0,
   has	scenery;
 
@@ -1882,7 +1882,7 @@ Object -> obj140_lemniscus "lemniscus"	! 140 / 0x8c
 
 Object obj141_spherical_opening "spherical opening"	! 141 / 0x8d
   with	name 'gold' 'golden' 'spherical' 'opening' 'cavity',
-	prop2 routine93620,
+	after routine93620,
 	initial "There is now a small spherical opening in one wall.",
 	description "It would just hold a ball the size of your palm.",
   has	static;
@@ -1914,7 +1914,7 @@ Object -> obj144_little_window "little window"	! 144 / 0x90
 
 Object -> obj145_gilded_model_coffin "gilded model coffin"	! 145 / 0x91
   with	name 'gilded' 'model' 'coffin' 'lid' 'inscription',
-	prop2 routine94088,
+	after routine94088,
 	before routine93928,
 	initial "A rather morbid, gilded model coffin rests here in peace.",
 	description " .The lid bears an inscription in strange hieroglyphics:^",
@@ -1930,7 +1930,7 @@ Object -> obj146_ragged_scroll "ragged scroll"	! 146 / 0x92
 
 Object -> obj147_framed_charcoal_sketch "framed charcoal sketch"	! 147 / 0x93
   with	name 'frame' 'framed' 'charcoal' 'sketch' 'of' 'alexandria',
-	prop2 routine94344,
+	after routine94344,
 	initial "A little charcoal sketch is framed on one wall.",
 	description "Behind the frame seems to be an artist's impression of the great Palace of Alexandria as it might once have been.",
 	devil_hint "It's the frame which really sets it off.",
@@ -1961,7 +1961,7 @@ Object obj150_White_Hallway "White Hallway"	! 150 / 0x96
 
 Object -> obj151_picture_hook "picture hook"	! 151 / 0x97
   with	name 'picture' 'hook',
-	prop2 routine94844,
+	after routine94844,
 	initial "Up on one wall is a picture hook.",
   has	static;
 
@@ -1974,7 +1974,7 @@ Object -> obj152_umbrella_stand "umbrella stand"	! 152 / 0x98
 
 Object -> -> model_golden_sceptre "model golden sceptre"	! 430 / 0x1ae
   with	name 'model' 'golden' 'gold' 'sceptre',
-	prop2 routine135680,
+	after routine135680,
 	before routine135656,
 	initial nothing,
 	description "A copy, half-size, of the one from Tutenkhamun's sarcophagus. It isn't real gold, either.",
@@ -2008,7 +2008,7 @@ Object obj155_Shadowy_Hallway "Shadowy Hallway"	! 155 / 0x9b
 
 Object -> obj156_poster "poster"	! 156 / 0x9c
   with	name 'poster' 'posters' 'peeling',
-	prop2 routine95240,
+	after routine95240,
 	description "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish you had a dog called Toto, so as to be able to say ~Toto, I've got a feeling we're not in England any more.~",
 	devil_hint "What a very useful piece of paper. Pity there's writing on it.",
   has	scenery;
@@ -2031,7 +2031,7 @@ Object -> obj158_Impressionist_painting "Impressionist painting"	! 158 / 0x9e
 
 Object obj159_Consulting_Room "Consulting Room"	! 159 / 0x9f
   with	name 'sevenbran' 'candelabra' 'sticks' 'table',
-	prop2 routine96860,
+	after routine96860,
 	d_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
 	d_to obj155_Shadowy_Hallway,
 	description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table, on which is an electric bell push and a wicked Tarot pack.",
@@ -2040,7 +2040,7 @@ Object obj159_Consulting_Room "Consulting Room"	! 159 / 0x9f
 
 Object -> obj160_Tarot_pack "Tarot pack"	! 160 / 0xa0
   with	name 'wicked' 'tarot' 'pack' 'deck',
-	prop2 routine96888,
+	after routine96888,
   has	scenery;
 
 Object -> obj161_curtain "curtain"	! 161 / 0xa1
@@ -2049,7 +2049,7 @@ Object -> obj161_curtain "curtain"	! 161 / 0xa1
 
 Object -> obj162_bell_push "bell push"	! 162 / 0xa2
   with	name 'bell' 'push',
-	prop2 routine97180,
+	after routine97180,
   has	scenery;
 
 Object obj163_Madame_Sosostris__famous_clairvoyante "Madame Sosostris, famous clairvoyante"	! 163 / 0xa3
@@ -2060,7 +2060,7 @@ Object obj163_Madame_Sosostris__famous_clairvoyante "Madame Sosostris, famous cl
 
 Object Grim_Reaper_card "Grim Reaper"	! 164 / 0xa4
   with	name 'death' 'grim' 'reaper' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	n_to obj203_Ruined_Castle_Cafe,
 	list_together "Tarot cards",
 	description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
@@ -2072,7 +2072,7 @@ Object Grim_Reaper_card "Grim Reaper"	! 164 / 0xa4
 
 Object Fool_card "Fool"	! 165 / 0xa5
   with	name 'fool' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	n_to obj203_Ruined_Castle_Cafe,
 	list_together "Tarot cards",
 	description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
@@ -2084,7 +2084,7 @@ Object Fool_card "Fool"	! 165 / 0xa5
 
 Object Drowned_Sailor_card "Drowned Sailor"	! 166 / 0xa6
   with	name 'drowned' 'sailor' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	n_to obj203_Ruined_Castle_Cafe,
 	list_together "Tarot cards",
 	description "Those are pearls that were his eyes...",
@@ -2103,7 +2103,7 @@ Object obj167_oak_quarterstaff "oak quarterstaff"	! 167 / 0xa7
 
 Object obj168_Down_by_River "Down by River"	! 168 / 0xa8
   with	name 'rats' 'mounds' 'rubbish',
-	prop2 routine97800,
+	after routine97800,
 	e_to obj154_Unreal_City,
 	d_to routine97832,
 	description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you.",
@@ -2112,7 +2112,7 @@ Object obj168_Down_by_River "Down by River"	! 168 / 0xa8
 
 Object -> obj169_silk_handkerchief "silk handkerchief"	! 169 / 0xa9
   with	name 'silk' 'handkerchier' 'hanky' 'hankie',
-	prop2 routine97852,
+	after routine97852,
 	initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
 	description "Monogrammed J. A. P., but that's no great matter.",
 	devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth is hardly attractive, is it?",
@@ -2120,7 +2120,7 @@ Object -> obj169_silk_handkerchief "silk handkerchief"	! 169 / 0xa9
 
 Object -> obj170_tourist_boat "tourist boat"	! 170 / 0xaa
   with	name 'tourist' 'boat' 'bateau',
-	prop2 routine97928,
+	after routine97928,
 	n_to obj171_On_board_the_Phlebas,
 	s_to "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention.",
 	d_to nw_obj,
@@ -2155,7 +2155,7 @@ Object obj173_Near_Ring_Road "Near Ring Road"	! 173 / 0xad
 
 Object obj174_Chatelet_les_Halles "Chatelet-les-Halles"	! 174 / 0xae
   with	name 'gates',
-	prop2 routine98620,
+	after routine98620,
 	u_to obj173_Near_Ring_Road,
 	description "This is a vast underground station in great rectangular caverns, deep beneath the streets. You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't a ticket you're likely to stay that way.",
 	cant_go "Back up the stairs for you. Call yourself a traveller...",
@@ -2187,7 +2187,7 @@ Object obj177_Museum_Foyer "Museum Foyer"	! 177 / 0xb1
 
 Object -> obj178_revolving_door "revolving door"	! 178 / 0xb2
   with	name 'revolving' 'door',
-	prop2 routine99148,
+	after routine99148,
 	description "Why not go northeast and look inside?",
   has	scenery;
 
@@ -2208,7 +2208,7 @@ Object obj180_Revolving_Door "Revolving Door"	! 180 / 0xb4
 
 Object -> obj181_door "door"	! 181 / 0xb5
   with	name 'door' 'revolving',
-	prop2 routine99348,
+	after routine99348,
 	description "You stand within it.",
   has	scenery;
 
@@ -2223,13 +2223,13 @@ Object obj182_Revolving_Door "Revolving Door"	! 182 / 0xb6
 
 Object -> obj183_door "door"	! 183 / 0xb7
   with	name 'door' 'revolving',
-	prop2 routine99348,
+	after routine99348,
 	description "You stand within it.",
   has	scenery;
 
 Object -> obj184_beach_ball "beach ball"	! 184 / 0xb8
   with	name 'striped' 'beach' 'ball',
-	prop2 routine99404,
+	after routine99404,
 	before routine99700,
 	initial "A colourful, striped inflated beach ball bounces around.",
   has	;
@@ -2244,14 +2244,14 @@ Object obj185_Hall_of_Exhibits "Hall of Exhibits"	! 185 / 0xb9
 
 Object -> obj186_Tarot_box "Tarot box"	! 186 / 0xba
   with	name 'box' 'of' 'tarot',
-	prop2 routine99736,
+	after routine99736,
 	initial "Resting on a little display table is a Tarot box.",
 	devil_hint "There's nothing worthwhile in it.",
   has	container openable;
 
 Object -> -> obj190_Castle "Castle"	! 190 / 0xbe
   with	name 'castle' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	n_to obj203_Ruined_Castle_Cafe,
 	list_together "Tarot cards",
 	description "A stone castle on a hill.",
@@ -2263,7 +2263,7 @@ Object -> -> obj190_Castle "Castle"	! 190 / 0xbe
 
 Object -> -> obj191_Star "Star"	! 191 / 0xbf
   with	name 'star' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	n_to obj257_Lighthouse,
 	list_together "Tarot cards",
 	description "A single bright light in the darkness.",
@@ -2275,7 +2275,7 @@ Object -> -> obj191_Star "Star"	! 191 / 0xbf
 
 Object -> -> obj192_Eight_of_Wands "Eight of Wands"	! 192 / 0xc0
   with	name 'eight' 'of' 'wands' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	list_together "Tarot cards",
 	article "the",
 	short routine64336,
@@ -2286,7 +2286,7 @@ Object -> -> obj192_Eight_of_Wands "Eight of Wands"	! 192 / 0xc0
 
 Object -> -> obj193_Maiden "Maiden"	! 193 / 0xc1
   with	name 'maiden' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	n_to obj218_Sea_Shore,
 	list_together "Tarot cards",
 	description "Andromeda chained to a rock on the sea-shore.",
@@ -2304,7 +2304,7 @@ Object -> obj187_still_life "still life"	! 187 / 0xbb
   has	static talkable;
 
 Object obj188_Dark_Staircase "Dark Staircase"	! 188 / 0xbc
-  with	prop2 routine99768,
+  with	after routine99768,
 	before routine100008,
 	e_to obj185_Hall_of_Exhibits,
 	u_to obj185_Hall_of_Exhibits,
@@ -2321,7 +2321,7 @@ Object -> obj189_discarded_matchbook "discarded matchbook"	! 189 / 0xbd
 
 Object obj194_Ace_of_Cups "Ace of Cups"	! 194 / 0xc2
   with	name 'ace' 'of' 'cups' 'card' 'tarot',
-	prop2 routine64232,
+	after routine64232,
 	n_to obj211_Cups_and_Glasses,
 	list_together "Tarot cards",
 	description "It shows a great many crystal-glass cups and glasses.",
@@ -2332,7 +2332,7 @@ Object obj194_Ace_of_Cups "Ace of Cups"	! 194 / 0xc2
   has	card;
 
 Object obj195_Coven_Cell "Coven Cell"	! 195 / 0xc3
-  with	prop2 routine100348,
+  with	after routine100348,
 	description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
 	cant_go "There's definitely no way out of here.",
 	number 0,
@@ -2354,14 +2354,14 @@ Object -> obj197_shepherd_s_crook "shepherd's crook"	! 197 / 0xc5
 
 Object -> obj198_cell_door "cell door"	! 198 / 0xc6
   with	name 'cell' 'door',
-	prop2 routine100640,
+	after routine100640,
 	n_to obj177_Museum_Foyer,
 	s_to "As you might expect, the cell door is closed.",
 	d_to ne_obj,
   has	door locked openable static;
 
 Object obj199_Cabinet_Room "Cabinet Room"	! 199 / 0xc7
-  with	prop2 routine100704,
+  with	after routine100704,
 	d_to obj185_Hall_of_Exhibits,
 	description "An annexe to the museum, containing sundry archaelogical finds, badly labelled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
 	section T_HAMBURG,
@@ -2369,7 +2369,7 @@ Object obj199_Cabinet_Room "Cabinet Room"	! 199 / 0xc7
 
 Object -> obj200_glass_cabinet "glass cabinet"	! 200 / 0xc8
   with	name 'glass' 'cabinet' 'pane',
-	prop2 routine100752,
+	after routine100752,
 	s_to "One cabinet looks particularly vulnerable.",
 	initial "You could just look inside the broken glass cabinet.",
 	number 0,
@@ -2378,7 +2378,7 @@ Object -> obj200_glass_cabinet "glass cabinet"	! 200 / 0xc8
 
 Object -> -> obj201_smooth_round_stone "smooth round stone"	! 201 / 0xc9
   with	name 'smooth' 'round' 'pumice' 'metal' 'stone',
-	prop2 routine101280,
+	after routine101280,
 	initial nothing,
 	description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the label rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
 	angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
@@ -2402,7 +2402,7 @@ Object obj203_Ruined_Castle_Cafe "Ruined Castle Cafe"	! 203 / 0xcb
 
 Object -> obj204_cafe_table "cafe table"	! 204 / 0xcc
   with	name 'cafe' 'table' 'leg' 'legs',
-	prop2 routine101692,
+	after routine101692,
   has	scenery supporter;
 
 Object obj205_complicated_looking_bomb "complicated-looking bomb"	! 205 / 0xcd
@@ -2417,7 +2417,7 @@ Object obj205_complicated_looking_bomb "complicated-looking bomb"	! 205 / 0xcd
 
 Object -> obj206_timer_detonator "timer-detonator"	! 206 / 0xce
   with	name 'timer' 'detonater' 'detonator',
-	prop2 routine103296,
+	after routine103296,
 	number 10,
 	prop24 [0 0],
 	daemon routine102360,
@@ -2427,22 +2427,22 @@ Object -> obj206_timer_detonator "timer-detonator"	! 206 / 0xce
 
 Object -> obj207_green_wire "green wire"	! 207 / 0xcf
   with	name 'green' 'wire',
-	prop2 routine103492,
+	after routine103492,
   has	static wire;
 
 Object -> obj208_red_wire "red wire"	! 208 / 0xd0
   with	name 'red' 'wire',
-	prop2 routine103492,
+	after routine103492,
   has	static wire;
 
 Object -> obj209_blue_wire "blue wire"	! 209 / 0xd1
   with	name 'blue' 'wire',
-	prop2 routine103492,
+	after routine103492,
   has	static wire;
 
 Object -> obj210_black_wire "black wire"	! 210 / 0xd2
   with	name 'black' 'wire',
-	prop2 routine103492,
+	after routine103492,
   has	static wire;
 
 Object obj211_Cups_and_Glasses "Cups and Glasses"	! 211 / 0xd3
@@ -2464,7 +2464,7 @@ Object -> obj212_windowed_door "windowed door"	! 212 / 0xd4
 
 Object -> obj213_cups_and_glasses "cups and glasses"	! 213 / 0xd5
   with	name 'crates' 'glasses' 'cups',
-	prop2 routine104396,
+	after routine104396,
 	article "numerous",
   has	scenery;
 
@@ -2477,27 +2477,27 @@ Object -> obj214_mounted_bottle "mounted bottle"	! 214 / 0xd6
 
 Object obj215_ship_in_a_bottle "ship in a bottle"	! 215 / 0xd7
   with	name 'ship' 'in' 'bottle',
-	prop2 routine104504,
+	after routine104504,
 	description "Within the whisky bottle is a model sailing ship, far too large to have passed the neck.",
 	angel_hint "Oh, well done!  Why not take a closer look, you deserve it?",
   has	;
 
 Object obj216_model_ship "model ship"	! 216 / 0xd8
   with	name 'model' 'sailing' 'ship' 'anchor' 'chain' 'mermaid' 'filigree' 'prow' 'stern',
-	prop2 routine104972,
+	after routine104972,
 	description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
 	angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has	attrib8;
 
 Object obj217_stick_with_an_anchor "stick with an anchor"	! 217 / 0xd9
   with	name 'stick' 'with' 'anchor' 'chain' 'sticks' 'ship',
-	prop2 routine104972,
+	after routine104972,
 	description "A tightly-folded bundle of sticks, about six inches long, with a filigree chain and anchor hanging from it.",
 	angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has	;
 
 Object obj218_Sea_Shore "Sea Shore"	! 218 / 0xda
-  with	prop2 routine105584,
+  with	after routine105584,
 	u_to obj221_Cliffs,
 	description " .A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^",
 	cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
@@ -2553,7 +2553,7 @@ Object obj224_Outside_Taverna "Outside Taverna"	! 224 / 0xe0
 
 Object -> obj225_small_thorny_tree "small thorny tree"	! 225 / 0xe1
   with	name 'tree' 'thorny' 'small',
-	prop2 routine106752,
+	after routine106752,
 	description "Only a small, thorny, unclimbable fig tree.",
   has	scenery;
 
@@ -2566,7 +2566,7 @@ Object -> obj226_fig "fig"	! 226 / 0xe2
   has	edible;
 
 Object obj227_Eraina_Taverna "Eraina Taverna"	! 227 / 0xe3
-  with	prop2 routine106776,
+  with	after routine106776,
 	n_to obj224_Outside_Taverna,
 	description "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight.",
 	cant_go "The tavern entrance is to the north.",
@@ -2576,7 +2576,7 @@ Object obj227_Eraina_Taverna "Eraina Taverna"	! 227 / 0xe3
 
 Object -> obj228_Ekmek_Special "Ekmek Special"	! 228 / 0xe4
   with	name 'ekmek' 'special' 'dessert',
-	prop2 routine107076,
+	after routine107076,
 	initial "Left untouched on one table is an Ekmek Special dessert.",
 	description "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste.",
 	devil_hint "Better with chocolate ice cream, I think.",
@@ -2681,14 +2681,14 @@ Object -> obj240_Homer "Homer"	! 240 / 0xf0
 
 Object -> -> obj241_Pan_pipes "Pan pipes"	! 241 / 0xf1
   with	name 'pan' 'pipes' 'panpipes' 'syrinx',
-	prop2 routine109056,
+	after routine109056,
 	description "Carefully cut from river reeds, these once belonged to Homer himself. As you may recall.",
 	article "the",
 	angel_hint "Marvellous! A sound to soothe the spirit.",
   has	;
 
 Object obj242_Cross_Centre "Cross Centre"	! 242 / 0xf2
-  with	prop2 routine109584,
+  with	after routine109584,
 	before routine109612,
 	s_to obj239_Inner_Sanctum,
 	prop9 obj246_Northeast_Cross,
@@ -2705,7 +2705,7 @@ Object obj242_Cross_Centre "Cross Centre"	! 242 / 0xf2
 
 Object -> obj243_inscriptions "inscriptions"	! 243 / 0xf3
   with	name 'inscription' 'opening',
-	prop2 routine109740,
+	after routine109740,
 	n_to obj244_Oubliette,
 	s_to "There are extremely scuffed and faded inscriptions at the centre of the cross.",
 	d_to thedark,
@@ -2723,7 +2723,7 @@ Object obj244_Oubliette "Oubliette"	! 244 / 0xf4
 
 Object -> obj245_gleaming_amber_gem "gleaming amber gem"	! 245 / 0xf5
   with	name 'amber' 'gem',
-	prop2 routine109848,
+	after routine109848,
 	initial "Lying on top of crushed, broken bones, in plain view, is a gleaming gem of amber.",
 	description "Embedded within is the body of a fly. Scratched upon one face is the word ~GALITA~.",
 	angel_hint "Isn't there some classical legend about her?",
@@ -2738,7 +2738,7 @@ Object obj246_Northeast_Cross "Northeast Cross"	! 246 / 0xf6
 
 Object -> obj251_statue_of_Demeter "statue of Demeter"	! 251 / 0xfb
   with	name 'demeter' 'statue' 'of',
-	prop2 routine110036,
+	after routine110036,
 	before routine110156,
 	initial "A fine statue of the goddess Demeter stands here.",
   has	static statue_flag;
@@ -2752,7 +2752,7 @@ Object obj247_Northwest_Cross "Northwest Cross"	! 247 / 0xf7
 
 Object -> obj253_statue_of_Dionysus "statue of Dionysus"	! 253 / 0xfd
   with	name 'dionysus' 'statue' 'of',
-	prop2 routine110036,
+	after routine110036,
 	before routine110156,
 	initial "A fine statue of the god Dionysus stands here.",
   has	static statue_flag;
@@ -2766,7 +2766,7 @@ Object obj248_Southeast_Cross "Southeast Cross"	! 248 / 0xf8
 
 Object -> obj252_statue_of_Ares "statue of Ares"	! 252 / 0xfc
   with	name 'ares' 'statue' 'of',
-	prop2 routine110036,
+	after routine110036,
 	before routine110156,
 	initial "A fine statue of the god Ares stands here.",
   has	static statue_flag;
@@ -2780,7 +2780,7 @@ Object obj249_Southwest_Cross "Southwest Cross"	! 249 / 0xf9
 
 Object -> obj250_statue_of_Poseidon "statue of Poseidon"	! 250 / 0xfa
   with	name 'poseidon' 'statue' 'of',
-	prop2 routine110036,
+	after routine110036,
 	before routine110156,
 	initial "A fine statue of the god Poseidon stands here.",
   has	static statue_flag;
@@ -2794,7 +2794,7 @@ Object obj254_Cave_Mouth "Cave Mouth"	! 254 / 0xfe
 
 Object -> obj256_flaming_bronze_urn "flaming bronze urn"	! 256 / 0x100
   with	name 'flaming' 'bronze' 'urn' 'flame' 'cube' 'obsidian' 'altar' 'stone',
-	prop2 routine110880,
+	after routine110880,
 	initial "In the centre of the cave rests an obsidian altar stone with a flaming bronze urn.",
 	description "The altar stone, sometimes called ~Omphalos~ or ~the navel~, bears an odd cross or plus sign and is fabled to mark the centre of the world.^^Around the side of the urn are reliefs of feasts, of oxen being tracked and sacrificed, of the gathering of fruit and the making of cheese.",
 	article "the",
@@ -2857,7 +2857,7 @@ Object obj264_aft_wall "aft wall"	! 264 / 0x108
 
 Object obj265_some_landlubber_s_direction "some landlubber's direction"	! 265 / 0x109
   with	name 'north' 'n//' 'south' 's//' 'east' 'e//' 'west' 'w//',
-	prop2 routine111692,
+	after routine111692,
   has	proper scenery;
 
 Object obj266_Aboard_Ship "Aboard Ship"	! 266 / 0x10a
@@ -2874,12 +2874,12 @@ Object obj266_Aboard_Ship "Aboard Ship"	! 266 / 0x10a
 
 Object -> obj267_mast_and_rigging "mast and rigging"	! 267 / 0x10b
   with	name 'mast' 'rigged' 'rigging',
-	prop2 routine111872,
+	after routine111872,
 	article "the",
   has	scenery;
 
 Object obj268_Up_the_Mast "Up the Mast"	! 268 / 0x10c
-  with	prop2 routine112212,
+  with	after routine112212,
 	before routine112312,
 	d_to routine111888,
 	d_to routine112160,
@@ -2890,14 +2890,14 @@ Object obj268_Up_the_Mast "Up the Mast"	! 268 / 0x10c
 
 Object -> obj269_flagpole "flagpole"	! 269 / 0x10d
   with	name 'pole' 'flagpole' 'mast' 'ensign' 'spar',
-	prop2 routine112420,
+	after routine112420,
 	initial "A flagpole juts out portwards from the top of the mast, far too insubstantial to bear any weight. From it hangs the ensign of the British Merchant Navy (which you could just reach the bottom of).",
 	description "The flagpole juts out to port with the prevailing... wind?",
   has	static;
 
 Object -> obj270_flag_of_the_British_Merchant_Navy "flag of the British Merchant Navy"	! 270 / 0x10e
   with	name 'flag' 'ensign' 'navy' 'british' 'merchant' 'of' 'tassels',
-	prop2 routine112468,
+	after routine112468,
 	initial "The flag has fluttered to a heap on deck.",
 	description "Broad, heavy, scarlet cloth, halfway between a silken sheet and a carpet, with a cross and a Union Jack in one corner.",
 	devil_hint "Piece of advice - it's never very comfortable wrapping yourself in the Flag.",
@@ -2923,7 +2923,7 @@ Object obj272_Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"	! 272 / 0x
 
 Object -> obj273_green_branch "green branch"	! 273 / 0x111
   with	name 'green' 'branch' 'leafed',
-	prop2 routine112676,
+	after routine112676,
 	initial "In the Lady Magdalena's loose grip is a traditional sailor's good-luck token: a green-leafed branch, to attract the gulls of an approaching shore.",
 	section T_TAROT,
 	angel_hint "Oh, you startled me for a moment there! I am getting flighty.",
@@ -2940,13 +2940,13 @@ Object obj274_Stern "Stern"	! 274 / 0x112
 
 Object -> obj275_capstan "capstan"	! 275 / 0x113
   with	name 'capstan' 'anchor' 'chain' 'wheel',
-	prop2 routine113332,
+	after routine113332,
 	initial "The top of the anchor chain is wound around the capstan, a great wheel on the deck beside you. The chain disappears over the side.",
   has	static;
 
 Object obj276_Garden_Stream "Garden Stream"	! 276 / 0x114
   with	name 'reeds',
-	prop2 routine113420,
+	after routine113420,
 	n_to "Better not... you'd be seen from the Library.",
 	s_to obj277_coal_bunker,
 	e_to obj279_Beside_the_Wall,
@@ -2970,7 +2970,7 @@ Object -> obj277_coal_bunker "coal bunker"	! 277 / 0x115
 
 Object -> obj278_stream "stream"	! 278 / 0x116
   with	name 'stream' 'water' 'gurgling',
-	prop2 routine113520,
+	after routine113520,
   has	scenery;
 
 Object obj279_Beside_the_Wall "Beside the Wall"	! 279 / 0x117
@@ -2987,13 +2987,13 @@ Object obj279_Beside_the_Wall "Beside the Wall"	! 279 / 0x117
 
 Object -> obj280_potted_shrub "potted shrub"	! 280 / 0x118
   with	name 'pot' 'potted' 'tub' 'plant' 'shrub',
-	prop2 routine113576,
+	after routine113576,
 	initial "A shrub is being nursed in a wide round tub in the centre of the path, sheltered behind the wall.",
   has	static;
 
 Object -> obj281_stone_wall "stone wall"	! 281 / 0x119
   with	name 'stone' 'wall' 'carved' 'carvings' 'painted',
-	prop2 routine113724,
+	after routine113724,
 	life routine113824,
 	description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
 	prop22 [1 17 1 d6],
@@ -3022,7 +3022,7 @@ Object obj283_Family_Tree "Family Tree"	! 283 / 0x11b
 
 Object -> obj284_plane_tree "plane tree"	! 284 / 0x11c
   with	name 'plane' 'tree' 'family',
-	prop2 routine114192,
+	after routine114192,
   has	scenery;
 
 Object obj285_Lawn_Ornaments "Lawn Ornaments"	! 285 / 0x11d
@@ -3096,7 +3096,7 @@ Object -> obj293_runner_bean_plant "runner-bean plant"	! 293 / 0x125
   has	door static;
 
 Object obj294_Up_the_Beanstalk "Up the Beanstalk"	! 294 / 0x126
-  with	prop2 routine114248,
+  with	after routine114248,
 	before routine114280,
 	n_to Heavenly_Place,
 	d_to obj292_Vegetable_Garden,
@@ -3113,7 +3113,7 @@ Object obj295_Garage "Garage"	! 295 / 0x127
 
 Object -> obj296_garden_roller "garden roller"	! 296 / 0x128
   with	name 'garden' 'roller' 'switch' 'motor' 'motorised' 'power',
-	prop2 routine114368,
+	after routine114368,
 	s_to "A big motorised garden roller is parked here.",
 	initial "The garden roller sits here, its engine still running.",
 	description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
@@ -3122,7 +3122,7 @@ Object -> obj296_garden_roller "garden roller"	! 296 / 0x128
 
 Object -> obj297_weed_killer_bottle "weed killer bottle"	! 297 / 0x129
   with	name 'weed' 'killer' 'bottle' 'weedkille',
-	prop2 routine114744,
+	after routine114744,
 	initial "In the shadows is a weed killer bottle.",
 	description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
 	daemon routine115216,
@@ -3131,7 +3131,7 @@ Object -> obj297_weed_killer_bottle "weed killer bottle"	! 297 / 0x129
 
 Object -> obj298_spade "spade"	! 298 / 0x12a
   with	name 'bladed' 'agricultural' 'implement' 'zzzzzzzzz',
-	prop2 routine115280,
+	after routine115280,
 	initial "Hanging from a hook is a bladed agricultural implement.",
 	short routine115244,
 	angel_hint "Do you think there's anywhere in the garden particularly suitable for such an implement?",
@@ -3139,7 +3139,7 @@ Object -> obj298_spade "spade"	! 298 / 0x12a
 
 Object obj299_Up_the_Plane_Tree "Up the Plane Tree"	! 299 / 0x12b
   with	name 'jemima' 'conservatory' 'window',
-	prop2 routine115496,
+	after routine115496,
 	d_to obj283_Family_Tree,
 	description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
 	cant_go "No, don't go out on a limb.",
@@ -3153,7 +3153,7 @@ Object -> obj300_maze_layout "maze layout"	! 300 / 0x12c
   has	scenery;
 
 Object obj301_Maze "Maze"	! 301 / 0x12d
-  with	prop2 routine115944,
+  with	after routine115944,
 	before routine116264,
 	s_to obj283_Family_Tree,
 	d_to obj304_Viewpoint_Ledge,
@@ -3164,7 +3164,7 @@ Object obj301_Maze "Maze"	! 301 / 0x12d
 
 Object obj302_Patio_in_Maze "Patio in Maze"	! 302 / 0x12e
   with	name 'patio' 'flagstone',
-	prop2 routine116276,
+	after routine116276,
 	before routine116332,
 	u_to "Up?  Are we playing the same game?",
 	d_to Crypt,
@@ -3175,14 +3175,14 @@ Object obj302_Patio_in_Maze "Patio in Maze"	! 302 / 0x12e
 
 Object -> obj303_marble_rose "marble rose"	! 303 / 0x12f
   with	name 'marble' 'rose' 'flower',
-	prop2 routine116344,
+	after routine116344,
 	initial "Sticking out of some soft earth is a perfectly-carved marble rose.",
 	angel_hint "Perfection set in stone. Not a gift for mortal women!",
   has	;
 
 Object obj304_Viewpoint_Ledge "Viewpoint Ledge"	! 304 / 0x130
   with	name 'motorway' 'coaches',
-	prop2 routine116412,
+	after routine116412,
 	e_to obj301_Maze,
 	description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
 	cant_go "The hillside is too steep.",
@@ -3227,7 +3227,7 @@ Object -> obj309_bean_pole "bean pole"	! 309 / 0x135
   has	attrib8 attrib33;
 
 Object obj310_Maze_Foundations "Maze Foundations"	! 310 / 0x136
-  with	prop2 routine116760,
+  with	after routine116760,
 	before routine116976,
 	s_to obj311_Tree_Planting,
 	d_to obj307_Folly,
@@ -3279,7 +3279,7 @@ Object -> obj316_croquet_mallet "croquet mallet"	! 316 / 0x13c
 
 Object -> obj317_gold_watch_on_a_chain "gold watch on a chain"	! 317 / 0x13d
   with	name 'gold' 'watch' 'on' 'chain',
-	prop2 routine118032,
+	after routine118032,
 	initial "Something golden hangs by a chain from a loose pane in the roof, but it's too high up to reach.",
 	description "It is beautifully polished, and captivates the eye. You could stare for hours...",
 	angel_hint "How easily are the weak mesmerised by baubles.",
@@ -3296,7 +3296,7 @@ Object Behind_Summer_House "Behind Summer House"	! 318 / 0x13e
 
 Object -> loose_board "loose board"	! 319 / 0x13f
   with	name 'loose' 'board',
-	prop2 routine118116,
+	after routine118116,
 	n_to obj315_Summer_House,
 	s_to "One board of the back wall is noticeably loose, making a good-sized crack.",
 	d_to ne_obj,
@@ -3305,7 +3305,7 @@ Object -> loose_board "loose board"	! 319 / 0x13f
 
 Object -> crack "crack"	! 320 / 0x140
   with	name 'crack' 'gap' 'hole' 'summerhou' 'summer' 'house',
-	prop2 routine118180,
+	after routine118180,
 	before routine118232,
 	description "Through the crack you can see the summer house.",
   has	container open scenery;
@@ -3342,7 +3342,7 @@ Object strongbox "strongbox"	! 324 / 0x144
 
 Object -> golden_astrolabe "golden astrolabe"	! 325 / 0x145
   with	name 'golden' 'gold' 'astrolabe' 'eyepiece',
-	prop2 routine119052,
+	after routine119052,
 	before routine119316,
 	initial nothing,
 	description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua Meldrewe's stolen hoard of gold. There is an eyepiece.",
@@ -3351,7 +3351,7 @@ Object -> golden_astrolabe "golden astrolabe"	! 325 / 0x145
 
 Object dug_hole "dug hole"	! 326 / 0x146
   with	name 'hole' 'dug',
-	prop2 routine119332,
+	after routine119332,
 	description "The rich loam, the silver of earthworms, the dignity of toil... none of these pastoral consolations is yours as you scrabble in the dirt.",
 	prop19 routine119392,
   has	container open static;
@@ -3387,12 +3387,12 @@ Object Spur_of_Rock "Spur of Rock"	! 330 / 0x14a
 
 Object -> hanging_rope "hanging rope"	! 331 / 0x14b
   with	name 'hanging' 'rope',
-	prop2 routine121808,
+	after routine121808,
   has	scenery;
 
 Object Hanging_on_Rope "Hanging on Rope"	! 332 / 0x14c
   with	name 'patrol' 'men',
-	prop2 routine121880,
+	after routine121880,
 	before routine121936,
 	u_to Spur_of_Rock,
 	d_to routine121824,
@@ -3407,7 +3407,7 @@ Object -> hemp_rope "hemp rope"	! 333 / 0x14d
 
 Object -> yellow_daisy "yellow daisy"	! 334 / 0x14e
   with	name 'yellow' 'daisy',
-	prop2 routine122068,
+	after routine122068,
 	before routine121980,
 	u_to routine122144,
 	initial "A single yellow daisy grows from a little tuft of grass on the crags.",
@@ -3432,7 +3432,7 @@ Object Roman_Villa "Roman Villa"	! 336 / 0x150
 
 Object Stream "Stream"	! 337 / 0x151
   with	name 'river' 'road' 'stream' 'roof',
-	prop2 routine122220,
+	after routine122220,
 	d_to Roman_Villa,
 	u_to "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.",
 	description "A stream runs past the villa and cascades down the hillside here, to join the river far below, near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from your back garden. A rough ladder of wood lashed together with leather rests against the villa at the lowest point of the tiled roof.",
@@ -3441,7 +3441,7 @@ Object Stream "Stream"	! 337 / 0x151
 
 Object -> rough_ladder "rough ladder"	! 338 / 0x152
   with	name 'rough' 'ladder',
-	prop2 routine122272,
+	after routine122272,
   has	scenery;
 
 Object Atrium_Cloister "Atrium Cloister"	! 339 / 0x153
@@ -3454,7 +3454,7 @@ Object Atrium_Cloister "Atrium Cloister"	! 339 / 0x153
 
 Object -> summoning_horn "summoning horn"	! 340 / 0x154
   with	name 'horn' 'summoning' 'on' 'pole',
-	prop2 routine122288,
+	after routine122288,
 	initial "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
 	rod_assoc rod_of_language,
   has	attrib33;
@@ -3512,7 +3512,7 @@ Object -> kitchen_well "kitchen well"	! 347 / 0x15b
 
 Object Inside_Well "Inside Well"	! 348 / 0x15c
   with	name 'air',
-	prop2 routine122852,
+	after routine122852,
 	e_to Hypocaust,
 	u_to Triclinium,
 	description "You are clinging perilously to the walls of the deep and dangerous well. You can hardly see a thing, even with the aid of the torch, but curiously enough you feel warm air blowing across you from the east.",
@@ -3530,12 +3530,12 @@ Object Hypocaust "Hypocaust"	! 349 / 0x15d
 
 Object -> vents "vents"	! 350 / 0x15e
   with	name 'hypocaust' 'vents',
-	prop2 routine122896,
+	after routine122896,
 	article "the",
   has	scenery;
 
 Object Entrance "Entrance"	! 351 / 0x15f
-  with	prop2 routine123076,
+  with	after routine123076,
 	before routine123156,
 	n_to Atrium,
 	description "A well-flagstoned forecourt at the villa entrance, surrounded by lesser wooden buildings. Some of these are in use as stables, and figures of men slip between them. You hide from sight, not wishing to draw attention to yourself. Up on the hill, where Meldrew Hall will one day be built, men on horseback can be seen circling the access track. For a deserted villa, this is certainly well-guarded.",
@@ -3551,7 +3551,7 @@ Object Rough_Tent "Rough Tent"	! 352 / 0x160
 
 Object -> tent_pole "tent pole"	! 353 / 0x161
   with	name 'tent' 'pole' 'central',
-	prop2 routine123720,
+	after routine123720,
 	before routine123768,
 	number 0,
 	daemon routine123528,
@@ -3560,7 +3560,7 @@ Object -> tent_pole "tent pole"	! 353 / 0x161
 
 Object unconscious_Saxon_spy "unconscious Saxon spy"	! 354 / 0x162
   with	name 'saxon' 'spy',
-	prop2 routine124248,
+	after routine124248,
 	life routine124316,
 	initial "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
 	description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours.",
@@ -3605,7 +3605,7 @@ Object fifty_franc_note "fifty-franc note"	! 359 / 0x167
   has	;
 
 Object ghost_of_yourself "ghost of yourself"	! 360 / 0x168
-  with	prop2 routine124596,
+  with	after routine124596,
 	description "You are transparent like a ghost.",
 	prop24 [0 0],
 	capacity 1,
@@ -3642,7 +3642,7 @@ Object -> bear_tapestry "bear tapestry"	! 364 / 0x16c
 
 Object -> heavy_iron_mascot "heavy iron mascot"	! 365 / 0x16d
   with	name 'heavy' 'iron' 'mascot',
-	prop2 routine125196,
+	after routine125196,
 	before routine124964,
 	initial "On the table is a heavy iron mascot of some kind.",
 	description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
@@ -3683,12 +3683,12 @@ Object Melancholy_Dream "Melancholy Dream"	! 369 / 0x171
 
 Object -> metal_barrier "metal barrier"	! 370 / 0x172
   with	name 'metal' 'barrier',
-	prop2 routine126404,
+	after routine126404,
   has	scenery;
 
 Object green_luminescence "flurries of green luminescence"	! 371 / 0x173
   with	name 'green' 'flurries' 'of' 'luminesce',
-	prop2 routine126480,
+	after routine126480,
 	initial "Flurries of green luminescence whirl endlessly around you, west to east and over.",
 	description "The flurries have almost endless fascination... but you manage to tear your eyes away after, oh, an hour?",
   has	static;
@@ -3720,7 +3720,7 @@ Object -> hieroglyphic_symbols "hieroglyphic symbols"	! 374 / 0x176
 
 Object -> ships_wheel "ship's wheel"	! 375 / 0x177
   with	name 'ships' 'wheel',
-	prop2 routine126724,
+	after routine126724,
 	initial "A kind of ship's wheel (of eight-spoked timber) is affixed to the northwest wall.",
   has	static;
 
@@ -3745,7 +3745,7 @@ Object -> bronze_mural "bronze mural"	! 377 / 0x179
 
 Object Jagged_Passage "Jagged Passage"	! 378 / 0x17a
   with	name 'bones',
-	prop2 routine126932,
+	after routine126932,
 	n_to Crypt,
 	s_to The_Catacombs,
 	e_to Charnel_Passage,
@@ -3763,7 +3763,7 @@ Object -> wrought_iron_key "long wrought iron key"	! 379 / 0x17b
   has	;
 
 Object Charnel_Passage "Charnel Passage"	! 380 / 0x17c
-  with	prop2 routine126932,
+  with	after routine126932,
 	e_to Sarcophagus,
 	d_to Jagged_Passage,
 	description "A long, winding, vile passage through the earth, running east to west. The distasteful odour grows stronger as you go east.",
@@ -3771,7 +3771,7 @@ Object Charnel_Passage "Charnel Passage"	! 380 / 0x17c
   has	;
 
 Object Sarcophagus "Sarcophagus"	! 381 / 0x17d
-  with	prop2 routine126932,
+  with	after routine126932,
 	d_to Charnel_Passage,
 	description "Well, perhaps ~sarcophagus~ is a little melodramatic, but it's that kind of moment. This must be somewhere under the old parish church. You are stooped over inside a stone tomb, stained and crumbled with decay, broken only by a crevice you crawled in by. It is a nightmarish place.",
 	section T_CATACOMBS,
@@ -3784,7 +3784,7 @@ Object -> tombstone "tombstone"	! 382 / 0x17e
   has	static;
 
 Object The_Catacombs "Catacombs"	! 383 / 0x17f
-  with	prop2 routine126932,
+  with	after routine126932,
 	n_to Jagged_Passage,
 	d_to CR,
 	u_to Jagged_Passage,
@@ -3797,7 +3797,7 @@ Object The_Catacombs "Catacombs"	! 383 / 0x17f
 
 Object aluminium_staircase "aluminium staircase"	! 384 / 0x180
   with	name 'staircase' 'stairs' 'stair' 'case' 'aluminium',
-	prop2 routine127192,
+	after routine127192,
 	initial "The odd smell seems to be ozone, and it drifts up from a previously concealed aluminium staircase.",
 	description "Leading down.",
 	article "an",
@@ -3817,7 +3817,7 @@ Object CR "CR"	! 385 / 0x181
 
 Object -> metal_wall "metal wall"	! 386 / 0x182
   with	name 'mirror' 'metal' 'bronze' 'wall' 'sheet' 'amber',
-	prop2 routine127904,
+	after routine127904,
 	n_to CR,
 	s_to "The north edge of the room is a big sheet of dull amber-coloured metal.",
 	d_to w_obj,
@@ -3833,13 +3833,13 @@ Object -> iron_grid "iron grid"	! 387 / 0x183
 
 Object -> glowing_golden_orb "glowing golden orb"	! 388 / 0x184
   with	name 'glowing' 'golden' 'orb',
-	prop2 routine128404,
+	after routine128404,
 	description "How tantalisingly valuable it seems.",
   has	scenery;
 
 Object -> cannonball "cannonball"	! 389 / 0x185
   with	name 'cannon' 'ball' 'cannonball',
-	prop2 routine128404,
+	after routine128404,
 	description "Solid, heavy, reliable, out of reach on the other side of the glass.",
   has	scenery;
 
@@ -3858,7 +3858,7 @@ Object -> big_electricians_switch "big electrician's switch"	! 391 / 0x187
 
 Object -> large_dial "large dial"	! 392 / 0x188
   with	name 'large' 'dial' 'gauges' 'dials',
-	prop2 routine129376,
+	after routine129376,
 	initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.",
 	description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
   has	static;
@@ -3880,7 +3880,7 @@ Object -> array_of_oblong_crystals "array of oblong crystals"	! 395 / 0x18b
   has	static;
 
 Object Causeway "Causeway"	! 396 / 0x18c
-  with	prop2 routine130472,
+  with	after routine130472,
 	n_to Island_of_Pharos,
 	prop10 Crossroads,
 	initial routine130540,
@@ -3892,7 +3892,7 @@ Object Causeway "Causeway"	! 396 / 0x18c
 
 Object Island_of_Pharos "Island of Pharos"	! 397 / 0x18d
   with	name 'pharos' 'lighthouse' 'moon' 'circle' 'octagon' 'square' 'defences' 'causeway' 'island' 'harbour',
-	prop2 routine130472,
+	after routine130472,
 	s_to Causeway,
 	u_to "The Pharos is unclimbable, alas.",
 	d_to rusty_iron_grating,
@@ -3905,7 +3905,7 @@ Object Island_of_Pharos "Island of Pharos"	! 397 / 0x18d
 
 Object -> rusty_iron_grating "rusty iron grating"	! 398 / 0x18e
   with	name 'rusty' 'iron' 'grating' 'seaweed' 'grate' 'rusted',
-	prop2 routine131812,
+	after routine131812,
 	n_to Jetty,
 	s_to "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
 	e_to rusty_iron_key,
@@ -3915,14 +3915,14 @@ Object -> rusty_iron_grating "rusty iron grating"	! 398 / 0x18e
 
 Object -> rusty_iron_key "rusty iron key"	! 399 / 0x18f
   with	name 'rusty' 'iron' 'key',
-	prop2 routine132056,
+	after routine132056,
 	list_together Compass,
 	initial "Interestingly, a key which looks as if it would fit the grating can be seen inside the passage beneath.",
 	angel_hint "Oh dear, surely it's gratingly obvious what this fits?",
   has	;
 
 Object Jetty "Jetty"	! 400 / 0x190
-  with	prop2 routine130472,
+  with	after routine130472,
 	u_to Island_of_Pharos,
 	description "Down on a dark stone jetty, where the waters of the Alexandrian harbour splash insistently. Rough-hewn steps rise up the island through the grating.",
 	each_turn routine132112,
@@ -3944,7 +3944,7 @@ Object -> -> adamantine_heart "adamantine heart"	! 402 / 0x192
   has	;
 
 Object Harbour_Mouth "Harbour Mouth"	! 403 / 0x193
-  with	prop2 routine132216,
+  with	after routine132216,
 	description "As the skiff passes the jaws of the Royal Harbour, beneath the great Pharos light, you have a final view of the receding civilisation of Alexandria: ahead lies the vast, oil-calm Mediterranean and moonlight on the waters.",
 	cant_go "The skiff is not under your control.",
 	each_turn routine132276,
@@ -3953,7 +3953,7 @@ Object Harbour_Mouth "Harbour Mouth"	! 403 / 0x193
 
 Object Drifting "Drifting"	! 404 / 0x194
   with	name 'curious' 'fish' 'zephyr' 'sea',
-	prop2 routine132216,
+	after routine132216,
 	description "You drift in the wide, peaceful Lunar sea. Curious fish, their yellow-green eyes gleaming beneath the silver ripples, brush past your wake: the night zephyr is almost slack but still you drift. Minutes pass like hours in paradise.",
 	cant_go "You feel only a drug-like calm.",
 	each_turn routine132340,
@@ -3962,7 +3962,7 @@ Object Drifting "Drifting"	! 404 / 0x194
 
 Object Crossroads "Crossroads"	! 405 / 0x195
   with	name 'processio' 'tower',
-	prop2 routine132404,
+	after routine132404,
 	prop9 Outside_the_Royal_Museum,
 	prop10 A_Tower,
 	nw_to Causeway,
@@ -3988,7 +3988,7 @@ Object -> birds_of_prey "birds of prey"	! 407 / 0x197
 
 Object unexciting_tombstone "unexciting tombstone"	! 408 / 0x198
   with	name 'tomb' 'tombstone' 'stone' 'unexcitin' 'face' 'socket' 'steps' 'mouth',
-	prop2 routine132568,
+	after routine132568,
 	n_to The_Height_of_Fashion,
 	s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
 	d_to thedark,
@@ -3998,7 +3998,7 @@ Object unexciting_tombstone "unexciting tombstone"	! 408 / 0x198
 
 Object cloak_of_many_colours "cloak of many colours"	! 409 / 0x199
   with	name 'of' 'many' 'colours' 'cloak' 'coat' 'chlamys',
-	prop2 routine132776,
+	after routine132776,
 	initial "A cloak of many colours lies folded on it.",
 	description "A fine cloak, grey-lined, sapphire-encrusted, rippled across with rainbow fabrics from the trade routes of the world.",
 	angel_hint "Are you sure it isn't inside out?",
@@ -4006,13 +4006,13 @@ Object cloak_of_many_colours "cloak of many colours"	! 409 / 0x199
 
 Object grey_cloak "grey cloak"	! 410 / 0x19a
   with	name 'grey' 'cloak' 'coat' 'chlamys',
-	prop2 routine132776,
+	after routine132776,
 	description "A fine grey cloak, sapphire-encrusted, lined with rainbow fabrics from the trade routes of the world.",
 	angel_hint "Are you sure it isn't inside out?",
   has	clothing;
 
 Object XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"	! 411 / 0x19b
-  with	prop2 routine132888,
+  with	after routine132888,
 	n_to Necropolis,
 	description "Ransacked, dimly-lit, cramped and empty, this rough-built and uneven burial mound is to the Great Pyramids of Giza (built just a century before) what the summerhouse in your garden is to Windsor Castle. There are only dull painted writings, an unpleasant odour and a passage out to the north.",
 	section T_ALEXANDRIA,
@@ -4027,7 +4027,7 @@ Object -> painted_writings "painted writings"	! 412 / 0x19c
 
 Object The_Height_of_Fashion "The Height of Fashion"	! 413 / 0x19d
   with	name 'table' 'panelling' 'doorway' 'door',
-	prop2 routine132972,
+	after routine132972,
 	d_to routine133044,
 	u_to Necropolis,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling. This is the latest in modern funerary apartments.^^There's a couch for visitors, a table, a flight of steps up and a doorway to the west, flanked by two stone sphinxes.",
@@ -4048,14 +4048,14 @@ Object -> wooden_couch "wooden couch"	! 415 / 0x19f
 
 Object stone_nose_of_a_sphinx "stone nose of a sphinx"	! 416 / 0x1a0
   with	name 'stone' 'nose',
-	prop2 routine133108,
+	after routine133108,
 	initial "One of the sphinxes does have rather a prominent nose, it must be said.",
 	description "Splendid.",
   has	static;
 
 Object The_Spirit_World "The Spirit World"	! 417 / 0x1a1
   with	name 'table' 'panelling' 'doorway' 'door',
-	prop2 routine133428,
+	after routine133428,
 	before routine133704,
 	d_to routine133240,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling, at the foot of a flight of steps which leads only to a sealed wall.",
@@ -4113,7 +4113,7 @@ Object -> marble_wall "marble wall"	! 423 / 0x1a7
   has	door static;
 
 Object Quite_an_Undertaking "Quite an Undertaking"	! 424 / 0x1a8
-  with	prop2 routine134680,
+  with	after routine134680,
 	e_to This_Is_The_Death,
 	u_to This_Is_The_Death,
 	description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
@@ -4128,14 +4128,14 @@ Object -> painting_of_the_priest "painting of the priest"	! 425 / 0x1a9
 
 Object -> mummy_case "mummy case"	! 426 / 0x1aa
   with	name 'mummy' 'case' 'lid' 'sarcophag' 'coffin',
-	prop2 routine134932,
+	after routine134932,
 	initial "A beautiful gold and blue mummy case, or sarcophagus, rests massively here.",
 	description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
   has	enterable static;
 
 Object -> first_socket "first socket"	! 427 / 0x1ab
   with	name 'first' 'socket' 'sockets' 'words',
-	prop2 routine135524,
+	after routine135524,
 	description " .Above ",
 	article "the",
 	number 1,
@@ -4143,7 +4143,7 @@ Object -> first_socket "first socket"	! 427 / 0x1ab
 
 Object -> second_socket "second socket"	! 428 / 0x1ac
   with	name 'second' 'socket' 'sockets' 'words',
-	prop2 routine135524,
+	after routine135524,
 	description " .Above ",
 	article "the",
 	number 1,
@@ -4151,14 +4151,14 @@ Object -> second_socket "second socket"	! 428 / 0x1ac
 
 Object -> third_socket "third socket"	! 429 / 0x1ad
   with	name 'third' 'socket' 'sockets' 'words',
-	prop2 routine135524,
+	after routine135524,
 	description " .Above ",
 	article "the",
 	number 1,
   has	scenery;
 
 Object Buried_Alive "Buried Alive"	! 431 / 0x1af
-  with	prop2 routine136036,
+  with	after routine136036,
 	u_to Sarcophagus,
 	description "You lie in the mummy case, your arms folded across each other, face grimaced, running out of air rapidly and with almost no room to maneouvre. The coffin lid is about ten times heavier than you, and its seal is very good.",
 	number 5,
@@ -4213,7 +4213,7 @@ Object A_Tower "A Tower"	! 437 / 0x1b5
 
 Object -> defaced_door "defaced door"	! 438 / 0x1b6
   with	name 'defaced' 'sosostris' 'door' 'writings' 'scripts',
-	prop2 routine136924,
+	after routine136924,
 	n_to Consulting_Room,
 	s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
 	d_to obj13_inside,
@@ -4230,7 +4230,7 @@ Object Consulting_Room "Consulting Room"	! 439 / 0x1b7
 
 Object -> table "table"	! 440 / 0x1b8
   with	name 'bare' 'table',
-	prop2 routine137036,
+	after routine137036,
 	description "Madame Sosostris stares at it fixedly as she meditates.",
   has	scenery supporter;
 
@@ -4248,7 +4248,7 @@ Object -> Madame_Sosostris "Madame Sosostris, famous clairvoyante"	! 442 / 0x1ba
 
 Object quarterstaff "green oak quarterstaff"	! 443 / 0x1bb
   with	name 'green' 'oak' 'staff' 'quarterst' 'quarter' 'beam' 'wooden',
-	prop2 routine137436,
+	after routine137436,
 	initial "You seem to have dislodged one of the wooden beams used by the tomb's builders: a useful length of greenish oak.",
 	description "It needs to be left to mature, and yet there's something awfully familiar about it.",
 	devil_hint "Ready to use.",
@@ -4262,7 +4262,7 @@ Object silver_keepsake "silver keepsake"	! 444 / 0x1bc
   has	clothing;
 
 Object Warehouses_and_Port "Warehouses and Port"	! 445 / 0x1bd
-  with	prop2 routine130472,
+  with	after routine130472,
 	e_to Outside_the_Theatre,
 	description "Down by the sea-front, in the old harbourlands, surrounded by warehouses. The Mediterranean laps darkly against the hard, splashing an occasional wave up the slope. The city, and the party, lie back east.",
 	cant_go "There's nowhere to go but the city, east.",
@@ -4271,7 +4271,7 @@ Object Warehouses_and_Port "Warehouses and Port"	! 445 / 0x1bd
 
 Object -> gambling_sailor "gambling sailor"	! 446 / 0x1be
   with	name 'sailor' 'gambling' 'gambler' 'grizzled',
-	prop2 routine137476,
+	after routine137476,
 	life routine137492,
 	initial "A grizzled sailor sits at a harbourside table.",
 	each_turn routine137616,
@@ -4279,7 +4279,7 @@ Object -> gambling_sailor "gambling sailor"	! 446 / 0x1be
 
 Object -> inscribed_die "inscribed die"	! 447 / 0x1bf
   with	name 'inscribed' 'die' 'dice' 'cube',
-	prop2 routine137820,
+	after routine137820,
 	initial "An inscribed six-sided die lies on the table in front of him.",
 	description "The sides you can see are labelled with short words.",
 	article "an",
@@ -4334,7 +4334,7 @@ Object -> scroll_bearing_a_short_poem "scroll bearing a short poem"	! 452 / 0x1c
   has	;
 
 Object Oil_Room "Oil Room"	! 454 / 0x1c6
-  with	prop2 routine138364,
+  with	after routine138364,
 	n_to The_Birdcage_of_the_Muses,
 	description "This small, dark (by night) room is a repository for Library supplies: above all, for lamp oil, which is stored in broad shallow earthenware troughs. Lucky your torch is electric, when you think about it. Anyway, a passage leads back north.",
 	section T_ALEXANDRIA,
@@ -4342,7 +4342,7 @@ Object Oil_Room "Oil Room"	! 454 / 0x1c6
 
 Object -> oil_filled_troughs "oil-filled troughs"	! 455 / 0x1c7
   with	name 'oil' 'troughs' 'shallow' 'lamp',
-	prop2 routine138500,
+	after routine138500,
 	article "the",
   has	scenery;
 
@@ -4355,7 +4355,7 @@ Object Geography_Room "Geography Room"	! 456 / 0x1c8
 
 Object -> spindle_from_the_globe "spindle from the globe"	! 457 / 0x1c9
   with	name 'spindle' 'axis' 'globe' 'earth',
-	prop2 routine138528,
+	after routine138528,
 	before routine138544,
 	initial "Protruding from a broken globe of the Earth (marked with very tentative and approximate maps) is the spindle, the only thing holding it together.",
 	description "Perhaps the best work of cartography likely for the next two thousand years, though it seems unlikely to last the next two hours.",
@@ -4420,7 +4420,7 @@ Object Outside_the_Royal_Palace_of_Alexander "Outside the Royal Palace of Alexan
   has	light;
 
 Object Lost_inside_the_Palace "Lost inside the Palace"	! 466 / 0x1d2
-  with	prop2 routine139872,
+  with	after routine139872,
 	before routine140040,
 	n_to Lost_inside_the_Palace,
 	s_to Lost_inside_the_Palace,
@@ -4442,7 +4442,7 @@ Object -> slave "slave"	! 467 / 0x1d3
   has	animate;
 
 Object Palace_Balustrade "Palace Balustrade"	! 468 / 0x1d4
-  with	prop2 routine140336,
+  with	after routine140336,
 	description "The magnificent balcony overlooking the Royal harbour of Alexandria. In two hundred years' time, Julius Caesar will be besieged here, and will hold the palace with a tiny force of men against an entire army: and will lose his heart to Cleopatra...^^For the mean time, this is a broad stone balustraded balcony. The coin-bright moon, low in the sky, reflects off the black waters far below.",
 	cant_go "There seems to be absolutely no way off the balcony, as the stone doors to the heart of the palace are sealed shut.",
 	section T_ALEXANDRIA,
@@ -4450,14 +4450,14 @@ Object Palace_Balustrade "Palace Balustrade"	! 468 / 0x1d4
 
 Object -> astronomical_mounting "astronomical mounting"	! 469 / 0x1d5
   with	name 'mounting' 'socket' 'astronomical' 'tripod',
-	prop2 routine140508,
+	after routine140508,
 	initial "An impressive astronomical mounting stands on a tripod here. But there is no telescope.",
 	article "an",
   has	static;
 
 Object Beside_the_Drive "Beside the Drive"	! 470 / 0x1d6
   with	name 'wistaria' 'car' 'gravel',
-	prop2 routine140600,
+	after routine140600,
 	n_to "The old carved southern wall of the gardens blocks your way around the edge of the Hall.",
 	d_to "The Hall is in the way.",
 	prop9 Public_Footpath,
@@ -4469,7 +4469,7 @@ Object Beside_the_Drive "Beside the Drive"	! 470 / 0x1d6
 
 Object -> fire_escape "fire escape"	! 471 / 0x1d7
   with	name 'fire' 'escape' 'white' 'rope' 'rickety',
-	prop2 routine140724,
+	after routine140724,
 	initial routine140740,
 	description "For the first couple of storeys, an old iron zig-zag, and after that a ladder that might or might not be well-anchored. The gardeners have done a good job of concealing it behind wistaria which (in any case) looks the stronger of the two.",
   has	static;
@@ -4498,7 +4498,7 @@ Object -> nest "nest"	! 474 / 0x1da
 
 Object -> bunch_of_nuts "bunch of nuts"	! 475 / 0x1db
   with	name 'bunch' 'of' 'nuts',
-	prop2 routine140884,
+	after routine140884,
 	initial "Entwined in the nest is a bunch of nuts.",
 	description "A bunch of nuts, left over from last autumn.",
 	devil_hint "Nuts to you too.",
@@ -4530,7 +4530,7 @@ Object -> Old_Evans "Old Evans"	! 478 / 0x1de
 
 Object -> -> Crescent_Moon "Crescent Moon"	! 483 / 0x1e3
   with	name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
-	prop2 routine141420 routine64232,
+	after routine141420 routine64232,
 	n_to Parish_Church,
 	list_together "Tarot cards",
 	description "Some kind of crescent moon, an old Druidical symbol.",
@@ -4542,13 +4542,13 @@ Object -> -> Crescent_Moon "Crescent Moon"	! 483 / 0x1e3
 
 Object -> -> Racing_Times "Racing Times"	! 484 / 0x1e4
   with	name 'paper' 'newspaper' 'racing' 'times',
-	prop2 routine141468,
+	after routine141468,
 	description "The front page story (~Lord Lucan's new acquisition Shergar comes out of retirement to win the Grand National~) is so boringly unsensational that you quickly lose interest. But Evans is eternally fascinated with minute details of the form of the horses, tomorrow's race meetings, current odds quoted by the bookmakers, and so on.",
   has	;
 
 Object -> -> hat_band "hat band"	! 485 / 0x1e5
   with	name 'hat' 'band',
-	prop2 routine141500,
+	after routine141500,
 	description "Racing aficionados consider it lucky to wear mascots in the bands of their hats.",
   has	;
 
@@ -4559,7 +4559,7 @@ Object -> war_memorial "war memorial"	! 479 / 0x1df
 
 Object -> parish_church "parish church"	! 480 / 0x1e0
   with	name 'parish' 'church' 'door',
-	prop2 routine141256,
+	after routine141256,
 	n_to Parish_Church,
 	d_to w_obj,
 	description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
@@ -4567,14 +4567,14 @@ Object -> parish_church "parish church"	! 480 / 0x1e0
 
 Object -> Goat_and_Compasses "Goat and Compasses"	! 481 / 0x1e1
   with	name 'pub' 'goat' 'compasses' 'public' 'house' 'bar',
-	prop2 routine141296,
+	after routine141296,
 	d_to w_obj,
 	description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing laws. You congratulate yourself on living in such a modern, forward-looking country.",
   has	door locked proper scenery;
 
 Object pet_monkey "pet monkey"	! 482 / 0x1e2
   with	name 'pet' 'monkey',
-	prop2 routine141340,
+	after routine141340,
 	initial "The monkey sits on Evans' shoulder, cheeping with excitement. Evans has found a pet, and is so gruffly delighted that he has forgotten all about the mascot you stole. Now if he could only predict the 3.40 at Borchester Mills...",
   has	animate;
 
@@ -4591,7 +4591,7 @@ Object Parish_Church "Parish Church"	! 486 / 0x1e6
 
 Object -> Moonstone "Moonstone"	! 487 / 0x1e7
   with	name 'moonstone' 'moon' 'stone' 'door' 'flagstone' 'iron' 'rings' 'old',
-	prop2 routine141728,
+	after routine141728,
 	s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
 	d_to thedark,
 	initial "A passage slants down through a solid crystal doorway in the Moonstone.",
@@ -4601,7 +4601,7 @@ Object -> Moonstone "Moonstone"	! 487 / 0x1e7
 
 Object West_Side_Chapel "West Side Chapel"	! 488 / 0x1e8
   with	name 'stained' 'glass' 'windows' 'resurrect',
-	prop2 routine142212,
+	after routine142212,
 	before routine142572,
 	e_to Parish_Church,
 	description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
@@ -4634,7 +4634,7 @@ Object East_Side_Chapel "East Side Chapel"	! 491 / 0x1eb
 
 Object -> statue_of_Diana "statue of Diana"	! 492 / 0x1ec
   with	name 'marble' 'statue' 'of' 'diana',
-	prop2 routine144620,
+	after routine144620,
 	initial "A tall marble statue of Diana stands here: a find from the nearby Roman remains.",
 	description "There is a sly look in her eye as she smiles aslant.",
   has	static;
@@ -4649,7 +4649,7 @@ Object Bell_Tower "Bell Tower"	! 493 / 0x1ed
 
 Object -> bell_ropes "bell ropes"	! 494 / 0x1ee
   with	name 'bell' 'bells' 'rope' 'ropes' 'braided' 'sash' 'sashes',
-	prop2 routine144716,
+	after routine144716,
 	article "eight",
   has	scenery;
 
@@ -4694,7 +4694,7 @@ Object -> demon "demon"	! 499 / 0x1f3
 
 Object Heavenly_Place "Heavenly Place"	! 500 / 0x1f4
   with	name 'furniture' 'cloud',
-	prop2 routine146452,
+	after routine146452,
 	before routine146476,
 	s_to obj294_Up_the_Beanstalk,
 	description "Heaven, you always imagined, would be a world of marble pillars, fluffy clouds, harps and angelic ladies with serene expressions. You were right about the last part. An angel is sitting here behind some new office furniture, next to a blue Tourist Information sign. A bridge of cloud extends south across the sky to the beanstalk. There is some choral singing going on somewhere, but not loud enough for you to hear properly. Not in this life, anyway.",
@@ -4712,7 +4712,7 @@ Object -> angel "angel"	! 501 / 0x1f5
 
 Object carbolic_soap "carbolic soap"	! 502 / 0x1f6
   with	name 'soap' 'carbolic',
-	prop2 routine147544,
+	after routine147544,
 	description "~For foulmouths everywhere~.",
 	article "a cake of",
 	devil_hint "That's the spirit, keep it up!",
@@ -8095,9 +8095,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
         }
         if (actor ~= player) {
-            j = RunRoutines(player,prop16);
+            j = RunRoutines(player,orders);
             if (j == 0) {
-                j = RunRoutines(actor,prop16);
+                j = RunRoutines(actor,orders);
                 if (j == 0) {
                     if (verb == ##Action264) {
                         inputobjs-->3 = actor;
@@ -8294,10 +8294,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (routine172644() ~= 0) {
         rtrue;
     }
-    if (RunRoutines(player,prop16) ~= 0) {
+    if (RunRoutines(player,orders) ~= 0) {
         rtrue;
     }
-    if (location ~= nothing && RunRoutines(location,prop2) ~= 0) {
+    if (location ~= nothing && RunRoutines(location,after) ~= 0) {
         rtrue;
     }
     scope_reason = REACT_BEFORE_REASON;
@@ -8307,7 +8307,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parser_one ~= 0) {
         rtrue;
     }
-    if (inp1 > 1 && RunRoutines(inp1,prop2) ~= 0) {
+    if (inp1 > 1 && RunRoutines(inp1,after) ~= 0) {
         rtrue;
     }
     rfalse;
@@ -9034,7 +9034,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj16_lm.prop2
+! References: obj16_lm.after
 
 [ routine58172 ;	! 58172 / 0xe33c
     if (action == ##Score) {
@@ -9092,7 +9092,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: rod_of_fire.prop2, rod_of_returning.prop2, rod_of_stalking.prop2, rod_of_infinity.prop2, rod_of_husbandry.prop2, rod_of_bronze.prop2, rod_of_sacrifice.prop2, rod_of_luck.prop2, rod_of_ice.prop2, rod_of_language.prop2, rod_of_returning2.prop2, rod_of_life.prop2, rod_of_death.prop2, rod_of_love.prop2
+! References: rod_of_fire.after, rod_of_returning.after, rod_of_stalking.after, rod_of_infinity.after, rod_of_husbandry.after, rod_of_bronze.after, rod_of_sacrifice.after, rod_of_luck.after, rod_of_ice.after, rod_of_language.after, rod_of_returning2.after, rod_of_life.after, rod_of_death.after, rod_of_love.after
 
 [ routine58560 ;	! 58560 / 0xe4c0
     if (action == ##Read) {
@@ -9646,7 +9646,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Grim_Reaper_card.prop2, Fool_card.prop2, Drowned_Sailor_card.prop2, obj190_Castle.prop2, obj191_Star.prop2, obj192_Eight_of_Wands.prop2, obj193_Maiden.prop2, obj194_Ace_of_Cups.prop2, Crescent_Moon.prop2
+! References: Grim_Reaper_card.after, Fool_card.after, Drowned_Sailor_card.after, obj190_Castle.after, obj191_Star.after, obj192_Eight_of_Wands.after, obj193_Maiden.after, obj194_Ace_of_Cups.after, Crescent_Moon.after
 
 [ routine64232 ;	! 64232 / 0xfae8
     if (action == ##Read) {
@@ -9706,7 +9706,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 65535[?];
 ];
 
-! References: obj32_electric_torch.prop2
+! References: obj32_electric_torch.after
 
 [ routine64428 ;	! 64428 / 0xfbac
     if (action == ##Action257) {
@@ -9800,7 +9800,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj36_hinged_trapdoor.prop2
+! References: obj36_hinged_trapdoor.after
 
 [ routine65124 ;	! 65124 / 0xfe64
     if (action == ##LookUnder) {
@@ -9833,7 +9833,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj37_teachests.prop2
+! References: obj37_teachests.after
 
 [ routine65316 ;	! 65316 / 0xff24
     if (action == ##Search) {
@@ -9849,7 +9849,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj38_History_of_the_Meldrews__vol__II_.prop2
+! References: obj38_History_of_the_Meldrews__vol__II_.after
 
 [ routine65440 local1 ;	! 65440 / 0xffa0
     if (action == ##Consult) {
@@ -9925,7 +9925,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Yes, probably just as well to give up looking, and heaven knows there's enough packing to do, what with the rest of the family in uproar. Oh well.";
 ];
 
-! References: obj42_Servant_s_Room.prop2
+! References: obj42_Servant_s_Room.after
 
 [ routine69588 ;	! 69588 / 0x10fd4
     if (action == ##Sleep) {
@@ -9949,7 +9949,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj43_classical_dictionary.prop2
+! References: obj43_classical_dictionary.after
 
 [ routine69840 local1 ;	! 69840 / 0x110d0
     if (action == ##Consult) {
@@ -10096,7 +10096,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj50_bird_whistle.prop2
+! References: obj50_bird_whistle.after
 
 [ routine71948 ;	! 71948 / 0x1190c
     if (action == ##Blow) {
@@ -10140,7 +10140,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj51_gift_wrapped_parcel.prop2
+! References: obj51_gift_wrapped_parcel.after
 
 [ routine72724 ;	! 72724 / 0x11c14
     if (action == ##Open) {
@@ -10175,7 +10175,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj55_mb.prop2
+! References: obj55_mb.after
 
 [ routine73008 ;	! 73008 / 0x11d30
     if (action == ##Attack) {
@@ -10216,7 +10216,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj58_Austin.prop2
+! References: obj58_Austin.after
 
 [ routine73352 ;	! 73352 / 0x11e88
     if (action == ##Clean or ##Touch or ##Squeeze) {
@@ -10611,7 +10611,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj61_hanging_cord.prop2
+! References: obj61_hanging_cord.after
 
 [ routine75752 ;	! 75752 / 0x127e8
     if (action == ##Pull) {
@@ -10628,7 +10628,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj63_photographer_s_flash.prop2
+! References: obj63_photographer_s_flash.after
 
 [ routine75840 ;	! 75840 / 0x12840
     if (action == ##Action257) {
@@ -10732,7 +10732,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^Your footfall causes the crystal ball to wobble fractionally, just enough for the beam of light to cross the smoke detector. Click! and then some electronic bleeping. Little servo motors fire lethargically into life, then collapse in exhaustion. The alarm soon runs down to a tiny drone, then silence.^^But there's quite a loud report from off to the east somewhere.";
 ];
 
-! References: obj66_solid_glass_ball.prop2
+! References: obj66_solid_glass_ball.after
 
 [ routine76752 local1 ;	! 76752 / 0x12bd0
     if (action == ##Clean) {
@@ -10792,7 +10792,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj68_water_pipe.prop2
+! References: obj68_water_pipe.after
 
 [ routine77352 ;	! 77352 / 0x12e28
     if (action == ##TurnWith) {
@@ -10824,7 +10824,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj69_romantic_novel.prop2
+! References: obj69_romantic_novel.after
 
 [ routine77636 ;	! 77636 / 0x12f44
     if (action == ##Take) {
@@ -10844,7 +10844,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj70_book_of_Twenties_poetry.prop2
+! References: obj70_book_of_Twenties_poetry.after
 
 [ routine77704 ;	! 77704 / 0x12f88
     if (action == ##Take) {
@@ -10886,7 +10886,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
 ];
 
-! References: obj71_Souvenirs_Room.prop2
+! References: obj71_Souvenirs_Room.after
 
 [ routine78248 local1 ;	! 78248 / 0x131a8
     if (action == ##Read) {
@@ -10933,7 +10933,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj72_slide_projector.prop2
+! References: obj72_slide_projector.after
 
 [ routine78492 ;	! 78492 / 0x1329c
     if (action == ##Action257) {
@@ -11020,7 +11020,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj73_south_wall.prop2
+! References: obj73_south_wall.after
 
 [ routine79012 local1 ;	! 79012 / 0x134a4
     if (action == ##Enter) {
@@ -11100,7 +11100,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     " and the dead end south is bright with sunlight through a square open hatchway in the roof.";
 ];
 
-! References: obj74_East_Annexe.prop2
+! References: obj74_East_Annexe.after
 
 [ routine80144 ;	! 80144 / 0x13910
     if (action == ##Go or ##Enter) {
@@ -11115,7 +11115,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj75_insulation_rolls.prop2
+! References: obj75_insulation_rolls.after
 
 [ routine80320 ;	! 80320 / 0x139c0
     if (action == ##Read or ##Search or ##LookUnder) {
@@ -11132,7 +11132,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj77_cupboard_door.prop2
+! References: obj77_cupboard_door.after
 
 [ routine80488 ;	! 80488 / 0x13a68
     if (action == ##Knock) {
@@ -11141,7 +11141,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj78_Dead_End.prop2
+! References: obj78_Dead_End.after
 
 [ routine80540 ;	! 80540 / 0x13a9c
     if (verb == ##Knock && noun == s_obj) {
@@ -11207,7 +11207,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj85_cranked_skylight.prop2
+! References: obj85_cranked_skylight.after
 
 [ routine80924 ;	! 80924 / 0x13c1c
     if (action == ##Open or ##Close) {
@@ -11236,7 +11236,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj89_gothic_looking_iron_key.prop2
+! References: obj89_gothic_looking_iron_key.after
 
 [ routine81140 ;	! 81140 / 0x13cf4
     if (action == ##Take) {
@@ -11311,7 +11311,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj91_Chimney.prop2
+! References: obj91_Chimney.after
 
 [ routine82264 local1 ;	! 82264 / 0x14158
     if (verb ~= ##Inv or ##Look or ##Go or ##Exit) {
@@ -11335,7 +11335,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj93_Priest_s_Hole.prop2
+! References: obj93_Priest_s_Hole.after
 
 [ routine82456 local1 ;	! 82456 / 0x14218
     if (action == ##Enter) {
@@ -11374,7 +11374,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj95_ancient_prayer_book.prop2
+! References: obj95_ancient_prayer_book.after
 
 [ routine82652 local1 ;	! 82652 / 0x142dc
     if (action == ##Consult) {
@@ -11419,7 +11419,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "The room is provided with a comfortable bed, which looks very inviting.";
 ];
 
-! References: obj96_Alison_s_Writing_Room.prop2
+! References: obj96_Alison_s_Writing_Room.after
 
 [ routine83696 ;	! 83696 / 0x146f0
     if (action == ##Sleep) {
@@ -11453,7 +11453,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj97_comfortable_bed.prop2
+! References: obj97_comfortable_bed.after
 
 [ routine83964 ;	! 83964 / 0x147fc
     if (action == ##Action257) {
@@ -11466,13 +11466,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj98_windows.prop2
+! References: obj98_windows.after
 
 [ routine84044 ;	! 84044 / 0x1484c
     if (action == ##Attack or ##Push or ##Pull) {
         give obj98_windows open;
         give obj98_windows openable;
-        selfobj.prop2 = 65535[?];
+        selfobj.after = 65535[?];
         "The windows suddenly give way in a shower of flakes of paint, letting fresh summer air into the room!";
     }
     if (action == ##Enter) {
@@ -11509,7 +11509,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^Now that you have finally been able to look it in the eyes, the monkey leaps from your arms, revelling in its new life, and scampers away through the windows onto the balcony, then up and over the side of the house. You can just make it out as it races down the footpath.";
 ];
 
-! References: obj99_long_vanity_mirror.prop2
+! References: obj99_long_vanity_mirror.after
 
 [ routine84524 local1 local2 ;	! 84524 / 0x14a2c
     if (action == ##Attack) {
@@ -11552,7 +11552,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj101_window_sill.prop2
+! References: obj101_window_sill.after
 
 [ routine84776 ;	! 84776 / 0x14b28
     if (action == ##Search or ##LookUnder) {
@@ -11589,7 +11589,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj103_Old_Winery.prop2
+! References: obj103_Old_Winery.after
 
 [ routine85084 ;	! 85084 / 0x14c5c
     if (action == ##PutOn) {
@@ -11601,7 +11601,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj104_labelled_glass_demijohn.prop2
+! References: obj104_labelled_glass_demijohn.after
 
 [ routine85140 ;	! 85140 / 0x14c94
     if (action == ##Open) {
@@ -11617,7 +11617,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj106_tourist_map.prop2
+! References: obj106_tourist_map.after
 
 [ routine85276 local1 ;	! 85276 / 0x14d1c
     if (action == ##Consult) {
@@ -11651,7 +11651,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj108_daisy_calendar.prop2
+! References: obj108_daisy_calendar.after
 
 [ routine85692 local1 local2 ;	! 85692 / 0x14ebc
     if (action == ##Read) {
@@ -11754,7 +11754,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj110_pile_of_sheets.prop2
+! References: obj110_pile_of_sheets.after
 
 [ routine86108 ;	! 86108 / 0x1505c
     if (action == ##Take) {
@@ -11805,7 +11805,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj111_antiquated_wireless.prop2
+! References: obj111_antiquated_wireless.after
 
 [ routine86604 ;	! 86604 / 0x1524c
     if (selfobj has concealed) {
@@ -11903,7 +11903,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj113_old_gardeners__gloves.prop2
+! References: obj113_old_gardeners__gloves.after
 
 [ routine87548 ;	! 87548 / 0x155fc
     if (action == ##Take) {
@@ -12068,7 +12068,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj115_daisy_chain.prop2
+! References: obj115_daisy_chain.after
 
 [ routine89704 ;	! 89704 / 0x15e68
     if (action == ##Read) {
@@ -12144,7 +12144,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj116_Storage_Room.prop2
+! References: obj116_Storage_Room.after
 
 [ routine90148 ;	! 90148 / 0x16024
     if (action == ##Enter) {
@@ -12160,7 +12160,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj117_wheel.prop2, obj128_wheel.prop2
+! References: obj117_wheel.after, obj128_wheel.after
 
 [ routine90240 local1 ;	! 90240 / 0x16080
     if (action == ##TurnWith) {
@@ -12230,7 +12230,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj121_pulley_ropes.prop2
+! References: obj121_pulley_ropes.after
 
 [ routine90736 local1 ;	! 90736 / 0x16270
     if (action == ##Pull) {
@@ -12261,7 +12261,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj122_chicken_wishbone.prop2
+! References: obj122_chicken_wishbone.after
 
 [ routine91000 ;	! 91000 / 0x16378
     if (action == ##Pull) {
@@ -12282,7 +12282,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj123_Dark_Shaft.prop2
+! References: obj123_Dark_Shaft.after
 
 [ routine91112 ;	! 91112 / 0x163e8
     if (action == ##Go) {
@@ -12294,7 +12294,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj124_Dark_Passage.prop2
+! References: obj124_Dark_Passage.after
 
 [ routine91172 ;	! 91172 / 0x16424
     if (obj125_sandstone_recess has open) {
@@ -12333,7 +12333,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj127_Cellars.prop2
+! References: obj127_Cellars.after
 
 [ routine91352 ;	! 91352 / 0x164d8
     if (action == ##Enter) {
@@ -12502,7 +12502,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     ". The barrel-shaft slants upwards to the north, and bright light floods in from the gardens above.";
 ];
 
-! References: obj132_Wine_Cellars.prop2
+! References: obj132_Wine_Cellars.after
 
 [ routine92688 ;	! 92688 / 0x16a10
     if (action == ##Drink) {
@@ -12520,7 +12520,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "The barrel-shaft is too steep to climb. You were lucky enough not to break your neck on the way down.";
 ];
 
-! References: obj134_hole_in_the_wall.prop2
+! References: obj134_hole_in_the_wall.after
 
 [ routine92808 ;	! 92808 / 0x16a88
     if (action == ##Action257) {
@@ -12547,7 +12547,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj137_ironbound_door.prop2
+! References: obj137_ironbound_door.after
 
 [ routine92900 ;	! 92900 / 0x16ae4
     if (action == ##Knock) {
@@ -12598,7 +12598,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj139_circular_arc.prop2
+! References: obj139_circular_arc.after
 
 [ routine93356 local1 ;	! 93356 / 0x16cac
     if (action == ##Action257) {
@@ -12632,7 +12632,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj141_spherical_opening.prop2
+! References: obj141_spherical_opening.after
 
 [ routine93620 ;	! 93620 / 0x16db4
     if (action == ##Action257) {
@@ -12701,7 +12701,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj145_gilded_model_coffin.prop2
+! References: obj145_gilded_model_coffin.after
 
 [ routine94088 ;	! 94088 / 0x16f88
     if (action == ##Open) {
@@ -12724,7 +12724,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj147_framed_charcoal_sketch.prop2
+! References: obj147_framed_charcoal_sketch.after
 
 [ routine94344 ;	! 94344 / 0x17088
     if (action == ##Attack or ##Open) {
@@ -12746,7 +12746,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj151_picture_hook.prop2
+! References: obj151_picture_hook.after
 
 [ routine94844 ;	! 94844 / 0x1727c
     if (action == ##Action257) {
@@ -12794,7 +12794,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj156_poster.prop2
+! References: obj156_poster.after
 
 [ routine95240 ;	! 95240 / 0x17408
     if (action == ##Take or ##RipDown or ##Rip or ##Pull) {
@@ -13018,7 +13018,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj159_Consulting_Room.prop2
+! References: obj159_Consulting_Room.after
 
 [ routine96860 ;	! 96860 / 0x17a5c
     if (action == ##Smell) {
@@ -13027,7 +13027,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj160_Tarot_pack.prop2
+! References: obj160_Tarot_pack.after
 
 [ routine96888 ;	! 96888 / 0x17a78
     if (action == ##Take or ##Remove) {
@@ -13059,7 +13059,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj162_bell_push.prop2
+! References: obj162_bell_push.after
 
 [ routine97180 ;	! 97180 / 0x17b9c
     if (action == ##Push) {
@@ -13115,7 +13115,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj168_Down_by_River.prop2
+! References: obj168_Down_by_River.after
 
 [ routine97800 ;	! 97800 / 0x17e08
     if (action == ##Swim or ##Drink) {
@@ -13134,7 +13134,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 170[obj170_tourist_boat?];
 ];
 
-! References: obj169_silk_handkerchief.prop2
+! References: obj169_silk_handkerchief.after
 
 [ routine97852 ;	! 97852 / 0x17e3c
     if (action == ##Wave && location == obj168_Down_by_River && obj170_tourist_boat hasnt open) {
@@ -13144,7 +13144,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj170_tourist_boat.prop2
+! References: obj170_tourist_boat.after
 
 [ routine97928 ;	! 97928 / 0x17e88
     if (action == ##Enter) {
@@ -13207,7 +13207,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj174_Chatelet_les_Halles.prop2
+! References: obj174_Chatelet_les_Halles.after
 
 [ routine98620 ;	! 98620 / 0x1813c
     if (action == ##Buy) {
@@ -13256,7 +13256,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     " - in this case, one which jams. Steel barriers appear across the corridor, and you are obliged to withdraw back to the foyer.^^After a moment, the barriers recede again.";
 ];
 
-! References: obj178_revolving_door.prop2
+! References: obj178_revolving_door.after
 
 [ routine99148 ;	! 99148 / 0x1834c
     if (action == ##Turn or ##Push or ##Pull) {
@@ -13294,7 +13294,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj181_door.prop2, obj183_door.prop2
+! References: obj181_door.after, obj183_door.after
 
 [ routine99348 ;	! 99348 / 0x18414
     if (action == ##Push or ##Turn or ##Pull) {
@@ -13303,7 +13303,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj184_beach_ball.prop2
+! References: obj184_beach_ball.after
 
 [ routine99404 ;	! 99404 / 0x1844c
     if (action == ##Take or ##Remove) {
@@ -13332,7 +13332,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj186_Tarot_box.prop2
+! References: obj186_Tarot_box.after
 
 [ routine99736 ;	! 99736 / 0x18598
     if (action == ##Action257) {
@@ -13344,7 +13344,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj188_Dark_Staircase.prop2
+! References: obj188_Dark_Staircase.after
 
 [ routine99768 ;	! 99768 / 0x185b8
     if (action == ##Listen) {
@@ -13388,7 +13388,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^Kicking and screaming, you are are dragged off to a grisly sacrifice...";
 ];
 
-! References: obj195_Coven_Cell.prop2
+! References: obj195_Coven_Cell.after
 
 [ routine100348 ;	! 100348 / 0x187fc
     if (verb == ##Ram) {
@@ -13431,7 +13431,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj198_cell_door.prop2
+! References: obj198_cell_door.after
 
 [ routine100640 ;	! 100640 / 0x18920
     if (action == ##Knock) {
@@ -13440,7 +13440,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj199_Cabinet_Room.prop2
+! References: obj199_Cabinet_Room.after
 
 [ routine100704 ;	! 100704 / 0x18960
     if (action == ##Read) {
@@ -13452,7 +13452,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj200_glass_cabinet.prop2
+! References: obj200_glass_cabinet.after
 
 [ routine100752 ;	! 100752 / 0x18990
     if (action == ##Attack) {
@@ -13482,7 +13482,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj201_smooth_round_stone.prop2
+! References: obj201_smooth_round_stone.after
 
 [ routine101280 ;	! 101280 / 0x18ba0
     if (action == ##Take) {
@@ -13530,7 +13530,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj204_cafe_table.prop2
+! References: obj204_cafe_table.after
 
 [ routine101692 ;	! 101692 / 0x18d3c
     if (action == ##LookUnder or ##Search) {
@@ -13643,7 +13643,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj206_timer_detonator.prop2
+! References: obj206_timer_detonator.after
 
 [ routine103296 local1 ;	! 103296 / 0x19380
     if (action == ##Read) {
@@ -13671,7 +13671,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj207_green_wire.prop2, obj208_red_wire.prop2, obj209_blue_wire.prop2, obj210_black_wire.prop2
+! References: obj207_green_wire.after, obj208_red_wire.after, obj209_blue_wire.after, obj210_black_wire.after
 
 [ routine103492 local1 ;	! 103492 / 0x19444
     if (action == ##Pull) {
@@ -13787,7 +13787,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj213_cups_and_glasses.prop2
+! References: obj213_cups_and_glasses.after
 
 [ routine104396 ;	! 104396 / 0x197cc
     if (action == ##Search or ##Read or ##LookUnder) {
@@ -13802,7 +13802,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj215_ship_in_a_bottle.prop2
+! References: obj215_ship_in_a_bottle.after
 
 [ routine104504 ;	! 104504 / 0x19838
     if (action == ##Read) {
@@ -13822,7 +13822,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj216_model_ship.prop2, obj217_stick_with_an_anchor.prop2
+! References: obj216_model_ship.after, obj217_stick_with_an_anchor.after
 
 [ routine104972 ;	! 104972 / 0x19a0c
     if (verb == ##Pull) {
@@ -13868,7 +13868,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj218_Sea_Shore.prop2
+! References: obj218_Sea_Shore.after
 
 [ routine105584 ;	! 105584 / 0x19c70
     if (action == ##Drink) {
@@ -13946,7 +13946,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj225_small_thorny_tree.prop2
+! References: obj225_small_thorny_tree.after
 
 [ routine106752 ;	! 106752 / 0x1a100
     if (action == ##Climb or ##Enter) {
@@ -13955,7 +13955,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj227_Eraina_Taverna.prop2
+! References: obj227_Eraina_Taverna.after
 
 [ routine106776 ;	! 106776 / 0x1a118
     if (action == ##Buy) {
@@ -13983,7 +13983,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj228_Ekmek_Special.prop2
+! References: obj228_Ekmek_Special.after
 
 [ routine107076 ;	! 107076 / 0x1a244
     if (action == ##Take) {
@@ -14137,7 +14137,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj241_Pan_pipes.prop2
+! References: obj241_Pan_pipes.after
 
 [ routine109056 local1 ;	! 109056 / 0x1aa00
     if (action == ##Blow) {
@@ -14187,7 +14187,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj242_Cross_Centre.prop2
+! References: obj242_Cross_Centre.after
 
 [ routine109584 ;	! 109584 / 0x1ac10
     if (verb == ##Take or ##Remove && noun == obj236_inscribed_stone or obj271_old_timber_spar && noun has scenery) {
@@ -14220,7 +14220,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj243_inscriptions.prop2
+! References: obj243_inscriptions.after
 
 [ routine109740 ;	! 109740 / 0x1acac
     if (action == ##Action257) {
@@ -14251,7 +14251,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj245_gleaming_amber_gem.prop2
+! References: obj245_gleaming_amber_gem.after
 
 [ routine109848 ;	! 109848 / 0x1ad18
     if (action == ##Take) {
@@ -14269,7 +14269,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj250_statue_of_Poseidon.prop2, obj251_statue_of_Demeter.prop2, obj252_statue_of_Ares.prop2, obj253_statue_of_Dionysus.prop2
+! References: obj250_statue_of_Poseidon.after, obj251_statue_of_Demeter.after, obj252_statue_of_Ares.after, obj253_statue_of_Dionysus.after
 
 [ routine110036 ;	! 110036 / 0x1add4
     if (action == ##Push) {
@@ -14358,7 +14358,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj256_flaming_bronze_urn.prop2
+! References: obj256_flaming_bronze_urn.after
 
 [ routine110880 ;	! 110880 / 0x1b120
     if (action == ##Action257) {
@@ -14430,7 +14430,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj265_some_landlubber_s_direction.prop2
+! References: obj265_some_landlubber_s_direction.after
 
 [ routine111692 ;	! 111692 / 0x1b44c
     "Here aboard ship, such a landlubber's direction seems inappropriate.";
@@ -14482,7 +14482,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj267_mast_and_rigging.prop2
+! References: obj267_mast_and_rigging.after
 
 [ routine111872 ;	! 111872 / 0x1b500
     if (action == ##Enter or ##Climb) {
@@ -14521,7 +14521,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 266[obj266_Aboard_Ship?];
 ];
 
-! References: obj268_Up_the_Mast.prop2
+! References: obj268_Up_the_Mast.after
 
 [ routine112212 ;	! 112212 / 0x1b654
     if (action == ##Jump) {
@@ -14553,7 +14553,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj269_flagpole.prop2
+! References: obj269_flagpole.after
 
 [ routine112420 ;	! 112420 / 0x1b724
     if (action == ##Take or ##Turn or ##Push or ##Pull) {
@@ -14562,7 +14562,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj270_flag_of_the_British_Merchant_Navy.prop2
+! References: obj270_flag_of_the_British_Merchant_Navy.after
 
 [ routine112468 ;	! 112468 / 0x1b754
     if (selfobj in obj97_comfortable_bed && verb == ##Take or ##Remove) {
@@ -14604,7 +14604,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj273_green_branch.prop2
+! References: obj273_green_branch.after
 
 [ routine112676 ;	! 112676 / 0x1b824
     if (action == ##Wave) {
@@ -14631,7 +14631,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "You shin down the anchor chain, down, down, under the keel of the Lady Magdalena, down until there is nothing but the glassy mist and the endless chain...^^...And the approaching soft, spongy, pinkish sand-bank, which welcomes you with its warmth: you step ashore, and immediately sink into the clammy, living sand, until you are engulfed altogether... and pass out.^^However, the hard attic floorboards beneath your back soon wake you again.";
 ];
 
-! References: obj275_capstan.prop2
+! References: obj275_capstan.after
 
 [ routine113332 ;	! 113332 / 0x1bab4
     if (action == ##Turn or ##Push or ##PushDir) {
@@ -14651,7 +14651,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj276_Garden_Stream.prop2
+! References: obj276_Garden_Stream.after
 
 [ routine113420 ;	! 113420 / 0x1bb0c
     if (action == ##Swim) {
@@ -14685,7 +14685,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj278_stream.prop2
+! References: obj278_stream.after
 
 [ routine113520 ;	! 113520 / 0x1bb70
     if (action == ##Drink) {
@@ -14698,7 +14698,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj280_potted_shrub.prop2
+! References: obj280_potted_shrub.after
 
 [ routine113576 ;	! 113576 / 0x1bba8
     if (action == ##Climb or ##Enter) {
@@ -14720,7 +14720,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj281_stone_wall.prop2
+! References: obj281_stone_wall.after
 
 [ routine113724 ;	! 113724 / 0x1bc3c
     if (action == ##Climb or ##Enter) {
@@ -14774,7 +14774,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "You can't go that way.^^Now, this takes a little explaining... These days, it isn't easy to keep up a house the size of Meldrew Hall, and your family has had to strike a bargain with the National Trust that the house should be open to the public in the summer months. The maze is so popular with visitors that the grass has worn away, and it's being reseeded at the moment, so you shouldn't go treading all over it.";
 ];
 
-! References: obj284_plane_tree.prop2
+! References: obj284_plane_tree.after
 
 [ routine114192 ;	! 114192 / 0x1be10
     if (action == ##Climb) {
@@ -14795,7 +14795,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj294_Up_the_Beanstalk.prop2
+! References: obj294_Up_the_Beanstalk.after
 
 [ routine114248 ;	! 114248 / 0x1be48
     if (action == ##Jump) {
@@ -14822,7 +14822,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj296_garden_roller.prop2
+! References: obj296_garden_roller.after
 
 [ routine114368 ;	! 114368 / 0x1bec0
     if (action == ##Go) {
@@ -14869,7 +14869,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj297_weed_killer_bottle.prop2
+! References: obj297_weed_killer_bottle.after
 
 [ routine114744 local1 ;	! 114744 / 0x1c038
     if (action == ##Squeeze or ##Push) {
@@ -14934,7 +14934,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj298_spade.prop2
+! References: obj298_spade.after
 
 [ routine115280 ;	! 115280 / 0x1c250
     if (action == ##Read) {
@@ -14994,7 +14994,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return local3;
 ];
 
-! References: obj299_Up_the_Plane_Tree.prop2
+! References: obj299_Up_the_Plane_Tree.after
 
 [ routine115496 ;	! 115496 / 0x1c328
     if (action == ##Jump) {
@@ -15096,7 +15096,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj301_Maze.prop2
+! References: obj301_Maze.after
 
 [ routine115944 local1 local2 ;	! 115944 / 0x1c4e8
     if (action == ##Exit) {
@@ -15163,7 +15163,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj302_Patio_in_Maze.prop2
+! References: obj302_Patio_in_Maze.after
 
 [ routine116276 ;	! 116276 / 0x1c634
     if (action == ##Go) {
@@ -15173,7 +15173,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (player notin obj296_garden_roller) {
             "Mustn't tread on the grass now!";
         }
-        return RunRoutines(obj301_Maze,prop2);
+        return RunRoutines(obj301_Maze,after);
     }
     rfalse;
 ];
@@ -15188,7 +15188,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj303_marble_rose.prop2
+! References: obj303_marble_rose.after
 
 [ routine116344 ;	! 116344 / 0x1c678
     if (action == ##Insert or ##Give && second == statue_of_Diana) {
@@ -15197,7 +15197,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj304_Viewpoint_Ledge.prop2
+! References: obj304_Viewpoint_Ledge.after
 
 [ routine116412 ;	! 116412 / 0x1c6bc
     if (action == ##Read) {
@@ -15247,7 +15247,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj310_Maze_Foundations.prop2
+! References: obj310_Maze_Foundations.after
 
 [ routine116760 local1 local2 ;	! 116760 / 0x1c818
     if (action == ##Go) {
@@ -15509,7 +15509,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj317_gold_watch_on_a_chain.prop2
+! References: obj317_gold_watch_on_a_chain.after
 
 [ routine118032 ;	! 118032 / 0x1cd10
     if (selfobj hasnt moved) {
@@ -15521,7 +15521,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: loose_board.prop2
+! References: loose_board.after
 
 [ routine118116 ;	! 118116 / 0x1cd64
     if (action == ##Open or ##Push or ##Pull or ##Turn) {
@@ -15533,7 +15533,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: crack.prop2
+! References: crack.after
 
 [ routine118180 ;	! 118180 / 0x1cda4
     if (action == ##Search) {
@@ -15649,7 +15649,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: golden_astrolabe.prop2
+! References: golden_astrolabe.after
 
 [ routine119052 ;	! 119052 / 0x1d10c
     if (action == ##Remove) {
@@ -15679,7 +15679,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: dug_hole.prop2
+! References: dug_hole.after
 
 [ routine119332 ;	! 119332 / 0x1d224
     if (action == ##Take) {
@@ -15826,7 +15826,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: hanging_rope.prop2
+! References: hanging_rope.after
 
 [ routine121808 ;	! 121808 / 0x1dbd0
     if (action == ##Climb) {
@@ -15844,7 +15844,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: Hanging_on_Rope.prop2
+! References: Hanging_on_Rope.after
 
 [ routine121880 ;	! 121880 / 0x1dc18
     if (action == ##Swing) {
@@ -15884,7 +15884,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: yellow_daisy.prop2
+! References: yellow_daisy.after
 
 [ routine122068 ;	! 122068 / 0x1dcd4
     if (action == ##Take) {
@@ -15916,7 +15916,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Stream.prop2
+! References: Stream.after
 
 [ routine122220 ;	! 122220 / 0x1dd6c
     if (action == ##Swim) {
@@ -15928,7 +15928,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: rough_ladder.prop2
+! References: rough_ladder.after
 
 [ routine122272 ;	! 122272 / 0x1dda0
     if (action == ##Climb or ##Enter) {
@@ -15938,7 +15938,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: summoning_horn.prop2
+! References: summoning_horn.after
 
 [ routine122288 ;	! 122288 / 0x1ddb0
     if (action == ##Blow) {
@@ -16010,7 +16010,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Inside_Well.prop2
+! References: Inside_Well.after
 
 [ routine122852 ;	! 122852 / 0x1dfe4
     if (verb == ##Look or ##Go or ##Read) {
@@ -16019,7 +16019,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "In this confined space there is little room for action.";
 ];
 
-! References: vents.prop2
+! References: vents.after
 
 [ routine122896 ;	! 122896 / 0x1e010
     if (action == ##Read or ##Search) {
@@ -16031,7 +16031,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Entrance.prop2
+! References: Entrance.after
 
 [ routine123076 ;	! 123076 / 0x1e0c4
     if (action == ##Go) {
@@ -16088,7 +16088,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: tent_pole.prop2
+! References: tent_pole.after
 
 [ routine123720 ;	! 123720 / 0x1e348
     if (action == ##Attack) {
@@ -16133,7 +16133,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: unconscious_Saxon_spy.prop2, Beside_the_Drive.name
+! References: unconscious_Saxon_spy.after, Beside_the_Drive.name
 
 [ routine124248 ;	! 124248 / 0x1e558
     if (action == ##Search) {
@@ -16180,7 +16180,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Walk across those hot coals!  You must be joking.";
 ];
 
-! References: ghost_of_yourself.prop2
+! References: ghost_of_yourself.after
 
 [ routine124596 ;	! 124596 / 0x1e6b4
     if (verb == ##Sleep) {
@@ -16261,7 +16261,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: heavy_iron_mascot.prop2
+! References: heavy_iron_mascot.after
 
 [ routine125196 ;	! 125196 / 0x1e90c
     if (action == ##Give) {
@@ -16360,13 +16360,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^A ghostly apparition of a venerable man hazes into view. He raises his mahogany staff and strikes it (silently) on the ground, then points it at the walls, and suddenly a flurry of green luminescence chases around you!^^He fades away again, mumbling something incoherent.";
 ];
 
-! References: metal_barrier.prop2
+! References: metal_barrier.after
 
 [ routine126404 ;	! 126404 / 0x1edc4
     "The metal barrier is indistinct, on the edge of your consciousness, and you can't get close. However familiar it seems.";
 ];
 
-! References: green_luminescence.prop2, old_village_clock.name
+! References: green_luminescence.after, old_village_clock.name
 
 [ routine126480 ;	! 126480 / 0x1ee10
     if (action == ##Take or ##Remove or ##Touch) {
@@ -16385,7 +16385,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^Confused and hazy, you feel you can understand hieroglyphics, - or hasn't that happened yet?";
 ];
 
-! References: ships_wheel.prop2
+! References: ships_wheel.after
 
 [ routine126724 ;	! 126724 / 0x1ef04
     if (action == ##Turn) {
@@ -16407,7 +16407,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Jagged_Passage.prop2, Charnel_Passage.prop2, Sarcophagus.prop2, The_Catacombs.prop2
+! References: Jagged_Passage.after, Charnel_Passage.after, Sarcophagus.after, The_Catacombs.after
 
 [ routine126932 local1 ;	! 126932 / 0x1efd4
     if (action == ##Smell) {
@@ -16431,7 +16431,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: aluminium_staircase.prop2
+! References: aluminium_staircase.after
 
 [ routine127192 ;	! 127192 / 0x1f0d8
     if (action == ##Climb or ##Enter) {
@@ -16564,7 +16564,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     " wall is occupied by a bronze mirror, reflecting the room.";
 ];
 
-! References: metal_wall.prop2
+! References: metal_wall.after
 
 [ routine127904 ;	! 127904 / 0x1f3a0
     if (action == ##Clean) {
@@ -16601,7 +16601,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^[Try ~slide b~, for instance, to move a piece into the gap.]";
 ];
 
-! References: glowing_golden_orb.prop2, cannonball.prop2
+! References: glowing_golden_orb.after, cannonball.after
 
 [ routine128404 ;	! 128404 / 0x1f594
     if (verb ~= ##Read) {
@@ -16727,7 +16727,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: large_dial.prop2
+! References: large_dial.after
 
 [ routine129376 ;	! 129376 / 0x1f960
     if (action == ##Turn) {
@@ -16743,7 +16743,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: golden_orb.prop2
+! References: golden_orb.after
 
 [ routine129592 ;	! 129592 / 0x1fa38
     if (action == ##Clean) {
@@ -16815,7 +16815,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Causeway.prop2, Island_of_Pharos.prop2, Jetty.prop2, Warehouses_and_Port.prop2
+! References: Causeway.after, Island_of_Pharos.after, Jetty.after, Warehouses_and_Port.after
 
 [ routine130472 ;	! 130472 / 0x1fda8
     if (action == ##Drink) {
@@ -16918,7 +16918,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: rusty_iron_grating.prop2
+! References: rusty_iron_grating.after
 
 [ routine131812 ;	! 131812 / 0x202e4
     if (action == ##Action257) {
@@ -16943,7 +16943,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: rusty_iron_key.prop2
+! References: rusty_iron_key.after
 
 [ routine132056 ;	! 132056 / 0x203d8
     if (action == ##Take && rusty_iron_key hasnt attrib8) {
@@ -16964,7 +16964,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^A wave suddenly splashes against your feet, up to the knees, and washes up the steps toward the grating.";
 ];
 
-! References: Harbour_Mouth.prop2, Drifting.prop2
+! References: Harbour_Mouth.after, Drifting.after
 
 [ routine132216 ;	! 132216 / 0x20478
     if (action == ##Exit or ##Swim) {
@@ -16998,7 +16998,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: Crossroads.prop2
+! References: Crossroads.after
 
 [ routine132404 ;	! 132404 / 0x20534
     if (action == ##Go) {
@@ -17014,7 +17014,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: unexciting_tombstone.prop2
+! References: unexciting_tombstone.after
 
 [ routine132568 ;	! 132568 / 0x205d8
     if (action == ##Action257) {
@@ -17033,7 +17033,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: cloak_of_many_colours.prop2, grey_cloak.prop2
+! References: cloak_of_many_colours.after, grey_cloak.after
 
 [ routine132776 ;	! 132776 / 0x206a8
     if (action == ##Turn or ##SwitchOn) {
@@ -17057,7 +17057,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj63_photographer_s_flash.name, XIIth_Dynasty_Pyramid.prop2
+! References: obj63_photographer_s_flash.name, XIIth_Dynasty_Pyramid.after
 
 [ routine132888 ;	! 132888 / 0x20718
     if (action == ##Smell) {
@@ -17066,7 +17066,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: The_Height_of_Fashion.prop2
+! References: The_Height_of_Fashion.after
 
 [ routine132972 ;	! 132972 / 0x2076c
     if (action == ##Sleep) {
@@ -17091,7 +17091,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 421[This_Is_The_Death?];
 ];
 
-! References: stone_nose_of_a_sphinx.prop2
+! References: stone_nose_of_a_sphinx.after
 
 [ routine133108 ;	! 133108 / 0x207f4
     if (action == ##Push or ##Pull) {
@@ -17128,7 +17128,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: obj263_fore_wall.name, The_Spirit_World.prop2
+! References: obj263_fore_wall.name, The_Spirit_World.after
 
 [ routine133428 ;	! 133428 / 0x20934
     if (action == ##Go) {
@@ -17243,7 +17243,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: Quite_an_Undertaking.prop2
+! References: Quite_an_Undertaking.after
 
 [ routine134680 ;	! 134680 / 0x20e18
     if (player in mummy_case) {
@@ -17271,7 +17271,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: mummy_case.prop2
+! References: mummy_case.after
 
 [ routine134932 ;	! 134932 / 0x20f14
     if (action == ##Open) {
@@ -17315,7 +17315,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "~.";
 ];
 
-! References: first_socket.prop2, second_socket.prop2, third_socket.prop2
+! References: first_socket.after, second_socket.after, third_socket.after
 
 [ routine135524 ;	! 135524 / 0x21164
     if (action == ##Action257) {
@@ -17353,7 +17353,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: model_golden_sceptre.prop2
+! References: model_golden_sceptre.after
 
 [ routine135680 local1 ;	! 135680 / 0x21200
     if (action == ##Wave) {
@@ -17387,7 +17387,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Buried_Alive.prop2
+! References: Buried_Alive.after
 
 [ routine136036 ;	! 136036 / 0x21364
     if (verb == ##Look or ##Wait or ##Inv) {
@@ -17457,7 +17457,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^Austin strolls regally along with you.";
 ];
 
-! References: defaced_door.prop2
+! References: defaced_door.after
 
 [ routine136924 ;	! 136924 / 0x216dc
     if (action == ##Open) {
@@ -17472,7 +17472,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: table.prop2
+! References: table.after
 
 [ routine137036 ;	! 137036 / 0x2174c
     if (action == ##Action257) {
@@ -17510,7 +17510,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: quarterstaff.prop2
+! References: quarterstaff.after
 
 [ routine137436 ;	! 137436 / 0x218dc
     if (action == ##Wave) {
@@ -17519,7 +17519,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: gambling_sailor.prop2
+! References: gambling_sailor.after
 
 [ routine137476 ;	! 137476 / 0x21904
     if (action == ##Gamble) {
@@ -17577,7 +17577,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: inscribed_die.prop2
+! References: inscribed_die.after
 
 [ routine137820 local1 ;	! 137820 / 0x21a5c
     if (action == ##Take) {
@@ -17683,7 +17683,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Oil_Room.prop2
+! References: Oil_Room.after
 
 [ routine138364 ;	! 138364 / 0x21c7c
     if (action == ##Anoint) {
@@ -17696,7 +17696,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: oil_filled_troughs.prop2
+! References: oil_filled_troughs.after
 
 [ routine138500 ;	! 138500 / 0x21d04
     if (action == ##Drink or ##Enter) {
@@ -17705,7 +17705,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: spindle_from_the_globe.prop2
+! References: spindle_from_the_globe.after
 
 [ routine138528 ;	! 138528 / 0x21d20
     if (action == ##Pull) {
@@ -17803,7 +17803,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 466[Lost_inside_the_Palace?];
 ];
 
-! References: silver_keepsake.name, Lost_inside_the_Palace.prop2
+! References: silver_keepsake.name, Lost_inside_the_Palace.after
 
 [ routine139872 ;	! 139872 / 0x22260
     if (action == ##Go) {
@@ -17884,7 +17884,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-! References: Palace_Balustrade.prop2
+! References: Palace_Balustrade.after
 
 [ routine140336 ;	! 140336 / 0x22430
     if (action == ##Swim or ##Jump) {
@@ -17895,7 +17895,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: astronomical_mounting.prop2
+! References: astronomical_mounting.after
 
 [ routine140508 ;	! 140508 / 0x224dc
     if (action == ##Action257) {
@@ -17913,7 +17913,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Beside_the_Drive.prop2
+! References: Beside_the_Drive.after
 
 [ routine140600 ;	! 140600 / 0x22538
     if (action == ##Go) {
@@ -17925,7 +17925,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: fire_escape.prop2
+! References: fire_escape.after
 
 [ routine140724 ;	! 140724 / 0x225b4
     if (action == ##Climb or ##Enter) {
@@ -17944,7 +17944,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "Wistaria climbs a desperately rickety fire escape up the east side of the Hall, and so might you: at the top the fire escape door into the attic is open.";
 ];
 
-! References: bunch_of_nuts.prop2
+! References: bunch_of_nuts.after
 
 [ routine140884 ;	! 140884 / 0x22654
     routine155280(41[obj41_House?]);
@@ -17991,7 +17991,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: parish_church.prop2
+! References: parish_church.after
 
 [ routine141256 ;	! 141256 / 0x227c8
     if (action == ##Enter) {
@@ -18003,7 +18003,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Goat_and_Compasses.prop2
+! References: Goat_and_Compasses.after
 
 [ routine141296 ;	! 141296 / 0x227f0
     if (action == ##Enter) {
@@ -18012,7 +18012,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: pet_monkey.prop2
+! References: pet_monkey.after
 
 [ routine141340 ;	! 141340 / 0x2281c
     if (action == ##Touch) {
@@ -18024,7 +18024,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj62_red_lamp.name, Inside_the_Orb.name, Crescent_Moon.prop2
+! References: obj62_red_lamp.name, Inside_the_Orb.name, Crescent_Moon.after
 
 [ routine141420 ;	! 141420 / 0x2286c
     if (action == ##Take or ##Remove) {
@@ -18036,7 +18036,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Racing_Times.prop2
+! References: Racing_Times.after
 
 [ routine141468 ;	! 141468 / 0x2289c
     if (action == ##Take or ##Remove) {
@@ -18045,7 +18045,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: hat_band.prop2
+! References: hat_band.after
 
 [ routine141500 ;	! 141500 / 0x228bc
     if (action == ##Take or ##Remove) {
@@ -18074,7 +18074,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "The Moonstone is huge and solid.";
 ];
 
-! References: Moonstone.prop2
+! References: Moonstone.after
 
 [ routine141728 ;	! 141728 / 0x229a0
     if (action == ##Read) {
@@ -18094,7 +18094,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: rod_of_life.prop2, rod_of_death.prop2, rod_of_love.prop2
+! References: rod_of_life.after, rod_of_death.after, rod_of_love.after
 
 [ routine141892 ;	! 141892 / 0x22a44
     if (verb == ##Take && noun hasnt moved) {
@@ -18137,7 +18137,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj163_Madame_Sosostris__famous_clairvoyante.name, Madame_Sosostris.name, West_Side_Chapel.prop2
+! References: obj163_Madame_Sosostris__famous_clairvoyante.name, Madame_Sosostris.name, West_Side_Chapel.after
 
 [ routine142212 ;	! 142212 / 0x22b84
     if (action == ##Action91 or ##Insert or ##PutOn) {
@@ -18370,7 +18370,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "The knight is confused. Perhaps you were a little rough with the skull.";
 ];
 
-! References: statue_of_Diana.prop2
+! References: statue_of_Diana.after
 
 [ routine144620 ;	! 144620 / 0x234ec
     if (action == ##PointAt) {
@@ -18385,7 +18385,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: bell_ropes.prop2
+! References: bell_ropes.after
 
 [ routine144716 ;	! 144716 / 0x2354c
     if (action == ##Pull or ##Push or ##Blow) {
@@ -18573,7 +18573,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "That direction is not for the living.";
 ];
 
-! References: Heavenly_Place.prop2
+! References: Heavenly_Place.after
 
 [ routine146452 ;	! 146452 / 0x23c14
     if (action == ##Strike) {
@@ -18676,7 +18676,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: carbolic_soap.prop2
+! References: carbolic_soap.after
 
 [ routine147544 ;	! 147544 / 0x24058
     if (action == ##Eat) {
@@ -20367,7 +20367,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         postonobj = i;
         k = verb;
         verb = ##Action256;
-        if (RunRoutines(i,prop2) ~= 0) {
+        if (RunRoutines(i,after) ~= 0) {
             verb = k;
             rtrue;
         }
@@ -20528,7 +20528,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (second > 1) {
         verb = ##Action257;
-        if (RunRoutines(second,prop2) ~= 0) {
+        if (RunRoutines(second,after) ~= 0) {
             verb = ##PutOn;
             rtrue;
         }
@@ -20594,7 +20594,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (second > 1) {
         verb = ##Action257;
-        if (RunRoutines(second,prop2) ~= 0) {
+        if (RunRoutines(second,after) ~= 0) {
             verb = ##Insert;
             rtrue;
         }
@@ -20678,7 +20678,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local4 = local5;
             local3 = verb;
             verb = ##Action256;
-            if (RunRoutines(local5,prop2) ~= 0) {
+            if (RunRoutines(local5,after) ~= 0) {
                 verb = local3;
                 rtrue;
             }
@@ -20833,7 +20833,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ ExitSub local1 ;	! 163540 / 0x27ed4
     local1 = parent(player);
     if (local1 == location || (location == thedark && local1 == real_location)) {
-        if (location.prop16 ~= 0 || (location == thedark && real_location.prop16 ~= 0)) {
+        if (location.orders ~= nothing || (location == thedark && real_location.orders ~= nothing)) {
             routine55348(##Go,12[obj12_outside?]);
             rtrue;
         }
@@ -20876,7 +20876,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (location == thedark) {
             location = real_location;
         }
-        local3 = RunRoutines(local1,prop2);
+        local3 = RunRoutines(local1,after);
         if (local3 ~= 3[s_obj?]) {
             location = local2;
         }
@@ -21648,7 +21648,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ ThrowAtSub ;	! 166180 / 0x28924
     if (second > 1) {
         verb = ##Action258;
-        if (RunRoutines(second,prop2) ~= 0) {
+        if (RunRoutines(second,after) ~= 0) {
             verb = ##ThrowAt;
             rtrue;
         }
@@ -21735,7 +21735,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     lm_n = n;
     lm_o = x1;
     verb = action;
-    if (RunRoutines(obj16_lm,prop2) ~= 0) {
+    if (RunRoutines(obj16_lm,after) ~= 0) {
         verb = s;
         rfalse;
     }
