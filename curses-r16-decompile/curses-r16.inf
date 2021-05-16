@@ -4895,7 +4895,7 @@ Global num_words;
 Global verb_word;
 Global verb_wordnum;
 Global global54;
-Global global55;
+Global multi_wanted;
 Global multihad;
 Global multi_context;
 Global pcount;
@@ -6004,7 +6004,7 @@ Array array_29185 -->	! 29185 (0x7201)
         print " available.^";
     }
     if (etype == NOTHING_PE) {
-        if (global55 == 100[obj100_Tiny_Balcony?]) {
+        if (multi_wanted == 100[obj100_Tiny_Balcony?]) {
             print "Nothing to do!^";
         } else {
             print "There are none at all available!^";
@@ -6510,7 +6510,7 @@ Array array_29185 -->	! 29185 (0x7201)
         multi_context = token;
     } else if (indef_mode == 1[?] && indef_type & 8 ~= 0 && (indef_wanted < 100 && indef_wanted > 1)) {
         multihad = 1;
-        global55 = indef_wanted;
+        multi_wanted = indef_wanted;
         etype = TOOFEW_PE;
         jump label47741;
     }
@@ -6830,7 +6830,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (i < indef_wanted && indef_wanted < 100) {
             etype = TOOFEW_PE;
-            global55 = indef_wanted;
+            multi_wanted = indef_wanted;
             multihad = multiple_object-->0;
             return 65535[?];
         }
