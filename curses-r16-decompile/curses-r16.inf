@@ -7813,7 +7813,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ GetGender person ;	! 53432 / 0xd0b8
-    if (person hasnt attrib7) {
+    if (person hasnt absent) {
         rtrue;
     }
     rfalse;
@@ -20045,7 +20045,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
   .label160785;
     if (i <= top_object) {
         address = i.&found_in;
-        if (address ~= 0 && i hasnt attrib7) {
+        if (address ~= 0 && i hasnt absent) {
             if (ZRegion(address-->0) == 2[?]) {
                 if ((address-->0)() ~= 0) {
                     move i to location;
