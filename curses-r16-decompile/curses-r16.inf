@@ -805,7 +805,7 @@ Object yourself "yourself"	! 15 / 0xf
 	each_turn routine262140,
 	capacity 100,
 	short nothing,
-	some_common_attr nothing,
+	some_common_prop nothing,
   has	animate concealed proper transparent;
 
 Object obj16_lm "lm"	! 16 / 0x10
@@ -820,7 +820,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'fire',
 	rod_action RodOfFireAction,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
@@ -834,7 +834,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'returning',
 	rod_action RodOfReturningAction,
 	devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
@@ -848,7 +848,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'stalking',
 	rod_action RodOfStalkingAction,
 	devil_hint "It has no horticultural application.",
@@ -862,7 +862,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'infinity',
 	rod_action RodOfInfinityAction,
 	angel_hint "Well, where might you have seen infinity before?",
@@ -876,7 +876,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'husbandry',
 	rod_action RodOfHusbandryAction,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
@@ -890,7 +890,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'bronze',
 	rod_action RodOfBronzeAction,
 	angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
@@ -904,7 +904,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'sacrifice',
 	rod_action RodOfSacrificeAction,
 	angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
@@ -918,7 +918,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'luck',
 	rod_action RodOfLuckAction,
 	angel_hint "Well, if there's such a thing as luck, maybe this would help.",
@@ -932,7 +932,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_word 'ice',
 	rod_action RodOfIceAction,
 	angel_hint "Use only at heated moments, when affairs are delicately balanced.",
@@ -945,7 +945,7 @@ Object rod_of_language "Language"	! 26 / 0x1a
 	u_to routine58852,
 	article "the",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_action RodOfLanguageAction,
   has	rod_attr;
 
@@ -956,7 +956,7 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 	u_to routine58852,
 	article "the",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_action RodOfReturningAction,
   has	rod_attr;
 
@@ -970,7 +970,7 @@ Object rod_of_life "Life"	! 28 / 0x1c
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	rod_attr high_rod;
@@ -984,7 +984,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
@@ -998,7 +998,7 @@ Object rod_of_love "Love"	! 30 / 0x1e
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
 	short rod_short,
-	some_common_attr routine58728,
+	some_common_prop routine58728,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
@@ -1068,7 +1068,7 @@ Object -> -> obj38_History_of_the_Meldrews__vol__II_ "History of the Meldrews (v
 	nw_to n_obj,
 	description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends of the earth, he never could find a detail he wanted for volume I, and it was never published. Somehow, this typifies your family, and consulting this worthy book about your ancestors makes you realise what an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an awful lot of children. So many Meldrews are listed here that you'll have to look them up individually.",
 	article "the",
-	some_common_attr routine64400,
+	some_common_prop routine64400,
 	devil_hint "What a boring old book!  There's nobody worth looking up.",
   has	concealed consultable;
 
@@ -1110,7 +1110,7 @@ Object -> obj43_classical_dictionary "classical dictionary"	! 43 / 0x2b
 	initial "There's a little book on the tiny bedside table.",
 	description "~Hobson's: A Choice Classical Dictionary~. It claims to have numerous entries.",
 	article "Hobson's",
-	some_common_attr routine64400,
+	some_common_prop routine64400,
 	devil_hint "Lots of naughty words in that one.",
   has	consultable;
 
@@ -1304,7 +1304,7 @@ Object -> obj69_romantic_novel "romantic novel"	! 69 / 0x45
 	nw_to n_obj,
 	initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
 	description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
-	some_common_attr routine64400,
+	some_common_prop routine64400,
 	devil_hint "Don't bother reading or thinking about it. Nothing to do with your family.",
   has	consultable;
 
@@ -1312,7 +1312,7 @@ Object -> obj70_book_of_Twenties_poetry "book of Twenties poetry"	! 70 / 0x46
   with	name 'poetry' 'book',
 	after routine77704,
 	nw_to n_obj,
-	some_common_attr routine64400,
+	some_common_prop routine64400,
 	devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
   has	concealed consultable;
 
@@ -1523,7 +1523,7 @@ Object -> obj95_ancient_prayer_book "ancient prayer book"	! 95 / 0x5f
 	initial "The dust and grime on the floor almost obscures an ancient prayer book.",
 	description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
 	article "an",
-	some_common_attr routine64400,
+	some_common_prop routine64400,
 	devil_hint "The really good research was in his earlier years.",
   has	consultable;
 
@@ -2066,7 +2066,7 @@ Object Grim_Reaper_card "Grim Reaper"	! 164 / 0xa4
 	description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "It's vital you slide right along with this one.",
   has	card;
 
@@ -2078,7 +2078,7 @@ Object Fool_card "Fool"	! 165 / 0xa5
 	description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "Don't worry, he won't slide down the cliff.",
   has	card;
 
@@ -2090,7 +2090,7 @@ Object Drowned_Sailor_card "Drowned Sailor"	! 166 / 0xa6
 	description "Those are pearls that were his eyes...",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "He's one of my colleagues now, of course.",
   has	card;
 
@@ -2257,7 +2257,7 @@ Object -> -> obj190_Castle "Castle"	! 190 / 0xbe
 	description "A stone castle on a hill.",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "It leads nowhere.",
   has	card;
 
@@ -2269,7 +2269,7 @@ Object -> -> obj191_Star "Star"	! 191 / 0xbf
 	description "A single bright light in the darkness.",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "Ugh, what a nasty bright light. Good thing you'll never go there.",
   has	card;
 
@@ -2279,7 +2279,7 @@ Object -> -> obj192_Eight_of_Wands "Eight of Wands"	! 192 / 0xc0
 	nw_to "Tarot cards",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	rod_assoc rod_of_infinity,
 	devil_hint "There's less to this card than meets the eye.",
   has	card attrib33;
@@ -2292,7 +2292,7 @@ Object -> -> obj193_Maiden "Maiden"	! 193 / 0xc1
 	description "Andromeda chained to a rock on the sea-shore.",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "What an ugly girl!  Bet she's good for a laugh though.",
   has	card;
 
@@ -2327,7 +2327,7 @@ Object obj194_Ace_of_Cups "Ace of Cups"	! 194 / 0xc2
 	description "It shows a great many crystal-glass cups and glasses.",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "It leads nowhere.",
   has	card;
 
@@ -4308,28 +4308,28 @@ Object -> pigeonhole "pigeonhole"	! 449 / 0x1c1
 Object tube_with_an_alpha_on "tube with an alpha on"	! 450 / 0x1c2
   with	name 'alpha' 'with' 'tube' 'cylinder',
 	description "An open-ended hollow tube, marked with a Greek capital Alpha.",
-	some_common_attr routine138240,
+	some_common_prop routine138240,
 	angel_hint "Surely this is addressed to someone?",
   has	container open;
 
 Object -> scroll_bearing_an_epic_poem "scroll bearing an epic poem"	! 453 / 0x1c5
   with	name 'long' 'epic' 'scroll' 'poem',
 	description "All Greek to you, alas, and running on for 1000 lines or more.",
-	some_common_attr routine138300,
+	some_common_prop routine138300,
 	angel_hint "Oh my. Well, the plot, um, there are seven attackers, all with different shields, one for each of the seven city gates, and it's a civil war so of course the brothers are really in a duel and there are champions and the women are upset but it's all because of their brother who was really their father... Never mind. It's strictly for aficionados.",
   has	;
 
 Object tube_with_a_kappa_on "tube with a kappa on"	! 451 / 0x1c3
   with	name 'kappa' 'with' 'tube' 'cylinder',
 	description "An open-ended hollow tube, marked with a Greek capital Kappa.",
-	some_common_attr routine138240,
+	some_common_prop routine138240,
 	angel_hint "Surely this is addressed to someone?",
   has	container open;
 
 Object -> scroll_bearing_a_short_poem "scroll bearing a short poem"	! 452 / 0x1c4
   with	name 'short' 'scroll' 'poem',
 	description "All Greek to you, alas. Only a dozen lines or so, though.",
-	some_common_attr routine138300,
+	some_common_prop routine138300,
 	angel_hint "Oh my. ~I touch your... and the scent of you rises from... your beautiful...~  I'd better not read the rest. Strictly for aficionados.",
   has	;
 
@@ -4536,7 +4536,7 @@ Object -> -> Crescent_Moon "Crescent Moon"	! 483 / 0x1e3
 	description "Some kind of crescent moon, an old Druidical symbol.",
 	article "the",
 	short routine64336,
-	some_common_attr routine64276,
+	some_common_prop routine64276,
 	devil_hint "It leads nowhere.",
   has	card;
 
@@ -7106,15 +7106,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parent(o1) == Compass || parent(o2) == Compass) {
         rfalse;
     }
-    if (o1.some_common_attr ~= nothing || o2.some_common_attr ~= nothing) {
-        if (o1.some_common_attr ~= o2.some_common_attr) {
+    if (o1.some_common_prop ~= nothing || o2.some_common_prop ~= nothing) {
+        if (o1.some_common_prop ~= o2.some_common_prop) {
             rfalse;
         }
         parser_action = ##TheSame;
         parser_one = o1;
         parser_two = o2;
         j = wn;
-        i = RunRoutines(o1,some_common_attr);
+        i = RunRoutines(o1,some_common_prop);
         wn = j;
         if (i == 65535[?]) {
             rtrue;
@@ -7552,10 +7552,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         MakeMatch(obj,0);
         rfalse;
     }
-    if (obj.some_common_attr ~= nothing) {
+    if (obj.some_common_prop ~= nothing) {
         parser_action = ##Action65535;
         j = wn;
-        k = RunRoutines(obj,some_common_attr);
+        k = RunRoutines(obj,some_common_prop);
         if (k > 0) {
             wn = j + k;
           .label52497;
@@ -9114,7 +9114,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: rod_of_fire.some_common_attr, rod_of_returning.some_common_attr, rod_of_stalking.some_common_attr, rod_of_infinity.some_common_attr, rod_of_husbandry.some_common_attr, rod_of_bronze.some_common_attr, rod_of_sacrifice.some_common_attr, rod_of_luck.some_common_attr, rod_of_ice.some_common_attr, rod_of_language.some_common_attr, rod_of_returning2.some_common_attr, rod_of_life.some_common_attr, rod_of_death.some_common_attr, rod_of_love.some_common_attr
+! References: rod_of_fire.some_common_prop, rod_of_returning.some_common_prop, rod_of_stalking.some_common_prop, rod_of_infinity.some_common_prop, rod_of_husbandry.some_common_prop, rod_of_bronze.some_common_prop, rod_of_sacrifice.some_common_prop, rod_of_luck.some_common_prop, rod_of_ice.some_common_prop, rod_of_language.some_common_prop, rod_of_returning2.some_common_prop, rod_of_life.some_common_prop, rod_of_death.some_common_prop, rod_of_love.some_common_prop
 
 [ routine58728 local1 local2 ;	! 58728 / 0xe568
     if (parser_action == ##TheSame) {
@@ -9658,7 +9658,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Grim_Reaper_card.some_common_attr, Fool_card.some_common_attr, Drowned_Sailor_card.some_common_attr, obj190_Castle.some_common_attr, obj191_Star.some_common_attr, obj192_Eight_of_Wands.some_common_attr, obj193_Maiden.some_common_attr, obj194_Ace_of_Cups.some_common_attr, Crescent_Moon.some_common_attr
+! References: Grim_Reaper_card.some_common_prop, Fool_card.some_common_prop, Drowned_Sailor_card.some_common_prop, obj190_Castle.some_common_prop, obj191_Star.some_common_prop, obj192_Eight_of_Wands.some_common_prop, obj193_Maiden.some_common_prop, obj194_Ace_of_Cups.some_common_prop, Crescent_Moon.some_common_prop
 
 [ routine64276 local1 local2 ;	! 64276 / 0xfb14
     if (parser_action == ##TheSame) {
@@ -9695,7 +9695,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj38_History_of_the_Meldrews__vol__II_.some_common_attr, obj43_classical_dictionary.some_common_attr, obj69_romantic_novel.some_common_attr, obj70_book_of_Twenties_poetry.some_common_attr, obj95_ancient_prayer_book.some_common_attr
+! References: obj38_History_of_the_Meldrews__vol__II_.some_common_prop, obj43_classical_dictionary.some_common_prop, obj69_romantic_novel.some_common_prop, obj70_book_of_Twenties_poetry.some_common_prop, obj95_ancient_prayer_book.some_common_prop
 
 [ routine64400 ;	! 64400 / 0xfb90
     if (NextWord() == 30738['books'?] or 41025['volumes'?] or 40539['tomes'?]) {
@@ -17639,7 +17639,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: tube_with_an_alpha_on.some_common_attr, tube_with_a_kappa_on.some_common_attr
+! References: tube_with_an_alpha_on.some_common_prop, tube_with_a_kappa_on.some_common_prop
 
 [ routine138240 local1 local2 ;	! 138240 / 0x21c00
     if (parser_action == ##TheSame) {
@@ -17661,7 +17661,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: scroll_bearing_a_short_poem.some_common_attr, scroll_bearing_an_epic_poem.some_common_attr
+! References: scroll_bearing_a_short_poem.some_common_prop, scroll_bearing_an_epic_poem.some_common_prop
 
 [ routine138300 local1 local2 ;	! 138300 / 0x21c3c
     if (parser_action == ##TheSame) {
