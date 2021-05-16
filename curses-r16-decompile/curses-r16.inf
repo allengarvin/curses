@@ -3927,7 +3927,7 @@ Object Jetty "Jetty"	! 400 / 0x190
 	description "Down on a dark stone jetty, where the waters of the Alexandrian harbour splash insistently. Rough-hewn steps rise up the island through the grating.",
 	each_turn routine132112,
 	section T_ALEXANDRIA,
-  has	light scored attrib39;
+  has	light scored cat_nofollow;
 
 Object -> skiff "skiff"	! 401 / 0x191
   with	name 'skiff' 'boat' 'small',
@@ -3949,7 +3949,7 @@ Object Harbour_Mouth "Harbour Mouth"	! 403 / 0x193
 	cant_go "The skiff is not under your control.",
 	each_turn routine132276,
 	section T_ALEXANDRIA,
-  has	light attrib39;
+  has	light cat_nofollow;
 
 Object Drifting "Drifting"	! 404 / 0x194
   with	name 'curious' 'fish' 'zephyr' 'sea',
@@ -3958,7 +3958,7 @@ Object Drifting "Drifting"	! 404 / 0x194
 	cant_go "You feel only a drug-like calm.",
 	each_turn routine132340,
 	section T_ALEXANDRIA,
-  has	light attrib39;
+  has	light cat_nofollow;
 
 Object Crossroads "Crossroads"	! 405 / 0x195
   with	name 'processio' 'tower',
@@ -4016,7 +4016,7 @@ Object XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"	! 411 / 0x19b
 	n_to Necropolis,
 	description "Ransacked, dimly-lit, cramped and empty, this rough-built and uneven burial mound is to the Great Pyramids of Giza (built just a century before) what the summerhouse in your garden is to Windsor Castle. There are only dull painted writings, an unpleasant odour and a passage out to the north.",
 	section T_ALEXANDRIA,
-  has	light attrib39;
+  has	light cat_nofollow;
 
 Object -> painted_writings "painted writings"	! 412 / 0x19c
   with	name 'painted' 'paintings' 'writing' 'writings',
@@ -4032,7 +4032,7 @@ Object The_Height_of_Fashion "The Height of Fashion"	! 413 / 0x19d
 	u_to Necropolis,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling. This is the latest in modern funerary apartments.^^There's a couch for visitors, a table, a flight of steps up and a doorway to the west, flanked by two stone sphinxes.",
 	section T_ALEXANDRIA,
-  has	scored attrib39;
+  has	scored cat_nofollow;
 
 Object -> sphinxes "sphinxes"	! 414 / 0x19e
   with	name 'sphinx' 'sphinxes' 'stone' 'statue' 'statues',
@@ -4093,7 +4093,7 @@ Object This_Is_The_Death "This Is The Death"	! 421 / 0x1a5
 	description "The passage, descending from the east down to the west, is cut from marble, lined with painted scenes from the fashionable comedies of Menander, decorated with Alexandrian coloured glass ornaments.^^The expression ~You can't take it with you~ doesn't seem to be popular hereabouts.",
 	cant_go "Just an east-west passage.",
 	section T_ALEXANDRIA,
-  has	attrib39;
+  has	cat_nofollow;
 
 Object -> model_of_ugly_animal "model of an animal so ugly you can't bear to look at it"	! 422 / 0x1a6
   with	name 'model' 'animal' 'ugly' 'monkey',
@@ -4119,7 +4119,7 @@ Object Quite_an_Undertaking "Quite an Undertaking"	! 424 / 0x1a8
 	description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
 	cant_go "The passage rises sharply to the east.",
 	section T_ALEXANDRIA,
-  has	scored attrib39;
+  has	scored cat_nofollow;
 
 Object -> painting_of_the_priest "painting of the priest"	! 425 / 0x1a9
   with	name 'painting' 'of' 'priest' 'sosostris',
@@ -4164,7 +4164,7 @@ Object Buried_Alive "Buried Alive"	! 431 / 0x1af
 	time_left 5,
 	each_turn routine136372,
 	section T_ALEXANDRIA,
-  has	light attrib39;
+  has	light cat_nofollow;
 
 Object adamantine_skull "adamantine skull"	! 432 / 0x1b0
   with	name 'adamantine' 'skull' 'adamant',
@@ -4226,7 +4226,7 @@ Object Consulting_Room "Consulting Room"	! 439 / 0x1b7
 	d_to A_Tower,
 	description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads east. In the centre of the room is a table, which is bare.",
 	section T_ALEXANDRIA,
-  has	light scored attrib39;
+  has	light scored cat_nofollow;
 
 Object -> table "table"	! 440 / 0x1b8
   with	name 'bare' 'table',
@@ -4432,7 +4432,7 @@ Object Lost_inside_the_Palace "Lost inside the Palace"	! 466 / 0x1d2
 	nw_to Lost_inside_the_Palace,
 	description "Scholars are divided on the origin of the ~maze~ legend: some hold that to a primitive culture, the Knossos palace was so complex as to seem a maze, and the king so fearsome as to seem a Minotaur.^^Others say the early palaces really were labyrinths to protect sacred altars.^^And you think it's because this is a maze of twisty little passages, all alike.",
 	section T_ALEXANDRIA,
-  has	light scored attrib39;
+  has	light scored cat_nofollow;
 
 Object -> slave "slave"	! 467 / 0x1d3
   with	name 'slave' 'deaf' 'mute',
@@ -4446,7 +4446,7 @@ Object Palace_Balustrade "Palace Balustrade"	! 468 / 0x1d4
 	description "The magnificent balcony overlooking the Royal harbour of Alexandria. In two hundred years' time, Julius Caesar will be besieged here, and will hold the palace with a tiny force of men against an entire army: and will lose his heart to Cleopatra...^^For the mean time, this is a broad stone balustraded balcony. The coin-bright moon, low in the sky, reflects off the black waters far below.",
 	cant_go "There seems to be absolutely no way off the balcony, as the stone doors to the heart of the palace are sealed shut.",
 	section T_ALEXANDRIA,
-  has	light scored attrib39;
+  has	light scored cat_nofollow;
 
 Object -> astronomical_mounting "astronomical mounting"	! 469 / 0x1d5
   with	name 'mounting' 'socket' 'astronomical' 'tripod',
@@ -17450,7 +17450,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Outside_the_Royal_Museum.daemon
 
 [ routine136876 ;	! 136876 / 0x216ac
-    if (game_section ~= T_ALEXANDRIA || location has attrib39 || obj58_Austin in location) {
+    if (game_section ~= T_ALEXANDRIA || location has cat_nofollow || obj58_Austin in location) {
         rfalse;
     }
     move obj58_Austin to location;
