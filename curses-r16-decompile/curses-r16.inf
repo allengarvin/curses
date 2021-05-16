@@ -7342,160 +7342,160 @@ Array array_29185 -->	! 29185 (0x7201)
         rtrue;
     }
     if (context == 5[w_obj?] && advance_warning ~= 65535) {
-        if (routine51504(advance_warning) == 1[?]) {
-            routine51864(advance_warning,0,context);
+        if (IsSeeThrough(advance_warning) == 1[?]) {
+            ScopeWithin(advance_warning,0,context);
         }
     } else {
-        routine51864(domain1,domain2,context);
-        routine51864(domain2,0,context);
+        ScopeWithin(domain1,domain2,context);
+        ScopeWithin(domain2,0,context);
     }
     rtrue;
 ];
 
-[ routine51504 local1 ;	! 51504 / 0xc930
-    if (local1 has supporter || local1 has transparent || (local1 has container && local1 has open)) {
+[ IsSeeThrough o ;	! 51504 / 0xc930
+    if (o has supporter || o has transparent || (o has container && o has open)) {
         rtrue;
     }
     rfalse;
 ];
 
-[ routine51528 local1 ;	! 51528 / 0xc948
+[ PlaceInScope thing ;	! 51528 / 0xc948
     if (scope_reason ~= PARSING_REASON or TALKING_REASON) {
-        routine51556(local1);
+        DoScopeAction(thing);
         rtrue;
     }
     wn = global70;
-    routine52400(local1);
+    routine52400(thing);
     global96 = 1[?];
     rtrue;
 ];
 
-[ routine51556 local1 local2 local3 ;	! 51556 / 0xc964
-    local2 = scope_reason;
-    local3 = parser_one;
+[ DoScopeAction thing s p1 ;	! 51556 / 0xc964
+    s = scope_reason;
+    p1 = parser_one;
     if (parser_trace >= 5) {
         print "[DSA on ";
-        Defart(local1);
+        Defart(thing);
         print " with reason = ", scope_reason, " p1 = ", parser_one, " p2 = ", parser_two, "]^";
     }
     generic_globvar = scope_reason;
     if (generic_globvar == 3[s_obj?]) {
-        if (local1.prop9 == nothing or NULL) {
+        if (thing.prop9 == nothing or NULL) {
             rtrue;
         }
         if (parser_trace >= 2) {
             print "[Considering react_before for ";
-            Defart(local1);
+            Defart(thing);
             print "]^";
         }
         if (parser_one == 0) {
-            parser_one = routine53736(local1,9[sw_obj?]);
+            parser_one = routine53736(thing,9[sw_obj?]);
         }
     } else if (generic_globvar == 4[e_obj?]) {
-        if (local1.nw_to == nothing or NULL) {
+        if (thing.nw_to == nothing or NULL) {
             rtrue;
         }
         if (parser_trace >= 2) {
             print "[Considering react_after for ";
-            Defart(local1);
+            Defart(thing);
             print "]^";
         }
         if (parser_one == 0) {
-            parser_one = routine53736(local1,11[d_obj?]);
+            parser_one = routine53736(thing,11[d_obj?]);
         }
     } else if (generic_globvar == 2[?]) {
-        if (local1.&each_turn == 0) {
+        if (thing.&each_turn == 0) {
             rtrue;
         }
         if (parser_trace >= 2) {
             print "[Considering each_turn for ";
-            Defart(local1);
+            Defart(thing);
             print "]^";
         }
-        PrintOrRun(local1,26[rod_of_language?]);
+        PrintOrRun(thing,26[rod_of_language?]);
     } else if (generic_globvar == 6[ne_obj?]) {
-        if (local1 == parser_one) {
+        if (thing == parser_one) {
             parser_two = 1[?];
         }
     } else if (generic_globvar == 5[w_obj?]) {
-        generic_globvar = parser_one(local1);
-        parser_one = local3;
+        generic_globvar = parser_one(thing);
+        parser_one = p1;
     }
-    scope_reason = local2;
+    scope_reason = s;
     rtrue;
 ];
 
-[ routine51864 local1 local2 local3 ;	! 51864 / 0xca98
-    if (local1 == 0) {
+[ ScopeWithin domain nosearch context ;	! 51864 / 0xca98
+    if (domain == 0) {
         rtrue;
     }
-    if (local3 == 4[e_obj?] && local1 == advance_warning) {
+    if (context == 4[e_obj?] && domain == advance_warning) {
         rtrue;
     }
-    if (indef_mode == 0 && local1 == actor_location && scope_reason == PARSING_REASON && local3 ~= 6[ne_obj?]) {
-        routine51864(1[?]);
+    if (indef_mode == 0 && domain == actor_location && scope_reason == PARSING_REASON && context ~= 6[ne_obj?]) {
+        ScopeWithin(1[?]);
     }
-    local1 = child(local1);
+    domain = child(domain);
   .label51911;
-    if (local1 ~= 0) {
-        routine51932(local1,local2,local3);
-        local1 = sibling(local1);
+    if (domain ~= 0) {
+        ScopeWithin_O(domain,nosearch,context);
+        domain = sibling(domain);
         jump label51911;
     }
     rtrue;
 ];
 
-[ routine51932 local1 local2 local3 local4 local5 local6 ;	! 51932 / 0xcadc
+[ ScopeWithin_O domain nosearch context i ad n ;	! 51932 / 0xcadc
     if (scope_reason ~= PARSING_REASON or TALKING_REASON) {
-        routine51556(local1);
+        DoScopeAction(domain);
     } else if (global70 > num_words) {
-        local4 = parser_trace;
+        i = parser_trace;
         parser_trace = 0;
-        if (local4 >= 5) {
+        if (i >= 5) {
             print "     Out of text: matching ";
-            Defart(local1);
+            Defart(domain);
             new_line;
         }
-        routine52240(local1,1[?]);
-        parser_trace = local4;
+        routine52240(domain,1[?]);
+        parser_trace = i;
     } else {
         wn = global70;
-        local4 = routine52812();
-        if (local4 == 1[?] && itobj == local1) {
+        i = routine52812();
+        if (i == 1[?] && itobj == domain) {
             routine52240(itobj,1[?]);
         }
-        if (local4 == 2[?] && himobj == local1) {
+        if (i == 2[?] && himobj == domain) {
             routine52240(himobj,1[?]);
         }
-        if (local4 == 3[s_obj?] && herobj == local1) {
+        if (i == 3[s_obj?] && herobj == domain) {
             routine52240(herobj,1[?]);
         }
-        if (local4 == 4[e_obj?] && player == local1) {
+        if (i == 4[e_obj?] && player == domain) {
             routine52240(player,1[?]);
         }
         --wn;
-        routine52400(local1);
+        routine52400(domain);
     }
-    if (child(local1) ~= nothing && local1 ~= local2 && routine51504(local1) == 1[?]) {
-        routine51864(local1,0,local3);
+    if (child(domain) ~= nothing && domain ~= nosearch && IsSeeThrough(domain) == 1[?]) {
+        ScopeWithin(domain,0,context);
     }
-    local5 = local1.&prop10;
-    if (local5 ~= 0) {
-        if (UnsignedCompare(local5-->0,top_object) > 0) {
-            global104 = 2 + local3;
-            routine53736(local1,10[u_obj?]);
+    ad = domain.&prop10;
+    if (ad ~= 0) {
+        if (UnsignedCompare(ad-->0,top_object) > 0) {
+            global104 = 2 + context;
+            routine53736(domain,10[u_obj?]);
             global104 = 0;
         } else {
-            generic_globvar = local1.&prop10;
+            generic_globvar = domain.&prop10;
             if (generic_globvar) {
                 generic_globvar = get_prop_len(generic_globvar);
             }
-            local6 = generic_globvar;
-            local4 = 0;
+            n = generic_globvar;
+            i = 0;
           .label52171;
-            if (2 * local4 < local6) {
-                routine51932(local5-->local4,0,local3);
-                ++local4;
+            if (2 * i < n) {
+                ScopeWithin_O(ad-->i,0,context);
+                ++i;
                 jump label52171;
             }
         }
@@ -7505,7 +7505,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine52200 local1 ;	! 52200 / 0xcbe8
     if (global104 >= 2) {
-        routine51932(local1,0,global104 - 2);
+        ScopeWithin_O(local1,0,global104 - 2);
     }
     if (global104 == 1[?] && HasLightSource(local1) == 1[?]) {
         global105 = 1[?];
@@ -8732,7 +8732,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (deadflag == 0) {
         scope_reason = EACH_TURN_REASON;
         verb_word = 0;
-        routine51556(location);
+        DoScopeAction(location);
         SearchScope(location,player,0);
         scope_reason = PARSING_REASON;
     }
@@ -8797,7 +8797,7 @@ Array array_29185 -->	! 29185 (0x7201)
         local2 = sibling(local2);
         jump label57053;
     }
-    if (o has enterable || routine51504(o) == 1[?]) {
+    if (o has enterable || IsSeeThrough(o) == 1[?]) {
         return OffersLight(parent(o));
     }
     rfalse;
@@ -8810,7 +8810,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (i has light) {
         rtrue;
     }
-    if (i has enterable || routine51504(i) == 1[?]) {
+    if (i has enterable || IsSeeThrough(i) == 1[?]) {
         i = child(i);
       .label57141;
         if (i ~= 0) {
