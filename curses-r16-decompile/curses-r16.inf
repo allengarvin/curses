@@ -9105,7 +9105,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "The silver plaque on this mahogany rod proclaims it as ";
         Defart(selfobj);
         print ".";
-        if (noun has attrib38) {
+        if (noun has charged) {
             "  It is fully charged up.";
         }
         new_line;
@@ -9158,7 +9158,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rod_of_fire.u_to, rod_of_returning.u_to, rod_of_stalking.u_to, rod_of_infinity.u_to, rod_of_husbandry.u_to, rod_of_bronze.u_to, rod_of_sacrifice.u_to, rod_of_luck.u_to, rod_of_ice.u_to, rod_of_language.u_to, rod_of_returning2.u_to, rod_of_life.u_to, rod_of_death.u_to, rod_of_love.u_to
 
 [ routine58852 ;	! 58852 / 0xe5e4
-    if (global115 == 2[?] && selfobj has attrib38) {
+    if (global115 == 2[?] && selfobj has charged) {
         print " (charged)";
     }
     rfalse;
@@ -23453,11 +23453,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         Defart(noun);
         " on the ground.";
     }
-    if (noun has attrib38) {
+    if (noun has charged) {
         deadflag = DIED;
         "The already-charged rod explodes with cataclysmic violence, burying everything nearby in rubble!";
     }
-    give noun attrib38;
+    give noun charged;
     Achieved(6);
     if (AfterRoutines() == true) {
         rtrue;
@@ -23492,7 +23492,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun hasnt rod_attr) {
         "Ok. (Why?)";
     }
-    if (noun hasnt attrib38) {
+    if (noun hasnt charged) {
         "Nothing happens.";
     }
     Achieved(7);
@@ -23500,7 +23500,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 == 65535[?]) {
         "** No rod routine **";
     }
-    give noun ~attrib38;
+    give noun ~charged;
     generic_globvar = local1();
     rtrue;
 ];
