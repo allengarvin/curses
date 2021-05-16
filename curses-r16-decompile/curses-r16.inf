@@ -4876,7 +4876,7 @@ Global noun;
 Global second;
 Global special_word;
 Global special_number;
-Global global36;
+Global parsed_number;
 Global multiflag;
 Global notheld_mode;
 Global onotheld_mode;
@@ -6338,9 +6338,9 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (l == 1[?]) {
             if (nsns == 0) {
-                special_number1 = global36;
+                special_number1 = parsed_number;
             } else {
-                special_number2 = global36;
+                special_number2 = parsed_number;
             }
             ++nsns;
         }
@@ -23717,9 +23717,9 @@ Array array_29185 -->	! 29185 (0x7201)
     if (action_to_be == ##Ask or ##Answer or ##Tell) {
         local1 = wn;
         wn = consult_from;
-        global36 = NextWord();
-        if (global36 == 40278['the'?] && consult_words > 1) {
-            global36 = NextWord();
+        parsed_number = NextWord();
+        if (parsed_number == 40278 && consult_words > 1) {
+            parsed_number = NextWord();
         }
         wn = local1;
         return 1[?];
@@ -23981,7 +23981,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (local3 == 65535[?]) {
         return 65535[?];
     }
-    global36 = local3;
+    parsed_number = local3;
     ++wn;
     return 1[?];
 ];
