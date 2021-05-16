@@ -703,7 +703,7 @@ Verb 'score'
 
 
 Object Compass "compass"	! 1 / 0x1
-  has	attrib2;
+  has	workflag;
 
 Object -> n_obj "north wall"	! 2 / 0x2
   with	name 'n//' 'north' 'wall',
@@ -806,7 +806,7 @@ Object yourself "yourself"	! 15 / 0xf
 	capacity 100,
 	short nothing,
 	parse_name nothing,
-  has	animate attrib2 proper transparent;
+  has	animate workflag proper transparent;
 
 Object obj16_lm "lm"	! 16 / 0x10
   with	after routine58172,
@@ -987,7 +987,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
 	parse_name routine58728,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
-  has	attrib2 rod_attr high_rod;
+  has	workflag rod_attr high_rod;
 
 Object rod_of_love "Love"	! 30 / 0x1e
   with	name 'love' 'high' 'rod' 'of',
@@ -1001,7 +1001,7 @@ Object rod_of_love "Love"	! 30 / 0x1e
 	parse_name routine58728,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
-  has	attrib2 rod_attr high_rod;
+  has	workflag rod_attr high_rod;
 
 Object obj31_crumpled_piece_of_paper "crumpled piece of paper"	! 31 / 0x1f
   with	name 'crumpled' 'paper',
@@ -1070,7 +1070,7 @@ Object -> -> obj38_History_of_the_Meldrews__vol__II_ "History of the Meldrews (v
 	article "the",
 	parse_name routine64400,
 	devil_hint "What a boring old book!  There's nobody worth looking up.",
-  has	attrib2 consultable;
+  has	workflag consultable;
 
 Object obj39_antique_jewellery_box "antique jewellery box"	! 39 / 0x27
   with	name 'antique' 'jewellery' 'box',
@@ -1079,7 +1079,7 @@ Object obj39_antique_jewellery_box "antique jewellery box"	! 39 / 0x27
 	description "A graceful lady's box, bearing the initials A. M. and engraved with a drawing of what seems to be a rabbit's foot.",
 	article "an",
 	angel_hint "Try investigating the world of the romantic novel, out on the balconies of life.",
-  has	attrib2 container lockable locked openable;
+  has	workflag container lockable locked openable;
 
 Object -> obj40_four_leafed_clover "four-leafed clover"	! 40 / 0x28
   with	name 'four' 'leafed' 'clover',
@@ -1296,7 +1296,7 @@ Object -> obj68_water_pipe "water pipe"	! 68 / 0x44
   with	name 'water' 'pipe' 'joint' 'pipes',
 	after routine77352,
 	description "The joint on the water pipe looks none too sturdy.",
-  has	attrib2 static;
+  has	workflag static;
 
 Object -> obj69_romantic_novel "romantic novel"	! 69 / 0x45
   with	name 'romance' 'romantic' 'novel' 'book',
@@ -1314,7 +1314,7 @@ Object -> obj70_book_of_Twenties_poetry "book of Twenties poetry"	! 70 / 0x46
 	nw_to n_obj,
 	parse_name routine64400,
 	devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
-  has	attrib2 consultable;
+  has	workflag consultable;
 
 Object obj71_Souvenirs_Room "Souvenirs Room"	! 71 / 0x47
   with	name 'souvenirs' 'holiday' 'snaps' 'beam',
@@ -1338,7 +1338,7 @@ Object -> obj73_south_wall "south wall"	! 73 / 0x49
   with	after routine79012,
 	n_to nothing,
 	w_to ne_obj,
-  has	attrib2 door open scenery static;
+  has	workflag door open scenery static;
 
 Object obj74_East_Annexe "East Annexe"	! 74 / 0x4a
   with	name 'gap' 'tiles' 'roof',
@@ -1397,7 +1397,7 @@ Object obj80_secret_door "secret door"	! 80 / 0x50
 	s_to "The secret door is closed.",
 	w_to ne_obj,
 	initial "A secret door stands open in the south wall!",
-  has	attrib2 door open openable static;
+  has	workflag door open openable static;
 
 Object obj81_fire_escape "fire escape"	! 81 / 0x51
   with	name 'fire' 'escape' 'hatchway' 'hatch',
@@ -1429,7 +1429,7 @@ Object -> obj84_big_iron_fireplace "big iron fireplace"	! 84 / 0x54
 	n_to obj91_Chimney,
 	w_to nw_obj,
 	initial "There is a big iron fireplace in the west wall.",
-  has	attrib2 container door open static;
+  has	workflag container door open static;
 
 Object -> obj85_cranked_skylight "cranked skylight"	! 85 / 0x55
   with	name 'crank' 'cranked' 'skylight' 'handle',
@@ -1479,7 +1479,7 @@ Object -> obj90_Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"	! 90 / 0x5a
 	article "the ghost of",
 	time_left 0,
 	daemon JoshuaMeldreweDaemon,
-  has	animate attrib2;
+  has	animate workflag;
 
 Object obj91_Chimney "Chimney"	! 91 / 0x5b
   with	after routine82264,
@@ -1577,7 +1577,7 @@ Object -> obj102_delicate_gold_key "delicate gold key"	! 102 / 0x66
   with	name 'delicate' 'gold' 'key',
 	nw_to Compass,
 	devil_hint "Gold and lead are naturally related, so you want to find a lead box to open.",
-  has	attrib2 scored;
+  has	workflag scored;
 
 Object obj103_Old_Winery "Old Winery"	! 103 / 0x67
   with	name 'banister' 'rail' 'crack' 'paraphern',
@@ -1655,7 +1655,7 @@ Object -> obj111_antiquated_wireless "antiquated wireless"	! 111 / 0x6f
 	article "an",
 	time_left 0,
 	daemon routine86996,
-  has	attrib2 static switchable;
+  has	workflag static switchable;
 
 Object obj112_Potting_Room "Potting Room"	! 112 / 0x70
   with	name 'plants' 'flowers' 'seeds' 'trowels',
@@ -2413,7 +2413,7 @@ Object obj205_complicated_looking_bomb "complicated-looking bomb"	! 205 / 0xcd
 	time_left 0,
 	number [0 0],
 	daemon routine101884,
-  has	attrib2 container open;
+  has	workflag container open;
 
 Object -> obj206_timer_detonator "timer-detonator"	! 206 / 0xce
   with	name 'timer' 'detonater' 'detonator',
@@ -2517,7 +2517,7 @@ Object -> obj220_amber_hairband "amber hairband"	! 220 / 0xdc
 	article "Andromeda's",
 	rod_assoc rod_of_sacrifice,
 	devil_hint "Mmm... it still has her perfume on it. Hehehehe. Bet she's dead now.",
-  has	attrib2 static hidden_rod;
+  has	workflag static hidden_rod;
 
 Object obj221_Cliffs "Cliffs"	! 221 / 0xdd
   with	name 'pharos' 'lighthouse' 'tower',
@@ -2901,7 +2901,7 @@ Object -> obj270_flag_of_the_British_Merchant_Navy "flag of the British Merchant
 	initial "The flag has fluttered to a heap on deck.",
 	description "Broad, heavy, scarlet cloth, halfway between a silken sheet and a carpet, with a cross and a Union Jack in one corner.",
 	devil_hint "Piece of advice - it's never very comfortable wrapping yourself in the Flag.",
-  has	attrib2;
+  has	workflag;
 
 Object obj271_old_timber_spar "old timber spar"	! 271 / 0x10f
   with	name 'old' 'prop' 'timber' 'flagpole' 'spar',
@@ -3556,7 +3556,7 @@ Object -> tent_pole "tent pole"	! 353 / 0x161
 	time_left 0,
 	daemon routine123528,
 	rod_assoc rod_of_returning2,
-  has	attrib2 static hidden_rod;
+  has	workflag static hidden_rod;
 
 Object unconscious_Saxon_spy "unconscious Saxon spy"	! 354 / 0x162
   with	name 'saxon' 'spy',
@@ -4614,7 +4614,7 @@ Object -> adamantine_statue "adamantine statue"	! 489 / 0x1e9
   with	name 'adamantine' 'statue' 'adamant' 'knight',
 	description "The statue is half-skeleton, and you can see clear through the bones.",
 	article "an",
-  has	attrib2 static;
+  has	workflag static;
 
 Object adamantine_knight "adamantine knight"	! 490 / 0x1ea
   with	name 'adamantine' 'statue' 'adamant' 'knight',
@@ -4717,7 +4717,7 @@ Object carbolic_soap "carbolic soap"	! 502 / 0x1f6
 	article "a cake of",
 	devil_hint "That's the spirit, keep it up!",
 	angel_hint "Really!  How disgraceful!",
-  has	attrib2;
+  has	workflag;
 
 ! Constants
 
@@ -6732,7 +6732,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
   .label48783;
     if (i <= j) {
         n = match_list-->i;
-        if (n hasnt attrib2) {
+        if (n hasnt workflag) {
             ultimate = n;
           .label48802;
             ultimate = parent(ultimate);
@@ -6796,7 +6796,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
       .label49068;
         if (j ~= 65535[?] && i < indef_wanted && i + offset < 63) {
             flag = 0;
-            if (j hasnt attrib2 && j hasnt worn) {
+            if (j hasnt workflag && j hasnt worn) {
                 flag = 1[?];
             }
             if (context == 3[s_obj?] or 4[e_obj?] && parent(j) ~= actor) {
@@ -8006,7 +8006,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
   .label54119;
     if (i ~= 0) {
         give i moved;
-        give i ~attrib2;
+        give i ~workflag;
         i = sibling(i);
         jump label54119;
     }
@@ -8878,7 +8878,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         actor = obj;
     }
     give player ~transparent;
-    give player ~attrib2;
+    give player ~workflag;
     i = obj;
   .label57450;
     if (parent(i) ~= nothing) {
@@ -8897,7 +8897,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         player.short = NULL;
     }
     give player transparent;
-    give player attrib2;
+    give player workflag;
     give player animate;
     give player proper;
     i = player;
@@ -9077,7 +9077,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print "For some reason, Austin is startled and springs for his life ";
         routine155280(7[se_obj?]);
-        if (location == obj71_Souvenirs_Room && obj148_charcoal_sketch in obj72_slide_projector && obj73_south_wall hasnt attrib2) {
+        if (location == obj71_Souvenirs_Room && obj148_charcoal_sketch in obj72_slide_projector && obj73_south_wall hasnt workflag) {
             move obj58_Austin to Causeway;
             Achieved(36);
             StartDaemon(435[Outside_the_Royal_Museum?]);
@@ -9804,10 +9804,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine65124 ;	! 65124 / 0xfe64
     if (action == ##LookUnder) {
-        if (obj39_antique_jewellery_box hasnt attrib2) {
+        if (obj39_antique_jewellery_box hasnt workflag) {
             rfalse;
         }
-        give obj39_antique_jewellery_box ~attrib2;
+        give obj39_antique_jewellery_box ~workflag;
         move obj39_antique_jewellery_box to obj35_Attic;
         "You discover a lady's jewellery box under the trapdoor!";
     }
@@ -9823,8 +9823,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Close) {
         give selfobj ~light;
-        if (obj39_antique_jewellery_box has attrib2) {
-            give obj39_antique_jewellery_box ~attrib2;
+        if (obj39_antique_jewellery_box has workflag) {
+            give obj39_antique_jewellery_box ~workflag;
             move obj39_antique_jewellery_box to obj35_Attic;
             "You close the trapdoor, surprised to see that something shiny was obscured by it.";
         }
@@ -9838,10 +9838,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine65316 ;	! 65316 / 0xff24
     if (action == ##Search) {
         print "That was the first place you tried, hours and hours ago now";
-        if (obj38_History_of_the_Meldrews__vol__II_ has attrib2) {
+        if (obj38_History_of_the_Meldrews__vol__II_ has workflag) {
             print ", and there's nothing there but that boring old book. You pick it up anyway, bored as you are";
             routine155280(33[obj33_old_smudged_battery?]);
-            give obj38_History_of_the_Meldrews__vol__II_ ~attrib2;
+            give obj38_History_of_the_Meldrews__vol__II_ ~workflag;
             move obj38_History_of_the_Meldrews__vol__II_ to player;
         }
         ".";
@@ -9929,7 +9929,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine69588 ;	! 69588 / 0x10fd4
     if (action == ##Sleep) {
-        if (carbolic_soap hasnt attrib2) {
+        if (carbolic_soap hasnt workflag) {
             "Racked with guilt over your bad language, you are unable to nod off.";
         }
         if (player notin obj44_camp_bed) {
@@ -10815,9 +10815,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         give obj120_steel_wrench general;
         Achieved(13);
-        give obj70_book_of_Twenties_poetry ~attrib2;
+        give obj70_book_of_Twenties_poetry ~workflag;
         give obj70_book_of_Twenties_poetry moved;
-        give obj69_romantic_novel ~attrib2;
+        give obj69_romantic_novel ~workflag;
         give obj69_romantic_novel moved;
         "You tighten the joint with the wrench, just enough for the books to fall away without a gushing explosion of water.";
     }
@@ -11014,7 +11014,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##SwitchOff) {
         give obj71_Souvenirs_Room ~light;
         give obj64_Disused_Observatory ~light;
-        give obj73_south_wall attrib2;
+        give obj73_south_wall workflag;
         rfalse;
     }
     rfalse;
@@ -11070,13 +11070,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 ~= 0) {
         if (local1.n_to ~= nothing) {
             obj73_south_wall.n_to = local1.n_to;
-            give obj73_south_wall ~attrib2;
+            give obj73_south_wall ~workflag;
         }
         print "The south wall lights up with ";
         routine79532(local1);
         rtrue;
     }
-    give obj73_south_wall attrib2;
+    give obj73_south_wall workflag;
     "The south wall becomes blank again.";
 ];
 
@@ -11147,13 +11147,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (verb == ##Knock && noun == s_obj) {
         "The south wall rings curiously hollow.";
     }
-    if (noun == s_obj && obj80_secret_door hasnt attrib2) {
+    if (noun == s_obj && obj80_secret_door hasnt workflag) {
         R_Process(verb,80[obj80_secret_door?],second);
         rtrue;
     }
     if (action == ##Push) {
-        if (noun == s_obj && obj80_secret_door has attrib2) {
-            give obj80_secret_door ~attrib2;
+        if (noun == s_obj && obj80_secret_door has workflag) {
+            give obj80_secret_door ~workflag;
             move obj80_secret_door to obj78_Dead_End;
             Achieved(3);
             "A secret door springs open!";
@@ -11179,8 +11179,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give selfobj ~talkable;
             "You take Mad Isaac down.";
         }
-        if (obj84_big_iron_fireplace has attrib2) {
-            give obj84_big_iron_fireplace ~attrib2;
+        if (obj84_big_iron_fireplace has workflag) {
+            give obj84_big_iron_fireplace ~workflag;
             "Taken. (There's a fireplace behind it, by the way.)";
         }
         rfalse;
@@ -11243,7 +11243,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (selfobj has general) {
             rfalse;
         }
-        give obj90_Sir_Joshua_Meldrewe ~attrib2;
+        give obj90_Sir_Joshua_Meldrewe ~workflag;
         move selfobj to obj90_Sir_Joshua_Meldrewe;
         obj90_Sir_Joshua_Meldrewe.time_left = 5;
         StartDaemon(90[obj90_Sir_Joshua_Meldrewe?]);
@@ -11528,9 +11528,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local1 ~= 0) {
             if (routine84192(local1) == 0) {
                 ++local2;
-                give local1 concealed;
+                give local1 attrib25;
             } else {
-                give local1 ~concealed;
+                give local1 ~attrib25;
             }
             local1 = sibling(local1);
             jump label84670;
@@ -11539,7 +11539,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             ".";
         }
         print ", carrying ";
-        if (model_of_ugly_animal has concealed) {
+        if (model_of_ugly_animal has attrib25) {
             give model_of_ugly_animal general;
         }
         WriteListFrom(child(player),512 + 8 + 64);
@@ -11556,8 +11556,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine84776 ;	! 84776 / 0x14b28
     if (action == ##Search or ##LookUnder) {
-        if (obj102_delicate_gold_key has attrib2) {
-            give obj102_delicate_gold_key ~attrib2;
+        if (obj102_delicate_gold_key has workflag) {
+            give obj102_delicate_gold_key ~workflag;
             "You dislodge something shiny!";
         }
         rfalse;
@@ -11759,15 +11759,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine86108 ;	! 86108 / 0x1505c
     if (action == ##Take) {
         print "The thought of Jemima's wrath if you actually took one of her tie-dyed sheets (~Dyeing is an art like everything else... I do it very well~) is just too dreadful. ";
-        if (obj111_antiquated_wireless has attrib2) {
+        if (obj111_antiquated_wireless has workflag) {
             "But there seems to be something lurking beneath.";
         }
         new_line;
         rtrue;
     }
     if (action == ##Search or ##LookUnder or ##Read) {
-        if (obj111_antiquated_wireless has attrib2) {
-            give obj111_antiquated_wireless ~attrib2;
+        if (obj111_antiquated_wireless has workflag) {
+            give obj111_antiquated_wireless ~workflag;
             Achieved(8);
             "Not as many sheets as you thought - they were on top of a large black wireless, now exposed to the light for the first time in months.";
         }
@@ -11808,7 +11808,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj111_antiquated_wireless.after
 
 [ routine86604 ;	! 86604 / 0x1524c
-    if (selfobj has attrib2) {
+    if (selfobj has workflag) {
         "You've played this game before.";
     }
     if (action == ##Take) {
@@ -13107,7 +13107,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             remove obj163_Madame_Sosostris__famous_clairvoyante;
             give obj161_curtain ~general;
             give obj163_Madame_Sosostris__famous_clairvoyante general;
-            give obj163_Madame_Sosostris__famous_clairvoyante attrib2;
+            give obj163_Madame_Sosostris__famous_clairvoyante workflag;
             rtrue;
         }
         "~You must answer my question!~  She does seem anxious.";
@@ -13498,7 +13498,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine101336 ;	! 101336 / 0x18bd8
     if (action == ##Look) {
-        if (obj211_Cups_and_Glasses has visited && obj205_complicated_looking_bomb has attrib2) {
+        if (obj211_Cups_and_Glasses has visited && obj205_complicated_looking_bomb has workflag) {
             "^Over in one corner, you can see a little square window, behind which must be the store of cups and glasses. Remembering this, you are distracted and unable to enjoy the entertainment. Even the table is annoying. It must have one leg shorter than the rest, or something, because it rattles now and then.";
         }
         rfalse;
@@ -13512,7 +13512,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj203_Ruined_Castle_Cafe.initial
 
 [ routine101636 ;	! 101636 / 0x18d04
-    if (obj205_complicated_looking_bomb has attrib2) {
+    if (obj205_complicated_looking_bomb has workflag) {
         StartTimer(205[obj205_complicated_looking_bomb?],10[u_obj?]);
     }
     rfalse;
@@ -13521,7 +13521,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj203_Ruined_Castle_Cafe.each_turn
 
 [ routine101652 ;	! 101652 / 0x18d14
-    if (obj205_complicated_looking_bomb hasnt attrib2) {
+    if (obj205_complicated_looking_bomb hasnt workflag) {
         new_line;
         routine103600();
     } else {
@@ -13534,8 +13534,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine101692 ;	! 101692 / 0x18d3c
     if (action == ##LookUnder or ##Search) {
-        if (obj205_complicated_looking_bomb has attrib2) {
-            give obj205_complicated_looking_bomb ~attrib2;
+        if (obj205_complicated_looking_bomb has workflag) {
+            give obj205_complicated_looking_bomb ~workflag;
             move obj205_complicated_looking_bomb to obj203_Ruined_Castle_Cafe;
             "Now don't panic, but there's a ticking bomb loosely taped to the underside of the table you're sitting at!";
         }
@@ -13553,7 +13553,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= obj203_Ruined_Castle_Cafe) {
         rfalse;
     }
-    if (obj205_complicated_looking_bomb hasnt attrib2) {
+    if (obj205_complicated_looking_bomb hasnt workflag) {
         if (209[obj209_blue_wire?] ~= array_25223->0 || 207[obj207_green_wire?] ~= array_25223->1 || 210[obj210_black_wire?] ~= array_25223->2 || 208[obj208_red_wire?] ~= array_25223->3) {
             print "^Click!  Perhaps there's more to bomb disposal than you thought.^";
         } else {
@@ -14501,7 +14501,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         ", plummeting, head over heels to the hard wooden deck and the inevitable iron fixtures...";
     }
     move obj270_flag_of_the_British_Merchant_Navy to obj266_Aboard_Ship;
-    give obj270_flag_of_the_British_Merchant_Navy ~attrib2;
+    give obj270_flag_of_the_British_Merchant_Navy ~workflag;
     give obj270_flag_of_the_British_Merchant_Navy ~general;
     remove obj269_flagpole;
     move obj271_old_timber_spar to obj266_Aboard_Ship;
@@ -16905,7 +16905,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         move rusty_iron_key to Warehouses_and_Port;
         give obj201_smooth_round_stone ~general;
         give obj201_smooth_round_stone ~moved;
-        give obj201_smooth_round_stone ~attrib2;
+        give obj201_smooth_round_stone ~workflag;
         give rusty_iron_key general;
         rusty_iron_key.initial = "That iron key seems to have washed up here...";
         obj201_smooth_round_stone.initial = "...and there's the strange stone again.";
@@ -16928,7 +16928,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == obj201_smooth_round_stone) {
             move noun to Island_of_Pharos;
             give obj201_smooth_round_stone general;
-            give obj201_smooth_round_stone attrib2;
+            give obj201_smooth_round_stone workflag;
             StartDaemon(397[Island_of_Pharos?]);
             rusty_iron_key.initial = "The iron key, out of reach below, is glued somehow to the strange stone.";
             "The strange stone drops through the grating, and falls on the top step. The iron key mysteriously glues itself to the metal in the stone. It's still out of reach, though.";
@@ -17765,7 +17765,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         print "Callimachus";
                         move selfobj to parent(Callimachus);
                     }
-                    give Callimachus attrib2;
+                    give Callimachus workflag;
                     Apollonius.initial = "Apollonius and Callimachus are having a furious, heated, endless argument about something. They seem well practised at this occupation.";
                     "~. He pushes you out of his way and stomps off.";
                 }
@@ -18119,15 +18119,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (verb == ##Take && global172 == 0) {
         remove rod_of_life;
         give rod_of_life moved;
-        give rod_of_life ~attrib2;
+        give rod_of_life ~workflag;
         give rod_of_life scored;
         remove rod_of_death;
         give rod_of_death moved;
-        give rod_of_death ~attrib2;
+        give rod_of_death ~workflag;
         give rod_of_death scored;
         remove rod_of_love;
         give rod_of_love moved;
-        give rod_of_love ~attrib2;
+        give rod_of_love ~workflag;
         give rod_of_love scored;
         move noun to player;
         give noun ~scored;
@@ -18149,13 +18149,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (noun == adamantine_hand) {
             move adamantine_hand to West_Side_Chapel;
-            give adamantine_hand attrib2;
+            give adamantine_hand workflag;
             global173 = 2[?];
             "The hand fits rather loosely onto the left ~wrist~ of the adamantine knight.";
         }
         if (noun == adamantine_skull) {
             move adamantine_skull to West_Side_Chapel;
-            give adamantine_skull attrib2;
+            give adamantine_skull workflag;
             global174 = 2[?];
             "The skull fits very loosely onto the ~neck~ of the adamantine knight.";
         }
@@ -18167,19 +18167,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Turn) {
-        if (noun == adamantine_skull or adamantine_hand && noun has attrib2) {
+        if (noun == adamantine_skull or adamantine_hand && noun has workflag) {
             if (noun == adamantine_hand) {
                 remove adamantine_hand;
                 global173 = 0;
                 give adamantine_hand general;
-                give adamantine_hand ~attrib2;
+                give adamantine_hand ~workflag;
                 "The hand screws tightly onto the adamantine knight.";
             }
             if (noun == adamantine_skull) {
                 remove adamantine_skull;
                 global174 = 0;
                 give adamantine_skull general;
-                give adamantine_skull ~attrib2;
+                give adamantine_skull ~workflag;
                 "The skull screws tightly onto the adamantine knight.";
             }
         }
@@ -18206,14 +18206,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (global174 > 0) {
         --global174;
         if (global174 == 0) {
-            give adamantine_skull ~attrib2;
+            give adamantine_skull ~workflag;
             "^The skull wobbles and falls off the knight again.";
         }
     }
     if (global173 > 0) {
         --global173;
         if (global173 == 0) {
-            give adamantine_hand ~attrib2;
+            give adamantine_hand ~workflag;
             "^The hand wavers and falls off the knight again.";
         }
     }
@@ -18272,7 +18272,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine143264 ;	! 143264 / 0x22fa0
-    if (adamantine_skull hasnt general && adamantine_skull hasnt attrib2) {
+    if (adamantine_skull hasnt general && adamantine_skull hasnt workflag) {
         print "^A headless ";
     } else {
         print "^An ";
@@ -18281,7 +18281,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (adamantine_hand hasnt general && adamantine_heart hasnt general) {
         ".";
     }
-    if (adamantine_hand has general || adamantine_hand has attrib2) {
+    if (adamantine_hand has general || adamantine_hand has workflag) {
         print " with hand outstretched";
     }
     if (adamantine_heart has general) {
@@ -19348,7 +19348,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (global117 ~= 0) {
         if (c_style & 512 ~= 0 && odepth == 0) {
           .label157794;
-            if (o ~= 0 && (o.nw_to ~= global117 || o hasnt concealed)) {
+            if (o ~= 0 && (o.nw_to ~= global117 || o hasnt attrib25)) {
                 o = sibling(o);
                 jump label157794;
             }
@@ -19356,7 +19356,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (c_style & 2048 ~= 0) {
           .label157833;
-            if (o ~= 0 && (o has attrib2 || o has scenery || o.nw_to ~= global117)) {
+            if (o ~= 0 && (o has workflag || o has scenery || o.nw_to ~= global117)) {
                 o = sibling(o);
                 jump label157833;
             }
@@ -19371,7 +19371,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (c_style & 512 ~= 0 && odepth == 0) {
       .label157905;
-        if (o ~= 0 && o hasnt concealed) {
+        if (o ~= 0 && o hasnt attrib25) {
             o = sibling(o);
             jump label157905;
         }
@@ -19379,7 +19379,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (c_style & 2048 ~= 0) {
       .label157935;
-        if (o ~= 0 && (o has attrib2 || o has scenery)) {
+        if (o ~= 0 && (o has workflag || o has scenery)) {
             o = sibling(o);
             jump label157935;
         }
@@ -19485,13 +19485,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     c_style = style;
     if (style & 512 ~= 0) {
       .label158339;
-        if (o ~= 0 && o hasnt concealed) {
+        if (o ~= 0 && o hasnt attrib25) {
             o = sibling(o);
             jump label158339;
         }
     } else if (c_style & 2048 ~= 0) {
       .label158370;
-        if (o ~= 0 && (o has attrib2 || o has scenery)) {
+        if (o ~= 0 && (o has workflag || o has scenery)) {
             o = sibling(o);
             jump label158370;
         }
@@ -19976,7 +19976,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         p = child(o);
       .label160510;
         if (p ~= 0) {
-            if (p hasnt attrib2) {
+            if (p hasnt workflag) {
                 ++flag3;
             }
             p = sibling(p);
@@ -20914,7 +20914,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (local2 has door) {
-        if (local2 has attrib2) {
+        if (local2 has workflag) {
             return L__M(##Go,2);
         }
         if (local2 hasnt open) {
@@ -20972,7 +20972,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local2 = child(local1);
   .label164046;
     if (local2 ~= 0) {
-        if (local2 hasnt attrib2 && local2 hasnt scenery) {
+        if (local2 hasnt workflag && local2 hasnt scenery) {
             local3 = 1[?];
         }
         local2 = sibling(local2);
@@ -20989,7 +20989,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local4 = child(local1);
   .label164093;
     if (local4 ~= 0) {
-        give local4 ~concealed;
+        give local4 ~attrib25;
         local4 = sibling(local4);
         jump label164093;
     }
@@ -20997,9 +20997,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local4 = child(local1);
   .label164115;
     if (local4 ~= 0) {
-        if (local4 hasnt attrib2 && local4 ~= parent(player)) {
+        if (local4 hasnt workflag && local4 ~= parent(player)) {
             if (local4 hasnt scenery) {
-                give local4 concealed;
+                give local4 attrib25;
                 ++local6;
                 local5 = 17[rod_of_fire?];
                 local9 = 0;
@@ -21018,7 +21018,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 if (local4 hasnt moved || local4.describe ~= NULL || local9 == 1[?]) {
                     if (local4.describe ~= NULL && RunRoutines(local4,describe) ~= 0) {
                         local8 = 1[?];
-                        give local4 ~concealed;
+                        give local4 ~attrib25;
                         --local6;
                     } else {
                         local7 = local4.local5;
@@ -21026,7 +21026,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                             new_line;
                             PrintOrRun(local4,local5);
                             local8 = 1[?];
-                            give local4 ~concealed;
+                            give local4 ~attrib25;
                             --local6;
                             if (local4 has supporter && child(local4) ~= nothing) {
                                 routine164032(local4);
@@ -21201,7 +21201,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local1 = child(noun);
   .label164915;
     if (local1 ~= 0) {
-        if (local1 hasnt attrib2) {
+        if (local1 hasnt workflag) {
             local2 = 1[?];
         }
         local1 = sibling(local1);
@@ -22583,7 +22583,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine172644 ;	! 172644 / 0x2a264
-    if (verb == ##Go && carbolic_soap hasnt attrib2) {
+    if (verb == ##Go && carbolic_soap hasnt workflag) {
         routine155280(13[obj13_inside?]);
         "You're going nowhere until you make amends for that nasty bad language.";
     }
@@ -23092,7 +23092,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print "For some reason, Austin is startled and springs for his life ";
         routine155280(7[se_obj?]);
-        if (location == obj71_Souvenirs_Room && obj148_charcoal_sketch in obj72_slide_projector && obj73_south_wall hasnt attrib2) {
+        if (location == obj71_Souvenirs_Room && obj148_charcoal_sketch in obj72_slide_projector && obj73_south_wall hasnt workflag) {
             move obj58_Austin to Causeway;
             Achieved(36);
             "right up through the south wall and into Alexandria!";
@@ -23105,7 +23105,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ SorrySub ;	! 176316 / 0x2b0bc
-    if (carbolic_soap has attrib2) {
+    if (carbolic_soap has workflag) {
         "Oh, don't apologise.";
     }
     "Sorry isn't good enough!";
@@ -23113,7 +23113,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ StrongSub ;	! 176360 / 0x2b0e8
     move carbolic_soap to player;
-    give carbolic_soap ~attrib2;
+    give carbolic_soap ~workflag;
     "Now, that sort of language is an absolute disgrace, and you're going to have to pay the price for it.";
 ];
 
@@ -23125,7 +23125,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "You've no soap.";
     }
     remove carbolic_soap;
-    give carbolic_soap attrib2;
+    give carbolic_soap workflag;
     "Ugh, it tastes absolutely ghastly. But you feel better for it.";
 ];
 
