@@ -5119,7 +5119,7 @@ Array array_24553 --> 16384[?];	! 24553 (0x5fe9)
 Array array_24618 --> 1;	! 24618 (0x602a)
 Array array_24634 --> 1;	! 24634 (0x603a)
 Array array_24650 --> 1;	! 24650 (0x604a)
-Array array_24660 --> 1;	! 24660 (0x6054)
+Array match_list --> 1;	! 24660 (0x6054)
 Array array_24788 --> 1;	! 24788 (0x60d4)
 Array array_24916 --> 1;	! 24916 (0x6154)
 Array array_25223 --> 1;	! 25223 (0x6287)
@@ -6546,7 +6546,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (global70 <= num_words) {
         if (number_matched == 1[?]) {
-            i = array_24660-->0;
+            i = match_list-->0;
             return i;
         }
         if (wn <= num_words) {
@@ -6571,7 +6571,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     global68 = 0;
     if (number_matched == 1[?]) {
-        i = array_24660-->0;
+        i = match_list-->0;
     }
     if (number_matched > 1) {
         i = Adjudicate(context);
@@ -6611,7 +6611,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 ++marker;
                 jump label48092;
             }
-            k = array_24660-->marker;
+            k = match_list-->marker;
             if (array_24788-->marker > 0) {
                 Defart(k);
             } else {
@@ -6636,7 +6636,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 i = 0;
               .label48243;
                 if (i < number_matched && l + i < 63) {
-                    k = array_24660-->i;
+                    k = match_list-->i;
                     multiple_object-->(i + 1 + l) = k;
                     ++i;
                     jump label48243;
@@ -6735,11 +6735,11 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     j = number_matched - 1;
     good_ones = 0;
-    last = array_24660-->0;
+    last = match_list-->0;
     i = 0;
   .label48783;
     if (i <= j) {
-        n = array_24660-->i;
+        n = match_list-->i;
         if (n hasnt concealed) {
             ultimate = n;
           .label48802;
@@ -6790,7 +6790,7 @@ Array array_29185 -->	! 29185 (0x7201)
         return last;
     }
     if (context == 6[ne_obj?] && good_ones == 0) {
-        return array_24660-->0;
+        return match_list-->0;
     }
     if (indef_mode == 1[?] && indef_type & 8 ~= 0) {
         if (context < 2 || context > 5) {
@@ -6858,7 +6858,7 @@ Array array_29185 -->	! 29185 (0x7201)
             j = i + 1;
           .label49347;
             if (j < number_matched) {
-                if (array_24788-->j == 0 && routine50640(array_24660-->i,array_24660-->j) == 1[?]) {
+                if (array_24788-->j == 0 && routine50640(match_list-->i,match_list-->j) == 1[?]) {
                     flag = 1[?];
                     array_24788-->j = array_24788-->i;
                 }
@@ -6879,8 +6879,8 @@ Array array_29185 -->	! 29185 (0x7201)
       .label49478;
         if (i < number_matched) {
             print "   ";
-            CDefart(array_24660-->i);
-            print " (", array_24660-->i, ")  ---  ", array_24788-->i, "^";
+            CDefart(match_list-->i);
+            print " (", match_list-->i, ")  ---  ", array_24788-->i, "^";
             ++i;
             jump label49478;
         }
@@ -6892,14 +6892,14 @@ Array array_29185 -->	! 29185 (0x7201)
         i = 0;
       .label49557;
         if (i < number_matched) {
-            k = routine175160(array_24660-->i,2[?]);
+            k = routine175160(match_list-->i,2[?]);
             if (k == j) {
                 ++good_ones;
             }
             if (k > j) {
                 j = k;
                 good_ones = 1[?];
-                last = array_24660-->i;
+                last = match_list-->i;
             }
             ++i;
             jump label49557;
@@ -7015,7 +7015,7 @@ Array array_29185 -->	! 29185 (0x7201)
     i = 0;
   .label50199;
     if (i < number_matched) {
-        obj = array_24660-->i;
+        obj = match_list-->i;
         its_owner = parent(obj);
         its_score = 0;
         if (its_owner == actor) {
@@ -7050,13 +7050,13 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         its_score = its_score + routine175160(obj,2[?]);
         if (its_score < threshold) {
-            array_24660-->i = 65535[?];
+            match_list-->i = 65535[?];
         } else {
             array_24788-->i = its_score;
             if (parser_trace >= 4) {
                 print "   ";
-                CDefart(array_24660-->i);
-                print " (", array_24660-->i, ") in ";
+                CDefart(match_list-->i);
+                print " (", match_list-->i, ") in ";
                 Defart(its_owner);
                 print " scores ", its_score, "^";
             }
@@ -7077,7 +7077,7 @@ Array array_29185 -->	! 29185 (0x7201)
     local4 = 0;
   .label50500;
     if (local4 < number_matched) {
-        if (array_24660-->local4 >= 0) {
+        if (match_list-->local4 >= 0) {
             local2 = array_24788-->local4;
             if (local2 > local3) {
                 local3 = local2;
@@ -7092,15 +7092,15 @@ Array array_29185 -->	! 29185 (0x7201)
             print "   Best guess ran out of choices^";
         } else {
             print "   Best guess ";
-            Defart(array_24660-->local1);
-            print " (", array_24660-->local1, ")^";
+            Defart(match_list-->local1);
+            print " (", match_list-->local1, ")^";
         }
     }
     if (local3 < 0) {
         return 65535[?];
     }
-    local4 = array_24660-->local1;
-    array_24660-->local1 = 65535[?];
+    local4 = match_list-->local1;
+    match_list-->local1 = 65535[?];
     return local4;
 ];
 
@@ -7536,14 +7536,14 @@ Array array_29185 -->	! 29185 (0x7201)
         local3 = 0;
       .label52341;
         if (local3 < number_matched) {
-            if (array_24660-->local3 == local1) {
+            if (match_list-->local3 == local1) {
                 rtrue;
             }
             ++local3;
             jump label52341;
         }
     }
-    array_24660-->number_matched++ = local1;
+    match_list-->number_matched++ = local1;
     if (parser_trace >= 5) {
         print "    Match added to list^";
     }
