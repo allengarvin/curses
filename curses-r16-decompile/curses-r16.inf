@@ -5275,7 +5275,7 @@ Array actions_table -->	! 28893 (0x70dd)
     CloseWithSub
     StackSub
 ;
-Array array_29185 -->	! 29185 (0x7201)
+Array preactions_table -->	! 29185 (0x7201)
     IsDirection
     routine181160
     routine181076
@@ -5283,6 +5283,144 @@ Array array_29185 -->	! 29185 (0x7201)
     routine181800
     routine181728
     routine181828
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
 ;
 
 ! Routines
@@ -6325,7 +6463,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         single_object = 1[?];
     } else if (token >= 48 && token < 80) {
-        l = (array_29185-->(token - 48))();
+        l = (preactions_table-->(token - 48))();
         if (parser_trace >= 3) {
             print "  [Outside parsing routine returned ", l, "]^";
         }
@@ -6350,7 +6488,7 @@ Array array_29185 -->	! 29185 (0x7201)
         single_object = l;
     } else {
         if (token >= 80 && token < 128) {
-            scope_token = array_29185-->(token - 80);
+            scope_token = preactions_table-->(token - 80);
             scope_stage = 1;
             l = scope_token();
             if (parser_trace >= 3) {
@@ -7319,7 +7457,7 @@ Array array_29185 -->	! 29185 (0x7201)
         rfalse;
     }
     noun = obj;
-    return (array_29185-->(token_was - 16))();
+    return (preactions_table-->(token_was - 16))();
 ];
 
 [ MoveWord at1 b2 at2 x y ;	! 51364 / 0xc8a4
