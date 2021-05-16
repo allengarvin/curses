@@ -1026,7 +1026,7 @@ Object -> obj33_old_smudged_battery "old smudged battery"	! 33 / 0x21
 	nw_to s_obj,
 	article "an",
 	time_left 200,
-  has	attrib31;
+  has	battery_flag;
 
 Object obj34_chocolate_biscuit "chocolate biscuit"	! 34 / 0x22
   with	name 'chocolate' 'biscuit',
@@ -1361,7 +1361,7 @@ Object -> -> obj76_new_looking_battery "new-looking battery"	! 76 / 0x4c
 	nw_to s_obj,
 	time_left 300,
 	devil_hint "That is a difficult puzzle, yes.",
-  has	attrib31;
+  has	battery_flag;
 
 Object -> obj77_cupboard_door "cupboard door"	! 77 / 0x4d
   with	name 'cupboard' 'door',
@@ -1604,7 +1604,7 @@ Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"	! 105 
 	nw_to s_obj,
 	description "On the side is the word ~Achtung~.",
 	devil_hint "It's provided for your torch, and not for anything else.",
-  has	attrib31;
+  has	battery_flag;
 
 Object -> -> obj106_tourist_map "tourist map"	! 106 / 0x6a
   with	name 'hamburg' 'tourist' 'map',
@@ -9713,7 +9713,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (child(selfobj) ~= nothing) {
             "There's a battery in already.";
         }
-        if (noun hasnt attrib31) {
+        if (noun hasnt battery_flag) {
             "Not surprisingly, it won't fit in the battery compartment.";
         }
         rfalse;
@@ -10645,10 +10645,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == obj206_timer_detonator) {
             rfalse;
         }
-        if (noun hasnt attrib31) {
+        if (noun hasnt battery_flag) {
             "Only batteries and timers will fit in.";
         }
-        if (child(selfobj) has attrib31) {
+        if (child(selfobj) has battery_flag) {
             "There is already a battery inside, and there's only room now for a timer.";
         }
         rfalse;
