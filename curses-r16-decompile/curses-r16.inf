@@ -4906,7 +4906,7 @@ Global nsns;
 Global interfrom;
 Global inferword;
 Global oops_from;
-Global global66;
+Global saved_oops;
 Global number_matched;
 Global global68;
 Global global69;
@@ -5950,14 +5950,14 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (etype == CANTSEE_PE) {
         print "You can't see any such thing.^";
-        oops_from = global66;
+        oops_from = saved_oops;
     }
     if (etype == TOOLIT_PE) {
         print "You seem to have said too little!^";
     }
     if (etype == NOTHELD_PE) {
         print "You aren't holding that!^";
-        oops_from = global66;
+        oops_from = saved_oops;
     }
     if (etype == MULTI_PE) {
         print "You can't use multiple objects with that verb.^";
@@ -6463,7 +6463,7 @@ Array array_29185 -->	! 29185 (0x7201)
             o = parent(l);
             if (o ~= actor) {
                 if (notheld_mode == 1) {
-                    global66 = oops_from;
+                    saved_oops = oops_from;
                     etype = NOTHELD_PE;
                     jump label47741;
                 }
@@ -7227,7 +7227,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ CantSee i w e ;	! 51088 / 0xc790
-    global66 = oops_from;
+    saved_oops = oops_from;
     if (scope_token ~= 0) {
         global102 = scope_token;
         return 18[rod_of_returning?];
