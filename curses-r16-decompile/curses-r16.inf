@@ -5478,7 +5478,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
         }
         if (usual_grammar_after == 0) {
-            i = RunRoutines(actor,15[yourself?]);
+            i = RunRoutines(actor,grammar);
             if (parser_trace >= 2 && actor.grammar ~= 0 or 65535[?]) {
                 print " [Grammar property returned ", i, "]^";
             }
@@ -7114,7 +7114,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         parser_one = o1;
         parser_two = o2;
         j = wn;
-        i = RunRoutines(o1,29[rod_of_death?]);
+        i = RunRoutines(o1,prop29);
         wn = j;
         if (i == 65535[?]) {
             rtrue;
@@ -7381,7 +7381,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "]^";
         }
         if (parser_one == 0) {
-            parser_one = RunRoutines(thing,9[sw_obj?]);
+            parser_one = RunRoutines(thing,prop9);
         }
     } else if (generic_globvar == 4[e_obj?]) {
         if (thing.nw_to == nothing or NULL) {
@@ -7393,7 +7393,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "]^";
         }
         if (parser_one == 0) {
-            parser_one = RunRoutines(thing,11[d_obj?]);
+            parser_one = RunRoutines(thing,nw_to);
         }
     } else if (generic_globvar == 2[?]) {
         if (thing.&each_turn == 0) {
@@ -7475,7 +7475,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (ad ~= 0) {
         if (UnsignedCompare(ad-->0,top_object) > 0) {
             ats_flag = 2 + context;
-            RunRoutines(domain,10[u_obj?]);
+            RunRoutines(domain,prop10);
             ats_flag = 0;
         } else {
             generic_globvar = domain.&prop10;
@@ -7555,7 +7555,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (obj.prop29 ~= nothing) {
         parser_action = ##Action65535;
         j = wn;
-        k = RunRoutines(obj,29[rod_of_death?]);
+        k = RunRoutines(obj,prop29);
         if (k > 0) {
             wn = j + k;
           .label52497;
@@ -7899,7 +7899,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ RunRoutines obj prop i j k l m ssv ;	! 53736 / 0xd1e8
-    if (obj == 14[thedark?] && prop ~= 17[rod_of_fire?]) {
+    if (obj == thedark && prop ~= initial) {
         obj = real_location;
     }
     if (obj.prop == 65535[?] or 0) {
@@ -7914,7 +7914,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     m = selfobj;
     selfobj = obj;
     ssv = action;
-    if (prop == 4[e_obj?]) {
+    if (prop == life) {
         action = global41;
     } else {
         action = verb;
@@ -8095,9 +8095,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
         }
         if (actor ~= player) {
-            j = RunRoutines(player,16[obj16_lm?]);
+            j = RunRoutines(player,prop16);
             if (j == 0) {
-                j = RunRoutines(actor,16[obj16_lm?]);
+                j = RunRoutines(actor,prop16);
                 if (j == 0) {
                     if (verb == ##Action264) {
                         inputobjs-->3 = actor;
@@ -8294,10 +8294,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (routine172644() ~= 0) {
         rtrue;
     }
-    if (RunRoutines(player,16[obj16_lm?]) ~= 0) {
+    if (RunRoutines(player,prop16) ~= 0) {
         rtrue;
     }
-    if (location ~= nothing && RunRoutines(location,2[?]) ~= 0) {
+    if (location ~= nothing && RunRoutines(location,prop2) ~= 0) {
         rtrue;
     }
     scope_reason = REACT_BEFORE_REASON;
@@ -8307,7 +8307,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parser_one ~= 0) {
         rtrue;
     }
-    if (inp1 > 1 && RunRoutines(inp1,2[?]) ~= 0) {
+    if (inp1 > 1 && RunRoutines(inp1,prop2) ~= 0) {
         rtrue;
     }
     rfalse;
@@ -8321,10 +8321,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parser_one ~= 0) {
         rtrue;
     }
-    if (location ~= nothing && RunRoutines(location,3[s_obj?]) ~= 0) {
+    if (location ~= nothing && RunRoutines(location,before) ~= 0) {
         rtrue;
     }
-    if (inp1 > 1 && RunRoutines(inp1,3[s_obj?]) ~= 0) {
+    if (inp1 > 1 && RunRoutines(inp1,before) ~= 0) {
         rtrue;
     }
     return routine181212();
@@ -8361,7 +8361,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine55448 local1 local2 ;	! 55448 / 0xd898
     global41 = local2;
-    return RunRoutines(local1,4[e_obj?]);
+    return RunRoutines(local1,life);
 ];
 
 [ LowKey_Menu menu_choices EntryR ChoiceR lines main_title i j ;	! 55464 / 0xd8a8
@@ -8710,10 +8710,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         j = the_timers-->i;
         if (j ~= 0) {
             if (array_23957->i == 2[?]) {
-                RunRoutines(j,25[rod_of_ice?]);
+                RunRoutines(j,daemon);
             } else if (j.number == 0) {
                 StopTimer(j);
-                RunRoutines(j,25[rod_of_ice?]);
+                RunRoutines(j,daemon);
             } else {
                 j.number = j.number - 1;
             }
@@ -8818,7 +8818,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (ad-->0 > top_object) {
             ats_hls = 0;
             ats_flag = 1;
-            RunRoutines(i,10[u_obj?]);
+            RunRoutines(i,prop10);
             ats_flag = 0;
             if (ats_hls == 1) {
                 rtrue;
@@ -12540,7 +12540,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine92872 ;	! 92872 / 0x16ac8
     if (action == ##Action259 or ##Ask or ##Answer) {
         if (obj131_robot_mouse in selfobj) {
-            return RunRoutines(131[obj131_robot_mouse?],4[e_obj?]);
+            return RunRoutines(obj131_robot_mouse,life);
         }
         rfalse;
     }
@@ -15173,7 +15173,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (player notin obj296_garden_roller) {
             "Mustn't tread on the grass now!";
         }
-        return RunRoutines(301[obj301_Maze?],2[?]);
+        return RunRoutines(obj301_Maze,prop2);
     }
     rfalse;
 ];
@@ -19664,7 +19664,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                                 global115 = 1[?];
                                 parser_one = j;
                                 parser_two = depth + global120;
-                                if (RunRoutines(j,12[obj12_outside?]) == 1[?]) {
+                                if (RunRoutines(j,list_together) == 1[?]) {
                                     jump label159226;
                                 }
                             }
@@ -19683,7 +19683,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                                 global115 = 2[?];
                                 parser_one = j;
                                 parser_two = depth + global120;
-                                RunRoutines(j,12[obj12_outside?]);
+                                RunRoutines(j,list_together);
                             }
                           .label159226;
                             if (q & 1 ~= 0 && c_style & 1 == 0) {
@@ -19793,7 +19793,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         global115 = 1[?];
                         parser_one = j;
                         parser_two = depth + global120;
-                        if (RunRoutines(j,12[obj12_outside?]) == 1[?]) {
+                        if (RunRoutines(j,list_together) == 1[?]) {
                             jump label159760;
                         }
                     }
@@ -19812,7 +19812,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         global115 = 2[?];
                         parser_one = j;
                         parser_two = depth + global120;
-                        RunRoutines(j,12[obj12_outside?]);
+                        RunRoutines(j,list_together);
                     }
                   .label159760;
                     if (q & 1 ~= 0 && c_style & 1 == 0) {
@@ -19910,7 +19910,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (c_style & 4 ~= 0) {
         if (o.u_to ~= nothing) {
             global115 = 2[?];
-            if (RunRoutines(o,13[obj13_inside?]) ~= 0) {
+            if (RunRoutines(o,u_to) ~= 0) {
                 if (c_style & 1 ~= 0) {
                     new_line;
                 }
@@ -20367,7 +20367,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         postonobj = i;
         k = verb;
         verb = ##Action256;
-        if (RunRoutines(i,2[?]) ~= 0) {
+        if (RunRoutines(i,prop2) ~= 0) {
             verb = k;
             rtrue;
         }
@@ -20443,7 +20443,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (postonobj ~= 0) {
         k = verb;
         verb = ##Action256;
-        if (RunRoutines(postonobj,3[s_obj?]) ~= 0) {
+        if (RunRoutines(postonobj,before) ~= 0) {
             verb = k;
             rtrue;
         }
@@ -20528,7 +20528,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (second > 1) {
         verb = ##Action257;
-        if (RunRoutines(second,2[?]) ~= 0) {
+        if (RunRoutines(second,prop2) ~= 0) {
             verb = ##PutOn;
             rtrue;
         }
@@ -20567,7 +20567,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (second > 1) {
         verb = ##Action257;
-        if (RunRoutines(second,3[s_obj?]) ~= 0) {
+        if (RunRoutines(second,before) ~= 0) {
             verb = ##PutOn;
             rtrue;
         }
@@ -20594,7 +20594,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (second > 1) {
         verb = ##Action257;
-        if (RunRoutines(second,2[?]) ~= 0) {
+        if (RunRoutines(second,prop2) ~= 0) {
             verb = ##Insert;
             rtrue;
         }
@@ -20633,7 +20633,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (second > 1) {
         verb = ##Action257;
-        if (RunRoutines(second,3[s_obj?]) ~= 0) {
+        if (RunRoutines(second,before) ~= 0) {
             verb = ##Insert;
             rtrue;
         }
@@ -20678,7 +20678,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local4 = local5;
             local3 = verb;
             verb = ##Action256;
-            if (RunRoutines(local5,2[?]) ~= 0) {
+            if (RunRoutines(local5,prop2) ~= 0) {
                 verb = local3;
                 rtrue;
             }
@@ -20688,7 +20688,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local4 ~= 0) {
             local3 = verb;
             verb = ##Action256;
-            if (RunRoutines(local4,3[s_obj?]) ~= 0) {
+            if (RunRoutines(local4,before) ~= 0) {
                 verb = local3;
                 rtrue;
             }
@@ -20876,7 +20876,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (location == thedark) {
             location = real_location;
         }
-        local3 = RunRoutines(local1,2[?]);
+        local3 = RunRoutines(local1,prop2);
         if (local3 ~= 3[s_obj?]) {
             location = local2;
         }
@@ -20892,7 +20892,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     local6 = noun.d_to;
     if (ZRegion(local6) == 2[?]) {
-        local6 = RunRoutines(noun,8[nw_obj?]);
+        local6 = RunRoutines(noun,d_to);
     }
     local2 = local1.local6;
     local3 = ZRegion(local2);
@@ -20927,7 +20927,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             return L__M(##Go,5,local2);
         }
         if (ZRegion(local2.n_to) == 2[?]) {
-            local2 = RunRoutines(local2,5[w_obj?]);
+            local2 = RunRoutines(local2,n_to);
         } else {
             local2 = local2.n_to;
         }
@@ -21016,7 +21016,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     local9 = 1[?];
                 }
                 if (local4 hasnt moved || local4.prop19 ~= routine262140 || local9 == 1[?]) {
-                    if (local4.prop19 ~= routine262140 && RunRoutines(local4,19[rod_of_stalking?]) ~= 0) {
+                    if (local4.prop19 ~= routine262140 && RunRoutines(local4,prop19) ~= 0) {
                         local8 = 1[?];
                         give local4 ~attrib25;
                         --local6;
@@ -21138,7 +21138,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     new_line;
     if (global19 < 3 && (allow_abbrev ~= true || global19 == 2[?] || location hasnt visited)) {
         if (location.prop19 ~= routine262140) {
-            RunRoutines(location,19[rod_of_stalking?]);
+            RunRoutines(location,prop19);
         } else if (location.description == 0) {
             print "** Room undescribed! **^";
         } else {
@@ -21648,7 +21648,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ ThrowAtSub ;	! 166180 / 0x28924
     if (second > 1) {
         verb = ##Action258;
-        if (RunRoutines(second,2[?]) ~= 0) {
+        if (RunRoutines(second,prop2) ~= 0) {
             verb = ##ThrowAt;
             rtrue;
         }
@@ -21735,7 +21735,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     lm_n = n;
     lm_o = x1;
     verb = action;
-    if (RunRoutines(16[obj16_lm?],2[?]) ~= 0) {
+    if (RunRoutines(obj16_lm,prop2) ~= 0) {
         verb = s;
         rfalse;
     }
