@@ -799,7 +799,7 @@ Object yourself "yourself"	! 15 / 0xf
 	life routine262140,
 	orders nothing,
 	description "As good-looking as ever.",
-	prop19 routine262140,
+	describe NULL,
 	number [0 0],
 	daemon routine262140,
 	each_turn routine262140,
@@ -1651,7 +1651,7 @@ Object -> obj111_antiquated_wireless "antiquated wireless"	! 111 / 0x6f
 	after routine86604,
 	before routine86892,
 	description "It rolls on casters, and has a bakelite on/off switch.",
-	prop19 routine87156,
+	describe routine87156,
 	article "an",
 	time_left 0,
 	daemon routine86996,
@@ -3353,7 +3353,7 @@ Object dug_hole "dug hole"	! 326 / 0x146
   with	name 'hole' 'dug',
 	after routine119332,
 	description "The rich loam, the silver of earthworms, the dignity of toil... none of these pastoral consolations is yours as you scrabble in the dirt.",
-	prop19 routine119392,
+	describe routine119392,
   has	container open static;
 
 Object Murky_Cave "Murky Cave"	! 327 / 0x147
@@ -11868,7 +11868,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj111_antiquated_wireless.prop19
+! References: obj111_antiquated_wireless.describe
 
 [ routine87156 ;	! 87156 / 0x15474
     if (selfobj has attrib8) {
@@ -15688,7 +15688,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: dug_hole.prop19
+! References: dug_hole.describe
 
 [ routine119392 ;	! 119392 / 0x1d260
     if (global158 == global156 && global159 == global157) {
@@ -21015,8 +21015,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     local5 = 6[ne_obj?];
                     local9 = 1[?];
                 }
-                if (local4 hasnt moved || local4.prop19 ~= routine262140 || local9 == 1[?]) {
-                    if (local4.prop19 ~= routine262140 && RunRoutines(local4,prop19) ~= 0) {
+                if (local4 hasnt moved || local4.describe ~= NULL || local9 == 1[?]) {
+                    if (local4.describe ~= NULL && RunRoutines(local4,describe) ~= 0) {
                         local8 = 1[?];
                         give local4 ~attrib25;
                         --local6;
@@ -21137,8 +21137,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     new_line;
     if (global19 < 3 && (allow_abbrev ~= true || global19 == 2[?] || location hasnt visited)) {
-        if (location.prop19 ~= routine262140) {
-            RunRoutines(location,prop19);
+        if (location.describe ~= NULL) {
+            RunRoutines(location,describe);
         } else if (location.description == 0) {
             print "** Room undescribed! **^";
         } else {
