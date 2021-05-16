@@ -4881,7 +4881,7 @@ Global multiflag;
 Global notheld_mode;
 Global onotheld_mode;
 Global meta;
-Global global41;
+Global orders;
 Global action;
 Global consult_from;
 Global consult_words;
@@ -7915,7 +7915,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     selfobj = obj;
     ssv = action;
     if (prop == life) {
-        action = global41;
+        action = orders;
     } else {
         action = verb;
     }
@@ -8360,7 +8360,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine55448 local1 local2 ;	! 55448 / 0xd898
-    global41 = local2;
+    orders = local2;
     return RunRoutines(local1,life);
 ];
 
