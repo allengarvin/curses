@@ -7272,7 +7272,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ MultiSub o i j k et ;	! 51208 / 0xc808
     i = multiple_object-->0;
     et = 0;
-    j = 1[?];
+    j = 1;
   .label51221;
     if (j <= i) {
         if (o == multiple_object-->j) {
@@ -7290,7 +7290,7 @@ Array array_29185 -->	! 29185 (0x7201)
         ++j;
         jump label51221;
     }
-    et = 9[sw_obj?];
+    et = VAGUE_PE;
     return et;
 ];
 
