@@ -2996,7 +2996,7 @@ Object -> obj281_stone_wall "stone wall"	! 281 / 0x119
 	after routine113724,
 	life routine113824,
 	description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
-	prop22 [1 17 1 d6],
+	found_in [1 17 1 d6],
   has	scenery talkable;
 
 Object obj282_timber_hatch "timber hatch"	! 282 / 0x11a
@@ -20044,14 +20044,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     i = 15 + 1;
   .label160785;
     if (i <= top_object) {
-        address = i.&prop22;
+        address = i.&found_in;
         if (address ~= 0 && i hasnt attrib7) {
             if (ZRegion(address-->0) == 2[?]) {
                 if ((address-->0)() ~= 0) {
                     move i to location;
                 }
             } else {
-                generic_globvar = i.&prop22;
+                generic_globvar = i.&found_in;
                 if (generic_globvar) {
                     generic_globvar = get_prop_len(generic_globvar);
                 }
