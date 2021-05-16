@@ -613,7 +613,7 @@ Global 19	global19:?
 Global 20	global20:?
 Global 21	top_object
 GlobalArray 22	standard_interpreter:array(?)
-Global 23	global23:?
+Global 23	toomany_flag:int
 Global 24	actor:object
 Global 25	actor_location:object
 Global 26	verb:action
@@ -1129,7 +1129,7 @@ Routine 0xc530	BestGuess  earliest its_score best i
 Routine 0xc5d0	Identical o1 o2 p1 p2 n1 n2 i j flag
 Routine 0xc6d4	PrintCommand from emptyf i j k f
 Routine 0xc790	CantSee:etype_enum  i w e:etype_enum
-Routine 0xc7d0	MultiAdd o i j
+Routine 0xc7d0	MultiAdd o i:int j
 Routine 0xc808	MultiSub o i j k et
 Routine 0xc858	MultiFilter attr  i j o
 Routine 0xc880	UserFilter obj

@@ -4863,7 +4863,7 @@ Global things_score;
 Global global19 = 1[?];
 Global global20;
 Global top_object;
-Global global23;
+Global toomany_flag;
 Global actor;
 Global actor_location;
 Global verb;
@@ -7250,8 +7250,8 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ MultiAdd o i j ;	! 51152 / 0xc7d0
     i = multiple_object-->0;
-    if (i == 63[obj63_photographer_s_flash?]) {
-        global23 = 1[?];
+    if (i == 63) {
+        toomany_flag = 1;
         rtrue;
     }
     j = 1[?];
@@ -8127,8 +8127,8 @@ Array array_29185 -->	! 29185 (0x7201)
                 L__M(##Miscellany,2);
                 jump label54208;
             }
-            if (global23 == 1[?]) {
-                global23 = 0;
+            if (toomany_flag == 1) {
+                toomany_flag = 0;
                 L__M(##Miscellany,1);
             }
             i = location;
