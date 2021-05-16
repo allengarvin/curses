@@ -4924,7 +4924,7 @@ Global indef_mode;
 Global indef_type;
 Global indef_wanted;
 Global indef_guess_p;
-Global global84;
+Global allow_plurals;
 Global notholding;
 Global global86;
 Global global87;
@@ -6217,7 +6217,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             indef_type = indef_type | 8;
         }
-        if (global84 == 1[?]) {
+        if (allow_plurals == 1) {
             n = NumberWord(o);
             if (n > 1) {
                 indef_guess_p = 1[?];
@@ -6367,7 +6367,7 @@ Array array_29185 -->	! 29185 (0x7201)
             token_was = token;
             token = 0;
         }
-        global84 = 1[?];
+        allow_plurals = 1;
         desc_wn = wn;
       .label46968;
         l = Descriptors(token);
@@ -6519,8 +6519,8 @@ Array array_29185 -->	! 29185 (0x7201)
     array_24618-->pcount = single_object;
     return 1[?];
   .label47741;
-    if (global84 == 1[?] && indef_guess_p == 1[?]) {
-        global84 = 0;
+    if (allow_plurals == 1 && indef_guess_p == 1[?]) {
+        allow_plurals = 0;
         wn = desc_wn;
         jump label46968;
     }
@@ -7568,7 +7568,7 @@ Array array_29185 -->	! 29185 (0x7201)
             wn = j + k;
           .label52497;
             if (global71 == 261[obj261_port_wall?]) {
-                if (global84 == 0) {
+                if (allow_plurals == 0) {
                     jump label52685;
                 }
                 if (indef_mode == 0) {
