@@ -5513,7 +5513,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         if (verb_word == 0 || verb_word->6 & 1 == 0) {
             wn = verb_wordnum;
-            l = NounDomain(Compass,nothing,0);
+            l = NounDomain(1[?],0,0);
             if (l == 10000[?]) {
                 jump label42195;
             }
@@ -5550,7 +5550,7 @@ Array array_29185 -->	! 29185 (0x7201)
             wn = 1;
             lookahead = 1;
             scope_reason = TALKING_REASON;
-            l = NounDomain(player,actor_location,6);
+            l = NounDomain(player,actor_location,6[ne_obj?]);
             scope_reason = PARSING_REASON;
             if (l == 10000[?]) {
                 jump label42195;
@@ -6527,7 +6527,7 @@ Array array_29185 -->	! 29185 (0x7201)
     return 0;
 ];
 
-[ NounDomain who where i local4 local5 local6 local7 local8 local9 local10 local11 ;	! 47764 / 0xba94
+[ NounDomain domain1 domain2 context first_word i j k l oldw answer_words marker ;	! 47764 / 0xba94
     if (parser_trace >= 4) {
         print "   [NounDomain called at word ", wn, "^";
     }
@@ -6535,7 +6535,7 @@ Array array_29185 -->	! 29185 (0x7201)
     global67 = 0;
     global70 = wn;
     global96 = 0;
-    routine51412(who,where,i);
+    routine51412(domain1,domain2,context);
     if (parser_trace >= 4) {
         print "   [ND made ", global67, " matches]^";
     }
@@ -6546,13 +6546,13 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (global70 <= num_words) {
         if (global67 == 1[?]) {
-            local5 = array_24660-->0;
-            return local5;
+            i = array_24660-->0;
+            return i;
         }
         if (wn <= num_words) {
-            local5 = routine52976();
+            i = routine52976();
             --wn;
-            if (local5 ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
+            if (i ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
                 if (lookahead == 8) {
                     rfalse;
                 }
@@ -6571,107 +6571,107 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     global68 = 0;
     if (global67 == 1[?]) {
-        local5 = array_24660-->0;
+        i = array_24660-->0;
     }
     if (global67 > 1) {
-        local5 = routine48728(i);
-        if (local5 == 65535[?]) {
+        i = routine48728(context);
+        if (i == 65535[?]) {
             rfalse;
         }
-        if (local5 == 1[?]) {
+        if (i == 1[?]) {
             rtrue;
         }
     }
-    if (local5 ~= 0) {
+    if (i ~= 0) {
         if (dont_infer == 1) {
-            return local5;
+            return i;
         }
         if (interfrom == 0) {
             interfrom = pcount;
         }
-        array_24618-->pcount = local5;
-        return local5;
+        array_24618-->pcount = i;
+        return i;
     }
     if (global70 > num_words) {
         ! no code
     } else {
-        if (i == 6) {
+        if (context == 6[ne_obj?]) {
             print "Who";
         } else {
             print "Which";
         }
         print " do you mean, ";
-        local6 = global68;
-        local11 = 0;
-        local5 = 1[?];
+        j = global68;
+        marker = 0;
+        i = 1[?];
       .label48087;
-        if (local5 <= global68) {
+        if (i <= global68) {
           .label48092;
-            if (array_24788-->local11 ~= local5 && array_24788-->local11 ~= 0 - local5) {
-                ++local11;
+            if (array_24788-->marker ~= i && array_24788-->marker ~= 0 - i) {
+                ++marker;
                 jump label48092;
             }
-            local7 = array_24660-->local11;
-            if (array_24788-->local11 > 0) {
-                Defart(local7);
+            k = array_24660-->marker;
+            if (array_24788-->marker > 0) {
+                Defart(k);
             } else {
-                Indefart(local7);
+                Indefart(k);
             }
-            if (local5 < local6 - 1) {
+            if (i < j - 1) {
                 print ", ";
             }
-            if (local5 == local6 - 1) {
+            if (i == j - 1) {
                 print " or ";
             }
-            ++local5;
+            ++i;
             jump label48087;
         }
         print "?^";
       .label48189;
-        local10 = Keyboard(24367[?],24488[?]);
-        local4 = array_24488-->1;
-        if (local4 == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
-            if (i >= 2 && i <= 5) {
-                local8 = multiple_object-->0;
-                local5 = 0;
+        answer_words = Keyboard(24367[?],24488[?]);
+        first_word = array_24488-->1;
+        if (first_word == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
+            if (context >= 2 && context <= 5) {
+                l = multiple_object-->0;
+                i = 0;
               .label48243;
-                if (local5 < global67 && local8 + local5 < 63) {
-                    local7 = array_24660-->local5;
-                    multiple_object-->(local5 + 1 + local8) = local7;
-                    ++local5;
+                if (i < global67 && l + i < 63) {
+                    k = array_24660-->i;
+                    multiple_object-->(i + 1 + l) = k;
+                    ++i;
                     jump label48243;
                 }
-                multiple_object-->0 = local5 + local8;
+                multiple_object-->0 = i + l;
                 rtrue;
             }
             print "Sorry, you can only have one item here. Which one exactly?^";
             jump label48189;
         }
-        local6 = local4->6;
-        if (0 ~= local6 & 1) {
+        j = first_word->6;
+        if (0 ~= j & 1) {
             routine53440(24021[?],24367[?]);
             routine53440(24142[?],24488[?]);
             return 10000[?];
         }
-        local9 = parse->1;
-        parse->1 = local10 + local9;
-        local7 = local9 + local10;
+        oldw = parse->1;
+        parse->1 = answer_words + oldw;
+        k = oldw + answer_words;
       .label48387;
-        if (local7 > global70) {
-            routine51364(local7,24142[?],local7 - local10);
-            --local7;
+        if (k > global70) {
+            routine51364(k,24142[?],k - answer_words);
+            --k;
             jump label48387;
         }
-        local7 = 1[?];
+        k = 1[?];
       .label48412;
-        if (local7 <= local10) {
-            routine51364(global70 + local7 - 1,24488[?],local7);
-            ++local7;
+        if (k <= answer_words) {
+            routine51364(global70 + k - 1,24488[?],k);
+            ++k;
             jump label48412;
         }
         return 10000[?];
     }
-    if (i == 6) {
+    if (context == 6[ne_obj?]) {
         print "Whom";
     } else {
         print "What";
@@ -6684,48 +6684,48 @@ Array array_29185 -->	! 29185 (0x7201)
     print " to ";
     PrintCommand(0,1[?]);
     print "?^";
-    local10 = Keyboard(24367[?],24488[?]);
-    local4 = array_24488-->1;
-    local6 = local4->6;
-    if (0 ~= local6 & 1) {
+    answer_words = Keyboard(24367[?],24488[?]);
+    first_word = array_24488-->1;
+    j = first_word->6;
+    if (0 ~= j & 1) {
         routine53440(24021[?],24367[?]);
         routine53440(24142[?],24488[?]);
         return 10000[?];
     }
-    local9 = parse->1;
+    oldw = parse->1;
     if (interfrom == 0) {
-        local7 = 1[?];
+        k = 1[?];
       .label48556;
-        if (local7 <= local10) {
-            routine51364(local9 + local7,24488[?],local7);
-            ++local7;
+        if (k <= answer_words) {
+            routine51364(oldw + k,24488[?],k);
+            ++k;
             jump label48556;
         }
     } else {
-        local6 = pcount - interfrom;
-        local7 = 1[?];
+        j = pcount - interfrom;
+        k = 1[?];
       .label48588;
-        if (local7 <= local10) {
-            routine51364(local9 + local7 + local6,24488[?],local7);
-            ++local7;
+        if (k <= answer_words) {
+            routine51364(oldw + k + j,24488[?],k);
+            ++k;
             jump label48588;
         }
-        local6 = interfrom;
+        j = interfrom;
       .label48617;
-        if (local6 < pcount) {
-            if (array_24618-->local6 >= 2 && array_24618-->local6 < 10000) {
+        if (j < pcount) {
+            if (array_24618-->j >= 2 && array_24618-->j < 10000) {
                 array_24488-->1 = 34860['it'?];
-                itobj = array_24618-->local6;
+                itobj = array_24618-->j;
             } else {
-                array_24488-->1 = routine52916(array_24618-->local6 - 10000);
+                array_24488-->1 = routine52916(array_24618-->j - 10000);
             }
-            routine51364(local9 + 1 + local6 - interfrom,24488[?],1[?]);
-            ++local10;
-            ++local6;
+            routine51364(oldw + 1 + j - interfrom,24488[?],1[?]);
+            ++answer_words;
+            ++j;
             jump label48617;
         }
     }
-    parse->1 = local10 + local9;
+    parse->1 = answer_words + oldw;
     return 10000[?];
 ];
 
@@ -23888,7 +23888,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     local2 = wn;
     if (local1 ~= 65535[?]) {
-        local4 = NounDomain(Compass,nothing,0);
+        local4 = NounDomain(1[?],0,0);
     } else {
         local4 = 65535[?];
     }
