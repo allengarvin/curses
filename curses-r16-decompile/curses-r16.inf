@@ -4904,7 +4904,7 @@ Global parameters;
 Global params_wanted;
 Global nsns;
 Global interfrom;
-Global global64;
+Global inferword;
 Global oops_from;
 Global global66;
 Global number_matched;
@@ -5779,7 +5779,7 @@ Array array_29185 -->	! 29185 (0x7201)
                         if (wn > num_words) {
                             if (interfrom == 0 && parameters < params_wanted) {
                                 interfrom = pcount;
-                                global64 = token;
+                                inferword = token;
                             }
                             if (interfrom == 0) {
                                 jump label44659;
