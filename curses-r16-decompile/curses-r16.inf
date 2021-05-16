@@ -6800,7 +6800,7 @@ Array array_29185 -->	! 29185 (0x7201)
         i = 0;
         global68 = 1[?];
         offset = multiple_object-->0;
-        j = routine50480();
+        j = BestGuess();
       .label49068;
         if (j ~= 65535[?] && i < indef_wanted && i + offset < 63) {
             flag = 0;
@@ -6825,7 +6825,7 @@ Array array_29185 -->	! 29185 (0x7201)
             } else if (parser_trace >= 4) {
                 print "   Rejecting it^";
             }
-            j = routine50480();
+            j = BestGuess();
             jump label49068;
         }
         if (i < indef_wanted && indef_wanted < 100) {
@@ -6858,7 +6858,7 @@ Array array_29185 -->	! 29185 (0x7201)
             j = i + 1;
           .label49347;
             if (j < number_matched) {
-                if (array_24788-->j == 0 && routine50640(match_list-->i,match_list-->j) == 1[?]) {
+                if (array_24788-->j == 0 && Identical(match_list-->i,match_list-->j) == 1[?]) {
                     flag = 1[?];
                     array_24788-->j = array_24788-->i;
                 }
@@ -6921,7 +6921,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (n == 1[?]) {
         dont_infer = 1;
     }
-    return routine50480();
+    return BestGuess();
 ];
 
 [ ReviseMulti second_p i low ;	! 49704 / 0xc228
@@ -7068,117 +7068,117 @@ Array array_29185 -->	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine50480 local1 local2 local3 local4 ;	! 50480 / 0xc530
+[ BestGuess earliest its_score best i ;	! 50480 / 0xc530
     if (global68 ~= 1[?]) {
         ScoreMatchL();
     }
-    local1 = 0;
-    local3 = 65535[?];
-    local4 = 0;
+    earliest = 0;
+    best = 65535[?];
+    i = 0;
   .label50500;
-    if (local4 < number_matched) {
-        if (match_list-->local4 >= 0) {
-            local2 = array_24788-->local4;
-            if (local2 > local3) {
-                local3 = local2;
-                local1 = local4;
+    if (i < number_matched) {
+        if (match_list-->i >= 0) {
+            its_score = array_24788-->i;
+            if (its_score > best) {
+                best = its_score;
+                earliest = i;
             }
         }
-        ++local4;
+        ++i;
         jump label50500;
     }
     if (parser_trace >= 4) {
-        if (local3 < 0) {
+        if (best < 0) {
             print "   Best guess ran out of choices^";
         } else {
             print "   Best guess ";
-            Defart(match_list-->local1);
-            print " (", match_list-->local1, ")^";
+            Defart(match_list-->earliest);
+            print " (", match_list-->earliest, ")^";
         }
     }
-    if (local3 < 0) {
+    if (best < 0) {
         return 65535[?];
     }
-    local4 = match_list-->local1;
-    match_list-->local1 = 65535[?];
-    return local4;
+    i = match_list-->earliest;
+    match_list-->earliest = 65535[?];
+    return i;
 ];
 
-[ routine50640 local1 local2 local3 local4 local5 local6 local7 local8 local9 ;	! 50640 / 0xc5d0
-    if (local1 == local2) {
+[ Identical o1 o2 p1 p2 n1 n2 i j flag ;	! 50640 / 0xc5d0
+    if (o1 == o2) {
         rtrue;
     }
-    if (local1 == 0 || local2 == 0) {
+    if (o1 == 0 || o2 == 0) {
         rfalse;
     }
-    if (parent(local1) == Compass || parent(local2) == Compass) {
+    if (parent(o1) == Compass || parent(o2) == Compass) {
         rfalse;
     }
-    if (local1.prop29 ~= nothing || local2.prop29 ~= nothing) {
-        if (local1.prop29 ~= local2.prop29) {
+    if (o1.prop29 ~= nothing || o2.prop29 ~= nothing) {
+        if (o1.prop29 ~= o2.prop29) {
             rfalse;
         }
         global71 = 260[obj260_Greek_frieze?];
-        parser_one = local1;
-        parser_two = local2;
-        local8 = wn;
-        local7 = routine53736(local1,29[rod_of_death?]);
-        wn = local8;
-        if (local7 == 65535[?]) {
+        parser_one = o1;
+        parser_two = o2;
+        j = wn;
+        i = routine53736(o1,29[rod_of_death?]);
+        wn = j;
+        if (i == 65535[?]) {
             rtrue;
         }
-        if (local7 == 65534[?]) {
+        if (i == 65534[?]) {
             rfalse;
         }
     }
-    local3 = local1.&name;
-    generic_globvar = local1.&name;
+    p1 = o1.&name;
+    generic_globvar = o1.&name;
     if (generic_globvar) {
         generic_globvar = get_prop_len(generic_globvar);
     }
-    local5 = generic_globvar / 2;
-    local4 = local2.&name;
-    generic_globvar = local2.&name;
+    n1 = generic_globvar / 2;
+    p2 = o2.&name;
+    generic_globvar = o2.&name;
     if (generic_globvar) {
         generic_globvar = get_prop_len(generic_globvar);
     }
-    local6 = generic_globvar / 2;
-    local7 = 0;
+    n2 = generic_globvar / 2;
+    i = 0;
   .label50798;
-    if (local7 < local5) {
-        local9 = 0;
-        local8 = 0;
+    if (i < n1) {
+        flag = 0;
+        j = 0;
       .label50809;
-        if (local8 < local6) {
-            if (local3-->local7 == local4-->local8) {
-                local9 = 1[?];
+        if (j < n2) {
+            if (p1-->i == p2-->j) {
+                flag = 1[?];
             }
-            ++local8;
+            ++j;
             jump label50809;
         }
-        if (local9 == 0) {
+        if (flag == 0) {
             rfalse;
         }
-        ++local7;
+        ++i;
         jump label50798;
     }
-    local8 = 0;
+    j = 0;
   .label50849;
-    if (local8 < local6) {
-        local9 = 0;
-        local7 = 0;
+    if (j < n2) {
+        flag = 0;
+        i = 0;
       .label50860;
-        if (local7 < local5) {
-            if (local3-->local7 == local4-->local8) {
-                local9 = 1[?];
+        if (i < n1) {
+            if (p1-->i == p2-->j) {
+                flag = 1[?];
             }
-            ++local7;
+            ++i;
             jump label50860;
         }
-        if (local9 == 0) {
+        if (flag == 0) {
             rfalse;
         }
-        ++local8;
+        ++j;
         jump label50849;
     }
     rtrue;
@@ -19423,7 +19423,7 @@ Array array_29185 -->	! 29185 (0x7201)
             rfalse;
         }
     }
-    return routine50640(o1,o);
+    return Identical(o1,o);
 ];
 
 [ SortTogether obj value ;	! 158112 / 0x269a0
