@@ -1134,7 +1134,7 @@ Object obj46_tight_door "tight door"	! 46 / 0x2e
 Object obj47_Old_Furniture "Old Furniture"	! 47 / 0x2f
   with	name 'armchairs' 'umbrella' 'table' 'stand' 'rubbish' 'armchair',
 	n_to obj35_Attic,
-	prop10 obj57_Over_the_East_Wing,
+	se_to obj57_Over_the_East_Wing,
 	description "Scruffy old furniture is piled up here: armchairs with springs coming out, umbrella stands, a badly scratched cupboard, a table with one leg missing... You try to remember why you keep all this rubbish, and fail. Anyway the attic continues to the southeast.",
 	cant_go "The attic turns from north to southeast here.",
 	section T_MODERN,
@@ -1458,7 +1458,7 @@ Object obj87_Roof "Roof"	! 87 / 0x57
 
 Object obj88_Battlements "Battlements"	! 88 / 0x58
   with	name 'battlements' 'crenellations',
-	prop10 obj87_Roof,
+	se_to obj87_Roof,
 	description "The old crenellated battlements of the house. An Englishman's home is, of course, his castle, but Meldrew Hall never saw much fighting and these military-looking features were just a seventeenth-century fashion. They also weren't intended for standing on, and the only safe way to proceed is back southeast.^^It is peculiarly cold here.",
 	cant_go "The rooftop is far too dangerous in that direction.",
 	section T_MODERN,
@@ -1865,7 +1865,7 @@ Object -> obj137_ironbound_door "ironbound door"	! 137 / 0x89
 Object obj138_Infinity_Symbol "Infinity Symbol"	! 138 / 0x8a
   with	name 'marble' 'disc' 'webs' 'icicle',
 	before routine92944,
-	prop10 obj136_Cellar_West,
+	se_to obj136_Cellar_West,
 	description "An eerie, dark cave carved from crystal icicles of rock and strewn with great spiders' webs hung from the ragged stone, inhabited only by dead white insects. A narrow crevice opens out to an iron doorway and the warmth of the house.^^The rough stone floor levels out to a perfectly round, smooth white marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.^^You shiver with foreboding, but inexplicably feel that the map you're looking for must be somewhere near here.",
 	section T_MODERN,
   has	light scored;
@@ -1899,7 +1899,7 @@ Object obj142_Sandstone_Passage "Sandstone Passage"	! 142 / 0x8e
 Object obj143_The_Octagon "The Octagon"	! 143 / 0x8f
   with	before routine93900,
 	d_to obj142_Sandstone_Passage,
-	prop10 obj150_White_Hallway,
+	se_to obj150_White_Hallway,
 	u_to obj142_Sandstone_Passage,
 	description "A broad, dark octagonal room devoted to dull exhibits of the disastrous Nile Valley Expedition of '21 - the few good ones were donated to the British Museum. A back staircase leads west to the unbuilt extension, while the entrance seems to be the cobwebbed passage southeast. High windows on the northern face let in dim light.",
 	cant_go "The only exits are via the southeast passage and the back staircase.",
@@ -2619,7 +2619,7 @@ Object obj232_Sacred_Earth "Sacred Earth"	! 232 / 0xe8
 Object obj233_Temple_of_Zeus "Temple of Zeus"	! 233 / 0xe9
   with	name 'pillar',
 	n_to routine107840,
-	prop10 obj235_East_Cloister,
+	se_to obj235_East_Cloister,
 	list_together obj237_West_Cloister,
 	description "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and featureless save for the entrance at the north. So much for all the rumours about hoards of treasure - it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along.^^Cloisters lead southeast and southwest, deeper into the temple.",
 	section T_TAROT,
@@ -2650,7 +2650,7 @@ Object -> obj236_inscribed_stone "inscribed stone"	! 236 / 0xec
 
 Object obj237_West_Cloister "West Cloister"	! 237 / 0xed
   with	prop9 obj233_Temple_of_Zeus,
-	prop10 obj239_Inner_Sanctum,
+	se_to obj239_Inner_Sanctum,
 	description "Along the west cloister, turning from northeast to southeast, is a broad bas relief depicting the seasons: the planting of seed, high summer, the harvest, floods and then the coming of ice.",
 	section T_TAROT,
   has	;
@@ -2692,7 +2692,7 @@ Object obj242_Cross_Centre "Cross Centre"	! 242 / 0xf2
 	before routine109612,
 	s_to obj239_Inner_Sanctum,
 	prop9 obj246_Northeast_Cross,
-	prop10 obj248_Southeast_Cross,
+	se_to obj248_Southeast_Cross,
 	nw_to obj247_Northwest_Cross,
 	list_together obj249_Southwest_Cross,
 	u_to obj239_Inner_Sanctum,
@@ -2745,7 +2745,7 @@ Object -> obj251_statue_of_Demeter "statue of Demeter"	! 251 / 0xfb
 
 Object obj247_Northwest_Cross "Northwest Cross"	! 247 / 0xf7
   with	name 'carvings' 'wheat',
-	prop10 obj242_Cross_Centre,
+	se_to obj242_Cross_Centre,
 	description "This cross-corner is surrounded with carvings of wheat swaying in the breeze, bathed with sunshine.^^The Labyrinth lies to southeast.",
 	section T_TAROT,
   has	;
@@ -3013,7 +3013,7 @@ Object obj283_Family_Tree "Family Tree"	! 283 / 0x11b
 	n_to routine113940,
 	e_to obj285_Lawn_Ornaments,
 	d_to obj291_Clearing,
-	prop10 obj276_Garden_Stream,
+	se_to obj276_Garden_Stream,
 	u_to obj299_Up_the_Plane_Tree,
 	initial routine113932,
 	description "You stand in the shade of a great plane tree, seedlings for which were brought back from Spain by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and to the north a single break in the green privet hedge marks the entrance to the famously difficult Meldrew Hall Maze. A signpost reading ~To the Mosaic~ points east across the lawn.",
@@ -3288,7 +3288,7 @@ Object -> obj317_gold_watch_on_a_chain "gold watch on a chain"	! 317 / 0x13d
 Object Behind_Summer_House "Behind Summer House"	! 318 / 0x13e
   with	s_to loose_board,
 	d_to obj288_Mosaic,
-	prop10 Croquet_Lawn,
+	se_to Croquet_Lawn,
 	d_to obj288_Mosaic,
 	description "Among dense hedges by the shabby wood-slatted back of the summer house. Dark scratchy branches hem you in, but you could scramble down to the west or out onto the croquet lawn southeast.",
 	section T_GARDEN,
@@ -3882,7 +3882,7 @@ Object -> array_of_oblong_crystals "array of oblong crystals"	! 395 / 0x18b
 Object Causeway "Causeway"	! 396 / 0x18c
   with	after routine130472,
 	n_to Island_of_Pharos,
-	prop10 Crossroads,
+	se_to Crossroads,
 	initial routine130540,
 	description "A warm winter's night in the ancient city of Alexandria, on the Heptastadion causeway across the harbour to the Island of Pharos (to north). The Mediterranean waters lap against the land bridge, and the whole city (southeast) is lit up with torches: it is a night of celebration.",
 	number 2,
@@ -3964,7 +3964,7 @@ Object Crossroads "Crossroads"	! 405 / 0x195
   with	name 'processio' 'tower',
 	after routine132404,
 	prop9 Outside_the_Royal_Museum,
-	prop10 A_Tower,
+	se_to A_Tower,
 	nw_to Causeway,
 	list_together Necropolis,
 	description "The great crossroads at the heart of chlamys-shaped Alexandria, greatest city of the civilised world. The northwest-southeast road runs from the causeway to the Tower: the main road runs southwest from the Necropolis gate, northeast to the great public buildings of the city.",
@@ -4192,7 +4192,7 @@ Object Outside_the_Theatre "Outside the Theatre"	! 434 / 0x1b2
 Object Outside_the_Royal_Museum "Outside the Royal Museum"	! 435 / 0x1b3
   with	n_to Outside_the_Theatre,
 	prop9 Stadium,
-	prop10 routine136564,
+	se_to routine136564,
 	list_together Crossroads,
 	description "The main southwest-northeast road forks off with a road due north to the Theatre. Despite the kaleidoscopic din you are impressed by the sober majesty of the Museum of the Ptolemies, whose fine portico entrance, decked with reliefs, is southeast.",
 	daemon routine136876,
@@ -4290,7 +4290,7 @@ Object The_Birdcage_of_the_Muses "The Birdcage of the Muses"	! 448 / 0x1c0
   with	name 'little' 'door' 'books',
 	s_to Oil_Room,
 	e_to Reading_Corridor,
-	prop10 Geography_Room,
+	se_to Geography_Room,
 	nw_to Outside_the_Royal_Museum,
 	nw_to Outside_the_Royal_Museum,
 	description "The celebrated Library of Alexandria, finest in the entire world, possessed of hundreds of thousands of books: where the ruling Ptolemies keep fanatic, infighting scholars almost imprisoned as they turn out rival commentaries on the ancient poems - hence the nickname.^^There is a little door to the south; a dusty corridor southeast; a thoroughfare east, and a grand entrance northwest.",
@@ -4427,7 +4427,7 @@ Object Lost_inside_the_Palace "Lost inside the Palace"	! 466 / 0x1d2
 	e_to Lost_inside_the_Palace,
 	d_to Lost_inside_the_Palace,
 	prop9 Lost_inside_the_Palace,
-	prop10 Lost_inside_the_Palace,
+	se_to Lost_inside_the_Palace,
 	nw_to Lost_inside_the_Palace,
 	list_together Lost_inside_the_Palace,
 	description "Scholars are divided on the origin of the ~maze~ legend: some hold that to a primitive culture, the Knossos palace was so complex as to seem a maze, and the king so fearsome as to seem a Minotaur.^^Others say the early palaces really were labyrinths to protect sacred altars.^^And you think it's because this is a maze of twisty little passages, all alike.",
@@ -4676,7 +4676,7 @@ Object -> old_village_clock "old village clock"	! 497 / 0x1f1
 
 Object Hellish_Place "Hellish Place"	! 498 / 0x1f2
   with	name 'desk',
-	before routine145296,
+	before HellishPlaceBefore,
 	n_to obj136_Cellar_West,
 	u_to obj136_Cellar_West,
 	description "Hell, you always imagined, would contain fiery, sulphurous pits and a great many gentlemen with forked tails. You were right about the last part. A demon is sitting behind a flame-proofed desk at the bottom of the stairs. There are some disconcerting screams from further away, but nothing to worry about. Not in this life, anyway.",
@@ -7471,14 +7471,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (child(domain) ~= nothing && domain ~= nosearch && IsSeeThrough(domain) == 1[?]) {
         ScopeWithin(domain,0,context);
     }
-    ad = domain.&prop10;
+    ad = domain.&se_to;
     if (ad ~= 0) {
         if (UnsignedCompare(ad-->0,top_object) > 0) {
             ats_flag = 2 + context;
-            RunRoutines(domain,prop10);
+            RunRoutines(domain,se_to);
             ats_flag = 0;
         } else {
-            generic_globvar = domain.&prop10;
+            generic_globvar = domain.&se_to;
             if (generic_globvar) {
                 generic_globvar = get_prop_len(generic_globvar);
             }
@@ -8813,12 +8813,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             jump label57141;
         }
     }
-    ad = i.&prop10;
+    ad = i.&se_to;
     if (parent(i) ~= nothing && ad ~= 0) {
         if (ad-->0 > top_object) {
             ats_hls = 0;
             ats_flag = 1;
-            RunRoutines(i,prop10);
+            RunRoutines(i,se_to);
             ats_flag = 0;
             if (ats_hls == 1) {
                 rtrue;
@@ -8826,7 +8826,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         } else {
             j = 0;
           .label57218;
-            generic_globvar = i.&prop10;
+            generic_globvar = i.&se_to;
             if (generic_globvar) {
                 generic_globvar = get_prop_len(generic_globvar);
             }
@@ -17430,7 +17430,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Outside_the_Royal_Museum.prop10
+! References: Outside_the_Royal_Museum.se_to
 
 [ routine136564 ;	! 136564 / 0x21574
     if (purple_sash has attrib26) {
@@ -18470,7 +18470,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hellish_Place.before
 
-[ routine145296 local1 ;	! 145296 / 0x23790
+[ HellishPlaceBefore local1 ;	! 145296 / 0x23790
     if (action == ##Look) {
         new_line;
         if (demon has attrib8) {
