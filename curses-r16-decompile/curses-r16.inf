@@ -7118,7 +7118,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (o1.prop29 ~= o2.prop29) {
             rfalse;
         }
-        parser_action = ##Action260;
+        parser_action = ##TheSame;
         parser_one = o1;
         parser_two = o2;
         j = wn;
@@ -9125,7 +9125,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: rod_of_fire.prop29, rod_of_returning.prop29, rod_of_stalking.prop29, rod_of_infinity.prop29, rod_of_husbandry.prop29, rod_of_bronze.prop29, rod_of_sacrifice.prop29, rod_of_luck.prop29, rod_of_ice.prop29, rod_of_language.prop29, rod_of_returning2.prop29, rod_of_life.prop29, rod_of_death.prop29, rod_of_love.prop29
 
 [ routine58728 local1 local2 ;	! 58728 / 0xe568
-    if (parser_action == ##Action260) {
+    if (parser_action == ##TheSame) {
         if (parser_one has attrib34 && parser_two has attrib34) {
             return 65535[?];
         }
@@ -9669,7 +9669,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: Grim_Reaper_card.prop29, Fool_card.prop29, Drowned_Sailor_card.prop29, obj190_Castle.prop29, obj191_Star.prop29, obj192_Eight_of_Wands.prop29, obj193_Maiden.prop29, obj194_Ace_of_Cups.prop29, Crescent_Moon.prop29
 
 [ routine64276 local1 local2 ;	! 64276 / 0xfb14
-    if (parser_action == ##Action260) {
+    if (parser_action == ##TheSame) {
         return 65534[?];
     }
   .label64287;
@@ -17650,7 +17650,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: tube_with_an_alpha_on.prop29, tube_with_a_kappa_on.prop29
 
 [ routine138240 local1 local2 ;	! 138240 / 0x21c00
-    if (parser_action == ##Action260) {
+    if (parser_action == ##TheSame) {
         return 65535[?];
     }
   .label138251;
@@ -17672,7 +17672,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ! References: scroll_bearing_a_short_poem.prop29, scroll_bearing_an_epic_poem.prop29
 
 [ routine138300 local1 local2 ;	! 138300 / 0x21c3c
-    if (parser_action == ##Action260) {
+    if (parser_action == ##TheSame) {
         return 65535[?];
     }
   .label138311;
