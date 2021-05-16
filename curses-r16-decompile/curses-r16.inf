@@ -4929,7 +4929,7 @@ Global notholding;
 Global global86;
 Global global87;
 Global held_back_mode;
-Global global89;
+Global hb_wn;
 Global pcount2;
 Global etype;
 Global last_command_from;
@@ -5794,7 +5794,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                 l = NextWord();
                                 if (l == 40296['then'?] or 41628['xcomma'?]) {
                                     held_back_mode = 1;
-                                    global89 = wn - 1;
+                                    hb_wn = wn - 1;
                                 } else {
                                     m = 0;
                                   .label44207;
@@ -5857,7 +5857,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                 print ")^";
                             }
                             if (held_back_mode == 1) {
-                                wn = global89;
+                                wn = hb_wn;
                                 jump label45430;
                             }
                             rtrue;
