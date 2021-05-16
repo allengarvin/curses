@@ -4899,7 +4899,7 @@ Global global55;
 Global multihad;
 Global multi_context;
 Global pcount;
-Global global59;
+Global pcount2;
 Global parameters;
 Global params_wanted;
 Global nsns;
@@ -5803,7 +5803,7 @@ Array array_29185 -->	! 29185 (0x7201)
                                         ++m;
                                         jump label44207;
                                     }
-                                    global59 = pcount;
+                                    pcount2 = pcount;
                                     etype = UPTO_PE;
                                     jump label44659;
                                 }
@@ -5941,7 +5941,7 @@ Array array_29185 -->	! 29185 (0x7201)
             ++m;
             jump label44846;
         }
-        pcount = global59;
+        pcount = pcount2;
         PrintCommand(0,1[?]);
         print ".^";
     }
