@@ -1148,12 +1148,12 @@ Routine 0xce94	AdjectiveWord i j
 Routine 0xceb4	AdjectiveAddress number m
 Routine 0xcef0	NextWord i j k
 Routine 0xcf40	NextWordStopped
-Routine 0xcf58	routine53080:?
-Routine 0xcf70	routine53104:?
-Routine 0xcf80	routine53120:?
-Routine 0xd090	routine53392:?
-Routine 0xd0b8	routine53432:?
-Routine 0xd0c0	routine53440:?
+Routine 0xcf58	WordAddress wordnum
+Routine 0xcf70	WordLength wordnum
+Routine 0xcf80	TryNumber wordnum   i j c num len mul tot d digit
+Routine 0xd090	ResetVagueWords i
+Routine 0xd0b8	GetGender person
+Routine 0xd0c0	Copy bto bfrom i size
 Routine 0xd0dc	UnsignedCompare
 Routine 0xd114	ZRegion
 Routine 0xd148	PrintOrRun o:thing

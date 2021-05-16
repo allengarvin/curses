@@ -5569,7 +5569,7 @@ Array array_29185 -->	! 29185 (0x7201)
                 print "To talk to someone, try ~someone, hello~ or some such.^";
                 jump label42187;
             }
-            routine53392(l);
+            ResetVagueWords(l);
             verb_wordnum = j + 1;
             actor = l;
             actor_location = l;
@@ -5837,7 +5837,7 @@ Array array_29185 -->	! 29185 (0x7201)
                             results-->1 = params_wanted;
                             results-->0 = line_address->7;
                             if (parameters > 0 && results-->2 >= 2) {
-                                routine53392(results-->2);
+                                ResetVagueWords(results-->2);
                             }
                             oops_from = 0;
                             if (notholding ~= 0 && actor == player) {
@@ -5915,7 +5915,7 @@ Array array_29185 -->	! 29185 (0x7201)
             special_word = NextWord();
             ++verb_wordnum;
         }
-        special_number = routine53120(verb_wordnum);
+        special_number = TryNumber(verb_wordnum);
         results-->0 = 264[obj264_aft_wall?];
         results-->1 = 2[?];
         results-->2 = 1[?];
@@ -6291,7 +6291,7 @@ Array array_29185 -->	! 29185 (0x7201)
         vague_obj = player;
     }
     if (token == 7) {
-        l = routine53120(wn);
+        l = TryNumber(wn);
         if (l ~= 64536[?]) {
             if (nsns == 0) {
                 special_number1 = l;
@@ -6310,7 +6310,7 @@ Array array_29185 -->	! 29185 (0x7201)
         special_word = NextWord();
         single_object = 1[?];
     } else if (token == 8) {
-        l = routine53120(wn++);
+        l = TryNumber(wn++);
         if (l == 64536[?]) {
             etype = NUMBER_PE;
             rfalse;
@@ -6649,8 +6649,8 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         j = first_word->6;
         if (0 ~= j & 1) {
-            routine53440(24021[?],24367[?]);
-            routine53440(24142[?],24488[?]);
+            Copy(24021[?],24367[?]);
+            Copy(24142[?],24488[?]);
             return 10000[?];
         }
         oldw = parse->1;
@@ -6688,8 +6688,8 @@ Array array_29185 -->	! 29185 (0x7201)
     first_word = array_24488-->1;
     j = first_word->6;
     if (0 ~= j & 1) {
-        routine53440(24021[?],24367[?]);
-        routine53440(24142[?],24488[?]);
+        Copy(24021[?],24367[?]);
+        Copy(24142[?],24488[?]);
         return 10000[?];
     }
     oldw = parse->1;
@@ -7045,7 +7045,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (indef_type & 16 ~= 0 && its_owner == itobj) {
             its_score = its_score + 40;
         }
-        if (indef_type & 32 ~= 0 && its_owner has animate && routine53432(its_owner) == 1[?]) {
+        if (indef_type & 32 ~= 0 && its_owner has animate && GetGender(its_owner) == 1[?]) {
             its_score = its_score + 40;
         }
         its_score = its_score + routine175160(obj,2[?]);
@@ -7729,111 +7729,111 @@ Array array_29185 -->	! 29185 (0x7201)
     return NextWord();
 ];
 
-[ routine53080 local1 ;	! 53080 / 0xcf58
-    return 24021 + parse->(local1 * 4 + 1);
+[ WordAddress wordnum ;	! 53080 / 0xcf58
+    return 24021 + parse->(wordnum * 4 + 1);
 ];
 
-[ routine53104 local1 ;	! 53104 / 0xcf70
-    return parse->(local1 * 4);
+[ WordLength wordnum ;	! 53104 / 0xcf70
+    return parse->(wordnum * 4);
 ];
 
-[ routine53120 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 ;	! 53120 / 0xcf80
-    local2 = wn;
-    wn = local1;
-    local3 = NextWord();
-    wn = local2;
-    local3 = NumberWord(local3);
-    if (local3 >= 1) {
-        return local3;
+[ TryNumber wordnum i j c num len mul tot d digit ;	! 53120 / 0xcf80
+    i = wn;
+    wn = wordnum;
+    j = NextWord();
+    wn = i;
+    j = NumberWord(j);
+    if (j >= 1) {
+        return j;
     }
-    local2 = local1 * 4 + 1;
-    local3 = parse->local2;
-    local5 = local3 + 24021;
-    local6 = parse->(local2 - 1);
-    local8 = routine181256(local5,local6);
-    if (local8 ~= 0) {
-        return local8;
+    i = wordnum * 4 + 1;
+    j = parse->i;
+    num = j + 24021;
+    len = parse->(i - 1);
+    tot = routine181256(num,len);
+    if (tot ~= 0) {
+        return tot;
     }
-    if (local6 >= 4) {
-        local7 = 1000[?];
+    if (len >= 4) {
+        mul = 1000[?];
     }
-    if (local6 == 3[s_obj?]) {
-        local7 = 100[obj100_Tiny_Balcony?];
+    if (len == 3[s_obj?]) {
+        mul = 100[obj100_Tiny_Balcony?];
     }
-    if (local6 == 2[?]) {
-        local7 = 10[u_obj?];
+    if (len == 2[?]) {
+        mul = 10[u_obj?];
     }
-    if (local6 == 1[?]) {
-        local7 = 1[?];
+    if (len == 1[?]) {
+        mul = 1[?];
     }
-    local8 = 0;
-    local4 = 0;
-    local6 = local6 - 1;
-    local4 = 0;
+    tot = 0;
+    c = 0;
+    len = len - 1;
+    c = 0;
   .label53238;
-    if (local4 <= local6) {
-        local10 = local5->local4;
-        if (local10 == 48[obj48_furniture?]) {
-            local9 = 0;
-        } else if (local10 == 49[obj49_scratched_cupboard?]) {
-            local9 = 1[?];
-        } else if (local10 == 50[obj50_bird_whistle?]) {
-            local9 = 2[?];
-        } else if (local10 == 51[obj51_gift_wrapped_parcel?]) {
-            local9 = 3[s_obj?];
-        } else if (local10 == 52[obj52_box_of_chocolates?]) {
-            local9 = 4[e_obj?];
-        } else if (local10 == 53[obj53_wrapping_paper_with_reindeer_on?]) {
-            local9 = 5[w_obj?];
-        } else if (local10 == 54[obj54_postcard_of_the_Champs_Elysees?]) {
-            local9 = 6[ne_obj?];
-        } else if (local10 == 55[obj55_mb?]) {
-            local9 = 7[se_obj?];
-        } else if (local10 == 56[obj56_red_tablet?]) {
-            local9 = 8[nw_obj?];
-        } else if (local10 == 57[obj57_Over_the_East_Wing?]) {
-            local9 = 9[sw_obj?];
+    if (c <= len) {
+        digit = num->c;
+        if (digit == 48[obj48_furniture?]) {
+            d = 0;
+        } else if (digit == 49[obj49_scratched_cupboard?]) {
+            d = 1[?];
+        } else if (digit == 50[obj50_bird_whistle?]) {
+            d = 2[?];
+        } else if (digit == 51[obj51_gift_wrapped_parcel?]) {
+            d = 3[s_obj?];
+        } else if (digit == 52[obj52_box_of_chocolates?]) {
+            d = 4[e_obj?];
+        } else if (digit == 53[obj53_wrapping_paper_with_reindeer_on?]) {
+            d = 5[w_obj?];
+        } else if (digit == 54[obj54_postcard_of_the_Champs_Elysees?]) {
+            d = 6[ne_obj?];
+        } else if (digit == 55[obj55_mb?]) {
+            d = 7[se_obj?];
+        } else if (digit == 56[obj56_red_tablet?]) {
+            d = 8[nw_obj?];
+        } else if (digit == 57[obj57_Over_the_East_Wing?]) {
+            d = 9[sw_obj?];
         } else {
             return 64536[?];
         }
-        local8 = local8 + local7 * local9;
-        local7 = local7 / 10;
-        ++local4;
+        tot = tot + mul * d;
+        mul = mul / 10;
+        ++c;
         jump label53238;
     }
-    if (local6 > 3) {
-        local8 = 10000[?];
+    if (len > 3) {
+        tot = 10000[?];
     }
-    return local8;
+    return tot;
 ];
 
-[ routine53392 local1 ;	! 53392 / 0xd090
-    if (local1 has animate && local1 ~= player) {
-        if (routine53432(local1) == 1[?]) {
-            himobj = local1;
+[ ResetVagueWords i ;	! 53392 / 0xd090
+    if (i has animate && i ~= player) {
+        if (GetGender(i) == 1[?]) {
+            himobj = i;
         } else {
-            herobj = local1;
+            herobj = i;
         }
     } else {
-        itobj = local1;
+        itobj = i;
     }
     rtrue;
 ];
 
-[ routine53432 local1 ;	! 53432 / 0xd0b8
-    if (local1 hasnt attrib7) {
+[ GetGender person ;	! 53432 / 0xd0b8
+    if (person hasnt attrib7) {
         rtrue;
     }
     rfalse;
 ];
 
-[ routine53440 local1 local2 local3 local4 ;	! 53440 / 0xd0c0
-    local4 = local1->0;
-    local3 = 1[?];
+[ Copy bto bfrom i size ;	! 53440 / 0xd0c0
+    size = bto->0;
+    i = 1[?];
   .label53448;
-    if (local3 <= local4) {
-        local1->local3 = local2->local3;
-        ++local3;
+    if (i <= size) {
+        bto->i = bfrom->i;
+        ++i;
         jump label53448;
     }
     rtrue;
@@ -8141,7 +8141,7 @@ Array array_29185 -->	! 29185 (0x7201)
                     print "(Since something dramatic has happened, your list of commands has been cut short.)^";
                 } else {
                     l = multiple_object-->k;
-                    routine53392(l);
+                    ResetVagueWords(l);
                     PrintShortName(l);
                     print ": ";
                     inp1 = l;
@@ -8402,7 +8402,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         rfalse;
     }
-    i = routine53120(1[?]);
+    i = TryNumber(1[?]);
     if (i < 1 || i > lines) {
         jump label55515;
     }
@@ -11386,7 +11386,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine82652 local1 ;	! 82652 / 0x142dc
     if (action == ##Consult) {
-        local1 = routine53120(global43);
+        local1 = TryNumber(global43);
         if (local1 < 1725 || local1 > 1792) {
             "He didn't seem to be experimenting in those days.";
         }
@@ -11632,7 +11632,7 @@ Array array_29185 -->	! 29185 (0x7201)
         if (selfobj in obj104_labelled_glass_demijohn) {
             "You can't get a close enough look.";
         }
-        local1 = routine53120(global43);
+        local1 = TryNumber(global43);
         if (local1 == 1420[?]) {
             if (obj177_Museum_Foyer has visited) {
                 "You remember, the museum.";
@@ -22990,7 +22990,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ LookUpSub local1 local2 ;	! 175216 / 0x2ac70
-    local2 = routine53120(global43);
+    local2 = TryNumber(global43);
     if (local2 >= 0 && (obj106_tourist_map in player || obj106_tourist_map in location)) {
         local1 = 106[obj106_tourist_map?];
     }
@@ -23846,7 +23846,7 @@ Array array_29185 -->	! 29185 (0x7201)
         ++wn;
         return 1[?];
     }
-    local2 = routine53120(wn);
+    local2 = TryNumber(wn);
     if (local2 < 0) {
         wn = local3;
         rfalse;
