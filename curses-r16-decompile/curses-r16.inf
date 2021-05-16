@@ -821,7 +821,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'fire',
+	rod_word 'fire',
 	rod_action RodOfFireAction,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
   has	rod_attr hidden_rod;
@@ -835,7 +835,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'returning',
+	rod_word 'returning',
 	rod_action RodOfReturningAction,
 	devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
   has	rod_attr hidden_rod;
@@ -849,7 +849,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'stalking',
+	rod_word 'stalking',
 	rod_action RodOfStalkingAction,
 	devil_hint "It has no horticultural application.",
   has	rod_attr hidden_rod;
@@ -863,7 +863,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'infinity',
+	rod_word 'infinity',
 	rod_action RodOfInfinityAction,
 	angel_hint "Well, where might you have seen infinity before?",
   has	rod_attr hidden_rod;
@@ -877,7 +877,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'husbandry',
+	rod_word 'husbandry',
 	rod_action RodOfHusbandryAction,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
   has	rod_attr hidden_rod;
@@ -891,7 +891,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'bronze',
+	rod_word 'bronze',
 	rod_action RodOfBronzeAction,
 	angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
   has	rod_attr hidden_rod;
@@ -905,7 +905,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'sacrifice',
+	rod_word 'sacrifice',
 	rod_action RodOfSacrificeAction,
 	angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
   has	rod_attr hidden_rod;
@@ -919,7 +919,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'luck',
+	rod_word 'luck',
 	rod_action RodOfLuckAction,
 	angel_hint "Well, if there's such a thing as luck, maybe this would help.",
   has	rod_attr hidden_rod;
@@ -933,7 +933,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 	article "a",
 	short rod_short,
 	prop29 routine58728,
-	prop32 'ice',
+	rod_word 'ice',
 	rod_action RodOfIceAction,
 	angel_hint "Use only at heated moments, when affairs are delicately balanced.",
   has	rod_attr hidden_rod;
@@ -9214,8 +9214,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine59144 local1 ;	! 59144 / 0xe708
     give local1 ~hidden_rod;
-    local1.&name-->2 = local1.prop32;
-    local1.&name-->3 = local1.prop32;
+    local1.&name-->2 = local1.rod_word;
+    local1.&name-->3 = local1.rod_word;
     local1.article = "the";
     local1.d_to = nothing;
     local1.nw_to = routine59044;
