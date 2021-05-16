@@ -8417,41 +8417,41 @@ Array array_29185 -->	! 29185 (0x7201)
     jump label55515;
 ];
 
-[ routine55676 s local2 local3 local4 local5 local6 local7 local8 local9 local10 local11 ;	! 55676 / 0xd97c
+[ DoMenu menu_choices EntryR Choice lines main_title main_wid cl i j oldcl pke ;	! 55676 / 0xd97c
     if (pretty_mode == false) {
-        LowKey_Menu(s,local2,local3);
+        LowKey_Menu(menu_choices,EntryR,Choice);
         rfalse;
     }
     ++menu_nesting;
     menu_item = 0;
-    local4 = local2();
-    local5 = submenu_header;
-    local6 = submenu_number;
-    local7 = 7[se_obj?];
+    lines = EntryR();
+    main_title = submenu_header;
+    main_wid = submenu_number;
+    cl = 7[se_obj?];
   .label55708;
-    local10 = 0;
+    oldcl = 0;
     @erase_window 65535;
-    local8 = local4 + 7;
-    @split_window local8;
-    local8 = 0->33;
-    if (local8 == 0) {
-        local8 = 80[obj80_secret_door?];
+    i = lines + 7;
+    @split_window i;
+    i = 0->33;
+    if (i == 0) {
+        i = 80[obj80_secret_door?];
     }
     @set_window 1;
     @set_cursor 1 1;
     style reverse;
-    generic_globvar = local8;
+    generic_globvar = i;
     if (generic_globvar >= 1) {
       .label55752;
         print ' ';
         generic_globvar = generic_globvar - 1;
         if (generic_globvar ~= 0) jump label55752;
     }
-    local9 = local8 / 2 - local6;
-    @set_cursor 1 local9;
-    print (string) local5;
+    j = i / 2 - main_wid;
+    @set_cursor 1 j;
+    print (string) main_title;
     @set_cursor 2 1;
-    generic_globvar = local8;
+    generic_globvar = i;
     if (generic_globvar >= 1) {
       .label55790;
         print ' ';
@@ -8460,11 +8460,11 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     @set_cursor 2 2;
     print "N = next subject";
-    local9 = local8 - 12;
-    @set_cursor 2 local9;
+    j = i - 12;
+    @set_cursor 2 j;
     print "P = previous";
     @set_cursor 3 1;
-    generic_globvar = local8;
+    generic_globvar = i;
     if (generic_globvar >= 1) {
       .label55852;
         print ' ';
@@ -8473,8 +8473,8 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     @set_cursor 3 2;
     print "RETURN = read subject";
-    local9 = local8 - 17;
-    @set_cursor 3 local9;
+    j = i - 17;
+    @set_cursor 3 j;
     if (menu_nesting == 1) {
         print "  Q = resume game";
     } else {
@@ -8483,78 +8483,78 @@ Array array_29185 -->	! 29185 (0x7201)
     style roman;
     @set_cursor 5 2;
     0-->8 = 2 | 0-->8;
-    if (ZRegion(s) == 3[s_obj?]) {
-        print (string) s;
+    if (ZRegion(menu_choices) == 3[s_obj?]) {
+        print (string) menu_choices;
     } else {
-        generic_globvar = s();
+        generic_globvar = menu_choices();
     }
   .label55975;
-    if (local7 ~= local10) {
-        if (local10 > 0) {
-            @set_cursor local10 4;
+    if (cl ~= oldcl) {
+        if (oldcl > 0) {
+            @set_cursor oldcl 4;
             print " ";
         }
-        @set_cursor local7 4;
+        @set_cursor cl 4;
         print ">";
     }
-    local10 = local7;
-    @read_char 1 0 0 -> local11;
-    if (local11 == 78[obj78_Dead_End?] or 110[obj110_pile_of_sheets?] or 130[obj130_little_window?]) {
-        ++local7;
-        if (local7 == 7 + local4) {
-            local7 = 7[se_obj?];
+    oldcl = cl;
+    @read_char 1 0 0 -> pke;
+    if (pke == 78[obj78_Dead_End?] or 110[obj110_pile_of_sheets?] or 130[obj130_little_window?]) {
+        ++cl;
+        if (cl == 7 + lines) {
+            cl = 7[se_obj?];
         }
         jump label55975;
     }
-    if (local11 == 80[obj80_secret_door?] or 112[obj112_Potting_Room?] or 129[obj129_dark_shaft?]) {
-        --local7;
-        if (local7 == 6[ne_obj?]) {
-            local7 = 6 + local4;
+    if (pke == 80[obj80_secret_door?] or 112[obj112_Potting_Room?] or 129[obj129_dark_shaft?]) {
+        --cl;
+        if (cl == 6[ne_obj?]) {
+            cl = 6 + lines;
         }
         jump label55975;
     }
-    if (local11 == 81[obj81_fire_escape?] or 113[obj113_old_gardeners__gloves?] or 27[rod_of_returning2?]) {
+    if (pke == 81[obj81_fire_escape?] or 113[obj113_old_gardeners__gloves?] or 27[rod_of_returning2?]) {
         ! no code
     } else {
-        if (local11 == 10[u_obj?] or 13[obj13_inside?]) {
+        if (pke == 10[u_obj?] or 13[obj13_inside?]) {
             @set_window 0;
             0-->8 = 65533 & 0-->8;
             new_line;
             new_line;
             new_line;
-            menu_item = local7 - 6;
-            generic_globvar = local2();
+            menu_item = cl - 6;
+            generic_globvar = EntryR();
             @erase_window 65535;
             @split_window 1;
-            local8 = 0->33;
-            if (local8 == 0) {
-                local8 = 80[obj80_secret_door?];
+            i = 0->33;
+            if (i == 0) {
+                i = 80[obj80_secret_door?];
             }
             @set_window 1;
             @set_cursor 1 1;
             style reverse;
-            generic_globvar = local8;
+            generic_globvar = i;
             if (generic_globvar >= 1) {
               .label56141;
                 print ' ';
                 generic_globvar = generic_globvar - 1;
                 if (generic_globvar ~= 0) jump label56141;
             }
-            local9 = local8 / 2 - submenu_number;
-            @set_cursor 1 local9;
+            j = i / 2 - submenu_number;
+            @set_cursor 1 j;
             print (string) submenu_header;
             style roman;
             @set_window 0;
             new_line;
-            local8 = local3();
-            if (local8 == 2[?]) {
+            i = Choice();
+            if (i == 2[?]) {
                 jump label55708;
             }
-            if (local8 == 3[s_obj?]) {
+            if (i == 3[s_obj?]) {
                 jump label56233;
             }
             print "^[Please press SPACE.]^";
-            @read_char 1 0 0 -> local11;
+            @read_char 1 0 0 -> pke;
             jump label55708;
         }
         jump label55975;
@@ -18698,7 +18698,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (pretty_mode == false) {
         "Newcomers to the game may like to try the following:^^  ~help instructions~   which gives some basic information,^  ~help commands~       details some common commands,^  ~help credits~        runs the game credits,^  ~help legal~          makes some legal disclaimers; or^  ~help inform~         which advertises the compiler Inform,^  ~help archive~        and the interactive fiction archive.";
     }
-    routine55676("Information is available on the following subjects:^^     Instructions    giving some basic information^     Commands        detailing some common commands^     Credits         game credits^     Release         release notes^     Legal           legal disclaimers^     Inform          advertising the compiler Inform^     Archive         and the interactive fiction archive",36959[routine147836?],37009[routine148036?]);
+    DoMenu(62512["Informat..."?],36959[routine147836?],37009[routine148036?]);
     displaying_quote = true;
     rtrue;
 ];
@@ -24113,7 +24113,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine183780 ;	! 183780 / 0x2cde4
-    routine55676("^^     Frivolous things to do^     About Callimachus and Apollonius^     An epigram by Callimachus^     Salmon Wielder^     Wistaria or wisteria?^     Great Curses mistakes^     The ancient languages^",45948[routine183792?],45503[routine182012?]);
+    DoMenu(64125["^^     F..."?],45948[routine183792?],45503[routine182012?]);
     rtrue;
 ];
 
@@ -24267,7 +24267,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine185096 ;	! 185096 / 0x2d308
-    routine55676("^^     1. What are the ~good but wrong guesses~?^     2. How many songs does the radio play?^     3. In what *** ways *** can the game end?^     4. What are the secret ways to detect a Rod?^     5. What can you see in the crystal ball?^     6. Where are Dame Judi Dench and Donald Sutherland?^     7. Explain the handkerchief initials and the graffiti.^     8. How many tarot cards are there altogether?^     9. How can the medicine bottle be opened?^     10. What is the mascot for in the premonition?^",46277[routine185108?],45975[routine183900?]);
+    DoMenu(64485["^^     1..."?],46277[routine185108?],45975[routine183900?]);
     rtrue;
 ];
 
@@ -24333,7 +24333,7 @@ Array array_29185 -->	! 29185 (0x7201)
 ];
 
 [ routine185280 ;	! 185280 / 0x2d3c0
-    routine55676("^^     For your amusement^     Trivia questions^",46323[routine185292?],46314[routine185256?]);
+    DoMenu(64651["^^     F..."?],46323[routine185292?],46314[routine185256?]);
     rtrue;
 ];
 
