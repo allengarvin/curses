@@ -8018,7 +8018,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         real_location = location;
         location = thedark;
     }
-    routine55348(##Look);
+    R_Process(##Look);
     i = 1[?];
   .label54173;
     if (i <= 100) {
@@ -8330,32 +8330,32 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return routine181212();
 ];
 
-[ routine55348 a local2 local3 local4 local5 local6 local7 ;	! 55348 / 0xd834
-    local4 = inp1;
-    local5 = inp2;
-    local6 = verb;
-    local7 = selfobj;
-    inp1 = local2;
-    inp2 = local3;
-    noun = local2;
-    second = local3;
-    verb = a;
+[ R_Process acti i j sn ss sa sse ;	! 55348 / 0xd834
+    sn = inp1;
+    ss = inp2;
+    sa = verb;
+    sse = selfobj;
+    inp1 = i;
+    inp2 = j;
+    noun = i;
+    second = j;
+    verb = acti;
     if (meta == 1 || BeforeRoutines() == 0 && verb < 256) {
         generic_globvar = (actions_table-->verb)();
-        selfobj = local7;
-        inp1 = local4;
-        noun = local4;
-        inp2 = local5;
-        second = local5;
-        verb = local6;
+        selfobj = sse;
+        inp1 = sn;
+        noun = sn;
+        inp2 = ss;
+        second = ss;
+        verb = sa;
         rfalse;
     }
-    selfobj = local7;
-    inp1 = local4;
-    noun = local4;
-    inp2 = local5;
-    second = local5;
-    verb = local6;
+    selfobj = sse;
+    inp1 = sn;
+    noun = sn;
+    inp2 = ss;
+    second = ss;
+    verb = sa;
     rtrue;
 ];
 
@@ -8389,7 +8389,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rfalse;
         }
         if (deadflag == 0) {
-            routine55348(##Look);
+            R_Process(##Look);
             rtrue;
         }
         rfalse;
@@ -8564,7 +8564,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     new_line;
     new_line;
     if (deadflag == 0) {
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     rtrue;
@@ -8756,7 +8756,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (i == 0 && lightflag == true) {
         location = real_location;
         if (flag == 0) {
-            routine55348(##Look);
+            R_Process(##Look);
         }
     }
     if (i == 1[?] && lightflag == false) {
@@ -9310,7 +9310,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "Although nothing seems to happen to you, the whole golden sphere gracefully contracts, pulling itself tight until it sits comfortably in the palm of your hand. You blink.^";
         location = global137;
         move player to global138;
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     routine111612();
@@ -9445,7 +9445,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "The White pieces advance: first a bishop, then a knight is sacrificed, clearing away the wall of pawns which surround the Black king so that a dazzling checkmate can be executed!^^You fade out of the orb as oddly as you came, struck by the way it now almost pulsates in your palm.^";
         move player to global138;
         location = global137;
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     if (second == player) {
@@ -10800,7 +10800,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             CDefart(second);
             " proves inadequate as a plumbing tool.";
         }
-        routine55348(##Turn,selfobj);
+        R_Process(##Turn,selfobj);
         rtrue;
     }
     if (action == ##Action91 or ##Turn) {
@@ -10929,7 +10929,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj71_Souvenirs_Room.s_to
 
 [ routine78480 ;	! 78480 / 0x13290
-    routine55348(##Enter,73[obj73_south_wall?]);
+    R_Process(##Enter,73[obj73_south_wall?]);
     rtrue;
 ];
 
@@ -11148,7 +11148,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "The south wall rings curiously hollow.";
     }
     if (noun == s_obj && obj80_secret_door hasnt concealed) {
-        routine55348(verb,80[obj80_secret_door?],second);
+        R_Process(verb,80[obj80_secret_door?],second);
         rtrue;
     }
     if (action == ##Push) {
@@ -11699,7 +11699,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Turn or ##SwitchOn) {
         selfobj.prop24 = (selfobj.prop24 + 1) % 12;
-        routine55348(##Read,selfobj);
+        R_Process(##Read,selfobj);
         rtrue;
     }
     if (action == ##Consult) {
@@ -11745,7 +11745,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             if (local1 >= 0) {
                 selfobj.prop24 = local1;
-                routine55348(##Read,selfobj);
+                R_Process(##Read,selfobj);
                 rtrue;
             }
         }
@@ -12150,7 +12150,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Enter) {
         if (noun == obj119_dark_shaft) {
             if (obj118_dumbwaiter in obj119_dark_shaft) {
-                routine55348(##Enter,118[obj118_dumbwaiter?]);
+                R_Process(##Enter,118[obj118_dumbwaiter?]);
                 rtrue;
             }
             "But you suffer from vertigo. Even the thought of the plane journey tomorrow is nerve-wracking.";
@@ -12252,7 +12252,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         move obj118_dumbwaiter to local1;
         location = local1;
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     if (action == ##Climb) {
@@ -12339,7 +12339,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Enter) {
         if (noun == obj129_dark_shaft) {
             if (obj118_dumbwaiter in obj127_Cellars) {
-                routine55348(##Enter,118[obj118_dumbwaiter?]);
+                R_Process(##Enter,118[obj118_dumbwaiter?]);
                 rtrue;
             }
             "No, don't. There's nothing there and it's nasty and dirty. Bring the dumbwaiter down instead.";
@@ -13037,7 +13037,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (second == nothing) {
             "An intriguing idea, but you'll have to be more explicit about how to do it.";
         }
-        routine55348(##Insert,second,selfobj);
+        R_Process(##Insert,second,selfobj);
         rtrue;
     }
     if (action == ##Action257) {
@@ -13128,7 +13128,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine97832 ;	! 97832 / 0x17e28
     if (obj170_tourist_boat hasnt open) {
-        routine55348(##Enter,170[obj170_tourist_boat?]);
+        R_Process(##Enter,170[obj170_tourist_boat?]);
         rtrue;
     }
     return 170[obj170_tourist_boat?];
@@ -13281,7 +13281,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Interestingly, there's something inside this segment of it.";
     }
     if (action == ##Enter) {
-        routine55348(##Go,6[ne_obj?]);
+        R_Process(##Go,6[ne_obj?]);
         rtrue;
     }
     rfalse;
@@ -13290,7 +13290,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj180_Revolving_Door.n_to, obj182_Revolving_Door.n_to
 
 [ routine99336 ;	! 99336 / 0x18408
-    routine55348(##Push,181[obj181_door?]);
+    R_Process(##Push,181[obj181_door?]);
     rtrue;
 ];
 
@@ -14363,7 +14363,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine110880 ;	! 110880 / 0x1b120
     if (action == ##Action257) {
         if (noun == player) {
-            routine55348(##Enter,selfobj);
+            R_Process(##Enter,selfobj);
             rtrue;
         }
         remove noun;
@@ -14486,7 +14486,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine111872 ;	! 111872 / 0x1b500
     if (action == ##Enter or ##Climb) {
-        routine55348(##Go,10[u_obj?]);
+        R_Process(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -14645,7 +14645,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "winding the great anchor chain.";
     }
     if (action == ##Climb or ##Enter) {
-        routine55348(##Go,11[d_obj?]);
+        R_Process(##Go,11[d_obj?]);
         rtrue;
     }
     rfalse;
@@ -14692,7 +14692,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "It's a warm, not unpleasant taste, silt and algae.";
     }
     if (action == ##Enter) {
-        routine55348(##Swim);
+        R_Process(##Swim);
         rtrue;
     }
     rfalse;
@@ -14778,7 +14778,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine114192 ;	! 114192 / 0x1be10
     if (action == ##Climb) {
-        routine55348(##Go,10[u_obj?]);
+        R_Process(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -15147,7 +15147,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move obj296_garden_roller to obj302_Patio_in_Maze;
         }
         routine155280(39[obj39_antique_jewellery_box?]);
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     rfalse;
@@ -15830,7 +15830,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine121808 ;	! 121808 / 0x1dbd0
     if (action == ##Climb) {
-        routine55348(##Go,11[d_obj?]);
+        R_Process(##Go,11[d_obj?]);
         rtrue;
     }
     rfalse;
@@ -15932,7 +15932,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine122272 ;	! 122272 / 0x1dda0
     if (action == ##Climb or ##Enter) {
-        routine55348(##Go,10[u_obj?]);
+        R_Process(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -16196,7 +16196,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Attack && noun == selfobj) {
         print "Ouch!  You wake up, smarting.^";
         ChangePlayer(15[yourself?]);
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Turn or ##Attack or ##Read) {
@@ -16435,7 +16435,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine127192 ;	! 127192 / 0x1f0d8
     if (action == ##Climb or ##Enter) {
-        routine55348(##Go,11[d_obj?]);
+        R_Process(##Go,11[d_obj?]);
         rtrue;
     }
     rfalse;
@@ -16980,7 +16980,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "^The sails billow, then slacken...^";
         move skiff to Drifting;
         location = Drifting;
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     } else {
         give Harbour_Mouth attrib8;
@@ -16994,7 +16994,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "^Light brightens into day. The skiff drifts, drifts upon...^";
     move skiff to obj276_Garden_Stream;
     location = obj276_Garden_Stream;
-    routine55348(##Look);
+    R_Process(##Look);
     rtrue;
 ];
 
@@ -17124,7 +17124,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         move player to wooden_couch;
         remove Napoleonic_officers;
     }
-    routine55348(##Look);
+    R_Process(##Look);
     rtrue;
 ];
 
@@ -17523,7 +17523,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine137476 ;	! 137476 / 0x21904
     if (action == ##Gamble) {
-        routine55348(##Drop,447[inscribed_die?]);
+        R_Process(##Drop,447[inscribed_die?]);
         rtrue;
     }
     rfalse;
@@ -17709,7 +17709,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine138528 ;	! 138528 / 0x21d20
     if (action == ##Pull) {
-        routine55348(##Take,selfobj);
+        R_Process(##Take,selfobj);
         rtrue;
     }
     rfalse;
@@ -17863,14 +17863,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine140144 ;	! 140144 / 0x22370
     if (action == ##Action259) {
         if (verb == ##Anoppe && location has attrib8) {
-            routine55348(##Anoppe);
+            R_Process(##Anoppe);
             rtrue;
         }
         "The slave doesn't seem to notice.";
     }
     if (action == ##Ask) {
         if (second == invalidObj29928 or invalidObj32817 && location has attrib8) {
-            routine55348(##Anoppe);
+            R_Process(##Anoppe);
             rtrue;
         }
         rfalse;
@@ -17929,7 +17929,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine140724 ;	! 140724 / 0x225b4
     if (action == ##Climb or ##Enter) {
-        routine55348(##Go,10[u_obj?]);
+        R_Process(##Go,10[u_obj?]);
         rtrue;
     }
     rfalse;
@@ -18680,7 +18680,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine147544 ;	! 147544 / 0x24058
     if (action == ##Eat) {
-        routine55348(##Wash,selfobj);
+        R_Process(##Wash,selfobj);
         rtrue;
     }
     rfalse;
@@ -20085,7 +20085,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     real_location = location;
     AdjustLight(1[?]);
     if (flag == 0) {
-        routine55348(##Look);
+        R_Process(##Look);
     }
     if (flag == 1[?]) {
         routine164468();
@@ -20098,8 +20098,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ MovePlayer direc ;	! 160960 / 0x274c0
-    routine55348(##Go,direc);
-    routine55348(##Look);
+    R_Process(##Go,direc);
+    R_Process(##Look);
     rtrue;
 ];
 
@@ -20296,13 +20296,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ InvWideSub ;	! 161604 / 0x27744
     inventory_style = 4 + 8 + 16;
-    routine55348(##Inv);
+    R_Process(##Inv);
     rtrue;
 ];
 
 [ InvTallSub ;	! 161620 / 0x27754
     inventory_style = 4 + 2 + 1 + 16;
-    routine55348(##Inv);
+    R_Process(##Inv);
     rtrue;
 ];
 
@@ -20311,7 +20311,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         return L__M(##Inv,1);
     }
     if (inventory_style == 0) {
-        routine55348(##InvTall);
+        R_Process(##InvTall);
         rtrue;
     }
     L__M(##Inv,2);
@@ -20427,7 +20427,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (j ~= 0) {
                 L__M(##Take,13,j);
                 keep_silent = true;
-                routine55348(##Insert,j,79[obj79_canvas_rucksack?]);
+                R_Process(##Insert,j,79[obj79_canvas_rucksack?]);
                 keep_silent = false;
                 if (j notin obj79_canvas_rucksack) {
                     rtrue;
@@ -20462,7 +20462,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (noun has attrib26) {
         L__M(##Drop,3,noun);
-        routine55348(##Disrobe,noun);
+        R_Process(##Disrobe,noun);
         if (noun has attrib26) {
             rtrue;
         }
@@ -20520,7 +20520,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ PutOnSub ;	! 162440 / 0x27a88
     global123 = 27[rod_of_returning2?];
     if (second == d_obj) {
-        routine55348(##Drop,noun);
+        R_Process(##Drop,noun);
         rfalse;
     }
     if (parent(noun) ~= player) {
@@ -20545,7 +20545,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (noun has attrib26) {
         L__M(##PutOn,5);
-        routine55348(##Disrobe,noun);
+        R_Process(##Disrobe,noun);
         if (noun has attrib26) {
             rtrue;
         }
@@ -20586,7 +20586,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ InsertSub ;	! 162692 / 0x27b84
     global123 = 26[rod_of_language?];
     if (second == d_obj) {
-        routine55348(##Drop,noun);
+        R_Process(##Drop,noun);
         rtrue;
     }
     if (parent(noun) ~= player) {
@@ -20611,7 +20611,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (noun has attrib26) {
         L__M(##Insert,6);
-        routine55348(##Disrobe,noun);
+        R_Process(##Disrobe,noun);
         if (noun has attrib26) {
             rtrue;
         }
@@ -20696,15 +20696,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
     if (local2 == 28[rod_of_life?]) {
-        routine55348(##Drop,noun);
+        R_Process(##Drop,noun);
         rtrue;
     }
     if (local2 == 26[rod_of_language?]) {
-        routine55348(##Insert,noun,second);
+        R_Process(##Insert,noun,second);
         rtrue;
     }
     if (local2 == 27[rod_of_returning2?]) {
-        routine55348(##PutOn,noun,second);
+        R_Process(##PutOn,noun,second);
         rtrue;
     }
     rtrue;
@@ -20740,7 +20740,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local2 = sibling(local1);
         PrintShortName(local1);
         print ": ";
-        routine55348(##Transfer,local1,second);
+        R_Process(##Transfer,local1,second);
         local1 = local2;
         jump label163225;
     }
@@ -20762,7 +20762,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ GiveRSub ;	! 163312 / 0x27df0
-    routine55348(##Give,second,noun);
+    R_Process(##Give,second,noun);
     rtrue;
 ];
 
@@ -20771,7 +20771,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         return L__M(##Show,1,noun);
     }
     if (second == player) {
-        routine55348(##Read,noun);
+        R_Process(##Read,noun);
         rtrue;
     }
     if (routine55448(second,36[obj36_hinged_trapdoor?]) ~= 0) {
@@ -20782,13 +20782,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ ShowRSub ;	! 163376 / 0x27e30
-    routine55348(##Show,second,noun);
+    R_Process(##Show,second,noun);
     rtrue;
 ];
 
 [ EnterSub local1 ;	! 163388 / 0x27e3c
     if (noun has door) {
-        routine55348(##Go,noun);
+        R_Process(##Go,noun);
         rtrue;
     }
     local1 = parent(player);
@@ -20797,7 +20797,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     local1 = parent(noun);
     if (local1 == 1[?]) {
-        routine55348(##Go,noun);
+        R_Process(##Go,noun);
         rtrue;
     }
     if (noun hasnt enterable) {
@@ -20823,7 +20823,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ TakeOffSub ;	! 163516 / 0x27ebc
     if (parent(player) == noun) {
-        routine55348(##Exit);
+        R_Process(##Exit);
         rtrue;
     }
     L__M(##TakeOff,1,noun);
@@ -20834,7 +20834,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local1 = parent(player);
     if (local1 == location || (location == thedark && local1 == real_location)) {
         if (location.orders ~= nothing || (location == thedark && real_location.orders ~= nothing)) {
-            routine55348(##Go,12[obj12_outside?]);
+            R_Process(##Go,12[obj12_outside?]);
             rtrue;
         }
         return L__M(##Exit,1);
@@ -20864,7 +20864,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ EnterSub ;	! 163672 / 0x27f58
-    routine55348(##Go,13[obj13_inside?]);
+    R_Process(##Go,13[obj13_inside?]);
     rtrue;
 ];
 
@@ -21167,7 +21167,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local1 = noun.description;
     if (local1 == 0) {
         if (noun has container) {
-            routine55348(##Search,noun);
+            R_Process(##Search,noun);
             rtrue;
         }
         if (noun has switchable) {
@@ -21628,7 +21628,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     AfterRoutines();
     local1 = noun;
     move local1 to player;
-    routine55348(##Go,second);
+    R_Process(##Go,second);
     if (location == thedark) {
         move local1 to real_location;
     } else {
@@ -21712,7 +21712,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ AskForSub ;	! 166384 / 0x289f0
     if (noun == player) {
-        routine55348(##Inv);
+        R_Process(##Inv);
         rtrue;
     }
     L__M(##Action259,1,noun);
@@ -23001,7 +23001,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "(consulting ";
     Defart(local1);
     print ")^";
-    routine55348(##Consult,local1);
+    R_Process(##Consult,local1);
     rtrue;
 ];
 
@@ -23135,7 +23135,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ KillSub ;	! 176576 / 0x2b1c0
     if (noun ~= obj290_hard_wooden_ball || second ~= obj316_croquet_mallet) {
-        routine55348(##Attack,noun);
+        R_Process(##Attack,noun);
         rtrue;
     }
     if (parent(obj290_hard_wooden_ball) ~= location) {
@@ -23198,13 +23198,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local2 == 65535[?]) {
         global156 = 0;
         global157 = 0;
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     if (local2 == 65534[?]) {
         global156 = global158;
         global157 = global159;
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     if (location ~= Croquet_Lawn) {
@@ -23254,7 +23254,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     global156 = local5;
     global157 = local6;
-    routine55348(##Look);
+    R_Process(##Look);
     rtrue;
 ];
 
@@ -23374,7 +23374,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ RipDownSub ;	! 178592 / 0x2b9a0
-    routine55348(##Rip);
+    R_Process(##Rip);
     rtrue;
 ];
 
@@ -23560,7 +23560,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Old Evans, who is nine-tenths hypnotised most of the time anyway, succumbs easily.";
     }
     if (noun == player) {
-        routine55348(##Sleep);
+        R_Process(##Sleep);
         rtrue;
     }
     print "But ";
@@ -23589,7 +23589,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             location = Warehouses_and_Port;
         }
         print "The skiff gathers wind from somewhere, which whistles past you until your eyes are blurred and watery. When you look around, you find that you are moored once again...^";
-        routine55348(##Look);
+        R_Process(##Look);
         rtrue;
     }
     if (skiff has attrib8) {
@@ -23599,7 +23599,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     move skiff to Harbour_Mouth;
     location = Harbour_Mouth;
     print "You set sail, and a light breeze propels your skiff...^";
-    routine55348(##Look);
+    R_Process(##Look);
     rtrue;
 ];
 
@@ -23639,11 +23639,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ LieDownSub ;	! 180732 / 0x2c1fc
     if (location == obj42_Servant_s_Room) {
-        routine55348(##Enter,44[obj44_camp_bed?]);
+        R_Process(##Enter,44[obj44_camp_bed?]);
         rtrue;
     }
     if (location == obj96_Alison_s_Writing_Room) {
-        routine55348(##Enter,97[obj97_comfortable_bed?]);
+        R_Process(##Enter,97[obj97_comfortable_bed?]);
         rtrue;
     }
     "You lie down on the floor for a while and then get up again, feeling foolish.";
@@ -23664,12 +23664,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ CloseWithSub ;	! 180936 / 0x2c2c8
-    routine55348(##PutOn,second,noun);
+    R_Process(##PutOn,second,noun);
     rtrue;
 ];
 
 [ StackSub ;	! 180948 / 0x2c2d4
-    routine55348(##Drop,noun);
+    R_Process(##Drop,noun);
     rtrue;
 ];
 
@@ -23681,7 +23681,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= obj67_Library_Storage) {
         print "(The wrench seems unnecessary, so you use bare hands.)^";
     }
-    routine55348(##Turn,noun);
+    R_Process(##Turn,noun);
     rtrue;
 ];
 
