@@ -4943,7 +4943,7 @@ Global dont_infer;
 Global scope_reason;
 Global scope_token;
 Global global102;
-Global global103;
+Global scope_stage;
 Global global104;
 Global global105;
 Global take_all_rule = 1;
@@ -6011,7 +6011,7 @@ Array array_29185 -->	! 29185 (0x7201)
         }
     }
     if (etype == ASKSCOPE_PE) {
-        global103 = 3[s_obj?];
+        scope_stage = 3;
         generic_globvar = global102();
     }
     jump label42187;
@@ -6351,7 +6351,7 @@ Array array_29185 -->	! 29185 (0x7201)
     } else {
         if (token >= 80 && token < 128) {
             scope_token = array_29185-->(token - 80);
-            global103 = 1[?];
+            scope_stage = 1;
             l = scope_token();
             if (parser_trace >= 3) {
                 print "  [Scope routine returned multiple-flag of ", l, "]^";
@@ -7333,7 +7333,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ SearchScope domain1 domain2 context i ;	! 51412 / 0xc8d4
     i = 0;
     if (scope_token ~= 0) {
-        global103 = 2[?];
+        scope_stage = 2;
         if (scope_token() ~= 0) {
             rtrue;
         }
