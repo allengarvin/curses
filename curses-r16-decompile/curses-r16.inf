@@ -707,82 +707,82 @@ Object Compass "compass"	! 1 / 0x1
 
 Object -> n_obj "north wall"	! 2 / 0x2
   with	name 'n//' 'north' 'wall',
-	d_to w_obj,
+	w_to w_obj,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> s_obj "south wall"	! 3 / 0x3
   with	name 's//' 'south' 'wall',
-	d_to ne_obj,
+	w_to ne_obj,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> e_obj "east wall"	! 4 / 0x4
   with	name 'e//' 'east' 'wall',
-	d_to se_obj,
+	w_to se_obj,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> w_obj "west wall"	! 5 / 0x5
   with	name 'w//' 'west' 'wall',
-	d_to nw_obj,
+	w_to nw_obj,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> ne_obj "northeast wall"	! 6 / 0x6
   with	name 'ne' 'northeast' 'wall',
-	d_to sw_obj,
+	w_to sw_obj,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> se_obj "southeast wall"	! 7 / 0x7
   with	name 'se' 'southeast' 'wall',
-	d_to u_obj,
+	w_to u_obj,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> nw_obj "northwest wall"	! 8 / 0x8
   with	name 'nw' 'northwest' 'wall',
-	d_to d_obj,
+	w_to d_obj,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> sw_obj "southwest wall"	! 9 / 0x9
   with	name 'sw' 'southwest' 'wall',
-	d_to obj12_outside,
+	w_to obj12_outside,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> u_obj "ceiling"	! 10 / 0xa
   with	name 'u//' 'up' 'ceiling',
-	d_to obj13_inside,
+	w_to obj13_inside,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> d_obj "floor"	! 11 / 0xb
   with	name 'd//' 'down' 'floor',
-	d_to thedark,
+	w_to thedark,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> obj12_outside "outside"	! 12 / 0xc
-  with	d_to obj16_lm,
+  with	w_to obj16_lm,
 	article "the",
 	prop24 [0 0],
   has	scenery;
 
 Object -> obj13_inside "inside"	! 13 / 0xd
-  with	d_to yourself,
+  with	w_to yourself,
 	article "the",
 	prop24 [0 0],
   has	scenery;
@@ -1051,7 +1051,7 @@ Object -> obj36_hinged_trapdoor "hinged trapdoor"	! 36 / 0x24
 	before routine65184,
 	n_to obj41_House,
 	s_to "There is a closed trapdoor in the middle of the floor.",
-	d_to thedark,
+	w_to thedark,
 	initial "A hinged trapdoor in the floor stands open, and light streams in from below.",
   has	door light open openable static;
 
@@ -1097,7 +1097,7 @@ Object obj42_Servant_s_Room "Servant's Room"	! 42 / 0x2a
   with	name 'bedside' 'table',
 	after routine69588,
 	n_to nothing,
-	d_to obj35_Attic,
+	w_to obj35_Attic,
 	d_to nothing,
 	description "Once upon a time, servants in great houses lived in awful little crevices and excuses for rooms like this one. They must have been in permanent danger of suffocation, for there are no windows and only a doorway to the west. A bed is still kept here, and the sight of it brings on drowsiness in all this warm stuffy air. All you want to do is curl up and sleep.",
 	section T_MODERN,
@@ -1200,7 +1200,7 @@ Object obj57_Over_the_East_Wing "Over the East Wing"	! 57 / 0x39
   with	name 'steps',
 	s_to obj64_Disused_Observatory,
 	e_to obj74_East_Annexe,
-	d_to obj59_Dark_Room,
+	w_to obj59_Dark_Room,
 	nw_to obj47_Old_Furniture,
 	d_to obj64_Disused_Observatory,
 	initial routine73336,
@@ -1266,7 +1266,7 @@ Object obj64_Disused_Observatory "Disused Observatory"	! 64 / 0x40
 	before routine75984,
 	n_to obj57_Over_the_East_Wing,
 	s_to obj71_Souvenirs_Room,
-	d_to obj67_Library_Storage,
+	w_to obj67_Library_Storage,
 	u_to obj57_Over_the_East_Wing,
 	d_to obj71_Souvenirs_Room,
 	description "Once upon a time, this small circular room had a dome and a telescope, but it leaked dreadfully and so now there's a proper roof.^^A circular mural painted with the signs of the zodiac is interrupted by a short flight of stairs leading up to the north, a smoke detector, a west doorway to a shadowy alcove and the continuation of the stairs down and to the south.",
@@ -1337,7 +1337,7 @@ Object -> obj72_slide_projector "slide projector"	! 72 / 0x48
 Object -> obj73_south_wall "south wall"	! 73 / 0x49
   with	after routine79012,
 	n_to nothing,
-	d_to ne_obj,
+	w_to ne_obj,
   has	concealed door open scenery static;
 
 Object obj74_East_Annexe "East Annexe"	! 74 / 0x4a
@@ -1345,7 +1345,7 @@ Object obj74_East_Annexe "East Annexe"	! 74 / 0x4a
 	after routine80144,
 	n_to obj77_cupboard_door,
 	s_to obj78_Dead_End,
-	d_to obj57_Over_the_East_Wing,
+	w_to obj57_Over_the_East_Wing,
 	description " .This tight annexe at the eastern end of the house is piled up with old loft insulation rolls, left over from the last time the job was done (whenever that was). A gap between the tiles of the roof (which you really must mend before winter) lets a little natural light in",
 	section T_MODERN,
   has	light;
@@ -1369,7 +1369,7 @@ Object -> obj77_cupboard_door "cupboard door"	! 77 / 0x4d
 	n_to obj82_Inside_Cupboard,
 	s_to "In the north wall is an intriguing closed cupboard door.",
 	e_to obj135_small_brass_key,
-	d_to w_obj,
+	w_to w_obj,
 	initial "In the north wall is an open cupboard door, large enough to step inside.",
   has	door lockable openable static;
 
@@ -1395,20 +1395,20 @@ Object obj80_secret_door "secret door"	! 80 / 0x50
   with	name 'secret' 'door',
 	n_to obj96_Alison_s_Writing_Room,
 	s_to "The secret door is closed.",
-	d_to ne_obj,
+	w_to ne_obj,
 	initial "A secret door stands open in the south wall!",
   has	concealed door open openable static;
 
 Object obj81_fire_escape "fire escape"	! 81 / 0x51
   with	name 'fire' 'escape' 'hatchway' 'hatch',
 	n_to Beside_the_Drive,
-	d_to thedark,
+	w_to thedark,
 	initial "A hatchway in the east wall, onto an old iron fire escape, is open and light floods in through it. (Some fool must have set the alarm off.)",
   has	door open static;
 
 Object obj82_Inside_Cupboard "Inside Cupboard"	! 82 / 0x52
   with	s_to obj74_East_Annexe,
-	d_to obj84_big_iron_fireplace,
+	w_to obj84_big_iron_fireplace,
 	u_to obj85_cranked_skylight,
 	description "This is a surprisingly spacious cupboard, which you can't recall ever visiting before today. You really ought to use this convenient empty room for something...",
 	section T_MODERN,
@@ -1427,7 +1427,7 @@ Object -> obj84_big_iron_fireplace "big iron fireplace"	! 84 / 0x54
   with	name 'iron' 'fireplace' 'chimney',
 	before routine80840,
 	n_to obj91_Chimney,
-	d_to nw_obj,
+	w_to nw_obj,
 	initial "There is a big iron fireplace in the west wall.",
   has	concealed container door open static;
 
@@ -1436,7 +1436,7 @@ Object -> obj85_cranked_skylight "cranked skylight"	! 85 / 0x55
 	after routine80924,
 	n_to obj87_Roof,
 	s_to "Above you is a blacked-out skylight with a crank handle.",
-	d_to obj13_inside,
+	w_to obj13_inside,
 	initial "The skylight above is open, and the sky does indeed light the room.",
 	description "It was painted out black during the first wave of Zeppelin air raids in World War I. This is completely irrelevant, but you did ask.",
   has	door static;
@@ -1511,7 +1511,7 @@ Object -> obj94_hatch "hatch"	! 94 / 0x5e
 	n_to obj136_Cellar_West,
 	s_to "Low down on one wall is a little hatch door, which if it were open would be large enough to enter.",
 	e_to obj135_small_brass_key,
-	d_to thedark,
+	w_to thedark,
 	initial "An open hatch-door in the wall at floor level reveals a chute leading down into darkness.",
 	description "Perhaps the attic key might unlock it?  It does look modern compared to everything else here.",
   has	door lockable locked openable static;
@@ -1548,7 +1548,7 @@ Object -> obj98_windows "windows"	! 98 / 0x62
 	after routine84044,
 	n_to obj100_Tiny_Balcony,
 	s_to "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
-	d_to ne_obj,
+	w_to ne_obj,
 	initial "Black-latticed windows open on a beautiful summer's day.",
   has	door static;
 
@@ -1585,7 +1585,7 @@ Object obj103_Old_Winery "Old Winery"	! 103 / 0x67
 	before routine84820,
 	s_to obj35_Attic,
 	e_to obj116_Storage_Room,
-	d_to obj107_Aunt_Jemima_s_Lair,
+	w_to obj107_Aunt_Jemima_s_Lair,
 	d_to obj107_Aunt_Jemima_s_Lair,
 	description "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east.",
 	number 0,
@@ -1619,7 +1619,7 @@ Object obj107_Aunt_Jemima_s_Lair "Aunt Jemima's Lair"	! 107 / 0x6b
 	before routine85632,
 	s_to obj109_Airing_Cupboard,
 	e_to obj103_Old_Winery,
-	d_to obj112_Potting_Room,
+	w_to obj112_Potting_Room,
 	list_together obj41_House,
 	u_to obj103_Old_Winery,
 	description "This used to be called the Conservatory, before Aunt Jemima took it over to potter about with plants, painting and indeed (on occasion) pottery. She has filled the place with objets trouves and bric-a-brac, and hung up a home-made calendar of watercolours. Even the old airing cupboard to the south is cluttered.^^An open doorway leads back southwest onto the upstairs landing, and you can hear the chaotic noise of suitcases being manhandled about - good thing nobody's seen you. A narrow staircase leads up and to the east into the attic.^^Jemima herself seems to be in the potting room to the west.",
@@ -1694,7 +1694,7 @@ Object obj115_daisy_chain "daisy chain"	! 115 / 0x73
 
 Object obj116_Storage_Room "Storage Room"	! 116 / 0x74
   with	after routine90148,
-	d_to obj103_Old_Winery,
+	w_to obj103_Old_Winery,
 	description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
 	cant_go "The only doorway is back west to the winery.",
 	section T_MODERN,
@@ -1763,7 +1763,7 @@ Object -> obj125_sandstone_recess "sandstone recess"	! 125 / 0x7d
   with	name 'sandstone' 'recess' 'shallow',
 	n_to obj142_Sandstone_Passage,
 	s_to "There is a shallow sandstone recess in the east wall.",
-	d_to se_obj,
+	w_to se_obj,
 	initial "A secret passage slants down to the east through a sandstone recess.",
   has	door static;
 
@@ -1773,7 +1773,7 @@ Object -> obj126_metal_door "metal door"	! 126 / 0x7e
 	n_to obj276_Garden_Stream,
 	s_to "At the north end is a closed metal door.",
 	e_to obj135_small_brass_key,
-	d_to w_obj,
+	w_to w_obj,
 	initial "At the north end is a metal door, standing open.",
   has	door lockable locked openable static;
 
@@ -1781,7 +1781,7 @@ Object obj127_Cellars "Cellars"	! 127 / 0x7f
   with	after routine91352,
 	s_to obj133_Cellars_South,
 	e_to obj132_Wine_Cellars,
-	d_to obj136_Cellar_West,
+	w_to obj136_Cellar_West,
 	description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues east-to-west and south.",
 	section T_MODERN,
   has	;
@@ -1814,7 +1814,7 @@ Object -> obj131_robot_mouse "robot mouse"	! 131 / 0x83
 Object obj132_Wine_Cellars "Wine Cellars"	! 132 / 0x84
   with	name 'wine' 'woodlice' 'hexagonal' 'racks' 'shaft',
 	after routine92688,
-	d_to obj127_Cellars,
+	w_to obj127_Cellars,
 	u_to routine92740,
 	description " .The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked",
 	cant_go "This is the eastern end of the cellars, from which you can only go west.",
@@ -1856,7 +1856,7 @@ Object -> obj137_ironbound_door "ironbound door"	! 137 / 0x89
 	n_to obj138_Infinity_Symbol,
 	s_to "In the northwest wall is a heavy, imposing ironbound door.",
 	e_to wrought_iron_key,
-	d_to d_obj,
+	w_to d_obj,
 	initial "In the northwest wall the ironbound door stands open.",
 	description "There are times when your life seems an endless sequence of locked doors, each harder to pass than the last. This one, though, has a feeling of the ultimate about it.",
 	article "an",
@@ -1889,7 +1889,7 @@ Object obj141_spherical_opening "spherical opening"	! 141 / 0x8d
 
 Object obj142_Sandstone_Passage "Sandstone Passage"	! 142 / 0x8e
   with	e_to obj143_The_Octagon,
-	d_to obj124_Dark_Passage,
+	w_to obj124_Dark_Passage,
 	u_to obj124_Dark_Passage,
 	d_to obj143_The_Octagon,
 	description "A flight of sandstone steps, cut in the 1920s when an Egyptological craze was sweeping England, slants down from the coal-dust passage to the east.",
@@ -1898,7 +1898,7 @@ Object obj142_Sandstone_Passage "Sandstone Passage"	! 142 / 0x8e
 
 Object obj143_The_Octagon "The Octagon"	! 143 / 0x8f
   with	before routine93900,
-	d_to obj142_Sandstone_Passage,
+	w_to obj142_Sandstone_Passage,
 	se_to obj150_White_Hallway,
 	u_to obj142_Sandstone_Passage,
 	description "A broad, dark octagonal room devoted to dull exhibits of the disastrous Nile Valley Expedition of '21 - the few good ones were donated to the British Museum. A back staircase leads west to the unbuilt extension, while the entrance seems to be the cobwebbed passage southeast. High windows on the northern face let in dim light.",
@@ -1992,7 +1992,7 @@ Object obj153_Halfway_up_the_Stairs "Halfway up the Stairs"	! 153 / 0x99
 Object obj154_Unreal_City "Unreal City"	! 154 / 0x9a
   with	n_to obj155_Shadowy_Hallway,
 	e_to obj173_Near_Ring_Road,
-	d_to obj168_Down_by_River,
+	w_to obj168_Down_by_River,
 	description "This is a city side street, but as if seen through the grey of despair. People stream by, some of whom you almost recognise, as if dead. The street runs east-west, and to the north is a doorway into a grubby tenement building.",
 	each_turn routine94988,
 	section T_UNREAL,
@@ -2015,7 +2015,7 @@ Object -> obj156_poster "poster"	! 156 / 0x9c
 
 Object obj157_Bohemia "Bohemia"	! 157 / 0x9d
   with	name 'easels' 'brushes' 'paint',
-	d_to obj155_Shadowy_Hallway,
+	w_to obj155_Shadowy_Hallway,
 	initial routine95408,
 	description "Flats occupied by starving-but-noble artists can be romantic and stylish despite the squalor. This one, however, is simply a one-room hovel, caked with paint, littered with brushes and improvised easels, and you can't help standing on tiptoe here.",
 	section T_UNREAL,
@@ -2032,7 +2032,7 @@ Object -> obj158_Impressionist_painting "Impressionist painting"	! 158 / 0x9e
 Object obj159_Consulting_Room "Consulting Room"	! 159 / 0x9f
   with	name 'sevenbran' 'candelabra' 'sticks' 'table',
 	after routine96860,
-	d_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
+	w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
 	d_to obj155_Shadowy_Hallway,
 	description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table, on which is an electric bell push and a wicked Tarot pack.",
 	section T_UNREAL,
@@ -2105,7 +2105,7 @@ Object obj168_Down_by_River "Down by River"	! 168 / 0xa8
   with	name 'rats' 'mounds' 'rubbish',
 	after routine97800,
 	e_to obj154_Unreal_City,
-	d_to routine97832,
+	w_to routine97832,
 	description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you.",
 	section T_UNREAL,
   has	light;
@@ -2123,7 +2123,7 @@ Object -> obj170_tourist_boat "tourist boat"	! 170 / 0xaa
 	after routine97928,
 	n_to obj171_On_board_the_Phlebas,
 	s_to "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention.",
-	d_to nw_obj,
+	w_to nw_obj,
 	initial "Moored close to the bank is a glass-roofed tourist boat.",
 	description "The side reads: PHLEBAS.",
   has	door static;
@@ -2145,7 +2145,7 @@ Object -> obj172_hollow_man "hollow man"	! 172 / 0xac
 
 Object obj173_Near_Ring_Road "Near Ring Road"	! 173 / 0xad
   with	name 'metro' 'pedestria' 'army',
-	d_to obj154_Unreal_City,
+	w_to obj154_Unreal_City,
 	d_to obj174_Chatelet_les_Halles,
 	description "A dry, desolate waste of buildings borders here on a main road, so full of black-suited pedestrians off to work at banks that you can't force your way any further east. Once in a while a few of the bowler-hatted army step into the street and down some steps below a Metropolitan sign.",
 	cant_go "You can't force your way through the tide of bankers.",
@@ -2237,7 +2237,7 @@ Object -> obj184_beach_ball "beach ball"	! 184 / 0xb8
 Object obj185_Hall_of_Exhibits "Hall of Exhibits"	! 185 / 0xb9
   with	n_to obj177_Museum_Foyer,
 	e_to obj199_Cabinet_Room,
-	d_to obj188_Dark_Staircase,
+	w_to obj188_Dark_Staircase,
 	description "A great square gloomy room, just south of the foyer. There are square lintelled doorways east and west. The storm is dark, and the windows are high, but there's just enough light to see by.",
 	section T_HAMBURG,
   has	light;
@@ -2357,12 +2357,12 @@ Object -> obj198_cell_door "cell door"	! 198 / 0xc6
 	after routine100640,
 	n_to obj177_Museum_Foyer,
 	s_to "As you might expect, the cell door is closed.",
-	d_to ne_obj,
+	w_to ne_obj,
   has	door locked openable static;
 
 Object obj199_Cabinet_Room "Cabinet Room"	! 199 / 0xc7
   with	after routine100704,
-	d_to obj185_Hall_of_Exhibits,
+	w_to obj185_Hall_of_Exhibits,
 	description "An annexe to the museum, containing sundry archaelogical finds, badly labelled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
 	section T_HAMBURG,
   has	;
@@ -2458,7 +2458,7 @@ Object obj211_Cups_and_Glasses "Cups and Glasses"	! 211 / 0xd3
 Object -> obj212_windowed_door "windowed door"	! 212 / 0xd4
   with	name 'door' 'window' 'windowed',
 	n_to obj211_Cups_and_Glasses,
-	d_to w_obj,
+	w_to w_obj,
 	description "Through the square window in the door you can see a bar at which staff are serving, and a very crowded and lively cafe-restaurant beyond. The cabaret act has her back to you, and a considerable amount of her front to the diners.",
   has	door lockable locked openable scenery;
 
@@ -2532,7 +2532,7 @@ Object obj221_Cliffs "Cliffs"	! 221 / 0xdd
 Object obj222_Clifftop_Walk "Clifftop Walk"	! 222 / 0xde
   with	s_to obj230_Wall_of_Thorns,
 	e_to routine106648,
-	d_to obj221_Cliffs,
+	w_to obj221_Cliffs,
 	description "A long clifftop walk by the sea, from the lighthouse to the west to the village not far east. These fields are occupied by herds of hardy mountain goats, continually butting each other and frisking. To the south a path leads across sparse grassland to a great outgrowth of some kind.",
 	cant_go "There's only dull grassland that way.",
 	section T_TAROT,
@@ -2545,7 +2545,7 @@ Object -> obj223_herd_of_goats "herd of goats"	! 223 / 0xdf
 
 Object obj224_Outside_Taverna "Outside Taverna"	! 224 / 0xe0
   with	s_to obj227_Eraina_Taverna,
-	d_to obj222_Clifftop_Walk,
+	w_to obj222_Clifftop_Walk,
 	description "A long walk along the cliffs from the lighthouse leads naturally here, just outside the Eraina Taverna, whose open doorway lies to the south.",
 	cant_go "There's only dull grassland that way.",
 	section T_TAROT,
@@ -2602,7 +2602,7 @@ Object -> obj231_wall_of_thorns "wall of thorns"	! 231 / 0xe7
   with	name 'gap' 'thorns' 'of' 'wall',
 	n_to obj232_Sacred_Earth,
 	s_to "The wall rustles and clashes its thorns like a beast alive.",
-	d_to ne_obj,
+	w_to ne_obj,
 	initial "A ragged gap in the wall has been burnt out to the south.",
 	description "It's hard to imagine what could possibly shift a wall like that.",
   has	door static;
@@ -2708,7 +2708,7 @@ Object -> obj243_inscriptions "inscriptions"	! 243 / 0xf3
 	after routine109740,
 	n_to obj244_Oubliette,
 	s_to "There are extremely scuffed and faded inscriptions at the centre of the cross.",
-	d_to thedark,
+	w_to thedark,
 	initial "Beside the inscriptions is an opening in the floor, about two feet square.",
 	description "~ka-i ur-a re-im ka an-ge~",
 	article "the",
@@ -2833,25 +2833,25 @@ Object -> obj260_Greek_frieze "Greek frieze"	! 260 / 0x104
 
 Object obj261_port_wall "port wall"	! 261 / 0x105
   with	name 'port',
-	d_to nw_obj,
+	w_to nw_obj,
 	article "the",
   has	scenery;
 
 Object obj262_starboard_wall "starboard wall"	! 262 / 0x106
   with	name 'starboard',
-	d_to se_obj,
+	w_to se_obj,
 	article "the",
   has	scenery;
 
 Object obj263_fore_wall "fore wall"	! 263 / 0x107
   with	name 'fore',
-	d_to w_obj,
+	w_to w_obj,
 	article "the",
   has	scenery;
 
 Object obj264_aft_wall "aft wall"	! 264 / 0x108
   with	name 'aft',
-	d_to ne_obj,
+	w_to ne_obj,
 	article "the",
   has	scenery;
 
@@ -2881,7 +2881,7 @@ Object -> obj267_mast_and_rigging "mast and rigging"	! 267 / 0x10b
 Object obj268_Up_the_Mast "Up the Mast"	! 268 / 0x10c
   with	after routine112212,
 	before routine112312,
-	d_to routine111888,
+	w_to routine111888,
 	d_to routine112160,
 	description "Coming up here must be one of your less inspired ideas. The mist is all around you, confusing your senses. Two pale, bluish moons hang in a pink sky.",
 	cant_go "Down might be a better idea.",
@@ -2950,7 +2950,7 @@ Object obj276_Garden_Stream "Garden Stream"	! 276 / 0x114
 	n_to "Better not... you'd be seen from the Library.",
 	s_to obj277_coal_bunker,
 	e_to obj279_Beside_the_Wall,
-	d_to "Better not... you'd be seen from the Orangery.",
+	w_to "Better not... you'd be seen from the Orangery.",
 	prop9 "Better not... you'd be seen from the Old Ballroom.",
 	nw_to obj283_Family_Tree,
 	d_to "The Hall is not safely climbable.",
@@ -2964,7 +2964,7 @@ Object -> obj277_coal_bunker "coal bunker"	! 277 / 0x115
 	before routine113480,
 	n_to obj124_Dark_Passage,
 	s_to "On the house wall is a coal bunker, whose loading door is shut.",
-	d_to ne_obj,
+	w_to ne_obj,
 	initial "On the house wall is a coal bunker, whose door stands open.",
   has	door locked openable static;
 
@@ -2976,7 +2976,7 @@ Object -> obj278_stream "stream"	! 278 / 0x116
 Object obj279_Beside_the_Wall "Beside the Wall"	! 279 / 0x117
   with	n_to "You'd be seen from the Old Ballroom that way.",
 	s_to "There's no door into the Hall.",
-	d_to obj276_Garden_Stream,
+	w_to obj276_Garden_Stream,
 	nw_to "You'd be seen from the Library that way.",
 	u_to "The walls of the Hall are unclimbable to someone suffering from your degree of vertigo.",
 	d_to nothing,
@@ -3004,7 +3004,7 @@ Object obj282_timber_hatch "timber hatch"	! 282 / 0x11a
 	before routine113904,
 	n_to obj132_Wine_Cellars,
 	s_to "Beside the shrub is a timber hatch, three feet across.",
-	d_to thedark,
+	w_to thedark,
 	initial "The timber lid stands open beside the shrub, revealing the old barrel-hatch.",
   has	door openable static;
 
@@ -3012,7 +3012,7 @@ Object obj283_Family_Tree "Family Tree"	! 283 / 0x11b
   with	name 'sign' 'signpost' 'post',
 	n_to routine113940,
 	e_to obj285_Lawn_Ornaments,
-	d_to obj291_Clearing,
+	w_to obj291_Clearing,
 	se_to obj276_Garden_Stream,
 	u_to obj299_Up_the_Plane_Tree,
 	initial routine113932,
@@ -3028,7 +3028,7 @@ Object -> obj284_plane_tree "plane tree"	! 284 / 0x11c
 Object obj285_Lawn_Ornaments "Lawn Ornaments"	! 285 / 0x11d
   with	name 'gnomes' 'nymphs' 'windmills' 'gnome' 'nymph' 'windmill' 'ornament' 'ornaments',
 	e_to obj288_Mosaic,
-	d_to obj283_Family_Tree,
+	w_to obj283_Family_Tree,
 	d_to obj288_Mosaic,
 	description "Several hundred years of rolling have made this a rather fine patch of grass, between the privet hedge (north), the plane tree (west) and the mosaic (east). Unfortunately, it is adorned with all the really ugly ornaments (gnomes, plaster nymphs, stone windmills to grow flowers in), this being the corner of the garden least visible from the house.",
 	cant_go "The options appear to be east or west.",
@@ -3051,7 +3051,7 @@ Object obj287_ancient_well "ancient well"	! 287 / 0x11f
 Object obj288_Mosaic "Mosaic"	! 288 / 0x120
   with	name 'perspex' 'scenes' 'quadrants',
 	e_to nothing,
-	d_to obj285_Lawn_Ornaments,
+	w_to obj285_Lawn_Ornaments,
 	u_to obj285_Lawn_Ornaments,
 	description "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitors' shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists so the excavations went no further.",
 	cant_go "From here you can climb back up to the lawn.",
@@ -3073,7 +3073,7 @@ Object -> obj290_hard_wooden_ball "hard wooden ball"	! 290 / 0x122
 Object obj291_Clearing "Clearing"	! 291 / 0x123
   with	s_to obj292_Vegetable_Garden,
 	e_to obj283_Family_Tree,
-	d_to obj295_Garage,
+	w_to obj295_Garage,
 	description "A clearing at the edge of the garden, surrounded by walls and the privet hedges of the maze. To the east is the plane tree, to the west an opening in the wall makes a garage entrance and to the south is a small vegetable garden.",
 	section T_GARDEN,
   has	light;
@@ -3090,7 +3090,7 @@ Object -> obj293_runner_bean_plant "runner-bean plant"	! 293 / 0x125
   with	name 'runner' 'bean' 'plant',
 	n_to obj294_Up_the_Beanstalk,
 	s_to "Only a runner-bean plant graces the vegetable garden.",
-	d_to u_obj,
+	w_to u_obj,
 	initial "A giant runner-bean plant leads up vertiginously into the sky from here.",
 	section T_GARDEN,
   has	door static;
@@ -3156,7 +3156,7 @@ Object obj301_Maze "Maze"	! 301 / 0x12d
   with	after routine115944,
 	before routine116264,
 	s_to obj283_Family_Tree,
-	d_to obj304_Viewpoint_Ledge,
+	w_to obj304_Viewpoint_Ledge,
 	description "A maze of green privet passages, all alike.",
 	cant_go "The privet hedges are in the way.",
 	section T_GARDEN,
@@ -3230,7 +3230,7 @@ Object obj310_Maze_Foundations "Maze Foundations"	! 310 / 0x136
   with	after routine116760,
 	before routine116976,
 	s_to obj311_Tree_Planting,
-	d_to obj307_Folly,
+	w_to obj307_Folly,
 	description "A square grid of plots of grass and seedbeds, all alike.",
 	section T_GARDEN_PAST,
   has	light;
@@ -3252,7 +3252,7 @@ Object obj312_Bricked_Path "Bricked Path"	! 312 / 0x138
 Object obj313_Hedgery "Hedgery"	! 313 / 0x139
   with	n_to routine117768,
 	e_to Croquet_Lawn,
-	d_to obj312_Bricked_Path,
+	w_to obj312_Bricked_Path,
 	description "Named by some family wag generations back, this is a restful hedge garden, crowned with a summer house to the north, widening out to a broad croquet lawn east.",
 	section T_GARDEN,
   has	light;
@@ -3287,7 +3287,7 @@ Object -> obj317_gold_watch_on_a_chain "gold watch on a chain"	! 317 / 0x13d
 
 Object Behind_Summer_House "Behind Summer House"	! 318 / 0x13e
   with	s_to loose_board,
-	d_to obj288_Mosaic,
+	w_to obj288_Mosaic,
 	se_to Croquet_Lawn,
 	d_to obj288_Mosaic,
 	description "Among dense hedges by the shabby wood-slatted back of the summer house. Dark scratchy branches hem you in, but you could scramble down to the west or out onto the croquet lawn southeast.",
@@ -3299,7 +3299,7 @@ Object -> loose_board "loose board"	! 319 / 0x13f
 	after routine118116,
 	n_to obj315_Summer_House,
 	s_to "One board of the back wall is noticeably loose, making a good-sized crack.",
-	d_to ne_obj,
+	w_to ne_obj,
 	initial "You could easily squeeze past the loose board south into the summer house.",
   has	door openable static;
 
@@ -3319,7 +3319,7 @@ Object -> irate_squirrel_friend "irate squirrel friend"	! 321 / 0x141
   has	animate;
 
 Object Croquet_Lawn "Croquet Lawn"	! 322 / 0x142
-  with	d_to obj313_Hedgery,
+  with	w_to obj313_Hedgery,
 	nw_to nothing,
 	initial routine118996,
 	description " .One of the most beautiful hedge-enclosed, tree-muffled lawns in England, and just out of sight of the house, this has been a jewel in the gardens for centuries. Since the twenties it has also been a croquet lawn, of the regulation twenty-four yards square, laid out with a central coloured peg and six peripheral hoops",
@@ -3357,7 +3357,7 @@ Object dug_hole "dug hole"	! 326 / 0x146
   has	container open static;
 
 Object Murky_Cave "Murky Cave"	! 327 / 0x147
-  with	d_to Spur_of_Rock,
+  with	w_to Spur_of_Rock,
 	prop9 Valley_Prospect,
 	initial routine119472,
 	description "This is a murky hillside cave, whose mouth opens to the northeast, though a tight squeeze might lead a little way west. Outside is a clear starry night. There is no traffic noise, and the air smells fresh.",
@@ -3425,7 +3425,7 @@ Object Roman_Villa "Roman Villa"	! 336 / 0x150
   with	name 'timber' 'door',
 	s_to Atrium_Cloister,
 	e_to Stream,
-	d_to Valley_Prospect,
+	w_to Valley_Prospect,
 	description "You stand beside a Roman villa, whose columns cast shadows of an Empire in the moonlight. It is thirty years since the fall of the West, and Britain is cut off from the continent, where soon even the existence of the Anglis will become a myth. This villa has survived the pestilence and devastation of the civil war, and although it must be a couple of centuries old, it is still standing. From here you could cut across the hillside east to west, or slip in through a none-too-secure timber door.",
 	section T_ANCIENT_BRITAIN,
   has	light;
@@ -3433,7 +3433,7 @@ Object Roman_Villa "Roman Villa"	! 336 / 0x150
 Object Stream "Stream"	! 337 / 0x151
   with	name 'river' 'road' 'stream' 'roof',
 	after routine122220,
-	d_to Roman_Villa,
+	w_to Roman_Villa,
 	u_to "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.",
 	description "A stream runs past the villa and cascades down the hillside here, to join the river far below, near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from your back garden. A rough ladder of wood lashed together with leather rests against the villa at the lowest point of the tiled roof.",
 	section T_ANCIENT_BRITAIN,
@@ -3463,7 +3463,7 @@ Object Atrium "Atrium"	! 341 / 0x155
   with	n_to Atrium_Cloister,
 	s_to Entrance,
 	e_to Guard_Quarters,
-	d_to Triclinium,
+	w_to Triclinium,
 	description "The central well of the villa, ringed with columns. On the north side is a cloister and stone-linteled doorways lead east, south and west. The central floor area is commanded by a beautiful Roman mosaic, quartered into individual scenes, around the edges of which are vents from the hypocaust. There is no roof over the courtyard, and the atrium is lit by moonlight.",
 	section T_ANCIENT_BRITAIN,
   has	light;
@@ -3475,7 +3475,7 @@ Object -> mosaic "mosaic"	! 342 / 0x156
 
 Object Guard_Quarters "Guard Quarters"	! 343 / 0x157
   with	name 'armour' 'spears' 'hides' 'blankets',
-	d_to Atrium,
+	w_to Atrium,
 	description "Whatever function this spacious room once had, now it is evidently home to military men, for it is filled with crude armour, spears, rough blankets which are little more than animal hides. Fortunately for you the guards are absent.",
 	section T_ANCIENT_BRITAIN,
   has	light;
@@ -3503,7 +3503,7 @@ Object -> kitchen_well "kitchen well"	! 347 / 0x15b
 	before routine122728,
 	n_to Inside_Well,
 	s_to "In one corner is a hinged wooden cover of some kind, which is shut.",
-	d_to thedark,
+	w_to thedark,
 	initial "The hinged wooden cover is raised, revealing a circular well about a yard in diameter. It is very dark inside.",
 	description "The well has a hinged wooden cover. You can't tell by looking how deep it is.",
 	number 0,
@@ -3522,7 +3522,7 @@ Object Inside_Well "Inside Well"	! 348 / 0x15c
 
 Object Hypocaust "Hypocaust"	! 349 / 0x15d
   with	name 'fires' 'heating' 'log' 'logs',
-	d_to Inside_Well,
+	w_to Inside_Well,
 	description "This very low almost-cellar underneath the atrium is a tiny access space for log fires which are kept going to provide a form of central heating for the villa. They are lit and going away nicely, interestingly. It isn't very warm by twentieth-century standards, but you have to admit it works.^^A tiny amount of light filters in from the vents in the roof; just enough to see by. The only way in seems to be the way you came.",
 	cant_go "The log fires are hot, and anyway the only way out large enough for you is back west.",
 	section T_ANCIENT_BRITAIN,
@@ -3581,13 +3581,13 @@ Object Encampment "Encampment"	! 355 / 0x163
 Object -> dolmen "dolmen"	! 356 / 0x164
   with	name 'dolmen' 'coals' 'hot' 'rock',
 	n_to Beneath_Dolmen,
-	d_to e_obj,
+	w_to e_obj,
 	initial "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be made out to the east, on the other side of an almost-extinguished campfire of hot coals.",
   has	door open static;
 
 Object Beneath_Dolmen "Beneath Dolmen"	! 357 / 0x165
   with	name 'dolmen',
-	d_to Encampment,
+	w_to Encampment,
 	description "You stand beside the eerie dolmen, surrounded by the terrible noises and incantations of a druidic rite.",
 	cant_go "Far, far too risky.",
 	section T_ANCIENT_BRITAIN,
@@ -3621,7 +3621,7 @@ Object Premonition "Premonition"	! 361 / 0x169
 
 Object The_Generals_Tent "The General's Tent"	! 362 / 0x16a
   with	n_to Beside_Table,
-	d_to routine124892,
+	w_to routine124892,
 	description "This is the tent of a thin, reedy man who wears no uniform but has an obvious and commanding presence. He has an aquiline, patrician nose and, at five feet four, is taller than anyone else present. The others are advisers, junior officers, scheming politicians and their like. They are keeping their distance from a trestle table at the north end of the tent.",
 	cant_go routine124792,
 	section T_DREAMING,
@@ -3695,7 +3695,7 @@ Object green_luminescence "flurries of green luminescence"	! 371 / 0x173
 
 Object Solid_Sand "Solid Sand"	! 372 / 0x174
   with	e_to Octagonal_Tomb,
-	d_to Melancholy_Dream,
+	w_to Melancholy_Dream,
 	u_to Melancholy_Dream,
 	d_to Octagonal_Tomb,
 	description "Your ghostly self is embedded in a diagonal downward shaft (descending to the east) entirely filled with dry sand. Solid flagstones line the walls.",
@@ -3705,7 +3705,7 @@ Object Solid_Sand "Solid Sand"	! 372 / 0x174
 
 Object Octagonal_Tomb "Octagonal Tomb"	! 373 / 0x175
   with	name 'torch' 'torches' 'slab',
-	d_to Solid_Sand,
+	w_to Solid_Sand,
 	u_to Solid_Sand,
 	description "Flaming torches bracketed in the wall gutter as the last oxygen in the air is consumed, and the flicker of flame plays across the yellow-orange glaze of the tomb walls.^^This octagonal chamber is lined with Egyptian hieroglyphics. Sand spills across the floor from under the sole entrance, sealed by an ingenious stone slab.",
 	cant_go routine124792,
@@ -3738,7 +3738,7 @@ Object -> bronze_mural "bronze mural"	! 377 / 0x179
 	life routine63748,
 	n_to Jagged_Passage,
 	s_to "The south wall forms a giant bronze mural, which has stood the test of time.",
-	d_to thedark,
+	w_to thedark,
 	initial "The mural stands slightly to one side, revealing a passage leading downward.",
 	description "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations.",
   has	door static talkable;
@@ -3765,14 +3765,14 @@ Object -> wrought_iron_key "long wrought iron key"	! 379 / 0x17b
 Object Charnel_Passage "Charnel Passage"	! 380 / 0x17c
   with	after routine126932,
 	e_to Sarcophagus,
-	d_to Jagged_Passage,
+	w_to Jagged_Passage,
 	description "A long, winding, vile passage through the earth, running east to west. The distasteful odour grows stronger as you go east.",
 	section T_CATACOMBS,
   has	;
 
 Object Sarcophagus "Sarcophagus"	! 381 / 0x17d
   with	after routine126932,
-	d_to Charnel_Passage,
+	w_to Charnel_Passage,
 	description "Well, perhaps ~sarcophagus~ is a little melodramatic, but it's that kind of moment. This must be somewhere under the old parish church. You are stooped over inside a stone tomb, stained and crumbled with decay, broken only by a crevice you crawled in by. It is a nightmarish place.",
 	section T_CATACOMBS,
   has	;
@@ -3786,7 +3786,7 @@ Object -> tombstone "tombstone"	! 382 / 0x17e
 Object The_Catacombs "Catacombs"	! 383 / 0x17f
   with	after routine126932,
 	n_to Jagged_Passage,
-	d_to CR,
+	w_to CR,
 	u_to Jagged_Passage,
 	d_to nothing,
 	description "A large, grisly cave, deep under the garden, dimly lit and eerie. Darkness curls around the natural pillars of rock like a mist: and there is a peculiar, vaguely familiar odour to it. The only obvious routes out are an uneven passage climbing to the north and a crawl west.",
@@ -3820,7 +3820,7 @@ Object -> metal_wall "metal wall"	! 386 / 0x182
 	after routine127904,
 	n_to CR,
 	s_to "The north edge of the room is a big sheet of dull amber-coloured metal.",
-	d_to w_obj,
+	w_to w_obj,
 	initial routine127832,
 	description "Someone rather good-looking (you can't help thinking) is reflected in the metal surface.",
   has	door static;
@@ -3909,7 +3909,7 @@ Object -> rusty_iron_grating "rusty iron grating"	! 398 / 0x18e
 	n_to Jetty,
 	s_to "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
 	e_to rusty_iron_key,
-	d_to thedark,
+	w_to thedark,
 	initial "A rusty seaweed-wreathed iron grating lies open here.",
   has	door lockable locked openable static;
 
@@ -3991,7 +3991,7 @@ Object unexciting_tombstone "unexciting tombstone"	! 408 / 0x198
 	after routine132568,
 	n_to The_Height_of_Fashion,
 	s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
-	d_to thedark,
+	w_to thedark,
 	initial "You stand near the tombstone, which has become rather more interesting now that a flight of steps downward has appeared.",
 	description "It bears just one word of epigram: ~GALITA~. Below that is a curious face, with an open empty socket of a mouth.",
   has	door static;
@@ -4028,7 +4028,7 @@ Object -> painted_writings "painted writings"	! 412 / 0x19c
 Object The_Height_of_Fashion "The Height of Fashion"	! 413 / 0x19d
   with	name 'table' 'panelling' 'doorway' 'door',
 	after routine132972,
-	d_to routine133044,
+	w_to routine133044,
 	u_to Necropolis,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling. This is the latest in modern funerary apartments.^^There's a couch for visitors, a table, a flight of steps up and a doorway to the west, flanked by two stone sphinxes.",
 	section T_ALEXANDRIA,
@@ -4057,7 +4057,7 @@ Object The_Spirit_World "The Spirit World"	! 417 / 0x1a1
   with	name 'table' 'panelling' 'doorway' 'door',
 	after routine133428,
 	before routine133704,
-	d_to routine133240,
+	w_to routine133240,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling, at the foot of a flight of steps which leads only to a sealed wall.",
 	number 1,
 	each_turn routine133912,
@@ -4087,7 +4087,7 @@ Object Napoleonic_officers "Napoleonic officers"	! 420 / 0x1a4
 Object This_Is_The_Death "This Is The Death"	! 421 / 0x1a5
   with	name 'painted' 'scenes' 'glass' 'ornaments',
 	e_to The_Height_of_Fashion,
-	d_to marble_wall,
+	w_to marble_wall,
 	u_to The_Height_of_Fashion,
 	d_to marble_wall,
 	description "The passage, descending from the east down to the west, is cut from marble, lined with painted scenes from the fashionable comedies of Menander, decorated with Alexandrian coloured glass ornaments.^^The expression ~You can't take it with you~ doesn't seem to be popular hereabouts.",
@@ -4108,7 +4108,7 @@ Object -> marble_wall "marble wall"	! 423 / 0x1a7
   with	name 'marble' 'wall',
 	n_to Quite_an_Undertaking,
 	s_to "Unfortunately, the passage slants down only into a solid marble wall.",
-	d_to thedark,
+	w_to thedark,
 	initial "The passage opens out onto the burial chamber below.",
   has	door static;
 
@@ -4184,7 +4184,7 @@ Object Stadium "Stadium"	! 433 / 0x1b1
 Object Outside_the_Theatre "Outside the Theatre"	! 434 / 0x1b2
   with	n_to Outside_the_Royal_Palace_of_Alexander,
 	s_to Outside_the_Royal_Museum,
-	d_to Warehouses_and_Port,
+	w_to Warehouses_and_Port,
 	description "Tragically, the Theatre is closed tonight, but roads lead past the great stepped bowl: north toward the Palace, south to the Museum and west to the harbour-front.",
 	section T_ALEXANDRIA,
   has	light;
@@ -4216,7 +4216,7 @@ Object -> defaced_door "defaced door"	! 438 / 0x1b6
 	after routine136924,
 	n_to Consulting_Room,
 	s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
-	d_to obj13_inside,
+	w_to obj13_inside,
 	initial "The heavily defaced door opens onto a staircase up.",
   has	door openable static;
 
@@ -4365,7 +4365,7 @@ Object -> spindle_from_the_globe "spindle from the globe"	! 457 / 0x1c9
 
 Object Reading_Corridor "Reading Corridor"	! 458 / 0x1ca
   with	s_to Librarians_Office,
-	d_to The_Birdcage_of_the_Muses,
+	w_to The_Birdcage_of_the_Muses,
 	description "A spacious, densely colonnaded corridor, its walls lined with inset shelves on which are scrolls beyond count, ribboned, dusty, disintegrating, badly catalogued so that only an expert can find what he wants.",
 	cant_go "You wander through the columns, but can find no exit save the thoroughfare west and a little office south.",
 	section T_ALEXANDRIA,
@@ -4425,7 +4425,7 @@ Object Lost_inside_the_Palace "Lost inside the Palace"	! 466 / 0x1d2
 	n_to Lost_inside_the_Palace,
 	s_to Lost_inside_the_Palace,
 	e_to Lost_inside_the_Palace,
-	d_to Lost_inside_the_Palace,
+	w_to Lost_inside_the_Palace,
 	prop9 Lost_inside_the_Palace,
 	se_to Lost_inside_the_Palace,
 	nw_to Lost_inside_the_Palace,
@@ -4459,7 +4459,7 @@ Object Beside_the_Drive "Beside the Drive"	! 470 / 0x1d6
   with	name 'wistaria' 'car' 'gravel',
 	after routine140600,
 	n_to "The old carved southern wall of the gardens blocks your way around the edge of the Hall.",
-	d_to "The Hall is in the way.",
+	w_to "The Hall is in the way.",
 	prop9 Public_Footpath,
 	u_to "The fire escape is perilous and leads nowhere. Doubtless it would be useless in any real fire.",
 	description "At the foot of the Hall is the drive, a long gravel lane approaching the house through trees.^^Since your family are intermittently loading suitcases into the car, which only makes you feel guilty, the only safe way to creep away is along the public footpath, to northeast.",
@@ -4561,14 +4561,14 @@ Object -> parish_church "parish church"	! 480 / 0x1e0
   with	name 'parish' 'church' 'door',
 	after routine141256,
 	n_to Parish_Church,
-	d_to w_obj,
+	w_to w_obj,
 	description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
   has	door scenery;
 
 Object -> Goat_and_Compasses "Goat and Compasses"	! 481 / 0x1e1
   with	name 'pub' 'goat' 'compasses' 'public' 'house' 'bar',
 	after routine141296,
-	d_to w_obj,
+	w_to w_obj,
 	description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing laws. You congratulate yourself on living in such a modern, forward-looking country.",
   has	door locked proper scenery;
 
@@ -4582,7 +4582,7 @@ Object Parish_Church "Parish Church"	! 486 / 0x1e6
   with	name 'flowers' 'pews' 'woven' 'mattings' 'lectern' 'altar',
 	s_to routine141536,
 	e_to East_Side_Chapel,
-	d_to West_Side_Chapel,
+	w_to West_Side_Chapel,
 	u_to Bell_Tower,
 	d_to routine141588,
 	description "Before this was the Norman church of St Michael and All Angels, it was a Saxon one: this is an ancient site. A great space of stone, filled with dark wooden pews and woven mattings. Flowers left over from Sunday grace the lectern and altar. A narrow stair leads upward, and the village green lies to the south.^^Old side chapels lie east and west.",
@@ -4593,7 +4593,7 @@ Object -> Moonstone "Moonstone"	! 487 / 0x1e7
   with	name 'moonstone' 'moon' 'stone' 'door' 'flagstone' 'iron' 'rings' 'old',
 	after MoonstoneAfter,
 	s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
-	d_to thedark,
+	w_to thedark,
 	initial "A passage slants down through a solid crystal doorway in the Moonstone.",
 	description "The Moonstone is very old, probably pre-dating the rest of the church by some centuries. Legends about it abound: some say the spirits of the departed pass beneath. Old iron rings are set in it, but nobody has ever succeeded in lifting the colossal weight.",
 	article "the",
@@ -4626,7 +4626,7 @@ Object adamantine_knight "adamantine knight"	! 490 / 0x1ea
 
 Object East_Side_Chapel "East Side Chapel"	! 491 / 0x1eb
   with	name 'stained' 'glass' 'windows' 'nativity',
-	d_to Parish_Church,
+	w_to Parish_Church,
 	description "A small clear space to the side of the church, in a bay ringed with stained glass windows of the Nativity.",
 	cant_go "The church lies west.",
 	section T_NE_OF_HOME,
@@ -10727,7 +10727,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     obj78_Dead_End.d_to = obj81_fire_escape;
     move obj81_fire_escape to obj78_Dead_End;
     Beside_the_Drive.u_to = obj78_Dead_End;
-    Beside_the_Drive.d_to = obj78_Dead_End;
+    Beside_the_Drive.w_to = obj78_Dead_End;
     give obj78_Dead_End light;
     "^Your footfall causes the crystal ball to wobble fractionally, just enough for the beam of light to cross the smoke detector. Click! and then some electronic bleeping. Little servo motors fire lethargically into life, then collapse in exhaustion. The alarm soon runs down to a tiny drone, then silence.^^But there's quite a loud report from off to the east somewhere.";
 ];
@@ -13124,7 +13124,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj168_Down_by_River.d_to
+! References: obj168_Down_by_River.w_to
 
 [ routine97832 ;	! 97832 / 0x17e28
     if (obj170_tourist_boat hasnt open) {
@@ -14492,7 +14492,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: obj268_Up_the_Mast.d_to
+! References: obj268_Up_the_Mast.w_to
 
 [ routine111888 ;	! 111888 / 0x1b510
     print "You wander out onto the flagpole, which bows and bends alarmingly, until suddenly...^^Crack!  And you are falling";
@@ -16231,7 +16231,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 362[The_Generals_Tent?];
 ];
 
-! References: The_Generals_Tent.d_to
+! References: The_Generals_Tent.w_to
 
 [ routine124892 ;	! 124892 / 0x1e7dc
     print "You pass uncomfortably back through the hide wall.^";
@@ -16522,12 +16522,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (noun == n_obj) {
                 selfobj.s_to = metal_wall;
                 selfobj.n_to = nothing;
-                metal_wall.d_to = ne_obj;
+                metal_wall.w_to = ne_obj;
                 selfobj.prop24 = 3[s_obj?];
             } else {
                 selfobj.n_to = metal_wall;
                 selfobj.s_to = nothing;
-                metal_wall.d_to = w_obj;
+                metal_wall.w_to = w_obj;
                 selfobj.prop24 = 2[?];
             }
             routine127208(0,2[?]);
@@ -17081,7 +17081,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: The_Height_of_Fashion.d_to
+! References: The_Height_of_Fashion.w_to
 
 [ routine133044 ;	! 133044 / 0x207b4
     if (player notin location) {
@@ -17112,7 +17112,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: The_Spirit_World.d_to
+! References: The_Spirit_World.w_to
 
 [ routine133240 ;	! 133240 / 0x20878
     print "The spirits of the sphinxes prowl across the doorway, paws raised, and then lunge towards you. Their claws rake across your skin, tearing off a layer, unwrapping you in a curiously painless way... and you wake...^";
@@ -20890,9 +20890,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rtrue;
         }
     }
-    local6 = noun.d_to;
+    local6 = noun.w_to;
     if (ZRegion(local6) == 2[?]) {
-        local6 = RunRoutines(noun,d_to);
+        local6 = RunRoutines(noun,w_to);
     }
     local2 = local1.local6;
     local3 = ZRegion(local2);
