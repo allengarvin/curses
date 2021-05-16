@@ -4942,7 +4942,7 @@ Global action_to_be;
 Global dont_infer;
 Global scope_reason;
 Global scope_token;
-Global global102;
+Global scope_error;
 Global scope_stage;
 Global global104;
 Global global105;
@@ -6012,7 +6012,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     if (etype == ASKSCOPE_PE) {
         scope_stage = 3;
-        generic_globvar = global102();
+        generic_globvar = scope_error();
     }
     jump label42187;
   .label45430;
@@ -7229,7 +7229,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ CantSee i w e ;	! 51088 / 0xc790
     saved_oops = oops_from;
     if (scope_token ~= 0) {
-        global102 = scope_token;
+        scope_error = scope_token;
         return 18[rod_of_returning?];
     }
     --wn;
