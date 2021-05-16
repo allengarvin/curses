@@ -4843,8 +4843,8 @@ Constant SCORE_HIGHROD = 44;
 ! Globals
 
 Global location = Compass;
-Global global2;
-Global global3;
+Global sline1;
+Global sline2;
 Global the_time = 65535;
 Global time_rate = 1;
 Global time_step;
@@ -7959,11 +7959,11 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ DisplayStatus ;	! 53944 / 0xd2b8
     if (the_time == 65535) {
-        global2 = score;
-        global3 = turns;
+        sline1 = score;
+        sline2 = turns;
     } else {
-        global2 = the_time / 60;
-        global3 = the_time % 60;
+        sline1 = the_time / 60;
+        sline2 = the_time % 60;
     }
     rtrue;
 ];
