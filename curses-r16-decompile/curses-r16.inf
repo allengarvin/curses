@@ -4910,7 +4910,7 @@ Global saved_oops;
 Global number_matched;
 Global global68;
 Global match_len;
-Global global70;
+Global match_from;
 Global global71;
 Global parser_one;
 Global parser_two;
@@ -4936,7 +4936,7 @@ Global last_command_from;
 Global last_command_to;
 Global token_was;
 Global advance_warning;
-Global global96;
+Global placed_in_flag;
 Global global97;
 Global action_to_be;
 Global dont_infer;
@@ -6533,18 +6533,18 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     match_len = 0;
     number_matched = 0;
-    global70 = wn;
-    global96 = 0;
+    match_from = wn;
+    placed_in_flag = 0;
     SearchScope(domain1,domain2,context);
     if (parser_trace >= 4) {
         print "   [ND made ", number_matched, " matches]^";
     }
-    wn = global70 + match_len;
+    wn = match_from + match_len;
     if (number_matched == 0) {
         ++wn;
         rfalse;
     }
-    if (global70 <= num_words) {
+    if (match_from <= num_words) {
         if (number_matched == 1[?]) {
             i = match_list-->0;
             return i;
@@ -6592,7 +6592,7 @@ Array array_29185 -->	! 29185 (0x7201)
         array_24618-->pcount = i;
         return i;
     }
-    if (global70 > num_words) {
+    if (match_from > num_words) {
         ! no code
     } else {
         if (context == 6[ne_obj?]) {
@@ -6657,7 +6657,7 @@ Array array_29185 -->	! 29185 (0x7201)
         parse->1 = answer_words + oldw;
         k = oldw + answer_words;
       .label48387;
-        if (k > global70) {
+        if (k > match_from) {
             MoveWord(k,24142[?],k - answer_words);
             --k;
             jump label48387;
@@ -6665,7 +6665,7 @@ Array array_29185 -->	! 29185 (0x7201)
         k = 1[?];
       .label48412;
         if (k <= answer_words) {
-            MoveWord(global70 + k - 1,24488[?],k);
+            MoveWord(match_from + k - 1,24488[?],k);
             ++k;
             jump label48412;
         }
@@ -7364,9 +7364,9 @@ Array array_29185 -->	! 29185 (0x7201)
         DoScopeAction(thing);
         rtrue;
     }
-    wn = global70;
+    wn = match_from;
     TryGivenObject(thing);
-    global96 = 1[?];
+    placed_in_flag = 1[?];
     rtrue;
 ];
 
@@ -7448,7 +7448,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ ScopeWithin_O domain nosearch context i ad n ;	! 51932 / 0xcadc
     if (scope_reason ~= PARSING_REASON or TALKING_REASON) {
         DoScopeAction(domain);
-    } else if (global70 > num_words) {
+    } else if (match_from > num_words) {
         i = parser_trace;
         parser_trace = 0;
         if (i >= 5) {
@@ -7459,7 +7459,7 @@ Array array_29185 -->	! 29185 (0x7201)
         MakeMatch(domain,1[?]);
         parser_trace = i;
     } else {
-        wn = global70;
+        wn = match_from;
         i = NounWord();
         if (i == 1[?] && itobj == domain) {
             MakeMatch(itobj,1[?]);
