@@ -2487,7 +2487,7 @@ Object obj216_model_ship "model ship"	! 216 / 0xd8
 	after routine104972,
 	description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
 	angel_hint "The great challenge, of course, is to get it inside a bottle.",
-  has	attrib8;
+  has	general;
 
 Object obj217_stick_with_an_anchor "stick with an anchor"	! 217 / 0xd9
   with	name 'stick' 'with' 'anchor' 'chain' 'sticks' 'ship',
@@ -3224,7 +3224,7 @@ Object -> obj309_bean_pole "bean pole"	! 309 / 0x135
 	daemon routine116536,
 	rod_assoc rod_of_stalking,
 	devil_hint "Whatever you do, it'll always be a bean pole.",
-  has	attrib8 attrib33;
+  has	general attrib33;
 
 Object obj310_Maze_Foundations "Maze Foundations"	! 310 / 0x136
   with	after routine116760,
@@ -9086,7 +9086,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         routine74232(1[?]);
         rfalse;
     }
-    if (action == ##Listen && obj111_antiquated_wireless has attrib8 && (obj111_antiquated_wireless in location || (obj111_antiquated_wireless in obj107_Aunt_Jemima_s_Lair && location == obj112_Potting_Room))) {
+    if (action == ##Listen && obj111_antiquated_wireless has general && (obj111_antiquated_wireless in location || (obj111_antiquated_wireless in obj107_Aunt_Jemima_s_Lair && location == obj112_Potting_Room))) {
         "You feel your brain turning to rice pudding.";
     }
     rfalse;
@@ -9234,7 +9234,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "You don't really want to vapourise Austin.";
     }
     if (second == adamantine_statue) {
-        if (adamantine_skull hasnt attrib8 || adamantine_heart hasnt attrib8 || adamantine_hand hasnt attrib8) {
+        if (adamantine_skull hasnt general || adamantine_heart hasnt general || adamantine_hand hasnt general) {
             "The bones jerk and rattle, but seem unable to come together into life.";
         }
         remove adamantine_statue;
@@ -9290,10 +9290,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         " freezes up.";
     }
     if (second has high_rod) {
-        if (second has attrib8) {
+        if (second has general) {
             "It's already cold.";
         }
-        give second attrib8;
+        give second general;
         "There is an enormous hissing of steam, creating wildly swirling mists, after whose parting an apparently cool rod is left behind.";
     }
     "Nothing obvious happens.";
@@ -9353,7 +9353,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (second ~= obj223_herd_of_goats) {
         "Nothing obvious happens.";
     }
-    give obj223_herd_of_goats attrib8;
+    give obj223_herd_of_goats general;
     routine155280(24[rod_of_luck?]);
     "The goats suddenly look up at you with awe, although they resume their former interest in eating the grass quite quickly.";
 ];
@@ -9391,7 +9391,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (big_electricians_switch has on) {
             "You feel no different. Perhaps there's no such thing as luck.";
         }
-        give noun attrib8;
+        give noun general;
         "You feel optimistic and lucky. Mind you, you feel that most times.";
     }
     if (second == obj58_Austin) {
@@ -9415,7 +9415,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ RodOfSacrificeAction ;	! 61400 / 0xefd8
     if (second == obj223_herd_of_goats) {
-        if (obj223_herd_of_goats hasnt attrib8) {
+        if (obj223_herd_of_goats hasnt general) {
             "The goats mill around too much to aim at one accurately.";
         }
         "Still obedient to your intent, the goats part so that one stands alone. Using this Rod, you vapourise it instantaneously, and the rest contentedly return.^^Do you think there might be a moral to draw here about the use, and abuse, of power?";
@@ -9434,12 +9434,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         ", which you annihilate with the Rod.";
     }
     if (location == Inside_the_Orb && second == array_of_oblong_crystals) {
-        if (Inside_the_Orb hasnt attrib8) {
+        if (Inside_the_Orb hasnt general) {
             deadflag = CHECKMATED;
             "The Black pieces make a rash break out of their defences, sacrificing a piece in vain and going down to a rapid defeat as a result.^^The White Queen rises from the board, an avenging angel's smile on her face, and swings a broadsword of burning light across your body...";
         }
         move golden_orb to player;
-        give golden_orb attrib8;
+        give golden_orb general;
         Achieved(17);
         golden_orb.description = "A treasure in every sense, the orb pulsates with golden radiance.";
         print "The White pieces advance: first a bishop, then a knight is sacrificed, clearing away the wall of pawns which surround the Black king so that a dazzling checkmate can be executed!^^You fade out of the orb as oddly as you came, struck by the way it now almost pulsates in your palm.^";
@@ -9529,15 +9529,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 < 9) {
         "You feel the air charge with excitement, and the symbol glows fiercely gold for a moment, but then the power drains away into one of the empty sockets in the arc.";
     }
-    if (noun has attrib8) {
+    if (noun has general) {
         "Nothing happens this time.";
     }
     print "The air charges with excitement, and the symbol glows fiercely gold, then begins to spin, faster and faster into a pearly golden light with bathes you with the flow of pure magic. ";
-    if (obj141_spherical_opening hasnt attrib8) {
+    if (obj141_spherical_opening hasnt general) {
         "But it is still too weak!  You half-hear, half-imagine a whisper of druids...";
     }
     print "Everything becomes a daze and then you find yourself...^";
-    give noun attrib8;
+    give noun general;
     routine63700();
     rtrue;
 ];
@@ -9938,10 +9938,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (obj58_Austin in location) {
             "Austin leaps up onto the bed, jumps around for a bit, and then falls back onto the floor. You are unable to get any sleep.";
         }
-        if (obj44_camp_bed has attrib8) {
+        if (obj44_camp_bed has general) {
             "You doze awhile, but that's all.";
         }
-        give obj44_camp_bed attrib8;
+        give obj44_camp_bed general;
         print "You sleep unexpectedly deeply, but just as you think you are starting to wake up, you experience a sudden...^";
         routine124836();
         rtrue;
@@ -9955,7 +9955,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Consult) {
         wn = consult_from;
         local1 = NextWord();
-        if (obj240_Homer has attrib8 && obj240_Homer.time_left < 3 && obj240_Homer in location) {
+        if (obj240_Homer has general && obj240_Homer.time_left < 3 && obj240_Homer in location) {
             routine109044();
             print "~Well, if you're going to cheat, forget it,~ says Homer loudly as he falls asleep.^^";
         }
@@ -10111,14 +10111,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "^The sparrows swoop down and around you, but rapidly lose interest.";
         }
         if (location == obj315_Summer_House) {
-            if (obj314_flock_of_sparrows has attrib8) {
+            if (obj314_flock_of_sparrows has general) {
                 "^But the sparrows cannot hear.";
             }
             if (obj317_gold_watch_on_a_chain has moved) {
                 "^But the sparrows are wise to that one.";
             }
             give obj317_gold_watch_on_a_chain moved;
-            give obj314_flock_of_sparrows attrib8;
+            give obj314_flock_of_sparrows general;
             remove irate_squirrel_friend;
             Achieved(29);
             "^The sparrows swoop down onto the roof, battering against the glass. In the process the gold watch comes loose, and falls to the ground with a disconcerting thud.^^It just misses the squirrel, who bolts away, startled.^^The sudden motion once more disturbs the flighty sparrows, who take to the skies. You feel rather deserted all of a sudden.";
@@ -10200,7 +10200,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine73296 ;	! 73296 / 0x11e50
     if (action == ##Eat) {
-        give player ~attrib8;
+        give player ~general;
         global140 = 1[?];
         "It tastes alarmingly of chocolate.";
     }
@@ -10664,7 +10664,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rfalse;
         }
         print "^A beam of white light runs into the room from the slide projector to the south, and hits the ";
-        if (obj66_solid_glass_ball hasnt attrib8) {
+        if (obj66_solid_glass_ball hasnt general) {
             "opaque glass ball.";
         }
         print "glass ball, which ";
@@ -10736,7 +10736,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine76752 local1 ;	! 76752 / 0x12bd0
     if (action == ##Clean) {
-        give selfobj attrib8;
+        give selfobj general;
         if (global139 == 1[?] && obj72_slide_projector has on) {
             print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
             routine76092();
@@ -10745,7 +10745,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "You polish the ball to a nice shine.";
     }
     if (action == ##Read or ##Search) {
-        if (selfobj hasnt attrib8) {
+        if (selfobj hasnt general) {
             "The ball is scratched and misted up.";
         }
         routine155280(32[obj32_electric_torch?]);
@@ -10804,7 +10804,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     if (action == ##Action91 or ##Turn) {
-        if (obj120_steel_wrench has attrib8) {
+        if (obj120_steel_wrench has general) {
             "The joint is fairly safe already.";
         }
         if (obj120_steel_wrench notin player) {
@@ -10813,7 +10813,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             "With your bare hands, you are unable to tighten the joint.";
         }
-        give obj120_steel_wrench attrib8;
+        give obj120_steel_wrench general;
         Achieved(13);
         give obj70_book_of_Twenties_poetry ~concealed;
         give obj70_book_of_Twenties_poetry moved;
@@ -10828,14 +10828,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine77636 ;	! 77636 / 0x12f44
     if (action == ##Take) {
-        if (obj120_steel_wrench hasnt attrib8) {
+        if (obj120_steel_wrench hasnt general) {
             routine77984();
             rtrue;
         }
         rfalse;
     }
     if (action == ##Read) {
-        if (obj120_steel_wrench hasnt attrib8) {
+        if (obj120_steel_wrench hasnt general) {
             "You can't read it while it's holding the pipe up.";
         }
         routine155280(35[obj35_Attic?]);
@@ -10848,14 +10848,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine77704 ;	! 77704 / 0x12f88
     if (action == ##Take) {
-        if (obj120_steel_wrench hasnt attrib8) {
+        if (obj120_steel_wrench hasnt general) {
             routine77984();
             rtrue;
         }
         rfalse;
     }
     if (action == ##Read) {
-        if (obj120_steel_wrench hasnt attrib8) {
+        if (obj120_steel_wrench hasnt general) {
             "You can't read it while it's holding the pipe up.";
         }
         if (location == thedark) {
@@ -11032,7 +11032,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "You are unable to enter the picture. It isn't very realistic, more a stylised figure-eight.";
         }
         print "You walk confidently into the south wall...^";
-        if (local1 has attrib8) {
+        if (local1 has general) {
             "But are unable to enter the scene for a second time.";
         }
         if (local1 == 164[Grim_Reaper_card?]) {
@@ -11050,7 +11050,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             routine79704(local1);
             rtrue;
         }
-        give local1 attrib8;
+        give local1 general;
         PlayerTo(local1.n_to);
         rtrue;
     }
@@ -11086,7 +11086,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "*** You have died ***";
     style roman;
     print "^^Or have you?  No... this isn't quite the end. You see an intense blue-white light at the end of what seems a tunnel, and drift toward it until you realise that you are staring, dazed, into the light of the slide projector, and have hardly moved at all.^";
-    give local1 attrib8;
+    give local1 general;
     rtrue;
 ];
 
@@ -11240,7 +11240,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine81140 ;	! 81140 / 0x13cf4
     if (action == ##Take) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             rfalse;
         }
         give obj90_Sir_Joshua_Meldrewe ~concealed;
@@ -11293,7 +11293,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         StopDaemon(selfobj);
         if (noun == obj122_chicken_wishbone) {
             move obj89_gothic_looking_iron_key to obj93_Priest_s_Hole;
-            give obj89_gothic_looking_iron_key attrib8;
+            give obj89_gothic_looking_iron_key general;
             remove obj90_Sir_Joshua_Meldrewe;
             Achieved(2);
             "The ghost swallows the wishbone, grinning nastily. Then a look of consternation spreads across his face. He begins to choke and as he fades away, his arms flailing wildly, he lets go of the key, which sails through the air onto the roof and (against all odds) falls neatly down a chimney.";
@@ -11428,10 +11428,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "Awareness that something important is happening tugs at your subconscious.^^But you feel too exposed to sleep with only a sheet on the bed, and can't get comfortable.";
             }
             Achieved(26);
-            if (obj97_comfortable_bed has attrib8) {
+            if (obj97_comfortable_bed has general) {
                 "You doze awhile, but that's all.";
             }
-            give obj97_comfortable_bed attrib8;
+            give obj97_comfortable_bed general;
             print "You sleep uneasily, fancying you can see Miss Alison writing at her table, trying to see the words, and always on the edge of a...^";
             routine126184();
             rtrue;
@@ -11488,7 +11488,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine84192 local1 ;	! 84192 / 0x148e0
-    if (obj99_long_vanity_mirror has attrib8) {
+    if (obj99_long_vanity_mirror has general) {
         rfalse;
     }
     if (local1 in player or obj79_canvas_rucksack && (local1 has rod_attr || local1 has attrib33 || local1 has hidden_rod)) {
@@ -11499,11 +11499,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine84228 ;	! 84228 / 0x14904
     if (Crescent_Moon in Old_Evans) {
-        give model_of_ugly_animal ~attrib8;
+        give model_of_ugly_animal ~general;
         "^The monkey revels briefly in its new life, but then catches your eyes, sadly realising you offer it no home. Quite quickly it settles back into an ugly idol.";
     }
     remove model_of_ugly_animal;
-    give model_of_ugly_animal ~attrib8;
+    give model_of_ugly_animal ~general;
     move pet_monkey to Stone_Cross;
     Old_Evans.description = "Evans is content once again.";
     "^Now that you have finally been able to look it in the eyes, the monkey leaps from your arms, revelling in its new life, and scampers away through the windows onto the balcony, then up and over the side of the house. You can just make it out as it races down the footpath.";
@@ -11516,7 +11516,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "What, and earn seven years bad luck?";
     }
     if (action == ##Clean) {
-        give selfobj attrib8;
+        give selfobj general;
         routine155280(21[rod_of_husbandry?]);
         "You polish up the mirror just a little more.";
     }
@@ -11540,11 +11540,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print ", carrying ";
         if (model_of_ugly_animal has attrib25) {
-            give model_of_ugly_animal attrib8;
+            give model_of_ugly_animal general;
         }
         WriteListFrom(child(player),512 + 8 + 64);
         print ".^";
-        if (model_of_ugly_animal has attrib8) {
+        if (model_of_ugly_animal has general) {
             routine84228();
         }
         rtrue;
@@ -11569,10 +11569,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine84820 ;	! 84820 / 0x14b54
     if (action == ##Look) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             rfalse;
         }
-        give selfobj attrib8;
+        give selfobj general;
         print "^As you disturb the still air, the attic key, which was balanced on top of the demijohn, slips onto the floor and disappears into a crack in the floorboards. Your spirits sink as it does, rattling down some distance. How on earth are you going to get it back?^";
         rfalse;
     }
@@ -11643,7 +11643,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine85632 ;	! 85632 / 0x14e80
     if (action == ##Look) {
-        if (obj111_antiquated_wireless has attrib8 && obj111_antiquated_wireless in obj109_Airing_Cupboard) {
+        if (obj111_antiquated_wireless has general && obj111_antiquated_wireless in obj109_Airing_Cupboard) {
             print "^Execrable music drifts in from the airing cupboard.^";
         }
         rfalse;
@@ -11787,7 +11787,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine86420 ;	! 86420 / 0x15194
     if (obj111_antiquated_wireless hasnt on) {
         StopDaemon(selfobj);
-        give obj111_antiquated_wireless ~attrib8;
+        give obj111_antiquated_wireless ~general;
         rtrue;
     }
     if (obj111_antiquated_wireless in obj107_Aunt_Jemima_s_Lair && location == obj112_Potting_Room) {
@@ -11839,8 +11839,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "You push the switch on the wireless, but nothing happens.";
     }
     if (action == ##SwitchOff) {
-        if (selfobj has attrib8) {
-            give obj111_antiquated_wireless ~attrib8;
+        if (selfobj has general) {
+            give obj111_antiquated_wireless ~general;
             "Thank heaven for that.";
         }
         rfalse;
@@ -11857,7 +11857,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine86996 ;	! 86996 / 0x153d4
     if (selfobj has on) {
         StartDaemon(110[obj110_pile_of_sheets?]);
-        give selfobj attrib8;
+        give selfobj general;
         if (obj111_antiquated_wireless in location) {
             print "^The radio valves glow, and execrable so-called easy listening music fills the air with a sort of bland aural candy-floss.^";
         }
@@ -11871,7 +11871,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj111_antiquated_wireless.describe
 
 [ routine87156 ;	! 87156 / 0x15474
-    if (selfobj has attrib8) {
+    if (selfobj has general) {
         "^The wireless fills the air with Jemima's favourite station, ~Mild-n-Breezy FM~, about which the least said the better.";
     }
     print "^To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with ";
@@ -11886,16 +11886,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine87344 ;	! 87344 / 0x15530
     if (action == ##Go) {
         if (parent(obj115_daisy_chain) == nothing && global141 == 1[?]) {
-            give obj114_Jemima attrib8;
+            give obj114_Jemima general;
             print "^~Oh, silly old you,~ says Jemima condescendingly, ~You've lost your daisy chain!  What colour do you want then?~^";
         }
         rfalse;
     }
     if (action == ##Look) {
-        if (obj111_antiquated_wireless has attrib8 && obj111_antiquated_wireless in obj107_Aunt_Jemima_s_Lair) {
+        if (obj111_antiquated_wireless has general && obj111_antiquated_wireless in obj107_Aunt_Jemima_s_Lair) {
             print "^Execrable music drifts in from the conservatory.^";
         }
-        if (obj111_antiquated_wireless has attrib8 && obj111_antiquated_wireless in obj109_Airing_Cupboard) {
+        if (obj111_antiquated_wireless has general && obj111_antiquated_wireless in obj109_Airing_Cupboard) {
             print "^Happily, the radio is almost inaudible from here.^";
         }
         rfalse;
@@ -11907,7 +11907,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine87548 ;	! 87548 / 0x155fc
     if (action == ##Take) {
-        if (obj111_antiquated_wireless in obj107_Aunt_Jemima_s_Lair && obj111_antiquated_wireless has attrib8) {
+        if (obj111_antiquated_wireless in obj107_Aunt_Jemima_s_Lair && obj111_antiquated_wireless has general) {
             rfalse;
         }
         if (obj113_old_gardeners__gloves hasnt moved) {
@@ -11948,7 +11948,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == obj52_box_of_chocolates) {
             remove obj52_box_of_chocolates;
             Achieved(10);
-            give obj114_Jemima attrib8;
+            give obj114_Jemima general;
             obj114_Jemima.description = "Definitely mollified.";
             "Aunt Jemima pounces on the chocolates, wolfs down a strawberry cream and persuades you to have a vile toffee cracknell. ~Now,~ she says, ~Your turn for a daisy chain!~^^You try to look pleased.^^~Let's see, the others have had theirs... I have only a few colours left. What would you like?~";
         }
@@ -11990,11 +11990,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Well, quite. Best to just grit your teeth and put up with her though.";
     }
     if (action == ##Answer) {
-        if (selfobj hasnt attrib8) {
+        if (selfobj hasnt general) {
             routine155280(17[rod_of_fire?]);
             "She pretends not to have heard, a favourite ploy of hers when sulking.";
         }
-        give obj114_Jemima ~attrib8;
+        give obj114_Jemima ~general;
         local1 = 0;
         if (noun == invalidObj41664 or invalidObj41673) {
             local1 = 1[?];
@@ -12642,12 +12642,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun ~= golden_orb) {
             "That doesn't seem to fit properly.";
         }
-        if (golden_orb hasnt attrib8) {
+        if (golden_orb hasnt general) {
             "The orb fits perfectly, but nothing happens: it is as if the socket is dead, and the orb rolls out again into your hands. Curious.";
         }
         move obj141_spherical_opening to golden_orb;
         remove golden_orb;
-        give obj141_spherical_opening attrib8;
+        give obj141_spherical_opening general;
         obj138_Infinity_Symbol.description = "A cave carved from crystal icicles of rock and glowing with vivid, golden light, so bright it almost hurts your eyes. A narrow crevice opens out to an iron doorway and the relative darkness of the house.^^The rough stone floor levels out to a perfectly round, smooth white marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.";
         "The orb fits perfectly, and the socket comes alive with golden light, which soaks out into the fabric of the cave until the whole place is shining bright.";
     }
@@ -12676,18 +12676,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Close) {
-        give obj145_gilded_model_coffin ~attrib8;
+        give obj145_gilded_model_coffin ~general;
         local1 = child(obj145_gilded_model_coffin);
       .label93977;
         if (local1 ~= 0) {
             if (local1 has hidden_rod) {
                 routine59144(local1);
-                give obj145_gilded_model_coffin attrib8;
+                give obj145_gilded_model_coffin general;
             }
             local1 = sibling(local1);
             jump label93977;
         }
-        if (obj145_gilded_model_coffin hasnt attrib8) {
+        if (obj145_gilded_model_coffin hasnt general) {
             obj145_gilded_model_coffin.initial = "A rather morbid gilded model coffin rests here.";
             rfalse;
         }
@@ -12705,7 +12705,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine94088 ;	! 94088 / 0x16f88
     if (action == ##Open) {
-        if (obj145_gilded_model_coffin has attrib8 && obj113_old_gardeners__gloves hasnt worn) {
+        if (obj145_gilded_model_coffin has general && obj113_old_gardeners__gloves hasnt worn) {
             deadflag = FAILED;
             "There is a flash and then everything goes dark!^^You were given a nasty shock by that coffin. ~Must have been some old wiring,~ says a doctor, leaning over you in hospital.";
         }
@@ -13007,7 +13007,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         } else {
             print "~You have come!  At last, after all these centuries!  But there is little I can do to ease your way, save to return the staff you left with me for safe keeping.~  And she shows you out. You feel rather bewildered.^";
             move obj167_oak_quarterstaff to player;
-            give obj154_Unreal_City attrib8;
+            give obj154_Unreal_City general;
             jump label96853;
         }
         routine155280(18[rod_of_returning?]);
@@ -13066,12 +13066,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (obj163_Madame_Sosostris__famous_clairvoyante in obj159_Consulting_Room) {
             "Madame Sosostris looks at you in some irritation.";
         }
-        if (obj163_Madame_Sosostris__famous_clairvoyante hasnt attrib8) {
+        if (obj163_Madame_Sosostris__famous_clairvoyante hasnt general) {
             move obj163_Madame_Sosostris__famous_clairvoyante to obj159_Consulting_Room;
-            give obj161_curtain attrib8;
+            give obj161_curtain general;
             "Madame Sosostris, the famous clairvoyante, breezes in through the hanging curtain and sits behind the table, making waving gestures with her hands.^^~First, this I must know, were you born in an even, or an odd, year?~";
         }
-        if (obj154_Unreal_City has attrib8) {
+        if (obj154_Unreal_City has general) {
             "She has helped enough.";
         }
         print "Madame Sosostris breezes in once more. ~You again,~ she says warily. ~Let us see how your fortunes have changed.~^^";
@@ -13099,14 +13099,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "She mesmerises you into immobility. She hasn't lived all these centuries in the Latin Quarter for nothing, you know.";
     }
     if (action == ##Answer) {
-        if (obj161_curtain hasnt attrib8) {
+        if (obj161_curtain hasnt general) {
             "She is startled and stares.";
         }
         if (special_word == 32880 or 36525) {
             routine96248();
             remove obj163_Madame_Sosostris__famous_clairvoyante;
-            give obj161_curtain ~attrib8;
-            give obj163_Madame_Sosostris__famous_clairvoyante attrib8;
+            give obj161_curtain ~general;
+            give obj163_Madame_Sosostris__famous_clairvoyante general;
             give obj163_Madame_Sosostris__famous_clairvoyante concealed;
             rtrue;
         }
@@ -13170,8 +13170,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 rtrue;
             }
             PlayerTo(276[obj276_Garden_Stream?]);
-            if (obj172_hollow_man hasnt attrib8) {
-                give obj172_hollow_man attrib8;
+            if (obj172_hollow_man hasnt general) {
+                give obj172_hollow_man general;
                 move obj194_Ace_of_Cups to player;
                 "^Was any of that real? you wonder, as you relax in the sunshine. But then you realise you are clutching a tarot card which certainly is.";
             }
@@ -13224,11 +13224,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "~Ceci n'est pas argent,~ he explains wearily.";
         }
         remove noun;
-        give noun attrib8;
+        give noun general;
         "He takes the money. ~Q'est-ce que vous desirez?~";
     }
     if (action == ##Answer) {
-        if (fifty_franc_note hasnt attrib8) {
+        if (fifty_franc_note hasnt general) {
             "It's not that he doesn't understand you, he's just obstructive for the sake of it.";
         }
         if (special_word == 31107) {
@@ -13372,17 +13372,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (player notin selfobj) {
         rtrue;
     }
-    if (obj195_Coven_Cell hasnt attrib8) {
+    if (obj195_Coven_Cell hasnt general) {
         if (global140 == 0) {
-            give player attrib8;
+            give player general;
         }
-        give obj195_Coven_Cell attrib8;
+        give obj195_Coven_Cell general;
         StartTimer(selfobj,3[s_obj?]);
         rtrue;
     }
     print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
     deadflag = DIED;
-    if (player has attrib8) {
+    if (player has general) {
         "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
     }
     "^Kicking and screaming, you are are dragged off to a grisly sacrifice...";
@@ -13394,7 +13394,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (verb == ##Ram) {
         "No, this is a goat. A ~ram~ is a kind of sheep.";
     }
-    if (verb == ##Wait || player hasnt attrib8) {
+    if (verb == ##Wait || player hasnt general) {
         rfalse;
     }
     "You seem to lack the will any more. The drug must have taken hold.";
@@ -13486,7 +13486,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine101280 ;	! 101280 / 0x18ba0
     if (action == ##Take) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             "Reach down the grating as you may, it remains just beyond reach.";
         }
         rfalse;
@@ -13610,8 +13610,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             local3 = 63[obj63_photographer_s_flash?];
             local3 = parent(local3);
-            if (local3 == 258[obj258_mirrored_device?] && obj63_photographer_s_flash hasnt attrib8) {
-                give obj63_photographer_s_flash attrib8;
+            if (local3 == 258[obj258_mirrored_device?] && obj63_photographer_s_flash hasnt general) {
+                give obj63_photographer_s_flash general;
                 print "Consequently you can only hear as the smudge on the horizon rises from the waves, becomes an enormous Kraken sea monster and lunges for the stone tower. (Considering this is supposed to be a Greek myth it feels surprisingly like a Japanese 1960s creature film.)  The Kraken swipes at you, overreaches itself and falls over forward, impaling itself extremely messily on the pharos. Your eyes just about recover by the time the rest of your body is crushed by its weight.^^Up on Mount Olympus, Zeus is still cross. ~Take me to your Leda~, you wittily demand, but this does not seem to improve matters. Poseidon also looks rather fed up, but luckily a sizeable faction of goddesses takes your side and arranges to have you resurrected...^";
                 Achieved(11);
                 remove obj63_photographer_s_flash;
@@ -13675,10 +13675,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine103492 local1 ;	! 103492 / 0x19444
     if (action == ##Pull) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             "That one's already pulled out.";
         }
-        give selfobj attrib8;
+        give selfobj general;
         print "You pull out ";
         Defart(inp1);
         print ". ";
@@ -13686,7 +13686,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         obj205_complicated_looking_bomb.number = local1 + 1;
         array_25223->local1 = selfobj;
         if (local1 == 3[s_obj?]) {
-            give obj205_complicated_looking_bomb attrib8;
+            give obj205_complicated_looking_bomb general;
             "All four wires are now disconnected.";
         }
         rtrue;
@@ -13726,22 +13726,22 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "None of the wires are plugged in.";
     }
     local2 = local1;
-    if (obj208_red_wire has attrib8) {
+    if (obj208_red_wire has general) {
         PrintShortName(obj208_red_wire);
         --local2;
         routine103900(local2);
     }
-    if (obj207_green_wire has attrib8) {
+    if (obj207_green_wire has general) {
         PrintShortName(obj207_green_wire);
         --local2;
         routine103900(local2);
     }
-    if (obj209_blue_wire has attrib8) {
+    if (obj209_blue_wire has general) {
         PrintShortName(obj209_blue_wire);
         --local2;
         routine103900(local2);
     }
-    if (obj210_black_wire has attrib8) {
+    if (obj210_black_wire has general) {
         PrintShortName(obj210_black_wire);
         --local2;
         routine103900(local2);
@@ -13791,10 +13791,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine104396 ;	! 104396 / 0x197cc
     if (action == ##Search or ##Read or ##LookUnder) {
-        if (obj216_model_ship hasnt attrib8) {
+        if (obj216_model_ship hasnt general) {
             "Nothing else.";
         }
-        give obj216_model_ship ~attrib8;
+        give obj216_model_ship ~general;
         give obj216_model_ship moved;
         move obj216_model_ship to player;
         "In fact there's nothing hidden among the crates but a model sailing ship. You pick it up from force of habit.";
@@ -13861,8 +13861,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine105380 ;	! 105380 / 0x19ba4
     print "A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^";
-    if (obj257_Lighthouse has visited && obj257_Lighthouse hasnt attrib8) {
-        give obj257_Lighthouse attrib8;
+    if (obj257_Lighthouse has visited && obj257_Lighthouse hasnt general) {
+        give obj257_Lighthouse general;
         "^You can just make out the Pharos atop the cliffs. But it seems to be earlier, nearer dawn, than your last visit.";
     }
     rtrue;
@@ -13893,7 +13893,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print " (unless you count a hairband)";
     }
     print ", as was fashionable for human sacrifices: the victim left overnight without food or shelter until the dawn. It has to be said that she doesn't look all that keen to be rescued";
-    if (obj63_photographer_s_flash hasnt attrib8) {
+    if (obj63_photographer_s_flash hasnt general) {
         ".";
     }
     ".^^Of course you've already rescued her, in a sense, but that's not due to happen for an hour or two yet by her time, so you can hardly expect thanks. Gives you a nice warm feeling inside, all the same.";
@@ -13930,7 +13930,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj222_Clifftop_Walk.e_to
 
 [ routine106648 ;	! 106648 / 0x1a098
-    if (obj223_herd_of_goats hasnt attrib8) {
+    if (obj223_herd_of_goats hasnt general) {
         "The goats hiss and butt against you, not letting you through.";
     }
     print "The goats obediently part to allow you to get by.^";
@@ -13987,7 +13987,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine107076 ;	! 107076 / 0x1a244
     if (action == ##Take) {
-        if (selfobj hasnt moved && obj234_copper_coin hasnt attrib8) {
+        if (selfobj hasnt moved && obj234_copper_coin hasnt general) {
             "You can't understand a word of what the bartender says, but the drift is clear enough. Not until you pay for it.";
         }
         rfalse;
@@ -14001,7 +14001,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Give) {
         if (noun == obj234_copper_coin) {
             remove obj234_copper_coin;
-            give obj234_copper_coin attrib8;
+            give obj234_copper_coin general;
             "The bartender takes the coin wearily, with a ~how can you eat at a time like this?~ look.";
         }
         print "The bartender looks at ";
@@ -14025,7 +14025,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         deadflag = DIED;
         "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave about. Pretty impressive prediction, is your last thought.";
     }
-    if (rod_of_luck has attrib8) {
+    if (rod_of_luck has general) {
         print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
         return 233[obj233_Temple_of_Zeus?];
     }
@@ -14077,7 +14077,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine108344 ;	! 108344 / 0x1a738
     if (action == ##Action259 or ##Ask) {
-        if (obj240_Homer has attrib8) {
+        if (obj240_Homer has general) {
             "Homer is far too busy composing Book XIV of the Iliad.";
         } else {
             "Homer is asleep.^";
@@ -14085,10 +14085,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##WakeOther) {
-        if (obj240_Homer has attrib8) {
+        if (obj240_Homer has general) {
             "Homer is awake already.";
         }
-        give obj240_Homer attrib8;
+        give obj240_Homer general;
         obj240_Homer.number = 0;
         obj240_Homer.initial = "Homer sits half-awake, clutching his syrinx.";
         "Homer wakes up, with a start. ~I suppose you want the syrinx,~ he grumbles, ~they always do. There are three questions you must answer wisely. The usual deal.~^^(He seems to be under an enchantment and able to speak modern English, or at least American.)^^~First: who is the brother of Menelaus?~";
@@ -14097,7 +14097,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "What, strike the greatest poet who ever lived?";
     }
     if (action == ##Answer) {
-        if (obj240_Homer hasnt attrib8) {
+        if (obj240_Homer hasnt general) {
             "Homer is asleep.";
         }
         if (obj240_Homer.number == 3[s_obj?]) {
@@ -14132,7 +14132,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine109044 ;	! 109044 / 0x1a9f4
-    give obj240_Homer ~attrib8;
+    give obj240_Homer ~general;
     obj240_Homer.initial = "Homer is asleep again, his syrinx tight in his arms.";
     rtrue;
 ];
@@ -14332,10 +14332,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (global150 == 3[s_obj?]) {
         "The priestess has told you enough.";
     }
-    if (obj255_Oracle hasnt attrib8) {
+    if (obj255_Oracle hasnt general) {
         "The priestess remains silent. Only by an offering can the wisdom of Apollo be gained.";
     }
-    give obj255_Oracle ~attrib8;
+    give obj255_Oracle ~general;
     ++global150;
     print "The priestess, Pythian oracle of Loxias, seems hardly to hear or understand: but goes into a trance, swaying to a sensuous rhythm: and chants, in English,^^";
     if (global150 == 1[?]) {
@@ -14376,7 +14376,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give obj226_fig ~moved;
         }
         if (noun has edible) {
-            give obj255_Oracle attrib8;
+            give obj255_Oracle general;
             "You have pleased the god Apollo - Loxias, god of words and counsel, as he was once called!  Very wise.";
         }
         "The god Apollo is unimpressed with your offering, which feeds the eternal flame.";
@@ -14394,13 +14394,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (obj218_Sea_Shore has visited) {
         print "The cliffs below are familiar, but it's a little later in the day than your arrival on the sea shore. ";
     }
-    if (obj63_photographer_s_flash has attrib8) {
+    if (obj63_photographer_s_flash has general) {
         print "Much traffic plies across the bay, and trade seems to be picking up again now that the Kraken has gone.";
     } else {
         print "There seems to be very little traffic at the moment, though a smudge on the horizon might possibly be a quinquireme.";
     }
     print "^^In the centre of the pinnacle is a marvellous device of polished bronze mirrors, its open end pointed out across the bay. ";
-    if (obj63_photographer_s_flash has attrib8) {
+    if (obj63_photographer_s_flash has general) {
         "The Mediterranean sparkles in the hot afternoon sun.";
     } else {
         "The sun is rising and the sky is clear blue over the Mediterranean: it's going to be a beautiful day.";
@@ -14496,13 +14496,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine111888 ;	! 111888 / 0x1b510
     print "You wander out onto the flagpole, which bows and bends alarmingly, until suddenly...^^Crack!  And you are falling";
-    if (obj270_flag_of_the_British_Merchant_Navy hasnt attrib8) {
+    if (obj270_flag_of_the_British_Merchant_Navy hasnt general) {
         deadflag = DIED;
         ", plummeting, head over heels to the hard wooden deck and the inevitable iron fixtures...";
     }
     move obj270_flag_of_the_British_Merchant_Navy to obj266_Aboard_Ship;
     give obj270_flag_of_the_British_Merchant_Navy ~concealed;
-    give obj270_flag_of_the_British_Merchant_Navy ~attrib8;
+    give obj270_flag_of_the_British_Merchant_Navy ~general;
     remove obj269_flagpole;
     move obj271_old_timber_spar to obj266_Aboard_Ship;
     move player to obj266_Aboard_Ship;
@@ -14514,8 +14514,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj268_Up_the_Mast.d_to
 
 [ routine112160 ;	! 112160 / 0x1b620
-    if (obj270_flag_of_the_British_Merchant_Navy has attrib8) {
-        give obj270_flag_of_the_British_Merchant_Navy ~attrib8;
+    if (obj270_flag_of_the_British_Merchant_Navy has general) {
+        give obj270_flag_of_the_British_Merchant_Navy ~general;
         print "You are obliged to leave hold of the flag en route.^^";
     }
     return 266[obj266_Aboard_Ship?];
@@ -14526,7 +14526,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine112212 ;	! 112212 / 0x1b654
     if (action == ##Jump) {
         print "You jump (madly) from the crow's nest ";
-        if (obj270_flag_of_the_British_Merchant_Navy has attrib8) {
+        if (obj270_flag_of_the_British_Merchant_Navy has general) {
             print "(tearing the flag as you go) ";
         }
         deadflag = DIED;
@@ -14572,11 +14572,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Take or ##Pull) {
-        give obj270_flag_of_the_British_Merchant_Navy attrib8;
+        give obj270_flag_of_the_British_Merchant_Navy general;
         "You take hold of the tassels of the flag in one hand (though it won't pull away from the pole).";
     }
     if (action == ##Drop or ##Remove) {
-        give obj270_flag_of_the_British_Merchant_Navy ~attrib8;
+        give obj270_flag_of_the_British_Merchant_Navy ~general;
         "You leave hold of the tassels of the flag.";
     }
     rfalse;
@@ -14586,10 +14586,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine112624 ;	! 112624 / 0x1b7f0
     if (action == ##Take) {
-        if (obj271_old_timber_spar hasnt attrib8) {
+        if (obj271_old_timber_spar hasnt general) {
             rfalse;
         }
-        give obj271_old_timber_spar ~attrib8;
+        give obj271_old_timber_spar ~general;
         StartTimer(309[obj309_bean_pole?],5[w_obj?]);
         rfalse;
     }
@@ -14623,7 +14623,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj274_Stern.d_to
 
 [ routine112912 ;	! 112912 / 0x1b910
-    if (obj275_capstan hasnt attrib8) {
+    if (obj275_capstan hasnt general) {
         "You shin precariously down the anchor chain, but reach the end while still hanging very far above the... water? quicksand?  Concentrating very carefully, you heave yourself back aboard and pant with relief.";
     }
     move player to obj71_Souvenirs_Room;
@@ -14636,10 +14636,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine113332 ;	! 113332 / 0x1bab4
     if (action == ##Turn or ##Push or ##PushDir) {
         print "You heave away at the capstan, ";
-        if (obj275_capstan has attrib8) {
-            give obj275_capstan ~attrib8;
+        if (obj275_capstan has general) {
+            give obj275_capstan ~general;
         } else {
-            give obj275_capstan attrib8;
+            give obj275_capstan general;
             print "un";
         }
         "winding the great anchor chain.";
@@ -14708,10 +14708,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "You swivel the plant's tub.";
     }
     if (action == ##Push or ##PushDir or ##Pull) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             rfalse;
         }
-        give selfobj attrib8;
+        give selfobj general;
         move obj282_timber_hatch to location;
         obj279_Beside_the_Wall.d_to = obj282_timber_hatch;
         move selfobj to location;
@@ -14789,7 +14789,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine114208 ;	! 114208 / 0x1be20
     if (action == ##Action257) {
         move noun to obj61_hanging_cord;
-        give CR ~attrib8;
+        give CR ~general;
         "It plummets down into the well.";
     }
     rfalse;
@@ -14859,7 +14859,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give CR light;
         remove obj286_plaster_statuette;
         move obj287_ancient_well to obj285_Lawn_Ornaments;
-        give obj285_Lawn_Ornaments attrib8;
+        give obj285_Lawn_Ornaments general;
     }
     if (obj55_mb in location && obj55_mb has locked && location ~= obj295_Garage) {
         print "^Oh dear. The medicine bottle, which you negligently left lying in the path of the roller, seems to have been cracked.^";
@@ -14873,10 +14873,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine114744 local1 ;	! 114744 / 0x1c038
     if (action == ##Squeeze or ##Push) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             "Nothing emerges. The bottle must be empty.";
         }
-        give selfobj attrib8;
+        give selfobj general;
         if (location == obj230_Wall_of_Thorns) {
             "A valiant but doomed idea. The weed killer harms barely a single tendril of the wall.";
         }
@@ -14926,7 +14926,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj298_spade.short
 
 [ routine115244 ;	! 115244 / 0x1c22c
-    if (selfobj has attrib8) {
+    if (selfobj has general) {
         print "spade";
     } else {
         print "bladed agricultural implement";
@@ -14938,10 +14938,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine115280 ;	! 115280 / 0x1c250
     if (action == ##Read) {
-        if (obj298_spade has attrib8) {
+        if (obj298_spade has general) {
             rfalse;
         }
-        give obj298_spade attrib8;
+        give obj298_spade general;
         obj298_spade.&name-->3 = 'spade';
         "On second thoughts, let's just call a spade a spade.";
     }
@@ -15227,10 +15227,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine116512 ;	! 116512 / 0x1c720
     if (action == ##Take) {
-        if (selfobj hasnt attrib8) {
+        if (selfobj hasnt general) {
             rfalse;
         }
-        give selfobj attrib8;
+        give selfobj general;
         StartTimer(selfobj,5[w_obj?]);
         rfalse;
     }
@@ -15480,7 +15480,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj313_Hedgery.n_to
 
 [ routine117768 ;	! 117768 / 0x1cc08
-    give obj314_flock_of_sparrows attrib8;
+    give obj314_flock_of_sparrows general;
     print "Your first step towards the sparrows startles them into the air, and they whirl upwards and around with panic, chirping their alarm.^";
     return 315[obj315_Summer_House?];
 ];
@@ -15488,8 +15488,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj315_Summer_House.s_to
 
 [ routine117856 ;	! 117856 / 0x1cc60
-    if (obj314_flock_of_sparrows has attrib8) {
-        give obj314_flock_of_sparrows ~attrib8;
+    if (obj314_flock_of_sparrows has general) {
+        give obj314_flock_of_sparrows ~general;
         print "As you step out, the sparrows gradually settle back down again.^";
     }
     return 313[obj313_Hedgery?];
@@ -15499,7 +15499,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine117916 ;	! 117916 / 0x1cc9c
     if (action == ##Look) {
-        if (obj314_flock_of_sparrows hasnt attrib8) {
+        if (obj314_flock_of_sparrows hasnt general) {
             print "^Sparrows chirp happily away to themselves around the high gutter.^";
         } else {
             print "^Startled sparrows circle high in the sky, showing no signs of calming down.^";
@@ -15851,7 +15851,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun ~= hemp_rope) {
             rfalse;
         }
-        give hemp_rope attrib8;
+        give hemp_rope general;
         "You set the rope swinging back and forth. Very exhilarating!";
     }
     rfalse;
@@ -15875,8 +15875,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "You tuck the daisy behind your ear, almost out of sight.";
     }
     if (action == ##Take) {
-        if (selfobj hasnt attrib8) {
-            give selfobj attrib8;
+        if (selfobj hasnt general) {
+            give selfobj general;
             "Aided by the swinging of the rope, you pick the daisy.";
         }
         rfalse;
@@ -15888,7 +15888,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine122068 ;	! 122068 / 0x1dcd4
     if (action == ##Take) {
-        if (selfobj has moved || hemp_rope has attrib8) {
+        if (selfobj has moved || hemp_rope has general) {
             rfalse;
         }
         "You stretch out your hand, but cannot quite reach the daisy, such is the size of the overhang.";
@@ -15972,7 +15972,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (kitchen_well hasnt open) {
         "The well is covered.";
     }
-    if (kitchen_well has attrib8) {
+    if (kitchen_well has general) {
         print "Aware of the dangers, you very carefully lower yourself...^";
         Achieved(20);
         return 347[kitchen_well?];
@@ -15987,7 +15987,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (player notin Triclinium) {
         rfalse;
     }
-    give kitchen_well attrib8;
+    give kitchen_well general;
     routine155280(9[sw_obj?]);
     "^You hear a splash from far down in the depths of the well.";
 ];
@@ -15998,7 +15998,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Action257) {
         remove noun;
         if (noun has light) {
-            give kitchen_well attrib8;
+            give kitchen_well general;
             "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
         }
         if (noun ~= historical_pamphlet) {
@@ -16104,10 +16104,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine123768 ;	! 123768 / 0x1e378
     if (action == ##Take) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             rfalse;
         }
-        give selfobj attrib8;
+        give selfobj general;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
         StartTimer(355[Encampment?],10[u_obj?]);
         PlayerTo(355[Encampment?]);
@@ -16251,8 +16251,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine124964 ;	! 124964 / 0x1e824
     if (action == ##Take) {
-        if (Beside_Table hasnt attrib8) {
-            give Beside_Table attrib8;
+        if (Beside_Table hasnt general) {
+            give Beside_Table general;
             remove Druid;
             "The Druid catches sight of your ghostly hand taking the mascot, and immediately begins her occultations, cursing you and your ill-gotten gains. But she is unable to make contact with you, and turns furiously to the tapestry, hissing ~lagach~ to the Bear. At once a sudden swirl of wind seems to pull her into the rough cloth, dissolving her to nothing.";
         }
@@ -16389,10 +16389,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine126724 ;	! 126724 / 0x1ef04
     if (action == ##Turn) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             "Your hands seem unable to touch it again.";
         }
-        give selfobj attrib8;
+        give selfobj general;
         give obj125_sandstone_recess open;
         "You try turning the wheel, but it moves only infinitesimally slowly. The door begins to raise the tiniest fraction, and a few grains of sand cascade in slow motion, rattling horribly against each other...^^It will take forever, and the air is running out...";
     }
@@ -16539,7 +16539,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Look) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             print "^The lower basket contains a cannonball, and the upper is empty.^";
             rfalse;
         }
@@ -16583,7 +16583,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "dark hole.^^";
     }
     print "Projecting out of the back of the panel mechanism at the near end is a metal hand, which ";
-    if (CR has attrib8) {
+    if (CR has general) {
         "grasps empty air.";
     }
     "grasps a cannonball in mid-air.";
@@ -16677,8 +16677,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     Achieved(16);
     print "^There is a click from the mechanism. Pulleys pull. Cogs spin. Little bits of string run.^";
-    if (CR hasnt attrib8) {
-        give CR attrib8;
+    if (CR hasnt general) {
+        give CR general;
         print "^The cannonball drops out of the metal hand, and falls into the higher basket, which plunges down, hurling the other basket upwards, ";
         local2 = child(obj61_hanging_cord);
         if (local2 == 0) {
@@ -16704,7 +16704,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move obj287_ancient_well to obj285_Lawn_Ornaments;
         } else {
             print "^A moment later, however, there is a distant but loud thump. A moment after that, something plummets back down out of the hole (in a shower of thin white plaster) and into the higher basket, which (owing to fantastic machinery) wrenches down again, hurling the cannonball in the other end up into the air.^^The metal hand catches the cannonball beautifully.^";
-            give CR ~attrib8;
+            give CR ~general;
         }
         if (parent(golden_orb) == obj61_hanging_cord) {
             move glowing_golden_orb to CR;
@@ -16747,7 +16747,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine129592 ;	! 129592 / 0x1fa38
     if (action == ##Clean) {
-        if (selfobj has attrib8) {
+        if (selfobj has general) {
             "It shines already!";
         }
         print "Bewilderingly, the condensation dissolves your hand away, and the water rushes up over your body as if it were blotting paper. You feel nothing except disorientation, but your confusion soon resolves to...^";
@@ -16801,13 +16801,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     local2 = local1 % 4;
     if (local2 == 0) {
-        give Inside_the_Orb ~attrib8;
+        give Inside_the_Orb ~general;
         if (local1 > 12) {
             "^(The sphere rotates.)  Black still looks safe.";
         }
     }
     if (local2 == 2[?]) {
-        give Inside_the_Orb attrib8;
+        give Inside_the_Orb general;
         if (local1 > 14) {
             "^(The sphere rotates.)  White must break out somehow.";
         }
@@ -16899,14 +16899,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (random(5) ~= 1) {
         rfalse;
     }
-    if (obj201_smooth_round_stone has attrib8) {
+    if (obj201_smooth_round_stone has general) {
         Achieved(37);
         move obj201_smooth_round_stone to Warehouses_and_Port;
         move rusty_iron_key to Warehouses_and_Port;
-        give obj201_smooth_round_stone ~attrib8;
+        give obj201_smooth_round_stone ~general;
         give obj201_smooth_round_stone ~moved;
         give obj201_smooth_round_stone ~concealed;
-        give rusty_iron_key attrib8;
+        give rusty_iron_key general;
         rusty_iron_key.initial = "That iron key seems to have washed up here...";
         obj201_smooth_round_stone.initial = "...and there's the strange stone again.";
         if (location == Island_of_Pharos) {
@@ -16927,7 +16927,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (noun == obj201_smooth_round_stone) {
             move noun to Island_of_Pharos;
-            give obj201_smooth_round_stone attrib8;
+            give obj201_smooth_round_stone general;
             give obj201_smooth_round_stone concealed;
             StartDaemon(397[Island_of_Pharos?]);
             rusty_iron_key.initial = "The iron key, out of reach below, is glued somehow to the strange stone.";
@@ -16946,7 +16946,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rusty_iron_key.after
 
 [ routine132056 ;	! 132056 / 0x203d8
-    if (action == ##Take && rusty_iron_key hasnt attrib8) {
+    if (action == ##Take && rusty_iron_key hasnt general) {
         "Reach down the grating as you may, it remains just beyond reach.";
     }
     rfalse;
@@ -16976,14 +16976,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj226_fig.name, Harbour_Mouth.each_turn
 
 [ routine132276 ;	! 132276 / 0x204b4
-    if (Harbour_Mouth has attrib8) {
+    if (Harbour_Mouth has general) {
         print "^The sails billow, then slacken...^";
         move skiff to Drifting;
         location = Drifting;
         R_Process(##Look);
         rtrue;
     } else {
-        give Harbour_Mouth attrib8;
+        give Harbour_Mouth general;
     }
     rfalse;
 ];
@@ -17215,7 +17215,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (global165 == 9[sw_obj?]) {
         print "^The first officer tweaks the nose of the sphinx in affection. Suddenly there is a great rumbling of stone from the passage below, and they rush down to investigate!^";
         remove Napoleonic_officers;
-        give sphinxes attrib8;
+        give sphinxes general;
         move stone_nose_of_a_sphinx to The_Height_of_Fashion;
     }
     rfalse;
@@ -17236,7 +17236,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: model_of_ugly_animal.short
 
 [ routine134624 ;	! 134624 / 0x20de0
-    if (selfobj hasnt attrib8) {
+    if (selfobj hasnt general) {
         rfalse;
     }
     print "model of a mischievous-looking monkey, which wriggles as it comes alive";
@@ -17259,9 +17259,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Go) {
         if (noun == n_obj or ne_obj) {
-            if (second_socket hasnt attrib8) {
+            if (second_socket hasnt general) {
                 move quarterstaff to Quite_an_Undertaking;
-                give second_socket attrib8;
+                give second_socket general;
                 "The passage seems endless, and you are obliged to retreat before the air runs out. You trip over something as you do, cursing under your breath.";
             }
             "The passage seems endless and you retreat.";
@@ -17399,13 +17399,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (verb ~= ##Go) {
         "There's very little room, and the air is running out.";
     }
-    if (mummy_case hasnt attrib8 || inp1 ~= 10[u_obj?]) {
+    if (mummy_case hasnt general || inp1 ~= 10[u_obj?]) {
         "There's nowhere to go.";
     }
-    if (selfobj has attrib8) {
+    if (selfobj has general) {
         "^Your spirit, having cheated death once already, is weighed down with its double life and will not diffuse out again.";
     }
-    give selfobj attrib8;
+    give selfobj general;
     Achieved(41);
     move adamantine_skull to player;
     print "^Your spirit rises, prepared as it was for the afterlife, and diffuses through the solid gold of the coffin by sheer effort of will, finally beginning to recoalesce. You stagger, confused, through dark caves until you finally come to light, clutching something solid...^";
@@ -17547,7 +17547,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: gambling_sailor.each_turn
 
 [ routine137616 local1 ;	! 137616 / 0x21990
-    if (gambling_sailor has attrib8) {
+    if (gambling_sailor has general) {
         local1 = random(5);
         if (local1 < 3) {
             print "^The sailor grabs the die and throws a ~";
@@ -17567,7 +17567,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 print "and shrugs.^";
             }
             inscribed_die.time_left = local1;
-            give gambling_sailor ~attrib8;
+            give gambling_sailor ~general;
         } else {
             "^The sailor stares at the die thoughtfully.";
         }
@@ -17593,7 +17593,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (inscribed_die has attrib36) {
             local1 = 6[ne_obj?];
         }
-        give gambling_sailor attrib8;
+        give gambling_sailor general;
         inscribed_die.time_left = local1;
         print "You throw a ~";
         routine138004(local1);
@@ -17687,10 +17687,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine138364 ;	! 138364 / 0x21c7c
     if (action == ##Anoint) {
-        if (noun ~= player || mummy_case has attrib8) {
+        if (noun ~= player || mummy_case has general) {
             "That hardly seems worthwhile.";
         }
-        give mummy_case attrib8;
+        give mummy_case general;
         "You smear some oil on your head, making a mental note to wash your hair in the morning. It is the least sacred sacred ritual you have ever taken part in.";
     }
     rfalse;
@@ -17719,8 +17719,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine138544 ;	! 138544 / 0x21d30
     if (action == ##Take) {
-        if (spindle_from_the_globe hasnt attrib8) {
-            give spindle_from_the_globe attrib8;
+        if (spindle_from_the_globe hasnt general) {
+            give spindle_from_the_globe general;
             spindle_from_the_globe.description = "Once the polar axis of a globe.";
             "As you pull out its polar axis, the spindle, the Earth collapses altogether in a possibly symbolic, certainly dusty shambles.";
         }
@@ -17818,7 +17818,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "The slave politely holds your arm fast until you desist.";
     }
     if (action == ##Anoppe) {
-        if (Lost_inside_the_Palace has attrib8) {
+        if (Lost_inside_the_Palace has general) {
             routine140220();
             rtrue;
         }
@@ -17841,9 +17841,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         global170 = global169;
         global169 = global168;
         global168 = noun;
-        give Lost_inside_the_Palace ~attrib8;
+        give Lost_inside_the_Palace ~general;
         if (global170 == 6[ne_obj?] && global169 == 4[e_obj?] && global168 == 3[s_obj?]) {
-            give Lost_inside_the_Palace attrib8;
+            give Lost_inside_the_Palace general;
         }
         if (global168 == 3[s_obj?] && global169 == 3[s_obj?]) {
             location = Outside_the_Royal_Palace_of_Alexander;
@@ -17862,14 +17862,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine140144 ;	! 140144 / 0x22370
     if (action == ##Action259) {
-        if (verb == ##Anoppe && location has attrib8) {
+        if (verb == ##Anoppe && location has general) {
             R_Process(##Anoppe);
             rtrue;
         }
         "The slave doesn't seem to notice.";
     }
     if (action == ##Ask) {
-        if (second == invalidObj29928 or invalidObj32817 && location has attrib8) {
+        if (second == invalidObj29928 or invalidObj32817 && location has general) {
             R_Process(##Anoppe);
             rtrue;
         }
@@ -17967,7 +17967,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine140960 ;	! 140960 / 0x226a0
     if (action == ##Action259 or ##Ask) {
-        if (selfobj hasnt attrib8) {
+        if (selfobj hasnt general) {
             "~Just a minute, I'm doing my form.~";
         }
         print "He looks at you in a hypnotic daze,";
@@ -18098,7 +18098,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine141892 ;	! 141892 / 0x22a44
     if (verb == ##Take && noun hasnt moved) {
-        if (noun hasnt attrib8) {
+        if (noun hasnt general) {
             if (obj113_old_gardeners__gloves has worn) {
                 "It is searing hot!  Even with the gloves on you cannot touch the adamantine.";
             }
@@ -18161,7 +18161,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (noun == adamantine_heart) {
             remove adamantine_heart;
-            give adamantine_heart attrib8;
+            give adamantine_heart general;
             "The heart sits well in the so-empty ribcage of the adamantine knight.";
         }
         rfalse;
@@ -18171,14 +18171,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (noun == adamantine_hand) {
                 remove adamantine_hand;
                 global173 = 0;
-                give adamantine_hand attrib8;
+                give adamantine_hand general;
                 give adamantine_hand ~concealed;
                 "The hand screws tightly onto the adamantine knight.";
             }
             if (noun == adamantine_skull) {
                 remove adamantine_skull;
                 global174 = 0;
-                give adamantine_skull attrib8;
+                give adamantine_skull general;
                 give adamantine_skull ~concealed;
                 "The skull screws tightly onto the adamantine knight.";
             }
@@ -18257,7 +18257,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "The knight looks at the picture sadly, unable to see its immediate relevance.";
             }
             move obj303_marble_rose to statue_of_Diana;
-            give adamantine_knight attrib8;
+            give adamantine_knight general;
             statue_of_Diana.initial = "Diana's tall marble statue bathes in the moonlight: and a flower is placed gaily in her hair.";
             Achieved(43);
             remove silver_keepsake;
@@ -18272,19 +18272,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine143264 ;	! 143264 / 0x22fa0
-    if (adamantine_skull hasnt attrib8 && adamantine_skull hasnt concealed) {
+    if (adamantine_skull hasnt general && adamantine_skull hasnt concealed) {
         print "^A headless ";
     } else {
         print "^An ";
     }
     print "adamantine statue lies prone here, a knight on a tomb";
-    if (adamantine_hand hasnt attrib8 && adamantine_heart hasnt attrib8) {
+    if (adamantine_hand hasnt general && adamantine_heart hasnt general) {
         ".";
     }
-    if (adamantine_hand has attrib8 || adamantine_hand has concealed) {
+    if (adamantine_hand has general || adamantine_hand has concealed) {
         print " with hand outstretched";
     }
-    if (adamantine_heart has attrib8) {
+    if (adamantine_heart has general) {
         ", a heart in his ribcage. And yet there is no spark of life in him.";
     }
     ", heartless and implacable.";
@@ -18295,7 +18295,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "The knight dances a jig with sheer exuberance.";
     }
     if (verb == ##Open or ##Pull or ##Take && noun == Moonstone && Moonstone hasnt open) {
-        if (adamantine_knight hasnt attrib8) {
+        if (adamantine_knight hasnt general) {
             "The knight understands what is to be done. But he is world-weary and sad, and not yet in your service.";
         }
         give Moonstone open;
@@ -18473,7 +18473,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ HellishPlaceBefore local1 ;	! 145296 / 0x23790
     if (action == ##Look) {
         new_line;
-        if (demon has attrib8) {
+        if (demon has general) {
             "~Thought what you wanted to ask yet?~ says the demon.";
         }
         local1 = demon.time_left;
@@ -18481,7 +18481,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             --local1;
             demon.time_left = local1;
             if (local1 > 0) {
-                give demon attrib8;
+                give demon general;
             }
         }
         if (local1 == 0) {
@@ -18518,7 +18518,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine145968 ;	! 145968 / 0x23a30
-    if (demon hasnt attrib8) {
+    if (demon hasnt general) {
         if (demon.time_left == 0) {
             "~No hints left, sucker.~";
         }
@@ -18535,7 +18535,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rtrue;
         }
         if (routine144884(special_word) ~= 0) {
-            give demon ~attrib8;
+            give demon ~general;
         }
         rtrue;
     }
@@ -18549,7 +18549,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "The demon glances lazily at ";
         Defart(noun);
         print " and rouses himself to say: ~";
-        give demon ~attrib8;
+        give demon ~general;
         if (noun has edible) {
             remove noun;
             print "Mmm... delicious!~  Sloth and gluttony... two deadly sins in one minute. His boss will be pleased. ~";
@@ -18587,7 +18587,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine146476 local1 ;	! 146476 / 0x23c2c
     if (action == ##Look) {
         new_line;
-        if (angel has attrib8) {
+        if (angel has general) {
             "~Take all the time you need,~ says the angel kindly.";
         }
         local1 = angel.time_left;
@@ -18595,7 +18595,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             --local1;
             angel.time_left = local1;
             if (local1 > 0) {
-                give angel attrib8;
+                give angel general;
             }
         }
         if (local1 == 0) {
@@ -18632,7 +18632,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine147164 ;	! 147164 / 0x23edc
-    if (angel hasnt attrib8) {
+    if (angel hasnt general) {
         if (angel.time_left == 0) {
             "~No hints left, alas.~";
         }
@@ -18649,7 +18649,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rtrue;
         }
         if (routine145076(special_word) ~= 0) {
-            give demon ~attrib8;
+            give demon ~general;
         }
         rtrue;
     }
@@ -18663,7 +18663,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "The angel looks keenly at ";
         Defart(noun);
         print " and rouses himself to say: ~";
-        give angel ~attrib8;
+        give angel ~general;
         local1 = noun.angel_hint;
         if (local1 == 65535[?]) {
             if (noun.devil_hint ~= "") {
@@ -23267,7 +23267,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (noun == model_of_ugly_animal) {
         print "In the mirror is a model of a mischievous-looking monkey, which wriggles as it comes alive!";
-        give model_of_ugly_animal attrib8;
+        give model_of_ugly_animal general;
         routine84228();
         rtrue;
     }
@@ -23527,8 +23527,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     obj271_old_timber_spar.initial = "The timber prop leans against the tottering Folly, supporting it.";
     give obj271_old_timber_spar ~moved;
     obj309_bean_pole.time_left = 0;
-    give obj271_old_timber_spar attrib8;
-    give obj309_bean_pole ~attrib8;
+    give obj271_old_timber_spar general;
+    give obj309_bean_pole ~general;
     "You lean the timber prop against the Folly tower, supporting it. (Better just hope you won't be needing the prop for anything else!)";
 ];
 
@@ -23556,7 +23556,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     print "You set the gold watch swinging, back and forth, spinning the light. ";
     if (noun == Old_Evans) {
-        give Old_Evans attrib8;
+        give Old_Evans general;
         "Old Evans, who is nine-tenths hypnotised most of the time anyway, succumbs easily.";
     }
     if (noun == player) {
@@ -23569,7 +23569,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AnoppeSub ;	! 180196 / 0x2bfe4
-    if (location ~= Lost_inside_the_Palace || Lost_inside_the_Palace hasnt attrib8) {
+    if (location ~= Lost_inside_the_Palace || Lost_inside_the_Palace hasnt general) {
         "Nothing happens.";
     }
     routine140220();
@@ -23592,10 +23592,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Look);
         rtrue;
     }
-    if (skiff has attrib8) {
+    if (skiff has general) {
         "That seems to be happening whether you like it or not.";
     }
-    give skiff attrib8;
+    give skiff general;
     move skiff to Harbour_Mouth;
     location = Harbour_Mouth;
     print "You set sail, and a light breeze propels your skiff...^";
