@@ -621,7 +621,7 @@ Verb 'carry' 'get' 'hold' 'take'
     * 'into' noun					-> Enter
     * 'on' noun						-> Enter
     * multiinside 'off' noun				-> Remove
-    * 'off' attrib26					-> Disrobe
+    * 'off' worn					-> Disrobe
     * 'off' noun					-> TakeOff
     * 'inventory'					-> Inv
     * routine181800					-> Pace
@@ -6796,7 +6796,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
       .label49068;
         if (j ~= 65535[?] && i < indef_wanted && i + offset < 63) {
             flag = 0;
-            if (j hasnt concealed && j hasnt attrib26) {
+            if (j hasnt concealed && j hasnt worn) {
                 flag = 1[?];
             }
             if (context == 3[s_obj?] or 4[e_obj?] && parent(j) ~= actor) {
@@ -9545,11 +9545,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine63700 local1 local2 ;	! 63700 / 0xf8d4
     game_section = T_ANCIENT_BRITAIN;
     local1 = child(player);
-    give obj115_daisy_chain ~attrib26;
+    give obj115_daisy_chain ~worn;
   .label63713;
     if (local1 ~= 0) {
         local2 = sibling(local1);
-        give local1 ~attrib26;
+        give local1 ~worn;
         move local1 to obj138_Infinity_Symbol;
         local1 = local2;
         jump label63713;
@@ -10100,7 +10100,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine71948 ;	! 71948 / 0x1190c
     if (action == ##Blow) {
-        if (obj86_gas_mask has attrib26) {
+        if (obj86_gas_mask has worn) {
             "With the gas mask on?";
         }
         print "Fweep!  Fweep!^";
@@ -10808,7 +10808,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "The joint is fairly safe already.";
         }
         if (obj120_steel_wrench notin player) {
-            if (obj113_old_gardeners__gloves in player && obj113_old_gardeners__gloves has attrib26) {
+            if (obj113_old_gardeners__gloves in player && obj113_old_gardeners__gloves has worn) {
                 "Even with gloves on you are unable to tighten the joint without some sort of tool.";
             }
             "With your bare hands, you are unable to tighten the joint.";
@@ -11119,7 +11119,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine80320 ;	! 80320 / 0x139c0
     if (action == ##Read or ##Search or ##LookUnder) {
-        if (obj113_old_gardeners__gloves hasnt attrib26) {
+        if (obj113_old_gardeners__gloves hasnt worn) {
             "A rash act. The itchy fibres of the insulation soon deter you.";
         }
         if (obj76_new_looking_battery notin selfobj) {
@@ -11322,7 +11322,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local1 = child(player);
           .label82331;
             if (local1 ~= 0) {
-                if (local1 hasnt attrib26 || local1 == 79[obj79_canvas_rucksack?]) {
+                if (local1 hasnt worn || local1 == 79[obj79_canvas_rucksack?]) {
                     "It's too narrow a squeeze for you at present.";
                 }
                 local1 = sibling(local1);
@@ -11350,7 +11350,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local1 = child(player);
           .label82488;
             if (local1 ~= 0) {
-                if (local1 hasnt attrib26 || local1 == 79[obj79_canvas_rucksack?]) {
+                if (local1 hasnt worn || local1 == 79[obj79_canvas_rucksack?]) {
                     "It's too narrow a squeeze for you at present.";
                 }
                 local1 = sibling(local1);
@@ -11605,7 +11605,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine85140 ;	! 85140 / 0x14c94
     if (action == ##Open) {
-        if (obj113_old_gardeners__gloves hasnt attrib26) {
+        if (obj113_old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
         }
         Achieved(4);
@@ -11772,7 +11772,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "Not as many sheets as you thought - they were on top of a large black wireless, now exposed to the light for the first time in months.";
         }
         print "No, you're only getting your ";
-        if (obj113_old_gardeners__gloves has attrib26) {
+        if (obj113_old_gardeners__gloves has worn) {
             print "gloves";
         } else {
             print "hands";
@@ -11929,7 +11929,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
     Achieved(9);
     give obj115_daisy_chain moved;
-    give obj115_daisy_chain attrib26;
+    give obj115_daisy_chain worn;
     global141 = 1[?];
     move obj115_daisy_chain to player;
     rtrue;
@@ -12078,7 +12078,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Drop) {
         remove selfobj;
-        give selfobj ~attrib26;
+        give selfobj ~worn;
         "The daisychain falls to pieces in your hands!  Cheer up, though, perhaps Jemima might give you another.";
     }
     rfalse;
@@ -12087,7 +12087,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: obj115_daisy_chain.u_to
 
 [ routine89828 local1 ;	! 89828 / 0x15ee4
-    if (selfobj has attrib26 && global115 == 2[?]) {
+    if (selfobj has worn && global115 == 2[?]) {
         local1 = child(player);
       .label89843;
         if (local1 ~= 0) {
@@ -12302,7 +12302,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     } else if (verb == ##Enter && noun == obj125_sandstone_recess) {
         "The recess is too shallow.";
     }
-    if (obj86_gas_mask has attrib26) {
+    if (obj86_gas_mask has worn) {
         rfalse;
     }
     if (verb == ##Go or ##Enter) {
@@ -12367,7 +12367,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine91484 local1 local2 local3 local4 local5 ;	! 91484 / 0x1655c
     if (action == ##Action259 or ##Answer or ##Ask) {
-        if (obj86_gas_mask has attrib26 && global145 == 0) {
+        if (obj86_gas_mask has worn && global145 == 0) {
             global145 = 1[?];
             print "(amazingly, the mouse can make out your voice even when you have the gas mask on - that's real engineering, that is)^";
         }
@@ -12705,7 +12705,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine94088 ;	! 94088 / 0x16f88
     if (action == ##Open) {
-        if (obj145_gilded_model_coffin has attrib8 && obj113_old_gardeners__gloves hasnt attrib26) {
+        if (obj145_gilded_model_coffin has attrib8 && obj113_old_gardeners__gloves hasnt worn) {
             deadflag = FAILED;
             "There is a flash and then everything goes dark!^^You were given a nasty shock by that coffin. ~Must have been some old wiring,~ says a doctor, leaning over you in hospital.";
         }
@@ -13623,7 +13623,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     local2 = sibling(local1);
                     if (local1 ~= 115[obj115_daisy_chain?]) {
                         move local1 to obj257_Lighthouse;
-                        give local1 ~attrib26;
+                        give local1 ~worn;
                     }
                     local1 = local2;
                     jump label103161;
@@ -14141,7 +14141,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine109056 local1 ;	! 109056 / 0x1aa00
     if (action == ##Blow) {
-        if (obj86_gas_mask has attrib26) {
+        if (obj86_gas_mask has worn) {
             "With the gas mask on?";
         }
         if (location == obj222_Clifftop_Walk) {
@@ -15899,7 +15899,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: yellow_daisy.u_to
 
 [ routine122144 local1 ;	! 122144 / 0x1dd20
-    if (selfobj has attrib26 && global115 == 2[?]) {
+    if (selfobj has worn && global115 == 2[?]) {
         local1 = child(player);
       .label122159;
         if (local1 ~= 0) {
@@ -16067,7 +16067,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
   .label123494;
     if (local1 ~= 0) {
         local2 = sibling(local1);
-        if (local1 hasnt attrib26) {
+        if (local1 hasnt worn) {
             remove local1;
         }
         local1 = local2;
@@ -16173,7 +16173,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Encampment.e_to
 
 [ routine124520 ;	! 124520 / 0x1e668
-    if (leather_sandals has attrib26) {
+    if (leather_sandals has worn) {
         print "You cross the hot coals nimbly in your sandals.^";
         return 356[dolmen?];
     }
@@ -17002,7 +17002,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine132404 ;	! 132404 / 0x20534
     if (action == ##Go) {
-        if (noun == ne_obj && cloak_of_many_colours has attrib26) {
+        if (noun == ne_obj && cloak_of_many_colours has worn) {
             print "The procession happily accommodates another crazily-dressed loon.^";
             rfalse;
         }
@@ -17037,7 +17037,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine132776 ;	! 132776 / 0x206a8
     if (action == ##Turn or ##SwitchOn) {
-        if (noun has attrib26) {
+        if (noun has worn) {
             "Not while you're wearing it.";
         }
         if (noun notin player) {
@@ -17433,7 +17433,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Outside_the_Royal_Museum.se_to
 
 [ routine136564 ;	! 136564 / 0x21574
-    if (purple_sash has attrib26) {
+    if (purple_sash has worn) {
         print "Seeing that you're wearing the sash of a Librarian, the guards part to allow you entrance.^";
         return 448[The_Birdcage_of_the_Muses?];
     }
@@ -17461,7 +17461,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine136924 ;	! 136924 / 0x216dc
     if (action == ##Open) {
-        if (grey_cloak has attrib26) {
+        if (grey_cloak has worn) {
             rfalse;
         }
         "It won't open, for no reason you can see.";
@@ -17795,7 +17795,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Outside_the_Royal_Palace_of_Alexander.n_to
 
 [ routine139676 ;	! 139676 / 0x2219c
-    if (cloak_of_many_colours has attrib26) {
+    if (cloak_of_many_colours has worn) {
         deadflag = DIED;
         "Or you could just saunter up to them wearing a cloak of many colours. Have it your own way.";
     }
@@ -17807,7 +17807,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine139872 ;	! 139872 / 0x22260
     if (action == ##Go) {
-        if (purple_sash hasnt attrib26) {
+        if (purple_sash hasnt worn) {
             move player to Outside_the_Royal_Palace_of_Alexander;
             location = Outside_the_Royal_Palace_of_Alexander;
             "The slave looks you over and sees that you do not bear the mark of an accredited visitor to the Palace. You are discreetly escorted out.";
@@ -18099,7 +18099,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine141892 ;	! 141892 / 0x22a44
     if (verb == ##Take && noun hasnt moved) {
         if (noun hasnt attrib8) {
-            if (obj113_old_gardeners__gloves has attrib26) {
+            if (obj113_old_gardeners__gloves has worn) {
                 "It is searing hot!  Even with the gloves on you cannot touch the adamantine.";
             }
             "It is searing hot, and you cannot touch the surface!";
@@ -19408,7 +19408,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (c_style & (4 + 128) ~= 0) {
-        if (o1 hasnt attrib26 && o has attrib26 || (o hasnt attrib26 && o1 has attrib26)) {
+        if (o1 hasnt worn && o has worn || (o hasnt worn && o1 has worn)) {
             rfalse;
         }
         if (o1 hasnt light && o has light || (o hasnt light && o1 has light)) {
@@ -19917,7 +19917,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 rtrue;
             }
         }
-        if (o has light && o has attrib26) {
+        if (o has light && o has worn) {
             print " (providing light and being worn";
             flag2 = 1[?];
         } else {
@@ -19925,7 +19925,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 print " (providing light";
                 flag2 = 1[?];
             }
-            if (o has attrib26) {
+            if (o has worn) {
                 print " (being worn";
                 flag2 = 1[?];
             }
@@ -20225,7 +20225,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Defart(local1);
             local2 = parent(local1);
             if (local2 == player) {
-                if (local1 has attrib26) {
+                if (local1 has worn) {
                     print "   (worn)";
                 } else {
                     print "   (held)";
@@ -20403,7 +20403,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     j = child(player);
   .label162041;
     if (j ~= 0) {
-        if (j hasnt attrib26) {
+        if (j hasnt worn) {
             ++k;
         }
         j = sibling(j);
@@ -20418,7 +20418,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             k = child(player);
           .label162101;
             if (k ~= 0) {
-                if (k ~= 79[obj79_canvas_rucksack?] && k hasnt attrib26 && k hasnt light) {
+                if (k ~= 79[obj79_canvas_rucksack?] && k hasnt worn && k hasnt light) {
                     j = k;
                 }
                 k = sibling(k);
@@ -20460,10 +20460,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 ~= player) {
         return L__M(##Drop,2);
     }
-    if (noun has attrib26) {
+    if (noun has worn) {
         L__M(##Drop,3,noun);
         R_Process(##Disrobe,noun);
-        if (noun has attrib26) {
+        if (noun has worn) {
             rtrue;
         }
     }
@@ -20543,10 +20543,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parent(second) == player) {
         return L__M(##PutOn,4);
     }
-    if (noun has attrib26) {
+    if (noun has worn) {
         L__M(##PutOn,5);
         R_Process(##Disrobe,noun);
-        if (noun has attrib26) {
+        if (noun has worn) {
             rtrue;
         }
     }
@@ -20609,10 +20609,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (routine162420(noun,second) == 1[?]) {
         return L__M(##Insert,5);
     }
-    if (noun has attrib26) {
+    if (noun has worn) {
         L__M(##Insert,6);
         R_Process(##Disrobe,noun);
-        if (noun has attrib26) {
+        if (noun has worn) {
             rtrue;
         }
     }
@@ -21363,10 +21363,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ DisrobeSub ;	! 165484 / 0x2866c
-    if (noun hasnt attrib26) {
+    if (noun hasnt worn) {
         return L__M(##Disrobe,1);
     }
-    give noun ~attrib26;
+    give noun ~worn;
     if (AfterRoutines() == true) {
         rtrue;
     }
@@ -21384,10 +21384,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parent(noun) ~= player) {
         return L__M(##Wear,2);
     }
-    if (noun has attrib26) {
+    if (noun has worn) {
         return L__M(##Wear,3);
     }
-    give noun attrib26;
+    give noun worn;
     if (AfterRoutines() == true) {
         rtrue;
     }
@@ -22587,7 +22587,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         routine155280(13[obj13_inside?]);
         "You're going nowhere until you make amends for that nasty bad language.";
     }
-    if (obj86_gas_mask has attrib26) {
+    if (obj86_gas_mask has worn) {
         if (verb == ##Smell) {
             "With the gas mask on all you can smell is old cork and rubber.";
         }
@@ -23399,7 +23399,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "But you aren't holding it.";
     }
     if (noun has attrib33) {
-        if (obj115_daisy_chain in player && obj115_daisy_chain has attrib26 && obj115_daisy_chain.time_left == 1) {
+        if (obj115_daisy_chain in player && obj115_daisy_chain has worn && obj115_daisy_chain.time_left == 1) {
             score = score + 6;
             rod_score = rod_score + 6;
             print "Light pulses around the daisy chain, then leaps out to engulf ";
@@ -23414,7 +23414,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Indefart(local1);
             "!";
         }
-        if (yellow_daisy in player && yellow_daisy has attrib26) {
+        if (yellow_daisy in player && yellow_daisy has worn) {
             score = score + 6;
             rod_score = rod_score + 6;
             print "Light pulses from the daisy behind your ear, leaping out to engulf ";
@@ -23436,7 +23436,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun has rod_attr) {
         "That seems to be not quite how they work...";
     }
-    if (noun has attrib26) {
+    if (noun has worn) {
         "You can't wave what you're wearing.";
     }
     print "You look ridiculous waving ";
