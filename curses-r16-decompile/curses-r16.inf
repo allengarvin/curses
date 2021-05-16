@@ -8105,7 +8105,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         verb = ##Answer;
                         jump label54402;
                     }
-                    if (routine55448(actor,259[obj259_Greek_Frieze?]) == 0) {
+                    if (RunLife(actor,259[obj259_Greek_Frieze?]) == 0) {
                         L__M(##Action259,1,actor);
                     }
                 }
@@ -8359,9 +8359,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine55448 local1 local2 ;	! 55448 / 0xd898
-    orders = local2;
-    return RunRoutines(local1,life);
+[ RunLife a j ;	! 55448 / 0xd898
+    orders = j;
+    return RunRoutines(a,life);
 ];
 
 [ LowKey_Menu menu_choices EntryR ChoiceR lines main_title i j ;	! 55464 / 0xd8a8
@@ -20754,7 +20754,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (second == player) {
         return L__M(##Give,2,noun);
     }
-    if (routine55448(second,34[obj34_chocolate_biscuit?]) ~= 0) {
+    if (RunLife(second,34[obj34_chocolate_biscuit?]) ~= 0) {
         rfalse;
     }
     L__M(##Give,3,second);
@@ -20774,7 +20774,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Read,noun);
         rtrue;
     }
-    if (routine55448(second,36[obj36_hinged_trapdoor?]) ~= 0) {
+    if (RunLife(second,36[obj36_hinged_trapdoor?]) ~= 0) {
         rfalse;
     }
     L__M(##Show,2,second);
@@ -21441,7 +21441,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ WakeOtherSub ;	! 165688 / 0x28738
-    if (routine55448(noun,83[obj83_painting_of_Mad_Isaac_Meldrewe?]) ~= 0) {
+    if (RunLife(noun,83[obj83_painting_of_Mad_Isaac_Meldrewe?]) ~= 0) {
         rfalse;
     }
     L__M(##WakeOther);
@@ -21657,7 +21657,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (second hasnt animate) {
         return L__M(##ThrowAt,1);
     }
-    if (routine55448(second,32[obj32_electric_torch?]) ~= 0) {
+    if (RunLife(second,32[obj32_electric_torch?]) ~= 0) {
         rfalse;
     }
     L__M(##ThrowAt,2);
@@ -21665,7 +21665,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AttackSub ;	! 166244 / 0x28964
-    if (noun has animate && routine55448(noun,66[obj66_solid_glass_ball?]) ~= 0) {
+    if (noun has animate && RunLife(noun,66[obj66_solid_glass_ball?]) ~= 0) {
         rfalse;
     }
     L__M(##Attack);
@@ -21673,7 +21673,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ KissSub ;	! 166272 / 0x28980
-    if (routine55448(noun,84[obj84_big_iron_fireplace?]) ~= 0) {
+    if (RunLife(noun,84[obj84_big_iron_fireplace?]) ~= 0) {
         rfalse;
     }
     if (noun == player) {
@@ -21684,7 +21684,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AnswerSub ;	! 166308 / 0x289a4
-    if (routine55448(second,68[obj68_water_pipe?]) ~= 0) {
+    if (RunLife(second,68[obj68_water_pipe?]) ~= 0) {
         rfalse;
     }
     L__M(##Answer);
@@ -21695,7 +21695,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun == player) {
         return L__M(##Tell);
     }
-    if (routine55448(noun,69[obj69_romantic_novel?]) ~= 0) {
+    if (RunLife(noun,69[obj69_romantic_novel?]) ~= 0) {
         rfalse;
     }
     L__M(##Tell,2);
@@ -21703,7 +21703,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AskSub ;	! 166364 / 0x289dc
-    if (routine55448(noun,70[obj70_book_of_Twenties_poetry?]) ~= 0) {
+    if (RunLife(noun,70[obj70_book_of_Twenties_poetry?]) ~= 0) {
         rfalse;
     }
     L__M(##Ask);
