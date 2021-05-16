@@ -4860,7 +4860,7 @@ Global last_score;
 Global notify_mode = true;
 Global places_score;
 Global things_score;
-Global global19 = 1[?];
+Global lookmode = 1;
 Global global20;
 Global top_object;
 Global toomany_flag;
@@ -21062,21 +21062,21 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ BriefSub ;	! 164420 / 0x28244
-    global19 = 1[?];
+    lookmode = 1;
     print "CURSES";
     L__M(##Brief);
     rtrue;
 ];
 
 [ VerboseSub ;	! 164436 / 0x28254
-    global19 = 2[?];
+    lookmode = 2;
     print "CURSES";
     L__M(##Verbose);
     rtrue;
 ];
 
 [ SuperbriefSub ;	! 164452 / 0x28264
-    global19 = 3[s_obj?];
+    lookmode = 3;
     print "CURSES";
     L__M(##Superbrief);
     rtrue;
@@ -21136,7 +21136,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print " ", (name) player, ")";
     }
     new_line;
-    if (global19 < 3 && (allow_abbrev ~= true || global19 == 2[?] || location hasnt visited)) {
+    if (lookmode < 3 && (allow_abbrev ~= true || lookmode == 2 || location hasnt visited)) {
         if (location.describe ~= NULL) {
             RunRoutines(location,describe);
         } else if (location.description == 0) {
