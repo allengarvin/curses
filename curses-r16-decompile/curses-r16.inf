@@ -6535,7 +6535,7 @@ Array array_29185 -->	! 29185 (0x7201)
     number_matched = 0;
     global70 = wn;
     global96 = 0;
-    routine51412(domain1,domain2,context);
+    SearchScope(domain1,domain2,context);
     if (parser_trace >= 4) {
         print "   [ND made ", number_matched, " matches]^";
     }
@@ -6658,14 +6658,14 @@ Array array_29185 -->	! 29185 (0x7201)
         k = oldw + answer_words;
       .label48387;
         if (k > global70) {
-            routine51364(k,24142[?],k - answer_words);
+            MoveWord(k,24142[?],k - answer_words);
             --k;
             jump label48387;
         }
         k = 1[?];
       .label48412;
         if (k <= answer_words) {
-            routine51364(global70 + k - 1,24488[?],k);
+            MoveWord(global70 + k - 1,24488[?],k);
             ++k;
             jump label48412;
         }
@@ -6697,7 +6697,7 @@ Array array_29185 -->	! 29185 (0x7201)
         k = 1[?];
       .label48556;
         if (k <= answer_words) {
-            routine51364(oldw + k,24488[?],k);
+            MoveWord(oldw + k,24488[?],k);
             ++k;
             jump label48556;
         }
@@ -6706,7 +6706,7 @@ Array array_29185 -->	! 29185 (0x7201)
         k = 1[?];
       .label48588;
         if (k <= answer_words) {
-            routine51364(oldw + k + j,24488[?],k);
+            MoveWord(oldw + k + j,24488[?],k);
             ++k;
             jump label48588;
         }
@@ -6719,7 +6719,7 @@ Array array_29185 -->	! 29185 (0x7201)
             } else {
                 array_24488-->1 = routine52916(array_24618-->j - 10000);
             }
-            routine51364(oldw + 1 + j - interfrom,24488[?],1[?]);
+            MoveWord(oldw + 1 + j - interfrom,24488[?],1[?]);
             ++answer_words;
             ++j;
             jump label48617;
@@ -7322,32 +7322,32 @@ Array array_29185 -->	! 29185 (0x7201)
     return (array_29185-->(token_was - 16))();
 ];
 
-[ routine51364 local1 local2 local3 local4 local5 ;	! 51364 / 0xc8a4
-    local4 = local1 * 2 - 1;
-    local5 = local3 * 2 - 1;
-    parse-->local4++ = local2-->local5++;
-    parse-->local4 = local2-->local5;
+[ MoveWord at1 b2 at2 x y ;	! 51364 / 0xc8a4
+    x = at1 * 2 - 1;
+    y = at2 * 2 - 1;
+    parse-->x++ = b2-->y++;
+    parse-->x = b2-->y;
     rtrue;
 ];
 
-[ routine51412 local1 local2 local3 local4 ;	! 51412 / 0xc8d4
-    local4 = 0;
+[ SearchScope domain1 domain2 context i ;	! 51412 / 0xc8d4
+    i = 0;
     if (scope_token ~= 0) {
         global103 = 2[?];
         if (scope_token() ~= 0) {
             rtrue;
         }
     }
-    if (actor == local1 or local2 && routine181224(actor) ~= 0) {
+    if (actor == domain1 or domain2 && routine181224(actor) ~= 0) {
         rtrue;
     }
-    if (local3 == 5[w_obj?] && advance_warning ~= 65535) {
+    if (context == 5[w_obj?] && advance_warning ~= 65535) {
         if (routine51504(advance_warning) == 1[?]) {
-            routine51864(advance_warning,0,local3);
+            routine51864(advance_warning,0,context);
         }
     } else {
-        routine51864(local1,local2,local3);
-        routine51864(local2,0,local3);
+        routine51864(domain1,domain2,context);
+        routine51864(domain2,0,context);
     }
     rtrue;
 ];
@@ -8262,7 +8262,7 @@ Array array_29185 -->	! 29185 (0x7201)
         actor_location = parent(actor_location);
         jump label55082;
     }
-    routine51412(location,player,0);
+    SearchScope(location,player,0);
     scope_reason = sr;
     actor = a;
     actor_location = al;
@@ -8290,7 +8290,7 @@ Array array_29185 -->	! 29185 (0x7201)
         jump label55157;
     }
     scope_reason = LOOPOVERSCOPE_REASON;
-    routine51412(actor_location,actor,0);
+    SearchScope(actor_location,actor,0);
     parser_one = x;
     scope_reason = y;
     actor = a;
@@ -8310,7 +8310,7 @@ Array array_29185 -->	! 29185 (0x7201)
     }
     scope_reason = REACT_BEFORE_REASON;
     parser_one = 0;
-    routine51412(location,player,0);
+    SearchScope(location,player,0);
     scope_reason = PARSING_REASON;
     if (parser_one ~= 0) {
         rtrue;
@@ -8324,7 +8324,7 @@ Array array_29185 -->	! 29185 (0x7201)
 [ AfterRoutines ;	! 55280 / 0xd7f0
     scope_reason = REACT_AFTER_REASON;
     parser_one = 0;
-    routine51412(location,player,0);
+    SearchScope(location,player,0);
     scope_reason = PARSING_REASON;
     if (parser_one ~= 0) {
         rtrue;
@@ -8733,7 +8733,7 @@ Array array_29185 -->	! 29185 (0x7201)
         scope_reason = EACH_TURN_REASON;
         verb_word = 0;
         routine51556(location);
-        routine51412(location,player,0);
+        SearchScope(location,player,0);
         scope_reason = PARSING_REASON;
     }
     if (deadflag == 0) {
