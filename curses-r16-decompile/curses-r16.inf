@@ -4944,7 +4944,7 @@ Global scope_reason;
 Global scope_token;
 Global scope_error;
 Global scope_stage;
-Global global104;
+Global ats_flag;
 Global global105;
 Global take_all_rule = 1;
 Global usual_grammar_after;
@@ -7474,9 +7474,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     ad = domain.&prop10;
     if (ad ~= 0) {
         if (UnsignedCompare(ad-->0,top_object) > 0) {
-            global104 = 2 + context;
+            ats_flag = 2 + context;
             RunRoutines(domain,10[u_obj?]);
-            global104 = 0;
+            ats_flag = 0;
         } else {
             generic_globvar = domain.&prop10;
             if (generic_globvar) {
@@ -7496,10 +7496,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AddToScope obj ;	! 52200 / 0xcbe8
-    if (global104 >= 2) {
-        ScopeWithin_O(obj,0,global104 - 2);
+    if (ats_flag >= 2) {
+        ScopeWithin_O(obj,0,ats_flag - 2);
     }
-    if (global104 == 1[?] && HasLightSource(obj) == 1[?]) {
+    if (ats_flag == 1 && HasLightSource(obj) == 1[?]) {
         global105 = 1[?];
     }
     rtrue;
@@ -8817,9 +8817,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parent(i) ~= nothing && ad ~= 0) {
         if (ad-->0 > top_object) {
             global105 = 0;
-            global104 = 1[?];
+            ats_flag = 1;
             RunRoutines(i,10[u_obj?]);
-            global104 = 0;
+            ats_flag = 0;
             if (global105 == 1[?]) {
                 rtrue;
             }
