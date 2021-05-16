@@ -8099,7 +8099,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (j == 0) {
                 j = RunRoutines(actor,orders);
                 if (j == 0) {
-                    if (verb == ##Action264) {
+                    if (verb == ##Orders) {
                         inputobjs-->3 = actor;
                         actor = player;
                         verb = ##Answer;
