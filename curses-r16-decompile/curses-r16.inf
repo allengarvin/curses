@@ -4591,7 +4591,7 @@ Object Parish_Church "Parish Church"	! 486 / 0x1e6
 
 Object -> Moonstone "Moonstone"	! 487 / 0x1e7
   with	name 'moonstone' 'moon' 'stone' 'door' 'flagstone' 'iron' 'rings' 'old',
-	after routine141728,
+	after MoonstoneAfter,
 	s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
 	d_to thedark,
 	initial "A passage slants down through a solid crystal doorway in the Moonstone.",
@@ -4602,7 +4602,7 @@ Object -> Moonstone "Moonstone"	! 487 / 0x1e7
 Object West_Side_Chapel "West Side Chapel"	! 488 / 0x1e8
   with	name 'stained' 'glass' 'windows' 'resurrect',
 	after routine142212,
-	before routine142572,
+	before WestSideChapelBefore,
 	e_to Parish_Church,
 	description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
 	cant_go "The church lies east.",
@@ -4634,7 +4634,7 @@ Object East_Side_Chapel "East Side Chapel"	! 491 / 0x1eb
 
 Object -> statue_of_Diana "statue of Diana"	! 492 / 0x1ec
   with	name 'marble' 'statue' 'of' 'diana',
-	after routine144620,
+	after DianaAfter,
 	initial "A tall marble statue of Diana stands here: a find from the nearby Roman remains.",
 	description "There is a sly look in her eye as she smiles aslant.",
   has	static;
@@ -4649,13 +4649,13 @@ Object Bell_Tower "Bell Tower"	! 493 / 0x1ed
 
 Object -> bell_ropes "bell ropes"	! 494 / 0x1ee
   with	name 'bell' 'bells' 'rope' 'ropes' 'braided' 'sash' 'sashes',
-	after routine144716,
+	after BellRopesAfter,
 	article "eight",
   has	scenery;
 
 Object Out_on_the_Spire "Out on the Spire"	! 495 / 0x1ef
   with	name 'village' 'clerestory' 'hills' 'farmlands' 'weather' 'vane' 'weatherva',
-	d_to routine144752,
+	d_to OutOfSpireDown,
 	description "There is a beautiful view over the green parceled farmlands and hills surrounding the village, and you feel a certain pride to see Meldrew Hall sitting amongst it. It's also windy and dangerous up here on the grey lead spire of the parish church, beside the old clock: fortunately an opening leads down into the clerestory.",
 	section T_NE_OF_HOME,
   has	light;
@@ -18076,7 +18076,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Moonstone.after
 
-[ routine141728 ;	! 141728 / 0x229a0
+[ MoonstoneAfter ;	! 141728 / 0x229a0
     if (action == ##Read) {
         routine155280(47[obj47_Old_Furniture?]);
         rfalse;
@@ -18190,7 +18190,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: West_Side_Chapel.before
 
-[ routine142572 ;	! 142572 / 0x22cec
+[ WestSideChapelBefore ;	! 142572 / 0x22cec
     if (action == ##Look) {
         if (adamantine_statue in West_Side_Chapel) {
             routine143264();
@@ -18222,7 +18222,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: adamantine_knight.description
 
-[ routine142688 ;	! 142688 / 0x22d60
+[ AdamantineKnightDesc ;	! 142688 / 0x22d60
     print "The knight is bursting and eager with life, as though nothing could fade his boundless energy for existence. ";
     if (obj303_marble_rose in selfobj) {
         print "He is holding the marble flower. ";
@@ -18372,7 +18372,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: statue_of_Diana.after
 
-[ routine144620 ;	! 144620 / 0x234ec
+[ DianaAfter ;	! 144620 / 0x234ec
     if (action == ##PointAt) {
         if (adamantine_knight in location) {
             if (obj303_marble_rose in selfobj) {
@@ -18387,7 +18387,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bell_ropes.after
 
-[ routine144716 ;	! 144716 / 0x2354c
+[ BellRopesAfter ;	! 144716 / 0x2354c
     if (action == ##Pull or ##Push or ##Blow) {
         "You ring an amateurish, jangling peal.";
     }
@@ -18396,7 +18396,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Out_on_the_Spire.d_to
 
-[ routine144752 ;	! 144752 / 0x23570
+[ OutOfSpireDown ;	! 144752 / 0x23570
     print "You slither down a bell rope, noisily...^";
     return 493[Bell_Tower?];
 ];
