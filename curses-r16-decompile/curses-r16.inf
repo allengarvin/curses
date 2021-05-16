@@ -9401,11 +9401,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Reassembled after all these years... how lucky can you get?";
     }
     if (second == gambling_sailor) {
-        give gambling_sailor attrib36;
+        give gambling_sailor lucky;
         "The sailor shudders suddenly.";
     }
     if (second == inscribed_die) {
-        give inscribed_die attrib36;
+        give inscribed_die lucky;
         "The die rattles a little, then settles.";
     }
     "Nothing obvious happens.";
@@ -17552,7 +17552,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local1 < 3) {
             print "^The sailor grabs the die and throws a ~";
             local1 = random(6);
-            if (gambling_sailor has attrib36 || inscribed_die has attrib36) {
+            if (gambling_sailor has lucky || inscribed_die has lucky) {
                 local1 = 6[ne_obj?];
             }
             routine138004(local1);
@@ -17590,7 +17590,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Drop or ##ThrowAt or ##Gamble) {
         local1 = random(6);
-        if (inscribed_die has attrib36) {
+        if (inscribed_die has lucky) {
             local1 = 6[ne_obj?];
         }
         give gambling_sailor general;
