@@ -5809,14 +5809,14 @@ Array array_29185 -->	! 29185 (0x7201)
                                 }
                             }
                             if (parameters >= 1 && results-->2 == 0) {
-                                l = routine49704(results-->3);
+                                l = ReviseMulti(results-->3);
                                 if (l ~= 0) {
                                     etype = l;
                                     jump label44659;
                                 }
                             }
                             if (parameters >= 2 && results-->3 == 0) {
-                                l = routine49704(results-->2);
+                                l = ReviseMulti(results-->2);
                                 if (l ~= 0) {
                                     etype = l;
                                     jump label44659;
@@ -6924,144 +6924,144 @@ Array array_29185 -->	! 29185 (0x7201)
     return routine50480();
 ];
 
-[ routine49704 local1 local2 local3 ;	! 49704 / 0xc228
+[ ReviseMulti second_p i low ;	! 49704 / 0xc228
     if (parser_trace >= 4) {
-        print "   Revising multiple object list of size ", multiple_object-->0, " with 2nd ", (name) local1, "^";
+        print "   Revising multiple object list of size ", multiple_object-->0, " with 2nd ", (name) second_p, "^";
     }
     if (multi_context == 4 or 5) {
-        local2 = 1[?];
-        local3 = 0;
+        i = 1[?];
+        low = 0;
       .label49771;
-        if (local2 <= multiple_object-->0) {
-            if (multi_context == 4 && multiple_object-->local2 ~= local1 || (multi_context == 5 && multiple_object-->local2 in local1)) {
-                ++local3;
-                multiple_object-->local3 = multiple_object-->local2;
+        if (i <= multiple_object-->0) {
+            if (multi_context == 4 && multiple_object-->i ~= second_p || (multi_context == 5 && multiple_object-->i in second_p)) {
+                ++low;
+                multiple_object-->low = multiple_object-->i;
             }
-            ++local2;
+            ++i;
             jump label49771;
         }
-        multiple_object-->0 = local3;
+        multiple_object-->0 = low;
     }
     if (multi_context == 2) {
-        local2 = 1[?];
-        local3 = 0;
+        i = 1[?];
+        low = 0;
       .label49850;
-        if (local2 <= multiple_object-->0) {
-            if (parent(multiple_object-->local2) == parent(actor)) {
-                ++local3;
+        if (i <= multiple_object-->0) {
+            if (parent(multiple_object-->i) == parent(actor)) {
+                ++low;
             }
-            ++local2;
+            ++i;
             jump label49850;
         }
         if (parser_trace >= 4) {
-            print "   Token 2 plural case: number with actor ", local3, "^";
+            print "   Token 2 plural case: number with actor ", low, "^";
         }
-        if (global106 == 2[?] || local3 > 0) {
-            local2 = 1[?];
-            local3 = 0;
+        if (global106 == 2[?] || low > 0) {
+            i = 1[?];
+            low = 0;
           .label49943;
-            if (local2 <= multiple_object-->0) {
-                if (parent(multiple_object-->local2) == parent(actor)) {
-                    ++local3;
-                    multiple_object-->local3 = multiple_object-->local2;
+            if (i <= multiple_object-->0) {
+                if (parent(multiple_object-->i) == parent(actor)) {
+                    ++low;
+                    multiple_object-->low = multiple_object-->i;
                 }
-                ++local2;
+                ++i;
                 jump label49943;
             }
-            multiple_object-->0 = local3;
+            multiple_object-->0 = low;
         }
     }
-    local2 = multiple_object-->0;
+    i = multiple_object-->0;
     if (parser_trace >= 4) {
-        print "   Done: new size ", local2, "^";
+        print "   Done: new size ", i, "^";
     }
-    if (local2 == 0) {
+    if (i == 0) {
         return 17[rod_of_fire?];
     }
     return 0;
 ];
 
-[ routine50040 local1 local2 local3 local4 local5 local6 local7 ;	! 50040 / 0xc378
+[ ScoreMatchL its_owner its_score obj i threshold a_s l_s ;	! 50040 / 0xc378
     if (indef_type & 1 ~= 0) {
-        local5 = 40[obj40_four_leafed_clover?];
+        threshold = 40[obj40_four_leafed_clover?];
     }
     if (indef_type & 2 ~= 0) {
-        local5 = local5 + 40;
+        threshold = threshold + 40;
     }
     if (indef_type & 4 ~= 0) {
-        local5 = local5 + 40;
+        threshold = threshold + 40;
     }
     if (indef_type & 16 ~= 0) {
-        local5 = local5 + 40;
+        threshold = threshold + 40;
     }
     if (indef_type & 32 ~= 0) {
-        local5 = local5 + 40;
+        threshold = threshold + 40;
     }
     if (indef_type & 64 ~= 0) {
-        local5 = local5 + 40;
+        threshold = threshold + 40;
     }
     if (indef_type & 128 ~= 0) {
-        local5 = local5 + 40;
+        threshold = threshold + 40;
     }
     if (parser_trace >= 4) {
-        print "   Scoring match list with type ", indef_type, ", threshold ", local5, ":^";
+        print "   Scoring match list with type ", indef_type, ", threshold ", threshold, ":^";
     }
-    local6 = 30[rod_of_love?];
-    local7 = 20[rod_of_infinity?];
+    a_s = 30[rod_of_love?];
+    l_s = 20[rod_of_infinity?];
     if (action_to_be == ##Take or ##Remove) {
-        local6 = 20[rod_of_infinity?];
-        local7 = 30[rod_of_love?];
+        a_s = 20[rod_of_infinity?];
+        l_s = 30[rod_of_love?];
     }
-    local4 = 0;
+    i = 0;
   .label50199;
-    if (local4 < global67) {
-        local3 = array_24660-->local4;
-        local1 = parent(local3);
-        local2 = 0;
-        if (local1 == actor) {
-            local2 = local6;
+    if (i < global67) {
+        obj = array_24660-->i;
+        its_owner = parent(obj);
+        its_score = 0;
+        if (its_owner == actor) {
+            its_score = a_s;
         }
-        if (local1 == actor_location) {
-            local2 = local7;
+        if (its_owner == actor_location) {
+            its_score = l_s;
         }
-        if (local2 == 0 && local1 ~= 1[?]) {
-            local2 = 10[u_obj?];
+        if (its_score == 0 && its_owner ~= 1[?]) {
+            its_score = 10[u_obj?];
         }
-        if (indef_type & 1 ~= 0 && local3 ~= itobj or himobj or herobj) {
-            local2 = local2 + 40;
+        if (indef_type & 1 ~= 0 && obj ~= itobj or himobj or herobj) {
+            its_score = its_score + 40;
         }
-        if (indef_type & 2 ~= 0 && local1 == actor) {
-            local2 = local2 + 40;
+        if (indef_type & 2 ~= 0 && its_owner == actor) {
+            its_score = its_score + 40;
         }
-        if (indef_type & 4 ~= 0 && local1 == actor_location) {
-            local2 = local2 + 40;
+        if (indef_type & 4 ~= 0 && its_owner == actor_location) {
+            its_score = its_score + 40;
         }
-        if (indef_type & 64 ~= 0 && local3 has light) {
-            local2 = local2 + 40;
+        if (indef_type & 64 ~= 0 && obj has light) {
+            its_score = its_score + 40;
         }
-        if (indef_type & 128 ~= 0 && local3 hasnt light) {
-            local2 = local2 + 40;
+        if (indef_type & 128 ~= 0 && obj hasnt light) {
+            its_score = its_score + 40;
         }
-        if (indef_type & 16 ~= 0 && local1 == itobj) {
-            local2 = local2 + 40;
+        if (indef_type & 16 ~= 0 && its_owner == itobj) {
+            its_score = its_score + 40;
         }
-        if (indef_type & 32 ~= 0 && local1 has animate && routine53432(local1) == 1[?]) {
-            local2 = local2 + 40;
+        if (indef_type & 32 ~= 0 && its_owner has animate && routine53432(its_owner) == 1[?]) {
+            its_score = its_score + 40;
         }
-        local2 = local2 + routine175160(local3,2[?]);
-        if (local2 < local5) {
-            array_24660-->local4 = 65535[?];
+        its_score = its_score + routine175160(obj,2[?]);
+        if (its_score < threshold) {
+            array_24660-->i = 65535[?];
         } else {
-            array_24788-->local4 = local2;
+            array_24788-->i = its_score;
             if (parser_trace >= 4) {
                 print "   ";
-                CDefart(array_24660-->local4);
-                print " (", array_24660-->local4, ") in ";
-                Defart(local1);
-                print " scores ", local2, "^";
+                CDefart(array_24660-->i);
+                print " (", array_24660-->i, ") in ";
+                Defart(its_owner);
+                print " scores ", its_score, "^";
             }
         }
-        ++local4;
+        ++i;
         jump label50199;
     }
     global68 = 2[?];
@@ -7070,7 +7070,7 @@ Array array_29185 -->	! 29185 (0x7201)
 
 [ routine50480 local1 local2 local3 local4 ;	! 50480 / 0xc530
     if (global68 ~= 1[?]) {
-        routine50040();
+        ScoreMatchL();
     }
     local1 = 0;
     local3 = 65535[?];
