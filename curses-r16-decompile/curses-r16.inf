@@ -824,7 +824,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 	rod_word 'fire',
 	rod_action RodOfFireAction,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_returning "Returning"	! 18 / 0x12
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -838,7 +838,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 	rod_word 'returning',
 	rod_action RodOfReturningAction,
 	devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_stalking "Stalking"	! 19 / 0x13
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -852,7 +852,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 	rod_word 'stalking',
 	rod_action RodOfStalkingAction,
 	devil_hint "It has no horticultural application.",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_infinity "Infinity"	! 20 / 0x14
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -866,7 +866,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 	rod_word 'infinity',
 	rod_action RodOfInfinityAction,
 	angel_hint "Well, where might you have seen infinity before?",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_husbandry "Husbandry"	! 21 / 0x15
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -880,7 +880,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 	rod_word 'husbandry',
 	rod_action RodOfHusbandryAction,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_bronze "Bronze"	! 22 / 0x16
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -894,7 +894,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 	rod_word 'bronze',
 	rod_action RodOfBronzeAction,
 	angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -908,7 +908,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 	rod_word 'sacrifice',
 	rod_action RodOfSacrificeAction,
 	angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_luck "Luck"	! 24 / 0x18
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -922,7 +922,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 	rod_word 'luck',
 	rod_action RodOfLuckAction,
 	angel_hint "Well, if there's such a thing as luck, maybe this would help.",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_ice "Ice"	! 25 / 0x19
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -936,7 +936,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 	rod_word 'ice',
 	rod_action RodOfIceAction,
 	angel_hint "Use only at heated moments, when affairs are delicately balanced.",
-  has	rod_attr prop34;
+  has	rod_attr unidentiifed_rod;
 
 Object rod_of_language "Language"	! 26 / 0x1a
   with	name 'rod' 'of' 'language',
@@ -1086,7 +1086,7 @@ Object -> obj40_four_leafed_clover "four-leafed clover"	! 40 / 0x28
 	description "Actually a four-leafed sprig of herb paris (Paris Quadrifolia) in the shape of a fourfold true-love knot. But that was good enough for Alison.",
 	rod_assoc rod_of_luck,
 	angel_hint "Not much use as it is, is it?",
-  has	hidden_Rod;
+  has	hidden_rod;
 
 Object obj41_House "House"	! 41 / 0x29
   with	before routine69292,
@@ -1495,7 +1495,7 @@ Object -> obj92_sooty_old_stick "sooty old stick"	! 92 / 0x5c
 	initial "Wedged loosely in beside you is a sooty old stick.",
 	rod_assoc rod_of_fire,
 	devil_hint "It's exactly what it seems.",
-  has	hidden_Rod;
+  has	hidden_rod;
 
 Object obj93_Priest_s_Hole "Priest's Hole"	! 93 / 0x5d
   with	name 'cross' 'padded' 'chute' 'crawl',
@@ -2099,7 +2099,7 @@ Object obj167_oak_quarterstaff "oak quarterstaff"	! 167 / 0xa7
 	article "an",
 	rod_assoc rod_of_bronze,
 	devil_hint "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?",
-  has	hidden_Rod;
+  has	hidden_rod;
 
 Object obj168_Down_by_River "Down by River"	! 168 / 0xa8
   with	name 'rats' 'mounds' 'rubbish',
@@ -2282,7 +2282,7 @@ Object -> -> obj192_Eight_of_Wands "Eight of Wands"	! 192 / 0xc0
 	parse_name routine64276,
 	rod_assoc rod_of_infinity,
 	devil_hint "There's less to this card than meets the eye.",
-  has	card hidden_Rod;
+  has	card hidden_rod;
 
 Object -> -> obj193_Maiden "Maiden"	! 193 / 0xc1
   with	name 'maiden' 'card' 'tarot',
@@ -2350,7 +2350,7 @@ Object -> obj197_shepherd_s_crook "shepherd's crook"	! 197 / 0xc5
   with	name 'shepherds' 'crook',
 	rod_assoc rod_of_husbandry,
 	devil_hint "Just a crook. And what's wrong with crooks, that's what I say.",
-  has	hidden_Rod;
+  has	hidden_rod;
 
 Object -> obj198_cell_door "cell door"	! 198 / 0xc6
   with	name 'cell' 'door',
@@ -2517,7 +2517,7 @@ Object -> obj220_amber_hairband "amber hairband"	! 220 / 0xdc
 	article "Andromeda's",
 	rod_assoc rod_of_sacrifice,
 	devil_hint "Mmm... it still has her perfume on it. Hehehehe. Bet she's dead now.",
-  has	concealed static hidden_Rod;
+  has	concealed static hidden_rod;
 
 Object obj221_Cliffs "Cliffs"	! 221 / 0xdd
   with	name 'pharos' 'lighthouse' 'tower',
@@ -2911,7 +2911,7 @@ Object obj271_old_timber_spar "old timber spar"	! 271 / 0x10f
 	article "an",
 	rod_assoc rod_of_returning,
 	devil_hint "A plain old piece of timber.",
-  has	hidden_Rod;
+  has	hidden_rod;
 
 Object obj272_Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"	! 272 / 0x110
   with	name 'lady' 'magdalena' 'mermaid' 'figurine',
@@ -3224,7 +3224,7 @@ Object -> obj309_bean_pole "bean pole"	! 309 / 0x135
 	daemon routine116536,
 	rod_assoc rod_of_stalking,
 	devil_hint "Whatever you do, it'll always be a bean pole.",
-  has	general hidden_Rod;
+  has	general hidden_rod;
 
 Object obj310_Maze_Foundations "Maze Foundations"	! 310 / 0x136
   with	after routine116760,
@@ -3457,7 +3457,7 @@ Object -> summoning_horn "summoning horn"	! 340 / 0x154
 	after routine122288,
 	initial "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
 	rod_assoc rod_of_language,
-  has	hidden_Rod;
+  has	hidden_rod;
 
 Object Atrium "Atrium"	! 341 / 0x155
   with	n_to Atrium_Cloister,
@@ -3556,7 +3556,7 @@ Object -> tent_pole "tent pole"	! 353 / 0x161
 	time_left 0,
 	daemon routine123528,
 	rod_assoc rod_of_returning2,
-  has	concealed static hidden_Rod;
+  has	concealed static hidden_rod;
 
 Object unconscious_Saxon_spy "unconscious Saxon spy"	! 354 / 0x162
   with	name 'saxon' 'spy',
@@ -3598,7 +3598,7 @@ Object -> bluish_stone "bluish stone"	! 358 / 0x166
 	initial "Resting on top of the dolmen is a polished blue stone.",
 	rod_assoc fifty_franc_note,
 	devil_hint "I wouldn't wave that around if I were you!",
-  has	scored hidden_Rod;
+  has	scored hidden_rod;
 
 Object fifty_franc_note "fifty-franc note"	! 359 / 0x167
   with	name 'fifty' 'franc' 'note' 'francs',
@@ -4361,7 +4361,7 @@ Object -> spindle_from_the_globe "spindle from the globe"	! 457 / 0x1c9
 	description "Perhaps the best work of cartography likely for the next two thousand years, though it seems unlikely to last the next two hours.",
 	rod_assoc rod_of_ice,
 	devil_hint "Don't go waving this about.",
-  has	hidden_Rod;
+  has	hidden_rod;
 
 Object Reading_Corridor "Reading Corridor"	! 458 / 0x1ca
   with	s_to Librarians_Office,
@@ -9096,7 +9096,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine58560 ;	! 58560 / 0xe4c0
     if (action == ##Read) {
-        if (selfobj has prop34) {
+        if (selfobj has unidentiifed_rod) {
             "A featureless mahogany rod, whose purpose is oblique. Or almost featureless: a little silver plaque is left blank at one end.";
         }
         if (selfobj has high_rod) {
@@ -9118,7 +9118,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine58728 local1 local2 ;	! 58728 / 0xe568
     if (parser_action == ##TheSame) {
-        if (parser_one has prop34 && parser_two has prop34) {
+        if (parser_one has unidentiifed_rod && parser_two has unidentiifed_rod) {
             return 65535[?];
         }
         return 65534[?];
@@ -9142,7 +9142,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rod_of_fire.short, rod_of_returning.short, rod_of_stalking.short, rod_of_infinity.short, rod_of_husbandry.short, rod_of_bronze.short, rod_of_sacrifice.short, rod_of_luck.short, rod_of_ice.short, rod_of_language.short, rod_of_returning2.short, rod_of_life.short, rod_of_death.short, rod_of_love.short
 
 [ rod_short ;	! 58804 / 0xe5b4
-    if (selfobj has prop34) {
+    if (selfobj has unidentiifed_rod) {
         print "featureless mahogany rod";
         rtrue;
     }
@@ -9213,7 +9213,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine59144 local1 ;	! 59144 / 0xe708
-    give local1 ~prop34;
+    give local1 ~unidentiifed_rod;
     local1.&name-->2 = local1.rod_word;
     local1.&name-->3 = local1.rod_word;
     local1.article = "the";
@@ -11491,7 +11491,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (obj99_long_vanity_mirror has general) {
         rfalse;
     }
-    if (local1 in player or obj79_canvas_rucksack && (local1 has rod_attr || local1 has hidden_Rod || local1 has prop34)) {
+    if (local1 in player or obj79_canvas_rucksack && (local1 has rod_attr || local1 has hidden_rod || local1 has unidentiifed_rod)) {
         rtrue;
     }
     rfalse;
@@ -12091,7 +12091,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local1 = child(player);
       .label89843;
         if (local1 ~= 0) {
-            if (local1 has hidden_Rod) {
+            if (local1 has hidden_rod) {
                 print " (which rustles as if with a magical wind)";
                 rtrue;
             }
@@ -12610,7 +12610,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "That won't fit in a socket.";
         }
         if (noun == rod_of_infinity) {
-            if (noun has prop34) {
+            if (noun has unidentiifed_rod) {
                 "For some reason, that rod is just too large to fit.";
             }
             "The Rod of Infinity is just slightly too large to fit.";
@@ -12658,7 +12658,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine93900 ;	! 93900 / 0x16ecc
     if (action == ##Take or ##Remove) {
-        if (noun has rod_attr && noun hasnt prop34) {
+        if (noun has rod_attr && noun hasnt unidentiifed_rod) {
             Achieved(28);
         }
         rfalse;
@@ -12680,7 +12680,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local1 = child(obj145_gilded_model_coffin);
       .label93977;
         if (local1 ~= 0) {
-            if (local1 has prop34) {
+            if (local1 has unidentiifed_rod) {
                 routine59144(local1);
                 give obj145_gilded_model_coffin general;
             }
@@ -15903,7 +15903,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local1 = child(player);
       .label122159;
         if (local1 ~= 0) {
-            if (local1 has hidden_Rod) {
+            if (local1 has hidden_rod) {
                 print " (twitching behind your ear)";
                 rtrue;
             }
@@ -23398,7 +23398,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun notin player) {
         "But you aren't holding it.";
     }
-    if (noun has hidden_Rod) {
+    if (noun has hidden_rod) {
         if (obj115_daisy_chain in player && obj115_daisy_chain has worn && obj115_daisy_chain.time_left == 1) {
             score = score + 6;
             rod_score = rod_score + 6;
@@ -23409,7 +23409,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local1 = noun.rod_assoc;
             itobj = local1;
             give local1 moved;
-            give local1 prop34;
+            give local1 unidentiifed_rod;
             move local1 to player;
             Indefart(local1);
             "!";
@@ -23626,7 +23626,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ InscribeOnSub ;	! 180644 / 0x2c1a4
-    if (second has prop34) {
+    if (second has unidentiifed_rod) {
         "The silver plaque is extremely strong, and resists all attempts to mark it.";
     }
     InscribeSub();
