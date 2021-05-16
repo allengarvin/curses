@@ -4909,7 +4909,7 @@ Global oops_from;
 Global saved_oops;
 Global number_matched;
 Global global68;
-Global global69;
+Global match_len;
 Global global70;
 Global global71;
 Global parser_one;
@@ -6476,7 +6476,7 @@ Array array_29185 -->	! 29185 (0x7201)
             }
             single_object = l;
         }
-        wn = oops_from + global69;
+        wn = oops_from + match_len;
         o = NextWord();
         if (o == 'and' or 'but' or 'except' or 'xcomma') {
             if (parser_trace >= 3) {
@@ -6531,7 +6531,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 4) {
         print "   [NounDomain called at word ", wn, "^";
     }
-    global69 = 0;
+    match_len = 0;
     number_matched = 0;
     global70 = wn;
     global96 = 0;
@@ -6539,7 +6539,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (parser_trace >= 4) {
         print "   [ND made ", number_matched, " matches]^";
     }
-    wn = global70 + global69;
+    wn = global70 + match_len;
     if (number_matched == 0) {
         ++wn;
         rfalse;
@@ -7523,11 +7523,11 @@ Array array_29185 -->	! 29185 (0x7201)
         }
         rtrue;
     }
-    if (quality < global69) {
+    if (quality < match_len) {
         rtrue;
     }
-    if (quality > global69) {
-        global69 = quality;
+    if (quality > match_len) {
+        match_len = quality;
         number_matched = 0;
     } else {
         if (2 * number_matched >= 128) {
