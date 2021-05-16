@@ -6574,7 +6574,7 @@ Array array_29185 -->	! 29185 (0x7201)
         i = array_24660-->0;
     }
     if (global67 > 1) {
-        i = routine48728(context);
+        i = Adjudicate(context);
         if (i == 65535[?]) {
             rfalse;
         }
@@ -6729,186 +6729,186 @@ Array array_29185 -->	! 29185 (0x7201)
     return 10000[?];
 ];
 
-[ routine48728 local1 local2 local3 local4 local5 local6 local7 local8 local9 local10 ;	! 48728 / 0xbe58
+[ Adjudicate context i j k good_ones last n ultimate flag offset ;	! 48728 / 0xbe58
     if (parser_trace >= 4) {
         print "   [Adjudicating match list of size ", global67, "^";
     }
-    local3 = global67 - 1;
-    local5 = 0;
-    local6 = array_24660-->0;
-    local2 = 0;
+    j = global67 - 1;
+    good_ones = 0;
+    last = array_24660-->0;
+    i = 0;
   .label48783;
-    if (local2 <= local3) {
-        local7 = array_24660-->local2;
-        if (local7 hasnt concealed) {
-            local8 = local7;
+    if (i <= j) {
+        n = array_24660-->i;
+        if (n hasnt concealed) {
+            ultimate = n;
           .label48802;
-            local8 = parent(local8);
-            if (local8 ~= actor_location or actor or nothing) jump label48802;
-            if (local1 == 0 && local8 == actor_location && (token_was == 0 || routine51328(local7) == 1[?])) {
-                ++local5;
-                local6 = local7;
+            ultimate = parent(ultimate);
+            if (ultimate ~= actor_location or actor or nothing) jump label48802;
+            if (context == 0 && ultimate == actor_location && (token_was == 0 || routine51328(n) == 1[?])) {
+                ++good_ones;
+                last = n;
             }
-            if (local1 == 1[?] && parent(local7) == actor) {
-                ++local5;
-                local6 = local7;
+            if (context == 1[?] && parent(n) == actor) {
+                ++good_ones;
+                last = n;
             }
-            if (local1 == 2[?] && local8 == actor_location) {
-                ++local5;
-                local6 = local7;
+            if (context == 2[?] && ultimate == actor_location) {
+                ++good_ones;
+                last = n;
             }
-            if (local1 == 3[s_obj?] && parent(local7) == actor) {
-                ++local5;
-                local6 = local7;
+            if (context == 3[s_obj?] && parent(n) == actor) {
+                ++good_ones;
+                last = n;
             }
-            if (local1 == 4[e_obj?] or 5[w_obj?]) {
+            if (context == 4[e_obj?] or 5[w_obj?]) {
                 if (advance_warning == 65535) {
-                    if (parent(local7) == actor) {
-                        ++local5;
-                        local6 = local7;
+                    if (parent(n) == actor) {
+                        ++good_ones;
+                        last = n;
                     }
                 } else {
-                    if (local1 == 4[e_obj?] && parent(local7) == actor && local7 ~= advance_warning) {
-                        ++local5;
-                        local6 = local7;
+                    if (context == 4[e_obj?] && parent(n) == actor && n ~= advance_warning) {
+                        ++good_ones;
+                        last = n;
                     }
-                    if (local1 == 5[w_obj?] && parent(local7) == actor && local7 in advance_warning) {
-                        ++local5;
-                        local6 = local7;
+                    if (context == 5[w_obj?] && parent(n) == actor && n in advance_warning) {
+                        ++good_ones;
+                        last = n;
                     }
                 }
             }
-            if (local1 == 6[ne_obj?] && CreatureTest(local7) == 1[?]) {
-                ++local5;
-                local6 = local7;
+            if (context == 6[ne_obj?] && CreatureTest(n) == 1[?]) {
+                ++good_ones;
+                last = n;
             }
         }
-        ++local2;
+        ++i;
         jump label48783;
     }
-    if (local5 == 1[?]) {
-        return local6;
+    if (good_ones == 1[?]) {
+        return last;
     }
-    if (local1 == 6[ne_obj?] && local5 == 0) {
+    if (context == 6[ne_obj?] && good_ones == 0) {
         return array_24660-->0;
     }
     if (indef_mode == 1[?] && indef_type & 8 ~= 0) {
-        if (local1 < 2 || local1 > 5) {
+        if (context < 2 || context > 5) {
             etype = MULTI_PE;
             return 65535[?];
         }
-        local2 = 0;
+        i = 0;
         global68 = 1[?];
-        local10 = multiple_object-->0;
-        local3 = routine50480();
+        offset = multiple_object-->0;
+        j = routine50480();
       .label49068;
-        if (local3 ~= 65535[?] && local2 < indef_wanted && local2 + local10 < 63) {
-            local9 = 0;
-            if (local3 hasnt concealed && local3 hasnt attrib26) {
-                local9 = 1[?];
+        if (j ~= 65535[?] && i < indef_wanted && i + offset < 63) {
+            flag = 0;
+            if (j hasnt concealed && j hasnt attrib26) {
+                flag = 1[?];
             }
-            if (local1 == 3[s_obj?] or 4[e_obj?] && parent(local3) ~= actor) {
-                local9 = 0;
+            if (context == 3[s_obj?] or 4[e_obj?] && parent(j) ~= actor) {
+                flag = 0;
             }
-            local4 = routine175160(local3,local9);
-            if (local4 == 1[?]) {
-                local9 = 1[?];
-            } else if (local4 == 2[?]) {
-                local9 = 0;
+            k = routine175160(j,flag);
+            if (k == 1[?]) {
+                flag = 1[?];
+            } else if (k == 2[?]) {
+                flag = 0;
             }
-            if (local9 == 1[?]) {
-                ++local2;
-                multiple_object-->(local2 + local10) = local3;
+            if (flag == 1[?]) {
+                ++i;
+                multiple_object-->(i + offset) = j;
                 if (parser_trace >= 4) {
                     print "   Accepting it^";
                 }
             } else if (parser_trace >= 4) {
                 print "   Rejecting it^";
             }
-            local3 = routine50480();
+            j = routine50480();
             jump label49068;
         }
-        if (local2 < indef_wanted && indef_wanted < 100) {
+        if (i < indef_wanted && indef_wanted < 100) {
             etype = TOOFEW_PE;
             global55 = indef_wanted;
             multihad = multiple_object-->0;
             return 65535[?];
         }
-        multiple_object-->0 = local2 + local10;
-        multi_context = local1;
+        multiple_object-->0 = i + offset;
+        multi_context = context;
         if (parser_trace >= 4) {
-            print "   Made multiple object of size ", local2, "]^";
+            print "   Made multiple object of size ", i, "]^";
         }
         return 1[?];
     }
-    local2 = 0;
+    i = 0;
   .label49291;
-    if (local2 < global67) {
-        array_24788-->local2 = 0;
-        ++local2;
+    if (i < global67) {
+        array_24788-->i = 0;
+        ++i;
         jump label49291;
     }
-    local7 = 1[?];
-    local2 = 0;
+    n = 1[?];
+    i = 0;
   .label49313;
-    if (local2 < global67) {
-        if (array_24788-->local2 == 0) {
-            array_24788-->local2 = local7++;
-            local9 = 0;
-            local3 = local2 + 1;
+    if (i < global67) {
+        if (array_24788-->i == 0) {
+            array_24788-->i = n++;
+            flag = 0;
+            j = i + 1;
           .label49347;
-            if (local3 < global67) {
-                if (array_24788-->local3 == 0 && routine50640(array_24660-->local2,array_24660-->local3) == 1[?]) {
-                    local9 = 1[?];
-                    array_24788-->local3 = array_24788-->local2;
+            if (j < global67) {
+                if (array_24788-->j == 0 && routine50640(array_24660-->i,array_24660-->j) == 1[?]) {
+                    flag = 1[?];
+                    array_24788-->j = array_24788-->i;
                 }
-                ++local3;
+                ++j;
                 jump label49347;
             }
-            if (local9 == 1[?]) {
-                array_24788-->local2 = 1 - local7;
+            if (flag == 1[?]) {
+                array_24788-->i = 1 - n;
             }
         }
-        ++local2;
+        ++i;
         jump label49313;
     }
-    --local7;
+    --n;
     if (parser_trace >= 4) {
-        print "   Difficult adjudication with ", local7, " equivalence classes:^";
-        local2 = 0;
+        print "   Difficult adjudication with ", n, " equivalence classes:^";
+        i = 0;
       .label49478;
-        if (local2 < global67) {
+        if (i < global67) {
             print "   ";
-            CDefart(array_24660-->local2);
-            print " (", array_24660-->local2, ")  ---  ", array_24788-->local2, "^";
-            ++local2;
+            CDefart(array_24660-->i);
+            print " (", array_24660-->i, ")  ---  ", array_24788-->i, "^";
+            ++i;
             jump label49478;
         }
     }
-    global68 = local7;
-    if (local7 > 1 && indef_mode == 0) {
-        local3 = 0;
-        local5 = 0;
-        local2 = 0;
+    global68 = n;
+    if (n > 1 && indef_mode == 0) {
+        j = 0;
+        good_ones = 0;
+        i = 0;
       .label49557;
-        if (local2 < global67) {
-            local4 = routine175160(array_24660-->local2,2[?]);
-            if (local4 == local3) {
-                ++local5;
+        if (i < global67) {
+            k = routine175160(array_24660-->i,2[?]);
+            if (k == j) {
+                ++good_ones;
             }
-            if (local4 > local3) {
-                local3 = local4;
-                local5 = 1[?];
-                local6 = array_24660-->local2;
+            if (k > j) {
+                j = k;
+                good_ones = 1[?];
+                last = array_24660-->i;
             }
-            ++local2;
+            ++i;
             jump label49557;
         }
-        if (local5 == 1[?]) {
+        if (good_ones == 1[?]) {
             if (parser_trace >= 4) {
                 print "   ChooseObjects picked a best.]^";
             }
-            return local6;
+            return last;
         }
         if (parser_trace >= 4) {
             print "   Unable to decide: it's a draw.]^";
@@ -6918,7 +6918,7 @@ Array array_29185 -->	! 29185 (0x7201)
     if (indef_mode == 0) {
         indef_type = 0;
     }
-    if (local7 == 1[?]) {
+    if (n == 1[?]) {
         dont_infer = 1;
     }
     return routine50480();
