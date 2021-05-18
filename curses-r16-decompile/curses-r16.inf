@@ -820,7 +820,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'fire',
 	rod_action RodOfFireAction,
 	angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
@@ -834,7 +834,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'returning',
 	rod_action RodOfReturningAction,
 	devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
@@ -848,7 +848,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'stalking',
 	rod_action RodOfStalkingAction,
 	devil_hint "It has no horticultural application.",
@@ -862,7 +862,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'infinity',
 	rod_action RodOfInfinityAction,
 	angel_hint "Well, where might you have seen infinity before?",
@@ -876,7 +876,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'husbandry',
 	rod_action RodOfHusbandryAction,
 	angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
@@ -890,7 +890,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'bronze',
 	rod_action RodOfBronzeAction,
 	angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
@@ -904,7 +904,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'sacrifice',
 	rod_action RodOfSacrificeAction,
 	angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
@@ -918,7 +918,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'luck',
 	rod_action RodOfLuckAction,
 	angel_hint "Well, if there's such a thing as luck, maybe this would help.",
@@ -932,7 +932,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 	d_to "featureless mahogany rods",
 	article "a",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_word 'ice',
 	rod_action RodOfIceAction,
 	angel_hint "Use only at heated moments, when affairs are delicately balanced.",
@@ -945,7 +945,7 @@ Object rod_of_language "Language"	! 26 / 0x1a
 	u_to routine58852,
 	article "the",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_action RodOfLanguageAction,
   has	rod_attr;
 
@@ -956,7 +956,7 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 	u_to routine58852,
 	article "the",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_action RodOfReturningAction,
   has	rod_attr;
 
@@ -970,7 +970,7 @@ Object rod_of_life "Life"	! 28 / 0x1c
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	rod_attr high_rod;
@@ -984,7 +984,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
@@ -998,7 +998,7 @@ Object rod_of_love "Love"	! 30 / 0x1e
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
 	short rod_short,
-	parse_name routine58728,
+	parse_name RodParse,
 	rod_action routine58968,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
@@ -9116,12 +9116,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_fire.parse_name, rod_of_returning.parse_name, rod_of_stalking.parse_name, rod_of_infinity.parse_name, rod_of_husbandry.parse_name, rod_of_bronze.parse_name, rod_of_sacrifice.parse_name, rod_of_luck.parse_name, rod_of_ice.parse_name, rod_of_language.parse_name, rod_of_returning2.parse_name, rod_of_life.parse_name, rod_of_death.parse_name, rod_of_love.parse_name
 
-[ routine58728 local1 local2 ;	! 58728 / 0xe568
+[ RodParse local1 local2 ;	! 58728 / 0xe568
     if (parser_action == ##TheSame) {
         if (parser_one has unidentiifed_rod && parser_two has unidentiifed_rod) {
-            return 65535[?];
+            return 65535;
         }
-        return 65534[?];
+        return 65534;
     }
   .label58752;
     if (1[?] == 1[?]) {
