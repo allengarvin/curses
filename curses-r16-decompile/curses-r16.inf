@@ -1554,7 +1554,7 @@ Object -> windows "windows"	! 98 / 0x62
 
 Object -> long_vanity_mirror "long vanity mirror"	! 99 / 0x63
   with	name 'long' 'vanity' 'mirror',
-	after routine84524,
+	after MirrorAfter,
 	initial "There is a long vanity mirror beside the bed.",
   has	static;
 
@@ -1568,7 +1568,7 @@ Object Tiny_Balcony "Tiny Balcony"	! 100 / 0x64
 
 Object -> window_sill "window sill"	! 101 / 0x65
   with	name 'window' 'sill',
-	after routine84776,
+	after WindowSillAfter,
 	initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
 	description "You look down on a low, bare window-sill.",
   has	static;
@@ -1595,7 +1595,7 @@ Object Old_Winery "Old Winery"	! 103 / 0x67
 
 Object -> demijohn "labelled glass demijohn"	! 104 / 0x68
   with	name 'demijohn' 'glass' 'bottle' 'label',
-	after routine85140,
+	after DemijohnAfter,
 	description "Faded ink on the label reads: Elderberry '63.",
   has	container openable static transparent;
 
@@ -1608,7 +1608,7 @@ Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"	! 105 
 
 Object -> -> tourist_map "tourist map"	! 106 / 0x6a
   with	name 'hamburg' 'tourist' 'map',
-	after routine85276,
+	after TouristMapAfter,
 	nw_to n_obj,
 	description "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg.",
 	devil_hint "Purely decorative.",
@@ -1616,7 +1616,7 @@ Object -> -> tourist_map "tourist map"	! 106 / 0x6a
 
 Object Conservatory "Aunt Jemima's Lair"	! 107 / 0x6b
   with	name 'objets' 'trouves' 'pottery' 'bric' 'brac',
-	before routine85632,
+	before ConservatoryBefore,
 	s_to Airing_Cupboard,
 	e_to Old_Winery,
 	w_to Potting_Room,
@@ -1628,7 +1628,7 @@ Object Conservatory "Aunt Jemima's Lair"	! 107 / 0x6b
 
 Object -> daisy_calendar "daisy calendar"	! 108 / 0x6c
   with	name 'calendar' 'page' 'pages' 'daisy',
-	after routine85692,
+	after CalendarAfter,
 	number [0 5],
   has	scenery;
 
@@ -1642,24 +1642,24 @@ Object Airing_Cupboard "Airing Cupboard"	! 109 / 0x6d
 
 Object -> pile_of_sheets "pile of sheets"	! 110 / 0x6e
   with	name 'pile' 'of' 'sheets' 'sheet',
-	after routine86108,
-	daemon routine86420,
+	after SheetsAFter,
+	daemon SheetsDaemon,
   has	scenery;
 
 Object -> antiquated_wireless "antiquated wireless"	! 111 / 0x6f
   with	name 'switch' 'cabinet' 'radio' 'wireless',
-	after routine86604,
-	before routine86892,
+	after WirelessAfter,
+	before WirelessBefore,
 	description "It rolls on casters, and has a bakelite on/off switch.",
-	describe routine87156,
+	describe WirelessDescribe,
 	article "an",
 	time_left 0,
-	daemon routine86996,
+	daemon WirelessDaemon,
   has	concealed static switchable;
 
 Object Potting_Room "Potting Room"	! 112 / 0x70
   with	name 'plants' 'flowers' 'seeds' 'trowels',
-	before routine87344,
+	before PottingRoomBefore,
 	e_to Conservatory,
 	description "This light room is full of pot plants, flowers, seeds, ornamental trowels and other miscellaneous garden implements.",
 	cant_go "The only exit is back east to the conservatory.",
@@ -1668,7 +1668,7 @@ Object Potting_Room "Potting Room"	! 112 / 0x70
 
 Object -> old_gardeners__gloves "old gardeners' gloves"	! 113 / 0x71
   with	name 'old' 'gardeners' 'gloves',
-	after routine87548,
+	after GlovesAfter,
 	initial "A pair of yellow rubber gloves hangs from a hook on one wall.",
 	article "some",
 	devil_hint "Good for nothing. Why would you want gloves on?",
@@ -1676,24 +1676,24 @@ Object -> old_gardeners__gloves "old gardeners' gloves"	! 113 / 0x71
 
 Object -> Jemima "Jemima"	! 114 / 0x72
   with	name 'aunt' 'jemima',
-	life routine87832,
+	life JemimaLife,
 	initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
 	description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow.",
 	article "Aunt",
 	time_left 0,
-	daemon routine87700,
+	daemon JemimaDaemon,
   has	animate proper;
 
 Object daisy_chain "daisy chain"	! 115 / 0x73
   with	name 'daisy' 'chain' 'daisychain',
-	after routine89704,
+	after DaisyChainAfter,
 	u_to routine89828,
 	time_left 11,
 	devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has	clothing;
 
 Object Storage_Room "Storage Room"	! 116 / 0x74
-  with	after routine90148,
+  with	after StorageRoomAfter,
 	w_to Old_Winery,
 	description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
 	cant_go "The only doorway is back west to the winery.",
@@ -1702,7 +1702,7 @@ Object Storage_Room "Storage Room"	! 116 / 0x74
 
 Object -> wheel2 "wheel"	! 117 / 0x75
   with	name 'wheel' 'handle' 'catch' 'safety',
-	after routine90240,
+	after WheelAfter,
 	description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has	on scenery switchable;
 
@@ -1714,33 +1714,33 @@ Object -> dumbwaiter "dumbwaiter"	! 118 / 0x76
 
 Object -> -> pulley_ropes "pulley ropes"	! 121 / 0x79
   with	name 'pulley' 'rope' 'ropes',
-	after routine90736,
+	after RopesAfter,
 	initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
 	article "the",
   has	static;
 
 Object -> -> chicken_wishbone "chicken wishbone"	! 122 / 0x7a
   with	name 'wish' 'bone' 'wishbone' 'chicken',
-	after routine91000,
+	after WishboneBefore,
 	description "The half which didn't get the wish, actually.",
 	devil_hint "It isn't even mentioned in any of the books I've read.",
   has	;
 
 Object -> dark_shaft_obj "dark shaft"	! 119 / 0x77
   with	name 'shaft' 'dark',
-	before routine90596,
+	before ShaftBefore,
 	description "Uninviting.",
   has	container open scenery;
 
 Object -> steel_wrench "steel wrench"	! 120 / 0x78
   with	name 'steel' 'wrench',
-	before routine90704,
+	before WrenchBefore,
 	initial "A steel wrench gathers dust in the corner.",
   has	;
 
 Object Dark_Shaft "Dark Shaft"	! 123 / 0x7b
-  with	after routine91112,
-	before routine91040,
+  with	after Shaft2After,
+	before ShaftAfter,
 	n_to Dark_Passage,
 	d_to Cellars,
 	description "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor leading north.",
@@ -1749,7 +1749,7 @@ Object Dark_Shaft "Dark Shaft"	! 123 / 0x7b
 
 Object Dark_Passage "Dark Passage"	! 124 / 0x7c
   with	name 'coal' 'dust',
-	after routine91172,
+	after DarkPassageAfter,
 	n_to metal_door,
 	s_to Dark_Shaft,
 	e_to sandstone_recess,
@@ -1769,7 +1769,7 @@ Object -> sandstone_recess "sandstone recess"	! 125 / 0x7d
 
 Object -> metal_door "metal door"	! 126 / 0x7e
   with	name 'metal' 'door',
-	before routine91304,
+	before MetalDoorBefore,
 	n_to Garden_Stream,
 	s_to "At the north end is a closed metal door.",
 	e_to small_brass_key,
@@ -1778,7 +1778,7 @@ Object -> metal_door "metal door"	! 126 / 0x7e
   has	door lockable locked openable static;
 
 Object Cellars "Cellars"	! 127 / 0x7f
-  with	after routine91352,
+  with	after CellarsAfter,
 	s_to Cellars_South,
 	e_to Wine_Cellars,
 	w_to Cellar_West,
@@ -1788,7 +1788,7 @@ Object Cellars "Cellars"	! 127 / 0x7f
 
 Object -> wheel "wheel"	! 128 / 0x80
   with	name 'wheel' 'handle' 'catch' 'safety',
-	after routine90240,
+	after WheelAfter,
 	description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has	on scenery switchable;
 
@@ -1805,7 +1805,7 @@ Object -> little_window "little window"	! 130 / 0x82
 
 Object -> robot_mouse "robot mouse"	! 131 / 0x83
   with	name 'robot' 'mouse',
-	life routine91484,
+	life MouseLife,
 	initial "In one corner is a dust-covered robot mouse.",
 	description "Remember the late 1970s, when a craze for home-made robots swept the home computing world?  No, perhaps not, but here is a left-over from it anyway. The mouse is quite large (almost a foot wide and tall), and has a big smile painted on its metal chassis. It has surprisingly modern circuitry in, though, and is even humming very faintly, so someone must have put some work in on it recently.",
 	devil_hint "It can't even follow orders.",
@@ -1813,9 +1813,9 @@ Object -> robot_mouse "robot mouse"	! 131 / 0x83
 
 Object Wine_Cellars "Wine Cellars"	! 132 / 0x84
   with	name 'wine' 'woodlice' 'hexagonal' 'racks' 'shaft',
-	after routine92688,
+	after WineCellarsAfter,
 	w_to Cellars,
-	u_to routine92740,
+	u_to WineCellarsUp,
 	description " .The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked",
 	cant_go "This is the eastern end of the cellars, from which you can only go west.",
 	section T_MODERN,
@@ -1829,8 +1829,8 @@ Object Cellars_South "Cellars South"	! 133 / 0x85
 
 Object -> hole_in_the_wall "hole in the wall"	! 134 / 0x86
   with	name 'hole' 'mousehole',
-	after routine92808,
-	life routine92872,
+	after HoleAfter,
+	life HoleLife,
   has	scenery talkable;
 
 Object -> -> small_brass_key "small brass key"	! 135 / 0x87
@@ -1852,7 +1852,7 @@ Object Cellar_West "Cellar West"	! 136 / 0x88
 
 Object -> ironbound_door "ironbound door"	! 137 / 0x89
   with	name 'iron' 'ironbound' 'door',
-	after routine92900,
+	after IronboundDoorAfter,
 	n_to Infinity_Symbol,
 	s_to "In the northwest wall is a heavy, imposing ironbound door.",
 	e_to wrought_iron_key,
@@ -1864,7 +1864,7 @@ Object -> ironbound_door "ironbound door"	! 137 / 0x89
 
 Object Infinity_Symbol "Infinity Symbol"	! 138 / 0x8a
   with	name 'marble' 'disc' 'webs' 'icicle',
-	before routine92944,
+	before LemniscusBefore,
 	se_to Cellar_West,
 	description "An eerie, dark cave carved from crystal icicles of rock and strewn with great spiders' webs hung from the ragged stone, inhabited only by dead white insects. A narrow crevice opens out to an iron doorway and the warmth of the house.^^The rough stone floor levels out to a perfectly round, smooth white marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.^^You shiver with foreboding, but inexplicably feel that the map you're looking for must be somewhere near here.",
 	section T_MODERN,
@@ -1872,7 +1872,7 @@ Object Infinity_Symbol "Infinity Symbol"	! 138 / 0x8a
 
 Object -> circular_arc "circular arc"	! 139 / 0x8b
   with	name 'wells' 'circular' 'arc' 'socket' 'sockets' 'well',
-	after routine93356,
+	after ArcAfter,
 	time_left 0,
   has	scenery;
 
@@ -1882,7 +1882,7 @@ Object -> lemniscus "lemniscus"	! 140 / 0x8c
 
 Object spherical_opening "spherical opening"	! 141 / 0x8d
   with	name 'gold' 'golden' 'spherical' 'opening' 'cavity',
-	after routine93620,
+	after SphericalOpeningAfter,
 	initial "There is now a small spherical opening in one wall.",
 	description "It would just hold a ball the size of your palm.",
   has	static;
@@ -1897,7 +1897,7 @@ Object Sandstone_Passage "Sandstone Passage"	! 142 / 0x8e
   has	light;
 
 Object The_Octagon "The Octagon"	! 143 / 0x8f
-  with	before routine93900,
+  with	before OctagonBefore,
 	w_to Sandstone_Passage,
 	se_to White_Hallway,
 	u_to Sandstone_Passage,
@@ -1914,8 +1914,8 @@ Object -> little_window "little window"	! 144 / 0x90
 
 Object -> gilded_model_coffin "gilded model coffin"	! 145 / 0x91
   with	name 'gilded' 'model' 'coffin' 'lid' 'inscription',
-	after routine94088,
-	before routine93928,
+	after CoffinAfter,
+	before CoffinBefore,
 	initial "A rather morbid, gilded model coffin rests here in peace.",
 	description " .The lid bears an inscription in strange hieroglyphics:^",
   has	container openable static;
@@ -1930,7 +1930,7 @@ Object -> ragged_scroll "ragged scroll"	! 146 / 0x92
 
 Object -> framed_charcoal_sketch "framed charcoal sketch"	! 147 / 0x93
   with	name 'frame' 'framed' 'charcoal' 'sketch' 'of' 'alexandria',
-	after routine94344,
+	after SketchAfter,
 	initial "A little charcoal sketch is framed on one wall.",
 	description "Behind the frame seems to be an artist's impression of the great Palace of Alexandria as it might once have been.",
 	devil_hint "It's the frame which really sets it off.",
@@ -1961,7 +1961,7 @@ Object White_Hallway "White Hallway"	! 150 / 0x96
 
 Object -> picture_hook "picture hook"	! 151 / 0x97
   with	name 'picture' 'hook',
-	after routine94844,
+	after HookAfter,
 	initial "Up on one wall is a picture hook.",
   has	static;
 
@@ -1983,7 +1983,7 @@ Object -> -> model_golden_sceptre "model golden sceptre"	! 430 / 0x1ae
   has	;
 
 Object Halfway_up_the_Stairs "Halfway up the Stairs"	! 153 / 0x99
-  with	u_to routine94940,
+  with	u_to HalfwayUpStairsUp,
 	d_to White_Hallway,
 	description "This dark, steep staircase zigzagging through the house once gave the servants access throughout. But those days are long gone and now all the doors are locked up.",
 	section T_MODERN,
@@ -1994,7 +1994,7 @@ Object Unreal_City "Unreal City"	! 154 / 0x9a
 	e_to Near_Ring_Road,
 	w_to Down_by_River,
 	description "This is a city side street, but as if seen through the grey of despair. People stream by, some of whom you almost recognise, as if dead. The street runs east-west, and to the north is a doorway into a grubby tenement building.",
-	each_turn routine94988,
+	each_turn UnrealEachTurn,
 	section T_UNREAL,
   has	light scored;
 
@@ -2008,7 +2008,7 @@ Object Shadowy_Hallway "Shadowy Hallway"	! 155 / 0x9b
 
 Object -> poster "poster"	! 156 / 0x9c
   with	name 'poster' 'posters' 'peeling',
-	after routine95240,
+	after PosterAfter,
 	description "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish you had a dog called Toto, so as to be able to say ~Toto, I've got a feeling we're not in England any more.~",
 	devil_hint "What a very useful piece of paper. Pity there's writing on it.",
   has	scenery;
@@ -2016,7 +2016,7 @@ Object -> poster "poster"	! 156 / 0x9c
 Object Bohemia "Bohemia"	! 157 / 0x9d
   with	name 'easels' 'brushes' 'paint',
 	w_to Shadowy_Hallway,
-	initial routine95408,
+	initial BohemiaInitial,
 	description "Flats occupied by starving-but-noble artists can be romantic and stylish despite the squalor. This one, however, is simply a one-room hovel, caked with paint, littered with brushes and improvised easels, and you can't help standing on tiptoe here.",
 	section T_UNREAL,
   has	light;
@@ -2149,7 +2149,7 @@ Object Near_Ring_Road "Near Ring Road"	! 173 / 0xad
 	d_to Chatelet_les_Halles,
 	description "A dry, desolate waste of buildings borders here on a main road, so full of black-suited pedestrians off to work at banks that you can't force your way any further east. Once in a while a few of the bowler-hatted army step into the street and down some steps below a Metropolitan sign.",
 	cant_go "You can't force your way through the tide of bankers.",
-	each_turn routine94988,
+	each_turn UnrealEachTurn,
 	section T_UNREAL,
   has	light;
 
@@ -11511,7 +11511,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: long_vanity_mirror.after
 
-[ routine84524 local1 local2 ;	! 84524 / 0x14a2c
+[ MirrorAfter local1 local2 ;	! 84524 / 0x14a2c
     if (action == ##Attack) {
         "What, and earn seven years bad luck?";
     }
@@ -11554,7 +11554,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: window_sill.after
 
-[ routine84776 ;	! 84776 / 0x14b28
+[ WindowSillAfter ;	! 84776 / 0x14b28
     if (action == ##Search or ##LookUnder) {
         if (delicate_gold_key has concealed) {
             give delicate_gold_key ~concealed;
@@ -11603,7 +11603,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: demijohn.after
 
-[ routine85140 ;	! 85140 / 0x14c94
+[ DemijohnAfter ;	! 85140 / 0x14c94
     if (action == ##Open) {
         if (old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
@@ -11619,7 +11619,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: tourist_map.after
 
-[ routine85276 local1 ;	! 85276 / 0x14d1c
+[ TouristMapAfter local1 ;	! 85276 / 0x14d1c
     if (action == ##Consult) {
         if (selfobj in demijohn) {
             "You can't get a close enough look.";
@@ -11641,7 +11641,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Conservatory.before
 
-[ routine85632 ;	! 85632 / 0x14e80
+[ ConservatoryBefore ;	! 85632 / 0x14e80
     if (action == ##Look) {
         if (antiquated_wireless has general && antiquated_wireless in Airing_Cupboard) {
             print "^Execrable music drifts in from the airing cupboard.^";
@@ -11653,7 +11653,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: daisy_calendar.after
 
-[ routine85692 local1 local2 ;	! 85692 / 0x14ebc
+[ CalendarAfter local1 local2 ;	! 85692 / 0x14ebc
     if (action == ##Read) {
         print "The calendar is turned to ";
         local1 = selfobj.number;
@@ -11756,7 +11756,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: pile_of_sheets.after
 
-[ routine86108 ;	! 86108 / 0x1505c
+[ SheetsAFter ;	! 86108 / 0x1505c
     if (action == ##Take) {
         print "The thought of Jemima's wrath if you actually took one of her tie-dyed sheets (~Dyeing is an art like everything else... I do it very well~) is just too dreadful. ";
         if (antiquated_wireless has concealed) {
@@ -11784,7 +11784,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: pile_of_sheets.daemon
 
-[ routine86420 ;	! 86420 / 0x15194
+[ SheetsDaemon ;	! 86420 / 0x15194
     if (antiquated_wireless hasnt on) {
         StopDaemon(selfobj);
         give antiquated_wireless ~general;
@@ -11807,7 +11807,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: antiquated_wireless.after
 
-[ routine86604 ;	! 86604 / 0x1524c
+[ WirelessAfter ;	! 86604 / 0x1524c
     if (selfobj has concealed) {
         "You've played this game before.";
     }
@@ -11833,7 +11833,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: antiquated_wireless.before
 
-[ routine86892 ;	! 86892 / 0x1536c
+[ WirelessBefore ;	! 86892 / 0x1536c
     if (action == ##SwitchOn) {
         StartTimer(selfobj,6[ne_obj?]);
         "You push the switch on the wireless, but nothing happens.";
@@ -11854,7 +11854,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: antiquated_wireless.daemon
 
-[ routine86996 ;	! 86996 / 0x153d4
+[ WirelessDaemon ;	! 86996 / 0x153d4
     if (selfobj has on) {
         StartDaemon(pile_of_sheets);
         give selfobj general;
@@ -11870,7 +11870,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: antiquated_wireless.describe
 
-[ routine87156 ;	! 87156 / 0x15474
+[ WirelessDescribe ;	! 87156 / 0x15474
     if (selfobj has general) {
         "^The wireless fills the air with Jemima's favourite station, ~Mild-n-Breezy FM~, about which the least said the better.";
     }
@@ -11883,7 +11883,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Potting_Room.before
 
-[ routine87344 ;	! 87344 / 0x15530
+[ PottingRoomBefore ;	! 87344 / 0x15530
     if (action == ##Go) {
         if (parent(daisy_chain) == nothing && global141 == 1[?]) {
             give Jemima general;
@@ -11905,7 +11905,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: old_gardeners__gloves.after
 
-[ routine87548 ;	! 87548 / 0x155fc
+[ GlovesAfter ;	! 87548 / 0x155fc
     if (action == ##Take) {
         if (antiquated_wireless in Conservatory && antiquated_wireless has general) {
             rfalse;
@@ -11921,7 +11921,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Jemima.daemon
 
-[ routine87700 ;	! 87700 / 0x15694
+[ JemimaDaemon ;	! 87700 / 0x15694
     if (location ~= Potting_Room) {
         StartTimer(selfobj,1[?]);
         rtrue;
@@ -11937,7 +11937,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Jemima.life
 
-[ routine87832 local1 ;	! 87832 / 0x15718
+[ JemimaLife local1 ;	! 87832 / 0x15718
     if (action == ##Action259) {
         if (verb == ##Give && noun == old_gardeners__gloves) {
             "~I can't give you those, I'm using them!~^^(This is plainly not true, but you know how it is with aunts.)";
@@ -12070,7 +12070,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: daisy_chain.after
 
-[ routine89704 ;	! 89704 / 0x15e68
+[ DaisyChainAfter ;	! 89704 / 0x15e68
     if (action == ##Read) {
         print "A delicate, pretty chain of ";
         routine89908(selfobj.time_left);
@@ -12146,7 +12146,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Storage_Room.after
 
-[ routine90148 ;	! 90148 / 0x16024
+[ StorageRoomAfter ;	! 90148 / 0x16024
     if (action == ##Enter) {
         if (noun == dark_shaft_obj) {
             if (dumbwaiter in dark_shaft_obj) {
@@ -12162,7 +12162,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: wheel2.after, wheel.after
 
-[ routine90240 local1 ;	! 90240 / 0x16080
+[ WheelAfter local1 ;	! 90240 / 0x16080
     if (action == ##TurnWith) {
         if (second == steel_wrench) {
             "The wrench doesn't fit a hand-wheel like this.";
@@ -12205,7 +12205,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: dark_shaft_obj.before
 
-[ routine90596 ;	! 90596 / 0x161e4
+[ ShaftBefore ;	! 90596 / 0x161e4
     if (action == ##Action257) {
         move noun to dumbwaiter;
         if (dumbwaiter in location) {
@@ -12223,7 +12223,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: steel_wrench.before
 
-[ routine90704 ;	! 90704 / 0x16250
+[ WrenchBefore ;	! 90704 / 0x16250
     if (action == ##Take) {
         "It's a wrench, but you take it.";
     }
@@ -12232,7 +12232,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: pulley_ropes.after
 
-[ routine90736 local1 ;	! 90736 / 0x16270
+[ RopesAfter local1 ;	! 90736 / 0x16270
     if (action == ##Pull) {
         if (player notin dumbwaiter) {
             "You can't reach them!";
@@ -12263,7 +12263,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: chicken_wishbone.after
 
-[ routine91000 ;	! 91000 / 0x16378
+[ WishboneBefore ;	! 91000 / 0x16378
     if (action == ##Pull) {
         "It already has been. The part you have, lost.";
     }
@@ -12272,7 +12272,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Dark_Shaft.before
 
-[ routine91040 ;	! 91040 / 0x163a0
+[ ShaftAfter ;	! 91040 / 0x163a0
     if (action == ##Look) {
         if (dumbwaiter notin Dark_Shaft) {
             print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the cellars.^";
@@ -12284,7 +12284,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Dark_Shaft.after
 
-[ routine91112 ;	! 91112 / 0x163e8
+[ Shaft2After ;	! 91112 / 0x163e8
     if (action == ##Go) {
         if (noun == d_obj && dumbwaiter in Dark_Shaft) {
             "Since the dumbwaiter is here, why not travel in that instead.";
@@ -12296,7 +12296,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Dark_Passage.after
 
-[ routine91172 ;	! 91172 / 0x16424
+[ DarkPassageAfter ;	! 91172 / 0x16424
     if (sandstone_recess has open) {
         Achieved(27);
     } else if (verb == ##Enter && noun == sandstone_recess) {
@@ -12313,7 +12313,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: metal_door.before
 
-[ routine91304 ;	! 91304 / 0x164a8
+[ MetalDoorBefore ;	! 91304 / 0x164a8
     if (action == ##Unlock) {
         give coal_bunker ~locked;
         rfalse;
@@ -12335,7 +12335,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Cellars.after
 
-[ routine91352 ;	! 91352 / 0x164d8
+[ CellarsAfter ;	! 91352 / 0x164d8
     if (action == ##Enter) {
         if (noun == dark_shaft_obj2) {
             if (dumbwaiter in Cellars) {
@@ -12365,7 +12365,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: robot_mouse.life
 
-[ routine91484 local1 local2 local3 local4 local5 ;	! 91484 / 0x1655c
+[ MouseLife local1 local2 local3 local4 local5 ;	! 91484 / 0x1655c
     if (action == ##Action259 or ##Answer or ##Ask) {
         if (gas_mask has worn && global145 == 0) {
             global145 = 1[?];
@@ -12494,7 +12494,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Wine_Cellars.description
 
-[ routine92516 ;	! 92516 / 0x16964
+[ WineCellarsDescription ;	! 92516 / 0x16964
     print "The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked";
     if (selfobj hasnt light) {
         ".";
@@ -12504,7 +12504,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Wine_Cellars.after
 
-[ routine92688 ;	! 92688 / 0x16a10
+[ WineCellarsAfter ;	! 92688 / 0x16a10
     if (action == ##Drink) {
         "But you are teetotal, which is why the cellars have got in this state.";
     }
@@ -12513,7 +12513,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Wine_Cellars.u_to
 
-[ routine92740 ;	! 92740 / 0x16a44
+[ WineCellarsUp ;	! 92740 / 0x16a44
     if (selfobj hasnt light) {
         rfalse;
     }
@@ -12522,7 +12522,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hole_in_the_wall.after
 
-[ routine92808 ;	! 92808 / 0x16a88
+[ HoleAfter ;	! 92808 / 0x16a88
     if (action == ##Action257) {
         if (second == hole_in_the_wall) {
             "Nothing is to be gained by this.";
@@ -12537,7 +12537,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hole_in_the_wall.life
 
-[ routine92872 ;	! 92872 / 0x16ac8
+[ HoleLife ;	! 92872 / 0x16ac8
     if (action == ##Action259 or ##Ask or ##Answer) {
         if (robot_mouse in selfobj) {
             return RunRoutines(robot_mouse,life);
@@ -12549,7 +12549,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: ironbound_door.after
 
-[ routine92900 ;	! 92900 / 0x16ae4
+[ IronboundDoorAfter ;	! 92900 / 0x16ae4
     if (action == ##Knock) {
         "You bark your knuckles painfully on the iron, and to no avail.";
     }
@@ -12558,7 +12558,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Infinity_Symbol.before
 
-[ routine92944 local1 ;	! 92944 / 0x16b10
+[ LemniscusBefore local1 ;	! 92944 / 0x16b10
     if (action == ##Look) {
         print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through nine equally spaced sockets or cylindrical wells.";
         local1 = circular_arc.time_left;
@@ -12600,7 +12600,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: circular_arc.after
 
-[ routine93356 local1 ;	! 93356 / 0x16cac
+[ ArcAfter local1 ;	! 93356 / 0x16cac
     if (action == ##Action257) {
         local1 = selfobj.time_left;
         if (local1 == 9[sw_obj?]) {
@@ -12634,7 +12634,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: spherical_opening.after
 
-[ routine93620 ;	! 93620 / 0x16db4
+[ SphericalOpeningAfter ;	! 93620 / 0x16db4
     if (action == ##Action257) {
         if (noun == hard_wooden_ball) {
             "Though correctly shaped, it is not quite small enough to fit the cavity.";
@@ -12656,7 +12656,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Octagon.before
 
-[ routine93900 ;	! 93900 / 0x16ecc
+[ OctagonBefore ;	! 93900 / 0x16ecc
     if (action == ##Take or ##Remove) {
         if (noun has rod_attr && noun hasnt unidentiifed_rod) {
             Achieved(28);
@@ -12668,7 +12668,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gilded_model_coffin.before
 
-[ routine93928 local1 ;	! 93928 / 0x16ee8
+[ CoffinBefore local1 ;	! 93928 / 0x16ee8
     if (action == ##Action257) {
         if (noun has rod_attr) {
             "The mahogany rod fits in perfectly.";
@@ -12703,7 +12703,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gilded_model_coffin.after
 
-[ routine94088 ;	! 94088 / 0x16f88
+[ CoffinAfter ;	! 94088 / 0x16f88
     if (action == ##Open) {
         if (gilded_model_coffin has general && old_gardeners__gloves hasnt worn) {
             deadflag = FAILED;
@@ -12716,7 +12716,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gilded_model_coffin.description
 
-[ routine94220 ;	! 94220 / 0x1700c
+[ CoffinDesc ;	! 94220 / 0x1700c
     print "The lid bears an inscription in strange hieroglyphics:^";
     0-->8 = 2 | 0-->8;
     print "^   (()) #+*+ <>   ->#.^             |||^";
@@ -12726,7 +12726,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: framed_charcoal_sketch.after
 
-[ routine94344 ;	! 94344 / 0x17088
+[ SketchAfter ;	! 94344 / 0x17088
     if (action == ##Attack or ##Open) {
         remove framed_charcoal_sketch;
         move charcoal_sketch to location;
@@ -12738,7 +12738,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: dog_eared_old_letter.description
 
-[ routine94404 ;	! 94404 / 0x170c4
+[ LetterDesc ;	! 94404 / 0x170c4
     print "A faint typewritten letter, postmarked Cairo, October 1920, with a handwritten note signed simply ~Ellingsworth~:^^Hartley - Thought you might be able to date some of these queer pictograms and determinitives, early New Kingdom?  Pottery unclear, work continues^";
     0-->8 = 2 | 0-->8;
     print "^  ::   and        #     the               #.    this^  :;   but        +*+   god/spirit?       (())  all^  =    of         []    house/building    |||   indicates plural^  ->   through    >>>   moves             <>    item/thing?^  __   sits/lies/rests/is near            /     to/toward^";
@@ -12748,7 +12748,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: picture_hook.after
 
-[ routine94844 ;	! 94844 / 0x1727c
+[ HookAfter ;	! 94844 / 0x1727c
     if (action == ##Action257) {
         if (noun ~= painting_of_Mad_Isaac_Meldrewe) {
             "Doesn't seem right there, somehow.";
@@ -12766,7 +12766,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Halfway_up_the_Stairs.u_to
 
-[ routine94940 ;	! 94940 / 0x172dc
+[ HalfwayUpStairsUp ;	! 94940 / 0x172dc
     Servants_Room.d_to = Halfway_up_the_Stairs;
     Servants_Room.n_to = Halfway_up_the_Stairs;
     move tight_door to Servants_Room;
@@ -12777,7 +12777,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Unreal_City.each_turn, Near_Ring_Road.each_turn
 
-[ routine94988 local1 ;	! 94988 / 0x1730c
+[ UnrealEachTurn local1 ;	! 94988 / 0x1730c
     local1 = random(10);
     if (local1 == 1[?]) {
         "^A clock keeps the hours, with a dead sound on the final stroke of nine.";
@@ -12796,7 +12796,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: poster.after
 
-[ routine95240 ;	! 95240 / 0x17408
+[ PosterAfter ;	! 95240 / 0x17408
     if (action == ##Take or ##RipDown or ##Rip or ##Pull) {
         if (selfobj has scenery) {
             give selfobj ~scenery;
@@ -12817,7 +12817,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Bohemia.initial
 
-[ routine95408 local1 ;	! 95408 / 0x174b0
+[ BohemiaInitial local1 ;	! 95408 / 0x174b0
     local1 = random(10);
     if (local1 == 1[?]) {
         Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a yellow chair.";
