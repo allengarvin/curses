@@ -4955,7 +4955,7 @@ Global submenu_number = 8;
 Global submenu_header = "Nameless item";
 Global menu_item;
 Global active_timers;
-Global global115 = 1[?];
+Global rod_identity = true;
 Global c_style;
 Global global117;
 Global global118;
@@ -9158,7 +9158,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rod_of_fire.u_to, rod_of_returning.u_to, rod_of_stalking.u_to, rod_of_infinity.u_to, rod_of_husbandry.u_to, rod_of_bronze.u_to, rod_of_sacrifice.u_to, rod_of_luck.u_to, rod_of_ice.u_to, rod_of_language.u_to, rod_of_returning2.u_to, rod_of_life.u_to, rod_of_death.u_to, rod_of_love.u_to
 
 [ routine58852 ;	! 58852 / 0xe5e4
-    if (global115 == 2[?] && selfobj has charged) {
+    if (rod_identity == invalidBool2 && selfobj has charged) {
         print " (charged)";
     }
     rfalse;
@@ -9189,7 +9189,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rod_of_language.nw_to, rod_of_returning2.nw_to
 
 [ routine59044 local1 ;	! 59044 / 0xe6a4
-    if (global115 == 1[?]) {
+    if (rod_identity == true) {
         if (local1 == 1[?]) {
             print "the High Rods of ";
         } else {
@@ -12087,7 +12087,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: daisy_chain.u_to
 
 [ routine89828 local1 ;	! 89828 / 0x15ee4
-    if (selfobj has worn && global115 == 2[?]) {
+    if (selfobj has worn && rod_identity == invalidBool2) {
         local1 = child(player);
       .label89843;
         if (local1 ~= 0) {
@@ -15899,7 +15899,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: yellow_daisy.u_to
 
 [ routine122144 local1 ;	! 122144 / 0x1dd20
-    if (selfobj has worn && global115 == 2[?]) {
+    if (selfobj has worn && rod_identity == invalidBool2) {
         local1 = child(player);
       .label122159;
         if (local1 ~= 0) {
@@ -19661,7 +19661,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                             }
                             q = c_style;
                             if (k2 ~= 3[s_obj?]) {
-                                global115 = 1[?];
+                                rod_identity = true;
                                 parser_one = j;
                                 parser_two = depth + global120;
                                 if (RunRoutines(j,nw_to) == 1[?]) {
@@ -19680,7 +19680,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                                     print ")";
                                 }
                             } else {
-                                global115 = 2[?];
+                                rod_identity = invalidBool2;
                                 parser_one = j;
                                 parser_two = depth + global120;
                                 RunRoutines(j,nw_to);
@@ -19790,7 +19790,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     }
                     q = c_style;
                     if (k ~= 3[s_obj?]) {
-                        global115 = 1[?];
+                        rod_identity = true;
                         parser_one = j;
                         parser_two = depth + global120;
                         if (RunRoutines(j,nw_to) == 1[?]) {
@@ -19809,7 +19809,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                             print ")";
                         }
                     } else {
-                        global115 = 2[?];
+                        rod_identity = invalidBool2;
                         parser_one = j;
                         parser_two = depth + global120;
                         RunRoutines(j,nw_to);
@@ -19864,7 +19864,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
     if (c_style & 4 ~= 0 && o.u_to ~= nothing) {
-        global115 = 1[?];
+        rod_identity = true;
         flag = PrintOrRun(o,13[in_obj?],1[?]);
         if (flag == 1[?] && c_style & 1 ~= 0) {
             new_line;
@@ -19909,7 +19909,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (c_style & 4 ~= 0) {
         if (o.u_to ~= nothing) {
-            global115 = 2[?];
+            rod_identity = invalidBool2;
             if (RunRoutines(o,u_to) ~= 0) {
                 if (c_style & 1 ~= 0) {
                     new_line;
