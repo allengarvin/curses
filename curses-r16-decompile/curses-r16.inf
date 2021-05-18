@@ -964,7 +964,7 @@ Object rod_of_life "Life"	! 28 / 0x1c
   with	name 'life' 'high' 'rod' 'of',
 	after routine141892 RodAfter,
 	before routine142064,
-	nw_to routine59132,
+	nw_to rod_func1,
 	u_to routine58852,
 	initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
 	description " .An adamantine rod, bearing a sculpted ",
@@ -979,7 +979,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
   with	name 'death' 'high' 'rod' 'of',
 	after routine141892 RodAfter,
 	before routine142064,
-	nw_to routine59132,
+	nw_to rod_func1,
 	u_to routine58852,
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
@@ -993,7 +993,7 @@ Object rod_of_love "Love"	! 30 / 0x1e
   with	name 'love' 'high' 'rod' 'of',
 	after routine141892 RodAfter,
 	before routine142064,
-	nw_to routine59132,
+	nw_to rod_func1,
 	u_to routine58852,
 	description " .An adamantine rod, bearing a sculpted ",
 	article "the",
@@ -9208,7 +9208,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_life.nw_to, rod_of_death.nw_to, rod_of_love.nw_to
 
-[ routine59132 ;	! 59132 / 0xe6fc
+[ rod_func1 ;	! 59132 / 0xe6fc
     return routine59044(1[?]);
 ];
 
