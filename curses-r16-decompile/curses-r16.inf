@@ -1585,8 +1585,8 @@ Object Old_Winery "Old Winery"	! 103 / 0x67
 	before routine84820,
 	s_to Attic,
 	e_to Storage_Room,
-	w_to Aunt_Jemima_s_Lair,
-	d_to Aunt_Jemima_s_Lair,
+	w_to Conservatory,
+	d_to Conservatory,
 	description "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east.",
 	time_left 0,
 	daemon routine84996,
@@ -1614,7 +1614,7 @@ Object -> -> tourist_map "tourist map"	! 106 / 0x6a
 	devil_hint "Purely decorative.",
   has	;
 
-Object Aunt_Jemima_s_Lair "Aunt Jemima's Lair"	! 107 / 0x6b
+Object Conservatory "Aunt Jemima's Lair"	! 107 / 0x6b
   with	name 'objets' 'trouves' 'pottery' 'bric' 'brac',
 	before routine85632,
 	s_to Airing_Cupboard,
@@ -1634,7 +1634,7 @@ Object -> daisy_calendar "daisy calendar"	! 108 / 0x6c
 
 Object Airing_Cupboard "Airing Cupboard"	! 109 / 0x6d
   with	name 'coffee' 'mugs' 'sculpture' 'racks' 'mug',
-	n_to Aunt_Jemima_s_Lair,
+	n_to Conservatory,
 	description "A space about six feet square. The old drying racks now contain odd ceramic sculptures almost but not quite unrecognisable as coffee mugs. One corner is filled with an enormous pile of tie-dyed sheets, from Aunt Jemima's infamous Sixties Revival period of last October.",
 	cant_go "The only way to go from here is back north.",
 	section T_MODERN,
@@ -1660,7 +1660,7 @@ Object -> antiquated_wireless "antiquated wireless"	! 111 / 0x6f
 Object Potting_Room "Potting Room"	! 112 / 0x70
   with	name 'plants' 'flowers' 'seeds' 'trowels',
 	before routine87344,
-	e_to Aunt_Jemima_s_Lair,
+	e_to Conservatory,
 	description "This light room is full of pot plants, flowers, seeds, ornamental trowels and other miscellaneous garden implements.",
 	cant_go "The only exit is back east to the conservatory.",
 	section T_MODERN,
@@ -9086,7 +9086,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         routine74232(1[?]);
         rfalse;
     }
-    if (action == ##Listen && antiquated_wireless has general && (antiquated_wireless in location || (antiquated_wireless in Aunt_Jemima_s_Lair && location == Potting_Room))) {
+    if (action == ##Listen && antiquated_wireless has general && (antiquated_wireless in location || (antiquated_wireless in Conservatory && location == Potting_Room))) {
         "You feel your brain turning to rice pudding.";
     }
     rfalse;
@@ -10236,7 +10236,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             ! no code
         } else if (location == Old_Winery && inp2 == 5[w_obj?] or 3[s_obj?]) {
             ! no code
-        } else if (location == Aunt_Jemima_s_Lair && inp2 == 5[w_obj?] or 4[e_obj?]) {
+        } else if (location == Conservatory && inp2 == 5[w_obj?] or 4[e_obj?]) {
             ! no code
         } else if (location == Old_Furniture && inp2 == 2[?] or 7[se_obj?]) {
             ! no code
@@ -10359,11 +10359,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local2 = location;
     } else {
         if (local2 == 112[Potting_Room?]) {
-            move Austin to Aunt_Jemima_s_Lair;
+            move Austin to Conservatory;
             if (location == Potting_Room) {
                 "^Jemima catches sight of Austin, and without warning jumps on the spot, startling him. He springs away, hissing.";
             }
-            if (location == Aunt_Jemima_s_Lair) {
+            if (location == Conservatory) {
                 "^Austin springs in from the potting room like a scalded cat, but hastily rearranges himself to his usual ~cool slob~ demeanour.";
             }
             rfalse;
@@ -10496,10 +10496,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local4 = 35[Attic?];
         }
         if (local3 == 2[?]) {
-            local4 = 107[Aunt_Jemima_s_Lair?];
+            local4 = 107[Conservatory?];
         }
     }
-    if (local2 == 107[Aunt_Jemima_s_Lair?]) {
+    if (local2 == 107[Conservatory?]) {
         local3 = random(2);
         if (local3 == 1[?]) {
             local4 = 112[Potting_Room?];
@@ -10570,7 +10570,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local3 == 42[Servants_Room?]) {
             "servant's bedroom.";
         }
-        if (local3 == 107[Aunt_Jemima_s_Lair?]) {
+        if (local3 == 107[Conservatory?]) {
             "conservatory.";
         }
         if (local3 == 112[Potting_Room?]) {
@@ -11639,7 +11639,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-! References: Aunt_Jemima_s_Lair.before
+! References: Conservatory.before
 
 [ routine85632 ;	! 85632 / 0x14e80
     if (action == ##Look) {
@@ -11790,7 +11790,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give antiquated_wireless ~general;
         rtrue;
     }
-    if (antiquated_wireless in Aunt_Jemima_s_Lair && location == Potting_Room) {
+    if (antiquated_wireless in Conservatory && location == Potting_Room) {
         print "^Jemima hums along to ";
     } else if (antiquated_wireless in location) {
         print "^The radio plays ";
@@ -11818,10 +11818,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "It moves easily on the casters.";
     }
     if (action == ##PushDir) {
-        if (location == Aunt_Jemima_s_Lair && second == e_obj) {
+        if (location == Conservatory && second == e_obj) {
             "Not upstairs you can't.";
         }
-        if (location == Aunt_Jemima_s_Lair && second == w_obj) {
+        if (location == Conservatory && second == w_obj) {
             deadflag = FAILED;
             "Aunt Jemima spends the next four hours explaining to you exactly why she put the radio into storage. The reason is awfully convoluted and due to her firm conviction that magnetic fields influence the growth of plants. By that time you have to leave for the airport...";
         }
@@ -11861,7 +11861,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (antiquated_wireless in location) {
             print "^The radio valves glow, and execrable so-called easy listening music fills the air with a sort of bland aural candy-floss.^";
         }
-        if (location == Potting_Room && antiquated_wireless in Aunt_Jemima_s_Lair) {
+        if (location == Potting_Room && antiquated_wireless in Conservatory) {
             print "^Execrable music begins to sound from the conservatory, and Aunt Jemima hums vacantly.^";
         }
     }
@@ -11892,7 +11892,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Look) {
-        if (antiquated_wireless has general && antiquated_wireless in Aunt_Jemima_s_Lair) {
+        if (antiquated_wireless has general && antiquated_wireless in Conservatory) {
             print "^Execrable music drifts in from the conservatory.^";
         }
         if (antiquated_wireless has general && antiquated_wireless in Airing_Cupboard) {
@@ -11907,7 +11907,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine87548 ;	! 87548 / 0x155fc
     if (action == ##Take) {
-        if (antiquated_wireless in Aunt_Jemima_s_Lair && antiquated_wireless has general) {
+        if (antiquated_wireless in Conservatory && antiquated_wireless has general) {
             rfalse;
         }
         if (old_gardeners__gloves hasnt moved) {
