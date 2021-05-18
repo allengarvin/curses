@@ -1581,7 +1581,7 @@ Object -> delicate_gold_key "delicate gold key"	! 102 / 0x66
 
 Object Old_Winery "Old Winery"	! 103 / 0x67
   with	name 'banister' 'rail' 'crack' 'paraphern',
-	after OldWineryDaemon,
+	after OldWineryBefore,
 	before routine84820,
 	s_to Attic,
 	e_to Storage_Room,
@@ -1589,7 +1589,7 @@ Object Old_Winery "Old Winery"	! 103 / 0x67
 	d_to Conservatory,
 	description "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east.",
 	time_left 0,
-	daemon routine84996,
+	daemon OldWineryDaemon,
 	section T_MODERN,
   has	;
 
@@ -11581,7 +11581,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Old_Winery.daemon
 
-[ routine84996 ;	! 84996 / 0x14c04
+[ OldWineryDaemon ;	! 84996 / 0x14c04
     print "^Sorry. Thinking about it again, the score only gets in a muddle this way, so the bonus points had better go after all.^";
     good_try_bonus = 0;
     displaying_quote = true;
@@ -11591,7 +11591,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Old_Winery.after
 
-[ OldWineryDaemon ;	! 85084 / 0x14c5c
+[ OldWineryBefore ;	! 85084 / 0x14c5c
     if (action == ##PutOn) {
         if (second == demijohn) {
             "We know already what happens to things balanced on the demijohn.";
