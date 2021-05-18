@@ -1130,13 +1130,13 @@ Routine 0xb548	ParseObjectList results token:int l o:dictword i j k and_parity:i
 Routine 0xba94	NounDomain domain1 domain2 context  first_word i j k l oldw answer_words marker
 Routine 0xbe58	Adjudicate context i j k good_ones last n ultimate flag offset
 Routine 0xc228	ReviseMulti second_p  i low
-Routine 0xc378	ScoreMatchL  its_owner its_score obj i threshold a_s l_s
+Routine 0xc378	ScoreMatchL  its_owner its_score obj:object i threshold a_s l_s
 Routine 0xc530	BestGuess  earliest its_score best i
 Routine 0xc5d0	Identical o1 o2 p1 p2 n1 n2 i j flag
 Routine 0xc6d4	PrintCommand from emptyf i j k f
 Routine 0xc790	CantSee:etype_enum  i w e:etype_enum
-Routine 0xc7d0	MultiAdd o i:int j
-Routine 0xc808	MultiSub o i j:int k et:etype_enum
+Routine 0xc7d0	MultiAdd o:object i:int j
+Routine 0xc808	MultiSub o:object i j:int k et:etype_enum
 Routine 0xc858	MultiFilter attr  i j o
 Routine 0xc880	UserFilter obj
 Routine 0xc8a4	MoveWord at1 b2 at2 x y
@@ -1147,9 +1147,9 @@ Routine 0xc964	DoScopeAction thing s p1
 Routine 0xca98	ScopeWithin domain nosearch context
 Routine 0xcadc	ScopeWithin_O domain nosearch context i ad n
 Routine 0xcbe8	AddToScope obj:object
-Routine 0xcc10	MakeMatch obj quality i
-Routine 0xccb0	TryGivenObject obj threshold k w j
-Routine 0xce10	Refers obj wd   k l m
+Routine 0xcc10	MakeMatch obj:object quality i
+Routine 0xccb0	TryGivenObject obj:object threshold k w j
+Routine 0xce10	Refers obj:object wd   k l m
 Routine 0xce4c	NounWord i
 Routine 0xce94	AdjectiveWord i j
 Routine 0xceb4	AdjectiveAddress number m
@@ -1164,14 +1164,14 @@ Routine 0xd0c0	Copy bto bfrom i size
 Routine 0xd0dc	UnsignedCompare
 Routine 0xd114	ZRegion
 Routine 0xd148	PrintOrRun o:thing
-Routine 0xd1c8	ValueOrRun obj prop a
+Routine 0xd1c8	ValueOrRun obj:object prop a
 Routine 0xd1e8	RunRoutines obj:object prop:property i j k l m ssv
 Routine 0xd2b8	DisplayStatus
 Routine 0xd2d4	SetTime t s
 Routine 0xd2e8	NotifyTheScore
 Routine 0xd338	PlayTheGame i j k l
 Routine 0xd6e4	Process
-Routine 0xd700	TestScope obj act a al sr x y
+Routine 0xd700	TestScope obj:object act a al sr x y
 Routine 0xd754	LoopOverScope routine act x y a al
 Routine 0xd79c	BeforeRoutines
 Routine 0xd7f0	AfterRoutines:bool
@@ -2090,15 +2090,15 @@ Routine 0x25e90	routine155280:? o:object
 Routine 0x25ea8	display_quote n:int
 Routine 0x26688	EnglishNumber n:int m:int f:bool
 Routine 0x267e8	EnglishDigit n:int
-Routine 0x26848	NextEntry o odepth
+Routine 0x26848	NextEntry o:object odepth
 Routine 0x26908	WillRecurse o:object
 Routine 0x26934	ListEqual o1 o
-Routine 0x269a0	SortTogether obj value
-Routine 0x269f4	SortOutList obj i k l
-Routine 0x26a5c	WriteListFrom o style depth
-Routine 0x26ac8	WriteListR o depth stack_pointer  classes_p sizes_p i j k k2 l m n q senc mr
-Routine 0x270a0	WriteBeforeEntry o depth  flag
-Routine 0x270f4	WriteAfterEntry o depth stack_p  flag flag2 flag3 p comb
+Routine 0x269a0	SortTogether obj:object value
+Routine 0x269f4	SortOutList obj:object i k l
+Routine 0x26a5c	WriteListFrom o:object style depth
+Routine 0x26ac8	WriteListR o:object depth stack_pointer  classes_p sizes_p i j k k2 l m n q senc mr
+Routine 0x270a0	WriteBeforeEntry o:object depth  flag
+Routine 0x270f4	WriteAfterEntry o:object depth stack_p  flag flag2 flag3 p comb
 Routine 0x2740c	MoveFloatingObjects i k l m address
 Routine 0x27480	PlayerTo newplace flag
 Routine 0x274c0	MovePlayer direc:property

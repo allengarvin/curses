@@ -7621,7 +7621,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ Refers obj wd k l m ;	! 52752 / 0xce10
-    if (obj == 0) {
+    if (obj == nothing) {
         rfalse;
     }
     k = obj.&name;
@@ -19348,7 +19348,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (global117 ~= 0) {
         if (c_style & 512 ~= 0 && odepth == 0) {
           .label157794;
-            if (o ~= 0 && (o.nw_to ~= global117 || o hasnt workflag)) {
+            if (o ~= nothing && (o.nw_to ~= global117 || o hasnt workflag)) {
                 o = sibling(o);
                 jump label157794;
             }
@@ -19356,14 +19356,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (c_style & 2048 ~= 0) {
           .label157833;
-            if (o ~= 0 && (o has concealed || o has scenery || o.nw_to ~= global117)) {
+            if (o ~= nothing && (o has concealed || o has scenery || o.nw_to ~= global117)) {
                 o = sibling(o);
                 jump label157833;
             }
             return o;
         }
       .label157866;
-        if (o ~= 0 && o.nw_to ~= global117) {
+        if (o ~= nothing && o.nw_to ~= global117) {
             o = sibling(o);
             jump label157866;
         }
@@ -19371,7 +19371,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (c_style & 512 ~= 0 && odepth == 0) {
       .label157905;
-        if (o ~= 0 && o hasnt workflag) {
+        if (o ~= nothing && o hasnt workflag) {
             o = sibling(o);
             jump label157905;
         }
@@ -19379,7 +19379,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (c_style & 2048 ~= 0) {
       .label157935;
-        if (o ~= 0 && (o has concealed || o has scenery)) {
+        if (o ~= nothing && (o has concealed || o has scenery)) {
             o = sibling(o);
             jump label157935;
         }
@@ -19485,18 +19485,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     c_style = style;
     if (style & 512 ~= 0) {
       .label158339;
-        if (o ~= 0 && o hasnt workflag) {
+        if (o ~= nothing && o hasnt workflag) {
             o = sibling(o);
             jump label158339;
         }
     } else if (c_style & 2048 ~= 0) {
       .label158370;
-        if (o ~= 0 && (o has concealed || o has scenery)) {
+        if (o ~= nothing && (o has concealed || o has scenery)) {
             o = sibling(o);
             jump label158370;
         }
     }
-    if (o == 0) {
+    if (o == nothing) {
         rfalse;
     }
     global120 = 0;
