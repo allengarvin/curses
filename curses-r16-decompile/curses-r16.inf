@@ -814,7 +814,7 @@ Object lm_object "lm"	! 16 / 0x10
 
 Object rod_of_fire "Fire"	! 17 / 0x11
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -828,7 +828,7 @@ Object rod_of_fire "Fire"	! 17 / 0x11
 
 Object rod_of_returning "Returning"	! 18 / 0x12
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -842,7 +842,7 @@ Object rod_of_returning "Returning"	! 18 / 0x12
 
 Object rod_of_stalking "Stalking"	! 19 / 0x13
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -856,7 +856,7 @@ Object rod_of_stalking "Stalking"	! 19 / 0x13
 
 Object rod_of_infinity "Infinity"	! 20 / 0x14
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -870,7 +870,7 @@ Object rod_of_infinity "Infinity"	! 20 / 0x14
 
 Object rod_of_husbandry "Husbandry"	! 21 / 0x15
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -884,7 +884,7 @@ Object rod_of_husbandry "Husbandry"	! 21 / 0x15
 
 Object rod_of_bronze "Bronze"	! 22 / 0x16
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -898,7 +898,7 @@ Object rod_of_bronze "Bronze"	! 22 / 0x16
 
 Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -912,7 +912,7 @@ Object rod_of_sacrifice "Sacrifice"	! 23 / 0x17
 
 Object rod_of_luck "Luck"	! 24 / 0x18
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -926,7 +926,7 @@ Object rod_of_luck "Luck"	! 24 / 0x18
 
 Object rod_of_ice "Ice"	! 25 / 0x19
   with	name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-	after routine58560,
+	after RodAfter,
 	nw_to nothing,
 	u_to routine58852,
 	d_to "featureless mahogany rods",
@@ -940,7 +940,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 
 Object rod_of_language "Language"	! 26 / 0x1a
   with	name 'rod' 'of' 'language',
-	after routine58560,
+	after RodAfter,
 	nw_to routine59044,
 	u_to routine58852,
 	article "the",
@@ -951,7 +951,7 @@ Object rod_of_language "Language"	! 26 / 0x1a
 
 Object rod_of_returning2 "Returning"	! 27 / 0x1b
   with	name 'rod' 'of' 'returning',
-	after routine58560,
+	after RodAfter,
 	nw_to routine59044,
 	u_to routine58852,
 	article "the",
@@ -962,7 +962,7 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 
 Object rod_of_life "Life"	! 28 / 0x1c
   with	name 'life' 'high' 'rod' 'of',
-	after routine141892 routine58560,
+	after routine141892 RodAfter,
 	before routine142064,
 	nw_to routine59132,
 	u_to routine58852,
@@ -977,7 +977,7 @@ Object rod_of_life "Life"	! 28 / 0x1c
 
 Object rod_of_death "Death"	! 29 / 0x1d
   with	name 'death' 'high' 'rod' 'of',
-	after routine141892 routine58560,
+	after routine141892 RodAfter,
 	before routine142064,
 	nw_to routine59132,
 	u_to routine58852,
@@ -991,7 +991,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
 
 Object rod_of_love "Love"	! 30 / 0x1e
   with	name 'love' 'high' 'rod' 'of',
-	after routine141892 routine58560,
+	after routine141892 RodAfter,
 	before routine142064,
 	nw_to routine59132,
 	u_to routine58852,
@@ -9094,7 +9094,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_fire.after, rod_of_returning.after, rod_of_stalking.after, rod_of_infinity.after, rod_of_husbandry.after, rod_of_bronze.after, rod_of_sacrifice.after, rod_of_luck.after, rod_of_ice.after, rod_of_language.after, rod_of_returning2.after, rod_of_life.after, rod_of_death.after, rod_of_love.after
 
-[ routine58560 ;	! 58560 / 0xe4c0
+[ RodAfter ;	! 58560 / 0xe4c0
     if (action == ##Read) {
         if (selfobj has unidentiifed_rod) {
             "A featureless mahogany rod, whose purpose is oblique. Or almost featureless: a little silver plaque is left blank at one end.";
