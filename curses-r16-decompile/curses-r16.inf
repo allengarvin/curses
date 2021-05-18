@@ -18690,7 +18690,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (pretty_mode == false) {
         "Newcomers to the game may like to try the following:^^  ~help instructions~   which gives some basic information,^  ~help commands~       details some common commands,^  ~help credits~        runs the game credits,^  ~help legal~          makes some legal disclaimers; or^  ~help inform~         which advertises the compiler Inform,^  ~help archive~        and the interactive fiction archive.";
     }
-    DoMenu("Information is available on the following subjects:^^     Instructions    giving some basic information^     Commands        detailing some common commands^     Credits         game credits^     Release         release notes^     Legal           legal disclaimers^     Inform          advertising the compiler Inform^     Archive         and the interactive fiction archive",36959[routine147836?],37009[routine148036?]);
+    DoMenu("Information is available on the following subjects:^^     Instructions    giving some basic information^     Commands        detailing some common commands^     Credits         game credits^     Release         release notes^     Legal           legal disclaimers^     Inform          advertising the compiler Inform^     Archive         and the interactive fiction archive",routine147836,37009[routine148036?]);
     displaying_quote = true;
     rtrue;
 ];
@@ -24105,7 +24105,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine183780 ;	! 183780 / 0x2cde4
-    DoMenu("^^     Frivolous things to do^     About Callimachus and Apollonius^     An epigram by Callimachus^     Salmon Wielder^     Wistaria or wisteria?^     Great Curses mistakes^     The ancient languages^",45948[routine183792?],45503[routine182012?]);
+    DoMenu("^^     Frivolous things to do^     About Callimachus and Apollonius^     An epigram by Callimachus^     Salmon Wielder^     Wistaria or wisteria?^     Great Curses mistakes^     The ancient languages^",routine183792,45503[routine182012?]);
     rtrue;
 ];
 
@@ -24259,7 +24259,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine185096 ;	! 185096 / 0x2d308
-    DoMenu("^^     1. What are the ~good but wrong guesses~?^     2. How many songs does the radio play?^     3. In what *** ways *** can the game end?^     4. What are the secret ways to detect a Rod?^     5. What can you see in the crystal ball?^     6. Where are Dame Judi Dench and Donald Sutherland?^     7. Explain the handkerchief initials and the graffiti.^     8. How many tarot cards are there altogether?^     9. How can the medicine bottle be opened?^     10. What is the mascot for in the premonition?^",46277[routine185108?],45975[routine183900?]);
+    DoMenu("^^     1. What are the ~good but wrong guesses~?^     2. How many songs does the radio play?^     3. In what *** ways *** can the game end?^     4. What are the secret ways to detect a Rod?^     5. What can you see in the crystal ball?^     6. Where are Dame Judi Dench and Donald Sutherland?^     7. Explain the handkerchief initials and the graffiti.^     8. How many tarot cards are there altogether?^     9. How can the medicine bottle be opened?^     10. What is the mascot for in the premonition?^",routine185108,45975[routine183900?]);
     rtrue;
 ];
 
@@ -24325,7 +24325,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine185280 ;	! 185280 / 0x2d3c0
-    DoMenu("^^     For your amusement^     Trivia questions^",46323[HintSubmenu?],46314[routine185256?]);
+    DoMenu("^^     For your amusement^     Trivia questions^",HintSubmenu,46314[routine185256?]);
     rtrue;
 ];
 
