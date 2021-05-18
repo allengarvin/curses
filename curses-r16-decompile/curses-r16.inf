@@ -7644,16 +7644,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ NounWord i ;	! 52812 / 0xce4c
     i = NextWord();
-    if (i == 34860['it'?] or 40287['them'?]) {
+    if (i == 'it' or 'them') {
         return 1;
     }
-    if (i == 34374['him'?]) {
+    if (i == 'him') {
         return 2;
     }
-    if (i == 34293['her'?]) {
+    if (i == 'her') {
         return 3;
     }
-    if (i == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
+    if (i == 'me' or 'myself' or 'self') {
         return 4;
     }
     if (i == 0) {
