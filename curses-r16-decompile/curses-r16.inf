@@ -9116,7 +9116,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_fire.parse_name, rod_of_returning.parse_name, rod_of_stalking.parse_name, rod_of_infinity.parse_name, rod_of_husbandry.parse_name, rod_of_bronze.parse_name, rod_of_sacrifice.parse_name, rod_of_luck.parse_name, rod_of_ice.parse_name, rod_of_language.parse_name, rod_of_returning2.parse_name, rod_of_life.parse_name, rod_of_death.parse_name, rod_of_love.parse_name
 
-[ RodParse local1 local2 ;	! 58728 / 0xe568
+[ RodParse i w ;	! 58728 / 0xe568
     if (parser_action == ##TheSame) {
         if (parser_one has unidentiifed_rod && parser_two has unidentiifed_rod) {
             return 65535;
@@ -9125,14 +9125,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
   .label58752;
     if (1[?] == 1[?]) {
-        local2 = NextWord();
-        if (Refers(selfobj,local2) == 1[?]) {
-            ++local1;
-        } else if (local2 == 38208['rods'?]) {
+        w = NextWord();
+        if (Refers(selfobj,w) == 1[?]) {
+            ++i;
+        } else if (w == 'rods') {
             parser_action = ##Action261;
-            ++local1;
+            ++i;
         } else {
-            return local1;
+            return i;
         }
         jump label58752;
     }
