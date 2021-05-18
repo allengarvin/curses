@@ -7678,7 +7678,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AdjectiveAddress number m ;	! 52916 / 0xceb4
-    m = 29479[routine117916?];
+    m = routine117916;
   .label52922;
     if (1[?] == 1[?]) {
         if (number == m-->1) {
@@ -7687,7 +7687,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         m = m + 4;
         jump label52922;
     }
-    m = 29479[routine117916?];
+    m = routine117916;
     print "<Adjective not found>";
     return m;
 ];
