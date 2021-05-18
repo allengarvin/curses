@@ -9212,13 +9212,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return routine59044(1[?]);
 ];
 
-[ routine59144 local1 ;	! 59144 / 0xe708
-    give local1 ~unidentiifed_rod;
-    local1.&name-->2 = local1.rod_word;
-    local1.&name-->3 = local1.rod_word;
-    local1.article = "the";
-    local1.d_to = nothing;
-    local1.nw_to = routine59044;
+[ discover_rod rod ;	! 59144 / 0xe708
+    give rod ~unidentiifed_rod;
+    rod.&name-->2 = rod.rod_word;
+    rod.&name-->3 = rod.rod_word;
+    rod.article = "the";
+    rod.d_to = nothing;
+    rod.nw_to = routine59044;
     rtrue;
 ];
 
@@ -12681,7 +12681,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
       .label93977;
         if (local1 ~= 0) {
             if (local1 has unidentiifed_rod) {
-                routine59144(local1);
+                discover_rod(local1);
                 give gilded_model_coffin general;
             }
             local1 = sibling(local1);
