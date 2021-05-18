@@ -1581,7 +1581,7 @@ Object -> delicate_gold_key "delicate gold key"	! 102 / 0x66
 
 Object Old_Winery "Old Winery"	! 103 / 0x67
   with	name 'banister' 'rail' 'crack' 'paraphern',
-	after routine85084,
+	after OldWineryDaemon,
 	before routine84820,
 	s_to Attic,
 	e_to Storage_Room,
@@ -11591,7 +11591,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Old_Winery.after
 
-[ routine85084 ;	! 85084 / 0x14c5c
+[ OldWineryDaemon ;	! 85084 / 0x14c5c
     if (action == ##PutOn) {
         if (second == demijohn) {
             "We know already what happens to things balanced on the demijohn.";
