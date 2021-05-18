@@ -9080,7 +9080,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (location == Souvenirs_Room && charcoal_sketch in slide_projector && south_wall hasnt concealed) {
             move Austin to Causeway;
             Achieved(36);
-            StartDaemon(435[Outside_the_Royal_Museum?]);
+            StartDaemon(Outside_the_Royal_Museum);
             "right up through the south wall and into Alexandria!";
         }
         routine74232(1[?]);
@@ -10211,7 +10211,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine73336 ;	! 73336 / 0x11e78
     if (Austin in selfobj) {
-        StartDaemon(58[Austin?]);
+        StartDaemon(Austin);
     }
     rfalse;
 ];
@@ -11246,7 +11246,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give Sir_Joshua_Meldrewe ~concealed;
         move selfobj to Sir_Joshua_Meldrewe;
         Sir_Joshua_Meldrewe.time_left = 5;
-        StartDaemon(90[Sir_Joshua_Meldrewe?]);
+        StartDaemon(Sir_Joshua_Meldrewe);
         "As you reach for the key, a swirling mist condenses about it, into a ghostly head which opens its mouth and eats up the key!  The rest of the ghostly body solidifies about the head and rises to swagger before you.";
     }
     rfalse;
@@ -11856,7 +11856,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine86996 ;	! 86996 / 0x153d4
     if (selfobj has on) {
-        StartDaemon(110[pile_of_sheets?]);
+        StartDaemon(pile_of_sheets);
         give selfobj general;
         if (antiquated_wireless in location) {
             print "^The radio valves glow, and execrable so-called easy listening music fills the air with a sort of bland aural candy-floss.^";
@@ -12021,7 +12021,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local1 = 5[w_obj?];
             print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
         }
-        StartTimer(114[Jemima?],7[se_obj?]);
+        StartTimer(Jemima,7[se_obj?]);
         daisy_chain.time_left = local1;
         "After a moment she notices you're still here. ~Come back later, it'll be done soon.~  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.";
     }
@@ -13474,7 +13474,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine100868 ;	! 100868 / 0x18a04
     if (game_section == T_HAMBURG && location ~= Coven_Cell) {
         print "^Finally reacting to the alarm you set off, Doktor Stein appears and steps toward you, clapping his hands sharply. And dozens of robed figures leap out of the darkness - but these are no security guards. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^~So, Meldrew. It is all as it was prophesied,~ says Stein in a perfectly conversational tone as he forces your mouth open and makes you swallow a violet pill.^^~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
-        StartTimer(195[Coven_Cell?],0);
+        StartTimer(Coven_Cell,0);
         global140 = 0;
         PlayerTo(195[Coven_Cell?]);
         rtrue;
@@ -13513,7 +13513,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine101636 ;	! 101636 / 0x18d04
     if (complicated_looking_bomb has concealed) {
-        StartTimer(205[complicated_looking_bomb?],10[u_obj?]);
+        StartTimer(complicated_looking_bomb,10[u_obj?]);
     }
     rfalse;
 ];
@@ -14069,7 +14069,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Inner_Sanctum.initial
 
 [ routine108336 ;	! 108336 / 0x1a730
-    StopDaemon(242[Cross_Centre?]);
+    StopDaemon(Cross_Centre);
     rfalse;
 ];
 
@@ -14590,7 +14590,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rfalse;
         }
         give old_timber_spar ~general;
-        StartTimer(309[bean_pole?],5[w_obj?]);
+        StartTimer(bean_pole,5[w_obj?]);
         rfalse;
     }
     rfalse;
@@ -16062,7 +16062,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and besides they would probably only have done you in more unpleasantly.";
     }
     print "^Suddenly you are thrust before a druidical figure. He seems to recognise you, and is troubled. Perhaps because of this, your life is saved and you are taken away into custody, down in the valley among the army encampments.^";
-    StartTimer(353[tent_pole?],4[e_obj?]);
+    StartTimer(tent_pole,4[e_obj?]);
     local1 = child(player);
   .label123494;
     if (local1 ~= 0) {
@@ -16084,7 +16084,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "^Without warning a Saxon spy (or, as the guards would no doubt put it, another Saxon spy) is thrown bodily into the tent, careering into the central pole and slumping unconscious on the ground as a result. For a moment the whole tent rocks with the force - the pole was nearly broken.^";
     give tent_pole ~static;
     move unconscious_Saxon_spy to Rough_Tent;
-    StartTimer(354[unconscious_Saxon_spy?],5[w_obj?]);
+    StartTimer(unconscious_Saxon_spy,5[w_obj?]);
     rfalse;
 ];
 
@@ -16109,7 +16109,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         give selfobj general;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
-        StartTimer(355[Encampment?],10[u_obj?]);
+        StartTimer(Encampment,10[u_obj?]);
         PlayerTo(355[Encampment?]);
         rtrue;
     }
@@ -16125,7 +16125,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (unconscious_Saxon_spy in Rough_Tent) {
         print "^Men arrive to drag the Saxon spy away to some unguessable grisly fate. They grimace at you as if to say, ~You're next.~^";
         remove unconscious_Saxon_spy;
-        StartTimer(354[unconscious_Saxon_spy?],5[w_obj?]);
+        StartTimer(unconscious_Saxon_spy,5[w_obj?]);
         rtrue;
     }
     deadflag = DIED;
@@ -16195,7 +16195,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Attack && noun == selfobj) {
         print "Ouch!  You wake up, smarting.^";
-        ChangePlayer(15[yourself?]);
+        ChangePlayer(yourself);
         R_Process(##Look);
         rtrue;
     }
@@ -16219,7 +16219,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine124836 ;	! 124836 / 0x1e7a4
-    ChangePlayer(360[ghost_of_yourself?]);
+    ChangePlayer(ghost_of_yourself);
     PlayerTo(361[Premonition?]);
     rtrue;
 ];
@@ -16328,10 +16328,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine126112 ;	! 126112 / 0x1eca0
     if (action == ##Look) {
-        ChangePlayer(15[yourself?]);
+        ChangePlayer(yourself);
         if (heavy_iron_mascot in ghost_of_yourself) {
             move heavy_iron_mascot to player;
-            StartDaemon(365[heavy_iron_mascot?]);
+            StartDaemon(heavy_iron_mascot);
             heavy_iron_mascot.time_left = 15;
             Achieved(21);
             score = score - 50;
@@ -16342,7 +16342,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine126184 ;	! 126184 / 0x1ece8
-    ChangePlayer(360[ghost_of_yourself?]);
+    ChangePlayer(ghost_of_yourself);
     PlayerTo(369[Melancholy_Dream?]);
     rtrue;
 ];
@@ -16832,7 +16832,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine130540 ;	! 130540 / 0x1fdec
     StartDaemon(selfobj);
     if (Austin in selfobj) {
-        StartDaemon(435[Outside_the_Royal_Museum?]);
+        StartDaemon(Outside_the_Royal_Museum);
     }
     rfalse;
 ];
@@ -16929,7 +16929,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move noun to Island_of_Pharos;
             give smooth_round_stone general;
             give smooth_round_stone concealed;
-            StartDaemon(397[Island_of_Pharos?]);
+            StartDaemon(Island_of_Pharos);
             rusty_iron_key.initial = "The iron key, out of reach below, is glued somehow to the strange stone.";
             "The strange stone drops through the grating, and falls on the top step. The iron key mysteriously glues itself to the metal in the stone. It's still out of reach, though.";
         }
@@ -17440,7 +17440,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (Austin in location) {
         print "The Museum guards are so busy abasing themselves before the sacred Cat (incredibly, that's Austin) that you are able to slip inside.^^Austin, having at long last found owners even more gullible and undemanding than yourself, ambles away to a life of extreme cossetting and luxury.^";
         remove Austin;
-        StopDaemon(58[Austin?]);
+        StopDaemon(Austin);
         StopDaemon(selfobj);
         return 448[The_Birdcage_of_the_Muses?];
     }
@@ -22573,7 +22573,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     move crumpled_piece_of_paper to player;
     move electric_torch to player;
     move chocolate_biscuit to player;
-    StartDaemon(32[electric_torch?]);
+    StartDaemon(electric_torch);
     InsertCardIntoDeck(Drowned_Sailor_card);
     InsertCardIntoDeck(Fool_card);
     InsertCardIntoDeck(Death_card);
@@ -22849,7 +22849,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     global177 = 1[?];
     displaying_quote = true;
-    StartTimer(103[Old_Winery?],4[e_obj?]);
+    StartTimer(Old_Winery,4[e_obj?]);
     score = score + 5;
     good_try_bonus = 1;
     "^A shame to see such a good try unrewarded... oh, go on, have an extra five points.";
