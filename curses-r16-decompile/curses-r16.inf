@@ -9561,13 +9561,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: painting_of_Mad_Isaac_Meldrewe.life, Impressionist_painting.life, still_life.life, Greek_frieze2.life, Roman_mosaic.life, bronze_mural.life, painted_writings.life
 
-[ LagachLife i r local3 ;	! 63748 / 0xf904
+[ LagachLife i r flag ;	! 63748 / 0xf904
     if (action == ##Action259) {
-        local3 = 1[?];
+        flag = true;
         if (painting_of_Mad_Isaac_Meldrewe notin White_Hallway || painting_of_Mad_Isaac_Meldrewe has moved) {
-            local3 = 0;
+            flag = false;
         }
-        if (selfobj == painting_of_Mad_Isaac_Meldrewe && local3 == 0) {
+        if (selfobj == painting_of_Mad_Isaac_Meldrewe && flag == false) {
             "A breeze ripples the canvas of the unanchored painting, but that's all.";
         }
         if (verb ~= ##Lagach) {
@@ -9603,7 +9603,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         r = carbolic_soap;
       .label63996;
-        if (r hasnt visited || (r == White_Hallway && local3 == 0)) {
+        if (r hasnt visited || (r == White_Hallway && flag == false)) {
             if (i++ == 8) {
                 i = 1;
             }
