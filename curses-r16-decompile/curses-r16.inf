@@ -10987,7 +10987,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         rfalse;
     }
-    if (action == ##Action256) {
+    if (action == ##Release) {
         if (selfobj has on) {
             routine79624(0);
             rtrue;
@@ -12529,7 +12529,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         rfalse;
     }
-    if (action == ##Action256) {
+    if (action == ##Release) {
         "There's nothing within reach inside.";
     }
     rfalse;
@@ -20366,7 +20366,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (i has container || i has supporter) {
         postonobj = i;
         k = verb;
-        verb = ##Action256;
+        verb = ##Release;
         if (RunRoutines(i,after) ~= 0) {
             verb = k;
             rtrue;
@@ -20442,7 +20442,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     move noun to player;
     if (postonobj ~= 0) {
         k = verb;
-        verb = ##Action256;
+        verb = ##Release;
         if (RunRoutines(postonobj,before) ~= 0) {
             verb = k;
             rtrue;
@@ -20677,7 +20677,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local5 has container || local5 has supporter) {
             local4 = local5;
             local3 = verb;
-            verb = ##Action256;
+            verb = ##Release;
             if (RunRoutines(local5,after) ~= 0) {
                 verb = local3;
                 rtrue;
@@ -20687,7 +20687,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         move noun to player;
         if (local4 ~= 0) {
             local3 = verb;
-            verb = ##Action256;
+            verb = ##Release;
             if (RunRoutines(local4,before) ~= 0) {
                 verb = local3;
                 rtrue;
