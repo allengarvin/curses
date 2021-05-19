@@ -1242,7 +1242,7 @@ Object -> hanging_cord "hanging cord"	! 61 / 0x3d
 
 Object -> -> golden_orb "glowing golden orb"	! 393 / 0x189
   with	name 'glowing' 'golden' 'orb',
-	after routine129592,
+	after GlowingOrbAfter,
 	initial "Sitting on the grass, beside the well, is a glowing golden orb.",
 	description "A treasure in every sense, but misted over, like condensation on a cold window. Odd shapes seem visible through the haze: a horse's head, castle walls, a priest's crook.",
   has	scored;
@@ -1974,8 +1974,8 @@ Object -> umbrella_stand "umbrella stand"	! 152 / 0x98
 
 Object -> -> model_golden_sceptre "model golden sceptre"	! 430 / 0x1ae
   with	name 'model' 'golden' 'gold' 'sceptre',
-	after routine135680,
-	before routine135656,
+	after SceptreAfter,
+	before SceptreBefore,
 	initial nothing,
 	description "A copy, half-size, of the one from Tutenkhamun's sarcophagus. It isn't real gold, either.",
 	time_left 0,
@@ -3677,18 +3677,18 @@ Object Melancholy_Dream "Melancholy Dream"	! 369 / 0x171
 	d_to nothing,
 	description "A strangely familiar, dusty passage, sloping down from a southern end bathed in hostile light to some kind of metal barrier in the north.",
 	cant_go routine124792,
-	each_turn routine126200,
+	each_turn DreamEachTurn,
 	section (T_DREAMING|T_UNREAL),
   has	light;
 
 Object -> metal_barrier "metal barrier"	! 370 / 0x172
   with	name 'metal' 'barrier',
-	after routine126404,
+	after BarrierAfter,
   has	scenery;
 
 Object green_luminescence "flurries of green luminescence"	! 371 / 0x173
   with	name 'green' 'flurries' 'of' 'luminesce',
-	after routine126480,
+	after LumnescenceAfter,
 	initial "Flurries of green luminescence whirl endlessly around you, west to east and over.",
 	description "The flurries have almost endless fascination... but you manage to tear your eyes away after, oh, an hour?",
   has	static;
@@ -3720,7 +3720,7 @@ Object -> hieroglyphic_symbols "hieroglyphic symbols"	! 374 / 0x176
 
 Object -> ships_wheel "ship's wheel"	! 375 / 0x177
   with	name 'ships' 'wheel',
-	after routine126724,
+	after ShipWheelAfter,
 	initial "A kind of ship's wheel (of eight-spoked timber) is affixed to the northwest wall.",
   has	static;
 
@@ -3728,7 +3728,7 @@ Object Crypt "Crypt"	! 376 / 0x178
   with	s_to bronze_mural,
 	u_to Patio_in_Maze,
 	d_to bronze_mural,
-	initial routine126924,
+	initial CryptInitial,
 	description "A dismal crypt, disused, rainswept and strewn with leaves. Light streams in from the square hole in the roof. There are no bones or urns on show.",
 	section T_CATACOMBS,
   has	light;
@@ -3805,23 +3805,23 @@ Object aluminium_staircase "aluminium staircase"	! 384 / 0x180
 
 Object CR "CR"	! 385 / 0x181
   with	name 'basket' 'seesaw' 'hand' 'cannon' 'glass',
-	before routine127564,
+	before CRBefore,
 	n_to metal_wall,
 	s_to nothing,
-	e_to routine127508,
+	e_to CREast,
 	description "The cartoonist Heath Robinson used to specialise in drawings of fantastically complicated machines of string, pulleys, levers, counterweights, cogs, mice running about on wheels and the like. Just such a contraption fills the west end of this room, though most of the workings are behind a glass wall which, although running with age, is as solid as the day it was built. The parts are very old (hand-made, not machined) but uncorroded.^^The only way out appears to be via the crawl to the east.",
 	number [0 2],
-	short routine127464,
+	short CRShort,
 	section T_CATACOMBS,
   has	;
 
 Object -> metal_wall "metal wall"	! 386 / 0x182
   with	name 'mirror' 'metal' 'bronze' 'wall' 'sheet' 'amber',
-	after routine127904,
+	after MetalWallAfter,
 	n_to CR,
 	s_to "The north edge of the room is a big sheet of dull amber-coloured metal.",
 	w_to w_obj,
-	initial routine127832,
+	initial MetalWallInitial,
 	description "Someone rather good-looking (you can't help thinking) is reflected in the metal surface.",
   has	door static;
 
@@ -3833,13 +3833,13 @@ Object -> iron_grid "iron grid"	! 387 / 0x183
 
 Object -> glowing_golden_orb "glowing golden orb"	! 388 / 0x184
   with	name 'glowing' 'golden' 'orb',
-	after routine128404,
+	after CannonballAfter,
 	description "How tantalisingly valuable it seems.",
   has	scenery;
 
 Object -> cannonball "cannonball"	! 389 / 0x185
   with	name 'cannon' 'ball' 'cannonball',
-	after routine128404,
+	after CannonballAfter,
 	description "Solid, heavy, reliable, out of reach on the other side of the glass.",
   has	scenery;
 
@@ -3852,23 +3852,23 @@ Object Universe_Maintenance_Room "Universe Maintenance Room"	! 390 / 0x186
 
 Object -> big_electricians_switch "big electrician's switch"	! 391 / 0x187
   with	name 'big' 'electricians' 'switch',
-	before routine129292,
+	before SwitchBefore,
 	description "The lower, on, position is labelled ~Determinism~. The upper, off, position is labelled ~Chance~.",
   has	on scenery static switchable;
 
 Object -> large_dial "large dial"	! 392 / 0x188
   with	name 'large' 'dial' 'gauges' 'dials',
-	after routine129376,
+	after DialAfter,
 	initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.",
 	description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
   has	static;
 
 Object Inside_the_Orb "Inside the Orb"	! 394 / 0x18a
   with	name 'light',
-	before routine129760,
+	before InOrbBefore,
 	description "You half-stand, half-float in a golden, misty sphere perhaps ten yards across, which slowly spins. The centre, out of reach and somehow insubstantial, is an eight-by-eight lattice of oblong crystals, bathed in warm pearly light.",
 	time_left 0,
-	each_turn routine129804,
+	each_turn InOrbEachTurn,
 	section T_CATACOMBS,
   has	light;
 
@@ -3880,32 +3880,32 @@ Object -> array_of_oblong_crystals "array of oblong crystals"	! 395 / 0x18b
   has	static;
 
 Object Causeway "Causeway"	! 396 / 0x18c
-  with	after routine130472,
+  with	after CausewayAfter,
 	n_to Island_of_Pharos,
 	se_to Crossroads,
-	initial routine130540,
+	initial CausewayInitial,
 	description "A warm winter's night in the ancient city of Alexandria, on the Heptastadion causeway across the harbour to the Island of Pharos (to north). The Mediterranean waters lap against the land bridge, and the whole city (southeast) is lit up with torches: it is a night of celebration.",
 	time_left 2,
-	daemon routine130560,
+	daemon CausewayDaemon,
 	section T_ALEXANDRIA,
   has	light;
 
 Object Island_of_Pharos "Island of Pharos"	! 397 / 0x18d
   with	name 'pharos' 'lighthouse' 'moon' 'circle' 'octagon' 'square' 'defences' 'causeway' 'island' 'harbour',
-	after routine130472,
+	after CausewayAfter,
 	s_to Causeway,
 	u_to "The Pharos is unclimbable, alas.",
 	d_to rusty_iron_grating,
 	description "The island of the Pharos: the lighthouse after which others are named, one of the Seven Wonders of the World, blazes into the sharp moonlit sky. It is 120 metres high, a circle on an octagon on a square.^^A light wind blows across the coastal defences. On this spot, seventy-two scholars first translated the Old Testament into Greek: shivering continuously if it was as chilly as this. A narrow causeway runs south across the harbour.",
 	cant_go "The causeway is the only land route off the island.",
-	daemon routine131608,
-	each_turn routine131540,
+	daemon PharosDaemon,
+	each_turn PharosEachTurn,
 	section T_ALEXANDRIA,
   has	light;
 
 Object -> rusty_iron_grating "rusty iron grating"	! 398 / 0x18e
   with	name 'rusty' 'iron' 'grating' 'seaweed' 'grate' 'rusted',
-	after routine131812,
+	after IronGratingAfter,
 	n_to Jetty,
 	s_to "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
 	e_to rusty_iron_key,
@@ -3915,17 +3915,17 @@ Object -> rusty_iron_grating "rusty iron grating"	! 398 / 0x18e
 
 Object -> rusty_iron_key "rusty iron key"	! 399 / 0x18f
   with	name 'rusty' 'iron' 'key',
-	after routine132056,
+	after RustyKeyAfter,
 	nw_to Compass,
 	initial "Interestingly, a key which looks as if it would fit the grating can be seen inside the passage beneath.",
 	angel_hint "Oh dear, surely it's gratingly obvious what this fits?",
   has	;
 
 Object Jetty "Jetty"	! 400 / 0x190
-  with	after routine130472,
+  with	after CausewayAfter,
 	u_to Island_of_Pharos,
 	description "Down on a dark stone jetty, where the waters of the Alexandrian harbour splash insistently. Rough-hewn steps rise up the island through the grating.",
-	each_turn routine132112,
+	each_turn JettyEachTurn,
 	section T_ALEXANDRIA,
   has	light scored cat_nofollow;
 
@@ -3944,25 +3944,25 @@ Object -> -> adamantine_heart "adamantine heart"	! 402 / 0x192
   has	;
 
 Object Harbour_Mouth "Harbour Mouth"	! 403 / 0x193
-  with	after routine132216,
+  with	after HarbourMouthAfter,
 	description "As the skiff passes the jaws of the Royal Harbour, beneath the great Pharos light, you have a final view of the receding civilisation of Alexandria: ahead lies the vast, oil-calm Mediterranean and moonlight on the waters.",
 	cant_go "The skiff is not under your control.",
-	each_turn routine132276,
+	each_turn HarbourMouthEachTurn,
 	section T_ALEXANDRIA,
   has	light cat_nofollow;
 
 Object Drifting "Drifting"	! 404 / 0x194
   with	name 'curious' 'fish' 'zephyr' 'sea',
-	after routine132216,
+	after HarbourMouthAfter,
 	description "You drift in the wide, peaceful Lunar sea. Curious fish, their yellow-green eyes gleaming beneath the silver ripples, brush past your wake: the night zephyr is almost slack but still you drift. Minutes pass like hours in paradise.",
 	cant_go "You feel only a drug-like calm.",
-	each_turn routine132340,
+	each_turn DriftingEachTurn,
 	section T_ALEXANDRIA,
   has	light cat_nofollow;
 
 Object Crossroads "Crossroads"	! 405 / 0x195
   with	name 'processio' 'tower',
-	after routine132404,
+	after CrossroadsAfter,
 	ne_to Outside_the_Royal_Museum,
 	se_to A_Tower,
 	nw_to Causeway,
@@ -3988,7 +3988,7 @@ Object -> birds_of_prey "birds of prey"	! 407 / 0x197
 
 Object unexciting_tombstone "unexciting tombstone"	! 408 / 0x198
   with	name 'tomb' 'tombstone' 'stone' 'unexcitin' 'face' 'socket' 'steps' 'mouth',
-	after routine132568,
+	after TombstoneAfter,
 	n_to The_Height_of_Fashion,
 	s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
 	w_to thedark,
@@ -3998,7 +3998,7 @@ Object unexciting_tombstone "unexciting tombstone"	! 408 / 0x198
 
 Object cloak_of_many_colours "cloak of many colours"	! 409 / 0x199
   with	name 'of' 'many' 'colours' 'cloak' 'coat' 'chlamys',
-	after routine132776,
+	after CloakAfter,
 	initial "A cloak of many colours lies folded on it.",
 	description "A fine cloak, grey-lined, sapphire-encrusted, rippled across with rainbow fabrics from the trade routes of the world.",
 	angel_hint "Are you sure it isn't inside out?",
@@ -4006,13 +4006,13 @@ Object cloak_of_many_colours "cloak of many colours"	! 409 / 0x199
 
 Object grey_cloak "grey cloak"	! 410 / 0x19a
   with	name 'grey' 'cloak' 'coat' 'chlamys',
-	after routine132776,
+	after CloakAfter,
 	description "A fine grey cloak, sapphire-encrusted, lined with rainbow fabrics from the trade routes of the world.",
 	angel_hint "Are you sure it isn't inside out?",
   has	clothing;
 
 Object XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"	! 411 / 0x19b
-  with	after routine132888,
+  with	after PyramidAfter,
 	n_to Necropolis,
 	description "Ransacked, dimly-lit, cramped and empty, this rough-built and uneven burial mound is to the Great Pyramids of Giza (built just a century before) what the summerhouse in your garden is to Windsor Castle. There are only dull painted writings, an unpleasant odour and a passage out to the north.",
 	section T_ALEXANDRIA,
@@ -4027,8 +4027,8 @@ Object -> painted_writings "painted writings"	! 412 / 0x19c
 
 Object The_Height_of_Fashion "The Height of Fashion"	! 413 / 0x19d
   with	name 'table' 'panelling' 'doorway' 'door',
-	after routine132972,
-	w_to routine133044,
+	after HeightFashionAfter,
+	w_to HeightFashionWest,
 	u_to Necropolis,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling. This is the latest in modern funerary apartments.^^There's a couch for visitors, a table, a flight of steps up and a doorway to the west, flanked by two stone sphinxes.",
 	section T_ALEXANDRIA,
@@ -4048,19 +4048,19 @@ Object -> wooden_couch "wooden couch"	! 415 / 0x19f
 
 Object stone_nose_of_a_sphinx "stone nose of a sphinx"	! 416 / 0x1a0
   with	name 'stone' 'nose',
-	after routine133108,
+	after NoseAfter,
 	initial "One of the sphinxes does have rather a prominent nose, it must be said.",
 	description "Splendid.",
   has	static;
 
 Object The_Spirit_World "The Spirit World"	! 417 / 0x1a1
   with	name 'table' 'panelling' 'doorway' 'door',
-	after routine133428,
-	before routine133704,
-	w_to routine133240,
+	after SpiritWorldAfter,
+	before SpiritWorldBefore,
+	w_to SpiritWorldWest,
 	description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling, at the foot of a flight of steps which leads only to a sealed wall.",
 	time_left 1,
-	each_turn routine133912,
+	each_turn SpiritWorldEachTurn,
 	section T_SPIRIT_WORLD,
   has	light scored;
 
@@ -4078,7 +4078,7 @@ Object -> wooden_couch "wooden couch"	! 419 / 0x1a3
 
 Object Napoleonic_officers "Napoleonic officers"	! 420 / 0x1a4
   with	name 'napoleoni' 'officers' 'soldiers' 'officer' 'soldier' 'lanterns',
-	life routine134572,
+	life OfficerLife,
 	initial "Two Napoleonic officers stand awestruck as light splashes from their lanterns over the riches of the tomb.",
 	description "The officers wear the uniforms of the Emperor's 1798 occupation of the Nile Delta, and carry fine brass lanterns.",
 	article "two",
@@ -4099,7 +4099,7 @@ Object -> model_of_ugly_animal "model of an animal so ugly you can't bear to loo
   with	name 'model' 'animal' 'ugly' 'monkey',
 	initial "Despite the tasteful decor, the most hideously ugly model animal you have ever seen sits on a little shelf here.",
 	description "You simply can't bear to look. It might be a monkey... at least it has a tail... No. No, you have to look away.",
-	short routine134624,
+	short UglyAnimalShort,
 	devil_hint "Exquisite. Simply charming.",
 	angel_hint "Oh dear.",
   has	;
@@ -4113,7 +4113,7 @@ Object -> marble_wall "marble wall"	! 423 / 0x1a7
   has	door static;
 
 Object Quite_an_Undertaking "Quite an Undertaking"	! 424 / 0x1a8
-  with	after routine134680,
+  with	after UndertakingAfter,
 	e_to This_Is_The_Death,
 	u_to This_Is_The_Death,
 	description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
@@ -4128,14 +4128,14 @@ Object -> painting_of_the_priest "painting of the priest"	! 425 / 0x1a9
 
 Object -> mummy_case "mummy case"	! 426 / 0x1aa
   with	name 'mummy' 'case' 'lid' 'sarcophag' 'coffin',
-	after routine134932,
+	after MummyCaseAfter,
 	initial "A beautiful gold and blue mummy case, or sarcophagus, rests massively here.",
 	description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
   has	enterable static;
 
 Object -> first_socket "first socket"	! 427 / 0x1ab
   with	name 'first' 'socket' 'sockets' 'words',
-	after routine135524,
+	after SocketAfter,
 	description " .Above ",
 	article "the",
 	time_left 1,
@@ -4143,7 +4143,7 @@ Object -> first_socket "first socket"	! 427 / 0x1ab
 
 Object -> second_socket "second socket"	! 428 / 0x1ac
   with	name 'second' 'socket' 'sockets' 'words',
-	after routine135524,
+	after SocketAfter,
 	description " .Above ",
 	article "the",
 	time_left 1,
@@ -4151,18 +4151,18 @@ Object -> second_socket "second socket"	! 428 / 0x1ac
 
 Object -> third_socket "third socket"	! 429 / 0x1ad
   with	name 'third' 'socket' 'sockets' 'words',
-	after routine135524,
+	after SocketAfter,
 	description " .Above ",
 	article "the",
 	time_left 1,
   has	scenery;
 
 Object Buried_Alive "Buried Alive"	! 431 / 0x1af
-  with	after routine136036,
+  with	after BuriedAfter,
 	u_to Sarcophagus,
 	description "You lie in the mummy case, your arms folded across each other, face grimaced, running out of air rapidly and with almost no room to maneouvre. The coffin lid is about ten times heavier than you, and its seal is very good.",
 	time_left 5,
-	each_turn routine136372,
+	each_turn BuriedEachTurn,
 	section T_ALEXANDRIA,
   has	light cat_nofollow;
 
@@ -4192,10 +4192,10 @@ Object Outside_the_Theatre "Outside the Theatre"	! 434 / 0x1b2
 Object Outside_the_Royal_Museum "Outside the Royal Museum"	! 435 / 0x1b3
   with	n_to Outside_the_Theatre,
 	ne_to Stadium,
-	se_to routine136564,
+	se_to OutsideRoyalMuseumSE,
 	nw_to Crossroads,
 	description "The main southwest-northeast road forks off with a road due north to the Theatre. Despite the kaleidoscopic din you are impressed by the sober majesty of the Museum of the Ptolemies, whose fine portico entrance, decked with reliefs, is southeast.",
-	daemon routine136876,
+	daemon OutsideRoyalMuseumDaemon,
 	section T_ALEXANDRIA,
   has	light;
 
@@ -4213,7 +4213,7 @@ Object A_Tower "A Tower"	! 437 / 0x1b5
 
 Object -> defaced_door "defaced door"	! 438 / 0x1b6
   with	name 'defaced' 'sosostris' 'door' 'writings' 'scripts',
-	after routine136924,
+	after DefacedDoorAfter,
 	n_to Consulting_Room,
 	s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
 	w_to in_obj,
@@ -4230,7 +4230,7 @@ Object Consulting_Room "Consulting Room"	! 439 / 0x1b7
 
 Object -> table "table"	! 440 / 0x1b8
   with	name 'bare' 'table',
-	after routine137036,
+	after TableAfter,
 	description "Madame Sosostris stares at it fixedly as she meditates.",
   has	scenery supporter;
 
@@ -4241,14 +4241,14 @@ Object -> curtain "curtain"	! 441 / 0x1b9
 
 Object -> Madame_Sosostris "Madame Sosostris, famous clairvoyante"	! 442 / 0x1ba
   with	name 'sosostris' 'madame' 'clairvoyant',
-	life routine137336,
+	life SosostrisLife,
 	initial "Madame Sosostris, famous clairvoyante, meditates here.",
 	description "Known to be the wisest woman in Asia Minor.",
   has	animate proper;
 
 Object quarterstaff "green oak quarterstaff"	! 443 / 0x1bb
   with	name 'green' 'oak' 'staff' 'quarterst' 'quarter' 'beam' 'wooden',
-	after routine137436,
+	after QuarterstaffAfter,
 	initial "You seem to have dislodged one of the wooden beams used by the tomb's builders: a useful length of greenish oak.",
 	description "It needs to be left to mature, and yet there's something awfully familiar about it.",
 	devil_hint "Ready to use.",
@@ -4262,7 +4262,7 @@ Object silver_keepsake "silver keepsake"	! 444 / 0x1bc
   has	clothing;
 
 Object Warehouses_and_Port "Warehouses and Port"	! 445 / 0x1bd
-  with	after routine130472,
+  with	after CausewayAfter,
 	e_to Outside_the_Theatre,
 	description "Down by the sea-front, in the old harbourlands, surrounded by warehouses. The Mediterranean laps darkly against the hard, splashing an occasional wave up the slope. The city, and the party, lie back east.",
 	cant_go "There's nowhere to go but the city, east.",
@@ -4271,8 +4271,8 @@ Object Warehouses_and_Port "Warehouses and Port"	! 445 / 0x1bd
 
 Object -> gambling_sailor "gambling sailor"	! 446 / 0x1be
   with	name 'sailor' 'gambling' 'gambler' 'grizzled',
-	after routine137476,
-	life routine137492,
+	after SailorAfter,
+	life SailorLife,
 	initial "A grizzled sailor sits at a harbourside table.",
 	each_turn GamblingSailorEachTurn,
   has	animate;
@@ -16349,7 +16349,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Melancholy_Dream.each_turn
 
-[ routine126200 ;	! 126200 / 0x1ecf8
+[ DreamEachTurn ;	! 126200 / 0x1ecf8
     ++global161;
     if (global161 ~= 2[?]) {
         rfalse;
@@ -16362,13 +16362,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: metal_barrier.after
 
-[ routine126404 ;	! 126404 / 0x1edc4
+[ BarrierAfter ;	! 126404 / 0x1edc4
     "The metal barrier is indistinct, on the edge of your consciousness, and you can't get close. However familiar it seems.";
 ];
 
 ! References: green_luminescence.after, old_village_clock.name
 
-[ routine126480 ;	! 126480 / 0x1ee10
+[ LumnescenceAfter ;	! 126480 / 0x1ee10
     if (action == ##Take or ##Remove or ##Touch) {
         "You bat at the flurries with your hand, but they're just green light (with the tiniest mosquito-sting).";
     }
@@ -16377,7 +16377,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hieroglyphic_symbols.description, Stone_Cross.name, Goat_and_Compasses.name
 
-[ routine126552 ;	! 126552 / 0x1ee58
+[ HieroglyphsDescription ;	! 126552 / 0x1ee58
     print "Your dream eye is caught by...^^";
     0-->8 = 2 | 0-->8;
     print "       (|/        ^   #   -o-  >>>   ^       /|)        ^";
@@ -16387,7 +16387,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: ships_wheel.after
 
-[ routine126724 ;	! 126724 / 0x1ef04
+[ ShipWheelAfter ;	! 126724 / 0x1ef04
     if (action == ##Turn) {
         if (selfobj has general) {
             "Your hands seem unable to touch it again.";
@@ -16401,7 +16401,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Crypt.initial
 
-[ routine126924 ;	! 126924 / 0x1efcc
+[ CryptInitial ;	! 126924 / 0x1efcc
     global152 = 7[se_obj?];
     global153 = 5[w_obj?];
     rfalse;
@@ -16493,7 +16493,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: CR.short
 
-[ routine127464 ;	! 127464 / 0x1f1e8
+[ CRShort ;	! 127464 / 0x1f1e8
     if (selfobj.number == 3[s_obj?]) {
         print "Contraption Reflection";
     } else {
@@ -16504,7 +16504,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: CR.e_to
 
-[ routine127508 ;	! 127508 / 0x1f214
+[ CREast ;	! 127508 / 0x1f214
     if (selfobj.number == 3[s_obj?]) {
         "You bump into an invisible barrier - perhaps the edge of the reflection.";
     }
@@ -16513,7 +16513,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: CR.before
 
-[ routine127564 ;	! 127564 / 0x1f24c
+[ CRBefore ;	! 127564 / 0x1f24c
     if (action == ##Go or ##Enter) {
         if (noun == n_obj or s_obj or metal_wall) {
             print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly the same...^";
@@ -16554,7 +16554,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: metal_wall.initial
 
-[ routine127832 ;	! 127832 / 0x1f358
+[ MetalWallInitial ;	! 127832 / 0x1f358
     print "The whole ";
     if (CR.number == 2[?]) {
         print "north";
@@ -16566,7 +16566,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: metal_wall.after
 
-[ routine127904 ;	! 127904 / 0x1f3a0
+[ MetalWallAfter ;	! 127904 / 0x1f3a0
     if (action == ##Clean) {
         "You polish the metal a little, but there's far too much to do by hand.";
     }
@@ -16591,7 +16591,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: iron_grid.description
 
-[ routine128252 ;	! 128252 / 0x1f4fc
+[ GridDesc ;	! 128252 / 0x1f4fc
     print "There are fourteen pieces in the grid, and one gap. The pieces have letters upon them ";
     if (CR.number == 3[s_obj?]) {
         print "(in reflected script) ";
@@ -16603,7 +16603,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: glowing_golden_orb.after, cannonball.after
 
-[ routine128404 ;	! 128404 / 0x1f594
+[ CannonballAfter ;	! 128404 / 0x1f594
     if (verb ~= ##Read) {
         "It is out of reach, beyond the glass.";
     }
@@ -16717,7 +16717,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: big_electricians_switch.before
 
-[ routine129292 ;	! 129292 / 0x1f90c
+[ SwitchBefore ;	! 129292 / 0x1f90c
     if (action == ##SwitchOn) {
         "Click-clunk!  The world looks precisely the same.";
     }
@@ -16729,7 +16729,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: large_dial.after
 
-[ routine129376 ;	! 129376 / 0x1f960
+[ DialAfter ;	! 129376 / 0x1f960
     if (action == ##Turn) {
         if (global164 == 0) {
             global164 = 1[?];
@@ -16745,7 +16745,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: golden_orb.after
 
-[ routine129592 ;	! 129592 / 0x1fa38
+[ GlowingOrbAfter ;	! 129592 / 0x1fa38
     if (action == ##Clean) {
         if (selfobj has general) {
             "It shines already!";
@@ -16762,7 +16762,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Inside_the_Orb.before
 
-[ routine129760 ;	! 129760 / 0x1fae0
+[ InOrbBefore ;	! 129760 / 0x1fae0
     if (action == ##Strike) {
         "The sphere rings with a hollow noise, but the rod charges up.";
     }
@@ -16771,7 +16771,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Inside_the_Orb.each_turn
 
-[ routine129804 local1 local2 ;	! 129804 / 0x1fb0c
+[ InOrbEachTurn local1 local2 ;	! 129804 / 0x1fb0c
     local1 = Inside_the_Orb.time_left + 1;
     Inside_the_Orb.time_left = local1;
     if (local1 == 1[?]) {
@@ -16817,7 +16817,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Causeway.after, Island_of_Pharos.after, Jetty.after, Warehouses_and_Port.after
 
-[ routine130472 ;	! 130472 / 0x1fda8
+[ CausewayAfter ;	! 130472 / 0x1fda8
     if (action == ##Drink) {
         "Drink warm salty water?  No.";
     }
@@ -16829,7 +16829,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Causeway.initial
 
-[ routine130540 ;	! 130540 / 0x1fdec
+[ CausewayInitial ;	! 130540 / 0x1fdec
     StartDaemon(selfobj);
     if (Austin in selfobj) {
         StartDaemon(Outside_the_Royal_Museum);
@@ -16839,7 +16839,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Causeway.daemon
 
-[ routine130560 local1 ;	! 130560 / 0x1fe00
+[ CausewayDaemon local1 ;	! 130560 / 0x1fe00
     if (game_section ~= T_ALEXANDRIA) {
         rfalse;
     }
@@ -16886,7 +16886,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Island_of_Pharos.each_turn
 
-[ routine131540 ;	! 131540 / 0x201d4
+[ PharosEachTurn ;	! 131540 / 0x201d4
     if (random(5) ~= 1) {
         "^Down below, a wave splashes against the sea front, briefly washing up under the grating.";
     }
@@ -16895,7 +16895,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Island_of_Pharos.daemon
 
-[ routine131608 ;	! 131608 / 0x20218
+[ PharosDaemon ;	! 131608 / 0x20218
     if (random(5) ~= 1) {
         rfalse;
     }
@@ -16920,7 +16920,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rusty_iron_grating.after
 
-[ routine131812 ;	! 131812 / 0x202e4
+[ IronGratingAfter ;	! 131812 / 0x202e4
     if (action == ##Receive) {
         if (noun == player) {
             "The bars are far too close together.";
@@ -16945,7 +16945,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rusty_iron_key.after
 
-[ routine132056 ;	! 132056 / 0x203d8
+[ RustyKeyAfter ;	! 132056 / 0x203d8
     if (action == ##Take && rusty_iron_key hasnt general) {
         "Reach down the grating as you may, it remains just beyond reach.";
     }
@@ -16954,7 +16954,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Jetty.each_turn
 
-[ routine132112 ;	! 132112 / 0x20410
+[ JettyEachTurn ;	! 132112 / 0x20410
     if (random(4) ~= 1) {
         rfalse;
     }
@@ -16966,7 +16966,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Harbour_Mouth.after, Drifting.after
 
-[ routine132216 ;	! 132216 / 0x20478
+[ HarbourMouthAfter ;	! 132216 / 0x20478
     if (action == ##Exit or ##Swim) {
         "The sepulchral calm of the ocean overwhelms you, and you can only watch and sail.";
     }
@@ -16975,7 +16975,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: fig.name, Harbour_Mouth.each_turn
 
-[ routine132276 ;	! 132276 / 0x204b4
+[ HarbourMouthEachTurn ;	! 132276 / 0x204b4
     if (Harbour_Mouth has general) {
         print "^The sails billow, then slacken...^";
         move skiff to Drifting;
@@ -16990,7 +16990,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Drifting.each_turn
 
-[ routine132340 ;	! 132340 / 0x204f4
+[ DriftingEachTurn ;	! 132340 / 0x204f4
     print "^Light brightens into day. The skiff drifts, drifts upon...^";
     move skiff to Garden_Stream;
     location = Garden_Stream;
@@ -17000,7 +17000,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Crossroads.after
 
-[ routine132404 ;	! 132404 / 0x20534
+[ CrossroadsAfter ;	! 132404 / 0x20534
     if (action == ##Go) {
         if (noun == ne_obj && cloak_of_many_colours has worn) {
             print "The procession happily accommodates another crazily-dressed loon.^";
@@ -17016,7 +17016,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: unexciting_tombstone.after
 
-[ routine132568 ;	! 132568 / 0x205d8
+[ TombstoneAfter ;	! 132568 / 0x205d8
     if (action == ##Receive) {
         if (noun ~= gleaming_amber_gem) {
             "Doesn't seem to fit.";
@@ -17035,7 +17035,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: cloak_of_many_colours.after, grey_cloak.after
 
-[ routine132776 ;	! 132776 / 0x206a8
+[ CloakAfter ;	! 132776 / 0x206a8
     if (action == ##Turn or ##SwitchOn) {
         if (noun has worn) {
             "Not while you're wearing it.";
@@ -17059,7 +17059,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: photographers_flash.name, XIIth_Dynasty_Pyramid.after
 
-[ routine132888 ;	! 132888 / 0x20718
+[ PyramidAfter ;	! 132888 / 0x20718
     if (action == ##Smell) {
         "Why do you only ever smell hard in unpleasant places?  The odour is repulsive in a termites-and-honey kind of way.";
     }
@@ -17068,7 +17068,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Height_of_Fashion.after
 
-[ routine132972 ;	! 132972 / 0x2076c
+[ HeightFashionAfter ;	! 132972 / 0x2076c
     if (action == ##Sleep) {
         if (player in wooden_couch) {
             print "The heavy weave mattings feel so restful that you slide into...^";
@@ -17083,7 +17083,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Height_of_Fashion.w_to
 
-[ routine133044 ;	! 133044 / 0x207b4
+[ HeightFashionWest ;	! 133044 / 0x207b4
     if (player notin location) {
         "First get up.";
     }
@@ -17093,7 +17093,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: stone_nose_of_a_sphinx.after
 
-[ routine133108 ;	! 133108 / 0x207f4
+[ NoseAfter ;	! 133108 / 0x207f4
     if (action == ##Push or ##Pull) {
         "It is made of stone, you know.";
     }
@@ -17114,7 +17114,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Spirit_World.w_to
 
-[ routine133240 ;	! 133240 / 0x20878
+[ SpiritWorldWest ;	! 133240 / 0x20878
     print "The spirits of the sphinxes prowl across the doorway, paws raised, and then lunge towards you. Their claws rake across your skin, tearing off a layer, unwrapping you in a curiously painless way... and you wake...^";
     if (The_Spirit_World.time_left == 1) {
         move player to wooden_couch;
@@ -17130,7 +17130,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: fore_obj.name, The_Spirit_World.after
 
-[ routine133428 ;	! 133428 / 0x20934
+[ SpiritWorldAfter ;	! 133428 / 0x20934
     if (action == ##Go) {
         if (noun == w_obj) {
             rfalse;
@@ -17160,7 +17160,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Spirit_World.before
 
-[ routine133704 local1 ;	! 133704 / 0x20a48
+[ SpiritWorldBefore local1 ;	! 133704 / 0x20a48
     if (action == ##Look) {
         local1 = The_Spirit_World.time_left;
         if (local1 == 1[?]) {
@@ -17185,7 +17185,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Spirit_World.each_turn
 
-[ routine133912 ;	! 133912 / 0x20b18
+[ SpiritWorldEachTurn ;	! 133912 / 0x20b18
     if (The_Spirit_World.time_left < 4) {
         rfalse;
     }
@@ -17223,7 +17223,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Napoleonic_officers.life
 
-[ routine134572 ;	! 134572 / 0x20dac
+[ OfficerLife ;	! 134572 / 0x20dac
     if (action == ##Kiss or ##Attack) {
         "Your body passes through them.";
     }
@@ -17235,7 +17235,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: model_of_ugly_animal.short
 
-[ routine134624 ;	! 134624 / 0x20de0
+[ UglyAnimalShort ;	! 134624 / 0x20de0
     if (selfobj hasnt general) {
         rfalse;
     }
@@ -17245,7 +17245,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Quite_an_Undertaking.after
 
-[ routine134680 ;	! 134680 / 0x20e18
+[ UndertakingAfter ;	! 134680 / 0x20e18
     if (player in mummy_case) {
         if (verb == ##Exit) {
             print "(That's a relief.)^";
@@ -17273,7 +17273,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: mummy_case.after
 
-[ routine134932 ;	! 134932 / 0x20f14
+[ MummyCaseAfter ;	! 134932 / 0x20f14
     if (action == ##Open) {
         if (selfobj hasnt open) {
             "The lid must weigh a ton. You can't shift it.";
@@ -17307,7 +17307,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: first_socket.description, second_socket.description, third_socket.description
 
-[ routine135484 ;	! 135484 / 0x2113c
+[ SocketDesc ;	! 135484 / 0x2113c
     print "Above ";
     Defart(selfobj);
     print " is the single word ~";
@@ -17317,7 +17317,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: first_socket.after, second_socket.after, third_socket.after
 
-[ routine135524 ;	! 135524 / 0x21164
+[ SocketAfter ;	! 135524 / 0x21164
     if (action == ##Receive) {
         if (noun == model_golden_sceptre) {
             model_golden_sceptre.time_left = selfobj;
@@ -17343,7 +17343,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: model_golden_sceptre.before
 
-[ routine135656 ;	! 135656 / 0x211e8
+[ SceptreBefore ;	! 135656 / 0x211e8
     if (action == ##Take or ##Remove) {
         if (location == Quite_an_Undertaking) {
             selfobj.time_left = 0;
@@ -17355,7 +17355,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: model_golden_sceptre.after
 
-[ routine135680 local1 ;	! 135680 / 0x21200
+[ SceptreAfter local1 ;	! 135680 / 0x21200
     if (action == ##Wave) {
         "Apparently, it's not susceptible to that.";
     }
@@ -17389,7 +17389,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Buried_Alive.after
 
-[ routine136036 ;	! 136036 / 0x21364
+[ BuriedAfter ;	! 136036 / 0x21364
     if (verb == ##Look or ##Wait or ##Inv) {
         rfalse;
     }
@@ -17414,7 +17414,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Buried_Alive.each_turn
 
-[ routine136372 local1 ;	! 136372 / 0x214b4
+[ BuriedEachTurn local1 ;	! 136372 / 0x214b4
     local1 = Buried_Alive.time_left - 1;
     Buried_Alive.time_left = local1;
     if (local1 == 0) {
@@ -17432,7 +17432,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Outside_the_Royal_Museum.se_to
 
-[ routine136564 ;	! 136564 / 0x21574
+[ OutsideRoyalMuseumSE ;	! 136564 / 0x21574
     if (purple_sash has worn) {
         print "Seeing that you're wearing the sash of a Librarian, the guards part to allow you entrance.^";
         return 448[The_Birdcage_of_the_Muses?];
@@ -17449,7 +17449,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Outside_the_Royal_Museum.daemon
 
-[ routine136876 ;	! 136876 / 0x216ac
+[ OutsideRoyalMuseumDaemon ;	! 136876 / 0x216ac
     if (game_section ~= T_ALEXANDRIA || location has cat_nofollow || Austin in location) {
         rfalse;
     }
@@ -17459,7 +17459,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: defaced_door.after
 
-[ routine136924 ;	! 136924 / 0x216dc
+[ DefacedDoorAfter ;	! 136924 / 0x216dc
     if (action == ##Open) {
         if (grey_cloak has worn) {
             rfalse;
@@ -17474,7 +17474,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: table.after
 
-[ routine137036 ;	! 137036 / 0x2174c
+[ TableAfter ;	! 137036 / 0x2174c
     if (action == ##Receive) {
         if (noun == quarterstaff) {
             remove quarterstaff;
@@ -17497,7 +17497,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Madame_Sosostris.life
 
-[ routine137336 ;	! 137336 / 0x21878
+[ SosostrisLife ;	! 137336 / 0x21878
     if (action == ##Give or ##Kiss) {
         "She is staring fixedly at the table, meditating.";
     }
@@ -17512,7 +17512,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: quarterstaff.after
 
-[ routine137436 ;	! 137436 / 0x218dc
+[ QuarterstaffAfter ;	! 137436 / 0x218dc
     if (action == ##Wave) {
         "It rumbles in your hands, but nothing else happens.";
     }
@@ -17521,7 +17521,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gambling_sailor.after
 
-[ routine137476 ;	! 137476 / 0x21904
+[ SailorAfter ;	! 137476 / 0x21904
     if (action == ##Gamble) {
         R_Process(##Drop,447[inscribed_die?]);
         rtrue;
@@ -17531,7 +17531,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gambling_sailor.life
 
-[ routine137492 ;	! 137492 / 0x21914
+[ SailorLife ;	! 137492 / 0x21914
     if (action == ##Order or ##Ask or ##Answer) {
         "You can't understand his guttural speech, but the die seems his only fascination.";
     }
