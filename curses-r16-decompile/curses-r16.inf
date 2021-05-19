@@ -93,7 +93,7 @@ Verb 'hypnotise' 'hypnotize'
 
 Verb 'pace'
     * 							-> Pace
-    * routine181728					-> Pace
+    * routine181728					-> PaceDir
 ;
 
 Verb 'milk'
@@ -530,7 +530,7 @@ Verb 'go' 'leave' 'run' 'walk'
     * 'in' noun						-> Enter
     * 'inside' noun					-> Enter
     * 'through' noun					-> Enter
-    * routine181728					-> Pace
+    * routine181728					-> PaceDir
 ;
 
 Verb 'display' 'present' 'show'
@@ -624,7 +624,7 @@ Verb 'carry' 'get' 'hold' 'take'
     * 'off' worn					-> Disrobe
     * 'off' noun					-> TakeOff
     * 'inventory'					-> Inv
-    * routine181800					-> Pace
+    * routine181800					-> PaceDir
 ;
 
 Verb 'objects'
@@ -5262,7 +5262,7 @@ Array actions_table -->	! 28893 (0x70dd)
     XyzzySub
     ShantihSub
     MilkSub
-    PaceSub
+    PaceDirSub
     HypnotizeSub
     AnoppeSub
     SailSub
@@ -23178,30 +23178,30 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "There are hints built into this game, but you will have to find out for yourself how to get them.";
 ];
 
-[ PaceSub ;	! 177064 / 0x2b3a8
+[ PaceDirSub ;	! 177064 / 0x2b3a8
     if (yard_dir <= 0) {
         yard_dir = e_obj;
     }
-    routine177088(1[?],yard_dir);
+    PaceMovement(1,yard_dir);
     rtrue;
 ];
 
 [ PaceSub ;	! 177080 / 0x2b3b8
-    routine177088(global178,yard_dir);
+    PaceMovement(global178,yard_dir);
     rtrue;
 ];
 
-[ routine177088 local1 local2 local3 local4 local5 local6 ;	! 177088 / 0x2b3c0
-    if (local2 == 0) {
-        local2 = 4[e_obj?];
+[ PaceMovement i d local3 local4 local5 local6 ;	! 177088 / 0x2b3c0
+    if (d == nothing) {
+        d = e_obj;
     }
-    if (local2 == 65535[?]) {
+    if (d == invalidObj65535) {
         DigX = 0;
         DigY = 0;
         R_Process(##Look);
         rtrue;
     }
-    if (local2 == 65534[?]) {
+    if (d == invalidObj65534) {
         DigX = OldDigX;
         DigY = OldDigY;
         R_Process(##Look);
@@ -23210,45 +23210,45 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= Croquet_Lawn) {
         "You pace up and down, Holmes-fashion.";
     }
-    if (local2 == 0) {
+    if (d == nothing) {
         "Perhaps you should say which way to pace.";
     }
-    if (parent(local2) ~= Compass) {
+    if (parent(d) ~= Compass) {
         "What?";
     }
-    if (local2 == 2[?]) {
+    if (d == n_obj) {
         local4 = 1[?];
     }
-    if (local2 == 3[s_obj?]) {
+    if (d == s_obj) {
         local4 = 65535[?];
     }
-    if (local2 == 4[e_obj?]) {
+    if (d == e_obj) {
         local3 = 1[?];
     }
-    if (local2 == 5[w_obj?]) {
+    if (d == w_obj) {
         local3 = 65535[?];
     }
-    if (local2 == 6[ne_obj?]) {
+    if (d == ne_obj) {
         local3 = 1[?];
         local4 = 1[?];
     }
-    if (local2 == 8[nw_obj?]) {
+    if (d == nw_obj) {
         local3 = 65535[?];
         local4 = 1[?];
     }
-    if (local2 == 7[se_obj?]) {
+    if (d == se_obj) {
         local3 = 1[?];
         local4 = 65535[?];
     }
-    if (local2 == 9[sw_obj?]) {
+    if (d == sw_obj) {
         local3 = 65535[?];
         local4 = 65535[?];
     }
     if (local3 == 0 && local4 == 0) {
         "Hardly!";
     }
-    local5 = DigX + local3 * local1;
-    local6 = DigY + local4 * local1;
+    local5 = DigX + local3 * i;
+    local6 = DigY + local4 * i;
     if (local5 >= 13 || local5 <= 65523 || local6 >= 13 || local6 <= 65523) {
         "That would go past the edge of the lawn.";
     }
