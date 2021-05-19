@@ -941,7 +941,7 @@ Object rod_of_ice "Ice"	! 25 / 0x19
 Object rod_of_language "Language"	! 26 / 0x1a
   with	name 'rod' 'of' 'language',
 	after RodAfter,
-	nw_to routine59044,
+	nw_to MasterGameRods,
 	u_to rod_display_after,
 	article "the",
 	short rod_short,
@@ -952,7 +952,7 @@ Object rod_of_language "Language"	! 26 / 0x1a
 Object rod_of_returning2 "Returning"	! 27 / 0x1b
   with	name 'rod' 'of' 'returning',
 	after RodAfter,
-	nw_to routine59044,
+	nw_to MasterGameRods,
 	u_to rod_display_after,
 	article "the",
 	short rod_short,
@@ -9188,9 +9188,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_language.nw_to, rod_of_returning2.nw_to
 
-[ routine59044 local1 ;	! 59044 / 0xe6a4
+[ MasterGameRods enhanced ;	! 59044 / 0xe6a4
     if (rod_identity == 1) {
-        if (local1 == 1[?]) {
+        if (enhanced == true) {
             print "the High Rods of ";
         } else {
             print "the Rods of ";
@@ -9209,7 +9209,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rod_of_life.nw_to, rod_of_death.nw_to, rod_of_love.nw_to
 
 [ rod_func1 ;	! 59132 / 0xe6fc
-    return routine59044(1[?]);
+    return MasterGameRods(true);
 ];
 
 [ discover_rod r ;	! 59144 / 0xe708
@@ -9218,7 +9218,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     r.&name-->3 = r.rod_word;
     r.article = "the";
     r.d_to = nothing;
-    r.nw_to = routine59044;
+    r.nw_to = MasterGameRods;
     rtrue;
 ];
 
