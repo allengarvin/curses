@@ -11511,7 +11511,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: long_vanity_mirror.after
 
-[ MirrorAfter local1 local2 ;	! 84524 / 0x14a2c
+[ MirrorAfter o i ;	! 84524 / 0x14a2c
     if (action == ##Attack) {
         "What, and earn seven years bad luck?";
     }
@@ -11522,20 +11522,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Read or ##Search) {
         print "In the mirror is one of the most strikingly attractive people you have ever seen in all your born days";
-        local2 = 0;
-        local1 = child(player);
+        i = 0;
+        o = child(player);
       .label84670;
-        if (local1 ~= 0) {
-            if (routine84192(local1) == 0) {
-                ++local2;
-                give local1 workflag;
+        if (o ~= nothing) {
+            if (routine84192(o) == 0) {
+                ++i;
+                give o workflag;
             } else {
-                give local1 ~workflag;
+                give o ~workflag;
             }
-            local1 = sibling(local1);
+            o = sibling(o);
             jump label84670;
         }
-        if (local2 == 0) {
+        if (i == 0) {
             ".";
         }
         print ", carrying ";
