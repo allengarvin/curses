@@ -10668,52 +10668,52 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "opaque glass ball.";
         }
         print "glass ball, which ";
-        routine76092();
+        ObservatoryDiffraction();
         rtrue;
     }
     rfalse;
 ];
 
-[ routine76092 local1 ;	! 76092 / 0x1293c
-    local1 = child(slide_projector);
-    if (local1 == 0) {
+[ ObservatoryDiffraction o ;	! 76092 / 0x1293c
+    o = child(slide_projector);
+    if (o == nothing) {
         "diffracts it into a beautiful spectrum across the ceiling.";
     }
-    if (local1 == 192[Eight_of_Wands_card?]) {
+    if (o == Eight_of_Wands_card) {
         "throws it into a straight rod of white light across one wall.";
     }
-    if (local1 == 190[Castle?]) {
+    if (o == Castle) {
         "spins it about wildly, as if it were a strobe light at a discotheque.";
     }
-    if (local1 == 191[Star?]) {
+    if (o == Star) {
         "amplifies it into a powerful yellow searchlight which slowly turns about the room.";
     }
-    if (local1 == 483[Crescent_Moon?]) {
+    if (o == Crescent_Moon) {
         "throws it in a crescent against one wall.";
     }
     print "somehow bends it so that it strikes the mural at the sign of ";
-    if (local1 == 306[miniature?]) {
+    if (o == miniature) {
         "Scorpio.";
     }
-    if (local1 == 193[Maiden_card?]) {
+    if (o == Maiden_card) {
         "Virgo.";
     }
-    if (local1 == 194[Ace_of_Cups_card?]) {
+    if (o == Ace_of_Cups_card) {
         "Aquarius.";
     }
-    if (local1 == 164[Death_card?]) {
+    if (o == Death_card) {
         "Cancer.";
     }
-    if (local1 == 166[Drowned_Sailor_card?]) {
+    if (o == Drowned_Sailor_card) {
         "Pisces.";
     }
-    if (local1 == 165[Fool_card?]) {
+    if (o == Fool_card) {
         print "Capricorn.^";
         routine76480();
         Achieved(SCORE_SMOKE);
         rtrue;
     }
-    if (local1 == 148[charcoal_sketch?]) {
+    if (o == charcoal_sketch) {
         "Leo.";
     }
     rtrue;
@@ -10739,7 +10739,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give selfobj general;
         if (global139 == 1[?] && slide_projector has on) {
             print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
-            routine76092();
+            ObservatoryDiffraction();
             rtrue;
         }
         "You polish the ball to a nice shine.";
