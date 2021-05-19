@@ -8106,7 +8106,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         jump label54402;
                     }
                     if (RunLife(actor,259[Greek_Frieze1?]) == 0) {
-                        L__M(##Action259,1,actor);
+                        L__M(##Order,1,actor);
                     }
                 }
             }
@@ -9562,7 +9562,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: painting_of_Mad_Isaac_Meldrewe.life, Impressionist_painting.life, still_life.life, Greek_frieze2.life, Roman_mosaic.life, bronze_mural.life, painted_writings.life
 
 [ LagachLife i r flag ;	! 63748 / 0xf904
-    if (action == ##Action259) {
+    if (action == ##Order) {
         flag = true;
         if (painting_of_Mad_Isaac_Meldrewe notin White_Hallway || painting_of_Mad_Isaac_Meldrewe has moved) {
             flag = false;
@@ -10277,7 +10277,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Attack) {
         "It is so pathetically easy to kick Austin that you never quite have the heart. Thus he outwits you again.";
     }
-    if (action == ##Action259 or ##Answer) {
+    if (action == ##Order or ##Answer) {
         "I can see you've never had a cat.";
     }
     if (action == ##Ask) {
@@ -11305,7 +11305,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Attack or ##Kiss) {
         "Ectoplasm is as nice to touch as its reputation suggests.";
     }
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "~I'll tell you nothing, varlet!~";
     }
     rfalse;
@@ -11938,7 +11938,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Jemima.life
 
 [ JemimaLife local1 ;	! 87832 / 0x15718
-    if (action == ##Action259) {
+    if (action == ##Order) {
         if (verb == ##Give && noun == old_gardeners__gloves) {
             "~I can't give you those, I'm using them!~^^(This is plainly not true, but you know how it is with aunts.)";
         }
@@ -12366,7 +12366,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: robot_mouse.life
 
 [ MouseLife local1 local2 local3 local4 local5 ;	! 91484 / 0x1655c
-    if (action == ##Action259 or ##Answer or ##Ask) {
+    if (action == ##Order or ##Answer or ##Ask) {
         if (gas_mask has worn && global145 == 0) {
             global145 = 1[?];
             print "(amazingly, the mouse can make out your voice even when you have the gas mask on - that's real engineering, that is)^";
@@ -12538,7 +12538,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: hole_in_the_wall.life
 
 [ HoleLife ;	! 92872 / 0x16ac8
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         if (robot_mouse in selfobj) {
             return RunRoutines(robot_mouse,life);
         }
@@ -13162,7 +13162,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Attack) {
         "You are unable to touch the man. It is as if he isn't there.";
     }
-    if (action == ##Action259 or ##Answer) {
+    if (action == ##Order or ##Answer) {
         if (special_word == 40476 || verb == ##Time) {
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
             if (tourist_map_of_Paris has moved) {
@@ -13420,7 +13420,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         rfalse;
     }
-    if (action == ##Action259 or ##Answer or ##Ask) {
+    if (action == ##Order or ##Answer or ##Ask) {
         if (special_word == 31926) {
             print "In a harsh voice, the goat intones:^^";
             VersionSub();
@@ -13921,7 +13921,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         "She looks down her nose at you.";
     }
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "Andromeda hisses something contemptuous at you in Greek. (Attic, not Demotic, ironically enough, but then it's all Greek to you.)";
     }
     rfalse;
@@ -13940,7 +13940,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: herd_of_goats.life
 
 [ routine106732 ;	! 106732 / 0x1a0ec
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "Grunt!";
     }
     rfalse;
@@ -14008,7 +14008,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         Defart(noun);
         " with a glazed expression.";
     }
-    if (action == ##Ask or ##Answer or ##Action259) {
+    if (action == ##Ask or ##Answer or ##Order) {
         "Being an educated person, the bartender speaks a little Latin and some Aramaic. Being an uneducated one, you don't, and communication proves impossible.";
     }
     if (action == ##Attack or ##Kiss) {
@@ -14076,7 +14076,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Homer.life
 
 [ routine108344 ;	! 108344 / 0x1a738
-    if (action == ##Action259 or ##Ask) {
+    if (action == ##Order or ##Ask) {
         if (Homer has general) {
             "Homer is far too busy composing Book XIV of the Iliad.";
         } else {
@@ -14303,7 +14303,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Attack or ##Kiss or ##ThrowAt) {
         "As you ought to know, the Oracle is inviolable.";
     }
-    if (action == ##Ask or ##Action259 or ##Answer) {
+    if (action == ##Ask or ##Order or ##Answer) {
         routine110288();
         rtrue;
     }
@@ -14732,7 +14732,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: stone_wall.life
 
 [ routine113824 ;	! 113824 / 0x1bca0
-    if (action == ##Action259 or ##Answer or ##Ask) {
+    if (action == ##Order or ##Answer or ##Ask) {
         if (verb ~= ##Lagach) {
             "The old wall is mute.";
         }
@@ -16154,7 +16154,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Attack or ##Kiss or ##ThrowAt) {
         "Not an act worthy of a Meldrew.";
     }
-    if (action == ##Action259 or ##Answer or ##Ask or ##Give) {
+    if (action == ##Order or ##Answer or ##Ask or ##Give) {
         "He's asleep.";
     }
     rfalse;
@@ -16241,7 +16241,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: bear_tapestry.life
 
 [ routine124928 ;	! 124928 / 0x1e800
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "Your mouth is too furred up to speak.";
     }
     rfalse;
@@ -16318,7 +16318,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Druid.life
 
 [ routine126064 ;	! 126064 / 0x1ec70
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "This is one of those dreams where you find you cannot speak.";
     }
     rfalse;
@@ -17227,7 +17227,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Kiss or ##Attack) {
         "Your body passes through them.";
     }
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "They hear nothing.";
     }
     rfalse;
@@ -17501,7 +17501,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Give or ##Kiss) {
         "She is staring fixedly at the table, meditating.";
     }
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "Madame Sosostris is meditating.";
     }
     if (action == ##Attack) {
@@ -17532,7 +17532,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: gambling_sailor.life
 
 [ routine137492 ;	! 137492 / 0x21914
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "You can't understand his guttural speech, but the die seems his only fascination.";
     }
     if (action == ##Kiss) {
@@ -17786,7 +17786,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         "How could you bribe such disinterested men of learning as the librarians?";
     }
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "As a barbarian scholar, unversed in Greek, you can hardly expect to converse with such as he.";
     }
     rfalse;
@@ -17861,7 +17861,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: slave.life
 
 [ routine140144 ;	! 140144 / 0x22370
-    if (action == ##Action259) {
+    if (action == ##Order) {
         if (verb == ##Anoppe && location has general) {
             R_Process(##Anoppe);
             rtrue;
@@ -17957,7 +17957,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: corn_crake.life
 
 [ routine140928 ;	! 140928 / 0x22680
-    if (action == ##Action259 or ##Ask or ##Answer) {
+    if (action == ##Order or ##Ask or ##Answer) {
         "The bird seems not to have heard.";
     }
     rfalse;
@@ -17966,7 +17966,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Old_Evans.life
 
 [ routine140960 ;	! 140960 / 0x226a0
-    if (action == ##Action259 or ##Ask) {
+    if (action == ##Order or ##Ask) {
         if (selfobj hasnt general) {
             "~Just a minute, I'm doing my form.~";
         }
@@ -18237,7 +18237,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: adamantine_knight.life
 
 [ routine142844 ;	! 142844 / 0x22dfc
-    if (action == ##Action259) {
+    if (action == ##Order) {
         routine143448();
         rtrue;
     }
@@ -18539,7 +18539,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         rtrue;
     }
-    if (action == ##Action259) {
+    if (action == ##Order) {
         "One does not give orders to such a character.";
     }
     if (action == ##Give or ##Show) {
@@ -18653,7 +18653,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         rtrue;
     }
-    if (action == ##Action259) {
+    if (action == ##Order) {
         "One does not give orders to such a character.";
     }
     if (action == ##Give or ##Show) {
@@ -21715,7 +21715,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Inv);
         rtrue;
     }
-    L__M(##Action259,1,noun);
+    L__M(##Order,1,noun);
     rtrue;
 ];
 
@@ -21804,7 +21804,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         rfalse;
     }
-    if (action == ##Action259) {
+    if (action == ##Order) {
         CDefart(x1);
         " has better things to do.";
     }
@@ -22594,7 +22594,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (verb == ##Eat) {
             "Not with a gas mask on!";
         }
-        if (verb == ##Action259 or ##Answer or ##Ask) {
+        if (verb == ##Order or ##Answer or ##Ask) {
             "Your speech is muffled into silence by the gas mask.";
         }
     }
