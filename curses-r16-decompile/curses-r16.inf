@@ -17355,7 +17355,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: model_golden_sceptre.after
 
-[ SceptreAfter local1 ;	! 135680 / 0x21200
+[ SceptreAfter i ;	! 135680 / 0x21200
     if (action == ##Wave) {
         "Apparently, it's not susceptible to that.";
     }
@@ -17368,10 +17368,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "With a crash, the coffin slams shut.^^";
         }
         print "You crank the sceptre round, lose control for a moment, and some primitive mechanism spins. The word comes to rest as ~";
-        local1 = random(6);
-        routine138004(local1);
+        i = random(6);
+        routine138004(i);
         print "~.^";
-        selfobj.time_left.time_left = local1;
+        selfobj.time_left.time_left = i;
         if (debug_deterministic_transportation == 1) {
             first_socket.time_left = 3;
             second_socket.time_left = 6;
