@@ -4957,7 +4957,7 @@ Global menu_item;
 Global active_timers;
 Global rod_identity = 1;
 Global c_style;
-Global global117;
+Global lt_value;
 Global listing_together;
 Global global119;
 Global wlf_indent;
@@ -19345,10 +19345,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ NextEntry o odepth ;	! 157768 / 0x26848
     o = sibling(o);
-    if (global117 ~= 0) {
+    if (lt_value ~= 0) {
         if (c_style & 512 ~= 0 && odepth == 0) {
           .label157794;
-            if (o ~= nothing && (o.nw_to ~= global117 || o hasnt workflag)) {
+            if (o ~= nothing && (o.nw_to ~= lt_value || o hasnt workflag)) {
                 o = sibling(o);
                 jump label157794;
             }
@@ -19356,14 +19356,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (c_style & 2048 ~= 0) {
           .label157833;
-            if (o ~= nothing && (o has concealed || o has scenery || o.nw_to ~= global117)) {
+            if (o ~= nothing && (o has concealed || o has scenery || o.nw_to ~= lt_value)) {
                 o = sibling(o);
                 jump label157833;
             }
             return o;
         }
       .label157866;
-        if (o ~= nothing && o.nw_to ~= global117) {
+        if (o ~= nothing && o.nw_to ~= lt_value) {
             o = sibling(o);
             jump label157866;
         }
@@ -19579,7 +19579,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 jump label158720;
             }
             m = sizes_p->i;
-            if (j.nw_to ~= nothing or global117 && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
+            if (j.nw_to ~= nothing or lt_value && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
                 --senc;
             }
             mr = j.nw_to;
@@ -19600,7 +19600,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 j = NextEntry(j,depth);
                 jump label158827;
             }
-            if (j.nw_to ~= nothing or global117) {
+            if (j.nw_to ~= nothing or lt_value) {
                 if (j.nw_to == mr) {
                     ++senc;
                     jump label159394;
@@ -19668,12 +19668,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                                     jump label159226;
                                 }
                             }
-                            global117 = j.nw_to;
+                            lt_value = j.nw_to;
                             listing_together = j;
                             ++wlf_indent;
                             WriteListR(j,depth,stack_pointer);
                             --wlf_indent;
-                            global117 = 0;
+                            lt_value = 0;
                             listing_together = 0;
                             if (k2 == 3[s_obj?]) {
                                 if (c_style & 8 ~= 0) {
@@ -19738,7 +19738,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     j = o;
   .label159411;
     if (i <= n) {
-        if (j.nw_to ~= nothing or global117 && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
+        if (j.nw_to ~= nothing or lt_value && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
             --senc;
         }
         mr = j.nw_to;
@@ -19752,7 +19752,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     mr = 0;
   .label159482;
     if (i <= senc) {
-        if (j.nw_to ~= nothing or global117) {
+        if (j.nw_to ~= nothing or lt_value) {
             if (j.nw_to == mr) {
                 --i;
                 jump label159889;
@@ -19797,12 +19797,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                             jump label159760;
                         }
                     }
-                    global117 = j.nw_to;
+                    lt_value = j.nw_to;
                     listing_together = j;
                     ++wlf_indent;
                     WriteListR(j,depth,stack_pointer);
                     --wlf_indent;
-                    global117 = 0;
+                    lt_value = 0;
                     listing_together = 0;
                     if (k == 3[s_obj?]) {
                         if (q & 8 ~= 0) {
