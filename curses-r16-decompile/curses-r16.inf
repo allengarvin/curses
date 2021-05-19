@@ -7849,18 +7849,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 65535;
 ];
 
-[ ZRegion local1 ;	! 53524 / 0xd114
-    if (local1 == 0) {
+[ ZRegion addr ;	! 53524 / 0xd114
+    if (addr == 0) {
         return 0;
     }
-    if (local1 >= 1 && local1 <= top_object) {
-        return 1[?];
+    if (addr >= 1 && addr <= top_object) {
+        return 1;
     }
-    if (UnsignedCompare(local1,46697["CURSES"?]) >= 0) {
-        return 3[s_obj?];
+    if (UnsignedCompare(addr,46697["CURSES"?]) >= 0) {
+        return 3;
     }
-    if (UnsignedCompare(local1,10439[Main?]) >= 0) {
-        return 2[?];
+    if (UnsignedCompare(addr,10439[Main?]) >= 0) {
+        return 2;
     }
     return 0;
 ];
@@ -8371,7 +8371,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     lines = EntryR();
     main_title = submenu_header;
     print "--- ", (string) main_title, " ---^^";
-    if (ZRegion(menu_choices) == 3[s_obj?]) {
+    if (ZRegion(menu_choices) == 3) {
         print (string) menu_choices;
     } else {
         generic_globvar = menu_choices();
@@ -8475,7 +8475,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     style roman;
     @set_cursor 5 2;
     0-->8 = 2 | 0-->8;
-    if (ZRegion(menu_choices) == 3[s_obj?]) {
+    if (ZRegion(menu_choices) == 3) {
         print (string) menu_choices;
     } else {
         generic_globvar = menu_choices();
@@ -19579,7 +19579,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 jump label158720;
             }
             m = sizes_p->i;
-            if (j.nw_to ~= nothing or global117 && ZRegion(j.nw_to) == 2[?] or 3[s_obj?] && j.nw_to == mr) {
+            if (j.nw_to ~= nothing or global117 && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
                 --senc;
             }
             mr = j.nw_to;
@@ -19738,7 +19738,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     j = o;
   .label159411;
     if (i <= n) {
-        if (j.nw_to ~= nothing or global117 && ZRegion(j.nw_to) == 2[?] or 3[s_obj?] && j.nw_to == mr) {
+        if (j.nw_to ~= nothing or global117 && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
             --senc;
         }
         mr = j.nw_to;
@@ -20046,7 +20046,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (i <= top_object) {
         address = i.&found_in;
         if (address ~= 0 && i hasnt absent) {
-            if (ZRegion(address-->0) == 2[?]) {
+            if (ZRegion(address-->0) == 2) {
                 if ((address-->0)() ~= 0) {
                     move i to location;
                 }
@@ -20891,7 +20891,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
     local6 = noun.w_to;
-    if (ZRegion(local6) == 2[?]) {
+    if (ZRegion(local6) == 2) {
         local6 = RunRoutines(noun,w_to);
     }
     local2 = local1.local6;
@@ -20926,7 +20926,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             return L__M(##Go,5,local2);
         }
-        if (ZRegion(local2.n_to) == 2[?]) {
+        if (ZRegion(local2.n_to) == 2) {
             local2 = RunRoutines(local2,n_to);
         } else {
             local2 = local2.n_to;
