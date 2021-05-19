@@ -2961,7 +2961,7 @@ Object Garden_Stream "Garden Stream"	! 276 / 0x114
 
 Object -> coal_bunker "coal bunker"	! 277 / 0x115
   with	name 'coal' 'bunker' 'loading' 'door',
-	before routine113480,
+	before CoalBunkerBefore,
 	n_to Dark_Passage,
 	s_to "On the house wall is a coal bunker, whose loading door is shut.",
 	w_to ne_obj,
@@ -14665,7 +14665,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: coal_bunker.before
 
-[ routine113480 ;	! 113480 / 0x1bb48
+[ CoalBunkerBefore ;	! 113480 / 0x1bb48
     if (action == ##Close) {
         give metal_door ~open;
         rfalse;
