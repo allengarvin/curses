@@ -971,7 +971,7 @@ Object rod_of_life "Life"	! 28 / 0x1c
 	article "the",
 	short rod_short,
 	parse_name RodParse,
-	rod_action routine58968,
+	rod_action LifeAction,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	rod_attr high_rod;
 
@@ -985,7 +985,7 @@ Object rod_of_death "Death"	! 29 / 0x1d
 	article "the",
 	short rod_short,
 	parse_name RodParse,
-	rod_action routine58968,
+	rod_action LifeAction,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
 
@@ -999,7 +999,7 @@ Object rod_of_love "Love"	! 30 / 0x1e
 	article "the",
 	short rod_short,
 	parse_name RodParse,
-	rod_action routine58968,
+	rod_action LifeAction,
 	angel_hint "Astonishing!  One of the three high Rods!",
   has	concealed rod_attr high_rod;
 
@@ -1012,8 +1012,8 @@ Object crumpled_piece_of_paper "crumpled piece of paper"	! 31 / 0x1f
 
 Object electric_torch "electric torch"	! 32 / 0x20
   with	name 'electric' 'torch' 'compartment',
-	after routine64428,
-	before routine64544,
+	after TorchAfter,
+	before TorchBefore,
 	nw_to s_obj,
 	description "The torch has a battery compartment which can be reached by opening it up.",
 	article "an",
@@ -1030,7 +1030,7 @@ Object -> old_smudged_battery "old smudged battery"	! 33 / 0x21
 
 Object chocolate_biscuit "chocolate biscuit"	! 34 / 0x22
   with	name 'chocolate' 'biscuit',
-	before routine65108,
+	before BiscuitBefore,
 	description "Oatmeal covered with plain chocolate, since you ask.",
 	devil_hint "I bet you didn't know that chocolate biscuit manufacturers are damned in perpetuity?  I'm afraid the chapters about that in the Old Testaments were lost, though, and now no-one can remember why.",
   has	edible moved;
@@ -1047,8 +1047,8 @@ Object Attic "Attic"	! 35 / 0x23
 
 Object -> hinged_trapdoor "hinged trapdoor"	! 36 / 0x24
   with	name 'hinged' 'trap' 'door' 'trapdoor',
-	after routine65124,
-	before routine65184,
+	after TrapdoorAfter,
+	before TrapdoorBefore,
 	n_to House,
 	s_to "There is a closed trapdoor in the middle of the floor.",
 	w_to thedark,
@@ -1057,18 +1057,18 @@ Object -> hinged_trapdoor "hinged trapdoor"	! 36 / 0x24
 
 Object -> teachests "teachests"	! 37 / 0x25
   with	name 'tea' 'chests' 'teachests' 'chest' 'teachest',
-	after routine65316,
+	after TeachestsAfter,
 	description "Open-topped. You could easily look inside, if so minded.",
 	article "some",
   has	container open scenery;
 
 Object -> -> Meldrewes_History "History of the Meldrews (vol. II)"	! 38 / 0x26
   with	name 'book' 'history',
-	after routine65440,
+	after HistoryAfter,
 	nw_to n_obj,
 	description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends of the earth, he never could find a detail he wanted for volume I, and it was never published. Somehow, this typifies your family, and consulting this worthy book about your ancestors makes you realise what an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an awful lot of children. So many Meldrews are listed here that you'll have to look them up individually.",
 	article "the",
-	parse_name routine64400,
+	parse_name ConsultableParsename,
 	devil_hint "What a boring old book!  There's nobody worth looking up.",
   has	concealed consultable;
 
@@ -1089,13 +1089,13 @@ Object -> four_leafed_clover "four-leafed clover"	! 40 / 0x28
   has	hidden_rod;
 
 Object House "House"	! 41 / 0x29
-  with	before routine69292,
+  with	before HouseBefore,
 	section T_MODERN,
   has	light;
 
 Object Servants_Room "Servant's Room"	! 42 / 0x2a
   with	name 'bedside' 'table',
-	after routine69588,
+	after ServantsRoomAfter,
 	n_to nothing,
 	w_to Attic,
 	d_to nothing,
@@ -1105,12 +1105,12 @@ Object Servants_Room "Servant's Room"	! 42 / 0x2a
 
 Object -> classical_dictionary "classical dictionary"	! 43 / 0x2b
   with	name 'hobsons' 'choice' 'classical' 'dictionary' 'book',
-	after routine69840,
+	after DictionaryAfter,
 	nw_to n_obj,
 	initial "There's a little book on the tiny bedside table.",
 	description "~Hobson's: A Choice Classical Dictionary~. It claims to have numerous entries.",
 	article "Hobson's",
-	parse_name routine64400,
+	parse_name ConsultableParsename,
 	devil_hint "Lots of naughty words in that one.",
   has	consultable;
 
@@ -1151,29 +1151,29 @@ Object -> scratched_cupboard "scratched cupboard"	! 49 / 0x31
 
 Object -> -> bird_whistle "bird whistle"	! 50 / 0x32
   with	name 'bird' 'whistle' 'harrison',
-	after routine71948,
+	after WhistleAfter,
 	description "A patent ~Harrison~ bird-whistle, according to the slogan on one side.",
 	devil_hint "It has a calm, soothing effect.",
   has	;
 
 Object -> -> gift_wrapped_parcel "gift-wrapped parcel"	! 51 / 0x33
   with	name 'gift' 'parcel',
-	after routine72724,
+	after ParcelAfter,
 	devil_hint "Shame the wrapping paper won't come off.",
   has	;
 
 Object -> -> medicine_bottle "mb"	! 55 / 0x37
   with	name 'medicine' 'bottle',
-	after routine73008,
+	after MedicineAfter,
 	initial nothing,
 	description "~Antidote only: no preventative effect.~",
-	short routine72936,
+	short MedicineShort,
 	devil_hint "These bottles can even survive long drops, so perhaps you should try fire.",
   has	container locked openable;
 
 Object -> -> -> red_tablet "red tablet"	! 56 / 0x38
   with	name 'red' 'pill' 'tablet',
-	before routine73296,
+	before TabletBefore,
 	devil_hint "This drug is for fun, it isn't an antidote. And it tastes gorgeous...",
   has	edible scored;
 
@@ -1190,7 +1190,7 @@ Object wrapping_paper "wrapping paper with reindeer on"	! 53 / 0x35
 
 Object postcard_of_the_Champs_Elysees "postcard of the Champs-Elysees"	! 54 / 0x36
   with	name 'postcard' 'card',
-	before routine72788,
+	before PostcardBefore,
 	nw_to n_obj,
 	description "It is addressed to the house, and postmarked 1963, but has no message. Odd, that.",
 	devil_hint "There's no message there to read.",
@@ -1304,7 +1304,7 @@ Object -> romantic_novel "romantic novel"	! 69 / 0x45
 	nw_to n_obj,
 	initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
 	description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
-	parse_name routine64400,
+	parse_name ConsultableParsename,
 	devil_hint "Don't bother reading or thinking about it. Nothing to do with your family.",
   has	consultable;
 
@@ -1312,7 +1312,7 @@ Object -> book_of_Twenties_poetry "book of Twenties poetry"	! 70 / 0x46
   with	name 'poetry' 'book',
 	after routine77704,
 	nw_to n_obj,
-	parse_name routine64400,
+	parse_name ConsultableParsename,
 	devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
   has	concealed consultable;
 
@@ -1417,7 +1417,7 @@ Object Inside_Cupboard "Inside Cupboard"	! 82 / 0x52
 Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"	! 83 / 0x53
   with	name 'painting' 'of' 'mad' 'isaac' 'picture',
 	before routine80740,
-	life routine63748,
+	life LagachLife,
 	initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
 	description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
 	devil_hint "Carry this with you everywhere you go.",
@@ -1523,7 +1523,7 @@ Object -> ancient_prayer_book "ancient prayer book"	! 95 / 0x5f
 	initial "The dust and grime on the floor almost obscures an ancient prayer book.",
 	description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
 	article "an",
-	parse_name routine64400,
+	parse_name ConsultableParsename,
 	devil_hint "The really good research was in his earlier years.",
   has	consultable;
 
@@ -2023,7 +2023,7 @@ Object Bohemia "Bohemia"	! 157 / 0x9d
 
 Object -> Impressionist_painting "Impressionist painting"	! 158 / 0x9e
   with	name 'impressionist' 'painting' 'mural',
-	life routine63748,
+	life LagachLife,
 	initial nothing,
 	description "The bottom corner is signed simply ~Helene~.",
 	article "an",
@@ -2060,37 +2060,37 @@ Object Madame_Sosostris "Madame Sosostris, famous clairvoyante"	! 163 / 0xa3
 
 Object Death_card "Grim Reaper"	! 164 / 0xa4
   with	name 'death' 'grim' 'reaper' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	n_to Ruined_Castle_Cafe,
 	nw_to "Tarot cards",
 	description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "It's vital you slide right along with this one.",
   has	card;
 
 Object Fool_card "Fool"	! 165 / 0xa5
   with	name 'fool' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	n_to Ruined_Castle_Cafe,
 	nw_to "Tarot cards",
 	description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "Don't worry, he won't slide down the cliff.",
   has	card;
 
 Object Drowned_Sailor_card "Drowned Sailor"	! 166 / 0xa6
   with	name 'drowned' 'sailor' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	n_to Ruined_Castle_Cafe,
 	nw_to "Tarot cards",
 	description "Those are pearls that were his eyes...",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "He's one of my colleagues now, of course.",
   has	card;
 
@@ -2251,54 +2251,54 @@ Object -> Tarot_box "Tarot box"	! 186 / 0xba
 
 Object -> -> Castle "Castle"	! 190 / 0xbe
   with	name 'castle' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	n_to Ruined_Castle_Cafe,
 	nw_to "Tarot cards",
 	description "A stone castle on a hill.",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "It leads nowhere.",
   has	card;
 
 Object -> -> Star "Star"	! 191 / 0xbf
   with	name 'star' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	n_to Lighthouse,
 	nw_to "Tarot cards",
 	description "A single bright light in the darkness.",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "Ugh, what a nasty bright light. Good thing you'll never go there.",
   has	card;
 
 Object -> -> Eight_of_Wands_card "Eight of Wands"	! 192 / 0xc0
   with	name 'eight' 'of' 'wands' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	nw_to "Tarot cards",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	rod_assoc rod_of_infinity,
 	devil_hint "There's less to this card than meets the eye.",
   has	card hidden_rod;
 
 Object -> -> Maiden_card "Maiden"	! 193 / 0xc1
   with	name 'maiden' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	n_to Sea_Shore,
 	nw_to "Tarot cards",
 	description "Andromeda chained to a rock on the sea-shore.",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "What an ugly girl!  Bet she's good for a laugh though.",
   has	card;
 
 Object -> still_life "still life"	! 187 / 0xbb
   with	name 'long' 'painted' 'still' 'life' 'painting' 'disturbing',
-	life routine63748,
+	life LagachLife,
 	initial "A long painted still life graces one wall near a corner.",
 	description "A disturbing painting, perhaps by Edvard Munch, this is a still life of a seedling on a table, surrounded by a rusty iron rod with a star on the end, a glass bottle, a lamp and a bunch of keys. No doubt these arcane objects held some special significance for primitive tribes now absorbed into civilisation.",
   has	static talkable;
@@ -2321,13 +2321,13 @@ Object -> discarded_matchbook "discarded matchbook"	! 189 / 0xbd
 
 Object Ace_of_Cups_card "Ace of Cups"	! 194 / 0xc2
   with	name 'ace' 'of' 'cups' 'card' 'tarot',
-	after routine64232,
+	after TarotAfter,
 	n_to Cups_and_Glasses,
 	nw_to "Tarot cards",
 	description "It shows a great many crystal-glass cups and glasses.",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "It leads nowhere.",
   has	card;
 
@@ -2827,7 +2827,7 @@ Object Greek_Frieze1 "Greek Frieze"	! 259 / 0x103
 
 Object -> Greek_frieze2 "Greek frieze"	! 260 / 0x104
   with	name 'greek' 'frieze' 'mural',
-	life routine63748,
+	life LagachLife,
 	description "The decorated strip of entablature between the architrave and the cornice, in the Attic style circa fifth century B.C.^^Well, you did ask.",
   has	scenery talkable;
 
@@ -3060,7 +3060,7 @@ Object Mosaic "Mosaic"	! 288 / 0x120
 
 Object -> Roman_mosaic "Roman mosaic"	! 289 / 0x121
   with	name 'roman' 'mosaic',
-	life routine63748,
+	life LagachLife,
 	description "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.",
   has	scenery talkable;
 
@@ -3735,7 +3735,7 @@ Object Crypt "Crypt"	! 376 / 0x178
 
 Object -> bronze_mural "bronze mural"	! 377 / 0x179
   with	name 'bronze' 'mural',
-	life routine63748,
+	life LagachLife,
 	n_to Jagged_Passage,
 	s_to "The south wall forms a giant bronze mural, which has stood the test of time.",
 	w_to thedark,
@@ -4020,7 +4020,7 @@ Object XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"	! 411 / 0x19b
 
 Object -> painted_writings "painted writings"	! 412 / 0x19c
   with	name 'painted' 'paintings' 'writing' 'writings',
-	life routine63748,
+	life LagachLife,
 	description "One of the so-called Pyramid Texts making up the so-called ~Book of the Dead~. This dramatic passage seems to be devoted to wise men preparing their bodies to rise in the afterlife, anointing themselves with oil. An interesting motif of ten strokes, arranged^^   III IIIIII I^^catches the eye.",
 	article "some",
   has	scenery talkable;
@@ -4530,13 +4530,13 @@ Object -> Old_Evans "Old Evans"	! 478 / 0x1de
 
 Object -> -> Crescent_Moon "Crescent Moon"	! 483 / 0x1e3
   with	name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
-	after routine141420 routine64232,
+	after routine141420 TarotAfter,
 	n_to Parish_Church,
 	nw_to "Tarot cards",
 	description "Some kind of crescent moon, an old Druidical symbol.",
 	article "the",
-	short routine64336,
-	parse_name routine64276,
+	short TarotShort,
+	parse_name TarotParseName,
 	devil_hint "It leads nowhere.",
   has	card;
 
@@ -9166,7 +9166,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_life.description, rod_of_death.description, rod_of_love.description
 
-[ routine58876 ;	! 58876 / 0xe5fc
+[ LifeDesc ;	! 58876 / 0xe5fc
     print "An adamantine rod, bearing a sculpted ";
     if (selfobj == rod_of_life) {
         print "hand";
@@ -9182,7 +9182,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_life.rod_action, rod_of_death.rod_action, rod_of_love.rod_action
 
-[ routine58968 ;	! 58968 / 0xe658
+[ LifeAction ;	! 58968 / 0xe658
     "You are knocked off your feet with the power of one of the High Rods, but it is too puissant for a mortal such as you are.";
 ];
 
@@ -9561,7 +9561,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: painting_of_Mad_Isaac_Meldrewe.life, Impressionist_painting.life, still_life.life, Greek_frieze2.life, Roman_mosaic.life, bronze_mural.life, painted_writings.life
 
-[ routine63748 local1 local2 local3 ;	! 63748 / 0xf904
+[ LagachLife local1 local2 local3 ;	! 63748 / 0xf904
     if (action == ##Action259) {
         local3 = 1[?];
         if (painting_of_Mad_Isaac_Meldrewe notin White_Hallway || painting_of_Mad_Isaac_Meldrewe has moved) {
@@ -9648,7 +9648,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Death_card.after, Fool_card.after, Drowned_Sailor_card.after, Castle.after, Star.after, Eight_of_Wands_card.after, Maiden_card.after, Ace_of_Cups_card.after, Crescent_Moon.after
 
-[ routine64232 ;	! 64232 / 0xfae8
+[ TarotAfter ;	! 64232 / 0xfae8
     if (action == ##Read) {
         if (selfobj.n_to ~= nothing) {
             print "A beautifully realistic picture. ";
@@ -9660,7 +9660,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Death_card.parse_name, Fool_card.parse_name, Drowned_Sailor_card.parse_name, Castle.parse_name, Star.parse_name, Eight_of_Wands_card.parse_name, Maiden_card.parse_name, Ace_of_Cups_card.parse_name, Crescent_Moon.parse_name
 
-[ routine64276 local1 local2 ;	! 64276 / 0xfb14
+[ TarotParseName local1 local2 ;	! 64276 / 0xfb14
     if (parser_action == ##TheSame) {
         return 65534[?];
     }
@@ -9682,7 +9682,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Death_card.short, Fool_card.short, Drowned_Sailor_card.short, Castle.short, Star.short, Eight_of_Wands_card.short, Maiden_card.short, Ace_of_Cups_card.short, Crescent_Moon.short
 
-[ routine64336 ;	! 64336 / 0xfb50
+[ TarotShort ;	! 64336 / 0xfb50
     if (global118 has card && c_style & 4096 == 0) {
         c_style = c_style | (4096 + 8);
         if (c_style & 2 ~= 0) {
@@ -9697,7 +9697,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Meldrewes_History.parse_name, classical_dictionary.parse_name, romantic_novel.parse_name, book_of_Twenties_poetry.parse_name, ancient_prayer_book.parse_name
 
-[ routine64400 ;	! 64400 / 0xfb90
+[ ConsultableParsename ;	! 64400 / 0xfb90
     if (NextWord() == 30738['books'?] or 41025['volumes'?] or 40539['tomes'?]) {
         parser_action = ##Action261;
         return 1[?];
@@ -9708,7 +9708,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: electric_torch.after
 
-[ routine64428 ;	! 64428 / 0xfbac
+[ TorchAfter ;	! 64428 / 0xfbac
     if (action == ##Action257) {
         if (child(selfobj) ~= nothing) {
             "There's a battery in already.";
@@ -9726,7 +9726,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: electric_torch.before
 
-[ routine64544 local1 local2 ;	! 64544 / 0xfc20
+[ TorchBefore local1 local2 ;	! 64544 / 0xfc20
     if (action == ##Open) {
         if (selfobj has light) {
             give selfobj ~light;
@@ -9792,7 +9792,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: chocolate_biscuit.before
 
-[ routine65108 ;	! 65108 / 0xfe54
+[ BiscuitBefore ;	! 65108 / 0xfe54
     if (action == ##Eat) {
         Achieved(22);
         rfalse;
@@ -9802,7 +9802,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hinged_trapdoor.after
 
-[ routine65124 ;	! 65124 / 0xfe64
+[ TrapdoorAfter ;	! 65124 / 0xfe64
     if (action == ##LookUnder) {
         if (antique_jewellery_box hasnt concealed) {
             rfalse;
@@ -9816,7 +9816,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hinged_trapdoor.before
 
-[ routine65184 ;	! 65184 / 0xfea0
+[ TrapdoorBefore ;	! 65184 / 0xfea0
     if (action == ##Open) {
         give selfobj light;
         rfalse;
@@ -9835,7 +9835,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: teachests.after
 
-[ routine65316 ;	! 65316 / 0xff24
+[ TeachestsAfter ;	! 65316 / 0xff24
     if (action == ##Search) {
         print "That was the first place you tried, hours and hours ago now";
         if (Meldrewes_History has concealed) {
@@ -9851,7 +9851,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Meldrewes_History.after
 
-[ routine65440 local1 ;	! 65440 / 0xffa0
+[ HistoryAfter local1 ;	! 65440 / 0xffa0
     if (action == ##Consult) {
         wn = consult_from;
         local1 = NextWord();
@@ -9916,7 +9916,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: House.before
 
-[ routine69292 ;	! 69292 / 0x10eac
+[ HouseBefore ;	! 69292 / 0x10eac
     if (tourist_map_of_Paris in player || (tourist_map_of_Paris in canvas_rucksack && canvas_rucksack in player)) {
         deadflag = WON;
         "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty generations, a Meldrew has found the useless object he was doomed to seek!  Unfortunately on the way to the airport you realise that you left the map on the kitchen table in all the rush, but never mind, you're on holiday now.";
@@ -9927,7 +9927,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Servants_Room.after
 
-[ routine69588 ;	! 69588 / 0x10fd4
+[ ServantsRoomAfter ;	! 69588 / 0x10fd4
     if (action == ##Sleep) {
         if (carbolic_soap hasnt concealed) {
             "Racked with guilt over your bad language, you are unable to nod off.";
@@ -9951,7 +9951,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: classical_dictionary.after
 
-[ routine69840 local1 ;	! 69840 / 0x110d0
+[ DictionaryAfter local1 ;	! 69840 / 0x110d0
     if (action == ##Consult) {
         wn = consult_from;
         local1 = NextWord();
@@ -10098,7 +10098,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bird_whistle.after
 
-[ routine71948 ;	! 71948 / 0x1190c
+[ WhistleAfter ;	! 71948 / 0x1190c
     if (action == ##Blow) {
         if (gas_mask has worn) {
             "With the gas mask on?";
@@ -10142,7 +10142,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gift_wrapped_parcel.after
 
-[ routine72724 ;	! 72724 / 0x11c14
+[ ParcelAfter ;	! 72724 / 0x11c14
     if (action == ##Open) {
         remove gift_wrapped_parcel;
         move postcard_of_the_Champs_Elysees to player;
@@ -10155,7 +10155,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: postcard_of_the_Champs_Elysees.before
 
-[ routine72788 ;	! 72788 / 0x11c54
+[ PostcardBefore ;	! 72788 / 0x11c54
     if (action == ##Read && location == Dark_Room && Dark_Room has light) {
         Achieved(0);
         discharge_rod(crumpled_piece_of_paper);
@@ -10166,7 +10166,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: medicine_bottle.short
 
-[ routine72936 ;	! 72936 / 0x11ce8
+[ MedicineShort ;	! 72936 / 0x11ce8
     if (selfobj hasnt locked) {
         print "cracked medicine bottle";
     } else {
@@ -10177,7 +10177,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: medicine_bottle.after
 
-[ routine73008 ;	! 73008 / 0x11d30
+[ MedicineAfter ;	! 73008 / 0x11d30
     if (action == ##Attack) {
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
@@ -10198,7 +10198,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: red_tablet.before
 
-[ routine73296 ;	! 73296 / 0x11e50
+[ TabletBefore ;	! 73296 / 0x11e50
     if (action == ##Eat) {
         give player ~general;
         global140 = 1[?];

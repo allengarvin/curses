@@ -1211,16 +1211,12 @@ Routine 0xe568	RodParse:int i:int w:dictword
 ! References: obj17_Fire.short, obj18_Returning.short, obj19_Stalking.short, obj20_Infinity.short, obj21_Husbandry.short, obj22_Bronze.short, obj23_Sacrifice.short, obj24_Luck.short, obj25_Ice.short, obj26_Language.short, obj27_Returning.short, obj28_Life.short, obj29_Death.short, obj30_Love.short
 Routine 0xe5b4	rod_short
 Routine 0xe5e4	rod_display_after
-! References: obj28_Life.description, obj29_Death.description, obj30_Love.description
-Routine 0xe5fc	routine58876:?
-! References: obj28_Life.rod_action, obj29_Death.rod_action, obj30_Love.rod_action
-Routine 0xe658	routine58968:?
+Routine 0xe5fc	LifeDesc
+Routine 0xe658	LifeAction
 ! References: obj26_Language.list_together, obj27_Returning.nw_to
 Routine 0xe6a4	routine59044:?
-! References: obj28_Life.list_together, obj29_Death.nw_to, obj30_Love.nw_to
 Routine 0xe6fc	rod_func1 
 Routine 0xe708	discover_rod r:object
-! References: obj17_Fire.rod_action
 Routine 0xe738	RodOfFireAction
 Routine 0xeaa4	RodOfIceAction
 Routine 0xeb60	RodOfReturningAction
@@ -1233,49 +1229,28 @@ Routine 0xf3f8	RodOfStalkingAction
 Routine 0xf708	RodOfInfinityAction
 Routine 0xf8d4	routine63700:?
 ! References: obj83_painting_of_Mad_Isaac_Meldrewe.life, obj158_Impressionist_painting.life, obj187_still_life.life, obj260_Greek_frieze.life, obj289_Roman_mosaic.life, obj377_bronze_mural.life, obj412_painted_writings.life
-Routine 0xf904	routine63748:?
-! References: obj164_Grim_Reaper.after, obj165_Fool.after, obj166_Drowned_Sailor.after, obj190_Castle.after, obj191_Star.after, obj192_Eight_of_Wands.after, obj193_Maiden.after, obj194_Ace_of_Cups.after, obj483_Crescent_Moon.after
-Routine 0xfae8	routine64232:?
-! References: obj164_Grim_Reaper.parse_name, obj165_Fool.parse_name, obj166_Drowned_Sailor.parse_name, obj190_Castle.parse_name, obj191_Star.parse_name, obj192_Eight_of_Wands.parse_name, obj193_Maiden.parse_name, obj194_Ace_of_Cups.parse_name, obj483_Crescent_Moon.parse_name
-Routine 0xfb14	routine64276:?
-! References: obj164_Grim_Reaper.short, obj165_Fool.short, obj166_Drowned_Sailor.short, obj190_Castle.short, obj191_Star.short, obj192_Eight_of_Wands.short, obj193_Maiden.short, obj194_Ace_of_Cups.short, obj483_Crescent_Moon.short
-Routine 0xfb50	routine64336:?
-! References: obj38_History_of_the_Meldrews__vol__II_.parse_name, obj43_classical_dictionary.parse_name, obj69_romantic_novel.parse_name, obj70_book_of_Twenties_poetry.parse_name, obj95_ancient_prayer_book.parse_name
-Routine 0xfb90	routine64400:?
-! References: obj32_electric_torch.after
-Routine 0xfbac	routine64428:?
-! References: obj32_electric_torch.before
-Routine 0xfc20	routine64544:?
-! References: obj32_electric_torch.daemon
+Routine 0xf904	LagachLife
+Routine 0xfae8	TarotAfter
+Routine 0xfb14	TarotParseName
+Routine 0xfb50	TarotShort
+Routine 0xfb90	ConsultableParsename
+Routine 0xfbac	TorchAfter
+Routine 0xfc20	TorchBefore
 Routine 0xfdf4	TorchTimer o:object n:int
-! References: obj34_chocolate_biscuit.before
-Routine 0xfe54	routine65108:?
-! References: obj36_hinged_trapdoor.after
-Routine 0xfe64	routine65124:?
-! References: obj36_hinged_trapdoor.before
-Routine 0xfea0	routine65184:?
-! References: obj37_teachests.after
-Routine 0xff24	routine65316:?
-! References: obj38_History_of_the_Meldrews__vol__II_.after
-Routine 0xffa0	routine65440:?
-! References: obj41_House.before
-Routine 0x10eac	routine69292:?
-! References: obj42_Servant_s_Room.after
-Routine 0x10fd4	routine69588:?
-! References: obj43_classical_dictionary.after
-Routine 0x110d0	routine69840:?
-! References: obj50_bird_whistle.after
-Routine 0x1190c	routine71948:?
-! References: obj51_gift_wrapped_parcel.after
-Routine 0x11c14	routine72724:?
-! References: obj54_postcard_of_the_Champs_Elysees.before
-Routine 0x11c54	routine72788:?
-! References: obj55_mb.short
-Routine 0x11ce8	routine72936:?
-! References: obj55_mb.after
-Routine 0x11d30	routine73008:?
-! References: obj56_red_tablet.before
-Routine 0x11e50	routine73296:?
+Routine 0xfe54	BiscuitBefore
+Routine 0xfe64	TrapdoorAfter
+Routine 0xfea0	TrapdoorBefore
+Routine 0xff24	TeachestsAfter
+Routine 0xffa0	HistoryAfter
+Routine 0x10eac	HouseBefore
+Routine 0x10fd4	ServantsRoomAfter
+Routine 0x110d0	DictionaryAfter
+Routine 0x1190c	WhistleAfter
+Routine 0x11c14	ParcelAfter
+Routine 0x11c54	PostcardBefore
+Routine 0x11ce8	MedicineShort
+Routine 0x11d30	MedicineAfter
+Routine 0x11e50	TabletBefore
 ! References: obj57_Over_the_East_Wing.initial
 Routine 0x11e78	routine73336:?
 ! References: obj58_Austin.after
