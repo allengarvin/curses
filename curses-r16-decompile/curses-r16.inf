@@ -9039,7 +9039,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ LMAfter ;	! 58172 / 0xe33c
     if (action == ##Score) {
         if (deadflag == 0) {
-            routine175344();
+            WhereInGame();
             print "  ";
         }
         rfalse;
@@ -23006,12 +23006,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ TimeSub ;	! 175336 / 0x2ace8
-    routine175344();
+    WhereInGame();
     new_line;
     rtrue;
 ];
 
-[ routine175344 ;	! 175344 / 0x2acf0
+[ WhereInGame ;	! 175344 / 0x2acf0
     if (location == Inside_the_Orb) {
         print "Inside the golden orb.";
         rfalse;
