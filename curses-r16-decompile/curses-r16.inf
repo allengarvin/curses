@@ -17311,7 +17311,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "Above ";
     Defart(selfobj);
     print " is the single word ~";
-    routine138004(selfobj.time_left);
+    TuscanInt(selfobj.time_left);
     "~.";
 ];
 
@@ -17369,7 +17369,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print "You crank the sceptre round, lose control for a moment, and some primitive mechanism spins. The word comes to rest as ~";
         i = random(6);
-        routine138004(i);
+        TuscanInt(i);
         print "~.^";
         selfobj.time_left.time_left = i;
         if (debug_deterministic_transportation == 1) {
@@ -17555,7 +17555,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (gambling_sailor has lucky || inscribed_die has lucky) {
                 n = 6;
             }
-            routine138004(n);
+            TuscanInt(n);
             print "~, ";
             if (n > inscribed_die.time_left) {
                 print "and grins.^";
@@ -17585,7 +17585,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Read) {
         print "Each side has a word inscribed on it. The word on top is ~";
-        routine138004(selfobj.time_left);
+        TuscanInt(selfobj.time_left);
         "~.";
     }
     if (action == ##Drop or ##ThrowAt or ##Gamble) {
@@ -17596,29 +17596,29 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give gambling_sailor general;
         inscribed_die.time_left = local1;
         print "You throw a ~";
-        routine138004(local1);
+        TuscanInt(local1);
         "~, whatever that means.";
     }
     rfalse;
 ];
 
-[ routine138004 local1 ;	! 138004 / 0x21b14
-    if (local1 == 1[?]) {
+[ TuscanInt i ;	! 138004 / 0x21b14
+    if (i == 1) {
         print "thu";
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         print "zal";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         print "si";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         print "ca";
     }
-    if (local1 == 5[w_obj?]) {
+    if (i == 5) {
         print "mach";
     }
-    if (local1 == 6[ne_obj?]) {
+    if (i == 6) {
         print "huth";
     }
     rtrue;
