@@ -1249,7 +1249,7 @@ Object -> -> golden_orb "glowing golden orb"	! 393 / 0x189
 
 Object -> photographers_flash "photographer's flash"	! 63 / 0x3f
   with	name 'photograp' 'flash' 'compartment',
-	after routine75840,
+	after FlashAFter,
 	nw_to s_obj,
 	initial "A rather more modern photographer's flash lies on a shelf to one side.",
 	description "The kind of black box which often sits on top of a camera, used to illuminate otherwise dim scenes. It has an openable compartment on the side, with room left inside for a battery and a timer mechanism (which seem to be optional extras).",
@@ -1263,7 +1263,7 @@ Object red_lamp "red lamp"	! 62 / 0x3e
 
 Object Disused_Observatory "Disused Observatory"	! 64 / 0x40
   with	name 'mural' 'zodiac' 'beam' 'stand',
-	before routine75984,
+	before ObservatoryBefore,
 	n_to Over_the_East_Wing,
 	s_to Souvenirs_Room,
 	w_to Library_Storage,
@@ -1280,7 +1280,7 @@ Object -> smoke_detector "smoke detector"	! 65 / 0x41
 
 Object -> solid_glass_ball "solid glass ball"	! 66 / 0x42
   with	name 'glass' 'ball',
-	after routine76752,
+	after GlassBallAfter,
 	initial "Mounted on the old telescope stand is what looks like a solid glass ball.",
   has	static;
 
@@ -1294,13 +1294,13 @@ Object Library_Storage "Library Storage"	! 67 / 0x43
 
 Object -> water_pipe "water pipe"	! 68 / 0x44
   with	name 'water' 'pipe' 'joint' 'pipes',
-	after routine77352,
+	after WaterPipeAfter,
 	description "The joint on the water pipe looks none too sturdy.",
   has	concealed static;
 
 Object -> romantic_novel "romantic novel"	! 69 / 0x45
   with	name 'romance' 'romantic' 'novel' 'book',
-	after routine77636,
+	after RomanticNovelAfter,
 	nw_to n_obj,
 	initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
 	description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
@@ -1310,7 +1310,7 @@ Object -> romantic_novel "romantic novel"	! 69 / 0x45
 
 Object -> book_of_Twenties_poetry "book of Twenties poetry"	! 70 / 0x46
   with	name 'poetry' 'book',
-	after routine77704,
+	after PoetryAfter,
 	nw_to n_obj,
 	parse_name ConsultableParsename,
 	devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
@@ -1318,10 +1318,10 @@ Object -> book_of_Twenties_poetry "book of Twenties poetry"	! 70 / 0x46
 
 Object Souvenirs_Room "Souvenirs Room"	! 71 / 0x47
   with	name 'souvenirs' 'holiday' 'snaps' 'beam',
-	after routine78248,
-	before routine78328,
+	after SouvenirsRoomAfter,
+	before SouvenirsRoomBefore,
 	n_to Disused_Observatory,
-	s_to routine78480,
+	s_to SouvenirsRoomSouth,
 	u_to Disused_Observatory,
 	description "This is where you ought to have left the wretched map, in the family lumber-room of souvenirs and holiday snaps. You checked it thoroughly earlier, and can't bear the thought of searching it all again. A slide projector is aimed at the whitewashed south wall, one of the outside walls of the house. The only way to go is back up to the observatory.",
 	section T_MODERN,
@@ -1329,13 +1329,13 @@ Object Souvenirs_Room "Souvenirs Room"	! 71 / 0x47
 
 Object -> slide_projector "slide projector"	! 72 / 0x48
   with	name 'slide' 'projector' 'switch' 'dial' 'slot' 'focus',
-	after routine78492,
-	before routine78820,
+	after ProjectorAfter,
+	before ProjectorBefore,
 	description "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There is also a little dial on the back, perhaps for the focus.",
   has	container open scenery switchable;
 
 Object -> south_wall "south wall"	! 73 / 0x49
-  with	after routine79012,
+  with	after SouthWallAfter,
 	n_to nothing,
 	w_to ne_obj,
   has	concealed door open scenery static;
@@ -10630,7 +10630,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: photographers_flash.after
 
-[ routine75840 ;	! 75840 / 0x12840
+[ FlashAFter ;	! 75840 / 0x12840
     if (action == ##Action257) {
         generic_globvar = 0;
         if (child(selfobj) ~= nothing) {
@@ -10658,7 +10658,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Disused_Observatory.before
 
-[ routine75984 ;	! 75984 / 0x128d0
+[ ObservatoryBefore ;	! 75984 / 0x128d0
     if (action == ##Look) {
         if (slide_projector hasnt on || global139 == 0) {
             rfalse;
@@ -10734,7 +10734,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: solid_glass_ball.after
 
-[ routine76752 local1 ;	! 76752 / 0x12bd0
+[ GlassBallAfter local1 ;	! 76752 / 0x12bd0
     if (action == ##Clean) {
         give selfobj general;
         if (global139 == 1[?] && slide_projector has on) {
@@ -10794,7 +10794,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: water_pipe.after
 
-[ routine77352 ;	! 77352 / 0x12e28
+[ WaterPipeAfter ;	! 77352 / 0x12e28
     if (action == ##TurnWith) {
         if (second ~= steel_wrench) {
             CDefart(second);
@@ -10826,7 +10826,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: romantic_novel.after
 
-[ routine77636 ;	! 77636 / 0x12f44
+[ RomanticNovelAfter ;	! 77636 / 0x12f44
     if (action == ##Take) {
         if (steel_wrench hasnt general) {
             routine77984();
@@ -10846,7 +10846,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: book_of_Twenties_poetry.after
 
-[ routine77704 ;	! 77704 / 0x12f88
+[ PoetryAfter ;	! 77704 / 0x12f88
     if (action == ##Take) {
         if (steel_wrench hasnt general) {
             routine77984();
@@ -10888,7 +10888,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Souvenirs_Room.after
 
-[ routine78248 local1 ;	! 78248 / 0x131a8
+[ SouvenirsRoomAfter local1 ;	! 78248 / 0x131a8
     if (action == ##Read) {
         if (noun == s_obj && slide_projector has on) {
             local1 = child(slide_projector);
@@ -10906,7 +10906,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Souvenirs_Room.before
 
-[ routine78328 local1 ;	! 78328 / 0x131f8
+[ SouvenirsRoomBefore local1 ;	! 78328 / 0x131f8
     if (action == ##Look) {
         if (slide_projector hasnt on) {
             rfalse;
@@ -10928,14 +10928,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Souvenirs_Room.s_to
 
-[ routine78480 ;	! 78480 / 0x13290
+[ SouvenirsRoomSouth ;	! 78480 / 0x13290
     R_Process(##Enter,73[south_wall?]);
     rtrue;
 ];
 
 ! References: slide_projector.after
 
-[ routine78492 ;	! 78492 / 0x1329c
+[ ProjectorAfter ;	! 78492 / 0x1329c
     if (action == ##Action257) {
         if (child(selfobj) ~= nothing) {
             "There's a slide in already.";
@@ -10979,7 +10979,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: slide_projector.before
 
-[ routine78820 local1 ;	! 78820 / 0x133e4
+[ ProjectorBefore local1 ;	! 78820 / 0x133e4
     if (action == ##Action257) {
         if (selfobj has on) {
             routine79624(noun);
@@ -11022,7 +11022,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: south_wall.after
 
-[ routine79012 local1 ;	! 79012 / 0x134a4
+[ SouthWallAfter local1 ;	! 79012 / 0x134a4
     if (action == ##Enter) {
         local1 = child(slide_projector);
         if (local1 == 0) {
