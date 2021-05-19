@@ -2970,7 +2970,7 @@ Object -> coal_bunker "coal bunker"	! 277 / 0x115
 
 Object -> stream "stream"	! 278 / 0x116
   with	name 'stream' 'water' 'gurgling',
-	after routine113520,
+	after StreamAfter,
   has	scenery;
 
 Object Beside_the_Wall "Beside the Wall"	! 279 / 0x117
@@ -2987,21 +2987,21 @@ Object Beside_the_Wall "Beside the Wall"	! 279 / 0x117
 
 Object -> potted_shrub "potted shrub"	! 280 / 0x118
   with	name 'pot' 'potted' 'tub' 'plant' 'shrub',
-	after routine113576,
+	after ShrubAfter,
 	initial "A shrub is being nursed in a wide round tub in the centre of the path, sheltered behind the wall.",
   has	static;
 
 Object -> stone_wall "stone wall"	! 281 / 0x119
   with	name 'stone' 'wall' 'carved' 'carvings' 'painted',
-	after routine113724,
-	life routine113824,
+	after StoneWallAfter,
+	life StoneWallLife,
 	description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
 	found_in [1 17 1 d6],
   has	scenery talkable;
 
 Object timber_hatch "timber hatch"	! 282 / 0x11a
   with	name 'timber' 'hatch' 'old' 'rotted' 'rotting' 'lid',
-	before routine113904,
+	before TimberHatchBefore,
 	n_to Wine_Cellars,
 	s_to "Beside the shrub is a timber hatch, three feet across.",
 	w_to thedark,
@@ -3010,19 +3010,19 @@ Object timber_hatch "timber hatch"	! 282 / 0x11a
 
 Object Family_Tree "Family Tree"	! 283 / 0x11b
   with	name 'sign' 'signpost' 'post',
-	n_to routine113940,
+	n_to FamilyTreeNorth,
 	e_to Lawn_Ornaments,
 	w_to Clearing,
 	se_to Garden_Stream,
 	u_to Up_the_Plane_Tree,
-	initial routine113932,
+	initial FamilyTreeInitial,
 	description "You stand in the shade of a great plane tree, seedlings for which were brought back from Spain by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and to the north a single break in the green privet hedge marks the entrance to the famously difficult Meldrew Hall Maze. A signpost reading ~To the Mosaic~ points east across the lawn.",
 	section T_GARDEN,
   has	light;
 
 Object -> plane_tree "plane tree"	! 284 / 0x11c
   with	name 'plane' 'tree' 'family',
-	after routine114192,
+	after PlaneTreeAfter,
   has	scenery;
 
 Object Lawn_Ornaments "Lawn Ornaments"	! 285 / 0x11d
@@ -3043,7 +3043,7 @@ Object -> plaster_statuette "plaster statuette"	! 286 / 0x11e
 
 Object ancient_well "ancient well"	! 287 / 0x11f
   with	name 'ancient' 'well' 'dark',
-	before routine114208,
+	before WellBefore,
 	initial "The lawn is lightly coated with broken plaster and dust, and in the spot where the statuette once stood is a dark, ancient well.",
 	description "You can make out nothing below, and the well is too small to climb down.",
   has	container open static;
@@ -3096,8 +3096,8 @@ Object -> runner_bean_plant "runner-bean plant"	! 293 / 0x125
   has	door static;
 
 Object Up_the_Beanstalk "Up the Beanstalk"	! 294 / 0x126
-  with	after routine114248,
-	before routine114280,
+  with	after BeanStalkAfter,
+	before BeanStalkBefore,
 	n_to Heavenly_Place,
 	d_to Vegetable_Garden,
 	description "At the top of the beanstalk, in amongst the clouds. There is no safe way to go from here except back down, not surprisingly. A dangerous way might be to step out onto the clouds to the north, but even if this is a fairy-tale it would be taking a lot on trust.",
@@ -3113,7 +3113,7 @@ Object Garage "Garage"	! 295 / 0x127
 
 Object -> garden_roller "garden roller"	! 296 / 0x128
   with	name 'garden' 'roller' 'switch' 'motor' 'motorised' 'power',
-	after routine114368,
+	after RollerAfter,
 	s_to "A big motorised garden roller is parked here.",
 	initial "The garden roller sits here, its engine still running.",
 	description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
@@ -14687,7 +14687,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: stream.after
 
-[ routine113520 ;	! 113520 / 0x1bb70
+[ StreamAfter ;	! 113520 / 0x1bb70
     if (action == ##Drink) {
         "It's a warm, not unpleasant taste, silt and algae.";
     }
@@ -14700,7 +14700,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: potted_shrub.after
 
-[ routine113576 ;	! 113576 / 0x1bba8
+[ ShrubAfter ;	! 113576 / 0x1bba8
     if (action == ##Climb or ##Enter) {
         "It's only three feet high!";
     }
@@ -14722,7 +14722,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: stone_wall.after
 
-[ routine113724 ;	! 113724 / 0x1bc3c
+[ StoneWallAfter ;	! 113724 / 0x1bc3c
     if (action == ##Climb or ##Enter) {
         "The old, carved garden wall is one of the treasures of rural England, and you're not nearly desperate enough to crumble it further into ruin.";
     }
@@ -14731,7 +14731,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: stone_wall.life
 
-[ routine113824 ;	! 113824 / 0x1bca0
+[ StoneWallLife ;	! 113824 / 0x1bca0
     if (action == ##Order or ##Answer or ##Ask) {
         if (verb ~= ##Lagach) {
             "The old wall is mute.";
@@ -14743,7 +14743,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: timber_hatch.before
 
-[ routine113904 ;	! 113904 / 0x1bcf0
+[ TimberHatchBefore ;	! 113904 / 0x1bcf0
     if (action == ##Open) {
         give Wine_Cellars light;
         print (string) selfobj.initial;
@@ -14759,7 +14759,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Family_Tree.initial
 
-[ routine113932 ;	! 113932 / 0x1bd0c
+[ FamilyTreeInitial ;	! 113932 / 0x1bd0c
     global152 = 4[e_obj?];
     global153 = 6[ne_obj?];
     rfalse;
@@ -14767,16 +14767,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Family_Tree.n_to
 
-[ routine113940 ;	! 113940 / 0x1bd14
+[ FamilyTreeNorth ;	! 113940 / 0x1bd14
     if (player in garden_roller) {
-        return 301[Maze?];
+        return Maze;
     }
     "You can't go that way.^^Now, this takes a little explaining... These days, it isn't easy to keep up a house the size of Meldrew Hall, and your family has had to strike a bargain with the National Trust that the house should be open to the public in the summer months. The maze is so popular with visitors that the grass has worn away, and it's being reseeded at the moment, so you shouldn't go treading all over it.";
 ];
 
 ! References: plane_tree.after
 
-[ routine114192 ;	! 114192 / 0x1be10
+[ PlaneTreeAfter ;	! 114192 / 0x1be10
     if (action == ##Climb) {
         R_Process(##Go,10[u_obj?]);
         rtrue;
@@ -14786,7 +14786,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: ancient_well.before
 
-[ routine114208 ;	! 114208 / 0x1be20
+[ WellBefore ;	! 114208 / 0x1be20
     if (action == ##Receive) {
         move noun to hanging_cord;
         give CR ~general;
@@ -14797,7 +14797,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Up_the_Beanstalk.after
 
-[ routine114248 ;	! 114248 / 0x1be48
+[ BeanStalkAfter ;	! 114248 / 0x1be48
     if (action == ##Jump) {
         deadflag = DIED;
         "You fall and break your neck!";
@@ -14807,7 +14807,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Up_the_Beanstalk.before
 
-[ routine114280 ;	! 114280 / 0x1be68
+[ BeanStalkBefore ;	! 114280 / 0x1be68
     if (action == ##Drop) {
         move noun to Family_Tree;
         if (noun == medicine_bottle && noun has locked) {
@@ -14824,7 +14824,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: garden_roller.after
 
-[ routine114368 ;	! 114368 / 0x1bec0
+[ RollerAfter ;	! 114368 / 0x1bec0
     if (action == ##Go) {
         if (selfobj hasnt on) {
             print "(The motor isn't on at the moment.)^";
