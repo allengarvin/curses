@@ -11497,7 +11497,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine84228 ;	! 84228 / 0x14904
+[ MonkeyAlive ;	! 84228 / 0x14904
     if (Crescent_Moon in Old_Evans) {
         give model_of_ugly_animal ~general;
         "^The monkey revels briefly in its new life, but then catches your eyes, sadly realising you offer it no home. Quite quickly it settles back into an ugly idol.";
@@ -11545,7 +11545,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         WriteListFrom(child(player),512 + 8 + 64);
         print ".^";
         if (model_of_ugly_animal has general) {
-            routine84228();
+            MonkeyAlive();
         }
         rtrue;
     }
@@ -23268,7 +23268,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun == model_of_ugly_animal) {
         print "In the mirror is a model of a mischievous-looking monkey, which wriggles as it comes alive!";
         give model_of_ugly_animal general;
-        routine84228();
+        MonkeyAlive();
         rtrue;
     }
     if (routine84192(noun) == 1[?]) {
