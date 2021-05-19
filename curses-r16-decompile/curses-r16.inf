@@ -9538,20 +9538,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     print "Everything becomes a daze and then you find yourself...^";
     give noun general;
-    routine63700();
+    StartMasterGame();
     rtrue;
 ];
 
-[ routine63700 local1 local2 ;	! 63700 / 0xf8d4
+[ StartMasterGame o sib ;	! 63700 / 0xf8d4
     game_section = T_ANCIENT_BRITAIN;
-    local1 = child(player);
+    o = child(player);
     give daisy_chain ~worn;
   .label63713;
-    if (local1 ~= 0) {
-        local2 = sibling(local1);
-        give local1 ~worn;
-        move local1 to Infinity_Symbol;
-        local1 = local2;
+    if (o ~= nothing) {
+        sib = sibling(o);
+        give o ~worn;
+        move o to Infinity_Symbol;
+        o = sib;
         jump label63713;
     }
     move historical_pamphlet to player;
