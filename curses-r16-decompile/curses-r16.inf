@@ -11835,7 +11835,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ WirelessBefore ;	! 86892 / 0x1536c
     if (action == ##SwitchOn) {
-        StartTimer(selfobj,6[ne_obj?]);
+        StartTimer(selfobj,6);
         "You push the switch on the wireless, but nothing happens.";
     }
     if (action == ##SwitchOff) {
@@ -11923,7 +11923,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ JemimaDaemon ;	! 87700 / 0x15694
     if (location ~= Potting_Room) {
-        StartTimer(selfobj,1[?]);
+        StartTimer(selfobj,1);
         rtrue;
     }
     print "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
@@ -12021,7 +12021,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local1 = 5[w_obj?];
             print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
         }
-        StartTimer(Jemima,7[se_obj?]);
+        StartTimer(Jemima,7);
         daisy_chain.time_left = local1;
         "After a moment she notices you're still here. ~Come back later, it'll be done soon.~  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.";
     }
@@ -13377,7 +13377,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give player general;
         }
         give Coven_Cell general;
-        StartTimer(selfobj,3[s_obj?]);
+        StartTimer(selfobj,3);
         rtrue;
     }
     print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
@@ -13460,7 +13460,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "Just how broken do you want it to be?";
         }
         give selfobj open;
-        StartTimer(selfobj,5[w_obj?]);
+        StartTimer(selfobj,5);
         "You smash the glass... noisily. Still, the cabinet is open now.";
     }
     if (action == ##Open or ##Close) {
@@ -13513,7 +13513,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine101636 ;	! 101636 / 0x18d04
     if (complicated_looking_bomb has concealed) {
-        StartTimer(complicated_looking_bomb,10[u_obj?]);
+        StartTimer(complicated_looking_bomb,10);
     }
     rfalse;
 ];
@@ -13664,7 +13664,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (selfobj.number ~= 0) {
             "It is already running!";
         }
-        StartTimer(selfobj,10[u_obj?]);
+        StartTimer(selfobj,10);
         selfobj.number = 1[?];
         "You wind back the timer to ten minutes, and off it goes.";
     }
@@ -14590,7 +14590,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rfalse;
         }
         give old_timber_spar ~general;
-        StartTimer(bean_pole,5[w_obj?]);
+        StartTimer(bean_pole,5);
         rfalse;
     }
     rfalse;
@@ -15231,7 +15231,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rfalse;
         }
         give selfobj general;
-        StartTimer(selfobj,5[w_obj?]);
+        StartTimer(selfobj,5);
         rfalse;
     }
     rfalse;
@@ -16002,7 +16002,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
         }
         if (noun ~= historical_pamphlet) {
-            StartTimer(selfobj,2[?]);
+            StartTimer(selfobj,2);
         }
         CDefart(noun);
         " drops into the well-shaft.";
@@ -16062,7 +16062,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and besides they would probably only have done you in more unpleasantly.";
     }
     print "^Suddenly you are thrust before a druidical figure. He seems to recognise you, and is troubled. Perhaps because of this, your life is saved and you are taken away into custody, down in the valley among the army encampments.^";
-    StartTimer(tent_pole,4[e_obj?]);
+    StartTimer(tent_pole,4);
     local1 = child(player);
   .label123494;
     if (local1 ~= 0) {
@@ -16084,7 +16084,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "^Without warning a Saxon spy (or, as the guards would no doubt put it, another Saxon spy) is thrown bodily into the tent, careering into the central pole and slumping unconscious on the ground as a result. For a moment the whole tent rocks with the force - the pole was nearly broken.^";
     give tent_pole ~static;
     move unconscious_Saxon_spy to Rough_Tent;
-    StartTimer(unconscious_Saxon_spy,5[w_obj?]);
+    StartTimer(unconscious_Saxon_spy,5);
     rfalse;
 ];
 
@@ -16109,7 +16109,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         give selfobj general;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
-        StartTimer(Encampment,10[u_obj?]);
+        StartTimer(Encampment,10);
         PlayerTo(Encampment);
         rtrue;
     }
@@ -16125,7 +16125,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (unconscious_Saxon_spy in Rough_Tent) {
         print "^Men arrive to drag the Saxon spy away to some unguessable grisly fate. They grimace at you as if to say, ~You're next.~^";
         remove unconscious_Saxon_spy;
-        StartTimer(unconscious_Saxon_spy,5[w_obj?]);
+        StartTimer(unconscious_Saxon_spy,5);
         rtrue;
     }
     deadflag = DIED;
@@ -22849,7 +22849,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     one_time_try_bonus = true;
     displaying_quote = true;
-    StartTimer(Old_Winery,4[e_obj?]);
+    StartTimer(Old_Winery,4);
     score = score + 5;
     good_try_bonus = 1;
     "^A shame to see such a good try unrewarded... oh, go on, have an extra five points.";
