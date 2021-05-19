@@ -5220,7 +5220,7 @@ Array actions_table -->	! 28893 (0x70dd)
     TasteSub
     TouchSub
     CleanSub
-    Action91Sub
+    RepairSub
     BurnSub
     DrinkSub
     FillSub
@@ -21480,7 +21480,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: green_wire.name, red_wire.name, blue_wire.name, black_wire.name
 
-[ Action91Sub ;	! 165756 / 0x2877c
+[ RepairSub ;	! 165756 / 0x2877c
     L__M(##Repair);
     rtrue;
 ];
