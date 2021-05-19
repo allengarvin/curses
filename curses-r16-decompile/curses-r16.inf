@@ -4979,7 +4979,7 @@ Global StrongboxX;
 Global StrongboxY;
 Global global137;
 Global global138;
-Global global139;
+Global BallPolished;
 Global global140;
 Global global141;
 Global global142 = 25144[?];
@@ -10461,7 +10461,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         newroom = Over_the_East_Wing;
     }
     if (env == Disused_Observatory) {
-        if (slide_projector has on && global139 ~= 0 && to_current == false) {
+        if (slide_projector has on && BallPolished ~= false && to_current == false) {
             if (location == Disused_Observatory) {
                 "^Austin seems fascinated by the beam of light.";
             }
@@ -10660,7 +10660,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ ObservatoryBefore ;	! 75984 / 0x128d0
     if (action == ##Look) {
-        if (slide_projector hasnt on || global139 == 0) {
+        if (slide_projector hasnt on || BallPolished == false) {
             rfalse;
         }
         print "^A beam of white light runs into the room from the slide projector to the south, and hits the ";
@@ -10674,52 +10674,52 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ ObservatoryDiffraction o ;	! 76092 / 0x1293c
-    o = child(slide_projector);
-    if (o == nothing) {
+[ ObservatoryDiffraction card ;	! 76092 / 0x1293c
+    card = child(slide_projector);
+    if (card == nothing) {
         "diffracts it into a beautiful spectrum across the ceiling.";
     }
-    if (o == Eight_of_Wands_card) {
+    if (card == Eight_of_Wands_card) {
         "throws it into a straight rod of white light across one wall.";
     }
-    if (o == Castle) {
+    if (card == Castle) {
         "spins it about wildly, as if it were a strobe light at a discotheque.";
     }
-    if (o == Star) {
+    if (card == Star) {
         "amplifies it into a powerful yellow searchlight which slowly turns about the room.";
     }
-    if (o == Crescent_Moon) {
+    if (card == Crescent_Moon) {
         "throws it in a crescent against one wall.";
     }
     print "somehow bends it so that it strikes the mural at the sign of ";
-    if (o == miniature) {
+    if (card == miniature) {
         "Scorpio.";
     }
-    if (o == Maiden_card) {
+    if (card == Maiden_card) {
         "Virgo.";
     }
-    if (o == Ace_of_Cups_card) {
+    if (card == Ace_of_Cups_card) {
         "Aquarius.";
     }
-    if (o == Death_card) {
+    if (card == Death_card) {
         "Cancer.";
     }
-    if (o == Drowned_Sailor_card) {
+    if (card == Drowned_Sailor_card) {
         "Pisces.";
     }
-    if (o == Fool_card) {
+    if (card == Fool_card) {
         print "Capricorn.^";
-        routine76480();
+        TriggerAlert();
         Achieved(SCORE_SMOKE);
         rtrue;
     }
-    if (o == charcoal_sketch) {
+    if (card == charcoal_sketch) {
         "Leo.";
     }
     rtrue;
 ];
 
-[ routine76480 ;	! 76480 / 0x12ac0
+[ TriggerAlert ;	! 76480 / 0x12ac0
     if (fire_escape in Dead_End) {
         rfalse;
     }
@@ -10734,10 +10734,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: solid_glass_ball.after
 
-[ GlassBallAfter local1 ;	! 76752 / 0x12bd0
+[ GlassBallAfter i ;	! 76752 / 0x12bd0
     if (action == ##Clean) {
         give selfobj general;
-        if (global139 == 1[?] && slide_projector has on) {
+        if (BallPolished == true && slide_projector has on) {
             print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
             ObservatoryDiffraction();
             rtrue;
@@ -10749,42 +10749,42 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "The ball is scratched and misted up.";
         }
         discharge_rod(electric_torch);
-        local1 = random(12);
+        i = random(12);
         print "In the ball mists swirl, then part to show ";
-        if (local1 == 1[?]) {
+        if (i == 1) {
             "a reflection of your face.";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             "a dizzying aerial view of Meldrew Hall gardens.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             "confused pictures of a tree being planted.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             "an image of a typist, home from work and wandering about her bedsit room.";
         }
-        if (local1 == 5[w_obj?]) {
+        if (i == 5) {
             "a dark picture of a museum display case.";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (i == 6) {
             "an Old Master painting, perhaps a Watteau, of a scene from classical mythology.";
         }
-        if (local1 == 7[se_obj?]) {
+        if (i == 7) {
             "an oddly-angled view of a Roman villa half in ruins.";
         }
-        if (local1 == 8[nw_obj?]) {
+        if (i == 8) {
             "a flickery view of faces round a camp fire.";
         }
-        if (local1 == 9[sw_obj?]) {
+        if (i == 9) {
             "a dark, spooky view of a crypt.";
         }
-        if (local1 == 10[u_obj?]) {
+        if (i == 10) {
             "a dreamy, enclosed view of somewhere half-familiar.";
         }
-        if (local1 == 11[d_obj?]) {
+        if (i == 11) {
             "a sketch of a great marble palace.";
         }
-        if (local1 == 12[out_obj?]) {
+        if (i == 12) {
             "a vision of English countryside.";
         }
         rfalse;
@@ -10918,7 +10918,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "^The south wall displays ";
             routine79532(local1);
         }
-        if (global139 == 1[?]) {
+        if (BallPolished == true) {
             "^A beam of white light points directly backward from the projector, through the north doorway into the Observatory.";
         }
         rtrue;
@@ -10959,15 +10959,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Turn) {
-        if (global139 == 1[?]) {
-            global139 = 0;
+        if (BallPolished == true) {
+            BallPolished = false;
             if (selfobj has on) {
                 give Disused_Observatory ~light;
                 "The sharp beam of light cuts out again.";
             }
             "Click.";
         }
-        global139 = 1[?];
+        BallPolished = true;
         if (selfobj has on) {
             give Disused_Observatory light;
             "A sharp beam of white light appears backward out of the projector. As you step out of the beam, it extends dead straight through the north doorway.";
@@ -10996,13 +10996,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##SwitchOn) {
         give Souvenirs_Room light;
-        if (global139 == 1[?]) {
+        if (BallPolished == true) {
             give Disused_Observatory light;
         }
         local1 = child(slide_projector);
         if (local1 == 0) {
             print "The south wall is lit up. ";
-            if (global139 == 1[?]) {
+            if (BallPolished == true) {
                 print "Also, a narrow white beam of light extends backwards from the projector, pointing out up through the Observatory doorway to the north.";
             }
             new_line;
