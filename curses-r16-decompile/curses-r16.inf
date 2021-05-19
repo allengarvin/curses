@@ -12887,102 +12887,102 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ Deal_random_card i j trump ;	! 95644 / 0x1759c
+[ Deal_random_card i j card ;	! 95644 / 0x1759c
     if (deal_random == 0) {
       .label95650;
-        trump = random(50);
-        if (trump == i) {
+        card = random(50);
+        if (card == i) {
             jump label95650;
         }
-        if (trump == j) {
+        if (card == j) {
             jump label95650;
         }
-        if (trump == 1) {
+        if (card == 1) {
             print "the Blank Card (~which I am forbidden to see~)";
         }
-        if (trump == 2) {
+        if (card == 2) {
             print "the One-Eyed Merchant";
         }
-        if (trump == 3) {
+        if (card == 3) {
             print "Marie, the Sledging Girl";
         }
-        if (trump == 4) {
+        if (card == 4) {
             print "the Red Rock";
         }
-        if (trump == 5) {
+        if (card == 5) {
             print "the Stony Wastes";
         }
-        if (trump == 6) {
+        if (card == 6) {
             print "the Arch-Duke";
         }
-        if (trump == 7) {
+        if (card == 7) {
             print "the Hyacinths";
         }
-        if (trump == 8) {
+        if (card == 8) {
             print "the Wheel";
         }
-        if (trump == 9) {
+        if (card == 9) {
             print "Belladonna, the Lady of the Rocks";
         }
-        if (trump == 10) {
+        if (card == 10) {
             print "the Hypocrit Reader";
         }
-        if (trump == 11) {
+        if (card == 11) {
             print "the Golden Cupidon";
         }
-        if (trump == 12) {
+        if (card == 12) {
             print "the Candle-Flames";
         }
-        if (trump == 13) {
+        if (card == 13) {
             print "the Carved Dolphin";
         }
-        if (trump == 14) {
+        if (card == 14) {
             print "Philomel, the Barbarous King";
         }
-        if (trump == 15) {
+        if (card == 15) {
             print "the Lonely Typist";
         }
-        if (trump == 16) {
+        if (card == 16) {
             print "the Bradford Millionaire";
         }
-        if (trump == 17) {
+        if (card == 17) {
             print "Magnus, the Martyr";
         }
-        if (trump == 18) {
+        if (card == 18) {
             print "Phlebas, the Phoenician";
         }
-        if (trump == 19) {
+        if (card == 19) {
             print "the Woman with Long Black Hair";
         }
-        if (trump == 20) {
+        if (card == 20) {
             print "the Cicadas in the Pine Trees";
         }
-        if (trump < 21) {
-            return trump;
+        if (card < 21) {
+            return card;
         }
-        if (trump < 31) {
-            Deal_card_number(trump - 20);
+        if (card < 31) {
+            Deal_card_number(card - 20);
             print " of Staves";
-            return trump;
+            return card;
         }
-        if (trump == 31) {
+        if (card == 31) {
             print "Tiresias, the shape changer";
-            return trump;
+            return card;
         }
-        if (trump < 41) {
-            Deal_card_number(trump - 30);
+        if (card < 41) {
+            Deal_card_number(card - 30);
             print " of Cups";
-            return trump;
+            return card;
         }
-        Deal_card_number(trump - 40);
+        Deal_card_number(card - 40);
         print " of Stones";
-        return trump;
+        return card;
     }
     --deal_random;
-    trump = global146-->deal_random;
-    move trump to Consulting_Room;
-    Defart(trump);
-    return trump;
+    card = global146-->deal_random;
+    move card to Consulting_Room;
+    Defart(card);
+    return card;
 ];
 
 [ InsertCardIntoDeck o ;	! 96236 / 0x177ec
