@@ -23851,35 +23851,35 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return local2;
 ];
 
-[ routine181484 local1 local2 local3 local4 local5 ;	! 181484 / 0x2c4ec
-    local1 = routine181312();
-    if (local1 == 33366['forward'?] or 33375['forwards'?]) {
+[ routine181484 w i flag local4 local5 ;	! 181484 / 0x2c4ec
+    w = routine181312();
+    if (w == 'forward' or 'forwards') {
         ++wn;
         return global179;
     }
-    if (local1 == 30279['back'?] or 30288['backward'?] or 30297['backwards'?]) {
+    if (w == 'back' or 'backward' or 'backwards') {
         ++wn;
-        local1 = routine181312();
-        local3 = 1[?];
+        w = routine181312();
+        flag = 1;
     }
-    if (local1 == 40503['to'?]) {
+    if (w == 'to') {
         ++wn;
-        local1 = routine181312();
+        w = routine181312();
     }
-    if (local1 == 40278['the'?]) {
+    if (w == 'the') {
         ++wn;
-        local1 = routine181312();
+        w = routine181312();
     }
-    if (local1 == 37047['peg'?] or 35886['middle'?] or 31233['centre'?] or 34518['hoop'?] or 34527['hoops'?] or 31215['center'?]) {
+    if (w == 'peg' or 'middle' or 'centre' or 'hoop' or 'hoops' or 'center') {
         ++wn;
         return 65535[?];
     }
-    if (local1 == 34464['hole'?] && dug_hole in Croquet_Lawn) {
+    if (w == 'hole' && dug_hole in Croquet_Lawn) {
         ++wn;
         return 65534[?];
     }
-    local2 = wn;
-    if (local1 ~= 65535[?]) {
+    i = wn;
+    if (w ~= 'invalidDictWord65535') {
         local4 = NounDomain(1[?],0,0);
     } else {
         local4 = 65535[?];
@@ -23887,11 +23887,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local4 <= top_object && local4 > 0) {
         local5 = local4;
     } else {
-        wn = local2;
+        wn = i;
         local5 = global179;
         if (local5 <= 0) {
             local5 = 4[e_obj?];
-        } else if (local3 == 1[?]) {
+        } else if (flag == 1) {
             if (global179 == 2[?]) {
                 local5 = 3[s_obj?];
             }
