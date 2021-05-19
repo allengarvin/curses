@@ -4998,8 +4998,8 @@ Global global154 = 100[Tiny_Balcony?];
 Global global155 = 100[Tiny_Balcony?];
 Global DigX;
 Global DigY;
-Global global158;
-Global global159;
+Global OldDigX;
+Global OldDigY;
 Global global160;
 Global global161;
 Global global162;
@@ -15691,11 +15691,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: dug_hole.describe
 
 [ routine119392 ;	! 119392 / 0x1d260
-    if (global158 == DigX && global159 == DigY) {
+    if (OldDigX == DigX && OldDigY == DigY) {
         "^The hole you dug in the lawn is just here.";
     }
     print "^Some vandal has dug a hole in the lawn, ";
-    routine118692(global158 - DigX,global159 - DigY);
+    routine118692(OldDigX - DigX,OldDigY - DigY);
     ".";
 ];
 
@@ -23202,8 +23202,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     if (local2 == 65534[?]) {
-        DigX = global158;
-        DigY = global159;
+        DigX = OldDigX;
+        DigY = OldDigY;
         R_Process(##Look);
         rtrue;
     }
@@ -23311,11 +23311,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (DigX == 0 && DigY == 0) {
         "You surely don't want to dig here, right in the middle of such a fine lawn. The peg would fall out, and that would never do.";
     }
-    if (DigX == global158 && DigY == global159) {
+    if (DigX == OldDigX && DigY == OldDigY) {
         "There is already a hole on this exact spot of the lawn.";
     }
-    global158 = DigX;
-    global159 = DigY;
+    OldDigX = DigX;
+    OldDigY = DigY;
     print "You dig an energetic little hole in the superb turf";
     if (dug_hole in Croquet_Lawn) {
         print ", filling your last one up with the earth uncovered";
