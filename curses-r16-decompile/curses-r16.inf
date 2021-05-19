@@ -4279,7 +4279,7 @@ Object -> gambling_sailor "gambling sailor"	! 446 / 0x1be
 
 Object -> inscribed_die "inscribed die"	! 447 / 0x1bf
   with	name 'inscribed' 'die' 'dice' 'cube',
-	after routine137820,
+	after InscribedDieAfter,
 	initial "An inscribed six-sided die lies on the table in front of him.",
 	description "The sides you can see are labelled with short words.",
 	article "an",
@@ -17579,7 +17579,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: inscribed_die.after
 
-[ routine137820 local1 ;	! 137820 / 0x21a5c
+[ InscribedDieAfter local1 ;	! 137820 / 0x21a5c
     if (action == ##Take) {
         "The sailor covers it with his hand. But he looks the type who's never averse to a game.";
     }
