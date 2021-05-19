@@ -7833,20 +7833,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ UnsignedCompare x y u v ;	! 53468 / 0xd0dc
     if (x == y) {
-        rfalse;
+        return 0;
     }
     if (x < 0 && y >= 0) {
-        rtrue;
+        return 1;
     }
     if (x >= 0 && y < 0) {
-        return invalidBool65535;
+        return 65535;
     }
     u = x & 32767;
     v = y & 32767;
     if (u > v) {
-        rtrue;
+        return 1;
     }
-    return invalidBool65535;
+    return 65535;
 ];
 
 [ ZRegion local1 ;	! 53524 / 0xd114
