@@ -5016,7 +5016,7 @@ Global global172;
 Global global173;
 Global global174;
 Global global175 = 65535[?];
-Global global177;
+Global one_time_try_bonus;
 Global global178;
 Global yard_dir;
 Global dig_cnt;
@@ -22844,10 +22844,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine174212 ;	! 174212 / 0x2a884
-    if (global177 == 1[?]) {
+    if (one_time_try_bonus == true) {
         rtrue;
     }
-    global177 = 1[?];
+    one_time_try_bonus = true;
     displaying_quote = true;
     StartTimer(Old_Winery,4[e_obj?]);
     score = score + 5;
