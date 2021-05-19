@@ -24258,12 +24258,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine185096 ;	! 185096 / 0x2d308
-    DoMenu("^^     1. What are the ~good but wrong guesses~?^     2. How many songs does the radio play?^     3. In what *** ways *** can the game end?^     4. What are the secret ways to detect a Rod?^     5. What can you see in the crystal ball?^     6. Where are Dame Judi Dench and Donald Sutherland?^     7. Explain the handkerchief initials and the graffiti.^     8. How many tarot cards are there altogether?^     9. How can the medicine bottle be opened?^     10. What is the mascot for in the premonition?^",routine185108,AmusementMenu);
+[ TriviaMenu ;	! 185096 / 0x2d308
+    DoMenu("^^     1. What are the ~good but wrong guesses~?^     2. How many songs does the radio play?^     3. In what *** ways *** can the game end?^     4. What are the secret ways to detect a Rod?^     5. What can you see in the crystal ball?^     6. Where are Dame Judi Dench and Donald Sutherland?^     7. Explain the handkerchief initials and the graffiti.^     8. How many tarot cards are there altogether?^     9. How can the medicine bottle be opened?^     10. What is the mascot for in the premonition?^",TriviaQuestion,AmusementMenu);
     rtrue;
 ];
 
-[ routine185108 ;	! 185108 / 0x2d314
+[ TriviaQuestion ;	! 185108 / 0x2d314
     if (menu_item == 0) {
         submenu_header = "Trivia questions";
         submenu_number = 8;
@@ -24312,20 +24312,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine185256 ;	! 185256 / 0x2d3a8
+[ WhichMenu ;	! 185256 / 0x2d3a8
     if (menu_item == 1) {
         EndMenuDisplay();
-        return 2[?];
+        return 2;
     }
     if (menu_item == 2) {
-        routine185096();
-        return 2[?];
+        TriviaMenu();
+        return 2;
     }
-    return 2[?];
+    return 2;
 ];
 
 [ routine185280 ;	! 185280 / 0x2d3c0
-    DoMenu("^^     For your amusement^     Trivia questions^",HintSubmenu,routine185256);
+    DoMenu("^^     For your amusement^     Trivia questions^",HintSubmenu,WhichMenu);
     rtrue;
 ];
 
