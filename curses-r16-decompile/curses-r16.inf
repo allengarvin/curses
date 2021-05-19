@@ -1529,8 +1529,8 @@ Object -> ancient_prayer_book "ancient prayer book"	! 95 / 0x5f
 
 Object Alisons_Writing_Room "Alison's Writing Room"	! 96 / 0x60
   with	name 'engraving' 'dice' 'outline' 'sixes' 'door',
-	after routine83696,
-	before routine83944,
+	after WritingRoomAfter,
+	before WritingRoomBefore,
 	n_to Dead_End,
 	s_to windows,
 	description " .A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^",
@@ -1540,12 +1540,12 @@ Object Alisons_Writing_Room "Alison's Writing Room"	! 96 / 0x60
 
 Object -> comfortable_bed "comfortable bed"	! 97 / 0x61
   with	name 'comfortable' 'bed',
-	after routine83964,
+	after ComfyBedAfter,
   has	enterable light scenery supporter;
 
 Object -> windows "windows"	! 98 / 0x62
   with	name 'windows' 'window' 'latticed' 'glass' 'lattice',
-	after routine84044,
+	after WindowAfter,
 	n_to Tiny_Balcony,
 	s_to "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
 	w_to ne_obj,
@@ -11411,7 +11411,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Alisons_Writing_Room.description
 
-[ routine83392 ;	! 83392 / 0x145c0
+[ WritingRoomDesc ;	! 83392 / 0x145c0
     print "A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^";
     if (flag_of_the_British_Merchant_Navy in comfortable_bed) {
         "The flag is spread out as a blanket on the comfortable bed.";
@@ -11421,7 +11421,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Alisons_Writing_Room.after
 
-[ routine83696 ;	! 83696 / 0x146f0
+[ WritingRoomAfter ;	! 83696 / 0x146f0
     if (action == ##Sleep) {
         if (player in comfortable_bed) {
             if (flag_of_the_British_Merchant_Navy notin comfortable_bed) {
@@ -11443,7 +11443,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Alisons_Writing_Room.before
 
-[ routine83944 ;	! 83944 / 0x147e8
+[ WritingRoomBefore ;	! 83944 / 0x147e8
     if (action == ##Exit) {
         if (Melancholy_Dream has visited) {
             discharge_rod(servants_bed);
@@ -11455,7 +11455,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: comfortable_bed.after
 
-[ routine83964 ;	! 83964 / 0x147fc
+[ ComfyBedAfter ;	! 83964 / 0x147fc
     if (action == ##Receive) {
         if (noun ~= flag_of_the_British_Merchant_Navy) {
             "That seems unlikely to make a good blanket.";
@@ -11468,7 +11468,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: windows.after
 
-[ routine84044 ;	! 84044 / 0x1484c
+[ WindowAfter ;	! 84044 / 0x1484c
     if (action == ##Attack or ##Push or ##Pull) {
         give windows open;
         give windows openable;
