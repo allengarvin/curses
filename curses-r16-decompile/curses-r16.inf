@@ -4986,8 +4986,7 @@ Global global142 = 25144[?];
 Global Mouse_x = 8;
 Global Mousy_y = 3;
 Global MouseUnderstandsMask;
-Global global146 = 25207[?];
-Global deal_random;
+Global card_ptr;
 Global global148;
 Global global149;
 Global global150;
@@ -5106,6 +5105,7 @@ Array task_scores -->	! 23848 (0x5d28)
     3843
 ;
 Array standard_interpreter --> 1280[?];	! 0 (0x0)
+Array card_deck --> ! Unknown length -- cannot print;	! 25207 (0x6277)
 Array quote_line --> 10;	! 25943 (0x6557)
 Array the_timers --> 1;	! 23893 (0x5d55)
 Array array_23957 --> 1;	! 23957 (0x5d95)
@@ -12888,7 +12888,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ Deal_random_card i j card ;	! 95644 / 0x1759c
-    if (deal_random == 0) {
+    if (card_ptr == 0) {
       .label95650;
         card = random(50);
         if (card == i) {
@@ -12978,16 +12978,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print " of Stones";
         return card;
     }
-    --deal_random;
-    card = global146-->deal_random;
+    --card_ptr;
+    card = card_deck-->card_ptr;
     move card to Consulting_Room;
     Defart(card);
     return card;
 ];
 
 [ InsertCardIntoDeck o ;	! 96236 / 0x177ec
-    global146-->deal_random = o;
-    ++deal_random;
+    card_deck-->card_ptr = o;
+    ++card_ptr;
     rtrue;
 ];
 
