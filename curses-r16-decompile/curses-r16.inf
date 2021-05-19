@@ -10352,7 +10352,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ AustinMovements to_current env local3 local4 ;	! 74232 / 0x121f8
+[ AustinMovements to_current env i local4 ;	! 74232 / 0x121f8
     env = parent(Austin);
     local4 = 65535[?];
     if (to_current == true) {
@@ -10368,8 +10368,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             rfalse;
         }
-        local3 = random(10);
-        if (local3 > 8) {
+        i = random(10);
+        if (i > 8) {
             ! no code
         } else {
             if (env ~= location) {
@@ -10384,16 +10384,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (location == Dark_Room && random(2) == 1) {
                 "^Austin jumps up at the cord, but falls back down again, growling.";
             }
-            if (local3 == 1[?]) {
+            if (i == 1) {
                 "^Austin yawns.";
             }
-            if (local3 == 2[?]) {
+            if (i == 2) {
                 "^Austin rolls over on his back and stretches.";
             }
-            if (local3 == 3[s_obj?]) {
+            if (i == 3) {
                 "^Austin looks ineffable again.";
             }
-            if (local3 == 4[e_obj?]) {
+            if (i == 4) {
                 "^Austin purrs and licks one of his paws.";
             }
             rfalse;
@@ -10410,7 +10410,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "^Austin, your ginger cat, jumps up through the trap door.";
             }
         }
-        if (env == Attic && hinged_trapdoor has open && local3 == 10[u_obj?]) {
+        if (env == Attic && hinged_trapdoor has open && i == 10) {
             move Austin to House;
             if (location == Attic) {
                 "^Austin, bored again, disappears through the trap door.";
@@ -10418,14 +10418,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
     if (env == Attic) {
-        local3 = random(3);
-        if (local3 == 1[?]) {
+        i = random(3);
+        if (i == 1) {
             local4 = 47[Old_Furniture?];
         }
-        if (local3 == 2[?]) {
+        if (i == 2) {
             local4 = 103[Old_Winery?];
         }
-        if (local3 == 3[s_obj?]) {
+        if (i == 3) {
             local4 = 42[Servants_Room?];
         }
     }
@@ -10433,24 +10433,24 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local4 = 35[Attic?];
     }
     if (env == Old_Furniture) {
-        if (local3 == 9[sw_obj?]) {
+        if (i == 9) {
             local4 = 35[Attic?];
         } else {
             local4 = 57[Over_the_East_Wing?];
         }
     }
     if (env == Over_the_East_Wing) {
-        local3 = random(4);
-        if (local3 == 1[?]) {
+        i = random(4);
+        if (i == 1) {
             local4 = 47[Old_Furniture?];
         }
-        if (local3 == 2[?]) {
+        if (i == 2) {
             local4 = 74[East_Annexe?];
         }
-        if (local3 == 3[s_obj?]) {
+        if (i == 3) {
             local4 = 59[Dark_Room?];
         }
-        if (local3 == 4[e_obj?]) {
+        if (i == 4) {
             local4 = 64[Disused_Observatory?];
         }
     }
@@ -10467,14 +10467,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             rfalse;
         }
-        local3 = random(3);
-        if (local3 == 1[?]) {
+        i = random(3);
+        if (i == 1) {
             local4 = 57[Over_the_East_Wing?];
         }
-        if (local3 == 2[?]) {
+        if (i == 2) {
             local4 = 67[Library_Storage?];
         }
-        if (local3 == 3[s_obj?]) {
+        if (i == 3) {
             local4 = 71[Souvenirs_Room?];
         }
     }
@@ -10491,20 +10491,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local4 = 64[Disused_Observatory?];
     }
     if (env == Old_Winery) {
-        local3 = random(2);
-        if (local3 == 1[?]) {
+        i = random(2);
+        if (i == 1) {
             local4 = 35[Attic?];
         }
-        if (local3 == 2[?]) {
+        if (i == 2) {
             local4 = 107[Conservatory?];
         }
     }
     if (env == Conservatory) {
-        local3 = random(2);
-        if (local3 == 1[?]) {
+        i = random(2);
+        if (i == 1) {
             local4 = 112[Potting_Room?];
         }
-        if (local3 == 2[?]) {
+        if (i == 2) {
             local4 = 103[Old_Winery?];
         }
     }
@@ -10515,83 +10515,83 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location == env or local4) {
         if (to_current == false) {
             print "^Austin ";
-            local3 = random(10);
-            if (local3 == 1[?]) {
+            i = random(10);
+            if (i == 1) {
                 print "sidles";
             }
-            if (local3 == 2[?]) {
+            if (i == 2) {
                 print "ambles";
             }
-            if (local3 == 3[s_obj?]) {
+            if (i == 3) {
                 print "strolls";
             }
-            if (local3 == 4[e_obj?]) {
+            if (i == 4) {
                 print "runs";
             }
-            if (local3 == 5[w_obj?]) {
+            if (i == 5) {
                 print "oozes";
             }
-            if (local3 == 6[ne_obj?]) {
+            if (i == 6) {
                 print "scurries";
             }
-            if (local3 == 7[se_obj?]) {
+            if (i == 7) {
                 print "tiptoes";
             }
-            if (local3 == 8[nw_obj?]) {
+            if (i == 8) {
                 print "leaps";
             }
-            if (local3 == 9[sw_obj?]) {
+            if (i == 9) {
                 print "crawls";
             }
-            if (local3 == 10[u_obj?]) {
+            if (i == 10) {
                 print "rolls";
             }
             if (location == env) {
                 print " away to ";
-                local3 = local4;
+                i = local4;
             } else {
                 print " in from ";
-                local3 = env;
+                i = env;
             }
         } else {
             print "to ";
-            local3 = local4;
+            i = local4;
         }
         print "the ";
-        if (local3 == 35[Attic?]) {
+        if (i == 35) {
             "attic.";
         }
-        if (local3 == 47[Old_Furniture?]) {
+        if (i == 47) {
             "furniture store.";
         }
-        if (local3 == 103[Old_Winery?]) {
+        if (i == 103) {
             "winery.";
         }
-        if (local3 == 42[Servants_Room?]) {
+        if (i == 42) {
             "servant's bedroom.";
         }
-        if (local3 == 107[Conservatory?]) {
+        if (i == 107) {
             "conservatory.";
         }
-        if (local3 == 112[Potting_Room?]) {
+        if (i == 112) {
             "potting room.";
         }
-        if (local3 == 57[Over_the_East_Wing?]) {
+        if (i == 57) {
             "east landing.";
         }
-        if (local3 == 74[East_Annexe?]) {
+        if (i == 74) {
             "annexe.";
         }
-        if (local3 == 59[Dark_Room?]) {
+        if (i == 59) {
             "dark room.";
         }
-        if (local3 == 64[Disused_Observatory?]) {
+        if (i == 64) {
             "observatory.";
         }
-        if (local3 == 71[Souvenirs_Room?]) {
+        if (i == 71) {
             "souvenirs room.";
         }
-        if (local3 == 67[Library_Storage?]) {
+        if (i == 67) {
             "book store.";
         }
         "cold.";
