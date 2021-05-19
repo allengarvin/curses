@@ -1203,23 +1203,23 @@ Object Over_the_East_Wing "Over the East Wing"	! 57 / 0x39
 	w_to Dark_Room,
 	nw_to Old_Furniture,
 	d_to Disused_Observatory,
-	initial routine73336,
+	initial OverEastWingInitial,
 	description "The air is dusty and warm, almost making you choke in this rather empty area. The attic turns from northwest to east, and there is also a tight doorway leading west. A short flight of wooden steps leads down and to the south.",
 	section T_MODERN,
   has	;
 
 Object -> Austin "Austin"	! 58 / 0x3a
   with	name 'austin' 'cat' 'ginger' 'tail',
-	after routine73352,
-	before routine73696,
-	life routine73728,
+	after AustinAfter,
+	before AustinBefore,
+	life AustinLife,
 	initial "Austin, your incorrigible ginger cat, lounges around here.",
 	description "(Aunt Jemima has two cats, Jane and Austin, but she finds Austin especially annoying - about the only point you have ever agreed with her about.)^^Austin, a ginger with a long tail and an uncompromisingly lazy expression, is the kind of cat who hates being pushed around.",
-	daemon routine74068,
+	daemon AustinDemon,
   has	animate proper;
 
 Object Dark_Room "Dark Room"	! 59 / 0x3b
-  with	before routine75660,
+  with	before DarkRoomBefore,
 	e_to Over_the_East_Wing,
 	description "This is a roughly-furnished photographer's dark room, used by your grandfather years ago. There's nothing much here now, since you threw the chemicals out in case the children found them.",
 	cant_go "The only doorway is back east.",
@@ -1235,7 +1235,7 @@ Object -> sepia_photograph "sepia photograph"	! 60 / 0x3c
 
 Object -> hanging_cord "hanging cord"	! 61 / 0x3d
   with	name 'hanging' 'cord',
-	after routine75752,
+	after HangingCordAfter,
 	initial "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
 	description "It is attached to the ceiling.",
   has	static;
@@ -10209,7 +10209,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Over_the_East_Wing.initial
 
-[ routine73336 ;	! 73336 / 0x11e78
+[ OverEastWingInitial ;	! 73336 / 0x11e78
     if (Austin in selfobj) {
         StartDaemon(Austin);
     }
@@ -10218,7 +10218,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Austin.after
 
-[ routine73352 ;	! 73352 / 0x11e88
+[ AustinAfter ;	! 73352 / 0x11e88
     if (action == ##Clean or ##Touch or ##Squeeze) {
         "Austin curls about your foot implacably.";
     }
@@ -10264,7 +10264,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Austin.before
 
-[ routine73696 ;	! 73696 / 0x11fe0
+[ AustinBefore ;	! 73696 / 0x11fe0
     if (action == ##PushDir) {
         "Austin reluctantly accompanies you.";
     }
@@ -10273,7 +10273,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Austin.life
 
-[ routine73728 ;	! 73728 / 0x12000
+[ AustinLife ;	! 73728 / 0x12000
     if (action == ##Attack) {
         "It is so pathetically easy to kick Austin that you never quite have the heart. Thus he outwits you again.";
     }
@@ -10307,7 +10307,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Austin.daemon
 
-[ routine74068 local1 ;	! 74068 / 0x12154
+[ AustinDemon local1 ;	! 74068 / 0x12154
     if (selfobj has moved) {
         give selfobj ~moved;
         rfalse;
@@ -10601,7 +10601,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Dark_Room.before
 
-[ routine75660 ;	! 75660 / 0x1278c
+[ DarkRoomBefore ;	! 75660 / 0x1278c
     if (action == ##Look) {
         if (selfobj has light) {
             print "^The room is filled with an eerie, reddish light. You feel gloomy and can't help thinking about aviation accident statistics.^";
@@ -10613,7 +10613,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hanging_cord.after
 
-[ routine75752 ;	! 75752 / 0x127e8
+[ HangingCordAfter ;	! 75752 / 0x127e8
     if (action == ##Pull) {
         print "Click!  ";
         if (Dark_Room has light) {
