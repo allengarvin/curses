@@ -9726,7 +9726,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: electric_torch.before
 
-[ TorchBefore bat local2 ;	! 64544 / 0xfc20
+[ TorchBefore bat i ;	! 64544 / 0xfc20
     if (action == ##Open) {
         if (selfobj has light) {
             give selfobj ~light;
@@ -9750,12 +9750,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Achieved(1);
         }
         if (bat == old_smudged_battery or new_battery) {
-            local2 = bat.time_left;
-            if (local2 == 0) {
+            i = bat.time_left;
+            if (i == 0) {
                 ", but the battery must be dead because nothing happens.";
             }
             give selfobj light;
-            if (local2 > 5) {
+            if (i > 5) {
                 ", and it lights up brightly.";
             }
             ", and it lights up feebly.";
