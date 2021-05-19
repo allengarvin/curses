@@ -8976,8 +8976,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ DirectionName local1 ;	! 57772 / 0xe1ac
-    generic_globvar = local1;
+[ DirectionName d ;	! 57772 / 0xe1ac
+    generic_globvar = d;
     if (generic_globvar == 5[w_obj?]) {
         print "north";
     } else if (generic_globvar == 6[ne_obj?]) {
