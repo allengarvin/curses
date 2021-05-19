@@ -12991,18 +12991,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine96248 local1 local2 local3 ;	! 96248 / 0x177f8
+[ SosostrisDeals card3 card2 card1 ;	! 96248 / 0x177f8
     print "Madame Sosostris picks up the cards and deals them onto the table. She frowns in concentration as ";
-    local1 = Deal_random_card(0,0);
+    card3 = Deal_random_card(0,0);
     print ", ";
-    local2 = Deal_random_card(local1,0);
+    card2 = Deal_random_card(card3,0);
     print " and then ";
-    local3 = Deal_random_card(local1,local2);
+    card1 = Deal_random_card(card3,card2);
     print " show. ";
-    if (local1 == 164[Death_card?]) {
+    if (card3 == 164[Death_card?]) {
         print "She blanches with alarm, then recovers and jabbers something about not taking the cards too literally, the images being symbolic and so on. As rapidly as she possibly can, she warns you to fear death by water and then hustles you out onto the street.^";
     } else {
-        if (local1 ~= 191[Star?] || local2 ~= 193[Maiden_card?] || local3 ~= 192[Eight_of_Wands_card?]) {
+        if (card3 ~= 191[Star?] || card2 ~= 193[Maiden_card?] || card1 ~= 192[Eight_of_Wands_card?]) {
             ! no code
         } else {
             print "~You have come!  At last, after all these centuries!  But there is little I can do to ease your way, save to return the staff you left with me for safe keeping.~  And she shows you out. You feel rather bewildered.^";
@@ -13075,7 +13075,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "She has helped enough.";
         }
         print "Madame Sosostris breezes in once more. ~You again,~ she says warily. ~Let us see how your fortunes have changed.~^^";
-        routine96248();
+        SosostrisDeals();
         rtrue;
     }
     rfalse;
@@ -13103,7 +13103,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "She is startled and stares.";
         }
         if (special_word == 32880 or 36525) {
-            routine96248();
+            SosostrisDeals();
             remove Madame_Sosostris;
             give curtain ~general;
             give Madame_Sosostris general;
