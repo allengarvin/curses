@@ -134,8 +134,8 @@ Verb 'dance' 'tango' 'waltz'
 ;
 
 Verb 'add' 'join' 'mend' 'repair'
-    * noun						-> Action91
-    * noun 'to' noun					-> Action91
+    * noun						-> Repair
+    * noun 'to' noun					-> Repair
 ;
 
 Verb 'diagnose'
@@ -261,8 +261,8 @@ Verb 'burn' 'light'
 ;
 
 Verb 'attach' 'fasten' 'fix' 'tie'
-    * noun						-> Action91
-    * noun 'to' noun					-> Action91
+    * noun						-> Repair
+    * noun 'to' noun					-> Repair
 ;
 
 Verb 'clean' 'dust' 'polish' 'rub' 'scrub' 'shine' 'sweep' 'wipe'
@@ -10803,7 +10803,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Turn,selfobj);
         rtrue;
     }
-    if (action == ##Action91 or ##Turn) {
+    if (action == ##Repair or ##Turn) {
         if (steel_wrench has general) {
             "The joint is fairly safe already.";
         }
@@ -18140,7 +18140,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Madame_Sosostris.name, Madame_Sosostris.name, West_Side_Chapel.after
 
 [ routine142212 ;	! 142212 / 0x22b84
-    if (action == ##Action91 or ##Insert or ##PutOn) {
+    if (action == ##Repair or ##Insert or ##PutOn) {
         if (second ~= adamantine_statue) {
             rfalse;
         }
@@ -21481,7 +21481,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: green_wire.name, red_wire.name, blue_wire.name, black_wire.name
 
 [ Action91Sub ;	! 165756 / 0x2877c
-    L__M(##Action91);
+    L__M(##Repair);
     rtrue;
 ];
 
@@ -22452,7 +22452,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Jump) {
         "You jump on the spot, fruitlessly.";
     }
-    if (action == ##JumpOver or ##Action91) {
+    if (action == ##JumpOver or ##Repair) {
         "You would achieve nothing by this.";
     }
     if (action == ##Drink) {
