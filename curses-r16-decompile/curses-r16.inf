@@ -23191,7 +23191,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ PaceMovement i d ydelta xdelta local5 local6 ;	! 177088 / 0x2b3c0
+[ PaceMovement i d ydelta xdelta x y ;	! 177088 / 0x2b3c0
     if (d == nothing) {
         d = e_obj;
     }
@@ -23247,13 +23247,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (ydelta == 0 && xdelta == 0) {
         "Hardly!";
     }
-    local5 = DigX + ydelta * i;
-    local6 = DigY + xdelta * i;
-    if (local5 >= 13 || local5 <= 65523 || local6 >= 13 || local6 <= 65523) {
+    x = DigX + ydelta * i;
+    y = DigY + xdelta * i;
+    if (x >= 13 || x <= 65523 || y >= 13 || y <= 65523) {
         "That would go past the edge of the lawn.";
     }
-    DigX = local5;
-    DigY = local6;
+    DigX = x;
+    DigY = y;
     R_Process(##Look);
     rtrue;
 ];
