@@ -4966,7 +4966,7 @@ Global keep_silent;
 Global global123;
 Global game_section = T_MODERN;
 Global good_try_bonus;
-Global global126;
+Global deterministic_transportation;
 Global global127;
 Global displaying_quote = true;
 Global global129;
@@ -9320,7 +9320,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         remove rod_of_returning2;
     } else {
         i = random(4);
-        if (global126 == 1[?]) {
+        if (deterministic_transportation == 1) {
             i = 1;
         }
         loc = Attic;
@@ -17372,7 +17372,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         routine138004(local1);
         print "~.^";
         selfobj.time_left.time_left = local1;
-        if (global126 == 1[?]) {
+        if (deterministic_transportation == 1) {
             first_socket.time_left = 3;
             second_socket.time_left = 6;
             third_socket.time_left = 1;
