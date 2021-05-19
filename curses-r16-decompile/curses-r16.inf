@@ -4967,7 +4967,7 @@ Global global123;
 Global game_section = T_MODERN;
 Global good_try_bonus;
 Global debug_deterministic_transportation;
-Global global127;
+Global KnowLanguages;
 Global displaying_quote = true;
 Global global129;
 Global global130;
@@ -9459,7 +9459,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ RodOfLanguageAction ;	! 62260 / 0xf334
     if (second == player) {
-        global127 = 1[?];
+        KnowLanguages = true;
         "Nothing obvious happens. You curse eloquently in Celtic.";
     }
     if (second == surly_shopkeeper) {
@@ -11487,7 +11487,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine84192 local1 ;	! 84192 / 0x148e0
+[ CheckMirror local1 ;	! 84192 / 0x148e0
     if (long_vanity_mirror has general) {
         rfalse;
     }
@@ -11526,7 +11526,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         o = child(player);
       .label84670;
         if (o ~= nothing) {
-            if (routine84192(o) == 0) {
+            if (CheckMirror(o) == false) {
                 ++i;
                 give o workflag;
             } else {
@@ -15773,28 +15773,28 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (local1 == 9[sw_obj?]) {
         print "^A voice, which can just be heard through the vent, says ";
-        if (global127 == 0) {
+        if (KnowLanguages == false) {
             "something in Anglo-Saxon or Celtic (hard to say which).";
         }
         "~Welcome, great masters. We are convened in secret conclave to decide the fate of Britain. Lament, for the old ways are passing!  There will be a dark age, a collapse into many monarchies, and any man who can hold a town will call himself King and heir to Vortigern.~";
     }
     if (local1 == 10[u_obj?]) {
         print "^A younger, more impatient voice, says ";
-        if (global127 == 0) {
+        if (KnowLanguages == false) {
             "something else.";
         }
         "~This is an opportunity!  We must be the power behind the thrones, we will in secret unite and be the true force of the land...~";
     }
     if (local1 == 11[d_obj?]) {
         print "^There is cynical laughter for a moment, and a third voice interjects ";
-        if (global127 == 0) {
+        if (KnowLanguages == false) {
             "something.";
         }
         "~And who will lead this, this unity?  We take all sides and none, you know that. There are potent druids in the tents of each general down there in the rabble. They'd kill each other in a second come the battle.~";
     }
     if (local1 == 12[out_obj?]) {
         print "^The first voice speaks once more. ";
-        if (global127 == 0) {
+        if (KnowLanguages == false) {
             new_line;
             rtrue;
         }
@@ -15802,14 +15802,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (local1 == 13[in_obj?]) {
         print "^After a sombre silence, a much older voice says ";
-        if (global127 == 0) {
+        if (KnowLanguages == false) {
             "something wise. It really is a pity you can't understand them.";
         }
         "~You did right to call us together. There is a path prepared for us, but the sacrifice will be terrible. We must concentrate all the remaining druidical energy into this sacred hill, that it may last through all time, and we must ensure that druids live on this site forever and keep the faith.~";
     }
     if (local1 == 14[thedark?]) {
         print "^The younger voice speaks again. ";
-        if (global127 == 0) {
+        if (KnowLanguages == false) {
             new_line;
             rtrue;
         }
@@ -15817,7 +15817,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (local1 == 15[yourself?]) {
         print "^The older voice replies triumphantly. ";
-        if (global127 == 0) {
+        if (KnowLanguages == false) {
             new_line;
             rtrue;
         }
@@ -23271,7 +23271,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         MonkeyAlive();
         rtrue;
     }
-    if (routine84192(noun) == 1[?]) {
+    if (CheckMirror(noun) == true) {
         print "Curiously, ";
         Defart(noun);
         " it casts no reflection in the mirror.";
