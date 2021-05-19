@@ -9514,7 +9514,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_infinity.rod_action
 
-[ RodOfInfinityAction local1 ;	! 63240 / 0xf708
+[ RodOfInfinityAction t ;	! 63240 / 0xf708
     if (second == adamantine_knight) {
         "Oh, the knight has been nearer the infinite than you could ever take him.";
     }
@@ -9524,9 +9524,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= Infinity_Symbol || second ~= lemniscus) {
         "Nothing obvious happens.";
     }
-    local1 = circular_arc.time_left;
+    t = circular_arc.time_left;
     discharge_rod(rod_of_love);
-    if (local1 < 9) {
+    if (t < 9) {
         "You feel the air charge with excitement, and the symbol glows fiercely gold for a moment, but then the power drains away into one of the empty sockets in the arc.";
     }
     if (noun has general) {
