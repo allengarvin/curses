@@ -23851,7 +23851,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return local2;
 ];
 
-[ routine181484 w i flag local4 local5 ;	! 181484 / 0x2c4ec
+[ CroquetMove w i flag j local5 ;	! 181484 / 0x2c4ec
     w = routine181312();
     if (w == 'forward' or 'forwards') {
         ++wn;
@@ -23872,20 +23872,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (w == 'peg' or 'middle' or 'centre' or 'hoop' or 'hoops' or 'center') {
         ++wn;
-        return 65535[?];
+        return 65535;
     }
     if (w == 'hole' && dug_hole in Croquet_Lawn) {
         ++wn;
-        return 65534[?];
+        return 65534;
     }
     i = wn;
     if (w ~= 'invalidDictWord65535') {
-        local4 = NounDomain(1[?],0,0);
+        j = NounDomain(1[?],0,0);
     } else {
-        local4 = 65535[?];
+        j = 65535;
     }
-    if (local4 <= top_object && local4 > 0) {
-        local5 = local4;
+    if (j <= top_object && j > 0) {
+        local5 = j;
     } else {
         wn = i;
         local5 = global179;
@@ -23927,7 +23927,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (routine181312() == 65535[?]) {
             return 65535[?];
         }
-        local2 = routine181484();
+        local2 = CroquetMove();
         if (routine181312() == 65535[?]) {
             local1 = 1[?];
         } else {
@@ -23937,7 +23937,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             return 65535[?];
         }
     } else {
-        local2 = routine181484();
+        local2 = CroquetMove();
     }
     global178 = local1;
     global179 = local2;
@@ -23949,7 +23949,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 == 0) {
         return 65535[?];
     }
-    local2 = routine181484();
+    local2 = CroquetMove();
     global178 = local1;
     global179 = local2;
     return 0;
