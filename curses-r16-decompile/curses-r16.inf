@@ -9555,7 +9555,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         jump label63713;
     }
     move historical_pamphlet to player;
-    PlayerTo(327[Murky_Cave?]);
+    PlayerTo(Murky_Cave);
     rtrue;
 ];
 
@@ -10866,7 +10866,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print "Publishers talk a lot of nonsense about readers being transported away by books, but somehow you have arrived in the...^";
         move book_of_Twenties_poetry to location;
-        PlayerTo(154[Unreal_City?]);
+        PlayerTo(Unreal_City);
         rtrue;
     }
     rfalse;
@@ -11631,7 +11631,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             print "^At that exact grid reference is Meldreustrasse, a minor back street which houses a museum of arcana.^^Suddenly you remember!  You visited the place once, and the curator Doktor Stein showed you round... and he hypnotised you into a swirl of unconsciousness...^^";
             move tourist_map to location;
-            PlayerTo(177[Museum_Foyer?]);
+            PlayerTo(Museum_Foyer);
             rtrue;
         }
         "Just some anonymous streets. The detail of this map is so tiny that unless you have the exact four-digit grid reference for what you want, you'll never find it.";
@@ -13014,7 +13014,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "~Curse it, another nobody,~ she hisses in an unguarded moment, as she tidies the pack absentmindedly with her hands. Then she recovers her poise and advises about handsome strangers, fearing death by water, crossing palms with gold and so on. Eventually she ushers you out.^";
     }
   .label96853;
-    PlayerTo(154[Unreal_City?]);
+    PlayerTo(Unreal_City);
     rtrue;
 ];
 
@@ -13166,10 +13166,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (special_word == 40476 || verb == ##Time) {
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
             if (tourist_map_of_Paris has moved) {
-                PlayerTo(138[Infinity_Symbol?]);
+                PlayerTo(Infinity_Symbol);
                 rtrue;
             }
-            PlayerTo(276[Garden_Stream?]);
+            PlayerTo(Garden_Stream);
             if (hollow_man hasnt general) {
                 give hollow_man general;
                 move Ace_of_Cups_card to player;
@@ -13314,7 +13314,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "You pass between the steel walls and a light passes over you. Suddenly barriers spring out across the corridor, thumping into the beach ball which rapidly begins to deflate.^^There is a sharp hiss as you nimbly jump over the ball, and then a horrid clang as the barriers come together behind you.^";
             remove beach_ball;
             Achieved(31);
-            PlayerTo(185[Hall_of_Exhibits?]);
+            PlayerTo(Hall_of_Exhibits);
             rtrue;
         }
         routine166092();
@@ -13476,7 +13476,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "^Finally reacting to the alarm you set off, Doktor Stein appears and steps toward you, clapping his hands sharply. And dozens of robed figures leap out of the darkness - but these are no security guards. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^~So, Meldrew. It is all as it was prophesied,~ says Stein in a perfectly conversational tone as he forces your mouth open and makes you swallow a violet pill.^^~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
         StartTimer(Coven_Cell,0);
         global140 = 0;
-        PlayerTo(195[Coven_Cell?]);
+        PlayerTo(Coven_Cell);
         rtrue;
     }
     rfalse;
@@ -13628,7 +13628,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     local1 = local2;
                     jump label103161;
                 }
-                PlayerTo(283[Family_Tree?]);
+                PlayerTo(Family_Tree);
                 rtrue;
             }
             new_line;
@@ -13816,7 +13816,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "Bright sunshine glints off the glass bottle, making it impossible to see detail within.";
         }
         move ship_in_a_bottle to Souvenirs_Room;
-        PlayerTo(266[Aboard_Ship?],1[?]);
+        PlayerTo(Aboard_Ship,true);
         "You look very closely at the fine detail on the model sailing ship. Perhaps it's the distorting glass of the bottle, perhaps your romantic imagination, but the deck seems more detailed, the rigging might almost be swaying, the little figure by one mast might almost be alive...^^In fact, the closer you look the more sea-sick you feel.^^Thank heavens for the deck rail, something to hang on to while this moment of queasiness passes.";
     }
     rfalse;
@@ -15663,7 +15663,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "You catch a fascinating, but all too brief, glimpse of something grey, angular and tall... which slips out of view as your unsteady hand shakes.";
         }
         print "Through the golden eyepiece you see, not the moon (for the astrolabe is tilted too low), but a curious, sunlit, grey triangle.^^Fascinated, you strain closer to the vision... closer...^";
-        PlayerTo(495[Out_on_the_Spire?]);
+        PlayerTo(Out_on_the_Spire);
         rtrue;
     }
     rfalse;
@@ -16074,7 +16074,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         jump label123494;
     }
     global160 = 0;
-    PlayerTo(352[Rough_Tent?]);
+    PlayerTo(Rough_Tent);
     rtrue;
 ];
 
@@ -16110,7 +16110,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give selfobj general;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
         StartTimer(Encampment,10[u_obj?]);
-        PlayerTo(355[Encampment?]);
+        PlayerTo(Encampment);
         rtrue;
     }
     rfalse;
@@ -16220,7 +16220,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine124836 ;	! 124836 / 0x1e7a4
     ChangePlayer(ghost_of_yourself);
-    PlayerTo(361[Premonition?]);
+    PlayerTo(Premonition);
     rtrue;
 ];
 
@@ -16343,7 +16343,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine126184 ;	! 126184 / 0x1ece8
     ChangePlayer(ghost_of_yourself);
-    PlayerTo(369[Melancholy_Dream?]);
+    PlayerTo(Melancholy_Dream);
     rtrue;
 ];
 
@@ -16754,7 +16754,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         move golden_orb to location;
         global138 = parent(player);
         global137 = location;
-        PlayerTo(394[Inside_the_Orb?]);
+        PlayerTo(Inside_the_Orb);
         rtrue;
     }
     rfalse;
@@ -17073,7 +17073,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (player in wooden_couch) {
             print "The heavy weave mattings feel so restful that you slide into...^";
             The_Spirit_World.time_left = 1;
-            PlayerTo(417[The_Spirit_World?]);
+            PlayerTo(The_Spirit_World);
             rtrue;
         }
         rfalse;
@@ -17150,7 +17150,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             print "The heavy weave mattings draw you deeper into...^";
             The_Spirit_World.time_left = The_Spirit_World.time_left + 1;
-            PlayerTo(417[The_Spirit_World?]);
+            PlayerTo(The_Spirit_World);
             rtrue;
         }
         rfalse;
@@ -17287,7 +17287,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "That seems an awfully... final decision. Here's a chance to reconsider.";
             }
             print "The lid slams down on you with a very terminal sound indeed.^^^   *** You have ...^^^But - something more is happening. The coffin's delicate balance has been altered, and it is sliding, slipping away down the square passage, endlessly, endlessly...^^And even that is not the end, for you suddenly crash into buffers at one end. What a lucky escape, you think... for a moment...^";
-            PlayerTo(431[Buried_Alive?]);
+            PlayerTo(Buried_Alive);
             rtrue;
         }
         if (selfobj has open) {
@@ -17482,7 +17482,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give defaced_door lockable;
             give defaced_door locked;
             print "Madame Sosostris looks up, startled. ~Yes,~ she says, ~yes... this has potential.~^^She mutters incantations over the green wood and it begins to straighten out in a quite Freudian way. ~It will be ready in two thousand years. Come back then.~^^And she slips something into your palm as she bustles you out.^";
-            PlayerTo(437[A_Tower?]);
+            PlayerTo(A_Tower);
             move silver_keepsake to player;
             Achieved(40);
             rtrue;
@@ -17781,7 +17781,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print " to find ";
             Indefart(local1);
             print ", which, to say the least, comes as a surprise. Such a fuss is kicked up that you are quickly thrown out into the street.^";
-            PlayerTo(435[Outside_the_Royal_Museum?],1[?]);
+            PlayerTo(Outside_the_Royal_Museum,true);
             rfalse;
         }
         "How could you bribe such disinterested men of learning as the librarians?";
@@ -17880,7 +17880,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine140220 ;	! 140220 / 0x223bc
     print "The slave here, a senior adviser merely disguised as a deaf mute, reacts at once, taking you by the arm and leading you on a convoluted path through the Palace to the...^";
-    PlayerTo(468[Palace_Balustrade?]);
+    PlayerTo(Palace_Balustrade);
     rtrue;
 ];
 
@@ -20084,14 +20084,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     location = newplace;
     real_location = location;
     AdjustLight(1[?]);
-    if (flag == 0) {
+    if (flag == false) {
         R_Process(##Look);
     }
-    if (flag == 1[?]) {
+    if (flag == true) {
         routine164468();
         routine164504();
     }
-    if (flag == 2[?]) {
+    if (flag == invalidBool2) {
         LookSub(true);
     }
     rtrue;
