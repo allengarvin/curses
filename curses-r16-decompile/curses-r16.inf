@@ -4979,9 +4979,9 @@ Global StrongboxX;
 Global StrongboxY;
 Global global137;
 Global global138;
-Global BallPolished;
+Global ball_polished;
 Global global140;
-Global global141;
+Global daisy_given;
 Global global142 = 25144[?];
 Global global143 = 8[nw_obj?];
 Global global144 = 3[s_obj?];
@@ -10461,7 +10461,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         newroom = Over_the_East_Wing;
     }
     if (env == Disused_Observatory) {
-        if (slide_projector has on && BallPolished ~= false && to_current == false) {
+        if (slide_projector has on && ball_polished ~= false && to_current == false) {
             if (location == Disused_Observatory) {
                 "^Austin seems fascinated by the beam of light.";
             }
@@ -10660,7 +10660,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ ObservatoryBefore ;	! 75984 / 0x128d0
     if (action == ##Look) {
-        if (slide_projector hasnt on || BallPolished == false) {
+        if (slide_projector hasnt on || ball_polished == false) {
             rfalse;
         }
         print "^A beam of white light runs into the room from the slide projector to the south, and hits the ";
@@ -10737,7 +10737,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ GlassBallAfter i ;	! 76752 / 0x12bd0
     if (action == ##Clean) {
         give selfobj general;
-        if (BallPolished == true && slide_projector has on) {
+        if (ball_polished == true && slide_projector has on) {
             print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
             ObservatoryDiffraction();
             rtrue;
@@ -10918,7 +10918,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "^The south wall displays ";
             routine79532(local1);
         }
-        if (BallPolished == true) {
+        if (ball_polished == true) {
             "^A beam of white light points directly backward from the projector, through the north doorway into the Observatory.";
         }
         rtrue;
@@ -10959,15 +10959,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Turn) {
-        if (BallPolished == true) {
-            BallPolished = false;
+        if (ball_polished == true) {
+            ball_polished = false;
             if (selfobj has on) {
                 give Disused_Observatory ~light;
                 "The sharp beam of light cuts out again.";
             }
             "Click.";
         }
-        BallPolished = true;
+        ball_polished = true;
         if (selfobj has on) {
             give Disused_Observatory light;
             "A sharp beam of white light appears backward out of the projector. As you step out of the beam, it extends dead straight through the north doorway.";
@@ -10996,13 +10996,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##SwitchOn) {
         give Souvenirs_Room light;
-        if (BallPolished == true) {
+        if (ball_polished == true) {
             give Disused_Observatory light;
         }
         local1 = child(slide_projector);
         if (local1 == 0) {
             print "The south wall is lit up. ";
-            if (BallPolished == true) {
+            if (ball_polished == true) {
                 print "Also, a narrow white beam of light extends backwards from the projector, pointing out up through the Observatory doorway to the north.";
             }
             new_line;
@@ -11885,7 +11885,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ PottingRoomBefore ;	! 87344 / 0x15530
     if (action == ##Go) {
-        if (parent(daisy_chain) == nothing && global141 == 1[?]) {
+        if (parent(daisy_chain) == nothing && daisy_given == true) {
             give Jemima general;
             print "^~Oh, silly old you,~ says Jemima condescendingly, ~You've lost your daisy chain!  What colour do you want then?~^";
         }
@@ -11930,7 +11930,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     Achieved(SCORE_DAISY);
     give daisy_chain moved;
     give daisy_chain worn;
-    global141 = 1[?];
+    daisy_given = true;
     move daisy_chain to player;
     rtrue;
 ];
