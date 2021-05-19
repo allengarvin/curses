@@ -12365,7 +12365,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: robot_mouse.life
 
-[ MouseLife i dst local3 local4 local5 ;	! 91484 / 0x1655c
+[ MouseLife frm dst local3 local4 local5 ;	! 91484 / 0x1655c
     if (action == ##Order or ##Answer or ##Ask) {
         if (gas_mask has worn && MouseUnderstandsMask == false) {
             MouseUnderstandsMask = true;
@@ -12395,8 +12395,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == u_obj) {
             "The mouse bleeps with annoyance.";
         }
-        i = parent(selfobj);
-        if (i == 133[Cellars_South?]) {
+        frm = parent(selfobj);
+        if (frm == Cellars_South) {
             if (noun == n_obj) {
                 dst = Cellars;
                 jump label92201;
@@ -12407,17 +12407,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 global144 = 3[s_obj?];
                 jump label92201;
             }
-        } else if (i == 136[Cellar_West?]) {
+        } else if (frm == Cellar_West) {
             if (noun == e_obj) {
                 dst = Cellars;
                 jump label92201;
             }
-        } else if (i == 132[Wine_Cellars?]) {
+        } else if (frm == Wine_Cellars) {
             if (noun == w_obj) {
                 dst = Cellars;
                 jump label92201;
             }
-        } else if (i == 127[Cellars?]) {
+        } else if (frm == Cellars) {
             if (noun == w_obj) {
                 dst = Cellar_West;
                 jump label92201;
@@ -12431,10 +12431,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 jump label92201;
             }
         } else {
-            if (i == 134[hole_in_the_wall?] && global143 == 8[nw_obj?] && global144 == 3[s_obj?] && noun == e_obj) {
+            if (frm == hole_in_the_wall && global143 == 8[nw_obj?] && global144 == 3[s_obj?] && noun == e_obj) {
                 dst = Cellars_South;
             } else {
-                if (i == 134[hole_in_the_wall?]) {
+                if (frm == hole_in_the_wall) {
                     if (noun == n_obj) {
                         local4 = global143;
                         local5 = global144 - 1;
@@ -12466,7 +12466,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "The mouse wheels spin, but can't get a good enough grip to move.";
             }
           .label92201;
-            local3 = i;
+            local3 = frm;
             move robot_mouse to dst;
             give robot_mouse moved;
             if (location == local3) {
