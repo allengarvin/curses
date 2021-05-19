@@ -4958,9 +4958,9 @@ Global active_timers;
 Global rod_identity = 1;
 Global c_style;
 Global global117;
-Global global118;
+Global listing_together;
 Global global119;
-Global global120;
+Global wlf_indent;
 Global inventory_style;
 Global keep_silent;
 Global global123;
@@ -9146,7 +9146,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "featureless mahogany rod";
         rtrue;
     }
-    if (global118 hasnt rod_attr) {
+    if (listing_together hasnt rod_attr) {
         if (selfobj has high_rod) {
             print "High ";
         }
@@ -9683,7 +9683,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Death_card.short, Fool_card.short, Drowned_Sailor_card.short, Castle.short, Star.short, Eight_of_Wands_card.short, Maiden_card.short, Ace_of_Cups_card.short, Crescent_Moon.short
 
 [ TarotShort ;	! 64336 / 0xfb50
-    if (global118 has card && c_style & 4096 == 0) {
+    if (listing_together has card && c_style & 4096 == 0) {
         c_style = c_style | (4096 + 8);
         if (c_style & 2 ~= 0) {
             c_style = c_style - 2;
@@ -19499,7 +19499,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (o == nothing) {
         rfalse;
     }
-    global120 = 0;
+    wlf_indent = 0;
     WriteListR(o,depth);
     rtrue;
 ];
@@ -19633,7 +19633,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                             ! no code
                         } else {
                             if (c_style & 2 ~= 0) {
-                                generic_globvar = 2 * (depth + global120);
+                                generic_globvar = 2 * (depth + wlf_indent);
                                 if (generic_globvar >= 1) {
                                   .label159048;
                                     print ' ';
@@ -19663,18 +19663,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                             if (k2 ~= 3[s_obj?]) {
                                 rod_identity = 1;
                                 parser_one = j;
-                                parser_two = depth + global120;
+                                parser_two = depth + wlf_indent;
                                 if (RunRoutines(j,nw_to) == 1[?]) {
                                     jump label159226;
                                 }
                             }
                             global117 = j.nw_to;
-                            global118 = j;
-                            ++global120;
+                            listing_together = j;
+                            ++wlf_indent;
                             WriteListR(j,depth,stack_pointer);
-                            --global120;
+                            --wlf_indent;
                             global117 = 0;
-                            global118 = 0;
+                            listing_together = 0;
                             if (k2 == 3[s_obj?]) {
                                 if (c_style & 8 ~= 0) {
                                     print ")";
@@ -19682,7 +19682,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                             } else {
                                 rod_identity = 2;
                                 parser_one = j;
-                                parser_two = depth + global120;
+                                parser_two = depth + wlf_indent;
                                 RunRoutines(j,nw_to);
                             }
                           .label159226;
@@ -19764,7 +19764,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 k = ZRegion(j.nw_to);
                 if (k == 2[?] or 3[s_obj?]) {
                     if (c_style & 2 ~= 0) {
-                        generic_globvar = 2 * (depth + global120);
+                        generic_globvar = 2 * (depth + wlf_indent);
                         if (generic_globvar >= 1) {
                           .label159582;
                             print ' ';
@@ -19792,18 +19792,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     if (k ~= 3[s_obj?]) {
                         rod_identity = 1;
                         parser_one = j;
-                        parser_two = depth + global120;
+                        parser_two = depth + wlf_indent;
                         if (RunRoutines(j,nw_to) == 1[?]) {
                             jump label159760;
                         }
                     }
                     global117 = j.nw_to;
-                    global118 = j;
-                    ++global120;
+                    listing_together = j;
+                    ++wlf_indent;
                     WriteListR(j,depth,stack_pointer);
-                    --global120;
+                    --wlf_indent;
                     global117 = 0;
-                    global118 = 0;
+                    listing_together = 0;
                     if (k == 3[s_obj?]) {
                         if (q & 8 ~= 0) {
                             print ")";
@@ -19811,7 +19811,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     } else {
                         rod_identity = 2;
                         parser_one = j;
-                        parser_two = depth + global120;
+                        parser_two = depth + wlf_indent;
                         RunRoutines(j,nw_to);
                     }
                   .label159760;
@@ -19855,7 +19855,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ WriteBeforeEntry o depth flag ;	! 159904 / 0x270a0
     if (c_style & 2 ~= 0) {
-        generic_globvar = 2 * (depth + global120);
+        generic_globvar = 2 * (depth + wlf_indent);
         if (generic_globvar >= 1) {
           .label159930;
             print ' ';
