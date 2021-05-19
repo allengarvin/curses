@@ -9079,7 +9079,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         discharge_rod(se_obj);
         if (location == Souvenirs_Room && charcoal_sketch in slide_projector && south_wall hasnt concealed) {
             move Austin to Causeway;
-            Achieved(36);
+            Achieved(SCORE_AUSTIN);
             StartDaemon(Outside_the_Royal_Museum);
             "right up through the south wall and into Alexandria!";
         }
@@ -9239,7 +9239,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         remove adamantine_statue;
         move adamantine_knight to West_Side_Chapel;
-        Achieved(42);
+        Achieved(SCORE_KNIGHT);
         himobj = adamantine_knight;
         "The adamantine knight leaps up, invigorated by the fire in his skeletal eyes, a new spark in his belly!  He bows gravely, in the elaborate style of a mime artist.";
     }
@@ -9440,7 +9440,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         move golden_orb to player;
         give golden_orb general;
-        Achieved(17);
+        Achieved(SCORE_ORB);
         golden_orb.description = "A treasure in every sense, the orb pulsates with golden radiance.";
         print "The White pieces advance: first a bishop, then a knight is sacrificed, clearing away the wall of pawns which surround the Black king so that a dazzling checkmate can be executed!^^You fade out of the orb as oddly as you came, struck by the way it now almost pulsates in your palm.^";
         move player to global138;
@@ -9747,7 +9747,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
         }
         if (bat == new_battery) {
-            Achieved(1);
+            Achieved(SCORE_TORCH);
         }
         if (bat == old_smudged_battery or new_battery) {
             i = bat.time_left;
@@ -9794,7 +9794,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ BiscuitBefore ;	! 65108 / 0xfe54
     if (action == ##Eat) {
-        Achieved(22);
+        Achieved(SCORE_BISCUIT);
         rfalse;
     }
     rfalse;
@@ -10120,7 +10120,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give gold_watch_on_a_chain moved;
             give flock_of_sparrows general;
             remove irate_squirrel_friend;
-            Achieved(29);
+            Achieved(SCORE_WATCH);
             "^The sparrows swoop down onto the roof, battering against the glass. In the process the gold watch comes loose, and falls to the ground with a disconcerting thud.^^It just misses the squirrel, who bolts away, startled.^^The sudden motion once more disturbs the flighty sparrows, who take to the skies. You feel rather deserted all of a sudden.";
         }
         if (location == Cliffs or Cave_Mouth) {
@@ -10157,7 +10157,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ PostcardBefore ;	! 72788 / 0x11c54
     if (action == ##Read && location == Dark_Room && Dark_Room has light) {
-        Achieved(0);
+        Achieved(SCORE_HAMBURG);
         discharge_rod(crumpled_piece_of_paper);
         "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
     }
@@ -10710,7 +10710,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 == 165[Fool_card?]) {
         print "Capricorn.^";
         routine76480();
-        Achieved(23);
+        Achieved(SCORE_SMOKE);
         rtrue;
     }
     if (local1 == 148[charcoal_sketch?]) {
@@ -10814,7 +10814,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "With your bare hands, you are unable to tighten the joint.";
         }
         give steel_wrench general;
-        Achieved(13);
+        Achieved(SCORE_PLUMBING);
         give book_of_Twenties_poetry ~concealed;
         give book_of_Twenties_poetry moved;
         give romantic_novel ~concealed;
@@ -11126,7 +11126,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "Nothing else there, unfortunately.";
         }
         move new_battery to East_Annexe;
-        Achieved(12);
+        Achieved(SCORE_BATTERY);
         "You uncover a shiny new battery. It must have been dropped by accident when the loft insulation was being done.";
     }
     rfalse;
@@ -11155,7 +11155,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == s_obj && secret_door has concealed) {
             give secret_door ~concealed;
             move secret_door to Dead_End;
-            Achieved(3);
+            Achieved(SCORE_SECRETDOOR);
             "A secret door springs open!";
         }
         rfalse;
@@ -11295,7 +11295,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move iron_key to Priest_s_Hole;
             give iron_key general;
             remove Sir_Joshua_Meldrewe;
-            Achieved(2);
+            Achieved(SCORE_JOSHUA);
             "The ghost swallows the wishbone, grinning nastily. Then a look of consternation spreads across his face. He begins to choke and as he fades away, his arms flailing wildly, he lets go of the key, which sails through the air onto the roof and (against all odds) falls neatly down a chimney.";
         }
         print "The ghost swallows ";
@@ -11427,7 +11427,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (flag_of_the_British_Merchant_Navy notin comfortable_bed) {
                 "Awareness that something important is happening tugs at your subconscious.^^But you feel too exposed to sleep with only a sheet on the bed, and can't get comfortable.";
             }
-            Achieved(26);
+            Achieved(SCORE_SLEEP);
             if (comfortable_bed has general) {
                 "You doze awhile, but that's all.";
             }
@@ -11608,7 +11608,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
         }
-        Achieved(4);
+        Achieved(SCORE_DEMIJOHN);
         rfalse;
     }
     if (action == ##Attack) {
@@ -11768,7 +11768,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Search or ##LookUnder or ##Read) {
         if (antiquated_wireless has concealed) {
             give antiquated_wireless ~concealed;
-            Achieved(8);
+            Achieved(SCORE_WIRELESS);
             "Not as many sheets as you thought - they were on top of a large black wireless, now exposed to the light for the first time in months.";
         }
         print "No, you're only getting your ";
@@ -11927,7 +11927,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     print "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
-    Achieved(9);
+    Achieved(SCORE_DAISY);
     give daisy_chain moved;
     give daisy_chain worn;
     global141 = 1[?];
@@ -11947,7 +11947,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Give) {
         if (noun == box_of_chocolates) {
             remove box_of_chocolates;
-            Achieved(10);
+            Achieved(SCORE_CHOCOLATE);
             give Jemima general;
             Jemima.description = "Definitely mollified.";
             "Aunt Jemima pounces on the chocolates, wolfs down a strawberry cream and persuades you to have a vile toffee cracknell. ~Now,~ she says, ~Your turn for a daisy chain!~^^You try to look pleased.^^~Let's see, the others have had theirs... I have only a few colours left. What would you like?~";
@@ -12237,7 +12237,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (player notin dumbwaiter) {
             "You can't reach them!";
         }
-        Achieved(5);
+        Achieved(SCORE_WAITER);
         if (location == Storage_Room) {
             local1 = 127[Cellars?];
             print "You begin moving, and then plummet, but friction gradually slows you down and you land without too much of a thump...^";
@@ -12298,7 +12298,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ DarkPassageAfter ;	! 91172 / 0x16424
     if (sandstone_recess has open) {
-        Achieved(27);
+        Achieved(SCORE_SECRET_PASS);
     } else if (verb == ##Enter && noun == sandstone_recess) {
         "The recess is too shallow.";
     }
@@ -12625,7 +12625,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "^As the rod goes home, a spherical opening a few inches across appears in one wall.^";
         }
         if (local1 == 9[sw_obj?]) {
-            Achieved(19);
+            Achieved(SCORE_ARC);
         }
         rtrue;
     }
@@ -12659,7 +12659,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ OctagonBefore ;	! 93900 / 0x16ecc
     if (action == ##Take or ##Remove) {
         if (noun has rod_attr && noun hasnt unidentiifed_rod) {
-            Achieved(28);
+            Achieved(SCORE_ROD_IDENT);
         }
         rfalse;
     }
@@ -13233,7 +13233,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (special_word == 31107) {
             move tourist_map_of_Paris to player;
-            Achieved(18);
+            Achieved(SCORE_MAP);
             give tourist_map_of_Paris moved;
             "Extremely reluctantly he serves you, giving you a tourist map of Paris.";
         }
@@ -13313,7 +13313,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (second == s_obj && location == Museum_Foyer) {
             print "You pass between the steel walls and a light passes over you. Suddenly barriers spring out across the corridor, thumping into the beach ball which rapidly begins to deflate.^^There is a sharp hiss as you nimbly jump over the ball, and then a horrid clang as the barriers come together behind you.^";
             remove beach_ball;
-            Achieved(31);
+            Achieved(SCORE_SECURITY);
             PlayerTo(Hall_of_Exhibits);
             rtrue;
         }
@@ -13613,7 +13613,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (local3 == 258[mirrored_device?] && photographers_flash hasnt general) {
                 give photographers_flash general;
                 print "Consequently you can only hear as the smudge on the horizon rises from the waves, becomes an enormous Kraken sea monster and lunges for the stone tower. (Considering this is supposed to be a Greek myth it feels surprisingly like a Japanese 1960s creature film.)  The Kraken swipes at you, overreaches itself and falls over forward, impaling itself extremely messily on the pharos. Your eyes just about recover by the time the rest of your body is crushed by its weight.^^Up on Mount Olympus, Zeus is still cross. ~Take me to your Leda~, you wittily demand, but this does not seem to improve matters. Poseidon also looks rather fed up, but luckily a sizeable faction of goddesses takes your side and arranges to have you resurrected...^";
-                Achieved(11);
+                Achieved(SCORE_ANDROMEDA);
                 remove photographers_flash;
                 give Lighthouse ~visited;
                 give Lighthouse ~scored;
@@ -13847,7 +13847,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             remove stick_with_an_anchor;
             move ship_in_a_bottle to player;
             give ship_in_a_bottle moved;
-            Achieved(24);
+            Achieved(SCORE_SHIP);
             "The bundle of sticks will just fit through the bottle's neck. With a sudden spring, just as the last of the stick passes the neck, its masts fold out... and you have put the ship into the bottle.";
         }
     }
@@ -14123,7 +14123,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Homer.initial = "Homer glares at you through sightless eyes.";
             move Pan_pipes to player;
             Homer.number = 3[s_obj?];
-            Achieved(33);
+            Achieved(SCORE_HOMER);
             "Homer reluctantly hands you the syrinx. ~Now leave me alone, I got six books of the Iliad left to compose.~";
         }
         jump label108857;
@@ -14174,7 +14174,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give flaming_bronze_urn ~static;
         give flaming_bronze_urn scenery;
         print ". Suddenly the great god Apollo appears before you!  As he speaks the very rock reverberates.^^   ~All wisdom is mine, mortal!^   Though you shall seek out your curse^   A thousand years and more. Now ask!~^^Apollo, as he vanishes, laughs in that style more recently popularised by Third World dictators and mad scientists. His priestess, the Oracle, steps out of the shadows.^";
-        Achieved(34);
+        Achieved(SCORE_ORACLE);
         rtrue;
     }
     rfalse;
@@ -14214,7 +14214,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rtrue;
         }
         give inscriptions open;
-        Achieved(32);
+        Achieved(SCORE_TEMPLE);
         "^You hear the noise of stone grating against stone.";
     }
     rfalse;
@@ -14507,7 +14507,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     move old_timber_spar to Aboard_Ship;
     move player to Aboard_Ship;
     location = Aboard_Ship;
-    Achieved(25);
+    Achieved(SCORE_FLAG);
     "... but gracefully, as the flag billows out into a parachute, until it suddenly tears out of your hand and you come down in an ignominious heap.";
 ];
 
@@ -15974,7 +15974,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (kitchen_well has general) {
         print "Aware of the dangers, you very carefully lower yourself...^";
-        Achieved(20);
+        Achieved(SCORE_WELL);
         return 347[kitchen_well?];
     }
     deadflag = DIED;
@@ -16333,7 +16333,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move heavy_iron_mascot to player;
             StartDaemon(heavy_iron_mascot);
             heavy_iron_mascot.time_left = 15;
-            Achieved(21);
+            Achieved(SCORE_MASCOT);
             score = score - 50;
         }
         "^You awaken, shivering with dread.";
@@ -16423,7 +16423,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move aluminium_staircase to The_Catacombs;
             The_Catacombs.d_to = Universe_Maintenance_Room;
             global162 = 1[?];
-            Achieved(14);
+            Achieved(SCORE_SMELL);
             "Ozone!  That's what it's called. Funny sort of odour for a cave - especially since, on investigating further, you find that it's drifting up from a concealed aluminium staircase.";
         }
         "Definitely ozone.";
@@ -16518,7 +16518,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == n_obj or s_obj or metal_wall) {
             print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly the same...^";
             displaying_quote = true;
-            Achieved(15);
+            Achieved(SCORE_REFLECTING);
             if (noun == n_obj) {
                 selfobj.s_to = metal_wall;
                 selfobj.n_to = nothing;
@@ -16675,7 +16675,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         ++local1;
         jump label128749;
     }
-    Achieved(16);
+    Achieved(SCORE_HENRIPOST);
     print "^There is a click from the mechanism. Pulleys pull. Cogs spin. Little bits of string run.^";
     if (CR hasnt general) {
         give CR general;
@@ -16900,7 +16900,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (smooth_round_stone has general) {
-        Achieved(37);
+        Achieved(SCORE_WASH);
         move smooth_round_stone to Warehouses_and_Port;
         move rusty_iron_key to Warehouses_and_Port;
         give smooth_round_stone ~general;
@@ -17106,7 +17106,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         } else {
             give marble_wall open;
         }
-        Achieved(39);
+        Achieved(SCORE_SPHINX);
         "You twist the nose, and before it springs back there is a rumbling of stone from below.";
     }
     rfalse;
@@ -17406,7 +17406,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "^Your spirit, having cheated death once already, is weighed down with its double life and will not diffuse out again.";
     }
     give selfobj general;
-    Achieved(41);
+    Achieved(SCORE_AFTERLIFE);
     move adamantine_skull to player;
     print "^Your spirit rises, prepared as it was for the afterlife, and diffuses through the solid gold of the coffin by sheer effort of will, finally beginning to recoalesce. You stagger, confused, through dark caves until you finally come to light, clutching something solid...^";
     rfalse;
@@ -17484,7 +17484,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "Madame Sosostris looks up, startled. ~Yes,~ she says, ~yes... this has potential.~^^She mutters incantations over the green wood and it begins to straighten out in a quite Freudian way. ~It will be ready in two thousand years. Come back then.~^^And she slips something into your palm as she bustles you out.^";
             PlayerTo(A_Tower);
             move silver_keepsake to player;
-            Achieved(40);
+            Achieved(SCORE_QUARTERSTAFF);
             rtrue;
         }
         print "Madame Sosostris brushes ";
@@ -17753,7 +17753,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         move mystic_scroll to location;
                         move Apollonius to location;
                         Apollonius.initial = "Apollonius and Callimachus are now engaged in a furious, ugly brawl, from which it seems unlikely they will emerge for some considerable time.";
-                        Achieved(38);
+                        Achieved(SCORE_LIBRARY);
                         "One look is enough. He throws a vicious punch, and the librarians begin a savage bare-knuckled fist fight.^^This, shall we say, rather petty practical joke of yours does seem to have had one interesting consequence, though.";
                     }
                     remove noun;
@@ -17973,7 +17973,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "He looks at you in a hypnotic daze,";
         if (verb == ##Give && noun == Crescent_Moon && second == player) {
             move Crescent_Moon to player;
-            Achieved(30);
+            Achieved(SCORE_HYPNOSIS);
             selfobj.description = "Old Evans' hat is empty. You feel terribly guilty.";
             " and before you can say ~How heartless I am~ he obediently hands you the Moon.";
         }
@@ -18108,7 +18108,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             global171 = 1[?];
             "Warning (once only!): the three High Rods seem to balanced extremely delicately on the edge of the pit.";
         }
-        Achieved(44);
+        Achieved(SCORE_HIGHROD);
     }
     rfalse;
 ];
@@ -18259,7 +18259,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move marble_rose to statue_of_Diana;
             give adamantine_knight general;
             statue_of_Diana.initial = "Diana's tall marble statue bathes in the moonlight: and a flower is placed gaily in her hair.";
-            Achieved(43);
+            Achieved(SCORE_KNIGHT_ENCOURAGE);
             remove silver_keepsake;
             "The knight takes the keepsake, and studies it. Catching on, he places the marble flower in Diana's hair, high up beyond your reach. Afterward, he bows to you gravely. But there is a little sadness in his eye as he turns away from her.";
         }
@@ -23094,7 +23094,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         discharge_rod(se_obj);
         if (location == Souvenirs_Room && charcoal_sketch in slide_projector && south_wall hasnt concealed) {
             move Austin to Causeway;
-            Achieved(36);
+            Achieved(SCORE_AUSTIN);
             "right up through the south wall and into Alexandria!";
         }
         AustinMovements(true);
@@ -23329,7 +23329,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (global156 == StrongboxX && global157 == StrongboxY && strongbox hasnt moved) {
         print ", until your spade bumps into something solid";
         move strongbox to dug_hole;
-        Achieved(35);
+        Achieved(SCORE_STRONGBOX);
     } else if (dig_cnt == 1) {
         dig_cnt = 0;
         print ", failing to find whatever it was you buried";
@@ -23458,7 +23458,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "The already-charged rod explodes with cataclysmic violence, burying everything nearby in rubble!";
     }
     give noun charged;
-    Achieved(6);
+    Achieved(SCORE_WAND);
     if (AfterRoutines() == true) {
         rtrue;
     }
@@ -23495,7 +23495,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun hasnt charged) {
         "Nothing happens.";
     }
-    Achieved(7);
+    Achieved(SCORE_AIMWAND);
     local1 = noun.rod_action;
     if (local1 == 65535[?]) {
         "** No rod routine **";
