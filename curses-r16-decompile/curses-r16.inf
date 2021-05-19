@@ -354,18 +354,18 @@ Verb 'eat'
 ;
 
 Verb 'ask'
-    * creature 'about' routine181076			-> Ask
+    * creature 'about' ConTopicJ			-> Ask
     * creature 'for' noun				-> AskFor
 ;
 
 Verb 'tell'
-    * creature 'about' routine181076			-> Tell
+    * creature 'about' ConTopicJ			-> Tell
 ;
 
 Verb 'answer' 'say' 'shout' 'speak'
     * 							-> Shout
     * 'lagach' 'to' noun				-> Lagach
-    * routine181076 'to' creature			-> Answer
+    * ConTopicJ 'to' creature				-> Answer
 ;
 
 Verb 'wait' 'z//'
@@ -403,7 +403,7 @@ Verb 'rotate' 'screw' 'turn' 'twist' 'unscrew'
     * noun 'around'					-> Turn
     * 'round' noun					-> Turn
     * noun 'with' held					-> TurnWith
-    * noun 'to' routine181076				-> Consult
+    * noun 'to' ConTopicJ				-> Consult
 ;
 
 Verb 'clear' 'move' 'press' 'push' 'shift'
@@ -454,8 +454,8 @@ Verb 'y//' 'yes'
 
 Verb 'read'
     * noun						-> Read
-    * 'about' routine181160 'in' noun			-> Consult
-    * routine181160 'in' noun				-> Consult
+    * 'about' ConTopic 'in' noun			-> Consult
+    * ConTopic 'in' noun				-> Consult
 ;
 
 Verb 'check' 'describe' 'examine' 'watch' 'x//'
@@ -499,8 +499,8 @@ Verb 'open' 'uncover' 'undo' 'unwrap'
 ;
 
 Verb 'consult'
-    * noun 'about' routine181076			-> Consult
-    * noun 'on' routine181076				-> Consult
+    * noun 'about' ConTopicJ				-> Consult
+    * noun 'on' ConTopicJ				-> Consult
 ;
 
 Verb 'l//' 'look'
@@ -511,9 +511,9 @@ Verb 'l//' 'look'
     * 'into' noun					-> Search
     * 'under' noun					-> LookUnder
     * 'through' noun					-> Search
-    * 'up' routine181160 'in' noun			-> Consult
-    * 'up' routine181268 'on' noun			-> Consult
-    * 'up' routine181076				-> LookUp
+    * 'up' ConTopic 'in' noun				-> Consult
+    * 'up' ConTopicI 'on' noun				-> Consult
+    * 'up' ConTopicJ					-> LookUp
 ;
 
 Verb 'i//' 'inv' 'inventory'
@@ -5297,7 +5297,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     a_buffer->0 = 120[steel_wrench?];
     a_table->0 = 64[Disused_Observatory?];
     L__M(##Action263);
-    routine181216();
+    Stub7();
     generic_globvar = 0;
     a_buffer->1 = 0;
     routine185684();
@@ -5410,7 +5410,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
   .label42195;
     num_words = parse->1;
     wn = 1;
-    routine181220();
+    Stub6();
     num_words = parse->1;
     if (parser_trace >= 4) {
         print "[ ", num_words, " to parse: ";
@@ -5526,7 +5526,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     ++j;
                     jump label42736;
                 }
-                verb_word = routine181232(verb_word);
+                verb_word = Stub4(verb_word);
                 if (verb_word ~= 0) {
                     jump label43039;
                 }
@@ -5917,7 +5917,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         consult_words = num_words - consult_from + 1;
         rtrue;
     }
-    if (routine181248(etype) ~= 0) {
+    if (Stub2(etype) ~= 0) {
         jump label42187;
     }
     if (etype == STUCK_PE) {
@@ -7189,7 +7189,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "examine";
         } else if (i == 34626['i//'?] or 34797['inv'?]) {
             print "inventory";
-        } else if (routine181240(i) == 0) {
+        } else if (Stub3(i) == 0) {
             print (address) i;
         }
     }
@@ -7330,7 +7330,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rtrue;
         }
     }
-    if (actor == domain1 or domain2 && routine181224(actor) ~= 0) {
+    if (actor == domain1 or domain2 && Stub5(actor) ~= 0) {
         rtrue;
     }
     if (context == 5[w_obj?] && advance_warning ~= 65535) {
@@ -7587,7 +7587,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     --wn;
     j = wn;
-    threshold = routine181264(obj);
+    threshold = NegativeOne(obj);
     if (threshold >= 0 && parser_trace >= 5) {
         print "    ParseNoun returned ", threshold, "^";
     }
@@ -7742,7 +7742,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     j = parse->i;
     num = j + 24021;
     len = parse->(i - 1);
-    tot = routine181256(num,len);
+    tot = Stub1(num,len);
     if (tot ~= 0) {
         return tot;
     }
@@ -8327,7 +8327,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (inp1 > 1 && RunRoutines(inp1,before) ~= 0) {
         rtrue;
     }
-    return routine181212();
+    return Stub8();
 ];
 
 [ R_Process acti i j sn ss sa sse ;	! 55348 / 0xd834
@@ -8729,7 +8729,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         scope_reason = PARSING_REASON;
     }
     if (deadflag == 0) {
-        routine181204();
+        Stub10();
     }
     if (deadflag == 0) {
         AdjustLight();
@@ -21149,7 +21149,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         routine164088(location);
     }
     routine164088(local3);
-    routine181208();
+    Stub9();
     routine164504();
     verb = ##Look;
     if (AfterRoutines() == true) {
@@ -23696,35 +23696,35 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine181076 local1 ;	! 181076 / 0x2c354
+[ ConTopicJ w ;	! 181076 / 0x2c354
     consult_from = wn;
   .label181080;
-    local1 = NextWordStopped();
-    if (local1 ~= 65535[?] && (local1 ~= 40503['to'?] || action_to_be ~= ##Answer)) jump label181080;
+    w = NextWordStopped();
+    if (w ~= 'invalidDictWord65535' && (w ~= 'to' || action_to_be ~= ##Answer)) jump label181080;
     --wn;
     consult_words = wn - consult_from;
     if (consult_words == 0) {
         return 65535[?];
     }
     if (action_to_be == ##Ask or ##Answer or ##Tell) {
-        local1 = wn;
+        w = wn;
         wn = consult_from;
         parsed_number = NextWord();
         if (parsed_number == 40278 && consult_words > 1) {
             parsed_number = NextWord();
         }
-        wn = local1;
+        wn = w;
         return 1[?];
     }
     return 0;
 ];
 
-[ routine181160 local1 ;	! 181160 / 0x2c3a8
+[ ConTopic w ;	! 181160 / 0x2c3a8
     consult_from = wn;
   .label181164;
-    local1 = NextWordStopped();
-    if (local1 ~= 34698['in'?] or 65535[?]) jump label181164;
-    if (local1 == 65535[?]) {
+    w = NextWordStopped();
+    if (w ~= 'in' or 'invalidDictWord65535') jump label181164;
+    if (w == 'invalidDictWord65535') {
         return 65535[?];
     }
     --wn;
@@ -23735,62 +23735,62 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 0;
 ];
 
-[ routine181204 ;	! 181204 / 0x2c3d4
+[ Stub10 ;	! 181204 / 0x2c3d4
     rfalse;
 ];
 
-[ routine181208 ;	! 181208 / 0x2c3d8
+[ Stub9 ;	! 181208 / 0x2c3d8
     rfalse;
 ];
 
-[ routine181212 ;	! 181212 / 0x2c3dc
+[ Stub8 ;	! 181212 / 0x2c3dc
     rfalse;
 ];
 
-[ routine181216 ;	! 181216 / 0x2c3e0
+[ Stub7 ;	! 181216 / 0x2c3e0
     rfalse;
 ];
 
-[ routine181220 ;	! 181220 / 0x2c3e4
+[ Stub6 ;	! 181220 / 0x2c3e4
     rfalse;
 ];
 
-[ routine181224 local1 ;	! 181224 / 0x2c3e8
-    local1 = 0;
+[ Stub5 i ;	! 181224 / 0x2c3e8
+    i = 0;
     rfalse;
 ];
 
-[ routine181232 local1 ;	! 181232 / 0x2c3f0
-    local1 = 0;
+[ Stub4 i ;	! 181232 / 0x2c3f0
+    i = 0;
     rfalse;
 ];
 
-[ routine181240 local1 ;	! 181240 / 0x2c3f8
-    local1 = 0;
+[ Stub3 i ;	! 181240 / 0x2c3f8
+    i = 0;
     rfalse;
 ];
 
-[ routine181248 local1 ;	! 181248 / 0x2c400
-    local1 = 0;
+[ Stub2 i ;	! 181248 / 0x2c400
+    i = 0;
     rfalse;
 ];
 
-[ routine181256 local1 local2 ;	! 181256 / 0x2c408
-    local1 = 0;
-    local2 = 0;
+[ Stub1 i j ;	! 181256 / 0x2c408
+    i = 0;
+    j = 0;
     rfalse;
 ];
 
-[ routine181264 ;	! 181264 / 0x2c410
-    return 65535[?];
+[ NegativeOne ;	! 181264 / 0x2c410
+    return 65535;
 ];
 
-[ routine181268 local1 ;	! 181268 / 0x2c414
+[ ConTopicI w ;	! 181268 / 0x2c414
     consult_from = wn;
   .label181272;
-    local1 = NextWordStopped();
-    if (local1 ~= 36624['on'?] or 65535[?]) jump label181272;
-    if (local1 == 65535[?]) {
+    w = NextWordStopped();
+    if (w ~= 'on' or 'invalidDictWord65535') jump label181272;
+    if (w == 'invalidDictWord65535') {
         return 65535[?];
     }
     --wn;
