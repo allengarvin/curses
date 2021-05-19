@@ -7970,19 +7970,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ NotifyTheScore local1 ;	! 53992 / 0xd2e8
+[ NotifyTheScore i ;	! 53992 / 0xd2e8
     print "^[Your score has just gone ";
     if (last_score > score) {
-        local1 = last_score - score;
+        i = last_score - score;
         print "down";
     } else {
-        local1 = score - last_score;
+        i = score - last_score;
         print "up";
     }
     print " by ";
-    EnglishNumber(local1);
+    EnglishNumber(i);
     print " point";
-    if (local1 > 1) {
+    if (i > 1) {
         print "s";
     }
     print ".]^";
