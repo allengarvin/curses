@@ -9709,7 +9709,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: electric_torch.after
 
 [ TorchAfter ;	! 64428 / 0xfbac
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (child(selfobj) ~= nothing) {
             "There's a battery in already.";
         }
@@ -10187,7 +10187,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         "You try absolutely everything. Pushing the top down, turning it, pulling it, putting it on the floor and jumping up and down on it, everything. It is resolutely adult-proof. Whatever would it take to break the dratted thing?";
     }
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (selfobj has open && noun ~= red_tablet) {
             "The neck is too narrow to fit anything but the pill.";
         }
@@ -10631,7 +10631,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: photographers_flash.after
 
 [ FlashAFter ;	! 75840 / 0x12840
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         generic_globvar = 0;
         if (child(selfobj) ~= nothing) {
           .label75855;
@@ -10936,7 +10936,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: slide_projector.after
 
 [ ProjectorAfter ;	! 78492 / 0x1329c
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (child(selfobj) ~= nothing) {
             "There's a slide in already.";
         }
@@ -10980,7 +10980,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: slide_projector.before
 
 [ ProjectorBefore local1 ;	! 78820 / 0x133e4
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (selfobj has on) {
             routine79624(noun);
             rtrue;
@@ -11191,7 +11191,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: big_iron_fireplace.before
 
 [ routine80840 ;	! 80840 / 0x13bc8
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         move noun to Priest_s_Hole;
         if (sooty_old_stick hasnt moved) {
             move sooty_old_stick to Priest_s_Hole;
@@ -11456,7 +11456,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: comfortable_bed.after
 
 [ routine83964 ;	! 83964 / 0x147fc
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun ~= flag_of_the_British_Merchant_Navy) {
             "That seems unlikely to make a good blanket.";
         }
@@ -12206,7 +12206,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: dark_shaft_obj.before
 
 [ ShaftBefore ;	! 90596 / 0x161e4
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         move noun to dumbwaiter;
         if (dumbwaiter in location) {
             "Put on the dumbwaiter.";
@@ -12523,7 +12523,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: hole_in_the_wall.after
 
 [ HoleAfter ;	! 92808 / 0x16a88
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (second == hole_in_the_wall) {
             "Nothing is to be gained by this.";
         }
@@ -12601,7 +12601,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: circular_arc.after
 
 [ ArcAfter local1 ;	! 93356 / 0x16cac
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         local1 = selfobj.time_left;
         if (local1 == 9[sw_obj?]) {
             "The sockets are all full.";
@@ -12635,7 +12635,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: spherical_opening.after
 
 [ SphericalOpeningAfter ;	! 93620 / 0x16db4
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun == hard_wooden_ball) {
             "Though correctly shaped, it is not quite small enough to fit the cavity.";
         }
@@ -12669,7 +12669,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: gilded_model_coffin.before
 
 [ CoffinBefore local1 ;	! 93928 / 0x16ee8
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun has rod_attr) {
             "The mahogany rod fits in perfectly.";
         }
@@ -12749,7 +12749,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: picture_hook.after
 
 [ HookAfter ;	! 94844 / 0x1727c
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun ~= painting_of_Mad_Isaac_Meldrewe) {
             "Doesn't seem right there, somehow.";
         }
@@ -13040,7 +13040,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Insert,second,selfobj);
         rtrue;
     }
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (Madame_Sosostris in location) {
             "Madame Sosostris won't let you.";
         }
@@ -13335,7 +13335,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Tarot_box.after
 
 [ routine99736 ;	! 99736 / 0x18598
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun hasnt card) {
             "Only cards will fit.";
         }
@@ -14223,7 +14223,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: inscriptions.after
 
 [ routine109740 ;	! 109740 / 0x1acac
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (selfobj hasnt open) {
             rfalse;
         }
@@ -14361,7 +14361,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: flaming_bronze_urn.after
 
 [ routine110880 ;	! 110880 / 0x1b120
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun == player) {
             R_Process(##Enter,selfobj);
             rtrue;
@@ -14787,7 +14787,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: ancient_well.before
 
 [ routine114208 ;	! 114208 / 0x1be20
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         move noun to hanging_cord;
         give CR ~general;
         "It plummets down into the well.";
@@ -15545,7 +15545,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: crack.before
 
 [ routine118232 ;	! 118232 / 0x1cdd8
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun == bunch_of_nuts) {
             give loose_board open;
             move bunch_of_nuts to irate_squirrel_friend;
@@ -15995,7 +15995,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: kitchen_well.before
 
 [ routine122728 ;	! 122728 / 0x1df68
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         remove noun;
         if (noun has light) {
             give kitchen_well general;
@@ -16921,7 +16921,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rusty_iron_grating.after
 
 [ routine131812 ;	! 131812 / 0x202e4
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun == player) {
             "The bars are far too close together.";
         }
@@ -17017,7 +17017,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: unexciting_tombstone.after
 
 [ routine132568 ;	! 132568 / 0x205d8
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun ~= gleaming_amber_gem) {
             "Doesn't seem to fit.";
         }
@@ -17318,7 +17318,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: first_socket.after, second_socket.after, third_socket.after
 
 [ routine135524 ;	! 135524 / 0x21164
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun == model_golden_sceptre) {
             model_golden_sceptre.time_left = selfobj;
             if (selfobj == first_socket) {
@@ -17475,7 +17475,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: table.after
 
 [ routine137036 ;	! 137036 / 0x2174c
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun == quarterstaff) {
             remove quarterstaff;
             give defaced_door ~open;
@@ -17898,7 +17898,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: astronomical_mounting.after
 
 [ routine140508 ;	! 140508 / 0x224dc
-    if (action == ##Action257) {
+    if (action == ##Receive) {
         if (noun == golden_astrolabe) {
             remove astronomical_mounting;
             move golden_astrolabe to Palace_Balustrade;
@@ -20527,7 +20527,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         return L__M(##PutOn,1,noun);
     }
     if (second > 1) {
-        verb = ##Action257;
+        verb = ##Receive;
         if (RunRoutines(second,after) ~= 0) {
             verb = ##PutOn;
             rtrue;
@@ -20566,7 +20566,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     if (second > 1) {
-        verb = ##Action257;
+        verb = ##Receive;
         if (RunRoutines(second,before) ~= 0) {
             verb = ##PutOn;
             rtrue;
@@ -20593,7 +20593,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         return L__M(##Insert,1);
     }
     if (second > 1) {
-        verb = ##Action257;
+        verb = ##Receive;
         if (RunRoutines(second,after) ~= 0) {
             verb = ##Insert;
             rtrue;
@@ -20632,7 +20632,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     if (second > 1) {
-        verb = ##Action257;
+        verb = ##Receive;
         if (RunRoutines(second,before) ~= 0) {
             verb = ##Insert;
             rtrue;
