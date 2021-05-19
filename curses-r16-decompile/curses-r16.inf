@@ -2031,7 +2031,7 @@ Object -> Impressionist_painting "Impressionist painting"	! 158 / 0x9e
 
 Object Consulting_Room "Consulting Room"	! 159 / 0x9f
   with	name 'sevenbran' 'candelabra' 'sticks' 'table',
-	after routine96860,
+	after ConsultingRoomAfter,
 	w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
 	d_to Shadowy_Hallway,
 	description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table, on which is an electric bell push and a wicked Tarot pack.",
@@ -2040,7 +2040,7 @@ Object Consulting_Room "Consulting Room"	! 159 / 0x9f
 
 Object -> Tarot_pack "Tarot pack"	! 160 / 0xa0
   with	name 'wicked' 'tarot' 'pack' 'deck',
-	after routine96888,
+	after TarotPackAfter,
   has	scenery;
 
 Object -> curtain "curtain"	! 161 / 0xa1
@@ -2049,12 +2049,12 @@ Object -> curtain "curtain"	! 161 / 0xa1
 
 Object -> bell_push "bell push"	! 162 / 0xa2
   with	name 'bell' 'push',
-	after routine97180,
+	after BellPushAfter,
   has	scenery;
 
 Object Madame_Sosostris "Madame Sosostris, famous clairvoyante"	! 163 / 0xa3
   with	name 'sosostris' 'madame' 'clairvoyant',
-	life routine97492,
+	life SosostrisLife,
 	description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
   has	animate proper;
 
@@ -2103,7 +2103,7 @@ Object oak_quarterstaff "oak quarterstaff"	! 167 / 0xa7
 
 Object Down_by_River "Down by River"	! 168 / 0xa8
   with	name 'rats' 'mounds' 'rubbish',
-	after routine97800,
+	after DownByRiverAfter,
 	e_to Unreal_City,
 	w_to routine97832,
 	description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you.",
@@ -13020,7 +13020,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Consulting_Room.after
 
-[ routine96860 ;	! 96860 / 0x17a5c
+[ ConsultingRoomAfter ;	! 96860 / 0x17a5c
     if (action == ##Smell) {
         "You feel briefly incensed.";
     }
@@ -13029,7 +13029,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Tarot_pack.after
 
-[ routine96888 ;	! 96888 / 0x17a78
+[ TarotPackAfter ;	! 96888 / 0x17a78
     if (action == ##Take or ##Remove) {
         "That's funny. For a moment there your hand seemed to go straight through the pack of cards without touching it!";
     }
@@ -13061,7 +13061,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bell_push.after
 
-[ routine97180 ;	! 97180 / 0x17b9c
+[ BellPushAfter ;	! 97180 / 0x17b9c
     if (action == ##Push) {
         if (Madame_Sosostris in Consulting_Room) {
             "Madame Sosostris looks at you in some irritation.";
@@ -13083,7 +13083,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Madame_Sosostris.life
 
-[ routine97492 ;	! 97492 / 0x17cd4
+[ SosostrisLife ;	! 97492 / 0x17cd4
     if (action == ##Give) {
         if (noun == silk_handkerchief) {
             "Gratefully she blows her nose but then returns the handkerchief. You refold it ingeniously.";
@@ -13117,7 +13117,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Down_by_River.after
 
-[ routine97800 ;	! 97800 / 0x17e08
+[ DownByRiverAfter ;	! 97800 / 0x17e08
     if (action == ##Swim or ##Drink) {
         "That foul water?  Not a chance.";
     }
