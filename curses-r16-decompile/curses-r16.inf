@@ -7831,19 +7831,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ UnsignedCompare local1 local2 local3 local4 ;	! 53468 / 0xd0dc
-    if (local1 == local2) {
+[ UnsignedCompare x y u v ;	! 53468 / 0xd0dc
+    if (x == y) {
         return 0;
     }
-    if (local1 < 0 && local2 >= 0) {
+    if (x < 0 && y >= 0) {
         return 1[?];
     }
-    if (local1 >= 0 && local2 < 0) {
+    if (x >= 0 && y < 0) {
         return 65535[?];
     }
-    local3 = local1 & 32767;
-    local4 = local2 & 32767;
-    if (local3 > local4) {
+    u = x & 32767;
+    v = y & 32767;
+    if (u > v) {
         return 1[?];
     }
     return 65535[?];
