@@ -4983,8 +4983,8 @@ Global ball_polished;
 Global tablet_eaten;
 Global daisy_given;
 Global global142 = 25144[?];
-Global global143 = 8[nw_obj?];
-Global global144 = 3[s_obj?];
+Global Mouse_x = 8;
+Global Mousy_y = 3;
 Global MouseUnderstandsMask;
 Global global146 = 25207[?];
 Global global147;
@@ -12403,8 +12403,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             if (noun == w_obj) {
                 dst = hole_in_the_wall;
-                global143 = 8[nw_obj?];
-                global144 = 3[s_obj?];
+                Mouse_x = 8;
+                Mousy_y = 3;
                 jump label92201;
             }
         } else if (frm == Cellar_West) {
@@ -12431,32 +12431,32 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 jump label92201;
             }
         } else {
-            if (frm == hole_in_the_wall && global143 == 8[nw_obj?] && global144 == 3[s_obj?] && noun == e_obj) {
+            if (frm == hole_in_the_wall && Mouse_x == 8 && Mousy_y == 3 && noun == e_obj) {
                 dst = Cellars_South;
             } else {
                 if (frm == hole_in_the_wall) {
                     if (noun == n_obj) {
-                        local4 = global143;
-                        local5 = global144 - 1;
+                        local4 = Mouse_x;
+                        local5 = Mousy_y - 1;
                     }
                     if (noun == e_obj) {
-                        local4 = global143 + 1;
-                        local5 = global144;
+                        local4 = Mouse_x + 1;
+                        local5 = Mousy_y;
                     }
                     if (noun == s_obj) {
-                        local4 = global143;
-                        local5 = global144 + 1;
+                        local4 = Mouse_x;
+                        local5 = Mousy_y + 1;
                     }
                     if (noun == w_obj) {
-                        local4 = global143 - 1;
-                        local5 = global144;
+                        local4 = Mouse_x - 1;
+                        local5 = Mousy_y;
                     }
                     if (routine91436(local4,local5) == 1[?]) {
                         "From somewhere inside the hole, you hear a disconsolate bleep.";
                     }
-                    global143 = local4;
-                    global144 = local5;
-                    if (global143 == 4[e_obj?] && global144 == 1[?] && small_brass_key in hole_in_the_wall) {
+                    Mouse_x = local4;
+                    Mousy_y = local5;
+                    if (Mouse_x == 4 && Mousy_y == 1 && small_brass_key in hole_in_the_wall) {
                         move small_brass_key to robot_mouse;
                         discharge_rod(n_obj);
                         "From somewhere inside the hole, you hear the spinning of tiny wheels, followed by an excitable high-pitched beep and a dull clanging noise.";
