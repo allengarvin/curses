@@ -10307,7 +10307,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Austin.daemon
 
-[ AustinDemon local1 ;	! 74068 / 0x12154
+[ AustinDemon i ;	! 74068 / 0x12154
     if (selfobj has moved) {
         give selfobj ~moved;
         rfalse;
@@ -10320,30 +10320,30 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rfalse;
         }
         print "^Austin ";
-        local1 = random(6);
-        if (local1 == 1[?]) {
+        i = random(6);
+        if (i == 1) {
             print "preens himself";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             print "wriggles";
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             print "springs about";
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             print "frisks";
         }
-        if (local1 == 5[w_obj?]) {
+        if (i == 5) {
             print "purrs";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (i == 6) {
             print "hisses";
         }
-        local1 = random(3);
-        if (local1 == 1[?]) {
+        i = random(3);
+        if (i == 1) {
             " contentedly.";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             " happily.";
         }
         " cheerfully.";
