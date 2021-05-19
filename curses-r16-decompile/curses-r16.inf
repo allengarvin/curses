@@ -9301,7 +9301,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_returning.rod_action, rod_of_returning2.rod_action
 
-[ RodOfReturningAction local1 local2 ;	! 60256 / 0xeb60
+[ RodOfReturningAction i local2 ;	! 60256 / 0xeb60
     if (second ~= player) {
         "Nothing obvious happens.";
     }
@@ -9319,18 +9319,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local2 = 138[Infinity_Symbol?];
         remove rod_of_returning2;
     } else {
-        local1 = random(4);
+        i = random(4);
         if (global126 == 1[?]) {
-            local1 = 1[?];
+            i = 1;
         }
         local2 = 35[Attic?];
-        if (local1 == 2[?]) {
+        if (i == 2) {
             local2 = 47[Old_Furniture?];
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             local2 = 103[Old_Winery?];
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             local2 = 57[Over_the_East_Wing?];
         }
     }
