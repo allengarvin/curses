@@ -4308,33 +4308,33 @@ Object -> pigeonhole "pigeonhole"	! 449 / 0x1c1
 Object tube_with_an_alpha_on "tube with an alpha on"	! 450 / 0x1c2
   with	name 'alpha' 'with' 'tube' 'cylinder',
 	description "An open-ended hollow tube, marked with a Greek capital Alpha.",
-	parse_name routine138240,
+	parse_name TubeParse,
 	angel_hint "Surely this is addressed to someone?",
   has	container open;
 
 Object -> scroll_bearing_an_epic_poem "scroll bearing an epic poem"	! 453 / 0x1c5
   with	name 'long' 'epic' 'scroll' 'poem',
 	description "All Greek to you, alas, and running on for 1000 lines or more.",
-	parse_name routine138300,
+	parse_name ScrollParse,
 	angel_hint "Oh my. Well, the plot, um, there are seven attackers, all with different shields, one for each of the seven city gates, and it's a civil war so of course the brothers are really in a duel and there are champions and the women are upset but it's all because of their brother who was really their father... Never mind. It's strictly for aficionados.",
   has	;
 
 Object tube_with_a_kappa_on "tube with a kappa on"	! 451 / 0x1c3
   with	name 'kappa' 'with' 'tube' 'cylinder',
 	description "An open-ended hollow tube, marked with a Greek capital Kappa.",
-	parse_name routine138240,
+	parse_name TubeParse,
 	angel_hint "Surely this is addressed to someone?",
   has	container open;
 
 Object -> scroll_bearing_a_short_poem "scroll bearing a short poem"	! 452 / 0x1c4
   with	name 'short' 'scroll' 'poem',
 	description "All Greek to you, alas. Only a dozen lines or so, though.",
-	parse_name routine138300,
+	parse_name ScrollParse,
 	angel_hint "Oh my. ~I touch your... and the scent of you rises from... your beautiful...~  I'd better not read the rest. Strictly for aficionados.",
   has	;
 
 Object Oil_Room "Oil Room"	! 454 / 0x1c6
-  with	after routine138364,
+  with	after OilRoomAfter,
 	n_to The_Birdcage_of_the_Muses,
 	description "This small, dark (by night) room is a repository for Library supplies: above all, for lamp oil, which is stored in broad shallow earthenware troughs. Lucky your torch is electric, when you think about it. Anyway, a passage leads back north.",
 	section T_ALEXANDRIA,
@@ -4342,7 +4342,7 @@ Object Oil_Room "Oil Room"	! 454 / 0x1c6
 
 Object -> oil_filled_troughs "oil-filled troughs"	! 455 / 0x1c7
   with	name 'oil' 'troughs' 'shallow' 'lamp',
-	after routine138500,
+	after OilTroughsAfter,
 	article "the",
   has	scenery;
 
@@ -4355,8 +4355,8 @@ Object Geography_Room "Geography Room"	! 456 / 0x1c8
 
 Object -> spindle_from_the_globe "spindle from the globe"	! 457 / 0x1c9
   with	name 'spindle' 'axis' 'globe' 'earth',
-	after routine138528,
-	before routine138544,
+	after SpindleAfter,
+	before SpindleBefore,
 	initial "Protruding from a broken globe of the Earth (marked with very tentative and approximate maps) is the spindle, the only thing holding it together.",
 	description "Perhaps the best work of cartography likely for the next two thousand years, though it seems unlikely to last the next two hours.",
 	rod_assoc rod_of_ice,
@@ -4379,7 +4379,7 @@ Object -> dusty_scrolls "dusty scrolls"	! 459 / 0x1cb
 
 Object -> Callimachus "Callimachus"	! 460 / 0x1cc
   with	name 'callimachus' 'expert' 'librarian',
-	life routine138656,
+	life CallimachusLife,
 	initial "The expert in question being Callimachus, who is brooding over a scroll, and hardly aware of your presence.",
 	description "Callimachus is famous for something or other. You wonder what...",
   has	animate proper;
@@ -4407,21 +4407,21 @@ Object Librarians_Office "Librarian's Office"	! 463 / 0x1cf
 
 Object -> Apollonius "Apollonius"	! 464 / 0x1d0
   with	name 'apollonius' 'head' 'expert' 'librarian',
-	life routine138656,
+	life CallimachusLife,
 	initial "Apollonius paces about self-importantly in a purple sash, perusing documents on his desk.",
 	description "His aim in life is chiefly to annoy Callimachus, his junior librarian and the modern poet he despises most.",
   has	animate proper;
 
 Object Outside_the_Royal_Palace_of_Alexander "Outside the Royal Palace of Alexander"	! 465 / 0x1d1
-  with	n_to routine139676,
+  with	n_to PlaceNorth,
 	s_to Outside_the_Theatre,
 	description "A hugely impressive edifice, and everything you might expect from the man who conquered the whole of Asia Minor at an age when most people are starting to think about getting a mortgage.^^There are of course guards, but they're trying to catch the procession, so if you're careful not to draw attention to yourself you could probably sneak in to the north.",
 	section T_ALEXANDRIA,
   has	light;
 
 Object Lost_inside_the_Palace "Lost inside the Palace"	! 466 / 0x1d2
-  with	after routine139872,
-	before routine140040,
+  with	after InsidePalaceAfter,
+	before InsidePalaceBefore,
 	n_to Lost_inside_the_Palace,
 	s_to Lost_inside_the_Palace,
 	e_to Lost_inside_the_Palace,
@@ -4436,13 +4436,13 @@ Object Lost_inside_the_Palace "Lost inside the Palace"	! 466 / 0x1d2
 
 Object -> slave "slave"	! 467 / 0x1d3
   with	name 'slave' 'deaf' 'mute',
-	life routine140144,
+	life SlaveLife,
 	initial "A slave stands impassively by one wall.",
 	description "Such a slave, a highly trained professional, stands at every intersection of passages in the palace. They are deaf mutes, to prevent them overhearing State secrets.",
   has	animate;
 
 Object Palace_Balustrade "Palace Balustrade"	! 468 / 0x1d4
-  with	after routine140336,
+  with	after BalustradeAfter,
 	description "The magnificent balcony overlooking the Royal harbour of Alexandria. In two hundred years' time, Julius Caesar will be besieged here, and will hold the palace with a tiny force of men against an entire army: and will lose his heart to Cleopatra...^^For the mean time, this is a broad stone balustraded balcony. The coin-bright moon, low in the sky, reflects off the black waters far below.",
 	cant_go "There seems to be absolutely no way off the balcony, as the stone doors to the heart of the palace are sealed shut.",
 	section T_ALEXANDRIA,
@@ -4450,14 +4450,14 @@ Object Palace_Balustrade "Palace Balustrade"	! 468 / 0x1d4
 
 Object -> astronomical_mounting "astronomical mounting"	! 469 / 0x1d5
   with	name 'mounting' 'socket' 'astronomical' 'tripod',
-	after routine140508,
+	after MountingAfter,
 	initial "An impressive astronomical mounting stands on a tripod here. But there is no telescope.",
 	article "an",
   has	static;
 
 Object Beside_the_Drive "Beside the Drive"	! 470 / 0x1d6
   with	name 'wistaria' 'car' 'gravel',
-	after routine140600,
+	after DriveAfter,
 	n_to "The old carved southern wall of the gardens blocks your way around the edge of the Hall.",
 	w_to "The Hall is in the way.",
 	ne_to Public_Footpath,
@@ -4469,8 +4469,8 @@ Object Beside_the_Drive "Beside the Drive"	! 470 / 0x1d6
 
 Object -> fire_escape "fire escape"	! 471 / 0x1d7
   with	name 'fire' 'escape' 'white' 'rope' 'rickety',
-	after routine140724,
-	initial routine140740,
+	after FireEscapeAfter,
+	initial FireEscpeInitial,
 	description "For the first couple of storeys, an old iron zig-zag, and after that a ladder that might or might not be well-anchored. The gardeners have done a good job of concealing it behind wistaria which (in any case) looks the stronger of the two.",
   has	static;
 
@@ -4498,7 +4498,7 @@ Object -> nest "nest"	! 474 / 0x1da
 
 Object -> bunch_of_nuts "bunch of nuts"	! 475 / 0x1db
   with	name 'bunch' 'of' 'nuts',
-	after routine140884,
+	after NutsAfter,
 	initial "Entwined in the nest is a bunch of nuts.",
 	description "A bunch of nuts, left over from last autumn.",
 	devil_hint "Nuts to you too.",
@@ -4507,7 +4507,7 @@ Object -> bunch_of_nuts "bunch of nuts"	! 475 / 0x1db
 
 Object -> corn_crake "corn crake"	! 476 / 0x1dc
   with	name 'corn' 'crake' 'corncrake' 'deaf' 'rail' 'bird',
-	life routine140928,
+	life CornCrakeLife,
 	initial "And sat upon it is, as you might expect, a bird: a corn crake, in fact.",
 	description "A rail with a distinctive cry. And a possessive look.",
   has	animate;
@@ -4523,14 +4523,14 @@ Object Stone_Cross "Stone Cross"	! 477 / 0x1dd
 
 Object -> Old_Evans "Old Evans"	! 478 / 0x1de
   with	name 'racing' 'enthusiast' 'old' 'evans',
-	life routine140960,
+	life OldEvansLife,
 	initial "Old Evans, the village racing enthusiast, sits on the steps of the memorial, combing the back pages of his ~Racing Times~ newspaper.",
 	description "In the band of his hat is his lucky mascot: a little picture of the crescent moon.",
   has	animate proper transparent;
 
 Object -> -> Crescent_Moon "Crescent Moon"	! 483 / 0x1e3
   with	name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
-	after routine141420 TarotAfter,
+	after CrescentMoonAfter TarotAfter,
 	n_to Parish_Church,
 	nw_to "Tarot cards",
 	description "Some kind of crescent moon, an old Druidical symbol.",
@@ -4542,13 +4542,13 @@ Object -> -> Crescent_Moon "Crescent Moon"	! 483 / 0x1e3
 
 Object -> -> Racing_Times "Racing Times"	! 484 / 0x1e4
   with	name 'paper' 'newspaper' 'racing' 'times',
-	after routine141468,
+	after RacingTimesAfter,
 	description "The front page story (~Lord Lucan's new acquisition Shergar comes out of retirement to win the Grand National~) is so boringly unsensational that you quickly lose interest. But Evans is eternally fascinated with minute details of the form of the horses, tomorrow's race meetings, current odds quoted by the bookmakers, and so on.",
   has	;
 
 Object -> -> hat_band "hat band"	! 485 / 0x1e5
   with	name 'hat' 'band',
-	after routine141500,
+	after HatBandAfter,
 	description "Racing aficionados consider it lucky to wear mascots in the bands of their hats.",
   has	;
 
@@ -4559,7 +4559,7 @@ Object -> war_memorial "war memorial"	! 479 / 0x1df
 
 Object -> parish_church "parish church"	! 480 / 0x1e0
   with	name 'parish' 'church' 'door',
-	after routine141256,
+	after ChurchAfter,
 	n_to Parish_Church,
 	w_to w_obj,
 	description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
@@ -4567,24 +4567,24 @@ Object -> parish_church "parish church"	! 480 / 0x1e0
 
 Object -> Goat_and_Compasses "Goat and Compasses"	! 481 / 0x1e1
   with	name 'pub' 'goat' 'compasses' 'public' 'house' 'bar',
-	after routine141296,
+	after GoatsCompassesAfter,
 	w_to w_obj,
 	description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing laws. You congratulate yourself on living in such a modern, forward-looking country.",
   has	door locked proper scenery;
 
 Object pet_monkey "pet monkey"	! 482 / 0x1e2
   with	name 'pet' 'monkey',
-	after routine141340,
+	after PetMonkeyAfter,
 	initial "The monkey sits on Evans' shoulder, cheeping with excitement. Evans has found a pet, and is so gruffly delighted that he has forgotten all about the mascot you stole. Now if he could only predict the 3.40 at Borchester Mills...",
   has	animate;
 
 Object Parish_Church "Parish Church"	! 486 / 0x1e6
   with	name 'flowers' 'pews' 'woven' 'mattings' 'lectern' 'altar',
-	s_to routine141536,
+	s_to ParishChurchSouth,
 	e_to East_Side_Chapel,
 	w_to West_Side_Chapel,
 	u_to Bell_Tower,
-	d_to routine141588,
+	d_to ParishChurchDown,
 	description "Before this was the Norman church of St Michael and All Angels, it was a Saxon one: this is an ancient site. A great space of stone, filled with dark wooden pews and woven mattings. Flowers left over from Sunday grace the lectern and altar. A narrow stair leads upward, and the village green lies to the south.^^Old side chapels lie east and west.",
 	section T_NE_OF_HOME,
   has	light;
@@ -17641,7 +17641,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: tube_with_an_alpha_on.parse_name, tube_with_a_kappa_on.parse_name
 
-[ routine138240 local1 local2 ;	! 138240 / 0x21c00
+[ TubeParse local1 local2 ;	! 138240 / 0x21c00
     if (parser_action == ##TheSame) {
         return 65535[?];
     }
@@ -17663,7 +17663,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: scroll_bearing_a_short_poem.parse_name, scroll_bearing_an_epic_poem.parse_name
 
-[ routine138300 local1 local2 ;	! 138300 / 0x21c3c
+[ ScrollParse local1 local2 ;	! 138300 / 0x21c3c
     if (parser_action == ##TheSame) {
         return 65535[?];
     }
@@ -17685,7 +17685,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Oil_Room.after
 
-[ routine138364 ;	! 138364 / 0x21c7c
+[ OilRoomAfter ;	! 138364 / 0x21c7c
     if (action == ##Anoint) {
         if (noun ~= player || mummy_case has general) {
             "That hardly seems worthwhile.";
@@ -17698,7 +17698,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: oil_filled_troughs.after
 
-[ routine138500 ;	! 138500 / 0x21d04
+[ OilTroughsAfter ;	! 138500 / 0x21d04
     if (action == ##Drink or ##Enter) {
         "What a revolting idea!";
     }
@@ -17707,7 +17707,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: spindle_from_the_globe.after
 
-[ routine138528 ;	! 138528 / 0x21d20
+[ SpindleAfter ;	! 138528 / 0x21d20
     if (action == ##Pull) {
         R_Process(##Take,selfobj);
         rtrue;
@@ -17717,7 +17717,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: spindle_from_the_globe.before
 
-[ routine138544 ;	! 138544 / 0x21d30
+[ SpindleBefore ;	! 138544 / 0x21d30
     if (action == ##Take) {
         if (spindle_from_the_globe hasnt general) {
             give spindle_from_the_globe general;
@@ -17731,7 +17731,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Callimachus.life, Apollonius.life
 
-[ routine138656 local1 ;	! 138656 / 0x21da0
+[ CallimachusLife local1 ;	! 138656 / 0x21da0
     if (action == ##Give) {
         if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && inp1 == 451[tube_with_a_kappa_on?])) {
             "He takes the tube, sees the letter on it, looks exasperated, clouts you over the head with the tube and pushes it back into your arms.";
@@ -17794,18 +17794,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Outside_the_Royal_Palace_of_Alexander.n_to
 
-[ routine139676 ;	! 139676 / 0x2219c
+[ PlaceNorth ;	! 139676 / 0x2219c
     if (cloak_of_many_colours has worn) {
         deadflag = DIED;
         "Or you could just saunter up to them wearing a cloak of many colours. Have it your own way.";
     }
     print "^You tiptoe into the palace, and immediately dart away from view of the many clerks and civil servants manning the machinery of government even at this late hour. Within seconds, you realise you are...^";
-    return 466[Lost_inside_the_Palace?];
+    return Lost_inside_the_Palace;
 ];
 
 ! References: silver_keepsake.name, Lost_inside_the_Palace.after
 
-[ routine139872 ;	! 139872 / 0x22260
+[ InsidePalaceAfter ;	! 139872 / 0x22260
     if (action == ##Go) {
         if (purple_sash hasnt worn) {
             move player to Outside_the_Royal_Palace_of_Alexander;
@@ -17829,7 +17829,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Lost_inside_the_Palace.before
 
-[ routine140040 ;	! 140040 / 0x22308
+[ InsidePalaceBefore ;	! 140040 / 0x22308
     if (action == ##Go) {
       .label140046;
         if (child(Lost_inside_the_Palace) ~= nothing) {
@@ -17860,7 +17860,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: slave.life
 
-[ routine140144 ;	! 140144 / 0x22370
+[ SlaveLife ;	! 140144 / 0x22370
     if (action == ##Order) {
         if (verb == ##Anoppe && location has general) {
             R_Process(##Anoppe);
@@ -17886,7 +17886,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Palace_Balustrade.after
 
-[ routine140336 ;	! 140336 / 0x22430
+[ BalustradeAfter ;	! 140336 / 0x22430
     if (action == ##Swim or ##Jump) {
         move player to Warehouses_and_Port;
         location = Warehouses_and_Port;
@@ -17897,7 +17897,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: astronomical_mounting.after
 
-[ routine140508 ;	! 140508 / 0x224dc
+[ MountingAfter ;	! 140508 / 0x224dc
     if (action == ##Receive) {
         if (noun == golden_astrolabe) {
             remove astronomical_mounting;
@@ -17915,7 +17915,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Beside_the_Drive.after
 
-[ routine140600 ;	! 140600 / 0x22538
+[ DriveAfter ;	! 140600 / 0x22538
     if (action == ##Go) {
         if (noun == w_obj or u_obj && selfobj.u_to == Dead_End) {
             print "With your heart in your mouth, you scale the old fire escape once again, breathing a sigh of relief as you haul yourself in through the open hatchway at the top.^";
@@ -17927,7 +17927,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: fire_escape.after
 
-[ routine140724 ;	! 140724 / 0x225b4
+[ FireEscapeAfter ;	! 140724 / 0x225b4
     if (action == ##Climb or ##Enter) {
         R_Process(##Go,10[u_obj?]);
         rtrue;
@@ -17937,7 +17937,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: fire_escape.initial
 
-[ routine140740 ;	! 140740 / 0x225c4
+[ FireEscpeInitial ;	! 140740 / 0x225c4
     if (Beside_the_Drive.u_to ~= Dead_End) {
         "Wistaria climbs a desperately rickety fire escape up the side of the Hall.";
     }
@@ -17946,7 +17946,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bunch_of_nuts.after
 
-[ routine140884 ;	! 140884 / 0x22654
+[ NutsAfter ;	! 140884 / 0x22654
     discharge_rod(House);
     if (corn_crake in Hollow) {
         "The corn crake won't let you near her nest.";
@@ -17956,7 +17956,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: corn_crake.life
 
-[ routine140928 ;	! 140928 / 0x22680
+[ CornCrakeLife ;	! 140928 / 0x22680
     if (action == ##Order or ##Ask or ##Answer) {
         "The bird seems not to have heard.";
     }
@@ -17965,7 +17965,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Old_Evans.life
 
-[ routine140960 ;	! 140960 / 0x226a0
+[ OldEvansLife ;	! 140960 / 0x226a0
     if (action == ##Order or ##Ask) {
         if (selfobj hasnt general) {
             "~Just a minute, I'm doing my form.~";
@@ -17993,7 +17993,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: parish_church.after
 
-[ routine141256 ;	! 141256 / 0x227c8
+[ ChurchAfter ;	! 141256 / 0x227c8
     if (action == ##Enter) {
         if (selfobj hasnt open) {
             "The Church door is barred from the far side.";
@@ -18005,7 +18005,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Goat_and_Compasses.after
 
-[ routine141296 ;	! 141296 / 0x227f0
+[ GoatsCompassesAfter ;	! 141296 / 0x227f0
     if (action == ##Enter) {
         "The pub is closed, licensing laws being what they are.";
     }
@@ -18014,7 +18014,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: pet_monkey.after
 
-[ routine141340 ;	! 141340 / 0x2281c
+[ PetMonkeyAfter ;	! 141340 / 0x2281c
     if (action == ##Touch) {
         "You stroke the monkey's pelt. It jumps about, cheeping.";
     }
@@ -18026,7 +18026,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: red_lamp.name, Inside_the_Orb.name, Crescent_Moon.after
 
-[ routine141420 ;	! 141420 / 0x2286c
+[ CrescentMoonAfter ;	! 141420 / 0x2286c
     if (action == ##Take or ##Remove) {
         if (selfobj in Old_Evans) {
             "Evans isn't giving up his mascot that easily.";
@@ -18038,7 +18038,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Racing_Times.after
 
-[ routine141468 ;	! 141468 / 0x2289c
+[ RacingTimesAfter ;	! 141468 / 0x2289c
     if (action == ##Take or ##Remove) {
         "Evans isn't giving up his paper.";
     }
@@ -18047,7 +18047,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hat_band.after
 
-[ routine141500 ;	! 141500 / 0x228bc
+[ HatBandAfter ;	! 141500 / 0x228bc
     if (action == ##Take or ##Remove) {
         "Evans isn't giving up his hat-band.";
     }
@@ -18056,18 +18056,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Parish_Church.s_to
 
-[ routine141536 ;	! 141536 / 0x228e0
+[ ParishChurchSouth ;	! 141536 / 0x228e0
     if (parish_church hasnt open) {
         give parish_church open;
         parish_church.description = "The church door is open.";
         print "You unbar the door, and let yourself out.^";
     }
-    return 477[Stone_Cross?];
+    return Stone_Cross;
 ];
 
 ! References: Parish_Church.d_to
 
-[ routine141588 ;	! 141588 / 0x22914
+[ ParishChurchDown ;	! 141588 / 0x22914
     if (Moonstone has open) {
         "To your horror your body partly thins to mist as you climb down through the threshold!  Alarmed, you pull back. The underworld beneath the Moonstone, it seems, is not for mortals.";
     }

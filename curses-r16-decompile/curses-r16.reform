@@ -1831,62 +1831,35 @@ Routine 0x21990	GamblingSailorEachTurn n:int
 Routine 0x21a5c	routine137820:?
 Routine 0x21b14	EtruscanInt i:int
 Routine 0x21b4c	BirdcageEachTurn i:int
-! References: obj450_tube_with_an_alpha_on.parse_name, obj451_tube_with_a_kappa_on.parse_name
-Routine 0x21c00	routine138240:?
-! References: obj452_scroll_bearing_a_short_poem.parse_name, obj453_scroll_bearing_an_epic_poem.parse_name
-Routine 0x21c3c	routine138300:?
-! References: obj454_Oil_Room.after
-Routine 0x21c7c	routine138364:?
-! References: obj455_oil_filled_troughs.after
-Routine 0x21d04	routine138500:?
-! References: obj457_spindle_from_the_globe.after
-Routine 0x21d20	routine138528:?
-! References: obj457_spindle_from_the_globe.before
-Routine 0x21d30	routine138544:?
-! References: obj460_Callimachus.life, obj464_Apollonius.life
-Routine 0x21da0	routine138656:?
+Routine 0x21c00	TubeParse
+Routine 0x21c3c	ScrollParse
+Routine 0x21c7c OilRoomAfter
+Routine 0x21d04	OilTroughsAfter
+Routine 0x21d20	SpindleAfter
+Routine 0x21d30	SpindleBefore
+Routine 0x21da0	CallimachusLife
 ! References: obj465_Outside_the_Royal_Palace_of_Alexander.n_to
-Routine 0x2219c	routine139676:?
-! References: obj444_silver_keepsake.name, obj466_Lost_inside_the_Palace.after
-Routine 0x22260	routine139872:?
-! References: obj466_Lost_inside_the_Palace.before
-Routine 0x22308	routine140040:?
-! References: obj467_slave.life
-Routine 0x22370	routine140144:?
+Routine 0x2219c	PlaceNorth:object
+Routine 0x22260	InsidePalaceAfter
+Routine 0x22308	InsidePalaceBefore
+Routine 0x22370	SlaveLife
 Routine 0x223bc	routine140220:?
-! References: obj468_Palace_Balustrade.after
-Routine 0x22430	routine140336:?
-! References: obj469_astronomical_mounting.after
-Routine 0x224dc	routine140508:?
-! References: obj470_Beside_the_Drive.after
-Routine 0x22538	routine140600:?
-! References: obj471_fire_escape.after
-Routine 0x225b4	routine140724:?
-! References: obj471_fire_escape.initial
-Routine 0x225c4	routine140740:?
-! References: obj475_bunch_of_nuts.after
-Routine 0x22654	routine140884:?
-! References: obj476_corn_crake.life
-Routine 0x22680	routine140928:?
-! References: obj478_Old_Evans.life
-Routine 0x226a0	routine140960:?
-! References: obj480_parish_church.after
-Routine 0x227c8	routine141256:?
-! References: obj481_Goat_and_Compasses.after
-Routine 0x227f0	routine141296:?
-! References: obj482_pet_monkey.after
-Routine 0x2281c	routine141340:?
-! References: obj62_red_lamp.name, obj394_Inside_the_Orb.name, obj483_Crescent_Moon.after
-Routine 0x2286c	routine141420:?
-! References: obj484_Racing_Times.after
-Routine 0x2289c	routine141468:?
-! References: obj485_hat_band.after
-Routine 0x228bc	routine141500:?
-! References: obj486_Parish_Church.s_to
-Routine 0x228e0	routine141536:?
-! References: obj486_Parish_Church.d_to
-Routine 0x22914	routine141588:?
-! References: obj487_Moonstone.after
+Routine 0x22430	BalustradeAfter
+Routine 0x224dc	MountingAfter
+Routine 0x22538	DriveAfter
+Routine 0x225b4	FireEscapeAfter
+Routine 0x225c4	FireEscpeInitial
+Routine 0x22654	NutsAfter
+Routine 0x22680	CornCrakeLife
+Routine 0x226a0	OldEvansLife
+Routine 0x227c8	ChurchAfter
+Routine 0x227f0	GoatsCompassesAfter
+Routine 0x2281c	PetMonkeyAfter
+Routine 0x2286c	CrescentMoonAfter
+Routine 0x2289c	RacingTimesAfter
+Routine 0x228bc	HatBandAfter
+Routine 0x228e0	ParishChurchSouth:object
+Routine 0x22914	ParishChurchDown:object
 Routine 0x229a0	MoonstoneAfter
 ! References: obj28_Life.after, obj29_Death.after, obj30_Love.after
 Routine 0x22a44	routine141892:?
