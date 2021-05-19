@@ -22568,7 +22568,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ Initialise; ;	! 172408 / 0x2a178
-    routine185336();
+    StartSplash();
     location = Attic;
     move crumpled_piece_of_paper to player;
     move electric_torch to player;
@@ -24346,17 +24346,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine185336 local1 ;	! 185336 / 0x2d3f8
+[ StartSplash i ;	! 185336 / 0x2d3f8
     @erase_window 65535;
     print "^^^^^^^^^^^^^";
-    local1 = 0->33;
-    if (local1 == 0) {
-        local1 = 80[secret_door?];
+    i = 0->33;
+    if (i == 0) {
+        i = 80;
     }
-    local1 = (local1 - 50) / 2;
+    i = (i - 50) / 2;
     style bold;
     0-->8 = 2 | 0-->8;
-    generic_globvar = local1;
+    generic_globvar = i;
     if (generic_globvar >= 1) {
       .label185404;
         print ' ';
@@ -24366,7 +24366,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "               Welcome to CURSES^";
     style roman;
     print "^^";
-    generic_globvar = local1;
+    generic_globvar = i;
     if (generic_globvar >= 1) {
       .label185461;
         print ' ';
@@ -24375,8 +24375,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     print "         [Please press SPACE to begin.]^";
     0-->8 = 65533 & 0-->8;
-    local1 = random(3);
-    if (local1 == 1[?]) {
+    i = random(3);
+    if (i == 1) {
         quote_line-->0 = "Nine times she waved the fluttering wimple round,";
         quote_line-->1 = "And made a little plot of magic ground.";
         quote_line-->2 = "And in that daisied circle, as men say,";
@@ -24385,7 +24385,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         quote_line-->5 = "-- Matthew Arnold, Tristram and Iseult III (1852)";
         generic_globvar = routine186572(6[ne_obj?],49[scratched_cupboard?],quote_line);
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         quote_line-->0 = "Curses are like young chickens,";
         quote_line-->1 = "they always come home to roost.";
         quote_line-->2 = 0;
@@ -24393,7 +24393,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         quote_line-->4 = "   ~The Curse of Kehama~";
         generic_globvar = routine186572(5[w_obj?],31[crumpled_piece_of_paper?],quote_line);
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         quote_line-->0 = "Let Rome in Tiber melt, and the wide arch";
         quote_line-->1 = "Of the ranged empire fall! Here is my space.";
         quote_line-->2 = "Kingdoms are clay.";
@@ -24402,8 +24402,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         generic_globvar = routine186572(5[w_obj?],44[servants_bed?],quote_line);
     }
   .label185661;
-    @read_char 1 0 0 -> local1;
-    if (local1 ~= 32[electric_torch?] or 10[u_obj?] or 13[in_obj?]) jump label185661;
+    @read_char 1 0 0 -> i;
+    if (i ~= 32 or 10 or 13) jump label185661;
     @erase_window 65535;
     rtrue;
 ];
