@@ -17435,14 +17435,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ OutsideRoyalMuseumSE ;	! 136564 / 0x21574
     if (purple_sash has worn) {
         print "Seeing that you're wearing the sash of a Librarian, the guards part to allow you entrance.^";
-        return 448[The_Birdcage_of_the_Muses?];
+        return The_Birdcage_of_the_Muses;
     }
     if (Austin in location) {
         print "The Museum guards are so busy abasing themselves before the sacred Cat (incredibly, that's Austin) that you are able to slip inside.^^Austin, having at long last found owners even more gullible and undemanding than yourself, ambles away to a life of extreme cossetting and luxury.^";
         remove Austin;
         StopDaemon(Austin);
         StopDaemon(selfobj);
-        return 448[The_Birdcage_of_the_Muses?];
+        return The_Birdcage_of_the_Muses;
     }
     "Museum guards tactfully nudge drunken louts away from the Museum.";
 ];
