@@ -24583,19 +24583,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ quote_display lines local2 local3 local4 local5 local6 local7 local8 ;	! 186572 / 0x2d8cc
+[ quote_display lines local2 local3 columns local5 local6 local7 local8 ;	! 186572 / 0x2d8cc
     @split_window (lines + 6);
     @set_window 1;
-    local4 = 0->33;
-    if (local4 == 0) {
-        local4 = 80[secret_door?];
+    columns = 0->33;
+    if (columns == 0) {
+        columns = 80;
     }
-    local5 = (local4 - local2) / 2;
+    local5 = (columns - local2) / 2;
     style reverse;
-    local4 = local5 - 2;
+    columns = local5 - 2;
     local6 = 5[w_obj?];
     local7 = 0;
-    @set_cursor 4 local4;
+    @set_cursor 4 columns;
     generic_globvar = local2 + 4;
     if (generic_globvar >= 1) {
       .label186632;
@@ -24604,7 +24604,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (generic_globvar ~= 0) jump label186632;
     }
   .label186644;
-    @set_cursor local6 local4;
+    @set_cursor local6 columns;
     generic_globvar = local2 + 4;
     if (generic_globvar >= 1) {
       .label186660;
@@ -24620,7 +24620,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     ++local6;
     ++local7;
     if (local7 ~= lines) jump label186644;
-    @set_cursor local6 local4;
+    @set_cursor local6 columns;
     generic_globvar = local2 + 4;
     if (generic_globvar >= 1) {
       .label186712;
@@ -24636,9 +24636,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "[ ";
     local7 = 0;
   .label186748;
-    local4 = local3-->local7;
-    if (local4 ~= 0) {
-        print (string) local4;
+    columns = local3-->local7;
+    if (columns ~= 0) {
+        print (string) columns;
     }
     ++local7;
     if (local7 == lines) {
