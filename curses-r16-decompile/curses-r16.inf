@@ -4295,7 +4295,7 @@ Object The_Birdcage_of_the_Muses "The Birdcage of the Muses"	! 448 / 0x1c0
 	nw_to Outside_the_Royal_Museum,
 	description "The celebrated Library of Alexandria, finest in the entire world, possessed of hundreds of thousands of books: where the ruling Ptolemies keep fanatic, infighting scholars almost imprisoned as they turn out rival commentaries on the ancient poems - hence the nickname.^^There is a little door to the south; a dusty corridor southeast; a thoroughfare east, and a grand entrance northwest.",
 	time_left 0,
-	each_turn routine138060,
+	each_turn BirdcageEachTurn,
 	section T_ALEXANDRIA,
   has	light scored;
 
@@ -17626,15 +17626,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Birdcage_of_the_Muses.each_turn
 
-[ routine138060 local1 ;	! 138060 / 0x21b4c
-    local1 = The_Birdcage_of_the_Muses.time_left;
-    if (local1 == 3[s_obj?]) {
+[ BirdcageEachTurn i ;	! 138060 / 0x21b4c
+    i = The_Birdcage_of_the_Muses.time_left;
+    if (i == 3) {
         print "^A messenger-boy in a plain white tunic slips into the library and places a couple of tubes in the pigeonhole. So resentful is he of missing the party outside that he fails to notice you, and runs back out again at once.^";
         move tube_with_an_alpha_on to pigeonhole;
         move tube_with_a_kappa_on to pigeonhole;
     }
-    if (local1 < 4) {
-        The_Birdcage_of_the_Muses.time_left = local1 + 1;
+    if (i < 4) {
+        The_Birdcage_of_the_Muses.time_left = i + 1;
     }
     rfalse;
 ];
