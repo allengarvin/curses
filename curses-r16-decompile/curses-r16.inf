@@ -5296,7 +5296,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     a_buffer->0 = 120[steel_wrench?];
     a_table->0 = 64[Disused_Observatory?];
-    L__M(##Action263);
+    L__M(##Prompt);
     Stub7();
     generic_globvar = 0;
     a_buffer->1 = 0;
@@ -21740,7 +21740,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     verb = s;
-    if (action == ##Action263) {
+    if (action == ##Prompt) {
         print "^>";
         rtrue;
     }
