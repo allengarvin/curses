@@ -5440,7 +5440,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
   .label42337;
     token_was = 0;
     scope_token = 0;
-    action_to_be = ##Action65535;
+    action_to_be = ##-1;
   .label42348;
     wn = verb_wordnum;
     verb_word = NextWordStopped();
@@ -7553,7 +7553,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (obj.parse_name ~= nothing) {
-        parser_action = ##Action65535;
+        parser_action = ##-1;
         j = wn;
         k = RunRoutines(obj,parse_name);
         if (k > 0) {
