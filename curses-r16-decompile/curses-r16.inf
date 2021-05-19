@@ -4985,7 +4985,7 @@ Global daisy_given;
 Global global142 = 25144[?];
 Global global143 = 8[nw_obj?];
 Global global144 = 3[s_obj?];
-Global global145;
+Global MouseUnderstandsMask;
 Global global146 = 25207[?];
 Global global147;
 Global global148;
@@ -12367,8 +12367,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ MouseLife local1 local2 local3 local4 local5 ;	! 91484 / 0x1655c
     if (action == ##Order or ##Answer or ##Ask) {
-        if (gas_mask has worn && global145 == 0) {
-            global145 = 1[?];
+        if (gas_mask has worn && MouseUnderstandsMask == false) {
+            MouseUnderstandsMask = true;
             print "(amazingly, the mouse can make out your voice even when you have the gas mask on - that's real engineering, that is)^";
         }
         if (verb == ##Beep or ##Sing) {
