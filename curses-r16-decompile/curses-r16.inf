@@ -23961,7 +23961,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local1 = local4 + 24021;
     local2 = parse->(local3 - 1);
     if (local2 ~= 1[?]) {
-        return 65535[?];
+        return 65535;
     }
     local3 = 65535[?];
     if (local1->0 >= 97 && local1->0 <= 122) {
@@ -23971,11 +23971,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local3 = local1->0 - 65 + 1;
     }
     if (local3 == 65535[?]) {
-        return 65535[?];
+        return 65535;
     }
     parsed_number = local3;
     ++wn;
-    return 1[?];
+    return 1;
 ];
 
 [ PageScreen s more c ;	! 181952 / 0x2c6c0
