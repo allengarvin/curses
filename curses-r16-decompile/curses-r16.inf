@@ -8155,7 +8155,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         jump label54187;
     }
     if (deadflag ~= WON) {
-        routine174296();
+        GoodTryRevoked();
     }
     if (deadflag == 0) {
         jump label54208;
@@ -9261,7 +9261,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (second == medicine_bottle) {
         print "The melting point of this glass is very high, and amazingly it withstands the bolt of fire.^";
-        routine174212();
+        GoodTry();
         rfalse;
     }
     if (second == complicated_looking_bomb or timer_detonator) {
@@ -10288,7 +10288,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Give or ##Show) {
         if (noun == chicken_wishbone) {
-            routine174212();
+            GoodTry();
             "Some cats do like the smell of chicken bones, but Austin doesn't.";
         }
         if (noun == robot_mouse) {
@@ -10942,12 +10942,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (noun == postcard_of_the_Champs_Elysees) {
             print "The postcard is just too large to fit.^";
-            routine174212();
+            GoodTry();
             rtrue;
         }
         if (noun == framed_charcoal_sketch) {
             print "The frame is too bulky.^";
-            routine174212();
+            GoodTry();
             rtrue;
         }
         if (noun == charcoal_sketch or miniature) {
@@ -11954,7 +11954,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (noun == chocolate_biscuit) {
             print "Jemima grudgingly takes the biscuit and nibbles at it, but she is still sulking.^";
-            routine174212();
+            GoodTry();
             remove chocolate_biscuit;
             rtrue;
         }
@@ -11971,14 +11971,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         Defart(noun);
         if (noun == gift_wrapped_parcel) {
             print " lacks style... after all, it isn't Christmas.^";
-            routine174212();
+            GoodTry();
             rtrue;
         }
         " seems inappropriate.";
     }
     if (action == ##Kiss) {
         print "She is slightly mollified, but only slightly.^";
-        routine174212();
+        GoodTry();
         rtrue;
     }
     if (action == ##Attack) {
@@ -12807,7 +12807,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Wave) {
         if (location == Down_by_River && tourist_boat hasnt open) {
             print "You wave the poster at the boat, but the boat remains unmoved.^";
-            routine174212();
+            GoodTry();
             rtrue;
         }
         rfalse;
@@ -21088,7 +21088,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local1.initial ~= nothing) {
             PrintOrRun(local1,initial);
         }
-        routine174348();
+        SetHimHer();
         MoveFloatingObjects();
         global20 = local1;
     }
@@ -22843,7 +22843,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine174212 ;	! 174212 / 0x2a884
+[ GoodTry ;	! 174212 / 0x2a884
     if (one_time_try_bonus == true) {
         rtrue;
     }
@@ -22855,7 +22855,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "^A shame to see such a good try unrewarded... oh, go on, have an extra five points.";
 ];
 
-[ routine174296 ;	! 174296 / 0x2a8d8
+[ GoodTryRevoked ;	! 174296 / 0x2a8d8
     if (good_try_bonus == 1) {
         score = score - 5;
         good_try_bonus = 0;
@@ -22864,70 +22864,70 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine174348 local1 ;	! 174348 / 0x2a90c
-    local1 = location;
-    if (local1 == 14[thedark?]) {
-        local1 = real_location;
+[ SetHimHer who ;	! 174348 / 0x2a90c
+    who = location;
+    if (who == thedark) {
+        who = real_location;
     }
-    if (local1.section == 0) {
+    if (who.section == 0) {
         "** Room has no zone **";
     }
-    game_section = local1.section;
-    if (local1 == 112[Potting_Room?]) {
+    game_section = who.section;
+    if (who == Potting_Room) {
         herobj = Jemima;
     }
-    if (local1 == 159[Consulting_Room?]) {
+    if (who == Consulting_Room) {
         herobj = Madame_Sosostris;
     }
-    if (local1 == 174[Chatelet_les_Halles?]) {
+    if (who == Chatelet_les_Halles) {
         himobj = surly_shopkeeper;
     }
-    if (local1 == 88[Battlements?]) {
+    if (who == Battlements) {
         himobj = Sir_Joshua_Meldrewe;
     }
-    if (local1 == 171[On_board_the_Phlebas?]) {
+    if (who == On_board_the_Phlebas) {
         himobj = hollow_man;
     }
-    if (local1 == 227[Eraina_Taverna?]) {
+    if (who == Eraina_Taverna) {
         himobj = bartender;
     }
-    if (local1 == 352[Rough_Tent?]) {
+    if (who == Rough_Tent) {
         himobj = unconscious_Saxon_spy;
     }
-    if (local1 == 498[Hellish_Place?]) {
+    if (who == Hellish_Place) {
         himobj = demon;
     }
-    if (local1 == 500[Heavenly_Place?]) {
+    if (who == Heavenly_Place) {
         herobj = angel;
     }
-    if (local1 == 254[Cave_Mouth?]) {
+    if (who == Cave_Mouth) {
         herobj = Oracle;
     }
-    if (local1 == 239[Inner_Sanctum?]) {
+    if (who == Inner_Sanctum) {
         himobj = Homer;
     }
-    if (local1 == 445[Warehouses_and_Port?]) {
+    if (who == Warehouses_and_Port) {
         himobj = gambling_sailor;
     }
-    if (local1 == 318[Behind_Summer_House?]) {
+    if (who == Behind_Summer_House) {
         himobj = irate_squirrel_friend;
     }
-    if (local1 == 473[Hollow?]) {
+    if (who == Hollow) {
         herobj = corn_crake;
     }
-    if (local1 == 477[Stone_Cross?]) {
+    if (who == Stone_Cross) {
         himobj = Old_Evans;
     }
-    if (local1 == 439[Consulting_Room?]) {
+    if (who == Consulting_Room) {
         herobj = Madame_Sosostris;
     }
-    if (local1 == 458[Reading_Corridor?]) {
+    if (who == Reading_Corridor) {
         himobj = Callimachus;
     }
-    if (local1 == 463[Librarians_Office?]) {
+    if (who == Librarians_Office) {
         himobj = Apollonius;
     }
-    if (local1 == 466[Lost_inside_the_Palace?]) {
+    if (who == Lost_inside_the_Palace) {
         himobj = slave;
     }
     rtrue;
