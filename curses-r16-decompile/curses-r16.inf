@@ -17311,7 +17311,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "Above ";
     Defart(selfobj);
     print " is the single word ~";
-    TuscanInt(selfobj.time_left);
+    EtruscanInt(selfobj.time_left);
     "~.";
 ];
 
@@ -17369,7 +17369,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print "You crank the sceptre round, lose control for a moment, and some primitive mechanism spins. The word comes to rest as ~";
         i = random(6);
-        TuscanInt(i);
+        EtruscanInt(i);
         print "~.^";
         selfobj.time_left.time_left = i;
         if (debug_deterministic_transportation == 1) {
@@ -17555,7 +17555,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (gambling_sailor has lucky || inscribed_die has lucky) {
                 n = 6;
             }
-            TuscanInt(n);
+            EtruscanInt(n);
             print "~, ";
             if (n > inscribed_die.time_left) {
                 print "and grins.^";
@@ -17585,7 +17585,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Read) {
         print "Each side has a word inscribed on it. The word on top is ~";
-        TuscanInt(selfobj.time_left);
+        EtruscanInt(selfobj.time_left);
         "~.";
     }
     if (action == ##Drop or ##ThrowAt or ##Gamble) {
@@ -17596,13 +17596,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give gambling_sailor general;
         inscribed_die.time_left = local1;
         print "You throw a ~";
-        TuscanInt(local1);
+        EtruscanInt(local1);
         "~, whatever that means.";
     }
     rfalse;
 ];
 
-[ TuscanInt i ;	! 138004 / 0x21b14
+[ EtruscanInt i ;	! 138004 / 0x21b14
     if (i == 1) {
         print "thu";
     }
