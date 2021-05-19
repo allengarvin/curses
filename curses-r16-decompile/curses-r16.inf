@@ -9561,7 +9561,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: painting_of_Mad_Isaac_Meldrewe.life, Impressionist_painting.life, still_life.life, Greek_frieze2.life, Roman_mosaic.life, bronze_mural.life, painted_writings.life
 
-[ LagachLife local1 local2 local3 ;	! 63748 / 0xf904
+[ LagachLife i r local3 ;	! 63748 / 0xf904
     if (action == ##Action259) {
         local3 = 1[?];
         if (painting_of_Mad_Isaac_Meldrewe notin White_Hallway || painting_of_Mad_Isaac_Meldrewe has moved) {
@@ -9573,70 +9573,70 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (verb ~= ##Lagach) {
             jump label64207;
         }
-        local1 = 0;
+        i = 0;
         if (location == Greek_Frieze1) {
-            local1 = 1[?];
+            i = 1;
         }
         if (location == Mosaic) {
-            local1 = 2[?];
+            i = 2;
         }
         if (location == Crypt) {
-            local1 = 3[s_obj?];
+            i = 3;
         }
         if (location == Bohemia) {
-            local1 = 4[e_obj?];
+            i = 4;
         }
         if (location == Hall_of_Exhibits) {
-            local1 = 5[w_obj?];
+            i = 5;
         }
         if (location == XIIth_Dynasty_Pyramid) {
-            local1 = 6[ne_obj?];
+            i = 6;
         }
         if (location == White_Hallway) {
-            local1 = 7[se_obj?];
+            i = 7;
         }
-        if (local1 == 0) {
+        if (i == 0) {
             jump label64207;
         }
         if (tourist_map_of_Paris has moved) {
             "Nothing happens!  Already the druids' magic fades from the earth, and you cannot help feeling saddened.";
         }
-        local2 = 502[carbolic_soap?];
+        r = carbolic_soap;
       .label63996;
-        if (local2 hasnt visited || (local2 == 150[White_Hallway?] && local3 == 0)) {
-            if (local1++ == 8[nw_obj?]) {
-                local1 = 1[?];
+        if (r hasnt visited || (r == White_Hallway && local3 == 0)) {
+            if (i++ == 8) {
+                i = 1;
             }
-            if (local1 == 1[?]) {
-                local2 = 259[Greek_Frieze1?];
+            if (i == 1) {
+                r = Greek_Frieze1;
             }
-            if (local1 == 2[?]) {
-                local2 = 288[Mosaic?];
+            if (i == 2) {
+                r = Mosaic;
             }
-            if (local1 == 3[s_obj?]) {
-                local2 = 376[Crypt?];
+            if (i == 3) {
+                r = Crypt;
             }
-            if (local1 == 4[e_obj?]) {
-                local2 = 157[Bohemia?];
+            if (i == 4) {
+                r = Bohemia;
             }
-            if (local1 == 5[w_obj?]) {
-                local2 = 185[Hall_of_Exhibits?];
+            if (i == 5) {
+                r = Hall_of_Exhibits;
             }
-            if (local1 == 6[ne_obj?]) {
-                local2 = 411[XIIth_Dynasty_Pyramid?];
+            if (i == 6) {
+                r = XIIth_Dynasty_Pyramid;
             }
-            if (local1 == 7[se_obj?]) {
-                local2 = 150[White_Hallway?];
+            if (i == 7) {
+                r = White_Hallway;
             }
             jump label63996;
         }
-        if (local2 == location) {
+        if (r == location) {
             "A swirl of wind almost bowls you over, but nothing else happens.";
         }
         print "A swirl of wind snakes out from ";
         Defart(selfobj);
         print " and whisks you away to...^";
-        PlayerTo(local2);
+        PlayerTo(r);
         rtrue;
     }
     if (action == ##Ask or ##Answer) {
