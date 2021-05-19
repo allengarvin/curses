@@ -9301,7 +9301,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_returning.rod_action, rod_of_returning2.rod_action
 
-[ RodOfReturningAction i local2 ;	! 60256 / 0xeb60
+[ RodOfReturningAction i loc ;	! 60256 / 0xeb60
     if (second ~= player) {
         "Nothing obvious happens.";
     }
@@ -9316,25 +9316,25 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     routine111612();
     print "You are engulfed in a cloud of spinning white lights, like insects. When the swarm clears, you find yourself transported...^";
     if (game_section == T_ANCIENT_BRITAIN) {
-        local2 = 138[Infinity_Symbol?];
+        loc = Infinity_Symbol;
         remove rod_of_returning2;
     } else {
         i = random(4);
         if (global126 == 1[?]) {
             i = 1;
         }
-        local2 = 35[Attic?];
+        loc = Attic;
         if (i == 2) {
-            local2 = 47[Old_Furniture?];
+            loc = Old_Furniture;
         }
         if (i == 3) {
-            local2 = 103[Old_Winery?];
+            loc = Old_Winery;
         }
         if (i == 4) {
-            local2 = 57[Over_the_East_Wing?];
+            loc = Over_the_East_Wing;
         }
     }
-    PlayerTo(local2);
+    PlayerTo(loc);
     rtrue;
 ];
 
