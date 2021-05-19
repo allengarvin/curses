@@ -1518,7 +1518,7 @@ Object -> hatch "hatch"	! 94 / 0x5e
 
 Object -> ancient_prayer_book "ancient prayer book"	! 95 / 0x5f
   with	name 'diary' 'ancient' 'prayer' 'book',
-	after routine82652,
+	after PrayerBookAfter,
 	nw_to n_obj,
 	initial "The dust and grime on the floor almost obscures an ancient prayer book.",
 	description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
@@ -11376,32 +11376,32 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: ancient_prayer_book.after
 
-[ routine82652 local1 ;	! 82652 / 0x142dc
+[ PrayerBookAfter year ;	! 82652 / 0x142dc
     if (action == ##Consult) {
-        local1 = TryNumber(consult_from);
-        if (local1 < 1725 || local1 > 1792) {
+        year = TryNumber(consult_from);
+        if (year < 1725 || year > 1792) {
             "He didn't seem to be experimenting in those days.";
         }
-        if (local1 == 1792[?]) {
+        if (year == 1792) {
             "In 1792, the last year of his life, ol' red-eyes becomes very excited about his new discovery. This time he claims that Merlyn bounde uppe the mystic estate (by this he means the back garden - Isaac never did have any sense of proportion) wyth great Roddes of Power. These are dangerous, yet also useful in themselves, but are really part of a great key... the usual nonsense. Of course you never actually see these rods, because they disguise themselves until waved by someone wearing Merlyn's hat.^^", "The funny thing is that Isaac died (legend has it, by spontaneous combustion) only a week after this breakthrough, preventing him from sending yet another paper to the Royal Society. But since Merlyn supposedly lived in about the sixth century A.D., there can't be a lot left of his hat, so the matter may be academic.";
         }
         print "In the year ";
-        EnglishNumber(local1);
+        EnglishNumber(year);
         print ", Isaac was mainly concerned with ";
-        local1 = local1 % 6;
-        if (local1 == 0) {
+        year = year % 6;
+        if (year == 0) {
             "alchemy.";
         }
-        if (local1 == 1[?]) {
+        if (year == 1) {
             "caustical opticks.";
         }
-        if (local1 == 2[?]) {
+        if (year == 2) {
             "concave mirrors.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (year == 3) {
             "the edibility of reptiles.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (year == 4) {
             "the spleens of flightless birds.";
         }
         "melting points of metals.";
