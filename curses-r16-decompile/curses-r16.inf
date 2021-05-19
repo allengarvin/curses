@@ -12999,10 +12999,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print " and then ";
     card1 = Deal_random_card(card3,card2);
     print " show. ";
-    if (card3 == 164[Death_card?]) {
+    if (card3 == Death_card) {
         print "She blanches with alarm, then recovers and jabbers something about not taking the cards too literally, the images being symbolic and so on. As rapidly as she possibly can, she warns you to fear death by water and then hustles you out onto the street.^";
     } else {
-        if (card3 ~= 191[Star?] || card2 ~= 193[Maiden_card?] || card1 ~= 192[Eight_of_Wands_card?]) {
+        if (card3 ~= Star || card2 ~= Maiden_card || card1 ~= Eight_of_Wands_card) {
             ! no code
         } else {
             print "~You have come!  At last, after all these centuries!  But there is little I can do to ease your way, save to return the staff you left with me for safe keeping.~  And she shows you out. You feel rather bewildered.^";
