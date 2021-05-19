@@ -5018,7 +5018,7 @@ Global global174;
 Global global175 = 65535[?];
 Global global177;
 Global global178;
-Global global179;
+Global yard_dir;
 Global dig_cnt;
 Global global181;
 Global global182;
@@ -23179,15 +23179,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ PaceSub ;	! 177064 / 0x2b3a8
-    if (global179 <= 0) {
-        global179 = 4[e_obj?];
+    if (yard_dir <= 0) {
+        yard_dir = e_obj;
     }
-    routine177088(1[?],global179);
+    routine177088(1[?],yard_dir);
     rtrue;
 ];
 
 [ PaceSub ;	! 177080 / 0x2b3b8
-    routine177088(global178,global179);
+    routine177088(global178,yard_dir);
     rtrue;
 ];
 
@@ -23851,11 +23851,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return local2;
 ];
 
-[ CroquetMove w i flag j local5 ;	! 181484 / 0x2c4ec
+[ CroquetMove w i flag j d ;	! 181484 / 0x2c4ec
     w = routine181312();
     if (w == 'forward' or 'forwards') {
         ++wn;
-        return global179;
+        return yard_dir;
     }
     if (w == 'back' or 'backward' or 'backwards') {
         ++wn;
@@ -23885,40 +23885,40 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         j = 65535;
     }
     if (j <= top_object && j > 0) {
-        local5 = j;
+        d = j;
     } else {
         wn = i;
-        local5 = global179;
-        if (local5 <= 0) {
-            local5 = 4[e_obj?];
+        d = yard_dir;
+        if (d <= 0) {
+            d = e_obj;
         } else if (flag == 1) {
-            if (global179 == 2[?]) {
-                local5 = 3[s_obj?];
+            if (yard_dir == n_obj) {
+                d = s_obj;
             }
-            if (global179 == 3[s_obj?]) {
-                local5 = 2[?];
+            if (yard_dir == s_obj) {
+                d = n_obj;
             }
-            if (global179 == 4[e_obj?]) {
-                local5 = 5[w_obj?];
+            if (yard_dir == e_obj) {
+                d = w_obj;
             }
-            if (global179 == 5[w_obj?]) {
-                local5 = 4[e_obj?];
+            if (yard_dir == w_obj) {
+                d = e_obj;
             }
-            if (global179 == 6[ne_obj?]) {
-                local5 = 9[sw_obj?];
+            if (yard_dir == ne_obj) {
+                d = sw_obj;
             }
-            if (global179 == 8[nw_obj?]) {
-                local5 = 7[se_obj?];
+            if (yard_dir == nw_obj) {
+                d = se_obj;
             }
-            if (global179 == 9[sw_obj?]) {
-                local5 = 6[ne_obj?];
+            if (yard_dir == sw_obj) {
+                d = ne_obj;
             }
-            if (global179 == 7[se_obj?]) {
-                local5 = 8[nw_obj?];
+            if (yard_dir == se_obj) {
+                d = nw_obj;
             }
         }
     }
-    return local5;
+    return d;
 ];
 
 [ routine181728 local1 local2 ;	! 181728 / 0x2c5e0
@@ -23940,7 +23940,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local2 = CroquetMove();
     }
     global178 = local1;
-    global179 = local2;
+    yard_dir = local2;
     return 0;
 ];
 
@@ -23951,7 +23951,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     local2 = CroquetMove();
     global178 = local1;
-    global179 = local2;
+    yard_dir = local2;
     return 0;
 ];
 
