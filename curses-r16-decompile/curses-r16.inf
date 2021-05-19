@@ -4980,7 +4980,7 @@ Global StrongboxY;
 Global global137;
 Global global138;
 Global ball_polished;
-Global global140;
+Global tablet_eaten;
 Global daisy_given;
 Global global142 = 25144[?];
 Global global143 = 8[nw_obj?];
@@ -10201,7 +10201,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ TabletBefore ;	! 73296 / 0x11e50
     if (action == ##Eat) {
         give player ~general;
-        global140 = 1[?];
+        tablet_eaten = true;
         "It tastes alarmingly of chocolate.";
     }
     rfalse;
@@ -13373,7 +13373,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     if (Coven_Cell hasnt general) {
-        if (global140 == 0) {
+        if (tablet_eaten == false) {
             give player general;
         }
         give Coven_Cell general;
@@ -13475,7 +13475,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (game_section == T_HAMBURG && location ~= Coven_Cell) {
         print "^Finally reacting to the alarm you set off, Doktor Stein appears and steps toward you, clapping his hands sharply. And dozens of robed figures leap out of the darkness - but these are no security guards. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^~So, Meldrew. It is all as it was prophesied,~ says Stein in a perfectly conversational tone as he forces your mouth open and makes you swallow a violet pill.^^~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
         StartTimer(Coven_Cell,0);
-        global140 = 0;
+        tablet_eaten = false;
         PlayerTo(Coven_Cell);
         rtrue;
     }
