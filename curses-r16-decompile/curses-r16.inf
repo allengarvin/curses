@@ -7499,7 +7499,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (ats_flag >= 2) {
         ScopeWithin_O(obj,0,ats_flag - 2);
     }
-    if (ats_flag == 1 && HasLightSource(obj) == 1[?]) {
+    if (ats_flag == 1 && HasLightSource(obj) == true) {
         ats_hls = 1;
     }
     rtrue;
@@ -8783,7 +8783,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     j = child(i);
   .label57053;
     if (j ~= nothing) {
-        if (HasLightSource(j) == 1[?]) {
+        if (HasLightSource(j) == true) {
             rtrue;
         }
         j = sibling(j);
@@ -8806,7 +8806,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         i = child(i);
       .label57141;
         if (i ~= 0) {
-            if (HasLightSource(i) == 1[?]) {
+            if (HasLightSource(i) == true) {
                 rtrue;
             }
             i = sibling(i);
@@ -8831,7 +8831,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 generic_globvar = get_prop_len(generic_globvar);
             }
             if (2 * j < generic_globvar) {
-                if (HasLightSource(ad-->j) == 1[?]) {
+                if (HasLightSource(ad-->j) == true) {
                     rtrue;
                 }
                 ++j;
