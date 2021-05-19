@@ -7404,7 +7404,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Defart(thing);
             print "]^";
         }
-        PrintOrRun(thing,26[rod_of_language?]);
+        PrintOrRun(thing,each_turn);
     } else if (generic_globvar == 6[ne_obj?]) {
         if (thing == parser_one) {
             parser_two = 1[?];
@@ -7865,29 +7865,29 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 0;
 ];
 
-[ PrintOrRun o local2 local3 local4 ;	! 53576 / 0xd148
-    generic_globvar = o.&local2;
+[ PrintOrRun o prop flag a ;	! 53576 / 0xd148
+    generic_globvar = o.&prop;
     if (generic_globvar) {
         generic_globvar = get_prop_len(generic_globvar);
     }
     if (generic_globvar > 2) {
-        return RunRoutines(o,local2);
+        return RunRoutines(o,prop);
     }
-    if (o.local2 == 65535[?]) {
+    if (o.prop == 65535[?]) {
         rfalse;
     }
-    local4 = ZRegion(o.local2);
-    if (local4 == 0 or 1[?]) {
+    a = ZRegion(o.prop);
+    if (a == 0 or 1) {
         "** Expected string/routine as prop value! **";
     }
-    if (local4 == 3[s_obj?]) {
-        print (string) o.local2;
-        if (local3 == 0) {
+    if (a == 3) {
+        print (string) o.prop;
+        if (flag == 0) {
             new_line;
         }
         rtrue;
     }
-    return RunRoutines(o,local2);
+    return RunRoutines(o,prop);
 ];
 
 [ ValueOrRun obj prop a ;	! 53704 / 0xd1c8
@@ -8933,7 +8933,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ Indefart o ;	! 57632 / 0xe120
     if (o hasnt proper) {
-        PrintOrRun(o,20[rod_of_infinity?],1[?]);
+        PrintOrRun(o,article,1);
         print " ";
     }
     PrintShortName(o);
@@ -8969,7 +8969,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "yourself";
         rtrue;
     }
-    if (o.&short ~= 0 && PrintOrRun(o,28[rod_of_life?],1[?]) ~= 0) {
+    if (o.&short ~= 0 && PrintOrRun(o,short,1) ~= 0) {
         rtrue;
     }
     print (name) o;
@@ -19713,7 +19713,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     }
                     EnglishNumber(sizes_p->i);
                     print " ";
-                    PrintOrRun(j,14[thedark?],1[?]);
+                    PrintOrRun(j,d_to,1);
                 }
                 WriteAfterEntry(j,depth,stack_pointer);
               .label159367;
@@ -19865,7 +19865,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (c_style & 4 ~= 0 && o.u_to ~= nothing) {
         rod_identity = 1;
-        flag = PrintOrRun(o,13[in_obj?],1[?]);
+        flag = PrintOrRun(o,u_to,1);
         if (flag == 1[?] && c_style & 1 ~= 0) {
             new_line;
         }
@@ -20909,7 +20909,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (local3 == 0 || local2 == 0) {
         if (local1.cant_go ~= nothing) {
-            PrintOrRun(local1,21[rod_of_husbandry?]);
+            PrintOrRun(local1,cant_go);
         }
         rfalse;
     }
@@ -21086,7 +21086,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local1 = location;
     if (local1 ~= global20) {
         if (local1.initial ~= nothing) {
-            PrintOrRun(local1,17[rod_of_fire?]);
+            PrintOrRun(local1,initial);
         }
         routine174348();
         MoveFloatingObjects();
@@ -21142,7 +21142,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         } else if (location.description == 0) {
             print "** Room undescribed! **^";
         } else {
-            PrintOrRun(location,18[rod_of_returning?]);
+            PrintOrRun(location,description);
         }
     }
     if (local3 ~= location) {
@@ -21176,7 +21176,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         return L__M(##Read,2,noun);
     }
-    PrintOrRun(noun,18[rod_of_returning?]);
+    PrintOrRun(noun,description);
     if (noun has switchable) {
         L__M(##Read,3,noun);
     }
