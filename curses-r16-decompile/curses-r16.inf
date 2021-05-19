@@ -1342,7 +1342,7 @@ Object -> south_wall "south wall"	! 73 / 0x49
 
 Object East_Annexe "East Annexe"	! 74 / 0x4a
   with	name 'gap' 'tiles' 'roof',
-	after routine80144,
+	after EastAnnexeAfter,
 	n_to cupboard_door,
 	s_to Dead_End,
 	w_to Over_the_East_Wing,
@@ -1352,7 +1352,7 @@ Object East_Annexe "East Annexe"	! 74 / 0x4a
 
 Object -> insulation_rolls "insulation rolls"	! 75 / 0x4b
   with	name 'insulation' 'rolls' 'roll',
-	after routine80320,
+	after InsulationAfter,
 	article "some",
   has	scenery;
 
@@ -1365,7 +1365,7 @@ Object -> -> new_battery "new-looking battery"	! 76 / 0x4c
 
 Object -> cupboard_door "cupboard door"	! 77 / 0x4d
   with	name 'cupboard' 'door',
-	after routine80488,
+	after CupboardAfter,
 	n_to Inside_Cupboard,
 	s_to "In the north wall is an intriguing closed cupboard door.",
 	e_to small_brass_key,
@@ -1375,7 +1375,7 @@ Object -> cupboard_door "cupboard door"	! 77 / 0x4d
 
 Object Dead_End "Dead End"	! 78 / 0x4e
   with	name 'soot' 'chimney' 'sweeping' 'gear',
-	after routine80540,
+	after DeadEndAfter,
 	n_to East_Annexe,
 	s_to secret_door,
 	e_to nothing,
@@ -1416,7 +1416,7 @@ Object Inside_Cupboard "Inside Cupboard"	! 82 / 0x52
 
 Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"	! 83 / 0x53
   with	name 'painting' 'of' 'mad' 'isaac' 'picture',
-	before routine80740,
+	before IsaacPaintingBefore,
 	life LagachLife,
 	initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
 	description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
@@ -1425,7 +1425,7 @@ Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"	! 83 /
 
 Object -> big_iron_fireplace "big iron fireplace"	! 84 / 0x54
   with	name 'iron' 'fireplace' 'chimney',
-	before routine80840,
+	before FireplaceBefore,
 	n_to Chimney,
 	w_to nw_obj,
 	initial "There is a big iron fireplace in the west wall.",
@@ -1433,7 +1433,7 @@ Object -> big_iron_fireplace "big iron fireplace"	! 84 / 0x54
 
 Object -> cranked_skylight "cranked skylight"	! 85 / 0x55
   with	name 'crank' 'cranked' 'skylight' 'handle',
-	after routine80924,
+	after SkylightAfter,
 	n_to Roof,
 	s_to "Above you is a blacked-out skylight with a crank handle.",
 	w_to in_obj,
@@ -1443,7 +1443,7 @@ Object -> cranked_skylight "cranked skylight"	! 85 / 0x55
 
 Object -> gas_mask "gas mask"	! 86 / 0x56
   with	name 'gas' 'mask' 'gasmask',
-	before routine81060,
+	before GasMaskBefore,
 	devil_hint "The cork filters have gone. It's useless now.",
   has	clothing;
 
@@ -1466,7 +1466,7 @@ Object Battlements "Battlements"	! 88 / 0x58
 
 Object -> iron_key "gothic-looking iron key"	! 89 / 0x59
   with	name 'gothic' 'looking' 'iron' 'key' 'gothic-looking',
-	after routine81140,
+	after GothicKeyAfter,
 	nw_to Compass,
 	initial IronKeyInitial,
 	devil_hint "Unfortunately, what you need this for is up in the clouds.",
@@ -1474,7 +1474,7 @@ Object -> iron_key "gothic-looking iron key"	! 89 / 0x59
 
 Object -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"	! 90 / 0x5a
   with	name 'ghost' 'of' 'sir' 'joshua' 'meldrewe' 'meldrew' 'georgian',
-	life routine81944,
+	life GhostLife,
 	description "He is dressed in a grey shadow of Georgian finery.",
 	article "the ghost of",
 	time_left 0,
@@ -1482,7 +1482,7 @@ Object -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"	! 90 / 0x5a
   has	animate concealed;
 
 Object Chimney "Chimney"	! 91 / 0x5b
-  with	after routine82264,
+  with	after ChimneyAfer,
 	e_to Inside_Cupboard,
 	d_to Priest_s_Hole,
 	description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
@@ -1499,7 +1499,7 @@ Object -> sooty_old_stick "sooty old stick"	! 92 / 0x5c
 
 Object Priest_s_Hole "Priest's Hole"	! 93 / 0x5d
   with	name 'cross' 'padded' 'chute' 'crawl',
-	after routine82456,
+	after PriestHoleAfter,
 	u_to Chimney,
 	d_to hatch,
 	description "Good heavens, so the house has a priest hole after all!  It was always a family legend but nobody seemed to know quite where it was. Apart from a cross painted on one wall and a padded floor (to absorb the noise), this spartan cranny is featureless. Nevertheless there is a spooky air of the supernatural about... A narrow crawl leads up into the chimney.",
@@ -11092,7 +11092,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: East_Annexe.description
 
-[ routine79900 ;	! 79900 / 0x1381c
+[ EastAnnexeDesc ;	! 79900 / 0x1381c
     print "This tight annexe at the eastern end of the house is piled up with old loft insulation rolls, left over from the last time the job was done (whenever that was). A gap between the tiles of the roof (which you really must mend before winter) lets a little natural light in";
     if (Dead_End.d_to == nothing) {
         ", but the attics to the west and south are dark.";
@@ -11102,7 +11102,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: East_Annexe.after
 
-[ routine80144 ;	! 80144 / 0x13910
+[ EastAnnexeAfter ;	! 80144 / 0x13910
     if (action == ##Go or ##Enter) {
         if (old_smudged_battery in electric_torch && noun == n_obj or cupboard_door) {
             "You know you only have an old, nearly dead battery in the torch, and are reluctant to tread on the weaker floorboards inside the cupboard without safer illumination.";
@@ -11117,7 +11117,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: insulation_rolls.after
 
-[ routine80320 ;	! 80320 / 0x139c0
+[ InsulationAfter ;	! 80320 / 0x139c0
     if (action == ##Read or ##Search or ##LookUnder) {
         if (old_gardeners__gloves hasnt worn) {
             "A rash act. The itchy fibres of the insulation soon deter you.";
@@ -11134,7 +11134,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: cupboard_door.after
 
-[ routine80488 ;	! 80488 / 0x13a68
+[ CupboardAfter ;	! 80488 / 0x13a68
     if (action == ##Knock) {
         "There is no reply, and frankly it's hard to imagine anyone's in there.";
     }
@@ -11143,7 +11143,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Dead_End.after
 
-[ routine80540 ;	! 80540 / 0x13a9c
+[ DeadEndAfter ;	! 80540 / 0x13a9c
     if (verb == ##Knock && noun == s_obj) {
         "The south wall rings curiously hollow.";
     }
@@ -11171,7 +11171,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: painting_of_Mad_Isaac_Meldrewe.before
 
-[ routine80740 ;	! 80740 / 0x13b64
+[ IsaacPaintingBefore ;	! 80740 / 0x13b64
     if (action == ##Take) {
         if (selfobj in White_Hallway && picture_hook has scenery) {
             give selfobj ~scenery;
@@ -11190,7 +11190,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: big_iron_fireplace.before
 
-[ routine80840 ;	! 80840 / 0x13bc8
+[ FireplaceBefore ;	! 80840 / 0x13bc8
     if (action == ##Receive) {
         move noun to Priest_s_Hole;
         if (sooty_old_stick hasnt moved) {
@@ -11209,7 +11209,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: cranked_skylight.after
 
-[ routine80924 ;	! 80924 / 0x13c1c
+[ SkylightAfter ;	! 80924 / 0x13c1c
     if (action == ##Open or ##Close) {
         "How, exactly?";
     }
@@ -11229,7 +11229,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gas_mask.before
 
-[ routine81060 ;	! 81060 / 0x13ca4
+[ GasMaskBefore ;	! 81060 / 0x13ca4
     if (action == ##Wear) {
         "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of World War II leftover cork.";
     }
@@ -11238,7 +11238,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: iron_key.after
 
-[ routine81140 ;	! 81140 / 0x13cf4
+[ GothicKeyAfter ;	! 81140 / 0x13cf4
     if (action == ##Take) {
         if (selfobj has general) {
             rfalse;
@@ -11287,7 +11287,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Sir_Joshua_Meldrewe.life
 
-[ routine81944 ;	! 81944 / 0x14018
+[ GhostLife ;	! 81944 / 0x14018
     if (action == ##Give or ##ThrowAt) {
         remove noun;
         StopDaemon(selfobj);
@@ -11313,7 +11313,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Chimney.after
 
-[ routine82264 local1 ;	! 82264 / 0x14158
+[ ChimneyAfer local1 ;	! 82264 / 0x14158
     if (verb ~= ##Inv or ##Look or ##Go or ##Exit) {
         "There's not enough room in this confined space to do anything much!";
     }
@@ -11337,29 +11337,29 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Priest_s_Hole.after
 
-[ routine82456 local1 ;	! 82456 / 0x14218
+[ PriestHoleAfter o ;	! 82456 / 0x14218
     if (action == ##Enter) {
         if (noun == hatch) {
-            routine82580();
+            DownTheHatch();
             rfalse;
         }
         rfalse;
     }
     if (action == ##Go) {
         if (noun == u_obj) {
-            local1 = child(player);
+            o = child(player);
           .label82488;
-            if (local1 ~= 0) {
-                if (local1 hasnt worn || local1 == 79[canvas_rucksack?]) {
+            if (o ~= nothing) {
+                if (o hasnt worn || o == canvas_rucksack) {
                     "It's too narrow a squeeze for you at present.";
                 }
-                local1 = sibling(local1);
+                o = sibling(o);
                 jump label82488;
             }
             print "You squeeze awkwardly back up the chimney.";
         }
         if (noun == d_obj) {
-            routine82580();
+            DownTheHatch();
             rfalse;
         }
         rfalse;
@@ -11367,7 +11367,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine82580 ;	! 82580 / 0x14294
+[ DownTheHatch ;	! 82580 / 0x14294
     if (hatch has open) {
         print "You zoom rapidly down the chute, but decelerate just in time and land in a dark corner of...^";
     }
