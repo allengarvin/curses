@@ -9660,20 +9660,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Death_card.parse_name, Fool_card.parse_name, Drowned_Sailor_card.parse_name, Castle.parse_name, Star.parse_name, Eight_of_Wands_card.parse_name, Maiden_card.parse_name, Ace_of_Cups_card.parse_name, Crescent_Moon.parse_name
 
-[ TarotParseName local1 local2 ;	! 64276 / 0xfb14
+[ TarotParseName i w ;	! 64276 / 0xfb14
     if (parser_action == ##TheSame) {
         return 65534[?];
     }
   .label64287;
     if (1[?] == 1[?]) {
-        local2 = NextWord();
-        if (Refers(selfobj,local2) == 1[?]) {
-            ++local1;
-        } else if (local2 == 31089['cards'?]) {
+        w = NextWord();
+        if (Refers(selfobj,w) == 1[?]) {
+            ++i;
+        } else if (w == 'cards') {
             parser_action = ##Action261;
-            ++local1;
+            ++i;
         } else {
-            return local1;
+            return i;
         }
         jump label64287;
     }
