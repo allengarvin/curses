@@ -4977,8 +4977,8 @@ Global global133;
 Global rod_score;
 Global StrongboxX;
 Global StrongboxY;
-Global global137;
-Global global138;
+Global LocationSave;
+Global ContainerSave;
 Global ball_polished;
 Global tablet_eaten;
 Global daisy_given;
@@ -9308,8 +9308,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location == Inside_the_Orb) {
         move golden_orb to player;
         print "Although nothing seems to happen to you, the whole golden sphere gracefully contracts, pulling itself tight until it sits comfortably in the palm of your hand. You blink.^";
-        location = global137;
-        move player to global138;
+        location = LocationSave;
+        move player to ContainerSave;
         R_Process(##Look);
         rtrue;
     }
@@ -9443,8 +9443,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         Achieved(SCORE_ORB);
         golden_orb.description = "A treasure in every sense, the orb pulsates with golden radiance.";
         print "The White pieces advance: first a bishop, then a knight is sacrificed, clearing away the wall of pawns which surround the Black king so that a dazzling checkmate can be executed!^^You fade out of the orb as oddly as you came, struck by the way it now almost pulsates in your palm.^";
-        move player to global138;
-        location = global137;
+        move player to ContainerSave;
+        location = LocationSave;
         R_Process(##Look);
         rtrue;
     }
@@ -16752,8 +16752,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print "Bewilderingly, the condensation dissolves your hand away, and the water rushes up over your body as if it were blotting paper. You feel nothing except disorientation, but your confusion soon resolves to...^";
         move golden_orb to location;
-        global138 = parent(player);
-        global137 = location;
+        ContainerSave = parent(player);
+        LocationSave = location;
         PlayerTo(Inside_the_Orb);
         rtrue;
     }
