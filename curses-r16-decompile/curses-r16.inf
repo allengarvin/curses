@@ -23191,7 +23191,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ PaceMovement i d local3 local4 local5 local6 ;	! 177088 / 0x2b3c0
+[ PaceMovement i d ydelta xdelta local5 local6 ;	! 177088 / 0x2b3c0
     if (d == nothing) {
         d = e_obj;
     }
@@ -23217,38 +23217,38 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "What?";
     }
     if (d == n_obj) {
-        local4 = 1[?];
+        xdelta = 1;
     }
     if (d == s_obj) {
-        local4 = 65535[?];
+        xdelta = 65535;
     }
     if (d == e_obj) {
-        local3 = 1[?];
+        ydelta = 1;
     }
     if (d == w_obj) {
-        local3 = 65535[?];
+        ydelta = 65535;
     }
     if (d == ne_obj) {
-        local3 = 1[?];
-        local4 = 1[?];
+        ydelta = 1;
+        xdelta = 1;
     }
     if (d == nw_obj) {
-        local3 = 65535[?];
-        local4 = 1[?];
+        ydelta = 65535;
+        xdelta = 1;
     }
     if (d == se_obj) {
-        local3 = 1[?];
-        local4 = 65535[?];
+        ydelta = 1;
+        xdelta = 65535;
     }
     if (d == sw_obj) {
-        local3 = 65535[?];
-        local4 = 65535[?];
+        ydelta = 65535;
+        xdelta = 65535;
     }
-    if (local3 == 0 && local4 == 0) {
+    if (ydelta == 0 && xdelta == 0) {
         "Hardly!";
     }
-    local5 = DigX + local3 * i;
-    local6 = DigY + local4 * i;
+    local5 = DigX + ydelta * i;
+    local6 = DigY + xdelta * i;
     if (local5 >= 13 || local5 <= 65523 || local6 >= 13 || local6 <= 65523) {
         "That would go past the edge of the lawn.";
     }
