@@ -12365,7 +12365,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: robot_mouse.life
 
-[ MouseLife local1 local2 local3 local4 local5 ;	! 91484 / 0x1655c
+[ MouseLife i dst local3 local4 local5 ;	! 91484 / 0x1655c
     if (action == ##Order or ##Answer or ##Ask) {
         if (gas_mask has worn && MouseUnderstandsMask == false) {
             MouseUnderstandsMask = true;
@@ -12395,46 +12395,46 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == u_obj) {
             "The mouse bleeps with annoyance.";
         }
-        local1 = parent(selfobj);
-        if (local1 == 133[Cellars_South?]) {
+        i = parent(selfobj);
+        if (i == 133[Cellars_South?]) {
             if (noun == n_obj) {
-                local2 = 127[Cellars?];
+                dst = Cellars;
                 jump label92201;
             }
             if (noun == w_obj) {
-                local2 = 134[hole_in_the_wall?];
+                dst = hole_in_the_wall;
                 global143 = 8[nw_obj?];
                 global144 = 3[s_obj?];
                 jump label92201;
             }
-        } else if (local1 == 136[Cellar_West?]) {
+        } else if (i == 136[Cellar_West?]) {
             if (noun == e_obj) {
-                local2 = 127[Cellars?];
+                dst = Cellars;
                 jump label92201;
             }
-        } else if (local1 == 132[Wine_Cellars?]) {
+        } else if (i == 132[Wine_Cellars?]) {
             if (noun == w_obj) {
-                local2 = 127[Cellars?];
+                dst = Cellars;
                 jump label92201;
             }
-        } else if (local1 == 127[Cellars?]) {
+        } else if (i == 127[Cellars?]) {
             if (noun == w_obj) {
-                local2 = 136[Cellar_West?];
+                dst = Cellar_West;
                 jump label92201;
             }
             if (noun == s_obj) {
-                local2 = 133[Cellars_South?];
+                dst = Cellars_South;
                 jump label92201;
             }
             if (noun == e_obj) {
-                local2 = 132[Wine_Cellars?];
+                dst = Wine_Cellars;
                 jump label92201;
             }
         } else {
-            if (local1 == 134[hole_in_the_wall?] && global143 == 8[nw_obj?] && global144 == 3[s_obj?] && noun == e_obj) {
-                local2 = 133[Cellars_South?];
+            if (i == 134[hole_in_the_wall?] && global143 == 8[nw_obj?] && global144 == 3[s_obj?] && noun == e_obj) {
+                dst = Cellars_South;
             } else {
-                if (local1 == 134[hole_in_the_wall?]) {
+                if (i == 134[hole_in_the_wall?]) {
                     if (noun == n_obj) {
                         local4 = global143;
                         local5 = global144 - 1;
@@ -12466,18 +12466,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "The mouse wheels spin, but can't get a good enough grip to move.";
             }
           .label92201;
-            local3 = local1;
-            move robot_mouse to local2;
+            local3 = i;
+            move robot_mouse to dst;
             give robot_mouse moved;
             if (location == local3) {
-                if (local2 == 134[hole_in_the_wall?]) {
+                if (dst == hole_in_the_wall) {
                     discharge_rod(Compass);
                     "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
                 } else {
                     "The mouse runs off as ordered.";
                 }
             }
-            if (location == local2) {
+            if (location == dst) {
                 print "The mouse runs back out of the hole, looking dustier but none the worse for its adventure";
                 if (small_brass_key notin robot_mouse) {
                     ".";
