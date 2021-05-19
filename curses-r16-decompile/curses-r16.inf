@@ -6219,7 +6219,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 indef_type = indef_type | 8;
             }
         }
-        if (flag == 1 && NextWord() ~= 36552['of'?]) {
+        if (flag == 1 && NextWord() ~= 'of') {
             --wn;
         }
         jump label46088;
@@ -9698,7 +9698,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Meldrewes_History.parse_name, classical_dictionary.parse_name, romantic_novel.parse_name, book_of_Twenties_poetry.parse_name, ancient_prayer_book.parse_name
 
 [ ConsultableParsename ;	! 64400 / 0xfb90
-    if (NextWord() == 30738['books'?] or 41025['volumes'?] or 40539['tomes'?]) {
+    if (NextWord() == 'books' or 'volumes' or 'tomes') {
         parser_action = ##Action261;
         return 1[?];
     }
