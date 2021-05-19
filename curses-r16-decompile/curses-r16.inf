@@ -4996,8 +4996,8 @@ Global global152 = 4[e_obj?];
 Global global153 = 6[ne_obj?];
 Global global154 = 100[Tiny_Balcony?];
 Global global155 = 100[Tiny_Balcony?];
-Global global156;
-Global global157;
+Global DigX;
+Global DigY;
 Global global158;
 Global global159;
 Global global160;
@@ -15629,22 +15629,22 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Croquet_Lawn.initial
 
 [ routine118996 ;	! 118996 / 0x1d0d4
-    global156 = 0;
-    global157 = 0;
+    DigX = 0;
+    DigY = 0;
     rfalse;
 ];
 
 ! References: Croquet_Lawn.short
 
 [ routine119004 ;	! 119004 / 0x1d0dc
-    if (global156 == 0 && global157 == 0) {
+    if (DigX == 0 && DigY == 0) {
         rfalse;
     }
     if (global129 == 1[?]) {
         rfalse;
     }
     print "Croquet Lawn (";
-    routine118692(global156,global157);
+    routine118692(DigX,DigY);
     print " of the peg)";
     rtrue;
 ];
@@ -15691,11 +15691,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: dug_hole.describe
 
 [ routine119392 ;	! 119392 / 0x1d260
-    if (global158 == global156 && global159 == global157) {
+    if (global158 == DigX && global159 == DigY) {
         "^The hole you dug in the lawn is just here.";
     }
     print "^Some vandal has dug a hole in the lawn, ";
-    routine118692(global158 - global156,global159 - global157);
+    routine118692(global158 - DigX,global159 - DigY);
     ".";
 ];
 
@@ -23196,14 +23196,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local2 = 4[e_obj?];
     }
     if (local2 == 65535[?]) {
-        global156 = 0;
-        global157 = 0;
+        DigX = 0;
+        DigY = 0;
         R_Process(##Look);
         rtrue;
     }
     if (local2 == 65534[?]) {
-        global156 = global158;
-        global157 = global159;
+        DigX = global158;
+        DigY = global159;
         R_Process(##Look);
         rtrue;
     }
@@ -23247,13 +23247,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local3 == 0 && local4 == 0) {
         "Hardly!";
     }
-    local5 = global156 + local3 * local1;
-    local6 = global157 + local4 * local1;
+    local5 = DigX + local3 * local1;
+    local6 = DigY + local4 * local1;
     if (local5 >= 13 || local5 <= 65523 || local6 >= 13 || local6 <= 65523) {
         "That would go past the edge of the lawn.";
     }
-    global156 = local5;
-    global157 = local6;
+    DigX = local5;
+    DigY = local6;
     R_Process(##Look);
     rtrue;
 ];
@@ -23308,14 +23308,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= Croquet_Lawn) {
         "The ground is unsuitable.";
     }
-    if (global156 == 0 && global157 == 0) {
+    if (DigX == 0 && DigY == 0) {
         "You surely don't want to dig here, right in the middle of such a fine lawn. The peg would fall out, and that would never do.";
     }
-    if (global156 == global158 && global157 == global159) {
+    if (DigX == global158 && DigY == global159) {
         "There is already a hole on this exact spot of the lawn.";
     }
-    global158 = global156;
-    global159 = global157;
+    global158 = DigX;
+    global159 = DigY;
     print "You dig an energetic little hole in the superb turf";
     if (dug_hole in Croquet_Lawn) {
         print ", filling your last one up with the earth uncovered";
@@ -23326,7 +23326,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             jump label178057;
         }
     }
-    if (global156 == StrongboxX && global157 == StrongboxY && strongbox hasnt moved) {
+    if (DigX == StrongboxX && DigY == StrongboxY && strongbox hasnt moved) {
         print ", until your spade bumps into something solid";
         move strongbox to dug_hole;
         Achieved(SCORE_STRONGBOX);
