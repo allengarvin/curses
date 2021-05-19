@@ -10352,9 +10352,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ AustinMovements to_current env i local4 ;	! 74232 / 0x121f8
+[ AustinMovements to_current env i newroom ;	! 74232 / 0x121f8
     env = parent(Austin);
-    local4 = 65535[?];
+    newroom = invalidObj65535;
     if (to_current == true) {
         env = location;
     } else {
@@ -10420,45 +10420,45 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (env == Attic) {
         i = random(3);
         if (i == 1) {
-            local4 = 47[Old_Furniture?];
+            newroom = Old_Furniture;
         }
         if (i == 2) {
-            local4 = 103[Old_Winery?];
+            newroom = Old_Winery;
         }
         if (i == 3) {
-            local4 = 42[Servants_Room?];
+            newroom = Servants_Room;
         }
     }
     if (env == Servants_Room) {
-        local4 = 35[Attic?];
+        newroom = Attic;
     }
     if (env == Old_Furniture) {
         if (i == 9) {
-            local4 = 35[Attic?];
+            newroom = Attic;
         } else {
-            local4 = 57[Over_the_East_Wing?];
+            newroom = Over_the_East_Wing;
         }
     }
     if (env == Over_the_East_Wing) {
         i = random(4);
         if (i == 1) {
-            local4 = 47[Old_Furniture?];
+            newroom = Old_Furniture;
         }
         if (i == 2) {
-            local4 = 74[East_Annexe?];
+            newroom = East_Annexe;
         }
         if (i == 3) {
-            local4 = 59[Dark_Room?];
+            newroom = Dark_Room;
         }
         if (i == 4) {
-            local4 = 64[Disused_Observatory?];
+            newroom = Disused_Observatory;
         }
     }
     if (env == East_Annexe) {
-        local4 = 57[Over_the_East_Wing?];
+        newroom = Over_the_East_Wing;
     }
     if (env == Dark_Room) {
-        local4 = 57[Over_the_East_Wing?];
+        newroom = Over_the_East_Wing;
     }
     if (env == Disused_Observatory) {
         if (slide_projector has on && global139 ~= 0 && to_current == false) {
@@ -10469,17 +10469,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         i = random(3);
         if (i == 1) {
-            local4 = 57[Over_the_East_Wing?];
+            newroom = Over_the_East_Wing;
         }
         if (i == 2) {
-            local4 = 67[Library_Storage?];
+            newroom = Library_Storage;
         }
         if (i == 3) {
-            local4 = 71[Souvenirs_Room?];
+            newroom = Souvenirs_Room;
         }
     }
     if (env == Library_Storage) {
-        local4 = 64[Disused_Observatory?];
+        newroom = Disused_Observatory;
     }
     if (env == Souvenirs_Room) {
         if (slide_projector has on && to_current == false) {
@@ -10488,31 +10488,31 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             rfalse;
         }
-        local4 = 64[Disused_Observatory?];
+        newroom = Disused_Observatory;
     }
     if (env == Old_Winery) {
         i = random(2);
         if (i == 1) {
-            local4 = 35[Attic?];
+            newroom = Attic;
         }
         if (i == 2) {
-            local4 = 107[Conservatory?];
+            newroom = Conservatory;
         }
     }
     if (env == Conservatory) {
         i = random(2);
         if (i == 1) {
-            local4 = 112[Potting_Room?];
+            newroom = Potting_Room;
         }
         if (i == 2) {
-            local4 = 103[Old_Winery?];
+            newroom = Old_Winery;
         }
     }
-    if (local4 == 65535[?]) {
+    if (newroom == invalidObj65535) {
         rfalse;
     }
-    move Austin to local4;
-    if (location == env or local4) {
+    move Austin to newroom;
+    if (location == env or newroom) {
         if (to_current == false) {
             print "^Austin ";
             i = random(10);
@@ -10548,14 +10548,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             if (location == env) {
                 print " away to ";
-                i = local4;
+                i = newroom;
             } else {
                 print " in from ";
                 i = env;
             }
         } else {
             print "to ";
-            i = local4;
+            i = newroom;
         }
         print "the ";
         if (i == 35) {
