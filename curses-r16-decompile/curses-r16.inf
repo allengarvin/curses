@@ -115,7 +115,7 @@ Verb 'plover' 'plugh' 'xyzzy'
 ;
 
 Verb 'slide'
-    * routine181828					-> Slide
+    * readchar						-> Slide
 ;
 
 Verb 'lean' 'prop' 'rest' 'support'
@@ -23955,20 +23955,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 0;
 ];
 
-[ routine181828 local1 local2 local3 local4 ;	! 181828 / 0x2c644
+[ readchar s local2 local3 local4 ;	! 181828 / 0x2c644
     local3 = wn * 4 + 1;
     local4 = parse->local3;
-    local1 = local4 + 24021;
+    s = local4 + 24021;
     local2 = parse->(local3 - 1);
     if (local2 ~= 1[?]) {
         return 65535;
     }
     local3 = 65535[?];
-    if (local1->0 >= 97 && local1->0 <= 122) {
-        local3 = local1->0 - 97 + 1;
+    if (s->0 >= 97 && s->0 <= 122) {
+        local3 = s->0 - 97 + 1;
     }
-    if (local1->0 >= 65 && local1->0 <= 90) {
-        local3 = local1->0 - 65 + 1;
+    if (s->0 >= 65 && s->0 <= 90) {
+        local3 = s->0 - 65 + 1;
     }
     if (local3 == 65535[?]) {
         return 65535;
