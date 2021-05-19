@@ -24583,7 +24583,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ quote_display lines margin local3 columns center cursor i local8 ;	! 186572 / 0x2d8cc
+[ quote_display lines margin line columns center cursor i local8 ;	! 186572 / 0x2d8cc
     @split_window (lines + 6);
     @set_window 1;
     columns = 0->33;
@@ -24613,7 +24613,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (generic_globvar ~= 0) jump label186660;
     }
     @set_cursor cursor center;
-    local8 = local3-->i;
+    local8 = line-->i;
     if (local8 ~= 0) {
         print (string) local8;
     }
@@ -24636,7 +24636,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "[ ";
     i = 0;
   .label186748;
-    columns = local3-->i;
+    columns = line-->i;
     if (columns ~= 0) {
         print (string) columns;
     }
