@@ -9083,7 +9083,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             StartDaemon(Outside_the_Royal_Museum);
             "right up through the south wall and into Alexandria!";
         }
-        routine74232(1[?]);
+        AustinMovements(true);
         rfalse;
     }
     if (action == ##Listen && antiquated_wireless has general && (antiquated_wireless in location || (antiquated_wireless in Conservatory && location == Potting_Room))) {
@@ -10348,17 +10348,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         " cheerfully.";
     }
-    routine74232(0);
+    AustinMovements(false);
     rfalse;
 ];
 
-[ routine74232 local1 local2 local3 local4 ;	! 74232 / 0x121f8
-    local2 = parent(Austin);
+[ AustinMovements to_current env local3 local4 ;	! 74232 / 0x121f8
+    env = parent(Austin);
     local4 = 65535[?];
-    if (local1 == 1[?]) {
-        local2 = location;
+    if (to_current == true) {
+        env = location;
     } else {
-        if (local2 == 112[Potting_Room?]) {
+        if (env == Potting_Room) {
             move Austin to Conservatory;
             if (location == Potting_Room) {
                 "^Jemima catches sight of Austin, and without warning jumps on the spot, startling him. He springs away, hissing.";
@@ -10372,7 +10372,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local3 > 8) {
             ! no code
         } else {
-            if (local2 ~= location) {
+            if (env ~= location) {
                 rfalse;
             }
             if (robot_mouse in location) {
@@ -10398,26 +10398,26 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             rfalse;
         }
-        if (local2 == 41[House?] && hinged_trapdoor hasnt open) {
+        if (env == House && hinged_trapdoor hasnt open) {
             if (location == Attic) {
                 "^There is a faint scratching noise at the trapdoor.";
             }
             rfalse;
         }
-        if (local2 == 41[House?]) {
+        if (env == House) {
             move Austin to Attic;
             if (location == Attic) {
                 "^Austin, your ginger cat, jumps up through the trap door.";
             }
         }
-        if (local2 == 35[Attic?] && hinged_trapdoor has open && local3 == 10[u_obj?]) {
+        if (env == Attic && hinged_trapdoor has open && local3 == 10[u_obj?]) {
             move Austin to House;
             if (location == Attic) {
                 "^Austin, bored again, disappears through the trap door.";
             }
         }
     }
-    if (local2 == 35[Attic?]) {
+    if (env == Attic) {
         local3 = random(3);
         if (local3 == 1[?]) {
             local4 = 47[Old_Furniture?];
@@ -10429,17 +10429,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local4 = 42[Servants_Room?];
         }
     }
-    if (local2 == 42[Servants_Room?]) {
+    if (env == Servants_Room) {
         local4 = 35[Attic?];
     }
-    if (local2 == 47[Old_Furniture?]) {
+    if (env == Old_Furniture) {
         if (local3 == 9[sw_obj?]) {
             local4 = 35[Attic?];
         } else {
             local4 = 57[Over_the_East_Wing?];
         }
     }
-    if (local2 == 57[Over_the_East_Wing?]) {
+    if (env == Over_the_East_Wing) {
         local3 = random(4);
         if (local3 == 1[?]) {
             local4 = 47[Old_Furniture?];
@@ -10454,14 +10454,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local4 = 64[Disused_Observatory?];
         }
     }
-    if (local2 == 74[East_Annexe?]) {
+    if (env == East_Annexe) {
         local4 = 57[Over_the_East_Wing?];
     }
-    if (local2 == 59[Dark_Room?]) {
+    if (env == Dark_Room) {
         local4 = 57[Over_the_East_Wing?];
     }
-    if (local2 == 64[Disused_Observatory?]) {
-        if (slide_projector has on && global139 ~= 0 && local1 == 0) {
+    if (env == Disused_Observatory) {
+        if (slide_projector has on && global139 ~= 0 && to_current == false) {
             if (location == Disused_Observatory) {
                 "^Austin seems fascinated by the beam of light.";
             }
@@ -10478,11 +10478,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local4 = 71[Souvenirs_Room?];
         }
     }
-    if (local2 == 67[Library_Storage?]) {
+    if (env == Library_Storage) {
         local4 = 64[Disused_Observatory?];
     }
-    if (local2 == 71[Souvenirs_Room?]) {
-        if (slide_projector has on && local1 == 0) {
+    if (env == Souvenirs_Room) {
+        if (slide_projector has on && to_current == false) {
             if (location == Souvenirs_Room) {
                 "^Austin stares curiously at the slideshow.";
             }
@@ -10490,7 +10490,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         local4 = 64[Disused_Observatory?];
     }
-    if (local2 == 103[Old_Winery?]) {
+    if (env == Old_Winery) {
         local3 = random(2);
         if (local3 == 1[?]) {
             local4 = 35[Attic?];
@@ -10499,7 +10499,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local4 = 107[Conservatory?];
         }
     }
-    if (local2 == 107[Conservatory?]) {
+    if (env == Conservatory) {
         local3 = random(2);
         if (local3 == 1[?]) {
             local4 = 112[Potting_Room?];
@@ -10512,8 +10512,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     move Austin to local4;
-    if (location == local2 or local4) {
-        if (local1 == 0) {
+    if (location == env or local4) {
+        if (to_current == false) {
             print "^Austin ";
             local3 = random(10);
             if (local3 == 1[?]) {
@@ -10546,12 +10546,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (local3 == 10[u_obj?]) {
                 print "rolls";
             }
-            if (location == local2) {
+            if (location == env) {
                 print " away to ";
                 local3 = local4;
             } else {
                 print " in from ";
-                local3 = local2;
+                local3 = env;
             }
         } else {
             print "to ";
@@ -23097,7 +23097,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Achieved(36);
             "right up through the south wall and into Alexandria!";
         }
-        routine74232(1[?]);
+        AustinMovements(true);
         rfalse;
     }
     L__M(##Jump);
