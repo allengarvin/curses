@@ -4855,7 +4855,7 @@ Global lightflag = true;
 Global real_location = thedark;
 Global print_player_flag;
 Global deadflag;
-Global global14;
+Global transcript_mode;
 Global last_score;
 Global notify_mode = true;
 Global places_score;
@@ -20151,10 +20151,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ ScriptOnSub ;	! 161108 / 0x27554
-    if (global14 == 1[?]) {
+    if (transcript_mode == true) {
         return L__M(##ScriptOn,1);
     }
-    global14 = 1[?];
+    transcript_mode = true;
     0-->8 = 0-->8 | 1;
     L__M(##ScriptOn,2);
     VersionSub();
@@ -20162,11 +20162,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ ScriptOffSub ;	! 161152 / 0x27580
-    if (global14 == 0) {
+    if (transcript_mode == false) {
         return L__M(##ScriptOff,1);
     }
     L__M(##ScriptOff,2);
-    global14 = 0;
+    transcript_mode = false;
     0-->8 = 0-->8 & 65534;
     rtrue;
 ];
