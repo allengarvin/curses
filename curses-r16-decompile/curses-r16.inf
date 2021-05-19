@@ -7559,7 +7559,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (k > 0) {
             wn = j + k;
           .label52497;
-            if (parser_action == ##RodVerb) {
+            if (parser_action == ##PluralFound) {
                 if (allow_plurals == 0) {
                     jump label52685;
                 }
@@ -9129,7 +9129,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (Refers(selfobj,w) == 1[?]) {
             ++i;
         } else if (w == 'rods') {
-            parser_action = ##RodVerb;
+            parser_action = ##PluralFound;
             ++i;
         } else {
             return i;
@@ -9670,7 +9670,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (Refers(selfobj,w) == 1[?]) {
             ++i;
         } else if (w == 'cards') {
-            parser_action = ##RodVerb;
+            parser_action = ##PluralFound;
             ++i;
         } else {
             return i;
@@ -9699,7 +9699,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ ConsultableParsename ;	! 64400 / 0xfb90
     if (NextWord() == 'books' or 'volumes' or 'tomes') {
-        parser_action = ##RodVerb;
+        parser_action = ##PluralFound;
         return 1[?];
     }
     --wn;
@@ -17651,7 +17651,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 40719['tubes'?]) {
-            parser_action = ##RodVerb;
+            parser_action = ##PluralFound;
             ++local1;
         } else {
             return local1;
@@ -17673,7 +17673,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (Refers(selfobj,local2) == 1[?]) {
             ++local1;
         } else if (local2 == 37344['poems'?] or 38703['scrolls'?]) {
-            parser_action = ##RodVerb;
+            parser_action = ##PluralFound;
             ++local1;
         } else {
             return local1;
@@ -21647,7 +21647,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ ThrowAtSub ;	! 166180 / 0x28924
     if (second > 1) {
-        verb = ##Action258;
+        verb = ##ThrownAt;
         if (RunRoutines(second,after) ~= 0) {
             verb = ##ThrowAt;
             rtrue;
