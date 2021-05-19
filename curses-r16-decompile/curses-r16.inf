@@ -8773,24 +8773,24 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ OffersLight o local2 ;	! 57036 / 0xdecc
-    if (o == nothing) {
+[ OffersLight i j ;	! 57036 / 0xdecc
+    if (i == nothing) {
         rfalse;
     }
-    if (o has light) {
+    if (i has light) {
         rtrue;
     }
-    local2 = child(o);
+    j = child(i);
   .label57053;
-    if (local2 ~= 0) {
-        if (HasLightSource(local2) == 1[?]) {
+    if (j ~= nothing) {
+        if (HasLightSource(j) == 1[?]) {
             rtrue;
         }
-        local2 = sibling(local2);
+        j = sibling(j);
         jump label57053;
     }
-    if (o has enterable || IsSeeThrough(o) == 1[?]) {
-        return OffersLight(parent(o));
+    if (i has enterable || IsSeeThrough(i) == 1[?]) {
+        return OffersLight(parent(i));
     }
     rfalse;
 ];
