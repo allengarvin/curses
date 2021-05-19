@@ -9726,7 +9726,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: electric_torch.before
 
-[ TorchBefore local1 local2 ;	! 64544 / 0xfc20
+[ TorchBefore bat local2 ;	! 64544 / 0xfc20
     if (action == ##Open) {
         if (selfobj has light) {
             give selfobj ~light;
@@ -9736,8 +9736,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Close) {
         print "You close the battery compartment of the torch";
-        local1 = child(selfobj);
-        if (local1 == 105[obj105_nasty_looking_red_battery?]) {
+        bat = child(selfobj);
+        if (bat == obj105_nasty_looking_red_battery) {
             if (game_section == T_MODERN) {
                 deadflag = FAILED;
                 ", and it explodes with light, becomes hot enough to melt, falls to the floor, catches fire and burns down most of the attic...^^It may be some consolation that since you spend your holiday in the local hospital burns unit, you are never inconvenienced much by not finding the map.";
@@ -9746,11 +9746,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 ", and it explodes with light, becomes hot enough to melt, falls from your grasp and perishes away to nothing.";
             }
         }
-        if (local1 == 76[new_battery?]) {
+        if (bat == new_battery) {
             Achieved(1);
         }
-        if (local1 == 33[old_smudged_battery?] or 76[new_battery?]) {
-            local2 = local1.time_left;
+        if (bat == old_smudged_battery or new_battery) {
+            local2 = bat.time_left;
             if (local2 == 0) {
                 ", but the battery must be dead because nothing happens.";
             }
