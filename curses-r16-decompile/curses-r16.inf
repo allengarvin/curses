@@ -12985,18 +12985,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Unreal_City.each_turn, Near_Ring_Road.each_turn
 
-[ UnrealEachTurn local1 ;	! 94988 / 0x1730c
-    local1 = random(10);
-    if (local1 == 1[?]) {
+[ UnrealEachTurn i ;	! 94988 / 0x1730c
+    i = random(10);
+    if (i == 1) {
         "^A clock keeps the hours, with a dead sound on the final stroke of nine.";
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         "^There is a brown fog about, like a winter dawn's.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         "^You can almost make out the pleasant whining of a mandoline from a faraway bar.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         "^Drifting through the streets from some distant bar comes the sound of one of Scott Joplin's newfangled piano pieces, accompanying song settings from ~Romeo and Juliet~.";
     }
     rfalse;
