@@ -20960,21 +20960,21 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ SearchSub local1 local2 ;	
+[ SearchSub i f ;	
     if (location == thedark) {
         return L__M(##Search,1);
     }
-    local1 = child(noun);
+    i = child(noun);
   .labelXXX;
-    if (local1 ~= 0) {
-        if (local1 hasnt concealed) {
-            local2 = 1[?];
+    if (i ~= 0) {
+        if (i hasnt concealed) {
+            f = 1[?];
         }
-        local1 = sibling(local1);
+        i = sibling(i);
         jump labelXXX;
     }
     if (noun has supporter) {
-        if (local2 == 0) {
+        if (f == 0) {
             return L__M(##Search,2,noun);
         }
         return L__M(##Search,3,noun);
@@ -20996,7 +20996,7 @@ Array preactions_table --> IsDirection;
     }
     @add SP generic_globvar -> SP;
     @store 1 SP;
-    if (local2 == 0) {
+    if (f == 0) {
         return L__M(##Search,6,noun);
     }
     L__M(##Search,7,noun);
