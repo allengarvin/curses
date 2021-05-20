@@ -21103,18 +21103,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (o hasnt scenery) {
                 give o workflag;
                 ++k;
-                p = 17[rod_of_fire?];
+                p = initial;
                 f2 = 0;
                 if (o has door && o hasnt open) {
-                    p = 6[ne_obj?];
+                    p = s_to;
                     f2 = 1;
                 }
                 if (o has switchable && o hasnt on) {
-                    p = 6[ne_obj?];
+                    p = s_to;
                     f2 = 1;
                 }
                 if (o has container && o hasnt open && o.&s_to ~= 0) {
-                    p = 6[ne_obj?];
+                    p = s_to;
                     f2 = 1;
                 }
                 if (o hasnt moved || o.describe ~= NULL || f2 == 1) {
