@@ -5013,7 +5013,7 @@ Global global171;
 Global global172;
 Global global173;
 Global global174;
-Global bool_array_just_set = 65535;
+Global bool_array_recently_set = 65535;
 Global one_time_try_bonus;
 Global global178;
 Global yard_dir;
@@ -18888,7 +18888,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ set_flag_array i ;	! 155280 / 0x25e90
     if (extra_global_bool_array->i == 0) {
         extra_global_bool_array->i = 1;
-        bool_array_just_set = i;
+        bool_array_recently_set = i;
     }
     rtrue;
 ];
@@ -24662,9 +24662,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     @set_window 0;
     0-->8 = 65533 & 0-->8;
     displaying_quote = false;
-    if (bool_array_just_set ~= 65535) {
-        display_quote(bool_array_just_set);
-        bool_array_just_set = 65535;
+    if (bool_array_recently_set ~= 65535) {
+        display_quote(bool_array_recently_set);
+        bool_array_recently_set = 65535;
     }
     rtrue;
 ];
