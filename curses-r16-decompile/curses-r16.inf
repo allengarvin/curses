@@ -8143,7 +8143,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         inputobjs-->3 = 0;
         meta = 0;
         Parser(24207[?]);
-        noun = 0;
+        noun = nothing;
         second = nothing;
         verb = ##Score;
         multiflag = 0;
@@ -8242,7 +8242,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     noun = l;
                     Process();
                     inp1 = 0;
-                    noun = 0;
+                    noun = nothing;
                     ++k;
                     jump label54605;
                 }
@@ -10290,7 +10290,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "You try absolutely everything. Pushing the top down, turning it, pulling it, putting it on the floor and jumping up and down on it, everything. It is resolutely adult-proof. Whatever would it take to break the dratted thing?";
     }
     if (action == ##Receive) {
-        if (selfobj has open && noun ~= 'invalidDictWord56') {
+        if (selfobj has open && noun ~= red_tablet) {
             "The neck is too narrow to fit anything but the pill.";
         }
         rfalse;
@@ -10389,11 +10389,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Austin (just) tolerates this show of affection.";
     }
     if (action == ##Give or ##Show) {
-        if (noun == 'invalidDictWord122') {
+        if (noun == chicken_wishbone) {
             GoodTry();
             "Some cats do like the smell of chicken bones, but Austin doesn't.";
         }
-        if (noun == 'invalidDictWord131') {
+        if (noun == robot_mouse) {
             move robot_mouse to location;
             "Austin claws it to the ground, captiously.";
         }
@@ -10744,7 +10744,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         @je SP 2[?] ?~label75890;
         "The flash is full already.";
       .label75890;
-        if (noun == 'invalidDictWord206') {
+        if (noun == timer_detonator) {
             rfalse;
         }
         if (noun hasnt battery_flag) {
@@ -10992,7 +10992,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ SouvenirsRoomAfter local1 ;	! 78248 / 0x131a8
     if (action == ##Read) {
-        if (noun == 'invalidDictWord3' && slide_projector has on) {
+        if (noun == s_obj && slide_projector has on) {
             local1 = child(slide_projector);
             if (local1 == 0) {
                 "The south wall is lit up by the projector.";
@@ -11042,17 +11042,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (child(selfobj) ~= nothing) {
             "There's a slide in already.";
         }
-        if (noun == 'invalidDictWord54') {
+        if (noun == postcard_of_the_Champs_Elysees) {
             print "The postcard is just too large to fit.^";
             GoodTry();
             rtrue;
         }
-        if (noun == 'invalidDictWord147') {
+        if (noun == framed_charcoal_sketch) {
             print "The frame is too bulky.^";
             GoodTry();
             rtrue;
         }
-        if (noun == 'invalidDictWord148' or 'invalidDictWord306') {
+        if (noun == charcoal_sketch or miniature) {
             rfalse;
         }
         if (noun hasnt card) {
@@ -11206,10 +11206,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ EastAnnexeAfter ;	! 80144 / 0x13910
     if (action == ##Go or ##Enter) {
-        if (old_smudged_battery in electric_torch && noun == 'invalidDictWord2' or 'invalidDictWord77') {
+        if (old_smudged_battery in electric_torch && noun == n_obj or cupboard_door) {
             "You know you only have an old, nearly dead battery in the torch, and are reluctant to tread on the weaker floorboards inside the cupboard without safer illumination.";
         }
-        if (child(electric_torch) == nothing && noun == 'invalidDictWord2' or 'invalidDictWord77') {
+        if (child(electric_torch) == nothing && noun == n_obj or cupboard_door) {
             "But it's dark in there and you have no battery in your torch.";
         }
         rfalse;
@@ -11246,15 +11246,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Dead_End.after
 
 [ DeadEndAfter ;	! 80540 / 0x13a9c
-    if (verb == ##Knock && noun == 'invalidDictWord3') {
+    if (verb == ##Knock && noun == s_obj) {
         "The south wall rings curiously hollow.";
     }
-    if (noun == 'invalidDictWord3' && secret_door hasnt concealed) {
+    if (noun == s_obj && secret_door hasnt concealed) {
         R_Process(verb,secret_door,second);
         rtrue;
     }
     if (action == ##Push) {
-        if (noun == 'invalidDictWord3' && secret_door has concealed) {
+        if (noun == s_obj && secret_door has concealed) {
             give secret_door ~concealed;
             move secret_door to Dead_End;
             Achieved(SCORE_SECRETDOOR);
@@ -11263,7 +11263,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Go) {
-        if (noun == 'invalidDictWord4' or 'invalidDictWord11' && selfobj.d_to ~= nothing) {
+        if (noun == e_obj or d_obj && selfobj.d_to ~= nothing) {
             print "You clamber out onto a rickety ladder which runs right down the east wall of the Hall, and nervously descend...^";
         }
         rfalse;
@@ -11299,7 +11299,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move sooty_old_stick to Priest_s_Hole;
             give sooty_old_stick moved;
         }
-        if (noun == 'invalidDictWord55' && medicine_bottle has locked) {
+        if (noun == medicine_bottle && medicine_bottle has locked) {
             give medicine_bottle ~moved;
             medicine_bottle.initial = "The medicine bottle, alas, was undamaged by the fall down the chimney.";
         }
@@ -11393,7 +11393,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Give or ##ThrowAt) {
         remove noun;
         StopDaemon(selfobj);
-        if (noun == 'invalidDictWord122') {
+        if (noun == chicken_wishbone) {
             move iron_key to Priest_s_Hole;
             give iron_key general;
             remove Sir_Joshua_Meldrewe;
@@ -11420,7 +11420,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "There's not enough room in this confined space to do anything much!";
     }
     if (action == ##Go) {
-        if (noun == 'invalidDictWord11') {
+        if (noun == d_obj) {
             o = child(player);
           .label82331;
             if (o ~= nothing) {
@@ -11441,14 +11441,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ PriestHoleAfter o ;	! 82456 / 0x14218
     if (action == ##Enter) {
-        if (noun == 'invalidDictWord94') {
+        if (noun == hatch) {
             DownTheHatch();
             rfalse;
         }
         rfalse;
     }
     if (action == ##Go) {
-        if (noun == 'invalidDictWord10') {
+        if (noun == u_obj) {
             o = child(player);
           .label82488;
             if (o ~= nothing) {
@@ -11460,7 +11460,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             print "You squeeze awkwardly back up the chimney.";
         }
-        if (noun == 'invalidDictWord11') {
+        if (noun == d_obj) {
             DownTheHatch();
             rfalse;
         }
@@ -11559,7 +11559,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ ComfyBedAfter ;	! 83964 / 0x147fc
     if (action == ##Receive) {
-        if (noun ~= 'invalidDictWord270') {
+        if (noun ~= flag_of_the_British_Merchant_Navy) {
             "That seems unlikely to make a good blanket.";
         }
         move flag_of_the_British_Merchant_Navy to comfortable_bed;
@@ -12039,31 +12039,31 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Jemima.life
 
-[ JemimaLife local1 ;	! 87832 / 0x15718
+[ JemimaLife i ;	! 87832 / 0x15718
     if (action == ##Order) {
-        if (verb == ##Give && noun == 'invalidDictWord113') {
+        if (verb == ##Give && noun == old_gardeners__gloves) {
             "~I can't give you those, I'm using them!~^^(This is plainly not true, but you know how it is with aunts.)";
         }
         "Aunt Jemima has never done what you suggested at the best of times. This is not the best of times.";
     }
     if (action == ##Give) {
-        if (noun == 'invalidDictWord52') {
+        if (noun == box_of_chocolates) {
             remove box_of_chocolates;
             Achieved(SCORE_CHOCOLATE);
             give Jemima general;
             Jemima.description = "Definitely mollified.";
             "Aunt Jemima pounces on the chocolates, wolfs down a strawberry cream and persuades you to have a vile toffee cracknell. ~Now,~ she says, ~Your turn for a daisy chain!~^^You try to look pleased.^^~Let's see, the others have had theirs... I have only a few colours left. What would you like?~";
         }
-        if (noun == 'invalidDictWord34') {
+        if (noun == chocolate_biscuit) {
             print "Jemima grudgingly takes the biscuit and nibbles at it, but she is still sulking.^";
             GoodTry();
             remove chocolate_biscuit;
             rtrue;
         }
-        if (noun == 'invalidDictWord56') {
+        if (noun == red_tablet) {
             "Jemima looks very suspiciously at the pill. ~Not just now, thanks.~";
         }
-        if (noun == 'invalidDictWord55' && noun has locked) {
+        if (noun == medicine_bottle && noun has locked) {
             remove red_tablet;
             give medicine_bottle ~locked;
             give medicine_bottle open;
@@ -12071,7 +12071,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print "A peace offering is a nice idea, but somehow ";
         Defart(noun);
-        if (noun == 'invalidDictWord51') {
+        if (noun == gift_wrapped_parcel) {
             print " lacks style... after all, it isn't Christmas.^";
             GoodTry();
             rtrue;
@@ -12097,34 +12097,34 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "She pretends not to have heard, a favourite ploy of hers when sulking.";
         }
         give Jemima ~general;
-        local1 = 0;
-        if (noun == 'yellow' or 'yellowish') {
-            local1 = 1[?];
+        i = 0;
+        if (noun == invalidObj41664 or invalidObj41673) {
+            i = 1;
         }
-        if (noun == 'blue') {
-            local1 = 2[?];
+        if (noun == invalidObj30666) {
+            i = 2;
         }
-        if (noun == 'red') {
-            local1 = 4[e_obj?];
+        if (noun == invalidObj37947) {
+            i = 4;
         }
-        if (noun == 'white' or 'plain') {
-            local1 = 5[w_obj?];
+        if (noun == invalidObj41304 or invalidObj37236) {
+            i = 5;
         }
-        if (noun == 'green') {
-            local1 = 6[ne_obj?];
+        if (noun == invalidObj33933) {
+            i = 6;
         }
-        if (noun == 'orange') {
-            local1 = 9[sw_obj?];
+        if (noun == invalidObj36687) {
+            i = 9;
         }
-        if (local1 ~= 0) {
+        if (i ~= 0) {
             print "~Right you are then, I'm sure I have some which are just right.~^^";
         }
-        if (local1 == 0) {
-            local1 = 5[w_obj?];
+        if (i == 0) {
+            i = 5;
             print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
         }
         StartTimer(Jemima,7);
-        daisy_chain.time_left = local1;
+        daisy_chain.time_left = i;
         "After a moment she notices you're still here. ~Come back later, it'll be done soon.~  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.";
     }
     if (action == ##Ask) {
@@ -12250,7 +12250,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ StorageRoomAfter ;	! 90148 / 0x16024
     if (action == ##Enter) {
-        if (noun == 'invalidDictWord119') {
+        if (noun == dark_shaft_obj) {
             if (dumbwaiter in dark_shaft_obj) {
                 R_Process(##Enter,dumbwaiter);
                 rtrue;
@@ -12313,7 +12313,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (dumbwaiter in location) {
             "Put on the dumbwaiter.";
         }
-        if (noun == 'invalidDictWord55') {
+        if (noun == medicine_bottle) {
             give medicine_bottle ~locked;
             give medicine_bottle open;
             "It disappears into the darkness, and there is a slight cracking noise.";
@@ -12388,7 +12388,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ Shaft2After ;	! 91112 / 0x163e8
     if (action == ##Go) {
-        if (noun == 'invalidDictWord11' && dumbwaiter in Dark_Shaft) {
+        if (noun == d_obj && dumbwaiter in Dark_Shaft) {
             "Since the dumbwaiter is here, why not travel in that instead.";
         }
         rfalse;
@@ -12401,7 +12401,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ DarkPassageAfter ;	! 91172 / 0x16424
     if (sandstone_recess has open) {
         Achieved(SCORE_SECRET_PASS);
-    } else if (verb == ##Enter && noun == 'invalidDictWord125') {
+    } else if (verb == ##Enter && noun == sandstone_recess) {
         "The recess is too shallow.";
     }
     if (gas_mask has worn) {
@@ -12439,7 +12439,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ CellarsAfter ;	! 91352 / 0x164d8
     if (action == ##Enter) {
-        if (noun == 'invalidDictWord129') {
+        if (noun == dark_shaft_obj2) {
             if (dumbwaiter in Cellars) {
                 R_Process(##Enter,dumbwaiter);
                 rtrue;
@@ -12479,77 +12479,77 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (verb ~= ##Go) {
             "The mouse emits a querulous, unhappy bleep.";
         }
-        if (noun == 'invalidDictWord6') {
-            noun = 'invalidDictWord10';
+        if (noun == ne_obj) {
+            noun = u_obj;
         }
-        if (noun == 'invalidDictWord8') {
-            noun = 'invalidDictWord10';
+        if (noun == nw_obj) {
+            noun = u_obj;
         }
-        if (noun == 'invalidDictWord7') {
-            noun = 'invalidDictWord10';
+        if (noun == se_obj) {
+            noun = u_obj;
         }
-        if (noun == 'invalidDictWord9') {
-            noun = 'invalidDictWord10';
+        if (noun == sw_obj) {
+            noun = u_obj;
         }
-        if (noun == 'invalidDictWord11') {
-            noun = 'invalidDictWord10';
+        if (noun == d_obj) {
+            noun = u_obj;
         }
-        if (noun == 'invalidDictWord10') {
+        if (noun == u_obj) {
             "The mouse bleeps with annoyance.";
         }
         frm = parent(selfobj);
         if (frm == Cellars_South) {
-            if (noun == 'invalidDictWord2') {
+            if (noun == n_obj) {
                 dst = Cellars;
                 jump label92201;
             }
-            if (noun == 'invalidDictWord5') {
+            if (noun == w_obj) {
                 dst = hole_in_the_wall;
                 Mouse_x = 8;
                 Mousy_y = 3;
                 jump label92201;
             }
         } else if (frm == Cellar_West) {
-            if (noun == 'invalidDictWord4') {
+            if (noun == e_obj) {
                 dst = Cellars;
                 jump label92201;
             }
         } else if (frm == Wine_Cellars) {
-            if (noun == 'invalidDictWord5') {
+            if (noun == w_obj) {
                 dst = Cellars;
                 jump label92201;
             }
         } else if (frm == Cellars) {
-            if (noun == 'invalidDictWord5') {
+            if (noun == w_obj) {
                 dst = Cellar_West;
                 jump label92201;
             }
-            if (noun == 'invalidDictWord3') {
+            if (noun == s_obj) {
                 dst = Cellars_South;
                 jump label92201;
             }
-            if (noun == 'invalidDictWord4') {
+            if (noun == e_obj) {
                 dst = Wine_Cellars;
                 jump label92201;
             }
         } else {
-            if (frm == hole_in_the_wall && Mouse_x == 8 && Mousy_y == 3 && noun == 'invalidDictWord4') {
+            if (frm == hole_in_the_wall && Mouse_x == 8 && Mousy_y == 3 && noun == e_obj) {
                 dst = Cellars_South;
             } else {
                 if (frm == hole_in_the_wall) {
-                    if (noun == 'invalidDictWord2') {
+                    if (noun == n_obj) {
                         local4 = Mouse_x;
                         local5 = Mousy_y - 1;
                     }
-                    if (noun == 'invalidDictWord4') {
+                    if (noun == e_obj) {
                         local4 = Mouse_x + 1;
                         local5 = Mousy_y;
                     }
-                    if (noun == 'invalidDictWord3') {
+                    if (noun == s_obj) {
                         local4 = Mouse_x;
                         local5 = Mousy_y + 1;
                     }
-                    if (noun == 'invalidDictWord5') {
+                    if (noun == w_obj) {
                         local4 = Mouse_x - 1;
                         local5 = Mousy_y;
                     }
@@ -12711,7 +12711,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun hasnt rod_attr) {
             "That won't fit in a socket.";
         }
-        if (noun == 'invalidDictWord20') {
+        if (noun == rod_of_infinity) {
             if (noun has unidentiifed_rod) {
                 "For some reason, that rod is just too large to fit.";
             }
@@ -12738,10 +12738,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ SphericalOpeningAfter ;	! 93620 / 0x16db4
     if (action == ##Receive) {
-        if (noun == 'invalidDictWord290') {
+        if (noun == hard_wooden_ball) {
             "Though correctly shaped, it is not quite small enough to fit the cavity.";
         }
-        if (noun ~= 'invalidDictWord393') {
+        if (noun ~= golden_orb) {
             "That doesn't seem to fit properly.";
         }
         if (golden_orb hasnt general) {
@@ -12852,7 +12852,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ HookAfter ;	! 94844 / 0x1727c
     if (action == ##Receive) {
-        if (noun ~= 'invalidDictWord83') {
+        if (noun ~= painting_of_Mad_Isaac_Meldrewe) {
             "Doesn't seem right there, somehow.";
         }
         move painting_of_Mad_Isaac_Meldrewe to White_Hallway;
@@ -13187,7 +13187,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine97492 ;	! 97492 / 0x17cd4
     if (action == ##Give) {
-        if (noun == 'invalidDictWord169') {
+        if (noun == silk_handkerchief) {
             "Gratefully she blows her nose but then returns the handkerchief. You refold it ingeniously.";
         }
         print "She looks warily at ";
@@ -13322,7 +13322,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ ShopkeeperLife ;	! 98656 / 0x18160
     if (action == ##Give) {
-        if (noun ~= 'invalidDictWord359') {
+        if (noun ~= fifty_franc_note) {
             "~Ceci n'est pas argent,~ he explains wearily.";
         }
         remove noun;
@@ -13453,7 +13453,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "It sounds like a thinly, but enthusiastically, attended football match. There are ragged German chants but only the word ~Eumenides~ pokes out.";
     }
     if (action == ##Go) {
-        if (noun == 'invalidDictWord3' or 'invalidDictWord11') {
+        if (noun == s_obj or d_obj) {
             "You step downward in some confusion, but your senses are assailed by some kind of vision, of a ghastly circle of druids watching your every move and plotting, plotting...^^In horror you turn back.";
         }
         rfalse;
@@ -13512,12 +13512,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Defart(inp1);
             ".";
         }
-        if (noun == 'invalidDictWord55' && medicine_bottle has locked) {
+        if (noun == medicine_bottle && medicine_bottle has locked) {
             give medicine_bottle ~locked;
             give medicine_bottle open;
             "The medicine bottle cracks open in the goat's jaws!";
         }
-        if (noun == 'invalidDictWord115') {
+        if (noun == daisy_chain) {
             "For heaven's sake, the daisy chain is far too useful for that.";
         }
         rfalse;
@@ -13928,7 +13928,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine104972 ;	! 104972 / 0x19a0c
     if (verb == ##Pull) {
-        if (noun == 'invalidDictWord216') {
+        if (noun == model_ship) {
             remove model_ship;
             move stick_with_an_anchor to player;
             itobj = stick_with_an_anchor;
@@ -13941,10 +13941,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "As you pull the anchor chain, the sticks spring back outwards into the fully-rigged model sailing ship you knew of old.";
     }
     if (verb == ##Insert && second == mounted_bottle) {
-        if (noun == 'invalidDictWord216') {
+        if (noun == model_ship) {
             "The model ship is, of course, far too large to fit into the bottle.";
         }
-        if (noun == 'invalidDictWord217') {
+        if (noun == stick_with_an_anchor) {
             remove mounted_bottle;
             remove stick_with_an_anchor;
             move ship_in_a_bottle to player;
@@ -13953,7 +13953,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "The bundle of sticks will just fit through the bottle's neck. With a sudden spring, just as the last of the stick passes the neck, its masts fold out... and you have put the ship into the bottle.";
         }
     }
-    if (verb == ##Wave && noun == 'invalidDictWord217') {
+    if (verb == ##Wave && noun == stick_with_an_anchor) {
         "Ever the optimist.";
     }
     rfalse;
@@ -14012,7 +14012,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Give) {
         if (noun has edible) {
-            if (noun == 'invalidDictWord228') {
+            if (noun == Ekmek_Special) {
                 remove noun;
                 give amber_hairband ~static;
                 give amber_hairband moved;
@@ -14101,7 +14101,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine107164 ;	! 107164 / 0x1a29c
     if (action == ##Give) {
-        if (noun == 'invalidDictWord234') {
+        if (noun == copper_coin) {
             remove copper_coin;
             give copper_coin general;
             "The bartender takes the coin wearily, with a ~how can you eat at a time like this?~ look.";
@@ -14292,7 +14292,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Cross_Centre.after
 
 [ routine109584 ;	! 109584 / 0x1ac10
-    if (verb == ##Take or ##Remove && noun == 'invalidDictWord236' or 'invalidDictWord271' && noun has scenery) {
+    if (verb == ##Take or ##Remove && noun == inscribed_stone or old_timber_spar && noun has scenery) {
         give noun ~scenery;
         give noun moved;
     }
@@ -14302,7 +14302,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Cross_Centre.before
 
 [ routine109612 ;	! 109612 / 0x1ac2c
-    if (verb == ##Take or ##Remove && noun == 'invalidDictWord236' or 'invalidDictWord271' && noun has static) {
+    if (verb == ##Take or ##Remove && noun == inscribed_stone or old_timber_spar && noun has static) {
         inscriptions.initial = "The two-foot opening is clear again.";
     }
     rfalse;
@@ -14329,13 +14329,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (selfobj hasnt open) {
             rfalse;
         }
-        if (noun ~= 'invalidDictWord236' or 'invalidDictWord271') {
+        if (noun ~= inscribed_stone or old_timber_spar) {
             CDefart(noun);
             print " would simply fall through.";
             new_line;
             rtrue;
         }
-        if (noun == 'invalidDictWord236') {
+        if (noun == inscribed_stone) {
             selfobj.initial = "The opening is securely wedged with the stone.";
         } else {
             selfobj.initial = "The opening is securely wedged with the prop.";
@@ -14472,7 +14472,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (Oracle notin location) {
             "Perhaps the gods no longer inhabit such places. Your offering burns to nothing, for nothing.";
         }
-        if (noun == 'invalidDictWord226') {
+        if (noun == fig) {
             move fig to Outside_Taverna;
             fig.initial = "The god Apollo moves in mysterious ways, for another fig has appeared on the tree.";
             give fig ~moved;
@@ -14526,7 +14526,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine111676 ;	! 111676 / 0x1b43c
-    if (verb == ##Go && noun == 'invalidDictWord11') {
+    if (verb == ##Go && noun == d_obj) {
         routine111612();
     }
     rfalse;
@@ -14645,7 +14645,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine112312 ;	! 112312 / 0x1b6b8
     if (action == ##Drop) {
         move noun to Aboard_Ship;
-        if (noun == 'invalidDictWord55' && noun has locked) {
+        if (noun == medicine_bottle && noun has locked) {
             give medicine_bottle ~locked;
             give medicine_bottle open;
             "The medicine bottle drops like a stone to the deck far below, where it cracks like an egg.";
@@ -14912,7 +14912,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ BeanStalkBefore ;	! 114280 / 0x1be68
     if (action == ##Drop) {
         move noun to Family_Tree;
-        if (noun == 'invalidDictWord55' && noun has locked) {
+        if (noun == medicine_bottle && noun has locked) {
             print "The medicine bottle plummets to the earth below.^";
             give medicine_bottle ~locked;
             give medicine_bottle open;
@@ -14931,15 +14931,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (selfobj hasnt on) {
             print "(The motor isn't on at the moment.)^";
         } else {
-            if (noun == 'invalidDictWord10' or 'invalidDictWord11') {
+            if (noun == u_obj or d_obj) {
                 print "The garden roller is a somewhat horizontal conveyance.^";
                 return 2[?];
             }
-            if (location == Garden_Stream && noun == 'invalidDictWord3') {
+            if (location == Garden_Stream && noun == s_obj) {
                 print "The garden roller will never fit.^";
                 return 2[?];
             }
-            if (location == Lawn_Ornaments && noun == 'invalidDictWord4') {
+            if (location == Lawn_Ornaments && noun == e_obj) {
                 print "Philistine!  How dare you try to drive a garden roller over a Roman mosaic.^";
                 return 2[?];
             }
@@ -15208,27 +15208,27 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (garden_roller hasnt on) {
             "But the garden roller is switched off, and won't drive.";
         }
-        if (MazeX == 4 && MazeY == 6 && noun == 'invalidDictWord3') {
+        if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (MazeX == 0 && MazeY == 1 && noun == 'invalidDictWord5') {
+        if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
         local1 = 100[Tiny_Balcony?];
         local2 = 100[Tiny_Balcony?];
-        if (noun == 'invalidDictWord2') {
+        if (noun == n_obj) {
             local1 = MazeX;
             local2 = MazeY - 1;
         }
-        if (noun == 'invalidDictWord4') {
+        if (noun == e_obj) {
             local1 = MazeX + 1;
             local2 = MazeY;
         }
-        if (noun == 'invalidDictWord3') {
+        if (noun == s_obj) {
             local1 = MazeX;
             local2 = MazeY + 1;
         }
-        if (noun == 'invalidDictWord5') {
+        if (noun == w_obj) {
             local1 = MazeX - 1;
             local2 = MazeY;
         }
@@ -15269,7 +15269,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine116276 ;	! 116276 / 0x1c634
     if (action == ##Go) {
-        if (noun == 'invalidDictWord11' or 'invalidDictWord10') {
+        if (noun == d_obj or u_obj) {
             rfalse;
         }
         if (player notin garden_roller) {
@@ -15303,13 +15303,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine116412 ;	! 116412 / 0x1c6bc
     if (action == ##Read) {
-        if (player in garden_roller && noun == 'invalidDictWord305') {
+        if (player in garden_roller && noun == plaque) {
             "The writing's too small from here.";
         }
         rfalse;
     }
     if (action == ##Go) {
-        if (noun == 'invalidDictWord4' && player notin garden_roller) {
+        if (noun == e_obj && player notin garden_roller) {
             "For the sake of the grass, you can't go that way.";
         }
         rfalse;
@@ -15353,10 +15353,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine116760 local1 local2 ;	! 116760 / 0x1c818
     if (action == ##Go) {
-        if (MazeX == 4 && MazeY == 6 && noun == 'invalidDictWord3') {
+        if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (MazeX == 0 && MazeY == 1 && noun == 'invalidDictWord5') {
+        if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
         local1 = 100[Tiny_Balcony?];
@@ -15648,7 +15648,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine118232 ;	! 118232 / 0x1cdd8
     if (action == ##Receive) {
-        if (noun == 'invalidDictWord475') {
+        if (noun == bunch_of_nuts) {
             give loose_board open;
             move bunch_of_nuts to irate_squirrel_friend;
             move irate_squirrel_friend to Summer_House;
@@ -15666,7 +15666,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine118404 ;	! 118404 / 0x1ce84
     if (action == ##Show) {
-        if (noun == 'invalidDictWord475') {
+        if (noun == bunch_of_nuts) {
             "The squirrel finds them of consuming interest.";
         }
         rfalse;
@@ -15674,12 +15674,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Give) {
         if (noun has edible) {
             remove noun;
-            if (noun == 'invalidDictWord475') {
+            if (noun == bunch_of_nuts) {
                 routine118680();
                 "The squirrel is extremely pleased, and devours the nuts delightedly. You have an uncomfortable feeling of having been suckered.";
             }
             print "Grateful for any food he can get, however unsuitable, the squirrel eagerly consumes ";
-            if (noun == 'invalidDictWord228') {
+            if (noun == Ekmek_Special) {
                 print "the ";
             }
             Defart(noun);
@@ -15950,7 +15950,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ HangingOnRopeAfter ;	! 121880 / 0x1dc18
     if (action == ##Swing) {
-        if (noun ~= 'invalidDictWord333') {
+        if (noun ~= hemp_rope) {
             rfalse;
         }
         give hemp_rope general;
@@ -16103,7 +16103,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give kitchen_well general;
             "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
         }
-        if (noun ~= 'invalidDictWord329') {
+        if (noun ~= historical_pamphlet) {
             StartTimer(selfobj,2);
         }
         CDefart(noun);
@@ -16137,7 +16137,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ EntranceAfter ;	! 123076 / 0x1e0c4
     if (action == ##Go) {
-        if (noun ~= 'invalidDictWord3' or 'invalidDictWord9' or 'invalidDictWord7') {
+        if (noun ~= s_obj or sw_obj or se_obj) {
             rfalse;
         }
         print "You walk out into the courtyard and are immediately set upon by guards, who drag you away.^";
@@ -16617,11 +16617,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ CRBefore ;	! 127564 / 0x1f24c
     if (action == ##Go or ##Enter) {
-        if (noun == 'invalidDictWord2' or 'invalidDictWord3' or 'invalidDictWord386') {
+        if (noun == n_obj or s_obj or metal_wall) {
             print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly the same...^";
             displaying_quote = true;
             Achieved(SCORE_REFLECTING);
-            if (noun == 'invalidDictWord2') {
+            if (noun == n_obj) {
                 selfobj.s_to = metal_wall;
                 selfobj.n_to = nothing;
                 metal_wall.w_to = ne_obj;
@@ -16716,7 +16716,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= CR) {
         "~Slide~ is inappropriate here.";
     }
-    if (noun == 0) {
+    if (noun == nothing) {
         "What piece was that?";
     }
     i = 0;
@@ -17027,7 +17027,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == player) {
             "The bars are far too close together.";
         }
-        if (noun == 'invalidDictWord201') {
+        if (noun == smooth_round_stone) {
             move noun to Island_of_Pharos;
             give smooth_round_stone general;
             give smooth_round_stone concealed;
@@ -17035,7 +17035,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rusty_iron_key.initial = "The iron key, out of reach below, is glued somehow to the strange stone.";
             "The strange stone drops through the grating, and falls on the top step. The iron key mysteriously glues itself to the metal in the stone. It's still out of reach, though.";
         }
-        if (noun == 'invalidDictWord131') {
+        if (noun == robot_mouse) {
             "The robot mouse is just the wrong shape.";
         }
         move noun to Jetty;
@@ -17104,11 +17104,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ CrossroadsAfter ;	! 132404 / 0x20534
     if (action == ##Go) {
-        if (noun == 'invalidDictWord6' && cloak_of_many_colours has worn) {
+        if (noun == ne_obj && cloak_of_many_colours has worn) {
             print "The procession happily accommodates another crazily-dressed loon.^";
             rfalse;
         }
-        if (noun == 'invalidDictWord8' or 'invalidDictWord9' or 'invalidDictWord7') {
+        if (noun == nw_obj or sw_obj or se_obj) {
             rfalse;
         }
         "The enormous procession, which throngs the great streets of Alexandria, is impossible to push your way through. Better just enjoy the spectacle.";
@@ -17120,7 +17120,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ TombstoneAfter ;	! 132568 / 0x205d8
     if (action == ##Receive) {
-        if (noun ~= 'invalidDictWord245') {
+        if (noun ~= gleaming_amber_gem) {
             "Doesn't seem to fit.";
         }
         if (unexciting_tombstone has open) {
@@ -17145,7 +17145,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun notin player) {
             "You need to be holding it.";
         }
-        if (noun == 'invalidDictWord409') {
+        if (noun == cloak_of_many_colours) {
             move grey_cloak to player;
             remove cloak_of_many_colours;
             itobj = grey_cloak;
@@ -17234,7 +17234,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ SpiritWorldAfter ;	! 133428 / 0x20934
     if (action == ##Go) {
-        if (noun == 'invalidDictWord5') {
+        if (noun == w_obj) {
             rfalse;
         }
         if (The_Spirit_World.time_left == 4) {
@@ -17360,7 +17360,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
     if (action == ##Go) {
-        if (noun == 'invalidDictWord2' or 'invalidDictWord6') {
+        if (noun == n_obj or ne_obj) {
             if (second_socket hasnt general) {
                 move quarterstaff to Quite_an_Undertaking;
                 give second_socket general;
@@ -17383,7 +17383,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "The coffin's already open.";
     }
     if (action == ##Close) {
-        if (noun == 'invalidDictWord426' && noun has open && player in mummy_case) {
+        if (noun == mummy_case && noun has open && player in mummy_case) {
             if (global166 == 0) {
                 global166 = 1[?];
                 "That seems an awfully... final decision. Here's a chance to reconsider.";
@@ -17421,7 +17421,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ SocketAfter ;	! 135524 / 0x21164
     if (action == ##Receive) {
-        if (noun == 'invalidDictWord430') {
+        if (noun == model_golden_sceptre) {
             model_golden_sceptre.time_left = selfobj;
             if (selfobj == first_socket) {
                 model_golden_sceptre.initial = "The sceptre projects from the first socket like a handle.";
@@ -17578,7 +17578,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ TableAfter ;	! 137036 / 0x2174c
     if (action == ##Receive) {
-        if (noun == 'invalidDictWord443') {
+        if (noun == quarterstaff) {
             remove quarterstaff;
             give defaced_door ~open;
             give defaced_door lockable;
@@ -17835,10 +17835,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ CallimachusLife local1 ;	! 138656 / 0x21da0
     if (action == ##Give) {
-        if (selfobj == Callimachus && noun == 'invalidDictWord450' || (selfobj == Apollonius && inp1 == 451[tube_with_a_kappa_on?])) {
+        if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && inp1 == 451[tube_with_a_kappa_on?])) {
             "He takes the tube, sees the letter on it, looks exasperated, clouts you over the head with the tube and pushes it back into your arms.";
         }
-        if (noun == 'invalidDictWord450' or 'invalidDictWord451') {
+        if (noun == tube_with_an_alpha_on or tube_with_a_kappa_on) {
             CDefart(selfobj);
             print " takes the tube and looks inside";
             local1 = child(noun);
@@ -17872,7 +17872,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     "~. He pushes you out of his way and stomps off.";
                 }
                 print "~Ahhhh...~ he says (untranslatably) as he reads. ";
-                if (noun == 'invalidDictWord460') {
+                if (noun == Callimachus) {
                     print "Eventually, after a very long wait, ";
                 } else {
                     print "But soon ";
@@ -18001,7 +18001,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ MountingAfter ;	! 140508 / 0x224dc
     if (action == ##Receive) {
-        if (noun == 'invalidDictWord325') {
+        if (noun == golden_astrolabe) {
             remove astronomical_mounting;
             move golden_astrolabe to Palace_Balustrade;
             give golden_astrolabe static;
@@ -18019,7 +18019,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ DriveAfter ;	! 140600 / 0x22538
     if (action == ##Go) {
-        if (noun == 'invalidDictWord5' or 'invalidDictWord10' && selfobj.u_to == Dead_End) {
+        if (noun == w_obj or u_obj && selfobj.u_to == Dead_End) {
             print "With your heart in your mouth, you scale the old fire escape once again, breathing a sigh of relief as you haul yourself in through the open hatchway at the top.^";
         }
         rfalse;
@@ -18073,7 +18073,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "~Just a minute, I'm doing my form.~";
         }
         print "He looks at you in a hypnotic daze,";
-        if (verb == ##Give && noun == 'invalidDictWord483' && second == player) {
+        if (verb == ##Give && noun == Crescent_Moon && second == player) {
             move Crescent_Moon to player;
             Achieved(SCORE_HYPNOSIS);
             selfobj.description = "Old Evans' hat is empty. You feel terribly guilty.";
@@ -18085,7 +18085,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Evans is lost. Whatever do you mean?";
     }
     if (action == ##Give) {
-        if (noun == 'invalidDictWord483') {
+        if (noun == Crescent_Moon) {
             "Evans looks sadly at the mascot. But it is tarnished now, you have spoilt it. Your guilt increases further.";
         }
         rfalse;
@@ -18246,22 +18246,22 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (second ~= adamantine_statue) {
             rfalse;
         }
-        if (noun ~= 'invalidDictWord496' or 'invalidDictWord432' or 'invalidDictWord402') {
+        if (noun ~= adamantine_hand or adamantine_skull or adamantine_heart) {
             "That seems incongruous.";
         }
-        if (noun == 'invalidDictWord496') {
+        if (noun == adamantine_hand) {
             move adamantine_hand to West_Side_Chapel;
             give adamantine_hand concealed;
             global173 = 2[?];
             "The hand fits rather loosely onto the left ~wrist~ of the adamantine knight.";
         }
-        if (noun == 'invalidDictWord432') {
+        if (noun == adamantine_skull) {
             move adamantine_skull to West_Side_Chapel;
             give adamantine_skull concealed;
             global174 = 2[?];
             "The skull fits very loosely onto the ~neck~ of the adamantine knight.";
         }
-        if (noun == 'invalidDictWord402') {
+        if (noun == adamantine_heart) {
             remove adamantine_heart;
             give adamantine_heart general;
             "The heart sits well in the so-empty ribcage of the adamantine knight.";
@@ -18269,15 +18269,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Turn) {
-        if (noun == 'invalidDictWord432' or 'invalidDictWord496' && noun has concealed) {
-            if (noun == 'invalidDictWord496') {
+        if (noun == adamantine_skull or adamantine_hand && noun has concealed) {
+            if (noun == adamantine_hand) {
                 remove adamantine_hand;
                 global173 = 0;
                 give adamantine_hand general;
                 give adamantine_hand ~concealed;
                 "The hand screws tightly onto the adamantine knight.";
             }
-            if (noun == 'invalidDictWord432') {
+            if (noun == adamantine_skull) {
                 remove adamantine_skull;
                 global174 = 0;
                 give adamantine_skull general;
@@ -18347,11 +18347,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "A shame there were no adamantine ears, really.";
     }
     if (action == ##Show or ##Give) {
-        if (noun == 'invalidDictWord303') {
+        if (noun == marble_rose) {
             move marble_rose to adamantine_knight;
             "The knight is exceedingly pleased, and takes the flower.";
         }
-        if (noun == 'invalidDictWord444') {
+        if (noun == silver_keepsake) {
             if (marble_rose notin adamantine_knight) {
                 "The knight looks sadly at the picture.";
             }
@@ -18396,7 +18396,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (verb == ##Jump or ##Dance or ##Sing) {
         "The knight dances a jig with sheer exuberance.";
     }
-    if (verb == ##Open or ##Pull or ##Take && noun == 'invalidDictWord487' && Moonstone hasnt open) {
+    if (verb == ##Open or ##Pull or ##Take && noun == Moonstone && Moonstone hasnt open) {
         if (adamantine_knight hasnt general) {
             "The knight understands what is to be done. But he is world-weary and sad, and not yet in your service.";
         }
@@ -18407,7 +18407,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "The knight just about understands that he is to go somewhere, but cannot quite comprehend the direction. You'll have to indicate it somehow. (Shame there were no adamantine ears, really.)";
     }
     if (verb == ##PointVague) {
-        if (location == Parish_Church && noun == 'invalidDictWord11') {
+        if (location == Parish_Church && noun == d_obj) {
             if (Moonstone hasnt open) {
                 "The knight is unable to walk straight through the Moonstone.";
             }
@@ -18420,23 +18420,23 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         local1 = 0;
         if (location == Parish_Church) {
-            if (noun == 'invalidDictWord3') {
+            if (noun == s_obj) {
                 local1 = 477[Stone_Cross?];
             }
-            if (noun == 'invalidDictWord4') {
+            if (noun == e_obj) {
                 local1 = 491[East_Side_Chapel?];
             }
-            if (noun == 'invalidDictWord5') {
+            if (noun == w_obj) {
                 local1 = 488[West_Side_Chapel?];
             }
-            if (noun == 'invalidDictWord10') {
+            if (noun == u_obj) {
                 "Somewhat comically, the knight is too bulky to squeeze into the staircase. After a moment or two of watching an immovable object fighting it out with an irresistable force, you point back, and the knight returns, chastened.";
             }
         }
-        if (location == East_Side_Chapel && noun == 'invalidDictWord5') {
+        if (location == East_Side_Chapel && noun == w_obj) {
             local1 = 486[Parish_Church?];
         }
-        if (location == West_Side_Chapel && noun == 'invalidDictWord4') {
+        if (location == West_Side_Chapel && noun == e_obj) {
             local1 = 486[Parish_Church?];
         }
         if (local1 == 0) {
@@ -18455,18 +18455,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             adamantine_knight.initial = "The knight stands staunchly here.";
         }
         print "The knight strides boldly away to the ";
-        if (noun == 'invalidDictWord2') {
+        if (noun == n_obj) {
             "north.";
         }
-        if (noun == 'invalidDictWord3') {
+        if (noun == s_obj) {
             "south.";
         }
-        if (noun == 'invalidDictWord4') {
+        if (noun == e_obj) {
             "east.";
         }
         "west.";
     }
-    if (verb == ##Give or ##Insert && second == statue_of_Diana && noun == 'invalidDictWord303') {
+    if (verb == ##Give or ##Insert && second == statue_of_Diana && noun == marble_rose) {
         "The knight likes the idea but is confused.";
     }
     "The knight is confused. Perhaps you were a little rough with the skull.";
@@ -21020,10 +21020,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             return L__M(##Go,2);
         }
         if (local2 hasnt open) {
-            if (noun == 'invalidDictWord10') {
+            if (noun == u_obj) {
                 return L__M(##Go,3,local2);
             }
-            if (noun == 'invalidDictWord11') {
+            if (noun == d_obj) {
                 return L__M(##Go,4,local2);
             }
             return L__M(##Go,5,local2);
@@ -23220,7 +23220,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ WashSub ;	! 176432 / 0x2b130
-    if (noun ~= 'invalidDictWord502') {
+    if (noun ~= carbolic_soap) {
         "That's not something you can wash with.";
     }
     if (carbolic_soap notin player) {
@@ -23236,7 +23236,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ KillSub ;	! 176576 / 0x2b1c0
-    if (noun ~= 'invalidDictWord290' || second ~= croquet_mallet) {
+    if (noun ~= hard_wooden_ball || second ~= croquet_mallet) {
         R_Process(##Attack,noun);
         rtrue;
     }
@@ -23367,7 +23367,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun == player) {
         "In the mirror is one of the most strikingly attractive people you have ever seen in all your born days.";
     }
-    if (noun == 'invalidDictWord422') {
+    if (noun == model_of_ugly_animal) {
         print "In the mirror is a model of a mischievous-looking monkey, which wriggles as it comes alive!";
         give model_of_ugly_animal general;
         MonkeyAlive();
@@ -23384,7 +23384,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ DigWithSub ;	! 177648 / 0x2b5f0
-    if (noun ~= 'invalidDictWord298') {
+    if (noun ~= spade) {
         "Not really a suitable implement.";
     }
     DigSub();
@@ -23445,7 +23445,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ FillSub ;	! 178196 / 0x2b814
     if (location == Croquet_Lawn) {
-        if (dug_hole notin Croquet_Lawn || noun ~= 'invalidDictWord326') {
+        if (dug_hole notin Croquet_Lawn || noun ~= dug_hole) {
             "What?";
         }
       .label178226;
@@ -23622,7 +23622,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (second ~= Folly_tower) {
         "That isn't in conspicuous need of support.";
     }
-    if (noun ~= 'invalidDictWord271') {
+    if (noun ~= old_timber_spar) {
         "That isn't a particularly good support.";
     }
     move old_timber_spar to Folly;
@@ -23643,7 +23643,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ MilkSub ;	! 179896 / 0x2beb8
-    if (noun == 'invalidDictWord196' or 'invalidDictWord223') {
+    if (noun == goat or herd_of_goats) {
         "Pour encourager les udders... But milking goats is no job for an amateur.";
     }
     "What?";
@@ -23657,7 +23657,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Unaided, you are unable to make any impression.";
     }
     print "You set the gold watch swinging, back and forth, spinning the light. ";
-    if (noun == 'invalidDictWord478') {
+    if (noun == Old_Evans) {
         give Old_Evans general;
         "Old Evans, who is nine-tenths hypnotised most of the time anyway, succumbs easily.";
     }
