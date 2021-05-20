@@ -5019,7 +5019,7 @@ Global one_time_try_bonus;
 Global global178;
 Global yard_dir;
 Global dig_cnt;
-Global global181;
+Global current_game_sec;
 Global global182;
 Global global183;
 Global global184;
@@ -24426,10 +24426,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     @buffer_mode false;
     @set_window 1;
     style reverse;
-    if (global181 ~= location.section) {
+    if (current_game_sec ~= location.section) {
         displaying_quote = true;
     }
-    global181 = location.section;
+    current_game_sec = location.section;
     if (deadflag > 0 || undone_flag == 1) {
         displaying_quote = true;
     }
