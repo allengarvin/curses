@@ -21067,30 +21067,30 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine164032 local1 local2 local3 ;	! 164032 / 0x280c0
-    if (local1 == parent(player)) {
+[ SayWhatsOn descon j f ;	! 164032 / 0x280c0
+    if (descon == parent(player)) {
         rfalse;
     }
-    local2 = child(local1);
+    j = child(descon);
   .label164046;
-    if (local2 ~= 0) {
-        if (local2 hasnt concealed && local2 hasnt scenery) {
-            local3 = 1[?];
+    if (j ~= 0) {
+        if (j hasnt concealed && j hasnt scenery) {
+            f = 1[?];
         }
-        local2 = sibling(local2);
+        j = sibling(j);
         jump label164046;
     }
-    if (local3 == 0) {
+    if (f == 0) {
         rfalse;
     }
-    L__M(##Look,4,local1);
+    L__M(##Look,4,descon);
     rtrue;
 ];
 
 [ Locale descin text1 text2 o p k j flag f2 ;	! 164088 / 0x280f8
     o = child(descin);
   .label164093;
-    if (o ~= 0) {
+    if (o ~= nothing) {
         give o ~workflag;
         o = sibling(o);
         jump label164093;
@@ -21098,7 +21098,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     k = 0;
     o = child(descin);
   .label164115;
-    if (o ~= 0) {
+    if (o ~= nothing) {
         if (o hasnt concealed && o ~= parent(player)) {
             if (o hasnt scenery) {
                 give o workflag;
@@ -21107,19 +21107,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 f2 = 0;
                 if (o has door && o hasnt open) {
                     p = 6[ne_obj?];
-                    f2 = 1[?];
+                    f2 = 1;
                 }
                 if (o has switchable && o hasnt on) {
                     p = 6[ne_obj?];
-                    f2 = 1[?];
+                    f2 = 1;
                 }
                 if (o has container && o hasnt open && o.&s_to ~= 0) {
                     p = 6[ne_obj?];
-                    f2 = 1[?];
+                    f2 = 1;
                 }
-                if (o hasnt moved || o.describe ~= NULL || f2 == 1[?]) {
+                if (o hasnt moved || o.describe ~= NULL || f2 == 1) {
                     if (o.describe ~= NULL && RunRoutines(o,describe) ~= 0) {
-                        flag = 1[?];
+                        flag = 1;
                         give o ~workflag;
                         --k;
                     } else {
@@ -21127,17 +21127,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         if (j ~= 0) {
                             new_line;
                             PrintOrRun(o,p);
-                            flag = 1[?];
+                            flag = 1;
                             give o ~workflag;
                             --k;
                             if (o has supporter && child(o) ~= nothing) {
-                                routine164032(o);
+                                SayWhatsOn(o);
                             }
                         }
                     }
                 }
             } else if (o has supporter && child(o) ~= nothing) {
-                routine164032(o);
+                SayWhatsOn(o);
             }
         }
         o = sibling(o);
@@ -21148,14 +21148,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (text1 ~= 0) {
         new_line;
-        if (flag == 1[?]) {
+        if (flag == 1) {
             text1 = text2;
         }
         print (string) text1, " ";
         WriteListFrom(child(descin),8 + 512 + 16 + 128 + 64 + 2048);
         return k;
     }
-    if (flag == 1[?]) {
+    if (flag == 1) {
         L__M(##Look,5,descin);
     } else {
         L__M(##Look,6,descin);
