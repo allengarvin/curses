@@ -5003,7 +5003,7 @@ Global DreamCnt;
 Global OzoneSmelled;
 Global slide_moves;
 Global global164;
-Global global165;
+Global SpiritCnt;
 Global global166;
 Global global167;
 Global global168;
@@ -17333,30 +17333,30 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (The_Spirit_World.number < 4) {
         rfalse;
     }
-    ++global165;
-    if (global165 == 2[?]) {
+    ++SpiritCnt;
+    if (SpiritCnt == 2) {
         print "^The entrance to the tomb rumbles.^";
     }
-    if (global165 == 3[s_obj?]) {
+    if (SpiritCnt == 3) {
         print "^The noise grows, and dust falls from cracks in the masonry.^";
     }
-    if (global165 == 4[e_obj?]) {
+    if (SpiritCnt == 4) {
         print "^The entrance bursts open in a shower of plaster!  Light streams in, searing your eyes. There is a great commotion. Two Napoleonic French officers stride down the stairs, lanterns in hand, looking admiringly around the court. They do not seem to see you.^";
         move Napoleonic_officers to The_Spirit_World;
     }
-    if (global165 == 5[w_obj?]) {
+    if (SpiritCnt == 5) {
         print "^The officers are fascinated by the way the tomb seems almost untouched, and yet the couch looks slept in.^";
     }
-    if (global165 == 6[ne_obj?]) {
+    if (SpiritCnt == 6) {
         print "^The officers look down the passage, finding it to be sealed.^";
     }
-    if (global165 == 7[se_obj?]) {
+    if (SpiritCnt == 7) {
         print "^The officers sit next to the sphinxes, stroking their moustaches in comic perplexity. As they do so, one bangs his head on a stone nose.^";
     }
-    if (global165 == 8[nw_obj?]) {
+    if (SpiritCnt == 8) {
         print "^The other officer is greatly amused by this slapstick. (You really are beginning to see just how boring the living can be.)^";
     }
-    if (global165 == 9[sw_obj?]) {
+    if (SpiritCnt == 9) {
         print "^The first officer tweaks the nose of the sphinx in affection. Suddenly there is a great rumbling of stone from the passage below, and they rush down to investigate!^";
         remove Napoleonic_officers;
         give sphinxes general;
