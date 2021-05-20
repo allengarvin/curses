@@ -20416,22 +20416,22 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ TransferSub local1 local2 local3 local4 local5 ;	
-    local2 = 28[rod_of_life?];
+[ TransferSub i act_needed k postonobj par ;	
+    act_needed = 28[rod_of_life?];
     if (second has container) {
-        local2 = 26[rod_of_language?];
+        act_needed = 26[rod_of_language?];
     } else if (second has supporter) {
-        local2 = 27[rod_of_returning2?];
+        act_needed = 27[rod_of_returning2?];
     }
-    local1 = parent(noun);
-    if (local1 ~= player) {
+    i = parent(noun);
+    if (i ~= player) {
       .labelXXX;
-        if (local1 ~= 0) {
-            if (local1 hasnt open) {
+        if (i ~= 0) {
+            if (i hasnt open) {
                 return L__M(##Transfer,1);
             }
-            local1 = parent(local1);
-            if (local1 == player) {
+            i = parent(i);
+            if (i == player) {
                 jump labelXXX;
             }
             jump labelXXX;
@@ -20440,37 +20440,37 @@ Array preactions_table --> IsDirection;
     }
   .labelXXX;
     if (noun notin player) {
-        local5 = parent(noun);
-        if (local5 has container || local5 has supporter) {
-            local4 = local5;
-            local3 = verb;
+        par = parent(noun);
+        if (par has container || par has supporter) {
+            postonobj = par;
+            k = verb;
             verb = ##Release;
-            if (RunRoutines(local5,after) ~= 0) {
-                verb = local3;
+            if (RunRoutines(par,after) ~= 0) {
+                verb = k;
                 rtrue;
             }
-            verb = local3;
+            verb = k;
         }
         move noun to player;
-        if (local4 ~= 0) {
-            local3 = verb;
+        if (postonobj ~= 0) {
+            k = verb;
             verb = ##Release;
-            if (RunRoutines(local4,before) ~= 0) {
-                verb = local3;
+            if (RunRoutines(postonobj,before) ~= 0) {
+                verb = k;
                 rtrue;
             }
-            verb = local3;
+            verb = k;
         }
     }
-    if (local2 == 28[rod_of_life?]) {
+    if (act_needed == 28[rod_of_life?]) {
         R_Process(##Drop,noun);
         rtrue;
     }
-    if (local2 == 26[rod_of_language?]) {
+    if (act_needed == 26[rod_of_language?]) {
         R_Process(##Insert,noun,second);
         rtrue;
     }
-    if (local2 == 27[rod_of_returning2?]) {
+    if (act_needed == 27[rod_of_returning2?]) {
         R_Process(##PutOn,noun,second);
         rtrue;
     }
