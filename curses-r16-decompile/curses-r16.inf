@@ -11589,11 +11589,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ CheckMirror local1 ;	! 84192 / 0x148e0
+[ CheckMirror o ;	! 84192 / 0x148e0
     if (long_vanity_mirror has general) {
         rfalse;
     }
-    if (local1 in player or canvas_rucksack && (local1 has rod_attr || local1 has hidden_rod || local1 has unidentiifed_rod)) {
+    if (o in player or canvas_rucksack && (o has rod_attr || o has hidden_rod || o has unidentiifed_rod)) {
         rtrue;
     }
     rfalse;
