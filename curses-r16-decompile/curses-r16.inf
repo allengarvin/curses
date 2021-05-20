@@ -23083,27 +23083,27 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 0;
 ];
 
-[ LookUpSub local1 local2 ;	! 175216 / 0x2ac70
-    local2 = TryNumber(consult_from);
-    if (local2 >= 0 && (tourist_map in player || tourist_map in location)) {
-        local1 = 106[tourist_map?];
+[ LookUpSub o n ;	! 175216 / 0x2ac70
+    n = TryNumber(consult_from);
+    if (n >= 0 && (tourist_map in player || tourist_map in location)) {
+        o = tourist_map;
     }
-    if (local2 >= 0 && (ancient_prayer_book in player || ancient_prayer_book in location)) {
-        local1 = 95[ancient_prayer_book?];
+    if (n >= 0 && (ancient_prayer_book in player || ancient_prayer_book in location)) {
+        o = ancient_prayer_book;
     }
-    if (local1 == 0) {
-        local1 = routine175184(player);
+    if (o == nothing) {
+        o = routine175184(player);
     }
-    if (local1 == 0) {
-        local1 = routine175184(location);
+    if (o == nothing) {
+        o = routine175184(location);
     }
-    if (local1 == 0) {
+    if (o == nothing) {
         "I can't see what you wish to consult.";
     }
     print "(consulting ";
-    Defart(local1);
+    Defart(o);
     print ")^";
-    R_Process(##Consult,local1);
+    R_Process(##Consult,o);
     rtrue;
 ];
 
