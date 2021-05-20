@@ -5244,72 +5244,7 @@ Array quote_line --> 10;
 Array the_timers --> 1; 
 Array array_23957 --> 1;        
 Array array_24021 --> 30720;    
-Array parse ->  
-    64
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-;
+Array parse string ! Unknown length -- cannot print;    
 Array inputobjs --> 1;  
 Array multiple_object --> 1;    
 Array parse2 -> 
@@ -5632,7 +5567,7 @@ Array preactions_table --> IsDirection;
     if (w == 'o//' or 'oops') {
         ! no code
     } else {
-        if (w == 'undo' && parse->1 == 1) {
+        if (w == 'undo' && parse->1 == 1[?]) {
             if (turns == 1) {
                 L__M(##Miscellany,11);
                 jump labelXXX;
