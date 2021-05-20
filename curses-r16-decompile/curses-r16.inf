@@ -21262,12 +21262,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Out_on_the_Spire.name
 
-[ ReadSub local1 ;	! 164784 / 0x283b0
+[ ReadSub i ;	! 164784 / 0x283b0
     if (location == thedark) {
         return L__M(##Read,1);
     }
-    local1 = noun.description;
-    if (local1 == 0) {
+    i = noun.description;
+    if (i == nothing) {
         if (noun has container) {
             R_Process(##Search,noun);
             rtrue;
