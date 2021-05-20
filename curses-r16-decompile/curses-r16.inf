@@ -3359,7 +3359,7 @@ Object dug_hole "dug hole"	! 326 / 0x146
 Object Murky_Cave "Murky Cave"	! 327 / 0x147
   with	w_to Spur_of_Rock,
 	ne_to Valley_Prospect,
-	initial MurkyCaveInitial,
+	initial routine119472,
 	description "This is a murky hillside cave, whose mouth opens to the northeast, though a tight squeeze might lead a little way west. Outside is a clear starry night. There is no traffic noise, and the air smells fresh.",
 	daemon MurkyCaveDaemon,
 	section T_ANCIENT_BRITAIN,
@@ -3387,15 +3387,15 @@ Object Spur_of_Rock "Spur of Rock"	! 330 / 0x14a
 
 Object -> hanging_rope "hanging rope"	! 331 / 0x14b
   with	name 'hanging' 'rope',
-	after routine121808,
+	after RopeAfter,
   has	scenery;
 
 Object Hanging_on_Rope "Hanging on Rope"	! 332 / 0x14c
   with	name 'patrol' 'men',
-	after routine121880,
-	before routine121936,
+	after HangingOnRopeAfter,
+	before HangingOnRopeBefore,
 	u_to Spur_of_Rock,
-	d_to routine121824,
+	d_to RopeDown,
 	description "You are hanging perilously on a hemp rope, suspended from an overhang of rock above, which drops down into the darkness of the valley. On the tracks below, patrols of men can be heard, and you feel instinctively that they are not friendly.",
 	cant_go "Up and down are it, quite frankly.",
 	section T_ANCIENT_BRITAIN,
@@ -3407,9 +3407,9 @@ Object -> hemp_rope "hemp rope"	! 333 / 0x14d
 
 Object -> yellow_daisy "yellow daisy"	! 334 / 0x14e
   with	name 'yellow' 'daisy',
-	after routine122068,
-	before routine121980,
-	u_to routine122144,
+	after DaisyAfter,
+	before DaisyBefore,
+	u_to DaisyUp,
 	initial "A single yellow daisy grows from a little tuft of grass on the crags.",
   has	clothing scored;
 
@@ -3432,7 +3432,7 @@ Object Roman_Villa "Roman Villa"	! 336 / 0x150
 
 Object Stream "Stream"	! 337 / 0x151
   with	name 'river' 'road' 'stream' 'roof',
-	after routine122220,
+	after EndStreamAfter,
 	w_to Roman_Villa,
 	u_to "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.",
 	description "A stream runs past the villa and cascades down the hillside here, to join the river far below, near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from your back garden. A rough ladder of wood lashed together with leather rests against the villa at the lowest point of the tiled roof.",
@@ -3441,7 +3441,7 @@ Object Stream "Stream"	! 337 / 0x151
 
 Object -> rough_ladder "rough ladder"	! 338 / 0x152
   with	name 'rough' 'ladder',
-	after routine122272,
+	after LadderAfter,
   has	scenery;
 
 Object Atrium_Cloister "Atrium Cloister"	! 339 / 0x153
@@ -3454,7 +3454,7 @@ Object Atrium_Cloister "Atrium Cloister"	! 339 / 0x153
 
 Object -> summoning_horn "summoning horn"	! 340 / 0x154
   with	name 'horn' 'summoning' 'on' 'pole',
-	after routine122288,
+	after HornAfter,
 	initial "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
 	rod_assoc rod_of_language,
   has	hidden_rod;
@@ -3482,7 +3482,7 @@ Object Guard_Quarters "Guard Quarters"	! 343 / 0x157
 
 Object -> bone_die "crude bone die"	! 344 / 0x158
   with	name 'die' 'dice' 'bone',
-	before routine122416,
+	before DieBefore,
 	description "A crude six-sided die made from animal bone.",
   has	;
 
@@ -3493,26 +3493,26 @@ Object -> leather_sandals "leather sandals"	! 345 / 0x159
 
 Object Triclinium "Triclinium"	! 346 / 0x15a
   with	e_to Atrium,
-	d_to routine122456,
+	d_to TricliniumDown,
 	description "What was once the villa's triclinium, or kitchen, is now deserted and long since ransacked for metal. (Nobody lives on their own in this century, and this villa wouldn't be easy to defend.)  A doorway to the east gives onto the atrium.",
 	section T_ANCIENT_BRITAIN,
   has	light;
 
 Object -> kitchen_well "kitchen well"	! 347 / 0x15b
   with	name 'well' 'hinged' 'wooden' 'cover',
-	before routine122728,
+	before WellBefore,
 	n_to Inside_Well,
 	s_to "In one corner is a hinged wooden cover of some kind, which is shut.",
 	w_to thedark,
 	initial "The hinged wooden cover is raised, revealing a circular well about a yard in diameter. It is very dark inside.",
 	description "The well has a hinged wooden cover. You can't tell by looking how deep it is.",
 	time_left 0,
-	daemon routine122672,
+	daemon WellDaemon,
   has	container door openable static;
 
 Object Inside_Well "Inside Well"	! 348 / 0x15c
   with	name 'air',
-	after routine122852,
+	after InsideWellAfter,
 	e_to Hypocaust,
 	u_to Triclinium,
 	description "You are clinging perilously to the walls of the deep and dangerous well. You can hardly see a thing, even with the aid of the torch, but curiously enough you feel warm air blowing across you from the east.",
@@ -3530,13 +3530,13 @@ Object Hypocaust "Hypocaust"	! 349 / 0x15d
 
 Object -> vents "vents"	! 350 / 0x15e
   with	name 'hypocaust' 'vents',
-	after routine122896,
+	after VentsAfter,
 	article "the",
   has	scenery;
 
 Object Entrance "Entrance"	! 351 / 0x15f
-  with	after routine123076,
-	before routine123156,
+  with	after EntranceAfter,
+	before EntranceBefore,
 	n_to Atrium,
 	description "A well-flagstoned forecourt at the villa entrance, surrounded by lesser wooden buildings. Some of these are in use as stables, and figures of men slip between them. You hide from sight, not wishing to draw attention to yourself. Up on the hill, where Meldrew Hall will one day be built, men on horseback can be seen circling the access track. For a deserted villa, this is certainly well-guarded.",
 	section T_ANCIENT_BRITAIN,
@@ -15787,7 +15787,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Murky_Cave.initial
 
-[ MurkyCaveInitial ;	! 119472 / 0x1d2b0
+[ routine119472 ;	! 119472 / 0x1d2b0
     StartDaemon(selfobj);
     rfalse;
 ];
@@ -15914,7 +15914,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hanging_rope.after
 
-[ routine121808 ;	! 121808 / 0x1dbd0
+[ RopeAfter ;	! 121808 / 0x1dbd0
     if (action == ##Climb) {
         R_Process(##Go,11[d_obj?]);
         rtrue;
@@ -15924,7 +15924,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hanging_on_Rope.d_to
 
-[ routine121824 ;	! 121824 / 0x1dbe0
+[ RopeDown ;	! 121824 / 0x1dbe0
     print "You clamber down the rope, straight into a patrol of guards who capture you!^";
     routine123168();
     rtrue;
@@ -15932,7 +15932,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hanging_on_Rope.after
 
-[ routine121880 ;	! 121880 / 0x1dc18
+[ HangingOnRopeAfter ;	! 121880 / 0x1dc18
     if (action == ##Swing) {
         if (noun ~= hemp_rope) {
             rfalse;
@@ -15945,7 +15945,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hanging_on_Rope.before
 
-[ routine121936 ;	! 121936 / 0x1dc50
+[ HangingOnRopeBefore ;	! 121936 / 0x1dc50
     if (action == ##Drop) {
         remove noun;
         CDefart(noun);
@@ -15956,7 +15956,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: yellow_daisy.before, bear_tapestry.name
 
-[ routine121980 ;	! 121980 / 0x1dc7c
+[ DaisyBefore ;	! 121980 / 0x1dc7c
     if (action == ##Wear) {
         "You tuck the daisy behind your ear, almost out of sight.";
     }
@@ -15972,7 +15972,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: yellow_daisy.after
 
-[ routine122068 ;	! 122068 / 0x1dcd4
+[ DaisyAfter ;	! 122068 / 0x1dcd4
     if (action == ##Take) {
         if (selfobj has moved || hemp_rope has general) {
             rfalse;
@@ -15984,7 +15984,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: yellow_daisy.u_to
 
-[ routine122144 local1 ;	! 122144 / 0x1dd20
+[ DaisyUp local1 ;	! 122144 / 0x1dd20
     if (selfobj has worn && rod_identity == 2) {
         local1 = child(player);
       .label122159;
@@ -16004,7 +16004,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Stream.after
 
-[ routine122220 ;	! 122220 / 0x1dd6c
+[ EndStreamAfter ;	! 122220 / 0x1dd6c
     if (action == ##Swim) {
         "Too shallow for comfort.";
     }
@@ -16016,7 +16016,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rough_ladder.after
 
-[ routine122272 ;	! 122272 / 0x1dda0
+[ LadderAfter ;	! 122272 / 0x1dda0
     if (action == ##Climb or ##Enter) {
         R_Process(##Go,10[u_obj?]);
         rtrue;
@@ -16026,7 +16026,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: summoning_horn.after
 
-[ routine122288 ;	! 122288 / 0x1ddb0
+[ HornAfter ;	! 122288 / 0x1ddb0
     if (action == ##Blow) {
         print "You blow the horn, and it lets a great clarion call out to the hills. ";
         if (CouncilCnt >= 7) {
@@ -16043,7 +16043,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bone_die.before
 
-[ routine122416 ;	! 122416 / 0x1de30
+[ DieBefore ;	! 122416 / 0x1de30
     if (action == ##Drop) {
         print "Alea iacta est. It comes up ";
         EnglishNumber(random(6));
@@ -16054,14 +16054,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Triclinium.d_to
 
-[ routine122456 ;	! 122456 / 0x1de58
+[ TricliniumDown ;	! 122456 / 0x1de58
     if (kitchen_well hasnt open) {
         "The well is covered.";
     }
     if (kitchen_well has general) {
         print "Aware of the dangers, you very carefully lower yourself...^";
         Achieved(SCORE_WELL);
-        return 347[kitchen_well?];
+        return kitchen_well;
     }
     deadflag = DIED;
     "Having no reason to suppose the well is very deep, you cheerfully lower yourself in. This turns out to be something of a misjudgement and you soon lose your grip and fall, endlessly banging against the walls until finally...";
@@ -16069,7 +16069,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: kitchen_well.daemon
 
-[ routine122672 ;	! 122672 / 0x1df30
+[ WellDaemon ;	! 122672 / 0x1df30
     if (player notin Triclinium) {
         rfalse;
     }
@@ -16080,7 +16080,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: kitchen_well.before
 
-[ routine122728 ;	! 122728 / 0x1df68
+[ WellBefore ;	! 122728 / 0x1df68
     if (action == ##Receive) {
         remove noun;
         if (noun has light) {
@@ -16098,7 +16098,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Inside_Well.after
 
-[ routine122852 ;	! 122852 / 0x1dfe4
+[ InsideWellAfter ;	! 122852 / 0x1dfe4
     if (verb == ##Look or ##Go or ##Read) {
         rfalse;
     }
@@ -16107,7 +16107,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: vents.after
 
-[ routine122896 ;	! 122896 / 0x1e010
+[ VentsAfter ;	! 122896 / 0x1e010
     if (action == ##Read or ##Search) {
         if (CouncilCnt > 7) {
             "Four men in druidic furs are standing on the corners of the mosaic, in some kind of sinister conference. This old villa must be some kind of rendezvous point. Between the men a bluish stone rests on the mosaic floor.";
@@ -16119,7 +16119,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Entrance.after
 
-[ routine123076 ;	! 123076 / 0x1e0c4
+[ EntranceAfter ;	! 123076 / 0x1e0c4
     if (action == ##Go) {
         if (noun ~= s_obj or sw_obj or se_obj) {
             rfalse;
@@ -16133,7 +16133,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Entrance.before
 
-[ routine123156 ;	! 123156 / 0x1e114
+[ EntranceBefore ;	! 123156 / 0x1e114
     if (CouncilCnt == 0) {
         CouncilCnt = 1;
     }
