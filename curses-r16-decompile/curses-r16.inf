@@ -1574,8 +1574,8 @@ Object -> delicate_gold_key "delicate gold key"
 
 Object Old_Winery "Old Winery"	
   with	name 'banister' 'rail' 'crack' 'paraphern',
-	after OldWineryBefore,
-	before routine84820,
+	after OldWineryAfter,
+	before OldWineryBefore,
 	s_to Attic,
 	e_to Storage_Room,
 	w_to Conservatory,
@@ -11675,7 +11675,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ routine84820 ;	
+[ OldWineryBefore ;	
     if (action == ##Look) {
         if (selfobj has general) {
             rfalse;
@@ -11697,7 +11697,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OldWineryBefore ;	
+[ OldWineryAfter ;	
     if (action == ##PutOn) {
         if (second == demijohn) {
             "We know already what happens to things balanced on the demijohn.";
