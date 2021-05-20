@@ -15248,7 +15248,7 @@ Array preactions_table --> IsDirection;
 
 [ FountdationsBefore ;	
     if (action == ##Look) {
-        routine117024();
+        MzeOldDescribe();
         rtrue;
     }
     if (action == ##Drop) {
@@ -15258,75 +15258,75 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine117024 local1 local2 local3 local4 local5 local6 ;	
-    local1 = MazeBoundary(MazeX,MazeY);
+[ MzeOldDescribe numwalls n_side e_side s_side w_side local6 ;	
+    numwalls = MazeBoundary(MazeX,MazeY);
     if (MazeX == 7 && MazeY == 5) {
-        local1 = 2[?];
+        numwalls = 2;
     }
     new_line;
-    if (local1 == 1[?]) {
+    if (numwalls == 1) {
         print "You are standing on a bed in which seeds have been recently planted. ";
     }
-    if (local1 == 0) {
+    if (numwalls == 0) {
         print "You stand on a rough patch of grass. ";
     }
-    if (local1 == 2[?]) {
+    if (numwalls == 2) {
         print "You stand on a rough patch of grass, marked out with whitewash. ";
     }
     --MazeY;
-    local2 = routine115448(MazeX,MazeY);
+    n_side = routine115448(MazeX,MazeY);
     ++MazeY;
     ++MazeX;
-    local4 = routine115448(MazeX,MazeY);
+    s_side = routine115448(MazeX,MazeY);
     --MazeX;
     ++MazeY;
-    local3 = routine115448(MazeX,MazeY);
+    e_side = routine115448(MazeX,MazeY);
     --MazeY;
     --MazeX;
-    local5 = routine115448(MazeX,MazeY);
+    w_side = routine115448(MazeX,MazeY);
     ++MazeX;
-    local1 = local2 + local4 + local3 + local5;
-    if (local1 == 4[e_obj?]) {
+    numwalls = n_side + s_side + e_side + w_side;
+    if (numwalls == 4) {
         print "There are seedbeds on all sides. ";
     } else {
-        if (local1 == 3[s_obj?]) {
+        if (numwalls == 3) {
             print "There are seedbeds to ";
         }
-        if (local1 == 2[?]) {
+        if (numwalls == 2) {
             print "There are seedbeds to the ";
         }
-        if (local1 == 1[?]) {
+        if (numwalls == 1) {
             print "There is a seedbed to the ";
         }
-        if (local1 == 0) {
+        if (numwalls == 0) {
             jump labelXXX;
         }
       .labelXXX;
-        if (local1 > 0) {
-            if (local2 == 1[?]) {
+        if (numwalls > 0) {
+            if (n_side == true) {
                 print "north";
-                local2 = 0;
-            } else if (local4 == 1[?]) {
+                n_side = false;
+            } else if (s_side == true) {
                 print "east";
-                local4 = 0;
-            } else if (local3 == 1[?]) {
+                s_side = false;
+            } else if (e_side == true) {
                 print "south";
-                local3 = 0;
-            } else if (local5 == 1[?]) {
+                e_side = false;
+            } else if (w_side == true) {
                 print "west";
-                local5 = 0;
+                w_side = false;
             }
-            --local1;
-            if (local1 == 0) {
+            --numwalls;
+            if (numwalls == 0) {
                 print ". ";
             } else {
-                if (local1 == 1[?]) {
+                if (numwalls == 1) {
                     print " and ";
                 }
-                if (local1 == 2[?]) {
+                if (numwalls == 2) {
                     print ", ";
                 }
-                if (local1 == 3[s_obj?]) {
+                if (numwalls == 3) {
                     print ", ";
                 }
                 jump labelXXX;
@@ -15335,66 +15335,66 @@ Array preactions_table --> IsDirection;
     }
   .labelXXX;
     --MazeY;
-    local2 = routine115468(MazeX,MazeY);
+    n_side = routine115468(MazeX,MazeY);
     ++MazeY;
     ++MazeX;
-    local4 = routine115468(MazeX,MazeY);
+    s_side = routine115468(MazeX,MazeY);
     --MazeX;
     ++MazeY;
-    local3 = routine115468(MazeX,MazeY);
+    e_side = routine115468(MazeX,MazeY);
     --MazeY;
     --MazeX;
-    local5 = routine115468(MazeX,MazeY);
+    w_side = routine115468(MazeX,MazeY);
     ++MazeX;
-    local1 = local2 + local4 + local3 + local5;
-    if (local1 == 0) {
+    numwalls = n_side + s_side + e_side + w_side;
+    if (numwalls == 0) {
         new_line;
         rfalse;
     }
-    if (local1 == 1[?]) {
+    if (numwalls == 1) {
         print "There is a fence to the ";
     }
-    if (local1 == 2[?]) {
+    if (numwalls == 2) {
         print "There are fences to ";
     }
-    if (local1 == 3[s_obj?]) {
+    if (numwalls == 3) {
         print "There are fences to ";
     }
-    if (local1 == 4[e_obj?]) {
+    if (numwalls == 4) {
         "This is a fenced-in area.";
     }
-    if (local1 == 2[?] && local4 == 1[?] && local5 == 1[?]) {
+    if (numwalls == 2 && s_side == true && w_side == true) {
         local6 = 1[?];
     }
   .labelXXX;
-    if (local1 > 0) {
-        if (local2 == 1[?]) {
+    if (numwalls > 0) {
+        if (n_side == true) {
             print "north";
-            local2 = 0;
-        } else if (local4 == 1[?]) {
+            n_side = false;
+        } else if (s_side == true) {
             print "east";
-            local4 = 0;
-        } else if (local3 == 1[?]) {
+            s_side = false;
+        } else if (e_side == true) {
             print "south";
-            local3 = 0;
-        } else if (local5 == 1[?]) {
+            e_side = false;
+        } else if (w_side == true) {
             print "west";
-            local5 = 0;
+            w_side = false;
         }
-        --local1;
-        if (local1 == 0) {
+        --numwalls;
+        if (numwalls == 0) {
             if (local6 == 1[?]) {
                 "; uncouth rustics are at work to the south, but fortunately they haven't yet seen you.";
             }
             ".";
         }
-        if (local1 == 1[?]) {
+        if (numwalls == 1) {
             print " and ";
         }
-        if (local1 == 2[?]) {
+        if (numwalls == 2) {
             print ", ";
         }
-        if (local1 == 3[s_obj?]) {
+        if (numwalls == 3) {
             print ", ";
         }
         jump labelXXX;
