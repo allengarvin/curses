@@ -18413,7 +18413,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ AngelLife local1 ;	
+[ AngelLife i ;	
     if (action == ##Answer or ##Ask) {
         if (AngelHints() ~= 0) {
             rtrue;
@@ -18434,14 +18434,14 @@ Array preactions_table --> IsDirection;
         Defart(noun);
         print " and rouses himself to say: ~";
         give angel ~general;
-        local1 = noun.angel_hint;
-        if (local1 == 65535[?]) {
+        i = noun.angel_hint;
+        if (i == 65535) {
             if (noun.devil_hint ~= "") {
                 "I suppose you could ask, um, that tailed gentleman.~";
             }
             "I'm afraid I can't help you there.~";
         }
-        (string) local1, "~";
+        (string) i, "~";
     }
     rfalse;
 ];
