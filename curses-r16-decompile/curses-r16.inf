@@ -4982,7 +4982,6 @@ Global ContainerSave;
 Global ball_polished;
 Global tablet_eaten;
 Global daisy_given;
-Global global142 = 25144[?];
 Global Mouse_x = 8;
 Global Mousy_y = 3;
 Global MouseUnderstandsMask;
@@ -5126,6 +5125,62 @@ Array task_scores ->	! 23848 (0x5d28)
     3
 ;
 Array standard_interpreter --> 1280[?];	! 0 (0x0)
+Array mouse_maze ->	! 25144 (0x6238)
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    48
+    48
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    48
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    48
+    48
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    49
+;
 Array card_deck --> 1;	! 25207 (0x6277)
 Array garden_array ->	! 25228 (0x628c)
     49
@@ -12497,7 +12552,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (i < 0 || i > 8 || j < 0 || j > 6) {
         rfalse;
     }
-    cell = global142->(9 * j + i);
+    cell = mouse_maze->(9 * j + i);
     if (cell == '0') {
         rfalse;
     }
