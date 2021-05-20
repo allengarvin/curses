@@ -4998,7 +4998,7 @@ Global DigX;
 Global DigY;
 Global OldDigX;
 Global OldDigY;
-Global global160;
+Global CouncilCnt;
 Global global161;
 Global global162;
 Global global163;
@@ -15798,9 +15798,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (game_section ~= T_ANCIENT_BRITAIN) {
         StopDaemon(selfobj);
     }
-    local1 = global160;
+    local1 = CouncilCnt;
     if (local1 > 0) {
-        ++global160;
+        ++CouncilCnt;
     }
     if (local1 == 1[?]) {
         "^From up on the hill you hear the blowing of a horn.";
@@ -16029,12 +16029,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine122288 ;	! 122288 / 0x1ddb0
     if (action == ##Blow) {
         print "You blow the horn, and it lets a great clarion call out to the hills. ";
-        if (global160 >= 7) {
+        if (CouncilCnt >= 7) {
             print "The guardsmen, all over the villa, find you very quickly.^";
             routine123168();
         } else {
             print "A call which is rapidly answered as...^";
-            global160 = 7[se_obj?];
+            CouncilCnt = 7;
         }
         rtrue;
     }
@@ -16109,7 +16109,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine122896 ;	! 122896 / 0x1e010
     if (action == ##Read or ##Search) {
-        if (global160 > 7) {
+        if (CouncilCnt > 7) {
             "Four men in druidic furs are standing on the corners of the mosaic, in some kind of sinister conference. This old villa must be some kind of rendezvous point. Between the men a bluish stone rests on the mosaic floor.";
         }
         "You see across the mosaic floor of the moonlit atrium.";
@@ -16134,8 +16134,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Entrance.before
 
 [ routine123156 ;	! 123156 / 0x1e114
-    if (global160 == 0) {
-        global160 = 1[?];
+    if (CouncilCnt == 0) {
+        CouncilCnt = 1;
     }
     rfalse;
 ];
@@ -16143,7 +16143,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: bell_ropes.name
 
 [ routine123168 local1 local2 ;	! 123168 / 0x1e120
-    if (global160 < 8) {
+    if (CouncilCnt < 8) {
         deadflag = DIED;
         "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and besides they would probably only have done you in more unpleasantly.";
     }
@@ -16159,7 +16159,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         local1 = local2;
         jump label123494;
     }
-    global160 = 0;
+    CouncilCnt = 0;
     PlayerTo(Rough_Tent);
     rtrue;
 ];
