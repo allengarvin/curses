@@ -5001,7 +5001,7 @@ Global OldDigY;
 Global CouncilCnt;
 Global DreamCnt;
 Global OzoneSmelled;
-Global global163;
+Global slide_moves;
 Global global164;
 Global global165;
 Global global166;
@@ -16740,11 +16740,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     new_line;
     rtrue;
   .label128652;
-    ++global163;
-    if (global163 == 8[nw_obj?]) {
+    ++slide_moves;
+    if (slide_moves == 8) {
         set_flag_array(36);
     }
-    if (global163 == 5[w_obj?]) {
+    if (slide_moves == 5) {
         set_flag_array(42);
     }
     local3 = array_25291->local1;
