@@ -6354,46 +6354,46 @@ Array preactions_table --> IsDirection;
             flag = 1;
         }
         if (o == 'a//' or 'an' or 'any' or 'either' or 'anything') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
         }
         if (o == 'another' or 'other') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_type = indef_type | 1;
         }
         if (o == 'my' or 'this' or 'these') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_type = indef_type | 2;
         }
         if (o == 'that' or 'those') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_type = indef_type | 4;
         }
         if (o == 'its') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_type = indef_type | 16;
         }
         if (o == 'his' or 'your') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_type = indef_type | 32;
         }
         if (o == 'lit' or 'lighted') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_type = indef_type | 64;
         }
         if (o == 'unlit') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_type = indef_type | 128;
         }
         if (o == 'all' or 'each' or 'every' or 'everything') {
-            indef_mode = 1[?];
+            indef_mode = 1;
             flag = 1;
             indef_wanted = 100;
             if (take_all_rule == 1) {
@@ -6405,7 +6405,7 @@ Array preactions_table --> IsDirection;
             n = NumberWord(o);
             if (n > 1) {
                 indef_guess_p = 1[?];
-                indef_mode = 1[?];
+                indef_mode = 1;
                 flag = 1;
                 indef_wanted = n;
                 indef_type = indef_type | 8;
@@ -6692,7 +6692,7 @@ Array preactions_table --> IsDirection;
     if (many_flag == 1[?]) {
         single_object = 0;
         multi_context = token;
-    } else if (indef_mode == 1[?] && indef_type & 8 ~= 0 && (indef_wanted < 100 && indef_wanted > 1)) {
+    } else if (indef_mode == 1 && indef_type & 8 ~= 0 && (indef_wanted < 100 && indef_wanted > 1)) {
         multihad = 1;
         multi_wanted = indef_wanted;
         etype = TOOFEW_PE;
@@ -6976,7 +6976,7 @@ Array preactions_table --> IsDirection;
     if (context == 6[ne_obj?] && good_ones == 0) {
         return match_list-->0;
     }
-    if (indef_mode == 1[?] && indef_type & 8 ~= 0) {
+    if (indef_mode == 1 && indef_type & 8 ~= 0) {
         if (context < 2 || context > 5) {
             etype = MULTI_PE;
             return 65535[?];
@@ -7756,7 +7756,7 @@ Array preactions_table --> IsDirection;
                     jump labelXXX;
                 }
                 if (indef_mode == 0) {
-                    indef_mode = 1[?];
+                    indef_mode = 1;
                     indef_type = 0;
                     indef_wanted = 0;
                 }
