@@ -14914,21 +14914,21 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ routine115396 local1 local2 local3 ;	
-    if (local1 == 0 or 8[nw_obj?] || local2 == 0 or 6[ne_obj?]) {
-        local3 = garden_array->(9 * local2 + local1);
-        if (local3 == 48[furniture?]) {
+[ TestMazeConfines x y cell ;	
+    if (x == 0 or 8 || y == 0 or 6) {
+        cell = garden_array->(9 * y + x);
+        if (cell == '0') {
             rfalse;
         }
-        if (local3 == 49[scratched_cupboard?]) {
+        if (cell == '1') {
             return 2[?];
         }
     }
-    return MazeBoundary(local1,local2);
+    return MazeBoundary(x,y);
 ];
 
 [ routine115448 local1 local2 local3 ;	
-    local3 = routine115396(local1,local2);
+    local3 = TestMazeConfines(local1,local2);
     if (local3 == 2[?]) {
         local3 = 0;
     }
@@ -14936,7 +14936,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ routine115468 local1 local2 local3 ;	
-    local3 = routine115396(local1,local2);
+    local3 = TestMazeConfines(local1,local2);
     if (local3 == 1[?]) {
         local3 = 0;
     }
