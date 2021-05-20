@@ -9953,14 +9953,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Meldrewes_History.after
 
-[ HistoryAfter local1 ;	! 65440 / 0xffa0
+[ HistoryAfter w ;	! 65440 / 0xffa0
     if (action == ##Consult) {
         wn = consult_from;
-        local1 = NextWord();
-        if (local1 == 35544['mad'?] or 39135['sir'?] or 34500['honourable'?]) {
-            local1 = NextWord();
+        w = NextWord();
+        if (w == 'mad' or 'sir' or 'honourable') {
+            w = NextWord();
         }
-        generic_globvar = local1;
+        generic_globvar = w;
         if (generic_globvar == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
             set_flag_array(48);
             "Perhaps you may one day earn a place in vol. III.";
