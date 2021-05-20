@@ -4972,7 +4972,7 @@ Global displaying_quote = true;
 Global before_short_desc;
 Global short_loc_var;
 Global global131;
-Global global132;
+Global save_score;
 Global global133;
 Global rod_score;
 Global StrongboxX;
@@ -24471,7 +24471,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (pretty_mode == false) {
         local2 = local1 - 15;
         @set_cursor 1 local2;
-        global132 = score;
+        save_score = score;
         print score, "/", turns, "   ";
     } else {
         if (displaying_quote == true) {
@@ -24486,7 +24486,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local2 = local1 - 28;
             @set_cursor 1 local2;
         }
-        if (displaying_quote == true || global132 ~= score) {
+        if (displaying_quote == true || save_score ~= score) {
             print score;
             if (deadflag > 0) {
                 print "/550";
