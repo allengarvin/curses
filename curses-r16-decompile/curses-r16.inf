@@ -2681,15 +2681,15 @@ Object -> Homer "Homer"	! 240 / 0xf0
 
 Object -> -> Pan_pipes "Pan pipes"	! 241 / 0xf1
   with	name 'pan' 'pipes' 'panpipes' 'syrinx',
-	after routine109056,
+	after PanPipesAfter,
 	description "Carefully cut from river reeds, these once belonged to Homer himself. As you may recall.",
 	article "the",
 	angel_hint "Marvellous! A sound to soothe the spirit.",
   has	;
 
 Object Cross_Centre "Cross Centre"	! 242 / 0xf2
-  with	after routine109584,
-	before routine109612,
+  with	after CrossAfter,
+	before CrossBefore,
 	s_to Inner_Sanctum,
 	ne_to Northeast_Cross,
 	se_to Southeast_Cross,
@@ -2697,15 +2697,15 @@ Object Cross_Centre "Cross Centre"	! 242 / 0xf2
 	nw_to Southwest_Cross,
 	u_to Inner_Sanctum,
 	d_to inscriptions,
-	initial routine109576,
+	initial CrossInitial,
 	description "The fabled Labyrinth seems only to consist of a broad cross. Arms run to northeast, northwest, southeast and southwest, while a flight of stone steps widens and climbs south.",
-	daemon routine109644,
+	daemon CrossDaemon,
 	section T_TAROT,
   has	;
 
 Object -> inscriptions "inscriptions"	! 243 / 0xf3
   with	name 'inscription' 'opening',
-	after routine109740,
+	after InscriptsAfter,
 	n_to Oubliette,
 	s_to "There are extremely scuffed and faded inscriptions at the centre of the cross.",
 	w_to thedark,
@@ -2723,7 +2723,7 @@ Object Oubliette "Oubliette"	! 244 / 0xf4
 
 Object -> gleaming_amber_gem "gleaming amber gem"	! 245 / 0xf5
   with	name 'amber' 'gem',
-	after routine109848,
+	after GemAfter,
 	initial "Lying on top of crushed, broken bones, in plain view, is a gleaming gem of amber.",
 	description "Embedded within is the body of a fly. Scratched upon one face is the word ~GALITA~.",
 	angel_hint "Isn't there some classical legend about her?",
@@ -2738,8 +2738,8 @@ Object Northeast_Cross "Northeast Cross"	! 246 / 0xf6
 
 Object -> statue_of_Demeter "statue of Demeter"	! 251 / 0xfb
   with	name 'demeter' 'statue' 'of',
-	after routine110036,
-	before routine110156,
+	after ClassicalStatueAfter,
+	before ClassicalStatueBefore,
 	initial "A fine statue of the goddess Demeter stands here.",
   has	static statue_flag;
 
@@ -2752,8 +2752,8 @@ Object Northwest_Cross "Northwest Cross"	! 247 / 0xf7
 
 Object -> statue_of_Dionysus "statue of Dionysus"	! 253 / 0xfd
   with	name 'dionysus' 'statue' 'of',
-	after routine110036,
-	before routine110156,
+	after ClassicalStatueAfter,
+	before ClassicalStatueBefore,
 	initial "A fine statue of the god Dionysus stands here.",
   has	static statue_flag;
 
@@ -2766,8 +2766,8 @@ Object Southeast_Cross "Southeast Cross"	! 248 / 0xf8
 
 Object -> statue_of_Ares "statue of Ares"	! 252 / 0xfc
   with	name 'ares' 'statue' 'of',
-	after routine110036,
-	before routine110156,
+	after ClassicalStatueAfter,
+	before ClassicalStatueBefore,
 	initial "A fine statue of the god Ares stands here.",
   has	static statue_flag;
 
@@ -2780,8 +2780,8 @@ Object Southwest_Cross "Southwest Cross"	! 249 / 0xf9
 
 Object -> statue_of_Poseidon "statue of Poseidon"	! 250 / 0xfa
   with	name 'poseidon' 'statue' 'of',
-	after routine110036,
-	before routine110156,
+	after ClassicalStatueAfter,
+	before ClassicalStatueBefore,
 	initial "A fine statue of the god Poseidon stands here.",
   has	static statue_flag;
 
@@ -2802,7 +2802,7 @@ Object -> flaming_bronze_urn "flaming bronze urn"	! 256 / 0x100
 
 Object Oracle "Oracle"	! 255 / 0xff
   with	name 'oracle' 'masked' 'priestess' 'pythian' 'loxias' 'of' 'apollo',
-	life routine110184,
+	life OracleLife,
 	initial "The Oracle, the masked priestess of Apollo, stands here behind an obsidian altar-stone, three cubits cubed: to her side is a bronze urn, mouthing perpetual flame.",
 	article "the",
   has	animate;
@@ -14347,7 +14347,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Pan_pipes.after
 
-[ routine109056 local1 ;	! 109056 / 0x1aa00
+[ PanPipesAfter i ;	! 109056 / 0x1aa00
     if (action == ##Blow) {
         if (gas_mask has worn) {
             "With the gas mask on?";
@@ -14359,20 +14359,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "You sound off some dissonant notes.";
         }
         print "Seized by divine inspiration, you launch into J. S. Bach's ";
-        local1 = random(5);
-        if (local1 == 1[?]) {
+        i = random(5);
+        if (i == 1) {
             print "Prelude number 1";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             print "Passacaglia";
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             print "Chromatic Fantasy and Fugue";
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             print "partita for unaccompanied flute";
         }
-        if (local1 == 5[w_obj?]) {
+        if (i == 5) {
             print "duet number four";
         }
         if (Oracle in location) {
@@ -14390,14 +14390,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Cross_Centre.initial
 
-[ routine109576 ;	! 109576 / 0x1ac08
+[ CrossInitial ;	! 109576 / 0x1ac08
     StartDaemon(selfobj);
     rfalse;
 ];
 
 ! References: Cross_Centre.after
 
-[ routine109584 ;	! 109584 / 0x1ac10
+[ CrossAfter ;	! 109584 / 0x1ac10
     if (verb == ##Take or ##Remove && noun == inscribed_stone or old_timber_spar && noun has scenery) {
         give noun ~scenery;
         give noun moved;
@@ -14407,7 +14407,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Cross_Centre.before
 
-[ routine109612 ;	! 109612 / 0x1ac2c
+[ CrossBefore ;	! 109612 / 0x1ac2c
     if (verb == ##Take or ##Remove && noun == inscribed_stone or old_timber_spar && noun has static) {
         inscriptions.initial = "The two-foot opening is clear again.";
     }
@@ -14416,7 +14416,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Cross_Centre.daemon
 
-[ routine109644 ;	! 109644 / 0x1ac4c
+[ CrossDaemon ;	! 109644 / 0x1ac4c
     if (parent(statue_of_Poseidon) == Northeast_Cross && parent(statue_of_Demeter) == Northwest_Cross && parent(statue_of_Ares) == Southeast_Cross && parent(statue_of_Dionysus) == Southwest_Cross) {
         if (inscriptions has open) {
             rtrue;
@@ -14430,7 +14430,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: inscriptions.after
 
-[ routine109740 ;	! 109740 / 0x1acac
+[ InscriptsAfter ;	! 109740 / 0x1acac
     if (action == ##Receive) {
         if (selfobj hasnt open) {
             rfalse;
@@ -14461,7 +14461,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gleaming_amber_gem.after
 
-[ routine109848 ;	! 109848 / 0x1ad18
+[ GemAfter ;	! 109848 / 0x1ad18
     if (action == ##Take) {
         if (selfobj has moved) {
             rfalse;
@@ -14479,7 +14479,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: statue_of_Poseidon.after, statue_of_Demeter.after, statue_of_Ares.after, statue_of_Dionysus.after
 
-[ routine110036 ;	! 110036 / 0x1add4
+[ ClassicalStatueAfter ;	! 110036 / 0x1add4
     if (action == ##Push) {
         "Perhaps you should say which way to push.";
     }
@@ -14498,7 +14498,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: statue_of_Poseidon.before, statue_of_Demeter.before, statue_of_Ares.before, statue_of_Dionysus.before
 
-[ routine110156 ;	! 110156 / 0x1ae4c
+[ ClassicalStatueBefore ;	! 110156 / 0x1ae4c
     if (action == ##PushDir) {
         "You heave the statue along with you.";
     }
@@ -14507,7 +14507,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Oracle.life
 
-[ routine110184 ;	! 110184 / 0x1ae68
+[ OracleLife ;	! 110184 / 0x1ae68
     if (action == ##Attack or ##Kiss or ##ThrowAt) {
         "As you ought to know, the Oracle is inviolable.";
     }
