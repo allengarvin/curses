@@ -746,7 +746,7 @@ Global 147	card_ptr:int
 Global 148	hollow_man_cnt:int
 Global 149	poseiden_warning:bool
 Global 150	priest_cnt:int
-Global 151	global151:?
+GlobalArray 151	garden_array:array(66*~int)
 Global 152	MazeX:int
 Global 153	MazeY:int
 Global 154	WeedkillerX:int
@@ -1524,7 +1524,7 @@ Routine 0x1be68	BeanStalkBefore
 Routine 0x1bec0	RollerAfter
 Routine 0x1bf80	RollerEachTurn
 Routine 0x1c038	WeedKillerAfter
-Routine 0x1c210	WeedKillerDaemon
+Routine 0x1c210	WeedKillerDaemon ndx:int
 Routine 0x1c22c	SpadeShort
 Routine 0x1c250	SpadeAfter
 Routine 0x1c294	MazeBoundary

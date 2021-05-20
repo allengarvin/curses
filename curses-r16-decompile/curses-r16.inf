@@ -4990,7 +4990,6 @@ Global card_ptr;
 Global hollow_man_cnt;
 Global poseiden_warning;
 Global priest_cnt;
-Global global151 = 25228[?];
 Global MazeX = 4;
 Global MazeY = 6;
 Global WeedkillerX = 100;
@@ -5128,6 +5127,74 @@ Array task_scores ->	! 23848 (0x5d28)
 ;
 Array standard_interpreter --> 1280[?];	! 0 (0x0)
 Array card_deck --> 1;	! 25207 (0x6277)
+Array garden_array ->	! 25228 (0x628c)
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    48
+    48
+    48
+    49
+    48
+    48
+    49
+    49
+    49
+    48
+    49
+    48
+    48
+    49
+    48
+    49
+    49
+    48
+    48
+    48
+    49
+    48
+    48
+    48
+    49
+    49
+    49
+    48
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    48
+    48
+    48
+    49
+    48
+    49
+    49
+    49
+    49
+    49
+    48
+    49
+    49
+    49
+    49
+    8
+    2
+    16
+;
 Array quote_line --> 10;	! 25943 (0x6557)
 Array the_timers --> 1;	! 23893 (0x5d55)
 Array array_23957 --> 1;	! 23957 (0x5d95)
@@ -14936,10 +15003,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: weed_killer_bottle.daemon
 
-[ WeedKillerDaemon local1 ;	! 115216 / 0x1c210
+[ WeedKillerDaemon ndx ;	! 115216 / 0x1c210
     if (game_section ~= T_GARDEN_PAST) {
-        local1 = WeedkillerX + 9 * WeedkillerY;
-        global151->local1 = 48[furniture?];
+        ndx = WeedkillerX + 9 * WeedkillerY;
+        garden_array->ndx = 48;
         StopDaemon(selfobj);
     }
     rfalse;
@@ -14974,7 +15041,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 < 0 || local1 > 8 || local2 < 0 || local2 > 6) {
         rfalse;
     }
-    local3 = global151->(9 * local2 + local1);
+    local3 = garden_array->(9 * local2 + local1);
     if (local3 == 48[furniture?]) {
         rfalse;
     }
@@ -14986,7 +15053,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine115396 local1 local2 local3 ;	! 115396 / 0x1c2c4
     if (local1 == 0 or 8[nw_obj?] || local2 == 0 or 6[ne_obj?]) {
-        local3 = global151->(9 * local2 + local1);
+        local3 = garden_array->(9 * local2 + local1);
         if (local3 == 48[furniture?]) {
             rfalse;
         }
