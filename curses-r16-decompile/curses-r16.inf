@@ -14984,61 +14984,61 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine115644 local1 local2 local3 local4 local5 ;	
+[ MazeDescribe numwalls n_side e_side s_side w_side ;	
     --MazeY;
-    local2 = MazeBoundary(MazeX,MazeY);
+    n_side = MazeBoundary(MazeX,MazeY);
     ++MazeY;
     ++MazeX;
-    local4 = MazeBoundary(MazeX,MazeY);
+    s_side = MazeBoundary(MazeX,MazeY);
     --MazeX;
     ++MazeY;
-    local3 = MazeBoundary(MazeX,MazeY);
+    e_side = MazeBoundary(MazeX,MazeY);
     --MazeY;
     --MazeX;
-    local5 = MazeBoundary(MazeX,MazeY);
+    w_side = MazeBoundary(MazeX,MazeY);
     ++MazeX;
-    local1 = local2 + local4 + local3 + local5;
-    if (local1 == 4[e_obj?]) {
+    numwalls = n_side + s_side + e_side + w_side;
+    if (numwalls == 4) {
         "^You are hedged in on all sides.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (numwalls == 3) {
         print "^You are hedged in and can only go back ";
     }
-    if (local1 == 2[?]) {
+    if (numwalls == 2) {
         print "^The corridor runs ";
     }
-    if (local1 == 1[?]) {
+    if (numwalls == 1) {
         print "^At this junction, the maze runs ";
     }
-    if (local1 == 0) {
+    if (numwalls == 0) {
         "^This is a crossroads in the maze.";
     }
   .labelXXX;
-    if (local1 < 4) {
-        if (local2 == 0) {
+    if (numwalls < 4) {
+        if (n_side == 0) {
             print "north";
-            local2 = 1[?];
-        } else if (local4 == 0) {
+            n_side = 1[?];
+        } else if (s_side == 0) {
             print "east";
-            local4 = 1[?];
-        } else if (local3 == 0) {
+            s_side = 1[?];
+        } else if (e_side == 0) {
             print "south";
-            local3 = 1[?];
-        } else if (local5 == 0) {
+            e_side = 1[?];
+        } else if (w_side == 0) {
             print "west";
-            local5 = 1[?];
+            w_side = 1[?];
         }
-        ++local1;
-        if (local1 == 4[e_obj?]) {
+        ++numwalls;
+        if (numwalls == 4) {
             ".";
         }
-        if (local1 == 3[s_obj?]) {
+        if (numwalls == 3) {
             print " and ";
         }
-        if (local1 == 2[?]) {
+        if (numwalls == 2) {
             print ", ";
         }
-        if (local1 == 1[?]) {
+        if (numwalls == 1) {
             print ", ";
         }
         jump labelXXX;
@@ -15105,7 +15105,7 @@ Array preactions_table --> IsDirection;
 
 [ MazeBefore ;	
     if (action == ##Look) {
-        routine115644();
+        MazeDescribe();
         rtrue;
     }
     rfalse;
@@ -15128,7 +15128,7 @@ Array preactions_table --> IsDirection;
 
 [ PatioBefore ;	
     if (action == ##Look) {
-        routine115644();
+        MazeDescribe();
         rtrue;
     }
     rfalse;
