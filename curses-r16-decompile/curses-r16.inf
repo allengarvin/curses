@@ -5255,7 +5255,7 @@ Array array_24634 --> 1;
 Array array_24650 --> 1;        
 Array match_list --> 1; 
 Array match_classes -> 128;     
-Array array_24916 --> 1;        
+Array kept_results --> 16;      
 Array bomb_wires -> 4;  
 Array henri_post_array ->       
     8
@@ -5578,7 +5578,7 @@ Array preactions_table --> IsDirection;
         i = 0;
       .labelXXX;
         if (i < 8) {
-            results-->i = array_24916-->i;
+            results-->i = kept_results-->i;
             ++i;
             jump labelXXX;
         }
@@ -6029,7 +6029,7 @@ Array preactions_table --> IsDirection;
                                 i = 0;
                               .labelXXX;
                                 if (i < 8) {
-                                    array_24916-->i = results-->i;
+                                    kept_results-->i = results-->i;
                                     ++i;
                                     jump labelXXX;
                                 }
