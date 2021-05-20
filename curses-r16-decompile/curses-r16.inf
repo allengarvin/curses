@@ -18619,7 +18619,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine145968 ;	! 145968 / 0x23a30
+[ HellishAsk ;	! 145968 / 0x23a30
     if (demon hasnt general) {
         if (demon.time_left == 0) {
             "~No hints left, sucker.~";
@@ -18633,7 +18633,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ DaemonLife local1 ;	! 146120 / 0x23ac8
     if (action == ##Answer or ##Ask) {
-        if (routine145968() ~= 0) {
+        if (HellishAsk() ~= 0) {
             rtrue;
         }
         if (routine144884(special_word) ~= 0) {
@@ -18645,7 +18645,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "One does not give orders to such a character.";
     }
     if (action == ##Give or ##Show) {
-        if (routine145968() ~= 0) {
+        if (HellishAsk() ~= 0) {
             rtrue;
         }
         print "The demon glances lazily at ";
