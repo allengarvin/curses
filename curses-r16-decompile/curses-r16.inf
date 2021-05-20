@@ -4680,7 +4680,7 @@ Object Hellish_Place "Hellish Place"
 
 Object -> demon "demon"	
   with	name 'devil' 'demon' 'demonic' 'gentleman',
-	life DaemonLife,
+	life DemonLife,
 	description "If you were to cast a film of your adventures so far, you would hire Donald Sutherland to play this gentleman.",
 	number 4,
   has	animate scenery;
@@ -18304,7 +18304,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DaemonLife local1 ;	
+[ DemonLife i ;	
     if (action == ##Answer or ##Ask) {
         if (HellishAsk() ~= 0) {
             rtrue;
@@ -18329,14 +18329,14 @@ Array preactions_table --> IsDirection;
             remove noun;
             print "Mmm... delicious!~  Sloth and gluttony... two deadly sins in one minute. His boss will be pleased. ~";
         }
-        local1 = noun.devil_hint;
-        if (local1 == 65535[?]) {
+        i = noun.devil_hint;
+        if (i == 65535) {
             if (noun.angel_hint ~= "") {
                 "I know about that, but my counterpart doesn't.~";
             }
             "I know just what that's for.~";
         }
-        (string) local1, "~";
+        (string) i, "~";
     }
     rfalse;
 ];
