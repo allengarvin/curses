@@ -16480,44 +16480,44 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: heavy_iron_mascot.daemon
 
-[ MascotDaemon local1 ;	! 125232 / 0x1e930
+[ MascotDaemon i ;	! 125232 / 0x1e930
     if (heavy_iron_mascot notin player) {
         rfalse;
     }
-    local1 = selfobj.number - 1;
-    selfobj.number = local1;
-    if (local1 == 0) {
+    i = selfobj.number - 1;
+    selfobj.number = i;
+    if (i == 0) {
         deadflag = DIED;
         print "^In an astonishing freak accident, ";
-        local1 = random(5);
-        if (local1 == 1[?]) {
+        i = random(5);
+        if (i == 1) {
             "a meteorite hurtles through the Earth's atmosphere and then straight through your head. Anyone would think you had a curse on you (anyone, that is, still able to think).";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             "an earthquake demolishes everything in the neighbourhood, swallowing you up into a chasm in the ground. Anyone would think you had a curse on you.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             "a long-dormant volcano erupts instantaneously below your feet. Anyone would think you had a curse on you (anyone, that is, still standing).";
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             "lightning abruptly strikes into your body, making your hair stand on end. (Oh, and vapourising you utterly, of course.)";
         }
         "four hundred Spartan soldiers are transported by some quantum-mechanical fluke from the Battle of Thermopylae into your immediate vicinity. They are quite keen for someone to explain things to them, but unfortunately most of the spears they were throwing came with them; one of which struck straight through the mascot into your body.";
     }
-    if (local1 == 10[u_obj?]) {
+    if (i == 10) {
         "^You feel very nervous indeed, for some reason.";
     }
-    if (local1 == 7[se_obj?]) {
+    if (i == 7) {
         if (player notin servants_bed) {
             "^You stub your toe painfully, and trip over.";
         } else {
             "^You feel bed-sores coming on.";
         }
     }
-    if (local1 == 5[w_obj?]) {
+    if (i == 5) {
         "^You scratch yourself, unable to get rid of an itching sensation.";
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         "^Something feels very wrong indeed. Your hand begins to burn.^";
     }
     rfalse;
