@@ -5254,7 +5254,7 @@ Array array_24618 --> 1;
 Array array_24634 --> 1;        
 Array array_24650 --> 1;        
 Array match_list --> 1; 
-Array array_24788 --> 24;       
+Array match_classes -> 128;     
 Array array_24916 --> 1;        
 Array bomb_wires -> 4;  
 Array henri_post_array ->       
@@ -6791,12 +6791,12 @@ Array preactions_table --> IsDirection;
       .labelXXX;
         if (i <= number_of_classes) {
           .labelXXX;
-            if (array_24788-->marker ~= i && array_24788-->marker ~= 0 - i) {
+            if (match_classes-->marker ~= i && match_classes-->marker ~= 0 - i) {
                 ++marker;
                 jump labelXXX;
             }
             k = match_list-->marker;
-            if (array_24788-->marker > 0) {
+            if (match_classes-->marker > 0) {
                 Defart(k);
             } else {
                 Indefart(k);
@@ -7028,7 +7028,7 @@ Array preactions_table --> IsDirection;
     i = 0;
   .labelXXX;
     if (i < number_matched) {
-        array_24788-->i = 0;
+        match_classes-->i = 0;
         ++i;
         jump labelXXX;
     }
@@ -7036,21 +7036,21 @@ Array preactions_table --> IsDirection;
     i = 0;
   .labelXXX;
     if (i < number_matched) {
-        if (array_24788-->i == 0) {
-            array_24788-->i = n++;
+        if (match_classes-->i == 0) {
+            match_classes-->i = n++;
             flag = 0;
             j = i + 1;
           .labelXXX;
             if (j < number_matched) {
-                if (array_24788-->j == 0 && Identical(match_list-->i,match_list-->j) == 1[?]) {
+                if (match_classes-->j == 0 && Identical(match_list-->i,match_list-->j) == 1[?]) {
                     flag = 1[?];
-                    array_24788-->j = array_24788-->i;
+                    match_classes-->j = match_classes-->i;
                 }
                 ++j;
                 jump labelXXX;
             }
             if (flag == 1[?]) {
-                array_24788-->i = 1 - n;
+                match_classes-->i = 1 - n;
             }
         }
         ++i;
@@ -7064,7 +7064,7 @@ Array preactions_table --> IsDirection;
         if (i < number_matched) {
             print "   ";
             CDefart(match_list-->i);
-            print " (", match_list-->i, ")  ---  ", array_24788-->i, "^";
+            print " (", match_list-->i, ")  ---  ", match_classes-->i, "^";
             ++i;
             jump labelXXX;
         }
@@ -7236,7 +7236,7 @@ Array preactions_table --> IsDirection;
         if (its_score < threshold) {
             match_list-->i = 65535[?];
         } else {
-            array_24788-->i = its_score;
+            match_classes-->i = its_score;
             if (parser_trace >= 4) {
                 print "   ";
                 CDefart(match_list-->i);
@@ -7262,7 +7262,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (i < number_matched) {
         if (match_list-->i >= 0) {
-            its_score = array_24788-->i;
+            its_score = match_classes-->i;
             if (its_score > best) {
                 best = its_score;
                 earliest = i;
