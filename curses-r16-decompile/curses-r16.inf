@@ -4970,7 +4970,7 @@ Global debug_deterministic_transportation;
 Global KnowLanguages;
 Global displaying_quote = true;
 Global before_short_desc;
-Global global130;
+Global short_loc_var;
 Global global131;
 Global global132;
 Global global133;
@@ -24453,7 +24453,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
         }
     }
-    if (displaying_quote == true || global130 ~= location) {
+    if (displaying_quote == true || short_loc_var ~= location) {
         @set_cursor 1 2;
         before_short_desc = true;
         PrintShortName(location);
@@ -24465,7 +24465,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             generic_globvar = generic_globvar - 1;
             if (generic_globvar ~= 0) jump label185853;
         }
-        global130 = location;
+        short_loc_var = location;
         displaying_quote = true;
     }
     if (pretty_mode == false) {
