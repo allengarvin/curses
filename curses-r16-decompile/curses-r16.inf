@@ -15801,21 +15801,21 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine118692 local1 local2 ;	! 118692 / 0x1cfa4
-    if (local1 ~= 0) {
-        DescribePaces(local1);
-        if (local1 > 0) {
+[ DescribePaces x y ;	! 118692 / 0x1cfa4
+    if (x ~= 0) {
+        DescribePaces(x);
+        if (x > 0) {
             print " east";
         } else {
             print " west";
         }
-        if (local2 ~= 0) {
+        if (y ~= 0) {
             print " and ";
         }
     }
-    if (local2 ~= 0) {
-        DescribePaces(local2);
-        if (local2 > 0) {
+    if (y ~= 0) {
+        DescribePaces(y);
+        if (y > 0) {
             print " north";
         } else {
             print " south";
@@ -15852,7 +15852,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     print "Croquet Lawn (";
-    routine118692(DigX,DigY);
+    DescribePaces(DigX,DigY);
     print " of the peg)";
     rtrue;
 ];
@@ -15903,7 +15903,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "^The hole you dug in the lawn is just here.";
     }
     print "^Some vandal has dug a hole in the lawn, ";
-    routine118692(OldDigX - DigX,OldDigY - DigY);
+    DescribePaces(OldDigX - DigX,OldDigY - DigY);
     ".";
 ];
 
