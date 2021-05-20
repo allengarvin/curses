@@ -15480,7 +15480,7 @@ Array preactions_table --> IsDirection;
             give loose_board open;
             move bunch_of_nuts to irate_squirrel_friend;
             move irate_squirrel_friend to Summer_House;
-            routine118680();
+            GoNuts();
             Summer_House.n_to = Behind_Summer_House;
             "You throw the nuts through the loose board into the summer house, and the squirrel jumps up after them, battering through the board and opening up a hole in the wall.";
         }
@@ -15502,7 +15502,7 @@ Array preactions_table --> IsDirection;
         if (noun has edible) {
             remove noun;
             if (noun == bunch_of_nuts) {
-                routine118680();
+                GoNuts();
                 "The squirrel is extremely pleased, and devours the nuts delightedly. You have an uncomfortable feeling of having been suckered.";
             }
             print "Grateful for any food he can get, however unsuitable, the squirrel eagerly consumes ";
@@ -15517,7 +15517,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine118680 ;	
+[ GoNuts ;	
     irate_squirrel_friend.initial = "The squirrel sits here, watchfully pecking away at the nuts.";
     rtrue;
 ];
