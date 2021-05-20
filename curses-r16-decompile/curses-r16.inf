@@ -10968,7 +10968,7 @@ Array preactions_table --> IsDirection;
 [ RomanticNovelAfter ;	
     if (action == ##Take) {
         if (steel_wrench hasnt general) {
-            routine77984();
+            PlumbingDisaster();
             rtrue;
         }
         rfalse;
@@ -10987,7 +10987,7 @@ Array preactions_table --> IsDirection;
 [ PoetryAfter ;	
     if (action == ##Take) {
         if (steel_wrench hasnt general) {
-            routine77984();
+            PlumbingDisaster();
             rtrue;
         }
         rfalse;
@@ -11010,7 +11010,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine77984 ;	
+[ PlumbingDisaster ;	
     deadflag = FAILED;
     "As you pull the book away, the pipe bursts and sprays water everywhere, drenching you, rendering the book unreadable, leaking through the ceiling into the bedrooms below and causing an enormous furore. You are obliged to spend the rest of the afternoon getting a plumber at short notice.";
 ];
