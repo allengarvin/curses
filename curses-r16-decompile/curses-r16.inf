@@ -23563,10 +23563,10 @@ Array preactions_table --> IsDirection;
     return 0;
 ];
 
-[ routine181312 local1 ;	
-    local1 = NextWordStopped();
+[ AnotherWord w ;	
+    w = NextWordStopped();
     --wn;
-    return local1;
+    return w;
 ];
 
 [ PaceOrPaces d ;	
@@ -23581,14 +23581,14 @@ Array preactions_table --> IsDirection;
 
 [ routine181352 local1 local2 local3 ;	
     local3 = wn;
-    local1 = routine181312();
+    local1 = AnotherWord();
     if (local1 == 30945['by'?] or 33348['for'?]) {
         ++wn;
-        local1 = routine181312();
+        local1 = AnotherWord();
     }
     if (local1 == 29622['a//'?] or 39117['single'?]) {
         ++wn;
-        local1 = routine181312();
+        local1 = AnotherWord();
         if (PaceOrPaces(local1) ~= 1[?]) {
             wn = local3;
             rfalse;
@@ -23606,7 +23606,7 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     ++wn;
-    local1 = routine181312();
+    local1 = AnotherWord();
     if (PaceOrPaces(local1) == 1[?] && local2 == 1[?] || (PaceOrPaces(local1) == 2[?] && local2 > 1)) {
         ++wn;
     }
@@ -23614,23 +23614,23 @@ Array preactions_table --> IsDirection;
 ];
 
 [ CroquetMove w i flag j d ;	
-    w = routine181312();
+    w = AnotherWord();
     if (w == 'forward' or 'forwards') {
         ++wn;
         return yard_dir;
     }
     if (w == 'back' or 'backward' or 'backwards') {
         ++wn;
-        w = routine181312();
+        w = AnotherWord();
         flag = 1;
     }
     if (w == 'to') {
         ++wn;
-        w = routine181312();
+        w = AnotherWord();
     }
     if (w == 'the') {
         ++wn;
-        w = routine181312();
+        w = AnotherWord();
     }
     if (w == 'peg' or 'middle' or 'centre' or 'hoop' or 'hoops' or 'center') {
         ++wn;
@@ -23686,11 +23686,11 @@ Array preactions_table --> IsDirection;
 [ routine181728 local1 local2 ;	
     local1 = routine181352();
     if (local1 == 0) {
-        if (routine181312() == 65535[?]) {
+        if (AnotherWord() == 65535[?]) {
             return 65535[?];
         }
         local2 = CroquetMove();
-        if (routine181312() == 65535[?]) {
+        if (AnotherWord() == 65535[?]) {
             local1 = 1[?];
         } else {
             local1 = routine181352();
