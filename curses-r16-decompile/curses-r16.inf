@@ -5226,7 +5226,7 @@ Array henri_post_array ->	! 25291 (0x62cb)
     9
     20
 ;
-Array array_25306 ->	! 25306 (0x62da)
+Array henry_post_initial_layout ->	! 25306 (0x62da)
     8
     2
     16
@@ -16813,7 +16813,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     i = 0;
   .label128749;
     if (i <= 14) {
-        if (henri_post_array->i ~= array_25306->i) {
+        if (henri_post_array->i ~= henry_post_initial_layout->i) {
             rfalse;
         }
         ++i;
