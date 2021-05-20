@@ -16106,16 +16106,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: yellow_daisy.u_to
 
-[ DaisyUp local1 ;	! 122144 / 0x1dd20
+[ DaisyUp o ;	! 122144 / 0x1dd20
     if (selfobj has worn && rod_identity == 2) {
-        local1 = child(player);
+        o = child(player);
       .label122159;
-        if (local1 ~= 0) {
-            if (local1 has hidden_rod) {
+        if (o ~= nothing) {
+            if (o has hidden_rod) {
                 print " (twitching behind your ear)";
                 rtrue;
             }
-            local1 = sibling(local1);
+            o = sibling(o);
             jump label122159;
         }
         print " (tucked behind your ear)";
