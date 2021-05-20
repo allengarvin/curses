@@ -14518,19 +14518,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine110240 local1 ;	! 110240 / 0x1aea0
-    if (local1 < 0) {
-        local1 = 0 - local1;
+[ DescribePaces i ;	! 110240 / 0x1aea0
+    if (i < 0) {
+        i = 0 - i;
     }
-    if (local1 == 0) {
+    if (i == 0) {
         print "nought";
     }
-    if (local1 == 1[?]) {
+    if (i == 1) {
         print "a pace";
         rfalse;
     }
-    if (local1 >= 2) {
-        EnglishNumber(local1);
+    if (i >= 2) {
+        EnglishNumber(i);
     }
     print " paces";
     rtrue;
@@ -14548,9 +14548,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     print "The priestess, Pythian oracle of Loxias, seems hardly to hear or understand: but goes into a trance, swaying to a sensuous rhythm: and chants, in English,^^";
     if (priest_cnt == 1) {
         print " ~As Hephaestus, master of the metals^  uncovered the gilden sunrise of Helicon^  so, in ";
-        routine110240(StrongboxX);
+        DescribePaces(StrongboxX);
         print " and ";
-        routine110240(StrongboxY);
+        DescribePaces(StrongboxY);
         print "^  when six arches have stood sixty years^  shall even a shade's remains be cast.~";
     }
     if (priest_cnt == 2) {
@@ -15803,7 +15803,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine118692 local1 local2 ;	! 118692 / 0x1cfa4
     if (local1 ~= 0) {
-        routine110240(local1);
+        DescribePaces(local1);
         if (local1 > 0) {
             print " east";
         } else {
@@ -15814,7 +15814,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
     if (local2 ~= 0) {
-        routine110240(local2);
+        DescribePaces(local2);
         if (local2 > 0) {
             print " north";
         } else {
