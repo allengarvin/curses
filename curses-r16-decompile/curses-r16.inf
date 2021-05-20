@@ -23067,20 +23067,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 1[?];
 ];
 
-[ routine175184 local1 ;	! 175184 / 0x2ac50
-    if (Meldrewes_History in local1) {
-        return 38[Meldrewes_History?];
+[ ConsultDefault o ;	! 175184 / 0x2ac50
+    if (Meldrewes_History in o) {
+        return Meldrewes_History;
     }
-    if (classical_dictionary in local1) {
-        return 43[classical_dictionary?];
+    if (classical_dictionary in o) {
+        return classical_dictionary;
     }
-    if (ancient_prayer_book in local1) {
-        return 95[ancient_prayer_book?];
+    if (ancient_prayer_book in o) {
+        return ancient_prayer_book;
     }
-    if (tourist_map in local1) {
-        return 106[tourist_map?];
+    if (tourist_map in o) {
+        return tourist_map;
     }
-    return 0;
+    return nothing;
 ];
 
 [ LookUpSub o n ;	! 175216 / 0x2ac70
@@ -23092,10 +23092,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         o = ancient_prayer_book;
     }
     if (o == nothing) {
-        o = routine175184(player);
+        o = ConsultDefault(player);
     }
     if (o == nothing) {
-        o = routine175184(location);
+        o = ConsultDefault(location);
     }
     if (o == nothing) {
         "I can't see what you wish to consult.";
