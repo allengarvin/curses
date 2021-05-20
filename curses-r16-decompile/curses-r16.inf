@@ -4861,7 +4861,7 @@ Global notify_mode = true;
 Global places_score;
 Global things_score;
 Global lookmode = 1;
-Global global20;
+Global lastdesc;
 Global top_object;
 Global toomany_flag;
 Global actor;
@@ -21186,13 +21186,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ NoteArrival descin ;	! 164468 / 0x28274
     descin = location;
-    if (descin ~= global20) {
+    if (descin ~= lastdesc) {
         if (descin.initial ~= nothing) {
             PrintOrRun(descin,initial);
         }
         SetHimHer();
         MoveFloatingObjects();
-        global20 = descin;
+        lastdesc = descin;
     }
     rtrue;
 ];
