@@ -4991,8 +4991,8 @@ Global hollow_man_cnt;
 Global poseiden_warning;
 Global priest_cnt;
 Global global151 = 25228[?];
-Global global152 = 4[e_obj?];
-Global global153 = 6[ne_obj?];
+Global MazeX = 4;
+Global MazeY = 6;
 Global global154 = 100[Tiny_Balcony?];
 Global global155 = 100[Tiny_Balcony?];
 Global DigX;
@@ -14782,8 +14782,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Family_Tree.initial
 
 [ FamilyTreeInitial ;	! 113932 / 0x1bd0c
-    global152 = 4[e_obj?];
-    global153 = 6[ne_obj?];
+    MazeX = 4;
+    MazeY = 6;
     rfalse;
 ];
 
@@ -14919,12 +14919,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (location ~= Maze_Foundations) {
                 ! no code
             } else {
-                local1 = routine115348(global152,global153);
+                local1 = routine115348(MazeX,MazeY);
                 if (local1 == 0) {
                     "A stream of weed-killer soaks into the grass, and does nothing obvious.";
                 }
-                global154 = global152;
-                global155 = global153;
+                global154 = MazeX;
+                global155 = MazeY;
                 StartDaemon(selfobj);
                 "A stream of weed-killer soaks into the seedbed, and does nothing obvious.";
             }
@@ -15057,18 +15057,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine115644 local1 local2 local3 local4 local5 ;	! 115644 / 0x1c3bc
-    --global153;
-    local2 = routine115348(global152,global153);
-    ++global153;
-    ++global152;
-    local4 = routine115348(global152,global153);
-    --global152;
-    ++global153;
-    local3 = routine115348(global152,global153);
-    --global153;
-    --global152;
-    local5 = routine115348(global152,global153);
-    ++global152;
+    --MazeY;
+    local2 = routine115348(MazeX,MazeY);
+    ++MazeY;
+    ++MazeX;
+    local4 = routine115348(MazeX,MazeY);
+    --MazeX;
+    ++MazeY;
+    local3 = routine115348(MazeX,MazeY);
+    --MazeY;
+    --MazeX;
+    local5 = routine115348(MazeX,MazeY);
+    ++MazeX;
     local1 = local2 + local4 + local3 + local5;
     if (local1 == 4[e_obj?]) {
         "^You are hedged in on all sides.";
@@ -15128,29 +15128,29 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (garden_roller hasnt on) {
             "But the garden roller is switched off, and won't drive.";
         }
-        if (global152 == 4[e_obj?] && global153 == 6[ne_obj?] && noun == s_obj) {
+        if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (global152 == 0 && global153 == 1[?] && noun == w_obj) {
+        if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
         local1 = 100[Tiny_Balcony?];
         local2 = 100[Tiny_Balcony?];
         if (noun == n_obj) {
-            local1 = global152;
-            local2 = global153 - 1;
+            local1 = MazeX;
+            local2 = MazeY - 1;
         }
         if (noun == e_obj) {
-            local1 = global152 + 1;
-            local2 = global153;
+            local1 = MazeX + 1;
+            local2 = MazeY;
         }
         if (noun == s_obj) {
-            local1 = global152;
-            local2 = global153 + 1;
+            local1 = MazeX;
+            local2 = MazeY + 1;
         }
         if (noun == w_obj) {
-            local1 = global152 - 1;
-            local2 = global153;
+            local1 = MazeX - 1;
+            local2 = MazeY;
         }
         if (local1 == 100[Tiny_Balcony?]) {
             "The maze is constructed with rectangular grid-lines of privet, so you can only proceed north, east, south or west.";
@@ -15158,13 +15158,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (routine115348(local1,local2) == 1[?]) {
             "The privet hedge is in the way.";
         }
-        global152 = local1;
-        global153 = local2;
+        MazeX = local1;
+        MazeY = local2;
         if (location == Patio_in_Maze) {
             location = Maze;
             move garden_roller to Maze;
         }
-        if (global152 == 7[se_obj?] && global153 == 5[w_obj?]) {
+        if (MazeX == 7 && MazeY == 5) {
             location = Patio_in_Maze;
             move garden_roller to Patio_in_Maze;
         }
@@ -15240,8 +15240,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Folly.before
 
 [ routine116504 ;	! 116504 / 0x1c718
-    global152 = 0;
-    global153 = 1[?];
+    MazeX = 0;
+    MazeY = 1;
     rfalse;
 ];
 
@@ -15273,45 +15273,45 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine116760 local1 local2 ;	! 116760 / 0x1c818
     if (action == ##Go) {
-        if (global152 == 4[e_obj?] && global153 == 6[ne_obj?] && noun == s_obj) {
+        if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
         }
-        if (global152 == 0 && global153 == 1[?] && noun == w_obj) {
+        if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
         local1 = 100[Tiny_Balcony?];
         local2 = 100[Tiny_Balcony?];
         if (inp1 == 2[?]) {
-            local1 = global152;
-            local2 = global153 - 1;
+            local1 = MazeX;
+            local2 = MazeY - 1;
         }
         if (inp1 == 4[e_obj?]) {
-            local1 = global152 + 1;
-            local2 = global153;
+            local1 = MazeX + 1;
+            local2 = MazeY;
         }
         if (inp1 == 3[s_obj?]) {
-            local1 = global152;
-            local2 = global153 + 1;
+            local1 = MazeX;
+            local2 = MazeY + 1;
         }
         if (inp1 == 5[w_obj?]) {
-            local1 = global152 - 1;
-            local2 = global153;
+            local1 = MazeX - 1;
+            local2 = MazeY;
         }
         if (inp1 == 6[ne_obj?]) {
-            local1 = global152 + 1;
-            local2 = global153 - 1;
+            local1 = MazeX + 1;
+            local2 = MazeY - 1;
         }
         if (inp1 == 8[nw_obj?]) {
-            local1 = global152 - 1;
-            local2 = global153 - 1;
+            local1 = MazeX - 1;
+            local2 = MazeY - 1;
         }
         if (inp1 == 7[se_obj?]) {
-            local1 = global152 + 1;
-            local2 = global153 + 1;
+            local1 = MazeX + 1;
+            local2 = MazeY + 1;
         }
         if (inp1 == 9[sw_obj?]) {
-            local1 = global152 - 1;
-            local2 = global153 + 1;
+            local1 = MazeX - 1;
+            local2 = MazeY + 1;
         }
         if (local1 == 100[Tiny_Balcony?]) {
             "The maze is only two-dimensional.";
@@ -15319,8 +15319,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (routine115468(local1,local2) ~= 0) {
             "The wooden fence is in the way.";
         }
-        global152 = local1;
-        global153 = local2;
+        MazeX = local1;
+        MazeY = local2;
         LookSub(true);
         rtrue;
     }
@@ -15342,8 +15342,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine117024 local1 local2 local3 local4 local5 local6 ;	! 117024 / 0x1c920
-    local1 = routine115348(global152,global153);
-    if (global152 == 7[se_obj?] && global153 == 5[w_obj?]) {
+    local1 = routine115348(MazeX,MazeY);
+    if (MazeX == 7 && MazeY == 5) {
         local1 = 2[?];
     }
     new_line;
@@ -15356,18 +15356,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (local1 == 2[?]) {
         print "You stand on a rough patch of grass, marked out with whitewash. ";
     }
-    --global153;
-    local2 = routine115448(global152,global153);
-    ++global153;
-    ++global152;
-    local4 = routine115448(global152,global153);
-    --global152;
-    ++global153;
-    local3 = routine115448(global152,global153);
-    --global153;
-    --global152;
-    local5 = routine115448(global152,global153);
-    ++global152;
+    --MazeY;
+    local2 = routine115448(MazeX,MazeY);
+    ++MazeY;
+    ++MazeX;
+    local4 = routine115448(MazeX,MazeY);
+    --MazeX;
+    ++MazeY;
+    local3 = routine115448(MazeX,MazeY);
+    --MazeY;
+    --MazeX;
+    local5 = routine115448(MazeX,MazeY);
+    ++MazeX;
     local1 = local2 + local4 + local3 + local5;
     if (local1 == 4[e_obj?]) {
         print "There are seedbeds on all sides. ";
@@ -15417,18 +15417,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
   .label117428;
-    --global153;
-    local2 = routine115468(global152,global153);
-    ++global153;
-    ++global152;
-    local4 = routine115468(global152,global153);
-    --global152;
-    ++global153;
-    local3 = routine115468(global152,global153);
-    --global153;
-    --global152;
-    local5 = routine115468(global152,global153);
-    ++global152;
+    --MazeY;
+    local2 = routine115468(MazeX,MazeY);
+    ++MazeY;
+    ++MazeX;
+    local4 = routine115468(MazeX,MazeY);
+    --MazeX;
+    ++MazeY;
+    local3 = routine115468(MazeX,MazeY);
+    --MazeY;
+    --MazeX;
+    local5 = routine115468(MazeX,MazeY);
+    ++MazeX;
     local1 = local2 + local4 + local3 + local5;
     if (local1 == 0) {
         new_line;
@@ -16424,8 +16424,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Crypt.initial
 
 [ CryptInitial ;	! 126924 / 0x1efcc
-    global152 = 7[se_obj?];
-    global153 = 5[w_obj?];
+    MazeX = 7;
+    MazeY = 5;
     rfalse;
 ];
 
