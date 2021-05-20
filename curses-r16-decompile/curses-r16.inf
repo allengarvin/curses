@@ -702,7 +702,7 @@ Verb 'score'
 ! Object tree
 
 
-Object Compass "compass"	! 1 / 0x1
+Object compass "compass"	! 1 / 0x1
   has	concealed;
 
 Object -> n_obj "north wall"	! 2 / 0x2
@@ -1467,7 +1467,7 @@ Object Battlements "Battlements"	! 88 / 0x58
 Object -> iron_key "gothic-looking iron key"	! 89 / 0x59
   with	name 'gothic' 'looking' 'iron' 'key' 'gothic-looking',
 	after GothicKeyAfter,
-	nw_to Compass,
+	nw_to compass,
 	initial IronKeyInitial,
 	devil_hint "Unfortunately, what you need this for is up in the clouds.",
   has	scored;
@@ -1575,7 +1575,7 @@ Object -> window_sill "window sill"	! 101 / 0x65
 
 Object -> delicate_gold_key "delicate gold key"	! 102 / 0x66
   with	name 'delicate' 'gold' 'key',
-	nw_to Compass,
+	nw_to compass,
 	devil_hint "Gold and lead are naturally related, so you want to find a lead box to open.",
   has	concealed scored;
 
@@ -1835,7 +1835,7 @@ Object -> hole_in_the_wall "hole in the wall"	! 134 / 0x86
 
 Object -> -> small_brass_key "small brass key"	! 135 / 0x87
   with	name 'small' 'brass' 'attic' 'key',
-	nw_to Compass,
+	nw_to compass,
 	initial "Lying where the mouse dropped it is a small brass-coloured key.",
 	description "Brass is of course a non-magnetic copper-zinc alloy, so presumably this key also contains iron.",
 	devil_hint "It isn't the attic key, I fear.",
@@ -3757,7 +3757,7 @@ Object Jagged_Passage "Jagged Passage"	! 378 / 0x17a
 
 Object -> wrought_iron_key "long wrought iron key"	! 379 / 0x17b
   with	name 'long' 'wrought' 'iron' 'key',
-	nw_to Compass,
+	nw_to compass,
 	initial "You appear to be standing on a wrought iron key.",
 	description "A figure-eight double ring, a long barrel and a finely-cut ten-groove claw: this is the ultimate in keys. It is superb.",
   has	;
@@ -3916,7 +3916,7 @@ Object -> rusty_iron_grating "rusty iron grating"	! 398 / 0x18e
 Object -> rusty_iron_key "rusty iron key"	! 399 / 0x18f
   with	name 'rusty' 'iron' 'key',
 	after RustyKeyAfter,
-	nw_to Compass,
+	nw_to compass,
 	initial "Interestingly, a key which looks as if it would fit the grating can be seen inside the passage beneath.",
 	angel_hint "Oh dear, surely it's gratingly obvious what this fits?",
   has	;
@@ -4842,7 +4842,7 @@ Constant SCORE_HIGHROD = 44;
 
 ! Globals
 
-Global location = Compass;
+Global location = compass;
 Global sline1;
 Global sline2;
 Global the_time = 65535;
@@ -7311,7 +7311,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (o1 == 0 || o2 == 0) {
         rfalse;
     }
-    if (parent(o1) == Compass || parent(o2) == Compass) {
+    if (parent(o1) == compass || parent(o2) == compass) {
         rfalse;
     }
     if (o1.parse_name ~= nothing || o2.parse_name ~= nothing) {
@@ -9258,7 +9258,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (location == Inside_the_Orb) {
             print "bathed in a curious white light, and ";
         }
-        if (lm_n == Compass) {
+        if (lm_n == compass) {
             "carrying nothing.";
         }
         print "carrying";
@@ -9521,7 +9521,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Look);
         rtrue;
     }
-    routine111612();
+    FlashFallsOut();
     print "You are engulfed in a cloud of spinning white lights, like insects. When the swarm clears, you find yourself transported...^";
     if (game_section == T_ANCIENT_BRITAIN) {
         loc = Infinity_Symbol;
@@ -14619,11 +14619,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Lighthouse.d_to
 
 [ LighthouseDown ;	! 111604 / 0x1b3f4
-    routine111612();
+    FlashFallsOut();
     return Greek_Frieze1;
 ];
 
-[ routine111612 ;	! 111612 / 0x1b3fc
+[ FlashFallsOut ;	! 111612 / 0x1b3fc
     if (photographers_flash in mirrored_device) {
         print "(Out of the corner of your eye, you notice the flash fall out of the device.)^";
         move photographers_flash to Lighthouse;
@@ -14631,9 +14631,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine111676 ;	! 111676 / 0x1b43c
+[ GoDownLighthouse ;	! 111676 / 0x1b43c
     if (verb == ##Go && noun == d_obj) {
-        routine111612();
+        FlashFallsOut();
     }
     rfalse;
 ];
@@ -14647,7 +14647,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Aboard_Ship.each_turn
 
 [ OnShipEachTurn ;	! 111740 / 0x1b47c
-    if (port_obj in Compass) {
+    if (port_obj in compass) {
         rfalse;
     }
     move n_obj to flagpole;
@@ -14658,11 +14658,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     move nw_obj to flagpole;
     move se_obj to flagpole;
     move sw_obj to flagpole;
-    move port_obj to Compass;
-    move starboard_obj to Compass;
-    move aft_obj to Compass;
-    move fore_obj to Compass;
-    move some_landlubbers_direction to Compass;
+    move port_obj to compass;
+    move starboard_obj to compass;
+    move aft_obj to compass;
+    move fore_obj to compass;
+    move some_landlubbers_direction to compass;
     StartDaemon(selfobj);
     rfalse;
 ];
@@ -14679,14 +14679,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     remove aft_obj;
     remove fore_obj;
     remove some_landlubbers_direction;
-    move n_obj to Compass;
-    move s_obj to Compass;
-    move e_obj to Compass;
-    move w_obj to Compass;
-    move ne_obj to Compass;
-    move nw_obj to Compass;
-    move se_obj to Compass;
-    move sw_obj to Compass;
+    move n_obj to compass;
+    move s_obj to compass;
+    move e_obj to compass;
+    move w_obj to compass;
+    move ne_obj to compass;
+    move nw_obj to compass;
+    move se_obj to compass;
+    move sw_obj to compass;
     rfalse;
 ];
 
@@ -15079,7 +15079,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: weed_killer_bottle.after
 
-[ WeedKillerAfter local1 ;	! 114744 / 0x1c038
+[ WeedKillerAfter i ;	! 114744 / 0x1c038
     if (action == ##Squeeze or ##Push) {
         if (selfobj has general) {
             "Nothing emerges. The bottle must be empty.";
@@ -15105,8 +15105,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (location ~= Maze_Foundations) {
                 ! no code
             } else {
-                local1 = MazeBoundary(MazeX,MazeY);
-                if (local1 == 0) {
+                i = MazeBoundary(MazeX,MazeY);
+                if (i == 0) {
                     "A stream of weed-killer soaks into the grass, and does nothing obvious.";
                 }
                 WeedkillerX = MazeX;
@@ -21004,7 +21004,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         return L__M(##Enter,1,o);
     }
     o = parent(noun);
-    if (o == Compass) {
+    if (o == compass) {
         R_Process(##Go,noun);
         rtrue;
     }
@@ -21827,7 +21827,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AllowPushDir i ;	! 166092 / 0x288cc
-    if (parent(second) ~= Compass) {
+    if (parent(second) ~= compass) {
         return L__M(##PushDir,2);
     }
     if (second == u_obj or d_obj) {
@@ -23421,7 +23421,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (d == nothing) {
         "Perhaps you should say which way to pace.";
     }
-    if (parent(d) ~= Compass) {
+    if (parent(d) ~= compass) {
         "What?";
     }
     if (d == n_obj) {
@@ -23680,7 +23680,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ PointVagueSub ;	! 179384 / 0x2bcb8
-    if (noun in Compass && adamantine_knight in location) {
+    if (noun in compass && adamantine_knight in location) {
         routine143448();
         rfalse;
     }
@@ -23898,7 +23898,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ IsDirection ;	! 181068 / 0x2c34c
-    if (noun in Compass) {
+    if (noun in compass) {
         rtrue;
     }
     rfalse;
