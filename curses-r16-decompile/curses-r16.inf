@@ -19982,48 +19982,48 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ ObjectsSub local1 local2 local3 ;	
+[ ObjectsSub i j k ;	
     L__M(##Objects,1);
-    local1 = 15[yourself?];
+    i = yourself;
   .labelXXX;
-    if (local1 <= top_object) {
-        if (local1 has moved) {
-            local3 = 1[?];
-            Defart(local1);
-            local2 = parent(local1);
-            if (local2 == player) {
-                if (local1 has worn) {
+    if (i <= top_object) {
+        if (i has moved) {
+            k = 1[?];
+            Defart(i);
+            j = parent(i);
+            if (j == player) {
+                if (i has worn) {
                     print "   (worn)";
                 } else {
                     print "   (held)";
                 }
-            } else if (local2 has animate) {
+            } else if (j has animate) {
                 print "   (given away)";
-            } else if (local2 has visited) {
+            } else if (j has visited) {
                 print "   (in ";
-                PrintShortName(local2);
+                PrintShortName(j);
                 print ")";
-            } else if (local2 has enterable) {
+            } else if (j has enterable) {
                 print "   (in ";
-                Defart(local2);
+                Defart(j);
                 print ")";
-            } else if (local2 has container) {
+            } else if (j has container) {
                 print "   (inside ";
-                PrintShortName(local2);
+                PrintShortName(j);
                 print ")";
-            } else if (local2 has supporter) {
+            } else if (j has supporter) {
                 print "   (on ";
-                PrintShortName(local2);
+                PrintShortName(j);
                 print ")";
             } else {
                 print "   (lost)";
             }
             new_line;
         }
-        ++local1;
+        ++i;
         jump labelXXX;
     }
-    if (local3 == 0) {
+    if (k == 0) {
         L__M(##Objects,2);
     }
     rtrue;
