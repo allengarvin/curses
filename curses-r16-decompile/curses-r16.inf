@@ -12808,10 +12808,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: circular_arc.after
 
-[ ArcAfter local1 ;	! 93356 / 0x16cac
+[ ArcAfter i ;	! 93356 / 0x16cac
     if (action == ##Receive) {
-        local1 = selfobj.number;
-        if (local1 == 9[sw_obj?]) {
+        i = selfobj.number;
+        if (i == 9) {
             "The sockets are all full.";
         }
         if (noun hasnt rod_attr) {
@@ -12825,14 +12825,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         move noun to selfobj;
         give noun static;
-        ++local1;
-        selfobj.number = local1;
+        ++i;
+        selfobj.number = i;
         print "It fits perfectly in one of the arc sockets.^";
         if (parent(spherical_opening) == nothing) {
             move spherical_opening to Infinity_Symbol;
             print "^As the rod goes home, a spherical opening a few inches across appears in one wall.^";
         }
-        if (local1 == 9[sw_obj?]) {
+        if (i == 9) {
             Achieved(SCORE_ARC);
         }
         rtrue;
