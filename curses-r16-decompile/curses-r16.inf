@@ -5257,7 +5257,12 @@ Array array_24650 --> 1;
 Array match_list --> 1;	
 Array array_24788 --> 1;	
 Array array_24916 --> 1;	
-Array array_25223 --> 1;	
+Array bomb_wires -->	
+    nothing
+    nothing
+    scratched_cupboard
+    invalidObj12593
+;
 Array henri_post_array ->	
     8
     2
@@ -13579,7 +13584,7 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     if (complicated_looking_bomb hasnt concealed) {
-        if (209[blue_wire?] ~= array_25223->0 || 207[green_wire?] ~= array_25223->1 || 210[black_wire?] ~= array_25223->2 || 208[red_wire?] ~= array_25223->3) {
+        if (209[blue_wire?] ~= bomb_wires->0 || 207[green_wire?] ~= bomb_wires->1 || 210[black_wire?] ~= bomb_wires->2 || 208[red_wire?] ~= bomb_wires->3) {
             print "^Click!  Perhaps there's more to bomb disposal than you thought.^";
         } else {
             print "^Click!  The timer runs out, but the bomb was disarmed. You pocket the timer and hide the rest of the evidence under the table.^";
@@ -13705,7 +13710,7 @@ Array preactions_table --> IsDirection;
         print ". ";
         i = complicated_looking_bomb.time_left;
         complicated_looking_bomb.time_left = i + 1;
-        array_25223->i = selfobj;
+        bomb_wires->i = selfobj;
         if (i == 3) {
             give complicated_looking_bomb general;
             "All four wires are now disconnected.";
