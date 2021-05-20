@@ -18655,14 +18655,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine145076 local1 local2 ;	! 145076 / 0x236b4
-    local2 = routine144788(25577[?],local1);
-    if (local2 ~= 0) {
-        print (string) local2;
+[ AngelQuestion w topic ;	! 145076 / 0x236b4
+    topic = routine144788(25577[?],w);
+    if (topic ~= 0) {
+        print (string) topic;
         new_line;
         rtrue;
     }
-    if (routine144788(25321[?],local1) ~= 0) {
+    if (routine144788(25321[?],w) ~= 0) {
         "~That's a question you'd better put to my colleague in the Other Place,~ says the angel smoothly. ~Try something else.~^";
     }
     print "~That's not something I am empowered to answer,~ says the angel with a beatific smile upward. ~Try something else.~^";
@@ -18856,7 +18856,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (AngelLife() ~= 0) {
             rtrue;
         }
-        if (routine145076(special_word) ~= 0) {
+        if (AngelQuestion(special_word) ~= 0) {
             give demon ~general;
         }
         rtrue;
