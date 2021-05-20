@@ -7167,7 +7167,7 @@ Array preactions_table --> IsDirection;
 
 [ ScoreMatchL its_owner its_score obj i threshold a_s l_s ;     
     if (indef_type & 1 ~= 0) {
-        threshold = 40[four_leafed_clover?];
+        threshold = 40;
     }
     if (indef_type & 2 ~= 0) {
         threshold = threshold + 40;
@@ -7190,11 +7190,11 @@ Array preactions_table --> IsDirection;
     if (parser_trace >= 4) {
         print "   Scoring match list with type ", indef_type, ", threshold ", threshold, ":^";
     }
-    a_s = 30[rod_of_love?];
-    l_s = 20[rod_of_infinity?];
+    a_s = 30;
+    l_s = 20;
     if (action_to_be == ##Take or ##Remove) {
-        a_s = 20[rod_of_infinity?];
-        l_s = 30[rod_of_love?];
+        a_s = 20;
+        l_s = 30;
     }
     i = 0;
   .labelXXX;
