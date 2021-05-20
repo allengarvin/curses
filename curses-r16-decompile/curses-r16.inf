@@ -8207,7 +8207,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         verb = ##Answer;
                         jump label54402;
                     }
-                    if (RunLife(actor,259[Greek_Frieze1?]) == 0) {
+                    if (RunLife(actor,##Order) == 0) {
                         L__M(##Order,1,actor);
                     }
                 }
@@ -10357,7 +10357,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         } else {
             "Austin refuses to go that way.";
         }
-        routine166092();
+        AllowPushDir();
         give selfobj moved;
         rtrue;
     }
@@ -11927,7 +11927,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             deadflag = FAILED;
             "Aunt Jemima spends the next four hours explaining to you exactly why she put the radio into storage. The reason is awfully convoluted and due to her firm conviction that magnetic fields influence the growth of plants. By that time you have to leave for the airport...";
         }
-        routine166092();
+        AllowPushDir();
         rtrue;
     }
     rfalse;
@@ -13419,7 +13419,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             PlayerTo(Hall_of_Exhibits);
             rtrue;
         }
-        routine166092();
+        AllowPushDir();
         rtrue;
     }
     rfalse;
@@ -14382,7 +14382,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "The only direction to push the statue in is to the centre of the cross, but there's a pit open in the floor there.";
         }
         if (second ~= u_obj or d_obj) {
-            routine166092();
+            AllowPushDir();
             rtrue;
         }
         rfalse;
@@ -20856,7 +20856,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (second == player) {
         return L__M(##Give,2,noun);
     }
-    if (RunLife(second,34[chocolate_biscuit?]) ~= 0) {
+    if (RunLife(second,##Give) ~= 0) {
         rfalse;
     }
     L__M(##Give,3,second);
@@ -20876,7 +20876,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Read,noun);
         rtrue;
     }
-    if (RunLife(second,36[hinged_trapdoor?]) ~= 0) {
+    if (RunLife(second,##Show) ~= 0) {
         rfalse;
     }
     L__M(##Show,2,second);
@@ -21543,7 +21543,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ WakeOtherSub ;	! 165688 / 0x28738
-    if (RunLife(noun,83[painting_of_Mad_Isaac_Meldrewe?]) ~= 0) {
+    if (RunLife(noun,##WakeOther) ~= 0) {
         rfalse;
     }
     L__M(##WakeOther);
@@ -21720,7 +21720,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine166092 local1 ;	! 166092 / 0x288cc
+[ AllowPushDir i ;	! 166092 / 0x288cc
     if (parent(second) ~= Compass) {
         return L__M(##PushDir,2);
     }
@@ -21728,13 +21728,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         return L__M(##PushDir,3);
     }
     AfterRoutines();
-    local1 = noun;
-    move local1 to player;
+    i = noun;
+    move i to player;
     R_Process(##Go,second);
     if (location == thedark) {
-        move local1 to real_location;
+        move i to real_location;
     } else {
-        move local1 to location;
+        move i to location;
     }
     rtrue;
 ];
@@ -21759,7 +21759,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (second hasnt animate) {
         return L__M(##ThrowAt,1);
     }
-    if (RunLife(second,32[electric_torch?]) ~= 0) {
+    if (RunLife(second,##ThrowAt) ~= 0) {
         rfalse;
     }
     L__M(##ThrowAt,2);
@@ -21767,7 +21767,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AttackSub ;	! 166244 / 0x28964
-    if (noun has animate && RunLife(noun,66[solid_glass_ball?]) ~= 0) {
+    if (noun has animate && RunLife(noun,##Attack) ~= 0) {
         rfalse;
     }
     L__M(##Attack);
@@ -21775,7 +21775,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ KissSub ;	! 166272 / 0x28980
-    if (RunLife(noun,84[big_iron_fireplace?]) ~= 0) {
+    if (RunLife(noun,##Kiss) ~= 0) {
         rfalse;
     }
     if (noun == player) {
@@ -21786,7 +21786,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AnswerSub ;	! 166308 / 0x289a4
-    if (RunLife(second,68[water_pipe?]) ~= 0) {
+    if (RunLife(second,##Answer) ~= 0) {
         rfalse;
     }
     L__M(##Answer);
@@ -21797,7 +21797,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun == player) {
         return L__M(##Tell);
     }
-    if (RunLife(noun,69[romantic_novel?]) ~= 0) {
+    if (RunLife(noun,##Tell) ~= 0) {
         rfalse;
     }
     L__M(##Tell,2);
@@ -21805,7 +21805,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AskSub ;	! 166364 / 0x289dc
-    if (RunLife(noun,70[book_of_Twenties_poetry?]) ~= 0) {
+    if (RunLife(noun,##Ask) ~= 0) {
         rfalse;
     }
     L__M(##Ask);
