@@ -12467,7 +12467,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: robot_mouse.life
 
-[ MouseLife frm dst local3 x y ;	! 91484 / 0x1655c
+[ MouseLife frm dst prev_loc x y ;	! 91484 / 0x1655c
     if (action == ##Order or ##Answer or ##Ask) {
         if (gas_mask has worn && MouseUnderstandsMask == false) {
             MouseUnderstandsMask = true;
@@ -12568,10 +12568,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "The mouse wheels spin, but can't get a good enough grip to move.";
             }
           .label92201;
-            local3 = frm;
+            prev_loc = frm;
             move robot_mouse to dst;
             give robot_mouse moved;
-            if (location == local3) {
+            if (location == prev_loc) {
                 if (dst == hole_in_the_wall) {
                     set_flag_array(1);
                     "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
