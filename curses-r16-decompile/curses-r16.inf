@@ -2794,7 +2794,7 @@ Object Cave_Mouth "Cave Mouth"	! 254 / 0xfe
 
 Object -> flaming_bronze_urn "flaming bronze urn"	! 256 / 0x100
   with	name 'flaming' 'bronze' 'urn' 'flame' 'cube' 'obsidian' 'altar' 'stone',
-	after routine110880,
+	after UrnAfter,
 	initial "In the centre of the cave rests an obsidian altar stone with a flaming bronze urn.",
 	description "The altar stone, sometimes called ~Omphalos~ or ~the navel~, bears an odd cross or plus sign and is fabled to mark the centre of the world.^^Around the side of the urn are reliefs of feasts, of oxen being tracked and sacrificed, of the gathering of fruit and the making of cheese.",
 	article "the",
@@ -2809,7 +2809,7 @@ Object Oracle "Oracle"	! 255 / 0xff
 
 Object Lighthouse "Lighthouse"	! 257 / 0x101
   with	name 'smudge' 'quinquire',
-	d_to routine111604,
+	d_to LighthouseDown,
 	description " .You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Considerately enough, the builders have provided a spiral staircase down. ",
 	cant_go "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
 	section T_TAROT,
@@ -2857,7 +2857,7 @@ Object aft_obj "aft wall"	! 264 / 0x108
 
 Object some_landlubbers_direction "some landlubber's direction"	! 265 / 0x109
   with	name 'north' 'n//' 'south' 's//' 'east' 'e//' 'west' 'w//',
-	after routine111692,
+	after LandlubberAfter,
   has	proper scenery;
 
 Object Aboard_Ship "Aboard Ship"	! 266 / 0x10a
@@ -2867,22 +2867,22 @@ Object Aboard_Ship "Aboard Ship"	! 266 / 0x10a
 	u_to Up_the_Mast,
 	description "There is a storm tossing the deck, one which drives no rain: you reel from one side to the other, hanging onto the rail, grabbing at the mast or the rigging. Nobody else seems to be aboard. The boat makes no headway in a strange, glassy mist.^^The mast rises dizzyingly high.^^You can't even make out the water below. A great pink haze spreads across the sky. With omens like these, who needs albatrosses?",
 	cant_go "The deck runs fore to aft (as all decks do).",
-	daemon routine111820,
-	each_turn routine111740,
+	daemon OnShipDaemon,
+	each_turn OnShipEachTurn,
 	section T_TAROT,
   has	light ship_flag;
 
 Object -> mast_and_rigging "mast and rigging"	! 267 / 0x10b
   with	name 'mast' 'rigged' 'rigging',
-	after routine111872,
+	after RiggingAfter,
 	article "the",
   has	scenery;
 
 Object Up_the_Mast "Up the Mast"	! 268 / 0x10c
-  with	after routine112212,
-	before routine112312,
-	w_to routine111888,
-	d_to routine112160,
+  with	after OnMastAfter,
+	before OnMastBefore,
+	w_to OnMastWest,
+	d_to OnMastDown,
 	description "Coming up here must be one of your less inspired ideas. The mist is all around you, confusing your senses. Two pale, bluish moons hang in a pink sky.",
 	cant_go "Down might be a better idea.",
 	section T_TAROT,
@@ -2890,14 +2890,14 @@ Object Up_the_Mast "Up the Mast"	! 268 / 0x10c
 
 Object -> flagpole "flagpole"	! 269 / 0x10d
   with	name 'pole' 'flagpole' 'mast' 'ensign' 'spar',
-	after routine112420,
+	after FlagpoleAfter,
 	initial "A flagpole juts out portwards from the top of the mast, far too insubstantial to bear any weight. From it hangs the ensign of the British Merchant Navy (which you could just reach the bottom of).",
 	description "The flagpole juts out to port with the prevailing... wind?",
   has	static;
 
 Object -> flag_of_the_British_Merchant_Navy "flag of the British Merchant Navy"	! 270 / 0x10e
   with	name 'flag' 'ensign' 'navy' 'british' 'merchant' 'of' 'tassels',
-	after routine112468,
+	after FlagAfter,
 	initial "The flag has fluttered to a heap on deck.",
 	description "Broad, heavy, scarlet cloth, halfway between a silken sheet and a carpet, with a cross and a Union Jack in one corner.",
 	devil_hint "Piece of advice - it's never very comfortable wrapping yourself in the Flag.",
@@ -2905,7 +2905,7 @@ Object -> flag_of_the_British_Merchant_Navy "flag of the British Merchant Navy"	
 
 Object old_timber_spar "old timber spar"	! 271 / 0x10f
   with	name 'old' 'prop' 'timber' 'flagpole' 'spar',
-	before routine112624,
+	before TimberSparBefore,
 	initial "The broken flagpole, a plain timber spar, lies beside the mast.",
 	description "An old timber prop, once the spar of a main mast.",
 	article "an",
@@ -2917,13 +2917,13 @@ Object Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"	! 272 / 0x110
   with	name 'lady' 'magdalena' 'mermaid' 'figurine',
 	s_to Aboard_Ship,
 	description "You stand in the triangular prow of the ship, which is graced by a carved and painted figurine and named the ~Lady Magdalena~. There is no sign of water, but the boat is rocked too often for it to be aground. And the glassy mist hangs ahead.",
-	cant_go routine112652,
+	cant_go ProwCantGo,
 	section T_TAROT,
   has	light ship_flag;
 
 Object -> green_branch "green branch"	! 273 / 0x111
   with	name 'green' 'branch' 'leafed',
-	after routine112676,
+	after BranchAfter,
 	initial "In the Lady Magdalena's loose grip is a traditional sailor's good-luck token: a green-leafed branch, to attract the gulls of an approaching shore.",
 	section T_TAROT,
 	angel_hint "Oh, you startled me for a moment there! I am getting flighty.",
@@ -2932,7 +2932,7 @@ Object -> green_branch "green branch"	! 273 / 0x111
 Object Stern "Stern"	! 274 / 0x112
   with	name 'sand' 'bank' 'mist',
 	n_to Aboard_Ship,
-	d_to routine112912,
+	d_to SternDown,
 	description "The square stern of the ship looks out south, not onto receding waves, but to what seems a tunnel through dense, glassy mist. You can faintly make out an odd, pale reddish sand bank in the distance.",
 	cant_go "The boat runs fore.",
 	section T_TAROT,
@@ -2940,13 +2940,13 @@ Object Stern "Stern"	! 274 / 0x112
 
 Object -> capstan "capstan"	! 275 / 0x113
   with	name 'capstan' 'anchor' 'chain' 'wheel',
-	after routine113332,
+	after CapstanAfter,
 	initial "The top of the anchor chain is wound around the capstan, a great wheel on the deck beside you. The chain disappears over the side.",
   has	static;
 
 Object Garden_Stream "Garden Stream"	! 276 / 0x114
   with	name 'reeds',
-	after routine113420,
+	after GardenStreamAfter,
 	n_to "Better not... you'd be seen from the Library.",
 	s_to coal_bunker,
 	e_to Beside_the_Wall,
@@ -14512,7 +14512,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "As you ought to know, the Oracle is inviolable.";
     }
     if (action == ##Ask or ##Order or ##Answer) {
-        routine110288();
+        PriestTalk();
         rtrue;
     }
     rfalse;
@@ -14536,7 +14536,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine110288 ;	! 110288 / 0x1aed0
+[ PriestTalk ;	! 110288 / 0x1aed0
     if (priest_cnt == 3) {
         "The priestess has told you enough.";
     }
@@ -14568,7 +14568,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: flaming_bronze_urn.after
 
-[ routine110880 ;	! 110880 / 0x1b120
+[ UrnAfter ;	! 110880 / 0x1b120
     if (action == ##Receive) {
         if (noun == player) {
             R_Process(##Enter,selfobj);
@@ -14597,7 +14597,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Lighthouse.description
 
-[ routine111128 ;	! 111128 / 0x1b218
+[ LighthouseDesc ;	! 111128 / 0x1b218
     print "You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Considerately enough, the builders have provided a spiral staircase down. ";
     if (Sea_Shore has visited) {
         print "The cliffs below are familiar, but it's a little later in the day than your arrival on the sea shore. ";
@@ -14618,9 +14618,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Lighthouse.d_to
 
-[ routine111604 ;	! 111604 / 0x1b3f4
+[ LighthouseDown ;	! 111604 / 0x1b3f4
     routine111612();
-    return 259[Greek_Frieze1?];
+    return Greek_Frieze1;
 ];
 
 [ routine111612 ;	! 111612 / 0x1b3fc
@@ -14640,13 +14640,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: some_landlubbers_direction.after
 
-[ routine111692 ;	! 111692 / 0x1b44c
+[ LandlubberAfter ;	! 111692 / 0x1b44c
     "Here aboard ship, such a landlubber's direction seems inappropriate.";
 ];
 
 ! References: Aboard_Ship.each_turn
 
-[ routine111740 ;	! 111740 / 0x1b47c
+[ OnShipEachTurn ;	! 111740 / 0x1b47c
     if (port_obj in Compass) {
         rfalse;
     }
@@ -14669,7 +14669,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Aboard_Ship.daemon
 
-[ routine111820 ;	! 111820 / 0x1b4cc
+[ OnShipDaemon ;	! 111820 / 0x1b4cc
     if (location has ship_flag) {
         rfalse;
     }
@@ -14692,7 +14692,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: mast_and_rigging.after
 
-[ routine111872 ;	! 111872 / 0x1b500
+[ RiggingAfter ;	! 111872 / 0x1b500
     if (action == ##Enter or ##Climb) {
         R_Process(##Go,u_obj);
         rtrue;
@@ -14702,7 +14702,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Up_the_Mast.w_to
 
-[ routine111888 ;	! 111888 / 0x1b510
+[ OnMastWest ;	! 111888 / 0x1b510
     print "You wander out onto the flagpole, which bows and bends alarmingly, until suddenly...^^Crack!  And you are falling";
     if (flag_of_the_British_Merchant_Navy hasnt general) {
         deadflag = DIED;
@@ -14721,17 +14721,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Up_the_Mast.d_to
 
-[ routine112160 ;	! 112160 / 0x1b620
+[ OnMastDown ;	! 112160 / 0x1b620
     if (flag_of_the_British_Merchant_Navy has general) {
         give flag_of_the_British_Merchant_Navy ~general;
         print "You are obliged to leave hold of the flag en route.^^";
     }
-    return 266[Aboard_Ship?];
+    return Aboard_Ship;
 ];
 
 ! References: Up_the_Mast.after
 
-[ routine112212 ;	! 112212 / 0x1b654
+[ OnMastAfter ;	! 112212 / 0x1b654
     if (action == ##Jump) {
         print "You jump (madly) from the crow's nest ";
         if (flag_of_the_British_Merchant_Navy has general) {
@@ -14748,7 +14748,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Up_the_Mast.before
 
-[ routine112312 ;	! 112312 / 0x1b6b8
+[ OnMastBefore ;	! 112312 / 0x1b6b8
     if (action == ##Drop) {
         move noun to Aboard_Ship;
         if (noun == medicine_bottle && noun has locked) {
@@ -14763,7 +14763,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: flagpole.after
 
-[ routine112420 ;	! 112420 / 0x1b724
+[ FlagpoleAfter ;	! 112420 / 0x1b724
     if (action == ##Take or ##Turn or ##Push or ##Pull) {
         "The flagpole is very securely fixed to the main mast.";
     }
@@ -14772,7 +14772,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: flag_of_the_British_Merchant_Navy.after
 
-[ routine112468 ;	! 112468 / 0x1b754
+[ FlagAfter ;	! 112468 / 0x1b754
     if (selfobj in comfortable_bed && verb == ##Take or ##Remove) {
         "The flag seems perfect for the bed as it is.";
     }
@@ -14792,7 +14792,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: old_timber_spar.before
 
-[ routine112624 ;	! 112624 / 0x1b7f0
+[ TimberSparBefore ;	! 112624 / 0x1b7f0
     if (action == ##Take) {
         if (old_timber_spar hasnt general) {
             rfalse;
@@ -14806,7 +14806,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Prow_of_the_Lady_Magdalena.cant_go
 
-[ routine112652 ;	! 112652 / 0x1b80c
+[ ProwCantGo ;	! 112652 / 0x1b80c
     print "You can only go aft.^";
     set_flag_array(11);
     rtrue;
@@ -14814,7 +14814,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: green_branch.after
 
-[ routine112676 ;	! 112676 / 0x1b824
+[ BranchAfter ;	! 112676 / 0x1b824
     if (action == ##Wave) {
         if (Jemima in location) {
             "Jemima, who has hay fever, is extremely annoyed by this. So it wasn't a turn entirely wasted.";
@@ -14830,7 +14830,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Stern.d_to
 
-[ routine112912 ;	! 112912 / 0x1b910
+[ SternDown ;	! 112912 / 0x1b910
     if (capstan hasnt general) {
         "You shin precariously down the anchor chain, but reach the end while still hanging very far above the... water? quicksand?  Concentrating very carefully, you heave yourself back aboard and pant with relief.";
     }
@@ -14841,7 +14841,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: capstan.after
 
-[ routine113332 ;	! 113332 / 0x1bab4
+[ CapstanAfter ;	! 113332 / 0x1bab4
     if (action == ##Turn or ##Push or ##PushDir) {
         print "You heave away at the capstan, ";
         if (capstan has general) {
@@ -14861,7 +14861,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Garden_Stream.after
 
-[ routine113420 ;	! 113420 / 0x1bb0c
+[ GardenStreamAfter ;	! 113420 / 0x1bb0c
     if (action == ##Swim) {
         "Too shallow for comfort.";
     }
