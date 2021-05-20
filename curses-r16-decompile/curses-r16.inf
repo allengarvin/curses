@@ -23634,10 +23634,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "You lean the timber prop against the Folly tower, supporting it. (Better just hope you won't be needing the prop for anything else!)";
 ];
 
-[ PropWithSub local1 ;	! 179880 / 0x2bea8
-    local1 = noun;
+[ PropWithSub o ;	! 179880 / 0x2bea8
+    o = noun;
     noun = second;
-    second = local1;
+    second = o;
     LeanSub();
     rtrue;
 ];
