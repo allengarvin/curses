@@ -1687,7 +1687,7 @@ Object -> Jemima "Jemima"	! 114 / 0x72
 Object daisy_chain "daisy chain"	! 115 / 0x73
   with	name 'daisy' 'chain' 'daisychain',
 	after DaisyChainAfter,
-	u_to routine89828,
+	u_to DaisyUp,
 	time_left 11,
 	devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has	clothing;
@@ -11796,7 +11796,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "December";
         }
         print " and a watercolour painting of some ";
-        routine89908(i);
+        DaisyType(i);
         " daisies.";
     }
     if (action == ##Turn or ##SwitchOn) {
@@ -12175,7 +12175,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ DaisyChainAfter ;	! 89704 / 0x15e68
     if (action == ##Read) {
         print "A delicate, pretty chain of ";
-        routine89908(selfobj.time_left);
+        DaisyType(selfobj.time_left);
         " daisies.";
     }
     if (action == ##Drop) {
@@ -12188,16 +12188,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: daisy_chain.u_to
 
-[ routine89828 local1 ;	! 89828 / 0x15ee4
+[ DaisyUp o ;	! 89828 / 0x15ee4
     if (selfobj has worn && rod_identity == 2) {
-        local1 = child(player);
+        o = child(player);
       .label89843;
-        if (local1 ~= 0) {
-            if (local1 has hidden_rod) {
+        if (o ~= nothing) {
+            if (o has hidden_rod) {
                 print " (which rustles as if with a magical wind)";
                 rtrue;
             }
-            local1 = sibling(local1);
+            o = sibling(o);
             jump label89843;
         }
         print " (around your neck)";
@@ -12206,41 +12206,41 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine89908 local1 ;	! 89908 / 0x15f34
-    if (local1 == 0) {
+[ DaisyType n ;	! 89908 / 0x15f34
+    if (n == 0) {
         print "speckled Jemima's Pride";
     }
-    if (local1 == 1[?]) {
+    if (n == 1) {
         print "yellowish Merlyn's Hat";
     }
-    if (local1 == 2[?]) {
+    if (n == 2) {
         print "blue-tinted bell";
     }
-    if (local1 == 3[s_obj?]) {
+    if (n == 3) {
         print "heavy-headed Dorset Pride";
     }
-    if (local1 == 4[e_obj?]) {
+    if (n == 4) {
         print "reddish meadow-heart";
     }
-    if (local1 == 5[w_obj?]) {
+    if (n == 5) {
         print "wild white common";
     }
-    if (local1 == 6[ne_obj?]) {
+    if (n == 6) {
         print "green-edged hedgerow";
     }
-    if (local1 == 7[se_obj?]) {
+    if (n == 7) {
         print "plain Russian Steppe";
     }
-    if (local1 == 8[nw_obj?]) {
+    if (n == 8) {
         print "tall-stemmed Breton";
     }
-    if (local1 == 9[sw_obj?]) {
+    if (n == 9) {
         print "orange meadow";
     }
-    if (local1 == 10[u_obj?]) {
+    if (n == 10) {
         print "short-leaved Meldrew";
     }
-    if (local1 == 11[d_obj?]) {
+    if (n == 11) {
         print "tiny bonsai";
     }
     rtrue;
