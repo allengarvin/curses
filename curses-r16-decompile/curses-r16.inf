@@ -12098,22 +12098,22 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         give Jemima ~general;
         local1 = 0;
-        if (noun == invalidObj41664 or invalidObj41673) {
+        if (noun == invalidThing41664 or invalidThing41673) {
             local1 = 1[?];
         }
-        if (noun == invalidObj30666) {
+        if (noun == invalidThing30666) {
             local1 = 2[?];
         }
-        if (noun == invalidObj37947) {
+        if (noun == invalidThing37947) {
             local1 = 4[e_obj?];
         }
-        if (noun == invalidObj41304 or invalidObj37236) {
+        if (noun == SwitchOnSub or invalidThing37236) {
             local1 = 5[w_obj?];
         }
-        if (noun == invalidObj33933) {
+        if (noun == invalidThing33933) {
             local1 = 6[ne_obj?];
         }
-        if (noun == invalidObj36687) {
+        if (noun == invalidThing36687) {
             local1 = 9[sw_obj?];
         }
         if (local1 ~= 0) {
