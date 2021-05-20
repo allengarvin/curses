@@ -11755,48 +11755,48 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: daisy_calendar.after
 
-[ CalendarAfter local1 local2 ;	! 85692 / 0x14ebc
+[ CalendarAfter i w ;	! 85692 / 0x14ebc
     if (action == ##Read) {
         print "The calendar is turned to ";
-        local1 = selfobj.number;
-        if (local1 == 0) {
+        i = selfobj.number;
+        if (i == 0) {
             print "January";
         }
-        if (local1 == 1[?]) {
+        if (i == 1) {
             print "February";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             print "March";
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             print "April";
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             print "May";
         }
-        if (local1 == 5[w_obj?]) {
+        if (i == 5) {
             print "June";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (i == 6) {
             print "July";
         }
-        if (local1 == 7[se_obj?]) {
+        if (i == 7) {
             print "August";
         }
-        if (local1 == 8[nw_obj?]) {
+        if (i == 8) {
             print "September";
         }
-        if (local1 == 9[sw_obj?]) {
+        if (i == 9) {
             print "October";
         }
-        if (local1 == 10[u_obj?]) {
+        if (i == 10) {
             print "November";
         }
-        if (local1 == 11[d_obj?]) {
+        if (i == 11) {
             print "December";
         }
         print " and a watercolour painting of some ";
-        routine89908(local1);
+        routine89908(i);
         " daisies.";
     }
     if (action == ##Turn or ##SwitchOn) {
@@ -11807,46 +11807,46 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Consult) {
         if (consult_words == 1[?]) {
             wn = consult_from;
-            local2 = NextWord();
-            local1 = 65535[?];
-            if (local2 == 34878['january'?]) {
-                local1 = 0;
+            w = NextWord();
+            i = 65535;
+            if (w == 'january') {
+                i = 0;
             }
-            if (local2 == 33024['february'?]) {
-                local1 = 1[?];
+            if (w == 'february') {
+                i = 1;
             }
-            if (local2 == 35643['march'?]) {
-                local1 = 2[?];
+            if (w == 'march') {
+                i = 2;
             }
-            if (local2 == 30027['april'?]) {
-                local1 = 3[s_obj?];
+            if (w == 'april') {
+                i = 3;
             }
-            if (local2 == 35742['may'?]) {
-                local1 = 4[e_obj?];
+            if (w == 'may') {
+                i = 4;
             }
-            if (local2 == 34950['june'?]) {
-                local1 = 5[w_obj?];
+            if (w == 'june') {
+                i = 5;
             }
-            if (local2 == 34932['july'?]) {
-                local1 = 6[ne_obj?];
+            if (w == 'july') {
+                i = 6;
             }
-            if (local2 == 30216['august'?]) {
-                local1 = 7[se_obj?];
+            if (w == 'august') {
+                i = 7;
             }
-            if (local2 == 38829['september'?]) {
-                local1 = 8[nw_obj?];
+            if (w == 'september') {
+                i = 8;
             }
-            if (local2 == 36516['october'?]) {
-                local1 = 9[sw_obj?];
+            if (w == 'october') {
+                i = 9;
             }
-            if (local2 == 36399['november'?]) {
-                local1 = 10[u_obj?];
+            if (w == 'november') {
+                i = 10;
             }
-            if (local2 == 32052['december'?]) {
-                local1 = 11[d_obj?];
+            if (w == 'december') {
+                i = 11;
             }
-            if (local1 >= 0) {
-                selfobj.number = local1;
+            if (i >= 0) {
+                selfobj.number = i;
                 R_Process(##Read,selfobj);
                 rtrue;
             }
