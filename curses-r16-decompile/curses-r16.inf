@@ -5014,7 +5014,7 @@ Global global171;
 Global global172;
 Global global173;
 Global global174;
-Global global175 = 65535[?];
+Global rod_charge_index = 65535;
 Global one_time_try_bonus;
 Global global178;
 Global yard_dir;
@@ -18824,7 +18824,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ discharge_rod o ;	! 155280 / 0x25e90
     if (rod_charge_array->o == 0) {
         rod_charge_array->o = 1;
-        global175 = o;
+        rod_charge_index = o;
     }
     rtrue;
 ];
@@ -24598,9 +24598,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     @set_window 0;
     0-->8 = 65533 & 0-->8;
     displaying_quote = false;
-    if (global175 ~= 65535[?]) {
-        display_quote(global175);
-        global175 = 65535[?];
+    if (rod_charge_index ~= 65535) {
+        display_quote(rod_charge_index);
+        rod_charge_index = 65535;
     }
     rtrue;
 ];
