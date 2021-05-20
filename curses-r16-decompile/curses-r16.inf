@@ -11230,36 +11230,36 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: south_wall.after
 
-[ SouthWallAfter local1 ;	! 79012 / 0x134a4
+[ SouthWallAfter o ;	! 79012 / 0x134a4
     if (action == ##Enter) {
-        local1 = child(slide_projector);
-        if (local1 == 0) {
+        o = child(slide_projector);
+        if (o == nothing) {
             "You can't go that way.";
         }
-        if (local1 == 192[Eight_of_Wands_card?]) {
+        if (o == Eight_of_Wands_card) {
             "You are unable to enter the picture. It isn't very realistic, more a stylised figure-eight.";
         }
         print "You walk confidently into the south wall...^";
-        if (local1 has general) {
+        if (o has general) {
             "But are unable to enter the scene for a second time.";
         }
-        if (local1 == 164[Death_card?]) {
+        if (o == Death_card) {
             print "^And find yourself in a golden cornfield on a sunny afternoon. You have just time to admire the ears of wheat before the scythe of the Grim Reaper cuts your soul from your body.^";
-            FakeDie(local1);
+            FakeDie(o);
             rtrue;
         }
-        if (local1 == 166[Drowned_Sailor_card?]) {
+        if (o == Drowned_Sailor_card) {
             print "^You are underwater, in the wreck of a ship, surrounded by the skeletons of its former crew, whom you abruptly join as your air runs out.^";
-            FakeDie(local1);
+            FakeDie(o);
             rtrue;
         }
-        if (local1 == 165[Fool_card?]) {
+        if (o == Fool_card) {
             print "^And find yourself stepping off a cliff. All is well for a moment, and then like a cartoon character you notice there is no ground beneath you and you plummet to a stony death far below.^";
-            FakeDie(local1);
+            FakeDie(o);
             rtrue;
         }
-        give local1 general;
-        PlayerTo(local1.n_to);
+        give o general;
+        PlayerTo(o.n_to);
         rtrue;
     }
     rfalse;
