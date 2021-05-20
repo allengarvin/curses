@@ -11187,7 +11187,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: slide_projector.before
 
-[ ProjectorBefore local1 ;	! 78820 / 0x133e4
+[ ProjectorBefore o ;	! 78820 / 0x133e4
     if (action == ##Receive) {
         if (selfobj has on) {
             ToggleSouthWall(noun);
@@ -11207,8 +11207,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (ball_polished == true) {
             give Disused_Observatory light;
         }
-        local1 = child(slide_projector);
-        if (local1 == 0) {
+        o = child(slide_projector);
+        if (o == nothing) {
             print "The south wall is lit up. ";
             if (ball_polished == true) {
                 print "Also, a narrow white beam of light extends backwards from the projector, pointing out up through the Observatory doorway to the north.";
@@ -11216,7 +11216,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             new_line;
             rtrue;
         }
-        ToggleSouthWall(local1);
+        ToggleSouthWall(o);
         rtrue;
     }
     if (action == ##SwitchOff) {
