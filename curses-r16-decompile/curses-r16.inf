@@ -11031,7 +11031,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Souvenirs_Room.s_to
 
 [ SouvenirsRoomSouth ;	! 78480 / 0x13290
-    R_Process(##Enter,73[south_wall?]);
+    R_Process(##Enter,south_wall);
     rtrue;
 ];
 
@@ -11250,7 +11250,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "The south wall rings curiously hollow.";
     }
     if (noun == s_obj && secret_door hasnt concealed) {
-        R_Process(verb,80[secret_door?],second);
+        R_Process(verb,secret_door,second);
         rtrue;
     }
     if (action == ##Push) {
@@ -12252,7 +12252,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Enter) {
         if (noun == dark_shaft_obj) {
             if (dumbwaiter in dark_shaft_obj) {
-                R_Process(##Enter,118[dumbwaiter?]);
+                R_Process(##Enter,dumbwaiter);
                 rtrue;
             }
             "But you suffer from vertigo. Even the thought of the plane journey tomorrow is nerve-wracking.";
@@ -12441,7 +12441,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Enter) {
         if (noun == dark_shaft_obj2) {
             if (dumbwaiter in Cellars) {
-                R_Process(##Enter,118[dumbwaiter?]);
+                R_Process(##Enter,dumbwaiter);
                 rtrue;
             }
             "No, don't. There's nothing there and it's nasty and dirty. Bring the dumbwaiter down instead.";
@@ -13230,7 +13230,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ DownByRiverWest ;	! 97832 / 0x17e28
     if (tourist_boat hasnt open) {
-        R_Process(##Enter,170[tourist_boat?]);
+        R_Process(##Enter,tourist_boat);
         rtrue;
     }
     return 170[tourist_boat?];
@@ -13383,7 +13383,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Interestingly, there's something inside this segment of it.";
     }
     if (action == ##Enter) {
-        R_Process(##Go,6[ne_obj?]);
+        R_Process(##Go,ne_obj);
         rtrue;
     }
     rfalse;
@@ -13392,7 +13392,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Revolving_Door1.n_to, Revolving_Door2.n_to
 
 [ RevolvingDoorNorth ;	! 99336 / 0x18408
-    R_Process(##Push,181[door1?]);
+    R_Process(##Push,door1);
     rtrue;
 ];
 
@@ -14588,7 +14588,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine111872 ;	! 111872 / 0x1b500
     if (action == ##Enter or ##Climb) {
-        R_Process(##Go,10[u_obj?]);
+        R_Process(##Go,u_obj);
         rtrue;
     }
     rfalse;
@@ -14747,7 +14747,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "winding the great anchor chain.";
     }
     if (action == ##Climb or ##Enter) {
-        R_Process(##Go,11[d_obj?]);
+        R_Process(##Go,d_obj);
         rtrue;
     }
     rfalse;
@@ -14880,7 +14880,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ PlaneTreeAfter ;	! 114192 / 0x1be10
     if (action == ##Climb) {
-        R_Process(##Go,10[u_obj?]);
+        R_Process(##Go,u_obj);
         rtrue;
     }
     rfalse;
@@ -15932,7 +15932,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ RopeAfter ;	! 121808 / 0x1dbd0
     if (action == ##Climb) {
-        R_Process(##Go,11[d_obj?]);
+        R_Process(##Go,d_obj);
         rtrue;
     }
     rfalse;
@@ -16034,7 +16034,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ LadderAfter ;	! 122272 / 0x1dda0
     if (action == ##Climb or ##Enter) {
-        R_Process(##Go,10[u_obj?]);
+        R_Process(##Go,u_obj);
         rtrue;
     }
     rfalse;
@@ -16537,7 +16537,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ AluminumStairAfter ;	! 127192 / 0x1f0d8
     if (action == ##Climb or ##Enter) {
-        R_Process(##Go,11[d_obj?]);
+        R_Process(##Go,d_obj);
         rtrue;
     }
     rfalse;
@@ -17625,7 +17625,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ SailorAfter ;	! 137476 / 0x21904
     if (action == ##Gamble) {
-        R_Process(##Drop,447[inscribed_die?]);
+        R_Process(##Drop,inscribed_die);
         rtrue;
     }
     rfalse;
@@ -18031,7 +18031,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ FireEscapeAfter ;	! 140724 / 0x225b4
     if (action == ##Climb or ##Enter) {
-        R_Process(##Go,10[u_obj?]);
+        R_Process(##Go,u_obj);
         rtrue;
     }
     rfalse;
@@ -20936,7 +20936,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local1 = parent(player);
     if (local1 == location || (location == thedark && local1 == real_location)) {
         if (location.orders ~= nothing || (location == thedark && real_location.orders ~= nothing)) {
-            R_Process(##Go,12[out_obj?]);
+            R_Process(##Go,out_obj);
             rtrue;
         }
         return L__M(##Exit,1);
@@ -20966,7 +20966,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ EnterSub ;	! 163672 / 0x27f58
-    R_Process(##Go,13[in_obj?]);
+    R_Process(##Go,in_obj);
     rtrue;
 ];
 
@@ -23741,11 +23741,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ LieDownSub ;	! 180732 / 0x2c1fc
     if (location == Servants_Room) {
-        R_Process(##Enter,44[servants_bed?]);
+        R_Process(##Enter,servants_bed);
         rtrue;
     }
     if (location == Alisons_Writing_Room) {
-        R_Process(##Enter,97[comfortable_bed?]);
+        R_Process(##Enter,comfortable_bed);
         rtrue;
     }
     "You lie down on the floor for a while and then get up again, feeling foolish.";
