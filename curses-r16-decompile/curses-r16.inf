@@ -4999,7 +4999,7 @@ Global DigY;
 Global OldDigX;
 Global OldDigY;
 Global CouncilCnt;
-Global global161;
+Global DreamCnt;
 Global global162;
 Global global163;
 Global global164;
@@ -16436,8 +16436,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Melancholy_Dream.each_turn
 
 [ DreamEachTurn ;	! 126200 / 0x1ecf8
-    ++global161;
-    if (global161 ~= 2[?]) {
+    ++DreamCnt;
+    if (DreamCnt ~= 2) {
         rfalse;
     }
     move green_luminescence to Melancholy_Dream;
