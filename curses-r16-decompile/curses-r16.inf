@@ -10113,7 +10113,7 @@ Array preactions_table --> IsDirection;
         wn = consult_from;
         w = NextWord();
         if (Homer has general && Homer.number < 3 && Homer in location) {
-            routine109044();
+            HomerSleeps();
             print "~Well, if you're going to cheat, forget it,~ says Homer loudly as he falls asleep.^^";
         }
         if (w == 'galita') {
@@ -14108,7 +14108,7 @@ Array preactions_table --> IsDirection;
                 "~Mph,~ he says (untranslatably). ~But can ya see the future?  Who's gonna rule Alexandria after the fall of the guy they're gonna call Alexander the Big?~";
             }
           .labelXXX;
-            routine109044();
+            HomerSleeps();
             "~Hopeless,~ he says dismissively and falls asleep.";
         }
         if (Homer.time_left == 1) {
@@ -14130,7 +14130,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine109044 ;	
+[ HomerSleeps ;	
     give Homer ~general;
     Homer.initial = "Homer is asleep again, his syrinx tight in his arms.";
     rtrue;
