@@ -618,7 +618,7 @@ Verb 'carry' 'get' 'hold' 'take'
     * 'off' worn					-> Disrobe
     * 'off' noun					-> TakeOff
     * 'inventory'					-> Inv
-    * routine181800					-> PaceDir
+    * AnotherCroquetFunc				-> PaceDir
 ;
 
 Verb 'objects'
@@ -23706,14 +23706,14 @@ Array preactions_table --> IsDirection;
     return 0;
 ];
 
-[ routine181800 local1 local2 ;	
-    local1 = SomeParse();
-    if (local1 == 0) {
-        return 65535[?];
+[ AnotherCroquetFunc i j ;	
+    i = SomeParse();
+    if (i == 0) {
+        return 65535;
     }
-    local2 = CroquetMove();
-    croquet_var = local1;
-    yard_dir = local2;
+    j = CroquetMove();
+    croquet_var = i;
+    yard_dir = j;
     return 0;
 ];
 
