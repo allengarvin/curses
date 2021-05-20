@@ -7209,7 +7209,7 @@ Array preactions_table --> IsDirection;
             its_score = l_s;
         }
         if (its_score == 0 && its_owner ~= 1[?]) {
-            its_score = 10[u_obj?];
+            its_score = 10;
         }
         if (indef_type & 1 ~= 0 && obj ~= itobj or himobj or herobj) {
             its_score = its_score + 40;
