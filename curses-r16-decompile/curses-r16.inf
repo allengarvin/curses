@@ -5009,7 +5009,7 @@ Global PalaceCnt;
 Global palace_var168;
 Global palace_var169;
 Global palace_var170;
-Global global171;
+Global HighRodWarn;
 Global global172;
 Global global173;
 Global global174;
@@ -18248,8 +18248,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             "It is searing hot, and you cannot touch the surface!";
         }
-        if (global171 == 0) {
-            global171 = 1;
+        if (HighRodWarn == 0) {
+            HighRodWarn = 1;
             "Warning (once only!): the three High Rods seem to balanced extremely delicately on the edge of the pit.";
         }
         Achieved(SCORE_HIGHROD);
