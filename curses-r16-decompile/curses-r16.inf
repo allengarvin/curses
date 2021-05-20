@@ -11547,7 +11547,7 @@ Array preactions_table --> IsDirection;
             }
             give comfortable_bed general;
             print "You sleep uneasily, fancying you can see Miss Alison writing at her table, trying to see the words, and always on the edge of a...^";
-            routine126184();
+            EnterDream();
             rtrue;
         }
         rfalse;
@@ -16224,7 +16224,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine126184 ;	
+[ EnterDream ;	
     ChangePlayer(ghost_of_yourself);
     PlayerTo(Melancholy_Dream);
     rtrue;
