@@ -16543,11 +16543,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine127208 local1 local2 local3 local4 ;	! 127208 / 0x1f0e8
-    local3 = henri_post_array->local1;
-    local4 = henri_post_array->local2;
-    henri_post_array->local2 = local3;
-    henri_post_array->local1 = local4;
+[ AdjustSlide i j u v ;	! 127208 / 0x1f0e8
+    u = henri_post_array->i;
+    v = henri_post_array->j;
+    henri_post_array->j = u;
+    henri_post_array->i = v;
     rtrue;
 ];
 
@@ -16632,11 +16632,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 metal_wall.w_to = w_obj;
                 selfobj.number = 2[?];
             }
-            routine127208(0,2[?]);
-            routine127208(3[s_obj?],5[w_obj?]);
-            routine127208(6[ne_obj?],8[nw_obj?]);
-            routine127208(9[sw_obj?],11[d_obj?]);
-            routine127208(12[out_obj?],14[thedark?]);
+            AdjustSlide(0,2);
+            AdjustSlide(3,5);
+            AdjustSlide(6,8);
+            AdjustSlide(9,11);
+            AdjustSlide(12,14);
         }
         rfalse;
     }
