@@ -18572,27 +18572,27 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hellish_Place.before
 
-[ HellishPlaceBefore local1 ;	! 145296 / 0x23790
+[ HellishPlaceBefore cnt ;	! 145296 / 0x23790
     if (action == ##Look) {
         new_line;
         if (demon has general) {
             "~Thought what you wanted to ask yet?~ says the demon.";
         }
-        local1 = demon.time_left;
-        if (local1 > 0) {
-            --local1;
-            demon.time_left = local1;
-            if (local1 > 0) {
+        cnt = demon.time_left;
+        if (cnt > 0) {
+            --cnt;
+            demon.time_left = cnt;
+            if (cnt > 0) {
                 give demon general;
             }
         }
-        if (local1 == 0) {
+        if (cnt == 0) {
             "~Begone, pipsqueak!  I'll be seeing you... much later...~ says the demon with a memorable smile.";
         }
-        if (local1 == 1[?]) {
+        if (cnt == 1) {
             "~All right, toad, you have one, just one, chance left,~ says the demon with a memorable smile.";
         }
-        if (local1 == 2[?]) {
+        if (cnt == 2) {
             "~Now then, two chances remaining,~ says the demon with a memorable smile.";
         }
         "~Good afternoon,~ says the demon with a memorable smile. ~As a reward for your naked greed, may I welcome you to our little information service. We try to be as helpful as possible to explorers who are lost, or can't think how to solve their problems, you know the kind of thing. So just tell me what you want to know, or show me something to look at. You get the usual three hints.~";
