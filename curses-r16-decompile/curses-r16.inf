@@ -6904,7 +6904,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (context == 3[s_obj?] or 4[e_obj?] && parent(j) ~= actor) {
                 flag = 0;
             }
-            k = routine175160(j,flag);
+            k = CanStrike(j,flag);
             if (k == 1[?]) {
                 flag = 1[?];
             } else if (k == 2[?]) {
@@ -6986,7 +6986,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         i = 0;
       .label49557;
         if (i < number_matched) {
-            k = routine175160(match_list-->i,2[?]);
+            k = CanStrike(match_list-->i,2);
             if (k == j) {
                 ++good_ones;
             }
@@ -7142,7 +7142,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (indef_type & 32 ~= 0 && its_owner has animate && GetGender(its_owner) == 1[?]) {
             its_score = its_score + 40;
         }
-        its_score = its_score + routine175160(obj,2[?]);
+        its_score = its_score + CanStrike(obj,2);
         if (its_score < threshold) {
             match_list-->i = 65535[?];
         } else {
@@ -23057,14 +23057,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine175160 local1 local2 ;	! 175160 / 0x2ac38
-    if (local2 < 2) {
+[ CanStrike o i ;	! 175160 / 0x2ac38
+    if (i < 2) {
         rfalse;
     }
-    if (action_to_be == ##Strike && local1 has rod_attr) {
-        return 2[?];
+    if (action_to_be == ##Strike && o has rod_attr) {
+        return 2;
     }
-    return 1[?];
+    return 1;
 ];
 
 [ ConsultDefault o ;	! 175184 / 0x2ac50
