@@ -22731,21 +22731,21 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ PrintRank local1 local2 ;	! 173036 / 0x2a3ec
+[ PrintRank s ndx ;	! 173036 / 0x2a3ec
     print ", giving you the rank of ";
-    local1 = score;
-    if (local1 ~= 65437[?] && task_done->11 ~= 0) {
-        local1 = local1 - 50;
+    s = score;
+    if (s ~= 65437 && task_done->11 ~= 0) {
+        s = s - 50;
     }
-    local2 = 1[?];
+    ndx = 1;
   .label173080;
-    if (local2 <= array_26065-->0 * 2) {
-        if (local1 >= array_26065-->local2) {
-            print (string) array_26065-->(local2 + 1);
+    if (ndx <= array_26065-->0 * 2) {
+        if (s >= array_26065-->ndx) {
+            print (string) array_26065-->(ndx + 1);
             new_line;
             rtrue;
         }
-        local2 = local2 + 2;
+        ndx = ndx + 2;
         jump label173080;
     }
     rtrue;
