@@ -18401,7 +18401,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ WestSideChapelBefore ;	! 142572 / 0x22cec
     if (action == ##Look) {
         if (adamantine_statue in West_Side_Chapel) {
-            routine143264();
+            DisplayKnight();
         }
         rfalse;
     }
@@ -18479,7 +18479,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine143264 ;	! 143264 / 0x22fa0
+[ DisplayKnight ;	! 143264 / 0x22fa0
     if (adamantine_skull hasnt general && adamantine_skull hasnt concealed) {
         print "^A headless ";
     } else {
