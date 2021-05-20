@@ -12660,39 +12660,39 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Infinity_Symbol.before
 
-[ LemniscusBefore local1 ;	! 92944 / 0x16b10
+[ LemniscusBefore i ;	! 92944 / 0x16b10
     if (action == ##Look) {
         print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through nine equally spaced sockets or cylindrical wells.";
-        local1 = circular_arc.time_left;
-        if (local1 == 0) {
+        i = circular_arc.time_left;
+        if (i == 0) {
             new_line;
             rfalse;
         }
-        if (local1 == 1[?]) {
+        if (i == 1) {
             "  One socket contains a rod, fixed in place.";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             "  Two of the sockets contain rods, fixed in place.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             "  Three sockets contain rods, fixed in place.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             "  Four sockets contain rods, fixed in place.";
         }
-        if (local1 == 5[w_obj?]) {
+        if (i == 5) {
             "  Five sockets contain rods, fixed in place.";
         }
-        if (local1 == 6[ne_obj?]) {
+        if (i == 6) {
             "  Six sockets contain rods, fixed in place.";
         }
-        if (local1 == 7[se_obj?]) {
+        if (i == 7) {
             "  Seven sockets contain rods, fixed in place.";
         }
-        if (local1 == 8[nw_obj?]) {
+        if (i == 8) {
             "  Only one socket is left empty.";
         }
-        if (local1 == 9[sw_obj?]) {
+        if (i == 9) {
             "  All nine sockets are occupied by rods.";
         }
         rfalse;
