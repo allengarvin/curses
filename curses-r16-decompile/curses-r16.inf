@@ -14927,12 +14927,12 @@ Array preactions_table --> IsDirection;
     return MazeBoundary(x,y);
 ];
 
-[ routine115448 local1 local2 local3 ;	
-    local3 = TestMazeConfines(local1,local2);
-    if (local3 == 2[?]) {
-        local3 = 0;
+[ CheckMaze x y cell ;	
+    cell = TestMazeConfines(x,y);
+    if (cell == '@{2}') {
+        cell = '@{0}';
     }
-    return local3;
+    return cell;
 ];
 
 [ routine115468 local1 local2 local3 ;	
@@ -15274,16 +15274,16 @@ Array preactions_table --> IsDirection;
         print "You stand on a rough patch of grass, marked out with whitewash. ";
     }
     --MazeY;
-    n_side = routine115448(MazeX,MazeY);
+    n_side = CheckMaze(MazeX,MazeY);
     ++MazeY;
     ++MazeX;
-    s_side = routine115448(MazeX,MazeY);
+    s_side = CheckMaze(MazeX,MazeY);
     --MazeX;
     ++MazeY;
-    e_side = routine115448(MazeX,MazeY);
+    e_side = CheckMaze(MazeX,MazeY);
     --MazeY;
     --MazeX;
-    w_side = routine115448(MazeX,MazeY);
+    w_side = CheckMaze(MazeX,MazeY);
     ++MazeX;
     numwalls = n_side + s_side + e_side + w_side;
     if (numwalls == 4) {
