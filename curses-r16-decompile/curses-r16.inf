@@ -20932,17 +20932,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ ExitSub local1 ;	! 163540 / 0x27ed4
-    local1 = parent(player);
-    if (local1 == location || (location == thedark && local1 == real_location)) {
+[ ExitSub env ;	! 163540 / 0x27ed4
+    env = parent(player);
+    if (env == location || (location == thedark && env == real_location)) {
         if (location.orders ~= nothing || (location == thedark && real_location.orders ~= nothing)) {
             R_Process(##Go,out_obj);
             rtrue;
         }
         return L__M(##Exit,1);
     }
-    if (local1 has container && local1 hasnt open) {
-        return L__M(##Exit,2,local1);
+    if (env has container && env hasnt open) {
+        return L__M(##Exit,2,env);
     }
     if (location == thedark) {
         move player to real_location;
@@ -20955,7 +20955,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (keep_silent == true) {
         rtrue;
     }
-    L__M(##Exit,3,local1);
+    L__M(##Exit,3,env);
     LookSub(true);
     rtrue;
 ];
