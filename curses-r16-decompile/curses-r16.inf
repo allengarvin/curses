@@ -17871,20 +17871,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: scroll_bearing_a_short_poem.parse_name, scroll_bearing_an_epic_poem.parse_name
 
-[ ScrollParse local1 local2 ;	! 138300 / 0x21c3c
+[ ScrollParse i w ;	! 138300 / 0x21c3c
     if (parser_action == ##TheSame) {
         return 65535[?];
     }
   .label138311;
     if (1[?] == 1[?]) {
-        local2 = NextWord();
-        if (Refers(selfobj,local2) == 1[?]) {
-            ++local1;
-        } else if (local2 == 37344['poems'?] or 38703['scrolls'?]) {
+        w = NextWord();
+        if (Refers(selfobj,w) == 1[?]) {
+            ++i;
+        } else if (w == 'poems' or 'scrolls') {
             parser_action = ##PluralFound;
-            ++local1;
+            ++i;
         } else {
-            return local1;
+            return i;
         }
         jump label138311;
     }
