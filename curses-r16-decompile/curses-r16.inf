@@ -15794,24 +15794,24 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Murky_Cave.daemon
 
-[ MurkyCaveDaemon local1 ;	! 119480 / 0x1d2b8
+[ MurkyCaveDaemon cnt ;	! 119480 / 0x1d2b8
     if (game_section ~= T_ANCIENT_BRITAIN) {
         StopDaemon(selfobj);
     }
-    local1 = CouncilCnt;
-    if (local1 > 0) {
+    cnt = CouncilCnt;
+    if (cnt > 0) {
         ++CouncilCnt;
     }
-    if (local1 == 1[?]) {
+    if (cnt == 1) {
         "^From up on the hill you hear the blowing of a horn.";
     }
-    if (local1 == 2[?]) {
+    if (cnt == 2) {
         "^Horses are approaching the villa, coming down the hill.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (cnt == 3) {
         "^The sound of horses draws nearer.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (cnt == 4) {
         if (location == Entrance) {
             print "^Horsemen suddenly gallop into the courtyard and you are soon ringed by guards!^";
             routine123168();
@@ -15819,7 +15819,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "^There is definitely activity outside the villa.";
         }
     }
-    if (local1 >= 5) {
+    if (cnt >= 5) {
         if (location == Entrance) {
             print "^You walk straight into the guards.^";
             routine123168();
@@ -15829,7 +15829,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             routine123168();
         }
     }
-    if (local1 == 7[se_obj?]) {
+    if (cnt == 7) {
         print "^There is sudden activity as the guards make a thorough precautionary search of the villa. ";
         if (location == Hypocaust) {
             "Luckily, they don't even think of looking down in here.";
@@ -15844,7 +15844,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         routine123168();
     }
-    if (local1 <= 7) {
+    if (cnt <= 7) {
         rfalse;
     }
     if (location == Triclinium) {
@@ -15854,31 +15854,31 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= Hypocaust) {
         rfalse;
     }
-    if (local1 == 8[nw_obj?]) {
+    if (cnt == 8) {
         "^You hear men walking across the mosaic just above your head.";
     }
-    if (local1 == 9[sw_obj?]) {
+    if (cnt == 9) {
         print "^A voice, which can just be heard through the vent, says ";
         if (KnowLanguages == false) {
             "something in Anglo-Saxon or Celtic (hard to say which).";
         }
         "~Welcome, great masters. We are convened in secret conclave to decide the fate of Britain. Lament, for the old ways are passing!  There will be a dark age, a collapse into many monarchies, and any man who can hold a town will call himself King and heir to Vortigern.~";
     }
-    if (local1 == 10[u_obj?]) {
+    if (cnt == 10) {
         print "^A younger, more impatient voice, says ";
         if (KnowLanguages == false) {
             "something else.";
         }
         "~This is an opportunity!  We must be the power behind the thrones, we will in secret unite and be the true force of the land...~";
     }
-    if (local1 == 11[d_obj?]) {
+    if (cnt == 11) {
         print "^There is cynical laughter for a moment, and a third voice interjects ";
         if (KnowLanguages == false) {
             "something.";
         }
         "~And who will lead this, this unity?  We take all sides and none, you know that. There are potent druids in the tents of each general down there in the rabble. They'd kill each other in a second come the battle.~";
     }
-    if (local1 == 12[out_obj?]) {
+    if (cnt == 12) {
         print "^The first voice speaks once more. ";
         if (KnowLanguages == false) {
             new_line;
@@ -15886,14 +15886,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         "~Far worse is to come. The jumped-up kings and their new men will no longer believe in the ancient powers. Already I can feel the druidic magic weakening away, and we are perilously close to the nexus now. In the valleys below, armies wait to fight the decisive battle. Whichever side wins, they will no longer need us. In a matter of hours, the power will be broken forever.~";
     }
-    if (local1 == 13[in_obj?]) {
+    if (cnt == 13) {
         print "^After a sombre silence, a much older voice says ";
         if (KnowLanguages == false) {
             "something wise. It really is a pity you can't understand them.";
         }
         "~You did right to call us together. There is a path prepared for us, but the sacrifice will be terrible. We must concentrate all the remaining druidical energy into this sacred hill, that it may last through all time, and we must ensure that druids live on this site forever and keep the faith.~";
     }
-    if (local1 == 14[thedark?]) {
+    if (cnt == 14) {
         print "^The younger voice speaks again. ";
         if (KnowLanguages == false) {
             new_line;
@@ -15901,7 +15901,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         "~For now, yes, for a century or two, yes, but what then?  They will forget the old ways, they will no longer truly be druids.~";
     }
-    if (local1 == 15[yourself?]) {
+    if (cnt == 15) {
         print "^The older voice replies triumphantly. ";
         if (KnowLanguages == false) {
             new_line;
