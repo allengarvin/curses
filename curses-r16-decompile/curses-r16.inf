@@ -11096,15 +11096,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Souvenirs_Room.after
 
-[ SouvenirsRoomAfter local1 ;	! 78248 / 0x131a8
+[ SouvenirsRoomAfter o ;	! 78248 / 0x131a8
     if (action == ##Read) {
         if (noun == s_obj && slide_projector has on) {
-            local1 = child(slide_projector);
-            if (local1 == 0) {
+            o = child(slide_projector);
+            if (o == nothing) {
                 "The south wall is lit up by the projector.";
             }
             print "The south wall shows ";
-            WallDisplay(local1);
+            WallDisplay(o);
             rtrue;
         }
         rfalse;
@@ -11114,17 +11114,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Souvenirs_Room.before
 
-[ SouvenirsRoomBefore local1 ;	! 78328 / 0x131f8
+[ SouvenirsRoomBefore o ;	! 78328 / 0x131f8
     if (action == ##Look) {
         if (slide_projector hasnt on) {
             rfalse;
         }
-        local1 = child(slide_projector);
-        if (local1 == 0) {
+        o = child(slide_projector);
+        if (o == nothing) {
             print "^The south wall is lit up by the projector.^";
         } else {
             print "^The south wall displays ";
-            DisplayCardDesc(local1);
+            DisplayCardDesc(o);
         }
         if (ball_polished == true) {
             "^A beam of white light points directly backward from the projector, through the north doorway into the Observatory.";
