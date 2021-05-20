@@ -5006,9 +5006,9 @@ Global global164;
 Global SpiritCnt;
 Global MummyWarning;
 Global global167;
-Global global168;
-Global global169;
-Global global170;
+Global palace_var168;
+Global palace_var169;
+Global palace_var170;
 Global global171;
 Global global172;
 Global global173;
@@ -17982,14 +17982,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         move slave to Lost_inside_the_Palace;
         move player to Lost_inside_the_Palace;
-        global170 = global169;
-        global169 = global168;
-        global168 = noun;
+        palace_var170 = palace_var169;
+        palace_var169 = palace_var168;
+        palace_var168 = noun;
         give Lost_inside_the_Palace ~general;
-        if (global170 == 6 && global169 == 4 && global168 == 3) {
+        if (palace_var170 == 6 && palace_var169 == 4 && palace_var168 == 3) {
             give Lost_inside_the_Palace general;
         }
-        if (global168 == 3 && global169 == 3) {
+        if (palace_var168 == 3 && palace_var169 == 3) {
             location = Outside_the_Royal_Palace_of_Alexander;
             move player to location;
         }
