@@ -7202,10 +7202,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         j = wn;
         i = RunRoutines(o1,parse_name);
         wn = j;
-        if (i == 65535[?]) {
+        if (i == 65535) {
             rtrue;
         }
-        if (i == 65534[?]) {
+        if (i == 65534) {
             rfalse;
         }
     }
