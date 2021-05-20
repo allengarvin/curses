@@ -3827,7 +3827,7 @@ Object -> metal_wall "metal wall"	! 386 / 0x182
 
 Object -> iron_grid "iron grid"	! 387 / 0x183
   with	name 'iron' 'grid' 'contraption' 'panel',
-	initial routine127956,
+	initial IronGridInitial,
 	description " .There are fourteen pieces in the grid, and one gap. The pieces have letters upon them ",
   has	static;
 
@@ -16566,7 +16566,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Crescent_Moon.name
 
-[ routine127272 ;	! 127272 / 0x1f128
+[ DisplayWholeGrid ;	! 127272 / 0x1f128
     0-->8 = 2 | 0-->8;
     print "     ";
     DisplaySlidePos(1);
@@ -16677,7 +16677,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: daisy_chain.name, iron_grid.initial
 
-[ routine127956 ;	! 127956 / 0x1f3d4
+[ IronGridInitial ;	! 127956 / 0x1f3d4
     print "Amid the glass wall is an iron panel divided into a three-by-five grid.^^Behind the glass is a kind of see-saw of two leather baskets at opposite ends of an oak pivot. ", "In one corner of the roof, above the far end of the see-saw, is a ";
     if (ancient_well notin nothing) {
         print "hole through which dim natural light emanates.^^";
@@ -16699,7 +16699,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "(in reflected script) ";
     }
     print "and are arranged as follows:^^";
-    routine127272();
+    DisplayWholeGrid();
     "^[Try ~slide b~, for instance, to move a piece into the gap.]";
 ];
 
@@ -16767,7 +16767,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     henri_post_array->local2 = local3;
     henri_post_array->local1 = 0;
     print "You slide '", (char) noun + 65 - 1, "' into the gap, leaving the grid looking like:^^";
-    routine127272();
+    DisplayWholeGrid();
     local1 = 0;
   .label128749;
     if (local1 <= 14) {
