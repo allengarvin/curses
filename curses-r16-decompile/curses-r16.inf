@@ -17242,17 +17242,17 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BuriedEachTurn local1 ;	
-    local1 = Buried_Alive.number - 1;
-    Buried_Alive.number = local1;
-    if (local1 == 0) {
+[ BuriedEachTurn i ;	
+    i = Buried_Alive.number - 1;
+    Buried_Alive.number = i;
+    if (i == 0) {
         deadflag = DIED;
         "^The air runs out, and you expire. Few corpses as so considerate as to bury themselves in advance - hopefully this thought is some consolation.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         "^You are beginning to choke and pant.";
     }
-    if (local1 == 1[?]) {
+    if (i == 1) {
         "^The air is desperately thin now, and you struggle hopelessly.";
     }
     rfalse;
