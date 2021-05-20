@@ -12264,7 +12264,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: wheel2.after, wheel.after
 
-[ WheelAfter local1 ;	! 90240 / 0x16080
+[ WheelAfter r ;	! 90240 / 0x16080
     if (action == ##TurnWith) {
         if (second == steel_wrench) {
             "The wrench doesn't fit a hand-wheel like this.";
@@ -12289,14 +12289,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 print "(Just before it reached the bottom there was a curious cracking noise. Was it really wise to leave something in the shaft?)";
             }
         }
-        local1 = parent(dumbwaiter);
-        if (local1 == 116[Storage_Room?]) {
+        r = parent(dumbwaiter);
+        if (r == Storage_Room) {
             move dumbwaiter to Cellars;
         }
-        if (local1 == 123[Dark_Shaft?]) {
+        if (r == Dark_Shaft) {
             move dumbwaiter to location;
         }
-        if (local1 == 127[Cellars?]) {
+        if (r == Cellars) {
             move dumbwaiter to Storage_Room;
         }
         new_line;
