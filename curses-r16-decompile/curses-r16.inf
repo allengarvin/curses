@@ -18356,27 +18356,27 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HeavenBefore local1 ;	
+[ HeavenBefore i ;	
     if (action == ##Look) {
         new_line;
         if (angel has general) {
             "~Take all the time you need,~ says the angel kindly.";
         }
-        local1 = angel.number;
-        if (local1 > 0) {
-            --local1;
-            angel.number = local1;
-            if (local1 > 0) {
+        i = angel.number;
+        if (i > 0) {
+            --i;
+            angel.number = i;
+            if (i > 0) {
                 give angel general;
             }
         }
-        if (local1 == 0) {
+        if (i == 0) {
             "~I'm afraid I can be of no further use to you!  See you in another life,~ says the angel with a memorable smile.";
         }
-        if (local1 == 1[?]) {
+        if (i == 1) {
             "~You have one remaining question,~ says the angel with a memorable smile.";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             "~A whole two questions left,~ says the angel with a memorable smile.";
         }
         "~Good day,~ says the angel with a memorable smile. ~As a reward for your act of faith, may I welcome you to our little information service. We try to be as helpful as possible to explorers who are lost, or can't think how to solve their problems. Is there anything, pray, which you would like a hint about, or which you'd like to show me?  You are permitted three hints in all, in accordance with standard practice.~";
