@@ -17047,7 +17047,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Causeway.daemon
 
-[ CausewayDaemon local1 ;	! 130560 / 0x1fe00
+[ CausewayDaemon i ;	! 130560 / 0x1fe00
     if (game_section ~= T_ALEXANDRIA) {
         rfalse;
     }
@@ -17055,38 +17055,38 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (location ~= Crossroads or Outside_the_Royal_Museum or Stadium) {
         rfalse;
     }
-    local1 = Causeway.number;
+    i = Causeway.number;
     if (location == Outside_the_Royal_Museum) {
-        --local1;
+        --i;
     }
     if (location == Stadium) {
-        local1 = local1 - 2;
+        i = i - 2;
     }
-    if (local1 < 4) {
+    if (i < 4) {
         "^A lively, very noisy procession pushes through here, and some spectacular floats are approaching fast.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         "^The Morning Star leads an enormous procession for the festival of Dionysus, which throngs with officials dressed as satyrs, actors and townswomen.";
     }
-    if (local1 == 5[w_obj?]) {
+    if (i == 5) {
         "^Behind the front are huge statues on mechanical floats, flanked by giant overflowing pitchers of wine. And the animals are coming!";
     }
-    if (local1 == 6[ne_obj?]) {
+    if (i == 6) {
         "^Yes, 2000 oxen dressed in gold, as many dogs, and the giraffes, the antelopes, the gnus, parrots, elephants, wildebeest... ostriches pulling carts, a white bear...";
     }
-    if (local1 == 7[se_obj?]) {
+    if (i == 7) {
         "^Next the dancers, in a great masque of the life of Alexander the Great, his travels, conquests, founding of the City, and so on. The delicate matter of how exactly his general Ptolemy took over is omitted, since Ptolemy's son Ptolemy II is now very much in charge.";
     }
-    if (local1 == 8[nw_obj?]) {
+    if (i == 8) {
         "^The centrepiece of the procession: an enormous gold ribboned phallus, two hundred feet long and with a giant star on the end. Inexplicably, you are the only person present who feels this to be in doubtful taste.";
     }
-    if (local1 == 9[sw_obj?]) {
+    if (i == 9) {
         "^A procession of women follows next, each in the national dress of an allied city state, from all over the Hellenistic world, North Africa to Sicily to Asia.";
     }
-    if (local1 == 10[u_obj?]) {
+    if (i == 10) {
         "^The procession ends as it began, with a great Evening Star, before falling into a shambolic crowd of revellers, drunken and maudlin.";
     }
-    if (local1 > 10) {
+    if (i > 10) {
         "^The procession looks like running on forever.";
     }
     rfalse;
