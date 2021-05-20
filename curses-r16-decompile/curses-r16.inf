@@ -17939,7 +17939,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Callimachus.life, Apollonius.life
 
-[ CallimachusLife local1 ;	! 138656 / 0x21da0
+[ CallimachusLife o ;	! 138656 / 0x21da0
     if (action == ##Give) {
         if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && inp1 == 451[tube_with_a_kappa_on?])) {
             "He takes the tube, sees the letter on it, looks exasperated, clouts you over the head with the tube and pushes it back into your arms.";
@@ -17947,15 +17947,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == tube_with_an_alpha_on or tube_with_a_kappa_on) {
             CDefart(selfobj);
             print " takes the tube and looks inside";
-            local1 = child(noun);
-            if (local1 == 0) {
+            o = child(noun);
+            if (o == nothing) {
                 move noun to location;
                 " to find it is empty. He looks at you very darkly indeed but returns to his work, throwing the tube down impatiently.";
             }
-            if (local1 == 452[scroll_bearing_a_short_poem?] or 453[scroll_bearing_an_epic_poem?]) {
+            if (o == scroll_bearing_a_short_poem or scroll_bearing_an_epic_poem) {
                 print " to see a scroll, which he pulls out eagerly.^^";
-                if (selfobj == Callimachus && local1 == 453[scroll_bearing_an_epic_poem?] || (selfobj == Apollonius && local1 == 452[scroll_bearing_a_short_poem?])) {
-                    remove local1;
+                if (selfobj == Callimachus && o == scroll_bearing_an_epic_poem || (selfobj == Apollonius && o == scroll_bearing_a_short_poem)) {
+                    remove o;
                     if (parent(Callimachus) == parent(Apollonius)) {
                         move purple_sash to location;
                         move mystic_scroll to location;
@@ -17987,7 +17987,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "he finishes, puts the scroll back into the tube with the habit of a trained librarian, and drops it absentmindedly on the floor.";
             }
             print " to find ";
-            Indefart(local1);
+            Indefart(o);
             print ", which, to say the least, comes as a surprise. Such a fuss is kicked up that you are quickly thrown out into the street.^";
             PlayerTo(Outside_the_Royal_Museum,1);
             rfalse;
