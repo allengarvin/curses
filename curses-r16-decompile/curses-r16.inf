@@ -4963,7 +4963,7 @@ Global global119;
 Global wlf_indent;
 Global inventory_style;
 Global keep_silent;
-Global global123;
+Global receive_action;
 Global game_section = T_MODERN;
 Global good_try_bonus;
 Global debug_deterministic_transportation;
@@ -20662,7 +20662,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ PutOnSub ;	! 162440 / 0x27a88
-    global123 = 27[rod_of_returning2?];
+    receive_action = ##PutOn;
     if (second == d_obj) {
         R_Process(##Drop,noun);
         rfalse;
@@ -20728,7 +20728,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ InsertSub ;	! 162692 / 0x27b84
-    global123 = 26[rod_of_language?];
+    receive_action = ##Insert;
     if (second == d_obj) {
         R_Process(##Drop,noun);
         rtrue;
