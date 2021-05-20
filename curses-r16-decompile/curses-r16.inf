@@ -787,15 +787,15 @@ Object thedark "Darkness"
   has	;
 
 Object yourself "yourself"	
-  with	after -1,
-	before -1,
-	life -1,
+  with	after $ffff,
+	before $ffff,
+	life $ffff,
 	orders nothing,
 	description "As good-looking as ever.",
 	describe NULL,
 	time_left 0,
-	daemon -1,
-	each_turn -1,
+	daemon $ffff,
+	each_turn $ffff,
 	capacity 100,
 	short nothing,
 	parse_name nothing,
@@ -23259,7 +23259,7 @@ Array preactions_table --> IsDirection;
     }
     Achieved(SCORE_AIMWAND);
     r = noun.rod_action;
-    if (r == -1) {
+    if (r == $ffff) {
         "** No rod routine **";
     }
     give noun ~charged;
