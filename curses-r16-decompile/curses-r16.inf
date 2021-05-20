@@ -4698,7 +4698,7 @@ Object Heavenly_Place "Heavenly Place"
 
 Object -> angel "angel"	
   with	name 'angel' 'lady' 'angelic',
-	life routine147316,
+	life AngelLife,
 	description "If you were to cast a film of your adventures so far, you would hire Dame Judi Dench to play this lady.",
 	number 4,
   has	animate scenery;
@@ -18402,7 +18402,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ AngelLife ;	
+[ AngelHints ;	
     if (angel hasnt general) {
         if (angel.number == 0) {
             "~No hints left, alas.~";
@@ -18413,9 +18413,9 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ routine147316 local1 ;	
+[ AngelLife local1 ;	
     if (action == ##Answer or ##Ask) {
-        if (AngelLife() ~= 0) {
+        if (AngelHints() ~= 0) {
             rtrue;
         }
         if (AngelQuestion(special_word) ~= 0) {
@@ -18427,7 +18427,7 @@ Array preactions_table --> IsDirection;
         "One does not give orders to such a character.";
     }
     if (action == ##Give or ##Show) {
-        if (AngelLife() ~= 0) {
+        if (AngelHints() ~= 0) {
             rtrue;
         }
         print "The angel looks keenly at ";
