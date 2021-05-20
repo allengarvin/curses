@@ -3359,7 +3359,7 @@ Object dug_hole "dug hole"	! 326 / 0x146
 Object Murky_Cave "Murky Cave"	! 327 / 0x147
   with	w_to Spur_of_Rock,
 	ne_to Valley_Prospect,
-	initial routine119472,
+	initial MurkyCaveInitial,
 	description "This is a murky hillside cave, whose mouth opens to the northeast, though a tight squeeze might lead a little way west. Outside is a clear starry night. There is no traffic noise, and the air smells fresh.",
 	daemon MurkyCaveDaemon,
 	section T_ANCIENT_BRITAIN,
@@ -15787,7 +15787,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Murky_Cave.initial
 
-[ routine119472 ;	! 119472 / 0x1d2b0
+[ MurkyCaveInitial ;	! 119472 / 0x1d2b0
     StartDaemon(selfobj);
     rfalse;
 ];
