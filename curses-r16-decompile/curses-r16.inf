@@ -4989,7 +4989,7 @@ Global MouseUnderstandsMask;
 Global card_ptr;
 Global hollow_man_cnt;
 Global poseiden_warning;
-Global global150;
+Global priest_cnt;
 Global global151 = 25228[?];
 Global global152 = 4[e_obj?];
 Global global153 = 6[ne_obj?];
@@ -14351,30 +14351,30 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine110288 ;	! 110288 / 0x1aed0
-    if (global150 == 3[s_obj?]) {
+    if (priest_cnt == 3) {
         "The priestess has told you enough.";
     }
     if (Oracle hasnt general) {
         "The priestess remains silent. Only by an offering can the wisdom of Apollo be gained.";
     }
     give Oracle ~general;
-    ++global150;
+    ++priest_cnt;
     print "The priestess, Pythian oracle of Loxias, seems hardly to hear or understand: but goes into a trance, swaying to a sensuous rhythm: and chants, in English,^^";
-    if (global150 == 1[?]) {
+    if (priest_cnt == 1) {
         print " ~As Hephaestus, master of the metals^  uncovered the gilden sunrise of Helicon^  so, in ";
         routine110240(StrongboxX);
         print " and ";
         routine110240(StrongboxY);
         print "^  when six arches have stood sixty years^  shall even a shade's remains be cast.~";
     }
-    if (global150 == 2[?]) {
+    if (priest_cnt == 2) {
         print " ~Like the eruptions of Sicilian mounts^  shall come devices to ruin a castle,^  which no bronze armour can withstand^  save, it may be, a veil of the neck.~";
     }
-    if (global150 == 3[s_obj?]) {
+    if (priest_cnt == 3) {
         print " ~Your ancestor, pestle in hand^  made the salve you shall need^  to defy the Druids' earthly band:^  take care, mortal, take heed.~";
     }
     new_line;
-    if (global150 == 1[?]) {
+    if (priest_cnt == 1) {
         "^Apollo is what you might call an annoying git, were he not also an alarmingly powerful deity.";
     }
     rtrue;
