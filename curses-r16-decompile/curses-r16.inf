@@ -1482,7 +1482,7 @@ Object -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"	! 90 / 0x5a
   has	animate concealed;
 
 Object Chimney "Chimney"	! 91 / 0x5b
-  with	after ChimneyAfer,
+  with	after ChimneyAfter,
 	e_to Inside_Cupboard,
 	d_to Priest_s_Hole,
 	description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
@@ -11415,19 +11415,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Chimney.after
 
-[ ChimneyAfer local1 ;	! 82264 / 0x14158
+[ ChimneyAfter o ;	! 82264 / 0x14158
     if (verb ~= ##Inv or ##Look or ##Go or ##Exit) {
         "There's not enough room in this confined space to do anything much!";
     }
     if (action == ##Go) {
         if (noun == d_obj) {
-            local1 = child(player);
+            o = child(player);
           .label82331;
-            if (local1 ~= 0) {
-                if (local1 hasnt worn || local1 == 79[canvas_rucksack?]) {
+            if (o ~= nothing) {
+                if (o hasnt worn || o == canvas_rucksack) {
                     "It's too narrow a squeeze for you at present.";
                 }
-                local1 = sibling(local1);
+                o = sibling(o);
                 jump label82331;
             }
             print "You squeeze awkwardly down the chimney. Lucky your best clothes are all packed, because you're getting filthy.^";
