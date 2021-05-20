@@ -4987,7 +4987,7 @@ Global Mouse_x = 8;
 Global Mousy_y = 3;
 Global MouseUnderstandsMask;
 Global card_ptr;
-Global global148;
+Global hollow_man_cnt;
 Global global149;
 Global global150;
 Global global151 = 25228[?];
@@ -13199,26 +13199,26 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             }
             rtrue;
         }
-        ++global148;
-        if (global148 == 1[?]) {
+        ++hollow_man_cnt;
+        if (hollow_man_cnt == 1) {
             "~I don't believe in that place any more. Hurry up please it's time!~";
         }
-        if (global148 == 2[?]) {
+        if (hollow_man_cnt == 2) {
             "~Hurry up please it's time!~";
         }
-        if (global148 == 3[s_obj?]) {
+        if (hollow_man_cnt == 3) {
             "~HURRY UP PLEASE IT'S TIME!~";
         }
-        if (global148 == 4[e_obj?]) {
+        if (hollow_man_cnt == 4) {
             "He can't be bothered to say anything this time.";
         }
-        if (global148 == 5[w_obj?]) {
+        if (hollow_man_cnt == 5) {
             "It really is time you thought of something.";
         }
-        if (global148 == 6[ne_obj?]) {
+        if (hollow_man_cnt == 6) {
             "Time and time again you haven't guessed correctly.";
         }
-        if (global148 == 7[se_obj?]) {
+        if (hollow_man_cnt == 7) {
             "The hollow man must be beginning to think you can't take a hint.";
         }
         "~It's time!~ repeats the hollow man.";
