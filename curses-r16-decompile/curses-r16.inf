@@ -5004,7 +5004,7 @@ Global OzoneSmelled;
 Global slide_moves;
 Global global164;
 Global SpiritCnt;
-Global global166;
+Global MummyWarning;
 Global global167;
 Global global168;
 Global global169;
@@ -17426,8 +17426,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Close) {
         if (noun == mummy_case && noun has open && player in mummy_case) {
-            if (global166 == 0) {
-                global166 = 1[?];
+            if (MummyWarning == false) {
+                MummyWarning = true;
                 "That seems an awfully... final decision. Here's a chance to reconsider.";
             }
             print "The lid slams down on you with a very terminal sound indeed.^^^   *** You have ...^^^But - something more is happening. The coffin's delicate balance has been altered, and it is sliding, slipping away down the square passage, endlessly, endlessly...^^And even that is not the end, for you suddenly crash into buffers at one end. What a lucky escape, you think... for a moment...^";
