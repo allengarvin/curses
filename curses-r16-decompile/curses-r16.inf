@@ -5209,7 +5209,53 @@ Array match_list --> 1;	! 24660 (0x6054)
 Array array_24788 --> 1;	! 24788 (0x60d4)
 Array array_24916 --> 1;	! 24916 (0x6154)
 Array array_25223 --> 1;	! 25223 (0x6287)
-Array array_25291 --> 2050[?];	! 25291 (0x62cb)
+Array henri_post_array ->	! 25291 (0x62cb)
+    8
+    2
+    16
+    14
+    5
+    12
+    1
+    3
+    15
+    18
+    11
+    19
+    0
+    9
+    20
+    8
+    2
+    16
+    5
+    12
+    15
+    14
+    1
+    19
+    18
+    3
+    20
+    9
+    11
+    0
+    0
+    2
+    146
+    139
+    126
+    237
+    238
+    206
+    0
+    2
+    158
+    100
+    118
+    215
+    238
+;
 Array array_25306 --> 2050[?];	! 25306 (0x62da)
 Array extra_global_bool_array -> 48;	! 25893 (0x6525)
 Array task_done --> 22;	! 25975 (0x6577)
@@ -16528,17 +16574,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ routine127208 local1 local2 local3 local4 ;	! 127208 / 0x1f0e8
-    local3 = array_25291->local1;
-    local4 = array_25291->local2;
-    array_25291->local2 = local3;
-    array_25291->local1 = local4;
+    local3 = henri_post_array->local1;
+    local4 = henri_post_array->local2;
+    henri_post_array->local2 = local3;
+    henri_post_array->local1 = local4;
     rtrue;
 ];
 
 ! References: Battlements.name
 
 [ routine127236 local1 local2 ;	! 127236 / 0x1f104
-    local2 = array_25291->(local1 - 1);
+    local2 = henri_post_array->(local1 - 1);
     if (local2 == 0) {
         print ". ";
         rfalse;
@@ -16706,29 +16752,29 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     local1 = 0;
   .label128490;
     if (local1 <= 14) {
-        if (array_25291->local1 == noun) {
+        if (henri_post_array->local1 == noun) {
             if (local1 >= 3) {
                 local2 = local1 - 3;
-                if (array_25291->local2 == 0) {
+                if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
             if (local1 < 12) {
                 local2 = local1 + 3;
-                if (array_25291->local2 == 0) {
+                if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
             local3 = local1 % 3;
             if (local3 ~= 0) {
                 local2 = local1 - 1;
-                if (array_25291->local2 == 0) {
+                if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
             if (local3 ~= 2[?]) {
                 local2 = local1 + 1;
-                if (array_25291->local2 == 0) {
+                if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
@@ -16747,15 +16793,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (slide_moves == 5) {
         set_flag_array(42);
     }
-    local3 = array_25291->local1;
-    array_25291->local2 = local3;
-    array_25291->local1 = 0;
+    local3 = henri_post_array->local1;
+    henri_post_array->local2 = local3;
+    henri_post_array->local1 = 0;
     print "You slide '", (char) noun + 65 - 1, "' into the gap, leaving the grid looking like:^^";
     routine127272();
     local1 = 0;
   .label128749;
     if (local1 <= 14) {
-        if (array_25291->local1 ~= array_25306->local1) {
+        if (henri_post_array->local1 ~= array_25306->local1) {
             rfalse;
         }
         ++local1;
