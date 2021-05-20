@@ -10101,7 +10101,7 @@ Array preactions_table --> IsDirection;
         }
         give servants_bed general;
         print "You sleep unexpectedly deeply, but just as you think you are starting to wake up, you experience a sudden...^";
-        routine124836();
+        PremonitionStart();
         rtrue;
     }
     rfalse;
@@ -16109,7 +16109,7 @@ Array preactions_table --> IsDirection;
     "You drift in that direction, but without gaining any ground.";
 ];
 
-[ routine124836 ;	
+[ PremonitionStart ;	
     ChangePlayer(ghost_of_yourself);
     PlayerTo(Premonition);
     rtrue;
