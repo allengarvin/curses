@@ -5229,7 +5229,7 @@ Array henri_post_array ->	! 25291 (0x62cb)
 Array array_25306 --> 2050[?];	! 25306 (0x62da)
 Array extra_global_bool_array -> 48;	! 25893 (0x6525)
 Array task_done --> 22;	! 25975 (0x6577)
-Array task_desc -->	! 26065 (0x65d1)
+Array rank_levels -->	! 26065 (0x65d1)
     48
     500 "happy Tourist."
     499 "very nearly happy Tourist."
@@ -22765,9 +22765,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     ndx = 1;
   .label173080;
-    if (ndx <= task_desc-->0 * 2) {
-        if (s >= task_desc-->ndx) {
-            print (string) task_desc-->(ndx + 1);
+    if (ndx <= rank_levels-->0 * 2) {
+        if (s >= rank_levels-->ndx) {
+            print (string) rank_levels-->(ndx + 1);
             new_line;
             rtrue;
         }
