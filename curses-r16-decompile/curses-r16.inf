@@ -4971,7 +4971,7 @@ Global KnowLanguages;
 Global displaying_quote = true;
 Global before_short_desc;
 Global short_loc_var;
-Global global131;
+Global save_game_sec;
 Global save_score;
 Global global133;
 Global rod_score;
@@ -24497,7 +24497,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "Turns: ";
         }
         print turns;
-        if (displaying_quote == true || global131 ~= game_section) {
+        if (displaying_quote == true || save_game_sec ~= game_section) {
             game_section = location.section;
             local2 = local1 - 20;
             @set_cursor 2 local2;
