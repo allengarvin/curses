@@ -5005,7 +5005,7 @@ Global slide_moves;
 Global global164;
 Global SpiritCnt;
 Global MummyWarning;
-Global global167;
+Global PalaceCnt;
 Global palace_var168;
 Global palace_var169;
 Global palace_var170;
@@ -17993,8 +17993,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             location = Outside_the_Royal_Palace_of_Alexander;
             move player to location;
         }
-        ++global167;
-        if (global167 == 2[?]) {
+        ++PalaceCnt;
+        if (PalaceCnt == 2) {
             set_flag_array(46);
         }
         rfalse;
