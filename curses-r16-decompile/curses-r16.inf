@@ -16712,44 +16712,44 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ SlideSub local1 local2 local3 ;	! 128436 / 0x1f5b4
+[ SlideSub i local2 local3 ;	! 128436 / 0x1f5b4
     if (location ~= CR) {
         "~Slide~ is inappropriate here.";
     }
     if (noun == nothing) {
         "What piece was that?";
     }
-    local1 = 0;
+    i = 0;
   .label128490;
-    if (local1 <= 14) {
-        if (henri_post_array->local1 == noun) {
-            if (local1 >= 3) {
-                local2 = local1 - 3;
+    if (i <= 14) {
+        if (henri_post_array->i == noun) {
+            if (i >= 3) {
+                local2 = i - 3;
                 if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
-            if (local1 < 12) {
-                local2 = local1 + 3;
+            if (i < 12) {
+                local2 = i + 3;
                 if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
-            local3 = local1 % 3;
+            local3 = i % 3;
             if (local3 ~= 0) {
-                local2 = local1 - 1;
+                local2 = i - 1;
                 if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
             if (local3 ~= 2[?]) {
-                local2 = local1 + 1;
+                local2 = i + 1;
                 if (henri_post_array->local2 == 0) {
                     jump label128652;
                 }
             }
         }
-        ++local1;
+        ++i;
         jump label128490;
     }
     print "Unfortunately, '", (char) noun + 65 - 1, "' is not adjacent to the gap.";
@@ -16763,18 +16763,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (slide_moves == 5) {
         set_flag_array(42);
     }
-    local3 = henri_post_array->local1;
+    local3 = henri_post_array->i;
     henri_post_array->local2 = local3;
-    henri_post_array->local1 = 0;
+    henri_post_array->i = 0;
     print "You slide '", (char) noun + 65 - 1, "' into the gap, leaving the grid looking like:^^";
     DisplayWholeGrid();
-    local1 = 0;
+    i = 0;
   .label128749;
-    if (local1 <= 14) {
-        if (henri_post_array->local1 ~= array_25306->local1) {
+    if (i <= 14) {
+        if (henri_post_array->i ~= array_25306->i) {
             rfalse;
         }
-        ++local1;
+        ++i;
         jump label128749;
     }
     Achieved(SCORE_HENRIPOST);
@@ -16798,9 +16798,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             local2 = child(hanging_cord);
           .label129019;
             if (local2 ~= 0) {
-                local1 = sibling(local2);
+                i = sibling(local2);
                 move local2 to Lawn_Ornaments;
-                local2 = local1;
+                local2 = i;
                 jump label129019;
             }
             move ancient_well to Lawn_Ornaments;
