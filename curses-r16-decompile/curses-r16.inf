@@ -5015,7 +5015,7 @@ Global LeftHand;
 Global SkullFit;
 Global bool_array_recently_set = 65535;
 Global one_time_try_bonus;
-Global global178;
+Global croquet_var;
 Global yard_dir;
 Global dig_cnt;
 Global current_game_sec;
@@ -23331,7 +23331,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ PaceSub ;	! 177080 / 0x2b3b8
-    PaceMovement(global178,yard_dir);
+    PaceMovement(croquet_var,yard_dir);
     rtrue;
 ];
 
@@ -24083,7 +24083,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     } else {
         local2 = CroquetMove();
     }
-    global178 = local1;
+    croquet_var = local1;
     yard_dir = local2;
     return 0;
 ];
@@ -24094,7 +24094,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         return 65535[?];
     }
     local2 = CroquetMove();
-    global178 = local1;
+    croquet_var = local1;
     yard_dir = local2;
     return 0;
 ];
