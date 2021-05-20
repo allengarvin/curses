@@ -16857,44 +16857,44 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Inside_the_Orb.each_turn
 
-[ InOrbEachTurn local1 local2 ;	! 129804 / 0x1fb0c
-    local1 = Inside_the_Orb.time_left + 1;
-    Inside_the_Orb.time_left = local1;
-    if (local1 == 1[?]) {
+[ InOrbEachTurn i j ;	! 129804 / 0x1fb0c
+    i = Inside_the_Orb.time_left + 1;
+    Inside_the_Orb.time_left = i;
+    if (i == 1) {
         rtrue;
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         print "^The sphere rotates, giving you a fresh view of the images: stylised Kings and Queens?^";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         print "^The sphere rotates, giving you another look: humble tokens of warriors.^";
     }
-    if (local1 == 6[ne_obj?]) {
+    if (i == 6) {
         print "^The sphere rotates, giving you another look: carved horse-heads and Bishops' mitres.^";
     }
-    if (local1 == 8[nw_obj?]) {
+    if (i == 8) {
         print "^(The sphere rotates.)  It's a chess game!  Now you understand. But you still can't puzzle out the actual solution.^";
     }
-    if (local1 == 10[u_obj?]) {
+    if (i == 10) {
         print "^(The sphere rotates.)  You have some impression that White is trying to make an attack, having plenty of spare pieces.^";
         set_flag_array(26);
     }
-    if (local1 == 12[out_obj?]) {
+    if (i == 12) {
         print "^(The sphere rotates.)  Seeing the board from Black's point of view, the defence looks solid.^";
     }
-    if (local1 == 14[thedark?]) {
+    if (i == 14) {
         print "^(The sphere rotates.)  Back to White's side. You definitely need to smash through somehow, all that cautious exchanging of pieces hasn't worked. If you want White to win, that is.^";
     }
-    local2 = local1 % 4;
-    if (local2 == 0) {
+    j = i % 4;
+    if (j == 0) {
         give Inside_the_Orb ~general;
-        if (local1 > 12) {
+        if (i > 12) {
             "^(The sphere rotates.)  Black still looks safe.";
         }
     }
-    if (local2 == 2[?]) {
+    if (j == 2) {
         give Inside_the_Orb general;
-        if (local1 > 14) {
+        if (i > 14) {
             "^(The sphere rotates.)  White must break out somehow.";
         }
     }
