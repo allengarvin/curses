@@ -8865,7 +8865,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         real_location = location;
         location = thedark;
         if (flag == 0) {
-            routine164468();
+            NoteArrival();
             return L__M(##Miscellany,9);
         }
     }
@@ -20190,7 +20190,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         R_Process(##Look);
     }
     if (flag == true) {
-        routine164468();
+        NoteArrival();
         routine164504();
     }
     if (flag == invalidBool2) {
@@ -21184,15 +21184,15 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine164468 local1 ;	! 164468 / 0x28274
-    local1 = location;
-    if (local1 ~= global20) {
-        if (local1.initial ~= nothing) {
-            PrintOrRun(local1,initial);
+[ NoteArrival descin ;	! 164468 / 0x28274
+    descin = location;
+    if (descin ~= global20) {
+        if (descin.initial ~= nothing) {
+            PrintOrRun(descin,initial);
         }
         SetHimHer();
         MoveFloatingObjects();
-        global20 = local1;
+        global20 = descin;
     }
     rtrue;
 ];
@@ -21212,7 +21212,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parent(player) == nothing) {
         "** Error: player has no location **";
     }
-    routine164468();
+    NoteArrival();
     new_line;
     style bold;
     PrintShortName(location);
