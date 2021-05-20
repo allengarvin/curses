@@ -20191,7 +20191,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (flag == true) {
         NoteArrival();
-        routine164504();
+        ScoreArrival();
     }
     if (flag == invalidBool2) {
         LookSub(true);
@@ -21197,7 +21197,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine164504 ;	! 164504 / 0x28298
+[ ScoreArrival ;	! 164504 / 0x28298
     if (location hasnt visited) {
         give location visited;
         if (location has scored) {
@@ -21252,7 +21252,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     routine164088(local3);
     Stub9();
-    routine164504();
+    ScoreArrival();
     verb = ##Look;
     if (AfterRoutines() == true) {
         rtrue;
