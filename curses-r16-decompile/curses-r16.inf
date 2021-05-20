@@ -3139,7 +3139,7 @@ Object -> spade "spade"	! 298 / 0x12a
 
 Object Up_the_Plane_Tree "Up the Plane Tree"	! 299 / 0x12b
   with	name 'jemima' 'conservatory' 'window',
-	after routine115496,
+	after UpTreeAfter,
 	d_to Family_Tree,
 	description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
 	cant_go "No, don't go out on a limb.",
@@ -3153,8 +3153,8 @@ Object -> maze_layout "maze layout"	! 300 / 0x12c
   has	scenery;
 
 Object Maze "Maze"	! 301 / 0x12d
-  with	after routine115944,
-	before routine116264,
+  with	after MazeAfter,
+	before MazeBefore,
 	s_to Family_Tree,
 	w_to Viewpoint_Ledge,
 	description "A maze of green privet passages, all alike.",
@@ -3164,8 +3164,8 @@ Object Maze "Maze"	! 301 / 0x12d
 
 Object Patio_in_Maze "Patio in Maze"	! 302 / 0x12e
   with	name 'patio' 'flagstone',
-	after routine116276,
-	before routine116332,
+	after PatioAfter,
+	before PatioBefore,
 	u_to "Up?  Are we playing the same game?",
 	d_to Crypt,
 	description "This is an old stone patio in the heart of the garden maze. A missing flagstone offers an intriguing dark prospect beneath.",
@@ -3175,14 +3175,14 @@ Object Patio_in_Maze "Patio in Maze"	! 302 / 0x12e
 
 Object -> marble_rose "marble rose"	! 303 / 0x12f
   with	name 'marble' 'rose' 'flower',
-	after routine116344,
+	after RoseAfter,
 	initial "Sticking out of some soft earth is a perfectly-carved marble rose.",
 	angel_hint "Perfection set in stone. Not a gift for mortal women!",
   has	;
 
 Object Viewpoint_Ledge "Viewpoint Ledge"	! 304 / 0x130
   with	name 'motorway' 'coaches',
-	after routine116412,
+	after ViewpointAfter,
 	e_to Maze,
 	description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
 	cant_go "The hillside is too steep.",
@@ -3204,7 +3204,7 @@ Object -> miniature "miniature"	! 306 / 0x132
 
 Object Folly "Folly"	! 307 / 0x133
   with	name 'wain' 'hay' 'valley',
-	before routine116504,
+	before FollyBefore,
 	e_to Maze_Foundations,
 	description "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across the river.^^Towering over you is a monstrously awful piece of architecture, a Folly. The freestanding tower has no appreciable purpose and no apparent entrance. The latter is just as well since it looks extremely unsafe.",
 	cant_go "The hillside is too steep.",
@@ -3218,17 +3218,17 @@ Object -> Folly_tower "Folly tower"	! 308 / 0x134
 
 Object -> bean_pole "bean pole"	! 309 / 0x135
   with	name 'bean' 'pole' 'beanpole',
-	before routine116512,
+	before BeanpoleBefore,
 	initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
 	number 0,
-	daemon routine116536,
+	daemon BeanpoleDaemon,
 	rod_assoc rod_of_stalking,
 	devil_hint "Whatever you do, it'll always be a bean pole.",
   has	general hidden_rod;
 
 Object Maze_Foundations "Maze Foundations"	! 310 / 0x136
-  with	after routine116760,
-	before routine116976,
+  with	after FoundationsAfter,
+	before FountdationsBefore,
 	s_to Tree_Planting,
 	w_to Folly,
 	description "A square grid of plots of grass and seedbeds, all alike.",
@@ -15204,7 +15204,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Up_the_Plane_Tree.after
 
-[ routine115496 ;	! 115496 / 0x1c328
+[ UpTreeAfter ;	! 115496 / 0x1c328
     if (action == ##Jump) {
         deadflag = DIED;
         "You fall and break your neck!";
@@ -15214,7 +15214,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: maze_layout.description
 
-[ routine115528 local1 local2 local3 ;	! 115528 / 0x1c348
+[ LayoutDesc local1 local2 local3 ;	! 115528 / 0x1c348
     print "The layout is roughly as follows:^^";
     0-->8 = 2 | 0-->8;
     local1 = 0;
@@ -15306,7 +15306,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Maze.after
 
-[ routine115944 local1 local2 ;	! 115944 / 0x1c4e8
+[ MazeAfter local1 local2 ;	! 115944 / 0x1c4e8
     if (action == ##Exit) {
         "Remember the poor grass!";
     }
@@ -15363,7 +15363,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Maze.before
 
-[ routine116264 ;	! 116264 / 0x1c628
+[ MazeBefore ;	! 116264 / 0x1c628
     if (action == ##Look) {
         routine115644();
         rtrue;
@@ -15373,7 +15373,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Patio_in_Maze.after
 
-[ routine116276 ;	! 116276 / 0x1c634
+[ PatioAfter ;	! 116276 / 0x1c634
     if (action == ##Go) {
         if (noun == d_obj or u_obj) {
             rfalse;
@@ -15388,7 +15388,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Patio_in_Maze.before
 
-[ routine116332 ;	! 116332 / 0x1c66c
+[ PatioBefore ;	! 116332 / 0x1c66c
     if (action == ##Look) {
         routine115644();
         rtrue;
@@ -15398,7 +15398,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: marble_rose.after
 
-[ routine116344 ;	! 116344 / 0x1c678
+[ RoseAfter ;	! 116344 / 0x1c678
     if (action == ##Insert or ##Give && second == statue_of_Diana) {
         "It would look perfect in Diana's hair, but her head is far too high to reach.";
     }
@@ -15407,7 +15407,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Viewpoint_Ledge.after
 
-[ routine116412 ;	! 116412 / 0x1c6bc
+[ ViewpointAfter ;	! 116412 / 0x1c6bc
     if (action == ##Read) {
         if (player in garden_roller && noun == plaque) {
             "The writing's too small from here.";
@@ -15425,7 +15425,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Folly.before
 
-[ routine116504 ;	! 116504 / 0x1c718
+[ FollyBefore ;	! 116504 / 0x1c718
     MazeX = 0;
     MazeY = 1;
     rfalse;
@@ -15433,7 +15433,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bean_pole.before
 
-[ routine116512 ;	! 116512 / 0x1c720
+[ BeanpoleBefore ;	! 116512 / 0x1c720
     if (action == ##Take) {
         if (selfobj hasnt general) {
             rfalse;
@@ -15447,7 +15447,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bean_pole.daemon
 
-[ routine116536 ;	! 116536 / 0x1c738
+[ BeanpoleDaemon ;	! 116536 / 0x1c738
     if (game_section == T_GARDEN_PAST) {
         print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come running to investigate. In the ensuing confusion, they come across you and, of course, blame you for their incompetent masonry. You are hauled up before the county assizes...^";
         deadflag = AUSTRALIA;
@@ -15457,7 +15457,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Maze_Foundations.after
 
-[ routine116760 local1 local2 ;	! 116760 / 0x1c818
+[ FoundationsAfter local1 local2 ;	! 116760 / 0x1c818
     if (action == ##Go) {
         if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
@@ -15515,7 +15515,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Maze_Foundations.before
 
-[ routine116976 ;	! 116976 / 0x1c8f0
+[ FountdationsBefore ;	! 116976 / 0x1c8f0
     if (action == ##Look) {
         routine117024();
         rtrue;
