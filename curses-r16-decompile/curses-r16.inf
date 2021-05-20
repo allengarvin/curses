@@ -5011,8 +5011,8 @@ Global palace_var169;
 Global palace_var170;
 Global HighRodWarn;
 Global HighRodBalance;
-Global global173;
-Global global174;
+Global LeftHand;
+Global SkullFit;
 Global bool_array_recently_set = 65535;
 Global one_time_try_bonus;
 Global global178;
@@ -18294,13 +18294,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == adamantine_hand) {
             move adamantine_hand to West_Side_Chapel;
             give adamantine_hand concealed;
-            global173 = 2[?];
+            LeftHand = 2;
             "The hand fits rather loosely onto the left ~wrist~ of the adamantine knight.";
         }
         if (noun == adamantine_skull) {
             move adamantine_skull to West_Side_Chapel;
             give adamantine_skull concealed;
-            global174 = 2[?];
+            SkullFit = 2;
             "The skull fits very loosely onto the ~neck~ of the adamantine knight.";
         }
         if (noun == adamantine_heart) {
@@ -18314,14 +18314,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (noun == adamantine_skull or adamantine_hand && noun has concealed) {
             if (noun == adamantine_hand) {
                 remove adamantine_hand;
-                global173 = 0;
+                LeftHand = 0;
                 give adamantine_hand general;
                 give adamantine_hand ~concealed;
                 "The hand screws tightly onto the adamantine knight.";
             }
             if (noun == adamantine_skull) {
                 remove adamantine_skull;
-                global174 = 0;
+                SkullFit = 0;
                 give adamantine_skull general;
                 give adamantine_skull ~concealed;
                 "The skull screws tightly onto the adamantine knight.";
@@ -18347,16 +18347,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: West_Side_Chapel.each_turn
 
 [ WestSideChapelEachTurn ;	! 142592 / 0x22d00
-    if (global174 > 0) {
-        --global174;
-        if (global174 == 0) {
+    if (SkullFit > 0) {
+        --SkullFit;
+        if (SkullFit == 0) {
             give adamantine_skull ~concealed;
             "^The skull wobbles and falls off the knight again.";
         }
     }
-    if (global173 > 0) {
-        --global173;
-        if (global173 == 0) {
+    if (LeftHand > 0) {
+        --LeftHand;
+        if (LeftHand == 0) {
             give adamantine_hand ~concealed;
             "^The hand wavers and falls off the knight again.";
         }
