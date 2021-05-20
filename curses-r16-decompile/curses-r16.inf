@@ -15047,7 +15047,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MazeAfter local1 local2 ;	
+[ MazeAfter x y ;	
     if (action == ##Exit) {
         "Remember the poor grass!";
     }
@@ -15061,32 +15061,32 @@ Array preactions_table --> IsDirection;
         if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
-        local1 = 100[Tiny_Balcony?];
-        local2 = 100[Tiny_Balcony?];
+        x = 100;
+        y = 100;
         if (noun == n_obj) {
-            local1 = MazeX;
-            local2 = MazeY - 1;
+            x = MazeX;
+            y = MazeY - 1;
         }
         if (noun == e_obj) {
-            local1 = MazeX + 1;
-            local2 = MazeY;
+            x = MazeX + 1;
+            y = MazeY;
         }
         if (noun == s_obj) {
-            local1 = MazeX;
-            local2 = MazeY + 1;
+            x = MazeX;
+            y = MazeY + 1;
         }
         if (noun == w_obj) {
-            local1 = MazeX - 1;
-            local2 = MazeY;
+            x = MazeX - 1;
+            y = MazeY;
         }
-        if (local1 == 100[Tiny_Balcony?]) {
+        if (x == 100) {
             "The maze is constructed with rectangular grid-lines of privet, so you can only proceed north, east, south or west.";
         }
-        if (MazeBoundary(local1,local2) == 1[?]) {
+        if (MazeBoundary(x,y) == 1[?]) {
             "The privet hedge is in the way.";
         }
-        MazeX = local1;
-        MazeY = local2;
+        MazeX = x;
+        MazeY = y;
         if (location == Patio_in_Maze) {
             location = Maze;
             move garden_roller to Maze;
