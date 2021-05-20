@@ -3551,30 +3551,30 @@ Object Rough_Tent "Rough Tent"	! 352 / 0x160
 
 Object -> tent_pole "tent pole"	! 353 / 0x161
   with	name 'tent' 'pole' 'central',
-	after routine123720,
-	before routine123768,
+	after TentPoleAfter,
+	before TentPoleBefore,
 	time_left 0,
-	daemon routine123528,
+	daemon TentPoleDaemon,
 	rod_assoc rod_of_returning2,
   has	concealed static hidden_rod;
 
 Object unconscious_Saxon_spy "unconscious Saxon spy"	! 354 / 0x162
   with	name 'saxon' 'spy',
-	after routine124248,
-	life routine124316,
+	after SpyAfter,
+	life SpyLife,
 	initial "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
 	description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours.",
 	time_left 0,
-	daemon routine123920,
+	daemon SpyDaemon,
   has	animate;
 
 Object Encampment "Encampment"	! 355 / 0x163
   with	name 'fires' 'camp' 'dolmen',
-	e_to routine124520,
+	e_to EncampmentEast,
 	description "Luckily for you the tent, now collapsed, was hardly being watched at all, because all the attention is diverted to a ghastly ritual being carried out over beyond the camp-fires. But your luck cannot hold for long. You are so surrounded by hostile territory that you simply have nowhere to run or hide. Things are, not to put too fine a point on it, looking grim.",
 	cant_go "Far, far too risky.",
 	time_left 0,
-	daemon routine124400,
+	daemon EncampmentDaemon,
 	section T_ANCIENT_BRITAIN,
   has	light scored;
 
@@ -3605,55 +3605,55 @@ Object fifty_franc_note "fifty-franc note"	! 359 / 0x167
   has	;
 
 Object ghost_of_yourself "ghost of yourself"	! 360 / 0x168
-  with	after routine124596,
+  with	after YourGhostAfter,
 	description "You are transparent like a ghost.",
 	number [0 0],
 	capacity 1,
   has	;
 
 Object Premonition "Premonition"	! 361 / 0x169
-  with	e_to routine124852,
+  with	e_to PremonitionEast,
 	nw_to Camp_Fire,
 	description "It is a frosty, clear night, but there is a scent of camp-fires burning in the distance. You are passing through the landscape as if a ghost, and all seems faintly unreal. To the east is one side of an animal-hide tent, but there is no way in from here. To southwest, some soldiers sit around the embers of a fire. There is a terrible sense of something about to happen.",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	section T_DREAMING,
   has	light;
 
 Object The_Generals_Tent "The General's Tent"	! 362 / 0x16a
   with	n_to Beside_Table,
-	w_to routine124892,
+	w_to GeneralsTentWest,
 	description "This is the tent of a thin, reedy man who wears no uniform but has an obvious and commanding presence. He has an aquiline, patrician nose and, at five feet four, is taller than anyone else present. The others are advisers, junior officers, scheming politicians and their like. They are keeping their distance from a trestle table at the north end of the tent.",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	section T_DREAMING,
   has	light;
 
 Object Beside_Table "Shrine of the Bear"	! 363 / 0x16b
   with	s_to The_Generals_Tent,
 	description "This is a kind of improvised shrine. A trestle table bears entrails, crude drawings sketched out on hide, and caged animals: draped beside it is a primitive tapestry of a bear reared up on its hind legs.",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	section T_DREAMING,
   has	light;
 
 Object -> bear_tapestry "bear tapestry"	! 364 / 0x16c
   with	name 'bear' 'tapestry',
-	life routine124928,
+	life BearTapestryLife,
 	description "Primal, bestial, terrifying.",
   has	scenery talkable;
 
 Object -> heavy_iron_mascot "heavy iron mascot"	! 365 / 0x16d
   with	name 'heavy' 'iron' 'mascot',
-	after routine125196,
-	before routine124964,
+	after MascotAfter,
+	before MascotBefore,
 	initial "On the table is a heavy iron mascot of some kind.",
 	description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
 	time_left 0,
-	daemon routine125232,
+	daemon MascotDaemon,
 	devil_hint "An absolute essential.",
   has	;
 
 Object -> Druid "Druid"	! 366 / 0x16e
   with	name 'druid' 'druidess',
-	life routine126064,
+	life DruidLife,
 	initial "Beside the table is a more substantial adviser, as if she too walks in this strange spirit plane. She is wearing frightening druidical robes, of strange pelts and furs, with nasty-looking charms around her neck. Every so often, she seems to catch sight of you out of the corner of her eye, but then look round and see nothing. The military men do not believe in her power, and yet... they treat her with respect.",
   has	animate proper;
 
@@ -3661,14 +3661,14 @@ Object Camp_Fire "Camp Fire"	! 367 / 0x16f
   with	e_to Near_Dolmen,
 	ne_to Premonition,
 	description "You can almost smell fear here. A motley platoon of soldiers are sitting about the embers of a fire. None are talking or sleeping, and the false good humour of the evening has died away. At first light, you realise, there will be a battle. It isn't a risk you'd like to run in their place. And there is a strange light already in the east... not yet a dawn, for the soldiers seem unaware of it.",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	section T_DREAMING,
   has	light;
 
 Object Near_Dolmen "Near Dolmen"	! 368 / 0x170
-  with	before routine126112,
+  with	before DolmenBefore,
 	description "A standing stone, perhaps a glacial erratic, stands here and on top of it is a shining blue stone, whose brightness almost blinds you. You feel irresistably drawn to it, and your hand reaches out...",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	section T_DREAMING,
   has	light;
 
@@ -3676,7 +3676,7 @@ Object Melancholy_Dream "Melancholy Dream"	! 369 / 0x171
   with	e_to nothing,
 	d_to nothing,
 	description "A strangely familiar, dusty passage, sloping down from a southern end bathed in hostile light to some kind of metal barrier in the north.",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	each_turn DreamEachTurn,
 	section (T_DREAMING|T_UNREAL),
   has	light;
@@ -3699,7 +3699,7 @@ Object Solid_Sand "Solid Sand"	! 372 / 0x174
 	u_to Melancholy_Dream,
 	d_to Octagonal_Tomb,
 	description "Your ghostly self is embedded in a diagonal downward shaft (descending to the east) entirely filled with dry sand. Solid flagstones line the walls.",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	section (T_DREAMING|T_UNREAL),
   has	light;
 
@@ -3708,7 +3708,7 @@ Object Octagonal_Tomb "Octagonal Tomb"	! 373 / 0x175
 	w_to Solid_Sand,
 	u_to Solid_Sand,
 	description "Flaming torches bracketed in the wall gutter as the last oxygen in the air is consumed, and the flicker of flame plays across the yellow-orange glaze of the tomb walls.^^This octagonal chamber is lined with Egyptian hieroglyphics. Sand spills across the floor from under the sole entrance, sealed by an ingenious stone slab.",
-	cant_go routine124792,
+	cant_go DreamCantGo,
 	section (T_DREAMING|T_UNREAL),
   has	light;
 
@@ -3745,7 +3745,7 @@ Object -> bronze_mural "bronze mural"	! 377 / 0x179
 
 Object Jagged_Passage "Jagged Passage"	! 378 / 0x17a
   with	name 'bones',
-	after routine126932,
+	after CryptRoomAfter,
 	n_to Crypt,
 	s_to The_Catacombs,
 	e_to Charnel_Passage,
@@ -3763,7 +3763,7 @@ Object -> wrought_iron_key "long wrought iron key"	! 379 / 0x17b
   has	;
 
 Object Charnel_Passage "Charnel Passage"	! 380 / 0x17c
-  with	after routine126932,
+  with	after CryptRoomAfter,
 	e_to Sarcophagus,
 	w_to Jagged_Passage,
 	description "A long, winding, vile passage through the earth, running east to west. The distasteful odour grows stronger as you go east.",
@@ -3771,7 +3771,7 @@ Object Charnel_Passage "Charnel Passage"	! 380 / 0x17c
   has	;
 
 Object Sarcophagus "Sarcophagus"	! 381 / 0x17d
-  with	after routine126932,
+  with	after CryptRoomAfter,
 	w_to Charnel_Passage,
 	description "Well, perhaps ~sarcophagus~ is a little melodramatic, but it's that kind of moment. This must be somewhere under the old parish church. You are stooped over inside a stone tomb, stained and crumbled with decay, broken only by a crevice you crawled in by. It is a nightmarish place.",
 	section T_CATACOMBS,
@@ -3784,7 +3784,7 @@ Object -> tombstone "tombstone"	! 382 / 0x17e
   has	static;
 
 Object The_Catacombs "Catacombs"	! 383 / 0x17f
-  with	after routine126932,
+  with	after CryptRoomAfter,
 	n_to Jagged_Passage,
 	w_to CR,
 	u_to Jagged_Passage,
@@ -3797,7 +3797,7 @@ Object The_Catacombs "Catacombs"	! 383 / 0x17f
 
 Object aluminium_staircase "aluminium staircase"	! 384 / 0x180
   with	name 'staircase' 'stairs' 'stair' 'case' 'aluminium',
-	after routine127192,
+	after AluminumStairAfter,
 	initial "The odd smell seems to be ozone, and it drifts up from a previously concealed aluminium staircase.",
 	description "Leading down.",
 	article "an",
@@ -16166,7 +16166,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Bohemia.name, tent_pole.daemon
 
-[ routine123528 ;	! 123528 / 0x1e288
+[ TentPoleDaemon ;	! 123528 / 0x1e288
     print "^Without warning a Saxon spy (or, as the guards would no doubt put it, another Saxon spy) is thrown bodily into the tent, careering into the central pole and slumping unconscious on the ground as a result. For a moment the whole tent rocks with the force - the pole was nearly broken.^";
     give tent_pole ~static;
     move unconscious_Saxon_spy to Rough_Tent;
@@ -16176,7 +16176,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: tent_pole.after
 
-[ routine123720 ;	! 123720 / 0x1e348
+[ TentPoleAfter ;	! 123720 / 0x1e348
     if (action == ##Attack) {
         "It won't break.";
     }
@@ -16188,7 +16188,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: tent_pole.before
 
-[ routine123768 ;	! 123768 / 0x1e378
+[ TentPoleBefore ;	! 123768 / 0x1e378
     if (action == ##Take) {
         if (selfobj has general) {
             rfalse;
@@ -16204,7 +16204,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: unconscious_Saxon_spy.daemon
 
-[ routine123920 ;	! 123920 / 0x1e410
+[ SpyDaemon ;	! 123920 / 0x1e410
     if (location ~= Rough_Tent) {
         rfalse;
     }
@@ -16221,7 +16221,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: unconscious_Saxon_spy.after, Beside_the_Drive.name
 
-[ routine124248 ;	! 124248 / 0x1e558
+[ SpyAfter ;	! 124248 / 0x1e558
     if (action == ##Search) {
         "Not only are the guards better at searching suspects than you, they also did so first.";
     }
@@ -16233,7 +16233,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: unconscious_Saxon_spy.life
 
-[ routine124316 ;	! 124316 / 0x1e59c
+[ SpyLife ;	! 124316 / 0x1e59c
     if (action == ##WakeOther) {
         "The spy is too deeply unconscious.";
     }
@@ -16248,7 +16248,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Encampment.daemon
 
-[ routine124400 ;	! 124400 / 0x1e5f0
+[ EncampmentDaemon ;	! 124400 / 0x1e5f0
     if (game_section ~= T_ANCIENT_BRITAIN) {
         rfalse;
     }
@@ -16258,17 +16258,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Encampment.e_to
 
-[ routine124520 ;	! 124520 / 0x1e668
+[ EncampmentEast ;	! 124520 / 0x1e668
     if (leather_sandals has worn) {
         print "You cross the hot coals nimbly in your sandals.^";
-        return 356[dolmen?];
+        return dolmen;
     }
     "Walk across those hot coals!  You must be joking.";
 ];
 
 ! References: ghost_of_yourself.after
 
-[ routine124596 ;	! 124596 / 0x1e6b4
+[ YourGhostAfter ;	! 124596 / 0x1e6b4
     if (verb == ##Sleep) {
         "In the dream you are not drowsy.";
     }
@@ -16299,7 +16299,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Premonition.cant_go, The_Generals_Tent.cant_go, Beside_Table.cant_go, Camp_Fire.cant_go, Near_Dolmen.cant_go, Melancholy_Dream.cant_go, Solid_Sand.cant_go, Octagonal_Tomb.cant_go
 
-[ routine124792 ;	! 124792 / 0x1e778
+[ DreamCantGo ;	! 124792 / 0x1e778
     discharge_rod(rod_of_death);
     "You drift in that direction, but without gaining any ground.";
 ];
@@ -16312,21 +16312,21 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Premonition.e_to
 
-[ routine124852 ;	! 124852 / 0x1e7b4
+[ PremonitionEast ;	! 124852 / 0x1e7b4
     print "You pass uncomfortably straight through the hide wall.^";
-    return 362[The_Generals_Tent?];
+    return The_Generals_Tent;
 ];
 
 ! References: The_Generals_Tent.w_to
 
-[ routine124892 ;	! 124892 / 0x1e7dc
+[ GeneralsTentWest ;	! 124892 / 0x1e7dc
     print "You pass uncomfortably back through the hide wall.^";
-    return 361[Premonition?];
+    return Premonition;
 ];
 
 ! References: bear_tapestry.life
 
-[ routine124928 ;	! 124928 / 0x1e800
+[ BearTapestryLife ;	! 124928 / 0x1e800
     if (action == ##Order or ##Ask or ##Answer) {
         "Your mouth is too furred up to speak.";
     }
@@ -16335,7 +16335,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: heavy_iron_mascot.before
 
-[ routine124964 ;	! 124964 / 0x1e824
+[ MascotBefore ;	! 124964 / 0x1e824
     if (action == ##Take) {
         if (Beside_Table hasnt general) {
             give Beside_Table general;
@@ -16349,7 +16349,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: heavy_iron_mascot.after
 
-[ routine125196 ;	! 125196 / 0x1e90c
+[ MascotAfter ;	! 125196 / 0x1e90c
     if (action == ##Give) {
         "Now that really would not be very kind.";
     }
@@ -16358,7 +16358,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: heavy_iron_mascot.daemon
 
-[ routine125232 local1 ;	! 125232 / 0x1e930
+[ MascotDaemon local1 ;	! 125232 / 0x1e930
     if (heavy_iron_mascot notin player) {
         rfalse;
     }
@@ -16403,7 +16403,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Druid.life
 
-[ routine126064 ;	! 126064 / 0x1ec70
+[ DruidLife ;	! 126064 / 0x1ec70
     if (action == ##Order or ##Ask or ##Answer) {
         "This is one of those dreams where you find you cannot speak.";
     }
@@ -16412,7 +16412,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Near_Dolmen.before
 
-[ routine126112 ;	! 126112 / 0x1eca0
+[ DolmenBefore ;	! 126112 / 0x1eca0
     if (action == ##Look) {
         ChangePlayer(yourself);
         if (heavy_iron_mascot in ghost_of_yourself) {
@@ -16495,7 +16495,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Jagged_Passage.after, Charnel_Passage.after, Sarcophagus.after, The_Catacombs.after
 
-[ routine126932 local1 ;	! 126932 / 0x1efd4
+[ CryptRoomAfter local1 ;	! 126932 / 0x1efd4
     if (action == ##Smell) {
         if (location ~= The_Catacombs) {
             "Ugh.";
@@ -16519,7 +16519,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: aluminium_staircase.after
 
-[ routine127192 ;	! 127192 / 0x1f0d8
+[ AluminumStairAfter ;	! 127192 / 0x1f0d8
     if (action == ##Climb or ##Enter) {
         R_Process(##Go,11[d_obj?]);
         rtrue;
