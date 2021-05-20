@@ -15814,7 +15814,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (cnt == 4) {
         if (location == Entrance) {
             print "^Horsemen suddenly gallop into the courtyard and you are soon ringed by guards!^";
-            routine123168();
+            Capture();
         } else {
             "^There is definitely activity outside the villa.";
         }
@@ -15822,11 +15822,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (cnt >= 5) {
         if (location == Entrance) {
             print "^You walk straight into the guards.^";
-            routine123168();
+            Capture();
         }
         if (location == Roman_Villa) {
             print "^You walk straight into the guards at the back door.^";
-            routine123168();
+            Capture();
         }
     }
     if (cnt == 7) {
@@ -15842,14 +15842,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         } else if (location ~= Inside_Well) {
             print "The virtue of doing so is demonstrated when they find you without difficulty.^";
         }
-        routine123168();
+        Capture();
     }
     if (cnt <= 7) {
         rfalse;
     }
     if (location == Triclinium) {
         print "^An industrious-looking slave (who cooks for the horsemen) is rather surprised to see you, but with creditable presence of mind he summons the guard at once.^";
-        routine123168();
+        Capture();
     }
     if (location ~= Hypocaust) {
         rfalse;
@@ -15926,7 +15926,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ RopeDown ;	! 121824 / 0x1dbe0
     print "You clamber down the rope, straight into a patrol of guards who capture you!^";
-    routine123168();
+    Capture();
     rtrue;
 ];
 
@@ -16031,7 +16031,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "You blow the horn, and it lets a great clarion call out to the hills. ";
         if (CouncilCnt >= 7) {
             print "The guardsmen, all over the villa, find you very quickly.^";
-            routine123168();
+            Capture();
         } else {
             print "A call which is rapidly answered as...^";
             CouncilCnt = 7;
@@ -16125,7 +16125,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             rfalse;
         }
         print "You walk out into the courtyard and are immediately set upon by guards, who drag you away.^";
-        routine123168();
+        Capture();
         rtrue;
     }
     rfalse;
@@ -16142,21 +16142,21 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bell_ropes.name
 
-[ routine123168 local1 local2 ;	! 123168 / 0x1e120
+[ Capture o s ;	! 123168 / 0x1e120
     if (CouncilCnt < 8) {
         deadflag = DIED;
         "^The guardsmen grab your head by the chin and examine you, but take you for a plain thief and immediately put you to the sword. A pity they did not realise your importance, but then they are only guards, and besides they would probably only have done you in more unpleasantly.";
     }
     print "^Suddenly you are thrust before a druidical figure. He seems to recognise you, and is troubled. Perhaps because of this, your life is saved and you are taken away into custody, down in the valley among the army encampments.^";
     StartTimer(tent_pole,4);
-    local1 = child(player);
+    o = child(player);
   .label123494;
-    if (local1 ~= 0) {
-        local2 = sibling(local1);
-        if (local1 hasnt worn) {
-            remove local1;
+    if (o ~= nothing) {
+        s = sibling(o);
+        if (o hasnt worn) {
+            remove o;
         }
-        local1 = local2;
+        o = s;
         jump label123494;
     }
     CouncilCnt = 0;
