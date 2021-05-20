@@ -5240,9 +5240,9 @@ Array actions_table -->	! 28893 (0x70dd)
     SaveSub
     ScriptOnSub
     ScriptOffSub
-    SuperbriefSub
-    VerboseSub
-    BriefSub
+    LMode3Sub
+    LMode2Sub
+    LMode1Sub
     NounsSub
     NotifyOnSub
     NotifyOffSub
@@ -20919,7 +20919,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     L__M(##Enter,5,noun);
-    routine164088(noun);
+    Locale(noun);
     rtrue;
 ];
 
@@ -21087,97 +21087,97 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ routine164088 local1 local2 local3 local4 local5 local6 local7 local8 local9 ;	! 164088 / 0x280f8
-    local4 = child(local1);
+[ Locale descin text1 text2 o p k j flag f2 ;	! 164088 / 0x280f8
+    o = child(descin);
   .label164093;
-    if (local4 ~= 0) {
-        give local4 ~workflag;
-        local4 = sibling(local4);
+    if (o ~= 0) {
+        give o ~workflag;
+        o = sibling(o);
         jump label164093;
     }
-    local6 = 0;
-    local4 = child(local1);
+    k = 0;
+    o = child(descin);
   .label164115;
-    if (local4 ~= 0) {
-        if (local4 hasnt concealed && local4 ~= parent(player)) {
-            if (local4 hasnt scenery) {
-                give local4 workflag;
-                ++local6;
-                local5 = 17[rod_of_fire?];
-                local9 = 0;
-                if (local4 has door && local4 hasnt open) {
-                    local5 = 6[ne_obj?];
-                    local9 = 1[?];
+    if (o ~= 0) {
+        if (o hasnt concealed && o ~= parent(player)) {
+            if (o hasnt scenery) {
+                give o workflag;
+                ++k;
+                p = 17[rod_of_fire?];
+                f2 = 0;
+                if (o has door && o hasnt open) {
+                    p = 6[ne_obj?];
+                    f2 = 1[?];
                 }
-                if (local4 has switchable && local4 hasnt on) {
-                    local5 = 6[ne_obj?];
-                    local9 = 1[?];
+                if (o has switchable && o hasnt on) {
+                    p = 6[ne_obj?];
+                    f2 = 1[?];
                 }
-                if (local4 has container && local4 hasnt open && local4.&s_to ~= 0) {
-                    local5 = 6[ne_obj?];
-                    local9 = 1[?];
+                if (o has container && o hasnt open && o.&s_to ~= 0) {
+                    p = 6[ne_obj?];
+                    f2 = 1[?];
                 }
-                if (local4 hasnt moved || local4.describe ~= NULL || local9 == 1[?]) {
-                    if (local4.describe ~= NULL && RunRoutines(local4,describe) ~= 0) {
-                        local8 = 1[?];
-                        give local4 ~workflag;
-                        --local6;
+                if (o hasnt moved || o.describe ~= NULL || f2 == 1[?]) {
+                    if (o.describe ~= NULL && RunRoutines(o,describe) ~= 0) {
+                        flag = 1[?];
+                        give o ~workflag;
+                        --k;
                     } else {
-                        local7 = local4.local5;
-                        if (local7 ~= 0) {
+                        j = o.p;
+                        if (j ~= 0) {
                             new_line;
-                            PrintOrRun(local4,local5);
-                            local8 = 1[?];
-                            give local4 ~workflag;
-                            --local6;
-                            if (local4 has supporter && child(local4) ~= nothing) {
-                                routine164032(local4);
+                            PrintOrRun(o,p);
+                            flag = 1[?];
+                            give o ~workflag;
+                            --k;
+                            if (o has supporter && child(o) ~= nothing) {
+                                routine164032(o);
                             }
                         }
                     }
                 }
-            } else if (local4 has supporter && child(local4) ~= nothing) {
-                routine164032(local4);
+            } else if (o has supporter && child(o) ~= nothing) {
+                routine164032(o);
             }
         }
-        local4 = sibling(local4);
+        o = sibling(o);
         jump label164115;
     }
-    if (local6 == 0) {
+    if (k == 0) {
         return 0;
     }
-    if (local2 ~= 0) {
+    if (text1 ~= 0) {
         new_line;
-        if (local8 == 1[?]) {
-            local2 = local3;
+        if (flag == 1[?]) {
+            text1 = text2;
         }
-        print (string) local2, " ";
-        WriteListFrom(child(local1),8 + 512 + 16 + 128 + 64 + 2048);
-        return local6;
+        print (string) text1, " ";
+        WriteListFrom(child(descin),8 + 512 + 16 + 128 + 64 + 2048);
+        return k;
     }
-    if (local8 == 1[?]) {
-        L__M(##Look,5,local1);
+    if (flag == 1[?]) {
+        L__M(##Look,5,descin);
     } else {
-        L__M(##Look,6,local1);
+        L__M(##Look,6,descin);
     }
     rtrue;
 ];
 
-[ BriefSub ;	! 164420 / 0x28244
+[ LMode1Sub ;	! 164420 / 0x28244
     lookmode = 1;
     print "CURSES";
     L__M(##Brief);
     rtrue;
 ];
 
-[ VerboseSub ;	! 164436 / 0x28254
+[ LMode2Sub ;	! 164436 / 0x28254
     lookmode = 2;
     print "CURSES";
     L__M(##Verbose);
     rtrue;
 ];
 
-[ SuperbriefSub ;	! 164452 / 0x28264
+[ LMode3Sub ;	! 164452 / 0x28264
     lookmode = 3;
     print "CURSES";
     L__M(##Superbrief);
@@ -21248,9 +21248,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
     }
     if (local3 ~= location) {
-        routine164088(location);
+        Locale(location);
     }
-    routine164088(local3);
+    Locale(local3);
     Stub9();
     ScoreArrival();
     verb = ##Look;
