@@ -18459,12 +18459,12 @@ Array preactions_table --> IsDirection;
     if (pretty_mode == false) {
         "Newcomers to the game may like to try the following:^^  ~help instructions~   which gives some basic information,^  ~help commands~       details some common commands,^  ~help credits~        runs the game credits,^  ~help legal~          makes some legal disclaimers; or^  ~help inform~         which advertises the compiler Inform,^  ~help archive~        and the interactive fiction archive.";
     }
-    DoMenu("Information is available on the following subjects:^^     Instructions    giving some basic information^     Commands        detailing some common commands^     Credits         game credits^     Release         release notes^     Legal           legal disclaimers^     Inform          advertising the compiler Inform^     Archive         and the interactive fiction archive",routine147836,routine148036);
+    DoMenu("Information is available on the following subjects:^^     Instructions    giving some basic information^     Commands        detailing some common commands^     Credits         game credits^     Release         release notes^     Legal           legal disclaimers^     Inform          advertising the compiler Inform^     Archive         and the interactive fiction archive",MainMenu,MainMenuDesc);
     displaying_quote = true;
     rtrue;
 ];
 
-[ routine147836 ;	
+[ MainMenu ;	
     if (menu_item == 0) {
         submenu_number = 3;
         submenu_header = "Curses";
@@ -18527,12 +18527,12 @@ Array preactions_table --> IsDirection;
     if (menu_item == 0) {
         HelpSub();
     } else {
-        routine148036(menu_item);
+        MainMenuDesc(menu_item);
     }
     rtrue;
 ];
 
-[ routine148036 ;	
+[ MainMenuDesc ;	
     if (menu_item == 1) {
         "^Welcome to the world of CURSES, an Advanced interactive Adventure game...^^", "The scene is set initially in the present day, at Meldrew Hall, an old family seat in the shires of England. You play the part of the current heir to the house. (This doesn't make your family rich aristocrats - just people who suffer very badly from inheritance tax.)^^Remember, your only aim is to find that map of Paris so you can go on holiday - try not to get diverted by any enormous quests. Still, it would be interesting to find out:^", "^  Just how realistic are the Tarot cards?^  What do sixth century politics have to do with you?^  Surely Greek myths can't come into this?^  What on earth is wrong with your entire family?^  Do the National Trust have sinister motives?^  Why is it so hard to go to church these days?^  What are daisies for?  Or goats, for that matter?^  Can modernist poetry really be bad for you?^  Should you rescue someone who doesn't want you to?^^", "To finally understand the secret, you will need to reach the Master Game, a concluding game-within-a-game buried deep in the past. Good luck!";
     }
