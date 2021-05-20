@@ -2451,7 +2451,7 @@ Object Cups_and_Glasses "Cups and Glasses"	! 211 / 0xd3
 	description "This basement room is filled with crate after crate of glasses and cups, enough for an entire hotel, or restaurant perhaps. Almost anything might be hidden among them. A little light comes in from an opaque skylight which is at street level outdoors. There is no way out of here, since the only door is shut tight.",
 	cant_go "There's no apparent way out of here.",
 	number 0,
-	each_turn routine103924,
+	each_turn CupsAndGlassesEachTurn,
 	section T_TAROT,
   has	light;
 
@@ -2464,7 +2464,7 @@ Object -> windowed_door "windowed door"	! 212 / 0xd4
 
 Object -> cups_and_glasses "cups and glasses"	! 213 / 0xd5
   with	name 'crates' 'glasses' 'cups',
-	after routine104396,
+	after CupsAndGlassesAfter,
 	article "numerous",
   has	scenery;
 
@@ -2477,27 +2477,27 @@ Object -> mounted_bottle "mounted bottle"	! 214 / 0xd6
 
 Object ship_in_a_bottle "ship in a bottle"	! 215 / 0xd7
   with	name 'ship' 'in' 'bottle',
-	after routine104504,
+	after BottleShipAfter,
 	description "Within the whisky bottle is a model sailing ship, far too large to have passed the neck.",
 	angel_hint "Oh, well done!  Why not take a closer look, you deserve it?",
   has	;
 
 Object model_ship "model ship"	! 216 / 0xd8
   with	name 'model' 'sailing' 'ship' 'anchor' 'chain' 'mermaid' 'filigree' 'prow' 'stern',
-	after routine104972,
+	after ModelShipAfter,
 	description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
 	angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has	general;
 
 Object stick_with_an_anchor "stick with an anchor"	! 217 / 0xd9
   with	name 'stick' 'with' 'anchor' 'chain' 'sticks' 'ship',
-	after routine104972,
+	after ModelShipAfter,
 	description "A tightly-folded bundle of sticks, about six inches long, with a filigree chain and anchor hanging from it.",
 	angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has	;
 
 Object Sea_Shore "Sea Shore"	! 218 / 0xda
-  with	after routine105584,
+  with	after SeaShoreAfter,
 	u_to Cliffs,
 	description " .A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^",
 	cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
@@ -2506,7 +2506,7 @@ Object Sea_Shore "Sea Shore"	! 218 / 0xda
 
 Object -> Andromeda "Andromeda"	! 219 / 0xdb
   with	name 'andromeda' 'maiden',
-	life routine106172,
+	life AndromedaLife,
 	initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
 	description " .Avert your eyes. She is naked",
   has	animate proper;
@@ -2531,7 +2531,7 @@ Object Cliffs "Cliffs"	! 221 / 0xdd
 
 Object Clifftop_Walk "Clifftop Walk"	! 222 / 0xde
   with	s_to Wall_of_Thorns,
-	e_to routine106648,
+	e_to ClifftopEast,
 	w_to Cliffs,
 	description "A long clifftop walk by the sea, from the lighthouse to the west to the village not far east. These fields are occupied by herds of hardy mountain goats, continually butting each other and frisking. To the south a path leads across sparse grassland to a great outgrowth of some kind.",
 	cant_go "There's only dull grassland that way.",
@@ -2540,7 +2540,7 @@ Object Clifftop_Walk "Clifftop Walk"	! 222 / 0xde
 
 Object -> herd_of_goats "herd of goats"	! 223 / 0xdf
   with	name 'goat' 'goats' 'herd' 'of',
-	life routine106732,
+	life GoatsLife,
   has	scenery talkable;
 
 Object Outside_Taverna "Outside Taverna"	! 224 / 0xe0
@@ -2553,7 +2553,7 @@ Object Outside_Taverna "Outside Taverna"	! 224 / 0xe0
 
 Object -> small_thorny_tree "small thorny tree"	! 225 / 0xe1
   with	name 'tree' 'thorny' 'small',
-	after routine106752,
+	after ThornyTreeAfter,
 	description "Only a small, thorny, unclimbable fig tree.",
   has	scenery;
 
@@ -2566,17 +2566,17 @@ Object -> fig "fig"	! 226 / 0xe2
   has	edible;
 
 Object Eraina_Taverna "Eraina Taverna"	! 227 / 0xe3
-  with	after routine106776,
+  with	after TavernAfter,
 	n_to Outside_Taverna,
 	description "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight.",
 	cant_go "The tavern entrance is to the north.",
-	each_turn routine106824,
+	each_turn TavernEachTurn,
 	section T_TAROT,
   has	light scored;
 
 Object -> Ekmek_Special "Ekmek Special"	! 228 / 0xe4
   with	name 'ekmek' 'special' 'dessert',
-	after routine107076,
+	after DessertAfter,
 	initial "Left untouched on one table is an Ekmek Special dessert.",
 	description "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste.",
 	devil_hint "Better with chocolate ice cream, I think.",
@@ -2585,7 +2585,7 @@ Object -> Ekmek_Special "Ekmek Special"	! 228 / 0xe4
 
 Object -> bartender "bartender"	! 229 / 0xe5
   with	name 'bar' 'tender' 'bartender',
-	life routine107164,
+	life BartenderLife,
 	initial "Behind the bar, a depressed bartender polishes glasses.",
 	description "Morose and unconvivial at the best of times. This is not the best of times.",
   has	animate;
@@ -2608,9 +2608,9 @@ Object -> wall_of_thorns_object "wall of thorns"	! 231 / 0xe7
   has	door static;
 
 Object Sacred_Earth "Sacred Earth"	! 232 / 0xe8
-  with	before routine107832,
+  with	before SacredEarthBefore,
 	n_to Wall_of_Thorns,
-	s_to routine107416,
+	s_to SacredEarthSouth,
 	description "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number of myths about gods getting cross about that sort of thing.",
 	cant_go "The wall of thorns hems you in.",
 	section T_TAROT,
@@ -2618,7 +2618,7 @@ Object Sacred_Earth "Sacred Earth"	! 232 / 0xe8
 
 Object Temple_of_Zeus "Temple of Zeus"	! 233 / 0xe9
   with	name 'pillar',
-	n_to routine107840,
+	n_to TempleNorth,
 	se_to East_Cloister,
 	nw_to West_Cloister,
 	description "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and featureless save for the entrance at the north. So much for all the rumours about hoards of treasure - it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along.^^Cloisters lead southeast and southwest, deeper into the temple.",
@@ -2666,14 +2666,14 @@ Object Inner_Sanctum "Inner Sanctum"	! 239 / 0xef
 	ne_to East_Cloister,
 	nw_to West_Cloister,
 	d_to Cross_Centre,
-	initial routine108336,
+	initial InnerSanctumInitial,
 	description "Here from the dark heart of the temple, cloisters fork northeast and northwest while a flight of narrowing steps lead down and to the north.",
 	section T_TAROT,
   has	;
 
 Object -> Homer "Homer"	! 240 / 0xf0
   with	name 'homer' 'blind' 'poet',
-	life routine108344,
+	life HomerLife,
 	initial "The blind poet Homer half-slumbers here, clutching his syrinx (or Pan-pipes) to himself.",
 	description "Homer is wearing a Columbo-style raincoat.",
 	time_left 0,
@@ -13974,22 +13974,22 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Cups_and_Glasses.each_turn
 
-[ routine103924 local1 ;	! 103924 / 0x195f4
+[ CupsAndGlassesEachTurn i ;	! 103924 / 0x195f4
     selfobj.number = selfobj.number + 1;
-    local1 = selfobj.number;
-    if (local1 == 2[?]) {
+    i = selfobj.number;
+    if (i == 2) {
         "^There is a scuffling noise as some people gather up on the pavement outside the skylight.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         "^The men begin to talk like conspirators, but half in chants. You catch occasional sounds, but can make little sense of them.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         "^Alarmingly, you catch the odd word ~incendiary~ and are almost sure you can make out someone say ~accursed Meldrew~ (in the old-fashioned way, you know, so that ~accursed~ rhymes with ~dead~). Paranoia, bound to be. There surely can't really be a conspiracy of druid-worshippers out to get you?";
     }
-    if (local1 == 5[w_obj?]) {
+    if (i == 5) {
         "^~The prophecy must be fulfilled!~ one warns, in an unearthly voice which suddenly carries. The others hush him.";
     }
-    if (local1 == 6[ne_obj?]) {
+    if (i == 6) {
         "^The men walk away, perhaps a few feet, perhaps a mile.";
     }
     rfalse;
@@ -13997,7 +13997,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: cups_and_glasses.after
 
-[ routine104396 ;	! 104396 / 0x197cc
+[ CupsAndGlassesAfter ;	! 104396 / 0x197cc
     if (action == ##Search or ##Read or ##LookUnder) {
         if (model_ship hasnt general) {
             "Nothing else.";
@@ -14012,7 +14012,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: ship_in_a_bottle.after
 
-[ routine104504 ;	! 104504 / 0x19838
+[ BottleShipAfter ;	! 104504 / 0x19838
     if (action == ##Read) {
         if (ship_in_a_bottle notin player) {
             "You can't get a good look from here.";
@@ -14032,7 +14032,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: model_ship.after, stick_with_an_anchor.after
 
-[ routine104972 ;	! 104972 / 0x19a0c
+[ ModelShipAfter ;	! 104972 / 0x19a0c
     if (verb == ##Pull) {
         if (noun == model_ship) {
             remove model_ship;
@@ -14067,7 +14067,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Sea_Shore.description
 
-[ routine105380 ;	! 105380 / 0x19ba4
+[ SeashoreDesc ;	! 105380 / 0x19ba4
     print "A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^";
     if (Lighthouse has visited && Lighthouse hasnt general) {
         give Lighthouse general;
@@ -14078,7 +14078,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Sea_Shore.after
 
-[ routine105584 ;	! 105584 / 0x19c70
+[ SeaShoreAfter ;	! 105584 / 0x19c70
     if (action == ##Drink) {
         "Salt water!  No thanks.";
     }
@@ -14095,7 +14095,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Andromeda.description
 
-[ routine105888 ;	! 105888 / 0x19da0
+[ AndromedaDesc ;	! 105888 / 0x19da0
     print "Avert your eyes. She is naked";
     if (amber_hairband has static) {
         print " (unless you count a hairband)";
@@ -14109,7 +14109,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Andromeda.life
 
-[ routine106172 ;	! 106172 / 0x19ebc
+[ AndromedaLife ;	! 106172 / 0x19ebc
     if (action == ##Kiss) {
         "She evades you deftly, having had years of practice with Greek men.";
     }
@@ -14137,17 +14137,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Clifftop_Walk.e_to
 
-[ routine106648 ;	! 106648 / 0x1a098
+[ ClifftopEast ;	! 106648 / 0x1a098
     if (herd_of_goats hasnt general) {
         "The goats hiss and butt against you, not letting you through.";
     }
     print "The goats obediently part to allow you to get by.^";
-    return 224[Outside_Taverna?];
+    return Outside_Taverna;
 ];
 
 ! References: herd_of_goats.life
 
-[ routine106732 ;	! 106732 / 0x1a0ec
+[ GoatsLife ;	! 106732 / 0x1a0ec
     if (action == ##Order or ##Ask or ##Answer) {
         "Grunt!";
     }
@@ -14156,7 +14156,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: small_thorny_tree.after
 
-[ routine106752 ;	! 106752 / 0x1a100
+[ ThornyTreeAfter ;	! 106752 / 0x1a100
     if (action == ##Climb or ##Enter) {
         "The thorns deter you.";
     }
@@ -14165,7 +14165,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Eraina_Taverna.after
 
-[ routine106776 ;	! 106776 / 0x1a118
+[ TavernAfter ;	! 106776 / 0x1a118
     if (action == ##Buy) {
         "Given the language difficulty, you'd better resort to barter.";
     }
@@ -14174,7 +14174,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Eraina_Taverna.each_turn
 
-[ routine106824 local1 ;	! 106824 / 0x1a148
+[ TavernEachTurn local1 ;	! 106824 / 0x1a148
     local1 = random(13);
     if (local1 == 1[?]) {
         "^The diners grumble and play backgammon viciously.";
@@ -14193,7 +14193,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Ekmek_Special.after
 
-[ routine107076 ;	! 107076 / 0x1a244
+[ DessertAfter ;	! 107076 / 0x1a244
     if (action == ##Take) {
         if (selfobj hasnt moved && copper_coin hasnt general) {
             "You can't understand a word of what the bartender says, but the drift is clear enough. Not until you pay for it.";
@@ -14205,7 +14205,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: bartender.life
 
-[ routine107164 ;	! 107164 / 0x1a29c
+[ BartenderLife ;	! 107164 / 0x1a29c
     if (action == ##Give) {
         if (noun == copper_coin) {
             remove copper_coin;
@@ -14227,7 +14227,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Sacred_Earth.s_to
 
-[ routine107416 ;	! 107416 / 0x1a398
+[ SacredEarthSouth ;	! 107416 / 0x1a398
     print "Zeus, chief of all the gods, appears and hurls a thunderbolt down just before you begin to cross into the Temple. ";
     if (big_electricians_switch has on) {
         deadflag = DIED;
@@ -14235,7 +14235,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (rod_of_luck has general) {
         print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
-        return 233[Temple_of_Zeus?];
+        return Temple_of_Zeus;
     }
     deadflag = DIED;
     "With the luck of the gods, Zeus' thunderbolt strikes you just about exactly in the back, despite your attempts to weave about.";
@@ -14243,21 +14243,21 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Sacred_Earth.before
 
-[ routine107832 ;	! 107832 / 0x1a538
+[ SacredEarthBefore ;	! 107832 / 0x1a538
     set_flag_array(4);
     rfalse;
 ];
 
 ! References: Temple_of_Zeus.n_to
 
-[ routine107840 ;	! 107840 / 0x1a540
+[ TempleNorth ;	! 107840 / 0x1a540
     print "~I'll get you this time, worm!~ bellows Zeus, and hurls another thunderbolt, but now he's angry his aim is right off. You survive once more.^";
-    return 232[Sacred_Earth?];
+    return Sacred_Earth;
 ];
 
 ! References: inscribed_stone.description
 
-[ routine107936 ;	! 107936 / 0x1a5a0
+[ InscribedStoneDesc ;	! 107936 / 0x1a5a0
     print "The stone bears two inscriptions, side by side:^";
     0-->8 = 2 | 0-->8;
     print "^   #. [] = # +*+  __             an-ta re-im ka u bir ka-i^             |||       ^        |        |     ^   / # -+- :; # -+-                 ka ne : to-ro-ma ka ur^        |        |     ^                       ^   >>> -> # (---)         .je-fe-im ka ur-a an-ge to-ro-ma^             |||^";
@@ -14267,7 +14267,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: symbol.description
 
-[ routine108268 ;	! 108268 / 0x1a6ec
+[ SymbolDesc ;	! 108268 / 0x1a6ec
     0-->8 = 2 | 0-->8;
     print "   (---)  (---)  (---)  (---)^";
     0-->8 = 65533 & 0-->8;
@@ -14276,14 +14276,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Inner_Sanctum.initial
 
-[ routine108336 ;	! 108336 / 0x1a730
+[ InnerSanctumInitial ;	! 108336 / 0x1a730
     StopDaemon(Cross_Centre);
     rfalse;
 ];
 
 ! References: Homer.life
 
-[ routine108344 ;	! 108344 / 0x1a738
+[ HomerLife ;	! 108344 / 0x1a738
     if (action == ##Order or ##Ask) {
         if (Homer has general) {
             "Homer is far too busy composing Book XIV of the Iliad.";

@@ -1402,50 +1402,28 @@ Routine 0x19380	TimerAfter i:int
 Routine 0x19444	WireAfter i:int
 Routine 0x194b0	BombTicks w:int i:int
 Routine 0x195dc	AndList i:int
-                   ! References: obj211_Cups_and_Glasses.each_turn
-Routine 0x195f4	routine103924:?
-                   ! References: obj213_cups_and_glasses.after
-Routine 0x197cc	routine104396:?
-                   ! References: obj215_ship_in_a_bottle.after
-Routine 0x19838	routine104504:?
-                   ! References: obj216_model_ship.after, obj217_stick_with_an_anchor.after
-Routine 0x19a0c	routine104972:?
-                   ! References: obj218_Sea_Shore.description
-Routine 0x19ba4	routine105380:?
-                   ! References: obj218_Sea_Shore.after
-Routine 0x19c70	routine105584:?
-                   ! References: obj219_Andromeda.description
-Routine 0x19da0	routine105888:?
-                   ! References: obj219_Andromeda.life
-Routine 0x19ebc	routine106172:?
-                   ! References: obj222_Clifftop_Walk.e_to
-Routine 0x1a098	routine106648:?
-                   ! References: obj223_herd_of_goats.life
-Routine 0x1a0ec	routine106732:?
-                   ! References: obj225_small_thorny_tree.after
-Routine 0x1a100	routine106752:?
-                   ! References: obj227_Eraina_Taverna.after
-Routine 0x1a118	routine106776:?
-                   ! References: obj227_Eraina_Taverna.each_turn
-Routine 0x1a148	routine106824:?
-                   ! References: obj228_Ekmek_Special.after
-Routine 0x1a244	routine107076:?
-                   ! References: obj229_bartender.life
-Routine 0x1a29c	routine107164:?
-                   ! References: obj232_Sacred_Earth.s_to
-Routine 0x1a398	routine107416:?
-                   ! References: obj232_Sacred_Earth.before
-Routine 0x1a538	routine107832:?
-                   ! References: obj233_Temple_of_Zeus.n_to
-Routine 0x1a540	routine107840:?
-                   ! References: obj236_inscribed_stone.description
-Routine 0x1a5a0	routine107936:?
-                   ! References: obj238_symbol.description
-Routine 0x1a6ec	routine108268:?
-                   ! References: obj239_Inner_Sanctum.initial
-Routine 0x1a730	routine108336:?
-                   ! References: obj240_Homer.life
-Routine 0x1a738	routine108344:?
+Routine 0x195f4	CupsAndGlassesEachTurn i:int
+Routine 0x197cc	CupsAndGlassesAfter
+Routine 0x19838	BottleShipAfter
+Routine 0x19a0c	ModelShipAfter
+Routine 0x19ba4	SeashoreDesc
+Routine 0x19c70	SeaShoreAfter
+Routine 0x19da0	AndromedaDesc
+Routine 0x19ebc	AndromedaLife
+Routine 0x1a098	ClifftopEast:object
+Routine 0x1a0ec	GoatsLife
+Routine 0x1a100	ThornyTreeAfter
+Routine 0x1a118	TavernAfter
+Routine 0x1a148	TavernEachTurn
+Routine 0x1a244	DessertAfter
+Routine 0x1a29c	BartenderLife
+Routine 0x1a398	SacredEarthSouth:object
+Routine 0x1a538	SacredEarthBefore
+Routine 0x1a540	TempleNorth:object
+Routine 0x1a5a0	InscribedStoneDesc
+Routine 0x1a6ec	SymbolDesc
+Routine 0x1a730	InnerSanctumInitial
+Routine 0x1a738	HomerLife
 Routine 0x1a9f4	routine109044:?
                    ! References: obj241_Pan_pipes.after
 Routine 0x1aa00	routine109056:?
