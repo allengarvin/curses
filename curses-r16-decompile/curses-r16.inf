@@ -9131,7 +9131,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     if (action == ##Inv) {
-        discharge_rod(nothing);
+        set_flag_array(0);
         print "You are ";
         if (location == Inside_the_Orb) {
             print "bathed in a curious white light, and ";
@@ -9144,7 +9144,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Drop) {
         if (lm_n == e_obj && noun has rod_attr) {
-            discharge_rod(lm_object);
+            set_flag_array(16);
         }
         rfalse;
     }
@@ -9162,7 +9162,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "Austin is quite unruffled.";
         }
         print "For some reason, Austin is startled and springs for his life ";
-        discharge_rod(se_obj);
+        set_flag_array(7);
         if (location == Souvenirs_Room && charcoal_sketch in slide_projector && south_wall hasnt concealed) {
             move Austin to Causeway;
             Achieved(SCORE_AUSTIN);
@@ -9316,7 +9316,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
     }
     if (second == Austin) {
-        discharge_rod(ne_obj);
+        set_flag_array(6);
         "You don't really want to vapourise Austin.";
     }
     if (second == adamantine_statue) {
@@ -9440,7 +9440,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Nothing obvious happens.";
     }
     give herd_of_goats general;
-    discharge_rod(rod_of_luck);
+    set_flag_array(24);
     "The goats suddenly look up at you with awe, although they resume their former interest in eating the grass quite quickly.";
 ];
 
@@ -9507,7 +9507,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Still obedient to your intent, the goats part so that one stands alone. Using this Rod, you vapourise it instantaneously, and the rest contentedly return.^^Do you think there might be a moral to draw here about the use, and abuse, of power?";
     }
     if (second == Austin) {
-        discharge_rod(ne_obj);
+        set_flag_array(6);
         "You don't really want to sacrifice Austin.";
     }
     if (second == adamantine_knight) {
@@ -9611,7 +9611,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Nothing obvious happens.";
     }
     t = circular_arc.time_left;
-    discharge_rod(rod_of_love);
+    set_flag_array(30);
     if (t < 9) {
         "You feel the air charge with excitement, and the symbol glows fiercely gold for a moment, but then the power drains away into one of the empty sockets in the arc.";
     }
@@ -9871,7 +9871,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (n == 0) {
         print "^The torch finally dies out.^";
         give electric_torch ~light;
-        discharge_rod(nw_obj);
+        set_flag_array(8);
     }
     rfalse;
 ];
@@ -9926,7 +9926,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "That was the first place you tried, hours and hours ago now";
         if (Meldrewes_History has concealed) {
             print ", and there's nothing there but that boring old book. You pick it up anyway, bored as you are";
-            discharge_rod(old_smudged_battery);
+            set_flag_array(33);
             give Meldrewes_History ~concealed;
             move Meldrewes_History to player;
         }
@@ -9946,7 +9946,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         generic_globvar = local1;
         if (generic_globvar == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
-            discharge_rod(furniture);
+            set_flag_array(48);
             "Perhaps you may one day earn a place in vol. III.";
         }
         if (generic_globvar == 37083['peter'?]) {
@@ -10244,7 +10244,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ PostcardBefore ;	! 72788 / 0x11c54
     if (action == ##Read && location == Dark_Room && Dark_Room has light) {
         Achieved(SCORE_HAMBURG);
-        discharge_rod(crumpled_piece_of_paper);
+        set_flag_array(31);
         "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
     }
     rfalse;
@@ -10834,7 +10834,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (selfobj hasnt general) {
             "The ball is scratched and misted up.";
         }
-        discharge_rod(electric_torch);
+        set_flag_array(32);
         i = random(12);
         print "In the ball mists swirl, then part to show ";
         if (i == 1) {
@@ -10924,7 +10924,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (steel_wrench hasnt general) {
             "You can't read it while it's holding the pipe up.";
         }
-        discharge_rod(Attic);
+        set_flag_array(35);
         rfalse;
     }
     rfalse;
@@ -11532,7 +11532,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ WritingRoomBefore ;	! 83944 / 0x147e8
     if (action == ##Exit) {
         if (Melancholy_Dream has visited) {
-            discharge_rod(servants_bed);
+            set_flag_array(44);
         }
         rfalse;
     }
@@ -11603,7 +11603,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Clean) {
         give selfobj general;
-        discharge_rod(rod_of_husbandry);
+        set_flag_array(21);
         "You polish up the mirror just a little more.";
     }
     if (action == ##Read or ##Search) {
@@ -12068,16 +12068,16 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rtrue;
     }
     if (action == ##Attack) {
-        discharge_rod(rod_of_life);
+        set_flag_array(28);
         "Well, she's annoying, but that's family for you.";
     }
     if (action == ##ThrowAt) {
-        discharge_rod(rod_of_life);
+        set_flag_array(28);
         "Well, quite. Best to just grit your teeth and put up with her though.";
     }
     if (action == ##Answer) {
         if (selfobj hasnt general) {
-            discharge_rod(rod_of_fire);
+            set_flag_array(17);
             "She pretends not to have heard, a favourite ploy of hers when sulking.";
         }
         give Jemima ~general;
@@ -12112,7 +12112,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "After a moment she notices you're still here. ~Come back later, it'll be done soon.~  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.";
     }
     if (action == ##Ask) {
-        discharge_rod(rod_of_fire);
+        set_flag_array(17);
         if (second == invalidObj31971 or invalidObj31251) {
             "Jemima gives you a cool look. ~They're just for decoration.~";
         }
@@ -12544,7 +12544,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     Mousy_y = local5;
                     if (Mouse_x == 4 && Mousy_y == 1 && small_brass_key in hole_in_the_wall) {
                         move small_brass_key to robot_mouse;
-                        discharge_rod(n_obj);
+                        set_flag_array(2);
                         "From somewhere inside the hole, you hear the spinning of tiny wheels, followed by an excitable high-pitched beep and a dull clanging noise.";
                     }
                     "From somewhere inside the hole, you hear tiny wheels spin.";
@@ -12557,7 +12557,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give robot_mouse moved;
             if (location == local3) {
                 if (dst == hole_in_the_wall) {
-                    discharge_rod(Compass);
+                    set_flag_array(1);
                     "The mouse just squeezes through the hole, and disappears from view. Unfortunately you can't very easily talk to it now...";
                 } else {
                     "The mouse runs off as ordered.";
@@ -12569,7 +12569,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     ".";
                 }
                 move small_brass_key to Cellars_South;
-                discharge_rod(s_obj);
+                set_flag_array(3);
                 ", and then almost looks proud as a magnet cuts out and something metal drops off the underside of the mouse onto the floor. The lost key is found!";
             }
         }
@@ -13096,7 +13096,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             give Unreal_City general;
             jump label96853;
         }
-        discharge_rod(rod_of_returning);
+        set_flag_array(18);
         print "~Curse it, another nobody,~ she hisses in an unguarded moment, as she tidies the pack absentmindedly with her hands. Then she recovers her poise and advises about handsome strangers, fearing death by water, crossing palms with gold and so on. Eventually she ushers you out.^";
     }
   .label96853;
@@ -13448,7 +13448,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Dark_Staircase.before
 
 [ DarkStaircaseBefore ;	! 100008 / 0x186a8
-    discharge_rod(thedark);
+    set_flag_array(14);
     rfalse;
 ];
 
@@ -13792,7 +13792,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         print " short of the red zone. ";
         if (complicated_looking_bomb.time_left == 5) {
-            discharge_rod(u_obj);
+            set_flag_array(10);
         }
     }
     local1 = complicated_looking_bomb.number;
@@ -14122,7 +14122,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Sacred_Earth.before
 
 [ routine107832 ;	! 107832 / 0x1a538
-    discharge_rod(e_obj);
+    set_flag_array(4);
     rfalse;
 ];
 
@@ -14686,7 +14686,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine112652 ;	! 112652 / 0x1b80c
     print "You can only go aft.^";
-    discharge_rod(d_obj);
+    set_flag_array(11);
     rtrue;
 ];
 
@@ -15232,7 +15232,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             location = Patio_in_Maze;
             move garden_roller to Patio_in_Maze;
         }
-        discharge_rod(antique_jewellery_box);
+        set_flag_array(39);
         R_Process(##Look);
         rtrue;
     }
@@ -15559,7 +15559,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Bricked_Path.initial
 
 [ routine117760 ;	! 117760 / 0x1cc00
-    discharge_rod(rod_of_bronze);
+    set_flag_array(22);
     rfalse;
 ];
 
@@ -15759,7 +15759,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine119316 ;	! 119316 / 0x1d214
     if (action == ##Take) {
-        discharge_rod(classical_dictionary);
+        set_flag_array(43);
         rfalse;
     }
     rfalse;
@@ -16074,7 +16074,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         rfalse;
     }
     give kitchen_well general;
-    discharge_rod(sw_obj);
+    set_flag_array(9);
     "^You hear a splash from far down in the depths of the well.";
 ];
 
@@ -16300,7 +16300,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Premonition.cant_go, The_Generals_Tent.cant_go, Beside_Table.cant_go, Camp_Fire.cant_go, Near_Dolmen.cant_go, Melancholy_Dream.cant_go, Solid_Sand.cant_go, Octagonal_Tomb.cant_go
 
 [ DreamCantGo ;	! 124792 / 0x1e778
-    discharge_rod(rod_of_death);
+    set_flag_array(29);
     "You drift in that direction, but without gaining any ground.";
 ];
 
@@ -16742,10 +16742,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
   .label128652;
     ++global163;
     if (global163 == 8[nw_obj?]) {
-        discharge_rod(hinged_trapdoor);
+        set_flag_array(36);
     }
     if (global163 == 5[w_obj?]) {
-        discharge_rod(Servants_Room);
+        set_flag_array(42);
     }
     local3 = array_25291->local1;
     array_25291->local2 = local3;
@@ -16819,7 +16819,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (action == ##Turn) {
         if (global164 == 0) {
             global164 = 1[?];
-            discharge_rod(out_obj);
+            set_flag_array(12);
             "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
         }
         deadflag = DESTROYED_UNIVERSE;
@@ -16877,7 +16877,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (local1 == 10[u_obj?]) {
         print "^(The sphere rotates.)  You have some impression that White is trying to make an attack, having plenty of spare pieces.^";
-        discharge_rod(rod_of_language);
+        set_flag_array(26);
     }
     if (local1 == 12[out_obj?]) {
         print "^(The sphere rotates.)  Seeing the board from Black's point of view, the defence looks solid.^";
@@ -17112,7 +17112,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         unexciting_tombstone.description = "An amber gem gleams in the mouth of its face.";
         give unexciting_tombstone open;
-        discharge_rod(rod_of_ice);
+        set_flag_array(25);
         move gleaming_amber_gem to unexciting_tombstone;
         "The amber fits perfectly into the mouth of the stone face, and there is a heaving from beneath your feet... you topple over backward, flailing wildly. When you get up you can see a short flight of steps leading down. You have opened the tomb!";
     }
@@ -17937,7 +17937,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         ++global167;
         if (global167 == 2[?]) {
-            discharge_rod(tight_door);
+            set_flag_array(46);
         }
         rfalse;
     }
@@ -18033,7 +18033,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: bunch_of_nuts.after
 
 [ NutsAfter ;	! 140884 / 0x22654
-    discharge_rod(House);
+    set_flag_array(41);
     if (corn_crake in Hollow) {
         "The corn crake won't let you near her nest.";
     }
@@ -18164,11 +18164,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ MoonstoneAfter ;	! 141728 / 0x229a0
     if (action == ##Read) {
-        discharge_rod(Old_Furniture);
+        set_flag_array(47);
         rfalse;
     }
     if (action == ##Open or ##Push or ##Pull or ##Take) {
-        discharge_rod(rod_of_stalking);
+        set_flag_array(19);
         "Legend has it nothing holds down the stone, but if so it's far too heavy to budge.";
     }
     if (action == ##PointAt or ##Knock) {
@@ -18550,7 +18550,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: Hellish_Place.cant_go
 
 [ HellishPlaceCantGo ;	! 145268 / 0x23774
-    discharge_rod(teachests);
+    set_flag_array(37);
     "That direction is not for the living.";
 ];
 
@@ -18655,7 +18655,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: old_smudged_battery.name, old_striped_scarf.name, old_gardeners__gloves.name, dog_eared_old_letter.name, Cups_and_Glasses.name, old_timber_spar.name, timber_hatch.name, Old_Evans.name, Moonstone.name, old_village_clock.name, Heavenly_Place.cant_go
 
 [ HeavenCantGo ;	! 146424 / 0x23bf8
-    discharge_rod(rod_of_returning2);
+    set_flag_array(27);
     "That direction is not for the living.";
 ];
 
@@ -18885,10 +18885,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: sepia_photograph.name
 
-[ discharge_rod o ;	! 155280 / 0x25e90
-    if (rod_charge_array->o == 0) {
-        rod_charge_array->o = 1;
-        rod_charge_index = o;
+[ set_flag_array i ;	! 155280 / 0x25e90
+    if (rod_charge_array->i == 0) {
+        rod_charge_array->i = 1;
+        rod_charge_index = i;
     }
     rtrue;
 ];
@@ -22670,7 +22670,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine172644 ;	! 172644 / 0x2a264
     if (verb == ##Go && carbolic_soap hasnt concealed) {
-        discharge_rod(in_obj);
+        set_flag_array(13);
         "You're going nowhere until you make amends for that nasty bad language.";
     }
     if (gas_mask has worn) {
@@ -23177,7 +23177,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "Austin is quite unruffled.";
         }
         print "For some reason, Austin is startled and springs for his life ";
-        discharge_rod(se_obj);
+        set_flag_array(7);
         if (location == Souvenirs_Room && charcoal_sketch in slide_projector && south_wall hasnt concealed) {
             move Austin to Causeway;
             Achieved(SCORE_AUSTIN);
@@ -23227,7 +23227,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (parent(hard_wooden_ball) ~= location) {
         "The ball is not on the ground.";
     }
-    discharge_rod(yourself);
+    set_flag_array(15);
     print "You strike the ball with the mallet, and a pleasing cracking sound.^";
     if (location == Lawn_Ornaments) {
         "^The ball ricochets around the ornaments as on a pinball table.";
@@ -23249,7 +23249,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ PrettySub ;	! 176916 / 0x2b314
     pretty_mode = true;
-    discharge_rod(w_obj);
+    set_flag_array(5);
     displaying_quote = true;
     "~Curses~ is now in its (supposedly) ~pretty~ mode.";
 ];
