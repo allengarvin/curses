@@ -11721,13 +11721,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: tourist_map.after
 
-[ TouristMapAfter local1 ;	! 85276 / 0x14d1c
+[ TouristMapAfter n ;	! 85276 / 0x14d1c
     if (action == ##Consult) {
         if (selfobj in demijohn) {
             "You can't get a close enough look.";
         }
-        local1 = TryNumber(consult_from);
-        if (local1 == 1420[?]) {
+        n = TryNumber(consult_from);
+        if (n == 1420) {
             if (Museum_Foyer has visited) {
                 "You remember, the museum.";
             }
