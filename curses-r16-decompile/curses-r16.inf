@@ -18602,18 +18602,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hellish_Place.each_turn
 
-[ HellishPlaceEachTurn local1 ;	! 145796 / 0x23984
-    local1 = random(10);
-    if (local1 == 1[?]) {
+[ HellishPlaceEachTurn i ;	! 145796 / 0x23984
+    i = random(10);
+    if (i == 1) {
         "^There is a horrid grinding noise from far away.";
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         "^A flash of light sears your eyes, as the sulphurous flames grumble.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         "^You can almost, but not quite, make out the noise of shouting.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         "^Thunder and lightning can be heard from the fiery depths.";
     }
     rfalse;
