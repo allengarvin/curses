@@ -23584,7 +23584,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "A useless gesture.";
 ];
 
-[ PointSub local1 ;	! 179440 / 0x2bcf0
+[ PointSub r ;	! 179440 / 0x2bcf0
     if (noun notin player) {
         "But you aren't holding it.";
     }
@@ -23598,12 +23598,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Nothing happens.";
     }
     Achieved(SCORE_AIMWAND);
-    local1 = noun.rod_action;
-    if (local1 == 65535[?]) {
+    r = noun.rod_action;
+    if (r == routine262140) {
         "** No rod routine **";
     }
     give noun ~charged;
-    generic_globvar = local1();
+    generic_globvar = r();
     rtrue;
 ];
 
