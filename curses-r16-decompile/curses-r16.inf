@@ -20888,17 +20888,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ EnterSub local1 ;	! 163388 / 0x27e3c
+[ EnterSub o ;	! 163388 / 0x27e3c
     if (noun has door) {
         R_Process(##Go,noun);
         rtrue;
     }
-    local1 = parent(player);
-    if (local1 ~= location) {
-        return L__M(##Enter,1,local1);
+    o = parent(player);
+    if (o ~= location) {
+        return L__M(##Enter,1,o);
     }
-    local1 = parent(noun);
-    if (local1 == 1[?]) {
+    o = parent(noun);
+    if (o == Compass) {
         R_Process(##Go,noun);
         rtrue;
     }
@@ -20908,7 +20908,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (noun has container && noun hasnt open) {
         return L__M(##Enter,3,noun);
     }
-    if (local1 ~= location) {
+    if (o ~= location) {
         return L__M(##Enter,4);
     }
     move player to noun;
