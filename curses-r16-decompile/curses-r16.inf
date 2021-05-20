@@ -20417,11 +20417,11 @@ Array preactions_table --> IsDirection;
 ];
 
 [ TransferSub i act_needed k postonobj par ;	
-    act_needed = 28[rod_of_life?];
+    act_needed = ##Drop;
     if (second has container) {
-        act_needed = 26[rod_of_language?];
+        act_needed = ##Insert;
     } else if (second has supporter) {
-        act_needed = 27[rod_of_returning2?];
+        act_needed = ##PutOn;
     }
     i = parent(noun);
     if (i ~= player) {
@@ -20462,15 +20462,15 @@ Array preactions_table --> IsDirection;
             verb = k;
         }
     }
-    if (act_needed == 28[rod_of_life?]) {
+    if (act_needed == ##Drop) {
         R_Process(##Drop,noun);
         rtrue;
     }
-    if (act_needed == 26[rod_of_language?]) {
+    if (act_needed == ##Insert) {
         R_Process(##Insert,noun,second);
         rtrue;
     }
-    if (act_needed == 27[rod_of_returning2?]) {
+    if (act_needed == ##PutOn) {
         R_Process(##PutOn,noun,second);
         rtrue;
     }
