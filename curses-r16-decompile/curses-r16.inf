@@ -18385,18 +18385,18 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HeavenEachTurn local1 ;	
-    local1 = random(10);
-    if (local1 == 1[?]) {
+[ HeavenEachTurn i ;	
+    i = random(10);
+    if (i == 1) {
         "^Angels with harps float by, gossiping about you in a kindly way.";
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         "^Babies float by, just counting their toes.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         "^Burnished-gold sunlight strokes the tops of the clouds here.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         "^The choir invisible almost, for a moment, becomes audible.";
     }
     rfalse;
