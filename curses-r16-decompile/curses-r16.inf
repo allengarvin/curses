@@ -15189,7 +15189,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FoundationsAfter local1 local2 ;	
+[ FoundationsAfter x y ;	
     if (action == ##Go) {
         if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
@@ -15197,48 +15197,48 @@ Array preactions_table --> IsDirection;
         if (MazeX == 0 && MazeY == 1 && noun == w_obj) {
             rfalse;
         }
-        local1 = 100[Tiny_Balcony?];
-        local2 = 100[Tiny_Balcony?];
+        x = 100;
+        y = 100;
         if (inp1 == 2[?]) {
-            local1 = MazeX;
-            local2 = MazeY - 1;
+            x = MazeX;
+            y = MazeY - 1;
         }
         if (inp1 == 4[e_obj?]) {
-            local1 = MazeX + 1;
-            local2 = MazeY;
+            x = MazeX + 1;
+            y = MazeY;
         }
         if (inp1 == 3[s_obj?]) {
-            local1 = MazeX;
-            local2 = MazeY + 1;
+            x = MazeX;
+            y = MazeY + 1;
         }
         if (inp1 == 5[w_obj?]) {
-            local1 = MazeX - 1;
-            local2 = MazeY;
+            x = MazeX - 1;
+            y = MazeY;
         }
         if (inp1 == 6[ne_obj?]) {
-            local1 = MazeX + 1;
-            local2 = MazeY - 1;
+            x = MazeX + 1;
+            y = MazeY - 1;
         }
         if (inp1 == 8[nw_obj?]) {
-            local1 = MazeX - 1;
-            local2 = MazeY - 1;
+            x = MazeX - 1;
+            y = MazeY - 1;
         }
         if (inp1 == 7[se_obj?]) {
-            local1 = MazeX + 1;
-            local2 = MazeY + 1;
+            x = MazeX + 1;
+            y = MazeY + 1;
         }
         if (inp1 == 9[sw_obj?]) {
-            local1 = MazeX - 1;
-            local2 = MazeY + 1;
+            x = MazeX - 1;
+            y = MazeY + 1;
         }
-        if (local1 == 100[Tiny_Balcony?]) {
+        if (x == 100) {
             "The maze is only two-dimensional.";
         }
-        if (routine115468(local1,local2) ~= 0) {
+        if (routine115468(x,y) ~= 0) {
             "The wooden fence is in the way.";
         }
-        MazeX = local1;
-        MazeY = local2;
+        MazeX = x;
+        MazeY = y;
         LookSub(true);
         rtrue;
     }
