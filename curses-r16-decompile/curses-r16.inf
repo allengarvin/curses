@@ -16553,14 +16553,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Battlements.name
 
-[ routine127236 local1 local2 ;	! 127236 / 0x1f104
-    local2 = henri_post_array->(local1 - 1);
-    if (local2 == 0) {
+[ DisplaySlidePos ndx chr ;	! 127236 / 0x1f104
+    chr = henri_post_array->(ndx - 1);
+    if (chr == '@{0}') {
         print ". ";
         rfalse;
     }
-    local2 = local2 + 65 - 1;
-    print (char) local2, " ";
+    chr = chr + 65 - 1;
+    print (char) chr, " ";
     rtrue;
 ];
 
@@ -16569,25 +16569,25 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine127272 ;	! 127272 / 0x1f128
     0-->8 = 2 | 0-->8;
     print "     ";
-    routine127236(1[?]);
-    routine127236(2[?]);
-    routine127236(3[s_obj?]);
+    DisplaySlidePos(1);
+    DisplaySlidePos(2);
+    DisplaySlidePos(3);
     print "^      + +^", "     ";
-    routine127236(4[e_obj?]);
-    routine127236(5[w_obj?]);
-    routine127236(6[ne_obj?]);
+    DisplaySlidePos(4);
+    DisplaySlidePos(5);
+    DisplaySlidePos(6);
     print "^      + +^", "     ";
-    routine127236(7[se_obj?]);
-    routine127236(8[nw_obj?]);
-    routine127236(9[sw_obj?]);
+    DisplaySlidePos(7);
+    DisplaySlidePos(8);
+    DisplaySlidePos(9);
     print "^      + +^", "     ";
-    routine127236(10[u_obj?]);
-    routine127236(11[d_obj?]);
-    routine127236(12[out_obj?]);
+    DisplaySlidePos(10);
+    DisplaySlidePos(11);
+    DisplaySlidePos(12);
     print "^      + +^", "     ";
-    routine127236(13[in_obj?]);
-    routine127236(14[thedark?]);
-    routine127236(15[yourself?]);
+    DisplaySlidePos(13);
+    DisplaySlidePos(14);
+    DisplaySlidePos(15);
     new_line;
     0-->8 = 65533 & 0-->8;
     rtrue;
