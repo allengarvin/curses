@@ -12876,7 +12876,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gilded_model_coffin.before
 
-[ CoffinBefore local1 ;	! 93928 / 0x16ee8
+[ CoffinBefore r ;	! 93928 / 0x16ee8
     if (action == ##Receive) {
         if (noun has rod_attr) {
             "The mahogany rod fits in perfectly.";
@@ -12885,14 +12885,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (action == ##Close) {
         give gilded_model_coffin ~general;
-        local1 = child(gilded_model_coffin);
+        r = child(gilded_model_coffin);
       .label93977;
-        if (local1 ~= 0) {
-            if (local1 has unidentiifed_rod) {
-                discover_rod(local1);
+        if (r ~= nothing) {
+            if (r has unidentiifed_rod) {
+                discover_rod(r);
                 give gilded_model_coffin general;
             }
-            local1 = sibling(local1);
+            r = sibling(r);
             jump label93977;
         }
         if (gilded_model_coffin hasnt general) {
