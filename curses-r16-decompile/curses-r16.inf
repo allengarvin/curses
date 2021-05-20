@@ -4993,8 +4993,8 @@ Global priest_cnt;
 Global global151 = 25228[?];
 Global MazeX = 4;
 Global MazeY = 6;
-Global global154 = 100[Tiny_Balcony?];
-Global global155 = 100[Tiny_Balcony?];
+Global WeedkillerX = 100;
+Global WeedkillerY = 100;
 Global DigX;
 Global DigY;
 Global OldDigX;
@@ -14923,8 +14923,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 if (local1 == 0) {
                     "A stream of weed-killer soaks into the grass, and does nothing obvious.";
                 }
-                global154 = MazeX;
-                global155 = MazeY;
+                WeedkillerX = MazeX;
+                WeedkillerY = MazeY;
                 StartDaemon(selfobj);
                 "A stream of weed-killer soaks into the seedbed, and does nothing obvious.";
             }
@@ -14938,7 +14938,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine115216 local1 ;	! 115216 / 0x1c210
     if (game_section ~= T_GARDEN_PAST) {
-        local1 = global154 + 9 * global155;
+        local1 = WeedkillerX + 9 * WeedkillerY;
         global151->local1 = 48[furniture?];
         StopDaemon(selfobj);
     }
