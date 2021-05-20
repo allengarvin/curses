@@ -10053,144 +10053,144 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: classical_dictionary.after
 
-[ DictionaryAfter local1 ;	! 69840 / 0x110d0
+[ DictionaryAfter w ;	! 69840 / 0x110d0
     if (action == ##Consult) {
         wn = consult_from;
-        local1 = NextWord();
+        w = NextWord();
         if (Homer has general && Homer.time_left < 3 && Homer in location) {
             routine109044();
             print "~Well, if you're going to cheat, forget it,~ says Homer loudly as he falls asleep.^^";
         }
-        if (local1 == 33537['galita'?]) {
+        if (w == 'galita') {
             "Minor deity of tombs, reincarnated from a fly who flew into setting amber.";
         }
-        if (local1 == 35823['menelaus'?]) {
+        if (w == 'menelaus') {
             "General in Trojan War, and brother of Agamemnon.";
         }
-        if (local1 == 29730['agamemnon'?]) {
+        if (w == 'agamemnon') {
             "General in Trojan War, and brother of Menelaus.";
         }
-        if (local1 == 30063['ares'?]) {
+        if (w == 'ares') {
             "Greek god of war.";
         }
-        if (local1 == 31341['chlamys'?]) {
+        if (w == 'chlamys') {
             "An emperor's (rectangular) cloak.";
         }
-        if (local1 == 34590['husbandry'?]) {
+        if (w == 'husbandry') {
             "Not this dictionary!";
         }
-        if (local1 == 33996['hades'?]) {
+        if (w == 'hades') {
             "Underworld of spirits.";
         }
-        if (local1 == 29667['adamantine'?]) {
+        if (w == 'adamantine') {
             "Hardest stone known to the ancients.";
         }
-        if (local1 == 34662['iliad'?] or 36543['odyssey'?]) {
+        if (w == 'iliad' or 'odyssey') {
             "Epic by Homer.";
         }
-        if (local1 == 34239['helicon'?]) {
+        if (w == 'helicon') {
             "Mythical mountain of poets and muses.";
         }
-        if (local1 == 34284['hephaestus'?]) {
+        if (w == 'hephaestus') {
             "Greek god of blacksmiths and master of metals.";
         }
-        if (local1 == 36885['pan'?]) {
+        if (w == 'pan') {
             "Greek god of pastures and shepherds; player of the syrinx, or pipes.";
         }
-        if (local1 == 32115['demeter'?]) {
+        if (w == 'demeter') {
             "Greek goddess of plenty.";
         }
-        if (local1 == 37416['poseidon'?]) {
+        if (w == 'poseidon') {
             "Greek god of the sea, and of horses.";
         }
-        if (local1 == 30009['apollo'?] or 35499['loxias'?]) {
+        if (w == 'apollo' or 'loxias') {
             "Greek god of words, music and poetry.";
         }
-        if (local1 == 41727['zeus'?]) {
+        if (w == 'zeus') {
             "Greek ruler of the gods.";
         }
-        if (local1 == 35256['leda'?]) {
+        if (w == 'leda') {
             "Mortal woman seduced by Zeus, who appeared to her in the form of a swan.";
         }
-        if (local1 == 34302['hera'?]) {
+        if (w == 'hera') {
             "Jealous wife of Zeus.";
         }
-        if (local1 == 30000['aphrodite'?]) {
+        if (w == 'aphrodite') {
             "Greek goddess of beauty.";
         }
-        if (local1 == 30180['athene'?]) {
+        if (w == 'athene') {
             "Greek goddess of wisdom.";
         }
-        if (local1 == 32268['diana'?]) {
+        if (w == 'diana') {
             "Goddess of hunting, the underworld (with Pluto) and the moon.";
         }
-        if (local1 == 38802['selenae'?]) {
+        if (w == 'selenae') {
             "Mythical island mountain home of Diana.";
         }
-        if (local1 == 39459['sosostris'?]) {
+        if (w == 'sosostris') {
             "Mythical pharoah of Egypt, after whom a curious cult rose: sometimes confused with Alexander the Great.";
         }
-        if (local1 == 37326['pluto'?]) {
+        if (w == 'pluto') {
             "Canine Walt Disney character, after whom the planet is named.";
         }
-        if (local1 == 32322['dionysus'?]) {
+        if (w == 'dionysus') {
             "Greek god of wine, and revelry.";
         }
-        if (local1 == 33510['furies'?] or 31926['curses'?] or 32862['eumenides'?]) {
+        if (w == 'furies' or 'curses' or 'eumenides') {
             "Eternally pursuing Greek goddesses, they enforced divine rules by punishing the families of miscreants through all time.";
         }
-        if (local1 == 36615['omphalos'?]) {
+        if (w == 'omphalos') {
             "Fabled to be the stone at the centre (literally ~navel~) of the world.";
         }
-        if (local1 == 36678['oracle'?] or 37758['pythian'?]) {
+        if (w == 'oracle' or 'pythian') {
             "Priestess of Apollo: her predictions were legendary for their accuracy, and also their difficulty to interpret.";
         }
-        if (local1 == 37101['pharos'?]) {
+        if (w == 'pharos') {
             "Lighthouse-tower. The great one at Alexandria was one of the Seven Wonders of the World.";
         }
-        if (local1 == 29694['aeschylus'?]) {
+        if (w == 'aeschylus') {
             "The first great tragic playwright (525 - c.456 BC).";
         }
-        if (local1 == 35067['kraken'?]) {
+        if (w == 'kraken') {
             "Legendary sea-monster of Poseidon (though the word derives from the Norwegian - not a lot of people know that).";
         }
-        if (local1 == 29883['andromeda'?]) {
+        if (w == 'andromeda') {
             "Maiden sacrificed to a sea-monster, according to myth eventually saved by Perseus.";
         }
-        if (local1 == 37056['perseus'?]) {
+        if (w == 'perseus') {
             "Greek hero and slayer of monsters.";
         }
-        if (local1 == 40080['syrinx'?]) {
+        if (w == 'syrinx') {
             "Pan-pipes: reed-cut.";
         }
-        if (local1 == 34491['homer'?]) {
+        if (w == 'homer') {
             "Earliest poet of the Greek tradition, legendarily blind: nothing is known about him, except that he (supposedly) wrote the ~Iliad~ and the ~Odyssey~.";
         }
-        if (local1 == 32691['ekmek'?] or 32826['eraina'?]) {
+        if (w == 'ekmek' or 'eraina') {
             "The Ekmek Special is a delicacy still served to this day by the Eraina Taverna, Free School Lane, Cambridge, England. Much prized by itinerant mathematicians.";
         }
-        if (local1 == 30981['callimachus'?]) {
+        if (w == 'callimachus') {
             "Cataloguer of the Alexandrian library: most famous of all the wittily brief epigrammatic poets.";
         }
-        if (local1 == 30018['apollonius'?]) {
+        if (w == 'apollonius') {
             "Librarian, mathematician, epic poet, politician.";
         }
-        if (local1 == 30135['arthur'?]) {
+        if (w == 'arthur') {
             "Half-mythical High King of the Britons.";
         }
-        if (local1 == 35841['merlin'?] or 35850['merlyn'?]) {
+        if (w == 'merlin' or 'merlyn') {
             "Half-mythical wizard to the court of King Arthur.";
         }
-        if (local1 == 29775['alexandria'?]) {
+        if (w == 'alexandria') {
             "City on the Nile Delta founded by Alexander the Great.";
         }
-        if (local1 == 29766['alexander'?]) {
+        if (w == 'alexander') {
             "Macedonian who conquered the known world in his twenties.";
         }
-        if (local1 == 37650['ptolemy'?]) {
+        if (w == 'ptolemy') {
             "General of Alexander the Great, governed and later inherited Egypt.";
         }
-        if (local1 == 36534['odysseus'?] or 40800['ulysses'?]) {
+        if (w == 'odysseus' or 'ulysses') {
             "Wasn't he a sailor?";
         }
         "Sorry, there's nothing on that.";
