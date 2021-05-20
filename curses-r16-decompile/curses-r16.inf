@@ -20219,12 +20219,12 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ DropSub local1 ;	
-    local1 = parent(noun);
-    if (local1 == location) {
+[ DropSub o ;	
+    o = parent(noun);
+    if (o == location) {
         return L__M(##Drop,1);
     }
-    if (local1 ~= player) {
+    if (o ~= player) {
         return L__M(##Drop,2);
     }
     if (noun has worn) {
@@ -20244,16 +20244,16 @@ Array preactions_table --> IsDirection;
     return L__M(##Drop,4);
 ];
 
-[ RemoveSub local1 ;	
-    local1 = parent(noun);
-    if (local1 has container && local1 hasnt open) {
+[ RemoveSub o ;	
+    o = parent(noun);
+    if (o has container && o hasnt open) {
         return L__M(##Remove,1);
     }
-    if (local1 ~= second) {
+    if (o ~= second) {
         return L__M(##Remove,2);
     }
-    if (local1 has animate) {
-        return L__M(##Take,6,local1);
+    if (o has animate) {
+        return L__M(##Take,6,o);
     }
     if (RTakeSub(second) ~= 0) {
         rtrue;
