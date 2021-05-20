@@ -13918,7 +13918,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "Bright sunshine glints off the glass bottle, making it impossible to see detail within.";
         }
         move ship_in_a_bottle to Souvenirs_Room;
-        PlayerTo(Aboard_Ship,true);
+        PlayerTo(Aboard_Ship,1);
         "You look very closely at the fine detail on the model sailing ship. Perhaps it's the distorting glass of the bottle, perhaps your romantic imagination, but the deck seems more detailed, the rigging might almost be swaying, the little figure by one mast might almost be alive...^^In fact, the closer you look the more sea-sick you feel.^^Thank heavens for the deck rail, something to hang on to while this moment of queasiness passes.";
     }
     rfalse;
@@ -17883,7 +17883,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print " to find ";
             Indefart(local1);
             print ", which, to say the least, comes as a surprise. Such a fuss is kicked up that you are quickly thrown out into the street.^";
-            PlayerTo(Outside_the_Royal_Museum,true);
+            PlayerTo(Outside_the_Royal_Museum,1);
             rfalse;
         }
         "How could you bribe such disinterested men of learning as the librarians?";
@@ -20186,14 +20186,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     location = newplace;
     real_location = location;
     AdjustLight(1[?]);
-    if (flag == false) {
+    if (flag == 0) {
         R_Process(##Look);
     }
-    if (flag == true) {
+    if (flag == 1) {
         NoteArrival();
         ScoreArrival();
     }
-    if (flag == invalidBool2) {
+    if (flag == 2) {
         LookSub(true);
     }
     rtrue;
