@@ -8363,7 +8363,7 @@ Array preactions_table --> IsDirection;
     }
     if (deadflag > 2) {
         print " ";
-        routine172820();
+        DeathMessage();
         print " ";
     }
     print "***";
@@ -22363,7 +22363,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine172820 ;	
+[ DeathMessage ;	
     if (deadflag == FAILED) {
         print "You have missed the point entirely";
     }
