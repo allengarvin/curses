@@ -12467,7 +12467,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: robot_mouse.life
 
-[ MouseLife frm dst local3 local4 local5 ;	! 91484 / 0x1655c
+[ MouseLife frm dst local3 x y ;	! 91484 / 0x1655c
     if (action == ##Order or ##Answer or ##Ask) {
         if (gas_mask has worn && MouseUnderstandsMask == false) {
             MouseUnderstandsMask = true;
@@ -12538,26 +12538,26 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             } else {
                 if (frm == hole_in_the_wall) {
                     if (noun == n_obj) {
-                        local4 = Mouse_x;
-                        local5 = Mousy_y - 1;
+                        x = Mouse_x;
+                        y = Mousy_y - 1;
                     }
                     if (noun == e_obj) {
-                        local4 = Mouse_x + 1;
-                        local5 = Mousy_y;
+                        x = Mouse_x + 1;
+                        y = Mousy_y;
                     }
                     if (noun == s_obj) {
-                        local4 = Mouse_x;
-                        local5 = Mousy_y + 1;
+                        x = Mouse_x;
+                        y = Mousy_y + 1;
                     }
                     if (noun == w_obj) {
-                        local4 = Mouse_x - 1;
-                        local5 = Mousy_y;
+                        x = Mouse_x - 1;
+                        y = Mousy_y;
                     }
-                    if (MouseBoundary(local4,local5) == true) {
+                    if (MouseBoundary(x,y) == true) {
                         "From somewhere inside the hole, you hear a disconsolate bleep.";
                     }
-                    Mouse_x = local4;
-                    Mousy_y = local5;
+                    Mouse_x = x;
+                    Mousy_y = y;
                     if (Mouse_x == 4 && Mousy_y == 1 && small_brass_key in hole_in_the_wall) {
                         move small_brass_key to robot_mouse;
                         set_flag_array(2);
