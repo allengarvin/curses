@@ -2047,7 +2047,7 @@ Object -> bell_push "bell push"
 
 Object Madame_Sosostris "Madame Sosostris, famous clairvoyante"	
   with	name 'sosostris' 'madame' 'clairvoyant',
-	life routine97492,
+	life SosostrisLife,
 	description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
   has	animate proper;
 
@@ -4234,7 +4234,7 @@ Object -> curtain "curtain"
 
 Object -> Madame_Sosostris "Madame Sosostris, famous clairvoyante"	
   with	name 'sosostris' 'madame' 'clairvoyant',
-	life SosostrisLife,
+	life SosostrisLife2,
 	initial "Madame Sosostris, famous clairvoyante, meditates here.",
 	description "Known to be the wisest woman in Asia Minor.",
   has	animate proper;
@@ -13137,7 +13137,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ routine97492 ;	
+[ SosostrisLife ;	
     if (action == ##Give) {
         if (noun == silk_handkerchief) {
             "Gratefully she blows her nose but then returns the handkerchief. You refold it ingeniously.";
@@ -17320,7 +17320,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SosostrisLife ;	
+[ SosostrisLife2 ;	
     if (action == ##Give or ##Kiss) {
         "She is staring fixedly at the table, meditating.";
     }
