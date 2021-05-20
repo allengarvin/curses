@@ -14927,23 +14927,23 @@ Array preactions_table --> IsDirection;
     return MazeBoundary(x,y);
 ];
 
-[ CheckMaze x y cell ;	
-    cell = TestMazeConfines(x,y);
-    if (cell == '@{2}') {
-        cell = '@{0}';
+[ CheckMaze x y z ;	
+    z = TestMazeConfines(x,y);
+    if (z == 2) {
+        z = 0;
     }
-    return cell;
+    return z;
 ];
 
-[ routine115468 local1 local2 local3 ;	
-    local3 = TestMazeConfines(local1,local2);
-    if (local3 == 1[?]) {
-        local3 = 0;
+[ CheckMaze2 x y z ;	
+    z = TestMazeConfines(x,y);
+    if (z == 1) {
+        z = 0;
     }
-    if (local3 == 2[?]) {
-        local3 = 1[?];
+    if (z == 2) {
+        z = 1;
     }
-    return local3;
+    return z;
 ];
 
 
@@ -15234,7 +15234,7 @@ Array preactions_table --> IsDirection;
         if (x == 100) {
             "The maze is only two-dimensional.";
         }
-        if (routine115468(x,y) ~= 0) {
+        if (CheckMaze2(x,y) ~= 0) {
             "The wooden fence is in the way.";
         }
         MazeX = x;
@@ -15335,16 +15335,16 @@ Array preactions_table --> IsDirection;
     }
   .labelXXX;
     --MazeY;
-    n_side = routine115468(MazeX,MazeY);
+    n_side = CheckMaze2(MazeX,MazeY);
     ++MazeY;
     ++MazeX;
-    s_side = routine115468(MazeX,MazeY);
+    s_side = CheckMaze2(MazeX,MazeY);
     --MazeX;
     ++MazeY;
-    e_side = routine115468(MazeX,MazeY);
+    e_side = CheckMaze2(MazeX,MazeY);
     --MazeY;
     --MazeX;
-    w_side = routine115468(MazeX,MazeY);
+    w_side = CheckMaze2(MazeX,MazeY);
     ++MazeX;
     numwalls = n_side + s_side + e_side + w_side;
     if (numwalls == 0) {
