@@ -12334,26 +12334,26 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: pulley_ropes.after
 
-[ RopesAfter local1 ;	! 90736 / 0x16270
+[ RopesAfter r ;	! 90736 / 0x16270
     if (action == ##Pull) {
         if (player notin dumbwaiter) {
             "You can't reach them!";
         }
         Achieved(SCORE_WAITER);
         if (location == Storage_Room) {
-            local1 = 127[Cellars?];
+            r = Cellars;
             print "You begin moving, and then plummet, but friction gradually slows you down and you land without too much of a thump...^";
         }
         if (location == Dark_Shaft) {
-            local1 = 116[Storage_Room?];
+            r = Storage_Room;
             print "You heave yourself up to the attic again...^";
         }
         if (location == Cellars) {
-            local1 = 123[Dark_Shaft?];
+            r = Dark_Shaft;
             print "You heave yourself half-way up, and then need to stop for a rest.^";
         }
-        move dumbwaiter to local1;
-        location = local1;
+        move dumbwaiter to r;
+        location = r;
         R_Process(##Look);
         rtrue;
     }
