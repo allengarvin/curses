@@ -20818,7 +20818,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rtrue;
 ];
 
-[ EmptyTSub local1 local2 ;	! 163140 / 0x27d44
+[ EmptyTSub i j ;	! 163140 / 0x27d44
     if (noun hasnt container) {
         return L__M(##EmptyT,1,noun);
     }
@@ -20833,17 +20833,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             return L__M(##EmptyT,2,second);
         }
     }
-    local1 = child(noun);
-    if (local1 == 0) {
+    i = child(noun);
+    if (i == 0) {
         return L__M(##EmptyT,3,noun);
     }
   .label163225;
-    if (local1 ~= 0) {
-        local2 = sibling(local1);
-        PrintShortName(local1);
+    if (i ~= 0) {
+        j = sibling(i);
+        PrintShortName(i);
         print ": ";
-        R_Process(##Transfer,local1,second);
-        local1 = local2;
+        R_Process(##Transfer,i,second);
+        i = j;
         jump label163225;
     }
     rtrue;
