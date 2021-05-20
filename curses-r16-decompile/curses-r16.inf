@@ -23579,24 +23579,24 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine181352 local1 local2 local3 ;	
+[ SomeParse w local2 local3 ;	
     local3 = wn;
-    local1 = AnotherWord();
-    if (local1 == 30945['by'?] or 33348['for'?]) {
+    w = AnotherWord();
+    if (w == 'by' or 'for') {
         ++wn;
-        local1 = AnotherWord();
+        w = AnotherWord();
     }
-    if (local1 == 29622['a//'?] or 39117['single'?]) {
+    if (w == 'a//' or 'single') {
         ++wn;
-        local1 = AnotherWord();
-        if (PaceOrPaces(local1) ~= 1[?]) {
+        w = AnotherWord();
+        if (PaceOrPaces(w) ~= 1[?]) {
             wn = local3;
             rfalse;
         }
         ++wn;
         return 1[?];
     }
-    if (PaceOrPaces(local1) == 1[?]) {
+    if (PaceOrPaces(w) == 1[?]) {
         ++wn;
         return 1[?];
     }
@@ -23606,8 +23606,8 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     ++wn;
-    local1 = AnotherWord();
-    if (PaceOrPaces(local1) == 1[?] && local2 == 1[?] || (PaceOrPaces(local1) == 2[?] && local2 > 1)) {
+    w = AnotherWord();
+    if (PaceOrPaces(w) == 1[?] && local2 == 1[?] || (PaceOrPaces(w) == 2[?] && local2 > 1)) {
         ++wn;
     }
     return local2;
@@ -23684,7 +23684,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ routine181728 local1 local2 ;	
-    local1 = routine181352();
+    local1 = SomeParse();
     if (local1 == 0) {
         if (AnotherWord() == 65535[?]) {
             return 65535[?];
@@ -23693,7 +23693,7 @@ Array preactions_table --> IsDirection;
         if (AnotherWord() == 65535[?]) {
             local1 = 1[?];
         } else {
-            local1 = routine181352();
+            local1 = SomeParse();
         }
         if (local1 == 0) {
             return 65535[?];
@@ -23707,7 +23707,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ routine181800 local1 local2 ;	
-    local1 = routine181352();
+    local1 = SomeParse();
     if (local1 == 0) {
         return 65535[?];
     }
