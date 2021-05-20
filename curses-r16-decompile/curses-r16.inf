@@ -3236,7 +3236,7 @@ Object Maze_Foundations "Maze Foundations"	! 310 / 0x136
   has	light;
 
 Object Tree_Planting "Tree Planting"	! 311 / 0x137
-  with	before routine117752,
+  with	before PlantingBefore,
 	description "Capability Meldrew and his gang of workmen are delicately planting a sapling plane tree here. Your disturbance annoys them immensely and you are immediately arrested for vagrancy and theft. After a few months in prison, you are hauled up before the County Assizes and sentenced...",
 	section T_GARDEN_PAST,
   has	light;
@@ -3244,13 +3244,13 @@ Object Tree_Planting "Tree Planting"	! 311 / 0x137
 Object Bricked_Path "Bricked Path"	! 312 / 0x138
   with	e_to Hedgery,
 	nw_to White_Hallway,
-	initial routine117760,
+	initial BrickPathInitial,
 	description "You're strolling on a pleasant bricked path, passing from the outer rooms of Meldrew Hall to a track through the eastern side of the garden.",
 	section T_GARDEN,
   has	light;
 
 Object Hedgery "Hedgery"	! 313 / 0x139
-  with	n_to routine117768,
+  with	n_to HedgeryNorth,
 	e_to Croquet_Lawn,
 	w_to Bricked_Path,
 	description "Named by some family wag generations back, this is a restful hedge garden, crowned with a summer house to the north, widening out to a broad croquet lawn east.",
@@ -3263,9 +3263,9 @@ Object -> flock_of_sparrows "flock of sparrows"	! 314 / 0x13a
   has	static;
 
 Object Summer_House "Summer House"	! 315 / 0x13b
-  with	before routine117916,
+  with	before SummerHouseBefore,
 	n_to nothing,
-	s_to routine117856,
+	s_to SummerHouseSouth,
 	description "An old wooden summer house, reeking of varnish and uncertain beneath your feet. Several segments of the tall glass many-sided pyramidal roof are missing and others are cracked, but this is still somehow a homely and welcoming retreat. The only entrance is also the only exit.",
 	section T_GARDEN,
   has	light;
@@ -3279,7 +3279,7 @@ Object -> croquet_mallet "croquet mallet"	! 316 / 0x13c
 
 Object -> gold_watch_on_a_chain "gold watch on a chain"	! 317 / 0x13d
   with	name 'gold' 'watch' 'on' 'chain',
-	after routine118032,
+	after ChainAfter,
 	initial "Something golden hangs by a chain from a loose pane in the roof, but it's too high up to reach.",
 	description "It is beautifully polished, and captivates the eye. You could stare for hours...",
 	angel_hint "How easily are the weak mesmerised by baubles.",
@@ -3296,7 +3296,7 @@ Object Behind_Summer_House "Behind Summer House"	! 318 / 0x13e
 
 Object -> loose_board "loose board"	! 319 / 0x13f
   with	name 'loose' 'board',
-	after routine118116,
+	after BoardAfter,
 	n_to Summer_House,
 	s_to "One board of the back wall is noticeably loose, making a good-sized crack.",
 	w_to ne_obj,
@@ -3305,14 +3305,14 @@ Object -> loose_board "loose board"	! 319 / 0x13f
 
 Object -> crack "crack"	! 320 / 0x140
   with	name 'crack' 'gap' 'hole' 'summerhou' 'summer' 'house',
-	after routine118180,
-	before routine118232,
+	after CrackAfter,
+	before CrackBefore,
 	description "Through the crack you can see the summer house.",
   has	container open scenery;
 
 Object -> irate_squirrel_friend "irate squirrel friend"	! 321 / 0x141
   with	name 'irate' 'my' 'squirrel' 'friend',
-	life routine118404,
+	life SquirrelLife,
 	initial nothing,
 	description "Not at all shy when on his own territory.",
 	article "your",
@@ -7886,7 +7886,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AdjectiveAddress number m ;	! 52916 / 0xceb4
-    m = routine117916;
+    m = SummerHouseBefore;
   .label52922;
     if (1[?] == 1[?]) {
         if (number == m-->1) {
@@ -7895,7 +7895,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         m = m + 4;
         jump label52922;
     }
-    m = routine117916;
+    m = SummerHouseBefore;
     print "<Adjective not found>";
     return m;
 ];
@@ -15673,39 +15673,39 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Tree_Planting.before
 
-[ routine117752 ;	! 117752 / 0x1cbf8
+[ PlantingBefore ;	! 117752 / 0x1cbf8
     deadflag = AUSTRALIA;
     rfalse;
 ];
 
 ! References: Bricked_Path.initial
 
-[ routine117760 ;	! 117760 / 0x1cc00
+[ BrickPathInitial ;	! 117760 / 0x1cc00
     set_flag_array(22);
     rfalse;
 ];
 
 ! References: Hedgery.n_to
 
-[ routine117768 ;	! 117768 / 0x1cc08
+[ HedgeryNorth ;	! 117768 / 0x1cc08
     give flock_of_sparrows general;
     print "Your first step towards the sparrows startles them into the air, and they whirl upwards and around with panic, chirping their alarm.^";
-    return 315[Summer_House?];
+    return Summer_House;
 ];
 
 ! References: Summer_House.s_to
 
-[ routine117856 ;	! 117856 / 0x1cc60
+[ SummerHouseSouth ;	! 117856 / 0x1cc60
     if (flock_of_sparrows has general) {
         give flock_of_sparrows ~general;
         print "As you step out, the sparrows gradually settle back down again.^";
     }
-    return 313[Hedgery?];
+    return Hedgery;
 ];
 
 ! References: Summer_House.before
 
-[ routine117916 ;	! 117916 / 0x1cc9c
+[ SummerHouseBefore ;	! 117916 / 0x1cc9c
     if (action == ##Look) {
         if (flock_of_sparrows hasnt general) {
             print "^Sparrows chirp happily away to themselves around the high gutter.^";
@@ -15719,7 +15719,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: gold_watch_on_a_chain.after
 
-[ routine118032 ;	! 118032 / 0x1cd10
+[ ChainAfter ;	! 118032 / 0x1cd10
     if (selfobj hasnt moved) {
         "The watch is just within sight, but quite beyond reach.";
     }
@@ -15731,7 +15731,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: loose_board.after
 
-[ routine118116 ;	! 118116 / 0x1cd64
+[ BoardAfter ;	! 118116 / 0x1cd64
     if (action == ##Open or ##Push or ##Pull or ##Turn) {
         if (irate_squirrel_friend in location) {
             "The squirrel rears up and nips you on the wrist. You withdraw, hurt.";
@@ -15743,7 +15743,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: crack.after
 
-[ routine118180 ;	! 118180 / 0x1cda4
+[ CrackAfter ;	! 118180 / 0x1cda4
     if (action == ##Search) {
         "Through the crack you can see sunlight on the summer-house floorboards.";
     }
@@ -15752,7 +15752,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: crack.before
 
-[ routine118232 ;	! 118232 / 0x1cdd8
+[ CrackBefore ;	! 118232 / 0x1cdd8
     if (action == ##Receive) {
         if (noun == bunch_of_nuts) {
             give loose_board open;
@@ -15770,7 +15770,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: irate_squirrel_friend.life
 
-[ routine118404 ;	! 118404 / 0x1ce84
+[ SquirrelLife ;	! 118404 / 0x1ce84
     if (action == ##Show) {
         if (noun == bunch_of_nuts) {
             "The squirrel finds them of consuming interest.";
