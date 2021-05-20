@@ -23579,8 +23579,8 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ SomeParse w local2 local3 ;	
-    local3 = wn;
+[ SomeParse w n i ;	
+    i = wn;
     w = AnotherWord();
     if (w == 'by' or 'for') {
         ++wn;
@@ -23590,7 +23590,7 @@ Array preactions_table --> IsDirection;
         ++wn;
         w = AnotherWord();
         if (PaceOrPaces(w) ~= 1[?]) {
-            wn = local3;
+            wn = i;
             rfalse;
         }
         ++wn;
@@ -23600,17 +23600,17 @@ Array preactions_table --> IsDirection;
         ++wn;
         return 1[?];
     }
-    local2 = TryNumber(wn);
-    if (local2 < 0) {
-        wn = local3;
+    n = TryNumber(wn);
+    if (n < 0) {
+        wn = i;
         rfalse;
     }
     ++wn;
     w = AnotherWord();
-    if (PaceOrPaces(w) == 1[?] && local2 == 1[?] || (PaceOrPaces(w) == 2[?] && local2 > 1)) {
+    if (PaceOrPaces(w) == 1[?] && n == 1 || (PaceOrPaces(w) == 2[?] && n > 1)) {
         ++wn;
     }
-    return local2;
+    return n;
 ];
 
 [ CroquetMove w i flag j d ;	
