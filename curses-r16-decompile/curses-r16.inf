@@ -16495,17 +16495,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Jagged_Passage.after, Charnel_Passage.after, Sarcophagus.after, The_Catacombs.after
 
-[ CryptRoomAfter local1 ;	! 126932 / 0x1efd4
+[ CryptRoomAfter i ;	! 126932 / 0x1efd4
     if (action == ##Smell) {
         if (location ~= The_Catacombs) {
             "Ugh.";
         }
-        local1 = The_Catacombs.number + 1;
-        The_Catacombs.number = local1;
-        if (local1 == 1[?]) {
+        i = The_Catacombs.number + 1;
+        The_Catacombs.number = i;
+        if (i == 1) {
             "Something like... perhaps, air after a thunderstorm... but no, you still can't be sure what it is.";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             move aluminium_staircase to The_Catacombs;
             The_Catacombs.d_to = Universe_Maintenance_Room;
             OzoneSmelled = true;
