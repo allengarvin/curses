@@ -4969,7 +4969,7 @@ Global good_try_bonus;
 Global debug_deterministic_transportation;
 Global KnowLanguages;
 Global displaying_quote = true;
-Global global129;
+Global before_short_desc;
 Global global130;
 Global global131;
 Global global132;
@@ -15640,7 +15640,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (DigX == 0 && DigY == 0) {
         rfalse;
     }
-    if (global129 == 1[?]) {
+    if (before_short_desc == true) {
         rfalse;
     }
     print "Croquet Lawn (";
@@ -24455,9 +24455,9 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     }
     if (displaying_quote == true || global130 ~= location) {
         @set_cursor 1 2;
-        global129 = 1[?];
+        before_short_desc = true;
         PrintShortName(location);
-        global129 = 0;
+        before_short_desc = false;
         generic_globvar = 20[rod_of_infinity?];
         if (generic_globvar >= 1) {
           .label185853;
