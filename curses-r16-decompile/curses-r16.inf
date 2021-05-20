@@ -5244,11 +5244,140 @@ Array quote_line --> 10;
 Array the_timers --> 1; 
 Array array_23957 --> 1;        
 Array array_24021 --> 30720;    
-Array array_24142 --> 16384[?]; 
-Array parse --> 16384[?];       
+Array parse ->  
+    64
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+;
 Array inputobjs --> 1;  
 Array multiple_object --> 1;    
-Array array_24488 --> 16384[?]; 
+Array parse2 -> 
+    64
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+;
 Array array_24553 --> 16384[?]; 
 Array array_24618 --> 1;        
 Array array_24634 --> 1;        
@@ -5503,7 +5632,7 @@ Array preactions_table --> IsDirection;
     if (w == 'o//' or 'oops') {
         ! no code
     } else {
-        if (w == 'undo' && array_24142->1 == 1[?]) {
+        if (w == 'undo' && parse->1 == 1) {
             if (turns == 1) {
                 L__M(##Miscellany,11);
                 jump labelXXX;
@@ -5590,7 +5719,7 @@ Array preactions_table --> IsDirection;
         i = 0;
       .labelXXX;
         if (i < 64) {
-            array_24142->i = array_24488->i;
+            parse->i = parse2->i;
             ++i;
             jump labelXXX;
         }
@@ -5600,16 +5729,16 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     Keyboard(24021[?],24142[?]);
   .labelXXX;
-    num_words = array_24142->1;
+    num_words = parse->1;
     wn = 1;
     Stub6();
-    num_words = array_24142->1;
+    num_words = parse->1;
     if (parser_trace >= 4) {
         print "[ ", num_words, " to parse: ";
         i = 1[?];
       .labelXXX;
         if (i <= num_words) {
-            j = array_24142-->((i - 1) * 2 + 1);
+            j = parse-->((i - 1) * 2 + 1);
             if (j == 0) {
                 print "? ";
             } else {
@@ -5654,7 +5783,7 @@ Array preactions_table --> IsDirection;
             i = 0;
           .labelXXX;
             if (i < 64) {
-                array_24142->i = array_24553->i;
+                parse->i = array_24553->i;
                 ++i;
                 jump labelXXX;
             }
@@ -5664,7 +5793,7 @@ Array preactions_table --> IsDirection;
             i = 0;
           .labelXXX;
             if (i < 64) {
-                array_24553->i = array_24142->i;
+                array_24553->i = parse->i;
                 ++i;
                 jump labelXXX;
             }
@@ -6206,7 +6335,7 @@ Array preactions_table --> IsDirection;
     i = NextWord();
     if (i == 40296['then'?] or 41628['xcomma'?]) {
         if (wn > num_words) {
-            array_24488->1 = array_24488->1 - 1;
+            parse2->1 = parse2->1 - 1;
             held_back_mode = 0;
             rtrue;
         }
@@ -6222,16 +6351,16 @@ Array preactions_table --> IsDirection;
             i = 0;
           .labelXXX;
             if (i < j) {
-                array_24488-->(2 * i + 1) = array_24142-->(2 * i + 1);
-                array_24488-->(2 * i + 2) = array_24142-->(2 * i + 2);
+                parse2-->(2 * i + 1) = parse-->(2 * i + 1);
+                parse2-->(2 * i + 2) = parse-->(2 * i + 2);
                 ++i;
                 jump labelXXX;
             }
             i = last_command_from;
           .labelXXX;
             if (i <= last_command_to) {
-                array_24488-->(2 + 2 * j) = array_24142-->(2 * i);
-                array_24488-->(1 + 2 * j) = array_24142-->(2 * i - 1);
+                parse2-->(2 + 2 * j) = parse-->(2 * i);
+                parse2-->(1 + 2 * j) = parse-->(2 * i - 1);
                 ++i;
                 ++j;
                 jump labelXXX;
@@ -6239,13 +6368,13 @@ Array preactions_table --> IsDirection;
             i = wn;
           .labelXXX;
             if (i <= num_words) {
-                array_24488-->(2 + 2 * j) = array_24142-->(2 * i);
-                array_24488-->(1 + 2 * j) = array_24142-->(2 * i - 1);
+                parse2-->(2 + 2 * j) = parse-->(2 * i);
+                parse2-->(1 + 2 * j) = parse-->(2 * i - 1);
                 ++i;
                 ++j;
                 jump labelXXX;
             }
-            array_24488->1 = j;
+            parse2->1 = j;
             held_back_mode = 1;
             rtrue;
         } else {
@@ -6254,21 +6383,21 @@ Array preactions_table --> IsDirection;
         i = 0;
       .labelXXX;
         if (i < j) {
-            array_24488-->(2 * i + 1) = array_24142-->(2 * i + 1);
-            array_24488-->(2 * i + 2) = array_24142-->(2 * i + 2);
+            parse2-->(2 * i + 1) = parse-->(2 * i + 1);
+            parse2-->(2 * i + 2) = parse-->(2 * i + 2);
             ++i;
             jump labelXXX;
         }
         i = wn;
       .labelXXX;
         if (i <= num_words) {
-            array_24488-->(2 + 2 * j) = array_24142-->(2 * i);
-            array_24488-->(1 + 2 * j) = array_24142-->(2 * i - 1);
+            parse2-->(2 + 2 * j) = parse-->(2 * i);
+            parse2-->(1 + 2 * j) = parse-->(2 * i - 1);
             ++i;
             ++j;
             jump labelXXX;
         }
-        array_24488->1 = j;
+        parse2->1 = j;
         held_back_mode = 1;
         rtrue;
     }
@@ -6813,7 +6942,7 @@ Array preactions_table --> IsDirection;
         print "?^";
       .labelXXX;
         answer_words = Keyboard(24367[?],24488[?]);
-        first_word = array_24488-->1;
+        first_word = parse2-->1;
         if (first_word == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
             if (context >= 2 && context <= 5) {
                 l = multiple_object-->0;
@@ -6837,8 +6966,8 @@ Array preactions_table --> IsDirection;
             Copy(24142[?],24488[?]);
             return 10000[?];
         }
-        oldw = array_24142->1;
-        array_24142->1 = answer_words + oldw;
+        oldw = parse->1;
+        parse->1 = answer_words + oldw;
         k = oldw + answer_words;
       .labelXXX;
         if (k > match_from) {
@@ -6869,14 +6998,14 @@ Array preactions_table --> IsDirection;
     PrintCommand(0,1[?]);
     print "?^";
     answer_words = Keyboard(24367[?],24488[?]);
-    first_word = array_24488-->1;
+    first_word = parse2-->1;
     j = first_word->6;
     if (0 ~= j & 1) {
         Copy(24021[?],24367[?]);
         Copy(24142[?],24488[?]);
         return 10000[?];
     }
-    oldw = array_24142->1;
+    oldw = parse->1;
     if (interfrom == 0) {
         k = 1[?];
       .labelXXX;
@@ -6898,10 +7027,10 @@ Array preactions_table --> IsDirection;
       .labelXXX;
         if (j < pcount) {
             if (array_24618-->j >= 2 && array_24618-->j < 10000) {
-                array_24488-->1 = 34860['it'?];
+                parse2-->1 = 34860['it'?];
                 itobj = array_24618-->j;
             } else {
-                array_24488-->1 = AdjectiveAddress(array_24618-->j - 10000);
+                parse2-->1 = AdjectiveAddress(array_24618-->j - 10000);
             }
             MoveWord(oldw + 1 + j - interfrom,24488[?],1[?]);
             ++answer_words;
@@ -6909,7 +7038,7 @@ Array preactions_table --> IsDirection;
             jump labelXXX;
         }
     }
-    array_24142->1 = answer_words + oldw;
+    parse->1 = answer_words + oldw;
     return 10000[?];
 ];
 
@@ -7509,8 +7638,8 @@ Array preactions_table --> IsDirection;
 [ MoveWord at1 b2 at2 x y ;     
     x = at1 * 2 - 1;
     y = at2 * 2 - 1;
-    array_24142-->x++ = b2-->y++;
-    array_24142-->x = b2-->y;
+    parse-->x++ = b2-->y++;
+    parse-->x = b2-->y;
     rtrue;
 ];
 
@@ -7740,7 +7869,7 @@ Array preactions_table --> IsDirection;
         Defart(obj);
         print " (", obj, ") at word ", wn, "^";
     }
-    if (indef_mode ~= 0 && wn > array_24142->1) {
+    if (indef_mode ~= 0 && wn > parse->1) {
         MakeMatch(obj,0);
         rfalse;
     }
@@ -7885,16 +8014,16 @@ Array preactions_table --> IsDirection;
 ];
 
 [ NextWord i j k ;      
-    if (wn > array_24142->1) {
+    if (wn > parse->1) {
         ++wn;
         rfalse;
     }
     i = wn * 2 - 1;
     ++wn;
-    j = array_24142-->i;
+    j = parse-->i;
     if (j == 0) {
         k = wn * 4 - 3;
-        i = array_24021->(array_24142->k);
+        i = array_24021->(parse->k);
         if (i == ',') {
             j = 'xcomma';
         }
@@ -7906,7 +8035,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ NextWordStopped ;     
-    if (wn > array_24142->1) {
+    if (wn > parse->1) {
         ++wn;
         return 65535[?];
     }
@@ -7914,11 +8043,11 @@ Array preactions_table --> IsDirection;
 ];
 
 [ WordAddress wordnum ; 
-    return 24021 + array_24142->(wordnum * 4 + 1);
+    return 24021 + parse->(wordnum * 4 + 1);
 ];
 
 [ WordLength wordnum ;  
-    return array_24142->(wordnum * 4);
+    return parse->(wordnum * 4);
 ];
 
 [ TryNumber wordnum i j c num len mul tot d digit ;     
@@ -7931,9 +8060,9 @@ Array preactions_table --> IsDirection;
         return j;
     }
     i = wordnum * 4 + 1;
-    j = array_24142->i;
+    j = parse->i;
     num = j + 24021;
-    len = array_24142->(i - 1);
+    len = parse->(i - 1);
     tot = Stub1(num,len);
     if (tot ~= 0) {
         return tot;
@@ -8378,8 +8507,8 @@ Array preactions_table --> IsDirection;
     generic_globvar = 0;
     array_24021->1 = 0;
     StatusLinePrinter();
-    @aread array_24021 array_24142 -> generic_globvar;
-    i = array_24142-->1;
+    @aread array_24021 parse -> generic_globvar;
+    i = parse-->1;
     if (i == 37839['quit'?] or 37767['q//'?]) {
         @quit;
     }
@@ -8573,9 +8702,9 @@ Array preactions_table --> IsDirection;
     generic_globvar = 0;
     array_24021->1 = 0;
     StatusLinePrinter();
-    @aread array_24021 array_24142 -> generic_globvar;
-    i = array_24142-->1;
-    if (i == 'quit' or 'q//' || array_24142->1 == 0) {
+    @aread array_24021 parse -> generic_globvar;
+    i = parse-->1;
+    if (i == 'quit' or 'q//' || parse->1 == 0) {
         --menu_nesting;
         if (menu_nesting > 0) {
             rfalse;
@@ -9681,7 +9810,7 @@ Array preactions_table --> IsDirection;
     print "^Warning: something extremely cliched is about to happen. When you think you have composed yourself and can stand it, press ENTER. ", '>';
     array_24021->1 = 0;
     StatusLinePrinter();
-    @aread array_24021 array_24142 -> generic_globvar;
+    @aread array_24021 parse -> generic_globvar;
     new_line;
     "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reaching up high into the sky!  You yawn convulsively.";
 ];
@@ -19875,8 +20004,8 @@ Array preactions_table --> IsDirection;
     if (1[?] == 1[?]) {
         array_24021->1 = 0;
         StatusLinePrinter();
-        @aread array_24021 array_24142 -> generic_globvar;
-        i = array_24142-->1;
+        @aread array_24021 parse -> generic_globvar;
+        i = parse-->1;
         if (i == 'yes' or 'y//') {
             rtrue;
         }
@@ -23719,9 +23848,9 @@ Array preactions_table --> IsDirection;
 
 [ readchar s i j k ;    
     j = wn * 4 + 1;
-    k = array_24142->j;
+    k = parse->j;
     s = k + 24021;
-    i = array_24142->(j - 1);
+    i = parse->(j - 1);
     if (i ~= true) {
         return 65535;
     }
