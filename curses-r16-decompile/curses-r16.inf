@@ -20272,13 +20272,13 @@ Array preactions_table --> IsDirection;
     return L__M(##Remove,4);
 ];
 
-[ routine162420 local1 local2 ;	
+[ IndirectlyContains o1 o2 ;	
   .labelXXX;
-    if (local2 ~= 0) {
-        if (local1 == local2) {
+    if (o2 ~= nothing) {
+        if (o1 == o2) {
             rtrue;
         }
-        local2 = parent(local2);
+        o2 = parent(o2);
         jump labelXXX;
     }
     rfalse;
@@ -20301,7 +20301,7 @@ Array preactions_table --> IsDirection;
         }
         verb = ##PutOn;
     }
-    if (routine162420(noun,second) == 1[?]) {
+    if (IndirectlyContains(noun,second) == 1[?]) {
         return L__M(##PutOn,2);
     }
     if (second hasnt supporter) {
@@ -20373,7 +20373,7 @@ Array preactions_table --> IsDirection;
     if (second hasnt open) {
         return L__M(##Insert,3);
     }
-    if (routine162420(noun,second) == 1[?]) {
+    if (IndirectlyContains(noun,second) == 1[?]) {
         return L__M(##Insert,5);
     }
     if (noun has worn) {
