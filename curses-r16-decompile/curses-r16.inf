@@ -5000,7 +5000,7 @@ Global OldDigX;
 Global OldDigY;
 Global CouncilCnt;
 Global DreamCnt;
-Global global162;
+Global OzoneSmelled;
 Global global163;
 Global global164;
 Global global165;
@@ -16508,7 +16508,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (local1 == 2[?]) {
             move aluminium_staircase to The_Catacombs;
             The_Catacombs.d_to = Universe_Maintenance_Room;
-            global162 = 1[?];
+            OzoneSmelled = true;
             Achieved(SCORE_SMELL);
             "Ozone!  That's what it's called. Funny sort of odour for a cave - especially since, on investigating further, you find that it's drifting up from a concealed aluminium staircase.";
         }
