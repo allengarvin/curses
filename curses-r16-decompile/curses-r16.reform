@@ -1214,14 +1214,11 @@ Routine 0xe268	Banner i:int
 Routine 0xe2f8	VersionSub
 Routine 0xe33c	LMAfter
 Routine 0xe4c0	RodAfter
-! References: obj17_Fire.parse_name, obj18_Returning.parse_name, obj19_Stalking.parse_name, obj20_Infinity.parse_name, obj21_Husbandry.parse_name, obj22_Bronze.parse_name, obj23_Sacrifice.parse_name, obj24_Luck.parse_name, obj25_Ice.parse_name, obj26_Language.parse_name, obj27_Returning.parse_name, obj28_Life.parse_name, obj29_Death.parse_name, obj30_Love.parse_name
 Routine 0xe568	RodParse:int i:int w:dictword
-! References: obj17_Fire.short, obj18_Returning.short, obj19_Stalking.short, obj20_Infinity.short, obj21_Husbandry.short, obj22_Bronze.short, obj23_Sacrifice.short, obj24_Luck.short, obj25_Ice.short, obj26_Language.short, obj27_Returning.short, obj28_Life.short, obj29_Death.short, obj30_Love.short
 Routine 0xe5b4	rod_short
 Routine 0xe5e4	rod_display_after
 Routine 0xe5fc	LifeDesc
 Routine 0xe658	LifeAction
-! References: obj26_Language.list_together, obj27_Returning.nw_to
 Routine 0xe6a4	MasterGameRods enhanced:bool
 Routine 0xe6fc	rod_func1 
 Routine 0xe708	discover_rod r:object
@@ -1236,7 +1233,6 @@ Routine 0xf334	RodOfLanguageAction
 Routine 0xf3f8	RodOfStalkingAction
 Routine 0xf708	RodOfInfinityAction t:int
 Routine 0xf8d4	StartMasterGame o:object sib:object
-! References: obj83_painting_of_Mad_Isaac_Meldrewe.life, obj158_Impressionist_painting.life, obj187_still_life.life, obj260_Greek_frieze.life, obj289_Roman_mosaic.life, obj377_bronze_mural.life, obj412_painted_writings.life
 Routine 0xf904	LagachLife i:int r:object flag:bool
 Routine 0xfae8	TarotAfter
 Routine 0xfb14	TarotParseName i:int w:dictword
@@ -1372,181 +1368,146 @@ Routine 0x177f8	SosostrisDeals card3:object card2:object card1:object
 Routine 0x17a5c	ConsultingRoomAfter
 Routine 0x17a78	TarotPackAfter
 Routine 0x17b9c	BellPushAfter
-Routine 0x17cd4	SosostrisLife
-! References: obj168_Down_by_River.after
 Routine 0x17e08	DownByRiverAfter
-! References: obj168_Down_by_River.w_to
-Routine 0x17e28	routine97832:?
-! References: obj169_silk_handkerchief.after
-Routine 0x17e3c	routine97852:?
-! References: obj170_tourist_boat.after
-Routine 0x17e88	routine97928:?
-! References: obj172_hollow_man.life
-Routine 0x17ec0	routine97984:?
-! References: obj174_Chatelet_les_Halles.after
-Routine 0x1813c	routine98620:?
-! References: obj175_surly_shopkeeper.life
-Routine 0x18160	routine98656:?
-! References: obj177_Museum_Foyer.s_to
-Routine 0x18290	routine98960:?
-! References: obj178_revolving_door.after
-Routine 0x1834c	routine99148:?
-! References: obj180_Revolving_Door.n_to, obj182_Revolving_Door.n_to
-Routine 0x18408	routine99336:?
-! References: obj181_door.after, obj183_door.after
-Routine 0x18414	routine99348:?
-! References: obj184_beach_ball.after
-Routine 0x1844c	routine99404:?
-! References: obj184_beach_ball.before
-Routine 0x18574	routine99700:?
-! References: obj186_Tarot_box.after
-Routine 0x18598	routine99736:?
-! References: obj188_Dark_Staircase.after
-Routine 0x185b8	routine99768:?
-! References: obj188_Dark_Staircase.before
-Routine 0x186a8	routine100008:?
-! References: obj195_Coven_Cell.daemon
-Routine 0x186b0	routine100016:?
-! References: obj195_Coven_Cell.after
-Routine 0x187fc	routine100348:?
-! References: obj196_anxious_looking_goat.life
-Routine 0x1885c	routine100444:?
-! References: obj198_cell_door.after
-Routine 0x18920	routine100640:?
-! References: obj199_Cabinet_Room.after
-Routine 0x18960	routine100704:?
-! References: obj200_glass_cabinet.after
-Routine 0x18990	routine100752:?
-! References: obj200_glass_cabinet.daemon
-Routine 0x18a04	routine100868:?
-! References: obj201_smooth_round_stone.after
-Routine 0x18ba0	routine101280:?
-! References: obj203_Ruined_Castle_Cafe.before
-Routine 0x18bd8	routine101336:?
-! References: obj203_Ruined_Castle_Cafe.initial
-Routine 0x18d04	routine101636:?
-! References: obj203_Ruined_Castle_Cafe.each_turn
-Routine 0x18d14	routine101652:?
-! References: obj204_cafe_table.after
-Routine 0x18d3c	routine101692:?
-! References: obj205_complicated_looking_bomb.daemon
-Routine 0x18dfc	routine101884:?
-! References: obj205_complicated_looking_bomb.before
-Routine 0x18f44	routine102212:?
-! References: obj206_timer_detonator.daemon
-Routine 0x18fd8	routine102360:?
-! References: obj206_timer_detonator.after
-Routine 0x19380	routine103296:?
-! References: obj207_green_wire.after, obj208_red_wire.after, obj209_blue_wire.after, obj210_black_wire.after
-Routine 0x19444	routine103492:?
+Routine 0x17e28	DownByRiverWest
+Routine 0x17e3c	HandkerchiefAfter
+Routine 0x17e88	TouristBoatAfter
+Routine 0x17ec0	HollowManLife
+Routine 0x1813c	ChateletAfter
+Routine 0x18160	ShopkeeperLife
+Routine 0x18290	FoyerSouth:object
+Routine 0x1834c	RevolvingDoorAfter
+Routine 0x18408	RevolvingDoorNorth:object
+Routine 0x18414	MuseumDoorAfter
+Routine 0x1844c	BeachBallAfter
+Routine 0x18574	BeachBallBefore
+Routine 0x18598	TarotBoxAfter
+Routine 0x185b8	DarkStaircaseAfter
+Routine 0x186a8	DarkStaircaseBefore
+Routine 0x186b0	CovenCellDaemon
+Routine 0x187fc	CovenCellAfter
+Routine 0x1885c	GoatLife
+Routine 0x18920	CelldoorAfter
+Routine 0x18960	CabinetRoomAfter
+Routine 0x18990	CabinetAfter
+Routine 0x18a04	CabinetDAemon
+Routine 0x18ba0	RoundStoneAfter
+Routine 0x18bd8	CafeBefore
+Routine 0x18d04	CafeInitial
+Routine 0x18d3c	CafeTableAfter
+Routine 0x18dfc	BombDaemon
+Routine 0x18f44	BombBefore
+Routine 0x18fd8	TimerDaemon
+Routine 0x19380	TimerAfter
+Routine 0x19444	WireAfter
 Routine 0x194b0	routine103600:?
 Routine 0x195dc	routine103900:?
-! References: obj211_Cups_and_Glasses.each_turn
+                   ! References: obj211_Cups_and_Glasses.each_turn
 Routine 0x195f4	routine103924:?
-! References: obj213_cups_and_glasses.after
+                   ! References: obj213_cups_and_glasses.after
 Routine 0x197cc	routine104396:?
-! References: obj215_ship_in_a_bottle.after
+                   ! References: obj215_ship_in_a_bottle.after
 Routine 0x19838	routine104504:?
-! References: obj216_model_ship.after, obj217_stick_with_an_anchor.after
+                   ! References: obj216_model_ship.after, obj217_stick_with_an_anchor.after
 Routine 0x19a0c	routine104972:?
-! References: obj218_Sea_Shore.description
+                   ! References: obj218_Sea_Shore.description
 Routine 0x19ba4	routine105380:?
-! References: obj218_Sea_Shore.after
+                   ! References: obj218_Sea_Shore.after
 Routine 0x19c70	routine105584:?
-! References: obj219_Andromeda.description
+                   ! References: obj219_Andromeda.description
 Routine 0x19da0	routine105888:?
-! References: obj219_Andromeda.life
+                   ! References: obj219_Andromeda.life
 Routine 0x19ebc	routine106172:?
-! References: obj222_Clifftop_Walk.e_to
+                   ! References: obj222_Clifftop_Walk.e_to
 Routine 0x1a098	routine106648:?
-! References: obj223_herd_of_goats.life
+                   ! References: obj223_herd_of_goats.life
 Routine 0x1a0ec	routine106732:?
-! References: obj225_small_thorny_tree.after
+                   ! References: obj225_small_thorny_tree.after
 Routine 0x1a100	routine106752:?
-! References: obj227_Eraina_Taverna.after
+                   ! References: obj227_Eraina_Taverna.after
 Routine 0x1a118	routine106776:?
-! References: obj227_Eraina_Taverna.each_turn
+                   ! References: obj227_Eraina_Taverna.each_turn
 Routine 0x1a148	routine106824:?
-! References: obj228_Ekmek_Special.after
+                   ! References: obj228_Ekmek_Special.after
 Routine 0x1a244	routine107076:?
-! References: obj229_bartender.life
+                   ! References: obj229_bartender.life
 Routine 0x1a29c	routine107164:?
-! References: obj232_Sacred_Earth.s_to
+                   ! References: obj232_Sacred_Earth.s_to
 Routine 0x1a398	routine107416:?
-! References: obj232_Sacred_Earth.before
+                   ! References: obj232_Sacred_Earth.before
 Routine 0x1a538	routine107832:?
-! References: obj233_Temple_of_Zeus.n_to
+                   ! References: obj233_Temple_of_Zeus.n_to
 Routine 0x1a540	routine107840:?
-! References: obj236_inscribed_stone.description
+                   ! References: obj236_inscribed_stone.description
 Routine 0x1a5a0	routine107936:?
-! References: obj238_symbol.description
+                   ! References: obj238_symbol.description
 Routine 0x1a6ec	routine108268:?
-! References: obj239_Inner_Sanctum.initial
+                   ! References: obj239_Inner_Sanctum.initial
 Routine 0x1a730	routine108336:?
-! References: obj240_Homer.life
+                   ! References: obj240_Homer.life
 Routine 0x1a738	routine108344:?
 Routine 0x1a9f4	routine109044:?
-! References: obj241_Pan_pipes.after
+                   ! References: obj241_Pan_pipes.after
 Routine 0x1aa00	routine109056:?
-! References: obj242_Cross_Centre.initial
+                   ! References: obj242_Cross_Centre.initial
 Routine 0x1ac08	routine109576:?
-! References: obj242_Cross_Centre.after
+                   ! References: obj242_Cross_Centre.after
 Routine 0x1ac10	routine109584:?
-! References: obj242_Cross_Centre.before
+                   ! References: obj242_Cross_Centre.before
 Routine 0x1ac2c	routine109612:?
-! References: obj242_Cross_Centre.daemon
+                   ! References: obj242_Cross_Centre.daemon
 Routine 0x1ac4c	routine109644:?
-! References: obj243_inscriptions.after
+                   ! References: obj243_inscriptions.after
 Routine 0x1acac	routine109740:?
-! References: obj245_gleaming_amber_gem.after
+                   ! References: obj245_gleaming_amber_gem.after
 Routine 0x1ad18	routine109848:?
-! References: obj250_statue_of_Poseidon.after, obj251_statue_of_Demeter.after, obj252_statue_of_Ares.after, obj253_statue_of_Dionysus.after
+                   ! References: obj250_statue_of_Poseidon.after, obj251_statue_of_Demeter.after, obj252_statue_of_Ares.after, obj253_statue_of_Dionysus.after
 Routine 0x1add4	routine110036:?
-! References: obj250_statue_of_Poseidon.before, obj251_statue_of_Demeter.before, obj252_statue_of_Ares.before, obj253_statue_of_Dionysus.before
+                   ! References: obj250_statue_of_Poseidon.before, obj251_statue_of_Demeter.before, obj252_statue_of_Ares.before, obj253_statue_of_Dionysus.before
 Routine 0x1ae4c	routine110156:?
-! References: obj255_Oracle.life
+                   ! References: obj255_Oracle.life
 Routine 0x1ae68	routine110184:?
 Routine 0x1aea0	routine110240:?
 Routine 0x1aed0	routine110288:?
-! References: obj256_flaming_bronze_urn.after
+                   ! References: obj256_flaming_bronze_urn.after
 Routine 0x1b120	routine110880:?
-! References: obj257_Lighthouse.description
+                   ! References: obj257_Lighthouse.description
 Routine 0x1b218	routine111128:?
-! References: obj257_Lighthouse.d_to
+                   ! References: obj257_Lighthouse.d_to
 Routine 0x1b3f4	routine111604:?
 Routine 0x1b3fc	routine111612:?
 Routine 0x1b43c	routine111676:?
-! References: obj265_some_landlubber_s_direction.after
+                   ! References: obj265_some_landlubber_s_direction.after
 Routine 0x1b44c	routine111692:?
-! References: obj266_Aboard_Ship.each_turn
+                   ! References: obj266_Aboard_Ship.each_turn
 Routine 0x1b47c	routine111740:?
-! References: obj266_Aboard_Ship.daemon
+                   ! References: obj266_Aboard_Ship.daemon
 Routine 0x1b4cc	routine111820:?
-! References: obj267_mast_and_rigging.after
+                   ! References: obj267_mast_and_rigging.after
 Routine 0x1b500	routine111872:?
-! References: obj268_Up_the_Mast.w_to
+                   ! References: obj268_Up_the_Mast.w_to
 Routine 0x1b510	routine111888:?
-! References: obj268_Up_the_Mast.d_to
+                   ! References: obj268_Up_the_Mast.d_to
 Routine 0x1b620	routine112160:?
-! References: obj268_Up_the_Mast.after
+                   ! References: obj268_Up_the_Mast.after
 Routine 0x1b654	routine112212:?
-! References: obj268_Up_the_Mast.before
+                   ! References: obj268_Up_the_Mast.before
 Routine 0x1b6b8	routine112312:?
-! References: obj269_flagpole.after
+                   ! References: obj269_flagpole.after
 Routine 0x1b724	routine112420:?
-! References: obj270_flag_of_the_British_Merchant_Navy.after
+                   ! References: obj270_flag_of_the_British_Merchant_Navy.after
 Routine 0x1b754	routine112468:?
-! References: obj271_old_timber_spar.before
+                   ! References: obj271_old_timber_spar.before
 Routine 0x1b7f0	routine112624:?
-! References: obj272_Prow_of_the_Lady_Magdalena.cant_go
+                   ! References: obj272_Prow_of_the_Lady_Magdalena.cant_go
 Routine 0x1b80c	routine112652:?
-! References: obj273_green_branch.after
+                   ! References: obj273_green_branch.after
 Routine 0x1b824	routine112676:?
-! References: obj274_Stern.d_to
+                   ! References: obj274_Stern.d_to
 Routine 0x1b910	routine112912:?
-! References: obj275_capstan.after
+                   ! References: obj275_capstan.after
 Routine 0x1bab4	routine113332:?
-! References: obj276_Garden_Stream.after
+                   ! References: obj276_Garden_Stream.after
 Routine 0x1bb0c	routine113420:?
 Routine 0x1bb48	CoalBunkerBefore
 Routine 0x1bb70	StreamAfter
@@ -1561,162 +1522,152 @@ Routine 0x1be20	WellBefore
 Routine 0x1be48	BeanStalkAfter
 Routine 0x1be68	BeanStalkBefore
 Routine 0x1bec0	RollerAfter
-! References: obj296_garden_roller.each_turn
+                   ! References: obj296_garden_roller.each_turn
 Routine 0x1bf80	routine114560:?
-! References: obj297_weed_killer_bottle.after
+                   ! References: obj297_weed_killer_bottle.after
 Routine 0x1c038	routine114744:?
-! References: obj297_weed_killer_bottle.daemon
+                   ! References: obj297_weed_killer_bottle.daemon
 Routine 0x1c210	routine115216:?
-! References: obj298_spade.short
+                   ! References: obj298_spade.short
 Routine 0x1c22c	routine115244:?
-! References: obj298_spade.after
+                   ! References: obj298_spade.after
 Routine 0x1c250	routine115280:?
 Routine 0x1c294	routine115348:?
 Routine 0x1c2c4	routine115396:?
 Routine 0x1c2f8	routine115448:?
 Routine 0x1c30c	routine115468:?
-! References: obj299_Up_the_Plane_Tree.after
+                   ! References: obj299_Up_the_Plane_Tree.after
 Routine 0x1c328	routine115496:?
-! References: obj300_maze_layout.description
+                   ! References: obj300_maze_layout.description
 Routine 0x1c348	routine115528:?
 Routine 0x1c3bc	routine115644:?
-! References: obj301_Maze.after
+                   ! References: obj301_Maze.after
 Routine 0x1c4e8	routine115944:?
-! References: obj301_Maze.before
+                   ! References: obj301_Maze.before
 Routine 0x1c628	routine116264:?
-! References: obj302_Patio_in_Maze.after
+                   ! References: obj302_Patio_in_Maze.after
 Routine 0x1c634	routine116276:?
-! References: obj302_Patio_in_Maze.before
+                   ! References: obj302_Patio_in_Maze.before
 Routine 0x1c66c	routine116332:?
-! References: obj303_marble_rose.after
+                   ! References: obj303_marble_rose.after
 Routine 0x1c678	routine116344:?
-! References: obj304_Viewpoint_Ledge.after
+                   ! References: obj304_Viewpoint_Ledge.after
 Routine 0x1c6bc	routine116412:?
-! References: obj307_Folly.before
+                   ! References: obj307_Folly.before
 Routine 0x1c718	routine116504:?
-! References: obj309_bean_pole.before
+                   ! References: obj309_bean_pole.before
 Routine 0x1c720	routine116512:?
-! References: obj309_bean_pole.daemon
+                   ! References: obj309_bean_pole.daemon
 Routine 0x1c738	routine116536:?
-! References: obj310_Maze_Foundations.after
+                   ! References: obj310_Maze_Foundations.after
 Routine 0x1c818	routine116760:?
-! References: obj310_Maze_Foundations.before
+                   ! References: obj310_Maze_Foundations.before
 Routine 0x1c8f0	routine116976:?
 Routine 0x1c920	routine117024:?
-! References: obj311_Tree_Planting.before
+                   ! References: obj311_Tree_Planting.before
 Routine 0x1cbf8	routine117752:?
-! References: obj312_Bricked_Path.initial
+                   ! References: obj312_Bricked_Path.initial
 Routine 0x1cc00	routine117760:?
-! References: obj313_Hedgery.n_to
+                   ! References: obj313_Hedgery.n_to
 Routine 0x1cc08	routine117768:?
-! References: obj315_Summer_House.s_to
+                   ! References: obj315_Summer_House.s_to
 Routine 0x1cc60	routine117856:?
-! References: obj315_Summer_House.before
+                   ! References: obj315_Summer_House.before
 Routine 0x1cc9c	routine117916:?
-! References: obj317_gold_watch_on_a_chain.after
+                   ! References: obj317_gold_watch_on_a_chain.after
 Routine 0x1cd10	routine118032:?
-! References: obj319_loose_board.after
+                   ! References: obj319_loose_board.after
 Routine 0x1cd64	routine118116:?
-! References: obj320_crack.after
+                   ! References: obj320_crack.after
 Routine 0x1cda4	routine118180:?
-! References: obj320_crack.before
+                   ! References: obj320_crack.before
 Routine 0x1cdd8	routine118232:?
-! References: obj321_irate_squirrel_friend.life
+                   ! References: obj321_irate_squirrel_friend.life
 Routine 0x1ce84	routine118404:?
 Routine 0x1cf98	routine118680:?
 Routine 0x1cfa4	routine118692:?
-! References: obj322_Croquet_Lawn.description
-Routine 0x1cfe8	routine118760:?
-! References: obj322_Croquet_Lawn.initial
-Routine 0x1d0d4	routine118996:?
-! References: obj322_Croquet_Lawn.short
-Routine 0x1d0dc	routine119004:?
-! References: obj325_golden_astrolabe.after
-Routine 0x1d10c	routine119052:?
-! References: obj220_amber_hairband.name, obj245_gleaming_amber_gem.name, obj325_golden_astrolabe.before, obj386_metal_wall.name
+Routine 0x1cfe8	CroquetLawnDesc
+Routine 0x1d0d4	CroquetLawnInitial
+Routine 0x1d0dc	CroquetLawnShort
+Routine 0x1d10c	AstrolabeAfter
 Routine 0x1d214	routine119316:?
-! References: obj326_dug_hole.after
-Routine 0x1d224	routine119332:?
-! References: obj326_dug_hole.describe
-Routine 0x1d260	routine119392:?
-! References: obj327_Murky_Cave.initial
-Routine 0x1d2b0	routine119472:?
-! References: obj327_Murky_Cave.daemon
-Routine 0x1d2b8	routine119480:?
-! References: obj331_hanging_rope.after
+Routine 0x1d224	DugHoleAfter
+Routine 0x1d260	DugHoleDesc
+Routine 0x1d2b0	MurkyCaveInitial
+Routine 0x1d2b8	MurkyCaveDaemon
+                   ! References: obj331_hanging_rope.after
 Routine 0x1dbd0	routine121808:?
-! References: obj332_Hanging_on_Rope.d_to
+                   ! References: obj332_Hanging_on_Rope.d_to
 Routine 0x1dbe0	routine121824:?
-! References: obj332_Hanging_on_Rope.after
+                   ! References: obj332_Hanging_on_Rope.after
 Routine 0x1dc18	routine121880:?
-! References: obj332_Hanging_on_Rope.before
+                   ! References: obj332_Hanging_on_Rope.before
 Routine 0x1dc50	routine121936:?
-! References: obj334_yellow_daisy.before, obj364_bear_tapestry.name
+                   ! References: obj334_yellow_daisy.before
 Routine 0x1dc7c	routine121980:?
-! References: obj334_yellow_daisy.after
+                   ! References: obj334_yellow_daisy.after
 Routine 0x1dcd4	routine122068:?
-! References: obj334_yellow_daisy.u_to
+                   ! References: obj334_yellow_daisy.u_to
 Routine 0x1dd20	routine122144:?
-! References: obj337_Stream.after
+                   ! References: obj337_Stream.after
 Routine 0x1dd6c	routine122220:?
-! References: obj338_rough_ladder.after
+                   ! References: obj338_rough_ladder.after
 Routine 0x1dda0	routine122272:?
-! References: obj340_summoning_horn.after
+                   ! References: obj340_summoning_horn.after
 Routine 0x1ddb0	routine122288:?
-! References: obj344_crude_bone_die.before
+                   ! References: obj344_crude_bone_die.before
 Routine 0x1de30	routine122416:?
-! References: obj346_Triclinium.d_to
+                   ! References: obj346_Triclinium.d_to
 Routine 0x1de58	routine122456:?
-! References: obj347_kitchen_well.daemon
+                   ! References: obj347_kitchen_well.daemon
 Routine 0x1df30	routine122672:?
-! References: obj347_kitchen_well.before
+                   ! References: obj347_kitchen_well.before
 Routine 0x1df68	routine122728:?
-! References: obj348_Inside_Well.after
+                   ! References: obj348_Inside_Well.after
 Routine 0x1dfe4	routine122852:?
-! References: obj350_vents.after
+                   ! References: obj350_vents.after
 Routine 0x1e010	routine122896:?
-! References: obj351_Entrance.after
+                   ! References: obj351_Entrance.after
 Routine 0x1e0c4	routine123076:?
-! References: obj351_Entrance.before
+                   ! References: obj351_Entrance.before
 Routine 0x1e114	routine123156:?
-! References: obj494_bell_ropes.name
 Routine 0x1e120	routine123168:?
-! References: obj157_Bohemia.name, obj353_tent_pole.daemon
+                   ! References: obj353_tent_pole.daemon
 Routine 0x1e288	routine123528:?
-! References: obj353_tent_pole.after
+                   ! References: obj353_tent_pole.after
 Routine 0x1e348	routine123720:?
-! References: obj353_tent_pole.before
+                   ! References: obj353_tent_pole.before
 Routine 0x1e378	routine123768:?
-! References: obj354_unconscious_Saxon_spy.daemon
+                   ! References: obj354_unconscious_Saxon_spy.daemon
 Routine 0x1e410	routine123920:?
-! References: obj354_unconscious_Saxon_spy.after, obj470_Beside_the_Drive.name
+                   ! References: obj354_unconscious_Saxon_spy.after
 Routine 0x1e558	routine124248:?
-! References: obj354_unconscious_Saxon_spy.life
+                   ! References: obj354_unconscious_Saxon_spy.life
 Routine 0x1e59c	routine124316:?
-! References: obj355_Encampment.daemon
+                   ! References: obj355_Encampment.daemon
 Routine 0x1e5f0	routine124400:?
-! References: obj355_Encampment.e_to
+                   ! References: obj355_Encampment.e_to
 Routine 0x1e668	routine124520:?
-! References: obj360_ghost_of_yourself.after
+                   ! References: obj360_ghost_of_yourself.after
 Routine 0x1e6b4	routine124596:?
-! References: obj361_Premonition.cant_go, obj362_The_General_s_Tent.cant_go, obj363_Shrine_of_the_Bear.cant_go, obj367_Camp_Fire.cant_go, obj368_Near_Dolmen.cant_go, obj369_Melancholy_Dream.cant_go, obj372_Solid_Sand.cant_go, obj373_Octagonal_Tomb.cant_go
+                   ! References: obj361_Premonition.cant_go, obj362_The_General_s_Tent.cant_go, obj363_Shrine_of_the_Bear.cant_go, obj367_Camp_Fire.cant_go, obj368_Near_Dolmen.cant_go, obj369_Melancholy_Dream.cant_go, obj372_Solid_Sand.cant_go, obj373_Octagonal_Tomb.cant_go
 Routine 0x1e778	routine124792:?
 Routine 0x1e7a4	routine124836:?
-! References: obj361_Premonition.e_to
+                   ! References: obj361_Premonition.e_to
 Routine 0x1e7b4	routine124852:?
-! References: obj362_The_General_s_Tent.w_to
+                   ! References: obj362_The_General_s_Tent.w_to
 Routine 0x1e7dc	routine124892:?
-! References: obj364_bear_tapestry.life
+                   ! References: obj364_bear_tapestry.life
 Routine 0x1e800	routine124928:?
-! References: obj365_heavy_iron_mascot.before
+                   ! References: obj365_heavy_iron_mascot.before
 Routine 0x1e824	routine124964:?
-! References: obj365_heavy_iron_mascot.after
+                   ! References: obj365_heavy_iron_mascot.after
 Routine 0x1e90c	routine125196:?
-! References: obj365_heavy_iron_mascot.daemon
+                   ! References: obj365_heavy_iron_mascot.daemon
 Routine 0x1e930	routine125232:?
-! References: obj366_Druid.life
+                   ! References: obj366_Druid.life
 Routine 0x1ec70	routine126064:?
-! References: obj368_Near_Dolmen.before
+                   ! References: obj368_Near_Dolmen.before
 Routine 0x1eca0	routine126112:?
 Routine 0x1ece8	routine126184:?
 Routine 0x1ecf8	DreamEachTurn
@@ -1725,14 +1676,12 @@ Routine 0x1ee10	LumnescenceAfter
 Routine 0x1ee58	HieroglyphsDescription
 Routine 0x1ef04	ShipWheelAfter
 Routine 0x1efcc	CryptInitial
-! References: obj378_Jagged_Passage.after, obj380_Charnel_Passage.after, obj381_Sarcophagus.after, obj383_Catacombs.after
+                   ! References: obj378_Jagged_Passage.after, obj380_Charnel_Passage.after, obj381_Sarcophagus.after, obj383_Catacombs.after
 Routine 0x1efd4	routine126932:?
-! References: obj384_aluminium_staircase.after
+                   ! References: obj384_aluminium_staircase.after
 Routine 0x1f0d8	routine127192:?
 Routine 0x1f0e8	routine127208:?
-! References: obj88_Battlements.name
 Routine 0x1f104	routine127236:?
-! References: obj483_Crescent_Moon.name
 Routine 0x1f128	routine127272:?
 Routine 0x1f1e8	CRShort
 Routine 0x1f214	CREast
@@ -1821,19 +1770,13 @@ Routine 0x228bc	HatBandAfter
 Routine 0x228e0	ParishChurchSouth:object
 Routine 0x22914	ParishChurchDown:object
 Routine 0x229a0	MoonstoneAfter
-! References: obj28_Life.after, obj29_Death.after, obj30_Love.after
-Routine 0x22a44	routine141892:?
-! References: obj28_Life.before, obj29_Death.before, obj30_Love.before
-Routine 0x22af0	routine142064:?
-! References: obj163_Madame_Sosostris__famous_clairvoyante.name, obj442_Madame_Sosostris__famous_clairvoyante.name, obj488_West_Side_Chapel.after
-Routine 0x22b84	routine142212:?
-! References: obj488_West_Side_Chapel.before
+Routine 0x22a44	LifeDeathLoveAfter
+Routine 0x22af0	LifeDeathLoveBefore
+Routine 0x22b84	WestSideChapelAfter
 Routine 0x22cec	WestSideChapelBefore
-! References: obj488_West_Side_Chapel.each_turn
-Routine 0x22d00	routine142592:?
+Routine 0x22d00	WestSideChapelEachTurn
 Routine 0x22d60	AdamantineKnightDesc
-! References: obj490_adamantine_knight.life
-Routine 0x22dfc	routine142844:?
+Routine 0x22dfc	AdamantineKnightLife
 Routine 0x22fa0	routine143264:?
 Routine 0x23058	routine143448:?
 Routine 0x234ec	DianaAfter
@@ -1842,33 +1785,22 @@ Routine 0x23570	OutOfSpireDown
 Routine 0x23594	routine144788:?
 Routine 0x235f4	routine144884:?
 Routine 0x236b4	routine145076:?
-! References: obj498_Hellish_Place.cant_go
-Routine 0x23774	routine145268:?
-! References: obj498_Hellish_Place.before
+Routine 0x23774	HellishPlaceCantGo
 Routine 0x23790	HellishPlaceBefore
-! References: obj498_Hellish_Place.each_turn
-Routine 0x23984	routine145796:?
+Routine 0x23984	HellishPlaceEachTurn
 Routine 0x23a30	routine145968:?
-! References: obj499_demon.life
-Routine 0x23ac8	routine146120:?
-! References: obj33_old_smudged_battery.name, obj45_old_striped_scarf.name, obj113_old_gardeners__gloves.name, obj149_dog_eared_old_letter.name, obj211_Cups_and_Glasses.name, obj271_old_timber_spar.name, obj282_timber_hatch.name, obj478_Old_Evans.name, obj487_Moonstone.name, obj497_old_village_clock.name, obj500_Heavenly_Place.cant_go
-Routine 0x23bf8	routine146424:?
-! References: obj500_Heavenly_Place.after
-Routine 0x23c14	routine146452:?
-! References: obj500_Heavenly_Place.before
-Routine 0x23c2c	routine146476:?
-! References: obj500_Heavenly_Place.each_turn
-Routine 0x23e28	routine146984:?
-Routine 0x23edc	routine147164:?
-! References: obj501_angel.life
+Routine 0x23ac8	DaemonLife
+Routine 0x23bf8	HeavenCantGo
+Routine 0x23c14	HeavenAfter
+Routine 0x23c2c	HeavenBefore
+Routine 0x23e28	HeavenEachTurn
+Routine 0x23edc	AngelLife
 Routine 0x23f74	routine147316:?
-! References: obj502_carbolic_soap.after
-Routine 0x24058	routine147544:?
+Routine 0x24058	SoapAfter
 Routine 0x24068	HelpSub:?
 Routine 0x2417c	routine147836:?
 Routine 0x241e8	HelpSpecialSub:?
 Routine 0x24244	routine148036:?
-! References: obj60_sepia_photograph.name
 Routine 0x25e90	discharge_rod o:object
 Routine 0x25ea8	display_quote n:int
 Routine 0x26688	EnglishNumber n:int m:int f:bool
@@ -1929,13 +1861,11 @@ Routine 0x28264	SuperbriefSub:?
 Routine 0x28274	routine164468:?
 Routine 0x28298	routine164504:?
 Routine 0x282b0	LookSub:? allow_abbrev:bool env:object 
-! References: obj495_Out_on_the_Spire.name
 Routine 0x283b0	ReadSub:?
 Routine 0x28408	LookUnderSub:?
 Routine 0x28420	SearchSub:?
 Routine 0x284bc	UnlockSub:?
 Routine 0x28508	LockSub:?
-! References: obj146_ragged_scroll.name, obj395_array_of_oblong_crystals.name, obj471_fire_escape.name
 Routine 0x28560	SwitchOnSub:?
 Routine 0x28598	SwitchOffSub:?
 Routine 0x285d0	OpenSub:?
@@ -1943,7 +1873,6 @@ Routine 0x28634	CloseSub:?
 Routine 0x2866c	DisrobeSub:?
 Routine 0x28698	WearSub:?
 Routine 0x286e4	EatSub:?
-! References: obj132_Wine_Cellars.name
 Routine 0x28710	YesSub:?
 Routine 0x28718	NoSub:?
 Routine 0x28720	BurnSub:?
@@ -1956,7 +1885,6 @@ Routine 0x2875c	ListenSub:?
 Routine 0x28764	TasteSub:?
 Routine 0x2876c	CutSub:?
 Routine 0x28774	JumpOverSub:?
-! References: obj207_green_wire.name, obj208_red_wire.name, obj209_blue_wire.name, obj210_black_wire.name
 Routine 0x2877c	RepairSub
 Routine 0x28784	DrinkSub:?
 Routine 0x2878c	SwimSub:?
@@ -1966,7 +1894,6 @@ Routine 0x287a4	CleanSub:?
 Routine 0x287ac	SetSub:?
 Routine 0x287b4	SetToSub:?
 Routine 0x287bc	WaveHandsSub:?
-! References: obj35_Attic.name
 Routine 0x287c4	BuySub:?
 Routine 0x287cc	SingSub:?
 Routine 0x287d4	ClimbSub:?

@@ -962,8 +962,8 @@ Object rod_of_returning2 "Returning"	! 27 / 0x1b
 
 Object rod_of_life "Life"	! 28 / 0x1c
   with	name 'life' 'high' 'rod' 'of',
-	after routine141892 RodAfter,
-	before routine142064,
+	after LifeDeathLoveAfter RodAfter,
+	before LifeDeathLoveBefore,
 	nw_to rod_func1,
 	u_to rod_display_after,
 	initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
@@ -977,8 +977,8 @@ Object rod_of_life "Life"	! 28 / 0x1c
 
 Object rod_of_death "Death"	! 29 / 0x1d
   with	name 'death' 'high' 'rod' 'of',
-	after routine141892 RodAfter,
-	before routine142064,
+	after LifeDeathLoveAfter RodAfter,
+	before LifeDeathLoveBefore,
 	nw_to rod_func1,
 	u_to rod_display_after,
 	description " .An adamantine rod, bearing a sculpted ",
@@ -991,8 +991,8 @@ Object rod_of_death "Death"	! 29 / 0x1d
 
 Object rod_of_love "Love"	! 30 / 0x1e
   with	name 'love' 'high' 'rod' 'of',
-	after routine141892 RodAfter,
-	before routine142064,
+	after LifeDeathLoveAfter RodAfter,
+	before LifeDeathLoveBefore,
 	nw_to rod_func1,
 	u_to rod_display_after,
 	description " .An adamantine rod, bearing a sculpted ",
@@ -2054,7 +2054,7 @@ Object -> bell_push "bell push"	! 162 / 0xa2
 
 Object Madame_Sosostris "Madame Sosostris, famous clairvoyante"	! 163 / 0xa3
   with	name 'sosostris' 'madame' 'clairvoyant',
-	life SosostrisLife,
+	life routine97492,
 	description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
   has	animate proper;
 
@@ -2105,14 +2105,14 @@ Object Down_by_River "Down by River"	! 168 / 0xa8
   with	name 'rats' 'mounds' 'rubbish',
 	after DownByRiverAfter,
 	e_to Unreal_City,
-	w_to routine97832,
+	w_to DownByRiverWest,
 	description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you.",
 	section T_UNREAL,
   has	light;
 
 Object -> silk_handkerchief "silk handkerchief"	! 169 / 0xa9
   with	name 'silk' 'handkerchier' 'hanky' 'hankie',
-	after routine97852,
+	after HandkerchiefAfter,
 	initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
 	description "Monogrammed J. A. P., but that's no great matter.",
 	devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth is hardly attractive, is it?",
@@ -2120,7 +2120,7 @@ Object -> silk_handkerchief "silk handkerchief"	! 169 / 0xa9
 
 Object -> tourist_boat "tourist boat"	! 170 / 0xaa
   with	name 'tourist' 'boat' 'bateau',
-	after routine97928,
+	after TouristBoatAfter,
 	n_to On_board_the_Phlebas,
 	s_to "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention.",
 	w_to nw_obj,
@@ -2137,7 +2137,7 @@ Object On_board_the_Phlebas "On board the Phlebas"	! 171 / 0xab
 
 Object -> hollow_man "hollow man"	! 172 / 0xac
   with	name 'hollow' 'man',
-	life routine97984,
+	life HollowManLife,
 	initial "The hollow man mechanically says: ~Where to, guv'nor?  Me with my big mouth, I gone and done it again, calling you the guv'nor. I was down Margate Sands way once, had a bloke come on board, he thought any old destination would do, like a real place, like anywhere was real... We are the hollow men, I says, he didn't like that... Hurry up, please, it's time.~",
 	description "Every now and then he whimpers.",
 	article "the",
@@ -2155,7 +2155,7 @@ Object Near_Ring_Road "Near Ring Road"	! 173 / 0xad
 
 Object Chatelet_les_Halles "Chatelet-les-Halles"	! 174 / 0xae
   with	name 'gates',
-	after routine98620,
+	after ChateletAfter,
 	u_to Near_Ring_Road,
 	description "This is a vast underground station in great rectangular caverns, deep beneath the streets. You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't a ticket you're likely to stay that way.",
 	cant_go "Back up the stairs for you. Call yourself a traveller...",
@@ -2164,7 +2164,7 @@ Object Chatelet_les_Halles "Chatelet-les-Halles"	! 174 / 0xae
 
 Object -> surly_shopkeeper "surly shopkeeper"	! 175 / 0xaf
   with	name 'surly' 'man' 'shopkeepe',
-	life routine98656,
+	life ShopkeeperLife,
 	initial "Behind a kiosk, a surly-looking man is selling guide books and maps.",
 	description "His jumper is unstriped, and there are no onions around his neck. Nonetheless he has a rather Gallic, disgruntled look to him. Perhaps he's a former Socialist cabinet minister.",
   has	animate;
@@ -2178,7 +2178,7 @@ Object tourist_map_of_Paris "tourist map of Paris"	! 176 / 0xb0
 
 Object Museum_Foyer "Museum Foyer"	! 177 / 0xb1
   with	name 'shadows' 'bats' 'lamps' 'rain',
-	s_to routine98960,
+	s_to FoyerSouth,
 	ne_to Revolving_Door1,
 	description "The Museum of Arcana is deserted after nightfall and only dimly lit by distant sodium street-lamps. Outside it is a stormy October night and rain beats against the windowpanes. Shadows swoop and dive in the air like bats.^^The revolving door to northeast, which leads out, seems to be solidly blocked off. But a dim passage runs south, through a strange metal corridor.",
 	cant_go "There's no apparent way but south.",
@@ -2187,7 +2187,7 @@ Object Museum_Foyer "Museum Foyer"	! 177 / 0xb1
 
 Object -> revolving_door_obj "revolving door"	! 178 / 0xb2
   with	name 'revolving' 'door',
-	after routine99148,
+	after RevolvingDoorAfter,
 	description "Why not go northeast and look inside?",
   has	scenery;
 
@@ -2198,7 +2198,7 @@ Object -> publicity_poster "publicity poster"	! 179 / 0xb3
   has	static;
 
 Object Revolving_Door1 "Revolving Door"	! 180 / 0xb4
-  with	n_to routine99336,
+  with	n_to RevolvingDoorNorth,
 	e_to "The door only turns clockwise.",
 	nw_to Museum_Foyer,
 	description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
@@ -2208,12 +2208,12 @@ Object Revolving_Door1 "Revolving Door"	! 180 / 0xb4
 
 Object -> door1 "door"	! 181 / 0xb5
   with	name 'door' 'revolving',
-	after routine99348,
+	after MuseumDoorAfter,
 	description "You stand within it.",
   has	scenery;
 
 Object Revolving_Door2 "Revolving Door"	! 182 / 0xb6
-  with	n_to routine99336,
+  with	n_to RevolvingDoorNorth,
 	e_to "The door only turns clockwise.",
 	nw_to Museum_Foyer,
 	description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
@@ -2223,14 +2223,14 @@ Object Revolving_Door2 "Revolving Door"	! 182 / 0xb6
 
 Object -> door2 "door"	! 183 / 0xb7
   with	name 'door' 'revolving',
-	after routine99348,
+	after MuseumDoorAfter,
 	description "You stand within it.",
   has	scenery;
 
 Object -> beach_ball "beach ball"	! 184 / 0xb8
   with	name 'striped' 'beach' 'ball',
-	after routine99404,
-	before routine99700,
+	after BeachBallAfter,
+	before BeachBallBefore,
 	initial "A colourful, striped inflated beach ball bounces around.",
   has	;
 
@@ -2244,7 +2244,7 @@ Object Hall_of_Exhibits "Hall of Exhibits"	! 185 / 0xb9
 
 Object -> Tarot_box "Tarot box"	! 186 / 0xba
   with	name 'box' 'of' 'tarot',
-	after routine99736,
+	after TarotBoxAfter,
 	initial "Resting on a little display table is a Tarot box.",
 	devil_hint "There's nothing worthwhile in it.",
   has	container openable;
@@ -2304,8 +2304,8 @@ Object -> still_life "still life"	! 187 / 0xbb
   has	static talkable;
 
 Object Dark_Staircase "Dark Staircase"	! 188 / 0xbc
-  with	after routine99768,
-	before routine100008,
+  with	after DarkStaircaseAfter,
+	before DarkStaircaseBefore,
 	e_to Hall_of_Exhibits,
 	u_to Hall_of_Exhibits,
 	description "A dark staircase, turning from east to south as it descends. The hideous sound of arhythmic chanting can be heard from below.",
@@ -2332,17 +2332,17 @@ Object Ace_of_Cups_card "Ace of Cups"	! 194 / 0xc2
   has	card;
 
 Object Coven_Cell "Coven Cell"	! 195 / 0xc3
-  with	after routine100348,
+  with	after CovenCellAfter,
 	description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
 	cant_go "There's definitely no way out of here.",
 	time_left 0,
-	daemon routine100016,
+	daemon CovenCellDaemon,
 	section T_HAMBURG,
   has	light;
 
 Object -> goat "anxious-looking goat"	! 196 / 0xc4
   with	name 'anxious' 'goat' 'dobbin',
-	life routine100444,
+	life GoatLife,
 	article "an",
   has	animate static;
 
@@ -2354,14 +2354,14 @@ Object -> crook "shepherd's crook"	! 197 / 0xc5
 
 Object -> cell_door "cell door"	! 198 / 0xc6
   with	name 'cell' 'door',
-	after routine100640,
+	after CelldoorAfter,
 	n_to Museum_Foyer,
 	s_to "As you might expect, the cell door is closed.",
 	w_to ne_obj,
   has	door locked openable static;
 
 Object Cabinet_Room "Cabinet Room"	! 199 / 0xc7
-  with	after routine100704,
+  with	after CabinetRoomAfter,
 	w_to Hall_of_Exhibits,
 	description "An annexe to the museum, containing sundry archaelogical finds, badly labelled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
 	section T_HAMBURG,
@@ -2369,16 +2369,16 @@ Object Cabinet_Room "Cabinet Room"	! 199 / 0xc7
 
 Object -> glass_cabinet "glass cabinet"	! 200 / 0xc8
   with	name 'glass' 'cabinet' 'pane',
-	after routine100752,
+	after CabinetAfter,
 	s_to "One cabinet looks particularly vulnerable.",
 	initial "You could just look inside the broken glass cabinet.",
 	time_left 0,
-	daemon routine100868,
+	daemon CabinetDAemon,
   has	container static transparent;
 
 Object -> -> smooth_round_stone "smooth round stone"	! 201 / 0xc9
   with	name 'smooth' 'round' 'pumice' 'metal' 'stone',
-	after routine101280,
+	after RoundStoneAfter,
 	initial nothing,
 	description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the label rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
 	angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
@@ -2392,8 +2392,8 @@ Object -> -> papyrus_fragment "papyrus fragment"	! 202 / 0xca
 
 Object Ruined_Castle_Cafe "Ruined Castle Cafe"	! 203 / 0xcb
   with	name 'decor' 'arrows' 'quartet' 'waiter',
-	before routine101336,
-	initial routine101636,
+	before CafeBefore,
+	initial CafeInitial,
 	description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
 	cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
 	each_turn routine101652,
@@ -2402,47 +2402,47 @@ Object Ruined_Castle_Cafe "Ruined Castle Cafe"	! 203 / 0xcb
 
 Object -> cafe_table "cafe table"	! 204 / 0xcc
   with	name 'cafe' 'table' 'leg' 'legs',
-	after routine101692,
+	after CafeTableAfter,
   has	scenery supporter;
 
 Object complicated_looking_bomb "complicated-looking bomb"	! 205 / 0xcd
   with	name 'bomb',
-	before routine102212,
+	before BombBefore,
 	initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
 	description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
 	time_left 0,
 	number [0 0],
-	daemon routine101884,
+	daemon BombDaemon,
   has	concealed container open;
 
 Object -> timer_detonator "timer-detonator"	! 206 / 0xce
   with	name 'timer' 'detonater' 'detonator',
-	after routine103296,
+	after TimerAfter,
 	time_left 10,
 	number [0 0],
-	daemon routine102360,
+	daemon TimerDaemon,
 	devil_hint "Time flies down here, you know. Eternity simply breezes by.",
 	angel_hint "Good photographic gear that. You didn't get it from a... well, a bomb, I hope.",
   has	static;
 
 Object -> green_wire "green wire"	! 207 / 0xcf
   with	name 'green' 'wire',
-	after routine103492,
+	after WireAfter,
   has	static wire;
 
 Object -> red_wire "red wire"	! 208 / 0xd0
   with	name 'red' 'wire',
-	after routine103492,
+	after WireAfter,
   has	static wire;
 
 Object -> blue_wire "blue wire"	! 209 / 0xd1
   with	name 'blue' 'wire',
-	after routine103492,
+	after WireAfter,
   has	static wire;
 
 Object -> black_wire "black wire"	! 210 / 0xd2
   with	name 'black' 'wire',
-	after routine103492,
+	after WireAfter,
   has	static wire;
 
 Object Cups_and_Glasses "Cups and Glasses"	! 211 / 0xd3
@@ -3321,10 +3321,10 @@ Object -> irate_squirrel_friend "irate squirrel friend"	! 321 / 0x141
 Object Croquet_Lawn "Croquet Lawn"	! 322 / 0x142
   with	w_to Hedgery,
 	nw_to nothing,
-	initial routine118996,
+	initial CroquetLawnInitial,
 	description " .One of the most beautiful hedge-enclosed, tree-muffled lawns in England, and just out of sight of the house, this has been a jewel in the gardens for centuries. Since the twenties it has also been a croquet lawn, of the regulation twenty-four yards square, laid out with a central coloured peg and six peripheral hoops",
 	cant_go "The lawn is enclosed on all sides, but for a gap back west.",
-	short routine119004,
+	short CroquetLawnShort,
 	section T_GARDEN,
   has	light;
 
@@ -3342,7 +3342,7 @@ Object strongbox "strongbox"	! 324 / 0x144
 
 Object -> golden_astrolabe "golden astrolabe"	! 325 / 0x145
   with	name 'golden' 'gold' 'astrolabe' 'eyepiece',
-	after routine119052,
+	after AstrolabeAfter,
 	before routine119316,
 	initial nothing,
 	description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua Meldrewe's stolen hoard of gold. There is an eyepiece.",
@@ -3351,17 +3351,17 @@ Object -> golden_astrolabe "golden astrolabe"	! 325 / 0x145
 
 Object dug_hole "dug hole"	! 326 / 0x146
   with	name 'hole' 'dug',
-	after routine119332,
+	after DugHoleAfter,
 	description "The rich loam, the silver of earthworms, the dignity of toil... none of these pastoral consolations is yours as you scrabble in the dirt.",
-	describe routine119392,
+	describe DugHoleDesc,
   has	container open static;
 
 Object Murky_Cave "Murky Cave"	! 327 / 0x147
   with	w_to Spur_of_Rock,
 	ne_to Valley_Prospect,
-	initial routine119472,
+	initial MurkyCaveInitial,
 	description "This is a murky hillside cave, whose mouth opens to the northeast, though a tight squeeze might lead a little way west. Outside is a clear starry night. There is no traffic noise, and the air smells fresh.",
-	daemon routine119480,
+	daemon MurkyCaveDaemon,
 	section T_ANCIENT_BRITAIN,
   has	;
 
@@ -4601,12 +4601,12 @@ Object -> Moonstone "Moonstone"	! 487 / 0x1e7
 
 Object West_Side_Chapel "West Side Chapel"	! 488 / 0x1e8
   with	name 'stained' 'glass' 'windows' 'resurrect',
-	after routine142212,
+	after WestSideChapelAfter,
 	before WestSideChapelBefore,
 	e_to Parish_Church,
 	description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
 	cant_go "The church lies east.",
-	each_turn routine142592,
+	each_turn WestSideChapelEachTurn,
 	section T_NE_OF_HOME,
   has	light;
 
@@ -4618,7 +4618,7 @@ Object -> adamantine_statue "adamantine statue"	! 489 / 0x1e9
 
 Object adamantine_knight "adamantine knight"	! 490 / 0x1ea
   with	name 'adamantine' 'statue' 'adamant' 'knight',
-	life routine142844,
+	life AdamantineKnightLife,
 	initial "The adamantine knight stands staunchly here.",
 	description " .The knight is bursting and eager with life, as though nothing could fade his boundless energy for existence. ",
 	article "the",
@@ -4680,26 +4680,26 @@ Object Hellish_Place "Hellish Place"	! 498 / 0x1f2
 	n_to Cellar_West,
 	u_to Cellar_West,
 	description "Hell, you always imagined, would contain fiery, sulphurous pits and a great many gentlemen with forked tails. You were right about the last part. A demon is sitting behind a flame-proofed desk at the bottom of the stairs. There are some disconcerting screams from further away, but nothing to worry about. Not in this life, anyway.",
-	cant_go routine145268,
-	each_turn routine145796,
+	cant_go HellishPlaceCantGo,
+	each_turn HellishPlaceEachTurn,
 	section T_AFTERLIFE,
   has	light;
 
 Object -> demon "demon"	! 499 / 0x1f3
   with	name 'devil' 'demon' 'demonic' 'gentleman',
-	life routine146120,
+	life DaemonLife,
 	description "If you were to cast a film of your adventures so far, you would hire Donald Sutherland to play this gentleman.",
 	time_left 4,
   has	animate scenery;
 
 Object Heavenly_Place "Heavenly Place"	! 500 / 0x1f4
   with	name 'furniture' 'cloud',
-	after routine146452,
-	before routine146476,
+	after HeavenAfter,
+	before HeavenBefore,
 	s_to Up_the_Beanstalk,
 	description "Heaven, you always imagined, would be a world of marble pillars, fluffy clouds, harps and angelic ladies with serene expressions. You were right about the last part. An angel is sitting here behind some new office furniture, next to a blue Tourist Information sign. A bridge of cloud extends south across the sky to the beanstalk. There is some choral singing going on somewhere, but not loud enough for you to hear properly. Not in this life, anyway.",
-	cant_go routine146424,
-	each_turn routine146984,
+	cant_go HeavenCantGo,
+	each_turn HeavenEachTurn,
 	section T_AFTERLIFE,
   has	light;
 
@@ -4712,7 +4712,7 @@ Object -> angel "angel"	! 501 / 0x1f5
 
 Object carbolic_soap "carbolic soap"	! 502 / 0x1f6
   with	name 'soap' 'carbolic',
-	after routine147544,
+	after SoapAfter,
 	description "~For foulmouths everywhere~.",
 	article "a cake of",
 	devil_hint "That's the spirit, keep it up!",
@@ -13083,7 +13083,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Madame_Sosostris.life
 
-[ SosostrisLife ;	! 97492 / 0x17cd4
+[ routine97492 ;	! 97492 / 0x17cd4
     if (action == ##Give) {
         if (noun == silk_handkerchief) {
             "Gratefully she blows her nose but then returns the handkerchief. You refold it ingeniously.";
@@ -13126,7 +13126,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Down_by_River.w_to
 
-[ routine97832 ;	! 97832 / 0x17e28
+[ DownByRiverWest ;	! 97832 / 0x17e28
     if (tourist_boat hasnt open) {
         R_Process(##Enter,170[tourist_boat?]);
         rtrue;
@@ -13136,7 +13136,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: silk_handkerchief.after
 
-[ routine97852 ;	! 97852 / 0x17e3c
+[ HandkerchiefAfter ;	! 97852 / 0x17e3c
     if (action == ##Wave && location == Down_by_River && tourist_boat hasnt open) {
         give tourist_boat open;
         "You wave the handkerchief, and the boat glides smoothly across the river toward you.";
@@ -13146,7 +13146,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: tourist_boat.after
 
-[ routine97928 ;	! 97928 / 0x17e88
+[ TouristBoatAfter ;	! 97928 / 0x17e88
     if (action == ##Enter) {
         if (selfobj hasnt open) {
             "Are you in Seine?  There is a river in between you and the boat.";
@@ -13158,7 +13158,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: hollow_man.life
 
-[ routine97984 ;	! 97984 / 0x17ec0
+[ HollowManLife ;	! 97984 / 0x17ec0
     if (action == ##Attack) {
         "You are unable to touch the man. It is as if he isn't there.";
     }
@@ -13209,7 +13209,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Chatelet_les_Halles.after
 
-[ routine98620 ;	! 98620 / 0x1813c
+[ ChateletAfter ;	! 98620 / 0x1813c
     if (action == ##Buy) {
         "~Q'est-ce que vous voulez acheter?~";
     }
@@ -13218,7 +13218,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: surly_shopkeeper.life
 
-[ routine98656 ;	! 98656 / 0x18160
+[ ShopkeeperLife ;	! 98656 / 0x18160
     if (action == ##Give) {
         if (noun ~= fifty_franc_note) {
             "~Ceci n'est pas argent,~ he explains wearily.";
@@ -13247,18 +13247,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Museum_Foyer.s_to
 
-[ routine98960 ;	! 98960 / 0x18290
+[ FoyerSouth ;	! 98960 / 0x18290
     print "You pass between the steel walls and a light passes over you. Now you know how paper feels in a photocopier";
     if (child(player) == nothing) {
         print ".^";
-        return 185[Hall_of_Exhibits?];
+        return Hall_of_Exhibits;
     }
     " - in this case, one which jams. Steel barriers appear across the corridor, and you are obliged to withdraw back to the foyer.^^After a moment, the barriers recede again.";
 ];
 
 ! References: revolving_door_obj.after
 
-[ routine99148 ;	! 99148 / 0x1834c
+[ RevolvingDoorAfter ;	! 99148 / 0x1834c
     if (action == ##Turn or ##Push or ##Pull) {
         print "You give the revolving door a heave, and it begins to move; but you pause, out of breath, after only a half turn. ";
         if (Museum_Foyer.ne_to == Revolving_Door1) {
@@ -13289,14 +13289,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Revolving_Door1.n_to, Revolving_Door2.n_to
 
-[ routine99336 ;	! 99336 / 0x18408
+[ RevolvingDoorNorth ;	! 99336 / 0x18408
     R_Process(##Push,181[door1?]);
     rtrue;
 ];
 
 ! References: door1.after, door2.after
 
-[ routine99348 ;	! 99348 / 0x18414
+[ MuseumDoorAfter ;	! 99348 / 0x18414
     if (action == ##Push or ##Turn or ##Pull) {
         "You revolve clockwise with the door, and wind up back adjacent to the foyer.";
     }
@@ -13305,7 +13305,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: beach_ball.after
 
-[ routine99404 ;	! 99404 / 0x1844c
+[ BeachBallAfter ;	! 99404 / 0x1844c
     if (action == ##Take or ##Remove) {
         "The beach ball, a welcome dash of colour in this drab monochrome night, is simply too big, cumbersome and round to get hold of.";
     }
@@ -13325,7 +13325,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: beach_ball.before
 
-[ routine99700 ;	! 99700 / 0x18574
+[ BeachBallBefore ;	! 99700 / 0x18574
     if (action == ##PushDir) {
         "You bounce the beach ball along in front of you.";
     }
@@ -13334,7 +13334,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Tarot_box.after
 
-[ routine99736 ;	! 99736 / 0x18598
+[ TarotBoxAfter ;	! 99736 / 0x18598
     if (action == ##Receive) {
         if (noun hasnt card) {
             "Only cards will fit.";
@@ -13346,7 +13346,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Dark_Staircase.after
 
-[ routine99768 ;	! 99768 / 0x185b8
+[ DarkStaircaseAfter ;	! 99768 / 0x185b8
     if (action == ##Listen) {
         "It sounds like a thinly, but enthusiastically, attended football match. There are ragged German chants but only the word ~Eumenides~ pokes out.";
     }
@@ -13361,14 +13361,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Dark_Staircase.before
 
-[ routine100008 ;	! 100008 / 0x186a8
+[ DarkStaircaseBefore ;	! 100008 / 0x186a8
     discharge_rod(thedark);
     rfalse;
 ];
 
 ! References: Coven_Cell.daemon
 
-[ routine100016 ;	! 100016 / 0x186b0
+[ CovenCellDaemon ;	! 100016 / 0x186b0
     if (player notin selfobj) {
         rtrue;
     }
@@ -13390,7 +13390,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Coven_Cell.after
 
-[ routine100348 ;	! 100348 / 0x187fc
+[ CovenCellAfter ;	! 100348 / 0x187fc
     if (verb == ##Ram) {
         "No, this is a goat. A ~ram~ is a kind of sheep.";
     }
@@ -13402,7 +13402,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: goat.life
 
-[ routine100444 ;	! 100444 / 0x1885c
+[ GoatLife ;	! 100444 / 0x1885c
     if (action == ##Give) {
         if (noun has edible) {
             remove noun;
@@ -13433,7 +13433,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: cell_door.after
 
-[ routine100640 ;	! 100640 / 0x18920
+[ CelldoorAfter ;	! 100640 / 0x18920
     if (action == ##Knock) {
         "They're coming as fast as they can!  Ritual doesn't just happen by itself, you know.";
     }
@@ -13442,7 +13442,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Cabinet_Room.after
 
-[ routine100704 ;	! 100704 / 0x18960
+[ CabinetRoomAfter ;	! 100704 / 0x18960
     if (action == ##Read) {
         if (noun in glass_cabinet) {
             "It's too dark to see much inside the cabinet.";
@@ -13454,7 +13454,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: glass_cabinet.after
 
-[ routine100752 ;	! 100752 / 0x18990
+[ CabinetAfter ;	! 100752 / 0x18990
     if (action == ##Attack) {
         if (selfobj has open) {
             "Just how broken do you want it to be?";
@@ -13471,7 +13471,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: glass_cabinet.daemon
 
-[ routine100868 ;	! 100868 / 0x18a04
+[ CabinetDAemon ;	! 100868 / 0x18a04
     if (game_section == T_HAMBURG && location ~= Coven_Cell) {
         print "^Finally reacting to the alarm you set off, Doktor Stein appears and steps toward you, clapping his hands sharply. And dozens of robed figures leap out of the darkness - but these are no security guards. Their faces are painted hideously and they betray no emotion as they pinion you tight...^^~So, Meldrew. It is all as it was prophesied,~ says Stein in a perfectly conversational tone as he forces your mouth open and makes you swallow a violet pill.^^~One of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this is perhaps the least of your problems as they drag you off...^^";
         StartTimer(Coven_Cell,0);
@@ -13484,7 +13484,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: smooth_round_stone.after
 
-[ routine101280 ;	! 101280 / 0x18ba0
+[ RoundStoneAfter ;	! 101280 / 0x18ba0
     if (action == ##Take) {
         if (selfobj has general) {
             "Reach down the grating as you may, it remains just beyond reach.";
@@ -13496,7 +13496,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Ruined_Castle_Cafe.before
 
-[ routine101336 ;	! 101336 / 0x18bd8
+[ CafeBefore ;	! 101336 / 0x18bd8
     if (action == ##Look) {
         if (Cups_and_Glasses has visited && complicated_looking_bomb has concealed) {
             "^Over in one corner, you can see a little square window, behind which must be the store of cups and glasses. Remembering this, you are distracted and unable to enjoy the entertainment. Even the table is annoying. It must have one leg shorter than the rest, or something, because it rattles now and then.";
@@ -13511,7 +13511,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Ruined_Castle_Cafe.initial
 
-[ routine101636 ;	! 101636 / 0x18d04
+[ CafeInitial ;	! 101636 / 0x18d04
     if (complicated_looking_bomb has concealed) {
         StartTimer(complicated_looking_bomb,10);
     }
@@ -13532,7 +13532,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: cafe_table.after
 
-[ routine101692 ;	! 101692 / 0x18d3c
+[ CafeTableAfter ;	! 101692 / 0x18d3c
     if (action == ##LookUnder or ##Search) {
         if (complicated_looking_bomb has concealed) {
             give complicated_looking_bomb ~concealed;
@@ -13549,7 +13549,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: complicated_looking_bomb.daemon
 
-[ routine101884 ;	! 101884 / 0x18dfc
+[ BombDaemon ;	! 101884 / 0x18dfc
     if (location ~= Ruined_Castle_Cafe) {
         rfalse;
     }
@@ -13571,7 +13571,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: complicated_looking_bomb.before
 
-[ routine102212 ;	! 102212 / 0x18f44
+[ BombBefore ;	! 102212 / 0x18f44
     if (action == ##Take) {
         deadflag = PRISON;
         "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and twenty-five years isn't all that long.";
@@ -13581,7 +13581,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: timer_detonator.daemon
 
-[ routine102360 local1 local2 local3 ;	! 102360 / 0x18fd8
+[ TimerDaemon local1 local2 local3 ;	! 102360 / 0x18fd8
     local1 = 206[timer_detonator?];
     local2 = parent(local1);
     selfobj.number = 0;
@@ -13645,7 +13645,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: timer_detonator.after
 
-[ routine103296 local1 ;	! 103296 / 0x19380
+[ TimerAfter local1 ;	! 103296 / 0x19380
     if (action == ##Read) {
         print "The timer seems quite simple to set. ";
         local1 = selfobj.time_left;
@@ -13673,7 +13673,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: green_wire.after, red_wire.after, blue_wire.after, black_wire.after
 
-[ routine103492 local1 ;	! 103492 / 0x19444
+[ WireAfter local1 ;	! 103492 / 0x19444
     if (action == ##Pull) {
         if (selfobj has general) {
             "That one's already pulled out.";
@@ -15618,7 +15618,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Croquet_Lawn.description
 
-[ routine118760 ;	! 118760 / 0x1cfe8
+[ CroquetLawnDesc ;	! 118760 / 0x1cfe8
     print "One of the most beautiful hedge-enclosed, tree-muffled lawns in England, and just out of sight of the house, this has been a jewel in the gardens for centuries. Since the twenties it has also been a croquet lawn, of the regulation twenty-four yards square, laid out with a central coloured peg and six peripheral hoops";
     if (selfobj.nw_to == nothing) {
         ".";
@@ -15628,7 +15628,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Croquet_Lawn.initial
 
-[ routine118996 ;	! 118996 / 0x1d0d4
+[ CroquetLawnInitial ;	! 118996 / 0x1d0d4
     DigX = 0;
     DigY = 0;
     rfalse;
@@ -15636,7 +15636,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Croquet_Lawn.short
 
-[ routine119004 ;	! 119004 / 0x1d0dc
+[ CroquetLawnShort ;	! 119004 / 0x1d0dc
     if (DigX == 0 && DigY == 0) {
         rfalse;
     }
@@ -15651,7 +15651,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: golden_astrolabe.after
 
-[ routine119052 ;	! 119052 / 0x1d10c
+[ AstrolabeAfter ;	! 119052 / 0x1d10c
     if (action == ##Remove) {
         if (noun == second) {
             "It is in one piece.";
@@ -15681,7 +15681,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: dug_hole.after
 
-[ routine119332 ;	! 119332 / 0x1d224
+[ DugHoleAfter ;	! 119332 / 0x1d224
     if (action == ##Take) {
         "A surreal idea, somewhat reminiscent of the Beatles film ~Yellow Submarine~.";
     }
@@ -15690,7 +15690,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: dug_hole.describe
 
-[ routine119392 ;	! 119392 / 0x1d260
+[ DugHoleDesc ;	! 119392 / 0x1d260
     if (OldDigX == DigX && OldDigY == DigY) {
         "^The hole you dug in the lawn is just here.";
     }
@@ -15701,14 +15701,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Murky_Cave.initial
 
-[ routine119472 ;	! 119472 / 0x1d2b0
+[ MurkyCaveInitial ;	! 119472 / 0x1d2b0
     StartDaemon(selfobj);
     rfalse;
 ];
 
 ! References: Murky_Cave.daemon
 
-[ routine119480 local1 ;	! 119480 / 0x1d2b8
+[ MurkyCaveDaemon local1 ;	! 119480 / 0x1d2b8
     if (game_section ~= T_ANCIENT_BRITAIN) {
         StopDaemon(selfobj);
     }
@@ -18096,7 +18096,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_life.after, rod_of_death.after, rod_of_love.after
 
-[ routine141892 ;	! 141892 / 0x22a44
+[ LifeDeathLoveAfter ;	! 141892 / 0x22a44
     if (verb == ##Take && noun hasnt moved) {
         if (noun hasnt general) {
             if (old_gardeners__gloves has worn) {
@@ -18115,7 +18115,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: rod_of_life.before, rod_of_death.before, rod_of_love.before
 
-[ routine142064 ;	! 142064 / 0x22af0
+[ LifeDeathLoveBefore ;	! 142064 / 0x22af0
     if (verb == ##Take && global172 == 0) {
         remove rod_of_life;
         give rod_of_life moved;
@@ -18139,7 +18139,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Madame_Sosostris.name, Madame_Sosostris.name, West_Side_Chapel.after
 
-[ routine142212 ;	! 142212 / 0x22b84
+[ WestSideChapelAfter ;	! 142212 / 0x22b84
     if (action == ##Repair or ##Insert or ##PutOn) {
         if (second ~= adamantine_statue) {
             rfalse;
@@ -18202,7 +18202,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: West_Side_Chapel.each_turn
 
-[ routine142592 ;	! 142592 / 0x22d00
+[ WestSideChapelEachTurn ;	! 142592 / 0x22d00
     if (global174 > 0) {
         --global174;
         if (global174 == 0) {
@@ -18236,7 +18236,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: adamantine_knight.life
 
-[ routine142844 ;	! 142844 / 0x22dfc
+[ AdamantineKnightLife ;	! 142844 / 0x22dfc
     if (action == ##Order) {
         routine143448();
         rtrue;
@@ -18463,7 +18463,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hellish_Place.cant_go
 
-[ routine145268 ;	! 145268 / 0x23774
+[ HellishPlaceCantGo ;	! 145268 / 0x23774
     discharge_rod(teachests);
     "That direction is not for the living.";
 ];
@@ -18500,7 +18500,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Hellish_Place.each_turn
 
-[ routine145796 local1 ;	! 145796 / 0x23984
+[ HellishPlaceEachTurn local1 ;	! 145796 / 0x23984
     local1 = random(10);
     if (local1 == 1[?]) {
         "^There is a horrid grinding noise from far away.";
@@ -18529,7 +18529,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: demon.life
 
-[ routine146120 local1 ;	! 146120 / 0x23ac8
+[ DaemonLife local1 ;	! 146120 / 0x23ac8
     if (action == ##Answer or ##Ask) {
         if (routine145968() ~= 0) {
             rtrue;
@@ -18568,14 +18568,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: old_smudged_battery.name, old_striped_scarf.name, old_gardeners__gloves.name, dog_eared_old_letter.name, Cups_and_Glasses.name, old_timber_spar.name, timber_hatch.name, Old_Evans.name, Moonstone.name, old_village_clock.name, Heavenly_Place.cant_go
 
-[ routine146424 ;	! 146424 / 0x23bf8
+[ HeavenCantGo ;	! 146424 / 0x23bf8
     discharge_rod(rod_of_returning2);
     "That direction is not for the living.";
 ];
 
 ! References: Heavenly_Place.after
 
-[ routine146452 ;	! 146452 / 0x23c14
+[ HeavenAfter ;	! 146452 / 0x23c14
     if (action == ##Strike) {
         "The clouds are too fluffy.";
     }
@@ -18584,7 +18584,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Heavenly_Place.before
 
-[ routine146476 local1 ;	! 146476 / 0x23c2c
+[ HeavenBefore local1 ;	! 146476 / 0x23c2c
     if (action == ##Look) {
         new_line;
         if (angel has general) {
@@ -18614,7 +18614,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Heavenly_Place.each_turn
 
-[ routine146984 local1 ;	! 146984 / 0x23e28
+[ HeavenEachTurn local1 ;	! 146984 / 0x23e28
     local1 = random(10);
     if (local1 == 1[?]) {
         "^Angels with harps float by, gossiping about you in a kindly way.";
@@ -18631,7 +18631,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine147164 ;	! 147164 / 0x23edc
+[ AngelLife ;	! 147164 / 0x23edc
     if (angel hasnt general) {
         if (angel.time_left == 0) {
             "~No hints left, alas.~";
@@ -18645,7 +18645,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ routine147316 local1 ;	! 147316 / 0x23f74
     if (action == ##Answer or ##Ask) {
-        if (routine147164() ~= 0) {
+        if (AngelLife() ~= 0) {
             rtrue;
         }
         if (routine145076(special_word) ~= 0) {
@@ -18657,7 +18657,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "One does not give orders to such a character.";
     }
     if (action == ##Give or ##Show) {
-        if (routine147164() ~= 0) {
+        if (AngelLife() ~= 0) {
             rtrue;
         }
         print "The angel looks keenly at ";
@@ -18678,7 +18678,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: carbolic_soap.after
 
-[ routine147544 ;	! 147544 / 0x24058
+[ SoapAfter ;	! 147544 / 0x24058
     if (action == ##Eat) {
         R_Process(##Wash,selfobj);
         rtrue;
