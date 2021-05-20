@@ -5010,7 +5010,7 @@ Global palace_var168;
 Global palace_var169;
 Global palace_var170;
 Global HighRodWarn;
-Global global172;
+Global HighRodBalance;
 Global global173;
 Global global174;
 Global bool_array_recently_set = 65535;
@@ -18260,7 +18260,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: rod_of_life.before, rod_of_death.before, rod_of_love.before
 
 [ LifeDeathLoveBefore ;	! 142064 / 0x22af0
-    if (verb == ##Take && global172 == 0) {
+    if (verb == ##Take && HighRodBalance == false) {
         remove rod_of_life;
         give rod_of_life moved;
         give rod_of_life ~concealed;
@@ -18275,7 +18275,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         give rod_of_love scored;
         move noun to player;
         give noun ~scored;
-        global172 = 1[?];
+        HighRodBalance = true;
         "(Interesting choice.)^^As you take it, you upset the balance and the other two High Rods rattle away down the crystal passageway into the underworld.";
     }
     rfalse;
