@@ -12451,7 +12451,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine91436 i j cell ;	! 91436 / 0x1652c
+[ MouseBoundary i j cell ;	! 91436 / 0x1652c
     if (i < 0 || i > 8 || j < 0 || j > 6) {
         rfalse;
     }
@@ -12553,7 +12553,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                         local4 = Mouse_x - 1;
                         local5 = Mousy_y;
                     }
-                    if (routine91436(local4,local5) == 1[?]) {
+                    if (MouseBoundary(local4,local5) == true) {
                         "From somewhere inside the hole, you hear a disconsolate bleep.";
                     }
                     Mouse_x = local4;
