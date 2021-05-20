@@ -8483,7 +8483,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ BeforeRoutines ;	
-    if (routine172644() ~= 0) {
+    if (GamePreRoutine() ~= 0) {
         rtrue;
     }
     if (RunRoutines(player,orders) ~= 0) {
@@ -22344,7 +22344,7 @@ Array preactions_table --> IsDirection;
     "^^^^It's become a matter of pride now not to give up. That tourist map of Paris must be up here somewhere in all this clutter, even if it has been five years since your last trip. And it's your own fault. It looks as if your great-grandfather was the last person to tidy up these lofts...^";
 ];
 
-[ routine172644 ;	
+[ GamePreRoutine ;	
     if (verb == ##Go && carbolic_soap hasnt concealed) {
         set_flag_array(13);
         "You're going nowhere until you make amends for that nasty bad language.";
