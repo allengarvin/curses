@@ -20529,7 +20529,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             if (j ~= 0) {
                 L__M(##Take,13,j);
                 keep_silent = true;
-                R_Process(##Insert,j,79[canvas_rucksack?]);
+                R_Process(##Insert,j,canvas_rucksack);
                 keep_silent = false;
                 if (j notin canvas_rucksack) {
                     rtrue;
