@@ -18446,7 +18446,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ AdamantineKnightLife ;	! 142844 / 0x22dfc
     if (action == ##Order) {
-        routine143448();
+        KnightReacts();
         rtrue;
     }
     if (action == ##Ask or ##Answer) {
@@ -18498,7 +18498,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     ", heartless and implacable.";
 ];
 
-[ routine143448 local1 ;	! 143448 / 0x23058
+[ KnightReacts o ;	! 143448 / 0x23058
     if (verb == ##Jump or ##Dance or ##Sing) {
         "The knight dances a jig with sheer exuberance.";
     }
@@ -18524,37 +18524,37 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             move Moonstone to Parish_Church;
             "The knight strides down into the underworld beneath the Moonstone, to be lost to your sight... forever?^^For even he has not life force enough to hold together in the mists: his skeleton begins to clatter away to nothing, falling in all directions, his heart, hand and skull returning Somehow to your feet. And they are altering, altering even as you look down into the void...";
         }
-        local1 = 0;
+        o = nothing;
         if (location == Parish_Church) {
             if (noun == s_obj) {
-                local1 = 477[Stone_Cross?];
+                o = Stone_Cross;
             }
             if (noun == e_obj) {
-                local1 = 491[East_Side_Chapel?];
+                o = East_Side_Chapel;
             }
             if (noun == w_obj) {
-                local1 = 488[West_Side_Chapel?];
+                o = West_Side_Chapel;
             }
             if (noun == u_obj) {
                 "Somewhat comically, the knight is too bulky to squeeze into the staircase. After a moment or two of watching an immovable object fighting it out with an irresistable force, you point back, and the knight returns, chastened.";
             }
         }
         if (location == East_Side_Chapel && noun == w_obj) {
-            local1 = 486[Parish_Church?];
+            o = Parish_Church;
         }
         if (location == West_Side_Chapel && noun == e_obj) {
-            local1 = 486[Parish_Church?];
+            o = Parish_Church;
         }
-        if (local1 == 0) {
+        if (o == nothing) {
             "The knight shakes his head, solemnly.";
         }
-        if (local1 == 477[Stone_Cross?]) {
+        if (o == Stone_Cross) {
             "The knight won't leave sacred ground.";
         }
-        move adamantine_knight to local1;
-        if (local1 == 491[East_Side_Chapel?]) {
+        move adamantine_knight to o;
+        if (o == East_Side_Chapel) {
             adamantine_knight.initial = "The knight stands here, bowing toward Diana.";
-            move statue_of_Diana to local1;
+            move statue_of_Diana to o;
         } else if (marble_rose in adamantine_knight) {
             adamantine_knight.initial = "The knight stands clasping the flower.";
         } else {
@@ -23681,7 +23681,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ PointVagueSub ;	! 179384 / 0x2bcb8
     if (noun in compass && adamantine_knight in location) {
-        routine143448();
+        KnightReacts();
         rfalse;
     }
     if (noun has rod_attr) {
