@@ -3336,7 +3336,7 @@ Object strongbox "strongbox"
 Object -> golden_astrolabe "golden astrolabe"	
   with	name 'golden' 'gold' 'astrolabe' 'eyepiece',
 	after AstrolabeAfter,
-	before routine119316,
+	before AstrolabeBefore,
 	initial nothing,
 	description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua Meldrewe's stolen hoard of gold. There is an eyepiece.",
 	angel_hint "A mighty fine instrument, though not much use hand-held.",
@@ -15595,7 +15595,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ routine119316 ;	
+[ AstrolabeBefore ;	
     if (action == ##Take) {
         set_flag_array(43);
         rfalse;
