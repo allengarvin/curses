@@ -5211,7 +5211,7 @@ Array array_24916 --> 1;	! 24916 (0x6154)
 Array array_25223 --> 1;	! 25223 (0x6287)
 Array array_25291 --> 2050[?];	! 25291 (0x62cb)
 Array array_25306 --> 2050[?];	! 25306 (0x62da)
-Array rod_charge_array -> 10;	! 25893 (0x6525)
+Array extra_global_bool_array -> 48;	! 25893 (0x6525)
 Array task_done --> 22;	! 25975 (0x6577)
 Array array_26065 --> 48[furniture?];	! 26065 (0x65d1)
 Array actions_table -->	! 28893 (0x70dd)
@@ -18886,8 +18886,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: sepia_photograph.name
 
 [ set_flag_array i ;	! 155280 / 0x25e90
-    if (rod_charge_array->i == 0) {
-        rod_charge_array->i = 1;
+    if (extra_global_bool_array->i == 0) {
+        extra_global_bool_array->i = 1;
         rod_charge_index = i;
     }
     rtrue;
