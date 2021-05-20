@@ -11085,10 +11085,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "As you pull the book away, the pipe bursts and sprays water everywhere, drenching you, rendering the book unreadable, leaking through the ceiling into the bedrooms below and causing an enormous furore. You are obliged to spend the rest of the afternoon getting a plumber at short notice.";
 ];
 
-[ routine78156 local1 ;	! 78156 / 0x1314c
+[ WallDisplay o ;	! 78156 / 0x1314c
     print "the picture on ";
-    Defart(local1);
-    if (local1.n_to == nothing) {
+    Defart(o);
+    if (o.n_to == nothing) {
         ".";
     }
     ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
@@ -11104,7 +11104,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 "The south wall is lit up by the projector.";
             }
             print "The south wall shows ";
-            routine78156(local1);
+            WallDisplay(local1);
             rtrue;
         }
         rfalse;
