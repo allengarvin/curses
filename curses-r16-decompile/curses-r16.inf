@@ -13937,22 +13937,22 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (red_wire has general) {
         PrintShortName(red_wire);
         --i;
-        routine103900(i);
+        AndList(i);
     }
     if (green_wire has general) {
         PrintShortName(green_wire);
         --i;
-        routine103900(i);
+        AndList(i);
     }
     if (blue_wire has general) {
         PrintShortName(blue_wire);
         --i;
-        routine103900(i);
+        AndList(i);
     }
     if (black_wire has general) {
         PrintShortName(black_wire);
         --i;
-        routine103900(i);
+        AndList(i);
     }
     if (w == 1) {
         " is unplugged.";
@@ -13960,12 +13960,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     " are unplugged.";
 ];
 
-[ routine103900 local1 ;	! 103900 / 0x195dc
-    if (local1 == 1[?]) {
+[ AndList i ;	! 103900 / 0x195dc
+    if (i == 1) {
         print " and ";
         rfalse;
     }
-    if (local1 == 0) {
+    if (i == 0) {
         rfalse;
     }
     print ", ";
