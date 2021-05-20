@@ -17787,7 +17787,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: inscribed_die.after
 
-[ InscribedDieAfter local1 ;	! 137820 / 0x21a5c
+[ InscribedDieAfter i ;	! 137820 / 0x21a5c
     if (action == ##Take) {
         "The sailor covers it with his hand. But he looks the type who's never averse to a game.";
     }
@@ -17797,14 +17797,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "~.";
     }
     if (action == ##Drop or ##ThrowAt or ##Gamble) {
-        local1 = random(6);
+        i = random(6);
         if (inscribed_die has lucky) {
-            local1 = 6[ne_obj?];
+            i = 6;
         }
         give gambling_sailor general;
-        inscribed_die.number = local1;
+        inscribed_die.number = i;
         print "You throw a ~";
-        EtruscanInt(local1);
+        EtruscanInt(i);
         "~, whatever that means.";
     }
     rfalse;
