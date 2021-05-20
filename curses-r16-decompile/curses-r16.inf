@@ -13731,7 +13731,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ routine101652 ;	! 101652 / 0x18d14
     if (complicated_looking_bomb hasnt concealed) {
         new_line;
-        routine103600();
+        BombTicks();
     } else {
         print "^The table rattles again.^";
     }
@@ -13853,17 +13853,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: timer_detonator.after
 
-[ TimerAfter local1 ;	! 103296 / 0x19380
+[ TimerAfter i ;	! 103296 / 0x19380
     if (action == ##Read) {
         print "The timer seems quite simple to set. ";
-        local1 = selfobj.number;
+        i = selfobj.number;
         if (selfobj.time_left ~= 0) {
             print "The clock is running, and currently at ";
-            EnglishNumber(local1);
+            EnglishNumber(i);
             " minutes.";
         }
-        if (local1 ~= 0) {
-            routine103600();
+        if (i ~= 0) {
+            BombTicks();
             rtrue;
         }
         "At present the clock is reset to zero.";
@@ -13881,7 +13881,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: green_wire.after, red_wire.after, blue_wire.after, black_wire.after
 
-[ WireAfter local1 ;	! 103492 / 0x19444
+[ WireAfter i ;	! 103492 / 0x19444
     if (action == ##Pull) {
         if (selfobj has general) {
             "That one's already pulled out.";
@@ -13890,10 +13890,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         print "You pull out ";
         Defart(inp1);
         print ". ";
-        local1 = complicated_looking_bomb.time_left;
-        complicated_looking_bomb.time_left = local1 + 1;
-        array_25223->local1 = selfobj;
-        if (local1 == 3[s_obj?]) {
+        i = complicated_looking_bomb.time_left;
+        complicated_looking_bomb.time_left = i + 1;
+        array_25223->i = selfobj;
+        if (i == 3) {
             give complicated_looking_bomb general;
             "All four wires are now disconnected.";
         }
@@ -13902,7 +13902,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine103600 local1 local2 ;	! 103600 / 0x194b0
+[ BombTicks w i ;	! 103600 / 0x194b0
     print "The clock is ticking downwards, and is ";
     if (complicated_looking_bomb.number == 0) {
         print "right on the red zone!  ";
@@ -13917,44 +13917,44 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             set_flag_array(10);
         }
     }
-    local1 = complicated_looking_bomb.time_left;
-    if (local1 == 0) {
+    w = complicated_looking_bomb.time_left;
+    if (w == 0) {
         "All four wires are plugged into the timer.";
     }
-    if (local1 == 1[?]) {
+    if (w == 1) {
         print "Only the ";
     }
-    if (local1 == 2[?]) {
+    if (w == 2) {
         print "The ";
     }
-    if (local1 == 3[s_obj?]) {
+    if (w == 3) {
         print "The ";
     }
-    if (local1 == 4[e_obj?]) {
+    if (w == 4) {
         "None of the wires are plugged in.";
     }
-    local2 = local1;
+    i = w;
     if (red_wire has general) {
         PrintShortName(red_wire);
-        --local2;
-        routine103900(local2);
+        --i;
+        routine103900(i);
     }
     if (green_wire has general) {
         PrintShortName(green_wire);
-        --local2;
-        routine103900(local2);
+        --i;
+        routine103900(i);
     }
     if (blue_wire has general) {
         PrintShortName(blue_wire);
-        --local2;
-        routine103900(local2);
+        --i;
+        routine103900(i);
     }
     if (black_wire has general) {
         PrintShortName(black_wire);
-        --local2;
-        routine103900(local2);
+        --i;
+        routine103900(i);
     }
-    if (local1 == 1[?]) {
+    if (w == 1) {
         " is unplugged.";
     }
     " are unplugged.";
