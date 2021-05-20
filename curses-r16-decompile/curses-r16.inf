@@ -19950,33 +19950,33 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ PlacesSub local1 local2 local3 ;	
+[ PlacesSub i j k ;	
     L__M(##Places);
-    local1 = 15[yourself?];
+    i = yourself;
   .labelXXX;
-    if (local1 <= top_object) {
-        if (local1 has visited) {
-            ++local2;
+    if (i <= top_object) {
+        if (i has visited) {
+            ++j;
         }
-        ++local1;
+        ++i;
         jump labelXXX;
     }
-    local1 = 15[yourself?];
+    i = yourself;
   .labelXXX;
-    if (local1 <= top_object) {
-        if (local1 has visited) {
-            PrintShortName(local1);
-            ++local3;
-            if (local3 == local2) {
+    if (i <= top_object) {
+        if (i has visited) {
+            PrintShortName(i);
+            ++k;
+            if (k == j) {
                 ".";
             }
-            if (local3 == local2 - 1) {
+            if (k == j - 1) {
                 print " and ";
             } else {
                 print ", ";
             }
         }
-        ++local1;
+        ++i;
         jump labelXXX;
     }
     rtrue;
