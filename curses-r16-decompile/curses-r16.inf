@@ -13789,51 +13789,51 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: timer_detonator.daemon
 
-[ TimerDaemon local1 local2 local3 ;	! 102360 / 0x18fd8
-    local1 = 206[timer_detonator?];
-    local2 = parent(local1);
+[ TimerDaemon i j k ;	! 102360 / 0x18fd8
+    i = timer_detonator;
+    j = parent(i);
     selfobj.time_left = 0;
   .label102372;
-    if (parent(local1) ~= nothing) {
-        local1 = parent(local1);
+    if (parent(i) ~= nothing) {
+        i = parent(i);
         jump label102372;
     }
-    if (location == local1) {
+    if (location == i) {
         print "^You hear a sharp click!^";
-        if (local2 == 63[photographers_flash?]) {
+        if (j == photographers_flash) {
             new_line;
-            local3 = child(local2);
-            if (local3 == 206[timer_detonator?]) {
-                local3 = sibling(local3);
+            k = child(j);
+            if (k == timer_detonator) {
+                k = sibling(k);
             }
-            if (local3 == 0) {
+            if (k == nothing) {
                 "But the flash does nothing.";
             }
-            if (local3 ~= 105[obj105_nasty_looking_red_battery?]) {
+            if (k ~= obj105_nasty_looking_red_battery) {
                 "And the flash gives a pathetically small flash of light.";
             }
             print "The flash suddenly gives an enormous magnesium-flare flash, almost blinding in its intensity. Your eyes take a little while to adjust. ";
             if (location == Ruined_Castle_Cafe) {
                 print "Consequently you can only hear as the cabaret audience gives you a round of applause for what they think is a magic trick.";
             }
-            local3 = 63[photographers_flash?];
-            local3 = parent(local3);
-            if (local3 == 258[mirrored_device?] && photographers_flash hasnt general) {
+            k = photographers_flash;
+            k = parent(k);
+            if (k == mirrored_device && photographers_flash hasnt general) {
                 give photographers_flash general;
                 print "Consequently you can only hear as the smudge on the horizon rises from the waves, becomes an enormous Kraken sea monster and lunges for the stone tower. (Considering this is supposed to be a Greek myth it feels surprisingly like a Japanese 1960s creature film.)  The Kraken swipes at you, overreaches itself and falls over forward, impaling itself extremely messily on the pharos. Your eyes just about recover by the time the rest of your body is crushed by its weight.^^Up on Mount Olympus, Zeus is still cross. ~Take me to your Leda~, you wittily demand, but this does not seem to improve matters. Poseidon also looks rather fed up, but luckily a sizeable faction of goddesses takes your side and arranges to have you resurrected...^";
                 Achieved(SCORE_ANDROMEDA);
                 remove photographers_flash;
                 give Lighthouse ~visited;
                 give Lighthouse ~scored;
-                local1 = child(player);
+                i = child(player);
               .label103161;
-                if (local1 ~= 0) {
-                    local2 = sibling(local1);
-                    if (local1 ~= 115[daisy_chain?]) {
-                        move local1 to Lighthouse;
-                        give local1 ~worn;
+                if (i ~= nothing) {
+                    j = sibling(i);
+                    if (i ~= daisy_chain) {
+                        move i to Lighthouse;
+                        give i ~worn;
                     }
-                    local1 = local2;
+                    i = j;
                     jump label103161;
                 }
                 PlayerTo(Family_Tree);
