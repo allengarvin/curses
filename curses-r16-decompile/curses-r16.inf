@@ -17849,20 +17849,20 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: tube_with_an_alpha_on.parse_name, tube_with_a_kappa_on.parse_name
 
-[ TubeParse local1 local2 ;	! 138240 / 0x21c00
+[ TubeParse i w ;	! 138240 / 0x21c00
     if (parser_action == ##TheSame) {
         return 65535[?];
     }
   .label138251;
     if (1[?] == 1[?]) {
-        local2 = NextWord();
-        if (Refers(selfobj,local2) == 1[?]) {
-            ++local1;
-        } else if (local2 == 40719['tubes'?]) {
+        w = NextWord();
+        if (Refers(selfobj,w) == 1[?]) {
+            ++i;
+        } else if (w == 'tubes') {
             parser_action = ##PluralFound;
-            ++local1;
+            ++i;
         } else {
-            return local1;
+            return i;
         }
         jump label138251;
     }
