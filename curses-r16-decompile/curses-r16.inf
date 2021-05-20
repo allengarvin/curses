@@ -23496,7 +23496,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     "For a moment you can almost hear thunder, as though it were saying something. But the moment passes.";
 ];
 
-[ WaveSub local1 ;	! 178828 / 0x2ba8c
+[ WaveSub r ;	! 178828 / 0x2ba8c
     if (noun notin player) {
         "But you aren't holding it.";
     }
@@ -23508,12 +23508,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Defart(noun);
             print " which melts into ";
             remove noun;
-            local1 = noun.rod_assoc;
-            itobj = local1;
-            give local1 moved;
-            give local1 unidentiifed_rod;
-            move local1 to player;
-            Indefart(local1);
+            r = noun.rod_assoc;
+            itobj = r;
+            give r moved;
+            give r unidentiifed_rod;
+            move r to player;
+            Indefart(r);
             "!";
         }
         if (yellow_daisy in player && yellow_daisy has worn) {
@@ -23523,14 +23523,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             Defart(noun);
             print " which melts into ";
             remove noun;
-            local1 = noun.rod_assoc;
-            itobj = local1;
-            give local1 moved;
-            move local1 to player;
-            if (local1 has rod_attr) {
-                Defart(local1);
+            r = noun.rod_assoc;
+            itobj = r;
+            give r moved;
+            move r to player;
+            if (r has rod_attr) {
+                Defart(r);
             } else {
-                Indefart(local1);
+                Indefart(r);
             }
             "!";
         }
