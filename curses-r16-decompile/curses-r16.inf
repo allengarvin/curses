@@ -87,7 +87,7 @@ Verb 'hypnotise' 'hypnotize'
 
 Verb 'pace'
     * 							-> Pace
-    * routine181728					-> PaceDir
+    * CroquetFunc					-> PaceDir
 ;
 
 Verb 'milk'
@@ -524,7 +524,7 @@ Verb 'go' 'leave' 'run' 'walk'
     * 'in' noun						-> Enter
     * 'inside' noun					-> Enter
     * 'through' noun					-> Enter
-    * routine181728					-> PaceDir
+    * CroquetFunc					-> PaceDir
 ;
 
 Verb 'display' 'present' 'show'
@@ -23683,26 +23683,26 @@ Array preactions_table --> IsDirection;
     return d;
 ];
 
-[ routine181728 local1 local2 ;	
-    local1 = SomeParse();
-    if (local1 == 0) {
+[ CroquetFunc i j ;	
+    i = SomeParse();
+    if (i == 0) {
         if (AnotherWord() == 65535[?]) {
-            return 65535[?];
+            return 65535;
         }
-        local2 = CroquetMove();
+        j = CroquetMove();
         if (AnotherWord() == 65535[?]) {
-            local1 = 1[?];
+            i = 1[?];
         } else {
-            local1 = SomeParse();
+            i = SomeParse();
         }
-        if (local1 == 0) {
-            return 65535[?];
+        if (i == 0) {
+            return 65535;
         }
     } else {
-        local2 = CroquetMove();
+        j = CroquetMove();
     }
-    croquet_var = local1;
-    yard_dir = local2;
+    croquet_var = i;
+    yard_dir = j;
     return 0;
 ];
 
