@@ -17944,10 +17944,10 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         global169 = global168;
         global168 = noun;
         give Lost_inside_the_Palace ~general;
-        if (global170 == 6[ne_obj?] && global169 == 4[e_obj?] && global168 == 3[s_obj?]) {
+        if (global170 == 6 && global169 == 4 && global168 == 3) {
             give Lost_inside_the_Palace general;
         }
-        if (global168 == 3[s_obj?] && global169 == 3[s_obj?]) {
+        if (global168 == 3 && global169 == 3) {
             location = Outside_the_Royal_Palace_of_Alexander;
             move player to location;
         }
@@ -18207,7 +18207,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "It is searing hot, and you cannot touch the surface!";
         }
         if (global171 == 0) {
-            global171 = 1[?];
+            global171 = 1;
             "Warning (once only!): the three High Rods seem to balanced extremely delicately on the edge of the pit.";
         }
         Achieved(SCORE_HIGHROD);
