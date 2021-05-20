@@ -17627,7 +17627,7 @@ Array preactions_table --> IsDirection;
     }
     if (action == ##Anoppe) {
         if (Lost_inside_the_Palace has general) {
-            routine140220();
+            SlaveFindsYou();
             rtrue;
         }
         rfalse;
@@ -17684,7 +17684,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ routine140220 ;	
+[ SlaveFindsYou ;	
     print "The slave here, a senior adviser merely disguised as a deaf mute, reacts at once, taking you by the arm and leading you on a convoluted path through the Palace to the...^";
     PlayerTo(Palace_Balustrade);
     rtrue;
@@ -23334,7 +23334,7 @@ Array preactions_table --> IsDirection;
     if (location ~= Lost_inside_the_Palace || Lost_inside_the_Palace hasnt general) {
         "Nothing happens.";
     }
-    routine140220();
+    SlaveFindsYou();
     rtrue;
 ];
 
