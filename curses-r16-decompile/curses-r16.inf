@@ -709,82 +709,82 @@ Object -> n_obj "north wall"	! 2 / 0x2
   with	name 'n//' 'north' 'wall',
 	w_to w_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> s_obj "south wall"	! 3 / 0x3
   with	name 's//' 'south' 'wall',
 	w_to ne_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> e_obj "east wall"	! 4 / 0x4
   with	name 'e//' 'east' 'wall',
 	w_to se_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> w_obj "west wall"	! 5 / 0x5
   with	name 'w//' 'west' 'wall',
 	w_to nw_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> ne_obj "northeast wall"	! 6 / 0x6
   with	name 'ne' 'northeast' 'wall',
 	w_to sw_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> se_obj "southeast wall"	! 7 / 0x7
   with	name 'se' 'southeast' 'wall',
 	w_to u_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> nw_obj "northwest wall"	! 8 / 0x8
   with	name 'nw' 'northwest' 'wall',
 	w_to d_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> sw_obj "southwest wall"	! 9 / 0x9
   with	name 'sw' 'southwest' 'wall',
 	w_to out_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> u_obj "ceiling"	! 10 / 0xa
   with	name 'u//' 'up' 'ceiling',
 	w_to in_obj,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> d_obj "floor"	! 11 / 0xb
   with	name 'd//' 'down' 'floor',
 	w_to thedark,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> out_obj "outside"	! 12 / 0xc
   with	w_to lm_object,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object -> in_obj "inside"	! 13 / 0xd
   with	w_to yourself,
 	article "the",
-	number [0 0],
+	number 0,
   has	scenery;
 
 Object thedark "Darkness"	! 14 / 0xe
@@ -800,7 +800,7 @@ Object yourself "yourself"	! 15 / 0xf
 	orders nothing,
 	description "As good-looking as ever.",
 	describe NULL,
-	number [0 0],
+	number 0,
 	daemon routine262140,
 	each_turn routine262140,
 	capacity 100,
@@ -1629,7 +1629,7 @@ Object Conservatory "Aunt Jemima's Lair"	! 107 / 0x6b
 Object -> daisy_calendar "daisy calendar"	! 108 / 0x6c
   with	name 'calendar' 'page' 'pages' 'daisy',
 	after CalendarAfter,
-	number [0 5],
+	number 5,
   has	scenery;
 
 Object Airing_Cupboard "Airing Cupboard"	! 109 / 0x6d
@@ -2411,7 +2411,7 @@ Object complicated_looking_bomb "complicated-looking bomb"	! 205 / 0xcd
 	initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
 	description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
 	time_left 0,
-	number [0 0],
+	number 0,
 	daemon BombDaemon,
   has	concealed container open;
 
@@ -2419,7 +2419,7 @@ Object -> timer_detonator "timer-detonator"	! 206 / 0xce
   with	name 'timer' 'detonater' 'detonator',
 	after TimerAfter,
 	time_left 10,
-	number [0 0],
+	number 0,
 	daemon TimerDaemon,
 	devil_hint "Time flies down here, you know. Eternity simply breezes by.",
 	angel_hint "Good photographic gear that. You didn't get it from a... well, a bomb, I hope.",
@@ -2676,7 +2676,7 @@ Object -> Homer "Homer"	! 240 / 0xf0
 	life routine108344,
 	initial "The blind poet Homer half-slumbers here, clutching his syrinx (or Pan-pipes) to himself.",
 	description "Homer is wearing a Columbo-style raincoat.",
-	number [0 0],
+	number 0,
   has	animate proper;
 
 Object -> -> Pan_pipes "Pan pipes"	! 241 / 0xf1
@@ -3607,7 +3607,7 @@ Object fifty_franc_note "fifty-franc note"	! 359 / 0x167
 Object ghost_of_yourself "ghost of yourself"	! 360 / 0x168
   with	after YourGhostAfter,
 	description "You are transparent like a ghost.",
-	number [0 0],
+	number 0,
 	capacity 1,
   has	;
 
@@ -3791,7 +3791,7 @@ Object The_Catacombs "Catacombs"	! 383 / 0x17f
 	d_to nothing,
 	description "A large, grisly cave, deep under the garden, dimly lit and eerie. Darkness curls around the natural pillars of rock like a mist: and there is a peculiar, vaguely familiar odour to it. The only obvious routes out are an uneven passage climbing to the north and a crawl west.",
 	cant_go "You bumped into something unpleasant there.",
-	number [0 0],
+	number 0,
 	section T_CATACOMBS,
   has	;
 
@@ -3810,7 +3810,7 @@ Object CR "CR"	! 385 / 0x181
 	s_to nothing,
 	e_to CREast,
 	description "The cartoonist Heath Robinson used to specialise in drawings of fantastically complicated machines of string, pulleys, levers, counterweights, cogs, mice running about on wheels and the like. Just such a contraption fills the west end of this room, though most of the workings are behind a glass wall which, although running with age, is as solid as the day it was built. The parts are very old (hand-made, not machined) but uncorroded.^^The only way out appears to be via the crawl to the east.",
-	number [0 2],
+	number 2,
 	short CRShort,
 	section T_CATACOMBS,
   has	;
@@ -13767,7 +13767,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             "It is already running!";
         }
         StartTimer(selfobj,10);
-        selfobj.number = 1[?];
+        selfobj.number = 1;
         "You wind back the timer to ten minutes, and off it goes.";
     }
     rfalse;
@@ -14202,21 +14202,21 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (Homer hasnt general) {
             "Homer is asleep.";
         }
-        if (Homer.number == 3[s_obj?]) {
+        if (Homer.number == 3) {
             "Homer glares back.";
         }
         if (Homer.number == 0) {
             if (special_word == 29730) {
-                Homer.number = 1[?];
+                Homer.number = 1;
                 "~Mph,~ he says (untranslatably). ~But can ya see the future?  Who's gonna rule Alexandria after the fall of the guy they're gonna call Alexander the Big?~";
             }
           .label108857;
             routine109044();
             "~Hopeless,~ he says dismissively and falls asleep.";
         }
-        if (Homer.number == 1[?]) {
+        if (Homer.number == 1) {
             if (special_word == 37650) {
-                Homer.number = 2[?];
+                Homer.number = 2;
                 "~What's your favorite color?~";
             }
             jump label108857;
@@ -14224,7 +14224,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         if (special_word == 41664) {
             Homer.initial = "Homer glares at you through sightless eyes.";
             move Pan_pipes to player;
-            Homer.number = 3[s_obj?];
+            Homer.number = 3;
             Achieved(SCORE_HOMER);
             "Homer reluctantly hands you the syrinx. ~Now leave me alone, I got six books of the Iliad left to compose.~";
         }
@@ -16596,7 +16596,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: CR.short
 
 [ CRShort ;	! 127464 / 0x1f1e8
-    if (selfobj.number == 3[s_obj?]) {
+    if (selfobj.number == 3) {
         print "Contraption Reflection";
     } else {
         print "Contraption Room";
@@ -16607,7 +16607,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ! References: CR.e_to
 
 [ CREast ;	! 127508 / 0x1f214
-    if (selfobj.number == 3[s_obj?]) {
+    if (selfobj.number == 3) {
         "You bump into an invisible barrier - perhaps the edge of the reflection.";
     }
     return 383[The_Catacombs?];
@@ -16625,12 +16625,12 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                 selfobj.s_to = metal_wall;
                 selfobj.n_to = nothing;
                 metal_wall.w_to = ne_obj;
-                selfobj.number = 3[s_obj?];
+                selfobj.number = 3;
             } else {
                 selfobj.n_to = metal_wall;
                 selfobj.s_to = nothing;
                 metal_wall.w_to = w_obj;
-                selfobj.number = 2[?];
+                selfobj.number = 2;
             }
             AdjustSlide(0,2);
             AdjustSlide(3,5);
@@ -16658,7 +16658,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ MetalWallInitial ;	! 127832 / 0x1f358
     print "The whole ";
-    if (CR.number == 2[?]) {
+    if (CR.number == 2) {
         print "north";
     } else {
         print "south";
@@ -16695,7 +16695,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ GridDesc ;	! 128252 / 0x1f4fc
     print "There are fourteen pieces in the grid, and one gap. The pieces have letters upon them ";
-    if (CR.number == 3[s_obj?]) {
+    if (CR.number == 3) {
         print "(in reflected script) ";
     }
     print "and are arranged as follows:^^";
