@@ -17368,19 +17368,19 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: The_Spirit_World.before
 
-[ SpiritWorldBefore local1 ;	! 133704 / 0x20a48
+[ SpiritWorldBefore i ;	! 133704 / 0x20a48
     if (action == ##Look) {
-        local1 = The_Spirit_World.number;
-        if (local1 == 1[?]) {
+        i = The_Spirit_World.number;
+        if (i == 1) {
             "^The tomb seems older now, weighed under with centuries.";
         }
-        if (local1 == 2[?]) {
+        if (i == 2) {
             "^The tomb swelters now, a thousand years old.";
         }
-        if (local1 == 3[s_obj?]) {
+        if (i == 3) {
             "^The tomb is beautifully well-preserved, but it seems quite ancient.";
         }
-        if (local1 == 4[e_obj?]) {
+        if (i == 4) {
             print "^By now the tomb might be two thousand years old.^";
             if (Napoleonic_officers in The_Spirit_World) {
                 "^And at last it has been opened.";
