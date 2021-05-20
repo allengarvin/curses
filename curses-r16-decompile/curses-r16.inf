@@ -16712,7 +16712,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ SlideSub i local2 local3 ;	! 128436 / 0x1f5b4
+[ SlideSub i j col ;	! 128436 / 0x1f5b4
     if (location ~= CR) {
         "~Slide~ is inappropriate here.";
     }
@@ -16724,27 +16724,27 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (i <= 14) {
         if (henri_post_array->i == noun) {
             if (i >= 3) {
-                local2 = i - 3;
-                if (henri_post_array->local2 == 0) {
+                j = i - 3;
+                if (henri_post_array->j == 0) {
                     jump label128652;
                 }
             }
             if (i < 12) {
-                local2 = i + 3;
-                if (henri_post_array->local2 == 0) {
+                j = i + 3;
+                if (henri_post_array->j == 0) {
                     jump label128652;
                 }
             }
-            local3 = i % 3;
-            if (local3 ~= 0) {
-                local2 = i - 1;
-                if (henri_post_array->local2 == 0) {
+            col = i % 3;
+            if (col ~= 0) {
+                j = i - 1;
+                if (henri_post_array->j == 0) {
                     jump label128652;
                 }
             }
-            if (local3 ~= 2[?]) {
-                local2 = i + 1;
-                if (henri_post_array->local2 == 0) {
+            if (col ~= 2) {
+                j = i + 1;
+                if (henri_post_array->j == 0) {
                     jump label128652;
                 }
             }
@@ -16763,8 +16763,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (slide_moves == 5) {
         set_flag_array(42);
     }
-    local3 = henri_post_array->i;
-    henri_post_array->local2 = local3;
+    col = henri_post_array->i;
+    henri_post_array->j = col;
     henri_post_array->i = 0;
     print "You slide '", (char) noun + 65 - 1, "' into the gap, leaving the grid looking like:^^";
     DisplayWholeGrid();
@@ -16782,25 +16782,25 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     if (CR hasnt general) {
         give CR general;
         print "^The cannonball drops out of the metal hand, and falls into the higher basket, which plunges down, hurling the other basket upwards, ";
-        local2 = child(hanging_cord);
-        if (local2 == 0) {
+        j = child(hanging_cord);
+        if (j == 0) {
             "but it must have been empty.";
         }
-        local2 = sibling(local2);
+        j = sibling(j);
         print "and projecting ";
-        if (local2 == 0) {
+        if (j == 0) {
             print "something";
         } else {
             print "some things";
         }
         print " up the hole in the corner.^";
         if (CR has light) {
-            local2 = child(hanging_cord);
+            j = child(hanging_cord);
           .label129019;
-            if (local2 ~= 0) {
-                i = sibling(local2);
-                move local2 to Lawn_Ornaments;
-                local2 = i;
+            if (j ~= 0) {
+                i = sibling(j);
+                move j to Lawn_Ornaments;
+                j = i;
                 jump label129019;
             }
             move ancient_well to Lawn_Ornaments;
