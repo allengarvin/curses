@@ -13025,36 +13025,36 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Bohemia.initial
 
-[ BohemiaInitial local1 ;	! 95408 / 0x174b0
-    local1 = random(10);
-    if (local1 == 1[?]) {
+[ BohemiaInitial i ;	! 95408 / 0x174b0
+    i = random(10);
+    if (i == 1) {
         Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a yellow chair.";
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of lilies on a pond.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a chateau in Aix-en-Provence.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of nude bathers.";
     }
-    if (local1 == 5[w_obj?]) {
+    if (i == 5) {
         Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a waitress at a bar.";
     }
-    if (local1 == 6[ne_obj?]) {
+    if (i == 6) {
         Impressionist_painting.initial = "One whole wall is an Cubist mural painting of a woman with a plate of fish on her head.";
     }
-    if (local1 == 7[se_obj?]) {
+    if (i == 7) {
         Impressionist_painting.initial = "One whole wall is an abstract Cubist mural painting.";
     }
-    if (local1 == 8[nw_obj?]) {
+    if (i == 8) {
         Impressionist_painting.initial = "One whole wall is an Pre-Raphaelite mural painting of the Virgin Mary looking up at the light.";
     }
-    if (local1 == 9[sw_obj?]) {
+    if (i == 9) {
         Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a woman with a parasol.";
     }
-    if (local1 == 10[u_obj?]) {
+    if (i == 10) {
         Impressionist_painting.initial = "One whole wall is an pointillist mural painting of a scene in a park by a lake.";
     }
     rfalse;
