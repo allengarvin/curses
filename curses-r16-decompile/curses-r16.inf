@@ -18609,23 +18609,23 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     return 493[Bell_Tower?];
 ];
 
-[ DevilConsultTopic w local2 local3 local4 local5 local6 ;	! 144788 / 0x23594
+[ AngelDevilConsultTopic tbl w local3 local4 local5 local6 ;	! 144788 / 0x23594
     local3 = 0;
   .label144792;
     if (1[?] == 1[?]) {
         local5 = 1[?];
         local6 = 0;
-        if (w-->local3 == 65535[?]) {
+        if (tbl-->local3 == 65535[?]) {
             rfalse;
         }
-        if (w-->local3 < 20 && w-->local3 >= 0) {
-            local5 = w-->local3;
+        if (tbl-->local3 < 20 && tbl-->local3 >= 0) {
+            local5 = tbl-->local3;
             ++local3;
         }
         local4 = 0;
       .label144842;
         if (local4 < local5) {
-            if (local2 == w-->local3) {
+            if (w == tbl-->local3) {
                 local6 = 1[?];
             }
             ++local4;
@@ -18633,7 +18633,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             jump label144842;
         }
         if (local6 == 1[?]) {
-            return w-->local3;
+            return tbl-->local3;
         }
         ++local3;
         jump label144792;
@@ -18642,13 +18642,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ DemonQuestion w topic ;	! 144884 / 0x235f4
-    topic = DevilConsultTopic(25321[?],w);
+    topic = AngelDevilConsultTopic(25321[?],w);
     if (topic ~= 0) {
         print (string) topic;
         new_line;
         rtrue;
     }
-    if (DevilConsultTopic(25577[?],w) ~= 0) {
+    if (AngelDevilConsultTopic(25577[?],w) ~= 0) {
         "~That's a question you'd better put to my colleague in the Other Place,~ says the demon smoothly. ~Try something else.~";
     }
     print "~That's not something I am empowered to answer,~ says the demon with a nervous glance behind him. ~Try something else.~^";
@@ -18656,13 +18656,13 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 ];
 
 [ AngelQuestion w topic ;	! 145076 / 0x236b4
-    topic = DevilConsultTopic(25577[?],w);
+    topic = AngelDevilConsultTopic(25577[?],w);
     if (topic ~= 0) {
         print (string) topic;
         new_line;
         rtrue;
     }
-    if (DevilConsultTopic(25321[?],w) ~= 0) {
+    if (AngelDevilConsultTopic(25321[?],w) ~= 0) {
         "~That's a question you'd better put to my colleague in the Other Place,~ says the angel smoothly. ~Try something else.~^";
     }
     print "~That's not something I am empowered to answer,~ says the angel with a beatific smile upward. ~Try something else.~^";
