@@ -4988,7 +4988,7 @@ Global Mousy_y = 3;
 Global MouseUnderstandsMask;
 Global card_ptr;
 Global hollow_man_cnt;
-Global global149;
+Global poseiden_warning;
 Global global150;
 Global global151 = 25228[?];
 Global global152 = 4[e_obj?];
@@ -13897,8 +13897,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         "Salt water!  No thanks.";
     }
     if (action == ##Swim) {
-        if (global149 == 0) {
-            global149 = 1[?];
+        if (poseiden_warning == false) {
+            poseiden_warning = true;
             "Mmm. Here is your first and only warning: the sea is the domain of Poseidon, and he's not what you'd call a gentleman.";
         }
         deadflag = MYTH;
