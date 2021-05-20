@@ -2389,7 +2389,7 @@ Object Ruined_Castle_Cafe "Ruined Castle Cafe"
 	initial CafeInitial,
 	description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
 	cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
-	each_turn routine101652,
+	each_turn CafeEachTurn,
 	section T_TAROT,
   has	light scored;
 
@@ -13547,7 +13547,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ routine101652 ;	
+[ CafeEachTurn ;	
     if (complicated_looking_bomb hasnt concealed) {
         new_line;
         BombTicks();
