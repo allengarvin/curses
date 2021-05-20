@@ -4959,7 +4959,7 @@ Global rod_identity = 1;
 Global c_style;
 Global lt_value;
 Global listing_together;
-Global global119;
+Global listing_size;
 Global wlf_indent;
 Global inventory_style;
 Global keep_silent;
@@ -19756,7 +19756,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                     k2 = ZRegion(j.nw_to);
                     if (k2 == 2[?] or 3[s_obj?]) {
                         q = j;
-                        global119 = 1[?];
+                        listing_size = 1;
                         l = k;
                         m = i;
                       .label158943;
@@ -19769,11 +19769,11 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                                 jump label158963;
                             }
                             if (q.nw_to == j.nw_to) {
-                                ++global119;
+                                ++listing_size;
                             }
                             jump label158943;
                         }
-                        if (global119 == 1[?]) {
+                        if (listing_size == 1) {
                             ! no code
                         } else {
                             if (c_style & 2 ~= 0) {
@@ -19789,7 +19789,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
                                 q = 0;
                                 l = 0;
                               .label159071;
-                                if (l < global119) {
+                                if (l < listing_size) {
                                     q = q + sizes_p->(l + i);
                                     ++l;
                                     jump label159071;
