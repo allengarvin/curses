@@ -14174,18 +14174,18 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 ! References: Eraina_Taverna.each_turn
 
-[ TavernEachTurn local1 ;	! 106824 / 0x1a148
-    local1 = random(13);
-    if (local1 == 1[?]) {
+[ TavernEachTurn i ;	! 106824 / 0x1a148
+    i = random(13);
+    if (i == 1) {
         "^The diners grumble and play backgammon viciously.";
     }
-    if (local1 == 2[?]) {
+    if (i == 2) {
         "^The bartender gives you a hard stare.";
     }
-    if (local1 == 3[s_obj?]) {
+    if (i == 3) {
         "^A fight breaks out, over an obscure question to do with somebody's second cousin.";
     }
-    if (local1 == 4[e_obj?]) {
+    if (i == 4) {
         "^The gentle sound of bazouki music strikes up in the background, gradually rising to an intolerable pitch. After a moment comes a dull thud and a strangled noise, then blessed quiet.";
     }
     rfalse;
