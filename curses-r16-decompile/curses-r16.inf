@@ -5002,7 +5002,7 @@ Global CouncilCnt;
 Global DreamCnt;
 Global OzoneSmelled;
 Global slide_moves;
-Global global164;
+Global PlanckWarning;
 Global SpiritCnt;
 Global MummyWarning;
 Global PalaceCnt;
@@ -16875,8 +16875,8 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 
 [ DialAfter ;	! 129376 / 0x1f960
     if (action == ##Turn) {
-        if (global164 == 0) {
-            global164 = 1[?];
+        if (PlanckWarning == false) {
+            PlanckWarning = true;
             set_flag_array(12);
             "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
         }
