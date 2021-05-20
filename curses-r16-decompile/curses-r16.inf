@@ -11018,7 +11018,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             print "^The south wall is lit up by the projector.^";
         } else {
             print "^The south wall displays ";
-            routine79532(local1);
+            DisplayCardDesc(local1);
         }
         if (ball_polished == true) {
             "^A beam of white light points directly backward from the projector, through the north doorway into the Observatory.";
@@ -11084,14 +11084,14 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
 [ ProjectorBefore local1 ;	! 78820 / 0x133e4
     if (action == ##Receive) {
         if (selfobj has on) {
-            routine79624(noun);
+            ToggleSouthWall(noun);
             rtrue;
         }
         rfalse;
     }
     if (action == ##Release) {
         if (selfobj has on) {
-            routine79624(0);
+            ToggleSouthWall(nothing);
             rtrue;
         }
         rfalse;
@@ -11110,7 +11110,7 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
             new_line;
             rtrue;
         }
-        routine79624(local1);
+        ToggleSouthWall(local1);
         rtrue;
     }
     if (action == ##SwitchOff) {
@@ -11139,17 +11139,17 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
         }
         if (local1 == 164[Death_card?]) {
             print "^And find yourself in a golden cornfield on a sunny afternoon. You have just time to admire the ears of wheat before the scythe of the Grim Reaper cuts your soul from your body.^";
-            routine79704(local1);
+            FakeDie(local1);
             rtrue;
         }
         if (local1 == 166[Drowned_Sailor_card?]) {
             print "^You are underwater, in the wreck of a ship, surrounded by the skeletons of its former crew, whom you abruptly join as your air runs out.^";
-            routine79704(local1);
+            FakeDie(local1);
             rtrue;
         }
         if (local1 == 165[Fool_card?]) {
             print "^And find yourself stepping off a cliff. All is well for a moment, and then like a cartoon character you notice there is no ground beneath you and you plummet to a stony death far below.^";
-            routine79704(local1);
+            FakeDie(local1);
             rtrue;
         }
         give local1 general;
@@ -11159,36 +11159,36 @@ Array preactions_table --> IsDirection;	! 29185 (0x7201)
     rfalse;
 ];
 
-[ routine79532 local1 ;	! 79532 / 0x136ac
+[ DisplayCardDesc o ;	! 79532 / 0x136ac
     print "the picture on ";
-    Defart(local1);
-    if (local1.n_to == nothing) {
+    Defart(o);
+    if (o.n_to == nothing) {
         ".";
     }
     ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
 ];
 
-[ routine79624 local1 ;	! 79624 / 0x13708
-    if (local1 ~= 0) {
-        if (local1.n_to ~= nothing) {
-            south_wall.n_to = local1.n_to;
+[ ToggleSouthWall o ;	! 79624 / 0x13708
+    if (o ~= nothing) {
+        if (o.n_to ~= nothing) {
+            south_wall.n_to = o.n_to;
             give south_wall ~concealed;
         }
         print "The south wall lights up with ";
-        routine79532(local1);
+        DisplayCardDesc(o);
         rtrue;
     }
     give south_wall concealed;
     "The south wall becomes blank again.";
 ];
 
-[ routine79704 local1 ;	! 79704 / 0x13758
+[ FakeDie card ;	! 79704 / 0x13758
     print "^^    ";
     style bold;
     print "*** You have died ***";
     style roman;
     print "^^Or have you?  No... this isn't quite the end. You see an intense blue-white light at the end of what seems a tunnel, and drift toward it until you realise that you are staring, dazed, into the light of the slide projector, and have hardly moved at all.^";
-    give local1 general;
+    give card general;
     rtrue;
 ];
 
