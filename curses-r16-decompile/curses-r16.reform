@@ -1130,22 +1130,22 @@ Word	zzzzzzzzz	zzzzzzzzz
 ! parser.h
 Routine 0xa31c	Main
 Routine 0xa324	Keyboard a_buffer a_table nw i:int w:dictword x1 x2
-Routine 0xa484	Parser  results   syntax line num_lines line_address i j token:int l m
+Routine 0xa484	Parser results syntax line num_lines line_address i j token:int l m
 Routine 0xb340	NumberWord:int w:dictword
 Routine 0xb3f8	Descriptors context o:dictword flag:int n
 Routine 0xb52c	CreatureTest obj
 Routine 0xb548	ParseObjectList results token:int l o:dictword i j k and_parity:int single_object desc_wn many_flag
-Routine 0xba94	NounDomain domain1 domain2 context  first_word i j k l oldw answer_words marker
+Routine 0xba94	NounDomain domain1 domain2 context first_word i j k l oldw answer_words marker
 Routine 0xbe58	Adjudicate context i j k good_ones last n ultimate flag offset
-Routine 0xc228	ReviseMulti second_p  i low
-Routine 0xc378	ScoreMatchL  its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
-Routine 0xc530	BestGuess  earliest its_score best i
+Routine 0xc228	ReviseMulti second_p i low
+Routine 0xc378	ScoreMatchL its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
+Routine 0xc530	BestGuess earliest its_score best i
 Routine 0xc5d0	Identical o1 o2 p1 p2 n1 n2 i:int j flag
 Routine 0xc6d4	PrintCommand from emptyf i j k f
-Routine 0xc790	CantSee:etype_enum  i w e:etype_enum
+Routine 0xc790	CantSee:etype_enum i w e:etype_enum
 Routine 0xc7d0	MultiAdd o:object i:int j
 Routine 0xc808	MultiSub o:object i j:int k et:etype_enum
-Routine 0xc858	MultiFilter attr  i j o
+Routine 0xc858	MultiFilter attr i j o
 Routine 0xc880	UserFilter obj
 Routine 0xc8a4	MoveWord at1 b2 at2 x y
 Routine 0xc8d4	SearchScope domain1 domain2 context i
@@ -1157,7 +1157,7 @@ Routine 0xcadc	ScopeWithin_O domain nosearch context i ad n
 Routine 0xcbe8	AddToScope obj:object
 Routine 0xcc10	MakeMatch obj:object quality i
 Routine 0xccb0	TryGivenObject obj:object threshold k w j
-Routine 0xce10	Refers obj:object wd   k l m
+Routine 0xce10	Refers obj:object wd k l m
 Routine 0xce4c	NounWord:int i:dictword
 Routine 0xce94	AdjectiveWord i j
 Routine 0xceb4	AdjectiveAddress number m:routine
