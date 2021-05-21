@@ -8264,8 +8264,8 @@ Array preactions_table --> IsDirection;
             special_word = special_number1;
         }
       .labelXXX;
-        inp1 = 0;
-        inp2 = 0;
+        inp1 = nothing;
+        inp2 = nothing;
         i = inputobjs-->1;
         if (i >= 1) {
             inp1 = inputobjs-->2;
@@ -8275,11 +8275,11 @@ Array preactions_table --> IsDirection;
         }
         noun = inp1;
         second = inp2;
-        if (inp1 == 1[?]) {
+        if (inp1 == compass) {
             noun = special_number1;
         }
-        if (inp2 == 1[?]) {
-            if (inp1 == 1[?]) {
+        if (inp2 == compass) {
+            if (inp1 == compass) {
                 second = special_number2;
             } else {
                 second = special_number1;
@@ -8301,7 +8301,7 @@ Array preactions_table --> IsDirection;
                     }
                 }
             }
-        } else if (i == 0 || inp1 ~= 0) {
+        } else if (i == 0 || inp1 ~= nothing) {
             Process();
         } else {
             multiflag = 1;
@@ -8330,7 +8330,7 @@ Array preactions_table --> IsDirection;
                     inp1 = l;
                     noun = l;
                     Process();
-                    inp1 = 0;
+                    inp1 = nothing;
                     noun = nothing;
                     ++k;
                     jump labelXXX;
@@ -10380,25 +10380,25 @@ Array preactions_table --> IsDirection;
         "Perhaps you should say which way to push Austin.";
     }
     if (action == ##PushDir) {
-        if (location == Attic && inp2 == 2[?] or 4[e_obj?] or 3[s_obj?]) {
+        if (location == Attic && inp2 == n_obj or e_obj or s_obj) {
             ! no code
-        } else if (location == Old_Winery && inp2 == 5[w_obj?] or 3[s_obj?]) {
+        } else if (location == Old_Winery && inp2 == w_obj or s_obj) {
             ! no code
-        } else if (location == Conservatory && inp2 == 5[w_obj?] or 4[e_obj?]) {
+        } else if (location == Conservatory && inp2 == w_obj or e_obj) {
             ! no code
-        } else if (location == Old_Furniture && inp2 == 2[?] or 7[se_obj?]) {
+        } else if (location == Old_Furniture && inp2 == n_obj or se_obj) {
             ! no code
-        } else if (location == Servants_Room && inp2 == 5[w_obj?]) {
+        } else if (location == Servants_Room && inp2 == w_obj) {
             ! no code
-        } else if (location == Over_the_East_Wing && inp2 == 8[nw_obj?] or 3[s_obj?] or 5[w_obj?]) {
+        } else if (location == Over_the_East_Wing && inp2 == nw_obj or s_obj or w_obj) {
             ! no code
-        } else if (location == Over_the_East_Wing or Dark_Room && inp2 == 4[e_obj?]) {
+        } else if (location == Over_the_East_Wing or Dark_Room && inp2 == e_obj) {
             ! no code
-        } else if (location == East_Annexe && inp2 == 5[w_obj?]) {
+        } else if (location == East_Annexe && inp2 == w_obj) {
             ! no code
-        } else if (location == Disused_Observatory && inp2 == 2[?] or 3[s_obj?]) {
+        } else if (location == Disused_Observatory && inp2 == n_obj or s_obj) {
             ! no code
-        } else if (location == Souvenirs_Room && inp2 == 2[?]) {
+        } else if (location == Souvenirs_Room && inp2 == n_obj) {
             ! no code
         } else {
             "Austin refuses to go that way.";
@@ -15198,35 +15198,35 @@ Array preactions_table --> IsDirection;
         }
         x = 100;
         y = 100;
-        if (inp1 == 2[?]) {
+        if (inp1 == n_obj) {
             x = MazeX;
             y = MazeY - 1;
         }
-        if (inp1 == 4[e_obj?]) {
+        if (inp1 == e_obj) {
             x = MazeX + 1;
             y = MazeY;
         }
-        if (inp1 == 3[s_obj?]) {
+        if (inp1 == s_obj) {
             x = MazeX;
             y = MazeY + 1;
         }
-        if (inp1 == 5[w_obj?]) {
+        if (inp1 == w_obj) {
             x = MazeX - 1;
             y = MazeY;
         }
-        if (inp1 == 6[ne_obj?]) {
+        if (inp1 == ne_obj) {
             x = MazeX + 1;
             y = MazeY - 1;
         }
-        if (inp1 == 8[nw_obj?]) {
+        if (inp1 == nw_obj) {
             x = MazeX - 1;
             y = MazeY - 1;
         }
-        if (inp1 == 7[se_obj?]) {
+        if (inp1 == se_obj) {
             x = MazeX + 1;
             y = MazeY + 1;
         }
-        if (inp1 == 9[sw_obj?]) {
+        if (inp1 == sw_obj) {
             x = MazeX - 1;
             y = MazeY + 1;
         }
@@ -17158,7 +17158,7 @@ Array preactions_table --> IsDirection;
             if (selfobj == second_socket) {
                 model_golden_sceptre.initial = "The sceptre projects from the second socket like a handle.";
             }
-            if (inp2 == 429[third_socket?]) {
+            if (inp2 == third_socket) {
                 model_golden_sceptre.initial = "The sceptre projects from the third socket like a handle.";
             }
             move model_golden_sceptre to Quite_an_Undertaking;
@@ -17227,7 +17227,7 @@ Array preactions_table --> IsDirection;
     if (verb ~= ##Go) {
         "There's very little room, and the air is running out.";
     }
-    if (mummy_case hasnt general || inp1 ~= 10[u_obj?]) {
+    if (mummy_case hasnt general || inp1 ~= u_obj) {
         "There's nowhere to go.";
     }
     if (selfobj has general) {
@@ -17542,7 +17542,7 @@ Array preactions_table --> IsDirection;
 
 [ CallimachusLife o ;   
     if (action == ##Give) {
-        if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && inp1 == 451[tube_with_a_kappa_on?])) {
+        if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && inp1 == tube_with_a_kappa_on)) {
             "He takes the tube, sees the letter on it, looks exasperated, clouts you over the head with the tube and pushes it back into your arms.";
         }
         if (noun == tube_with_an_alpha_on or tube_with_a_kappa_on) {
