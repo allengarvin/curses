@@ -1238,7 +1238,7 @@ Routine 0xf904 LagachLife i:int r:object flag:bool
 Routine 0xfae8 TarotAfter
 Routine 0xfb14 TarotParseName i:int w:dictword
 Routine 0xfb50 TarotShort
-Routine 0xfb90 ConsultableParsename
+Routine 0xfb90 ConsultableParsename:int
 Routine 0xfbac TorchAfter
 Routine 0xfc20 TorchBefore bat:object i:int
 Routine 0xfdf4 TorchTimer o:object n:int
@@ -1627,8 +1627,8 @@ Routine 0x21990 GamblingSailorEachTurn n:int
 Routine 0x21a5c InscribedDieAfter i:int
 Routine 0x21b14 EtruscanInt i:int
 Routine 0x21b4c BirdcageEachTurn i:int
-Routine 0x21c00 TubeParse i w:dictword
-Routine 0x21c3c ScrollParse i w:dictword
+Routine 0x21c00 TubeParse:int i w:dictword
+Routine 0x21c3c ScrollParse:int i w:dictword
 Routine 0x21c7c OilRoomAfter
 Routine 0x21d04 OilTroughsAfter
 Routine 0x21d20 SpindleAfter
@@ -1871,8 +1871,8 @@ Routine 0x2c2d4 StackSub:bool
 Routine 0x2c2dc TurnWithSub:bool
 Routine 0x2c330 StartSub:bool
 Routine 0x2c34c IsDirection:bool
-Routine 0x2c354 ConTopicJ w:dictword
-Routine 0x2c3a8 ConTopic w:dictword
+Routine 0x2c354 ConTopicJ:int w:dictword
+Routine 0x2c3a8 ConTopic:int w:dictword
 Routine 0x2c3d4 Stub10
 Routine 0x2c3d8 Stub9
 Routine 0x2c3dc Stub8
@@ -1884,7 +1884,7 @@ Routine 0x2c3f8 Stub3 i:int
 Routine 0x2c400 Stub2 i:int
 Routine 0x2c408 Stub1 i:int j:int
 Routine 0x2c410 NegativeOne:int
-Routine 0x2c414 ConTopicI w:dictword
+Routine 0x2c414 ConTopicI:int w:dictword
 Routine 0x2c440 AnotherWord w:dictword
 Routine 0x2c44c PaceOrPaces d:dictword
 Routine 0x2c468 SomeParse w:dictword n:int i
