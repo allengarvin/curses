@@ -20300,7 +20300,7 @@ Array preactions_table --> IsDirection;
         }
         verb = ##PutOn;
     }
-    if (IndirectlyContains(noun,second) == 1[?]) {
+    if (IndirectlyContains(noun,second) == true) {
         return L__M(##PutOn,2);
     }
     if (second hasnt supporter) {
@@ -20372,7 +20372,7 @@ Array preactions_table --> IsDirection;
     if (second hasnt open) {
         return L__M(##Insert,3);
     }
-    if (IndirectlyContains(noun,second) == 1[?]) {
+    if (IndirectlyContains(noun,second) == true) {
         return L__M(##Insert,5);
     }
     if (noun has worn) {
