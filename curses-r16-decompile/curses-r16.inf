@@ -5797,7 +5797,7 @@ Array preactions_table --> IsDirection;
         }
         if (verb_word == 0 || verb_word->6 & 1 == 0) {
             wn = verb_wordnum;
-            l = NounDomain(1[?],0,0);
+            l = NounDomain(true,0,0);
             if (l == 10000) {
                 jump labelXXX;
             }
@@ -23742,7 +23742,7 @@ Array preactions_table --> IsDirection;
     }
     i = wn;
     if (w ~= 'invalidDictWord65535') {
-        j = NounDomain(1[?],0,0);
+        j = NounDomain(true,0,0);
     } else {
         j = 65535;
     }
