@@ -7233,7 +7233,7 @@ Array preactions_table --> IsDirection;
         }
         its_score = its_score + ChooseObjects(obj,2);
         if (its_score < threshold) {
-            match_list-->i = 65535[?];
+            match_list-->i = 65535;
         } else {
             match_classes-->i = its_score;
             if (parser_trace >= 4) {
@@ -7283,7 +7283,7 @@ Array preactions_table --> IsDirection;
         return 65535[?];
     }
     i = match_list-->earliest;
-    match_list-->earliest = 65535[?];
+    match_list-->earliest = 65535;
     return i;
 ];
 
