@@ -1137,8 +1137,8 @@ Routine 0xa484 Parser results syntax line num_lines line_address i j token:int l
 Routine 0xb340 NumberWord:int w:dictword
 Routine 0xb3f8 Descriptors context o:dictword flag:int n
 Routine 0xb52c CreatureTest obj
-Routine 0xb548 ParseObjectList results token:int l o:dictword i j k and_parity:int single_object desc_wn many_flag
-Routine 0xba94 NounDomain:int domain1 domain2 context first_word i j k l oldw answer_words marker
+Routine 0xb548 ParseObjectList results token:int l:int o:dictword i j k and_parity:int single_object desc_wn many_flag
+Routine 0xba94 NounDomain:int domain1 domain2 context first_word i j k l:int oldw answer_words marker
 Routine 0xbe58 Adjudicate:int context i j k good_ones last n ultimate flag:int offset
 Routine 0xc228 ReviseMulti second_p i low
 Routine 0xc378 ScoreMatchL:int its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
