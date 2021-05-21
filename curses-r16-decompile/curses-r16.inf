@@ -23685,11 +23685,11 @@ Array preactions_table --> IsDirection;
 [ CroquetFunc i j ;     
     i = SomeParse();
     if (i == 0) {
-        if (AnotherWord() == 65535[?]) {
+        if (AnotherWord() == 65535) {
             return 65535;
         }
         j = CroquetMove();
-        if (AnotherWord() == 65535[?]) {
+        if (AnotherWord() == 65535) {
             i = 1[?];
         } else {
             i = SomeParse();
