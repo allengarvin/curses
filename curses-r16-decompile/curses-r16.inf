@@ -7422,7 +7422,7 @@ Array preactions_table --> IsDirection;
         e = ITGONE_PE;
     }
     i = parent(actor);
-    if (i has visited && Refers(i,w) == 1[?]) {
+    if (i has visited && Refers(i,w) == 1) {
         e = SCENERY_PE;
     }
     if (etype > e) {
@@ -9314,7 +9314,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1[?]) {
+        if (Refers(selfobj,w) == 1) {
             ++i;
         } else if (w == 'rods') {
             parser_action = ##PluralFound;
@@ -9836,7 +9836,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1[?]) {
+        if (Refers(selfobj,w) == 1) {
             ++i;
         } else if (w == 'cards') {
             parser_action = ##PluralFound;
@@ -17463,7 +17463,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1[?]) {
+        if (Refers(selfobj,w) == 1) {
             ++i;
         } else if (w == 'tubes') {
             parser_action = ##PluralFound;
@@ -17484,7 +17484,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1[?]) {
+        if (Refers(selfobj,w) == 1) {
             ++i;
         } else if (w == 'poems' or 'scrolls') {
             parser_action = ##PluralFound;
