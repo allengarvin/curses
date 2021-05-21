@@ -6592,7 +6592,7 @@ Array preactions_table --> IsDirection;
             print "  [Read special word at word number ", wn, "]^";
         }
         special_word = NextWord();
-        single_object = 1[?];
+        single_object = 1;
     } else if (token == 8) {
         l = TryNumber(wn++);
         if (l == 64536) {
@@ -6607,7 +6607,7 @@ Array preactions_table --> IsDirection;
         } else {
             special_number2 = l;
         }
-        single_object = 1[?];
+        single_object = 1;
     } else if (token >= 48 && token < 80) {
         l = (preactions_table-->(token - 48))();
         if (parser_trace >= 3) {
