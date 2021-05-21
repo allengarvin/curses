@@ -13,828 +13,828 @@ Enum score_index SCORE_HAMBURG=0 SCORE_TORCH=1 SCORE_JOSHUA=2 SCORE_SECRETDOOR=3
 
 
 
-MD5	f06a42a29a5a4e6aa70958c9ae4c37cd
+MD5 f06a42a29a5a4e6aa70958c9ae4c37cd
 
-Property 1	name:dictwords
-Property 2	after:routines
-Property 3	before:routine
-Property 4	life:routine
-Property 5	n_to:thing
-Property 6	s_to:thing
-Property 7	e_to:thing
-Property 8	w_to:thing
-Property 9	ne_to:thing
-Property 10	se_to:thing
-Property 11	nw_to:thing
-Property 12	nw_to:thing ! reused as list_together
-Property 13	u_to:thing
-Property 14	d_to:thing
+Property 1 name:dictwords
+Property 2 after:routines
+Property 3 before:routine
+Property 4 life:routine
+Property 5 n_to:thing
+Property 6 s_to:thing
+Property 7 e_to:thing
+Property 8 w_to:thing
+Property 9 ne_to:thing
+Property 10 se_to:thing
+Property 11 nw_to:thing
+Property 12 nw_to:thing ! reused as list_together
+Property 13 u_to:thing
+Property 14 d_to:thing
 Property 15 grammar
-Property 16	orders:thing
-Property 17	initial:thing
-Property 18	description:string
-Property 19	describe:thing
-Property 20	article:string
-Property 21	cant_go:thing
-Property 22	found_in:objwords
-Property 23	number:int
-Property 24	time_left:int
-Property 25	daemon:routine
-Property 26	each_turn:routine
-Property 27	capacity:int
-Property 28	short:thing
-Property 29	parse_name:thing
-Property 30	section:game_area
-Property 31	rod_assoc:object
-Property 32	rod_word:dictword
-Property 33	rod_action:routine
-Property 34	devil_hint:string
-Property 35	angel_hint:string
+Property 16 orders:thing
+Property 17 initial:thing
+Property 18 description:string
+Property 19 describe:thing
+Property 20 article:string
+Property 21 cant_go:thing
+Property 22 found_in:objwords
+Property 23 number:int
+Property 24 time_left:int
+Property 25 daemon:routine
+Property 26 each_turn:routine
+Property 27 capacity:int
+Property 28 short:thing
+Property 29 parse_name:thing
+Property 30 section:game_area
+Property 31 rod_assoc:object
+Property 32 rod_word:dictword
+Property 33 rod_action:routine
+Property 34 devil_hint:string
+Property 35 angel_hint:string
 
-Object 1	compass
-Object 2	n_obj
-Object 3	s_obj
-Object 4	e_obj
-Object 5	w_obj
-Object 6	ne_obj
-Object 7	se_obj
-Object 8	nw_obj
-Object 9	sw_obj
-Object 10	u_obj
-Object 11	d_obj
-Object 12	out_obj
-Object 13	in_obj
-Object 14	thedark
-Object 15	yourself
-Object 16	lm_object
-Object 17	rod_of_fire
-Object 18	rod_of_returning
-Object 19	rod_of_stalking
-Object 20	rod_of_infinity
-Object 21	rod_of_husbandry
-Object 22	rod_of_bronze
-Object 23	rod_of_sacrifice
-Object 24	rod_of_luck
-Object 25	rod_of_ice
-Object 26	rod_of_language
-Object 27	rod_of_returning2
-Object 28	rod_of_life
-Object 29	rod_of_death
-Object 30	rod_of_love
-Object 31	crumpled_piece_of_paper
-Object 32	electric_torch
-Object 33	old_smudged_battery
-Object 34	chocolate_biscuit
-Object 35	Attic
-Object 36	hinged_trapdoor
-Object 37	teachests
-Object 38	Meldrewes_History
-Object 39	antique_jewellery_box
-Object 40	four_leafed_clover
-Object 41	House
-Object 42	Servants_Room
-Object 43	classical_dictionary
-Object 44	servants_bed
-Object 45	old_striped_scarf
-Object 46	tight_door
-Object 47	Old_Furniture
-Object 48	furniture
-Object 49	scratched_cupboard
-Object 50	bird_whistle
-Object 51	gift_wrapped_parcel
-Object 52	box_of_chocolates
-Object 53	wrapping_paper
-Object 54	postcard_of_the_Champs_Elysees
-Object 55	medicine_bottle
-Object 56	red_tablet
-Object 57	Over_the_East_Wing
-Object 58	Austin
-Object 59	Dark_Room
-Object 60	sepia_photograph
-Object 61	hanging_cord
-Object 62	red_lamp
-Object 63	photographers_flash
-Object 64	Disused_Observatory
-Object 65	smoke_detector
-Object 66	solid_glass_ball
-Object 67	Library_Storage
-Object 68	water_pipe
-Object 69	romantic_novel
-Object 70	book_of_Twenties_poetry
-Object 71	Souvenirs_Room
-Object 72	slide_projector
-Object 73	south_wall
-Object 74	East_Annexe
-Object 75	insulation_rolls
-Object 76	new_battery
-Object 77	cupboard_door
-Object 78	Dead_End
-Object 79	canvas_rucksack
-Object 80	secret_door
-Object 81	fire_escape
-Object 82	Inside_Cupboard
-Object 83	painting_of_Mad_Isaac_Meldrewe
-Object 84	big_iron_fireplace
-Object 85	cranked_skylight
-Object 86	gas_mask
-Object 87	Roof
-Object 88	Battlements
-Object 89	iron_key
-Object 90	Sir_Joshua_Meldrewe
-Object 91	Chimney
-Object 92	sooty_old_stick
-Object 93	Priest_s_Hole
-Object 94	hatch
-Object 95	ancient_prayer_book
-Object 96	Alisons_Writing_Room
-Object 97	comfortable_bed
-Object 98	windows
-Object 99	long_vanity_mirror
-Object 100	Tiny_Balcony
-Object 101	window_sill
-Object 102	delicate_gold_key
-Object 103	Old_Winery
-Object 104	demijohn
-Object 105	obj105_nasty_looking_red_battery
-Object 106	tourist_map
-Object 107	Conservatory
-Object 108	daisy_calendar
-Object 109	Airing_Cupboard
-Object 110	pile_of_sheets
-Object 111	antiquated_wireless
-Object 112	Potting_Room
-Object 113	old_gardeners__gloves
-Object 114	Jemima
-Object 115	daisy_chain
-Object 116	Storage_Room
-Object 117	wheel2
-Object 118	dumbwaiter
-Object 119	dark_shaft_obj
-Object 120	steel_wrench
-Object 121	pulley_ropes
-Object 122	chicken_wishbone
-Object 123	Dark_Shaft
-Object 124	Dark_Passage
-Object 125	sandstone_recess
-Object 126	metal_door
-Object 127	Cellars
-Object 128	wheel
-Object 129	dark_shaft_obj2
-Object 130	little_window
-Object 131	robot_mouse
-Object 132	Wine_Cellars
-Object 133	Cellars_South
-Object 134	hole_in_the_wall
-Object 135	small_brass_key
-Object 136	Cellar_West
-Object 137	ironbound_door
-Object 138	Infinity_Symbol
-Object 139	circular_arc
-Object 140	lemniscus
-Object 141	spherical_opening
-Object 142	Sandstone_Passage
-Object 143	The_Octagon
-Object 144	little_window
-Object 145	gilded_model_coffin
-Object 146	ragged_scroll
-Object 147	framed_charcoal_sketch
-Object 148	charcoal_sketch
-Object 149	dog_eared_old_letter
-Object 150	White_Hallway
-Object 151	picture_hook
-Object 152	umbrella_stand
-Object 153	Halfway_up_the_Stairs
-Object 154	Unreal_City
-Object 155	Shadowy_Hallway
-Object 156	poster
-Object 157	Bohemia
-Object 158	Impressionist_painting
-Object 159	Consulting_Room
-Object 160	Tarot_pack
-Object 161	curtain
-Object 162	bell_push
-Object 163	Madame_Sosostris
-Object 164	Death_card
-Object 165	Fool_card
-Object 166	Drowned_Sailor_card
-Object 167	oak_quarterstaff
-Object 168	Down_by_River
-Object 169	silk_handkerchief
-Object 170	tourist_boat
-Object 171	On_board_the_Phlebas
-Object 172	hollow_man
-Object 173	Near_Ring_Road
-Object 174	Chatelet_les_Halles
-Object 175	surly_shopkeeper
-Object 176	tourist_map_of_Paris
-Object 177	Museum_Foyer
-Object 178	revolving_door_obj
-Object 179	publicity_poster
-Object 180	Revolving_Door1
-Object 181	door1
-Object 182	Revolving_Door2
-Object 183	door2
-Object 184	beach_ball
-Object 185	Hall_of_Exhibits
-Object 186	Tarot_box
-Object 187	still_life
-Object 188	Dark_Staircase
-Object 189	discarded_matchbook
-Object 190	Castle
-Object 191	Star
-Object 192	Eight_of_Wands_card
-Object 193	Maiden_card
-Object 194	Ace_of_Cups_card
-Object 195	Coven_Cell
-Object 196	goat
-Object 197	crook
-Object 198	cell_door
-Object 199	Cabinet_Room
-Object 200	glass_cabinet
-Object 201	smooth_round_stone
-Object 202	papyrus_fragment
-Object 203	Ruined_Castle_Cafe
-Object 204	cafe_table
-Object 205	complicated_looking_bomb
-Object 206	timer_detonator
-Object 207	green_wire
-Object 208	red_wire
-Object 209	blue_wire
-Object 210	black_wire
-Object 211	Cups_and_Glasses
-Object 212	windowed_door
-Object 213	cups_and_glasses
-Object 214	mounted_bottle
-Object 215	ship_in_a_bottle
-Object 216	model_ship
-Object 217	stick_with_an_anchor
-Object 218	Sea_Shore
-Object 219	Andromeda
-Object 220	amber_hairband
-Object 221	Cliffs
-Object 222	Clifftop_Walk
-Object 223	herd_of_goats
-Object 224	Outside_Taverna
-Object 225	small_thorny_tree
-Object 226	fig
-Object 227	Eraina_Taverna
-Object 228	Ekmek_Special
-Object 229	bartender
-Object 230	Wall_of_Thorns
-Object 231	wall_of_thorns_object
-Object 232	Sacred_Earth
-Object 233	Temple_of_Zeus
-Object 234	copper_coin
-Object 235	East_Cloister
-Object 236	inscribed_stone
-Object 237	West_Cloister
-Object 238	symbol
-Object 239	Inner_Sanctum
-Object 240	Homer
-Object 241	Pan_pipes
-Object 242	Cross_Centre
-Object 243	inscriptions
-Object 244	Oubliette
-Object 245	gleaming_amber_gem
-Object 246	Northeast_Cross
-Object 247	Northwest_Cross
-Object 248	Southeast_Cross
-Object 249	Southwest_Cross
-Object 250	statue_of_Poseidon
-Object 251	statue_of_Demeter
-Object 252	statue_of_Ares
-Object 253	statue_of_Dionysus
-Object 254	Cave_Mouth
-Object 255	Oracle
-Object 256	flaming_bronze_urn
-Object 257	Lighthouse
-Object 258	mirrored_device
-Object 259	Greek_Frieze1
-Object 260	Greek_frieze2
-Object 261	port_obj
-Object 262	starboard_obj
-Object 263	fore_obj
-Object 264	aft_obj
-Object 265	some_landlubbers_direction
-Object 266	Aboard_Ship
-Object 267	mast_and_rigging
-Object 268	Up_the_Mast
-Object 269	flagpole
-Object 270	flag_of_the_British_Merchant_Navy
-Object 271	old_timber_spar
-Object 272	Prow_of_the_Lady_Magdalena
-Object 273	green_branch
-Object 274	Stern
-Object 275	capstan
-Object 276	Garden_Stream
-Object 277	coal_bunker
-Object 278	stream
-Object 279	Beside_the_Wall
-Object 280	potted_shrub
-Object 281	stone_wall
-Object 282	timber_hatch
-Object 283	Family_Tree
-Object 284	plane_tree
-Object 285	Lawn_Ornaments
-Object 286	plaster_statuette
-Object 287	ancient_well
-Object 288	Mosaic
-Object 289	Roman_mosaic
-Object 290	hard_wooden_ball
-Object 291	Clearing
-Object 292	Vegetable_Garden
-Object 293	runner_bean_plant
-Object 294	Up_the_Beanstalk
-Object 295	Garage
-Object 296	garden_roller
-Object 297	weed_killer_bottle
-Object 298	spade
-Object 299	Up_the_Plane_Tree
-Object 300	maze_layout
-Object 301	Maze
-Object 302	Patio_in_Maze
-Object 303	marble_rose
-Object 304	Viewpoint_Ledge
-Object 305	plaque
-Object 306	miniature
-Object 307	Folly
-Object 308	Folly_tower
-Object 309	bean_pole
-Object 310	Maze_Foundations
-Object 311	Tree_Planting
-Object 312	Bricked_Path
-Object 313	Hedgery
-Object 314	flock_of_sparrows
-Object 315	Summer_House
-Object 316	croquet_mallet
-Object 317	gold_watch_on_a_chain
-Object 318	Behind_Summer_House
-Object 319	loose_board
-Object 320	crack
-Object 321	irate_squirrel_friend
-Object 322	Croquet_Lawn
-Object 323	peg_and_six_hoops
-Object 324	strongbox
-Object 325	golden_astrolabe
-Object 326	dug_hole
-Object 327	Murky_Cave
-Object 328	flaming_torch
-Object 329	historical_pamphlet
-Object 330	Spur_of_Rock
-Object 331	hanging_rope
-Object 332	Hanging_on_Rope
-Object 333	hemp_rope
-Object 334	yellow_daisy
-Object 335	Valley_Prospect
-Object 336	Roman_Villa
-Object 337	Stream
-Object 338	rough_ladder
-Object 339	Atrium_Cloister
-Object 340	summoning_horn
-Object 341	Atrium
-Object 342	mosaic
-Object 343	Guard_Quarters
-Object 344	bone_die
-Object 345	leather_sandals
-Object 346	Triclinium
-Object 347	kitchen_well
-Object 348	Inside_Well
-Object 349	Hypocaust
-Object 350	vents
-Object 351	Entrance
-Object 352	Rough_Tent
-Object 353	tent_pole
-Object 354	unconscious_Saxon_spy
-Object 355	Encampment
-Object 356	dolmen
-Object 357	Beneath_Dolmen
-Object 358	bluish_stone
-Object 359	fifty_franc_note
-Object 360	ghost_of_yourself
-Object 361	Premonition
-Object 362	The_Generals_Tent
-Object 363	Beside_Table
-Object 364	bear_tapestry
-Object 365	heavy_iron_mascot
-Object 366	Druid
-Object 367	Camp_Fire
-Object 368	Near_Dolmen
-Object 369	Melancholy_Dream
-Object 370	metal_barrier
-Object 371	green_luminescence
-Object 372	Solid_Sand
-Object 373	Octagonal_Tomb
-Object 374	hieroglyphic_symbols
-Object 375	ships_wheel
-Object 376	Crypt
-Object 377	bronze_mural
-Object 378	Jagged_Passage
-Object 379	wrought_iron_key
-Object 380	Charnel_Passage
-Object 381	Sarcophagus
-Object 382	tombstone
-Object 383	The_Catacombs
-Object 384	aluminium_staircase
-Object 385	CR
-Object 386	metal_wall
-Object 387	iron_grid
-Object 388	glowing_golden_orb
-Object 389	cannonball
-Object 390	Universe_Maintenance_Room
-Object 391	big_electricians_switch
-Object 392	large_dial
-Object 393	golden_orb
-Object 394	Inside_the_Orb
-Object 395	array_of_oblong_crystals
-Object 396	Causeway
-Object 397	Island_of_Pharos
-Object 398	rusty_iron_grating
-Object 399	rusty_iron_key
-Object 400	Jetty
-Object 401	skiff
-Object 402	adamantine_heart
-Object 403	Harbour_Mouth
-Object 404	Drifting
-Object 405	Crossroads
-Object 406	Necropolis
-Object 407	birds_of_prey
-Object 408	unexciting_tombstone
-Object 409	cloak_of_many_colours
-Object 410	grey_cloak
-Object 411	XIIth_Dynasty_Pyramid
-Object 412	painted_writings
-Object 413	The_Height_of_Fashion
-Object 414	sphinxes
-Object 415	wooden_couch
-Object 416	stone_nose_of_a_sphinx
-Object 417	The_Spirit_World
-Object 418	sphinxes
-Object 419	wooden_couch
-Object 420	Napoleonic_officers
-Object 421	This_Is_The_Death
-Object 422	model_of_ugly_animal
-Object 423	marble_wall
-Object 424	Quite_an_Undertaking
-Object 425	painting_of_the_priest
-Object 426	mummy_case
-Object 427	first_socket
-Object 428	second_socket
-Object 429	third_socket
-Object 430	model_golden_sceptre
-Object 431	Buried_Alive
-Object 432	adamantine_skull
-Object 433	Stadium
-Object 434	Outside_the_Theatre
-Object 435	Outside_the_Royal_Museum
-Object 436	portico
-Object 437	A_Tower
-Object 438	defaced_door
-Object 439	Consulting_Room
-Object 440	table
-Object 441	curtain
-Object 442	Madame_Sosostris
-Object 443	quarterstaff
-Object 444	silver_keepsake
-Object 445	Warehouses_and_Port
-Object 446	gambling_sailor
-Object 447	inscribed_die
-Object 448	The_Birdcage_of_the_Muses
-Object 449	pigeonhole
-Object 450	tube_with_an_alpha_on
-Object 451	tube_with_a_kappa_on
-Object 452	scroll_bearing_a_short_poem
-Object 453	scroll_bearing_an_epic_poem
-Object 454	Oil_Room
-Object 455	oil_filled_troughs
-Object 456	Geography_Room
-Object 457	spindle_from_the_globe
-Object 458	Reading_Corridor
-Object 459	dusty_scrolls
-Object 460	Callimachus
-Object 461	mystic_scroll
-Object 462	purple_sash
-Object 463	Librarians_Office
-Object 464	Apollonius
-Object 465	Outside_the_Royal_Palace_of_Alexander
-Object 466	Lost_inside_the_Palace
-Object 467	slave
-Object 468	Palace_Balustrade
-Object 469	astronomical_mounting
-Object 470	Beside_the_Drive
-Object 471	fire_escape
-Object 472	Public_Footpath
-Object 473	Hollow
-Object 474	nest
-Object 475	bunch_of_nuts
-Object 476	corn_crake
-Object 477	Stone_Cross
-Object 478	Old_Evans
-Object 479	war_memorial
-Object 480	parish_church
-Object 481	Goat_and_Compasses
-Object 482	pet_monkey
-Object 483	Crescent_Moon
-Object 484	Racing_Times
-Object 485	hat_band
-Object 486	Parish_Church
-Object 487	Moonstone
-Object 488	West_Side_Chapel
-Object 489	adamantine_statue
-Object 490	adamantine_knight
-Object 491	East_Side_Chapel
-Object 492	statue_of_Diana
-Object 493	Bell_Tower
-Object 494	bell_ropes
-Object 495	Out_on_the_Spire
-Object 496	adamantine_hand
-Object 497	old_village_clock
-Object 498	Hellish_Place
-Object 499	demon
-Object 500	Heavenly_Place
-Object 501	angel
-Object 502	carbolic_soap
+Object 1 compass
+Object 2 n_obj
+Object 3 s_obj
+Object 4 e_obj
+Object 5 w_obj
+Object 6 ne_obj
+Object 7 se_obj
+Object 8 nw_obj
+Object 9 sw_obj
+Object 10 u_obj
+Object 11 d_obj
+Object 12 out_obj
+Object 13 in_obj
+Object 14 thedark
+Object 15 yourself
+Object 16 lm_object
+Object 17 rod_of_fire
+Object 18 rod_of_returning
+Object 19 rod_of_stalking
+Object 20 rod_of_infinity
+Object 21 rod_of_husbandry
+Object 22 rod_of_bronze
+Object 23 rod_of_sacrifice
+Object 24 rod_of_luck
+Object 25 rod_of_ice
+Object 26 rod_of_language
+Object 27 rod_of_returning2
+Object 28 rod_of_life
+Object 29 rod_of_death
+Object 30 rod_of_love
+Object 31 crumpled_piece_of_paper
+Object 32 electric_torch
+Object 33 old_smudged_battery
+Object 34 chocolate_biscuit
+Object 35 Attic
+Object 36 hinged_trapdoor
+Object 37 teachests
+Object 38 Meldrewes_History
+Object 39 antique_jewellery_box
+Object 40 four_leafed_clover
+Object 41 House
+Object 42 Servants_Room
+Object 43 classical_dictionary
+Object 44 servants_bed
+Object 45 old_striped_scarf
+Object 46 tight_door
+Object 47 Old_Furniture
+Object 48 furniture
+Object 49 scratched_cupboard
+Object 50 bird_whistle
+Object 51 gift_wrapped_parcel
+Object 52 box_of_chocolates
+Object 53 wrapping_paper
+Object 54 postcard_of_the_Champs_Elysees
+Object 55 medicine_bottle
+Object 56 red_tablet
+Object 57 Over_the_East_Wing
+Object 58 Austin
+Object 59 Dark_Room
+Object 60 sepia_photograph
+Object 61 hanging_cord
+Object 62 red_lamp
+Object 63 photographers_flash
+Object 64 Disused_Observatory
+Object 65 smoke_detector
+Object 66 solid_glass_ball
+Object 67 Library_Storage
+Object 68 water_pipe
+Object 69 romantic_novel
+Object 70 book_of_Twenties_poetry
+Object 71 Souvenirs_Room
+Object 72 slide_projector
+Object 73 south_wall
+Object 74 East_Annexe
+Object 75 insulation_rolls
+Object 76 new_battery
+Object 77 cupboard_door
+Object 78 Dead_End
+Object 79 canvas_rucksack
+Object 80 secret_door
+Object 81 fire_escape
+Object 82 Inside_Cupboard
+Object 83 painting_of_Mad_Isaac_Meldrewe
+Object 84 big_iron_fireplace
+Object 85 cranked_skylight
+Object 86 gas_mask
+Object 87 Roof
+Object 88 Battlements
+Object 89 iron_key
+Object 90 Sir_Joshua_Meldrewe
+Object 91 Chimney
+Object 92 sooty_old_stick
+Object 93 Priest_s_Hole
+Object 94 hatch
+Object 95 ancient_prayer_book
+Object 96 Alisons_Writing_Room
+Object 97 comfortable_bed
+Object 98 windows
+Object 99 long_vanity_mirror
+Object 100 Tiny_Balcony
+Object 101 window_sill
+Object 102 delicate_gold_key
+Object 103 Old_Winery
+Object 104 demijohn
+Object 105 obj105_nasty_looking_red_battery
+Object 106 tourist_map
+Object 107 Conservatory
+Object 108 daisy_calendar
+Object 109 Airing_Cupboard
+Object 110 pile_of_sheets
+Object 111 antiquated_wireless
+Object 112 Potting_Room
+Object 113 old_gardeners__gloves
+Object 114 Jemima
+Object 115 daisy_chain
+Object 116 Storage_Room
+Object 117 wheel2
+Object 118 dumbwaiter
+Object 119 dark_shaft_obj
+Object 120 steel_wrench
+Object 121 pulley_ropes
+Object 122 chicken_wishbone
+Object 123 Dark_Shaft
+Object 124 Dark_Passage
+Object 125 sandstone_recess
+Object 126 metal_door
+Object 127 Cellars
+Object 128 wheel
+Object 129 dark_shaft_obj2
+Object 130 little_window
+Object 131 robot_mouse
+Object 132 Wine_Cellars
+Object 133 Cellars_South
+Object 134 hole_in_the_wall
+Object 135 small_brass_key
+Object 136 Cellar_West
+Object 137 ironbound_door
+Object 138 Infinity_Symbol
+Object 139 circular_arc
+Object 140 lemniscus
+Object 141 spherical_opening
+Object 142 Sandstone_Passage
+Object 143 The_Octagon
+Object 144 little_window
+Object 145 gilded_model_coffin
+Object 146 ragged_scroll
+Object 147 framed_charcoal_sketch
+Object 148 charcoal_sketch
+Object 149 dog_eared_old_letter
+Object 150 White_Hallway
+Object 151 picture_hook
+Object 152 umbrella_stand
+Object 153 Halfway_up_the_Stairs
+Object 154 Unreal_City
+Object 155 Shadowy_Hallway
+Object 156 poster
+Object 157 Bohemia
+Object 158 Impressionist_painting
+Object 159 Consulting_Room
+Object 160 Tarot_pack
+Object 161 curtain
+Object 162 bell_push
+Object 163 Madame_Sosostris
+Object 164 Death_card
+Object 165 Fool_card
+Object 166 Drowned_Sailor_card
+Object 167 oak_quarterstaff
+Object 168 Down_by_River
+Object 169 silk_handkerchief
+Object 170 tourist_boat
+Object 171 On_board_the_Phlebas
+Object 172 hollow_man
+Object 173 Near_Ring_Road
+Object 174 Chatelet_les_Halles
+Object 175 surly_shopkeeper
+Object 176 tourist_map_of_Paris
+Object 177 Museum_Foyer
+Object 178 revolving_door_obj
+Object 179 publicity_poster
+Object 180 Revolving_Door1
+Object 181 door1
+Object 182 Revolving_Door2
+Object 183 door2
+Object 184 beach_ball
+Object 185 Hall_of_Exhibits
+Object 186 Tarot_box
+Object 187 still_life
+Object 188 Dark_Staircase
+Object 189 discarded_matchbook
+Object 190 Castle
+Object 191 Star
+Object 192 Eight_of_Wands_card
+Object 193 Maiden_card
+Object 194 Ace_of_Cups_card
+Object 195 Coven_Cell
+Object 196 goat
+Object 197 crook
+Object 198 cell_door
+Object 199 Cabinet_Room
+Object 200 glass_cabinet
+Object 201 smooth_round_stone
+Object 202 papyrus_fragment
+Object 203 Ruined_Castle_Cafe
+Object 204 cafe_table
+Object 205 complicated_looking_bomb
+Object 206 timer_detonator
+Object 207 green_wire
+Object 208 red_wire
+Object 209 blue_wire
+Object 210 black_wire
+Object 211 Cups_and_Glasses
+Object 212 windowed_door
+Object 213 cups_and_glasses
+Object 214 mounted_bottle
+Object 215 ship_in_a_bottle
+Object 216 model_ship
+Object 217 stick_with_an_anchor
+Object 218 Sea_Shore
+Object 219 Andromeda
+Object 220 amber_hairband
+Object 221 Cliffs
+Object 222 Clifftop_Walk
+Object 223 herd_of_goats
+Object 224 Outside_Taverna
+Object 225 small_thorny_tree
+Object 226 fig
+Object 227 Eraina_Taverna
+Object 228 Ekmek_Special
+Object 229 bartender
+Object 230 Wall_of_Thorns
+Object 231 wall_of_thorns_object
+Object 232 Sacred_Earth
+Object 233 Temple_of_Zeus
+Object 234 copper_coin
+Object 235 East_Cloister
+Object 236 inscribed_stone
+Object 237 West_Cloister
+Object 238 symbol
+Object 239 Inner_Sanctum
+Object 240 Homer
+Object 241 Pan_pipes
+Object 242 Cross_Centre
+Object 243 inscriptions
+Object 244 Oubliette
+Object 245 gleaming_amber_gem
+Object 246 Northeast_Cross
+Object 247 Northwest_Cross
+Object 248 Southeast_Cross
+Object 249 Southwest_Cross
+Object 250 statue_of_Poseidon
+Object 251 statue_of_Demeter
+Object 252 statue_of_Ares
+Object 253 statue_of_Dionysus
+Object 254 Cave_Mouth
+Object 255 Oracle
+Object 256 flaming_bronze_urn
+Object 257 Lighthouse
+Object 258 mirrored_device
+Object 259 Greek_Frieze1
+Object 260 Greek_frieze2
+Object 261 port_obj
+Object 262 starboard_obj
+Object 263 fore_obj
+Object 264 aft_obj
+Object 265 some_landlubbers_direction
+Object 266 Aboard_Ship
+Object 267 mast_and_rigging
+Object 268 Up_the_Mast
+Object 269 flagpole
+Object 270 flag_of_the_British_Merchant_Navy
+Object 271 old_timber_spar
+Object 272 Prow_of_the_Lady_Magdalena
+Object 273 green_branch
+Object 274 Stern
+Object 275 capstan
+Object 276 Garden_Stream
+Object 277 coal_bunker
+Object 278 stream
+Object 279 Beside_the_Wall
+Object 280 potted_shrub
+Object 281 stone_wall
+Object 282 timber_hatch
+Object 283 Family_Tree
+Object 284 plane_tree
+Object 285 Lawn_Ornaments
+Object 286 plaster_statuette
+Object 287 ancient_well
+Object 288 Mosaic
+Object 289 Roman_mosaic
+Object 290 hard_wooden_ball
+Object 291 Clearing
+Object 292 Vegetable_Garden
+Object 293 runner_bean_plant
+Object 294 Up_the_Beanstalk
+Object 295 Garage
+Object 296 garden_roller
+Object 297 weed_killer_bottle
+Object 298 spade
+Object 299 Up_the_Plane_Tree
+Object 300 maze_layout
+Object 301 Maze
+Object 302 Patio_in_Maze
+Object 303 marble_rose
+Object 304 Viewpoint_Ledge
+Object 305 plaque
+Object 306 miniature
+Object 307 Folly
+Object 308 Folly_tower
+Object 309 bean_pole
+Object 310 Maze_Foundations
+Object 311 Tree_Planting
+Object 312 Bricked_Path
+Object 313 Hedgery
+Object 314 flock_of_sparrows
+Object 315 Summer_House
+Object 316 croquet_mallet
+Object 317 gold_watch_on_a_chain
+Object 318 Behind_Summer_House
+Object 319 loose_board
+Object 320 crack
+Object 321 irate_squirrel_friend
+Object 322 Croquet_Lawn
+Object 323 peg_and_six_hoops
+Object 324 strongbox
+Object 325 golden_astrolabe
+Object 326 dug_hole
+Object 327 Murky_Cave
+Object 328 flaming_torch
+Object 329 historical_pamphlet
+Object 330 Spur_of_Rock
+Object 331 hanging_rope
+Object 332 Hanging_on_Rope
+Object 333 hemp_rope
+Object 334 yellow_daisy
+Object 335 Valley_Prospect
+Object 336 Roman_Villa
+Object 337 Stream
+Object 338 rough_ladder
+Object 339 Atrium_Cloister
+Object 340 summoning_horn
+Object 341 Atrium
+Object 342 mosaic
+Object 343 Guard_Quarters
+Object 344 bone_die
+Object 345 leather_sandals
+Object 346 Triclinium
+Object 347 kitchen_well
+Object 348 Inside_Well
+Object 349 Hypocaust
+Object 350 vents
+Object 351 Entrance
+Object 352 Rough_Tent
+Object 353 tent_pole
+Object 354 unconscious_Saxon_spy
+Object 355 Encampment
+Object 356 dolmen
+Object 357 Beneath_Dolmen
+Object 358 bluish_stone
+Object 359 fifty_franc_note
+Object 360 ghost_of_yourself
+Object 361 Premonition
+Object 362 The_Generals_Tent
+Object 363 Beside_Table
+Object 364 bear_tapestry
+Object 365 heavy_iron_mascot
+Object 366 Druid
+Object 367 Camp_Fire
+Object 368 Near_Dolmen
+Object 369 Melancholy_Dream
+Object 370 metal_barrier
+Object 371 green_luminescence
+Object 372 Solid_Sand
+Object 373 Octagonal_Tomb
+Object 374 hieroglyphic_symbols
+Object 375 ships_wheel
+Object 376 Crypt
+Object 377 bronze_mural
+Object 378 Jagged_Passage
+Object 379 wrought_iron_key
+Object 380 Charnel_Passage
+Object 381 Sarcophagus
+Object 382 tombstone
+Object 383 The_Catacombs
+Object 384 aluminium_staircase
+Object 385 CR
+Object 386 metal_wall
+Object 387 iron_grid
+Object 388 glowing_golden_orb
+Object 389 cannonball
+Object 390 Universe_Maintenance_Room
+Object 391 big_electricians_switch
+Object 392 large_dial
+Object 393 golden_orb
+Object 394 Inside_the_Orb
+Object 395 array_of_oblong_crystals
+Object 396 Causeway
+Object 397 Island_of_Pharos
+Object 398 rusty_iron_grating
+Object 399 rusty_iron_key
+Object 400 Jetty
+Object 401 skiff
+Object 402 adamantine_heart
+Object 403 Harbour_Mouth
+Object 404 Drifting
+Object 405 Crossroads
+Object 406 Necropolis
+Object 407 birds_of_prey
+Object 408 unexciting_tombstone
+Object 409 cloak_of_many_colours
+Object 410 grey_cloak
+Object 411 XIIth_Dynasty_Pyramid
+Object 412 painted_writings
+Object 413 The_Height_of_Fashion
+Object 414 sphinxes
+Object 415 wooden_couch
+Object 416 stone_nose_of_a_sphinx
+Object 417 The_Spirit_World
+Object 418 sphinxes
+Object 419 wooden_couch
+Object 420 Napoleonic_officers
+Object 421 This_Is_The_Death
+Object 422 model_of_ugly_animal
+Object 423 marble_wall
+Object 424 Quite_an_Undertaking
+Object 425 painting_of_the_priest
+Object 426 mummy_case
+Object 427 first_socket
+Object 428 second_socket
+Object 429 third_socket
+Object 430 model_golden_sceptre
+Object 431 Buried_Alive
+Object 432 adamantine_skull
+Object 433 Stadium
+Object 434 Outside_the_Theatre
+Object 435 Outside_the_Royal_Museum
+Object 436 portico
+Object 437 A_Tower
+Object 438 defaced_door
+Object 439 Consulting_Room
+Object 440 table
+Object 441 curtain
+Object 442 Madame_Sosostris
+Object 443 quarterstaff
+Object 444 silver_keepsake
+Object 445 Warehouses_and_Port
+Object 446 gambling_sailor
+Object 447 inscribed_die
+Object 448 The_Birdcage_of_the_Muses
+Object 449 pigeonhole
+Object 450 tube_with_an_alpha_on
+Object 451 tube_with_a_kappa_on
+Object 452 scroll_bearing_a_short_poem
+Object 453 scroll_bearing_an_epic_poem
+Object 454 Oil_Room
+Object 455 oil_filled_troughs
+Object 456 Geography_Room
+Object 457 spindle_from_the_globe
+Object 458 Reading_Corridor
+Object 459 dusty_scrolls
+Object 460 Callimachus
+Object 461 mystic_scroll
+Object 462 purple_sash
+Object 463 Librarians_Office
+Object 464 Apollonius
+Object 465 Outside_the_Royal_Palace_of_Alexander
+Object 466 Lost_inside_the_Palace
+Object 467 slave
+Object 468 Palace_Balustrade
+Object 469 astronomical_mounting
+Object 470 Beside_the_Drive
+Object 471 fire_escape
+Object 472 Public_Footpath
+Object 473 Hollow
+Object 474 nest
+Object 475 bunch_of_nuts
+Object 476 corn_crake
+Object 477 Stone_Cross
+Object 478 Old_Evans
+Object 479 war_memorial
+Object 480 parish_church
+Object 481 Goat_and_Compasses
+Object 482 pet_monkey
+Object 483 Crescent_Moon
+Object 484 Racing_Times
+Object 485 hat_band
+Object 486 Parish_Church
+Object 487 Moonstone
+Object 488 West_Side_Chapel
+Object 489 adamantine_statue
+Object 490 adamantine_knight
+Object 491 East_Side_Chapel
+Object 492 statue_of_Diana
+Object 493 Bell_Tower
+Object 494 bell_ropes
+Object 495 Out_on_the_Spire
+Object 496 adamantine_hand
+Object 497 old_village_clock
+Object 498 Hellish_Place
+Object 499 demon
+Object 500 Heavenly_Place
+Object 501 angel
+Object 502 carbolic_soap
 
-Attribute 0	animate
-Attribute 1	clothing
-Attribute 2	concealed
-Attribute 3	container
-Attribute 4	door
-Attribute 5	edible
-Attribute 6	enterable
+Attribute 0 animate
+Attribute 1 clothing
+Attribute 2 concealed
+Attribute 3 container
+Attribute 4 door
+Attribute 5 edible
+Attribute 6 enterable
 Attribute 7 absent
-Attribute 8	general
-Attribute 9	light
-Attribute 10	lockable
-Attribute 11	locked
-Attribute 12	moved
-Attribute 13	on
-Attribute 14	open
-Attribute 15	openable
-Attribute 16	proper
-Attribute 17	scenery
-Attribute 18	scored
-Attribute 19	static
-Attribute 20	supporter
-Attribute 21	switchable
-Attribute 22	talkable
-Attribute 23	transparent
-Attribute 24    visited
-Attribute 25    workflag
-Attribute 26    worn
-Attribute 27	consultable
-Attribute 28	rod_attr
-Attribute 29	high_rod
-Attribute 30	card
-Attribute 31	battery_flag
-Attribute 32	wire
-Attribute 33	hidden_rod
-Attribute 34	unidentiifed_rod
-Attribute 35	statue_flag
-Attribute 36    lucky
-Attribute 37	ship_flag
-Attribute 38    charged
-Attribute 39	cat_nofollow
+Attribute 8 general
+Attribute 9 light
+Attribute 10 lockable
+Attribute 11 locked
+Attribute 12 moved
+Attribute 13 on
+Attribute 14 open
+Attribute 15 openable
+Attribute 16 proper
+Attribute 17 scenery
+Attribute 18 scored
+Attribute 19 static
+Attribute 20 supporter
+Attribute 21 switchable
+Attribute 22 talkable
+Attribute 23 transparent
+Attribute 24 visited
+Attribute 25 workflag
+Attribute 26 worn
+Attribute 27 consultable
+Attribute 28 rod_attr
+Attribute 29 high_rod
+Attribute 30 card
+Attribute 31 battery_flag
+Attribute 32 wire
+Attribute 33 hidden_rod
+Attribute 34 unidentiifed_rod
+Attribute 35 statue_flag
+Attribute 36 lucky
+Attribute 37 ship_flag
+Attribute 38 charged
+Attribute 39 cat_nofollow
 
-GlobalArray 0	task_scores:array(44*~int)
-Global 1	location:object
-Global 2	sline1:int
-Global 3	sline2:int
-Global 4	the_time:int
-Global 5	time_rate:int
-Global 6	time_step:int
-Global 7	score:int
-Global 8	turns:int
-Global 9	player:object
-Global 10	lightflag:bool
-Global 11	real_location:object
-Global 12	print_player_flag
-Global 13	deadflag:final_state
-Global 14	transcript_mode:bool
-Global 15	last_score:int
-Global 16	notify_mode:bool
-Global 17	places_score:int
-Global 18	things_score:int
-Global 19	lookmode:int
-Global 20	lastdesc:object
-Global 21	top_object
-GlobalArray 22	standard_interpreter:array(?)
-Global 23	toomany_flag:int
-Global 24	actor:object
-Global 25	actor_location:object
-Global 26	verb:action
-Global 27	inp1
-Global 28	inp2
-Global 29	special_number1
-Global 30	special_number2
-Global 31	selfobj:object
-Global 32	noun:object
-Global 33	second:object
-Global 34	special_word:int
-Global 35	special_number:int
-Global 36	parsed_number:int
-Global 37	multiflag:int
-Global 38	notheld_mode:int
-Global 39	onotheld_mode:int
-Global 40	meta:int
-Global 41	orders:action
-Global 42	action:action
-Global 43	consult_from
-Global 44	consult_words
-Global 45	undo_flag:int
-Global 46	parser_trace:int
-Global 47	global47:?
-Global 48	lm_n:object
-Global 49	lm_o
-Global 50	wn:int
-Global 51	num_words:int
-Global 52	verb_word:dictword
-Global 53	verb_wordnum
-Global 54	global54:?
-Global 55	multi_wanted:int
-Global 56	multihad:int
-Global 57	multi_context:int
-Global 58	pcount:int
-Global 59	pcount2
-Global 60	parameters
-Global 61	params_wanted
-Global 62	nsns:int
-Global 63	interfrom:int
-Global 64	inferword
-Global 65	oops_from:int
-Global 66	saved_oops
-Global 67	number_matched
-Global 68	number_of_classes:int
-Global 69	match_length
-Global 70	match_from
-Global 71	parser_action:action
-Global 72	parser_one
-Global 73	parser_two
-Global 74	vague_word:dictword
-Global 75	vague_obj:object
-Global 76	itobj:object
-Global 77	himobj:object
-Global 78	herobj:object
-Global 79	lookahead:int
-Global 80	indef_mode:int
-Global 81	indef_type:display_bit
-Global 82	indef_wanted:int
-Global 83	indef_guess_p
-Global 84	allow_plurals:int
-Global 85	notholding
-Global 86	global86:?
-Global 87	global87:?
-Global 88	held_back_mode:int
-Global 89	hb_wn
-Global 90	pcount2
-Global 91	etype:etype_enum
-Global 92	last_command_from
-Global 93	last_command_to
-Global 94	token_was:int
-Global 95	advance_warning:int
-Global 96	placed_in_flag
-Global 97	global97:?
-Global 98	action_to_be:action
-Global 99	dont_infer:int
-Global 100	scope_reason:reason_type
-Global 101	scope_token:int
-Global 102	scope_error:int
-Global 103	scope_stage:int
-Global 104	ats_flag:int
-Global 105	ats_hls:int
-Global 106	take_all_rule:int
-Global 107	usual_grammar_after:int
-Global 108	undone_flag:int
-Global 109	pretty_mode:bool
-Global 110	menu_nesting:int
-Global 111	submenu_number:int
-Global 112	submenu_header:string
-Global 113	menu_item:int
-Global 114	active_timers:int
-Global 115	rod_identity:int
-Global 116	c_style:display_bit
-Global 117	lt_value
-Global 118	listing_together
-Global 119	listing_size:int
-Global 120	wlf_indent
-Global 121	inventory_style:display_bit
-Global 122	keep_silent:bool
-Global 123	receive_action:action
-Global 124	game_section:game_area
-Global 125	good_try_bonus:int
-Global 126	debug_deterministic_transportation:int
-Global 127	KnowLanguages:bool
-Global 128	displaying_quote:bool
-Global 129	before_short_desc:bool
-Global 130	short_loc_var:object
-Global 131	save_game_sec:int
-Global 132	save_score:int
-Global 133	global133:?
-Global 134	rod_score:int
-Global 135	StrongboxX:int
-Global 136	StrongboxY:int
-Global 137	LocationSave:object
-Global 138	ContainerSave:object
-Global 139	ball_polished:bool
-Global 140	tablet_eaten:bool
-Global 141	daisy_given:bool
-GlobalArray 142	mouse_maze:array(63*~int)
-Global 143	Mouse_x:int
-Global 144	Mousy_y:int
-Global 145	MouseUnderstandsMask:bool
-GlobalArray 146	card_deck:array(?)
-Global 147	card_ptr:int
-Global 148	hollow_man_cnt:int
-Global 149	poseiden_warning:bool
-Global 150	priest_cnt:int
-GlobalArray 151	garden_array:array(63*~int)
-Global 152	MazeX:int
-Global 153	MazeY:int
-Global 154	WeedkillerX:int
-Global 155	WeedkillerY:int
-Global 156	DigX:int
-Global 157	DigY:int
-Global 158	OldDigX:int
-Global 159	OldDigY:int
-Global 160	CouncilCnt:int
-Global 161	DreamCnt:int
-Global 162	OzoneSmelled:bool
-Global 163	slide_moves:int
-Global 164	PlanckWarning:bool
-Global 165	SpiritCnt:int
-Global 166	MummyWarning:bool
-Global 167	PalaceCnt:int
-Global 168	palace_var168:int
-Global 169	palace_var169:int
-Global 170	palace_var170:int
-Global 171	HighRodWarn:int
-Global 172	HighRodBalance:bool
-Global 173	LeftHand:int
-Global 174	SkullFit:int
-Global 175	bool_array_recently_set:int
-GlobalArray 176	quote_line:array(10*string)
-Global 177	one_time_try_bonus:bool
-Global 178	croquet_var:int
-Global 179	yard_dir:object
-Global 180	dig_cnt:int
-Global 181	current_game_sec
-Global 182	global182:?
-Global 183	global183:?
-Global 184	global184:?
-Global 185	global185:?
-Global 186	global186:?
-Global 187	global187:?
-Global 188	global188:?
-Global 189	global189:?
-Global 190	global190:?
-Global 191	global191:?
-Global 192	global192:?
-Global 193	global193:?
-Global 194	global194:?
-Global 195	global195:?
-Global 196	global196:?
-Global 197	global197:?
-Global 198	global198:?
-Global 199	global199:?
-Global 200	global200:?
-Global 201	global201:?
-Global 202	global202:?
-Global 203	global203:?
-Global 204	global204:?
-Global 205	global205:?
-Global 206	global206:?
-Global 207	global207:?
-Global 208	global208:?
-Global 209	global209:?
-Global 210	global210:?
-Global 211	global211:?
-Global 212	global212:?
-Global 213	global213:?
-Global 214	global214:?
-Global 215	global215:?
-Global 216	global216:?
-Global 217	global217:?
-Global 218	global218:?
-Global 219	global219:?
-Global 220	global220:?
-Global 221	global221:?
-Global 222	global222:?
-Global 223	global223:?
-Global 224	global224:?
-Global 225	global225:?
-Global 226	global226:?
-Global 227	global227:?
-Global 228	global228:?
-Global 229	global229:?
-Global 230	global230:?
-Global 231	global231:?
-Global 232	global232:?
-Global 233	global233:?
-Global 234	global234:?
-Global 235	global235:?
-Global 236	global236:?
-Global 237	global237:?
-Global 238	global238:?
-Global 239	generic_globvar:?
+GlobalArray 0 task_scores:array(44*~int)
+Global 1 location:object
+Global 2 sline1:int
+Global 3 sline2:int
+Global 4 the_time:int
+Global 5 time_rate:int
+Global 6 time_step:int
+Global 7 score:int
+Global 8 turns:int
+Global 9 player:object
+Global 10 lightflag:bool
+Global 11 real_location:object
+Global 12 print_player_flag
+Global 13 deadflag:final_state
+Global 14 transcript_mode:bool
+Global 15 last_score:int
+Global 16 notify_mode:bool
+Global 17 places_score:int
+Global 18 things_score:int
+Global 19 lookmode:int
+Global 20 lastdesc:object
+Global 21 top_object
+GlobalArray 22 standard_interpreter:array(?)
+Global 23 toomany_flag:int
+Global 24 actor:object
+Global 25 actor_location:object
+Global 26 verb:action
+Global 27 inp1
+Global 28 inp2
+Global 29 special_number1
+Global 30 special_number2
+Global 31 selfobj:object
+Global 32 noun:object
+Global 33 second:object
+Global 34 special_word:int
+Global 35 special_number:int
+Global 36 parsed_number:int
+Global 37 multiflag:int
+Global 38 notheld_mode:int
+Global 39 onotheld_mode:int
+Global 40 meta:int
+Global 41 orders:action
+Global 42 action:action
+Global 43 consult_from
+Global 44 consult_words
+Global 45 undo_flag:int
+Global 46 parser_trace:int
+Global 47 global47:?
+Global 48 lm_n:object
+Global 49 lm_o
+Global 50 wn:int
+Global 51 num_words:int
+Global 52 verb_word:dictword
+Global 53 verb_wordnum
+Global 54 global54:?
+Global 55 multi_wanted:int
+Global 56 multihad:int
+Global 57 multi_context:int
+Global 58 pcount:int
+Global 59 pcount2
+Global 60 parameters
+Global 61 params_wanted
+Global 62 nsns:int
+Global 63 interfrom:int
+Global 64 inferword
+Global 65 oops_from:int
+Global 66 saved_oops
+Global 67 number_matched
+Global 68 number_of_classes:int
+Global 69 match_length
+Global 70 match_from
+Global 71 parser_action:action
+Global 72 parser_one
+Global 73 parser_two
+Global 74 vague_word:dictword
+Global 75 vague_obj:object
+Global 76 itobj:object
+Global 77 himobj:object
+Global 78 herobj:object
+Global 79 lookahead:int
+Global 80 indef_mode:int
+Global 81 indef_type:display_bit
+Global 82 indef_wanted:int
+Global 83 indef_guess_p
+Global 84 allow_plurals:int
+Global 85 notholding
+Global 86 global86:?
+Global 87 global87:?
+Global 88 held_back_mode:int
+Global 89 hb_wn
+Global 90 pcount2
+Global 91 etype:etype_enum
+Global 92 last_command_from
+Global 93 last_command_to
+Global 94 token_was:int
+Global 95 advance_warning:int
+Global 96 placed_in_flag
+Global 97 global97:?
+Global 98 action_to_be:action
+Global 99 dont_infer:int
+Global 100 scope_reason:reason_type
+Global 101 scope_token:int
+Global 102 scope_error:int
+Global 103 scope_stage:int
+Global 104 ats_flag:int
+Global 105 ats_hls:int
+Global 106 take_all_rule:int
+Global 107 usual_grammar_after:int
+Global 108 undone_flag:int
+Global 109 pretty_mode:bool
+Global 110 menu_nesting:int
+Global 111 submenu_number:int
+Global 112 submenu_header:string
+Global 113 menu_item:int
+Global 114 active_timers:int
+Global 115 rod_identity:int
+Global 116 c_style:display_bit
+Global 117 lt_value
+Global 118 listing_together
+Global 119 listing_size:int
+Global 120 wlf_indent
+Global 121 inventory_style:display_bit
+Global 122 keep_silent:bool
+Global 123 receive_action:action
+Global 124 game_section:game_area
+Global 125 good_try_bonus:int
+Global 126 debug_deterministic_transportation:int
+Global 127 KnowLanguages:bool
+Global 128 displaying_quote:bool
+Global 129 before_short_desc:bool
+Global 130 short_loc_var:object
+Global 131 save_game_sec:int
+Global 132 save_score:int
+Global 133 global133:?
+Global 134 rod_score:int
+Global 135 StrongboxX:int
+Global 136 StrongboxY:int
+Global 137 LocationSave:object
+Global 138 ContainerSave:object
+Global 139 ball_polished:bool
+Global 140 tablet_eaten:bool
+Global 141 daisy_given:bool
+GlobalArray 142 mouse_maze:array(63*~int)
+Global 143 Mouse_x:int
+Global 144 Mousy_y:int
+Global 145 MouseUnderstandsMask:bool
+GlobalArray 146 card_deck:array(?)
+Global 147 card_ptr:int
+Global 148 hollow_man_cnt:int
+Global 149 poseiden_warning:bool
+Global 150 priest_cnt:int
+GlobalArray 151 garden_array:array(63*~int)
+Global 152 MazeX:int
+Global 153 MazeY:int
+Global 154 WeedkillerX:int
+Global 155 WeedkillerY:int
+Global 156 DigX:int
+Global 157 DigY:int
+Global 158 OldDigX:int
+Global 159 OldDigY:int
+Global 160 CouncilCnt:int
+Global 161 DreamCnt:int
+Global 162 OzoneSmelled:bool
+Global 163 slide_moves:int
+Global 164 PlanckWarning:bool
+Global 165 SpiritCnt:int
+Global 166 MummyWarning:bool
+Global 167 PalaceCnt:int
+Global 168 palace_var168:int
+Global 169 palace_var169:int
+Global 170 palace_var170:int
+Global 171 HighRodWarn:int
+Global 172 HighRodBalance:bool
+Global 173 LeftHand:int
+Global 174 SkullFit:int
+Global 175 bool_array_recently_set:int
+GlobalArray 176 quote_line:array(10*string)
+Global 177 one_time_try_bonus:bool
+Global 178 croquet_var:int
+Global 179 yard_dir:object
+Global 180 dig_cnt:int
+Global 181 current_game_sec
+Global 182 global182:?
+Global 183 global183:?
+Global 184 global184:?
+Global 185 global185:?
+Global 186 global186:?
+Global 187 global187:?
+Global 188 global188:?
+Global 189 global189:?
+Global 190 global190:?
+Global 191 global191:?
+Global 192 global192:?
+Global 193 global193:?
+Global 194 global194:?
+Global 195 global195:?
+Global 196 global196:?
+Global 197 global197:?
+Global 198 global198:?
+Global 199 global199:?
+Global 200 global200:?
+Global 201 global201:?
+Global 202 global202:?
+Global 203 global203:?
+Global 204 global204:?
+Global 205 global205:?
+Global 206 global206:?
+Global 207 global207:?
+Global 208 global208:?
+Global 209 global209:?
+Global 210 global210:?
+Global 211 global211:?
+Global 212 global212:?
+Global 213 global213:?
+Global 214 global214:?
+Global 215 global215:?
+Global 216 global216:?
+Global 217 global217:?
+Global 218 global218:?
+Global 219 global219:?
+Global 220 global220:?
+Global 221 global221:?
+Global 222 global222:?
+Global 223 global223:?
+Global 224 global224:?
+Global 225 global225:?
+Global 226 global226:?
+Global 227 global227:?
+Global 228 global228:?
+Global 229 global229:?
+Global 230 global230:?
+Global 231 global231:?
+Global 232 global232:?
+Global 233 global233:?
+Global 234 global234:?
+Global 235 global235:?
+Global 236 global236:?
+Global 237 global237:?
+Global 238 global238:?
+Global 239 generic_globvar:?
 
 Array 23893 the_timers:array(?)
 Array 23957 array_23957:array(?)
@@ -860,154 +860,154 @@ Array 26065 rank_levels:array(int,24*(int,string))
 Array 28893 actions_table:array(145*routine)
 Array 29185 preactions_table:array(1*routine)
 
-Action 0	Score
-Action 1	FullScore
-				! 'full'/'fullscore' 'score'
-Action 2	Quit
-Action 3	Restore
-Action 4	Restart
-Action 5	Verify
-Action 6	Save
-Action 7	ScriptOn
-Action 8	ScriptOff
-Action 9	Superbrief
-Action 10	Verbose
-Action 11	Brief
-Action 12	Nouns
-Action 13	NotifyOn
-Action 14	NotifyOff
-Action 15	Version
-Action 16	Places
-Action 17	Objects
-Action 18	Exit
-Action 19	Take
-Action 20	Remove
-Action 21	Enter
-Action 22	Disrobe
-Action 23	TakeOff
-Action 24	Inv
-Action 25	Wear
-Action 26	Insert
-Action 27	PutOn
-Action 28	Drop
-Action 29	Empty
-Action 30	EmptyT
-Action 31	Transfer
-Action 32	ThrowAt
-Action 33	GiveR
-Action 34	Give
-Action 35	ShowR
-Action 36	Show
-Action 37	VagueGo
-Action 38	Go
-Action 39	InvTall
-Action 40	InvWide
-Action 41	Look
-Action 42	Read
-Action 43	Search
-Action 44	LookUnder
-Action 45	Consult
-Action 46	Open
-Action 47	Unlock
-Action 48	Close
-Action 49	SwitchOff
-Action 50	Enter
-Action 51	Yes
-Action 52	No
-Action 53	Sorry
-Action 54	Strong
-Action 55	Mild
-Action 56	WaveHands
-Action 57	Wave
-Action 58	Set
-Action 59	SetTo
-Action 60	Pull
-Action 61	Push
-Action 62	PushDir
-Action 63	Turn
-Action 64	SwitchOn
-Action 65	Lock
-Action 66	Attack
-Action 67	Wait
-Action 68	Answer
-Action 69	Tell
-Action 70	Ask
-Action 71	AskFor
-Action 72	Eat
-Action 73	Sleep
-Action 74	Sing
-Action 75	Climb
-Action 76	Buy
-Action 77	Squeeze
-Action 78	Swim
-Action 79	Swing
-Action 80	Blow
-Action 81	Pray
-Action 82	Wake
-Action 83	WakeOther
-Action 84	Kiss
-Action 85	Think
-Action 86	Smell
-Action 87	Listen
-Action 88	Taste
-Action 89	Touch
-Action 90	Clean
-Action 91   Repair
-Action 92	Burn
-Action 93	Drink
-Action 94	Fill
-Action 95	Cut
-Action 96	Jump
-Action 97	JumpOver
-Action 98	Dig
-Action 99	Plain
-Action 100	Pretty
-Action 101	Hints
-Action 102	Help
-Action 103	HelpSpecial
-Action 104	Time
-Action 105	LookUp
-Action 106	PaceDir
-Action 107	Ram
-Action 108	Lie
-Action 109	LieDown
-Action 110	Examine
-Action 111	Wash
-Action 112	DigWith
-Action 113	TurnWith
-Action 114	Rip
-Action 115	RipDown
-Action 116	Shout
-Action 117	Lagach
-Action 118	Strike
-Action 119	Kill
-Action 120	PointVague
-Action 121	PointAt
-Action 122	Point
-Action 123	PlayCroquet
-Action 124	Diagnose
-Action 125	Dance
-Action 126	Beep
-Action 127	Lean
-Action 128	PropWith
-Action 129	Slide
-Action 130	Xyzzy
-Action 131	Shantih
-Action 132	Milk
-Action 133	Pace
-Action 134	Hypnotize
-Action 135	Anoppe
-Action 136	Sail
-Action 137	Anoint
-Action 138	Knock
-Action 139	Wish
-Action 140	Inscribe
-Action 141	InscribeOn
-Action 142	Gamble
-Action 143	CloseWith
-Action 144	Stack
-Action 145	Start
-Action 262  Miscellany
+Action 0 Score
+Action 1 FullScore
+ ! 'full'/'fullscore' 'score'
+Action 2 Quit
+Action 3 Restore
+Action 4 Restart
+Action 5 Verify
+Action 6 Save
+Action 7 ScriptOn
+Action 8 ScriptOff
+Action 9 Superbrief
+Action 10 Verbose
+Action 11 Brief
+Action 12 Nouns
+Action 13 NotifyOn
+Action 14 NotifyOff
+Action 15 Version
+Action 16 Places
+Action 17 Objects
+Action 18 Exit
+Action 19 Take
+Action 20 Remove
+Action 21 Enter
+Action 22 Disrobe
+Action 23 TakeOff
+Action 24 Inv
+Action 25 Wear
+Action 26 Insert
+Action 27 PutOn
+Action 28 Drop
+Action 29 Empty
+Action 30 EmptyT
+Action 31 Transfer
+Action 32 ThrowAt
+Action 33 GiveR
+Action 34 Give
+Action 35 ShowR
+Action 36 Show
+Action 37 VagueGo
+Action 38 Go
+Action 39 InvTall
+Action 40 InvWide
+Action 41 Look
+Action 42 Read
+Action 43 Search
+Action 44 LookUnder
+Action 45 Consult
+Action 46 Open
+Action 47 Unlock
+Action 48 Close
+Action 49 SwitchOff
+Action 50 Enter
+Action 51 Yes
+Action 52 No
+Action 53 Sorry
+Action 54 Strong
+Action 55 Mild
+Action 56 WaveHands
+Action 57 Wave
+Action 58 Set
+Action 59 SetTo
+Action 60 Pull
+Action 61 Push
+Action 62 PushDir
+Action 63 Turn
+Action 64 SwitchOn
+Action 65 Lock
+Action 66 Attack
+Action 67 Wait
+Action 68 Answer
+Action 69 Tell
+Action 70 Ask
+Action 71 AskFor
+Action 72 Eat
+Action 73 Sleep
+Action 74 Sing
+Action 75 Climb
+Action 76 Buy
+Action 77 Squeeze
+Action 78 Swim
+Action 79 Swing
+Action 80 Blow
+Action 81 Pray
+Action 82 Wake
+Action 83 WakeOther
+Action 84 Kiss
+Action 85 Think
+Action 86 Smell
+Action 87 Listen
+Action 88 Taste
+Action 89 Touch
+Action 90 Clean
+Action 91 Repair
+Action 92 Burn
+Action 93 Drink
+Action 94 Fill
+Action 95 Cut
+Action 96 Jump
+Action 97 JumpOver
+Action 98 Dig
+Action 99 Plain
+Action 100 Pretty
+Action 101 Hints
+Action 102 Help
+Action 103 HelpSpecial
+Action 104 Time
+Action 105 LookUp
+Action 106 PaceDir
+Action 107 Ram
+Action 108 Lie
+Action 109 LieDown
+Action 110 Examine
+Action 111 Wash
+Action 112 DigWith
+Action 113 TurnWith
+Action 114 Rip
+Action 115 RipDown
+Action 116 Shout
+Action 117 Lagach
+Action 118 Strike
+Action 119 Kill
+Action 120 PointVague
+Action 121 PointAt
+Action 122 Point
+Action 123 PlayCroquet
+Action 124 Diagnose
+Action 125 Dance
+Action 126 Beep
+Action 127 Lean
+Action 128 PropWith
+Action 129 Slide
+Action 130 Xyzzy
+Action 131 Shantih
+Action 132 Milk
+Action 133 Pace
+Action 134 Hypnotize
+Action 135 Anoppe
+Action 136 Sail
+Action 137 Anoint
+Action 138 Knock
+Action 139 Wish
+Action 140 Inscribe
+Action 141 InscribeOn
+Action 142 Gamble
+Action 143 CloseWith
+Action 144 Stack
+Action 145 Start
+Action 262 Miscellany
 Action 256 Release
 Action 257 Receive
 Action 258 ThrownAt
@@ -1018,891 +1018,891 @@ Action 263 Prompt
 Action 264 Orders
 Action 65535 -1
 
-Word	adamantin	adamantine
-Word	agricultu	agricultural
-Word	alexandri	alexandria
-Word	apolloniu	apollonius
-Word	astronomi	astronomical
-Word	battlemen	battlements
-Word	callimach	callimachus
-Word	candelabr	candelabra
-Word	cannonbal	cannonball
-Word	capabilit	capability
-Word	clairvoya	clairvoyant
-Word	clerestor	clerestory
-Word	comfortab	comfortable
-Word	commemora	commemorative
-Word	compartme	compartment
-Word	conservat	conservatory
-Word	conspirat	conspirators
-Word	contrapti	contraption
-Word	crenellat	crenellations
-Word	daisychai	daisychain
-Word	developin	developing
-Word	dictionar	dictionary
-Word	disturbin	disturbing
-Word	dragonfli	dragonflies
-Word	dumbwaite	dumbwaiter
-Word	electrici	electricians
-Word	enthusias	enthusiast
-Word	everythin	everything
-Word	exhibitio	exhibition
-Word	featurele	featureless
-Word	floorboar	floorboards
-Word	gothic-l	gothic-looking
-Word	handkerch	handkerchier
-Word	hephaestu	hephaestus
-Word	hieroglyp	hieroglyphs
-Word	historica	historical
-Word	honourabl	honourable
-Word	impressio	impressionist
-Word	inscripti	inscription
-Word	instructi	instruction
-Word	insulatio	insulation
-Word	lighthous	lighthouse
-Word	luminesce	luminesce
-Word	magdalena	magdalena
-Word	matchbook	matchbook
-Word	miniature	miniature
-Word	moonstone	moonstone
-Word	motorised	motorised
-Word	mousehole	mousehole
-Word	napoleoni	napoleoni
-Word	newspaper	newspaper
-Word	northeast	northeast
-Word	northwest	northwest
-Word	ornaments	ornaments
-Word	oubliette	oubliette
-Word	paintings	paintings
-Word	panelling	panelling
-Word	paraphern	paraphern
-Word	parchment	parchment
-Word	pedestria	pedestria
-Word	photograp	photograp
-Word	pigeonhol	pigeonhol
-Word	premoniti	premoniti
-Word	pretentio	pretentio
-Word	priestess	priestess
-Word	processio	processio
-Word	projector	projector
-Word	publicity	publicity
-Word	quadrants	quadrants
-Word	quarterst	quarterst
-Word	quinquire	quinquire
-Word	reflectio	reflectio
-Word	resurrect	resurrect
-Word	returning	returning
-Word	revolving	revolving
-Word	sacrifice	sacrifice
-Word	sandstone	sandstone
-Word	sandwells	sandwells
-Word	sarcophag	sarcophag
-Word	scratched	scratched
-Word	sculpture	sculpture
-Word	september	september
-Word	sevenbran	sevenbran
-Word	seventeen	seventeen
-Word	shepherds	shepherds
-Word	shopkeepe	shopkeepe
-Word	sosostris	sosostris
-Word	southeast	southeast
-Word	southwest	southwest
-Word	souvenirs	souvenirs
-Word	spherical	spherical
-Word	staircase	staircase
-Word	starboard	starboard
-Word	statuette	statuette
-Word	strongbox	strongbox
-Word	summerhou	summerhou
-Word	summoning	summoning
-Word	superbrie	superbrie
-Word	teachests	teachests
-Word	tombstone	tombstone
-Word	unexcitin	unexcitin
-Word	weatherva	weatherva
-Word	weedkille	weedkille
-Word	windmills	windmills
-Word	window-v	window-v
-Word	windowven	windowven
-Word	yellowish	yellowish
-Word	zzzzzzzzz	zzzzzzzzz
+Word adamantin adamantine
+Word agricultu agricultural
+Word alexandri alexandria
+Word apolloniu apollonius
+Word astronomi astronomical
+Word battlemen battlements
+Word callimach callimachus
+Word candelabr candelabra
+Word cannonbal cannonball
+Word capabilit capability
+Word clairvoya clairvoyant
+Word clerestor clerestory
+Word comfortab comfortable
+Word commemora commemorative
+Word compartme compartment
+Word conservat conservatory
+Word conspirat conspirators
+Word contrapti contraption
+Word crenellat crenellations
+Word daisychai daisychain
+Word developin developing
+Word dictionar dictionary
+Word disturbin disturbing
+Word dragonfli dragonflies
+Word dumbwaite dumbwaiter
+Word electrici electricians
+Word enthusias enthusiast
+Word everythin everything
+Word exhibitio exhibition
+Word featurele featureless
+Word floorboar floorboards
+Word gothic-l gothic-looking
+Word handkerch handkerchier
+Word hephaestu hephaestus
+Word hieroglyp hieroglyphs
+Word historica historical
+Word honourabl honourable
+Word impressio impressionist
+Word inscripti inscription
+Word instructi instruction
+Word insulatio insulation
+Word lighthous lighthouse
+Word luminesce luminesce
+Word magdalena magdalena
+Word matchbook matchbook
+Word miniature miniature
+Word moonstone moonstone
+Word motorised motorised
+Word mousehole mousehole
+Word napoleoni napoleoni
+Word newspaper newspaper
+Word northeast northeast
+Word northwest northwest
+Word ornaments ornaments
+Word oubliette oubliette
+Word paintings paintings
+Word panelling panelling
+Word paraphern paraphern
+Word parchment parchment
+Word pedestria pedestria
+Word photograp photograp
+Word pigeonhol pigeonhol
+Word premoniti premoniti
+Word pretentio pretentio
+Word priestess priestess
+Word processio processio
+Word projector projector
+Word publicity publicity
+Word quadrants quadrants
+Word quarterst quarterst
+Word quinquire quinquire
+Word reflectio reflectio
+Word resurrect resurrect
+Word returning returning
+Word revolving revolving
+Word sacrifice sacrifice
+Word sandstone sandstone
+Word sandwells sandwells
+Word sarcophag sarcophag
+Word scratched scratched
+Word sculpture sculpture
+Word september september
+Word sevenbran sevenbran
+Word seventeen seventeen
+Word shepherds shepherds
+Word shopkeepe shopkeepe
+Word sosostris sosostris
+Word southeast southeast
+Word southwest southwest
+Word souvenirs souvenirs
+Word spherical spherical
+Word staircase staircase
+Word starboard starboard
+Word statuette statuette
+Word strongbox strongbox
+Word summerhou summerhou
+Word summoning summoning
+Word superbrie superbrie
+Word teachests teachests
+Word tombstone tombstone
+Word unexcitin unexcitin
+Word weatherva weatherva
+Word weedkille weedkille
+Word windmills windmills
+Word window-v window-v
+Word windowven windowven
+Word yellowish yellowish
+Word zzzzzzzzz zzzzzzzzz
 
 ! parser.h
-Routine 0xa31c	Main
-Routine 0xa324	Keyboard a_buffer a_table nw i:int w:dictword x1 x2
-Routine 0xa484	Parser results syntax line num_lines line_address i j token:int l m
-Routine 0xb340	NumberWord:int w:dictword
-Routine 0xb3f8	Descriptors context o:dictword flag:int n
-Routine 0xb52c	CreatureTest obj
-Routine 0xb548	ParseObjectList results token:int l o:dictword i j k and_parity:int single_object desc_wn many_flag
-Routine 0xba94	NounDomain domain1 domain2 context first_word i j k l oldw answer_words marker
-Routine 0xbe58	Adjudicate context i j k good_ones last n ultimate flag offset
-Routine 0xc228	ReviseMulti second_p i low
-Routine 0xc378	ScoreMatchL its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
-Routine 0xc530	BestGuess earliest its_score best i
-Routine 0xc5d0	Identical o1 o2 p1 p2 n1 n2 i:int j flag
-Routine 0xc6d4	PrintCommand from emptyf i j k f
-Routine 0xc790	CantSee:etype_enum i w e:etype_enum
-Routine 0xc7d0	MultiAdd o:object i:int j
-Routine 0xc808	MultiSub o:object i j:int k et:etype_enum
-Routine 0xc858	MultiFilter attr i j o
-Routine 0xc880	UserFilter obj
-Routine 0xc8a4	MoveWord at1 b2 at2 x y
-Routine 0xc8d4	SearchScope domain1 domain2 context i
-Routine 0xc930	IsSeeThrough o
-Routine 0xc948	PlaceInScope thing
-Routine 0xc964	DoScopeAction thing s p1
-Routine 0xca98	ScopeWithin domain nosearch context
-Routine 0xcadc	ScopeWithin_O domain nosearch context i ad n
-Routine 0xcbe8	AddToScope obj:object
-Routine 0xcc10	MakeMatch obj:object quality i
-Routine 0xccb0	TryGivenObject obj:object threshold k w j
-Routine 0xce10	Refers obj:object wd k l m
-Routine 0xce4c	NounWord:int i:dictword
-Routine 0xce94	AdjectiveWord i j
-Routine 0xceb4	AdjectiveAddress number m:routine
-Routine 0xcef0	NextWord:dictword i:char j:dictword k
-Routine 0xcf40	NextWordStopped
-Routine 0xcf58	WordAddress wordnum
-Routine 0xcf70	WordLength wordnum
-Routine 0xcf80	TryNumber wordnum   i j c num len mul tot d digit
-Routine 0xd090	ResetVagueWords i
-Routine 0xd0b8	GetGender person
-Routine 0xd0c0	Copy bto bfrom i size
-Routine 0xd0dc	UnsignedCompare:int x y u v
-Routine 0xd114	ZRegion:int addr
-Routine 0xd148	PrintOrRun o:thing prop:property flag:int a:int
-Routine 0xd1c8	ValueOrRun obj:object prop a
-Routine 0xd1e8	RunRoutines obj:object prop:property i j k l m ssv
-Routine 0xd2b8	DisplayStatus
-Routine 0xd2d4	SetTime t s
-Routine 0xd2e8	NotifyTheScore i:int
-Routine 0xd338	PlayTheGame i j k l
-Routine 0xd6e4	Process
-Routine 0xd700	TestScope obj:object act a al sr x y
-Routine 0xd754	LoopOverScope routine act x y a al
-Routine 0xd79c	BeforeRoutines
-Routine 0xd7f0	AfterRoutines:bool
-Routine 0xd834	R_Process acti:action i:object j:object sn ss sa sse
-Routine 0xd898	RunLife a j:action
-Routine 0xd8a8	LowKey_Menu menu_choices EntryR ChoiceR lines main_title i:dictword j:int
-Routine 0xd97c	DoMenu menu_choices:string EntryR:routine Choice:routine lines main_title main_wid cl i j oldcl pke
-Routine 0xdbdc	TimerE
-Routine 0xdc10	TimerE2 o:object
-Routine 0xdc3c	TimerE3 o:object
-Routine 0xdc68	StartTimer obj:object timer:int i
-Routine 0xdce4	StopTimer obj:object i
-Routine 0xdd1c	StartDaemon obj:object i
-Routine 0xdd84	StopDaemon obj:object i
-Routine 0xdda8	EndTurnSequence i j
-Routine 0xde78	AdjustLight flag i
-Routine 0xdecc	OffersLight i:object j:object
-Routine 0xdf14	HasLightSource:bool i j ad
-Routine 0xdfb4	PronounsSub p:object
-Routine 0xdfd0	NounsSub:bool
-Routine 0xe028	ChangePlayer obj:object flag i
-Routine 0xe0e0	ChangeDefault prop val
-Routine 0xe0f0	RandomEntry tab
-Routine 0xe120	Indefart o:object
-Routine 0xe138	Defart o:object
-Routine 0xe14c	CDefart o:object
-Routine 0xe15c	PrintShortName o:object
-Routine 0xe1ac	DirectionName d:object
-Routine 0xe268	Banner i:int
+Routine 0xa31c Main
+Routine 0xa324 Keyboard a_buffer a_table nw i:int w:dictword x1 x2
+Routine 0xa484 Parser results syntax line num_lines line_address i j token:int l m
+Routine 0xb340 NumberWord:int w:dictword
+Routine 0xb3f8 Descriptors context o:dictword flag:int n
+Routine 0xb52c CreatureTest obj
+Routine 0xb548 ParseObjectList results token:int l o:dictword i j k and_parity:int single_object desc_wn many_flag
+Routine 0xba94 NounDomain domain1 domain2 context first_word i j k l oldw answer_words marker
+Routine 0xbe58 Adjudicate context i j k good_ones last n ultimate flag offset
+Routine 0xc228 ReviseMulti second_p i low
+Routine 0xc378 ScoreMatchL its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
+Routine 0xc530 BestGuess earliest its_score best i
+Routine 0xc5d0 Identical o1 o2 p1 p2 n1 n2 i:int j flag
+Routine 0xc6d4 PrintCommand from emptyf i j k f
+Routine 0xc790 CantSee:etype_enum i w e:etype_enum
+Routine 0xc7d0 MultiAdd o:object i:int j
+Routine 0xc808 MultiSub o:object i j:int k et:etype_enum
+Routine 0xc858 MultiFilter attr i j o
+Routine 0xc880 UserFilter obj
+Routine 0xc8a4 MoveWord at1 b2 at2 x y
+Routine 0xc8d4 SearchScope domain1 domain2 context i
+Routine 0xc930 IsSeeThrough o
+Routine 0xc948 PlaceInScope thing
+Routine 0xc964 DoScopeAction thing s p1
+Routine 0xca98 ScopeWithin domain nosearch context
+Routine 0xcadc ScopeWithin_O domain nosearch context i ad n
+Routine 0xcbe8 AddToScope obj:object
+Routine 0xcc10 MakeMatch obj:object quality i
+Routine 0xccb0 TryGivenObject obj:object threshold k w j
+Routine 0xce10 Refers obj:object wd k l m
+Routine 0xce4c NounWord:int i:dictword
+Routine 0xce94 AdjectiveWord i j
+Routine 0xceb4 AdjectiveAddress number m:routine
+Routine 0xcef0 NextWord:dictword i:char j:dictword k
+Routine 0xcf40 NextWordStopped
+Routine 0xcf58 WordAddress wordnum
+Routine 0xcf70 WordLength wordnum
+Routine 0xcf80 TryNumber wordnum i j c num len mul tot d digit
+Routine 0xd090 ResetVagueWords i
+Routine 0xd0b8 GetGender person
+Routine 0xd0c0 Copy bto bfrom i size
+Routine 0xd0dc UnsignedCompare:int x y u v
+Routine 0xd114 ZRegion:int addr
+Routine 0xd148 PrintOrRun o:thing prop:property flag:int a:int
+Routine 0xd1c8 ValueOrRun obj:object prop a
+Routine 0xd1e8 RunRoutines obj:object prop:property i j k l m ssv
+Routine 0xd2b8 DisplayStatus
+Routine 0xd2d4 SetTime t s
+Routine 0xd2e8 NotifyTheScore i:int
+Routine 0xd338 PlayTheGame i j k l
+Routine 0xd6e4 Process
+Routine 0xd700 TestScope obj:object act a al sr x y
+Routine 0xd754 LoopOverScope routine act x y a al
+Routine 0xd79c BeforeRoutines
+Routine 0xd7f0 AfterRoutines:bool
+Routine 0xd834 R_Process acti:action i:object j:object sn ss sa sse
+Routine 0xd898 RunLife a j:action
+Routine 0xd8a8 LowKey_Menu menu_choices EntryR ChoiceR lines main_title i:dictword j:int
+Routine 0xd97c DoMenu menu_choices:string EntryR:routine Choice:routine lines main_title main_wid cl i j oldcl pke
+Routine 0xdbdc TimerE
+Routine 0xdc10 TimerE2 o:object
+Routine 0xdc3c TimerE3 o:object
+Routine 0xdc68 StartTimer obj:object timer:int i
+Routine 0xdce4 StopTimer obj:object i
+Routine 0xdd1c StartDaemon obj:object i
+Routine 0xdd84 StopDaemon obj:object i
+Routine 0xdda8 EndTurnSequence i j
+Routine 0xde78 AdjustLight flag i
+Routine 0xdecc OffersLight i:object j:object
+Routine 0xdf14 HasLightSource:bool i j ad
+Routine 0xdfb4 PronounsSub p:object
+Routine 0xdfd0 NounsSub:bool
+Routine 0xe028 ChangePlayer obj:object flag i
+Routine 0xe0e0 ChangeDefault prop val
+Routine 0xe0f0 RandomEntry tab
+Routine 0xe120 Indefart o:object
+Routine 0xe138 Defart o:object
+Routine 0xe14c CDefart o:object
+Routine 0xe15c PrintShortName o:object
+Routine 0xe1ac DirectionName d:object
+Routine 0xe268 Banner i:int
 
 ! -----
-Routine 0xe2f8	VersionSub
-Routine 0xe33c	LMAfter
-Routine 0xe4c0	RodAfter
-Routine 0xe568	RodParse:int i:int w:dictword
-Routine 0xe5b4	rod_short
-Routine 0xe5e4	rod_display_after
-Routine 0xe5fc	LifeDesc
-Routine 0xe658	LifeAction
-Routine 0xe6a4	MasterGameRods enhanced:bool
-Routine 0xe6fc	rod_func1 
-Routine 0xe708	discover_rod r:object
-Routine 0xe738	RodOfFireAction
-Routine 0xeaa4	RodOfIceAction
-Routine 0xeb60	RodOfReturningAction i:int loc:object
-Routine 0xec88	RodOfHusbandryAction
-Routine 0xed8c	RodOfBronzeAction
-Routine 0xeed0  RodOfLuckAction
-Routine 0xefd8	RodOfSacrificeAction
-Routine 0xf334	RodOfLanguageAction
-Routine 0xf3f8	RodOfStalkingAction
-Routine 0xf708	RodOfInfinityAction t:int
-Routine 0xf8d4	StartMasterGame o:object sib:object
-Routine 0xf904	LagachLife i:int r:object flag:bool
-Routine 0xfae8	TarotAfter
-Routine 0xfb14	TarotParseName i:int w:dictword
-Routine 0xfb50	TarotShort
-Routine 0xfb90	ConsultableParsename
-Routine 0xfbac	TorchAfter
-Routine 0xfc20	TorchBefore bat:object i:int
-Routine 0xfdf4	TorchTimer o:object n:int
-Routine 0xfe54	BiscuitBefore
-Routine 0xfe64	TrapdoorAfter
-Routine 0xfea0	TrapdoorBefore
-Routine 0xff24	TeachestsAfter
-Routine 0xffa0	HistoryAfter w:dictword
-Routine 0x10eac	HouseBefore
-Routine 0x10fd4	ServantsRoomAfter
-Routine 0x110d0	DictionaryAfter w:dictword
-Routine 0x1190c	WhistleAfter
-Routine 0x11c14	ParcelAfter
-Routine 0x11c54	PostcardBefore
-Routine 0x11ce8	MedicineShort
-Routine 0x11d30	MedicineAfter
-Routine 0x11e50	TabletBefore
-Routine 0x11e78	OverEastWingInitial
-Routine 0x11e88	AustinAfter
-Routine 0x11fe0	AustinBefore
-Routine 0x12000	AustinLife
-Routine 0x12154	AustinDemon i:int
-Routine 0x121f8	AustinMovements to_current:bool env:object i:int newroom:object
-Routine 0x1278c	DarkRoomBefore
-Routine 0x127e8	HangingCordAfter
-Routine 0x12840	FlashAFter
-Routine 0x128d0	ObservatoryBefore
-Routine 0x1293c	ObservatoryDiffraction card:object
-Routine 0x12ac0	TriggerAlert
-Routine 0x12bd0	GlassBallAfter i:int
-Routine 0x12e28	WaterPipeAfter
-Routine 0x12f44	RomanticNovelAfter
-Routine 0x12f88	PoetryAfter
-Routine 0x130a0	PlumbingDisaster
-Routine 0x1314c	WallDisplay o:object
-Routine 0x131a8	SouvenirsRoomAfter o:object
-Routine 0x131f8	SouvenirsRoomBefore o:object
-Routine 0x13290	SouvenirsRoomSouth
-Routine 0x1329c	ProjectorAfter
-Routine 0x133e4	ProjectorBefore o:object
-Routine 0x134a4	SouthWallAfter o:object
-Routine 0x136ac	DisplayCardDesc o:object
-Routine 0x13708	ToggleSouthWall o:object
-Routine 0x13758	FakeDie card:object
-Routine 0x1381c	EastAnnexeDesc
-Routine 0x13910	EastAnnexeAfter
-Routine 0x139c0	InsulationAfter
-Routine 0x13a68	CupboardAfter
-Routine 0x13a9c	DeadEndAfter
-Routine 0x13b64	IsaacPaintingBefore
-Routine 0x13bc8	FireplaceBefore
-Routine 0x13c1c	SkylightAfter
-Routine 0x13ca4	GasMaskBefore
-Routine 0x13cf4	GothicKeyAfter
-Routine 0x13d94	IronKeyInitial
-Routine 0x13df4	JoshuaMeldreweDaemon n:int
-Routine 0x14018	GhostLife
-Routine 0x14158	ChimneyAfter o:object
-Routine 0x14218	PriestHoleAfter o:object
-Routine 0x14294	DownTheHatch
-Routine 0x142dc	PrayerBookAfter year:int
-Routine 0x145c0	WritingRoomDesc
-Routine 0x146f0	WritingRoomAfter
-Routine 0x147e8	WritingRoomBefore
-Routine 0x147fc	ComfyBedAfter
-Routine 0x1484c	WindowAfter
-Routine 0x148e0	CheckMirror:bool o:object
-Routine 0x14904	MonkeyAlive
-Routine 0x14a2c	MirrorAfter o:object i:int
-Routine 0x14b28	WindowSillAfter
-Routine 0x14b54	OldWineryBefore
-Routine 0x14c04	OldWineryDaemon
-Routine 0x14c5c	OldWineryAfter
-Routine 0x14c94	DemijohnAfter
-Routine 0x14d1c	TouristMapAfter n:int
-Routine 0x14e80	ConservatoryBefore
-Routine 0x14ebc	CalendarAfter i:int w:dictword
-Routine 0x1505c	SheetsAFter
-Routine 0x15194	SheetsDaemon
-Routine 0x1524c	WirelessAfter
-Routine 0x1536c	WirelessBefore
-Routine 0x153d4	WirelessDaemon
-Routine 0x15474	WirelessDescribe
-Routine 0x15530	PottingRoomBefore
-Routine 0x155fc	GlovesAfter
-Routine 0x15694	JemimaDaemon
-Routine 0x15718	JemimaLife i:int
-Routine 0x15e68	DaisyChainAfter
-Routine 0x15ee4	DaisyUp o:object
-Routine 0x15f34	DaisyType n:int
-Routine 0x16024	StorageRoomAfter
-Routine 0x16080	WheelAfter r:object
-Routine 0x161e4	ShaftBefore
-Routine 0x16250	WrenchBefore
-Routine 0x16270	RopesAfter r:object
-Routine 0x16378	WishboneBefore
-Routine 0x163a0	ShaftAfter
-Routine 0x163e8	Shaft2After
-Routine 0x16424	DarkPassageAfter
-Routine 0x164a8	MetalDoorBefore
-Routine 0x164d8	CellarsAfter
-Routine 0x1652c	MouseBoundary:bool i:int j:int cell:char
-Routine 0x1655c	MouseLife frm:object dst:object prev_loc:object x:int y:int
-Routine 0x16964	WineCellarsDescription
-Routine 0x16a10	WineCellarsAfter
-Routine 0x16a44	WineCellarsUp
-Routine 0x16a88	HoleAfter
-Routine 0x16ac8	HoleLife
-Routine 0x16ae4	IronboundDoorAfter
-Routine 0x16b10	LemniscusBefore i:int
-Routine 0x16cac	ArcAfter i:int
-Routine 0x16db4	SphericalOpeningAfter
-Routine 0x16ecc	OctagonBefore
-Routine 0x16ee8	CoffinBefore r:object
-Routine 0x16f88	CoffinAfter
-Routine 0x1700c	CoffinDesc
-Routine 0x17088	SketchAfter
-Routine 0x170c4	LetterDesc
-Routine 0x1727c	HookAfter
-Routine 0x172dc	HalfwayUpStairsUp
-Routine 0x1730c	UnrealEachTurn i:int
-Routine 0x17408	PosterAfter
-Routine 0x174b0	BohemiaInitial i:int
-Routine 0x17530	Deal_card_number rank:int
-Routine 0x1759c	Deal_random_card i j card:int
-Routine 0x177ec	InsertCardIntoDeck o:object
-Routine 0x177f8	SosostrisDeals card3:object card2:object card1:object
-Routine  97492  SosostrisLife
-Routine 0x17a5c	ConsultingRoomAfter
-Routine 0x17a78	TarotPackAfter
-Routine 0x17b9c	BellPushAfter
-Routine 0x17e08	DownByRiverAfter
-Routine 0x17e28	DownByRiverWest
-Routine 0x17e3c	HandkerchiefAfter
-Routine 0x17e88	TouristBoatAfter
-Routine 0x17ec0	HollowManLife
-Routine 0x1813c	ChateletAfter
-Routine 0x18160	ShopkeeperLife
-Routine 0x18290	FoyerSouth:object
-Routine 0x1834c	RevolvingDoorAfter
-Routine 0x18408	RevolvingDoorNorth:object
-Routine 0x18414	MuseumDoorAfter
-Routine 0x1844c	BeachBallAfter
-Routine 0x18574	BeachBallBefore
-Routine 0x18598	TarotBoxAfter
-Routine 0x185b8	DarkStaircaseAfter
-Routine 0x186a8	DarkStaircaseBefore
-Routine 0x186b0	CovenCellDaemon
-Routine 0x187fc	CovenCellAfter
-Routine 0x1885c	GoatLife
-Routine 0x18920	CelldoorAfter
-Routine 0x18960	CabinetRoomAfter
-Routine 0x18990	CabinetAfter
-Routine 0x18a04	CabinetDAemon
-Routine 0x18ba0	RoundStoneAfter
-Routine 0x18bd8	CafeBefore
-Routine 0x18d04	CafeInitial
-Routine 0x18d3c	CafeTableAfter
-Routine 0x18dfc	BombDaemon
-Routine 0x18f44	BombBefore
-Routine 0x18fd8	TimerDaemon i:object j:object k:object
-Routine 0x19380	TimerAfter i:int
-Routine 0x19444	WireAfter i:int
-Routine 0x194b0	BombTicks w:int i:int
-Routine 0x195dc	AndList i:int
-Routine 0x195f4	CupsAndGlassesEachTurn i:int
-Routine 0x197cc	CupsAndGlassesAfter
-Routine 0x19838	BottleShipAfter
-Routine 0x19a0c	ModelShipAfter
-Routine 0x19ba4	SeashoreDesc
-Routine 0x19c70	SeaShoreAfter
-Routine 0x19da0	AndromedaDesc
-Routine 0x19ebc	AndromedaLife
-Routine 0x1a098	ClifftopEast:object
-Routine 0x1a0ec	GoatsLife
-Routine 0x1a100	ThornyTreeAfter
-Routine 0x1a118	TavernAfter
-Routine 0x1a148	TavernEachTurn i:int
-Routine 0x1a244	DessertAfter
-Routine 0x1a29c	BartenderLife
-Routine 0x1a398	SacredEarthSouth:object
-Routine 0x1a538	SacredEarthBefore
-Routine 0x1a540	TempleNorth:object
-Routine 0x1a5a0	InscribedStoneDesc
-Routine 0x1a6ec	SymbolDesc
-Routine 0x1a730	InnerSanctumInitial
-Routine 0x1a738	HomerLife
-Routine 0x1a9f4	HomerSleeps
-Routine 0x1aa00	PanPipesAfter i:int
-Routine 0x1ac08	CrossInitial
-Routine 0x1ac10	CrossAfter
-Routine 0x1ac2c	CrossBefore
-Routine 0x1ac4c	CrossDaemon
-Routine 0x1acac	InscriptsAfter
-Routine 0x1ad18	GemAfter
-Routine 0x1add4	ClassicalStatueAfter
-Routine 0x1ae4c	ClassicalStatueBefore
-Routine 0x1ae68	OracleLife
-Routine 0x1aea0	DescribePaces i:int
-Routine 0x1aed0	PriestTalk
-Routine 0x1b120	UrnAfter
-Routine 0x1b218	LighthouseDesc
-Routine 0x1b3f4	LighthouseDown:object
-Routine 0x1b3fc	FlashFallsOut
-Routine 0x1b43c	GoDownLighthouse
-Routine 0x1b44c	LandlubberAfter
-Routine 0x1b47c	OnShipEachTurn
-Routine 0x1b4cc	OnShipDaemon
-Routine 0x1b500	RiggingAfter
-Routine 0x1b510	OnMastWest:object
-Routine 0x1b620	OnMastDown:object
-Routine 0x1b654	OnMastAfter
-Routine 0x1b6b8	OnMastBefore
-Routine 0x1b724	FlagpoleAfter
-Routine 0x1b754	FlagAfter
-Routine 0x1b7f0	TimberSparBefore
-Routine 0x1b80c	ProwCantGo
-Routine 0x1b824	BranchAfter
-Routine 0x1b910	SternDown:object
-Routine 0x1bab4	CapstanAfter
-Routine 0x1bb0c	GardenStreamAfter
-Routine 0x1bb48	CoalBunkerBefore
-Routine 0x1bb70	StreamAfter
-Routine 0x1bba8	ShrubAfter
-Routine 0x1bc3c	StoneWallAfter
-Routine 0x1bca0	StoneWallLife
-Routine 0x1bcf0	TimberHatchBefore
-Routine 0x1bd0c	FamilyTreeInitial
-Routine 0x1bd14	FamilyTreeNorth:object
-Routine 0x1be10	PlaneTreeAfter
-Routine 0x1be20	WellBefore
-Routine 0x1be48	BeanStalkAfter
-Routine 0x1be68	BeanStalkBefore
-Routine 0x1bec0	RollerAfter
-Routine 0x1bf80	RollerEachTurn
-Routine 0x1c038	WeedKillerAfter i:int
-Routine 0x1c210	WeedKillerDaemon ndx:int
-Routine 0x1c22c	SpadeShort
-Routine 0x1c250	SpadeAfter
-Routine 0x1c294	MazeBoundary x:int y:int cell:char
-Routine 0x1c2c4	TestMazeConfines:int x:int y:int cell:char
-Routine 0x1c2f8	CheckMaze x:int y:int z:int
-Routine 0x1c30c	CheckMaze2 x:int y:int z:int
-Routine 0x1c328	UpTreeAfter
-Routine 0x1c348	LayoutDesc y:int x:int wallp:bool
-Routine 0x1c3bc	MazeDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
-Routine 0x1c4e8	MazeAfter x:int y:int
-Routine 0x1c628	MazeBefore
-Routine 0x1c634	PatioAfter
-Routine 0x1c66c	PatioBefore
-Routine 0x1c678	RoseAfter
-Routine 0x1c6bc	ViewpointAfter
-Routine 0x1c718	FollyBefore
-Routine 0x1c720	BeanpoleBefore
-Routine 0x1c738	BeanpoleDaemon
-Routine 0x1c818	FoundationsAfter x:int y:int
-Routine 0x1c8f0	FountdationsBefore
-Routine 0x1c920	MzeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
-Routine 0x1cbf8	PlantingBefore
-Routine 0x1cc00	BrickPathInitial
-Routine 0x1cc08	HedgeryNorth:object
-Routine 0x1cc60	SummerHouseSouth:object
-Routine 0x1cc9c	SummerHouseBefore:object
-Routine 0x1cd10	ChainAfter
-Routine 0x1cd64	BoardAfter
-Routine 0x1cda4	CrackAfter
-Routine 0x1cdd8	CrackBefore
-Routine 0x1ce84	SquirrelLife
-Routine 0x1cf98	GoNuts
-Routine 0x1cfa4	DescribePaces x:int y:int
-Routine 0x1cfe8	CroquetLawnDesc
-Routine 0x1d0d4	CroquetLawnInitial
-Routine 0x1d0dc	CroquetLawnShort
-Routine 0x1d10c	AstrolabeAfter
-Routine 0x1d214	AstrolabeBefore
-Routine 0x1d224	DugHoleAfter
-Routine 0x1d260	DugHoleDesc
-Routine 0x1d2b0	MurkyCaveInitial
-Routine 0x1d2b8	MurkyCaveDaemon cnt:int
-Routine 0x1dbd0	RopeAfter
-Routine 0x1dbe0	RopeDown
-Routine 0x1dc18	HangingOnRopeAfter
-Routine 0x1dc50	HangingOnRopeBefore
-Routine 0x1dc7c	DaisyBefore
-Routine 0x1dcd4	DaisyAfter
-Routine 0x1dd20	DaisyUp o:object
-Routine 0x1dd6c	EndStreamAfter
-Routine 0x1dda0	LadderAfter
-Routine 0x1ddb0	HornAfter
-Routine 0x1de30	DieBefore
-Routine 0x1de58	TricliniumDown:object
-Routine 0x1df30	WellDaemon
-Routine 0x1df68	WellBefore
-Routine 0x1dfe4	InsideWellAfter
-Routine 0x1e010	VentsAfter
-Routine 0x1e0c4	EntranceAfter
-Routine 0x1e114	EntranceBefore
-Routine 0x1e120	Capture o:object s:object
-Routine 0x1e288	TentPoleDaemon
-Routine 0x1e348	TentPoleAfter
-Routine 0x1e378	TentPoleBefore
-Routine 0x1e410	SpyDaemon
-Routine 0x1e558	SpyAfter
-Routine 0x1e59c	SpyLife
-Routine 0x1e5f0	EncampmentDaemon
-Routine 0x1e668	EncampmentEast:object
-Routine 0x1e6b4	YourGhostAfter
-Routine 0x1e778	DreamCantGo
-Routine 0x1e7a4	PremonitionStart
-Routine 0x1e7b4	PremonitionEast:object
-Routine 0x1e7dc	GeneralsTentWest:object
-Routine 0x1e800	BearTapestryLife
-Routine 0x1e824	MascotBefore
-Routine 0x1e90c	MascotAfter
-Routine 0x1e930	MascotDaemon i:int
-Routine 0x1ec70	DruidLife
-Routine 0x1eca0	DolmenBefore
-Routine 0x1ece8	EnterDream
-Routine 0x1ecf8	DreamEachTurn
-Routine 0x1edc4	BarrierAfter
-Routine 0x1ee10	LumnescenceAfter
-Routine 0x1ee58	HieroglyphsDescription
-Routine 0x1ef04	ShipWheelAfter
-Routine 0x1efcc	CryptInitial
-Routine 0x1efd4	CryptRoomAfter i:int
-Routine 0x1f0d8	AluminumStairAfter
-Routine 0x1f0e8	AdjustSlide i:int j:int u:int v:int
-Routine 0x1f104	DisplaySlidePos ndx:int chr:char
-Routine 0x1f128	DisplayWholeGrid
-Routine 0x1f1e8	CRShort
-Routine 0x1f214	CREast:object
-Routine 0x1f24c	CRBefore
-Routine 0x1f358	MetalWallInitial
-Routine 0x1f3a0	MetalWallAfter
-Routine 0x1f3d4	IronGridInitial
-Routine 0x1f4fc	GridDesc
-Routine 0x1f594	CannonballAfter
-Routine 0x1f5b4	SlideSub:bool i:int j:int col:int
-Routine 0x1f90c	SwitchBefore
-Routine 0x1f960	DialAfter
-Routine 0x1fa38	GlowingOrbAfter
-Routine 0x1fae0	InOrbBefore
-Routine 0x1fb0c	InOrbEachTurn i:int j:int
-Routine 0x1fda8	CausewayAfter
-Routine 0x1fdec	CausewayInitial
-Routine 0x1fe00	CausewayDaemon i:int
-Routine 0x201d4	PharosEachTurn
-Routine 0x20218	PharosDaemon
-Routine 0x202e4	IronGratingAfter
-Routine 0x203d8	RustyKeyAfter
-Routine 0x20410	JettyEachTurn
-Routine 0x20478	HarbourMouthAfter
-Routine 0x204b4	HarbourMouthEachTurn
-Routine 0x204f4	DriftingEachTurn
-Routine 0x20534	CrossroadsAfter
-Routine 0x205d8	TombstoneAfter
-Routine 0x206a8	CloakAfter
-Routine 0x20718	PyramidAfter
-Routine 0x2076c	HeightFashionAfter
-Routine 0x207b4	HeightFashionWest
-Routine 0x207f4	NoseAfter
-Routine 0x20878	SpiritWorldWest
-Routine 0x20934	SpiritWorldAfter
-Routine 0x20a48	SpiritWorldBefore i:int
-Routine 0x20b18	SpiritWorldEachTurn
-Routine 0x20dac	OfficerLife
-Routine 0x20de0	UglyAnimalShort
-Routine 0x20e18	UndertakingAfter
-Routine 0x20f14	MummyCaseAfter
-Routine 0x2113c	SocketDesc
-Routine 0x21164	SocketAfter
-Routine 0x211e8	SceptreBefore
-Routine 0x21200	SceptreAfter i:int
-Routine 0x21364	BuriedAfter
-Routine 0x214b4	BuriedEachTurn i:int
-Routine 0x21574	OutsideRoyalMuseumSE:object
-Routine 0x216ac	OutsideRoyalMuseumDaemon
-Routine 0x216dc	DefacedDoorAfter
-Routine 0x2174c	TableAfter
-Routine 0x21878	SosostrisLife2
-Routine 101652  CafeEachTurn
-Routine 0x218dc	QuarterstaffAfter
-Routine 0x21904	SailorAfter
-Routine 0x21914	SailorLife
-Routine 0x21990	GamblingSailorEachTurn n:int
-Routine 0x21a5c	InscribedDieAfter i:int
-Routine 0x21b14	EtruscanInt i:int
-Routine 0x21b4c	BirdcageEachTurn i:int
-Routine 0x21c00	TubeParse i w:dictword
-Routine 0x21c3c	ScrollParse i w:dictword
+Routine 0xe2f8 VersionSub
+Routine 0xe33c LMAfter
+Routine 0xe4c0 RodAfter
+Routine 0xe568 RodParse:int i:int w:dictword
+Routine 0xe5b4 rod_short
+Routine 0xe5e4 rod_display_after
+Routine 0xe5fc LifeDesc
+Routine 0xe658 LifeAction
+Routine 0xe6a4 MasterGameRods enhanced:bool
+Routine 0xe6fc rod_func1 
+Routine 0xe708 discover_rod r:object
+Routine 0xe738 RodOfFireAction
+Routine 0xeaa4 RodOfIceAction
+Routine 0xeb60 RodOfReturningAction i:int loc:object
+Routine 0xec88 RodOfHusbandryAction
+Routine 0xed8c RodOfBronzeAction
+Routine 0xeed0 RodOfLuckAction
+Routine 0xefd8 RodOfSacrificeAction
+Routine 0xf334 RodOfLanguageAction
+Routine 0xf3f8 RodOfStalkingAction
+Routine 0xf708 RodOfInfinityAction t:int
+Routine 0xf8d4 StartMasterGame o:object sib:object
+Routine 0xf904 LagachLife i:int r:object flag:bool
+Routine 0xfae8 TarotAfter
+Routine 0xfb14 TarotParseName i:int w:dictword
+Routine 0xfb50 TarotShort
+Routine 0xfb90 ConsultableParsename
+Routine 0xfbac TorchAfter
+Routine 0xfc20 TorchBefore bat:object i:int
+Routine 0xfdf4 TorchTimer o:object n:int
+Routine 0xfe54 BiscuitBefore
+Routine 0xfe64 TrapdoorAfter
+Routine 0xfea0 TrapdoorBefore
+Routine 0xff24 TeachestsAfter
+Routine 0xffa0 HistoryAfter w:dictword
+Routine 0x10eac HouseBefore
+Routine 0x10fd4 ServantsRoomAfter
+Routine 0x110d0 DictionaryAfter w:dictword
+Routine 0x1190c WhistleAfter
+Routine 0x11c14 ParcelAfter
+Routine 0x11c54 PostcardBefore
+Routine 0x11ce8 MedicineShort
+Routine 0x11d30 MedicineAfter
+Routine 0x11e50 TabletBefore
+Routine 0x11e78 OverEastWingInitial
+Routine 0x11e88 AustinAfter
+Routine 0x11fe0 AustinBefore
+Routine 0x12000 AustinLife
+Routine 0x12154 AustinDemon i:int
+Routine 0x121f8 AustinMovements to_current:bool env:object i:int newroom:object
+Routine 0x1278c DarkRoomBefore
+Routine 0x127e8 HangingCordAfter
+Routine 0x12840 FlashAFter
+Routine 0x128d0 ObservatoryBefore
+Routine 0x1293c ObservatoryDiffraction card:object
+Routine 0x12ac0 TriggerAlert
+Routine 0x12bd0 GlassBallAfter i:int
+Routine 0x12e28 WaterPipeAfter
+Routine 0x12f44 RomanticNovelAfter
+Routine 0x12f88 PoetryAfter
+Routine 0x130a0 PlumbingDisaster
+Routine 0x1314c WallDisplay o:object
+Routine 0x131a8 SouvenirsRoomAfter o:object
+Routine 0x131f8 SouvenirsRoomBefore o:object
+Routine 0x13290 SouvenirsRoomSouth
+Routine 0x1329c ProjectorAfter
+Routine 0x133e4 ProjectorBefore o:object
+Routine 0x134a4 SouthWallAfter o:object
+Routine 0x136ac DisplayCardDesc o:object
+Routine 0x13708 ToggleSouthWall o:object
+Routine 0x13758 FakeDie card:object
+Routine 0x1381c EastAnnexeDesc
+Routine 0x13910 EastAnnexeAfter
+Routine 0x139c0 InsulationAfter
+Routine 0x13a68 CupboardAfter
+Routine 0x13a9c DeadEndAfter
+Routine 0x13b64 IsaacPaintingBefore
+Routine 0x13bc8 FireplaceBefore
+Routine 0x13c1c SkylightAfter
+Routine 0x13ca4 GasMaskBefore
+Routine 0x13cf4 GothicKeyAfter
+Routine 0x13d94 IronKeyInitial
+Routine 0x13df4 JoshuaMeldreweDaemon n:int
+Routine 0x14018 GhostLife
+Routine 0x14158 ChimneyAfter o:object
+Routine 0x14218 PriestHoleAfter o:object
+Routine 0x14294 DownTheHatch
+Routine 0x142dc PrayerBookAfter year:int
+Routine 0x145c0 WritingRoomDesc
+Routine 0x146f0 WritingRoomAfter
+Routine 0x147e8 WritingRoomBefore
+Routine 0x147fc ComfyBedAfter
+Routine 0x1484c WindowAfter
+Routine 0x148e0 CheckMirror:bool o:object
+Routine 0x14904 MonkeyAlive
+Routine 0x14a2c MirrorAfter o:object i:int
+Routine 0x14b28 WindowSillAfter
+Routine 0x14b54 OldWineryBefore
+Routine 0x14c04 OldWineryDaemon
+Routine 0x14c5c OldWineryAfter
+Routine 0x14c94 DemijohnAfter
+Routine 0x14d1c TouristMapAfter n:int
+Routine 0x14e80 ConservatoryBefore
+Routine 0x14ebc CalendarAfter i:int w:dictword
+Routine 0x1505c SheetsAFter
+Routine 0x15194 SheetsDaemon
+Routine 0x1524c WirelessAfter
+Routine 0x1536c WirelessBefore
+Routine 0x153d4 WirelessDaemon
+Routine 0x15474 WirelessDescribe
+Routine 0x15530 PottingRoomBefore
+Routine 0x155fc GlovesAfter
+Routine 0x15694 JemimaDaemon
+Routine 0x15718 JemimaLife i:int
+Routine 0x15e68 DaisyChainAfter
+Routine 0x15ee4 DaisyUp o:object
+Routine 0x15f34 DaisyType n:int
+Routine 0x16024 StorageRoomAfter
+Routine 0x16080 WheelAfter r:object
+Routine 0x161e4 ShaftBefore
+Routine 0x16250 WrenchBefore
+Routine 0x16270 RopesAfter r:object
+Routine 0x16378 WishboneBefore
+Routine 0x163a0 ShaftAfter
+Routine 0x163e8 Shaft2After
+Routine 0x16424 DarkPassageAfter
+Routine 0x164a8 MetalDoorBefore
+Routine 0x164d8 CellarsAfter
+Routine 0x1652c MouseBoundary:bool i:int j:int cell:char
+Routine 0x1655c MouseLife frm:object dst:object prev_loc:object x:int y:int
+Routine 0x16964 WineCellarsDescription
+Routine 0x16a10 WineCellarsAfter
+Routine 0x16a44 WineCellarsUp
+Routine 0x16a88 HoleAfter
+Routine 0x16ac8 HoleLife
+Routine 0x16ae4 IronboundDoorAfter
+Routine 0x16b10 LemniscusBefore i:int
+Routine 0x16cac ArcAfter i:int
+Routine 0x16db4 SphericalOpeningAfter
+Routine 0x16ecc OctagonBefore
+Routine 0x16ee8 CoffinBefore r:object
+Routine 0x16f88 CoffinAfter
+Routine 0x1700c CoffinDesc
+Routine 0x17088 SketchAfter
+Routine 0x170c4 LetterDesc
+Routine 0x1727c HookAfter
+Routine 0x172dc HalfwayUpStairsUp
+Routine 0x1730c UnrealEachTurn i:int
+Routine 0x17408 PosterAfter
+Routine 0x174b0 BohemiaInitial i:int
+Routine 0x17530 Deal_card_number rank:int
+Routine 0x1759c Deal_random_card i j card:int
+Routine 0x177ec InsertCardIntoDeck o:object
+Routine 0x177f8 SosostrisDeals card3:object card2:object card1:object
+Routine 97492 SosostrisLife
+Routine 0x17a5c ConsultingRoomAfter
+Routine 0x17a78 TarotPackAfter
+Routine 0x17b9c BellPushAfter
+Routine 0x17e08 DownByRiverAfter
+Routine 0x17e28 DownByRiverWest
+Routine 0x17e3c HandkerchiefAfter
+Routine 0x17e88 TouristBoatAfter
+Routine 0x17ec0 HollowManLife
+Routine 0x1813c ChateletAfter
+Routine 0x18160 ShopkeeperLife
+Routine 0x18290 FoyerSouth:object
+Routine 0x1834c RevolvingDoorAfter
+Routine 0x18408 RevolvingDoorNorth:object
+Routine 0x18414 MuseumDoorAfter
+Routine 0x1844c BeachBallAfter
+Routine 0x18574 BeachBallBefore
+Routine 0x18598 TarotBoxAfter
+Routine 0x185b8 DarkStaircaseAfter
+Routine 0x186a8 DarkStaircaseBefore
+Routine 0x186b0 CovenCellDaemon
+Routine 0x187fc CovenCellAfter
+Routine 0x1885c GoatLife
+Routine 0x18920 CelldoorAfter
+Routine 0x18960 CabinetRoomAfter
+Routine 0x18990 CabinetAfter
+Routine 0x18a04 CabinetDAemon
+Routine 0x18ba0 RoundStoneAfter
+Routine 0x18bd8 CafeBefore
+Routine 0x18d04 CafeInitial
+Routine 0x18d3c CafeTableAfter
+Routine 0x18dfc BombDaemon
+Routine 0x18f44 BombBefore
+Routine 0x18fd8 TimerDaemon i:object j:object k:object
+Routine 0x19380 TimerAfter i:int
+Routine 0x19444 WireAfter i:int
+Routine 0x194b0 BombTicks w:int i:int
+Routine 0x195dc AndList i:int
+Routine 0x195f4 CupsAndGlassesEachTurn i:int
+Routine 0x197cc CupsAndGlassesAfter
+Routine 0x19838 BottleShipAfter
+Routine 0x19a0c ModelShipAfter
+Routine 0x19ba4 SeashoreDesc
+Routine 0x19c70 SeaShoreAfter
+Routine 0x19da0 AndromedaDesc
+Routine 0x19ebc AndromedaLife
+Routine 0x1a098 ClifftopEast:object
+Routine 0x1a0ec GoatsLife
+Routine 0x1a100 ThornyTreeAfter
+Routine 0x1a118 TavernAfter
+Routine 0x1a148 TavernEachTurn i:int
+Routine 0x1a244 DessertAfter
+Routine 0x1a29c BartenderLife
+Routine 0x1a398 SacredEarthSouth:object
+Routine 0x1a538 SacredEarthBefore
+Routine 0x1a540 TempleNorth:object
+Routine 0x1a5a0 InscribedStoneDesc
+Routine 0x1a6ec SymbolDesc
+Routine 0x1a730 InnerSanctumInitial
+Routine 0x1a738 HomerLife
+Routine 0x1a9f4 HomerSleeps
+Routine 0x1aa00 PanPipesAfter i:int
+Routine 0x1ac08 CrossInitial
+Routine 0x1ac10 CrossAfter
+Routine 0x1ac2c CrossBefore
+Routine 0x1ac4c CrossDaemon
+Routine 0x1acac InscriptsAfter
+Routine 0x1ad18 GemAfter
+Routine 0x1add4 ClassicalStatueAfter
+Routine 0x1ae4c ClassicalStatueBefore
+Routine 0x1ae68 OracleLife
+Routine 0x1aea0 DescribePaces i:int
+Routine 0x1aed0 PriestTalk
+Routine 0x1b120 UrnAfter
+Routine 0x1b218 LighthouseDesc
+Routine 0x1b3f4 LighthouseDown:object
+Routine 0x1b3fc FlashFallsOut
+Routine 0x1b43c GoDownLighthouse
+Routine 0x1b44c LandlubberAfter
+Routine 0x1b47c OnShipEachTurn
+Routine 0x1b4cc OnShipDaemon
+Routine 0x1b500 RiggingAfter
+Routine 0x1b510 OnMastWest:object
+Routine 0x1b620 OnMastDown:object
+Routine 0x1b654 OnMastAfter
+Routine 0x1b6b8 OnMastBefore
+Routine 0x1b724 FlagpoleAfter
+Routine 0x1b754 FlagAfter
+Routine 0x1b7f0 TimberSparBefore
+Routine 0x1b80c ProwCantGo
+Routine 0x1b824 BranchAfter
+Routine 0x1b910 SternDown:object
+Routine 0x1bab4 CapstanAfter
+Routine 0x1bb0c GardenStreamAfter
+Routine 0x1bb48 CoalBunkerBefore
+Routine 0x1bb70 StreamAfter
+Routine 0x1bba8 ShrubAfter
+Routine 0x1bc3c StoneWallAfter
+Routine 0x1bca0 StoneWallLife
+Routine 0x1bcf0 TimberHatchBefore
+Routine 0x1bd0c FamilyTreeInitial
+Routine 0x1bd14 FamilyTreeNorth:object
+Routine 0x1be10 PlaneTreeAfter
+Routine 0x1be20 WellBefore
+Routine 0x1be48 BeanStalkAfter
+Routine 0x1be68 BeanStalkBefore
+Routine 0x1bec0 RollerAfter
+Routine 0x1bf80 RollerEachTurn
+Routine 0x1c038 WeedKillerAfter i:int
+Routine 0x1c210 WeedKillerDaemon ndx:int
+Routine 0x1c22c SpadeShort
+Routine 0x1c250 SpadeAfter
+Routine 0x1c294 MazeBoundary x:int y:int cell:char
+Routine 0x1c2c4 TestMazeConfines:int x:int y:int cell:char
+Routine 0x1c2f8 CheckMaze x:int y:int z:int
+Routine 0x1c30c CheckMaze2 x:int y:int z:int
+Routine 0x1c328 UpTreeAfter
+Routine 0x1c348 LayoutDesc y:int x:int wallp:bool
+Routine 0x1c3bc MazeDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
+Routine 0x1c4e8 MazeAfter x:int y:int
+Routine 0x1c628 MazeBefore
+Routine 0x1c634 PatioAfter
+Routine 0x1c66c PatioBefore
+Routine 0x1c678 RoseAfter
+Routine 0x1c6bc ViewpointAfter
+Routine 0x1c718 FollyBefore
+Routine 0x1c720 BeanpoleBefore
+Routine 0x1c738 BeanpoleDaemon
+Routine 0x1c818 FoundationsAfter x:int y:int
+Routine 0x1c8f0 FountdationsBefore
+Routine 0x1c920 MzeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
+Routine 0x1cbf8 PlantingBefore
+Routine 0x1cc00 BrickPathInitial
+Routine 0x1cc08 HedgeryNorth:object
+Routine 0x1cc60 SummerHouseSouth:object
+Routine 0x1cc9c SummerHouseBefore:object
+Routine 0x1cd10 ChainAfter
+Routine 0x1cd64 BoardAfter
+Routine 0x1cda4 CrackAfter
+Routine 0x1cdd8 CrackBefore
+Routine 0x1ce84 SquirrelLife
+Routine 0x1cf98 GoNuts
+Routine 0x1cfa4 DescribePaces x:int y:int
+Routine 0x1cfe8 CroquetLawnDesc
+Routine 0x1d0d4 CroquetLawnInitial
+Routine 0x1d0dc CroquetLawnShort
+Routine 0x1d10c AstrolabeAfter
+Routine 0x1d214 AstrolabeBefore
+Routine 0x1d224 DugHoleAfter
+Routine 0x1d260 DugHoleDesc
+Routine 0x1d2b0 MurkyCaveInitial
+Routine 0x1d2b8 MurkyCaveDaemon cnt:int
+Routine 0x1dbd0 RopeAfter
+Routine 0x1dbe0 RopeDown
+Routine 0x1dc18 HangingOnRopeAfter
+Routine 0x1dc50 HangingOnRopeBefore
+Routine 0x1dc7c DaisyBefore
+Routine 0x1dcd4 DaisyAfter
+Routine 0x1dd20 DaisyUp o:object
+Routine 0x1dd6c EndStreamAfter
+Routine 0x1dda0 LadderAfter
+Routine 0x1ddb0 HornAfter
+Routine 0x1de30 DieBefore
+Routine 0x1de58 TricliniumDown:object
+Routine 0x1df30 WellDaemon
+Routine 0x1df68 WellBefore
+Routine 0x1dfe4 InsideWellAfter
+Routine 0x1e010 VentsAfter
+Routine 0x1e0c4 EntranceAfter
+Routine 0x1e114 EntranceBefore
+Routine 0x1e120 Capture o:object s:object
+Routine 0x1e288 TentPoleDaemon
+Routine 0x1e348 TentPoleAfter
+Routine 0x1e378 TentPoleBefore
+Routine 0x1e410 SpyDaemon
+Routine 0x1e558 SpyAfter
+Routine 0x1e59c SpyLife
+Routine 0x1e5f0 EncampmentDaemon
+Routine 0x1e668 EncampmentEast:object
+Routine 0x1e6b4 YourGhostAfter
+Routine 0x1e778 DreamCantGo
+Routine 0x1e7a4 PremonitionStart
+Routine 0x1e7b4 PremonitionEast:object
+Routine 0x1e7dc GeneralsTentWest:object
+Routine 0x1e800 BearTapestryLife
+Routine 0x1e824 MascotBefore
+Routine 0x1e90c MascotAfter
+Routine 0x1e930 MascotDaemon i:int
+Routine 0x1ec70 DruidLife
+Routine 0x1eca0 DolmenBefore
+Routine 0x1ece8 EnterDream
+Routine 0x1ecf8 DreamEachTurn
+Routine 0x1edc4 BarrierAfter
+Routine 0x1ee10 LumnescenceAfter
+Routine 0x1ee58 HieroglyphsDescription
+Routine 0x1ef04 ShipWheelAfter
+Routine 0x1efcc CryptInitial
+Routine 0x1efd4 CryptRoomAfter i:int
+Routine 0x1f0d8 AluminumStairAfter
+Routine 0x1f0e8 AdjustSlide i:int j:int u:int v:int
+Routine 0x1f104 DisplaySlidePos ndx:int chr:char
+Routine 0x1f128 DisplayWholeGrid
+Routine 0x1f1e8 CRShort
+Routine 0x1f214 CREast:object
+Routine 0x1f24c CRBefore
+Routine 0x1f358 MetalWallInitial
+Routine 0x1f3a0 MetalWallAfter
+Routine 0x1f3d4 IronGridInitial
+Routine 0x1f4fc GridDesc
+Routine 0x1f594 CannonballAfter
+Routine 0x1f5b4 SlideSub:bool i:int j:int col:int
+Routine 0x1f90c SwitchBefore
+Routine 0x1f960 DialAfter
+Routine 0x1fa38 GlowingOrbAfter
+Routine 0x1fae0 InOrbBefore
+Routine 0x1fb0c InOrbEachTurn i:int j:int
+Routine 0x1fda8 CausewayAfter
+Routine 0x1fdec CausewayInitial
+Routine 0x1fe00 CausewayDaemon i:int
+Routine 0x201d4 PharosEachTurn
+Routine 0x20218 PharosDaemon
+Routine 0x202e4 IronGratingAfter
+Routine 0x203d8 RustyKeyAfter
+Routine 0x20410 JettyEachTurn
+Routine 0x20478 HarbourMouthAfter
+Routine 0x204b4 HarbourMouthEachTurn
+Routine 0x204f4 DriftingEachTurn
+Routine 0x20534 CrossroadsAfter
+Routine 0x205d8 TombstoneAfter
+Routine 0x206a8 CloakAfter
+Routine 0x20718 PyramidAfter
+Routine 0x2076c HeightFashionAfter
+Routine 0x207b4 HeightFashionWest
+Routine 0x207f4 NoseAfter
+Routine 0x20878 SpiritWorldWest
+Routine 0x20934 SpiritWorldAfter
+Routine 0x20a48 SpiritWorldBefore i:int
+Routine 0x20b18 SpiritWorldEachTurn
+Routine 0x20dac OfficerLife
+Routine 0x20de0 UglyAnimalShort
+Routine 0x20e18 UndertakingAfter
+Routine 0x20f14 MummyCaseAfter
+Routine 0x2113c SocketDesc
+Routine 0x21164 SocketAfter
+Routine 0x211e8 SceptreBefore
+Routine 0x21200 SceptreAfter i:int
+Routine 0x21364 BuriedAfter
+Routine 0x214b4 BuriedEachTurn i:int
+Routine 0x21574 OutsideRoyalMuseumSE:object
+Routine 0x216ac OutsideRoyalMuseumDaemon
+Routine 0x216dc DefacedDoorAfter
+Routine 0x2174c TableAfter
+Routine 0x21878 SosostrisLife2
+Routine 101652 CafeEachTurn
+Routine 0x218dc QuarterstaffAfter
+Routine 0x21904 SailorAfter
+Routine 0x21914 SailorLife
+Routine 0x21990 GamblingSailorEachTurn n:int
+Routine 0x21a5c InscribedDieAfter i:int
+Routine 0x21b14 EtruscanInt i:int
+Routine 0x21b4c BirdcageEachTurn i:int
+Routine 0x21c00 TubeParse i w:dictword
+Routine 0x21c3c ScrollParse i w:dictword
 Routine 0x21c7c OilRoomAfter
-Routine 0x21d04	OilTroughsAfter
-Routine 0x21d20	SpindleAfter
-Routine 0x21d30	SpindleBefore
-Routine 0x21da0	CallimachusLife o:object
-Routine 0x2219c	PlaceNorth:object
-Routine 0x22260	InsidePalaceAfter
-Routine 0x22308	InsidePalaceBefore
-Routine 0x22370	SlaveLife
-Routine 0x223bc	SlaveFindsYou
-Routine 0x22430	BalustradeAfter
-Routine 0x224dc	MountingAfter
-Routine 0x22538	DriveAfter
-Routine 0x225b4	FireEscapeAfter
-Routine 0x225c4	FireEscpeInitial
-Routine 0x22654	NutsAfter
-Routine 0x22680	CornCrakeLife
-Routine 0x226a0	OldEvansLife
-Routine 0x227c8	ChurchAfter
-Routine 0x227f0	GoatsCompassesAfter
-Routine 0x2281c	PetMonkeyAfter
-Routine 0x2286c	CrescentMoonAfter
-Routine 0x2289c	RacingTimesAfter
-Routine 0x228bc	HatBandAfter
-Routine 0x228e0	ParishChurchSouth:object
-Routine 0x22914	ParishChurchDown:object
-Routine 0x229a0	MoonstoneAfter
-Routine 0x22a44	LifeDeathLoveAfter
-Routine 0x22af0	LifeDeathLoveBefore
-Routine 0x22b84	WestSideChapelAfter
-Routine 0x22cec	WestSideChapelBefore
-Routine 0x22d00	WestSideChapelEachTurn
-Routine 0x22d60	AdamantineKnightDesc
-Routine 0x22dfc	AdamantineKnightLife
+Routine 0x21d04 OilTroughsAfter
+Routine 0x21d20 SpindleAfter
+Routine 0x21d30 SpindleBefore
+Routine 0x21da0 CallimachusLife o:object
+Routine 0x2219c PlaceNorth:object
+Routine 0x22260 InsidePalaceAfter
+Routine 0x22308 InsidePalaceBefore
+Routine 0x22370 SlaveLife
+Routine 0x223bc SlaveFindsYou
+Routine 0x22430 BalustradeAfter
+Routine 0x224dc MountingAfter
+Routine 0x22538 DriveAfter
+Routine 0x225b4 FireEscapeAfter
+Routine 0x225c4 FireEscpeInitial
+Routine 0x22654 NutsAfter
+Routine 0x22680 CornCrakeLife
+Routine 0x226a0 OldEvansLife
+Routine 0x227c8 ChurchAfter
+Routine 0x227f0 GoatsCompassesAfter
+Routine 0x2281c PetMonkeyAfter
+Routine 0x2286c CrescentMoonAfter
+Routine 0x2289c RacingTimesAfter
+Routine 0x228bc HatBandAfter
+Routine 0x228e0 ParishChurchSouth:object
+Routine 0x22914 ParishChurchDown:object
+Routine 0x229a0 MoonstoneAfter
+Routine 0x22a44 LifeDeathLoveAfter
+Routine 0x22af0 LifeDeathLoveBefore
+Routine 0x22b84 WestSideChapelAfter
+Routine 0x22cec WestSideChapelBefore
+Routine 0x22d00 WestSideChapelEachTurn
+Routine 0x22d60 AdamantineKnightDesc
+Routine 0x22dfc AdamantineKnightLife
 Routine 0x22fa0 DisplayKnight
-Routine 0x23058	KnightReacts o:object
-Routine 0x234ec	DianaAfter
-Routine 0x2354c	BellRopesAfter
-Routine 0x23570	OutOfSpireDown
-Routine 0x23594	AngelDevilConsultTopic tbl w:dictword
-Routine 0x235f4	DemonQuestion w topic:int
-Routine 0x236b4	AngelQuestion w topic:int
-Routine 0x23774	HellishPlaceCantGo
-Routine 0x23790	HellishPlaceBefore cnt:int
-Routine 0x23984	HellishPlaceEachTurn i:int
-Routine 0x23a30	HellishAsk
-Routine 0x23ac8	DemonLife i:int
-Routine 0x23bf8	HeavenCantGo
-Routine 0x23c14	HeavenAfter
-Routine 0x23c2c	HeavenBefore i:int
-Routine 0x23e28	HeavenEachTurn i:int
-Routine 0x23edc	AngelHints
-Routine 0x23f74	AngelLife i:int
-Routine 0x24058	SoapAfter
-Routine 0x24068	HelpSub:bool
-Routine 0x2417c	MainMenu
-Routine 0x241e8	HelpSpecialSub:bool
-Routine 0x24244	MainMenuDesc
-Routine 0x25e90	set_flag_array i:int
-Routine 0x25ea8	display_quote n:int
-Routine 0x26688	EnglishNumber n:int m:int f:bool
-Routine 0x267e8	EnglishDigit n:int
-Routine 0x26848	NextEntry o:object odepth
-Routine 0x26908	WillRecurse o:object
-Routine 0x26934	ListEqual o1 o
-Routine 0x269a0	SortTogether obj:object value
-Routine 0x269f4	SortOutList obj:object i k l
-Routine 0x26a5c	WriteListFrom o:object style depth
-Routine 0x26ac8	WriteListR o:object depth stack_pointer  classes_p sizes_p i j k k2 l m n q senc mr
-Routine 0x270a0	WriteBeforeEntry o:object depth  flag
-Routine 0x270f4	WriteAfterEntry o:object depth stack_p  flag flag2 flag3 p comb
-Routine 0x2740c	MoveFloatingObjects i k l m address
-Routine 0x27480	PlayerTo newplace:object flag:int
-Routine 0x274c0	MovePlayer direc:property
-Routine 0x274d0	YesOrNo i:dictword
-Routine 0x27510	QuitSub:bool
-Routine 0x27524	RestartSub:bool
-Routine 0x2753c	VerifySub:bool
-Routine 0x27554	ScriptOnSub:bool
-Routine 0x27580	ScriptOffSub:bool
-Routine 0x275a8	NotifyOnSub:bool
-Routine 0x275b4	NotifyOffSub:bool
-Routine 0x275c0	PlacesSub:bool i:object j k
-Routine 0x27610	ObjectsSub:bool i:object j k
-Routine 0x276e0	ScoreSub:bool
-Routine 0x276ec	Achieved num:score_index
-Routine 0x27708	PANum m:int n:int
-Routine 0x27744	InvWideSub:bool
-Routine 0x27754	InvTallSub:bool
-Routine 0x27768	InvSub:bool
-Routine 0x277c0	TakeSub:bool
-Routine 0x27810	RTakeSub fromobj:object i j k postonobj
-Routine 0x279b0	DropSub:bool o:object
-Routine 0x27a08	RemoveSub:bool o:object
-Routine 0x27a74	IndirectlyContains o1:object o2:object
-Routine 0x27a88	PutOnSub:bool
-Routine 0x27b84	InsertSub:bool
-Routine 0x27c78	TransferSub:bool i act_needed:action k postonobj par
-Routine 0x27d3c	EmptySub:bool
-Routine 0x27d44	EmptyTSub:bool i j
-Routine 0x27db8	GiveSub:bool
-Routine 0x27df0	GiveRSub:bool
-Routine 0x27dfc	ShowSub:bool
-Routine 0x27e30	ShowRSub:bool
-Routine 0x27e3c	EnterSub:bool o:object
-Routine 0x27ebc	TakeOffSub:bool
-Routine 0x27ed4	ExitSub:bool env:object
-Routine 0x27f50	VagueGoSub:bool
-Routine 0x27f58	EnterSub:bool
-Routine 0x27f60	GoSub:bool i j k df movewith thedir:property
-Routine 0x280c0	SayWhatsOn descon:object j:object f:int
-Routine 0x280f8	Locale descin text1 text2 o:object p:property k j flag:int f2:int
-Routine 0x28244	LMode1Sub
-Routine 0x28254	LMode2Sub
-Routine 0x28264	LMode3Sub:bool
-Routine 0x28274	NoteArrival descin:object
-Routine 0x28298	ScoreArrival
-Routine 0x282b0	LookSub:bool allow_abbrev:bool env:object 
-Routine 0x283b0	ReadSub:bool i:thing
-Routine 0x28408	LookUnderSub:bool
-Routine 0x28420	SearchSub:bool i f
-Routine 0x284bc	UnlockSub:bool
-Routine 0x28508	LockSub:bool
-Routine 0x28560	SwitchOnSub:bool
-Routine 0x28598	SwitchOffSub:bool
-Routine 0x285d0	OpenSub:bool
-Routine 0x28634	CloseSub:bool
-Routine 0x2866c	DisrobeSub:bool
-Routine 0x28698	WearSub:bool
-Routine 0x286e4	EatSub:bool
-Routine 0x28710	YesSub:bool
-Routine 0x28718	NoSub:bool
-Routine 0x28720	BurnSub:bool
-Routine 0x28728	PraySub:bool
-Routine 0x28730	WakeSub:bool
-Routine 0x28738	WakeOtherSub:bool
-Routine 0x2874c	ThinkSub:bool
-Routine 0x28754	SmellSub:bool
-Routine 0x2875c	ListenSub:bool
-Routine 0x28764	TasteSub:bool
-Routine 0x2876c	CutSub:bool
-Routine 0x28774	JumpOverSub:bool
-Routine 0x2877c	RepairSub
-Routine 0x28784	DrinkSub:bool
-Routine 0x2878c	SwimSub:bool
-Routine 0x28794	SwingSub:bool
-Routine 0x2879c	BlowSub:bool
-Routine 0x287a4	CleanSub:bool
-Routine 0x287ac	SetSub:bool
-Routine 0x287b4	SetToSub:bool
-Routine 0x287bc	WaveHandsSub:bool
-Routine 0x287c4	BuySub:bool
-Routine 0x287cc	SingSub:bool
-Routine 0x287d4	ClimbSub:bool
-Routine 0x287dc	SleepSub:bool
-Routine 0x287e4	ConsultSub:bool
-Routine 0x287f0	TouchSub:bool
-Routine 0x28814	PullSub:bool
-Routine 0x28848	PushSub:bool
-Routine 0x2887c	TurnSub:bool
-Routine 0x288b0	WaitSub:bool
-Routine 0x288c4	PushDirSub:bool
-Routine 0x288cc	AllowPushDir i
-Routine 0x2890c	SqueezeSub:bool
-Routine 0x28924	ThrowAtSub:bool
-Routine 0x28964	AttackSub:bool
-Routine 0x28980	KissSub:bool
-Routine 0x289a4	AnswerSub:bool
-Routine 0x289b8	TellSub:bool
-Routine 0x289dc	AskSub:bool
-Routine 0x289f0	AskForSub:bool
-Routine 0x28a08	L__M act:action n:int x1 s
-Routine 0x28a24	L___M n:int x1 s
-Routine 0x2a178	Initialise;
-Routine 0x2a264	GamePreRoutine
-Routine 0x2a314	DeathMessage
-Routine 0x2a3ec	PrintRank s:int ndx:int 
-Routine 0x2a448	PrintTaskName n:score_index
-Routine 0x2a764	FullScoreSub:bool ndx:int score_var:int
-Routine 0x2a884	GoodTry
-Routine 0x2a8d8	GoodTryRevoked
-Routine 0x2a90c	SetHimHer who:object
-Routine 0x2aa04	DarkToDark
-Routine 0x2ac30	Amusing
-Routine 0x2ac38	ChooseObjects:int o:object i:int
-Routine 0x2ac50	ConsultDefault:object o:object
-Routine 0x2ac70	LookUpSub:bool o:object n:int
-Routine 0x2ace8	TimeSub:bool
-Routine 0x2acf0	WhereInGame
-Routine 0x2afb8	RestoreSub:bool
-Routine 0x2afd0	SaveSub:bool
-Routine 0x2b02c	JumpSub:bool
-Routine 0x2b0bc	SorrySub:bool
-Routine 0x2b0e8	StrongSub:bool
-Routine 0x2b130	WashSub:bool
-Routine 0x2b194	MildSub:bool
-Routine 0x2b1c0	KillSub:bool
-Routine 0x2b314	PrettySub:bool
-Routine 0x2b348	PlainSub:bool
-Routine 0x2b370	HintsSub:bool
-Routine 0x2b3a8	PaceDirSub:bool
-Routine 0x2b3b8	PaceSub:bool
-Routine 0x2b3c0	PaceMovement i:int d:object ydelta:int xdelta:int x:int y:int
-Routine 0x2b4f8	ExamineSub:bool
-Routine 0x2b5f0	DigWithSub:bool
-Routine 0x2b614	DigSub:bool
-Routine 0x2b814	FillSub:bool
-Routine 0x2b8e4	BeepSub:bool
-Routine 0x2b8f8	DanceSub:bool
-Routine 0x2b914	RipSub:bool
-Routine 0x2b9a0	RipDownSub:bool
-Routine 0x2b9a8	XyzzySub:bool
-Routine 0x2b9e0	LagachSub:bool
-Routine 0x2ba28	ShoutSub:bool
-Routine 0x2ba4c	ShantihSub:bool
-Routine 0x2ba8c	WaveSub:bool r:object
-Routine 0x2bbdc	StrikeSub:bool
-Routine 0x2bca4	PointAtSub:bool
-Routine 0x2bcb8	PointVagueSub:bool
-Routine 0x2bcf0	PointSub:bool r:routine
-Routine 0x2bd84	PlayCroquetSub:bool
-Routine 0x2bda0	DiagnoseSub:bool
-Routine 0x2bdcc	LeanSub:bool
-Routine 0x2bea8	PropWithSub:bool o:object
-Routine 0x2beb8	MilkSub:bool
-Routine 0x2befc	HypnotizeSub:bool
-Routine 0x2bfe4	AnoppeSub:bool
-Routine 0x2c004	SailSub:bool
-Routine 0x2c128	AnointSub:bool
-Routine 0x2c134	KnockSub:bool
-Routine 0x2c158	WishSub:bool
-Routine 0x2c194	InscribeSub:bool
-Routine 0x2c1a4	InscribeOnSub:bool
-Routine 0x2c1e0	LieSub:bool
-Routine 0x2c1fc	LieDownSub:bool
-Routine 0x2c244	RamSub:bool
-Routine 0x2c2bc	GambleSub:bool
-Routine 0x2c2c8	CloseWithSub:bool
-Routine 0x2c2d4	StackSub:bool
-Routine 0x2c2dc	TurnWithSub:bool
-Routine 0x2c330	StartSub:bool
-Routine 0x2c34c	IsDirection:bool
-Routine 0x2c354	ConTopicJ w:dictword
-Routine 0x2c3a8	ConTopic w:dictword
-Routine 0x2c3d4	Stub10
-Routine 0x2c3d8	Stub9
-Routine 0x2c3dc	Stub8
-Routine 0x2c3e0	Stub7
-Routine 0x2c3e4	Stub6
-Routine 0x2c3e8	Stub5 i:int
-Routine 0x2c3f0	Stub4 i:int
-Routine 0x2c3f8	Stub3 i:int
-Routine 0x2c400	Stub2 i:int
-Routine 0x2c408	Stub1 i:int j:int
-Routine 0x2c410	NegativeOne:int
-Routine 0x2c414	ConTopicI w:dictword
-Routine 0x2c440	AnotherWord w:dictword
+Routine 0x23058 KnightReacts o:object
+Routine 0x234ec DianaAfter
+Routine 0x2354c BellRopesAfter
+Routine 0x23570 OutOfSpireDown
+Routine 0x23594 AngelDevilConsultTopic tbl w:dictword
+Routine 0x235f4 DemonQuestion w topic:int
+Routine 0x236b4 AngelQuestion w topic:int
+Routine 0x23774 HellishPlaceCantGo
+Routine 0x23790 HellishPlaceBefore cnt:int
+Routine 0x23984 HellishPlaceEachTurn i:int
+Routine 0x23a30 HellishAsk
+Routine 0x23ac8 DemonLife i:int
+Routine 0x23bf8 HeavenCantGo
+Routine 0x23c14 HeavenAfter
+Routine 0x23c2c HeavenBefore i:int
+Routine 0x23e28 HeavenEachTurn i:int
+Routine 0x23edc AngelHints
+Routine 0x23f74 AngelLife i:int
+Routine 0x24058 SoapAfter
+Routine 0x24068 HelpSub:bool
+Routine 0x2417c MainMenu
+Routine 0x241e8 HelpSpecialSub:bool
+Routine 0x24244 MainMenuDesc
+Routine 0x25e90 set_flag_array i:int
+Routine 0x25ea8 display_quote n:int
+Routine 0x26688 EnglishNumber n:int m:int f:bool
+Routine 0x267e8 EnglishDigit n:int
+Routine 0x26848 NextEntry o:object odepth
+Routine 0x26908 WillRecurse o:object
+Routine 0x26934 ListEqual o1 o
+Routine 0x269a0 SortTogether obj:object value
+Routine 0x269f4 SortOutList obj:object i k l
+Routine 0x26a5c WriteListFrom o:object style depth
+Routine 0x26ac8 WriteListR o:object depth stack_pointer classes_p sizes_p i j k k2 l m n q senc mr
+Routine 0x270a0 WriteBeforeEntry o:object depth flag
+Routine 0x270f4 WriteAfterEntry o:object depth stack_p flag flag2 flag3 p comb
+Routine 0x2740c MoveFloatingObjects i k l m address
+Routine 0x27480 PlayerTo newplace:object flag:int
+Routine 0x274c0 MovePlayer direc:property
+Routine 0x274d0 YesOrNo i:dictword
+Routine 0x27510 QuitSub:bool
+Routine 0x27524 RestartSub:bool
+Routine 0x2753c VerifySub:bool
+Routine 0x27554 ScriptOnSub:bool
+Routine 0x27580 ScriptOffSub:bool
+Routine 0x275a8 NotifyOnSub:bool
+Routine 0x275b4 NotifyOffSub:bool
+Routine 0x275c0 PlacesSub:bool i:object j k
+Routine 0x27610 ObjectsSub:bool i:object j k
+Routine 0x276e0 ScoreSub:bool
+Routine 0x276ec Achieved num:score_index
+Routine 0x27708 PANum m:int n:int
+Routine 0x27744 InvWideSub:bool
+Routine 0x27754 InvTallSub:bool
+Routine 0x27768 InvSub:bool
+Routine 0x277c0 TakeSub:bool
+Routine 0x27810 RTakeSub fromobj:object i j k postonobj
+Routine 0x279b0 DropSub:bool o:object
+Routine 0x27a08 RemoveSub:bool o:object
+Routine 0x27a74 IndirectlyContains o1:object o2:object
+Routine 0x27a88 PutOnSub:bool
+Routine 0x27b84 InsertSub:bool
+Routine 0x27c78 TransferSub:bool i act_needed:action k postonobj par
+Routine 0x27d3c EmptySub:bool
+Routine 0x27d44 EmptyTSub:bool i j
+Routine 0x27db8 GiveSub:bool
+Routine 0x27df0 GiveRSub:bool
+Routine 0x27dfc ShowSub:bool
+Routine 0x27e30 ShowRSub:bool
+Routine 0x27e3c EnterSub:bool o:object
+Routine 0x27ebc TakeOffSub:bool
+Routine 0x27ed4 ExitSub:bool env:object
+Routine 0x27f50 VagueGoSub:bool
+Routine 0x27f58 EnterSub:bool
+Routine 0x27f60 GoSub:bool i j k df movewith thedir:property
+Routine 0x280c0 SayWhatsOn descon:object j:object f:int
+Routine 0x280f8 Locale descin text1 text2 o:object p:property k j flag:int f2:int
+Routine 0x28244 LMode1Sub
+Routine 0x28254 LMode2Sub
+Routine 0x28264 LMode3Sub:bool
+Routine 0x28274 NoteArrival descin:object
+Routine 0x28298 ScoreArrival
+Routine 0x282b0 LookSub:bool allow_abbrev:bool env:object 
+Routine 0x283b0 ReadSub:bool i:thing
+Routine 0x28408 LookUnderSub:bool
+Routine 0x28420 SearchSub:bool i f
+Routine 0x284bc UnlockSub:bool
+Routine 0x28508 LockSub:bool
+Routine 0x28560 SwitchOnSub:bool
+Routine 0x28598 SwitchOffSub:bool
+Routine 0x285d0 OpenSub:bool
+Routine 0x28634 CloseSub:bool
+Routine 0x2866c DisrobeSub:bool
+Routine 0x28698 WearSub:bool
+Routine 0x286e4 EatSub:bool
+Routine 0x28710 YesSub:bool
+Routine 0x28718 NoSub:bool
+Routine 0x28720 BurnSub:bool
+Routine 0x28728 PraySub:bool
+Routine 0x28730 WakeSub:bool
+Routine 0x28738 WakeOtherSub:bool
+Routine 0x2874c ThinkSub:bool
+Routine 0x28754 SmellSub:bool
+Routine 0x2875c ListenSub:bool
+Routine 0x28764 TasteSub:bool
+Routine 0x2876c CutSub:bool
+Routine 0x28774 JumpOverSub:bool
+Routine 0x2877c RepairSub
+Routine 0x28784 DrinkSub:bool
+Routine 0x2878c SwimSub:bool
+Routine 0x28794 SwingSub:bool
+Routine 0x2879c BlowSub:bool
+Routine 0x287a4 CleanSub:bool
+Routine 0x287ac SetSub:bool
+Routine 0x287b4 SetToSub:bool
+Routine 0x287bc WaveHandsSub:bool
+Routine 0x287c4 BuySub:bool
+Routine 0x287cc SingSub:bool
+Routine 0x287d4 ClimbSub:bool
+Routine 0x287dc SleepSub:bool
+Routine 0x287e4 ConsultSub:bool
+Routine 0x287f0 TouchSub:bool
+Routine 0x28814 PullSub:bool
+Routine 0x28848 PushSub:bool
+Routine 0x2887c TurnSub:bool
+Routine 0x288b0 WaitSub:bool
+Routine 0x288c4 PushDirSub:bool
+Routine 0x288cc AllowPushDir i
+Routine 0x2890c SqueezeSub:bool
+Routine 0x28924 ThrowAtSub:bool
+Routine 0x28964 AttackSub:bool
+Routine 0x28980 KissSub:bool
+Routine 0x289a4 AnswerSub:bool
+Routine 0x289b8 TellSub:bool
+Routine 0x289dc AskSub:bool
+Routine 0x289f0 AskForSub:bool
+Routine 0x28a08 L__M act:action n:int x1 s
+Routine 0x28a24 L___M n:int x1 s
+Routine 0x2a178 Initialise;
+Routine 0x2a264 GamePreRoutine
+Routine 0x2a314 DeathMessage
+Routine 0x2a3ec PrintRank s:int ndx:int 
+Routine 0x2a448 PrintTaskName n:score_index
+Routine 0x2a764 FullScoreSub:bool ndx:int score_var:int
+Routine 0x2a884 GoodTry
+Routine 0x2a8d8 GoodTryRevoked
+Routine 0x2a90c SetHimHer who:object
+Routine 0x2aa04 DarkToDark
+Routine 0x2ac30 Amusing
+Routine 0x2ac38 ChooseObjects:int o:object i:int
+Routine 0x2ac50 ConsultDefault:object o:object
+Routine 0x2ac70 LookUpSub:bool o:object n:int
+Routine 0x2ace8 TimeSub:bool
+Routine 0x2acf0 WhereInGame
+Routine 0x2afb8 RestoreSub:bool
+Routine 0x2afd0 SaveSub:bool
+Routine 0x2b02c JumpSub:bool
+Routine 0x2b0bc SorrySub:bool
+Routine 0x2b0e8 StrongSub:bool
+Routine 0x2b130 WashSub:bool
+Routine 0x2b194 MildSub:bool
+Routine 0x2b1c0 KillSub:bool
+Routine 0x2b314 PrettySub:bool
+Routine 0x2b348 PlainSub:bool
+Routine 0x2b370 HintsSub:bool
+Routine 0x2b3a8 PaceDirSub:bool
+Routine 0x2b3b8 PaceSub:bool
+Routine 0x2b3c0 PaceMovement i:int d:object ydelta:int xdelta:int x:int y:int
+Routine 0x2b4f8 ExamineSub:bool
+Routine 0x2b5f0 DigWithSub:bool
+Routine 0x2b614 DigSub:bool
+Routine 0x2b814 FillSub:bool
+Routine 0x2b8e4 BeepSub:bool
+Routine 0x2b8f8 DanceSub:bool
+Routine 0x2b914 RipSub:bool
+Routine 0x2b9a0 RipDownSub:bool
+Routine 0x2b9a8 XyzzySub:bool
+Routine 0x2b9e0 LagachSub:bool
+Routine 0x2ba28 ShoutSub:bool
+Routine 0x2ba4c ShantihSub:bool
+Routine 0x2ba8c WaveSub:bool r:object
+Routine 0x2bbdc StrikeSub:bool
+Routine 0x2bca4 PointAtSub:bool
+Routine 0x2bcb8 PointVagueSub:bool
+Routine 0x2bcf0 PointSub:bool r:routine
+Routine 0x2bd84 PlayCroquetSub:bool
+Routine 0x2bda0 DiagnoseSub:bool
+Routine 0x2bdcc LeanSub:bool
+Routine 0x2bea8 PropWithSub:bool o:object
+Routine 0x2beb8 MilkSub:bool
+Routine 0x2befc HypnotizeSub:bool
+Routine 0x2bfe4 AnoppeSub:bool
+Routine 0x2c004 SailSub:bool
+Routine 0x2c128 AnointSub:bool
+Routine 0x2c134 KnockSub:bool
+Routine 0x2c158 WishSub:bool
+Routine 0x2c194 InscribeSub:bool
+Routine 0x2c1a4 InscribeOnSub:bool
+Routine 0x2c1e0 LieSub:bool
+Routine 0x2c1fc LieDownSub:bool
+Routine 0x2c244 RamSub:bool
+Routine 0x2c2bc GambleSub:bool
+Routine 0x2c2c8 CloseWithSub:bool
+Routine 0x2c2d4 StackSub:bool
+Routine 0x2c2dc TurnWithSub:bool
+Routine 0x2c330 StartSub:bool
+Routine 0x2c34c IsDirection:bool
+Routine 0x2c354 ConTopicJ w:dictword
+Routine 0x2c3a8 ConTopic w:dictword
+Routine 0x2c3d4 Stub10
+Routine 0x2c3d8 Stub9
+Routine 0x2c3dc Stub8
+Routine 0x2c3e0 Stub7
+Routine 0x2c3e4 Stub6
+Routine 0x2c3e8 Stub5 i:int
+Routine 0x2c3f0 Stub4 i:int
+Routine 0x2c3f8 Stub3 i:int
+Routine 0x2c400 Stub2 i:int
+Routine 0x2c408 Stub1 i:int j:int
+Routine 0x2c410 NegativeOne:int
+Routine 0x2c414 ConTopicI w:dictword
+Routine 0x2c440 AnotherWord w:dictword
 Routine 0x2c44c PaceOrPaces d:dictword
-Routine 0x2c468	SomeParse w:dictword n:int i
-Routine 0x2c4ec	CroquetMove:int w:dictword i flag:int j:int d:object
-Routine 0x2c5e0	CroquetFunc:int i j:int
-Routine 0x2c628	AnotherCroquetFunc:int i j
-Routine 0x2c644	readchar:int s:^array(char) i:bool j:int k
-Routine 0x2c6c0	PageScreen:int s:string more:bool c:char
-Routine 0x2c6fc	MoreAmusements:int
-Routine 0x2cde4	EndMenuDisplay
-Routine 0x2cdf0	EndMenu:int
-Routine 0x2ce5c	AmusementMenu:int
-Routine 0x2d308	TriviaMenu:int
-Routine 0x2d314	TriviaQuestion:int
-Routine 0x2d3a8	WhichMenu:int
-Routine 0x2d3c0	Stub11
-Routine 0x2d3cc	HintSubmenu:int
-Routine 0x2d3f8	StartSplash i:int
-Routine 0x2d550	Sub12
-Routine 0x2d554	StatusLinePrinter columns:int
-Routine 0x2d8cc	quote_display lines:int margin:int lines:^array columns:int center:int cursor:int i:int l:string
+Routine 0x2c468 SomeParse w:dictword n:int i
+Routine 0x2c4ec CroquetMove:int w:dictword i flag:int j:int d:object
+Routine 0x2c5e0 CroquetFunc:int i j:int
+Routine 0x2c628 AnotherCroquetFunc:int i j
+Routine 0x2c644 readchar:int s:^array(char) i:bool j:int k
+Routine 0x2c6c0 PageScreen:int s:string more:bool c:char
+Routine 0x2c6fc MoreAmusements:int
+Routine 0x2cde4 EndMenuDisplay
+Routine 0x2cdf0 EndMenu:int
+Routine 0x2ce5c AmusementMenu:int
+Routine 0x2d308 TriviaMenu:int
+Routine 0x2d314 TriviaQuestion:int
+Routine 0x2d3a8 WhichMenu:int
+Routine 0x2d3c0 Stub11
+Routine 0x2d3cc HintSubmenu:int
+Routine 0x2d3f8 StartSplash i:int
+Routine 0x2d550 Sub12
+Routine 0x2d554 StatusLinePrinter columns:int
+Routine 0x2d8cc quote_display lines:int margin:int lines:^array columns:int center:int cursor:int i:int l:string
 Routine 262140 $ffff
