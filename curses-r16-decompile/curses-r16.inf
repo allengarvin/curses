@@ -6978,7 +6978,7 @@ Array preactions_table --> IsDirection;
     if (indef_mode == 1 && indef_type & 8 ~= 0) {
         if (context < 2 || context > 5) {
             etype = MULTI_PE;
-            return 65535[?];
+            return 65535;
         }
         i = 0;
         number_of_classes = 1;
@@ -7015,14 +7015,14 @@ Array preactions_table --> IsDirection;
             etype = TOOFEW_PE;
             multi_wanted = indef_wanted;
             multihad = multiple_object-->0;
-            return 65535[?];
+            return 65535;
         }
         multiple_object-->0 = i + offset;
         multi_context = context;
         if (parser_trace >= 4) {
             print "   Made multiple object of size ", i, "]^";
         }
-        return 1[?];
+        return 1;
     }
     i = 0;
   .labelXXX;
@@ -7280,7 +7280,7 @@ Array preactions_table --> IsDirection;
         }
     }
     if (best < 0) {
-        return 65535[?];
+        return 65535;
     }
     i = match_list-->earliest;
     match_list-->earliest = 65535;
