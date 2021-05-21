@@ -5798,7 +5798,7 @@ Array preactions_table --> IsDirection;
         if (verb_word == 0 || verb_word->6 & 1 == 0) {
             wn = verb_wordnum;
             l = NounDomain(1[?],0,0);
-            if (l == 10000[?]) {
+            if (l == 10000) {
                 jump labelXXX;
             }
             if (l ~= 0) {
@@ -5836,7 +5836,7 @@ Array preactions_table --> IsDirection;
             scope_reason = TALKING_REASON;
             l = NounDomain(player,actor_location,6[ne_obj?]);
             scope_reason = PARSING_REASON;
-            if (l == 10000[?]) {
+            if (l == 10000) {
                 jump labelXXX;
             }
             if (l == 0) {
@@ -5948,17 +5948,17 @@ Array preactions_table --> IsDirection;
                                     l = NounDomain(actor_location,actor,token);
                                     if (parser_trace >= 2) {
                                         print " [Forward token parsed: ";
-                                        if (l == 10000[?]) {
+                                        if (l == 10000) {
                                             print "re-parse request]^";
                                         }
-                                        if (l == 1[?]) {
+                                        if (l == 1) {
                                             print "but multiple found]^";
                                         }
                                         if (l == 0) {
                                             print "hit error ", etype, "]^";
                                         }
                                     }
-                                    if (l == 10000[?]) {
+                                    if (l == 10000) {
                                         jump labelXXX;
                                     }
                                     if (l >= 2) {
@@ -6076,7 +6076,7 @@ Array preactions_table --> IsDirection;
                         if (parameters == params_wanted) {
                             if (wn <= num_words) {
                                 l = NextWord();
-                                if (l == 40296['then'?] or 41628['xcomma'?]) {
+                                if (l == 40296 or 41628) {
                                     held_back_mode = 1;
                                     hb_wn = wn - 1;
                                 } else {
@@ -6153,17 +6153,17 @@ Array preactions_table --> IsDirection;
                         scope_reason = PARSING_REASON;
                         if (parser_trace >= 3) {
                             print "  [Parse object list replied with";
-                            if (l == 10000[?]) {
+                            if (l == 10000) {
                                 print " re-parse request]^";
                             }
                             if (l == 0) {
                                 print " token failed, error type ", etype, "]^";
                             }
-                            if (l == 1[?]) {
+                            if (l == 1) {
                                 print " token accepted]^";
                             }
                         }
-                        if (l == 10000[?]) {
+                        if (l == 10000) {
                             jump labelXXX;
                         }
                         if (l == 0) {
