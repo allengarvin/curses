@@ -7189,11 +7189,11 @@ Array preactions_table --> IsDirection;
     if (parser_trace >= 4) {
         print "   Scoring match list with type ", indef_type, ", threshold ", threshold, ":^";
     }
-    a_s = 30;
-    l_s = 20;
+    a_s = (RECURSE_BIT|ENGLISH_BIT|FULLINV_BIT|INDENT_BIT);
+    l_s = (RECURSE_BIT|FULLINV_BIT);
     if (action_to_be == ##Take or ##Remove) {
-        a_s = 20;
-        l_s = 30;
+        a_s = (RECURSE_BIT|FULLINV_BIT);
+        l_s = (RECURSE_BIT|ENGLISH_BIT|FULLINV_BIT|INDENT_BIT);
     }
     i = 0;
   .labelXXX;
@@ -7208,7 +7208,7 @@ Array preactions_table --> IsDirection;
             its_score = l_s;
         }
         if (its_score == 0 && its_owner ~= 1[?]) {
-            its_score = 10;
+            its_score = (ENGLISH_BIT|INDENT_BIT);
         }
         if (indef_type & 1 ~= 0 && obj ~= itobj or himobj or herobj) {
             its_score = its_score + 40;
