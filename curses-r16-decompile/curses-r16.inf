@@ -20086,7 +20086,7 @@ Array preactions_table --> IsDirection;
     } else {
         print " ";
     }
-    WriteListFrom(child(player),inventory_style,1[?]);
+    WriteListFrom(child(player),inventory_style,1);
     if (inventory_style & 8 ~= 0) {
         print ".^";
     }
