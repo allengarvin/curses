@@ -19651,25 +19651,25 @@ Array preactions_table --> IsDirection;
         if (o has container && (o has open || o has transparent) && child(o) == nothing) {
             comb = comb + 4;
         }
-        if (comb == 1[?]) {
+        if (comb == 1) {
             print " (providing light)";
         }
-        if (comb == 2[?]) {
+        if (comb == 2) {
             print " (which is closed)";
         }
-        if (comb == 3[s_obj?]) {
+        if (comb == 3) {
             print " (closed and providing light)";
         }
-        if (comb == 4[e_obj?]) {
+        if (comb == 4) {
             print " (which is empty)";
         }
-        if (comb == 5[w_obj?]) {
+        if (comb == 5) {
             print " (empty and providing light)";
         }
-        if (comb == 6[ne_obj?]) {
+        if (comb == 6) {
             print " (which is closed and empty)";
         }
-        if (comb == 7[se_obj?]) {
+        if (comb == 7) {
             print " (closed, empty and providing light)";
         }
     }
