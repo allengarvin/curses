@@ -5242,6 +5242,8 @@ Array garden_array ->
 ;
 Array quote_line --> 10;        
 Array array_24948 --> 12[out_obj?];     
+Array array_24974 --> 5[w_obj?];        
+Array array_24986 --> 78[Dead_End?];    
 Array the_timers --> 1; 
 Array array_23957 --> 1;        
 Array array_24021 --> 30720;    
@@ -11900,7 +11902,7 @@ Array preactions_table --> IsDirection;
     if (random(81) == 1) {
         "a splendid concert of the Sibelius Violin Concerto by the Minot Symphony Orchestra of North Dakota.";
     }
-    print (string) RandomEntry(array_24948), (string) RandomEntry(invalidArray24974), (string) RandomEntry(invalidArray24986);
+    print (string) RandomEntry(array_24948), (string) RandomEntry(array_24974), (string) RandomEntry(array_24986);
     new_line;
     rtrue;
 ];
