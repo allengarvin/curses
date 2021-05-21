@@ -23570,10 +23570,10 @@ Array preactions_table --> IsDirection;
 
 [ PaceOrPaces d ;       
     if (d == 'pace' or 'step' or 'stride') {
-        return 1[?];
+        return 1;
     }
     if (d == 'paces' or 'steps' or 'strides') {
-        return 2[?];
+        return 2;
     }
     rfalse;
 ];
@@ -23588,14 +23588,14 @@ Array preactions_table --> IsDirection;
     if (w == 'a//' or 'single') {
         ++wn;
         w = AnotherWord();
-        if (PaceOrPaces(w) ~= 1[?]) {
+        if (PaceOrPaces(w) ~= 1) {
             wn = i;
             rfalse;
         }
         ++wn;
         return 1[?];
     }
-    if (PaceOrPaces(w) == 1[?]) {
+    if (PaceOrPaces(w) == 1) {
         ++wn;
         return 1[?];
     }
@@ -23606,7 +23606,7 @@ Array preactions_table --> IsDirection;
     }
     ++wn;
     w = AnotherWord();
-    if (PaceOrPaces(w) == 1[?] && n == 1 || (PaceOrPaces(w) == 2[?] && n > 1)) {
+    if (PaceOrPaces(w) == 1 && n == 1 || (PaceOrPaces(w) == 2 && n > 1)) {
         ++wn;
     }
     return n;
