@@ -1137,7 +1137,7 @@ Routine 0xb3f8 Descriptors context o:dictword flag:int n
 Routine 0xb52c CreatureTest obj
 Routine 0xb548 ParseObjectList results token:int l o:dictword i j k and_parity:int single_object desc_wn many_flag
 Routine 0xba94 NounDomain:int domain1 domain2 context first_word i j k l oldw answer_words marker
-Routine 0xbe58 Adjudicate:int context i j k good_ones last n ultimate flag offset
+Routine 0xbe58 Adjudicate:int context i j k good_ones last n ultimate flag:int offset
 Routine 0xc228 ReviseMulti second_p i low
 Routine 0xc378 ScoreMatchL:int its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
 Routine 0xc530 BestGuess:int earliest its_score best:int i
@@ -1196,12 +1196,12 @@ Routine 0xdce4 StopTimer obj:object i
 Routine 0xdd1c StartDaemon obj:object i
 Routine 0xdd84 StopDaemon obj:object i
 Routine 0xdda8 EndTurnSequence i j
-Routine 0xde78 AdjustLight flag i
+Routine 0xde78 AdjustLight flag:int i
 Routine 0xdecc OffersLight i:object j:object
 Routine 0xdf14 HasLightSource:bool i j ad
 Routine 0xdfb4 PronounsSub p:object
 Routine 0xdfd0 NounsSub:bool
-Routine 0xe028 ChangePlayer obj:object flag i
+Routine 0xe028 ChangePlayer obj:object flag:int i
 Routine 0xe0e0 ChangeDefault prop val
 Routine 0xe0f0 RandomEntry tab
 Routine 0xe120 Indefart o:object
@@ -1699,7 +1699,7 @@ Routine 0x269f4 SortOutList obj:object i k l
 Routine 0x26a5c WriteListFrom o:object style depth
 Routine 0x26ac8 WriteListR o:object depth stack_pointer classes_p sizes_p i j k k2 l m n q senc mr
 Routine 0x270a0 WriteBeforeEntry o:object depth flag
-Routine 0x270f4 WriteAfterEntry o:object depth stack_p flag flag2 flag3 p comb
+Routine 0x270f4 WriteAfterEntry o:object depth stack_p flag:int flag2 flag3 p comb
 Routine 0x2740c MoveFloatingObjects i k l m address
 Routine 0x27480 PlayerTo newplace:object flag:int
 Routine 0x274c0 MovePlayer direc:property
