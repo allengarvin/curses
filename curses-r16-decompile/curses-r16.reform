@@ -580,19 +580,19 @@ Attribute 21 switchable
 Attribute 22 talkable
 Attribute 23 transparent
 Attribute 24 visited
-Attribute 25 workflag
+Attribute 25 workflag:int
 Attribute 26 worn
 Attribute 27 consultable
 Attribute 28 rod_attr
 Attribute 29 high_rod
 Attribute 30 card
-Attribute 31 battery_flag
+Attribute 31 battery_flag:int
 Attribute 32 wire
 Attribute 33 hidden_rod
 Attribute 34 unidentiifed_rod
-Attribute 35 statue_flag
+Attribute 35 statue_flag:int
 Attribute 36 lucky
-Attribute 37 ship_flag
+Attribute 37 ship_flag:int
 Attribute 38 charged
 Attribute 39 cat_nofollow
 
@@ -692,7 +692,7 @@ Global 92 last_command_from
 Global 93 last_command_to
 Global 94 token_was:int
 Global 95 advance_warning:int
-Global 96 placed_in_flag
+Global 96 placed_in_flag:int
 Global 97 global97:?
 Global 98 action_to_be:action
 Global 99 dont_infer:int
@@ -1137,13 +1137,13 @@ Routine 0xa484 Parser results syntax line num_lines line_address i j token:int l
 Routine 0xb340 NumberWord:int w:dictword
 Routine 0xb3f8 Descriptors context o:dictword flag:int n
 Routine 0xb52c CreatureTest obj
-Routine 0xb548 ParseObjectList results token:int l:int o:dictword i j k and_parity:int single_object:int desc_wn many_flag
+Routine 0xb548 ParseObjectList results token:int l:int o:dictword i j k and_parity:int single_object:int desc_wn many_flag:int
 Routine 0xba94 NounDomain:int domain1:bool domain2 context first_word i j k l:int oldw answer_words marker
 Routine 0xbe58 Adjudicate:int context i j k good_ones last n ultimate flag:int offset
 Routine 0xc228 ReviseMulti second_p i low
 Routine 0xc378 ScoreMatchL:int its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
 Routine 0xc530 BestGuess:int earliest its_score best:int i
-Routine 0xc5d0 Identical o1 o2 p1 p2 n1 n2 i:int j flag
+Routine 0xc5d0 Identical o1 o2 p1 p2 n1 n2 i:int j flag:int
 Routine 0xc6d4 PrintCommand from emptyf i j k f
 Routine 0xc790 CantSee:etype_enum i w e:etype_enum
 Routine 0xc7d0 MultiAdd o:object i:int j
@@ -1700,7 +1700,7 @@ Routine 0x269a0 SortTogether obj:object value
 Routine 0x269f4 SortOutList obj:object i k l
 Routine 0x26a5c WriteListFrom o:object style depth:int
 Routine 0x26ac8 WriteListR o:object depth stack_pointer classes_p sizes_p i j k k2 l m n q senc mr
-Routine 0x270a0 WriteBeforeEntry o:object depth flag
+Routine 0x270a0 WriteBeforeEntry o:object depth flag:int
 Routine 0x270f4 WriteAfterEntry o:object depth stack_p flag:int flag2:int flag3:int p comb:int
 Routine 0x2740c MoveFloatingObjects i k l m address
 Routine 0x27480 PlayerTo newplace:object flag:int

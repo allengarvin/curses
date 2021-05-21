@@ -1019,7 +1019,7 @@ Object -> old_smudged_battery "old smudged battery"
         nw_to s_obj,
         article "an",
         number 200,
-  has   battery_flag;
+  has   battery_flag:int;
 
 Object chocolate_biscuit "chocolate biscuit"    
   with  name 'chocolate' 'biscuit',
@@ -1354,7 +1354,7 @@ Object -> -> new_battery "new-looking battery"
         nw_to s_obj,
         number 300,
         devil_hint "That is a difficult puzzle, yes.",
-  has   battery_flag;
+  has   battery_flag:int;
 
 Object -> cupboard_door "cupboard door" 
   with  name 'cupboard' 'door',
@@ -1597,7 +1597,7 @@ Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"
         nw_to s_obj,
         description "On the side is the word ~Achtung~.",
         devil_hint "It's provided for your torch, and not for anything else.",
-  has   battery_flag;
+  has   battery_flag:int;
 
 Object -> -> tourist_map "tourist map"  
   with  name 'hamburg' 'tourist' 'map',
@@ -2734,7 +2734,7 @@ Object -> statue_of_Demeter "statue of Demeter"
         after ClassicalStatueAfter,
         before ClassicalStatueBefore,
         initial "A fine statue of the goddess Demeter stands here.",
-  has   static statue_flag;
+  has   static statue_flag:int;
 
 Object Northwest_Cross "Northwest Cross"        
   with  name 'carvings' 'wheat',
@@ -2748,7 +2748,7 @@ Object -> statue_of_Dionysus "statue of Dionysus"
         after ClassicalStatueAfter,
         before ClassicalStatueBefore,
         initial "A fine statue of the god Dionysus stands here.",
-  has   static statue_flag;
+  has   static statue_flag:int;
 
 Object Southeast_Cross "Southeast Cross"        
   with  name 'carvings' 'hoplite' 'warriors',
@@ -2762,7 +2762,7 @@ Object -> statue_of_Ares "statue of Ares"
         after ClassicalStatueAfter,
         before ClassicalStatueBefore,
         initial "A fine statue of the god Ares stands here.",
-  has   static statue_flag;
+  has   static statue_flag:int;
 
 Object Southwest_Cross "Southwest Cross"        
   with  name 'carvings' 'grape' 'vines' 'barrels',
@@ -2776,7 +2776,7 @@ Object -> statue_of_Poseidon "statue of Poseidon"
         after ClassicalStatueAfter,
         before ClassicalStatueBefore,
         initial "A fine statue of the god Poseidon stands here.",
-  has   static statue_flag;
+  has   static statue_flag:int;
 
 Object Cave_Mouth "Cave Mouth"  
   with  name 'lamps' 'trestle' 'altar' 'stone',
@@ -2863,7 +2863,7 @@ Object Aboard_Ship "Aboard Ship"
         daemon OnShipDaemon,
         each_turn OnShipEachTurn,
         section T_TAROT,
-  has   light ship_flag;
+  has   light ship_flag:int;
 
 Object -> mast_and_rigging "mast and rigging"   
   with  name 'mast' 'rigged' 'rigging',
@@ -2879,7 +2879,7 @@ Object Up_the_Mast "Up the Mast"
         description "Coming up here must be one of your less inspired ideas. The mist is all around you, confusing your senses. Two pale, bluish moons hang in a pink sky.",
         cant_go "Down might be a better idea.",
         section T_TAROT,
-  has   light ship_flag;
+  has   light ship_flag:int;
 
 Object -> flagpole "flagpole"   
   with  name 'pole' 'flagpole' 'mast' 'ensign' 'spar',
@@ -2912,7 +2912,7 @@ Object Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"
         description "You stand in the triangular prow of the ship, which is graced by a carved and painted figurine and named the ~Lady Magdalena~. There is no sign of water, but the boat is rocked too often for it to be aground. And the glassy mist hangs ahead.",
         cant_go ProwCantGo,
         section T_TAROT,
-  has   light ship_flag;
+  has   light ship_flag:int;
 
 Object -> green_branch "green branch"   
   with  name 'green' 'branch' 'leafed',
@@ -2929,7 +2929,7 @@ Object Stern "Stern"
         description "The square stern of the ship looks out south, not onto receding waves, but to what seems a tunnel through dense, glassy mist. You can faintly make out an odd, pale reddish sand bank in the distance.",
         cant_go "The boat runs fore.",
         section T_TAROT,
-  has   light ship_flag;
+  has   light ship_flag:int;
 
 Object -> capstan "capstan"     
   with  name 'capstan' 'anchor' 'chain' 'wheel',
@@ -6695,7 +6695,7 @@ Array preactions_table --> IsDirection;
             }
             if (l == 1) {
                 if (many_flag == 0) {
-                    many_flag = 1[?];
+                    many_flag = 1;
                 } else {
                     k = multiple_object-->0;
                     multiple_object-->0 = i;
@@ -6776,7 +6776,7 @@ Array preactions_table --> IsDirection;
             if (many_flag == 0) {
                 multiple_object-->0 = 1[?];
                 multiple_object-->1 = single_object;
-                many_flag = 1[?];
+                many_flag = 1;
                 if (parser_trace >= 3) {
                     print "  [Making new list from ";
                     Defart(single_object);
@@ -6789,7 +6789,7 @@ Array preactions_table --> IsDirection;
         }
         --wn;
     }
-    if (many_flag == 1[?]) {
+    if (many_flag == 1) {
         single_object = 0;
         multi_context = token;
     } else if (indef_mode == 1 && indef_type & 8 ~= 0 && (indef_wanted < 100 && indef_wanted > 1)) {
@@ -7435,7 +7435,7 @@ Array preactions_table --> IsDirection;
       .labelXXX;
         if (j < n2) {
             if (p1-->i == p2-->j) {
-                flag = 1[?];
+                flag = 1;
             }
             ++j;
             jump labelXXX;
@@ -7454,7 +7454,7 @@ Array preactions_table --> IsDirection;
       .labelXXX;
         if (i < n1) {
             if (p1-->i == p2-->j) {
-                flag = 1[?];
+                flag = 1;
             }
             ++i;
             jump labelXXX;
@@ -7650,7 +7650,7 @@ Array preactions_table --> IsDirection;
     }
     wn = match_from;
     TryGivenObject(thing);
-    placed_in_flag = 1[?];
+    placed_in_flag = 1;
     rtrue;
 ];
 
@@ -9980,7 +9980,7 @@ Array preactions_table --> IsDirection;
         if (child(selfobj) ~= nothing) {
             "There's a battery in already.";
         }
-        if (noun hasnt battery_flag) {
+        if (noun hasnt battery_flag:int) {
             "Not surprisingly, it won't fit in the battery compartment.";
         }
         rfalse;
@@ -10888,10 +10888,10 @@ Array preactions_table --> IsDirection;
         if (noun == timer_detonator) {
             rfalse;
         }
-        if (noun hasnt battery_flag) {
+        if (noun hasnt battery_flag:int) {
             "Only batteries and timers will fit in.";
         }
-        if (child(selfobj) has battery_flag) {
+        if (child(selfobj) has battery_flag:int) {
             "There is already a battery inside, and there's only room now for a timer.";
         }
         rfalse;
@@ -11738,9 +11738,9 @@ Array preactions_table --> IsDirection;
         if (o ~= nothing) {
             if (CheckMirror(o) == false) {
                 ++i;
-                give o workflag;
+                give o workflag:int;
             } else {
-                give o ~workflag;
+                give o ~workflag:int;
             }
             o = sibling(o);
             jump labelXXX;
@@ -11749,7 +11749,7 @@ Array preactions_table --> IsDirection;
             ".";
         }
         print ", carrying ";
-        if (model_of_ugly_animal has workflag) {
+        if (model_of_ugly_animal has workflag:int) {
             give model_of_ugly_animal general;
         }
         WriteListFrom(child(player),512 + 8 + 64);
@@ -14545,7 +14545,7 @@ Array preactions_table --> IsDirection;
 
 
 [ OnShipDaemon ;        
-    if (location has ship_flag) {
+    if (location has ship_flag:int) {
         rfalse;
     }
     StopDaemon(selfobj);
@@ -19216,7 +19216,7 @@ Array preactions_table --> IsDirection;
     if (lt_value ~= 0) {
         if (c_style & 512 ~= 0 && odepth == 0) {
           .labelXXX;
-            if (o ~= nothing && (o.nw_to ~= lt_value || o hasnt workflag)) {
+            if (o ~= nothing && (o.nw_to ~= lt_value || o hasnt workflag:int)) {
                 o = sibling(o);
                 jump labelXXX;
             }
@@ -19239,7 +19239,7 @@ Array preactions_table --> IsDirection;
     }
     if (c_style & 512 ~= 0 && odepth == 0) {
       .labelXXX;
-        if (o ~= nothing && o hasnt workflag) {
+        if (o ~= nothing && o hasnt workflag:int) {
             o = sibling(o);
             jump labelXXX;
         }
@@ -19352,7 +19352,7 @@ Array preactions_table --> IsDirection;
     c_style = style;
     if (style & 512 ~= 0) {
       .labelXXX;
-        if (o ~= nothing && o hasnt workflag) {
+        if (o ~= nothing && o hasnt workflag:int) {
             o = sibling(o);
             jump labelXXX;
         }
@@ -19733,7 +19733,7 @@ Array preactions_table --> IsDirection;
     if (c_style & 4 ~= 0 && o.u_to ~= nothing) {
         rod_identity = 1;
         flag = PrintOrRun(o,u_to,1);
-        if (flag == 1[?] && c_style & 1 ~= 0) {
+        if (flag == 1 && c_style & 1 ~= 0) {
             new_line;
         }
     }
@@ -20856,7 +20856,7 @@ Array preactions_table --> IsDirection;
     o = child(descin);
   .labelXXX;
     if (o ~= nothing) {
-        give o ~workflag;
+        give o ~workflag:int;
         o = sibling(o);
         jump labelXXX;
     }
@@ -20866,7 +20866,7 @@ Array preactions_table --> IsDirection;
     if (o ~= nothing) {
         if (o hasnt concealed && o ~= parent(player)) {
             if (o hasnt scenery) {
-                give o workflag;
+                give o workflag:int;
                 ++k;
                 p = initial;
                 f2 = 0;
@@ -20885,7 +20885,7 @@ Array preactions_table --> IsDirection;
                 if (o hasnt moved || o.describe ~= NULL || f2 == 1) {
                     if (o.describe ~= NULL && RunRoutines(o,describe) ~= 0) {
                         flag = 1;
-                        give o ~workflag;
+                        give o ~workflag:int;
                         --k;
                     } else {
                         j = o.p;
@@ -20893,7 +20893,7 @@ Array preactions_table --> IsDirection;
                             new_line;
                             PrintOrRun(o,p);
                             flag = 1;
-                            give o ~workflag;
+                            give o ~workflag:int;
                             --k;
                             if (o has supporter && child(o) ~= nothing) {
                                 SayWhatsOn(o);
