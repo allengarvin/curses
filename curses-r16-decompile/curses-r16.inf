@@ -19685,20 +19685,20 @@ Array preactions_table --> IsDirection;
         }
         if (o has light && o has worn) {
             print " (providing light and being worn";
-            flag2 = 1[?];
+            flag2 = 1;
         } else {
             if (o has light) {
                 print " (providing light";
-                flag2 = 1[?];
+                flag2 = 1;
             }
             if (o has worn) {
                 print " (being worn";
-                flag2 = 1[?];
+                flag2 = 1;
             }
         }
         if (o has container) {
             if (o has openable) {
-                if (flag2 == 1[?]) {
+                if (flag2 == 1) {
                     print " and ";
                 } else {
                     print " (which is ";
@@ -19714,16 +19714,16 @@ Array preactions_table --> IsDirection;
                 if (o has lockable && o has locked) {
                     print " and locked";
                 }
-                flag2 = 1[?];
+                flag2 = 1;
             } else if (child(o) == nothing) {
-                if (flag2 == 1[?]) {
+                if (flag2 == 1) {
                     print " and empty";
                 } else {
                     print " (which is empty)";
                 }
             }
         }
-        if (flag2 == 1[?]) {
+        if (flag2 == 1) {
             print ")";
         }
     }
