@@ -7907,7 +7907,7 @@ Array preactions_table --> IsDirection;
 [ NextWordStopped ;     
     if (wn > parse->1) {
         ++wn;
-        return 65535[?];
+        return 65535;
     }
     return NextWord();
 ];
