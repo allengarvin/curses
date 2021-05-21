@@ -6735,7 +6735,7 @@ Array preactions_table --> IsDirection;
         if (wn <= num_words) {
             i = NextWord();
             --wn;
-            if (i ~= 'and' or 'xcomma' or 'then' or 'but' or 'except') {
+            if (i ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
                 if (lookahead == 8) {
                     rfalse;
                 }
@@ -6758,10 +6758,10 @@ Array preactions_table --> IsDirection;
     }
     if (number_matched > 1) {
         i = Adjudicate(context);
-        if (i == 'invalidDictWord65535') {
+        if (i == 65535[?]) {
             rfalse;
         }
-        if (i == 'invalidDictWord1') {
+        if (i == 1[?]) {
             rtrue;
         }
     }
@@ -6786,7 +6786,7 @@ Array preactions_table --> IsDirection;
         print " do you mean, ";
         j = number_of_classes;
         marker = 0;
-        i = 'invalidDictWord1';
+        i = 1[?];
       .labelXXX;
         if (i <= number_of_classes) {
           .labelXXX;
