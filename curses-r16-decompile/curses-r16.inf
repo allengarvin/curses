@@ -6735,7 +6735,7 @@ Array preactions_table --> IsDirection;
         if (wn <= num_words) {
             i = NextWord();
             --wn;
-            if (i ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
+            if (i ~= 'and' or 'xcomma' or 'then' or 'but' or 'except') {
                 if (lookahead == 8) {
                     rfalse;
                 }
@@ -6758,10 +6758,10 @@ Array preactions_table --> IsDirection;
     }
     if (number_matched > 1) {
         i = Adjudicate(context);
-        if (i == 65535[?]) {
+        if (i == 'invalidDictWord65535') {
             rfalse;
         }
-        if (i == 1[?]) {
+        if (i == 'invalidDictWord1') {
             rtrue;
         }
     }
@@ -6786,7 +6786,7 @@ Array preactions_table --> IsDirection;
         print " do you mean, ";
         j = number_of_classes;
         marker = 0;
-        i = 1[?];
+        i = 'invalidDictWord1';
       .labelXXX;
         if (i <= number_of_classes) {
           .labelXXX;
@@ -6834,7 +6834,7 @@ Array preactions_table --> IsDirection;
         if (0 ~= j & 1) {
             Copy(24021[?],24367[?]);
             Copy(24142[?],24488[?]);
-            return 10000[?];
+            return 10000;
         }
         oldw = parse->1;
         parse->1 = answer_words + oldw;
@@ -6852,7 +6852,7 @@ Array preactions_table --> IsDirection;
             ++k;
             jump labelXXX;
         }
-        return 10000[?];
+        return 10000;
     }
     if (context == 6[ne_obj?]) {
         print "Whom";
@@ -6873,7 +6873,7 @@ Array preactions_table --> IsDirection;
     if (0 ~= j & 1) {
         Copy(24021[?],24367[?]);
         Copy(24142[?],24488[?]);
-        return 10000[?];
+        return 10000;
     }
     oldw = parse->1;
     if (interfrom == 0) {
@@ -6909,7 +6909,7 @@ Array preactions_table --> IsDirection;
         }
     }
     parse->1 = answer_words + oldw;
-    return 10000[?];
+    return 10000;
 ];
 
 [ Adjudicate context i j k good_ones last n ultimate flag offset ;      
