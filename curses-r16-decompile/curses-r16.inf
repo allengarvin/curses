@@ -7525,7 +7525,7 @@ Array preactions_table --> IsDirection;
         rtrue;
     }
     if (context == 5[w_obj?] && advance_warning ~= 65535) {
-        if (IsSeeThrough(advance_warning) == 1[?]) {
+        if (IsSeeThrough(advance_warning) == true) {
             ScopeWithin(advance_warning,0,context);
         }
     } else {
@@ -7659,7 +7659,7 @@ Array preactions_table --> IsDirection;
         --wn;
         TryGivenObject(domain);
     }
-    if (child(domain) ~= nothing && domain ~= nosearch && IsSeeThrough(domain) == 1[?]) {
+    if (child(domain) ~= nothing && domain ~= nosearch && IsSeeThrough(domain) == true) {
         ScopeWithin(domain,0,context);
     }
     ad = domain.&se_to;
@@ -8980,7 +8980,7 @@ Array preactions_table --> IsDirection;
         j = sibling(j);
         jump labelXXX;
     }
-    if (i has enterable || IsSeeThrough(i) == 1[?]) {
+    if (i has enterable || IsSeeThrough(i) == true) {
         return OffersLight(parent(i));
     }
     rfalse;
@@ -8993,7 +8993,7 @@ Array preactions_table --> IsDirection;
     if (i has light) {
         rtrue;
     }
-    if (i has enterable || IsSeeThrough(i) == 1[?]) {
+    if (i has enterable || IsSeeThrough(i) == true) {
         i = child(i);
       .labelXXX;
         if (i ~= 0) {
