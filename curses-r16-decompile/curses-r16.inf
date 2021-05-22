@@ -7157,7 +7157,7 @@ Array preactions_table --> IsDirection;
       .labelXXX;
         answer_words = Keyboard(buffer2,parse2);
         first_word = parse2-->1;
-        if (first_word == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
+        if (first_word == 'all' or 'both' or 'everything' or 'every' or 'each') {
             if (context >= 2 && context <= 5) {
                 l = multiple_object-->0;
                 i = 0;
