@@ -6829,14 +6829,14 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     if (match_from <= num_words) {
-        if (number_matched == 1[?]) {
+        if (number_matched == 1) {
             i = match_list-->0;
             return i;
         }
         if (wn <= num_words) {
             i = NextWord();
             --wn;
-            if (i ~= 29874['and'?] or 41628['xcomma'?] or 40296['then'?] or 30927['but'?] or 32916['except'?]) {
+            if (i ~= 29874 or 41628 or 40296 or 30927 or 32916) {
                 if (lookahead == 8) {
                     rfalse;
                 }
@@ -6854,15 +6854,15 @@ Array preactions_table --> IsDirection;
         }
     }
     number_of_classes = 0;
-    if (number_matched == 1[?]) {
+    if (number_matched == 1) {
         i = match_list-->0;
     }
     if (number_matched > 1) {
         i = Adjudicate(context);
-        if (i == 65535[?]) {
+        if (i == 65535) {
             rfalse;
         }
-        if (i == 1[?]) {
+        if (i == 1) {
             rtrue;
         }
     }
@@ -6887,7 +6887,7 @@ Array preactions_table --> IsDirection;
         print " do you mean, ";
         j = number_of_classes;
         marker = 0;
-        i = 1[?];
+        i = 1;
       .labelXXX;
         if (i <= number_of_classes) {
           .labelXXX;
