@@ -8427,7 +8427,7 @@ Array preactions_table --> IsDirection;
 
 [ ValueOrRun obj prop a ;       
     a = ZRegion(obj.prop);
-    if (a == 2[?]) {
+    if (a == 2) {
         return RunRoutines(obj,prop);
     }
     return obj.prop;
