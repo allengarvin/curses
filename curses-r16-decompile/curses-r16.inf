@@ -6687,7 +6687,7 @@ Array preactions_table --> IsDirection;
     indef_mode = 0;
     indef_type = 0;
     indef_wanted = 0;
-    indef_guess_p = 0;
+    indef_guess_p = false;
     flag = 1;
   .labelXXX;
     if (flag == 1) {
@@ -6747,7 +6747,7 @@ Array preactions_table --> IsDirection;
         if (allow_plurals == 1) {
             n = NumberWord(o);
             if (n > 1) {
-                indef_guess_p = 1[?];
+                indef_guess_p = true;
                 indef_mode = 1;
                 flag = 1;
                 indef_wanted = n;
@@ -7046,7 +7046,7 @@ Array preactions_table --> IsDirection;
     array_24618-->pcount = single_object;
     return 1;
   .labelXXX;
-    if (allow_plurals == 1 && indef_guess_p == 1[?]) {
+    if (allow_plurals == 1 && indef_guess_p == true) {
         allow_plurals = 0;
         wn = desc_wn;
         jump labelXXX;
