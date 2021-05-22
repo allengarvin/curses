@@ -6518,7 +6518,7 @@ Array preactions_table --> IsDirection;
     }
     --wn;
     if (indef_wanted > 0 && (context < 2 || context > 5)) {
-        return 7[se_obj?];
+        return 7;
     }
     return 0;
 ];
@@ -6801,7 +6801,7 @@ Array preactions_table --> IsDirection;
     results-->(parameters + 2) = single_object;
     ++parameters;
     array_24618-->pcount = single_object;
-    return 1[?];
+    return 1;
   .labelXXX;
     if (allow_plurals == 1 && indef_guess_p == 1[?]) {
         allow_plurals = 0;
@@ -14888,15 +14888,15 @@ Array preactions_table --> IsDirection;
         } else {
             if (noun == u_obj or d_obj) {
                 print "The garden roller is a somewhat horizontal conveyance.^";
-                return 2[?];
+                return 2;
             }
             if (location == Garden_Stream && noun == s_obj) {
                 print "The garden roller will never fit.^";
-                return 2[?];
+                return 2;
             }
             if (location == Lawn_Ornaments && noun == e_obj) {
                 print "Philistine!  How dare you try to drive a garden roller over a Roman mosaic.^";
-                return 2[?];
+                return 2;
             }
             rtrue;
         }
@@ -18568,7 +18568,7 @@ Array preactions_table --> IsDirection;
     if (menu_item == 0) {
         submenu_number = 3;
         submenu_header = "Curses";
-        return 7[se_obj?];
+        return 7;
     }
     if (menu_item == 1) {
         submenu_number = 6;
@@ -23694,11 +23694,11 @@ Array preactions_table --> IsDirection;
             rfalse;
         }
         ++wn;
-        return 1[?];
+        return 1;
     }
     if (PaceOrPaces(w) == 1) {
         ++wn;
-        return 1[?];
+        return 1;
     }
     n = TryNumber(wn);
     if (n < 0) {
