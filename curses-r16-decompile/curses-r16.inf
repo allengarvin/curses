@@ -6358,7 +6358,7 @@ Array preactions_table --> IsDirection;
                             }
                             if (interfrom ~= 0) {
                                 print "(";
-                                PrintCommand(interfrom,1[?]);
+                                PrintCommand(interfrom,true);
                                 print ")^";
                             }
                             results-->1 = params_wanted;
@@ -6469,7 +6469,7 @@ Array preactions_table --> IsDirection;
             jump labelXXX;
         }
         pcount = pcount2;
-        PrintCommand(0,1[?]);
+        PrintCommand(0,true);
         print ".^";
     }
     if (etype == NUMBER_PE) {
@@ -7209,7 +7209,7 @@ Array preactions_table --> IsDirection;
         Defart(actor);
     }
     print " to ";
-    PrintCommand(0,1[?]);
+    PrintCommand(0,true);
     print "?^";
     answer_words = Keyboard(buffer2,parse2);
     first_word = parse2-->1;
