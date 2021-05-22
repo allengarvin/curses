@@ -7572,7 +7572,7 @@ Array preactions_table --> IsDirection;
         if (indef_type & 16 ~= 0 && its_owner == itobj) {
             its_score = its_score + 40;
         }
-        if (indef_type & 32 ~= 0 && its_owner has animate && GetGender(its_owner) == 1[?]) {
+        if (indef_type & 32 ~= 0 && its_owner has animate && GetGender(its_owner) == 1) {
             its_score = its_score + 40;
         }
         its_score = its_score + ChooseObjects(obj,2);
@@ -8336,7 +8336,7 @@ Array preactions_table --> IsDirection;
 
 [ ResetVagueWords i ;   
     if (i has animate && i ~= player) {
-        if (GetGender(i) == 1[?]) {
+        if (GetGender(i) == 1) {
             himobj = i;
         } else {
             herobj = i;
