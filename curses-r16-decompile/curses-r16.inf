@@ -8545,7 +8545,7 @@ Array preactions_table --> IsDirection;
         i = sibling(i);
         jump labelXXX;
     }
-    if (j ~= 2[?]) {
+    if (j ~= 2) {
         Banner();
     }
     lightflag = OffersLight(parent(player));
@@ -8554,7 +8554,7 @@ Array preactions_table --> IsDirection;
         location = thedark;
     }
     R_Process(##Look);
-    i = 1[?];
+    i = 1;
   .labelXXX;
     if (i <= 100) {
         j = random(i);
@@ -8723,27 +8723,27 @@ Array preactions_table --> IsDirection;
     StatusLinePrinter();
     @aread buffer parse -> generic_globvar;
     i = parse-->1;
-    if (i == 37839['quit'?] or 37767['q//'?]) {
+    if (i == 37839 or 37767) {
         @quit;
     }
-    if (i == 38037['restart'?]) {
+    if (i == 38037) {
         @restart;
     }
-    if (i == 38046['restore'?]) {
+    if (i == 38046) {
         RestoreSub();
         jump labelXXX;
     }
-    if (i == 33501['fullscore'?] or 33492['full'?] && 0 == 0) {
+    if (i == 33501 or 33492 && 0 == 0) {
         new_line;
         FullScoreSub();
         jump labelXXX;
     }
-    if (deadflag == WON && i == 29838['amusing'?] && 0 == 0) {
+    if (deadflag == WON && i == 29838 && 0 == 0) {
         new_line;
         Amusing();
         jump labelXXX;
     }
-    if (i == 40836['undo'?]) {
+    if (i == 40836) {
         if (undo_flag == 0) {
             L__M(##Miscellany,6);
             jump labelXXX;
