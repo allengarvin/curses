@@ -6439,7 +6439,7 @@ Array preactions_table --> IsDirection;
         }
         wn = verb_wordnum;
         special_word = NextWord();
-        if (special_word == 41628) {
+        if (special_word == 'xcomma') {
             special_word = NextWord();
             ++verb_wordnum;
         }
@@ -13500,7 +13500,7 @@ Array preactions_table --> IsDirection;
         if (curtain hasnt general) {
             "She is startled and stares.";
         }
-        if (special_word == 32880 or 36525) {
+        if (special_word == 'even' or 'odd') {
             SosostrisDeals();
             remove Madame_Sosostris;
             give curtain ~general;
@@ -13556,7 +13556,7 @@ Array preactions_table --> IsDirection;
         "You are unable to touch the man. It is as if he isn't there.";
     }
     if (action == ##Order or ##Answer) {
-        if (special_word == 40476 || verb == ##Time) {
+        if (special_word == 'time' || verb == ##Time) {
             print "You lose all sense of time and place as the boat drifts down river... It comes as a considerable relief to your befuddled nerves when the man helps you off the boat again, and you find yourself:^";
             if (tourist_map_of_Paris has moved) {
                 PlayerTo(Infinity_Symbol);
@@ -13622,13 +13622,13 @@ Array preactions_table --> IsDirection;
         if (fifty_franc_note hasnt general) {
             "It's not that he doesn't understand you, he's just obstructive for the sake of it.";
         }
-        if (special_word == 31107) {
+        if (special_word == 'carte') {
             move tourist_map_of_Paris to player;
             Achieved(SCORE_MAP);
             give tourist_map_of_Paris moved;
             "Extremely reluctantly he serves you, giving you a tourist map of Paris.";
         }
-        if (special_word == 35625) {
+        if (special_word == 'map') {
             "He refuses to understand you, on principle.";
         }
         "~Non.~  And he folds his arms defiantly. Perhaps he has no such thing.";
@@ -13800,7 +13800,7 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     if (action == ##Order or ##Answer or ##Ask) {
-        if (special_word == 31926) {
+        if (special_word == 'curses') {
             print "In a harsh voice, the goat intones:^^";
             VersionSub();
             rtrue;
@@ -14447,7 +14447,7 @@ Array preactions_table --> IsDirection;
             "Homer glares back.";
         }
         if (Homer.time_left == 0) {
-            if (special_word == 29730) {
+            if (special_word == 'agamemnon') {
                 Homer.time_left = 1;
                 "~Mph,~ he says (untranslatably). ~But can ya see the future?  Who's gonna rule Alexandria after the fall of the guy they're gonna call Alexander the Big?~";
             }
@@ -14456,13 +14456,13 @@ Array preactions_table --> IsDirection;
             "~Hopeless,~ he says dismissively and falls asleep.";
         }
         if (Homer.time_left == 1) {
-            if (special_word == 37650) {
+            if (special_word == 'ptolemy') {
                 Homer.time_left = 2;
                 "~What's your favorite color?~";
             }
             jump labelXXX;
         }
-        if (special_word == 41664) {
+        if (special_word == 'yellow') {
             Homer.initial = "Homer glares at you through sightless eyes.";
             move Pan_pipes to player;
             Homer.time_left = 3;
@@ -18847,25 +18847,25 @@ Array preactions_table --> IsDirection;
 
 [ HelpSpecialSub ;      
     menu_item = 0;
-    if (special_word == 34770) {
+    if (special_word == 'instruction') {
         menu_item = 1;
     }
-    if (special_word == 31611) {
+    if (special_word == 'commands') {
         menu_item = 2;
     }
-    if (special_word == 31800) {
+    if (special_word == 'credits') {
         menu_item = 3;
     }
-    if (special_word == 37983) {
+    if (special_word == 'release') {
         menu_item = 4;
     }
-    if (special_word == 35274) {
+    if (special_word == 'legal') {
         menu_item = 5;
     }
-    if (special_word == 34716) {
+    if (special_word == 'inform') {
         menu_item = 6;
     }
-    if (special_word == 30054) {
+    if (special_word == 'archive') {
         menu_item = 7;
     }
     if (menu_item == 0) {
