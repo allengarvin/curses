@@ -5593,7 +5593,7 @@ Array inputobjs --> 1;
 Array multiple_object --> 64;   
 Array parse2 -> ! Unknown length -- cannot print;       
 Array array_24553 --> 16384[?]; 
-Array array_24618 --> 1;        
+Array pattern --> 8;    
 Array array_24634 --> 1;        
 Array array_24650 --> 1;        
 Array match_list --> 1; 
@@ -6236,7 +6236,7 @@ Array preactions_table --> IsDirection;
                 pcount = 1;
               .labelXXX;
                 if (pcount <= 6) {
-                    array_24618-->pcount = 0;
+                    pattern-->pcount = 0;
                     scope_token = 0;
                     token = line_address->pcount;
                     if (parser_trace >= 2) {
@@ -6302,7 +6302,7 @@ Array preactions_table --> IsDirection;
                         }
                     }
                     if (token > 180) {
-                        array_24618-->pcount = 10000 + token;
+                        pattern-->pcount = 10000 + token;
                         if (wn > num_words) {
                             if (interfrom == 0 && parameters < params_wanted) {
                                 interfrom = pcount;
@@ -6326,7 +6326,7 @@ Array preactions_table --> IsDirection;
                                     m = 0;
                                   .labelXXX;
                                     if (m < 8) {
-                                        array_24634-->m = array_24618-->m;
+                                        array_24634-->m = pattern-->m;
                                         ++m;
                                         jump labelXXX;
                                     }
@@ -6464,7 +6464,7 @@ Array preactions_table --> IsDirection;
         m = 0;
       .labelXXX;
         if (m < 8) {
-            array_24618-->m = array_24634-->m;
+            pattern-->m = array_24634-->m;
             ++m;
             jump labelXXX;
         }
@@ -7043,7 +7043,7 @@ Array preactions_table --> IsDirection;
     }
     results-->(parameters + 2) = single_object;
     ++parameters;
-    array_24618-->pcount = single_object;
+    pattern-->pcount = single_object;
     return 1;
   .labelXXX;
     if (allow_plurals == 1 && indef_guess_p == true) {
@@ -7116,7 +7116,7 @@ Array preactions_table --> IsDirection;
         if (interfrom == 0) {
             interfrom = pcount;
         }
-        array_24618-->pcount = i;
+        pattern-->pcount = i;
         return i;
     }
     if (match_from > num_words) {
@@ -7240,11 +7240,11 @@ Array preactions_table --> IsDirection;
         j = interfrom;
       .labelXXX;
         if (j < pcount) {
-            if (array_24618-->j >= 2 && array_24618-->j < 10000) {
+            if (pattern-->j >= 2 && pattern-->j < 10000) {
                 parse2-->1 = 34860['it'?];
-                itobj = array_24618-->j;
+                itobj = pattern-->j;
             } else {
-                parse2-->1 = AdjectiveAddress(array_24618-->j - 10000);
+                parse2-->1 = AdjectiveAddress(pattern-->j - 10000);
             }
             MoveWord(oldw + 1 + j - interfrom,parse2,1[?]);
             ++answer_words;
@@ -7735,7 +7735,7 @@ Array preactions_table --> IsDirection;
         if (f == 1[?]) {
             print ' ';
         }
-        i = array_24618-->k;
+        i = pattern-->k;
         if (i == 0) {
             print "those things";
         } else if (i == 1[?]) {
