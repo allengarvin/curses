@@ -6933,8 +6933,8 @@ Array preactions_table --> IsDirection;
         }
         j = first_word->6;
         if (0 ~= j & 1) {
-            Copy(24021[?],24367[?]);
-            Copy(24142[?],24488[?]);
+            Copy(array_24021,invalidArray24367);
+            Copy(parse,parse2);
             return 10000;
         }
         oldw = parse->1;
@@ -6972,8 +6972,8 @@ Array preactions_table --> IsDirection;
     first_word = parse2-->1;
     j = first_word->6;
     if (0 ~= j & 1) {
-        Copy(24021[?],24367[?]);
-        Copy(24142[?],24488[?]);
+        Copy(array_24021,invalidArray24367);
+        Copy(parse,parse2);
         return 10000;
     }
     oldw = parse->1;
