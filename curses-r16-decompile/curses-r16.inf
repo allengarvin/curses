@@ -5698,7 +5698,7 @@ Array preactions_table --> IsDirection;
         jump labelXXX;
     }
   .labelXXX;
-    Keyboard(24021[?],24142[?]);
+    Keyboard(array_24021,parse);
   .labelXXX;
     num_words = parse->1;
     wn = 1;
@@ -5834,7 +5834,7 @@ Array preactions_table --> IsDirection;
             wn = 1;
             lookahead = 1;
             scope_reason = TALKING_REASON;
-            l = NounDomain(player,actor_location,6[ne_obj?]);
+            l = NounDomain(player,actor_location,6);
             scope_reason = PARSING_REASON;
             if (l == 10000) {
                 jump labelXXX;
@@ -6879,7 +6879,7 @@ Array preactions_table --> IsDirection;
     if (match_from > num_words) {
         ! no code
     } else {
-        if (context == 6[ne_obj?]) {
+        if (context == 6) {
             print "Who";
         } else {
             print "Which";
@@ -6912,7 +6912,7 @@ Array preactions_table --> IsDirection;
         }
         print "?^";
       .labelXXX;
-        answer_words = Keyboard(24367[?],24488[?]);
+        answer_words = Keyboard(invalidArray24367,parse2);
         first_word = parse2-->1;
         if (first_word == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
             if (context >= 2 && context <= 5) {
@@ -6955,7 +6955,7 @@ Array preactions_table --> IsDirection;
         }
         return 10000;
     }
-    if (context == 6[ne_obj?]) {
+    if (context == 6) {
         print "Whom";
     } else {
         print "What";
@@ -6968,7 +6968,7 @@ Array preactions_table --> IsDirection;
     print " to ";
     PrintCommand(0,1[?]);
     print "?^";
-    answer_words = Keyboard(24367[?],24488[?]);
+    answer_words = Keyboard(invalidArray24367,parse2);
     first_word = parse2-->1;
     j = first_word->6;
     if (0 ~= j & 1) {

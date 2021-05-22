@@ -1132,13 +1132,13 @@ Word zzzzzzzzz zzzzzzzzz
 
 ! parser.h
 Routine 0xa31c Main
-Routine 0xa324 Keyboard a_buffer a_table nw i:int w:dictword x1 x2
+Routine 0xa324 Keyboard a_buffer:^array a_table:^array nw i:int w:dictword x1 x2
 Routine 0xa484 Parser results syntax line num_lines line_address i j token:int l:int m
 Routine 0xb340 NumberWord:int w:dictword
 Routine 0xb3f8 Descriptors:int context o:dictword flag:int n
 Routine 0xb52c CreatureTest obj
 Routine 0xb548 ParseObjectList:int results token:int l:int o:dictword i j k and_parity:int single_object:int desc_wn many_flag:int
-Routine 0xba94 NounDomain:int domain1:bool domain2 context first_word i:int j k l:int oldw answer_words marker
+Routine 0xba94 NounDomain:int domain1:bool domain2 context:int first_word i:int j k l:int oldw answer_words marker
 Routine 0xbe58 Adjudicate:int context i j k good_ones last n ultimate flag:int offset
 Routine 0xc228 ReviseMulti second_p i low
 Routine 0xc378 ScoreMatchL:int its_owner its_score:display_bit obj:object i threshold:int a_s:display_bit l_s:display_bit
