@@ -5344,7 +5344,250 @@ Array horrible_tunes table
 ;
 Array the_timers --> 1; 
 Array array_23957 --> 1;        
-Array array_24021 --> 30720;    
+Array buffer -> 
+    120
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+;
+Array buffer2 ->        
+    120
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+;
 Array parse string ! Unknown length -- cannot print;    
 Array inputobjs --> 1;  
 Array multiple_object --> 1;    
@@ -5698,7 +5941,7 @@ Array preactions_table --> IsDirection;
         jump labelXXX;
     }
   .labelXXX;
-    Keyboard(array_24021,parse);
+    Keyboard(buffer,parse);
   .labelXXX;
     num_words = parse->1;
     wn = 1;
@@ -6912,7 +7155,7 @@ Array preactions_table --> IsDirection;
         }
         print "?^";
       .labelXXX;
-        answer_words = Keyboard(invalidArray24367,parse2);
+        answer_words = Keyboard(buffer2,parse2);
         first_word = parse2-->1;
         if (first_word == 29793['all'?] or 30747['both'?] or 32898['everything'?] or 32889['every'?] or 32601['each'?]) {
             if (context >= 2 && context <= 5) {
@@ -6933,7 +7176,7 @@ Array preactions_table --> IsDirection;
         }
         j = first_word->6;
         if (0 ~= j & 1) {
-            Copy(array_24021,invalidArray24367);
+            Copy(buffer,buffer2);
             Copy(parse,parse2);
             return 10000;
         }
@@ -6968,11 +7211,11 @@ Array preactions_table --> IsDirection;
     print " to ";
     PrintCommand(0,1[?]);
     print "?^";
-    answer_words = Keyboard(invalidArray24367,parse2);
+    answer_words = Keyboard(buffer2,parse2);
     first_word = parse2-->1;
     j = first_word->6;
     if (0 ~= j & 1) {
-        Copy(array_24021,invalidArray24367);
+        Copy(buffer,buffer2);
         Copy(parse,parse2);
         return 10000;
     }
@@ -7994,7 +8237,7 @@ Array preactions_table --> IsDirection;
     j = parse-->i;
     if (j == 0) {
         k = wn * 4 - 3;
-        i = array_24021->(parse->k);
+        i = buffer->(parse->k);
         if (i == ',') {
             j = 'xcomma';
         }
@@ -8476,9 +8719,9 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     print "> ";
     generic_globvar = 0;
-    array_24021->1 = 0;
+    buffer->1 = 0;
     StatusLinePrinter();
-    @aread array_24021 parse -> generic_globvar;
+    @aread buffer parse -> generic_globvar;
     i = parse-->1;
     if (i == 37839['quit'?] or 37767['q//'?]) {
         @quit;
@@ -8671,9 +8914,9 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     print "^Type a number from 1 to ", lines, ", 0 to redisplay or press ENTER.^> ";
     generic_globvar = 0;
-    array_24021->1 = 0;
+    buffer->1 = 0;
     StatusLinePrinter();
-    @aread array_24021 parse -> generic_globvar;
+    @aread buffer parse -> generic_globvar;
     i = parse-->1;
     if (i == 'quit' or 'q//' || parse->1 == 0) {
         --menu_nesting;
@@ -9779,9 +10022,9 @@ Array preactions_table --> IsDirection;
     }
     give runner_bean_plant open;
     print "^Warning: something extremely cliched is about to happen. When you think you have composed yourself and can stand it, press ENTER. ", '>';
-    array_24021->1 = 0;
+    buffer->1 = 0;
     StatusLinePrinter();
-    @aread array_24021 parse -> generic_globvar;
+    @aread buffer parse -> generic_globvar;
     new_line;
     "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reaching up high into the sky!  You yawn convulsively.";
 ];
@@ -19973,9 +20216,9 @@ Array preactions_table --> IsDirection;
 [ YesOrNo i ;   
   .labelXXX;
     if (1[?] == 1[?]) {
-        array_24021->1 = 0;
+        buffer->1 = 0;
         StatusLinePrinter();
-        @aread array_24021 parse -> generic_globvar;
+        @aread buffer parse -> generic_globvar;
         i = parse-->1;
         if (i == 'yes' or 'y//') {
             rtrue;
