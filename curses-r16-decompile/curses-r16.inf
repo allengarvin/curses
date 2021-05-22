@@ -7189,7 +7189,7 @@ Array preactions_table --> IsDirection;
             --k;
             jump labelXXX;
         }
-        k = 1[?];
+        k = 1;
       .labelXXX;
         if (k <= answer_words) {
             MoveWord(match_from + k - 1,parse2,k);
@@ -7221,7 +7221,7 @@ Array preactions_table --> IsDirection;
     }
     oldw = parse->1;
     if (interfrom == 0) {
-        k = 1[?];
+        k = 1;
       .labelXXX;
         if (k <= answer_words) {
             MoveWord(oldw + k,parse2,k);
@@ -7230,7 +7230,7 @@ Array preactions_table --> IsDirection;
         }
     } else {
         j = pcount - interfrom;
-        k = 1[?];
+        k = 1;
       .labelXXX;
         if (k <= answer_words) {
             MoveWord(oldw + k + j,parse2,k);
