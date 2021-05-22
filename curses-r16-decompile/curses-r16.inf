@@ -18556,13 +18556,13 @@ Array preactions_table --> IsDirection;
 ];
 
 [ DemonQuestion w topic ;       
-    topic = AngelDevilConsultTopic(25321[?],w);
+    topic = AngelDevilConsultTopic(demon_topics,w);
     if (topic ~= 0) {
         print (string) topic;
         new_line;
         rtrue;
     }
-    if (AngelDevilConsultTopic(25577[?],w) ~= 0) {
+    if (AngelDevilConsultTopic(invalidArray25577,w) ~= 0) {
         "~That's a question you'd better put to my colleague in the Other Place,~ says the demon smoothly. ~Try something else.~";
     }
     print "~That's not something I am empowered to answer,~ says the demon with a nervous glance behind him. ~Try something else.~^";
@@ -18570,13 +18570,13 @@ Array preactions_table --> IsDirection;
 ];
 
 [ AngelQuestion w topic ;       
-    topic = AngelDevilConsultTopic(25577[?],w);
+    topic = AngelDevilConsultTopic(invalidArray25577,w);
     if (topic ~= 0) {
         print (string) topic;
         new_line;
         rtrue;
     }
-    if (AngelDevilConsultTopic(25321[?],w) ~= 0) {
+    if (AngelDevilConsultTopic(demon_topics,w) ~= 0) {
         "~That's a question you'd better put to my colleague in the Other Place,~ says the angel smoothly. ~Try something else.~^";
     }
     print "~That's not something I am empowered to answer,~ says the angel with a beatific smile upward. ~Try something else.~^";
