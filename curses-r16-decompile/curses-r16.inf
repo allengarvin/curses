@@ -5590,7 +5590,7 @@ Array buffer2 ->
 ;
 Array parse string ! Unknown length -- cannot print;    
 Array inputobjs --> 1;  
-Array multiple_object --> 1;    
+Array multiple_object --> 64;   
 Array parse2 -> ! Unknown length -- cannot print;       
 Array array_24553 --> 16384[?]; 
 Array array_24618 --> 1;        
@@ -7017,7 +7017,7 @@ Array preactions_table --> IsDirection;
                 and_parity = 1 - and_parity;
             }
             if (many_flag == 0) {
-                multiple_object-->0 = 1[?];
+                multiple_object-->0 = 1;
                 multiple_object-->1 = single_object;
                 many_flag = 1;
                 if (parser_trace >= 3) {
