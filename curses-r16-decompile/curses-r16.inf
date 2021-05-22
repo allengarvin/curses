@@ -8282,16 +8282,16 @@ Array preactions_table --> IsDirection;
         return tot;
     }
     if (len >= 4) {
-        mul = 1000[?];
+        mul = 1000;
     }
-    if (len == 3[s_obj?]) {
-        mul = 100[Tiny_Balcony?];
+    if (len == 3) {
+        mul = 100;
     }
-    if (len == 2[?]) {
-        mul = 10[u_obj?];
+    if (len == 2) {
+        mul = 10;
     }
-    if (len == 1[?]) {
-        mul = 1[?];
+    if (len == 1) {
+        mul = 1;
     }
     tot = 0;
     c = 0;
@@ -8329,7 +8329,7 @@ Array preactions_table --> IsDirection;
         jump labelXXX;
     }
     if (len > 3) {
-        tot = 10000[?];
+        tot = 10000;
     }
     return tot;
 ];
