@@ -8356,7 +8356,7 @@ Array preactions_table --> IsDirection;
 
 [ Copy bto bfrom i size ;       
     size = bto->0;
-    i = 1[?];
+    i = 1;
   .labelXXX;
     if (i <= size) {
         bto->i = bfrom->i;
