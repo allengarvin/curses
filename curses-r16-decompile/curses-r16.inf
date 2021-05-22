@@ -7185,14 +7185,14 @@ Array preactions_table --> IsDirection;
         k = oldw + answer_words;
       .labelXXX;
         if (k > match_from) {
-            MoveWord(k,24142[?],k - answer_words);
+            MoveWord(k,parse,k - answer_words);
             --k;
             jump labelXXX;
         }
         k = 1[?];
       .labelXXX;
         if (k <= answer_words) {
-            MoveWord(match_from + k - 1,24488[?],k);
+            MoveWord(match_from + k - 1,parse2,k);
             ++k;
             jump labelXXX;
         }
@@ -7224,7 +7224,7 @@ Array preactions_table --> IsDirection;
         k = 1[?];
       .labelXXX;
         if (k <= answer_words) {
-            MoveWord(oldw + k,24488[?],k);
+            MoveWord(oldw + k,parse2,k);
             ++k;
             jump labelXXX;
         }
@@ -7233,7 +7233,7 @@ Array preactions_table --> IsDirection;
         k = 1[?];
       .labelXXX;
         if (k <= answer_words) {
-            MoveWord(oldw + k + j,24488[?],k);
+            MoveWord(oldw + k + j,parse2,k);
             ++k;
             jump labelXXX;
         }
@@ -7246,7 +7246,7 @@ Array preactions_table --> IsDirection;
             } else {
                 parse2-->1 = AdjectiveAddress(array_24618-->j - 10000);
             }
-            MoveWord(oldw + 1 + j - interfrom,24488[?],1[?]);
+            MoveWord(oldw + 1 + j - interfrom,parse2,1[?]);
             ++answer_words;
             ++j;
             jump labelXXX;
