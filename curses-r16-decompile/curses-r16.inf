@@ -802,14 +802,14 @@ Object yourself "yourself"
   has   animate concealed proper transparent;
 
 Object lm_object "lm"   
-  with  before LMAfter,
+  with  before LMBefore,
   has   ;
 
 Object rod_of_fire "Fire"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -821,9 +821,9 @@ Object rod_of_fire "Fire"
 
 Object rod_of_returning "Returning"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -835,9 +835,9 @@ Object rod_of_returning "Returning"
 
 Object rod_of_stalking "Stalking"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -849,9 +849,9 @@ Object rod_of_stalking "Stalking"
 
 Object rod_of_infinity "Infinity"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -863,9 +863,9 @@ Object rod_of_infinity "Infinity"
 
 Object rod_of_husbandry "Husbandry"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -877,9 +877,9 @@ Object rod_of_husbandry "Husbandry"
 
 Object rod_of_bronze "Bronze"   
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -891,9 +891,9 @@ Object rod_of_bronze "Bronze"
 
 Object rod_of_sacrifice "Sacrifice"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -905,9 +905,9 @@ Object rod_of_sacrifice "Sacrifice"
 
 Object rod_of_luck "Luck"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -919,9 +919,9 @@ Object rod_of_luck "Luck"
 
 Object rod_of_ice "Ice" 
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        before RodAfter,
+        before RodBefore,
         sw_to nothing,
-        u_to rod_display_after,
+        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         short rod_short,
@@ -933,9 +933,9 @@ Object rod_of_ice "Ice"
 
 Object rod_of_language "Language"       
   with  name 'rod' 'of' 'language',
-        before RodAfter,
+        before RodBefore,
         sw_to MasterGameRods,
-        u_to rod_display_after,
+        u_to rod_display_before,
         article "the",
         short rod_short,
         parse_name RodParse,
@@ -944,9 +944,9 @@ Object rod_of_language "Language"
 
 Object rod_of_returning2 "Returning"    
   with  name 'rod' 'of' 'returning',
-        before RodAfter,
+        before RodBefore,
         sw_to MasterGameRods,
-        u_to rod_display_after,
+        u_to rod_display_before,
         article "the",
         short rod_short,
         parse_name RodParse,
@@ -955,10 +955,10 @@ Object rod_of_returning2 "Returning"
 
 Object rod_of_life "Life"       
   with  name 'life' 'high' 'rod' 'of',
-        before LifeDeathLoveAfter RodAfter,
-        after LifeDeathLoveBefore,
+        before LifeDeathLoveBefore RodBefore,
+        after LifeDeathLoveAfter,
         sw_to rod_func1,
-        u_to rod_display_after,
+        u_to rod_display_before,
         initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
         description " .An adamantine rod, bearing a sculpted ",
         article "the",
@@ -970,10 +970,10 @@ Object rod_of_life "Life"
 
 Object rod_of_death "Death"     
   with  name 'death' 'high' 'rod' 'of',
-        before LifeDeathLoveAfter RodAfter,
-        after LifeDeathLoveBefore,
+        before LifeDeathLoveBefore RodBefore,
+        after LifeDeathLoveAfter,
         sw_to rod_func1,
-        u_to rod_display_after,
+        u_to rod_display_before,
         description " .An adamantine rod, bearing a sculpted ",
         article "the",
         short rod_short,
@@ -984,10 +984,10 @@ Object rod_of_death "Death"
 
 Object rod_of_love "Love"       
   with  name 'love' 'high' 'rod' 'of',
-        before LifeDeathLoveAfter RodAfter,
-        after LifeDeathLoveBefore,
+        before LifeDeathLoveBefore RodBefore,
+        after LifeDeathLoveAfter,
         sw_to rod_func1,
-        u_to rod_display_after,
+        u_to rod_display_before,
         description " .An adamantine rod, bearing a sculpted ",
         article "the",
         short rod_short,
@@ -1005,8 +1005,8 @@ Object crumpled_piece_of_paper "crumpled piece of paper"
 
 Object electric_torch "electric torch"  
   with  name 'electric' 'torch' 'compartment',
-        before TorchAfter,
-        after TorchBefore,
+        before TorchBefore,
+        after TorchAfter,
         sw_to s_obj,
         description "The torch has a battery compartment which can be reached by opening it up.",
         article "an",
@@ -1023,7 +1023,7 @@ Object -> old_smudged_battery "old smudged battery"
 
 Object chocolate_biscuit "chocolate biscuit"    
   with  name 'chocolate' 'biscuit',
-        after BiscuitBefore,
+        after BiscuitAfter,
         description "Oatmeal covered with plain chocolate, since you ask.",
         devil_hint "I bet you didn't know that chocolate biscuit manufacturers are damned in perpetuity?  I'm afraid the chapters about that in the Old Testaments were lost, though, and now no-one can remember why.",
   has   edible moved;
@@ -1040,8 +1040,8 @@ Object Attic "Attic"
 
 Object -> hinged_trapdoor "hinged trapdoor"     
   with  name 'hinged' 'trap' 'door' 'trapdoor',
-        before TrapdoorAfter,
-        after TrapdoorBefore,
+        before TrapdoorBefore,
+        after TrapdoorAfter,
         n_to House,
         s_to "There is a closed trapdoor in the middle of the floor.",
         w_to thedark,
@@ -1050,14 +1050,14 @@ Object -> hinged_trapdoor "hinged trapdoor"
 
 Object -> teachests "teachests" 
   with  name 'tea' 'chests' 'teachests' 'chest' 'teachest',
-        before TeachestsAfter,
+        before TeachestsBefore,
         description "Open-topped. You could easily look inside, if so minded.",
         article "some",
   has   container open scenery;
 
 Object -> -> Meldrewes_History "History of the Meldrews (vol. II)"      
   with  name 'book' 'history',
-        before HistoryAfter,
+        before HistoryBefore,
         sw_to n_obj,
         description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends of the earth, he never could find a detail he wanted for volume I, and it was never published. Somehow, this typifies your family, and consulting this worthy book about your ancestors makes you realise what an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an awful lot of children. So many Meldrews are listed here that you'll have to look them up individually.",
         article "the",
@@ -1082,13 +1082,13 @@ Object -> four_leafed_clover "four-leafed clover"
   has   hidden_rod;
 
 Object House "House"    
-  with  after HouseBefore,
+  with  after HouseAfter,
         section T_MODERN,
   has   light;
 
 Object Servants_Room "Servant's Room"   
   with  name 'bedside' 'table',
-        before ServantsRoomAfter,
+        before ServantsRoomBefore,
         n_to nothing,
         w_to Attic,
         d_to nothing,
@@ -1098,7 +1098,7 @@ Object Servants_Room "Servant's Room"
 
 Object -> classical_dictionary "classical dictionary"   
   with  name 'hobsons' 'choice' 'classical' 'dictionary' 'book',
-        before DictionaryAfter,
+        before DictionaryBefore,
         sw_to n_obj,
         initial "There's a little book on the tiny bedside table.",
         description "~Hobson's: A Choice Classical Dictionary~. It claims to have numerous entries.",
@@ -1144,20 +1144,20 @@ Object -> scratched_cupboard "scratched cupboard"
 
 Object -> -> bird_whistle "bird whistle"        
   with  name 'bird' 'whistle' 'harrison',
-        before WhistleAfter,
+        before WhistleBefore,
         description "A patent ~Harrison~ bird-whistle, according to the slogan on one side.",
         devil_hint "It has a calm, soothing effect.",
   has   ;
 
 Object -> -> gift_wrapped_parcel "gift-wrapped parcel"  
   with  name 'gift' 'parcel',
-        before ParcelAfter,
+        before ParcelBefore,
         devil_hint "Shame the wrapping paper won't come off.",
   has   ;
 
 Object -> -> medicine_bottle "mb"       
   with  name 'medicine' 'bottle',
-        before MedicineAfter,
+        before MedicineBefore,
         initial nothing,
         description "~Antidote only: no preventative effect.~",
         short MedicineShort,
@@ -1166,7 +1166,7 @@ Object -> -> medicine_bottle "mb"
 
 Object -> -> -> red_tablet "red tablet" 
   with  name 'red' 'pill' 'tablet',
-        after TabletBefore,
+        after TabletAfter,
         devil_hint "This drug is for fun, it isn't an antidote. And it tastes gorgeous...",
   has   edible scored;
 
@@ -1183,7 +1183,7 @@ Object wrapping_paper "wrapping paper with reindeer on"
 
 Object postcard_of_the_Champs_Elysees "postcard of the Champs-Elysees"  
   with  name 'postcard' 'card',
-        after PostcardBefore,
+        after PostcardAfter,
         sw_to n_obj,
         description "It is addressed to the house, and postmarked 1963, but has no message. Odd, that.",
         devil_hint "There's no message there to read.",
@@ -1203,8 +1203,8 @@ Object Over_the_East_Wing "Over the East Wing"
 
 Object -> Austin "Austin"       
   with  name 'austin' 'cat' 'ginger' 'tail',
-        before AustinAfter,
-        after AustinBefore,
+        before AustinBefore,
+        after AustinAfter,
         life AustinLife,
         initial "Austin, your incorrigible ginger cat, lounges around here.",
         description "(Aunt Jemima has two cats, Jane and Austin, but she finds Austin especially annoying - about the only point you have ever agreed with her about.)^^Austin, a ginger with a long tail and an uncompromisingly lazy expression, is the kind of cat who hates being pushed around.",
@@ -1212,7 +1212,7 @@ Object -> Austin "Austin"
   has   animate proper;
 
 Object Dark_Room "Dark Room"    
-  with  after DarkRoomBefore,
+  with  after DarkRoomAfter,
         e_to Over_the_East_Wing,
         description "This is a roughly-furnished photographer's dark room, used by your grandfather years ago. There's nothing much here now, since you threw the chemicals out in case the children found them.",
         cant_go "The only doorway is back east.",
@@ -1228,14 +1228,14 @@ Object -> sepia_photograph "sepia photograph"
 
 Object -> hanging_cord "hanging cord"   
   with  name 'hanging' 'cord',
-        before HangingCordAfter,
+        before HangingCordBefore,
         initial "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
         description "It is attached to the ceiling.",
   has   static;
 
 Object -> -> golden_orb "glowing golden orb"    
   with  name 'glowing' 'golden' 'orb',
-        before GlowingOrbAfter,
+        before GlowingOrbBefore,
         initial "Sitting on the grass, beside the well, is a glowing golden orb.",
         description "A treasure in every sense, but misted over, like condensation on a cold window. Odd shapes seem visible through the haze: a horse's head, castle walls, a priest's crook.",
   has   scored;
@@ -1256,7 +1256,7 @@ Object red_lamp "red lamp"
 
 Object Disused_Observatory "Disused Observatory"        
   with  name 'mural' 'zodiac' 'beam' 'stand',
-        after ObservatoryBefore,
+        after ObservatoryAfter,
         n_to Over_the_East_Wing,
         s_to Souvenirs_Room,
         w_to Library_Storage,
@@ -1273,7 +1273,7 @@ Object -> smoke_detector "smoke detector"
 
 Object -> solid_glass_ball "solid glass ball"   
   with  name 'glass' 'ball',
-        before GlassBallAfter,
+        before GlassBallBefore,
         initial "Mounted on the old telescope stand is what looks like a solid glass ball.",
   has   static;
 
@@ -1287,13 +1287,13 @@ Object Library_Storage "Library Storage"
 
 Object -> water_pipe "water pipe"       
   with  name 'water' 'pipe' 'joint' 'pipes',
-        before WaterPipeAfter,
+        before WaterPipeBefore,
         description "The joint on the water pipe looks none too sturdy.",
   has   concealed static;
 
 Object -> romantic_novel "romantic novel"       
   with  name 'romance' 'romantic' 'novel' 'book',
-        before RomanticNovelAfter,
+        before RomanticNovelBefore,
         sw_to n_obj,
         initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
         description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
@@ -1303,7 +1303,7 @@ Object -> romantic_novel "romantic novel"
 
 Object -> book_of_Twenties_poetry "book of Twenties poetry"     
   with  name 'poetry' 'book',
-        before PoetryAfter,
+        before PoetryBefore,
         sw_to n_obj,
         parse_name ConsultableParsename,
         devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
@@ -1311,8 +1311,8 @@ Object -> book_of_Twenties_poetry "book of Twenties poetry"
 
 Object Souvenirs_Room "Souvenirs Room"  
   with  name 'souvenirs' 'holiday' 'snaps' 'beam',
-        before SouvenirsRoomAfter,
-        after SouvenirsRoomBefore,
+        before SouvenirsRoomBefore,
+        after SouvenirsRoomAfter,
         n_to Disused_Observatory,
         s_to SouvenirsRoomSouth,
         u_to Disused_Observatory,
@@ -1322,20 +1322,20 @@ Object Souvenirs_Room "Souvenirs Room"
 
 Object -> slide_projector "slide projector"     
   with  name 'slide' 'projector' 'switch' 'dial' 'slot' 'focus',
-        before ProjectorAfter,
-        after ProjectorBefore,
+        before ProjectorBefore,
+        after ProjectorAfter,
         description "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There is also a little dial on the back, perhaps for the focus.",
   has   container open scenery switchable;
 
 Object -> south_wall "south wall"       
-  with  before SouthWallAfter,
+  with  before SouthWallBefore,
         n_to nothing,
         w_to ne_obj,
   has   concealed door open scenery static;
 
 Object East_Annexe "East Annexe"        
   with  name 'gap' 'tiles' 'roof',
-        before EastAnnexeAfter,
+        before EastAnnexeBefore,
         n_to cupboard_door,
         s_to Dead_End,
         w_to Over_the_East_Wing,
@@ -1345,7 +1345,7 @@ Object East_Annexe "East Annexe"
 
 Object -> insulation_rolls "insulation rolls"   
   with  name 'insulation' 'rolls' 'roll',
-        before InsulationAfter,
+        before InsulationBefore,
         article "some",
   has   scenery;
 
@@ -1358,7 +1358,7 @@ Object -> -> new_battery "new-looking battery"
 
 Object -> cupboard_door "cupboard door" 
   with  name 'cupboard' 'door',
-        before CupboardAfter,
+        before CupboardBefore,
         n_to Inside_Cupboard,
         s_to "In the north wall is an intriguing closed cupboard door.",
         e_to small_brass_key,
@@ -1368,7 +1368,7 @@ Object -> cupboard_door "cupboard door"
 
 Object Dead_End "Dead End"      
   with  name 'soot' 'chimney' 'sweeping' 'gear',
-        before DeadEndAfter,
+        before DeadEndBefore,
         n_to East_Annexe,
         s_to secret_door,
         e_to nothing,
@@ -1409,7 +1409,7 @@ Object Inside_Cupboard "Inside Cupboard"
 
 Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"       
   with  name 'painting' 'of' 'mad' 'isaac' 'picture',
-        after IsaacPaintingBefore,
+        after IsaacPaintingAfter,
         life LagachLife,
         initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
         description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
@@ -1418,7 +1418,7 @@ Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"
 
 Object -> big_iron_fireplace "big iron fireplace"       
   with  name 'iron' 'fireplace' 'chimney',
-        after FireplaceBefore,
+        after FireplaceAfter,
         n_to Chimney,
         w_to nw_obj,
         initial "There is a big iron fireplace in the west wall.",
@@ -1426,7 +1426,7 @@ Object -> big_iron_fireplace "big iron fireplace"
 
 Object -> cranked_skylight "cranked skylight"   
   with  name 'crank' 'cranked' 'skylight' 'handle',
-        before SkylightAfter,
+        before SkylightBefore,
         n_to Roof,
         s_to "Above you is a blacked-out skylight with a crank handle.",
         w_to in_obj,
@@ -1436,7 +1436,7 @@ Object -> cranked_skylight "cranked skylight"
 
 Object -> gas_mask "gas mask"   
   with  name 'gas' 'mask' 'gasmask',
-        after GasMaskBefore,
+        after GasMaskAfter,
         devil_hint "The cork filters have gone. It's useless now.",
   has   clothing;
 
@@ -1459,7 +1459,7 @@ Object Battlements "Battlements"
 
 Object -> iron_key "gothic-looking iron key"    
   with  name 'gothic' 'looking' 'iron' 'key' 'gothic-looking',
-        before GothicKeyAfter,
+        before GothicKeyBefore,
         sw_to compass,
         initial IronKeyInitial,
         devil_hint "Unfortunately, what you need this for is up in the clouds.",
@@ -1475,7 +1475,7 @@ Object -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
   has   animate concealed;
 
 Object Chimney "Chimney"        
-  with  before ChimneyAfter,
+  with  before ChimneyBefore,
         e_to Inside_Cupboard,
         d_to Priest_s_Hole,
         description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
@@ -1492,7 +1492,7 @@ Object -> sooty_old_stick "sooty old stick"
 
 Object Priest_s_Hole "Priest's Hole"    
   with  name 'cross' 'padded' 'chute' 'crawl',
-        before PriestHoleAfter,
+        before PriestHoleBefore,
         u_to Chimney,
         d_to hatch,
         description "Good heavens, so the house has a priest hole after all!  It was always a family legend but nobody seemed to know quite where it was. Apart from a cross painted on one wall and a padded floor (to absorb the noise), this spartan cranny is featureless. Nevertheless there is a spooky air of the supernatural about... A narrow crawl leads up into the chimney.",
@@ -1511,7 +1511,7 @@ Object -> hatch "hatch"
 
 Object -> ancient_prayer_book "ancient prayer book"     
   with  name 'diary' 'ancient' 'prayer' 'book',
-        before PrayerBookAfter,
+        before PrayerBookBefore,
         sw_to n_obj,
         initial "The dust and grime on the floor almost obscures an ancient prayer book.",
         description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
@@ -1522,8 +1522,8 @@ Object -> ancient_prayer_book "ancient prayer book"
 
 Object Alisons_Writing_Room "Alison's Writing Room"     
   with  name 'engraving' 'dice' 'outline' 'sixes' 'door',
-        before WritingRoomAfter,
-        after WritingRoomBefore,
+        before WritingRoomBefore,
+        after WritingRoomAfter,
         n_to Dead_End,
         s_to windows,
         description " .A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^",
@@ -1533,12 +1533,12 @@ Object Alisons_Writing_Room "Alison's Writing Room"
 
 Object -> comfortable_bed "comfortable bed"     
   with  name 'comfortable' 'bed',
-        before ComfyBedAfter,
+        before ComfyBedBefore,
   has   enterable light scenery supporter;
 
 Object -> windows "windows"     
   with  name 'windows' 'window' 'latticed' 'glass' 'lattice',
-        before WindowAfter,
+        before WindowBefore,
         n_to Tiny_Balcony,
         s_to "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
         w_to ne_obj,
@@ -1547,7 +1547,7 @@ Object -> windows "windows"
 
 Object -> long_vanity_mirror "long vanity mirror"       
   with  name 'long' 'vanity' 'mirror',
-        before MirrorAfter,
+        before MirrorBefore,
         initial "There is a long vanity mirror beside the bed.",
   has   static;
 
@@ -1561,7 +1561,7 @@ Object Tiny_Balcony "Tiny Balcony"
 
 Object -> window_sill "window sill"     
   with  name 'window' 'sill',
-        before WindowSillAfter,
+        before WindowSillBefore,
         initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
         description "You look down on a low, bare window-sill.",
   has   static;
@@ -1574,8 +1574,8 @@ Object -> delicate_gold_key "delicate gold key"
 
 Object Old_Winery "Old Winery"  
   with  name 'banister' 'rail' 'crack' 'paraphern',
-        before OldWineryAfter,
-        after OldWineryBefore,
+        before OldWineryBefore,
+        after OldWineryAfter,
         s_to Attic,
         e_to Storage_Room,
         w_to Conservatory,
@@ -1588,7 +1588,7 @@ Object Old_Winery "Old Winery"
 
 Object -> demijohn "labelXXXled glass demijohn" 
   with  name 'demijohn' 'glass' 'bottle' 'labelXXX',
-        before DemijohnAfter,
+        before DemijohnBefore,
         description "Faded ink on the labelXXX reads: Elderberry '63.",
   has   container openable static transparent;
 
@@ -1601,7 +1601,7 @@ Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"
 
 Object -> -> tourist_map "tourist map"  
   with  name 'hamburg' 'tourist' 'map',
-        before TouristMapAfter,
+        before TouristMapBefore,
         sw_to n_obj,
         description "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg.",
         devil_hint "Purely decorative.",
@@ -1609,7 +1609,7 @@ Object -> -> tourist_map "tourist map"
 
 Object Conservatory "Aunt Jemima's Lair"        
   with  name 'objets' 'trouves' 'pottery' 'bric' 'brac',
-        after ConservatoryBefore,
+        after ConservatoryAfter,
         s_to Airing_Cupboard,
         e_to Old_Winery,
         w_to Potting_Room,
@@ -1621,7 +1621,7 @@ Object Conservatory "Aunt Jemima's Lair"
 
 Object -> daisy_calendar "daisy calendar"       
   with  name 'calendar' 'page' 'pages' 'daisy',
-        before CalendarAfter,
+        before CalendarBefore,
         time_left 5,
   has   scenery;
 
@@ -1641,8 +1641,8 @@ Object -> pile_of_sheets "pile of sheets"
 
 Object -> antiquated_wireless "antiquated wireless"     
   with  name 'switch' 'cabinet' 'radio' 'wireless',
-        before WirelessAfter,
-        after WirelessBefore,
+        before WirelessBefore,
+        after WirelessAfter,
         description "It rolls on casters, and has a bakelite on/off switch.",
         describe WirelessDescribe,
         article "an",
@@ -1652,7 +1652,7 @@ Object -> antiquated_wireless "antiquated wireless"
 
 Object Potting_Room "Potting Room"      
   with  name 'plants' 'flowers' 'seeds' 'trowels',
-        after PottingRoomBefore,
+        after PottingRoomAfter,
         e_to Conservatory,
         description "This light room is full of pot plants, flowers, seeds, ornamental trowels and other miscellaneous garden implements.",
         cant_go "The only exit is back east to the conservatory.",
@@ -1661,7 +1661,7 @@ Object Potting_Room "Potting Room"
 
 Object -> old_gardeners__gloves "old gardeners' gloves" 
   with  name 'old' 'gardeners' 'gloves',
-        before GlovesAfter,
+        before GlovesBefore,
         initial "A pair of yellow rubber gloves hangs from a hook on one wall.",
         article "some",
         devil_hint "Good for nothing. Why would you want gloves on?",
@@ -1679,14 +1679,14 @@ Object -> Jemima "Jemima"
 
 Object daisy_chain "daisy chain"        
   with  name 'daisy' 'chain' 'daisychain',
-        before DaisyChainAfter,
+        before DaisyChainBefore,
         u_to DaisyUp,
         number 11,
         devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has   clothing;
 
 Object Storage_Room "Storage Room"      
-  with  before StorageRoomAfter,
+  with  before StorageRoomBefore,
         w_to Old_Winery,
         description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
         cant_go "The only doorway is back west to the winery.",
@@ -1695,7 +1695,7 @@ Object Storage_Room "Storage Room"
 
 Object -> wheel2 "wheel"        
   with  name 'wheel' 'handle' 'catch' 'safety',
-        before WheelAfter,
+        before WheelBefore,
         description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has   on scenery switchable;
 
@@ -1707,33 +1707,33 @@ Object -> dumbwaiter "dumbwaiter"
 
 Object -> -> pulley_ropes "pulley ropes"        
   with  name 'pulley' 'rope' 'ropes',
-        before RopesAfter,
+        before RopesBefore,
         initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
         article "the",
   has   static;
 
 Object -> -> chicken_wishbone "chicken wishbone"        
   with  name 'wish' 'bone' 'wishbone' 'chicken',
-        before WishboneBefore,
+        before WishboneAfter,
         description "The half which didn't get the wish, actually.",
         devil_hint "It isn't even mentioned in any of the books I've read.",
   has   ;
 
 Object -> dark_shaft_obj "dark shaft"   
   with  name 'shaft' 'dark',
-        after ShaftBefore,
+        after ShaftAfter,
         description "Uninviting.",
   has   container open scenery;
 
 Object -> steel_wrench "steel wrench"   
   with  name 'steel' 'wrench',
-        after WrenchBefore,
+        after WrenchAfter,
         initial "A steel wrench gathers dust in the corner.",
   has   ;
 
 Object Dark_Shaft "Dark Shaft"  
-  with  before Shaft2After,
-        after ShaftAfter,
+  with  before Shaft2Before,
+        after ShaftBefore,
         n_to Dark_Passage,
         d_to Cellars,
         description "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor leading north.",
@@ -1742,7 +1742,7 @@ Object Dark_Shaft "Dark Shaft"
 
 Object Dark_Passage "Dark Passage"      
   with  name 'coal' 'dust',
-        before DarkPassageAfter,
+        before DarkPassageBefore,
         n_to metal_door,
         s_to Dark_Shaft,
         e_to sandstone_recess,
@@ -1762,7 +1762,7 @@ Object -> sandstone_recess "sandstone recess"
 
 Object -> metal_door "metal door"       
   with  name 'metal' 'door',
-        after MetalDoorBefore,
+        after MetalDoorAfter,
         n_to Garden_Stream,
         s_to "At the north end is a closed metal door.",
         e_to small_brass_key,
@@ -1771,7 +1771,7 @@ Object -> metal_door "metal door"
   has   door lockable locked openable static;
 
 Object Cellars "Cellars"        
-  with  before CellarsAfter,
+  with  before CellarsBefore,
         s_to Cellars_South,
         e_to Wine_Cellars,
         w_to Cellar_West,
@@ -1781,7 +1781,7 @@ Object Cellars "Cellars"
 
 Object -> wheel "wheel" 
   with  name 'wheel' 'handle' 'catch' 'safety',
-        before WheelAfter,
+        before WheelBefore,
         description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has   on scenery switchable;
 
@@ -1806,7 +1806,7 @@ Object -> robot_mouse "robot mouse"
 
 Object Wine_Cellars "Wine Cellars"      
   with  name 'wine' 'woodlice' 'hexagonal' 'racks' 'shaft',
-        before WineCellarsAfter,
+        before WineCellarsBefore,
         w_to Cellars,
         u_to WineCellarsUp,
         description " .The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked",
@@ -1822,7 +1822,7 @@ Object Cellars_South "Cellars South"
 
 Object -> hole_in_the_wall "hole in the wall"   
   with  name 'hole' 'mousehole',
-        before HoleAfter,
+        before HoleBefore,
         life HoleLife,
   has   scenery talkable;
 
@@ -1845,7 +1845,7 @@ Object Cellar_West "Cellar West"
 
 Object -> ironbound_door "ironbound door"       
   with  name 'iron' 'ironbound' 'door',
-        before IronboundDoorAfter,
+        before IronboundDoorBefore,
         n_to Infinity_Symbol,
         s_to "In the northwest wall is a heavy, imposing ironbound door.",
         e_to wrought_iron_key,
@@ -1857,7 +1857,7 @@ Object -> ironbound_door "ironbound door"
 
 Object Infinity_Symbol "Infinity Symbol"        
   with  name 'marble' 'disc' 'webs' 'icicle',
-        after LemniscusBefore,
+        after LemniscusAfter,
         se_to Cellar_West,
         description "An eerie, dark cave carved from crystal icicles of rock and strewn with great spiders' webs hung from the ragged stone, inhabited only by dead white insects. A narrow crevice opens out to an iron doorway and the warmth of the house.^^The rough stone floor levels out to a perfectly round, smooth white marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.^^You shiver with foreboding, but inexplicably feel that the map you're looking for must be somewhere near here.",
         section T_MODERN,
@@ -1865,7 +1865,7 @@ Object Infinity_Symbol "Infinity Symbol"
 
 Object -> circular_arc "circular arc"   
   with  name 'wells' 'circular' 'arc' 'socket' 'sockets' 'well',
-        before ArcAfter,
+        before ArcBefore,
         number 0,
   has   scenery;
 
@@ -1875,7 +1875,7 @@ Object -> lemniscus "lemniscus"
 
 Object spherical_opening "spherical opening"    
   with  name 'gold' 'golden' 'spherical' 'opening' 'cavity',
-        before SphericalOpeningAfter,
+        before SphericalOpeningBefore,
         initial "There is now a small spherical opening in one wall.",
         description "It would just hold a ball the size of your palm.",
   has   static;
@@ -1890,7 +1890,7 @@ Object Sandstone_Passage "Sandstone Passage"
   has   light;
 
 Object The_Octagon "The Octagon"        
-  with  after OctagonBefore,
+  with  after OctagonAfter,
         w_to Sandstone_Passage,
         se_to White_Hallway,
         u_to Sandstone_Passage,
@@ -1907,8 +1907,8 @@ Object -> little_window "little window"
 
 Object -> gilded_model_coffin "gilded model coffin"     
   with  name 'gilded' 'model' 'coffin' 'lid' 'inscription',
-        before CoffinAfter,
-        after CoffinBefore,
+        before CoffinBefore,
+        after CoffinAfter,
         initial "A rather morbid, gilded model coffin rests here in peace.",
         description " .The lid bears an inscription in strange hieroglyphics:^",
   has   container openable static;
@@ -1923,7 +1923,7 @@ Object -> ragged_scroll "ragged scroll"
 
 Object -> framed_charcoal_sketch "framed charcoal sketch"       
   with  name 'frame' 'framed' 'charcoal' 'sketch' 'of' 'alexandria',
-        before SketchAfter,
+        before SketchBefore,
         initial "A little charcoal sketch is framed on one wall.",
         description "Behind the frame seems to be an artist's impression of the great Palace of Alexandria as it might once have been.",
         devil_hint "It's the frame which really sets it off.",
@@ -1954,7 +1954,7 @@ Object White_Hallway "White Hallway"
 
 Object -> picture_hook "picture hook"   
   with  name 'picture' 'hook',
-        before HookAfter,
+        before HookBefore,
         initial "Up on one wall is a picture hook.",
   has   static;
 
@@ -1967,8 +1967,8 @@ Object -> umbrella_stand "umbrella stand"
 
 Object -> -> model_golden_sceptre "model golden sceptre"        
   with  name 'model' 'golden' 'gold' 'sceptre',
-        before SceptreAfter,
-        after SceptreBefore,
+        before SceptreBefore,
+        after SceptreAfter,
         initial nothing,
         description "A copy, half-size, of the one from Tutenkhamun's sarcophagus. It isn't real gold, either.",
         number 0,
@@ -2001,7 +2001,7 @@ Object Shadowy_Hallway "Shadowy Hallway"
 
 Object -> poster "poster"       
   with  name 'poster' 'posters' 'peeling',
-        before PosterAfter,
+        before PosterBefore,
         description "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish you had a dog called Toto, so as to be able to say ~Toto, I've got a feeling we're not in England any more.~",
         devil_hint "What a very useful piece of paper. Pity there's writing on it.",
   has   scenery;
@@ -2024,7 +2024,7 @@ Object -> Impressionist_painting "Impressionist painting"
 
 Object Consulting_Room "Consulting Room"        
   with  name 'sevenbran' 'candelabra' 'sticks' 'table',
-        before ConsultingRoomAfter,
+        before ConsultingRoomBefore,
         w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
         d_to Shadowy_Hallway,
         description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table, on which is an electric bell push and a wicked Tarot pack.",
@@ -2033,7 +2033,7 @@ Object Consulting_Room "Consulting Room"
 
 Object -> Tarot_pack "Tarot pack"       
   with  name 'wicked' 'tarot' 'pack' 'deck',
-        before TarotPackAfter,
+        before TarotPackBefore,
   has   scenery;
 
 Object -> curtain "curtain"     
@@ -2042,7 +2042,7 @@ Object -> curtain "curtain"
 
 Object -> bell_push "bell push" 
   with  name 'bell' 'push',
-        before BellPushAfter,
+        before BellPushBefore,
   has   scenery;
 
 Object Madame_Sosostris "Madame Sosostris, famous clairvoyante" 
@@ -2053,7 +2053,7 @@ Object Madame_Sosostris "Madame Sosostris, famous clairvoyante"
 
 Object Death_card "Grim Reaper" 
   with  name 'death' 'grim' 'reaper' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
@@ -2065,7 +2065,7 @@ Object Death_card "Grim Reaper"
 
 Object Fool_card "Fool" 
   with  name 'fool' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
@@ -2077,7 +2077,7 @@ Object Fool_card "Fool"
 
 Object Drowned_Sailor_card "Drowned Sailor"     
   with  name 'drowned' 'sailor' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "Those are pearls that were his eyes...",
@@ -2096,7 +2096,7 @@ Object oak_quarterstaff "oak quarterstaff"
 
 Object Down_by_River "Down by River"    
   with  name 'rats' 'mounds' 'rubbish',
-        before DownByRiverAfter,
+        before DownByRiverBefore,
         e_to Unreal_City,
         w_to DownByRiverWest,
         description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you.",
@@ -2105,7 +2105,7 @@ Object Down_by_River "Down by River"
 
 Object -> silk_handkerchief "silk handkerchief" 
   with  name 'silk' 'handkerchier' 'hanky' 'hankie',
-        before HandkerchiefAfter,
+        before HandkerchiefBefore,
         initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
         description "Monogrammed J. A. P., but that's no great matter.",
         devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth is hardly attractive, is it?",
@@ -2113,7 +2113,7 @@ Object -> silk_handkerchief "silk handkerchief"
 
 Object -> tourist_boat "tourist boat"   
   with  name 'tourist' 'boat' 'bateau',
-        before TouristBoatAfter,
+        before TouristBoatBefore,
         n_to On_board_the_Phlebas,
         s_to "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention.",
         w_to nw_obj,
@@ -2148,7 +2148,7 @@ Object Near_Ring_Road "Near Ring Road"
 
 Object Chatelet_les_Halles "Chatelet-les-Halles"        
   with  name 'gates',
-        before ChateletAfter,
+        before ChateletBefore,
         u_to Near_Ring_Road,
         description "This is a vast underground station in great rectangular caverns, deep beneath the streets. You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't a ticket you're likely to stay that way.",
         cant_go "Back up the stairs for you. Call yourself a traveller...",
@@ -2180,7 +2180,7 @@ Object Museum_Foyer "Museum Foyer"
 
 Object -> revolving_door_obj "revolving door"   
   with  name 'revolving' 'door',
-        before RevolvingDoorAfter,
+        before RevolvingDoorBefore,
         description "Why not go northeast and look inside?",
   has   scenery;
 
@@ -2201,7 +2201,7 @@ Object Revolving_Door1 "Revolving Door"
 
 Object -> door1 "door"  
   with  name 'door' 'revolving',
-        before MuseumDoorAfter,
+        before MuseumDoorBefore,
         description "You stand within it.",
   has   scenery;
 
@@ -2216,14 +2216,14 @@ Object Revolving_Door2 "Revolving Door"
 
 Object -> door2 "door"  
   with  name 'door' 'revolving',
-        before MuseumDoorAfter,
+        before MuseumDoorBefore,
         description "You stand within it.",
   has   scenery;
 
 Object -> beach_ball "beach ball"       
   with  name 'striped' 'beach' 'ball',
-        before BeachBallAfter,
-        after BeachBallBefore,
+        before BeachBallBefore,
+        after BeachBallAfter,
         initial "A colourful, striped inflated beach ball bounces around.",
   has   ;
 
@@ -2237,14 +2237,14 @@ Object Hall_of_Exhibits "Hall of Exhibits"
 
 Object -> Tarot_box "Tarot box" 
   with  name 'box' 'of' 'tarot',
-        before TarotBoxAfter,
+        before TarotBoxBefore,
         initial "Resting on a little display table is a Tarot box.",
         devil_hint "There's nothing worthwhile in it.",
   has   container openable;
 
 Object -> -> Castle "Castle"    
   with  name 'castle' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "A stone castle on a hill.",
@@ -2256,7 +2256,7 @@ Object -> -> Castle "Castle"
 
 Object -> -> Star "Star"        
   with  name 'star' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         n_to Lighthouse,
         sw_to "Tarot cards",
         description "A single bright light in the darkness.",
@@ -2268,7 +2268,7 @@ Object -> -> Star "Star"
 
 Object -> -> Eight_of_Wands_card "Eight of Wands"       
   with  name 'eight' 'of' 'wands' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         sw_to "Tarot cards",
         article "the",
         short TarotShort,
@@ -2279,7 +2279,7 @@ Object -> -> Eight_of_Wands_card "Eight of Wands"
 
 Object -> -> Maiden_card "Maiden"       
   with  name 'maiden' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         n_to Sea_Shore,
         sw_to "Tarot cards",
         description "Andromeda chained to a rock on the sea-shore.",
@@ -2297,8 +2297,8 @@ Object -> still_life "still life"
   has   static talkable;
 
 Object Dark_Staircase "Dark Staircase"  
-  with  before DarkStaircaseAfter,
-        after DarkStaircaseBefore,
+  with  before DarkStaircaseBefore,
+        after DarkStaircaseAfter,
         e_to Hall_of_Exhibits,
         u_to Hall_of_Exhibits,
         description "A dark staircase, turning from east to south as it descends. The hideous sound of arhythmic chanting can be heard from below.",
@@ -2314,7 +2314,7 @@ Object -> discarded_matchbook "discarded matchbook"
 
 Object Ace_of_Cups_card "Ace of Cups"   
   with  name 'ace' 'of' 'cups' 'card' 'tarot',
-        before TarotAfter,
+        before TarotBefore,
         n_to Cups_and_Glasses,
         sw_to "Tarot cards",
         description "It shows a great many crystal-glass cups and glasses.",
@@ -2325,7 +2325,7 @@ Object Ace_of_Cups_card "Ace of Cups"
   has   card;
 
 Object Coven_Cell "Coven Cell"  
-  with  before CovenCellAfter,
+  with  before CovenCellBefore,
         description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
         cant_go "There's definitely no way out of here.",
         number 0,
@@ -2347,14 +2347,14 @@ Object -> crook "shepherd's crook"
 
 Object -> cell_door "cell door" 
   with  name 'cell' 'door',
-        before CelldoorAfter,
+        before CelldoorBefore,
         n_to Museum_Foyer,
         s_to "As you might expect, the cell door is closed.",
         w_to ne_obj,
   has   door locked openable static;
 
 Object Cabinet_Room "Cabinet Room"      
-  with  before CabinetRoomAfter,
+  with  before CabinetRoomBefore,
         w_to Hall_of_Exhibits,
         description "An annexe to the museum, containing sundry archaelogical finds, badly labelXXXled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
         section T_HAMBURG,
@@ -2362,7 +2362,7 @@ Object Cabinet_Room "Cabinet Room"
 
 Object -> glass_cabinet "glass cabinet" 
   with  name 'glass' 'cabinet' 'pane',
-        before CabinetAfter,
+        before CabinetBefore,
         s_to "One cabinet looks particularly vulnerable.",
         initial "You could just look inside the broken glass cabinet.",
         number 0,
@@ -2371,7 +2371,7 @@ Object -> glass_cabinet "glass cabinet"
 
 Object -> -> smooth_round_stone "smooth round stone"    
   with  name 'smooth' 'round' 'pumice' 'metal' 'stone',
-        before RoundStoneAfter,
+        before RoundStoneBefore,
         initial nothing,
         description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the labelXXX rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
         angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
@@ -2385,7 +2385,7 @@ Object -> -> papyrus_fragment "papyrus fragment"
 
 Object Ruined_Castle_Cafe "Ruined Castle Cafe"  
   with  name 'decor' 'arrows' 'quartet' 'waiter',
-        after CafeBefore,
+        after CafeAfter,
         initial CafeInitial,
         description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
         cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
@@ -2395,12 +2395,12 @@ Object Ruined_Castle_Cafe "Ruined Castle Cafe"
 
 Object -> cafe_table "cafe table"       
   with  name 'cafe' 'table' 'leg' 'legs',
-        before CafeTableAfter,
+        before CafeTableBefore,
   has   scenery supporter;
 
 Object complicated_looking_bomb "complicated-looking bomb"      
   with  name 'bomb',
-        after BombBefore,
+        after BombAfter,
         initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
         description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
         number 0,
@@ -2410,7 +2410,7 @@ Object complicated_looking_bomb "complicated-looking bomb"
 
 Object -> timer_detonator "timer-detonator"     
   with  name 'timer' 'detonater' 'detonator',
-        before TimerAfter,
+        before TimerBefore,
         number 10,
         time_left 0,
         daemon TimerDaemon,
@@ -2420,22 +2420,22 @@ Object -> timer_detonator "timer-detonator"
 
 Object -> green_wire "green wire"       
   with  name 'green' 'wire',
-        before WireAfter,
+        before WireBefore,
   has   static wire;
 
 Object -> red_wire "red wire"   
   with  name 'red' 'wire',
-        before WireAfter,
+        before WireBefore,
   has   static wire;
 
 Object -> blue_wire "blue wire" 
   with  name 'blue' 'wire',
-        before WireAfter,
+        before WireBefore,
   has   static wire;
 
 Object -> black_wire "black wire"       
   with  name 'black' 'wire',
-        before WireAfter,
+        before WireBefore,
   has   static wire;
 
 Object Cups_and_Glasses "Cups and Glasses"      
@@ -2457,7 +2457,7 @@ Object -> windowed_door "windowed door"
 
 Object -> cups_and_glasses "cups and glasses"   
   with  name 'crates' 'glasses' 'cups',
-        before CupsAndGlassesAfter,
+        before CupsAndGlassesBefore,
         article "numerous",
   has   scenery;
 
@@ -2470,27 +2470,27 @@ Object -> mounted_bottle "mounted bottle"
 
 Object ship_in_a_bottle "ship in a bottle"      
   with  name 'ship' 'in' 'bottle',
-        before BottleShipAfter,
+        before BottleShipBefore,
         description "Within the whisky bottle is a model sailing ship, far too large to have passed the neck.",
         angel_hint "Oh, well done!  Why not take a closer look, you deserve it?",
   has   ;
 
 Object model_ship "model ship"  
   with  name 'model' 'sailing' 'ship' 'anchor' 'chain' 'mermaid' 'filigree' 'prow' 'stern',
-        before ModelShipAfter,
+        before ModelShipBefore,
         description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
         angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has   general;
 
 Object stick_with_an_anchor "stick with an anchor"      
   with  name 'stick' 'with' 'anchor' 'chain' 'sticks' 'ship',
-        before ModelShipAfter,
+        before ModelShipBefore,
         description "A tightly-folded bundle of sticks, about six inches long, with a filigree chain and anchor hanging from it.",
         angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has   ;
 
 Object Sea_Shore "Sea Shore"    
-  with  before SeaShoreAfter,
+  with  before SeaShoreBefore,
         u_to Cliffs,
         description " .A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^",
         cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
@@ -2546,7 +2546,7 @@ Object Outside_Taverna "Outside Taverna"
 
 Object -> small_thorny_tree "small thorny tree" 
   with  name 'tree' 'thorny' 'small',
-        before ThornyTreeAfter,
+        before ThornyTreeBefore,
         description "Only a small, thorny, unclimbable fig tree.",
   has   scenery;
 
@@ -2559,7 +2559,7 @@ Object -> fig "fig"
   has   edible;
 
 Object Eraina_Taverna "Eraina Taverna"  
-  with  before TavernAfter,
+  with  before TavernBefore,
         n_to Outside_Taverna,
         description "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight.",
         cant_go "The tavern entrance is to the north.",
@@ -2569,7 +2569,7 @@ Object Eraina_Taverna "Eraina Taverna"
 
 Object -> Ekmek_Special "Ekmek Special" 
   with  name 'ekmek' 'special' 'dessert',
-        before DessertAfter,
+        before DessertBefore,
         initial "Left untouched on one table is an Ekmek Special dessert.",
         description "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste.",
         devil_hint "Better with chocolate ice cream, I think.",
@@ -2601,7 +2601,7 @@ Object -> wall_of_thorns_object "wall of thorns"
   has   door static;
 
 Object Sacred_Earth "Sacred Earth"      
-  with  after SacredEarthBefore,
+  with  after SacredEarthAfter,
         n_to Wall_of_Thorns,
         s_to SacredEarthSouth,
         description "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number of myths about gods getting cross about that sort of thing.",
@@ -2674,15 +2674,15 @@ Object -> Homer "Homer"
 
 Object -> -> Pan_pipes "Pan pipes"      
   with  name 'pan' 'pipes' 'panpipes' 'syrinx',
-        before PanPipesAfter,
+        before PanPipesBefore,
         description "Carefully cut from river reeds, these once belonged to Homer himself. As you may recall.",
         article "the",
         angel_hint "Marvellous! A sound to soothe the spirit.",
   has   ;
 
 Object Cross_Centre "Cross Centre"      
-  with  before CrossAfter,
-        after CrossBefore,
+  with  before CrossBefore,
+        after CrossAfter,
         s_to Inner_Sanctum,
         ne_to Northeast_Cross,
         se_to Southeast_Cross,
@@ -2698,7 +2698,7 @@ Object Cross_Centre "Cross Centre"
 
 Object -> inscriptions "inscriptions"   
   with  name 'inscription' 'opening',
-        before InscriptsAfter,
+        before InscriptsBefore,
         n_to Oubliette,
         s_to "There are extremely scuffed and faded inscriptions at the centre of the cross.",
         w_to thedark,
@@ -2716,7 +2716,7 @@ Object Oubliette "Oubliette"
 
 Object -> gleaming_amber_gem "gleaming amber gem"       
   with  name 'amber' 'gem',
-        before GemAfter,
+        before GemBefore,
         initial "Lying on top of crushed, broken bones, in plain view, is a gleaming gem of amber.",
         description "Embedded within is the body of a fly. Scratched upon one face is the word ~GALITA~.",
         angel_hint "Isn't there some classical legend about her?",
@@ -2731,8 +2731,8 @@ Object Northeast_Cross "Northeast Cross"
 
 Object -> statue_of_Demeter "statue of Demeter" 
   with  name 'demeter' 'statue' 'of',
-        before ClassicalStatueAfter,
-        after ClassicalStatueBefore,
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
         initial "A fine statue of the goddess Demeter stands here.",
   has   static statue_flag;
 
@@ -2745,8 +2745,8 @@ Object Northwest_Cross "Northwest Cross"
 
 Object -> statue_of_Dionysus "statue of Dionysus"       
   with  name 'dionysus' 'statue' 'of',
-        before ClassicalStatueAfter,
-        after ClassicalStatueBefore,
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
         initial "A fine statue of the god Dionysus stands here.",
   has   static statue_flag;
 
@@ -2759,8 +2759,8 @@ Object Southeast_Cross "Southeast Cross"
 
 Object -> statue_of_Ares "statue of Ares"       
   with  name 'ares' 'statue' 'of',
-        before ClassicalStatueAfter,
-        after ClassicalStatueBefore,
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
         initial "A fine statue of the god Ares stands here.",
   has   static statue_flag;
 
@@ -2773,8 +2773,8 @@ Object Southwest_Cross "Southwest Cross"
 
 Object -> statue_of_Poseidon "statue of Poseidon"       
   with  name 'poseidon' 'statue' 'of',
-        before ClassicalStatueAfter,
-        after ClassicalStatueBefore,
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
         initial "A fine statue of the god Poseidon stands here.",
   has   static statue_flag;
 
@@ -2787,7 +2787,7 @@ Object Cave_Mouth "Cave Mouth"
 
 Object -> flaming_bronze_urn "flaming bronze urn"       
   with  name 'flaming' 'bronze' 'urn' 'flame' 'cube' 'obsidian' 'altar' 'stone',
-        before UrnAfter,
+        before UrnBefore,
         initial "In the centre of the cave rests an obsidian altar stone with a flaming bronze urn.",
         description "The altar stone, sometimes called ~Omphalos~ or ~the navel~, bears an odd cross or plus sign and is fabled to mark the centre of the world.^^Around the side of the urn are reliefs of feasts, of oxen being tracked and sacrificed, of the gathering of fruit and the making of cheese.",
         article "the",
@@ -2850,7 +2850,7 @@ Object aft_obj "aft wall"
 
 Object some_landlubbers_direction "some landlubber's direction" 
   with  name 'north' 'n//' 'south' 's//' 'east' 'e//' 'west' 'w//',
-        before LandlubberAfter,
+        before LandlubberBefore,
   has   proper scenery;
 
 Object Aboard_Ship "Aboard Ship"        
@@ -2867,13 +2867,13 @@ Object Aboard_Ship "Aboard Ship"
 
 Object -> mast_and_rigging "mast and rigging"   
   with  name 'mast' 'rigged' 'rigging',
-        before RiggingAfter,
+        before RiggingBefore,
         article "the",
   has   scenery;
 
 Object Up_the_Mast "Up the Mast"        
-  with  before OnMastAfter,
-        after OnMastBefore,
+  with  before OnMastBefore,
+        after OnMastAfter,
         w_to OnMastWest,
         d_to OnMastDown,
         description "Coming up here must be one of your less inspired ideas. The mist is all around you, confusing your senses. Two pale, bluish moons hang in a pink sky.",
@@ -2883,14 +2883,14 @@ Object Up_the_Mast "Up the Mast"
 
 Object -> flagpole "flagpole"   
   with  name 'pole' 'flagpole' 'mast' 'ensign' 'spar',
-        before FlagpoleAfter,
+        before FlagpoleBefore,
         initial "A flagpole juts out portwards from the top of the mast, far too insubstantial to bear any weight. From it hangs the ensign of the British Merchant Navy (which you could just reach the bottom of).",
         description "The flagpole juts out to port with the prevailing... wind?",
   has   static;
 
 Object -> flag_of_the_British_Merchant_Navy "flag of the British Merchant Navy" 
   with  name 'flag' 'ensign' 'navy' 'british' 'merchant' 'of' 'tassels',
-        before FlagAfter,
+        before FlagBefore,
         initial "The flag has fluttered to a heap on deck.",
         description "Broad, heavy, scarlet cloth, halfway between a silken sheet and a carpet, with a cross and a Union Jack in one corner.",
         devil_hint "Piece of advice - it's never very comfortable wrapping yourself in the Flag.",
@@ -2898,7 +2898,7 @@ Object -> flag_of_the_British_Merchant_Navy "flag of the British Merchant Navy"
 
 Object old_timber_spar "old timber spar"        
   with  name 'old' 'prop' 'timber' 'flagpole' 'spar',
-        after TimberSparBefore,
+        after TimberSparAfter,
         initial "The broken flagpole, a plain timber spar, lies beside the mast.",
         description "An old timber prop, once the spar of a main mast.",
         article "an",
@@ -2916,7 +2916,7 @@ Object Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"
 
 Object -> green_branch "green branch"   
   with  name 'green' 'branch' 'leafed',
-        before BranchAfter,
+        before BranchBefore,
         initial "In the Lady Magdalena's loose grip is a traditional sailor's good-luck token: a green-leafed branch, to attract the gulls of an approaching shore.",
         section T_TAROT,
         angel_hint "Oh, you startled me for a moment there! I am getting flighty.",
@@ -2933,13 +2933,13 @@ Object Stern "Stern"
 
 Object -> capstan "capstan"     
   with  name 'capstan' 'anchor' 'chain' 'wheel',
-        before CapstanAfter,
+        before CapstanBefore,
         initial "The top of the anchor chain is wound around the capstan, a great wheel on the deck beside you. The chain disappears over the side.",
   has   static;
 
 Object Garden_Stream "Garden Stream"    
   with  name 'reeds',
-        before GardenStreamAfter,
+        before GardenStreamBefore,
         n_to "Better not... you'd be seen from the Library.",
         s_to coal_bunker,
         e_to Beside_the_Wall,
@@ -2954,7 +2954,7 @@ Object Garden_Stream "Garden Stream"
 
 Object -> coal_bunker "coal bunker"     
   with  name 'coal' 'bunker' 'loading' 'door',
-        after CoalBunkerBefore,
+        after CoalBunkerAfter,
         n_to Dark_Passage,
         s_to "On the house wall is a coal bunker, whose loading door is shut.",
         w_to ne_obj,
@@ -2963,7 +2963,7 @@ Object -> coal_bunker "coal bunker"
 
 Object -> stream "stream"       
   with  name 'stream' 'water' 'gurgling',
-        before StreamAfter,
+        before StreamBefore,
   has   scenery;
 
 Object Beside_the_Wall "Beside the Wall"        
@@ -2980,13 +2980,13 @@ Object Beside_the_Wall "Beside the Wall"
 
 Object -> potted_shrub "potted shrub"   
   with  name 'pot' 'potted' 'tub' 'plant' 'shrub',
-        before ShrubAfter,
+        before ShrubBefore,
         initial "A shrub is being nursed in a wide round tub in the centre of the path, sheltered behind the wall.",
   has   static;
 
 Object -> stone_wall "stone wall"       
   with  name 'stone' 'wall' 'carved' 'carvings' 'painted',
-        before StoneWallAfter,
+        before StoneWallBefore,
         life StoneWallLife,
         description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
         found_in Beside_the_Wall Beside_the_Drive,
@@ -2994,7 +2994,7 @@ Object -> stone_wall "stone wall"
 
 Object timber_hatch "timber hatch"      
   with  name 'timber' 'hatch' 'old' 'rotted' 'rotting' 'lid',
-        after TimberHatchBefore,
+        after TimberHatchAfter,
         n_to Wine_Cellars,
         s_to "Beside the shrub is a timber hatch, three feet across.",
         w_to thedark,
@@ -3015,7 +3015,7 @@ Object Family_Tree "Family Tree"
 
 Object -> plane_tree "plane tree"       
   with  name 'plane' 'tree' 'family',
-        before PlaneTreeAfter,
+        before PlaneTreeBefore,
   has   scenery;
 
 Object Lawn_Ornaments "Lawn Ornaments"  
@@ -3036,7 +3036,7 @@ Object -> plaster_statuette "plaster statuette"
 
 Object ancient_well "ancient well"      
   with  name 'ancient' 'well' 'dark',
-        after WellBefore,
+        after WellAfter,
         initial "The lawn is lightly coated with broken plaster and dust, and in the spot where the statuette once stood is a dark, ancient well.",
         description "You can make out nothing below, and the well is too small to climb down.",
   has   container open static;
@@ -3089,8 +3089,8 @@ Object -> runner_bean_plant "runner-bean plant"
   has   door static;
 
 Object Up_the_Beanstalk "Up the Beanstalk"      
-  with  before BeanStalkAfter,
-        after BeanStalkBefore,
+  with  before BeanStalkBefore,
+        after BeanStalkAfter,
         n_to Heavenly_Place,
         d_to Vegetable_Garden,
         description "At the top of the beanstalk, in amongst the clouds. There is no safe way to go from here except back down, not surprisingly. A dangerous way might be to step out onto the clouds to the north, but even if this is a fairy-tale it would be taking a lot on trust.",
@@ -3106,7 +3106,7 @@ Object Garage "Garage"
 
 Object -> garden_roller "garden roller" 
   with  name 'garden' 'roller' 'switch' 'motor' 'motorised' 'power',
-        before RollerAfter,
+        before RollerBefore,
         s_to "A big motorised garden roller is parked here.",
         initial "The garden roller sits here, its engine still running.",
         description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
@@ -3115,7 +3115,7 @@ Object -> garden_roller "garden roller"
 
 Object -> weed_killer_bottle "weed killer bottle"       
   with  name 'weed' 'killer' 'bottle' 'weedkille',
-        before WeedKillerAfter,
+        before WeedKillerBefore,
         initial "In the shadows is a weed killer bottle.",
         description "If squeezed, it squirts weed killer over the ground. There are many warning labelXXXs about getting it on one's hands.",
         daemon WeedKillerDaemon,
@@ -3124,7 +3124,7 @@ Object -> weed_killer_bottle "weed killer bottle"
 
 Object -> spade "spade" 
   with  name 'bladed' 'agricultural' 'implement' 'zzzzzzzzz',
-        before SpadeAfter,
+        before SpadeBefore,
         initial "Hanging from a hook is a bladed agricultural implement.",
         short SpadeShort,
         angel_hint "Do you think there's anywhere in the garden particularly suitable for such an implement?",
@@ -3132,7 +3132,7 @@ Object -> spade "spade"
 
 Object Up_the_Plane_Tree "Up the Plane Tree"    
   with  name 'jemima' 'conservatory' 'window',
-        before UpTreeAfter,
+        before UpTreeBefore,
         d_to Family_Tree,
         description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
         cant_go "No, don't go out on a limb.",
@@ -3146,8 +3146,8 @@ Object -> maze_layout "maze layout"
   has   scenery;
 
 Object Maze "Maze"      
-  with  before MazeAfter,
-        after MazeBefore,
+  with  before MazeBefore,
+        after MazeAfter,
         s_to Family_Tree,
         w_to Viewpoint_Ledge,
         description "A maze of green privet passages, all alike.",
@@ -3157,8 +3157,8 @@ Object Maze "Maze"
 
 Object Patio_in_Maze "Patio in Maze"    
   with  name 'patio' 'flagstone',
-        before PatioAfter,
-        after PatioBefore,
+        before PatioBefore,
+        after PatioAfter,
         u_to "Up?  Are we playing the same game?",
         d_to Crypt,
         description "This is an old stone patio in the heart of the garden maze. A missing flagstone offers an intriguing dark prospect beneath.",
@@ -3168,14 +3168,14 @@ Object Patio_in_Maze "Patio in Maze"
 
 Object -> marble_rose "marble rose"     
   with  name 'marble' 'rose' 'flower',
-        before RoseAfter,
+        before RoseBefore,
         initial "Sticking out of some soft earth is a perfectly-carved marble rose.",
         angel_hint "Perfection set in stone. Not a gift for mortal women!",
   has   ;
 
 Object Viewpoint_Ledge "Viewpoint Ledge"        
   with  name 'motorway' 'coaches',
-        before ViewpointAfter,
+        before ViewpointBefore,
         e_to Maze,
         description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
         cant_go "The hillside is too steep.",
@@ -3197,7 +3197,7 @@ Object -> miniature "miniature"
 
 Object Folly "Folly"    
   with  name 'wain' 'hay' 'valley',
-        after FollyBefore,
+        after FollyAfter,
         e_to Maze_Foundations,
         description "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across the river.^^Towering over you is a monstrously awful piece of architecture, a Folly. The freestanding tower has no appreciable purpose and no apparent entrance. The latter is just as well since it looks extremely unsafe.",
         cant_go "The hillside is too steep.",
@@ -3211,7 +3211,7 @@ Object -> Folly_tower "Folly tower"
 
 Object -> bean_pole "bean pole" 
   with  name 'bean' 'pole' 'beanpole',
-        after BeanpoleBefore,
+        after BeanpoleAfter,
         initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
         number 0,
         daemon BeanpoleDaemon,
@@ -3220,8 +3220,8 @@ Object -> bean_pole "bean pole"
   has   general hidden_rod;
 
 Object Maze_Foundations "Maze Foundations"      
-  with  before FoundationsAfter,
-        after FountdationsBefore,
+  with  before FoundationsBefore,
+        after FountdationsAfter,
         s_to Tree_Planting,
         w_to Folly,
         description "A square grid of plots of grass and seedbeds, all alike.",
@@ -3229,7 +3229,7 @@ Object Maze_Foundations "Maze Foundations"
   has   light;
 
 Object Tree_Planting "Tree Planting"    
-  with  after PlantingBefore,
+  with  after PlantingAfter,
         description "Capability Meldrew and his gang of workmen are delicately planting a sapling plane tree here. Your disturbance annoys them immensely and you are immediately arrested for vagrancy and theft. After a few months in prison, you are hauled up before the County Assizes and sentenced...",
         section T_GARDEN_PAST,
   has   light;
@@ -3256,7 +3256,7 @@ Object -> flock_of_sparrows "flock of sparrows"
   has   static;
 
 Object Summer_House "Summer House"      
-  with  after SummerHouseBefore,
+  with  after SummerHouseAfter,
         n_to nothing,
         s_to SummerHouseSouth,
         description "An old wooden summer house, reeking of varnish and uncertain beneath your feet. Several segments of the tall glass many-sided pyramidal roof are missing and others are cracked, but this is still somehow a homely and welcoming retreat. The only entrance is also the only exit.",
@@ -3272,7 +3272,7 @@ Object -> croquet_mallet "croquet mallet"
 
 Object -> gold_watch_on_a_chain "gold watch on a chain" 
   with  name 'gold' 'watch' 'on' 'chain',
-        before ChainAfter,
+        before ChainBefore,
         initial "Something golden hangs by a chain from a loose pane in the roof, but it's too high up to reach.",
         description "It is beautifully polished, and captivates the eye. You could stare for hours...",
         angel_hint "How easily are the weak mesmerised by baubles.",
@@ -3289,7 +3289,7 @@ Object Behind_Summer_House "Behind Summer House"
 
 Object -> loose_board "loose board"     
   with  name 'loose' 'board',
-        before BoardAfter,
+        before BoardBefore,
         n_to Summer_House,
         s_to "One board of the back wall is noticeably loose, making a good-sized crack.",
         w_to ne_obj,
@@ -3298,8 +3298,8 @@ Object -> loose_board "loose board"
 
 Object -> crack "crack" 
   with  name 'crack' 'gap' 'hole' 'summerhou' 'summer' 'house',
-        before CrackAfter,
-        after CrackBefore,
+        before CrackBefore,
+        after CrackAfter,
         description "Through the crack you can see the summer house.",
   has   container open scenery;
 
@@ -3335,8 +3335,8 @@ Object strongbox "strongbox"
 
 Object -> golden_astrolabe "golden astrolabe"   
   with  name 'golden' 'gold' 'astrolabe' 'eyepiece',
-        before AstrolabeAfter,
-        after AstrolabeBefore,
+        before AstrolabeBefore,
+        after AstrolabeAfter,
         initial nothing,
         description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua Meldrewe's stolen hoard of gold. There is an eyepiece.",
         angel_hint "A mighty fine instrument, though not much use hand-held.",
@@ -3344,7 +3344,7 @@ Object -> golden_astrolabe "golden astrolabe"
 
 Object dug_hole "dug hole"      
   with  name 'hole' 'dug',
-        before DugHoleAfter,
+        before DugHoleBefore,
         description "The rich loam, the silver of earthworms, the dignity of toil... none of these pastoral consolations is yours as you scrabble in the dirt.",
         describe DugHoleDesc,
   has   container open static;
@@ -3380,13 +3380,13 @@ Object Spur_of_Rock "Spur of Rock"
 
 Object -> hanging_rope "hanging rope"   
   with  name 'hanging' 'rope',
-        before RopeAfter,
+        before RopeBefore,
   has   scenery;
 
 Object Hanging_on_Rope "Hanging on Rope"        
   with  name 'patrol' 'men',
-        before HangingOnRopeAfter,
-        after HangingOnRopeBefore,
+        before HangingOnRopeBefore,
+        after HangingOnRopeAfter,
         u_to Spur_of_Rock,
         d_to RopeDown,
         description "You are hanging perilously on a hemp rope, suspended from an overhang of rock above, which drops down into the darkness of the valley. On the tracks below, patrols of men can be heard, and you feel instinctively that they are not friendly.",
@@ -3400,8 +3400,8 @@ Object -> hemp_rope "hemp rope"
 
 Object -> yellow_daisy "yellow daisy"   
   with  name 'yellow' 'daisy',
-        before DaisyAfter,
-        after DaisyBefore,
+        before DaisyBefore,
+        after DaisyAfter,
         u_to DaisyUp,
         initial "A single yellow daisy grows from a little tuft of grass on the crags.",
   has   clothing scored;
@@ -3425,7 +3425,7 @@ Object Roman_Villa "Roman Villa"
 
 Object Stream "Stream"  
   with  name 'river' 'road' 'stream' 'roof',
-        before EndStreamAfter,
+        before EndStreamBefore,
         w_to Roman_Villa,
         u_to "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.",
         description "A stream runs past the villa and cascades down the hillside here, to join the river far below, near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from your back garden. A rough ladder of wood lashed together with leather rests against the villa at the lowest point of the tiled roof.",
@@ -3434,7 +3434,7 @@ Object Stream "Stream"
 
 Object -> rough_ladder "rough ladder"   
   with  name 'rough' 'ladder',
-        before LadderAfter,
+        before LadderBefore,
   has   scenery;
 
 Object Atrium_Cloister "Atrium Cloister"        
@@ -3447,7 +3447,7 @@ Object Atrium_Cloister "Atrium Cloister"
 
 Object -> summoning_horn "summoning horn"       
   with  name 'horn' 'summoning' 'on' 'pole',
-        before HornAfter,
+        before HornBefore,
         initial "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
         rod_assoc rod_of_language,
   has   hidden_rod;
@@ -3475,7 +3475,7 @@ Object Guard_Quarters "Guard Quarters"
 
 Object -> bone_die "crude bone die"     
   with  name 'die' 'dice' 'bone',
-        after DieBefore,
+        after DieAfter,
         description "A crude six-sided die made from animal bone.",
   has   ;
 
@@ -3493,7 +3493,7 @@ Object Triclinium "Triclinium"
 
 Object -> kitchen_well "kitchen well"   
   with  name 'well' 'hinged' 'wooden' 'cover',
-        after WellBefore,
+        after WellAfter,
         n_to Inside_Well,
         s_to "In one corner is a hinged wooden cover of some kind, which is shut.",
         w_to thedark,
@@ -3505,7 +3505,7 @@ Object -> kitchen_well "kitchen well"
 
 Object Inside_Well "Inside Well"        
   with  name 'air',
-        before InsideWellAfter,
+        before InsideWellBefore,
         e_to Hypocaust,
         u_to Triclinium,
         description "You are clinging perilously to the walls of the deep and dangerous well. You can hardly see a thing, even with the aid of the torch, but curiously enough you feel warm air blowing across you from the east.",
@@ -3523,13 +3523,13 @@ Object Hypocaust "Hypocaust"
 
 Object -> vents "vents" 
   with  name 'hypocaust' 'vents',
-        before VentsAfter,
+        before VentsBefore,
         article "the",
   has   scenery;
 
 Object Entrance "Entrance"      
-  with  before EntranceAfter,
-        after EntranceBefore,
+  with  before EntranceBefore,
+        after EntranceAfter,
         n_to Atrium,
         description "A well-flagstoned forecourt at the villa entrance, surrounded by lesser wooden buildings. Some of these are in use as stables, and figures of men slip between them. You hide from sight, not wishing to draw attention to yourself. Up on the hill, where Meldrew Hall will one day be built, men on horseback can be seen circling the access track. For a deserted villa, this is certainly well-guarded.",
         section T_ANCIENT_BRITAIN,
@@ -3544,8 +3544,8 @@ Object Rough_Tent "Rough Tent"
 
 Object -> tent_pole "tent pole" 
   with  name 'tent' 'pole' 'central',
-        before TentPoleAfter,
-        after TentPoleBefore,
+        before TentPoleBefore,
+        after TentPoleAfter,
         number 0,
         daemon TentPoleDaemon,
         rod_assoc rod_of_returning2,
@@ -3553,7 +3553,7 @@ Object -> tent_pole "tent pole"
 
 Object unconscious_Saxon_spy "unconscious Saxon spy"    
   with  name 'saxon' 'spy',
-        before SpyAfter,
+        before SpyBefore,
         life SpyLife,
         initial "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
         description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours.",
@@ -3598,7 +3598,7 @@ Object fifty_franc_note "fifty-franc note"
   has   ;
 
 Object ghost_of_yourself "ghost of yourself"    
-  with  before YourGhostAfter,
+  with  before YourGhostBefore,
         description "You are transparent like a ghost.",
         time_left 0,
         capacity 1,
@@ -3635,8 +3635,8 @@ Object -> bear_tapestry "bear tapestry"
 
 Object -> heavy_iron_mascot "heavy iron mascot" 
   with  name 'heavy' 'iron' 'mascot',
-        before MascotAfter,
-        after MascotBefore,
+        before MascotBefore,
+        after MascotAfter,
         initial "On the table is a heavy iron mascot of some kind.",
         description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
         number 0,
@@ -3659,7 +3659,7 @@ Object Camp_Fire "Camp Fire"
   has   light;
 
 Object Near_Dolmen "Near Dolmen"        
-  with  after DolmenBefore,
+  with  after DolmenAfter,
         description "A standing stone, perhaps a glacial erratic, stands here and on top of it is a shining blue stone, whose brightness almost blinds you. You feel irresistably drawn to it, and your hand reaches out...",
         cant_go DreamCantGo,
         section T_DREAMING,
@@ -3676,12 +3676,12 @@ Object Melancholy_Dream "Melancholy Dream"
 
 Object -> metal_barrier "metal barrier" 
   with  name 'metal' 'barrier',
-        before BarrierAfter,
+        before BarrierBefore,
   has   scenery;
 
 Object green_luminescence "flurries of green luminescence"      
   with  name 'green' 'flurries' 'of' 'luminesce',
-        before LumnescenceAfter,
+        before LumnescenceBefore,
         initial "Flurries of green luminescence whirl endlessly around you, west to east and over.",
         description "The flurries have almost endless fascination... but you manage to tear your eyes away after, oh, an hour?",
   has   static;
@@ -3713,7 +3713,7 @@ Object -> hieroglyphic_symbols "hieroglyphic symbols"
 
 Object -> ships_wheel "ship's wheel"    
   with  name 'ships' 'wheel',
-        before ShipWheelAfter,
+        before ShipWheelBefore,
         initial "A kind of ship's wheel (of eight-spoked timber) is affixed to the northwest wall.",
   has   static;
 
@@ -3738,7 +3738,7 @@ Object -> bronze_mural "bronze mural"
 
 Object Jagged_Passage "Jagged Passage"  
   with  name 'bones',
-        before CryptRoomAfter,
+        before CryptRoomBefore,
         n_to Crypt,
         s_to The_Catacombs,
         e_to Charnel_Passage,
@@ -3756,7 +3756,7 @@ Object -> wrought_iron_key "long wrought iron key"
   has   ;
 
 Object Charnel_Passage "Charnel Passage"        
-  with  before CryptRoomAfter,
+  with  before CryptRoomBefore,
         e_to Sarcophagus,
         w_to Jagged_Passage,
         description "A long, winding, vile passage through the earth, running east to west. The distasteful odour grows stronger as you go east.",
@@ -3764,7 +3764,7 @@ Object Charnel_Passage "Charnel Passage"
   has   ;
 
 Object Sarcophagus "Sarcophagus"        
-  with  before CryptRoomAfter,
+  with  before CryptRoomBefore,
         w_to Charnel_Passage,
         description "Well, perhaps ~sarcophagus~ is a little melodramatic, but it's that kind of moment. This must be somewhere under the old parish church. You are stooped over inside a stone tomb, stained and crumbled with decay, broken only by a crevice you crawled in by. It is a nightmarish place.",
         section T_CATACOMBS,
@@ -3777,7 +3777,7 @@ Object -> tombstone "tombstone"
   has   static;
 
 Object The_Catacombs "Catacombs"        
-  with  before CryptRoomAfter,
+  with  before CryptRoomBefore,
         n_to Jagged_Passage,
         w_to CR,
         u_to Jagged_Passage,
@@ -3790,7 +3790,7 @@ Object The_Catacombs "Catacombs"
 
 Object aluminium_staircase "aluminium staircase"        
   with  name 'staircase' 'stairs' 'stair' 'case' 'aluminium',
-        before AluminumStairAfter,
+        before AluminumStairBefore,
         initial "The odd smell seems to be ozone, and it drifts up from a previously concealed aluminium staircase.",
         description "Leading down.",
         article "an",
@@ -3798,7 +3798,7 @@ Object aluminium_staircase "aluminium staircase"
 
 Object CR "CR"  
   with  name 'basket' 'seesaw' 'hand' 'cannon' 'glass',
-        after CRBefore,
+        after CRAfter,
         n_to metal_wall,
         s_to nothing,
         e_to CREast,
@@ -3810,7 +3810,7 @@ Object CR "CR"
 
 Object -> metal_wall "metal wall"       
   with  name 'mirror' 'metal' 'bronze' 'wall' 'sheet' 'amber',
-        before MetalWallAfter,
+        before MetalWallBefore,
         n_to CR,
         s_to "The north edge of the room is a big sheet of dull amber-coloured metal.",
         w_to w_obj,
@@ -3826,13 +3826,13 @@ Object -> iron_grid "iron grid"
 
 Object -> glowing_golden_orb "glowing golden orb"       
   with  name 'glowing' 'golden' 'orb',
-        before CannonballAfter,
+        before CannonballBefore,
         description "How tantalisingly valuable it seems.",
   has   scenery;
 
 Object -> cannonball "cannonball"       
   with  name 'cannon' 'ball' 'cannonball',
-        before CannonballAfter,
+        before CannonballBefore,
         description "Solid, heavy, reliable, out of reach on the other side of the glass.",
   has   scenery;
 
@@ -3845,20 +3845,20 @@ Object Universe_Maintenance_Room "Universe Maintenance Room"
 
 Object -> big_electricians_switch "big electrician's switch"    
   with  name 'big' 'electricians' 'switch',
-        after SwitchBefore,
+        after SwitchAfter,
         description "The lower, on, position is labelXXXled ~Determinism~. The upper, off, position is labelled ~Chance~.",
   has   on scenery static switchable;
 
 Object -> large_dial "large dial"       
   with  name 'large' 'dial' 'gauges' 'dials',
-        before DialAfter,
+        before DialBefore,
         initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelXXXled in small print.",
         description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
   has   static;
 
 Object Inside_the_Orb "Inside the Orb"  
   with  name 'light',
-        after InOrbBefore,
+        after InOrbAfter,
         description "You half-stand, half-float in a golden, misty sphere perhaps ten yards across, which slowly spins. The centre, out of reach and somehow insubstantial, is an eight-by-eight lattice of oblong crystals, bathed in warm pearly light.",
         number 0,
         each_turn InOrbEachTurn,
@@ -3873,7 +3873,7 @@ Object -> array_of_oblong_crystals "array of oblong crystals"
   has   static;
 
 Object Causeway "Causeway"      
-  with  before CausewayAfter,
+  with  before CausewayBefore,
         n_to Island_of_Pharos,
         se_to Crossroads,
         initial CausewayInitial,
@@ -3885,7 +3885,7 @@ Object Causeway "Causeway"
 
 Object Island_of_Pharos "Island of Pharos"      
   with  name 'pharos' 'lighthouse' 'moon' 'circle' 'octagon' 'square' 'defences' 'causeway' 'island' 'harbour',
-        before CausewayAfter,
+        before CausewayBefore,
         s_to Causeway,
         u_to "The Pharos is unclimbable, alas.",
         d_to rusty_iron_grating,
@@ -3898,7 +3898,7 @@ Object Island_of_Pharos "Island of Pharos"
 
 Object -> rusty_iron_grating "rusty iron grating"       
   with  name 'rusty' 'iron' 'grating' 'seaweed' 'grate' 'rusted',
-        before IronGratingAfter,
+        before IronGratingBefore,
         n_to Jetty,
         s_to "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
         e_to rusty_iron_key,
@@ -3908,14 +3908,14 @@ Object -> rusty_iron_grating "rusty iron grating"
 
 Object -> rusty_iron_key "rusty iron key"       
   with  name 'rusty' 'iron' 'key',
-        before RustyKeyAfter,
+        before RustyKeyBefore,
         sw_to compass,
         initial "Interestingly, a key which looks as if it would fit the grating can be seen inside the passage beneath.",
         angel_hint "Oh dear, surely it's gratingly obvious what this fits?",
   has   ;
 
 Object Jetty "Jetty"    
-  with  before CausewayAfter,
+  with  before CausewayBefore,
         u_to Island_of_Pharos,
         description "Down on a dark stone jetty, where the waters of the Alexandrian harbour splash insistently. Rough-hewn steps rise up the island through the grating.",
         each_turn JettyEachTurn,
@@ -3937,7 +3937,7 @@ Object -> -> adamantine_heart "adamantine heart"
   has   ;
 
 Object Harbour_Mouth "Harbour Mouth"    
-  with  before HarbourMouthAfter,
+  with  before HarbourMouthBefore,
         description "As the skiff passes the jaws of the Royal Harbour, beneath the great Pharos light, you have a final view of the receding civilisation of Alexandria: ahead lies the vast, oil-calm Mediterranean and moonlight on the waters.",
         cant_go "The skiff is not under your control.",
         each_turn HarbourMouthEachTurn,
@@ -3946,7 +3946,7 @@ Object Harbour_Mouth "Harbour Mouth"
 
 Object Drifting "Drifting"      
   with  name 'curious' 'fish' 'zephyr' 'sea',
-        before HarbourMouthAfter,
+        before HarbourMouthBefore,
         description "You drift in the wide, peaceful Lunar sea. Curious fish, their yellow-green eyes gleaming beneath the silver ripples, brush past your wake: the night zephyr is almost slack but still you drift. Minutes pass like hours in paradise.",
         cant_go "You feel only a drug-like calm.",
         each_turn DriftingEachTurn,
@@ -3955,7 +3955,7 @@ Object Drifting "Drifting"
 
 Object Crossroads "Crossroads"  
   with  name 'processio' 'tower',
-        before CrossroadsAfter,
+        before CrossroadsBefore,
         ne_to Outside_the_Royal_Museum,
         se_to A_Tower,
         nw_to Causeway,
@@ -3981,7 +3981,7 @@ Object -> birds_of_prey "birds of prey"
 
 Object unexciting_tombstone "unexciting tombstone"      
   with  name 'tomb' 'tombstone' 'stone' 'unexcitin' 'face' 'socket' 'steps' 'mouth',
-        before TombstoneAfter,
+        before TombstoneBefore,
         n_to The_Height_of_Fashion,
         s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
         w_to thedark,
@@ -3991,7 +3991,7 @@ Object unexciting_tombstone "unexciting tombstone"
 
 Object cloak_of_many_colours "cloak of many colours"    
   with  name 'of' 'many' 'colours' 'cloak' 'coat' 'chlamys',
-        before CloakAfter,
+        before CloakBefore,
         initial "A cloak of many colours lies folded on it.",
         description "A fine cloak, grey-lined, sapphire-encrusted, rippled across with rainbow fabrics from the trade routes of the world.",
         angel_hint "Are you sure it isn't inside out?",
@@ -3999,13 +3999,13 @@ Object cloak_of_many_colours "cloak of many colours"
 
 Object grey_cloak "grey cloak"  
   with  name 'grey' 'cloak' 'coat' 'chlamys',
-        before CloakAfter,
+        before CloakBefore,
         description "A fine grey cloak, sapphire-encrusted, lined with rainbow fabrics from the trade routes of the world.",
         angel_hint "Are you sure it isn't inside out?",
   has   clothing;
 
 Object XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"    
-  with  before PyramidAfter,
+  with  before PyramidBefore,
         n_to Necropolis,
         description "Ransacked, dimly-lit, cramped and empty, this rough-built and uneven burial mound is to the Great Pyramids of Giza (built just a century before) what the summerhouse in your garden is to Windsor Castle. There are only dull painted writings, an unpleasant odour and a passage out to the north.",
         section T_ALEXANDRIA,
@@ -4020,7 +4020,7 @@ Object -> painted_writings "painted writings"
 
 Object The_Height_of_Fashion "The Height of Fashion"    
   with  name 'table' 'panelling' 'doorway' 'door',
-        before HeightFashionAfter,
+        before HeightFashionBefore,
         w_to HeightFashionWest,
         u_to Necropolis,
         description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling. This is the latest in modern funerary apartments.^^There's a couch for visitors, a table, a flight of steps up and a doorway to the west, flanked by two stone sphinxes.",
@@ -4041,15 +4041,15 @@ Object -> wooden_couch "wooden couch"
 
 Object stone_nose_of_a_sphinx "stone nose of a sphinx"  
   with  name 'stone' 'nose',
-        before NoseAfter,
+        before NoseBefore,
         initial "One of the sphinxes does have rather a prominent nose, it must be said.",
         description "Splendid.",
   has   static;
 
 Object The_Spirit_World "The Spirit World"      
   with  name 'table' 'panelling' 'doorway' 'door',
-        before SpiritWorldAfter,
-        after SpiritWorldBefore,
+        before SpiritWorldBefore,
+        after SpiritWorldAfter,
         w_to SpiritWorldWest,
         description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling, at the foot of a flight of steps which leads only to a sealed wall.",
         number 1,
@@ -4106,7 +4106,7 @@ Object -> marble_wall "marble wall"
   has   door static;
 
 Object Quite_an_Undertaking "Quite an Undertaking"      
-  with  before UndertakingAfter,
+  with  before UndertakingBefore,
         e_to This_Is_The_Death,
         u_to This_Is_The_Death,
         description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
@@ -4121,14 +4121,14 @@ Object -> painting_of_the_priest "painting of the priest"
 
 Object -> mummy_case "mummy case"       
   with  name 'mummy' 'case' 'lid' 'sarcophag' 'coffin',
-        before MummyCaseAfter,
+        before MummyCaseBefore,
         initial "A beautiful gold and blue mummy case, or sarcophagus, rests massively here.",
         description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
   has   enterable static;
 
 Object -> first_socket "first socket"   
   with  name 'first' 'socket' 'sockets' 'words',
-        before SocketAfter,
+        before SocketBefore,
         description " .Above ",
         article "the",
         number 1,
@@ -4136,7 +4136,7 @@ Object -> first_socket "first socket"
 
 Object -> second_socket "second socket" 
   with  name 'second' 'socket' 'sockets' 'words',
-        before SocketAfter,
+        before SocketBefore,
         description " .Above ",
         article "the",
         number 1,
@@ -4144,14 +4144,14 @@ Object -> second_socket "second socket"
 
 Object -> third_socket "third socket"   
   with  name 'third' 'socket' 'sockets' 'words',
-        before SocketAfter,
+        before SocketBefore,
         description " .Above ",
         article "the",
         number 1,
   has   scenery;
 
 Object Buried_Alive "Buried Alive"      
-  with  before BuriedAfter,
+  with  before BuriedBefore,
         u_to Sarcophagus,
         description "You lie in the mummy case, your arms folded across each other, face grimaced, running out of air rapidly and with almost no room to maneouvre. The coffin lid is about ten times heavier than you, and its seal is very good.",
         number 5,
@@ -4206,7 +4206,7 @@ Object A_Tower "A Tower"
 
 Object -> defaced_door "defaced door"   
   with  name 'defaced' 'sosostris' 'door' 'writings' 'scripts',
-        before DefacedDoorAfter,
+        before DefacedDoorBefore,
         n_to Consulting_Room,
         s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
         w_to in_obj,
@@ -4223,7 +4223,7 @@ Object Consulting_Room "Consulting Room"
 
 Object -> table "table" 
   with  name 'bare' 'table',
-        before TableAfter,
+        before TableBefore,
         description "Madame Sosostris stares at it fixedly as she meditates.",
   has   scenery supporter;
 
@@ -4241,7 +4241,7 @@ Object -> Madame_Sosostris "Madame Sosostris, famous clairvoyante"
 
 Object quarterstaff "green oak quarterstaff"    
   with  name 'green' 'oak' 'staff' 'quarterst' 'quarter' 'beam' 'wooden',
-        before QuarterstaffAfter,
+        before QuarterstaffBefore,
         initial "You seem to have dislodged one of the wooden beams used by the tomb's builders: a useful length of greenish oak.",
         description "It needs to be left to mature, and yet there's something awfully familiar about it.",
         devil_hint "Ready to use.",
@@ -4255,7 +4255,7 @@ Object silver_keepsake "silver keepsake"
   has   clothing;
 
 Object Warehouses_and_Port "Warehouses and Port"        
-  with  before CausewayAfter,
+  with  before CausewayBefore,
         e_to Outside_the_Theatre,
         description "Down by the sea-front, in the old harbourlands, surrounded by warehouses. The Mediterranean laps darkly against the hard, splashing an occasional wave up the slope. The city, and the party, lie back east.",
         cant_go "There's nowhere to go but the city, east.",
@@ -4264,7 +4264,7 @@ Object Warehouses_and_Port "Warehouses and Port"
 
 Object -> gambling_sailor "gambling sailor"     
   with  name 'sailor' 'gambling' 'gambler' 'grizzled',
-        before SailorAfter,
+        before SailorBefore,
         life SailorLife,
         initial "A grizzled sailor sits at a harbourside table.",
         each_turn GamblingSailorEachTurn,
@@ -4272,7 +4272,7 @@ Object -> gambling_sailor "gambling sailor"
 
 Object -> inscribed_die "inscribed die" 
   with  name 'inscribed' 'die' 'dice' 'cube',
-        before InscribedDieAfter,
+        before InscribedDieBefore,
         initial "An inscribed six-sided die lies on the table in front of him.",
         description "The sides you can see are labelXXXled with short words.",
         article "an",
@@ -4327,7 +4327,7 @@ Object -> scroll_bearing_a_short_poem "scroll bearing a short poem"
   has   ;
 
 Object Oil_Room "Oil Room"      
-  with  before OilRoomAfter,
+  with  before OilRoomBefore,
         n_to The_Birdcage_of_the_Muses,
         description "This small, dark (by night) room is a repository for Library supplies: above all, for lamp oil, which is stored in broad shallow earthenware troughs. Lucky your torch is electric, when you think about it. Anyway, a passage leads back north.",
         section T_ALEXANDRIA,
@@ -4335,7 +4335,7 @@ Object Oil_Room "Oil Room"
 
 Object -> oil_filled_troughs "oil-filled troughs"       
   with  name 'oil' 'troughs' 'shallow' 'lamp',
-        before OilTroughsAfter,
+        before OilTroughsBefore,
         article "the",
   has   scenery;
 
@@ -4348,8 +4348,8 @@ Object Geography_Room "Geography Room"
 
 Object -> spindle_from_the_globe "spindle from the globe"       
   with  name 'spindle' 'axis' 'globe' 'earth',
-        before SpindleAfter,
-        after SpindleBefore,
+        before SpindleBefore,
+        after SpindleAfter,
         initial "Protruding from a broken globe of the Earth (marked with very tentative and approximate maps) is the spindle, the only thing holding it together.",
         description "Perhaps the best work of cartography likely for the next two thousand years, though it seems unlikely to last the next two hours.",
         rod_assoc rod_of_ice,
@@ -4413,8 +4413,8 @@ Object Outside_the_Royal_Palace_of_Alexander "Outside the Royal Palace of Alexan
   has   light;
 
 Object Lost_inside_the_Palace "Lost inside the Palace"  
-  with  before InsidePalaceAfter,
-        after InsidePalaceBefore,
+  with  before InsidePalaceBefore,
+        after InsidePalaceAfter,
         n_to Lost_inside_the_Palace,
         s_to Lost_inside_the_Palace,
         e_to Lost_inside_the_Palace,
@@ -4435,7 +4435,7 @@ Object -> slave "slave"
   has   animate;
 
 Object Palace_Balustrade "Palace Balustrade"    
-  with  before BalustradeAfter,
+  with  before BalustradeBefore,
         description "The magnificent balcony overlooking the Royal harbour of Alexandria. In two hundred years' time, Julius Caesar will be besieged here, and will hold the palace with a tiny force of men against an entire army: and will lose his heart to Cleopatra...^^For the mean time, this is a broad stone balustraded balcony. The coin-bright moon, low in the sky, reflects off the black waters far below.",
         cant_go "There seems to be absolutely no way off the balcony, as the stone doors to the heart of the palace are sealed shut.",
         section T_ALEXANDRIA,
@@ -4443,14 +4443,14 @@ Object Palace_Balustrade "Palace Balustrade"
 
 Object -> astronomical_mounting "astronomical mounting" 
   with  name 'mounting' 'socket' 'astronomical' 'tripod',
-        before MountingAfter,
+        before MountingBefore,
         initial "An impressive astronomical mounting stands on a tripod here. But there is no telescope.",
         article "an",
   has   static;
 
 Object Beside_the_Drive "Beside the Drive"      
   with  name 'wistaria' 'car' 'gravel',
-        before DriveAfter,
+        before DriveBefore,
         n_to "The old carved southern wall of the gardens blocks your way around the edge of the Hall.",
         w_to "The Hall is in the way.",
         ne_to Public_Footpath,
@@ -4462,7 +4462,7 @@ Object Beside_the_Drive "Beside the Drive"
 
 Object -> fire_escape "fire escape"     
   with  name 'fire' 'escape' 'white' 'rope' 'rickety',
-        before FireEscapeAfter,
+        before FireEscapeBefore,
         initial FireEscpeInitial,
         description "For the first couple of storeys, an old iron zig-zag, and after that a ladder that might or might not be well-anchored. The gardeners have done a good job of concealing it behind wistaria which (in any case) looks the stronger of the two.",
   has   static;
@@ -4491,7 +4491,7 @@ Object -> nest "nest"
 
 Object -> bunch_of_nuts "bunch of nuts" 
   with  name 'bunch' 'of' 'nuts',
-        before NutsAfter,
+        before NutsBefore,
         initial "Entwined in the nest is a bunch of nuts.",
         description "A bunch of nuts, left over from last autumn.",
         devil_hint "Nuts to you too.",
@@ -4523,7 +4523,7 @@ Object -> Old_Evans "Old Evans"
 
 Object -> -> Crescent_Moon "Crescent Moon"      
   with  name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
-        before CrescentMoonAfter TarotAfter,
+        before CrescentMoonBefore TarotBefore,
         n_to Parish_Church,
         sw_to "Tarot cards",
         description "Some kind of crescent moon, an old Druidical symbol.",
@@ -4535,13 +4535,13 @@ Object -> -> Crescent_Moon "Crescent Moon"
 
 Object -> -> Racing_Times "Racing Times"        
   with  name 'paper' 'newspaper' 'racing' 'times',
-        before RacingTimesAfter,
+        before RacingTimesBefore,
         description "The front page story (~Lord Lucan's new acquisition Shergar comes out of retirement to win the Grand National~) is so boringly unsensational that you quickly lose interest. But Evans is eternally fascinated with minute details of the form of the horses, tomorrow's race meetings, current odds quoted by the bookmakers, and so on.",
   has   ;
 
 Object -> -> hat_band "hat band"        
   with  name 'hat' 'band',
-        before HatBandAfter,
+        before HatBandBefore,
         description "Racing aficionados consider it lucky to wear mascots in the bands of their hats.",
   has   ;
 
@@ -4552,7 +4552,7 @@ Object -> war_memorial "war memorial"
 
 Object -> parish_church "parish church" 
   with  name 'parish' 'church' 'door',
-        before ChurchAfter,
+        before ChurchBefore,
         n_to Parish_Church,
         w_to w_obj,
         description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
@@ -4560,14 +4560,14 @@ Object -> parish_church "parish church"
 
 Object -> Goat_and_Compasses "Goat and Compasses"       
   with  name 'pub' 'goat' 'compasses' 'public' 'house' 'bar',
-        before GoatsCompassesAfter,
+        before GoatsCompassesBefore,
         w_to w_obj,
         description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing laws. You congratulate yourself on living in such a modern, forward-looking country.",
   has   door locked proper scenery;
 
 Object pet_monkey "pet monkey"  
   with  name 'pet' 'monkey',
-        before PetMonkeyAfter,
+        before PetMonkeyBefore,
         initial "The monkey sits on Evans' shoulder, cheeping with excitement. Evans has found a pet, and is so gruffly delighted that he has forgotten all about the mascot you stole. Now if he could only predict the 3.40 at Borchester Mills...",
   has   animate;
 
@@ -4584,7 +4584,7 @@ Object Parish_Church "Parish Church"
 
 Object -> Moonstone "Moonstone" 
   with  name 'moonstone' 'moon' 'stone' 'door' 'flagstone' 'iron' 'rings' 'old',
-        before MoonstoneAfter,
+        before MoonstoneBefore,
         s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
         w_to thedark,
         initial "A passage slants down through a solid crystal doorway in the Moonstone.",
@@ -4594,8 +4594,8 @@ Object -> Moonstone "Moonstone"
 
 Object West_Side_Chapel "West Side Chapel"      
   with  name 'stained' 'glass' 'windows' 'resurrect',
-        before WestSideChapelAfter,
-        after WestSideChapelBefore,
+        before WestSideChapelBefore,
+        after WestSideChapelAfter,
         e_to Parish_Church,
         description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
         cant_go "The church lies east.",
@@ -4627,7 +4627,7 @@ Object East_Side_Chapel "East Side Chapel"
 
 Object -> statue_of_Diana "statue of Diana"     
   with  name 'marble' 'statue' 'of' 'diana',
-        before DianaAfter,
+        before DianaBefore,
         initial "A tall marble statue of Diana stands here: a find from the nearby Roman remains.",
         description "There is a sly look in her eye as she smiles aslant.",
   has   static;
@@ -4642,7 +4642,7 @@ Object Bell_Tower "Bell Tower"
 
 Object -> bell_ropes "bell ropes"       
   with  name 'bell' 'bells' 'rope' 'ropes' 'braided' 'sash' 'sashes',
-        before BellRopesAfter,
+        before BellRopesBefore,
         article "eight",
   has   scenery;
 
@@ -4669,7 +4669,7 @@ Object -> old_village_clock "old village clock"
 
 Object Hellish_Place "Hellish Place"    
   with  name 'desk',
-        after HellishPlaceBefore,
+        after HellishPlaceAfter,
         n_to Cellar_West,
         u_to Cellar_West,
         description "Hell, you always imagined, would contain fiery, sulphurous pits and a great many gentlemen with forked tails. You were right about the last part. A demon is sitting behind a flame-proofed desk at the bottom of the stairs. There are some disconcerting screams from further away, but nothing to worry about. Not in this life, anyway.",
@@ -4687,8 +4687,8 @@ Object -> demon "demon"
 
 Object Heavenly_Place "Heavenly Place"  
   with  name 'furniture' 'cloud',
-        before HeavenAfter,
-        after HeavenBefore,
+        before HeavenBefore,
+        after HeavenAfter,
         s_to Up_the_Beanstalk,
         description "Heaven, you always imagined, would be a world of marble pillars, fluffy clouds, harps and angelic ladies with serene expressions. You were right about the last part. An angel is sitting here behind some new office furniture, next to a blue Tourist Information sign. A bridge of cloud extends south across the sky to the beanstalk. There is some choral singing going on somewhere, but not loud enough for you to hear properly. Not in this life, anyway.",
         cant_go HeavenCantGo,
@@ -4705,7 +4705,7 @@ Object -> angel "angel"
 
 Object carbolic_soap "carbolic soap"    
   with  name 'soap' 'carbolic',
-        before SoapAfter,
+        before SoapBefore,
         description "~For foulmouths everywhere~.",
         article "a cake of",
         devil_hint "That's the spirit, keep it up!",
@@ -8214,7 +8214,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ AdjectiveAddress number m ;   
-    m = SummerHouseBefore;
+    m = SummerHouseAfter;
   .labelXXX;
     if (1[?] == 1[?]) {
         if (number == m-->1) {
@@ -8223,7 +8223,7 @@ Array preactions_table --> IsDirection;
         m = m + 4;
         jump labelXXX;
     }
-    m = SummerHouseBefore;
+    m = SummerHouseAfter;
     print "<Adjective not found>";
     return m;
 ];
@@ -8764,7 +8764,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ Process ;     
-    if (meta == 1 || BeforeRoutines() == 0) {
+    if (meta == 1 || AfterRoutines() == 0) {
         generic_globvar = (actions_table-->verb)();
     }
     rtrue;
@@ -8826,7 +8826,7 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ BeforeRoutines ;      
+[ AfterRoutines ;       
     if (GamePreRoutine() ~= 0) {
         rtrue;
     }
@@ -8849,7 +8849,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ AfterRoutines ;       
+[ BeforeRoutines ;      
     scope_reason = REACT_AFTER_REASON;
     parser_one = 0;
     SearchScope(location,player,0);
@@ -8876,7 +8876,7 @@ Array preactions_table --> IsDirection;
     noun = i;
     second = j;
     verb = acti;
-    if (meta == 1 || BeforeRoutines() == 0 && verb < 256) {
+    if (meta == 1 || AfterRoutines() == 0 && verb < 256) {
         generic_globvar = (actions_table-->verb)();
         selfobj = sse;
         inp1 = sn;
@@ -9571,7 +9571,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ LMAfter ;     
+[ LMBefore ;    
     if (action == ##Score) {
         if (deadflag == 0) {
             WhereInGame();
@@ -9628,7 +9628,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RodAfter ;    
+[ RodBefore ;   
     if (action == ##Read) {
         if (selfobj has unidentiifed_rod) {
             "A featureless mahogany rod, whose purpose is oblique. Or almost featureless: a little silver plaque is left blank at one end.";
@@ -9688,7 +9688,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ rod_display_after ;   
+[ rod_display_before ;  
     if (rod_identity == 2 && selfobj has charged) {
         print " (charged)";
     }
@@ -10163,7 +10163,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TarotAfter ;  
+[ TarotBefore ; 
     if (action == ##Read) {
         if (selfobj.n_to ~= nothing) {
             print "A beautifully realistic picture. ";
@@ -10219,7 +10219,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TorchAfter ;  
+[ TorchBefore ; 
     if (action == ##Receive) {
         if (child(selfobj) ~= nothing) {
             "There's a battery in already.";
@@ -10236,7 +10236,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TorchBefore bat i ;   
+[ TorchAfter bat i ;    
     if (action == ##Open) {
         if (selfobj has light) {
             give selfobj ~light;
@@ -10300,7 +10300,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BiscuitBefore ;       
+[ BiscuitAfter ;        
     if (action == ##Eat) {
         Achieved(SCORE_BISCUIT);
         rfalse;
@@ -10309,7 +10309,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TrapdoorAfter ;       
+[ TrapdoorBefore ;      
     if (action == ##LookUnder) {
         if (antique_jewellery_box hasnt concealed) {
             rfalse;
@@ -10322,7 +10322,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TrapdoorBefore ;      
+[ TrapdoorAfter ;       
     if (action == ##Open) {
         give selfobj light;
         rfalse;
@@ -10340,7 +10340,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TeachestsAfter ;      
+[ TeachestsBefore ;     
     if (action == ##Search) {
         print "That was the first place you tried, hours and hours ago now";
         if (Meldrewes_History has concealed) {
@@ -10355,7 +10355,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HistoryAfter w ;      
+[ HistoryBefore w ;     
     if (action == ##Consult) {
         wn = consult_from;
         w = NextWord();
@@ -10419,7 +10419,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HouseBefore ; 
+[ HouseAfter ;  
     if (tourist_map_of_Paris in player || (tourist_map_of_Paris in canvas_rucksack && canvas_rucksack in player)) {
         deadflag = WON;
         "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty generations, a Meldrew has found the useless object he was doomed to seek!  Unfortunately on the way to the airport you realise that you left the map on the kitchen table in all the rush, but never mind, you're on holiday now.";
@@ -10429,7 +10429,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ServantsRoomAfter ;   
+[ ServantsRoomBefore ;  
     if (action == ##Sleep) {
         if (carbolic_soap hasnt concealed) {
             "Racked with guilt over your bad language, you are unable to nod off.";
@@ -10452,7 +10452,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DictionaryAfter w ;   
+[ DictionaryBefore w ;  
     if (action == ##Consult) {
         wn = consult_from;
         w = NextWord();
@@ -10598,7 +10598,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WhistleAfter ;        
+[ WhistleBefore ;       
     if (action == ##Blow) {
         if (gas_mask has worn) {
             "With the gas mask on?";
@@ -10641,7 +10641,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ParcelAfter ; 
+[ ParcelBefore ;        
     if (action == ##Open) {
         remove gift_wrapped_parcel;
         move postcard_of_the_Champs_Elysees to player;
@@ -10653,7 +10653,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PostcardBefore ;      
+[ PostcardAfter ;       
     if (action == ##Read && location == Dark_Room && Dark_Room has light) {
         Achieved(SCORE_HAMBURG);
         set_flag_array(31);
@@ -10673,7 +10673,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MedicineAfter ;       
+[ MedicineBefore ;      
     if (action == ##Attack) {
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
@@ -10693,7 +10693,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TabletBefore ;        
+[ TabletAfter ; 
     if (action == ##Eat) {
         give player ~general;
         tablet_eaten = true;
@@ -10711,7 +10711,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ AustinAfter ; 
+[ AustinBefore ;        
     if (action == ##Clean or ##Touch or ##Squeeze) {
         "Austin curls about your foot implacably.";
     }
@@ -10756,7 +10756,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ AustinBefore ;        
+[ AustinAfter ; 
     if (action == ##PushDir) {
         "Austin reluctantly accompanies you.";
     }
@@ -11090,7 +11090,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DarkRoomBefore ;      
+[ DarkRoomAfter ;       
     if (action == ##Look) {
         if (selfobj has light) {
             print "^The room is filled with an eerie, reddish light. You feel gloomy and can't help thinking about aviation accident statistics.^";
@@ -11101,7 +11101,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HangingCordAfter ;    
+[ HangingCordBefore ;   
     if (action == ##Pull) {
         print "Click!  ";
         if (Dark_Room has light) {
@@ -11144,7 +11144,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ObservatoryBefore ;   
+[ ObservatoryAfter ;    
     if (action == ##Look) {
         if (slide_projector hasnt on || ball_polished == false) {
             rfalse;
@@ -11219,7 +11219,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GlassBallAfter i ;    
+[ GlassBallBefore i ;   
     if (action == ##Clean) {
         give selfobj general;
         if (ball_polished == true && slide_projector has on) {
@@ -11278,7 +11278,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WaterPipeAfter ;      
+[ WaterPipeBefore ;     
     if (action == ##TurnWith) {
         if (second ~= steel_wrench) {
             CDefart(second);
@@ -11309,7 +11309,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RomanticNovelAfter ;  
+[ RomanticNovelBefore ; 
     if (action == ##Take) {
         if (steel_wrench hasnt general) {
             PlumbingDisaster();
@@ -11328,7 +11328,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PoetryAfter ; 
+[ PoetryBefore ;        
     if (action == ##Take) {
         if (steel_wrench hasnt general) {
             PlumbingDisaster();
@@ -11369,7 +11369,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SouvenirsRoomAfter o ;        
+[ SouvenirsRoomBefore o ;       
     if (action == ##Read) {
         if (noun == s_obj && slide_projector has on) {
             o = child(slide_projector);
@@ -11386,7 +11386,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SouvenirsRoomBefore o ;       
+[ SouvenirsRoomAfter o ;        
     if (action == ##Look) {
         if (slide_projector hasnt on) {
             rfalse;
@@ -11413,7 +11413,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ProjectorAfter ;      
+[ ProjectorBefore ;     
     if (action == ##Receive) {
         if (child(selfobj) ~= nothing) {
             "There's a slide in already.";
@@ -11456,7 +11456,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ProjectorBefore o ;   
+[ ProjectorAfter o ;    
     if (action == ##Receive) {
         if (selfobj has on) {
             ToggleSouthWall(noun);
@@ -11498,7 +11498,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SouthWallAfter o ;    
+[ SouthWallBefore o ;   
     if (action == ##Enter) {
         o = child(slide_projector);
         if (o == nothing) {
@@ -11576,7 +11576,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ EastAnnexeAfter ;     
+[ EastAnnexeBefore ;    
     if (action == ##Go or ##Enter) {
         if (old_smudged_battery in electric_torch && noun == n_obj or cupboard_door) {
             "You know you only have an old, nearly dead battery in the torch, and are reluctant to tread on the weaker floorboards inside the cupboard without safer illumination.";
@@ -11590,7 +11590,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ InsulationAfter ;     
+[ InsulationBefore ;    
     if (action == ##Read or ##Search or ##LookUnder) {
         if (old_gardeners__gloves hasnt worn) {
             "A rash act. The itchy fibres of the insulation soon deter you.";
@@ -11606,7 +11606,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CupboardAfter ;       
+[ CupboardBefore ;      
     if (action == ##Knock) {
         "There is no reply, and frankly it's hard to imagine anyone's in there.";
     }
@@ -11614,7 +11614,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DeadEndAfter ;        
+[ DeadEndBefore ;       
     if (verb == ##Knock && noun == s_obj) {
         "The south wall rings curiously hollow.";
     }
@@ -11641,7 +11641,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ IsaacPaintingBefore ; 
+[ IsaacPaintingAfter ;  
     if (action == ##Take) {
         if (selfobj in White_Hallway && picture_hook has scenery) {
             give selfobj ~scenery;
@@ -11659,7 +11659,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FireplaceBefore ;     
+[ FireplaceAfter ;      
     if (action == ##Receive) {
         move noun to Priest_s_Hole;
         if (sooty_old_stick hasnt moved) {
@@ -11677,7 +11677,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SkylightAfter ;       
+[ SkylightBefore ;      
     if (action == ##Open or ##Close) {
         "How, exactly?";
     }
@@ -11696,7 +11696,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GasMaskBefore ;       
+[ GasMaskAfter ;        
     if (action == ##Wear) {
         "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of World War II leftover cork.";
     }
@@ -11704,7 +11704,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GothicKeyAfter ;      
+[ GothicKeyBefore ;     
     if (action == ##Take) {
         if (selfobj has general) {
             rfalse;
@@ -11775,7 +11775,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ChimneyAfter o ;      
+[ ChimneyBefore o ;     
     if (verb ~= ##Inv or ##Look or ##Go or ##Exit) {
         "There's not enough room in this confined space to do anything much!";
     }
@@ -11798,7 +11798,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PriestHoleAfter o ;   
+[ PriestHoleBefore o ;  
     if (action == ##Enter) {
         if (noun == hatch) {
             DownTheHatch();
@@ -11836,7 +11836,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PrayerBookAfter year ;        
+[ PrayerBookBefore year ;       
     if (action == ##Consult) {
         year = TryNumber(consult_from);
         if (year < 1725 || year > 1792) {
@@ -11879,7 +11879,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WritingRoomAfter ;    
+[ WritingRoomBefore ;   
     if (action == ##Sleep) {
         if (player in comfortable_bed) {
             if (flag_of_the_British_Merchant_Navy notin comfortable_bed) {
@@ -11900,7 +11900,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WritingRoomBefore ;   
+[ WritingRoomAfter ;    
     if (action == ##Exit) {
         if (Melancholy_Dream has visited) {
             set_flag_array(44);
@@ -11911,7 +11911,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ComfyBedAfter ;       
+[ ComfyBedBefore ;      
     if (action == ##Receive) {
         if (noun ~= flag_of_the_British_Merchant_Navy) {
             "That seems unlikely to make a good blanket.";
@@ -11923,7 +11923,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WindowAfter ; 
+[ WindowBefore ;        
     if (action == ##Attack or ##Push or ##Pull) {
         give windows open;
         give windows openable;
@@ -11965,7 +11965,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MirrorAfter o i ;     
+[ MirrorBefore o i ;    
     if (action == ##Attack) {
         "What, and earn seven years bad luck?";
     }
@@ -12007,7 +12007,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WindowSillAfter ;     
+[ WindowSillBefore ;    
     if (action == ##Search or ##LookUnder) {
         if (delicate_gold_key has concealed) {
             give delicate_gold_key ~concealed;
@@ -12019,7 +12019,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OldWineryBefore ;     
+[ OldWineryAfter ;      
     if (action == ##Look) {
         if (selfobj has general) {
             rfalse;
@@ -12041,7 +12041,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OldWineryAfter ;      
+[ OldWineryBefore ;     
     if (action == ##PutOn) {
         if (second == demijohn) {
             "We know already what happens to things balanced on the demijohn.";
@@ -12052,7 +12052,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DemijohnAfter ;       
+[ DemijohnBefore ;      
     if (action == ##Open) {
         if (old_gardeners__gloves hasnt worn) {
             "Your hands slip on the screw-top of the demijohn and can't get a grip.";
@@ -12067,7 +12067,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TouristMapAfter n ;   
+[ TouristMapBefore n ;  
     if (action == ##Consult) {
         if (selfobj in demijohn) {
             "You can't get a close enough look.";
@@ -12088,7 +12088,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ConservatoryBefore ;  
+[ ConservatoryAfter ;   
     if (action == ##Look) {
         if (antiquated_wireless has general && antiquated_wireless in Airing_Cupboard) {
             print "^Execrable music drifts in from the airing cupboard.^";
@@ -12099,7 +12099,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CalendarAfter i w ;   
+[ CalendarBefore i w ;  
     if (action == ##Read) {
         print "The calendar is turned to ";
         i = selfobj.time_left;
@@ -12250,7 +12250,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WirelessAfter ;       
+[ WirelessBefore ;      
     if (selfobj has concealed) {
         "You've played this game before.";
     }
@@ -12275,7 +12275,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WirelessBefore ;      
+[ WirelessAfter ;       
     if (action == ##SwitchOn) {
         StartTimer(selfobj,6);
         "You push the switch on the wireless, but nothing happens.";
@@ -12322,7 +12322,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PottingRoomBefore ;   
+[ PottingRoomAfter ;    
     if (action == ##Go) {
         if (parent(daisy_chain) == nothing && daisy_given == true) {
             give Jemima general;
@@ -12343,7 +12343,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GlovesAfter ; 
+[ GlovesBefore ;        
     if (action == ##Take) {
         if (antiquated_wireless in Conservatory && antiquated_wireless has general) {
             rfalse;
@@ -12505,7 +12505,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DaisyChainAfter ;     
+[ DaisyChainBefore ;    
     if (action == ##Read) {
         print "A delicate, pretty chain of ";
         DaisyType(selfobj.number);
@@ -12579,7 +12579,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ StorageRoomAfter ;    
+[ StorageRoomBefore ;   
     if (action == ##Enter) {
         if (noun == dark_shaft_obj) {
             if (dumbwaiter in dark_shaft_obj) {
@@ -12594,7 +12594,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WheelAfter r ;        
+[ WheelBefore r ;       
     if (action == ##TurnWith) {
         if (second == steel_wrench) {
             "The wrench doesn't fit a hand-wheel like this.";
@@ -12636,7 +12636,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ShaftBefore ; 
+[ ShaftAfter ;  
     if (action == ##Receive) {
         move noun to dumbwaiter;
         if (dumbwaiter in location) {
@@ -12653,7 +12653,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WrenchBefore ;        
+[ WrenchAfter ; 
     if (action == ##Take) {
         "It's a wrench, but you take it.";
     }
@@ -12661,7 +12661,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RopesAfter r ;        
+[ RopesBefore r ;       
     if (action == ##Pull) {
         if (player notin dumbwaiter) {
             "You can't reach them!";
@@ -12691,7 +12691,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WishboneBefore ;      
+[ WishboneAfter ;       
     if (action == ##Pull) {
         "It already has been. The part you have, lost.";
     }
@@ -12699,7 +12699,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ShaftAfter ;  
+[ ShaftBefore ; 
     if (action == ##Look) {
         if (dumbwaiter notin Dark_Shaft) {
             print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the cellars.^";
@@ -12710,7 +12710,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ Shaft2After ; 
+[ Shaft2Before ;        
     if (action == ##Go) {
         if (noun == d_obj && dumbwaiter in Dark_Shaft) {
             "Since the dumbwaiter is here, why not travel in that instead.";
@@ -12721,7 +12721,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DarkPassageAfter ;    
+[ DarkPassageBefore ;   
     if (sandstone_recess has open) {
         Achieved(SCORE_SECRET_PASS);
     } else if (verb == ##Enter && noun == sandstone_recess) {
@@ -12737,7 +12737,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MetalDoorBefore ;     
+[ MetalDoorAfter ;      
     if (action == ##Unlock) {
         give coal_bunker ~locked;
         rfalse;
@@ -12758,7 +12758,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CellarsAfter ;        
+[ CellarsBefore ;       
     if (action == ##Enter) {
         if (noun == dark_shaft_obj2) {
             if (dumbwaiter in Cellars) {
@@ -12924,7 +12924,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WineCellarsAfter ;    
+[ WineCellarsBefore ;   
     if (action == ##Drink) {
         "But you are teetotal, which is why the cellars have got in this state.";
     }
@@ -12940,7 +12940,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HoleAfter ;   
+[ HoleBefore ;  
     if (action == ##Receive) {
         if (second == hole_in_the_wall) {
             "Nothing is to be gained by this.";
@@ -12965,7 +12965,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ IronboundDoorAfter ;  
+[ IronboundDoorBefore ; 
     if (action == ##Knock) {
         "You bark your knuckles painfully on the iron, and to no avail.";
     }
@@ -12973,7 +12973,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ LemniscusBefore i ;   
+[ LemniscusAfter i ;    
     if (action == ##Look) {
         print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through nine equally spaced sockets or cylindrical wells.";
         i = circular_arc.number;
@@ -13014,7 +13014,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ArcAfter i ;  
+[ ArcBefore i ; 
     if (action == ##Receive) {
         i = selfobj.number;
         if (i == 9) {
@@ -13047,7 +13047,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SphericalOpeningAfter ;       
+[ SphericalOpeningBefore ;      
     if (action == ##Receive) {
         if (noun == hard_wooden_ball) {
             "Though correctly shaped, it is not quite small enough to fit the cavity.";
@@ -13068,7 +13068,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OctagonBefore ;       
+[ OctagonAfter ;        
     if (action == ##Take or ##Remove) {
         if (noun has rod_attr && noun hasnt unidentiifed_rod) {
             Achieved(SCORE_ROD_IDENT);
@@ -13079,7 +13079,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CoffinBefore r ;      
+[ CoffinAfter r ;       
     if (action == ##Receive) {
         if (noun has rod_attr) {
             "The mahogany rod fits in perfectly.";
@@ -13113,7 +13113,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CoffinAfter ; 
+[ CoffinBefore ;        
     if (action == ##Open) {
         if (gilded_model_coffin has general && old_gardeners__gloves hasnt worn) {
             deadflag = FAILED;
@@ -13134,7 +13134,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SketchAfter ; 
+[ SketchBefore ;        
     if (action == ##Attack or ##Open) {
         remove framed_charcoal_sketch;
         move charcoal_sketch to location;
@@ -13154,7 +13154,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HookAfter ;   
+[ HookBefore ;  
     if (action == ##Receive) {
         if (noun ~= painting_of_Mad_Isaac_Meldrewe) {
             "Doesn't seem right there, somehow.";
@@ -13199,7 +13199,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PosterAfter ; 
+[ PosterBefore ;        
     if (action == ##Take or ##RipDown or ##Rip or ##Pull) {
         if (selfobj has scenery) {
             give selfobj ~scenery;
@@ -13421,7 +13421,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ConsultingRoomAfter ; 
+[ ConsultingRoomBefore ;        
     if (action == ##Smell) {
         "You feel briefly incensed.";
     }
@@ -13429,7 +13429,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TarotPackAfter ;      
+[ TarotPackBefore ;     
     if (action == ##Take or ##Remove) {
         "That's funny. For a moment there your hand seemed to go straight through the pack of cards without touching it!";
     }
@@ -13460,7 +13460,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BellPushAfter ;       
+[ BellPushBefore ;      
     if (action == ##Push) {
         if (Madame_Sosostris in Consulting_Room) {
             "Madame Sosostris looks at you in some irritation.";
@@ -13514,7 +13514,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DownByRiverAfter ;    
+[ DownByRiverBefore ;   
     if (action == ##Swim or ##Drink) {
         "That foul water?  Not a chance.";
     }
@@ -13531,7 +13531,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HandkerchiefAfter ;   
+[ HandkerchiefBefore ;  
     if (action == ##Wave && location == Down_by_River && tourist_boat hasnt open) {
         give tourist_boat open;
         "You wave the handkerchief, and the boat glides smoothly across the river toward you.";
@@ -13540,7 +13540,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TouristBoatAfter ;    
+[ TouristBoatBefore ;   
     if (action == ##Enter) {
         if (selfobj hasnt open) {
             "Are you in Seine?  There is a river in between you and the boat.";
@@ -13601,7 +13601,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ChateletAfter ;       
+[ ChateletBefore ;      
     if (action == ##Buy) {
         "~Q'est-ce que vous voulez acheter?~";
     }
@@ -13647,7 +13647,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RevolvingDoorAfter ;  
+[ RevolvingDoorBefore ; 
     if (action == ##Turn or ##Push or ##Pull) {
         print "You give the revolving door a heave, and it begins to move; but you pause, out of breath, after only a half turn. ";
         if (Museum_Foyer.ne_to == Revolving_Door1) {
@@ -13683,7 +13683,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MuseumDoorAfter ;     
+[ MuseumDoorBefore ;    
     if (action == ##Push or ##Turn or ##Pull) {
         "You revolve clockwise with the door, and wind up back adjacent to the foyer.";
     }
@@ -13691,7 +13691,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BeachBallAfter ;      
+[ BeachBallBefore ;     
     if (action == ##Take or ##Remove) {
         "The beach ball, a welcome dash of colour in this drab monochrome night, is simply too big, cumbersome and round to get hold of.";
     }
@@ -13710,7 +13710,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BeachBallBefore ;     
+[ BeachBallAfter ;      
     if (action == ##PushDir) {
         "You bounce the beach ball along in front of you.";
     }
@@ -13718,7 +13718,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TarotBoxAfter ;       
+[ TarotBoxBefore ;      
     if (action == ##Receive) {
         if (noun hasnt card) {
             "Only cards will fit.";
@@ -13729,7 +13729,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DarkStaircaseAfter ;  
+[ DarkStaircaseBefore ; 
     if (action == ##Listen) {
         "It sounds like a thinly, but enthusiastically, attended football match. There are ragged German chants but only the word ~Eumenides~ pokes out.";
     }
@@ -13743,7 +13743,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DarkStaircaseBefore ; 
+[ DarkStaircaseAfter ;  
     set_flag_array(14);
     rfalse;
 ];
@@ -13770,7 +13770,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CovenCellAfter ;      
+[ CovenCellBefore ;     
     if (verb == ##Ram) {
         "No, this is a goat. A ~ram~ is a kind of sheep.";
     }
@@ -13811,7 +13811,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CelldoorAfter ;       
+[ CelldoorBefore ;      
     if (action == ##Knock) {
         "They're coming as fast as they can!  Ritual doesn't just happen by itself, you know.";
     }
@@ -13819,7 +13819,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CabinetRoomAfter ;    
+[ CabinetRoomBefore ;   
     if (action == ##Read) {
         if (noun in glass_cabinet) {
             "It's too dark to see much inside the cabinet.";
@@ -13830,7 +13830,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CabinetAfter ;        
+[ CabinetBefore ;       
     if (action == ##Attack) {
         if (selfobj has open) {
             "Just how broken do you want it to be?";
@@ -13858,7 +13858,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RoundStoneAfter ;     
+[ RoundStoneBefore ;    
     if (action == ##Take) {
         if (selfobj has general) {
             "Reach down the grating as you may, it remains just beyond reach.";
@@ -13869,7 +13869,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CafeBefore ;  
+[ CafeAfter ;   
     if (action == ##Look) {
         if (Cups_and_Glasses has visited && complicated_looking_bomb has concealed) {
             "^Over in one corner, you can see a little square window, behind which must be the store of cups and glasses. Remembering this, you are distracted and unable to enjoy the entertainment. Even the table is annoying. It must have one leg shorter than the rest, or something, because it rattles now and then.";
@@ -13902,7 +13902,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CafeTableAfter ;      
+[ CafeTableBefore ;     
     if (action == ##LookUnder or ##Search) {
         if (complicated_looking_bomb has concealed) {
             give complicated_looking_bomb ~concealed;
@@ -13939,7 +13939,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BombBefore ;  
+[ BombAfter ;   
     if (action == ##Take) {
         deadflag = PRISON;
         "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and twenty-five years isn't all that long.";
@@ -14011,7 +14011,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TimerAfter i ;        
+[ TimerBefore i ;       
     if (action == ##Read) {
         print "The timer seems quite simple to set. ";
         i = selfobj.number;
@@ -14038,7 +14038,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WireAfter i ; 
+[ WireBefore i ;        
     if (action == ##Pull) {
         if (selfobj has general) {
             "That one's already pulled out.";
@@ -14152,7 +14152,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CupsAndGlassesAfter ; 
+[ CupsAndGlassesBefore ;        
     if (action == ##Search or ##Read or ##LookUnder) {
         if (model_ship hasnt general) {
             "Nothing else.";
@@ -14166,7 +14166,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BottleShipAfter ;     
+[ BottleShipBefore ;    
     if (action == ##Read) {
         if (ship_in_a_bottle notin player) {
             "You can't get a good look from here.";
@@ -14185,7 +14185,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ModelShipAfter ;      
+[ ModelShipBefore ;     
     if (verb == ##Pull) {
         if (noun == model_ship) {
             remove model_ship;
@@ -14229,7 +14229,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SeaShoreAfter ;       
+[ SeaShoreBefore ;      
     if (action == ##Drink) {
         "Salt water!  No thanks.";
     }
@@ -14302,7 +14302,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ThornyTreeAfter ;     
+[ ThornyTreeBefore ;    
     if (action == ##Climb or ##Enter) {
         "The thorns deter you.";
     }
@@ -14310,7 +14310,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TavernAfter ; 
+[ TavernBefore ;        
     if (action == ##Buy) {
         "Given the language difficulty, you'd better resort to barter.";
     }
@@ -14336,7 +14336,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DessertAfter ;        
+[ DessertBefore ;       
     if (action == ##Take) {
         if (selfobj hasnt moved && copper_coin hasnt general) {
             "You can't understand a word of what the bartender says, but the drift is clear enough. Not until you pay for it.";
@@ -14383,7 +14383,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SacredEarthBefore ;   
+[ SacredEarthAfter ;    
     set_flag_array(4);
     rfalse;
 ];
@@ -14481,7 +14481,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PanPipesAfter i ;     
+[ PanPipesBefore i ;    
     if (action == ##Blow) {
         if (gas_mask has worn) {
             "With the gas mask on?";
@@ -14529,7 +14529,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CrossAfter ;  
+[ CrossBefore ; 
     if (verb == ##Take or ##Remove && noun == inscribed_stone or old_timber_spar && noun has scenery) {
         give noun ~scenery;
         give noun moved;
@@ -14538,7 +14538,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CrossBefore ; 
+[ CrossAfter ;  
     if (verb == ##Take or ##Remove && noun == inscribed_stone or old_timber_spar && noun has static) {
         inscriptions.initial = "The two-foot opening is clear again.";
     }
@@ -14559,7 +14559,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ InscriptsAfter ;      
+[ InscriptsBefore ;     
     if (action == ##Receive) {
         if (selfobj hasnt open) {
             rfalse;
@@ -14589,7 +14589,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GemAfter ;    
+[ GemBefore ;   
     if (action == ##Take) {
         if (selfobj has moved) {
             rfalse;
@@ -14606,7 +14606,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ClassicalStatueAfter ;        
+[ ClassicalStatueBefore ;       
     if (action == ##Push) {
         "Perhaps you should say which way to push.";
     }
@@ -14624,7 +14624,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ClassicalStatueBefore ;       
+[ ClassicalStatueAfter ;        
     if (action == ##PushDir) {
         "You heave the statue along with you.";
     }
@@ -14692,7 +14692,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ UrnAfter ;    
+[ UrnBefore ;   
     if (action == ##Receive) {
         if (noun == player) {
             R_Process(##Enter,selfobj);
@@ -14761,7 +14761,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ LandlubberAfter ;     
+[ LandlubberBefore ;    
     "Here aboard ship, such a landlubber's direction seems inappropriate.";
 ];
 
@@ -14810,7 +14810,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RiggingAfter ;        
+[ RiggingBefore ;       
     if (action == ##Enter or ##Climb) {
         R_Process(##Go,u_obj);
         rtrue;
@@ -14846,7 +14846,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OnMastAfter ; 
+[ OnMastBefore ;        
     if (action == ##Jump) {
         print "You jump (madly) from the crow's nest ";
         if (flag_of_the_British_Merchant_Navy has general) {
@@ -14862,7 +14862,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OnMastBefore ;        
+[ OnMastAfter ; 
     if (action == ##Drop) {
         move noun to Aboard_Ship;
         if (noun == medicine_bottle && noun has locked) {
@@ -14876,7 +14876,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FlagpoleAfter ;       
+[ FlagpoleBefore ;      
     if (action == ##Take or ##Turn or ##Push or ##Pull) {
         "The flagpole is very securely fixed to the main mast.";
     }
@@ -14884,7 +14884,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FlagAfter ;   
+[ FlagBefore ;  
     if (selfobj in comfortable_bed && verb == ##Take or ##Remove) {
         "The flag seems perfect for the bed as it is.";
     }
@@ -14903,7 +14903,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TimberSparBefore ;    
+[ TimberSparAfter ;     
     if (action == ##Take) {
         if (old_timber_spar hasnt general) {
             rfalse;
@@ -14923,7 +14923,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BranchAfter ; 
+[ BranchBefore ;        
     if (action == ##Wave) {
         if (Jemima in location) {
             "Jemima, who has hay fever, is extremely annoyed by this. So it wasn't a turn entirely wasted.";
@@ -14948,7 +14948,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CapstanAfter ;        
+[ CapstanBefore ;       
     if (action == ##Turn or ##Push or ##PushDir) {
         print "You heave away at the capstan, ";
         if (capstan has general) {
@@ -14967,7 +14967,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GardenStreamAfter ;   
+[ GardenStreamBefore ;  
     if (action == ##Swim) {
         "Too shallow for comfort.";
     }
@@ -14978,7 +14978,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CoalBunkerBefore ;    
+[ CoalBunkerAfter ;     
     if (action == ##Close) {
         give metal_door ~open;
         rfalse;
@@ -14999,7 +14999,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ StreamAfter ; 
+[ StreamBefore ;        
     if (action == ##Drink) {
         "It's a warm, not unpleasant taste, silt and algae.";
     }
@@ -15011,7 +15011,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ShrubAfter ;  
+[ ShrubBefore ; 
     if (action == ##Climb or ##Enter) {
         "It's only three feet high!";
     }
@@ -15032,7 +15032,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ StoneWallAfter ;      
+[ StoneWallBefore ;     
     if (action == ##Climb or ##Enter) {
         "The old, carved garden wall is one of the treasures of rural England, and you're not nearly desperate enough to crumble it further into ruin.";
     }
@@ -15051,7 +15051,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TimberHatchBefore ;   
+[ TimberHatchAfter ;    
     if (action == ##Open) {
         give Wine_Cellars light;
         print (string) selfobj.initial;
@@ -15081,7 +15081,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PlaneTreeAfter ;      
+[ PlaneTreeBefore ;     
     if (action == ##Climb) {
         R_Process(##Go,u_obj);
         rtrue;
@@ -15090,7 +15090,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WellBefore ;  
+[ WellAfter ;   
     if (action == ##Receive) {
         move noun to hanging_cord;
         give CR ~general;
@@ -15100,7 +15100,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BeanStalkAfter ;      
+[ BeanStalkBefore ;     
     if (action == ##Jump) {
         deadflag = DIED;
         "You fall and break your neck!";
@@ -15109,7 +15109,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BeanStalkBefore ;     
+[ BeanStalkAfter ;      
     if (action == ##Drop) {
         move noun to Family_Tree;
         if (noun == medicine_bottle && noun has locked) {
@@ -15125,7 +15125,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RollerAfter ; 
+[ RollerBefore ;        
     if (action == ##Go) {
         if (selfobj hasnt on) {
             print "(The motor isn't on at the moment.)^";
@@ -15170,7 +15170,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WeedKillerAfter i ;   
+[ WeedKillerBefore i ;  
     if (action == ##Squeeze or ##Push) {
         if (selfobj has general) {
             "Nothing emerges. The bottle must be empty.";
@@ -15232,7 +15232,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SpadeAfter ;  
+[ SpadeBefore ; 
     if (action == ##Read) {
         if (spade has general) {
             rfalse;
@@ -15291,7 +15291,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ UpTreeAfter ; 
+[ UpTreeBefore ;        
     if (action == ##Jump) {
         deadflag = DIED;
         "You fall and break your neck!";
@@ -15391,7 +15391,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MazeAfter x y ;       
+[ MazeBefore x y ;      
     if (action == ##Exit) {
         "Remember the poor grass!";
     }
@@ -15447,7 +15447,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MazeBefore ;  
+[ MazeAfter ;   
     if (action == ##Look) {
         MazeDescribe();
         rtrue;
@@ -15456,7 +15456,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PatioAfter ;  
+[ PatioBefore ; 
     if (action == ##Go) {
         if (noun == d_obj or u_obj) {
             rfalse;
@@ -15470,7 +15470,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PatioBefore ; 
+[ PatioAfter ;  
     if (action == ##Look) {
         MazeDescribe();
         rtrue;
@@ -15479,7 +15479,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RoseAfter ;   
+[ RoseBefore ;  
     if (action == ##Insert or ##Give && second == statue_of_Diana) {
         "It would look perfect in Diana's hair, but her head is far too high to reach.";
     }
@@ -15487,7 +15487,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ViewpointAfter ;      
+[ ViewpointBefore ;     
     if (action == ##Read) {
         if (player in garden_roller && noun == plaque) {
             "The writing's too small from here.";
@@ -15504,14 +15504,14 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FollyBefore ; 
+[ FollyAfter ;  
     MazeX = 0;
     MazeY = 1;
     rfalse;
 ];
 
 
-[ BeanpoleBefore ;      
+[ BeanpoleAfter ;       
     if (action == ##Take) {
         if (selfobj hasnt general) {
             rfalse;
@@ -15533,7 +15533,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FoundationsAfter x y ;        
+[ FoundationsBefore x y ;       
     if (action == ##Go) {
         if (MazeX == 4 && MazeY == 6 && noun == s_obj) {
             rfalse;
@@ -15590,7 +15590,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FountdationsBefore ;  
+[ FountdationsAfter ;   
     if (action == ##Look) {
         MzeOldDescribe();
         rtrue;
@@ -15747,7 +15747,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PlantingBefore ;      
+[ PlantingAfter ;       
     deadflag = AUSTRALIA;
     rfalse;
 ];
@@ -15775,7 +15775,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SummerHouseBefore ;   
+[ SummerHouseAfter ;    
     if (action == ##Look) {
         if (flock_of_sparrows hasnt general) {
             print "^Sparrows chirp happily away to themselves around the high gutter.^";
@@ -15788,7 +15788,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ChainAfter ;  
+[ ChainBefore ; 
     if (selfobj hasnt moved) {
         "The watch is just within sight, but quite beyond reach.";
     }
@@ -15799,7 +15799,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BoardAfter ;  
+[ BoardBefore ; 
     if (action == ##Open or ##Push or ##Pull or ##Turn) {
         if (irate_squirrel_friend in location) {
             "The squirrel rears up and nips you on the wrist. You withdraw, hurt.";
@@ -15810,7 +15810,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CrackAfter ;  
+[ CrackBefore ; 
     if (action == ##Search) {
         "Through the crack you can see sunlight on the summer-house floorboards.";
     }
@@ -15818,7 +15818,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CrackBefore ; 
+[ CrackAfter ;  
     if (action == ##Receive) {
         if (noun == bunch_of_nuts) {
             give loose_board open;
@@ -15920,7 +15920,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ AstrolabeAfter ;      
+[ AstrolabeBefore ;     
     if (action == ##Remove) {
         if (noun == second) {
             "It is in one piece.";
@@ -15939,7 +15939,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ AstrolabeBefore ;     
+[ AstrolabeAfter ;      
     if (action == ##Take) {
         set_flag_array(43);
         rfalse;
@@ -15948,7 +15948,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DugHoleAfter ;        
+[ DugHoleBefore ;       
     if (action == ##Take) {
         "A surreal idea, somewhat reminiscent of the Beatles film ~Yellow Submarine~.";
     }
@@ -16091,7 +16091,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RopeAfter ;   
+[ RopeBefore ;  
     if (action == ##Climb) {
         R_Process(##Go,d_obj);
         rtrue;
@@ -16107,7 +16107,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HangingOnRopeAfter ;  
+[ HangingOnRopeBefore ; 
     if (action == ##Swing) {
         if (noun ~= hemp_rope) {
             rfalse;
@@ -16119,7 +16119,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HangingOnRopeBefore ; 
+[ HangingOnRopeAfter ;  
     if (action == ##Drop) {
         remove noun;
         CDefart(noun);
@@ -16129,7 +16129,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DaisyBefore ; 
+[ DaisyAfter ;  
     if (action == ##Wear) {
         "You tuck the daisy behind your ear, almost out of sight.";
     }
@@ -16144,7 +16144,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DaisyAfter ;  
+[ DaisyBefore ; 
     if (action == ##Take) {
         if (selfobj has moved || hemp_rope has general) {
             rfalse;
@@ -16174,7 +16174,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ EndStreamAfter ;      
+[ EndStreamBefore ;     
     if (action == ##Swim) {
         "Too shallow for comfort.";
     }
@@ -16185,7 +16185,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ LadderAfter ; 
+[ LadderBefore ;        
     if (action == ##Climb or ##Enter) {
         R_Process(##Go,u_obj);
         rtrue;
@@ -16194,7 +16194,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HornAfter ;   
+[ HornBefore ;  
     if (action == ##Blow) {
         print "You blow the horn, and it lets a great clarion call out to the hills. ";
         if (CouncilCnt >= 7) {
@@ -16210,7 +16210,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DieBefore ;   
+[ DieAfter ;    
     if (action == ##Drop) {
         print "Alea iacta est. It comes up ";
         EnglishNumber(random(6));
@@ -16244,7 +16244,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WellBefore ;  
+[ WellAfter ;   
     if (action == ##Receive) {
         remove noun;
         if (noun has light) {
@@ -16261,7 +16261,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ InsideWellAfter ;     
+[ InsideWellBefore ;    
     if (verb == ##Look or ##Go or ##Read) {
         rfalse;
     }
@@ -16269,7 +16269,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ VentsAfter ;  
+[ VentsBefore ; 
     if (action == ##Read or ##Search) {
         if (CouncilCnt > 7) {
             "Four men in druidic furs are standing on the corners of the mosaic, in some kind of sinister conference. This old villa must be some kind of rendezvous point. Between the men a bluish stone rests on the mosaic floor.";
@@ -16280,7 +16280,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ EntranceAfter ;       
+[ EntranceBefore ;      
     if (action == ##Go) {
         if (noun ~= s_obj or sw_obj or se_obj) {
             rfalse;
@@ -16293,7 +16293,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ EntranceBefore ;      
+[ EntranceAfter ;       
     if (CouncilCnt == 0) {
         CouncilCnt = 1;
     }
@@ -16333,7 +16333,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TentPoleAfter ;       
+[ TentPoleBefore ;      
     if (action == ##Attack) {
         "It won't break.";
     }
@@ -16344,7 +16344,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TentPoleBefore ;      
+[ TentPoleAfter ;       
     if (action == ##Take) {
         if (selfobj has general) {
             rfalse;
@@ -16375,7 +16375,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SpyAfter ;    
+[ SpyBefore ;   
     if (action == ##Search) {
         "Not only are the guards better at searching suspects than you, they also did so first.";
     }
@@ -16418,7 +16418,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ YourGhostAfter ;      
+[ YourGhostBefore ;     
     if (verb == ##Sleep) {
         "In the dream you are not drowsy.";
     }
@@ -16480,7 +16480,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MascotBefore ;        
+[ MascotAfter ; 
     if (action == ##Take) {
         if (Beside_Table hasnt general) {
             give Beside_Table general;
@@ -16493,7 +16493,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MascotAfter ; 
+[ MascotBefore ;        
     if (action == ##Give) {
         "Now that really would not be very kind.";
     }
@@ -16553,7 +16553,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DolmenBefore ;        
+[ DolmenAfter ; 
     if (action == ##Look) {
         ChangePlayer(yourself);
         if (heavy_iron_mascot in ghost_of_yourself) {
@@ -16587,12 +16587,12 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BarrierAfter ;        
+[ BarrierBefore ;       
     "The metal barrier is indistinct, on the edge of your consciousness, and you can't get close. However familiar it seems.";
 ];
 
 
-[ LumnescenceAfter ;    
+[ LumnescenceBefore ;   
     if (action == ##Take or ##Remove or ##Touch) {
         "You bat at the flurries with your hand, but they're just green light (with the tiniest mosquito-sting).";
     }
@@ -16609,7 +16609,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ShipWheelAfter ;      
+[ ShipWheelBefore ;     
     if (action == ##Turn) {
         if (selfobj has general) {
             "Your hands seem unable to touch it again.";
@@ -16629,7 +16629,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CryptRoomAfter i ;    
+[ CryptRoomBefore i ;   
     if (action == ##Smell) {
         if (location ~= The_Catacombs) {
             "Ugh.";
@@ -16652,7 +16652,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ AluminumStairAfter ;  
+[ AluminumStairBefore ; 
     if (action == ##Climb or ##Enter) {
         R_Process(##Go,d_obj);
         rtrue;
@@ -16727,7 +16727,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CRBefore ;    
+[ CRAfter ;     
     if (action == ##Go or ##Enter) {
         if (noun == n_obj or s_obj or metal_wall) {
             print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly the same...^";
@@ -16778,7 +16778,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MetalWallAfter ;      
+[ MetalWallBefore ;     
     if (action == ##Clean) {
         "You polish the metal a little, but there's far too much to do by hand.";
     }
@@ -16812,7 +16812,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CannonballAfter ;     
+[ CannonballBefore ;    
     if (verb ~= ##Read) {
         "It is out of reach, beyond the glass.";
     }
@@ -16925,7 +16925,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SwitchBefore ;        
+[ SwitchAfter ; 
     if (action == ##SwitchOn) {
         "Click-clunk!  The world looks precisely the same.";
     }
@@ -16936,7 +16936,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DialAfter ;   
+[ DialBefore ;  
     if (action == ##Turn) {
         if (PlanckWarning == false) {
             PlanckWarning = true;
@@ -16951,7 +16951,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GlowingOrbAfter ;     
+[ GlowingOrbBefore ;    
     if (action == ##Clean) {
         if (selfobj has general) {
             "It shines already!";
@@ -16967,7 +16967,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ InOrbBefore ; 
+[ InOrbAfter ;  
     if (action == ##Strike) {
         "The sphere rings with a hollow noise, but the rod charges up.";
     }
@@ -17020,7 +17020,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CausewayAfter ;       
+[ CausewayBefore ;      
     if (action == ##Drink) {
         "Drink warm salty water?  No.";
     }
@@ -17118,7 +17118,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ IronGratingAfter ;    
+[ IronGratingBefore ;   
     if (action == ##Receive) {
         if (noun == player) {
             "The bars are far too close together.";
@@ -17142,7 +17142,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RustyKeyAfter ;       
+[ RustyKeyBefore ;      
     if (action == ##Take && rusty_iron_key hasnt general) {
         "Reach down the grating as you may, it remains just beyond reach.";
     }
@@ -17161,7 +17161,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HarbourMouthAfter ;   
+[ HarbourMouthBefore ;  
     if (action == ##Exit or ##Swim) {
         "The sepulchral calm of the ocean overwhelms you, and you can only watch and sail.";
     }
@@ -17192,7 +17192,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CrossroadsAfter ;     
+[ CrossroadsBefore ;    
     if (action == ##Go) {
         if (noun == ne_obj && cloak_of_many_colours has worn) {
             print "The procession happily accommodates another crazily-dressed loon.^";
@@ -17207,7 +17207,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TombstoneAfter ;      
+[ TombstoneBefore ;     
     if (action == ##Receive) {
         if (noun ~= gleaming_amber_gem) {
             "Doesn't seem to fit.";
@@ -17225,7 +17225,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CloakAfter ;  
+[ CloakBefore ; 
     if (action == ##Turn or ##SwitchOn) {
         if (noun has worn) {
             "Not while you're wearing it.";
@@ -17248,7 +17248,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PyramidAfter ;        
+[ PyramidBefore ;       
     if (action == ##Smell) {
         "Why do you only ever smell hard in unpleasant places?  The odour is repulsive in a termites-and-honey kind of way.";
     }
@@ -17256,7 +17256,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HeightFashionAfter ;  
+[ HeightFashionBefore ; 
     if (action == ##Sleep) {
         if (player in wooden_couch) {
             print "The heavy weave mattings feel so restful that you slide into...^";
@@ -17279,7 +17279,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ NoseAfter ;   
+[ NoseBefore ;  
     if (action == ##Push or ##Pull) {
         "It is made of stone, you know.";
     }
@@ -17314,7 +17314,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SpiritWorldAfter ;    
+[ SpiritWorldBefore ;   
     if (action == ##Go) {
         if (noun == w_obj) {
             rfalse;
@@ -17343,7 +17343,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SpiritWorldBefore i ; 
+[ SpiritWorldAfter i ;  
     if (action == ##Look) {
         i = The_Spirit_World.number;
         if (i == 1) {
@@ -17424,7 +17424,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ UndertakingAfter ;    
+[ UndertakingBefore ;   
     if (player in mummy_case) {
         if (verb == ##Exit) {
             print "(That's a relief.)^";
@@ -17451,7 +17451,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MummyCaseAfter ;      
+[ MummyCaseBefore ;     
     if (action == ##Open) {
         if (selfobj hasnt open) {
             "The lid must weigh a ton. You can't shift it.";
@@ -17493,7 +17493,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SocketAfter ; 
+[ SocketBefore ;        
     if (action == ##Receive) {
         if (noun == model_golden_sceptre) {
             model_golden_sceptre.number = selfobj;
@@ -17518,7 +17518,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SceptreBefore ;       
+[ SceptreAfter ;        
     if (action == ##Take or ##Remove) {
         if (location == Quite_an_Undertaking) {
             selfobj.number = 0;
@@ -17529,7 +17529,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SceptreAfter i ;      
+[ SceptreBefore i ;     
     if (action == ##Wave) {
         "Apparently, it's not susceptible to that.";
     }
@@ -17562,7 +17562,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BuriedAfter ; 
+[ BuriedBefore ;        
     if (verb == ##Look or ##Wait or ##Inv) {
         rfalse;
     }
@@ -17628,7 +17628,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DefacedDoorAfter ;    
+[ DefacedDoorBefore ;   
     if (action == ##Open) {
         if (grey_cloak has worn) {
             rfalse;
@@ -17642,7 +17642,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ TableAfter ;  
+[ TableBefore ; 
     if (action == ##Receive) {
         if (noun == quarterstaff) {
             remove quarterstaff;
@@ -17678,7 +17678,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ QuarterstaffAfter ;   
+[ QuarterstaffBefore ;  
     if (action == ##Wave) {
         "It rumbles in your hands, but nothing else happens.";
     }
@@ -17686,7 +17686,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SailorAfter ; 
+[ SailorBefore ;        
     if (action == ##Gamble) {
         R_Process(##Drop,inscribed_die);
         rtrue;
@@ -17741,7 +17741,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ InscribedDieAfter i ; 
+[ InscribedDieBefore i ;        
     if (action == ##Take) {
         "The sailor covers it with his hand. But he looks the type who's never averse to a game.";
     }
@@ -17843,7 +17843,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OilRoomAfter ;        
+[ OilRoomBefore ;       
     if (action == ##Anoint) {
         if (noun ~= player || mummy_case has general) {
             "That hardly seems worthwhile.";
@@ -17855,7 +17855,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ OilTroughsAfter ;     
+[ OilTroughsBefore ;    
     if (action == ##Drink or ##Enter) {
         "What a revolting idea!";
     }
@@ -17863,7 +17863,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SpindleAfter ;        
+[ SpindleBefore ;       
     if (action == ##Pull) {
         R_Process(##Take,selfobj);
         rtrue;
@@ -17872,7 +17872,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SpindleBefore ;       
+[ SpindleAfter ;        
     if (action == ##Take) {
         if (spindle_from_the_globe hasnt general) {
             give spindle_from_the_globe general;
@@ -17957,7 +17957,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ InsidePalaceAfter ;   
+[ InsidePalaceBefore ;  
     if (action == ##Go) {
         if (purple_sash hasnt worn) {
             move player to Outside_the_Royal_Palace_of_Alexander;
@@ -17980,7 +17980,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ InsidePalaceBefore ;  
+[ InsidePalaceAfter ;   
     if (action == ##Go) {
       .labelXXX;
         if (child(Lost_inside_the_Palace) ~= nothing) {
@@ -18035,7 +18035,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BalustradeAfter ;     
+[ BalustradeBefore ;    
     if (action == ##Swim or ##Jump) {
         move player to Warehouses_and_Port;
         location = Warehouses_and_Port;
@@ -18045,7 +18045,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MountingAfter ;       
+[ MountingBefore ;      
     if (action == ##Receive) {
         if (noun == golden_astrolabe) {
             remove astronomical_mounting;
@@ -18062,7 +18062,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DriveAfter ;  
+[ DriveBefore ; 
     if (action == ##Go) {
         if (noun == w_obj or u_obj && selfobj.u_to == Dead_End) {
             print "With your heart in your mouth, you scale the old fire escape once again, breathing a sigh of relief as you haul yourself in through the open hatchway at the top.^";
@@ -18073,7 +18073,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ FireEscapeAfter ;     
+[ FireEscapeBefore ;    
     if (action == ##Climb or ##Enter) {
         R_Process(##Go,u_obj);
         rtrue;
@@ -18090,7 +18090,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ NutsAfter ;   
+[ NutsBefore ;  
     set_flag_array(41);
     if (corn_crake in Hollow) {
         "The corn crake won't let you near her nest.";
@@ -18134,7 +18134,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ChurchAfter ; 
+[ ChurchBefore ;        
     if (action == ##Enter) {
         if (selfobj hasnt open) {
             "The Church door is barred from the far side.";
@@ -18145,7 +18145,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ GoatsCompassesAfter ; 
+[ GoatsCompassesBefore ;        
     if (action == ##Enter) {
         "The pub is closed, licensing laws being what they are.";
     }
@@ -18153,7 +18153,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PetMonkeyAfter ;      
+[ PetMonkeyBefore ;     
     if (action == ##Touch) {
         "You stroke the monkey's pelt. It jumps about, cheeping.";
     }
@@ -18164,7 +18164,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ CrescentMoonAfter ;   
+[ CrescentMoonBefore ;  
     if (action == ##Take or ##Remove) {
         if (selfobj in Old_Evans) {
             "Evans isn't giving up his mascot that easily.";
@@ -18175,7 +18175,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ RacingTimesAfter ;    
+[ RacingTimesBefore ;   
     if (action == ##Take or ##Remove) {
         "Evans isn't giving up his paper.";
     }
@@ -18183,7 +18183,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HatBandAfter ;        
+[ HatBandBefore ;       
     if (action == ##Take or ##Remove) {
         "Evans isn't giving up his hat-band.";
     }
@@ -18209,7 +18209,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MoonstoneAfter ;      
+[ MoonstoneBefore ;     
     if (action == ##Read) {
         set_flag_array(47);
         rfalse;
@@ -18228,7 +18228,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ LifeDeathLoveAfter ;  
+[ LifeDeathLoveBefore ; 
     if (verb == ##Take && noun hasnt moved) {
         if (noun hasnt general) {
             if (old_gardeners__gloves has worn) {
@@ -18246,7 +18246,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ LifeDeathLoveBefore ; 
+[ LifeDeathLoveAfter ;  
     if (verb == ##Take && HighRodBalance == false) {
         remove rod_of_life;
         give rod_of_life moved;
@@ -18269,7 +18269,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WestSideChapelAfter ; 
+[ WestSideChapelBefore ;        
     if (action == ##Repair or ##Insert or ##PutOn) {
         if (second ~= adamantine_statue) {
             rfalse;
@@ -18319,7 +18319,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ WestSideChapelBefore ;        
+[ WestSideChapelAfter ; 
     if (action == ##Look) {
         if (adamantine_statue in West_Side_Chapel) {
             DisplayKnight();
@@ -18497,7 +18497,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ DianaAfter ;  
+[ DianaBefore ; 
     if (action == ##PointAt) {
         if (adamantine_knight in location) {
             if (marble_rose in selfobj) {
@@ -18511,7 +18511,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ BellRopesAfter ;      
+[ BellRopesBefore ;     
     if (action == ##Pull or ##Push or ##Blow) {
         "You ring an amateurish, jangling peal.";
     }
@@ -18591,7 +18591,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HellishPlaceBefore cnt ;      
+[ HellishPlaceAfter cnt ;       
     if (action == ##Look) {
         new_line;
         if (demon has general) {
@@ -18692,7 +18692,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HeavenAfter ; 
+[ HeavenBefore ;        
     if (action == ##Strike) {
         "The clouds are too fluffy.";
     }
@@ -18700,7 +18700,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ HeavenBefore i ;      
+[ HeavenAfter i ;       
     if (action == ##Look) {
         new_line;
         if (angel has general) {
@@ -18791,7 +18791,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SoapAfter ;   
+[ SoapBefore ;  
     if (action == ##Eat) {
         R_Process(##Wash,selfobj);
         rtrue;
@@ -20435,7 +20435,7 @@ Array preactions_table --> IsDirection;
     if (inventory_style & 8 ~= 0) {
         print ".^";
     }
-    AfterRoutines();
+    BeforeRoutines();
     rtrue;
 ];
 
@@ -20449,7 +20449,7 @@ Array preactions_table --> IsDirection;
             rtrue;
         }
     }
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     notheld_mode = onotheld_mode;
@@ -20579,7 +20579,7 @@ Array preactions_table --> IsDirection;
         }
     }
     move noun to parent(player);
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -20603,11 +20603,11 @@ Array preactions_table --> IsDirection;
         rtrue;
     }
     verb = ##Take;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     verb = ##Remove;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -20673,7 +20673,7 @@ Array preactions_table --> IsDirection;
     return L__M(##PutOn,6,second);
   .labelXXX;
     move noun to second;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (second > 1) {
@@ -20739,7 +20739,7 @@ Array preactions_table --> IsDirection;
     return L__M(##Insert,7,second);
   .labelXXX;
     move noun to second;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (second > 1) {
@@ -20921,7 +20921,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Enter,4);
     }
     move player to noun;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -20958,7 +20958,7 @@ Array preactions_table --> IsDirection;
     } else {
         move player to location;
     }
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21066,7 +21066,7 @@ Array preactions_table --> IsDirection;
         location = thedark;
         lightflag = false;
     }
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21263,7 +21263,7 @@ Array preactions_table --> IsDirection;
     Stub9();
     ScoreArrival();
     verb = ##Look;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     rtrue;
@@ -21290,7 +21290,7 @@ Array preactions_table --> IsDirection;
     if (noun has switchable) {
         L__M(##Read,3,noun);
     }
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     rtrue;
@@ -21329,7 +21329,7 @@ Array preactions_table --> IsDirection;
     if (noun hasnt transparent && noun hasnt open) {
         return L__M(##Search,5);
     }
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     generic_globvar = 0;
@@ -21358,7 +21358,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Unlock,3);
     }
     give noun ~locked;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21382,7 +21382,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Lock,4);
     }
     give noun locked;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21401,7 +21401,7 @@ Array preactions_table --> IsDirection;
         return L__M(##SwitchOn,2);
     }
     give noun on;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21419,7 +21419,7 @@ Array preactions_table --> IsDirection;
         return L__M(##SwitchOff,2);
     }
     give noun ~on;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21440,7 +21440,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Open,3);
     }
     give noun open;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21461,7 +21461,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Close,2);
     }
     give noun ~open;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21476,7 +21476,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Disrobe,1);
     }
     give noun ~worn;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21497,7 +21497,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Wear,3);
     }
     give noun worn;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21512,7 +21512,7 @@ Array preactions_table --> IsDirection;
         return L__M(##Eat,1);
     }
     remove noun;
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     if (keep_silent == true) {
@@ -21712,7 +21712,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ WaitSub ;     
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     L__M(##Wait);
@@ -21731,7 +21731,7 @@ Array preactions_table --> IsDirection;
     if (second == u_obj or d_obj) {
         return L__M(##PushDir,3);
     }
-    AfterRoutines();
+    BeforeRoutines();
     i = noun;
     move i to player;
     R_Process(##Go,second);
@@ -23565,7 +23565,7 @@ Array preactions_table --> IsDirection;
     }
     give noun charged;
     Achieved(SCORE_WAND);
-    if (AfterRoutines() == true) {
+    if (BeforeRoutines() == true) {
         rtrue;
     }
     "The rod charges with etherial power, drawn up from the earth through ley lines...";

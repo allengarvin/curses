@@ -1188,8 +1188,8 @@ Routine 0xd338 PlayTheGame i:int j:int k l
 Routine 0xd6e4 Process
 Routine 0xd700 TestScope obj:object act a al sr x y
 Routine 0xd754 LoopOverScope routine act x y a al
-Routine 0xd79c BeforeRoutines
-Routine 0xd7f0 AfterRoutines:bool
+Routine 0xd79c AfterRoutines
+Routine 0xd7f0 BeforeRoutines:bool
 Routine 0xd834 R_Process acti:action i:object j:object sn ss sa sse
 Routine 0xd898 RunLife a j:action
 Routine 0xd8a8 LowKey_Menu menu_choices EntryR ChoiceR lines main_title i:dictword j:int
@@ -1219,11 +1219,11 @@ Routine 0xe268 Banner i:int
 
 ! -----
 Routine 0xe2f8 VersionSub
-Routine 0xe33c LMAfter
-Routine 0xe4c0 RodAfter
+Routine 0xe33c LMBefore
+Routine 0xe4c0 RodBefore
 Routine 0xe568 RodParse:int i:int w:dictword
 Routine 0xe5b4 rod_short
-Routine 0xe5e4 rod_display_after
+Routine 0xe5e4 rod_display_before
 Routine 0xe5fc LifeDesc
 Routine 0xe658 LifeAction
 Routine 0xe6a4 MasterGameRods enhanced:bool
@@ -1241,454 +1241,454 @@ Routine 0xf3f8 RodOfStalkingAction
 Routine 0xf708 RodOfInfinityAction t:int
 Routine 0xf8d4 StartMasterGame o:object sib:object
 Routine 0xf904 LagachLife i:int r:object flag:bool
-Routine 0xfae8 TarotAfter
+Routine 0xfae8 TarotBefore
 Routine 0xfb14 TarotParseName i:int w:dictword
 Routine 0xfb50 TarotShort
 Routine 0xfb90 ConsultableParsename:int
-Routine 0xfbac TorchAfter
-Routine 0xfc20 TorchBefore bat:object i:int
+Routine 0xfbac TorchBefore
+Routine 0xfc20 TorchAfter bat:object i:int
 Routine 0xfdf4 TorchTimer o:object n:int
-Routine 0xfe54 BiscuitBefore
-Routine 0xfe64 TrapdoorAfter
-Routine 0xfea0 TrapdoorBefore
-Routine 0xff24 TeachestsAfter
-Routine 0xffa0 HistoryAfter w:dictword
-Routine 0x10eac HouseBefore
-Routine 0x10fd4 ServantsRoomAfter
-Routine 0x110d0 DictionaryAfter w:dictword
-Routine 0x1190c WhistleAfter
-Routine 0x11c14 ParcelAfter
-Routine 0x11c54 PostcardBefore
+Routine 0xfe54 BiscuitAfter
+Routine 0xfe64 TrapdoorBefore
+Routine 0xfea0 TrapdoorAfter
+Routine 0xff24 TeachestsBefore
+Routine 0xffa0 HistoryBefore w:dictword
+Routine 0x10eac HouseAfter
+Routine 0x10fd4 ServantsRoomBefore
+Routine 0x110d0 DictionaryBefore w:dictword
+Routine 0x1190c WhistleBefore
+Routine 0x11c14 ParcelBefore
+Routine 0x11c54 PostcardAfter
 Routine 0x11ce8 MedicineShort
-Routine 0x11d30 MedicineAfter
-Routine 0x11e50 TabletBefore
+Routine 0x11d30 MedicineBefore
+Routine 0x11e50 TabletAfter
 Routine 0x11e78 OverEastWingInitial
-Routine 0x11e88 AustinAfter
-Routine 0x11fe0 AustinBefore
+Routine 0x11e88 AustinBefore
+Routine 0x11fe0 AustinAfter
 Routine 0x12000 AustinLife
 Routine 0x12154 AustinDemon i:int
 Routine 0x121f8 AustinMovements to_current:bool env:object i:int newroom:object
-Routine 0x1278c DarkRoomBefore
-Routine 0x127e8 HangingCordAfter
+Routine 0x1278c DarkRoomAfter
+Routine 0x127e8 HangingCordBefore
 Routine 0x12840 FlashAFter
-Routine 0x128d0 ObservatoryBefore
+Routine 0x128d0 ObservatoryAfter
 Routine 0x1293c ObservatoryDiffraction card:object
 Routine 0x12ac0 TriggerAlert
-Routine 0x12bd0 GlassBallAfter i:int
-Routine 0x12e28 WaterPipeAfter
-Routine 0x12f44 RomanticNovelAfter
-Routine 0x12f88 PoetryAfter
+Routine 0x12bd0 GlassBallBefore i:int
+Routine 0x12e28 WaterPipeBefore
+Routine 0x12f44 RomanticNovelBefore
+Routine 0x12f88 PoetryBefore
 Routine 0x130a0 PlumbingDisaster
 Routine 0x1314c WallDisplay o:object
-Routine 0x131a8 SouvenirsRoomAfter o:object
-Routine 0x131f8 SouvenirsRoomBefore o:object
+Routine 0x131a8 SouvenirsRoomBefore o:object
+Routine 0x131f8 SouvenirsRoomAfter o:object
 Routine 0x13290 SouvenirsRoomSouth
-Routine 0x1329c ProjectorAfter
-Routine 0x133e4 ProjectorBefore o:object
-Routine 0x134a4 SouthWallAfter o:object
+Routine 0x1329c ProjectorBefore
+Routine 0x133e4 ProjectorAfter o:object
+Routine 0x134a4 SouthWallBefore o:object
 Routine 0x136ac DisplayCardDesc o:object
 Routine 0x13708 ToggleSouthWall o:object
 Routine 0x13758 FakeDie card:object
 Routine 0x1381c EastAnnexeDesc
-Routine 0x13910 EastAnnexeAfter
-Routine 0x139c0 InsulationAfter
-Routine 0x13a68 CupboardAfter
-Routine 0x13a9c DeadEndAfter
-Routine 0x13b64 IsaacPaintingBefore
-Routine 0x13bc8 FireplaceBefore
-Routine 0x13c1c SkylightAfter
-Routine 0x13ca4 GasMaskBefore
-Routine 0x13cf4 GothicKeyAfter
+Routine 0x13910 EastAnnexeBefore
+Routine 0x139c0 InsulationBefore
+Routine 0x13a68 CupboardBefore
+Routine 0x13a9c DeadEndBefore
+Routine 0x13b64 IsaacPaintingAfter
+Routine 0x13bc8 FireplaceAfter
+Routine 0x13c1c SkylightBefore
+Routine 0x13ca4 GasMaskAfter
+Routine 0x13cf4 GothicKeyBefore
 Routine 0x13d94 IronKeyInitial
 Routine 0x13df4 JoshuaMeldreweDaemon n:int
 Routine 0x14018 GhostLife
-Routine 0x14158 ChimneyAfter o:object
-Routine 0x14218 PriestHoleAfter o:object
+Routine 0x14158 ChimneyBefore o:object
+Routine 0x14218 PriestHoleBefore o:object
 Routine 0x14294 DownTheHatch
-Routine 0x142dc PrayerBookAfter year:int
+Routine 0x142dc PrayerBookBefore year:int
 Routine 0x145c0 WritingRoomDesc
-Routine 0x146f0 WritingRoomAfter
-Routine 0x147e8 WritingRoomBefore
-Routine 0x147fc ComfyBedAfter
-Routine 0x1484c WindowAfter
+Routine 0x146f0 WritingRoomBefore
+Routine 0x147e8 WritingRoomAfter
+Routine 0x147fc ComfyBedBefore
+Routine 0x1484c WindowBefore
 Routine 0x148e0 CheckMirror:bool o:object
 Routine 0x14904 MonkeyAlive
-Routine 0x14a2c MirrorAfter o:object i:int
-Routine 0x14b28 WindowSillAfter
-Routine 0x14b54 OldWineryBefore
+Routine 0x14a2c MirrorBefore o:object i:int
+Routine 0x14b28 WindowSillBefore
+Routine 0x14b54 OldWineryAfter
 Routine 0x14c04 OldWineryDaemon
-Routine 0x14c5c OldWineryAfter
-Routine 0x14c94 DemijohnAfter
-Routine 0x14d1c TouristMapAfter n:int
-Routine 0x14e80 ConservatoryBefore
-Routine 0x14ebc CalendarAfter i:int w:dictword
+Routine 0x14c5c OldWineryBefore
+Routine 0x14c94 DemijohnBefore
+Routine 0x14d1c TouristMapBefore n:int
+Routine 0x14e80 ConservatoryAfter
+Routine 0x14ebc CalendarBefore i:int w:dictword
 Routine 0x1505c SheetsAFter
 Routine 0x15194 SheetsDaemon
-Routine 0x1524c WirelessAfter
-Routine 0x1536c WirelessBefore
+Routine 0x1524c WirelessBefore
+Routine 0x1536c WirelessAfter
 Routine 0x153d4 WirelessDaemon
 Routine 0x15474 WirelessDescribe
-Routine 0x15530 PottingRoomBefore
-Routine 0x155fc GlovesAfter
+Routine 0x15530 PottingRoomAfter
+Routine 0x155fc GlovesBefore
 Routine 0x15694 JemimaDaemon
 Routine 0x15718 JemimaLife i:int
-Routine 0x15e68 DaisyChainAfter
+Routine 0x15e68 DaisyChainBefore
 Routine 0x15ee4 DaisyUp o:object
 Routine 0x15f34 DaisyType n:int
-Routine 0x16024 StorageRoomAfter
-Routine 0x16080 WheelAfter r:object
-Routine 0x161e4 ShaftBefore
-Routine 0x16250 WrenchBefore
-Routine 0x16270 RopesAfter r:object
-Routine 0x16378 WishboneBefore
-Routine 0x163a0 ShaftAfter
-Routine 0x163e8 Shaft2After
-Routine 0x16424 DarkPassageAfter
-Routine 0x164a8 MetalDoorBefore
-Routine 0x164d8 CellarsAfter
+Routine 0x16024 StorageRoomBefore
+Routine 0x16080 WheelBefore r:object
+Routine 0x161e4 ShaftAfter
+Routine 0x16250 WrenchAfter
+Routine 0x16270 RopesBefore r:object
+Routine 0x16378 WishboneAfter
+Routine 0x163a0 ShaftBefore
+Routine 0x163e8 Shaft2Before
+Routine 0x16424 DarkPassageBefore
+Routine 0x164a8 MetalDoorAfter
+Routine 0x164d8 CellarsBefore
 Routine 0x1652c MouseBoundary:bool i:int j:int cell:char
 Routine 0x1655c MouseLife frm:object dst:object prev_loc:object x:int y:int
 Routine 0x16964 WineCellarsDescription
-Routine 0x16a10 WineCellarsAfter
+Routine 0x16a10 WineCellarsBefore
 Routine 0x16a44 WineCellarsUp
-Routine 0x16a88 HoleAfter
+Routine 0x16a88 HoleBefore
 Routine 0x16ac8 HoleLife
-Routine 0x16ae4 IronboundDoorAfter
-Routine 0x16b10 LemniscusBefore i:int
-Routine 0x16cac ArcAfter i:int
-Routine 0x16db4 SphericalOpeningAfter
-Routine 0x16ecc OctagonBefore
-Routine 0x16ee8 CoffinBefore r:object
-Routine 0x16f88 CoffinAfter
+Routine 0x16ae4 IronboundDoorBefore
+Routine 0x16b10 LemniscusAfter i:int
+Routine 0x16cac ArcBefore i:int
+Routine 0x16db4 SphericalOpeningBefore
+Routine 0x16ecc OctagonAfter
+Routine 0x16ee8 CoffinAfter r:object
+Routine 0x16f88 CoffinBefore
 Routine 0x1700c CoffinDesc
-Routine 0x17088 SketchAfter
+Routine 0x17088 SketchBefore
 Routine 0x170c4 LetterDesc
-Routine 0x1727c HookAfter
+Routine 0x1727c HookBefore
 Routine 0x172dc HalfwayUpStairsUp
 Routine 0x1730c UnrealEachTurn i:int
-Routine 0x17408 PosterAfter
+Routine 0x17408 PosterBefore
 Routine 0x174b0 BohemiaInitial i:int
 Routine 0x17530 Deal_card_number rank:int
 Routine 0x1759c Deal_random_card i j card:int
 Routine 0x177ec InsertCardIntoDeck o:object
 Routine 0x177f8 SosostrisDeals card3:object card2:object card1:object
 Routine 97492 SosostrisLife
-Routine 0x17a5c ConsultingRoomAfter
-Routine 0x17a78 TarotPackAfter
-Routine 0x17b9c BellPushAfter
-Routine 0x17e08 DownByRiverAfter
+Routine 0x17a5c ConsultingRoomBefore
+Routine 0x17a78 TarotPackBefore
+Routine 0x17b9c BellPushBefore
+Routine 0x17e08 DownByRiverBefore
 Routine 0x17e28 DownByRiverWest
-Routine 0x17e3c HandkerchiefAfter
-Routine 0x17e88 TouristBoatAfter
+Routine 0x17e3c HandkerchiefBefore
+Routine 0x17e88 TouristBoatBefore
 Routine 0x17ec0 HollowManLife
-Routine 0x1813c ChateletAfter
+Routine 0x1813c ChateletBefore
 Routine 0x18160 ShopkeeperLife
 Routine 0x18290 FoyerSouth:object
-Routine 0x1834c RevolvingDoorAfter
+Routine 0x1834c RevolvingDoorBefore
 Routine 0x18408 RevolvingDoorNorth:object
-Routine 0x18414 MuseumDoorAfter
-Routine 0x1844c BeachBallAfter
-Routine 0x18574 BeachBallBefore
-Routine 0x18598 TarotBoxAfter
-Routine 0x185b8 DarkStaircaseAfter
-Routine 0x186a8 DarkStaircaseBefore
+Routine 0x18414 MuseumDoorBefore
+Routine 0x1844c BeachBallBefore
+Routine 0x18574 BeachBallAfter
+Routine 0x18598 TarotBoxBefore
+Routine 0x185b8 DarkStaircaseBefore
+Routine 0x186a8 DarkStaircaseAfter
 Routine 0x186b0 CovenCellDaemon
-Routine 0x187fc CovenCellAfter
+Routine 0x187fc CovenCellBefore
 Routine 0x1885c GoatLife
-Routine 0x18920 CelldoorAfter
-Routine 0x18960 CabinetRoomAfter
-Routine 0x18990 CabinetAfter
+Routine 0x18920 CelldoorBefore
+Routine 0x18960 CabinetRoomBefore
+Routine 0x18990 CabinetBefore
 Routine 0x18a04 CabinetDAemon
-Routine 0x18ba0 RoundStoneAfter
-Routine 0x18bd8 CafeBefore
+Routine 0x18ba0 RoundStoneBefore
+Routine 0x18bd8 CafeAfter
 Routine 0x18d04 CafeInitial
-Routine 0x18d3c CafeTableAfter
+Routine 0x18d3c CafeTableBefore
 Routine 0x18dfc BombDaemon
-Routine 0x18f44 BombBefore
+Routine 0x18f44 BombAfter
 Routine 0x18fd8 TimerDaemon i:object j:object k:object
-Routine 0x19380 TimerAfter i:int
-Routine 0x19444 WireAfter i:int
+Routine 0x19380 TimerBefore i:int
+Routine 0x19444 WireBefore i:int
 Routine 0x194b0 BombTicks w:int i:int
 Routine 0x195dc AndList i:int
 Routine 0x195f4 CupsAndGlassesEachTurn i:int
-Routine 0x197cc CupsAndGlassesAfter
-Routine 0x19838 BottleShipAfter
-Routine 0x19a0c ModelShipAfter
+Routine 0x197cc CupsAndGlassesBefore
+Routine 0x19838 BottleShipBefore
+Routine 0x19a0c ModelShipBefore
 Routine 0x19ba4 SeashoreDesc
-Routine 0x19c70 SeaShoreAfter
+Routine 0x19c70 SeaShoreBefore
 Routine 0x19da0 AndromedaDesc
 Routine 0x19ebc AndromedaLife
 Routine 0x1a098 ClifftopEast:object
 Routine 0x1a0ec GoatsLife
-Routine 0x1a100 ThornyTreeAfter
-Routine 0x1a118 TavernAfter
+Routine 0x1a100 ThornyTreeBefore
+Routine 0x1a118 TavernBefore
 Routine 0x1a148 TavernEachTurn i:int
-Routine 0x1a244 DessertAfter
+Routine 0x1a244 DessertBefore
 Routine 0x1a29c BartenderLife
 Routine 0x1a398 SacredEarthSouth:object
-Routine 0x1a538 SacredEarthBefore
+Routine 0x1a538 SacredEarthAfter
 Routine 0x1a540 TempleNorth:object
 Routine 0x1a5a0 InscribedStoneDesc
 Routine 0x1a6ec SymbolDesc
 Routine 0x1a730 InnerSanctumInitial
 Routine 0x1a738 HomerLife
 Routine 0x1a9f4 HomerSleeps
-Routine 0x1aa00 PanPipesAfter i:int
+Routine 0x1aa00 PanPipesBefore i:int
 Routine 0x1ac08 CrossInitial
-Routine 0x1ac10 CrossAfter
-Routine 0x1ac2c CrossBefore
+Routine 0x1ac10 CrossBefore
+Routine 0x1ac2c CrossAfter
 Routine 0x1ac4c CrossDaemon
-Routine 0x1acac InscriptsAfter
-Routine 0x1ad18 GemAfter
-Routine 0x1add4 ClassicalStatueAfter
-Routine 0x1ae4c ClassicalStatueBefore
+Routine 0x1acac InscriptsBefore
+Routine 0x1ad18 GemBefore
+Routine 0x1add4 ClassicalStatueBefore
+Routine 0x1ae4c ClassicalStatueAfter
 Routine 0x1ae68 OracleLife
 Routine 0x1aea0 DescribePaces i:int
 Routine 0x1aed0 PriestTalk
-Routine 0x1b120 UrnAfter
+Routine 0x1b120 UrnBefore
 Routine 0x1b218 LighthouseDesc
 Routine 0x1b3f4 LighthouseDown:object
 Routine 0x1b3fc FlashFallsOut
 Routine 0x1b43c GoDownLighthouse
-Routine 0x1b44c LandlubberAfter
+Routine 0x1b44c LandlubberBefore
 Routine 0x1b47c OnShipEachTurn
 Routine 0x1b4cc OnShipDaemon
-Routine 0x1b500 RiggingAfter
+Routine 0x1b500 RiggingBefore
 Routine 0x1b510 OnMastWest:object
 Routine 0x1b620 OnMastDown:object
-Routine 0x1b654 OnMastAfter
-Routine 0x1b6b8 OnMastBefore
-Routine 0x1b724 FlagpoleAfter
-Routine 0x1b754 FlagAfter
-Routine 0x1b7f0 TimberSparBefore
+Routine 0x1b654 OnMastBefore
+Routine 0x1b6b8 OnMastAfter
+Routine 0x1b724 FlagpoleBefore
+Routine 0x1b754 FlagBefore
+Routine 0x1b7f0 TimberSparAfter
 Routine 0x1b80c ProwCantGo
-Routine 0x1b824 BranchAfter
+Routine 0x1b824 BranchBefore
 Routine 0x1b910 SternDown:object
-Routine 0x1bab4 CapstanAfter
-Routine 0x1bb0c GardenStreamAfter
-Routine 0x1bb48 CoalBunkerBefore
-Routine 0x1bb70 StreamAfter
-Routine 0x1bba8 ShrubAfter
-Routine 0x1bc3c StoneWallAfter
+Routine 0x1bab4 CapstanBefore
+Routine 0x1bb0c GardenStreamBefore
+Routine 0x1bb48 CoalBunkerAfter
+Routine 0x1bb70 StreamBefore
+Routine 0x1bba8 ShrubBefore
+Routine 0x1bc3c StoneWallBefore
 Routine 0x1bca0 StoneWallLife
-Routine 0x1bcf0 TimberHatchBefore
+Routine 0x1bcf0 TimberHatchAfter
 Routine 0x1bd0c FamilyTreeInitial
 Routine 0x1bd14 FamilyTreeNorth:object
-Routine 0x1be10 PlaneTreeAfter
-Routine 0x1be20 WellBefore
-Routine 0x1be48 BeanStalkAfter
-Routine 0x1be68 BeanStalkBefore
-Routine 0x1bec0 RollerAfter:int
+Routine 0x1be10 PlaneTreeBefore
+Routine 0x1be20 WellAfter
+Routine 0x1be48 BeanStalkBefore
+Routine 0x1be68 BeanStalkAfter
+Routine 0x1bec0 RollerBefore:int
 Routine 0x1bf80 RollerEachTurn
-Routine 0x1c038 WeedKillerAfter i:int
+Routine 0x1c038 WeedKillerBefore i:int
 Routine 0x1c210 WeedKillerDaemon ndx:int
 Routine 0x1c22c SpadeShort
-Routine 0x1c250 SpadeAfter
+Routine 0x1c250 SpadeBefore
 Routine 0x1c294 MazeBoundary x:int y:int cell:char
 Routine 0x1c2c4 TestMazeConfines:int x:int y:int cell:char
 Routine 0x1c2f8 CheckMaze x:int y:int z:int
 Routine 0x1c30c CheckMaze2 x:int y:int z:int
-Routine 0x1c328 UpTreeAfter
+Routine 0x1c328 UpTreeBefore
 Routine 0x1c348 LayoutDesc y:int x:int wallp:bool
 Routine 0x1c3bc MazeDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
-Routine 0x1c4e8 MazeAfter x:int y:int
-Routine 0x1c628 MazeBefore
-Routine 0x1c634 PatioAfter
-Routine 0x1c66c PatioBefore
-Routine 0x1c678 RoseAfter
-Routine 0x1c6bc ViewpointAfter
-Routine 0x1c718 FollyBefore
-Routine 0x1c720 BeanpoleBefore
+Routine 0x1c4e8 MazeBefore x:int y:int
+Routine 0x1c628 MazeAfter
+Routine 0x1c634 PatioBefore
+Routine 0x1c66c PatioAfter
+Routine 0x1c678 RoseBefore
+Routine 0x1c6bc ViewpointBefore
+Routine 0x1c718 FollyAfter
+Routine 0x1c720 BeanpoleAfter
 Routine 0x1c738 BeanpoleDaemon
-Routine 0x1c818 FoundationsAfter x:int y:int
-Routine 0x1c8f0 FountdationsBefore
+Routine 0x1c818 FoundationsBefore x:int y:int
+Routine 0x1c8f0 FountdationsAfter
 Routine 0x1c920 MzeOldDescribe numwalls:int n_side:bool e_side:bool s_side:bool w_side:bool
-Routine 0x1cbf8 PlantingBefore
+Routine 0x1cbf8 PlantingAfter
 Routine 0x1cc00 BrickPathInitial
 Routine 0x1cc08 HedgeryNorth:object
 Routine 0x1cc60 SummerHouseSouth:object
-Routine 0x1cc9c SummerHouseBefore:object
-Routine 0x1cd10 ChainAfter
-Routine 0x1cd64 BoardAfter
-Routine 0x1cda4 CrackAfter
-Routine 0x1cdd8 CrackBefore
+Routine 0x1cc9c SummerHouseAfter:object
+Routine 0x1cd10 ChainBefore
+Routine 0x1cd64 BoardBefore
+Routine 0x1cda4 CrackBefore
+Routine 0x1cdd8 CrackAfter
 Routine 0x1ce84 SquirrelLife
 Routine 0x1cf98 GoNuts
 Routine 0x1cfa4 DescribePaces x:int y:int
 Routine 0x1cfe8 CroquetLawnDesc
 Routine 0x1d0d4 CroquetLawnInitial
 Routine 0x1d0dc CroquetLawnShort
-Routine 0x1d10c AstrolabeAfter
-Routine 0x1d214 AstrolabeBefore
-Routine 0x1d224 DugHoleAfter
+Routine 0x1d10c AstrolabeBefore
+Routine 0x1d214 AstrolabeAfter
+Routine 0x1d224 DugHoleBefore
 Routine 0x1d260 DugHoleDesc
 Routine 0x1d2b0 MurkyCaveInitial
 Routine 0x1d2b8 MurkyCaveDaemon cnt:int
-Routine 0x1dbd0 RopeAfter
+Routine 0x1dbd0 RopeBefore
 Routine 0x1dbe0 RopeDown
-Routine 0x1dc18 HangingOnRopeAfter
-Routine 0x1dc50 HangingOnRopeBefore
-Routine 0x1dc7c DaisyBefore
-Routine 0x1dcd4 DaisyAfter
+Routine 0x1dc18 HangingOnRopeBefore
+Routine 0x1dc50 HangingOnRopeAfter
+Routine 0x1dc7c DaisyAfter
+Routine 0x1dcd4 DaisyBefore
 Routine 0x1dd20 DaisyUp o:object
-Routine 0x1dd6c EndStreamAfter
-Routine 0x1dda0 LadderAfter
-Routine 0x1ddb0 HornAfter
-Routine 0x1de30 DieBefore
+Routine 0x1dd6c EndStreamBefore
+Routine 0x1dda0 LadderBefore
+Routine 0x1ddb0 HornBefore
+Routine 0x1de30 DieAfter
 Routine 0x1de58 TricliniumDown:object
 Routine 0x1df30 WellDaemon
-Routine 0x1df68 WellBefore
-Routine 0x1dfe4 InsideWellAfter
-Routine 0x1e010 VentsAfter
-Routine 0x1e0c4 EntranceAfter
-Routine 0x1e114 EntranceBefore
+Routine 0x1df68 WellAfter
+Routine 0x1dfe4 InsideWellBefore
+Routine 0x1e010 VentsBefore
+Routine 0x1e0c4 EntranceBefore
+Routine 0x1e114 EntranceAfter
 Routine 0x1e120 Capture o:object s:object
 Routine 0x1e288 TentPoleDaemon
-Routine 0x1e348 TentPoleAfter
-Routine 0x1e378 TentPoleBefore
+Routine 0x1e348 TentPoleBefore
+Routine 0x1e378 TentPoleAfter
 Routine 0x1e410 SpyDaemon
-Routine 0x1e558 SpyAfter
+Routine 0x1e558 SpyBefore
 Routine 0x1e59c SpyLife
 Routine 0x1e5f0 EncampmentDaemon
 Routine 0x1e668 EncampmentEast:object
-Routine 0x1e6b4 YourGhostAfter
+Routine 0x1e6b4 YourGhostBefore
 Routine 0x1e778 DreamCantGo
 Routine 0x1e7a4 PremonitionStart
 Routine 0x1e7b4 PremonitionEast:object
 Routine 0x1e7dc GeneralsTentWest:object
 Routine 0x1e800 BearTapestryLife
-Routine 0x1e824 MascotBefore
-Routine 0x1e90c MascotAfter
+Routine 0x1e824 MascotAfter
+Routine 0x1e90c MascotBefore
 Routine 0x1e930 MascotDaemon i:int
 Routine 0x1ec70 DruidLife
-Routine 0x1eca0 DolmenBefore
+Routine 0x1eca0 DolmenAfter
 Routine 0x1ece8 EnterDream
 Routine 0x1ecf8 DreamEachTurn
-Routine 0x1edc4 BarrierAfter
-Routine 0x1ee10 LumnescenceAfter
+Routine 0x1edc4 BarrierBefore
+Routine 0x1ee10 LumnescenceBefore
 Routine 0x1ee58 HieroglyphsDescription
-Routine 0x1ef04 ShipWheelAfter
+Routine 0x1ef04 ShipWheelBefore
 Routine 0x1efcc CryptInitial
-Routine 0x1efd4 CryptRoomAfter i:int
-Routine 0x1f0d8 AluminumStairAfter
+Routine 0x1efd4 CryptRoomBefore i:int
+Routine 0x1f0d8 AluminumStairBefore
 Routine 0x1f0e8 AdjustSlide i:int j:int u:int v:int
 Routine 0x1f104 DisplaySlidePos ndx:int chr:char
 Routine 0x1f128 DisplayWholeGrid
 Routine 0x1f1e8 CRShort
 Routine 0x1f214 CREast:object
-Routine 0x1f24c CRBefore
+Routine 0x1f24c CRAfter
 Routine 0x1f358 MetalWallInitial
-Routine 0x1f3a0 MetalWallAfter
+Routine 0x1f3a0 MetalWallBefore
 Routine 0x1f3d4 IronGridInitial
 Routine 0x1f4fc GridDesc
-Routine 0x1f594 CannonballAfter
+Routine 0x1f594 CannonballBefore
 Routine 0x1f5b4 SlideSub:bool i:int j:int col:int
-Routine 0x1f90c SwitchBefore
-Routine 0x1f960 DialAfter
-Routine 0x1fa38 GlowingOrbAfter
-Routine 0x1fae0 InOrbBefore
+Routine 0x1f90c SwitchAfter
+Routine 0x1f960 DialBefore
+Routine 0x1fa38 GlowingOrbBefore
+Routine 0x1fae0 InOrbAfter
 Routine 0x1fb0c InOrbEachTurn i:int j:int
-Routine 0x1fda8 CausewayAfter
+Routine 0x1fda8 CausewayBefore
 Routine 0x1fdec CausewayInitial
 Routine 0x1fe00 CausewayDaemon i:int
 Routine 0x201d4 PharosEachTurn
 Routine 0x20218 PharosDaemon
-Routine 0x202e4 IronGratingAfter
-Routine 0x203d8 RustyKeyAfter
+Routine 0x202e4 IronGratingBefore
+Routine 0x203d8 RustyKeyBefore
 Routine 0x20410 JettyEachTurn
-Routine 0x20478 HarbourMouthAfter
+Routine 0x20478 HarbourMouthBefore
 Routine 0x204b4 HarbourMouthEachTurn
 Routine 0x204f4 DriftingEachTurn
-Routine 0x20534 CrossroadsAfter
-Routine 0x205d8 TombstoneAfter
-Routine 0x206a8 CloakAfter
-Routine 0x20718 PyramidAfter
-Routine 0x2076c HeightFashionAfter
+Routine 0x20534 CrossroadsBefore
+Routine 0x205d8 TombstoneBefore
+Routine 0x206a8 CloakBefore
+Routine 0x20718 PyramidBefore
+Routine 0x2076c HeightFashionBefore
 Routine 0x207b4 HeightFashionWest
-Routine 0x207f4 NoseAfter
+Routine 0x207f4 NoseBefore
 Routine 0x20878 SpiritWorldWest
-Routine 0x20934 SpiritWorldAfter
-Routine 0x20a48 SpiritWorldBefore i:int
+Routine 0x20934 SpiritWorldBefore
+Routine 0x20a48 SpiritWorldAfter i:int
 Routine 0x20b18 SpiritWorldEachTurn
 Routine 0x20dac OfficerLife
 Routine 0x20de0 UglyAnimalShort
-Routine 0x20e18 UndertakingAfter
-Routine 0x20f14 MummyCaseAfter
+Routine 0x20e18 UndertakingBefore
+Routine 0x20f14 MummyCaseBefore
 Routine 0x2113c SocketDesc
-Routine 0x21164 SocketAfter
-Routine 0x211e8 SceptreBefore
-Routine 0x21200 SceptreAfter i:int
-Routine 0x21364 BuriedAfter
+Routine 0x21164 SocketBefore
+Routine 0x211e8 SceptreAfter
+Routine 0x21200 SceptreBefore i:int
+Routine 0x21364 BuriedBefore
 Routine 0x214b4 BuriedEachTurn i:int
 Routine 0x21574 OutsideRoyalMuseumSE:object
 Routine 0x216ac OutsideRoyalMuseumDaemon
-Routine 0x216dc DefacedDoorAfter
-Routine 0x2174c TableAfter
+Routine 0x216dc DefacedDoorBefore
+Routine 0x2174c TableBefore
 Routine 0x21878 SosostrisLife2
 Routine 101652 CafeEachTurn
-Routine 0x218dc QuarterstaffAfter
-Routine 0x21904 SailorAfter
+Routine 0x218dc QuarterstaffBefore
+Routine 0x21904 SailorBefore
 Routine 0x21914 SailorLife
 Routine 0x21990 GamblingSailorEachTurn n:int
-Routine 0x21a5c InscribedDieAfter i:int
+Routine 0x21a5c InscribedDieBefore i:int
 Routine 0x21b14 EtruscanInt i:int
 Routine 0x21b4c BirdcageEachTurn i:int
 Routine 0x21c00 TubeParse:int i w:dictword
 Routine 0x21c3c ScrollParse:int i w:dictword
-Routine 0x21c7c OilRoomAfter
-Routine 0x21d04 OilTroughsAfter
-Routine 0x21d20 SpindleAfter
-Routine 0x21d30 SpindleBefore
+Routine 0x21c7c OilRoomBefore
+Routine 0x21d04 OilTroughsBefore
+Routine 0x21d20 SpindleBefore
+Routine 0x21d30 SpindleAfter
 Routine 0x21da0 CallimachusLife o:object
 Routine 0x2219c PlaceNorth:object
-Routine 0x22260 InsidePalaceAfter
-Routine 0x22308 InsidePalaceBefore
+Routine 0x22260 InsidePalaceBefore
+Routine 0x22308 InsidePalaceAfter
 Routine 0x22370 SlaveLife
 Routine 0x223bc SlaveFindsYou
-Routine 0x22430 BalustradeAfter
-Routine 0x224dc MountingAfter
-Routine 0x22538 DriveAfter
-Routine 0x225b4 FireEscapeAfter
+Routine 0x22430 BalustradeBefore
+Routine 0x224dc MountingBefore
+Routine 0x22538 DriveBefore
+Routine 0x225b4 FireEscapeBefore
 Routine 0x225c4 FireEscpeInitial
-Routine 0x22654 NutsAfter
+Routine 0x22654 NutsBefore
 Routine 0x22680 CornCrakeLife
 Routine 0x226a0 OldEvansLife
-Routine 0x227c8 ChurchAfter
-Routine 0x227f0 GoatsCompassesAfter
-Routine 0x2281c PetMonkeyAfter
-Routine 0x2286c CrescentMoonAfter
-Routine 0x2289c RacingTimesAfter
-Routine 0x228bc HatBandAfter
+Routine 0x227c8 ChurchBefore
+Routine 0x227f0 GoatsCompassesBefore
+Routine 0x2281c PetMonkeyBefore
+Routine 0x2286c CrescentMoonBefore
+Routine 0x2289c RacingTimesBefore
+Routine 0x228bc HatBandBefore
 Routine 0x228e0 ParishChurchSouth:object
 Routine 0x22914 ParishChurchDown:object
-Routine 0x229a0 MoonstoneAfter
-Routine 0x22a44 LifeDeathLoveAfter
-Routine 0x22af0 LifeDeathLoveBefore
-Routine 0x22b84 WestSideChapelAfter
-Routine 0x22cec WestSideChapelBefore
+Routine 0x229a0 MoonstoneBefore
+Routine 0x22a44 LifeDeathLoveBefore
+Routine 0x22af0 LifeDeathLoveAfter
+Routine 0x22b84 WestSideChapelBefore
+Routine 0x22cec WestSideChapelAfter
 Routine 0x22d00 WestSideChapelEachTurn
 Routine 0x22d60 AdamantineKnightDesc
 Routine 0x22dfc AdamantineKnightLife
 Routine 0x22fa0 DisplayKnight
 Routine 0x23058 KnightReacts o:object
-Routine 0x234ec DianaAfter
-Routine 0x2354c BellRopesAfter
+Routine 0x234ec DianaBefore
+Routine 0x2354c BellRopesBefore
 Routine 0x23570 OutOfSpireDown
 Routine 0x23594 AngelDevilConsultTopic tbl:^array w:dictword
 Routine 0x235f4 DemonQuestion w topic:int
 Routine 0x236b4 AngelQuestion w topic:int
 Routine 0x23774 HellishPlaceCantGo
-Routine 0x23790 HellishPlaceBefore cnt:int
+Routine 0x23790 HellishPlaceAfter cnt:int
 Routine 0x23984 HellishPlaceEachTurn i:int
 Routine 0x23a30 HellishAsk
 Routine 0x23ac8 DemonLife i:int
 Routine 0x23bf8 HeavenCantGo
-Routine 0x23c14 HeavenAfter
-Routine 0x23c2c HeavenBefore i:int
+Routine 0x23c14 HeavenBefore
+Routine 0x23c2c HeavenAfter i:int
 Routine 0x23e28 HeavenEachTurn i:int
 Routine 0x23edc AngelHints
 Routine 0x23f74 AngelLife i:int
-Routine 0x24058 SoapAfter
+Routine 0x24058 SoapBefore
 Routine 0x24068 HelpSub:bool
 Routine 0x2417c MainMenu:int
 Routine 0x241e8 HelpSpecialSub:bool
