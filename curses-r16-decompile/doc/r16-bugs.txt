@@ -1,0 +1,19 @@
+Giving anything to Joshua Meldew stops the daemon:
+
+    if( action == ##Give or ##ThrowAt ) {
+        remove noun;
+        StopDaemon(self);
+        if( noun == chicken_wishbone ) {
+            move iron_key to Priest_s_Hole;
+            give iron_key general;
+            remove Sir_Joshua_Meldrewe;
+            Achieved(SCORE_JOSHUA);
+            "The ghost swallows the wishbone, grinning nastily. Then a look of consternation spreads across his face. He begins to choke and as he fades away, his arms flailing wildly, he lets go of the key, which sails through the air onto the roof and (against all odds) falls neatly down a chimney.";
+        }
+        print "The ghost swallows ";
+        Defart(noun);
+        " whole and grins!";
+    }
+
+So you can give him something useless, and take your leisure
+
