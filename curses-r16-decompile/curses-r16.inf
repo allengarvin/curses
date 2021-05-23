@@ -808,7 +808,7 @@ Object lm_object "lm"
 Object rod_of_fire "Fire"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -822,7 +822,7 @@ Object rod_of_fire "Fire"
 Object rod_of_returning "Returning"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -836,7 +836,7 @@ Object rod_of_returning "Returning"
 Object rod_of_stalking "Stalking"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -850,7 +850,7 @@ Object rod_of_stalking "Stalking"
 Object rod_of_infinity "Infinity"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -864,7 +864,7 @@ Object rod_of_infinity "Infinity"
 Object rod_of_husbandry "Husbandry"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -878,7 +878,7 @@ Object rod_of_husbandry "Husbandry"
 Object rod_of_bronze "Bronze"   
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -892,7 +892,7 @@ Object rod_of_bronze "Bronze"
 Object rod_of_sacrifice "Sacrifice"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -906,7 +906,7 @@ Object rod_of_sacrifice "Sacrifice"
 Object rod_of_luck "Luck"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -920,7 +920,7 @@ Object rod_of_luck "Luck"
 Object rod_of_ice "Ice" 
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         after RodAfter,
-        nw_to nothing,
+        sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
         article "a",
@@ -934,7 +934,7 @@ Object rod_of_ice "Ice"
 Object rod_of_language "Language"       
   with  name 'rod' 'of' 'language',
         after RodAfter,
-        nw_to MasterGameRods,
+        sw_to MasterGameRods,
         u_to rod_display_after,
         article "the",
         short rod_short,
@@ -945,7 +945,7 @@ Object rod_of_language "Language"
 Object rod_of_returning2 "Returning"    
   with  name 'rod' 'of' 'returning',
         after RodAfter,
-        nw_to MasterGameRods,
+        sw_to MasterGameRods,
         u_to rod_display_after,
         article "the",
         short rod_short,
@@ -957,7 +957,7 @@ Object rod_of_life "Life"
   with  name 'life' 'high' 'rod' 'of',
         after LifeDeathLoveAfter RodAfter,
         before LifeDeathLoveBefore,
-        nw_to rod_func1,
+        sw_to rod_func1,
         u_to rod_display_after,
         initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
         description " .An adamantine rod, bearing a sculpted ",
@@ -972,7 +972,7 @@ Object rod_of_death "Death"
   with  name 'death' 'high' 'rod' 'of',
         after LifeDeathLoveAfter RodAfter,
         before LifeDeathLoveBefore,
-        nw_to rod_func1,
+        sw_to rod_func1,
         u_to rod_display_after,
         description " .An adamantine rod, bearing a sculpted ",
         article "the",
@@ -986,7 +986,7 @@ Object rod_of_love "Love"
   with  name 'love' 'high' 'rod' 'of',
         after LifeDeathLoveAfter RodAfter,
         before LifeDeathLoveBefore,
-        nw_to rod_func1,
+        sw_to rod_func1,
         u_to rod_display_after,
         description " .An adamantine rod, bearing a sculpted ",
         article "the",
@@ -998,7 +998,7 @@ Object rod_of_love "Love"
 
 Object crumpled_piece_of_paper "crumpled piece of paper"        
   with  name 'crumpled' 'paper',
-        nw_to n_obj,
+        sw_to n_obj,
         description "   Things to do:^^   1. Find map^   2. Phone airport to check parking^   3. Health forms...^^and so on. Let's face it, 1. is more enticing than the rest put together.",
         devil_hint "Immensely useful, that.",
   has   ;
@@ -1007,7 +1007,7 @@ Object electric_torch "electric torch"
   with  name 'electric' 'torch' 'compartment',
         after TorchAfter,
         before TorchBefore,
-        nw_to s_obj,
+        sw_to s_obj,
         description "The torch has a battery compartment which can be reached by opening it up.",
         article "an",
         daemon TorchTimer,
@@ -1016,7 +1016,7 @@ Object electric_torch "electric torch"
 
 Object -> old_smudged_battery "old smudged battery"     
   with  name 'old' 'smudged' 'battery',
-        nw_to s_obj,
+        sw_to s_obj,
         article "an",
         number 200,
   has   battery_flag:int;
@@ -1058,7 +1058,7 @@ Object -> teachests "teachests"
 Object -> -> Meldrewes_History "History of the Meldrews (vol. II)"      
   with  name 'book' 'history',
         after HistoryAfter,
-        nw_to n_obj,
+        sw_to n_obj,
         description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends of the earth, he never could find a detail he wanted for volume I, and it was never published. Somehow, this typifies your family, and consulting this worthy book about your ancestors makes you realise what an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an awful lot of children. So many Meldrews are listed here that you'll have to look them up individually.",
         article "the",
         parse_name ConsultableParsename,
@@ -1099,7 +1099,7 @@ Object Servants_Room "Servant's Room"
 Object -> classical_dictionary "classical dictionary"   
   with  name 'hobsons' 'choice' 'classical' 'dictionary' 'book',
         after DictionaryAfter,
-        nw_to n_obj,
+        sw_to n_obj,
         initial "There's a little book on the tiny bedside table.",
         description "~Hobson's: A Choice Classical Dictionary~. It claims to have numerous entries.",
         article "Hobson's",
@@ -1184,7 +1184,7 @@ Object wrapping_paper "wrapping paper with reindeer on"
 Object postcard_of_the_Champs_Elysees "postcard of the Champs-Elysees"  
   with  name 'postcard' 'card',
         before PostcardBefore,
-        nw_to n_obj,
+        sw_to n_obj,
         description "It is addressed to the house, and postmarked 1963, but has no message. Odd, that.",
         devil_hint "There's no message there to read.",
   has   ;
@@ -1243,7 +1243,7 @@ Object -> -> golden_orb "glowing golden orb"
 Object -> photographers_flash "photographer's flash"    
   with  name 'photograp' 'flash' 'compartment',
         after FlashAFter,
-        nw_to s_obj,
+        sw_to s_obj,
         initial "A rather more modern photographer's flash lies on a shelf to one side.",
         description "The kind of black box which often sits on top of a camera, used to illuminate otherwise dim scenes. It has an openable compartment on the side, with room left inside for a battery and a timer mechanism (which seem to be optional extras).",
         angel_hint "When you can get this working, perhaps you should take it somewhere prominent.",
@@ -1294,7 +1294,7 @@ Object -> water_pipe "water pipe"
 Object -> romantic_novel "romantic novel"       
   with  name 'romance' 'romantic' 'novel' 'book',
         after RomanticNovelAfter,
-        nw_to n_obj,
+        sw_to n_obj,
         initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
         description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
         parse_name ConsultableParsename,
@@ -1304,7 +1304,7 @@ Object -> romantic_novel "romantic novel"
 Object -> book_of_Twenties_poetry "book of Twenties poetry"     
   with  name 'poetry' 'book',
         after PoetryAfter,
-        nw_to n_obj,
+        sw_to n_obj,
         parse_name ConsultableParsename,
         devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
   has   concealed consultable;
@@ -1351,7 +1351,7 @@ Object -> insulation_rolls "insulation rolls"
 
 Object -> -> new_battery "new-looking battery"  
   with  name 'new' 'battery',
-        nw_to s_obj,
+        sw_to s_obj,
         number 300,
         devil_hint "That is a difficult puzzle, yes.",
   has   battery_flag:int;
@@ -1460,7 +1460,7 @@ Object Battlements "Battlements"
 Object -> iron_key "gothic-looking iron key"    
   with  name 'gothic' 'looking' 'iron' 'key' 'gothic-looking',
         after GothicKeyAfter,
-        nw_to compass,
+        sw_to compass,
         initial IronKeyInitial,
         devil_hint "Unfortunately, what you need this for is up in the clouds.",
   has   scored;
@@ -1512,7 +1512,7 @@ Object -> hatch "hatch"
 Object -> ancient_prayer_book "ancient prayer book"     
   with  name 'diary' 'ancient' 'prayer' 'book',
         after PrayerBookAfter,
-        nw_to n_obj,
+        sw_to n_obj,
         initial "The dust and grime on the floor almost obscures an ancient prayer book.",
         description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
         article "an",
@@ -1568,7 +1568,7 @@ Object -> window_sill "window sill"
 
 Object -> delicate_gold_key "delicate gold key" 
   with  name 'delicate' 'gold' 'key',
-        nw_to compass,
+        sw_to compass,
         devil_hint "Gold and lead are naturally related, so you want to find a lead box to open.",
   has   concealed scored;
 
@@ -1594,7 +1594,7 @@ Object -> demijohn "labelXXXled glass demijohn"
 
 Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"       
   with  name 'nasty' 'red' 'battery',
-        nw_to s_obj,
+        sw_to s_obj,
         description "On the side is the word ~Achtung~.",
         devil_hint "It's provided for your torch, and not for anything else.",
   has   battery_flag:int;
@@ -1602,7 +1602,7 @@ Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"
 Object -> -> tourist_map "tourist map"  
   with  name 'hamburg' 'tourist' 'map',
         after TouristMapAfter,
-        nw_to n_obj,
+        sw_to n_obj,
         description "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg.",
         devil_hint "Purely decorative.",
   has   ;
@@ -1613,7 +1613,7 @@ Object Conservatory "Aunt Jemima's Lair"
         s_to Airing_Cupboard,
         e_to Old_Winery,
         w_to Potting_Room,
-        nw_to House,
+        sw_to House,
         u_to Old_Winery,
         description "This used to be called the Conservatory, before Aunt Jemima took it over to potter about with plants, painting and indeed (on occasion) pottery. She has filled the place with objets trouves and bric-a-brac, and hung up a home-made calendar of watercolours. Even the old airing cupboard to the south is cluttered.^^An open doorway leads back southwest onto the upstairs landing, and you can hear the chaotic noise of suitcases being manhandled about - good thing nobody's seen you. A narrow staircase leads up and to the east into the attic.^^Jemima herself seems to be in the potting room to the west.",
         section T_MODERN,
@@ -1828,7 +1828,7 @@ Object -> hole_in_the_wall "hole in the wall"
 
 Object -> -> small_brass_key "small brass key"  
   with  name 'small' 'brass' 'attic' 'key',
-        nw_to compass,
+        sw_to compass,
         initial "Lying where the mouse dropped it is a small brass-coloured key.",
         description "Brass is of course a non-magnetic copper-zinc alloy, so presumably this key also contains iron.",
         devil_hint "It isn't the attic key, I fear.",
@@ -1915,7 +1915,7 @@ Object -> gilded_model_coffin "gilded model coffin"
 
 Object -> ragged_scroll "ragged scroll" 
   with  name 'ragged' 'white' 'parchment' 'scroll',
-        nw_to n_obj,
+        sw_to n_obj,
         initial "Leaned against one of the eight corners is a ragged white parchment scroll.",
         description "A lamentably naff tourist's gift, this seems to be a ~replica~ of one of the papyri on which some lost Greek play or other was written. Some nonsense about the priestess of Apollo being summoned by music, etcetera.^^It has all the charm of a tea-towel of, oh, say the Taj Mahal made out of curry.",
         devil_hint "What taste! What artistry!",
@@ -1938,7 +1938,7 @@ Object charcoal_sketch "charcoal sketch"
 
 Object dog_eared_old_letter "dog-eared old letter"      
   with  name 'old' 'letter',
-        nw_to n_obj,
+        sw_to n_obj,
         description " .A faint typewritten letter, postmarked Cairo, October 1920, with a handwritten note signed simply ~Ellingsworth~:^^Hartley - Thought you might be able to date some of these queer pictograms and determinitives, early New Kingdom?  Pottery unclear, work continues^",
         devil_hint "The ravings of a madman. Ignore it.",
   has   ;
@@ -2055,7 +2055,7 @@ Object Death_card "Grim Reaper"
   with  name 'death' 'grim' 'reaper' 'card' 'tarot',
         after TarotAfter,
         n_to Ruined_Castle_Cafe,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
         article "the",
         short TarotShort,
@@ -2067,7 +2067,7 @@ Object Fool_card "Fool"
   with  name 'fool' 'card' 'tarot',
         after TarotAfter,
         n_to Ruined_Castle_Cafe,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
         article "the",
         short TarotShort,
@@ -2079,7 +2079,7 @@ Object Drowned_Sailor_card "Drowned Sailor"
   with  name 'drowned' 'sailor' 'card' 'tarot',
         after TarotAfter,
         n_to Ruined_Castle_Cafe,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "Those are pearls that were his eyes...",
         article "the",
         short TarotShort,
@@ -2193,7 +2193,7 @@ Object -> publicity_poster "publicity poster"
 Object Revolving_Door1 "Revolving Door" 
   with  n_to RevolvingDoorNorth,
         e_to "The door only turns clockwise.",
-        nw_to Museum_Foyer,
+        sw_to Museum_Foyer,
         description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
         cant_go "To north and east are the walls of the door.",
         section T_HAMBURG,
@@ -2208,7 +2208,7 @@ Object -> door1 "door"
 Object Revolving_Door2 "Revolving Door" 
   with  n_to RevolvingDoorNorth,
         e_to "The door only turns clockwise.",
-        nw_to Museum_Foyer,
+        sw_to Museum_Foyer,
         description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
         cant_go "To north and east are the walls of the door.",
         section T_HAMBURG,
@@ -2246,7 +2246,7 @@ Object -> -> Castle "Castle"
   with  name 'castle' 'card' 'tarot',
         after TarotAfter,
         n_to Ruined_Castle_Cafe,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "A stone castle on a hill.",
         article "the",
         short TarotShort,
@@ -2258,7 +2258,7 @@ Object -> -> Star "Star"
   with  name 'star' 'card' 'tarot',
         after TarotAfter,
         n_to Lighthouse,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "A single bright light in the darkness.",
         article "the",
         short TarotShort,
@@ -2269,7 +2269,7 @@ Object -> -> Star "Star"
 Object -> -> Eight_of_Wands_card "Eight of Wands"       
   with  name 'eight' 'of' 'wands' 'card' 'tarot',
         after TarotAfter,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         article "the",
         short TarotShort,
         parse_name TarotParseName,
@@ -2281,7 +2281,7 @@ Object -> -> Maiden_card "Maiden"
   with  name 'maiden' 'card' 'tarot',
         after TarotAfter,
         n_to Sea_Shore,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "Andromeda chained to a rock on the sea-shore.",
         article "the",
         short TarotShort,
@@ -2316,7 +2316,7 @@ Object Ace_of_Cups_card "Ace of Cups"
   with  name 'ace' 'of' 'cups' 'card' 'tarot',
         after TarotAfter,
         n_to Cups_and_Glasses,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "It shows a great many crystal-glass cups and glasses.",
         article "the",
         short TarotShort,
@@ -2515,7 +2515,7 @@ Object -> amber_hairband "amber hairband"
 Object Cliffs "Cliffs"  
   with  name 'pharos' 'lighthouse' 'tower',
         e_to Clifftop_Walk,
-        nw_to Cave_Mouth,
+        sw_to Cave_Mouth,
         d_to Sea_Shore,
         description "On top of some exposed cliffs on the Mediterranean. A dangerous slither down leads on one side to the shore, all other ways down being even more hazardous. Atop the cliffs is the Pharos tower, a round stone pinnacle lighthouse, but there is no way in from here.^^A grassy walk leads east, and a narrow crack leads southwest into a cave mouth.",
         cant_go "There's only dull grassland that way.",
@@ -2613,7 +2613,7 @@ Object Temple_of_Zeus "Temple of Zeus"
   with  name 'pillar',
         n_to TempleNorth,
         se_to East_Cloister,
-        nw_to West_Cloister,
+        sw_to West_Cloister,
         description "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and featureless save for the entrance at the north. So much for all the rumours about hoards of treasure - it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along.^^Cloisters lead southeast and southwest, deeper into the temple.",
         section T_TAROT,
   has   light scored;
@@ -2628,7 +2628,7 @@ Object -> copper_coin "copper coin"
 Object East_Cloister "East Cloister"    
   with  name 'niche',
         nw_to Temple_of_Zeus,
-        nw_to Inner_Sanctum,
+        sw_to Inner_Sanctum,
         description "The east cloister of the Temple, which turns from northwest to southwest, is bare but for a small niche.",
         section T_TAROT,
   has   ;
@@ -2687,7 +2687,7 @@ Object Cross_Centre "Cross Centre"
         ne_to Northeast_Cross,
         se_to Southeast_Cross,
         nw_to Northwest_Cross,
-        nw_to Southwest_Cross,
+        sw_to Southwest_Cross,
         u_to Inner_Sanctum,
         d_to inscriptions,
         initial CrossInitial,
@@ -2724,7 +2724,7 @@ Object -> gleaming_amber_gem "gleaming amber gem"
 
 Object Northeast_Cross "Northeast Cross"        
   with  name 'carvings' 'fish' 'nets',
-        nw_to Cross_Centre,
+        sw_to Cross_Centre,
         description "This cross-corner is inlaid with carvings of fish, of the waves, of great casting nets sweeping through the water.^^The Labyrinth lies to southwest.",
         section T_TAROT,
   has   ;
@@ -3236,7 +3236,7 @@ Object Tree_Planting "Tree Planting"
 
 Object Bricked_Path "Bricked Path"      
   with  e_to Hedgery,
-        nw_to White_Hallway,
+        sw_to White_Hallway,
         initial BrickPathInitial,
         description "You're strolling on a pleasant bricked path, passing from the outer rooms of Meldrew Hall to a track through the eastern side of the garden.",
         section T_GARDEN,
@@ -3365,7 +3365,7 @@ Object -> flaming_torch "flaming torch"
 
 Object -> historical_pamphlet "historical pamphlet"     
   with  name 'historical' 'pamphlet',
-        nw_to n_obj,
+        sw_to n_obj,
         description "It is a summary of the writings of a polemical monk called Gildas, and relates to events following the fall of the tyrant Vortigern at the turn of the fifth century A.D. After dark decades of pillage by Saxon mercenaries, Britain was reunited by Ambrosius Aurelianus and then defended at the Battle of Badon Hill, some time in the early years of the sixth century.^^This remarkable victory was of no religious significance, so Gildas does not dwell upon it. He tends only to mention bad kings and leaders, and then chiefly to insult them. (Talking about Gildas is an excellent way to annoy an Anglo-Saxon historian.)  Nobody even knows where Badon Hill is any more, or anything else about it, although some students of Welsh poetry believe Ambrosius was the source of the legend of King Arthur.",
         article "an",
   has   ;
@@ -3408,7 +3408,7 @@ Object -> yellow_daisy "yellow daisy"
 
 Object Valley_Prospect "Valley Prospect"        
   with  e_to Roman_Villa,
-        nw_to Murky_Cave,
+        sw_to Murky_Cave,
         description "The geography is strangely familiar here. You are on a natural shelf on the hillside, overlooking the valley below. An all-but invisible cleft in the rock leads to a cave to the southwest, and the slope can safely be traversed to the east.^^It is a brightly moonlit night, cool as in late spring. There will be a sharp frost tomorrow. Down in the valley, a great cartwheel circle of camp fires illuminate some dark shapes, perhaps crude encampments. There is no other sign of civilisation.",
         cant_go "The hillside is too steep.",
         section T_ANCIENT_BRITAIN,
@@ -3606,7 +3606,7 @@ Object ghost_of_yourself "ghost of yourself"
 
 Object Premonition "Premonition"        
   with  e_to PremonitionEast,
-        nw_to Camp_Fire,
+        sw_to Camp_Fire,
         description "It is a frosty, clear night, but there is a scent of camp-fires burning in the distance. You are passing through the landscape as if a ghost, and all seems faintly unreal. To the east is one side of an animal-hide tent, but there is no way in from here. To southwest, some soldiers sit around the embers of a fire. There is a terrible sense of something about to happen.",
         cant_go DreamCantGo,
         section T_DREAMING,
@@ -3750,7 +3750,7 @@ Object Jagged_Passage "Jagged Passage"
 
 Object -> wrought_iron_key "long wrought iron key"      
   with  name 'long' 'wrought' 'iron' 'key',
-        nw_to compass,
+        sw_to compass,
         initial "You appear to be standing on a wrought iron key.",
         description "A figure-eight double ring, a long barrel and a finely-cut ten-groove claw: this is the ultimate in keys. It is superb.",
   has   ;
@@ -3909,7 +3909,7 @@ Object -> rusty_iron_grating "rusty iron grating"
 Object -> rusty_iron_key "rusty iron key"       
   with  name 'rusty' 'iron' 'key',
         after RustyKeyAfter,
-        nw_to compass,
+        sw_to compass,
         initial "Interestingly, a key which looks as if it would fit the grating can be seen inside the passage beneath.",
         angel_hint "Oh dear, surely it's gratingly obvious what this fits?",
   has   ;
@@ -3959,7 +3959,7 @@ Object Crossroads "Crossroads"
         ne_to Outside_the_Royal_Museum,
         se_to A_Tower,
         nw_to Causeway,
-        nw_to Necropolis,
+        sw_to Necropolis,
         description "The great crossroads at the heart of chlamys-shaped Alexandria, greatest city of the civilised world. The northwest-southeast road runs from the causeway to the Tower: the main road runs southwest from the Necropolis gate, northeast to the great public buildings of the city.",
         section T_ALEXANDRIA,
   has   light;
@@ -4168,7 +4168,7 @@ Object adamantine_skull "adamantine skull"
   has   ;
 
 Object Stadium "Stadium"        
-  with  nw_to Outside_the_Royal_Museum,
+  with  sw_to Outside_the_Royal_Museum,
         description "The great Stadium of Alexandria, with capacity enough to hold the whole population of the city: and it looks full. Olympic openings in the age of television have nothing on these people. The procession surges continually in, around the track and then out again, and amid the bustle you cannot push through.",
         cant_go "It would be easier to breathe back southwest.",
         section T_ALEXANDRIA,
@@ -4186,7 +4186,7 @@ Object Outside_the_Royal_Museum "Outside the Royal Museum"
   with  n_to Outside_the_Theatre,
         ne_to Stadium,
         se_to OutsideRoyalMuseumSE,
-        nw_to Crossroads,
+        sw_to Crossroads,
         description "The main southwest-northeast road forks off with a road due north to the Theatre. Despite the kaleidoscopic din you are impressed by the sober majesty of the Museum of the Ptolemies, whose fine portico entrance, decked with reliefs, is southeast.",
         daemon OutsideRoyalMuseumDaemon,
         section T_ALEXANDRIA,
@@ -4422,7 +4422,7 @@ Object Lost_inside_the_Palace "Lost inside the Palace"
         ne_to Lost_inside_the_Palace,
         se_to Lost_inside_the_Palace,
         nw_to Lost_inside_the_Palace,
-        nw_to Lost_inside_the_Palace,
+        sw_to Lost_inside_the_Palace,
         description "Scholars are divided on the origin of the ~maze~ legend: some hold that to a primitive culture, the Knossos palace was so complex as to seem a maze, and the king so fearsome as to seem a Minotaur.^^Others say the early palaces really were labyrinths to protect sacred altars.^^And you think it's because this is a maze of twisty little passages, all alike.",
         section T_ALEXANDRIA,
   has   light scored cat_nofollow;
@@ -4470,7 +4470,7 @@ Object -> fire_escape "fire escape"
 Object Public_Footpath "Public Footpath"        
   with  name 'stile' 'dragonflies' 'house' 'hall' 'battlements',
         n_to Stone_Cross,
-        nw_to Beside_the_Drive,
+        sw_to Beside_the_Drive,
         d_to Hollow,
         description "By a stile in the public footpath across the fields to the village, which lies to the north. Sitting on the stile you have a splendid view of the house and its battlements. The air is ablaze with pollen and dragonflies.^^It might be possible to scramble down to a hollow, but it surely wouldn't be pleasant.",
         cant_go "The footpath turns from southwest to north.",
@@ -4525,7 +4525,7 @@ Object -> -> Crescent_Moon "Crescent Moon"
   with  name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
         after CrescentMoonAfter TarotAfter,
         n_to Parish_Church,
-        nw_to "Tarot cards",
+        sw_to "Tarot cards",
         description "Some kind of crescent moon, an old Druidical symbol.",
         article "the",
         short TarotShort,
@@ -9745,7 +9745,7 @@ Array preactions_table --> IsDirection;
     r.&name-->3 = r.rod_word;
     r.article = "the";
     r.d_to = nothing;
-    r.nw_to = MasterGameRods;
+    r.sw_to = MasterGameRods;
     rtrue;
 ];
 
@@ -19460,7 +19460,7 @@ Array preactions_table --> IsDirection;
     if (lt_value ~= 0) {
         if (c_style & 512 ~= 0 && odepth == 0) {
           .labelXXX;
-            if (o ~= nothing && (o.nw_to ~= lt_value || o hasnt workflag:int)) {
+            if (o ~= nothing && (o.sw_to ~= lt_value || o hasnt workflag:int)) {
                 o = sibling(o);
                 jump labelXXX;
             }
@@ -19468,14 +19468,14 @@ Array preactions_table --> IsDirection;
         }
         if (c_style & 2048 ~= 0) {
           .labelXXX;
-            if (o ~= nothing && (o has concealed || o has scenery || o.nw_to ~= lt_value)) {
+            if (o ~= nothing && (o has concealed || o has scenery || o.sw_to ~= lt_value)) {
                 o = sibling(o);
                 jump labelXXX;
             }
             return o;
         }
       .labelXXX;
-        if (o ~= nothing && o.nw_to ~= lt_value) {
+        if (o ~= nothing && o.sw_to ~= lt_value) {
             o = sibling(o);
             jump labelXXX;
         }
@@ -19533,7 +19533,7 @@ Array preactions_table --> IsDirection;
 [ SortTogether obj value ;      
   .labelXXX;
     if (child(obj) ~= nothing) {
-        if (child(obj).nw_to ~= value) {
+        if (child(obj).sw_to ~= value) {
             move child(obj) to out_obj;
         } else {
             move child(obj) to in_obj;
@@ -19559,11 +19559,11 @@ Array preactions_table --> IsDirection;
     i = obj;
   .labelXXX;
     if (i ~= 0) {
-        k = i.nw_to;
+        k = i.sw_to;
         if (k ~= 0) {
             i = sibling(i);
           .labelXXX;
-            if (i ~= 0 && i.nw_to == k) {
+            if (i ~= 0 && i.sw_to == k) {
                 i = sibling(i);
                 jump labelXXX;
             }
@@ -19573,7 +19573,7 @@ Array preactions_table --> IsDirection;
             l = sibling(i);
           .labelXXX;
             if (l ~= 0) {
-                if (l.nw_to == k) {
+                if (l.sw_to == k) {
                     SortTogether(parent(obj),k);
                     obj = child(parent(obj));
                     jump labelXXX;
@@ -19690,10 +19690,10 @@ Array preactions_table --> IsDirection;
                 jump labelXXX;
             }
             m = sizes_p->i;
-            if (j.nw_to ~= nothing or lt_value && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
+            if (j.sw_to ~= nothing or lt_value && ZRegion(j.sw_to) == 2 or 3 && j.sw_to == mr) {
                 --senc;
             }
-            mr = j.nw_to;
+            mr = j.sw_to;
             ++i;
             ++senc;
             jump labelXXX;
@@ -19711,23 +19711,23 @@ Array preactions_table --> IsDirection;
                 j = NextEntry(j,depth);
                 jump labelXXX;
             }
-            if (j.nw_to ~= nothing or lt_value) {
-                if (j.nw_to == mr) {
+            if (j.sw_to ~= nothing or lt_value) {
+                if (j.sw_to == mr) {
                     ++senc;
                     jump labelXXX;
                 }
                 k2 = NextEntry(j,depth);
-                if (k2 == 0 || k2.nw_to ~= j.nw_to) {
+                if (k2 == 0 || k2.sw_to ~= j.sw_to) {
                     ! no code
                 } else {
-                    k2 = ZRegion(j.nw_to);
+                    k2 = ZRegion(j.sw_to);
                     if (k2 == 2[?] or 3[s_obj?]) {
                         q = j;
                         listing_size = 1;
                         l = k;
                         m = i;
                       .labelXXX;
-                        if (m < n && q.nw_to == j.nw_to) {
+                        if (m < n && q.sw_to == j.sw_to) {
                             ++m;
                           .labelXXX;
                             if (classes_p->l ~= m && classes_p->l ~= 0 - m) {
@@ -19735,7 +19735,7 @@ Array preactions_table --> IsDirection;
                                 q = NextEntry(q,depth);
                                 jump labelXXX;
                             }
-                            if (q.nw_to == j.nw_to) {
+                            if (q.sw_to == j.sw_to) {
                                 ++listing_size;
                             }
                             jump labelXXX;
@@ -19762,7 +19762,7 @@ Array preactions_table --> IsDirection;
                                     jump labelXXX;
                                 }
                                 EnglishNumber(q);
-                                print " ", (string) j.nw_to;
+                                print " ", (string) j.sw_to;
                                 if (c_style & 8 ~= 0) {
                                     print " (";
                                 }
@@ -19775,11 +19775,11 @@ Array preactions_table --> IsDirection;
                                 rod_identity = 1;
                                 parser_one = j;
                                 parser_two = depth + wlf_indent;
-                                if (RunRoutines(j,nw_to) == 1[?]) {
+                                if (RunRoutines(j,sw_to) == 1[?]) {
                                     jump labelXXX;
                                 }
                             }
-                            lt_value = j.nw_to;
+                            lt_value = j.sw_to;
                             listing_together = j;
                             ++wlf_indent;
                             WriteListR(j,depth,stack_pointer);
@@ -19794,14 +19794,14 @@ Array preactions_table --> IsDirection;
                                 rod_identity = 2;
                                 parser_one = j;
                                 parser_two = depth + wlf_indent;
-                                RunRoutines(j,nw_to);
+                                RunRoutines(j,sw_to);
                             }
                           .labelXXX;
                             if (q & 1 ~= 0 && c_style & 1 == 0) {
                                 new_line;
                             }
                             c_style = q;
-                            mr = j.nw_to;
+                            mr = j.sw_to;
                             jump labelXXX;
                         }
                     }
@@ -19849,10 +19849,10 @@ Array preactions_table --> IsDirection;
     j = o;
   .labelXXX;
     if (i <= n) {
-        if (j.nw_to ~= nothing or lt_value && ZRegion(j.nw_to) == 2 or 3 && j.nw_to == mr) {
+        if (j.sw_to ~= nothing or lt_value && ZRegion(j.sw_to) == 2 or 3 && j.sw_to == mr) {
             --senc;
         }
-        mr = j.nw_to;
+        mr = j.sw_to;
         j = NextEntry(j,depth);
         ++i;
         ++senc;
@@ -19863,16 +19863,16 @@ Array preactions_table --> IsDirection;
     mr = 0;
   .labelXXX;
     if (i <= senc) {
-        if (j.nw_to ~= nothing or lt_value) {
-            if (j.nw_to == mr) {
+        if (j.sw_to ~= nothing or lt_value) {
+            if (j.sw_to == mr) {
                 --i;
                 jump labelXXX;
             }
             k = NextEntry(j,depth);
-            if (k == 0 || k.nw_to ~= j.nw_to) {
+            if (k == 0 || k.sw_to ~= j.sw_to) {
                 ! no code
             } else {
-                k = ZRegion(j.nw_to);
+                k = ZRegion(j.sw_to);
                 if (k == 2[?] or 3[s_obj?]) {
                     if (c_style & 2 ~= 0) {
                         generic_globvar = 2 * (depth + wlf_indent);
@@ -19889,9 +19889,9 @@ Array preactions_table --> IsDirection;
                       .labelXXX;
                         q = NextEntry(q,depth);
                         ++l;
-                        if (q.nw_to == j.nw_to) jump labelXXX;
+                        if (q.sw_to == j.sw_to) jump labelXXX;
                         EnglishNumber(l);
-                        print " ", (string) j.nw_to;
+                        print " ", (string) j.sw_to;
                         if (c_style & 8 ~= 0) {
                             print " (";
                         }
@@ -19904,11 +19904,11 @@ Array preactions_table --> IsDirection;
                         rod_identity = 1;
                         parser_one = j;
                         parser_two = depth + wlf_indent;
-                        if (RunRoutines(j,nw_to) == 1[?]) {
+                        if (RunRoutines(j,sw_to) == 1[?]) {
                             jump labelXXX;
                         }
                     }
-                    lt_value = j.nw_to;
+                    lt_value = j.sw_to;
                     listing_together = j;
                     ++wlf_indent;
                     WriteListR(j,depth,stack_pointer);
@@ -19923,14 +19923,14 @@ Array preactions_table --> IsDirection;
                         rod_identity = 2;
                         parser_one = j;
                         parser_two = depth + wlf_indent;
-                        RunRoutines(j,nw_to);
+                        RunRoutines(j,sw_to);
                     }
                   .labelXXX;
                     if (q & 1 ~= 0 && c_style & 1 == 0) {
                         new_line;
                     }
                     c_style = q;
-                    mr = j.nw_to;
+                    mr = j.sw_to;
                     jump labelXXX;
                 }
             }
