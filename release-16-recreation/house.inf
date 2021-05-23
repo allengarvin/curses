@@ -1255,7 +1255,7 @@ HRoom   Alisons_Writing_Room "Alison's Writing Room"
   with  name 'engraving' 'dice' 'outline' 'sixes' 'door',
         before [;
             Sleep:
-                if( flag_of_the_British_Merchant_Navy notin comfortable_bed )
+                if( british_flag notin comfortable_bed )
                     "Awareness that something important is happening tugs at your subconscious.^^But you feel too exposed to sleep with only a sheet on the bed, and can't get comfortable.";
 
                 Achieved(SCORE_SLEEP);
@@ -1280,7 +1280,7 @@ HRoom   Alisons_Writing_Room "Alison's Writing Room"
                 is done out in a dice motif, and a square outline of
                 sixes surrounds a rather small door leading back north
                 into the attics.^^";
-            if( flag_of_the_British_Merchant_Navy in comfortable_bed ) { 
+            if( british_flag in comfortable_bed ) { 
                 "The flag is spread out as a blanket on the comfortable bed.";
             }
             "The room is provided with a comfortable bed, which looks very inviting."; 
@@ -1292,9 +1292,9 @@ Object  -> comfortable_bed "comfortable bed"
   with  name 'comfortable' 'bed',
         before [;
             Receive:
-                if( noun ~= flag_of_the_British_Merchant_Navy )
+                if( noun ~= british_flag )
                     "That seems unlikely to make a good blanket.";
-                move flag_of_the_British_Merchant_Navy to comfortable_bed;
+                move british_flag to comfortable_bed;
                 "You spread the flag over the bed as a blanket.";
         ],
   has   enterable light scenery supporter;
