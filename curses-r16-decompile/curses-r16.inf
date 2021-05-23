@@ -934,7 +934,7 @@ Object rod_of_ice "Ice"
 Object rod_of_language "Language"       
   with  name 'rod' 'of' 'language',
         before RodBefore,
-        sw_to MasterGameRods,
+        sw_to ListingRods,
         u_to rod_display_before,
         article "the",
         short rod_short,
@@ -945,7 +945,7 @@ Object rod_of_language "Language"
 Object rod_of_returning2 "Returning"    
   with  name 'rod' 'of' 'returning',
         before RodBefore,
-        sw_to MasterGameRods,
+        sw_to ListingRods,
         u_to rod_display_before,
         article "the",
         short rod_short,
@@ -9716,7 +9716,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ MasterGameRods enhanced ;     
+[ ListingRods enhanced ;        
     if (rod_identity == 1) {
         if (enhanced == true) {
             print "the High Rods of ";
@@ -9736,7 +9736,7 @@ Array preactions_table --> IsDirection;
 
 
 [ rod_func1 ;   
-    return MasterGameRods(true);
+    return ListingRods(true);
 ];
 
 [ discover_rod r ;      
@@ -9745,7 +9745,7 @@ Array preactions_table --> IsDirection;
     r.&name-->3 = r.rod_word;
     r.article = "the";
     r.d_to = nothing;
-    r.sw_to = MasterGameRods;
+    r.sw_to = ListingRods;
     rtrue;
 ];
 
