@@ -4964,7 +4964,7 @@ Global StrongboxX;
 Global StrongboxY;
 Global LocationSave;
 Global ContainerSave;
-Global ball_polished;
+Global projector_reversed;
 Global tablet_eaten;
 Global daisy_given;
 Global Mouse_x = 8;
@@ -10951,7 +10951,7 @@ Array preactions_table --> IsDirection;
         newroom = Over_the_East_Wing;
     }
     if (env == Disused_Observatory) {
-        if (slide_projector has on && ball_polished ~= false && to_current == false) {
+        if (slide_projector has on && projector_reversed ~= false && to_current == false) {
             if (location == Disused_Observatory) {
                 "^Austin seems fascinated by the beam of light.";
             }
@@ -11146,7 +11146,7 @@ Array preactions_table --> IsDirection;
 
 [ ObservatoryAfter ;    
     if (action == ##Look) {
-        if (slide_projector hasnt on || ball_polished == false) {
+        if (slide_projector hasnt on || projector_reversed == false) {
             rfalse;
         }
         print "^A beam of white light runs into the room from the slide projector to the south, and hits the ";
@@ -11222,7 +11222,7 @@ Array preactions_table --> IsDirection;
 [ GlassBallBefore i ;   
     if (action == ##Clean) {
         give selfobj general;
-        if (ball_polished == true && slide_projector has on) {
+        if (projector_reversed == true && slide_projector has on) {
             print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
             ObservatoryDiffraction();
             rtrue;
@@ -11398,7 +11398,7 @@ Array preactions_table --> IsDirection;
             print "^The south wall displays ";
             DisplayCardDesc(o);
         }
-        if (ball_polished == true) {
+        if (projector_reversed == true) {
             "^A beam of white light points directly backward from the projector, through the north doorway into the Observatory.";
         }
         rtrue;
@@ -11437,15 +11437,15 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     if (action == ##Turn) {
-        if (ball_polished == true) {
-            ball_polished = false;
+        if (projector_reversed == true) {
+            projector_reversed = false;
             if (selfobj has on) {
                 give Disused_Observatory ~light;
                 "The sharp beam of light cuts out again.";
             }
             "Click.";
         }
-        ball_polished = true;
+        projector_reversed = true;
         if (selfobj has on) {
             give Disused_Observatory light;
             "A sharp beam of white light appears backward out of the projector. As you step out of the beam, it extends dead straight through the north doorway.";
@@ -11473,13 +11473,13 @@ Array preactions_table --> IsDirection;
     }
     if (action == ##SwitchOn) {
         give Souvenirs_Room light;
-        if (ball_polished == true) {
+        if (projector_reversed == true) {
             give Disused_Observatory light;
         }
         o = child(slide_projector);
         if (o == nothing) {
             print "The south wall is lit up. ";
-            if (ball_polished == true) {
+            if (projector_reversed == true) {
                 print "Also, a narrow white beam of light extends backwards from the projector, pointing out up through the Observatory doorway to the north.";
             }
             new_line;
