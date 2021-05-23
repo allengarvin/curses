@@ -11464,7 +11464,7 @@ Array preactions_table --> IsDirection;
         }
         rfalse;
     }
-    if (action == ##Release) {
+    if (action == ##LetGo) {
         if (selfobj has on) {
             ToggleSouthWall(nothing);
             rtrue;
@@ -12947,7 +12947,7 @@ Array preactions_table --> IsDirection;
         }
         rfalse;
     }
-    if (action == ##Release) {
+    if (action == ##LetGo) {
         "There's nothing within reach inside.";
     }
     rfalse;
@@ -20477,7 +20477,7 @@ Array preactions_table --> IsDirection;
     if (i has container || i has supporter) {
         postonobj = i;
         k = verb;
-        verb = ##Release;
+        verb = ##LetGo;
         if (RunRoutines(i,before) ~= 0) {
             verb = k;
             rtrue;
@@ -20553,7 +20553,7 @@ Array preactions_table --> IsDirection;
     move noun to player;
     if (postonobj ~= 0) {
         k = verb;
-        verb = ##Release;
+        verb = ##LetGo;
         if (RunRoutines(postonobj,after) ~= 0) {
             verb = k;
             rtrue;
@@ -20788,7 +20788,7 @@ Array preactions_table --> IsDirection;
         if (par has container || par has supporter) {
             postonobj = par;
             k = verb;
-            verb = ##Release;
+            verb = ##LetGo;
             if (RunRoutines(par,before) ~= 0) {
                 verb = k;
                 rtrue;
@@ -20798,7 +20798,7 @@ Array preactions_table --> IsDirection;
         move noun to player;
         if (postonobj ~= 0) {
             k = verb;
-            verb = ##Release;
+            verb = ##LetGo;
             if (RunRoutines(postonobj,after) ~= 0) {
                 verb = k;
                 rtrue;
