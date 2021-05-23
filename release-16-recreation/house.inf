@@ -1648,14 +1648,22 @@ Object  -> -> pulley_ropes "pulley ropes"
 
 Object  -> -> chicken_wishbone "chicken wishbone"        
   with  name 'wish' 'bone' 'wishbone' 'chicken',
-        before WishboneAfter,
+        before [;
+            Pull: "It already has been. The part you have, lost.";
+        ],
         description "The half which didn't get the wish, actually.",
         devil_hint "It isn't even mentioned in any of the books I've read.",
   has   ;
 
 Object  -> dark_shaft_obj "dark shaft"   
   with  name 'shaft' 'dark',
-        after ShaftAfter,
+        after [;
+            Look:
+                if( dumbwaiter notin Dark_Shaft )
+                    print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the 
+                        cellars.^";
+                rfalse;
+        ],
         description "Uninviting.",
   has   container open scenery;
 
@@ -1666,11 +1674,23 @@ Object  -> steel_wrench "steel wrench"
   has   ;
 
 HRoom   Dark_Shaft "Dark Shaft"  
-  with  before Shaft2Before,
-        after ShaftAfter,
+  with  before [;
+            Go:
+                if( noun == d_obj && dumbwaiter in Dark_Shaft )
+                    "Since the dumbwaiter is here, why not travel in that instead.";
+                rfalse;
+        ],
+        after [;
+            Look:
+                if( dumbwaiter notin Dark_Shaft )
+                    print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the 
+                        cellars.^";
+                rfalse;
+        ],
         n_to Dark_Passage,
         d_to Cellars,
-        description "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor leading north.",
+        description "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor 
+            leading north.",
   has   ;
 
 HRoom   Dark_Passage "Dark Passage"      
@@ -1680,7 +1700,8 @@ HRoom   Dark_Passage "Dark Passage"
         s_to Dark_Shaft,
         e_to sandstone_recess,
         d_to sandstone_recess,
-        description "A passage which slants very slightly down to the south, which is full of coal dust, to which you are unfortunately allergic. Not somewhere to linger.",
+        description "A passage which slants very slightly down to the south, which is full of coal dust, to which 
+            you are unfortunately allergic. Not somewhere to linger.",
         number 2,
   has   ;
 
@@ -1737,10 +1758,23 @@ Object  -> robot_mouse "robot mouse"
 
 HRoom   Wine_Cellars "Wine Cellars"      
   with  name 'wine' 'woodlice' 'hexagonal' 'racks' 'shaft',
-        before WineCellarsBefore,
+        before [;
+            Drink:
+                "But you are teetotal, which is why the cellars have got in this state.";
+        ],
         w_to Cellars,
-        u_to WineCellarsUp,
-        description " .The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked",
+        u_to [;
+            if( self hasnt light )
+                rfalse;
+            "The barrel-shaft is too steep to climb. You were lucky enough not to break your neck on the way down.";
+        ],
+        description [;
+            print "The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to 
+                woodlice now. Much of what there is was laid in by your father and has corked";
+            if( self hasnt light ) 
+                ".";
+            ". The barrel-shaft slants upwards to the north, and bright light floods in from the gardens above.";
+        ],
         cant_go "This is the eastern end of the cellars, from which you can only go west.",
   has   ;
 
@@ -1751,7 +1785,12 @@ HRoom   Cellars_South "Cellars South"
 
 Object  -> hole_in_the_wall "hole in the wall"   
   with  name 'hole' 'mousehole',
-        before HoleBefore,
+        before [;
+            Receive:
+                "Nothing is to be gained by this.";
+            Release:
+                "There's nothing within reach inside.";
+        ],
         life HoleLife,
   has   scenery talkable;
 
@@ -1773,7 +1812,10 @@ HRoom   Cellar_West "Cellar West"
 
 Object  -> ironbound_door "ironbound door"       
   with  name 'iron' 'ironbound' 'door',
-        before IronboundDoorBefore,
+        before [;
+            Knock:
+                "You bark your knuckles painfully on the iron, and to no avail.";
+        ],
         n_to Infinity_Symbol,
         s_to "In the northwest wall is a heavy, imposing ironbound door.",
         e_to wrought_iron_key,
@@ -1785,14 +1827,57 @@ Object  -> ironbound_door "ironbound door"
 
 HRoom   Infinity_Symbol "Infinity Symbol"        
   with  name 'marble' 'disc' 'webs' 'icicle',
-        after LemniscusAfter,
+        after [ i;
+            Look:
+                print "^Around the edge of the disc is a circular arc, surrounding the lemniscus, which passes through nine equally spaced sockets or cylindrical wells.";
+                i = circular_arc.number;
+                switch( i ) {
+                    0: new_line;
+                    1: "  One socket contains a rod, fixed in place.";
+                    2: "  Two of the sockets contain rods, fixed in place.";
+                    3: "  Three sockets contain rods, fixed in place.";
+                    4: "  Four sockets contain rods, fixed in place.";
+                    5: "  Five sockets contain rods, fixed in place.";
+                    6: "  Six sockets contain rods, fixed in place.";
+                    7: "  Seven sockets contain rods, fixed in place.";
+                    8: "  Only one socket is left empty.";
+                    9: "  All nine sockets are occupied by rods.";
+                }
+                rfalse;
+        ],
         se_to Cellar_West,
-        description "An eerie, dark cave carved from crystal icicles of rock and strewn with great spiders' webs hung from the ragged stone, inhabited only by dead white insects. A narrow crevice opens out to an iron doorway and the warmth of the house.^^The rough stone floor levels out to a perfectly round, smooth white marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.^^You shiver with foreboding, but inexplicably feel that the map you're looking for must be somewhere near here.",
+        description "An eerie, dark cave carved from crystal icicles of rock and strewn with great spiders' webs 
+            hung from the ragged stone, inhabited only by dead white insects. A narrow crevice opens out to an iron
+            doorway and the warmth of the house.^^The rough stone floor levels out to a perfectly round, smooth white
+            marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.^^You shiver
+            with foreboding, but inexplicably feel that the map you're looking for must be somewhere near here.",
   has   light scored;
 
 Object  -> circular_arc "circular arc"   
   with  name 'wells' 'circular' 'arc' 'socket' 'sockets' 'well',
-        before ArcBefore,
+        before [ i;
+            Receive:
+                i = self.number;
+                if( i == 9 ) "The sockets are all full.";
+                if( noun hasnt rod_attr )
+                    "That won't fit in a socket.";
+                if( noun == rod_of_infinity ) {
+                    if( noun has unidentiifed_rod ) 
+                        "For some reason, that rod is just too large to fit.";
+                    "The Rod of Infinity is just slightly too large to fit.";
+                }
+                move noun to self;
+                give noun static;
+                ++i;
+                self.number = i;
+                print "It fits perfectly in one of the arc sockets.^";
+                if( parent(spherical_opening) == nothing ) {
+                    move spherical_opening to Infinity_Symbol;
+                    print "^As the rod goes home, a spherical opening a few inches across appears in one wall.^";
+                }
+                if( i == 9 ) Achieved(SCORE_ARC);
+                rtrue;
+        ],
         number 0,
   has   scenery;
 
@@ -1802,7 +1887,25 @@ Object  -> lemniscus "lemniscus"
 
 Object  spherical_opening "spherical opening"    
   with  name 'gold' 'golden' 'spherical' 'opening' 'cavity',
-        before SphericalOpeningBefore,
+        before [;
+            Receive:
+                if( noun == hard_wooden_ball )
+                    "Though correctly shaped, it is not quite small enough to fit the cavity.";
+                if( noun ~= golden_orb ) "That doesn't seem to fit properly.";
+                if( golden_orb hasnt general ) 
+                    "The orb fits perfectly, but nothing happens: it is as if the socket is dead, and the orb 
+                     rolls out again into your hands. Curious.";
+                move spherical_opening to golden_orb;
+                remove golden_orb;
+                give spherical_opening general;
+                Infinity_Symbol.description = "A cave carved from crystal icicles of rock and glowing with vivid, 
+                    golden light, so bright it almost hurts your eyes. A narrow crevice opens out to an iron doorway
+                    and the relative darkness of the house.^^The rough stone floor levels out to a perfectly
+                    round, smooth white marble disc about five yards across, inscribed with a black lemniscus
+                    (or infinity) symbol.";
+                "The orb fits perfectly, and the socket comes alive with golden light, which soaks out into the 
+                 fabric of the cave until the whole place is shining bright.";
+        ],
         initial "There is now a small spherical opening in one wall.",
         description "It would just hold a ball the size of your palm.",
   has   static;
