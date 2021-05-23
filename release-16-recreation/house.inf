@@ -1478,7 +1478,17 @@ Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
   has   animate concealed;
 
 Object  Chimney "Chimney"        
-  with  before ChimneyBefore,
+  with  before [ o;
+            Exit, Look, Inv: rfalse;
+            Go:
+                objectloop( o in player )
+                    if( o hasnt worn || o == rucksack )
+                        "It's too narrow a squeeze for you at present.";
+                print "You squeeze awkwardly down the chimney. Lucky your best clothes are all packed, because 
+                    you're getting filthy.^";
+                rfalse;
+            default: "There's not enough room in this confined space to do anything much!";
+        ],
         e_to Inside_Cupboard,
         d_to Priests_Hole,
         description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
@@ -2138,14 +2148,19 @@ HRoom   Wine_Cellars "Wine Cellars"
         cant_go "This is the eastern end of the cellars, from which you can only go west.",
   has   ;
 
-Array mouse_maze string
-    "111111111"
-    "111001001"
-    "111100101"
-    "111110000"
-    "111100111"
-    "111110011"
-    "111111111";
+Array mouse_maze string "111111111111001001111100101111110000111100111111110011111111111";
+
+! was MouseMove2 in my r7 recreation
+[ MouseBoundary x y cell ;
+    if( x < 0 || x > 8 || y < 0 || y > 6 )
+        rfalse;
+    cell = mouse_maze->(9 * y + x);
+    if( cell == '0' )
+        rfalse;
+    if( cell == '1' )
+        rtrue;
+    rtrue;
+];
 
 HRoom   Cellars_South "Cellars South"    
   with  n_to Cellars,
