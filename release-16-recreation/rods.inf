@@ -1,0 +1,282 @@
+[ discover_rod r ;
+    give r ~unidentiifed_rod;
+    r.&name-->2 = r.rod_word;
+    r.&name-->3 = r.rod_word;
+    r.article = "the";
+    r.d_to = nothing;
+    r.list_together = MasterGameRods;
+    rtrue;
+];
+
+[ ListingRods enhanced ;
+    if( rod_identity == 1 ) {
+        if( enhanced == true ) {
+            print "the High Rods of ";
+        } else {
+            print "the Rods of ";
+        }
+        c_style = c_style | (8 + 4096);
+        if( c_style & 1 ~= 0 ) {
+            c_style = c_style - 1;
+        }
+        if( c_style & 2 ~= 0 ) {
+            c_style = c_style - 2;
+        }
+    }
+    rfalse;
+];
+
+[ ListingHRods;
+    return MasterGameRods(true);
+];
+
+Class   Rod
+  with  before [;
+            Examine:
+                if( self has unidentifed_rod )
+                    "A featureless mahogany rod, whose purpose is oblique. Or almost featureless: a little silver 
+                     plaque is left blank at one end.";
+                if( self has high_rod )
+                    rfalse;
+                print "The silver plaque on this mahogany rod proclaims it as ", (the) self, ".";
+                if( noun has charged ) "  It is fully charged up.";
+                new_line;
+                rtrue;
+        ],
+        short [;
+            if( self has unidentifed_rod ) {
+                print "featureless mahogany rod";
+                rtrue; 
+            }
+            if( listing_together hasnt rod_attr ) {
+                if( self has high_rod )
+                    print "High ";
+                print "Rod of ";
+            }
+            rfalse;
+        ],
+  has   rod_attr;
+
+Class HighRod
+  class Rod
+  with  rod_action [;
+            "You are knocked off your feet with the power of one of the High Rods, but it is too puissant 
+             for a mortal such as you are.";
+        ],
+        description [;
+            print "An adamantine rod, bearing a sculpted ";
+            if( self == rod_of_life ) print "hand";
+            if( self == rod_of_love ) print "heart";
+            if( self == rod_of_death ) print "skull";
+            " on one end, and inscribed with its title.";
+        ],
+        article "the",
+        list_together ListingHRods,
+
+  has   high_rod;
+            
+
+Object rod_of_fire "Fire"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'fire',
+        rod_action [;
+            if( second == player ) {
+                deadflag = DIED;
+                "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
+            }
+            if( second == Austin ) {
+                set_flag_array(6);
+                "You don't really want to vapourise Austin.";
+            }
+            if( second == adamantine_statue ) {
+                if( adamantine_skull hasnt general || adamantine_heart hasnt general || adamantine_hand hasnt general ) {
+                    "The bones jerk and rattle, but seem unable to come together into life.";
+                }
+                remove adamantine_statue;
+                move adamantine_knight to West_Side_Chapel;
+                Achieved(SCORE_KNIGHT);
+                himobj = adamantine_knight;
+                "The adamantine knight leaps up, invigorated by the fire in his skeletal eyes, a new spark in his 
+                 belly!  He bows gravely, in the elaborate style of a mime artist.";
+            }
+            if( second == adamantine_knight )
+                "Adamantine is fireproof.";
+            if( second == loose_board )
+                "The wood seems to have been treated somehow, and is fireproof.";
+            if( second has animate )
+                "For heaven's sake, you're only looking for an out-of-date map. Murder does seem a little extreme.";
+            if( second == wall_of_thorns_object ) {
+                if( wall_of_thorns_object has open ) 
+                    "The wall wriggles in discomfort to avoid further devastation.";
+                give wall_of_thorns_object open;
+                "Fire leaps out from the rod into the heart of the thorn wall, which screams out as it burns, 
+                 revealing a great hole through the wild flames. You catch a tantalising glimpse of a great Temple,
+                 before the wall heals back. But it is unable to recover entirely, and a charred gap is left to
+                 the south. You could probably squeeze through it.";
+            }
+            if( second == medicine_bottle ) {
+                print "The melting point of this glass is very high, and amazingly it withstands the bolt of fire.^";
+                GoodTry();
+                rfalse;
+            }
+            if( second == complicated_looking_bomb or timer_detonator ) {
+                deadflag = DIED;
+                "(Perhaps predictably) the bomb explodes!";
+            }
+            if( second has scenery || second has static ) {
+                deadflag = DIED;
+                "You start a great conflagration, and then perish in it!";
+            }
+            remove second;
+            print "A bolt of fire leaps from the rod and consumes ", (the) second, "utterly!;
+        ],
+        angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
+  has   unidentifed_rod;
+
+Object rod_of_returning "Returning"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'returning',
+        rod_action RodOfReturningAction,
+        devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
+  has   unidentifed_rod;
+
+Object rod_of_stalking "Stalking"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'stalking',
+        rod_action RodOfStalkingAction,
+        devil_hint "It has no horticultural application.",
+  has   unidentifed_rod;
+
+Object rod_of_infinity "Infinity"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'infinity',
+        rod_action RodOfInfinityAction,
+        angel_hint "Well, where might you have seen infinity before?",
+  has   unidentifed_rod;
+
+Object rod_of_husbandry "Husbandry"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'husbandry',
+        rod_action RodOfHusbandryAction,
+        angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
+  has   unidentifed_rod;
+
+Object rod_of_bronze "Bronze"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'bronze',
+        rod_action RodOfBronzeAction,
+        angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
+  has   unidentifed_rod;
+
+Object rod_of_sacrifice "Sacrifice"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'sacrifice',
+        rod_action RodOfSacrificeAction,
+        angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
+  has   unidentifed_rod;
+
+Object rod_of_luck "Luck"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'luck',
+        rod_action RodOfLuckAction,
+        angel_hint "Well, if there's such a thing as luck, maybe this would help.",
+  has   unidentifed_rod;
+
+Object rod_of_ice "Ice"
+  with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
+        list_together nothing,
+        u_to rod_display_before,
+        d_to "featureless mahogany rods",
+        article "a",
+        parse_name RodParse,
+        rod_word 'ice',
+        rod_action RodOfIceAction,
+        angel_hint "Use only at heated moments, when affairs are delicately balanced.",
+  has   unidentifed_rod;
+
+Object rod_of_language "Language"
+  with  name 'rod' 'of' 'language',
+        list_together ListingRods,
+        u_to rod_display_before,
+        article "the",
+        parse_name RodParse,
+        rod_action RodOfLanguageAction,
+  has   ;
+
+Object rod_of_returning2 "Returning"
+  with  name 'rod' 'of' 'returning',
+        list_together ListingRods,
+        u_to rod_display_before,
+        article "the",
+        parse_name RodParse,
+        rod_action RodOfReturningAction,
+  has   ;
+
+Object rod_of_life "Life"
+  with  name 'life' 'high' 'rod' 'of',
+        before LifeDeathLoveBefore RodBefore,
+        after LifeDeathLoveAfter,
+        u_to rod_display_before,
+        initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
+        parse_name RodParse,
+        angel_hint "Astonishing!  One of the three high Rods!";
+
+Object rod_of_death "Death"
+  with  name 'death' 'high' 'rod' 'of',
+        before LifeDeathLoveBefore RodBefore,
+        after LifeDeathLoveAfter,
+        u_to rod_display_before,
+        parse_name RodParse,
+        angel_hint "Astonishing!  One of the three high Rods!",
+  has   concealed;
+
+Object rod_of_love "Love"
+  with  name 'love' 'high' 'rod' 'of',
+        before LifeDeathLoveBefore RodBefore,
+        after LifeDeathLoveAfter,
+        u_to rod_display_before,
+        parse_name RodParse,
+        angel_hint "Astonishing!  One of the three high Rods!",
+  has   concealed;
+
+

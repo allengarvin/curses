@@ -10,7 +10,6 @@ Verb 'add' 'join' 'mend' 'repair'
     if( location ~= Library_Storage )
         print "(The wrench seems unnecessary, so you use bare hands.)^";
     << Turn noun >>;
-    rtrue;
 ];
 
 Extend 'turn' last
