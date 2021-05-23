@@ -898,6 +898,13 @@ Object  -> romantic_novel "romantic novel"
         devil_hint "Don't bother reading or thinking about it. Nothing to do with your family.",
   has   consultable;
 
+[ PlumbingDisaster ;
+    deadflag = FAILED;
+    "As you pull the book away, the pipe bursts and sprays water everywhere, drenching you, rendering the book 
+        unreadable, leaking through the ceiling into the bedrooms below and causing an enormous furore. You are
+        obliged to spend the rest of the afternoon getting a plumber at short notice.";
+];
+
 Object  -> book_of_Twenties_poetry "book of Twenties poetry"     
   with  name 'poetry' 'book',
         before [;
@@ -925,14 +932,54 @@ Object  -> book_of_Twenties_poetry "book of Twenties poetry"
             Tennyson, Kipling and Hardy.",
   has   concealed consultable;
 
+[ WallDisplay o ;       
+    print "the picture on ", (the) o;
+    if( o.n_to == nothing )
+        ".";
+    ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
+];
+
+! Hmm, yep, there are two functions that do the exact same thing.
+[ DisplayCardDesc o ;
+    print "the picture on ", (the) o;
+    if( o.n_to == nothing ) {
+        ".";
+    }
+    ", beautifully magnified and amazingly life-like. Why, you'd hardly know there was a wall there at all.";
+];
+
 HRoom   Souvenirs_Room "Souvenirs Room"  
   with  name 'souvenirs' 'holiday' 'snaps' 'beam',
-        before SouvenirsRoomBefore,
-        after SouvenirsRoomAfter,
+        before [ o;
+            Examine:
+                if( noun == s_obj && slide_projector has on ) {
+                    o = child(slide_projector);
+                    if( o == nothing ) "The south wall is lit up by the projector.";
+                    print "The south wall shows "; WallDisplay(o); rtrue;
+                }
+                rfalse;
+        ],
+        after [ o;
+            Look:
+                if( slide_projector hasnt on ) rfalse;
+                o = child(slide_projector);
+                if( o == nothing )
+                    print "^The south wall is lit up by the projector.^";
+                else {
+                    print "^The south wall displays "; DisplayCardDesc(o);
+                }
+                if( projector_reversed == true )
+                    "^A beam of white light points directly backward from the projector, through the north 
+                     doorway into the Observatory.";
+                rtrue;
+        ],
         n_to Disused_Observatory,
         s_to SouvenirsRoomSouth,
         u_to Disused_Observatory,
-        description "This is where you ought to have left the wretched map, in the family lumber-room of souvenirs and holiday snaps. You checked it thoroughly earlier, and can't bear the thought of searching it all again. A slide projector is aimed at the whitewashed south wall, one of the outside walls of the house. The only way to go is back up to the observatory.",
+        description "This is where you ought to have left the wretched map, in the family lumber-room of souvenirs 
+            and holiday snaps. You checked it thoroughly earlier, and can't bear the thought of searching it
+            all again. A slide projector is aimed at the whitewashed south wall, one of the outside walls of the
+            house. The only way to go is back up to the observatory.",
   has   ;
 
 Object  -> slide_projector "slide projector"     
