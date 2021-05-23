@@ -62,7 +62,24 @@ Object  electric_torch "electric torch"
         list_together s_obj,
         description "The torch has a battery compartment which can be reached by opening it up.",
         article "an",
-        daemon TorchTimer,
+        number 0,
+        daemon [ o n;
+            if( self hasnt on )
+                rfalse;
+            o = child(self);
+            if( o == nothing )
+                rfalse;
+            n = o.number - 1;
+            if( n < 200 )
+                o.number = n;
+            if( n == 2 )
+                print "^The torch flickers ominously.^";
+            if( n == 0 ) {
+                print "^The torch finally dies out.^";
+                give electric_torch ~light;
+                set_flag_array(8);
+            }
+        ],
         devil_hint "Pity you can't change the batteries.",
   has   container light moved openable;
 
