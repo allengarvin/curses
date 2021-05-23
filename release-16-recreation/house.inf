@@ -1116,25 +1116,79 @@ HRoom   Battlements "Battlements"
 
 Object  -> iron_key "gothic-looking iron key"    
   with  name 'gothic' 'looking' 'iron' 'key' 'gothic-looking',
-        before GothicKeyBefore,
+        before [;
+            Take:
+                if( self has general ) rfalse;
+                give Sir_Joshua_Meldrewe ~concealed;
+                move self to Sir_Joshua_Meldrewe;
+                Sir_Joshua_Meldrewe.number = 5;
+                StartDaemon(Sir_Joshua_Meldrewe);
+                "As you reach for the key, a swirling mist condenses about it, into a ghostly head which opens its 
+                 mouth and eats up the key!  The rest of the ghostly body solidifies about the head and rises to
+                 swagger before you.";
+        ],
         sw_to compass,
-        initial IronKeyInitial,
+        initial [;
+            if( location == Priests_Hole )
+                "This chimney must have been the one the gothic-looking iron key fell down, for here it is.";
+            "An iron, gothic-looking key catches your eye.";
+        ],
         devil_hint "Unfortunately, what you need this for is up in the clouds.",
   has   scored;
 
 Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"     
   with  name 'ghost' 'of' 'sir' 'joshua' 'meldrewe' 'meldrew' 'georgian',
-        life GhostLife,
+        life [;
+            Give, ThrowAt:
+                remove noun;
+                StopDaemon(self);
+                 if( noun == chicken_wishbone ) {
+                    move iron_key to Priests_Hole;
+                    give iron_key general;
+                    remove Sir_Joshua_Meldrewe;
+                    Achieved(SCORE_JOSHUA);
+                    "The ghost swallows the wishbone, grinning nastily. Then a look of consternation spreads across 
+                     his face. He begins to choke and as he fades away, his arms flailing wildly, he lets go of
+                     the key, which sails through the air onto the roof and (against all odds) falls neatly down
+                     a chimney.";
+                }
+                print "The ghost swallows ", (the) noun, " whole and grins!";
+            Kiss, Attack:
+                "Ectoplasm is as nice to touch as its reputation suggests.";
+            Order, Ask, Answer:
+                "~I'll tell you nothing, varlet!~";
+        ],
         description "He is dressed in a grey shadow of Georgian finery.",
         article "the ghost of",
         number 0,
-        daemon JoshuaMeldreweDaemon,
+        daemon [ n;
+            if( location ~= Battlements )
+                rfalse;
+            n = self.number - 1;
+            self.number = n;
+            if( n == 4 ) 
+                "^The ghost laughs in a gurgling kind of way, as it were always coughing and spluttering.";
+            if( n == 3 )
+                "^The ghost begins to speak:^^                       My hour is almost come^   When I to 
+                 sulph'rous and tormenting flames^   Must render up myself...^^Can this possibly be the 
+                 infamous Sir Joshua Meldrewe?";
+            if( n == 2 ) 
+                "^~But not yet it hasn't, mark my word. And there's the burden of my inheritance, little wart! 
+                 Get thee from my sight ere I slice thee as befits a hog!~";
+            if( n == 1 )
+                "^~I prithee but once more, begone!~";
+            deadflag = SPOOKED;
+            "^The ghost swoops around and through you, making you scream with panic. Somehow you manage to run back 
+             to safety, where your family (who never believe a word of it) give you plenty of tea and occupy you with
+             holiday arrangements. As for you, you are so traumatised that you never venture into the attic again.^";
+        ],
+
   has   animate concealed;
 
 Object  Chimney "Chimney"        
   with  before ChimneyBefore,
         e_to Inside_Cupboard,
-        d_to Priest_s_Hole,
+        d_to Priests_Hole,
         description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
         cant_go "Not a chance!",
   has   ;
@@ -1146,9 +1200,31 @@ Object  -> sooty_old_stick "sooty old stick"
         devil_hint "It's exactly what it seems.",
   has   hidden_rod;
 
-HRoom   Priest_s_Hole "Priest's Hole"    
+[ DownTheHatch ;
+    if( hatch has open ) {
+        print "You zoom rapidly down the chute, but decelerate just in time and land in a dark corner of...^";
+    }
+    rtrue;
+];
+
+HRoom   Priests_Hole "Priest's Hole"    
   with  name 'cross' 'padded' 'chute' 'crawl',
-        before PriestHoleBefore,
+        before [ o;
+            Enter:
+                if( noun == hatch )
+                    DownTheHatch();
+                rfalse;
+            Go:
+                if( noun == u_obj ) {
+                    objectloop( o in player )
+                        if( o hasnt worn || o == rucksack )
+                            "It's too narrow a squeeze for you at present.";
+                    print "You squeeze awkwardly back up the chimney.";
+                }
+                if( noun == d_obj )
+                    DownTheHatch();
+                rfalse;
+        ],
         u_to Chimney,
         d_to hatch,
         description "Good heavens, so the house has a priest hole after all!  It was always a family legend but nobody seemed to know quite where it was. Apart from a cross painted on one wall and a padded floor (to absorb the noise), this spartan cranny is featureless. Nevertheless there is a spooky air of the supernatural about... A narrow crawl leads up into the chimney.",
@@ -1156,11 +1232,11 @@ HRoom   Priest_s_Hole "Priest's Hole"
 
 Object  -> hatch "hatch" 
   with  name 'hatch' 'door',
-        n_to Cellar_West,
-        s_to "Low down on one wall is a little hatch door, which if it were open would be large enough to enter.",
-        e_to small_brass_key,
+        door_to Cellar_West,
+        when_closed "Low down on one wall is a little hatch door, which if it were open would be large enough to enter.",
+        with_key small_brass_key,
         w_to thedark,
-        initial "An open hatch-door in the wall at floor level reveals a chute leading down into darkness.",
+        when_open "An open hatch-door in the wall at floor level reveals a chute leading down into darkness.",
         description "Perhaps the attic key might unlock it?  It does look modern compared to everything else here.",
   has   door lockable locked openable static;
 
@@ -1177,31 +1253,125 @@ Object  -> ancient_prayer_book "ancient prayer book"
 
 HRoom   Alisons_Writing_Room "Alison's Writing Room"     
   with  name 'engraving' 'dice' 'outline' 'sixes' 'door',
-        before WritingRoomBefore,
-        after WritingRoomAfter,
+        before [;
+            Sleep:
+                if( flag_of_the_British_Merchant_Navy notin comfortable_bed )
+                    "Awareness that something important is happening tugs at your subconscious.^^But you feel too exposed to sleep with only a sheet on the bed, and can't get comfortable.";
+
+                Achieved(SCORE_SLEEP);
+                if( comfortable_bed has general ) "You doze awhile, but that's all.";
+                give comfortable_bed general;
+                print "You sleep uneasily, fancying you can see Miss Alison writing at her table, trying to see 
+                    the words, and always on the edge of a...^";
+                EnterDream();
+                rtrue;
+        ],
+        after [;
+            Exit:
+                if( Melancholy_Dream has visited ) set_flag_array(44);
+                rfalse;
+        ],
         n_to Dead_End,
         s_to windows,
-        description " .A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^",
+        description [;
+            print "A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: 
+                Christina Rossetti, Elizabeth Browning, Emily Dickinson
+                and Queen Victoria, an unlikely quartet. The wallpaper
+                is done out in a dice motif, and a square outline of
+                sixes surrounds a rather small door leading back north
+                into the attics.^^";
+            if( flag_of_the_British_Merchant_Navy in comfortable_bed ) { 
+                "The flag is spread out as a blanket on the comfortable bed.";
+            }
+            "The room is provided with a comfortable bed, which looks very inviting."; 
+        ],
         cant_go "There's just the secret north door, unless of course you count the windows.",
   has   light;
 
 Object  -> comfortable_bed "comfortable bed"     
   with  name 'comfortable' 'bed',
-        before ComfyBedBefore,
+        before [;
+            Receive:
+                if( noun ~= flag_of_the_British_Merchant_Navy )
+                    "That seems unlikely to make a good blanket.";
+                move flag_of_the_British_Merchant_Navy to comfortable_bed;
+                "You spread the flag over the bed as a blanket.";
+        ],
   has   enterable light scenery supporter;
 
 Object  -> windows "windows"     
   with  name 'windows' 'window' 'latticed' 'glass' 'lattice',
-        before WindowBefore,
+        before [;
+            Attack, Push, Pull:
+                give windows open openable;
+                self.before = -1;
+                "The windows suddenly give way in a shower of flakes of paint, letting fresh summer air into the room!";
+            Enter:
+                if( self hasnt open ) "The windows are shut.";
+            Open:
+                "The windows are old and gummed up somehow.";
+        ],
+        
         n_to Tiny_Balcony,
         s_to "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
         w_to ne_obj,
         initial "Black-latticed windows open on a beautiful summer's day.",
   has   door static;
 
+[ CheckMirror o ;       
+    if( long_vanity_mirror has general ) {
+        rfalse;
+    }
+    if( o in player or rucksack && (o has rod_attr || o has hidden_rod || o has unidentiifed_rod) ) {
+        rtrue;
+    }
+    rfalse;
+];
+
+[ MonkeyAlive ;
+    if( Crescent_Moon in Old_Evans ) {
+        give model_of_ugly_animal ~general;
+        "^The monkey revels briefly in its new life, but then catches your eyes, sadly realising you offer it no home. Quite quickly it settles back into an ugly idol.";
+    }
+    remove model_of_ugly_animal;
+    give model_of_ugly_animal ~general;
+    move pet_monkey to Stone_Cross;
+    Old_Evans.description = "Evans is content once again.";
+    "^Now that you have finally been able to look it in the eyes, the monkey leaps from your arms, revelling in 
+     its new life, and scampers away through the windows onto the balcony, then up and over the side of the
+     house. You can just make it out as it races down the footpath.";
+];
+
 Object  -> long_vanity_mirror "long vanity mirror"       
   with  name 'long' 'vanity' 'mirror',
-        before MirrorBefore,
+        before [ o i;
+            Attack: "What, and earn seven years bad luck?";
+            Rub:
+                give self general;
+                set_flag_array(21); 
+                "You polish up the mirror just a little more.";
+            Examine, Search:
+                print "In the mirror is one of the most strikingly attractive people you have ever seen in all your 
+                    born days";
+                i = 0;
+                for( o = child(player) : o ~= nothing : o = sibling(o) ) {
+                    if( CheckMirror(o) == false ) {
+                        ++i;
+                        give o workflag;
+                    } else
+                        give o ~workflag;
+                }
+                if( i == 0 )
+                    ".";
+                print ", carrying ";
+                if( model_of_ugly_animal has workflag ) 
+                    give model_of_ugly_animal general;
+                WriteListFrom(child(player),512 + 8 + 64);
+                print ".^";
+                if( model_of_ugly_animal has general )
+                    MonkeyAlive();
+                rtrue;
+        ],
         initial "There is a long vanity mirror beside the bed.",
   has   static;
 
@@ -1214,7 +1384,14 @@ HRoom   Tiny_Balcony "Tiny Balcony"
 
 Object  -> window_sill "window sill"     
   with  name 'window' 'sill',
-        before WindowSillBefore,
+        before [;
+            Search, LookUnder:
+                if( delicate_gold_key has concealed ) {
+                    give delicate_gold_key ~concealed;
+                    "You dislodge something shiny!";
+                }
+                rfalse;
+        ],
         initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
         description "You look down on a low, bare window-sill.",
   has   static;
@@ -1228,7 +1405,20 @@ Object  -> delicate_gold_key "delicate gold key"
 HRoom   Old_Winery "Old Winery"  
   with  name 'banister' 'rail' 'crack' 'paraphernalia',
         before OldWineryBefore,
-        after OldWineryAfter,
+        after [;
+            Look:
+                if( self has general )
+                    rfalse;
+                give self general;
+                print "^As you disturb the still air, the attic key, which was balanced on top of the demijohn, 
+                    slips onto the floor and disappears into a crack in the floorboards. Your spirits sink as it
+                    does, rattling down some distance. How on earth are you going to get it back?^";
+                rfalse;
+            PutOn:
+                if( second == demijohn )
+                    "We know already what happens to things balanced on the demijohn.";
+                rfalse;
+        ],
         s_to Attic,
         e_to Storage_Room,
         w_to Conservatory,
@@ -1240,7 +1430,16 @@ HRoom   Old_Winery "Old Winery"
 
 Object  -> demijohn "labelXXXled glass demijohn" 
   with  name 'demijohn' 'glass' 'bottle' 'labelXXX',
-        before DemijohnBefore,
+        before [;
+            Open:
+                if( old_gardeners__gloves hasnt worn )
+                    "Your hands slip on the screw-top of the demijohn and can't get a grip.";
+                Achieved(SCORE_DEMIJOHN);
+                rfalse;
+            Attack:
+                "The demijohn is made of something like industrial-grade chemistry glass. You kick it and hurt your 
+                 foot.";
+        ],
         description "Faded ink on the labelXXX reads: Elderberry '63.",
   has   container openable static transparent;
 
@@ -1261,7 +1460,12 @@ Object  -> -> tourist_map "tourist map"
 
 HRoom   Conservatory "Aunt Jemima's Lair"        
   with  name 'objets' 'trouves' 'pottery' 'bric' 'brac',
-        after ConservatoryAfter,
+        after [;
+            Look:
+                if( antiquated_wireless has general && antiquated_wireless in Airing_Cupboard )
+                    print "^Execrable music drifts in from the airing cupboard.^";
+                rfalse;
+        ],
         s_to Airing_Cupboard,
         e_to Old_Winery,
         w_to Potting_Room,
@@ -1285,19 +1489,101 @@ HRoom   Airing_Cupboard "Airing Cupboard"
 
 Object  -> pile_of_sheets "pile of sheets"       
   with  name 'pile' 'of' 'sheets' 'sheet',
-        before SheetsAFter,
-        daemon SheetsDaemon,
+        before [;
+            Take:
+                print "The thought of Jemima's wrath if you actually took one of her tie-dyed sheets (~Dyeing is an 
+                    art like everything else... I do it very well~) is just too dreadful. ";
+                if( antiquated_wireless has concealed ) "But there seems to be something lurking beneath.";
+                new_line;
+                rtrue;
+            Search, Examine, LookUnder:
+                if( antiquated_wireless has concealed ) {
+                    give antiquated_wireless ~concealed;
+                    Achieved(SCORE_WIRELESS);
+                    "Not as many sheets as you thought - they were on top of a large black wireless, now exposed 
+                     to the light for the first time in months.";
+                }
+                print "No, you're only getting your ";
+                if( old_gardeners__gloves has worn )
+                    print "gloves";
+                else
+                    print "hands";
+                " stained looking.";
+        ],
+        daemon [;
+            if( antiquated_wireless hasnt on ) {
+                StopDaemon(self);
+                give antiquated_wireless ~general;
+                rtrue;
+            }
+            if( antiquated_wireless in Conservatory && location == Potting_Room ) {
+                print "^Jemima hums along to ";
+            } else if( antiquated_wireless in location ) {
+                print "^The radio plays ";
+            } else {
+                rtrue;
+            }
+            if( random(81) == 1 ) 
+                "a splendid concert of the Sibelius Violin Concerto by the Minot Symphony Orchestra of North Dakota.";
+            print_ret (string) RandomEntry(type_of_tune), (string) RandomEntry(tune_version), (string) RandomEntry(horrible_tunes);
+        ],
   has   scenery;
 
 Object  -> antiquated_wireless "antiquated wireless"     
   with  name 'switch' 'cabinet' 'radio' 'wireless',
-        before WirelessBefore,
-        after WirelessAfter,
+        before [;
+            if( self has concealed )   ! pretty sure this is impossible to reach -- ATG
+                "You've played this game before.";
+            Take: "It's too heavy to lift off the casters.";
+            Push, Pull, Turn: "It moves easily on the casters.";
+            PushDir:
+                if( location == Conservatory && second == e_obj )
+                    "Not upstairs you can't.";
+                if( location == Conservatory && second == w_obj ) {
+                    deadflag = FAILED;
+                    "Aunt Jemima spends the next four hours explaining to you exactly why she put the radio into 
+                     storage. The reason is awfully convoluted and due to her firm conviction that magnetic fields
+                     influence the growth of plants. By that time you have to leave for the airport...";
+                }
+                AllowPushDir();
+                rtrue;
+        ],
+        after [;
+            SwitchOn:
+                StartTimer(self,6);
+                "You push the switch on the wireless, but nothing happens.";
+            SwitchOff:
+                if( self has general ) {
+                    give antiquated_wireless ~general;
+                    "Thank heaven for that.";
+                }
+                rfalse;
+            PushDir:
+                print "It moves easily on the casters.^";
+                rfalse;
+        ],
         description "It rolls on casters, and has a bakelite on/off switch.",
-        describe WirelessDescribe,
+        describe [;
+            if( self has general )
+                "^The wireless fills the air with Jemima's favourite station, ~Mild-n-Breezy FM~, about which the 
+                 least said the better.";
+            print "^To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with ";
+            if( self has on ) print "glowing ";
+            "valves inside. On the top is a bakelite on-off switch.";
+        ],
         article "an",
-        number 0,
-        daemon WirelessDaemon,
+        time_left 0,
+        time_out [;
+            if( self has on ) {
+                StartDaemon(pile_of_sheets);
+                give self general;
+                if( antiquated_wireless in location )
+                    print "^The radio valves glow, and execrable so-called easy listening music fills the air with a sort of bland aural candy-floss.^";
+                if( location == Potting_Room && antiquated_wireless in Conservatory )
+                    print "^Execrable music begins to sound from the conservatory, and Aunt Jemima hums vacantly.^";
+            }
+        ],
+
   has   concealed static switchable;
 
 HRoom   Potting_Room "Potting Room"      
