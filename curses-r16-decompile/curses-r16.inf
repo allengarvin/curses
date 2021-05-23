@@ -960,7 +960,7 @@ Object rod_of_life "Life"
         sw_to rod_func1,
         u_to rod_display_before,
         initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
-        description " .An adamantine rod, bearing a sculpted ",
+        description LifeDesc,
         article "the",
         short rod_short,
         parse_name RodParse,
@@ -974,7 +974,7 @@ Object rod_of_death "Death"
         after LifeDeathLoveAfter,
         sw_to rod_func1,
         u_to rod_display_before,
-        description " .An adamantine rod, bearing a sculpted ",
+        description LifeDesc,
         article "the",
         short rod_short,
         parse_name RodParse,
@@ -988,7 +988,7 @@ Object rod_of_love "Love"
         after LifeDeathLoveAfter,
         sw_to rod_func1,
         u_to rod_display_before,
-        description " .An adamantine rod, bearing a sculpted ",
+        description LifeDesc,
         article "the",
         short rod_short,
         parse_name RodParse,
@@ -1339,7 +1339,7 @@ Object East_Annexe "East Annexe"
         n_to cupboard_door,
         s_to Dead_End,
         w_to Over_the_East_Wing,
-        description " .This tight annexe at the eastern end of the house is piled up with old loft insulation rolls, left over from the last time the job was done (whenever that was). A gap between the tiles of the roof (which you really must mend before winter) lets a little natural light in",
+        description EastAnnexeDesc,
         section T_MODERN,
   has   light;
 
@@ -1526,7 +1526,7 @@ Object Alisons_Writing_Room "Alison's Writing Room"
         after WritingRoomAfter,
         n_to Dead_End,
         s_to windows,
-        description " .A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^",
+        description WritingRoomDesc,
         cant_go "There's just the secret north door, unless of course you count the windows.",
         section T_MODERN,
   has   light;
@@ -1809,7 +1809,7 @@ Object Wine_Cellars "Wine Cellars"
         before WineCellarsBefore,
         w_to Cellars,
         u_to WineCellarsUp,
-        description " .The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked",
+        description WineCellarsDescription,
         cant_go "This is the eastern end of the cellars, from which you can only go west.",
         section T_MODERN,
   has   ;
@@ -1910,7 +1910,7 @@ Object -> gilded_model_coffin "gilded model coffin"
         before CoffinBefore,
         after CoffinAfter,
         initial "A rather morbid, gilded model coffin rests here in peace.",
-        description " .The lid bears an inscription in strange hieroglyphics:^",
+        description CoffinDesc,
   has   container openable static;
 
 Object -> ragged_scroll "ragged scroll" 
@@ -1939,7 +1939,7 @@ Object charcoal_sketch "charcoal sketch"
 Object dog_eared_old_letter "dog-eared old letter"      
   with  name 'old' 'letter',
         sw_to n_obj,
-        description " .A faint typewritten letter, postmarked Cairo, October 1920, with a handwritten note signed simply ~Ellingsworth~:^^Hartley - Thought you might be able to date some of these queer pictograms and determinitives, early New Kingdom?  Pottery unclear, work continues^",
+        description LetterDesc,
         devil_hint "The ravings of a madman. Ignore it.",
   has   ;
 
@@ -2492,7 +2492,7 @@ Object stick_with_an_anchor "stick with an anchor"
 Object Sea_Shore "Sea Shore"    
   with  before SeaShoreBefore,
         u_to Cliffs,
-        description " .A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^",
+        description SeashoreDesc,
         cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
         section T_TAROT,
   has   light;
@@ -2501,7 +2501,7 @@ Object -> Andromeda "Andromeda"
   with  name 'andromeda' 'maiden',
         life AndromedaLife,
         initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
-        description " .Avert your eyes. She is naked",
+        description AndromedaDesc,
   has   animate proper;
 
 Object -> amber_hairband "amber hairband"       
@@ -2636,7 +2636,7 @@ Object East_Cloister "East Cloister"
 Object -> inscribed_stone "inscribed stone"     
   with  name 'rosetta' 'stone' 'inscribed' 'pumice',
         initial "Resting in the niche is an inscribed pumice stone, two feet tall.",
-        description " .The stone bears two inscriptions, side by side:^",
+        description InscribedStoneDesc,
         article "an",
         angel_hint "Whoever wrote this must have wanted to get the message across very badly, to write it all out twice.",
   has   scored;
@@ -2651,7 +2651,7 @@ Object West_Cloister "West Cloister"
 Object -> symbol "symbol"       
   with  name 'symbol' 'symbols',
         initial "A curious symbol is repeated along the top of the relief.",
-        description "  j  c     k  b   s you gk ",
+        description SymbolDesc,
   has   static;
 
 Object Inner_Sanctum "Inner Sanctum"    
@@ -2803,7 +2803,7 @@ Object Oracle "Oracle"
 Object Lighthouse "Lighthouse"  
   with  name 'smudge' 'quinquire',
         d_to LighthouseDown,
-        description " .You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Considerately enough, the builders have provided a spiral staircase down. ",
+        description LighthouseDesc,
         cant_go "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
         section T_TAROT,
   has   light scored;
@@ -3141,7 +3141,7 @@ Object Up_the_Plane_Tree "Up the Plane Tree"
 
 Object -> maze_layout "maze layout"     
   with  name 'maze' 'layout',
-        description " xmThe layout is roughly as follows:^^",
+        description LayoutDesc,
         article "the",
   has   scenery;
 
@@ -3315,7 +3315,7 @@ Object Croquet_Lawn "Croquet Lawn"
   with  w_to Hedgery,
         nw_to nothing,
         initial CroquetLawnInitial,
-        description " .One of the most beautiful hedge-enclosed, tree-muffled lawns in England, and just out of sight of the house, this has been a jewel in the gardens for centuries. Since the twenties it has also been a croquet lawn, of the regulation twenty-four yards square, laid out with a central coloured peg and six peripheral hoops",
+        description CroquetLawnDesc,
         cant_go "The lawn is enclosed on all sides, but for a gap back west.",
         short CroquetLawnShort,
         section T_GARDEN,
@@ -3707,7 +3707,7 @@ Object Octagonal_Tomb "Octagonal Tomb"
 
 Object -> hieroglyphic_symbols "hieroglyphic symbols"   
   with  name 'symbols' 'hieroglyphs' 'egyptian',
-        description " .Your dream eye is caught by...^^",
+        description HieroglyphsDescription,
         article "some",
   has   scenery;
 
@@ -3821,7 +3821,7 @@ Object -> metal_wall "metal wall"
 Object -> iron_grid "iron grid" 
   with  name 'iron' 'grid' 'contraption' 'panel',
         initial IronGridInitial,
-        description " .There are fourteen pieces in the grid, and one gap. The pieces have letters upon them ",
+        description GridDesc,
   has   static;
 
 Object -> glowing_golden_orb "glowing golden orb"       
@@ -4129,7 +4129,7 @@ Object -> mummy_case "mummy case"
 Object -> first_socket "first socket"   
   with  name 'first' 'socket' 'sockets' 'words',
         before SocketBefore,
-        description " .Above ",
+        description SocketDesc,
         article "the",
         number 1,
   has   scenery;
@@ -4137,7 +4137,7 @@ Object -> first_socket "first socket"
 Object -> second_socket "second socket" 
   with  name 'second' 'socket' 'sockets' 'words',
         before SocketBefore,
-        description " .Above ",
+        description SocketDesc,
         article "the",
         number 1,
   has   scenery;
@@ -4145,7 +4145,7 @@ Object -> second_socket "second socket"
 Object -> third_socket "third socket"   
   with  name 'third' 'socket' 'sockets' 'words',
         before SocketBefore,
-        description " .Above ",
+        description SocketDesc,
         article "the",
         number 1,
   has   scenery;
@@ -4613,7 +4613,7 @@ Object adamantine_knight "adamantine knight"
   with  name 'adamantine' 'statue' 'adamant' 'knight',
         life AdamantineKnightLife,
         initial "The adamantine knight stands staunchly here.",
-        description " .The knight is bursting and eager with life, as though nothing could fade his boundless energy for existence. ",
+        description AdamantineKnightDesc,
         article "the",
   has   animate;
 
@@ -21250,7 +21250,7 @@ Array preactions_table --> IsDirection;
     if (lookmode < 3 && (allow_abbrev ~= true || lookmode == 2 || location hasnt visited)) {
         if (location.describe ~= NULL) {
             RunRoutines(location,describe);
-        } else if (location.description == 0) {
+        } else if (location.description == nothing) {
             print "** Room undescribed! **^";
         } else {
             PrintOrRun(location,description);
