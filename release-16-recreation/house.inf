@@ -1596,7 +1596,16 @@ HRoom   Potting_Room "Potting Room"
 
 Object  -> old_gardeners__gloves "old gardeners' gloves" 
   with  name 'old' 'gardeners' 'gloves',
-        before GlovesBefore,
+        before [;
+            Take:
+                if( antiquated_wireless in Conservatory && antiquated_wireless has general ) rfalse;
+                if( self has moved ) rfalse;
+                deadflag = FAILED;
+                "Aunt Jemima suddenly hears you, spins round to see you filching her gloves and screeches with 
+                 irritation, eventually summoning the entire family. You
+                 volunteer to shift some suitcases about just to get
+                 away from her.";
+        ],
         initial "A pair of yellow rubber gloves hangs from a hook on one wall.",
         article "some",
         devil_hint "Good for nothing. Why would you want gloves on?",
@@ -1608,9 +1617,39 @@ Object  -> Jemima "Jemima"
         initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
         description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow.",
         article "Aunt",
-        number 0,
-        daemon JemimaDaemon,
+        time_left 0,
+        time_out [;
+            if( location ~= Potting_Room ) {
+                StartTimer(self, 1);
+                rtrue;
+            }
+            print "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and 
+                adjusts your hair in an exceedingly annoying way.^";
+            Achieved(SCORE_DAISY);
+            give daisy_chain moved;
+            give daisy_chain worn;
+            daisy_given = true;
+            move daisy_chain to player;
+            rtrue;
+        ],
   has   animate proper;
+
+[ DaisyType n ;
+    switch( n ) {
+        0: print "speckled Jemima's Pride";
+        1: print "yellowish Merlyn's Hat";
+        2: print "blue-tinted bell";
+        3: print "heavy-headed Dorset Pride";
+        4: print "reddish meadow-heart";
+        5: print "wild white common"; 
+        6: print "green-edged hedgerow";
+        7: print "plain Russian Steppe";
+        8: print "tall-stemmed Breton"; 
+        9: print "orange meadow";
+        10: print "short-leaved Meldrew"; 
+        11: print "tiny bonsai";
+    }
+];
 
 Object  daisy_chain "daisy chain"        
   with  name 'daisy' 'chain' 'daisychain',
@@ -1621,7 +1660,13 @@ Object  daisy_chain "daisy chain"
   has   clothing;
 
 HRoom   Storage_Room "Storage Room"      
-  with  before StorageRoomBefore,
+  with  before [;
+            Enter:
+                if( noun == dark_shaft_obj )
+                    if( dumbwaiter in dark_shaft_obj )
+                        << Enter dumbwaiter >>;
+                    "But you suffer from vertigo. Even the thought of the plane journey tomorrow is nerve-wracking.";
+        ],
         w_to Old_Winery,
         description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
         cant_go "The only doorway is back west to the winery.",
@@ -1641,7 +1686,28 @@ Object  -> dumbwaiter "dumbwaiter"
 
 Object  -> -> pulley_ropes "pulley ropes"        
   with  name 'pulley' 'rope' 'ropes',
-        before RopesBefore,
+        before [ r;
+            Climb: "If only you didn't suffer from such dreadful vertigo...";
+            Pull:
+                if( player notin dumbwaiter ) "You can't reach them!";
+                Achieved(SCORE_WAITER);
+                if( location == Storage_Room ) {
+                    r = Cellars;
+                    print "You begin moving, and then plummet, but friction gradually slows you down and you land 
+                        without too much of a thump...^";
+                }
+                if( location == Dark_Shaft ) {
+                    r = Storage_Room;
+                    print "You heave yourself up to the attic again...^";
+                }
+                if( location == Cellars ) {
+                    r = Dark_Shaft;
+                    print "You heave yourself half-way up, and then need to stop for a rest.^";
+                }
+                move dumbwaiter to r;
+                location = r;
+                << Look >>;
+        ],
         initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
         article "the",
   has   static;
@@ -1669,7 +1735,9 @@ Object  -> dark_shaft_obj "dark shaft"
 
 Object  -> steel_wrench "steel wrench"   
   with  name 'steel' 'wrench',
-        after WrenchAfter,
+        after [;
+            Take: "It's a wrench, but you take it.";
+        ],
         initial "A steel wrench gathers dust in the corner.",
   has   ;
 
