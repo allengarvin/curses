@@ -141,7 +141,98 @@ Object  -> teachests "teachests"
 
 Object  -> -> Meldrewes_History "History of the Meldrews (vol. II)"      
   with  name 'book' 'history',
-        before HistoryBefore,
+        before [ w ;
+            wn = consult_from;
+            w = NextWord();
+            if( w == 'mad' or 'sir' or 'honourable' )
+                w = NextWord();
+            if( w == 'me' or 'myself' or 'self' ) {
+                set_flag_array(48);
+                "Perhaps you may one day earn a place in vol. III.";
+            }
+            if( w == 'peter' )
+                "Modestly, the author (died 1940 or so?) missed himself out.";
+            if( w == 'jemima' )
+                "She's far too recent to be included.";
+            if( w == 'isaac' )
+                "Mad Isaac (1705-1792) went in for mystic experiments of all kinds, and was a noted antiquarian. He
+                believed that the Meldrew family had an ancestral curse, dooming each member to undertake
+                a futile quest. The only way to break the curse, he thought, was for one of them to actually
+                succeed... unfortunately he died in peculiar circumstances before finding out how.^^Then again, he also
+                believed that King Arthur's wizard Merlin was buried not in a Tintagel cave, as is usually claimed,
+                but somewhere in the back garden (near where the motorway is now), and that the moon is a giant pair
+                of black and white discs towed through the night sky by a team of angels.";
+            if( w == 'ebenezer' )
+                "It seems Ebenezer (1846-1908), the younger of a pair of twins, threw up a promising career in the
+                East India Company one day, took a packet steamer to Cape Colony and simply marched off into the bush
+                on a quest to find a legendary river. His maps were used for several years after, and a province was
+                named after him for a while, but the locals call it something else now.";
+            if( w == 'roger' )
+                "Roger (1846-1913), the elder of a pair of twins, was very Victorian indeed, especially in his
+                disapproval of his beautiful young wife's literary career. He thought her romances so immoral that
+                he refused to allow the family name to appear on them. A prominent local vestryman, his own writing
+                was confined to a great many monographs on the problems of municipal drainage, but he died before his
+                grand National Sewerage Plan was complete.";
+            if( w == 'capability' or 'willard' )
+                "~Capability~ Meldrew (1761-1817) became a mildly celebrated landscape gardener, starting a brief
+                fashion for crypts and memorials as garden ornaments (he claimed it was closer to nature). Very little
+                of his work now survives. His real name, incidentally, was Willard.";
+            if( w == 'henri' )
+                "Very little is known about Henri, who lived at some time in the fifteenth century. As a young man
+                he fought at Agincourt, and seems to have been some kind of combat engineer. The story goes that he
+                acquired his nickname, The Black Post, from a joke made by the King when he was standing up to his
+                waist in a ditch. He must have been proud of it because his coat of arms bears his name written down
+                the left hand side, and Black Post down the right.^^In his later years he became morbidly possessed,
+                and (according to legend) spent his declining years working on his own tomb, which he insisted would
+                be of celestial importance.";
+            if( w == 'helene' )
+                "Helene Meldrew (1902-) is a noted painter and sculptress. Her relations with the family were broken off
+                in the 20s when she married Anton and ran off to Paris to study art, but she has recently returned to
+                the House, in search (as she puts it) of ~the perfect blue, the blue of the sky, the blue of water~. We
+                wish her well.";
+            if( w == 'anton' or 'smyslov' )
+                "Anton Smyslov shouldn't really be in the book, even if he did marry Helene, but there is a brief passage,
+                since he was so famous - he was a chess grandmaster, and won the Paris Open five years running in the
+                1930s. His speciality was bold sacrificial attacks, but he was also notorious for eating blueberry
+                yoghurt at the board.";
+            if( w == 'alison' )
+                "Under the pseudonym Marie Swelldon, your ancestress Alison (1871-1930) wrote several mildly successful
+                romances. She obsessively collected lucky charms, and advertised in newspapers for double-headed coins
+                and the like (although she never traced a rumoured find of a five-leafed clover, somewhere in County
+                Donegal).^^In order to write in tranquillity and to avoid her husband, it was she who installed the
+                fake wall at the far south end of the attic east wing, and each afternoon she would sneak upstairs to
+                push it aside.";
+            if( w == 'joshua' )
+                "Oh dear, the deeply regrettable Sir Joshua Meldrewe (1710-1776). Member of the Dilletanti Society
+                and the Hell-Fire Club, and a politician (chancellor of the exchequer 1762-3; ~probably the least
+                competent minister ever to hold that office~ - Oxford History of England, vol. xii).^^", "His father
+                disinherited him for wildly excessive living (he almost invariably wore jewelled buttons worth at least
+                a thousand pounds) and for marrying a lady of easy virtue while on the run from a prison in France,
+                where he was sentenced to be beheaded. In order to stop his sister getting the fortune, he went back
+                to Italy and advertised for a pregnant bride to provide a male heir. This nefarious plot was foiled
+                when he choked to death on a chicken-bone.^^It is said that he stole the money anyway near the end,
+                and certainly some gold went missing. (He also managed to get the family stripped of its baronetcy by
+                cheating at piquet with the Prince of Wales.)";
+            if( w == 'hartley' )
+                "Your distant great-uncle Hartley was a tiresomely enthusiastic amateur Egyptologist who, every Christmas,
+                used to sit you on his knee and drone on about trenches and writings and the fellaheen. It was all a
+                bit of a fraud, you now discover, since he only actually went to Egypt once - there was such a scandal
+                about his refusal to donate his best find to the British Museum that he was never allowed to excavate
+                again, though he spent years writing in vain to the Egyptian government.";
+            if( w == 'gerard' )
+                "Roger's eldest son Gerard (1898-1916) was killed in the Battle of the Somme. His mother, ~Marie
+                Swelldon~, gave up writing afterwards.";
+            if( w == 'austin' )
+                "Austin's quite venerable for a cat, but not that old.";
+            if( w == 'tobias' )
+                "Tobias Meldrew (1801-1870) was Professor of Theology at Christminster, 1850-66. He set himself the
+                task of proving the existence of God from first principles, a task which he announced in 1860 that
+                he had accomplished with the aid of ten thousand intermediate lemmas. The derision which greeted his
+                attempts to publish the mammoth work eventually drove him insane, and he spent the last four years of
+                his life in the madhouse.";
+            "Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find 
+             what you want.";
+        ],
         list_together n_obj,
         description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving 
             the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends
@@ -150,7 +241,6 @@ Object  -> -> Meldrewes_History "History of the Meldrews (vol. II)"
             an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an
             awful lot of children. So many Meldrews are listed here that you'll have to look them up individually.",
         article "the",
-        parse_name ConsultableParsename,
         devil_hint "What a boring old book!  There's nobody worth looking up.",
   has   concealed consultable;
 
