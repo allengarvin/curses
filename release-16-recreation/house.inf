@@ -1341,9 +1341,21 @@ Object  -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"
 
 Object  -> big_iron_fireplace "big iron fireplace"       
   with  name 'iron' 'fireplace' 'chimney',
-        after FireplaceAfter,
-        n_to Chimney,
-        w_to nw_obj,
+        after [;
+            Receive:
+                move noun to Priests_Hole;
+                if( sooty_old_stick hasnt moved ) {
+                    move sooty_old_stick to Priests_Hole;
+                    give sooty_old_stick moved;
+                }
+                if( noun == medicine_bottle && medicine_bottle has locked ) {
+                    give medicine_bottle ~moved;
+                    medicine_bottle.initial = "The medicine bottle, alas, was undamaged by the fall down the chimney.";
+                }
+                print_ret (The) noun, " rattles out of sight down the chimney.";
+        ],
+        door_to Chimney,
+        door_dir w_to,
         initial "There is a big iron fireplace in the west wall.",
   has   concealed container door open static;
 
