@@ -2283,10 +2283,47 @@ Object  -> little_window2 "little window"
 
 Object  -> gilded_model_coffin "gilded model coffin"     
   with  name 'gilded' 'model' 'coffin' 'lid' 'inscription',
-        before CoffinBefore,
-        after CoffinAfter,
+        before [;
+            Open:
+                if( gilded_model_coffin has general && old_gardeners__gloves hasnt worn ) {
+                    deadflag = FAILED;
+                    "There is a flash and then everything goes dark!^^You were given a nasty shock by that coffin. 
+                     ~Must have been some old wiring,~ says a doctor, leaning over you in hospital.";
+                }
+                rfalse;
+        ],
+        after [ r;
+            Receive:
+                if( noun has rod_attr ) {
+                    "The mahogany rod fits in perfectly.";
+                rfalse;
+            Close:
+                give gilded_model_coffin ~general;
+                
+                for( r = child(self) : r ~= nothing : r = sibling(r) ) {
+                    if( r has unidentiifed_rod ) {
+                        discover_rod(r);
+                        give gilded_model_coffin general;
+                    } 
+                }
+                if( gilded_model_coffin hasnt general ) {
+                    gilded_model_coffin.initial = "A rather morbid gilded model coffin rests here.";
+                    rfalse;
+                }
+                gilded_model_coffin.initial = "The model coffin is closed and throbbing with electric power.";
+                "The coffin sparks, spitting with electricity, and begins throbbing with a life of its own!";
+            Open:
+                self.initial = "A rather morbid gilded model coffin rests open here.";
+                rfalse;
+        ],
         initial "A rather morbid, gilded model coffin rests here in peace.",
-        description " .The lid bears an inscription in strange hieroglyphics:^",
+        description [;
+            print "The lid bears an inscription in strange hieroglyphics:^";
+            0-->8 = 2 | 0-->8;
+            print "^   (()) #+*+ <>   ->#.^             |||^";
+            0-->8 = 65533 & 0-->8;
+            rtrue;
+        ],
   has   container openable static;
 
 Object  -> ragged_scroll "ragged scroll" 
@@ -2299,15 +2336,31 @@ Object  -> ragged_scroll "ragged scroll"
 
 Object  -> framed_charcoal_sketch "framed charcoal sketch"       
   with  name 'frame' 'framed' 'charcoal' 'sketch' 'of' 'alexandria',
-        before SketchBefore,
+        before [;
+            Attack, Open:
+                remove framed_charcoal_sketch;
+                move charcoal_sketch to location;
+                move dog_eared_old_letter to location;
+                "Breaking open the frame looses the sketch, which falls to the floor.";
+        ],
         initial "A little charcoal sketch is framed on one wall.",
         description "Behind the frame seems to be an artist's impression of the great Palace of Alexandria as it might once have been.",
         devil_hint "It's the frame which really sets it off.",
   has   ;
 
+[ LetterDesc ;
+    print "A faint typewritten letter, postmarked Cairo, October 1920, with a handwritten note signed simply 
+        ~Ellingsworth~:^^Hartley - Thought you might be able to date some of these queer pictograms and 
+        determinitives, early New Kingdom?  Pottery unclear, work continues^";
+    0-->8 = 2 | 0-->8;
+    print "^  ::   and        #     the               #.    this^  :;   but        +*+   god/spirit?       (())  all^  =    of         []    house/building    |||   indicates plural^  ->   through    >>>   moves             <>    item/thing?^  __   sits/lies/rests/is near            /     to/toward^";
+    0-->8 = 65533 & 0-->8;
+    rtrue;
+];
+
 Object  charcoal_sketch "charcoal sketch"        
   with  name 'charcoal' 'sketch' 'of' 'alexandria',
-        n_to Causeway,
+        door_to Causeway,
         description "A miniature artist's impression of the great Palace of Alexandria as it might once have been.^^(No, the impression is miniature, not the artist.)",
         devil_hint "Charcoal is so unrealistic, don't you agree?  Besides, it's far too large and clumsy.",
   has   scored;
@@ -2319,6 +2372,15 @@ Object  dog_eared_old_letter "dog-eared old letter"
         devil_hint "The ravings of a madman. Ignore it.",
   has   ;
 
+[ HalfwayUpStairsUp ;   
+    Servants_Room.d_to = Halfway_up_the_Stairs;
+    Servants_Room.n_to = Halfway_up_the_Stairs;
+    move tight_door to Servants_Room;
+    self.u_to = Servants_Room;
+    print "The staircase leads up into...^";
+    return Servants_Room;
+];
+
 HRoom   White_Hallway "White Hallway"    
   with  s_to Halfway_up_the_Stairs,
         ne_to Bricked_Path,
@@ -2329,7 +2391,19 @@ HRoom   White_Hallway "White Hallway"
 
 Object  -> picture_hook "picture hook"   
   with  name 'picture' 'hook',
-        before HookBefore,
+        before [;
+            Receive:
+                if( noun ~= painting_of_Mad_Isaac_Meldrewe ) {
+                    "Doesn't seem right there, somehow.";
+                }
+                move painting_of_Mad_Isaac_Meldrewe to White_Hallway;
+                give painting_of_Mad_Isaac_Meldrewe ~moved;
+                give painting_of_Mad_Isaac_Meldrewe talkable;
+                give self ~static;
+                give self scenery;
+                painting_of_Mad_Isaac_Meldrewe.initial = "Mad Isaac's painting glares at you from the picture hook.";
+                "You hang up Mad Isaac, who seems ideally placed there.";
+        ],
         initial "Up on one wall is a picture hook.",
   has   static;
 
@@ -2342,7 +2416,11 @@ Object  -> umbrella_stand "umbrella stand"
 
 Object  -> -> model_golden_sceptre "model golden sceptre"        
   with  name 'model' 'golden' 'gold' 'sceptre',
-        before SceptreBefore,
+        before [;
+            Take, Remove:
+                if( location == Quite_an_Undertaking ) self.number = 0;
+                rfalse;
+        ],
         after SceptreAfter,
         initial nothing,
         description "A copy, half-size, of the one from Tutenkhamun's sarcophagus. It isn't real gold, either.",
