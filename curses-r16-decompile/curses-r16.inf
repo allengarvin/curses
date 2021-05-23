@@ -817,7 +817,7 @@ Object rod_of_fire "Fire"
         rod_word 'fire',
         rod_action RodOfFireAction,
         angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_returning "Returning"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -831,7 +831,7 @@ Object rod_of_returning "Returning"
         rod_word 'returning',
         rod_action RodOfReturningAction,
         devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_stalking "Stalking"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -845,7 +845,7 @@ Object rod_of_stalking "Stalking"
         rod_word 'stalking',
         rod_action RodOfStalkingAction,
         devil_hint "It has no horticultural application.",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_infinity "Infinity"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -859,7 +859,7 @@ Object rod_of_infinity "Infinity"
         rod_word 'infinity',
         rod_action RodOfInfinityAction,
         angel_hint "Well, where might you have seen infinity before?",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_husbandry "Husbandry"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -873,7 +873,7 @@ Object rod_of_husbandry "Husbandry"
         rod_word 'husbandry',
         rod_action RodOfHusbandryAction,
         angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_bronze "Bronze"   
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -887,7 +887,7 @@ Object rod_of_bronze "Bronze"
         rod_word 'bronze',
         rod_action RodOfBronzeAction,
         angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_sacrifice "Sacrifice"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -901,7 +901,7 @@ Object rod_of_sacrifice "Sacrifice"
         rod_word 'sacrifice',
         rod_action RodOfSacrificeAction,
         angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_luck "Luck"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -915,7 +915,7 @@ Object rod_of_luck "Luck"
         rod_word 'luck',
         rod_action RodOfLuckAction,
         angel_hint "Well, if there's such a thing as luck, maybe this would help.",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_ice "Ice" 
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
@@ -929,7 +929,7 @@ Object rod_of_ice "Ice"
         rod_word 'ice',
         rod_action RodOfIceAction,
         angel_hint "Use only at heated moments, when affairs are delicately balanced.",
-  has   rod_attr unidentiifed_rod;
+  has   rod_attr unidentifed_rod;
 
 Object rod_of_language "Language"       
   with  name 'rod' 'of' 'language',
@@ -9630,7 +9630,7 @@ Array preactions_table --> IsDirection;
 
 [ RodBefore ;   
     if (action == ##Read) {
-        if (selfobj has unidentiifed_rod) {
+        if (selfobj has unidentifed_rod) {
             "A featureless mahogany rod, whose purpose is oblique. Or almost featureless: a little silver plaque is left blank at one end.";
         }
         if (selfobj has high_rod) {
@@ -9651,7 +9651,7 @@ Array preactions_table --> IsDirection;
 
 [ RodParse i w ;        
     if (parser_action == ##TheSame) {
-        if (parser_one has unidentiifed_rod && parser_two has unidentiifed_rod) {
+        if (parser_one has unidentifed_rod && parser_two has unidentifed_rod) {
             return 65535;
         }
         return 65534;
@@ -9674,7 +9674,7 @@ Array preactions_table --> IsDirection;
 
 
 [ rod_short ;   
-    if (selfobj has unidentiifed_rod) {
+    if (selfobj has unidentifed_rod) {
         print "featureless mahogany rod";
         rtrue;
     }
@@ -9740,7 +9740,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ discover_rod r ;      
-    give r ~unidentiifed_rod;
+    give r ~unidentifed_rod;
     r.&name-->2 = r.rod_word;
     r.&name-->3 = r.rod_word;
     r.article = "the";
@@ -11946,7 +11946,7 @@ Array preactions_table --> IsDirection;
     if (long_vanity_mirror has general) {
         rfalse;
     }
-    if (o in player or canvas_rucksack && (o has rod_attr || o has hidden_rod || o has unidentiifed_rod)) {
+    if (o in player or canvas_rucksack && (o has rod_attr || o has hidden_rod || o has unidentifed_rod)) {
         rtrue;
     }
     rfalse;
@@ -13024,7 +13024,7 @@ Array preactions_table --> IsDirection;
             "That won't fit in a socket.";
         }
         if (noun == rod_of_infinity) {
-            if (noun has unidentiifed_rod) {
+            if (noun has unidentifed_rod) {
                 "For some reason, that rod is just too large to fit.";
             }
             "The Rod of Infinity is just slightly too large to fit.";
@@ -13070,7 +13070,7 @@ Array preactions_table --> IsDirection;
 
 [ OctagonAfter ;        
     if (action == ##Take or ##Remove) {
-        if (noun has rod_attr && noun hasnt unidentiifed_rod) {
+        if (noun has rod_attr && noun hasnt unidentifed_rod) {
             Achieved(SCORE_ROD_IDENT);
         }
         rfalse;
@@ -13091,7 +13091,7 @@ Array preactions_table --> IsDirection;
         r = child(gilded_model_coffin);
       .labelXXX;
         if (r ~= nothing) {
-            if (r has unidentiifed_rod) {
+            if (r has unidentifed_rod) {
                 discover_rod(r);
                 give gilded_model_coffin general;
             }
@@ -23515,7 +23515,7 @@ Array preactions_table --> IsDirection;
             r = noun.rod_assoc;
             itobj = r;
             give r moved;
-            give r unidentiifed_rod;
+            give r unidentifed_rod;
             move r to player;
             Indefart(r);
             "!";
@@ -23732,7 +23732,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ InscribeOnSub ;       
-    if (second has unidentiifed_rod) {
+    if (second has unidentifed_rod) {
         "The silver plaque is extremely strong, and resists all attempts to mark it.";
     }
     InscribeSub();
