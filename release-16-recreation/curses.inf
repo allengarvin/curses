@@ -16,3 +16,41 @@ Constant T_NE_OF_HOME = 12;
 Constant T_SPIRIT_WORLD = 13;
 Constant T_AFTERLIFE = 14;
 
+Global StrongboxY;
+Global StrongboxX;
+Global tablet_eaten;
+
+Attribute battery_flag;
+Attribute consultable;
+Attribute hidden_Rod;
+Attribute rod_attr;
+
+Include "Parser";
+Include "VerbLib";
+
+Include "house.inf";
+Include "newverbs.inf";
+
+[ Initialise; ;
+    StartSplash();
+    location = Attic;
+
+    move crumpled_piece_of_paper to player;
+    move electric_torch to player;
+    move chocolate_biscuit to player;
+
+    StartDaemon(electric_torch);
+
+    InsertCardIntoDeck(Drowned_Sailor_card);
+    InsertCardIntoDeck(Fool_card);
+    InsertCardIntoDeck(Death_card);
+
+    StrongboxX = random(18) - 9;
+    StrongboxY = random(18) - 9;
+
+    "^^^^It's become a matter of pride now not to give up. That tourist map of Paris must be up here 
+     somewhere in all this clutter, even if it has been five years since your last trip. And it's your own fault. It
+     looks as if your great-grandfather was the last person to tidy up these lofts...^";
+];
+
+Include "Grammar";

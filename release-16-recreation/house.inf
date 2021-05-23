@@ -1,6 +1,6 @@
 ! A room in the house
 Class   HRoom
-        section T_MODERN; 
+  with  section T_MODERN; 
 
 Object  crumpled_piece_of_paper "crumpled piece of paper"        
   with  name 'crumpled' 'paper',
@@ -173,7 +173,7 @@ Object  -> four_leafed_clover "four-leafed clover"
   has   hidden_rod;
 
 HRoom   House "House"    
-  with  after [ 
+  with  after [ ; 
             if( tourist_map_of_Paris in player || (tourist_map_of_Paris in rucksack && rucksack in player) ) {
                 deadflag = WON;
                 "You have succeeded in shaking off the Curse of the Meldrews: for the first time in sixty 
@@ -321,7 +321,7 @@ Object  wrapping_paper "wrapping paper with reindeer on"
 Object  postcard_of_the_Champs_Elysees "postcard of the Champs-Elysees"  
   with  name 'postcard' 'card',
         after [;
-            Read:
+            Examine:
                 if( location == Dark_Room && Dark_Room has light ) {
                     Achieved(SCORE_HAMBURG);
                     set_flag_array(31);
@@ -354,7 +354,7 @@ HRoom   Over_the_East_Wing "Over the East Wing"
 Object  -> Austin "Austin"       
   with  name 'austin' 'cat' 'ginger' 'tail',
         before [;
-            Clean, Touch, Squeeze:
+            Rub, Touch, Squeeze:
                 "Austin curls about your foot implacably.";
             Take:
                 "Austin sidles out of reach resentfully, then belches.";
@@ -423,10 +423,11 @@ Object  -> Austin "Austin"
                     5: print "purrs";
                     6: print "hisses";
                 }
-                switch( random(3) ) 
+                switch( random(3) ) {
                     1: " contentedly.";
                     2: " happily.";
                     3: " cheerfully."; 
+                }
             }
             AustinMovements(false);
         ],
@@ -434,7 +435,7 @@ Object  -> Austin "Austin"
 
 [ AustinMovements to_current env i newroom ;
     env = parent(Austin);
-    newroom = -1
+    newroom = -1;
     if( to_current == true ) {
         env = location;
     } else {
@@ -811,7 +812,7 @@ Object  -> smoke_detector "smoke detector"
 Object  -> solid_glass_ball "solid glass ball"   
   with  name 'glass' 'ball',
         before [;
-            Clean:
+            Rub:
                 give self general;
                 if( projector_reversed == true && slide_projector has on ) {
                     print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
@@ -819,7 +820,7 @@ Object  -> solid_glass_ball "solid glass ball"
                     rtrue;
                 }
                 "You polish the ball to a nice shine.";
-            Examine, Read, Search:
+            Examine, Search:
                 if( self hasnt general ) "The ball is scratched and misted up.";
                 set_flag_array(32);
                 switch( random(12) ) {
@@ -1355,7 +1356,7 @@ Object  -> dark_shaft_obj2 "dark shaft"
         description "Uninviting.",
   has   container enterable open scenery;
 
-Object  -> little_window "little window" 
+Object  -> little_window1 "little window" 
   with  name 'little' 'window' 'vent' 'windowven' 'window-v',
         initial "There is a little closed window-vent low in the north wall.",
         description "You can just make out an impression of golden light.",
@@ -1458,7 +1459,7 @@ HRoom   The_Octagon "The Octagon"
         cant_go "The only exits are via the southeast passage and the back staircase.",
   has   light;
 
-Object  -> little_window "little window" 
+Object  -> little_window2 "little window" 
   with  name 'little' 'window' 'vent',
         initial "There is a little window-vent high in the southwest wall.",
         description "You can just make out an impression of cellars.",
