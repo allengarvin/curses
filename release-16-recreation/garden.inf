@@ -3,7 +3,10 @@ Class   GRoom
 
 GRoom   Garden_Stream "Garden Stream"    
   with  name 'reeds',
-        before GardenStreamBefore,
+        before [;
+            Swim: "Too shallow for comfort.";
+            Drink: "Just about drinkable. Not much fun, though.";
+        ],
         n_to "Better not... you'd be seen from the Library.",
         s_to coal_bunker,
         e_to Beside_the_Wall,
@@ -11,22 +14,33 @@ GRoom   Garden_Stream "Garden Stream"
         ne_to "Better not... you'd be seen from the Old Ballroom.",
         nw_to Family_Tree,
         d_to "The Hall is not safely climbable.",
-        description "In the lush, verdant (which is to say, under-cared for) gardens of Meldrew House, where a stream gurgles pleasantly as it meanders through reeds. The house rises up high above you to the south and you dare not be seen from the windows by the rest of the family, so you'll have to go northwest, deeper into the gardens, or else east along a path hugging the wall.",
+        description "In the lush, verdant (which is to say, under-cared for) gardens of Meldrew House, where a 
+            stream gurgles pleasantly as it meanders through reeds. The house rises up high above you to the south
+            and you dare not be seen from the windows by the rest of the family, so you'll have to go northwest,
+            deeper into the gardens, or else east along a path hugging the wall.",
         cant_go "The bulk of the Hall is in your way.",
   has   light scored;
 
 Object  -> coal_bunker "coal bunker"     
   with  name 'coal' 'bunker' 'loading' 'door',
-        after CoalBunkerAfter,
-        n_to Dark_Passage,
-        s_to "On the house wall is a coal bunker, whose loading door is shut.",
-        w_to ne_obj,
-        initial "On the house wall is a coal bunker, whose door stands open.",
+        after [;
+            Close: give metal_door ~open; rfalse;
+            Open: give metal_door open; rfalse;
+            Lock: give metal_door locked; rfalse;
+            Unlock: give metal_door unlocked; rfalse;
+        ],
+        door_to Dark_Passage,
+        when_closed "On the house wall is a coal bunker, whose loading door is shut.",
+        door_dir s_to,
+        when_open "On the house wall is a coal bunker, whose door stands open.",
   has   door locked openable static;
 
 Object  -> stream "stream"       
   with  name 'stream' 'water' 'gurgling',
-        before StreamBefore,
+        before [;
+            Enter: <<Swim>>;
+            Drink: "It's a warm, not unpleasant taste, silt and algae.";
+        ],
   has   scenery;
 
 GRoom   Beside_the_Wall "Beside the Wall"        
@@ -36,19 +50,34 @@ GRoom   Beside_the_Wall "Beside the Wall"
         nw_to "You'd be seen from the Library that way.",
         u_to "The walls of the Hall are unclimbable to someone suffering from your degree of vertigo.",
         d_to nothing,
-        description "The east-west path along the foot of Meldrew Hall ends here at one of the carved walls bordering the garden.",
+        description "The east-west path along the foot of Meldrew Hall ends here at one of the carved walls 
+            bordering the garden.",
         cant_go "The stone wall blocks further passage east.",
   has   light;
 
 Object  -> potted_shrub "potted shrub"   
   with  name 'pot' 'potted' 'tub' 'plant' 'shrub',
-        before ShrubBefore,
+        before [;
+            Climb, Enter: "It's only three feet high!";
+            Turn: You swivel the plant's tub.";
+            Push, PushDir, Pull:
+                if( self has general ) rfalse;
+                give self general;
+                move timber_hatch to location;
+                Beside_the_Wall.d_to = timber_hatch;
+                move self to location;
+                "Pushing the shrub a little aside reveals an unsightly old timber hatch, about three feet in diameter.";
+        ],
         initial "A shrub is being nursed in a wide round tub in the centre of the path, sheltered behind the wall.",
   has   static;
 
 Object  -> stone_wall "stone wall"       
   with  name 'stone' 'wall' 'carved' 'carvings' 'painted',
-        before StoneWallBefore,
+        before [;
+            Climb, Enter:
+                "The old, carved garden wall is one of the treasures of rural England, and you're not nearly 
+                 desperate enough to crumble it further into ruin.";
+        ],
         life StoneWallLife,
         description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
         found_in Beside_the_Wall Beside_the_Drive,
@@ -56,27 +85,49 @@ Object  -> stone_wall "stone wall"
 
 Object  timber_hatch "timber hatch"      
   with  name 'timber' 'hatch' 'old' 'rotted' 'rotting' 'lid',
-        after TimberHatchAfter,
-        n_to Wine_Cellars,
-        s_to "Beside the shrub is a timber hatch, three feet across.",
-        w_to thedark,
-        initial "The timber lid stands open beside the shrub, revealing the old barrel-hatch.",
+        after [;
+            Open:
+                give Wine_Cellars light;
+                print (string) self.when_open;
+                new_line;
+                rtrue;
+            Close:
+                give Wine_Cellars ~light;
+                rfalse;
+        ],
+        door_to Wine_Cellars,
+        when_closed "Beside the shrub is a timber hatch, three feet across.",
+        door_to d_to,
+        when_open "The timber lid stands open beside the shrub, revealing the old barrel-hatch.",
   has   door openable static;
 
 GRoom   Family_Tree "Family Tree"        
   with  name 'sign' 'signpost' 'post',
-        n_to FamilyTreeNorth,
+        n_to [;
+            if( player in garden_roller )
+                return Maze;
+            "You can't go that way.^^Now, this takes a little explaining... These days, it isn't easy to keep up 
+             a house the size of Meldrew Hall, and your family has had to strike a bargain with the National
+             Trust that the house should be open to the public in the summer months. The maze is so popular with
+             visitors that the grass has worn away, and it's being reseeded at the moment, so you shouldn't go
+             treading all over it.";
+        ],
         e_to Lawn_Ornaments,
         w_to Clearing,
         se_to Garden_Stream,
         u_to Up_the_Plane_Tree,
-        initial FamilyTreeInitial,
-        description "You stand in the shade of a great plane tree, seedlings for which were brought back from Spain by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and to the north a single break in the green privet hedge marks the entrance to the famously difficult Meldrew Hall Maze. A signpost reading ~To the Mosaic~ points east across the lawn.",
+        initial [;
+            MazeX = 4; MazeY = 6; rfalse;
+        ],
+        description "You stand in the shade of a great plane tree, seedlings for which were brought back from Spain 
+            by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and
+            to the north a single break in the green privet hedge marks the entrance to the famously difficult
+            Meldrew Hall Maze. A signpost reading ~To the Mosaic~ points east across the lawn.",
   has   light;
 
 Object  -> plane_tree "plane tree"       
   with  name 'plane' 'tree' 'family',
-        before PlaneTreeBefore,
+        before [; Climb: << Go u_obj >>; ],
   has   scenery;
 
 GRoom   Lawn_Ornaments "Lawn Ornaments"  
@@ -96,7 +147,12 @@ Object  -> plaster_statuette "plaster statuette"
 
 Object  ancient_well "ancient well"      
   with  name 'ancient' 'well' 'dark',
-        after WellAfter,
+        after [;
+            Receive:
+                move noun to hanging_cord;
+                give CR ~general;
+                "It plummets down into the well.";
+        ],
         initial "The lawn is lightly coated with broken plaster and dust, and in the spot where the statuette once stood is a dark, ancient well.",
         description "You can make out nothing below, and the well is too small to climb down.",
   has   container open static;
@@ -146,8 +202,20 @@ Object  -> runner_bean_plant "runner-bean plant"
   has   door static;
 
 GRoom   Up_the_Beanstalk "Up the Beanstalk"      
-  with  before BeanStalkBefore,
-        after BeanStalkAfter,
+  with  before [;
+            Jump: deadflag = DIED; "You fall and break your neck!";
+        ],
+        after [;
+            Drop:
+                 move noun to Family_Tree;
+                 if( noun == medicine_bottle && noun has locked ) {
+                    print "The medicine bottle plummets to the earth below.^";
+                    give medicine_bottle ~locked;
+                    give medicine_bottle open;
+                    rtrue;
+                }
+                print_ret (The) noun, " plummets to the earth below.";
+        ],
         n_to Heavenly_Place,
         d_to Vegetable_Garden,
         description "At the top of the beanstalk, in amongst the clouds. There 
@@ -191,7 +259,9 @@ GRoom   Up_the_Plane_Tree "Up the Plane Tree"
   with  name 'jemima' 'conservatory' 'window',
         before UpTreeBefore,
         d_to Family_Tree,
-        description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
+        description "A magnificent view of the gardens would be yours, were it not for the branches and leaves 
+            which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from
+            her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
         cant_go "No, don't go out on a limb.",
   has   light;
 
@@ -242,7 +312,7 @@ Object  -> plaque "plaque"
 
 Object  -> miniature "miniature" 
   with  name 'miniature' 'plastic' 'etching',
-        n_to Folly,
+        door_to Folly,
         initial "A miniature plastic etching rests on the plaque.",
         description "No larger than a playing card, it depicts the Folly which used to stand on the hillside outcrop.",
         devil_hint "What's the point of a drawing so small it might almost be a playing card?",
