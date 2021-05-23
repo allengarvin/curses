@@ -1,0 +1,250 @@
+Class   GRoom
+  with  section T_GARDEN;
+
+GRoom   Garden_Stream "Garden Stream"    
+  with  name 'reeds',
+        before GardenStreamBefore,
+        n_to "Better not... you'd be seen from the Library.",
+        s_to coal_bunker,
+        e_to Beside_the_Wall,
+        w_to "Better not... you'd be seen from the Orangery.",
+        ne_to "Better not... you'd be seen from the Old Ballroom.",
+        nw_to Family_Tree,
+        d_to "The Hall is not safely climbable.",
+        description "In the lush, verdant (which is to say, under-cared for) gardens of Meldrew House, where a stream gurgles pleasantly as it meanders through reeds. The house rises up high above you to the south and you dare not be seen from the windows by the rest of the family, so you'll have to go northwest, deeper into the gardens, or else east along a path hugging the wall.",
+        cant_go "The bulk of the Hall is in your way.",
+  has   light scored;
+
+Object  -> coal_bunker "coal bunker"     
+  with  name 'coal' 'bunker' 'loading' 'door',
+        after CoalBunkerAfter,
+        n_to Dark_Passage,
+        s_to "On the house wall is a coal bunker, whose loading door is shut.",
+        w_to ne_obj,
+        initial "On the house wall is a coal bunker, whose door stands open.",
+  has   door locked openable static;
+
+Object  -> stream "stream"       
+  with  name 'stream' 'water' 'gurgling',
+        before StreamBefore,
+  has   scenery;
+
+GRoom   Beside_the_Wall "Beside the Wall"        
+  with  n_to "You'd be seen from the Old Ballroom that way.",
+        s_to "There's no door into the Hall.",
+        w_to Garden_Stream,
+        nw_to "You'd be seen from the Library that way.",
+        u_to "The walls of the Hall are unclimbable to someone suffering from your degree of vertigo.",
+        d_to nothing,
+        description "The east-west path along the foot of Meldrew Hall ends here at one of the carved walls bordering the garden.",
+        cant_go "The stone wall blocks further passage east.",
+  has   light;
+
+Object  -> potted_shrub "potted shrub"   
+  with  name 'pot' 'potted' 'tub' 'plant' 'shrub',
+        before ShrubBefore,
+        initial "A shrub is being nursed in a wide round tub in the centre of the path, sheltered behind the wall.",
+  has   static;
+
+Object  -> stone_wall "stone wall"       
+  with  name 'stone' 'wall' 'carved' 'carvings' 'painted',
+        before StoneWallBefore,
+        life StoneWallLife,
+        description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
+        found_in Beside_the_Wall Beside_the_Drive,
+  has   scenery talkable;
+
+Object  timber_hatch "timber hatch"      
+  with  name 'timber' 'hatch' 'old' 'rotted' 'rotting' 'lid',
+        after TimberHatchAfter,
+        n_to Wine_Cellars,
+        s_to "Beside the shrub is a timber hatch, three feet across.",
+        w_to thedark,
+        initial "The timber lid stands open beside the shrub, revealing the old barrel-hatch.",
+  has   door openable static;
+
+GRoom   Family_Tree "Family Tree"        
+  with  name 'sign' 'signpost' 'post',
+        n_to FamilyTreeNorth,
+        e_to Lawn_Ornaments,
+        w_to Clearing,
+        se_to Garden_Stream,
+        u_to Up_the_Plane_Tree,
+        initial FamilyTreeInitial,
+        description "You stand in the shade of a great plane tree, seedlings for which were brought back from Spain by an ancestor of yours in 1806. To the southeast is a stream, to the west is a small clearing and to the north a single break in the green privet hedge marks the entrance to the famously difficult Meldrew Hall Maze. A signpost reading ~To the Mosaic~ points east across the lawn.",
+  has   light;
+
+Object  -> plane_tree "plane tree"       
+  with  name 'plane' 'tree' 'family',
+        before PlaneTreeBefore,
+  has   scenery;
+
+GRoom   Lawn_Ornaments "Lawn Ornaments"  
+  with  name 'gnomes' 'nymphs' 'windmills' 'gnome' 'nymph' 'windmill' 'ornament' 'ornaments',
+        e_to Mosaic,
+        w_to Family_Tree,
+        d_to Mosaic,
+        description "Several hundred years of rolling have made this a rather fine patch of grass, between the privet hedge (north), the plane tree (west) and the mosaic (east). Unfortunately, it is adorned with all the really ugly ornaments (gnomes, plaster nymphs, stone windmills to grow flowers in), this being the corner of the garden least visible from the house.",
+        cant_go "The options appear to be east or west.",
+  has   light;
+
+Object  -> plaster_statuette "plaster statuette" 
+  with  name 'plaster' 'statuette' 'bust' 'statue',
+        initial "Prominent amongst these is a plaster statuette, a bust of a woman.",
+        description "It stands four feet high. At the base is an engraving: ~Self-Portrait, H.M. '54~. (It's presumably not by Her Majesty the Queen, though.)",
+  has   static;
+
+Object  ancient_well "ancient well"      
+  with  name 'ancient' 'well' 'dark',
+        after WellAfter,
+        initial "The lawn is lightly coated with broken plaster and dust, and in the spot where the statuette once stood is a dark, ancient well.",
+        description "You can make out nothing below, and the well is too small to climb down.",
+  has   container open static;
+
+GRoom   Mosaic "Mosaic"  
+  with  name 'perspex' 'scenes' 'quadrants',
+        e_to nothing,
+        w_to Lawn_Ornaments,
+        u_to Lawn_Ornaments,
+        description "This sunken corner of the garden has been excavated and then covered over with tough perspex to protect it from visitors' shoes. It consists of a time-worn Roman mosaic, divided into four quadrants, each showing scenes of idealised Roman life. There was probably a villa on this site, but your family has never been keen on archaeologists so the excavations went no further.",
+        cant_go "From here you can climb back up to the lawn.",
+  has   light;
+
+Object  -> Roman_mosaic "Roman mosaic"   
+  with  name 'roman' 'mosaic',
+        life LagachLife,
+        description "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.",
+  has   scenery talkable;
+
+Object  -> hard_wooden_ball "hard wooden ball"   
+  with  name 'croquet' 'hard' 'wooden' 'ball',
+        initial "A hard wooden ball, palm-sized, rolls about across the mosaic.",
+        angel_hint "Splendid, you're having a ball. I do hope you hit it off.",
+  has   ;
+
+GRoom   Clearing "Clearing"      
+  with  s_to Vegetable_Garden,
+        e_to Family_Tree,
+        w_to Garage,
+        description "A clearing at the edge of the garden, surrounded by walls and the privet hedges of the maze. To the east is the plane tree, to the west an opening in the wall makes a garage entrance and to the south is a small vegetable garden.",
+  has   light;
+
+GRoom   Vegetable_Garden "Vegetable Garden"      
+  with  n_to Clearing,
+        u_to runner_bean_plant,
+        description "A recently-turned vegetable garden, using up a shady corner of the garden. The patch testifies more to good intentions than horticulture.",
+        cant_go "From this corner, you can only go back to the clearing.",
+  has   light;
+
+Object  -> runner_bean_plant "runner-bean plant" 
+  with  name 'runner' 'bean' 'plant',
+        door_to Up_the_Beanstalk,
+        when_closed "Only a runner-bean plant graces the vegetable garden.",
+        door_dir u_to,
+        when_open "A giant runner-bean plant leads up vertiginously into the sky from here.",
+        section T_GARDEN,
+  has   door static;
+
+GRoom   Up_the_Beanstalk "Up the Beanstalk"      
+  with  before BeanStalkBefore,
+        after BeanStalkAfter,
+        n_to Heavenly_Place,
+        d_to Vegetable_Garden,
+        description "At the top of the beanstalk, in amongst the clouds. There 
+            is no safe way to go from here except back down, not surprisingly. A dangerous way might be to step
+            out onto the clouds to the north, but even if this is a fairy-tale it would be taking a lot on trust.",
+        cant_go "The clouds are too tenuous that way.",
+  has   light;
+
+GRoom   Garage "Garage"  
+  with  e_to Clearing,
+        description "A modest brick garage, built into the garden walls. A big open doorway leads east onto the clearing.",
+  has   light;
+
+Object  -> garden_roller "garden roller" 
+  with  name 'garden' 'roller' 'switch' 'motor' 'motorised' 'power',
+        before RollerBefore,
+        s_to "A big motorised garden roller is parked here.",
+        initial "The garden roller sits here, its engine still running.",
+        description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
+        each_turn RollerEachTurn,
+  has   container enterable open static switchable;
+
+Object  -> weed_killer_bottle "weed killer bottle"       
+  with  name 'weed' 'killer' 'bottle' 'weedkille',
+        before WeedKillerBefore,
+        initial "In the shadows is a weed killer bottle.",
+        description "If squeezed, it squirts weed killer over the ground. There are many warning labelXXXs about getting it on one's hands.",
+        daemon WeedKillerDaemon,
+        angel_hint "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens.",
+  has   ;
+
+Object  -> spade "spade" 
+  with  name 'bladed' 'agricultural' 'implement' 'zzzzzzzzz',
+        before SpadeBefore,
+        initial "Hanging from a hook is a bladed agricultural implement.",
+        short SpadeShort,
+        angel_hint "Do you think there's anywhere in the garden particularly suitable for such an implement?",
+  has   ;
+
+GRoom   Up_the_Plane_Tree "Up the Plane Tree"    
+  with  name 'jemima' 'conservatory' 'window',
+        before UpTreeBefore,
+        d_to Family_Tree,
+        description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
+        cant_go "No, don't go out on a limb.",
+  has   light;
+
+Object  -> maze_layout "maze layout"     
+  with  name 'maze' 'layout',
+        description " xmThe layout is roughly as follows:^^",
+        article "the",
+  has   scenery;
+
+GRoom   Maze "Maze"      
+  with  before MazeBefore,
+        after MazeAfter,
+        s_to Family_Tree,
+        w_to Viewpoint_Ledge,
+        description "A maze of green privet passages, all alike.",
+        cant_go "The privet hedges are in the way.",
+  has   light scored;
+
+GRoom   Patio_in_Maze "Patio in Maze"    
+  with  name 'patio' 'flagstone',
+        before PatioBefore,
+        after PatioAfter,
+        u_to "Up?  Are we playing the same game?",
+        d_to Crypt,
+        description "This is an old stone patio in the heart of the garden maze. A missing flagstone offers an intriguing dark prospect beneath.",
+        cant_go "The privet hedges are in the way.",
+  has   light scored;
+
+Object  -> marble_rose "marble rose"     
+  with  name 'marble' 'rose' 'flower',
+        before RoseBefore,
+        initial "Sticking out of some soft earth is a perfectly-carved marble rose.",
+        angel_hint "Perfection set in stone. Not a gift for mortal women!",
+  has   ;
+
+GRoom   Viewpoint_Ledge "Viewpoint Ledge"        
+  with  name 'motorway' 'coaches',
+        before ViewpointBefore,
+        e_to Maze,
+        description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
+        cant_go "The hillside is too steep.",
+  has   light scored;
+
+Object  -> plaque "plaque"       
+  with  name 'plaque',
+        description "~This viewpoint, one of the finest in the county, was laid down by Capability Meldrew, a well-known landscape gardener of his day. It was intended as one of the rewards of the garden maze, and was constructed c. 1808 after an earlier folly on the site collapsed.~",
+  has   scenery;
+
+Object  -> miniature "miniature" 
+  with  name 'miniature' 'plastic' 'etching',
+        n_to Folly,
+        initial "A miniature plastic etching rests on the plaque.",
+        description "No larger than a playing card, it depicts the Folly which used to stand on the hillside outcrop.",
+        devil_hint "What's the point of a drawing so small it might almost be a playing card?",
+  has   ;
+
