@@ -1790,7 +1790,7 @@ Object -> dark_shaft_obj2 "dark shaft"
         description "Uninviting.",
   has   container enterable open scenery;
 
-Object -> little_window "little window" 
+Object -> little_window1 "little window"        
   with  name 'little' 'window' 'vent' 'windowven' 'window-v',
         initial "There is a little closed window-vent low in the north wall.",
         description "You can just make out an impression of golden light.",
@@ -1899,7 +1899,7 @@ Object The_Octagon "The Octagon"
         section T_MODERN,
   has   light;
 
-Object -> little_window "little window" 
+Object -> little_window2 "little window"        
   with  name 'little' 'window' 'vent',
         initial "There is a little window-vent high in the southwest wall.",
         description "You can just make out an impression of cellars.",
@@ -9027,7 +9027,7 @@ Array preactions_table --> IsDirection;
     }
     oldcl = cl;
     @read_char 1 0 0 -> pke;
-    if (pke == 78[Dead_End?] or 110[pile_of_sheets?] or 130[little_window?]) {
+    if (pke == 78[Dead_End?] or 110[pile_of_sheets?] or 130[little_window1?]) {
         ++cl;
         if (cl == 7 + lines) {
             cl = 7[se_obj?];
