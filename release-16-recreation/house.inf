@@ -249,7 +249,43 @@ Object  -> scratched_cupboard "scratched cupboard"
 
 Object  -> -> bird_whistle "bird whistle"        
   with  name 'bird' 'whistle' 'harrison',
-        before WhistleBefore,
+        before [;
+            Blow:
+                if( gas_mask has worn ) "With the gas mask on?";
+                 print "Fweep!  Fweep!^";
+                if( Austin in location ) 
+                    print "^Austin is startled, but too lazy to look up.^";
+                if( location == Hedgery ) 
+                    "^The sparrows swoop down and around you, but rapidly lose interest.";
+                if( location == Summer_House ) {
+                    if( flock_of_sparrows has general ) 
+                        "^But the sparrows cannot hear.";
+                    if( gold_watch_on_a_chain has moved ) 
+                        "^But the sparrows are wise to that one.";
+                    give gold_watch_on_a_chain moved;
+                    give flock_of_sparrows general;
+                    remove irate_squirrel_friend;
+                    Achieved(SCORE_WATCH);
+                    "^The sparrows swoop down onto the roof, battering against the glass. In the process the gold 
+                     watch comes loose, and falls to the ground with a disconcerting thud.^^It just misses the
+                     squirrel, who bolts away, startled.^^The sudden motion once more disturbs the flighty sparrows,
+                     who take to the skies. You feel rather deserted all of a sudden.";
+                }
+                if( location == Cliffs or Cave_Mouth ) 
+                    "^The sacred falcon of Apollo wheels high in the sky over the cave mouth, but then flies away.";
+                if( location == Necropolis && unexciting_tombstone in nothing ) 
+                    move cloak_of_many_colours to Necropolis;
+                    move unexciting_tombstone to Necropolis;
+                    Necropolis.d_to = unexciting_tombstone;
+                    "^The birds of prey swoop, startled, down to an unexciting tombstone which you hadn't noticed 
+                     before; but after a moment they relax and slip away into the darkness.";
+                }
+                if( location == Hollow && corn_crake in Hollow ) 
+                    "Although seemingly distractable, the corn crake must be stone deaf. (You vaguely recall reading 
+                     somewhere that corn crakes are the noisiest birds in Ireland, famous for keeping farm-hands
+                     awake at night.)";
+                rtrue;
+        ],
         description "A patent ~Harrison~ bird-whistle, according to the slogan on one side.",
         devil_hint "It has a calm, soothing effect.",
   has   ;
