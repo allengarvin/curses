@@ -273,7 +273,7 @@ Object  -> -> bird_whistle "bird whistle"
                 }
                 if( location == Cliffs or Cave_Mouth ) 
                     "^The sacred falcon of Apollo wheels high in the sky over the cave mouth, but then flies away.";
-                if( location == Necropolis && unexciting_tombstone in nothing ) 
+                if( location == Necropolis && unexciting_tombstone in nothing )  {
                     move cloak_of_many_colours to Necropolis;
                     move unexciting_tombstone to Necropolis;
                     Necropolis.d_to = unexciting_tombstone;
