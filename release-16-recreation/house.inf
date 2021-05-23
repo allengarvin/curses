@@ -877,20 +877,52 @@ Object  -> water_pipe "water pipe"
 
 Object  -> romantic_novel "romantic novel"       
   with  name 'romance' 'romantic' 'novel' 'book',
-        before RomanticNovelBefore,
+        before [;
+            Take:
+                if( steel_wrench hasnt general ) {
+                    PlumbingDisaster();
+                    rtrue;
+                }
+            Examine:
+                if( steel_wrench hasnt general ) "You can't read it while it's holding the pipe up.";
+                set_flag_array(35);
+                rfalse;
+        ],
         list_together n_obj,
-        initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
-        description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
+        initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water 
+            pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
+        description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all 
+            about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the
+            aristocracy.",
         parse_name ConsultableParsename,
         devil_hint "Don't bother reading or thinking about it. Nothing to do with your family.",
   has   consultable;
 
 Object  -> book_of_Twenties_poetry "book of Twenties poetry"     
   with  name 'poetry' 'book',
-        before PoetryBefore,
+        before [;
+            Take:
+                if( steel_wrench hasnt general ) {
+                    PlumbingDisaster();
+                    rtrue;
+                }
+            Examine:
+                if( steel_wrench hasnt general ) "You can't read it while it's holding the pipe up.";
+                if( location == thedark )
+                    "1920s poetry may be literarily enlightening, but not literally. It is, in fact, too dark to 
+                     make out the print.";
+                if( location == Lighthouse )
+                    "The glare of the sun off the ocean is too bright to make out the words without giving you a 
+                     headache.";
+                print "Publishers talk a lot of nonsense about readers being transported away by books, but 
+                    somehow you have arrived in the...^";
+                move book_of_Twenties_poetry to location;
+                PlayerTo(Unreal_City);
+        ],
         list_together n_obj,
         parse_name ConsultableParsename,
-        devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
+        devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of 
+            Tennyson, Kipling and Hardy.",
   has   concealed consultable;
 
 HRoom   Souvenirs_Room "Souvenirs Room"  
