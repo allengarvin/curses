@@ -1020,10 +1020,106 @@ HRoom   Souvenirs_Room "Souvenirs Room"
 
 Object  -> slide_projector "slide projector"     
   with  name 'slide' 'projector' 'switch' 'dial' 'slot' 'focus',
-        before ProjectorBefore,
-        after ProjectorAfter,
-        description "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There is also a little dial on the back, perhaps for the focus.",
+        before [;
+            Receive:
+                if( child(self) )
+                    "There's a slide in already.";
+                if( noun == postcard_of_the_Champs_Elysees ) {
+                    print "The postcard is just too large to fit.^";
+                    GoodTry();
+                    rtrue;
+                }
+                if( noun == framed_charcoal_sketch ) {
+                    print "The frame is too bulky.^";
+                    GoodTry();
+                    rtrue;
+                }
+                if( noun == charcoal_sketch or miniature )
+                    rfalse;
+                if( noun hasnt card ) 
+                    "It won't fit. There's only room for something flat and the size of, say, a playing card.";
+            Turn:
+                if( projector_reversed == true ) {
+                    projector_reversed = false;
+                    if( self has on ) {
+                        give Disused_Observatory ~light;
+                        "The sharp beam of light cuts out again.";
+                    }
+                    "Click.";
+                }
+                projector_reversed = true;
+                if( self has on ) {
+                    give Disused_Observatory light;
+                    "A sharp beam of white light appears backward out of the projector. As you step out of the beam, 
+                     it extends dead straight through the north doorway.";
+                }
+                "Click.";
+        ],
+        after [ o;
+            Receive:
+                if( self has on ) {
+                    ToggleSouthWall(noun);
+                    rtrue;
+                }
+                rfalse;
+            LetGo:
+                if( self has on ) {
+                    ToggleSouthWall(nothing);
+                    rtrue;
+                }
+                rfalse;
+            SwitchOn:
+                give Souvenirs_Room light;
+                if( projector_reversed == true ) {
+                    give Disused_Observatory light;
+                }
+                o = child(slide_projector);
+                if( o == nothing ) {
+                    print "The south wall is lit up. ";
+                    if( projector_reversed == true ) {
+                        print "Also, a narrow white beam of light extends backwards from the projector, pointing 
+                            out up through the Observatory doorway to the north.";
+                    }
+                    new_line;
+                    rtrue;
+                }
+                ToggleSouthWall(o);
+                rtrue;
+            SwitchOff:
+                give Souvenirs_Room ~light;
+                give Disused_Observatory ~light;
+                give south_wall concealed;
+                rfalse;
+        ],
+        description "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There 
+            is also a little dial on the back, perhaps for the focus.",
   has   container open scenery switchable;
+
+[ ToggleSouthWall o ;
+    if( o ~= nothing ) {
+        if( o.door_to ~= nothing ) {
+            south_wall.door_to = o.n_to;
+            give south_wall ~concealed;
+        }
+        print "The south wall lights up with ";
+        DisplayCardDesc(o);
+        rtrue;
+    }
+    give south_wall concealed;
+    "The south wall becomes blank again.";
+];
+
+[ FakeDie card ;
+    print "^^    ";
+    style bold;
+    print "*** You have died ***";
+    style roman;
+    print "^^Or have you?  No... this isn't quite the end. You see an intense blue-white light at the end of 
+        what seems a tunnel, and drift toward it until you realise that you are staring, dazed, into the light of
+        the slide projector, and have hardly moved at all.^";
+    give card general;
+    rtrue;
+];
 
 Object  -> south_wall "south wall"       
   with  before SouthWallBefore,
@@ -1033,16 +1129,41 @@ Object  -> south_wall "south wall"
 
 HRoom   East_Annexe "East Annexe"        
   with  name 'gap' 'tiles' 'roof',
-        before EastAnnexeBefore,
+        before [;
+            Go, Enter:
+                if( old_smudged_battery in electric_torch && noun == n_obj or cupboard_door ) {
+                    "You know you only have an old, nearly dead battery in the torch, and are reluctant to tread on 
+                     the weaker floorboards inside the cupboard without safer illumination.";
+                }
+                if( child(electric_torch) == nothing && noun == n_obj or cupboard_door ) 
+                    "But it's dark in there and you have no battery in your torch.";
+        ],
         n_to cupboard_door,
         s_to Dead_End,
         w_to Over_the_East_Wing,
-        description " .This tight annexe at the eastern end of the house is piled up with old loft insulation rolls, left over from the last time the job was done (whenever that was). A gap between the tiles of the roof (which you really must mend before winter) lets a little natural light in",
+        description [;
+            print "This tight annexe at the eastern end of the house is piled up with old loft insulation rolls, 
+                left over from the last time the job was done (whenever that was). A gap between the tiles of the
+                roof (which you really must mend before winter) lets a little natural light in";
+            if( Dead_End.d_to == nothing ) 
+                ", but the attics to the west and south are dark.";
+            " and the dead end south is bright with sunlight through a square open hatchway in the roof.";
+        ],
   has   light;
 
 Object  -> insulation_rolls "insulation rolls"   
   with  name 'insulation' 'rolls' 'roll',
-        before InsulationBefore,
+        before [;
+            Examine, Search, LookUnder:
+                if( old_gardeners__gloves hasnt worn ) 
+                    "A rash act. The itchy fibres of the insulation soon deter you.";
+                if( new_battery notin self )
+                    "Nothing else there, unfortunately.";
+                move new_battery to East_Annexe;
+                Achieved(SCORE_BATTERY);
+                "You uncover a shiny new battery. It must have been dropped by accident when the loft insulation 
+                 was being done.";
+        ],
         article "some",
   has   scenery;
 
@@ -1055,12 +1176,14 @@ Object  -> -> new_battery "new-looking battery"
 
 Object  -> cupboard_door "cupboard door" 
   with  name 'cupboard' 'door',
-        before CupboardBefore,
-        n_to Inside_Cupboard,
-        s_to "In the north wall is an intriguing closed cupboard door.",
-        e_to small_brass_key,
-        w_to w_obj,
-        initial "In the north wall is an open cupboard door, large enough to step inside.",
+        before [;
+            Knock: "There is no reply, and frankly it's hard to imagine anyone's in there.";
+        ],
+        door_to Inside_Cupboard,
+        when_closed "In the north wall is an intriguing closed cupboard door.",
+        with_key small_brass_key,
+        door_dir n_to,
+        when_open "In the north wall is an open cupboard door, large enough to step inside.",
   has   door lockable openable static;
 
 HRoom   Dead_End "Dead End"      
@@ -1073,19 +1196,21 @@ HRoom   Dead_End "Dead End"
         description "The winding attic comes to a dead end here, and particularly dirty it is too, what with soot everywhere from the broken old chimney sweeping gear.",
   has   ;
 
-Object  -> canvas_rucksack "canvas rucksack"     
+Object  -> rucksack "canvas rucksack"     
   with  name 'canvas' 'rucksack' 'sack',
-        initial "Great Scott!  That old canvas rucksack must be the very one your famous ancestor, the African explorer Ebenezer Meldrew, brought back from the Zambezi Expedition of 1882!",
-        description "On second thoughts, now you look at more closely, it seems to be the rucksack you bought to go to Paris with five years ago.",
+        initial "Great Scott!  That old canvas rucksack must be the very one your famous ancestor, the African 
+            explorer Ebenezer Meldrew, brought back from the Zambezi Expedition of 1882!",
+        description "On second thoughts, now you look at more closely, it seems to be the rucksack you bought to 
+            go to Paris with five years ago.",
         devil_hint "It might be handy, if only it could carry anything.",
   has   clothing container open openable;
 
 Object  secret_door "secret door"        
   with  name 'secret' 'door',
-        n_to Alisons_Writing_Room,
-        s_to "The secret door is closed.",
-        w_to ne_obj,
-        initial "A secret door stands open in the south wall!",
+        door_to Alisons_Writing_Room,
+        when_closed "The secret door is closed.",
+        door_dir ne_to,
+        when_open "A secret door stands open in the south wall!",
   has   concealed door open openable static;
 
 Object  fire_escape "fire escape"        
@@ -1104,7 +1229,20 @@ HRoom   Inside_Cupboard "Inside Cupboard"
 
 Object  -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"       
   with  name 'painting' 'of' 'mad' 'isaac' 'picture',
-        after IsaacPaintingAfter,
+        after [;
+            Take:        
+                if( self in White_Hallway && picture_hook has scenery ) {
+                    give self ~scenery;
+                    give self static;
+                    give self ~talkable;
+                    "You take Mad Isaac down.";
+                }
+                if( big_iron_fireplace has concealed ) {
+                    give big_iron_fireplace ~concealed;
+                    "Taken. (There's a fireplace behind it, by the way.)";
+                }
+                rfalse;
+        ],
         life LagachLife,
         initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
         description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
@@ -1121,17 +1259,33 @@ Object  -> big_iron_fireplace "big iron fireplace"
 
 Object  -> cranked_skylight "cranked skylight"   
   with  name 'crank' 'cranked' 'skylight' 'handle',
-        before SkylightBefore,
-        n_to Roof,
-        s_to "Above you is a blacked-out skylight with a crank handle.",
-        w_to in_obj,
-        initial "The skylight above is open, and the sky does indeed light the room.",
-        description "It was painted out black during the first wave of Zeppelin air raids in World War I. This is completely irrelevant, but you did ask.",
+        before [;
+            Trun:
+                print "With a horrid creaking noise, the crank ";
+                if( Inside_Cupboard has light ) {
+                    give Inside_Cupboard ~light;
+                    give cranked_skylight ~open;
+                    "shuts down the skylight, shutting out the sunshine.";
+                }
+                give Inside_Cupboard light;
+                give cranked_skylight open;
+                "winds open the skylight, flooding the room with sunshine.";
+            Open, Close: "How, exactly?";
+        ],
+        door_to Roof,
+        when_closed "Above you is a blacked-out skylight with a crank handle.",
+        door_dir u_to,
+        when_open "The skylight above is open, and the sky does indeed light the room.",
+        description "It was painted out black during the first wave of Zeppelin air raids in World War I. This 
+            is completely irrelevant, but you did ask.",
   has   door static;
 
 Object  -> gas_mask "gas mask"   
   with  name 'gas' 'mask' 'gasmask',
-        after GasMaskAfter,
+        after [;
+            Wear: "After a brief ecstasy of fumbling, you pull it on. It smells unpleasantly of World War II leftover 
+                   cork.";
+        ],
         devil_hint "The cork filters have gone. It's useless now.",
   has   clothing;
 
