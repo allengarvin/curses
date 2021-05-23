@@ -18,7 +18,7 @@ Verb 'pinch' 'slap'
 ;
 
 Verb 'scratch'
-    * noun                                              -> Clean
+    * noun                                              -> Rub
 ;
 
 Verb 'ring'
@@ -260,7 +260,7 @@ Verb 'attach' 'fasten' 'fix' 'tie'
 ;
 
 Verb 'clean' 'dust' 'polish' 'rub' 'scrub' 'shine' 'sweep' 'wipe'
-    * noun                                              -> Clean
+    * noun                                              -> Rub
 ;
 
 Verb 'feel' 'fondle' 'grope' 'touch'
@@ -5708,7 +5708,7 @@ Array actions_table -->
     InvTallSub
     InvWideSub
     LookSub
-    ReadSub
+    ExamineSub
     SearchSub
     LookUnderSub
     ConsultSub
@@ -5756,7 +5756,7 @@ Array actions_table -->
     ListenSub
     TasteSub
     TouchSub
-    CleanSub
+    RubSub
     RepairSub
     BurnSub
     DrinkSub
@@ -5776,7 +5776,7 @@ Array actions_table -->
     RamSub
     LieSub
     LieDownSub
-    ExamineSub
+    ExamineInSub
     WashSub
     DigWithSub
     TurnWithSub
@@ -10712,7 +10712,7 @@ Array preactions_table --> IsDirection;
 
 
 [ AustinBefore ;        
-    if (action == ##Clean or ##Touch or ##Squeeze) {
+    if (action == ##Rub or ##Touch or ##Squeeze) {
         "Austin curls about your foot implacably.";
     }
     if (action == ##Take) {
@@ -11220,7 +11220,7 @@ Array preactions_table --> IsDirection;
 
 
 [ GlassBallBefore i ;   
-    if (action == ##Clean) {
+    if (action == ##Rub) {
         give selfobj general;
         if (projector_reversed == true && slide_projector has on) {
             print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
@@ -11969,7 +11969,7 @@ Array preactions_table --> IsDirection;
     if (action == ##Attack) {
         "What, and earn seven years bad luck?";
     }
-    if (action == ##Clean) {
+    if (action == ##Rub) {
         give selfobj general;
         set_flag_array(21);
         "You polish up the mirror just a little more.";
@@ -16779,7 +16779,7 @@ Array preactions_table --> IsDirection;
 
 
 [ MetalWallBefore ;     
-    if (action == ##Clean) {
+    if (action == ##Rub) {
         "You polish the metal a little, but there's far too much to do by hand.";
     }
     rfalse;
@@ -16952,7 +16952,7 @@ Array preactions_table --> IsDirection;
 
 
 [ GlowingOrbBefore ;    
-    if (action == ##Clean) {
+    if (action == ##Rub) {
         if (selfobj has general) {
             "It shines already!";
         }
@@ -21270,7 +21270,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ ReadSub i ;   
+[ ExamineSub i ;        
     if (location == thedark) {
         return L__M(##Read,1);
     }
@@ -21612,8 +21612,8 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ CleanSub ;    
-    L__M(##Clean);
+[ RubSub ;      
+    L__M(##Rub);
     rtrue;
 ];
 
@@ -22588,7 +22588,7 @@ Array preactions_table --> IsDirection;
     if (action == ##Blow) {
         "You can't usefully blow that.";
     }
-    if (action == ##Clean) {
+    if (action == ##Rub) {
         "You achieve nothing by this.";
     }
     if (action == ##Set) {
@@ -23364,7 +23364,7 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ ExamineSub ;  
+[ ExamineInSub ;        
     if (second ~= long_vanity_mirror or nothing) {
         "The point of which escapes me.";
     }

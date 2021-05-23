@@ -958,7 +958,7 @@ Action 86 Smell
 Action 87 Listen
 Action 88 Taste
 Action 89 Touch
-Action 90 Clean
+Action 90 Rub
 Action 91 Repair
 Action 92 Burn
 Action 93 Drink
@@ -1753,7 +1753,7 @@ Routine 0x28264 LMode3Sub:bool
 Routine 0x28274 NoteArrival descin:object
 Routine 0x28298 ScoreArrival
 Routine 0x282b0 LookSub:bool allow_abbrev:bool env:object 
-Routine 0x283b0 ReadSub:bool i:thing
+Routine 0x283b0 ExamineSub:bool i:thing
 Routine 0x28408 LookUnderSub:bool
 Routine 0x28420 SearchSub:bool i f
 Routine 0x284bc UnlockSub:bool
@@ -1782,7 +1782,7 @@ Routine 0x28784 DrinkSub:bool
 Routine 0x2878c SwimSub:bool
 Routine 0x28794 SwingSub:bool
 Routine 0x2879c BlowSub:bool
-Routine 0x287a4 CleanSub:bool
+Routine 0x287a4 RubSub:bool
 Routine 0x287ac SetSub:bool
 Routine 0x287b4 SetToSub:bool
 Routine 0x287bc WaveHandsSub:bool
@@ -1838,7 +1838,7 @@ Routine 0x2b370 HintsSub:bool
 Routine 0x2b3a8 PaceDirSub:bool
 Routine 0x2b3b8 PaceSub:bool
 Routine 0x2b3c0 PaceMovement i:int d:object ydelta:int xdelta:int x:int y:int
-Routine 0x2b4f8 ExamineSub:bool
+Routine 0x2b4f8 ExamineInSub:bool
 Routine 0x2b5f0 DigWithSub:bool
 Routine 0x2b614 DigSub:bool
 Routine 0x2b814 FillSub:bool
