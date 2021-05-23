@@ -76,7 +76,7 @@ Class HighRod
   has   high_rod;
             
 
-Object rod_of_fire "Fire"
+Rod     rod_of_fire "Fire"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -138,7 +138,7 @@ Object rod_of_fire "Fire"
         angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
   has   unidentifed_rod;
 
-Object rod_of_returning "Returning"
+Rod     rod_of_returning "Returning"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -150,7 +150,7 @@ Object rod_of_returning "Returning"
         devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
   has   unidentifed_rod;
 
-Object rod_of_stalking "Stalking"
+Rod     rod_of_stalking "Stalking"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -162,7 +162,7 @@ Object rod_of_stalking "Stalking"
         devil_hint "It has no horticultural application.",
   has   unidentifed_rod;
 
-Object rod_of_infinity "Infinity"
+Rod     rod_of_infinity "Infinity"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -174,7 +174,7 @@ Object rod_of_infinity "Infinity"
         angel_hint "Well, where might you have seen infinity before?",
   has   unidentifed_rod;
 
-Object rod_of_husbandry "Husbandry"
+Rod     rod_of_husbandry "Husbandry"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -186,7 +186,7 @@ Object rod_of_husbandry "Husbandry"
         angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
   has   unidentifed_rod;
 
-Object rod_of_bronze "Bronze"
+Rod     rod_of_bronze "Bronze"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -198,7 +198,7 @@ Object rod_of_bronze "Bronze"
         angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
   has   unidentifed_rod;
 
-Object rod_of_sacrifice "Sacrifice"
+Rod     rod_of_sacrifice "Sacrifice"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -210,7 +210,7 @@ Object rod_of_sacrifice "Sacrifice"
         angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
   has   unidentifed_rod;
 
-Object rod_of_luck "Luck"
+Rod     rod_of_luck "Luck"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -222,7 +222,7 @@ Object rod_of_luck "Luck"
         angel_hint "Well, if there's such a thing as luck, maybe this would help.",
   has   unidentifed_rod;
 
-Object rod_of_ice "Ice"
+Rod     rod_of_ice "Ice"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
         u_to rod_display_before,
@@ -234,7 +234,7 @@ Object rod_of_ice "Ice"
         angel_hint "Use only at heated moments, when affairs are delicately balanced.",
   has   unidentifed_rod;
 
-Object rod_of_language "Language"
+Rod     rod_of_language "Language"
   with  name 'rod' 'of' 'language',
         list_together ListingRods,
         u_to rod_display_before,
@@ -243,7 +243,7 @@ Object rod_of_language "Language"
         rod_action RodOfLanguageAction,
   has   ;
 
-Object rod_of_returning2 "Returning"
+Rod     rod_of_returning2 "Returning"
   with  name 'rod' 'of' 'returning',
         list_together ListingRods,
         u_to rod_display_before,
@@ -252,25 +252,25 @@ Object rod_of_returning2 "Returning"
         rod_action RodOfReturningAction,
   has   ;
 
-Object rod_of_life "Life"
+HighRod     rod_of_life "Life"
   with  name 'life' 'high' 'rod' 'of',
-        before LifeDeathLoveBefore RodBefore,
+        before LifeDeathLoveBefore HighRodBefore,
         after LifeDeathLoveAfter,
         u_to rod_display_before,
-        initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
-        parse_name RodParse,
-        angel_hint "Astonishing!  One of the three high Rods!";
+        initial "The High HighRods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
+        parse_name HighRodParse,
+        angel_hint "Astonishing!  One of the three high HighRods!";
 
-Object rod_of_death "Death"
+HighRod     rod_of_death "Death"
   with  name 'death' 'high' 'rod' 'of',
-        before LifeDeathLoveBefore RodBefore,
+        before LifeDeathLoveBefore HighRodBefore,
         after LifeDeathLoveAfter,
         u_to rod_display_before,
-        parse_name RodParse,
-        angel_hint "Astonishing!  One of the three high Rods!",
+        parse_name HighRodParse,
+        angel_hint "Astonishing!  One of the three high HighRods!",
   has   concealed;
 
-Object rod_of_love "Love"
+HighRod     rod_of_love "Love"
   with  name 'love' 'high' 'rod' 'of',
         before LifeDeathLoveBefore RodBefore,
         after LifeDeathLoveAfter,
