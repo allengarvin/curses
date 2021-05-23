@@ -1635,7 +1635,7 @@ Object Airing_Cupboard "Airing Cupboard"
 
 Object -> pile_of_sheets "pile of sheets"       
   with  name 'pile' 'of' 'sheets' 'sheet',
-        before SheetsAFter,
+        before SheetsBefore,
         daemon SheetsDaemon,
   has   scenery;
 
@@ -12201,7 +12201,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ SheetsAFter ; 
+[ SheetsBefore ;        
     if (action == ##Take) {
         print "The thought of Jemima's wrath if you actually took one of her tie-dyed sheets (~Dyeing is an art like everything else... I do it very well~) is just too dreadful. ";
         if (antiquated_wireless has concealed) {
