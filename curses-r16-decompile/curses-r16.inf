@@ -787,8 +787,8 @@ Object thedark "Darkness"
   has   ;
 
 Object yourself "yourself"      
-  with  after $ffff,
-        before $ffff,
+  with  before $ffff,
+        after $ffff,
         life $ffff,
         orders nothing,
         description "As good-looking as ever.",
@@ -802,12 +802,12 @@ Object yourself "yourself"
   has   animate concealed proper transparent;
 
 Object lm_object "lm"   
-  with  after LMAfter,
+  with  before LMAfter,
   has   ;
 
 Object rod_of_fire "Fire"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -821,7 +821,7 @@ Object rod_of_fire "Fire"
 
 Object rod_of_returning "Returning"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -835,7 +835,7 @@ Object rod_of_returning "Returning"
 
 Object rod_of_stalking "Stalking"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -849,7 +849,7 @@ Object rod_of_stalking "Stalking"
 
 Object rod_of_infinity "Infinity"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -863,7 +863,7 @@ Object rod_of_infinity "Infinity"
 
 Object rod_of_husbandry "Husbandry"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -877,7 +877,7 @@ Object rod_of_husbandry "Husbandry"
 
 Object rod_of_bronze "Bronze"   
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -891,7 +891,7 @@ Object rod_of_bronze "Bronze"
 
 Object rod_of_sacrifice "Sacrifice"     
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -905,7 +905,7 @@ Object rod_of_sacrifice "Sacrifice"
 
 Object rod_of_luck "Luck"       
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -919,7 +919,7 @@ Object rod_of_luck "Luck"
 
 Object rod_of_ice "Ice" 
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        after RodAfter,
+        before RodAfter,
         sw_to nothing,
         u_to rod_display_after,
         d_to "featureless mahogany rods",
@@ -933,7 +933,7 @@ Object rod_of_ice "Ice"
 
 Object rod_of_language "Language"       
   with  name 'rod' 'of' 'language',
-        after RodAfter,
+        before RodAfter,
         sw_to MasterGameRods,
         u_to rod_display_after,
         article "the",
@@ -944,7 +944,7 @@ Object rod_of_language "Language"
 
 Object rod_of_returning2 "Returning"    
   with  name 'rod' 'of' 'returning',
-        after RodAfter,
+        before RodAfter,
         sw_to MasterGameRods,
         u_to rod_display_after,
         article "the",
@@ -955,8 +955,8 @@ Object rod_of_returning2 "Returning"
 
 Object rod_of_life "Life"       
   with  name 'life' 'high' 'rod' 'of',
-        after LifeDeathLoveAfter RodAfter,
-        before LifeDeathLoveBefore,
+        before LifeDeathLoveAfter RodAfter,
+        after LifeDeathLoveBefore,
         sw_to rod_func1,
         u_to rod_display_after,
         initial "The High Rods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
@@ -970,8 +970,8 @@ Object rod_of_life "Life"
 
 Object rod_of_death "Death"     
   with  name 'death' 'high' 'rod' 'of',
-        after LifeDeathLoveAfter RodAfter,
-        before LifeDeathLoveBefore,
+        before LifeDeathLoveAfter RodAfter,
+        after LifeDeathLoveBefore,
         sw_to rod_func1,
         u_to rod_display_after,
         description " .An adamantine rod, bearing a sculpted ",
@@ -984,8 +984,8 @@ Object rod_of_death "Death"
 
 Object rod_of_love "Love"       
   with  name 'love' 'high' 'rod' 'of',
-        after LifeDeathLoveAfter RodAfter,
-        before LifeDeathLoveBefore,
+        before LifeDeathLoveAfter RodAfter,
+        after LifeDeathLoveBefore,
         sw_to rod_func1,
         u_to rod_display_after,
         description " .An adamantine rod, bearing a sculpted ",
@@ -1005,8 +1005,8 @@ Object crumpled_piece_of_paper "crumpled piece of paper"
 
 Object electric_torch "electric torch"  
   with  name 'electric' 'torch' 'compartment',
-        after TorchAfter,
-        before TorchBefore,
+        before TorchAfter,
+        after TorchBefore,
         sw_to s_obj,
         description "The torch has a battery compartment which can be reached by opening it up.",
         article "an",
@@ -1023,7 +1023,7 @@ Object -> old_smudged_battery "old smudged battery"
 
 Object chocolate_biscuit "chocolate biscuit"    
   with  name 'chocolate' 'biscuit',
-        before BiscuitBefore,
+        after BiscuitBefore,
         description "Oatmeal covered with plain chocolate, since you ask.",
         devil_hint "I bet you didn't know that chocolate biscuit manufacturers are damned in perpetuity?  I'm afraid the chapters about that in the Old Testaments were lost, though, and now no-one can remember why.",
   has   edible moved;
@@ -1040,8 +1040,8 @@ Object Attic "Attic"
 
 Object -> hinged_trapdoor "hinged trapdoor"     
   with  name 'hinged' 'trap' 'door' 'trapdoor',
-        after TrapdoorAfter,
-        before TrapdoorBefore,
+        before TrapdoorAfter,
+        after TrapdoorBefore,
         n_to House,
         s_to "There is a closed trapdoor in the middle of the floor.",
         w_to thedark,
@@ -1050,14 +1050,14 @@ Object -> hinged_trapdoor "hinged trapdoor"
 
 Object -> teachests "teachests" 
   with  name 'tea' 'chests' 'teachests' 'chest' 'teachest',
-        after TeachestsAfter,
+        before TeachestsAfter,
         description "Open-topped. You could easily look inside, if so minded.",
         article "some",
   has   container open scenery;
 
 Object -> -> Meldrewes_History "History of the Meldrews (vol. II)"      
   with  name 'book' 'history',
-        after HistoryAfter,
+        before HistoryAfter,
         sw_to n_obj,
         description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving the definitive family history. Unfortunately, although he claimed to have hunted for evidence to the ends of the earth, he never could find a detail he wanted for volume I, and it was never published. Somehow, this typifies your family, and consulting this worthy book about your ancestors makes you realise what an uncanny knack they had for never quite achieving anything.^^Unless, of course, you count having an awful lot of children. So many Meldrews are listed here that you'll have to look them up individually.",
         article "the",
@@ -1082,13 +1082,13 @@ Object -> four_leafed_clover "four-leafed clover"
   has   hidden_rod;
 
 Object House "House"    
-  with  before HouseBefore,
+  with  after HouseBefore,
         section T_MODERN,
   has   light;
 
 Object Servants_Room "Servant's Room"   
   with  name 'bedside' 'table',
-        after ServantsRoomAfter,
+        before ServantsRoomAfter,
         n_to nothing,
         w_to Attic,
         d_to nothing,
@@ -1098,7 +1098,7 @@ Object Servants_Room "Servant's Room"
 
 Object -> classical_dictionary "classical dictionary"   
   with  name 'hobsons' 'choice' 'classical' 'dictionary' 'book',
-        after DictionaryAfter,
+        before DictionaryAfter,
         sw_to n_obj,
         initial "There's a little book on the tiny bedside table.",
         description "~Hobson's: A Choice Classical Dictionary~. It claims to have numerous entries.",
@@ -1144,20 +1144,20 @@ Object -> scratched_cupboard "scratched cupboard"
 
 Object -> -> bird_whistle "bird whistle"        
   with  name 'bird' 'whistle' 'harrison',
-        after WhistleAfter,
+        before WhistleAfter,
         description "A patent ~Harrison~ bird-whistle, according to the slogan on one side.",
         devil_hint "It has a calm, soothing effect.",
   has   ;
 
 Object -> -> gift_wrapped_parcel "gift-wrapped parcel"  
   with  name 'gift' 'parcel',
-        after ParcelAfter,
+        before ParcelAfter,
         devil_hint "Shame the wrapping paper won't come off.",
   has   ;
 
 Object -> -> medicine_bottle "mb"       
   with  name 'medicine' 'bottle',
-        after MedicineAfter,
+        before MedicineAfter,
         initial nothing,
         description "~Antidote only: no preventative effect.~",
         short MedicineShort,
@@ -1166,7 +1166,7 @@ Object -> -> medicine_bottle "mb"
 
 Object -> -> -> red_tablet "red tablet" 
   with  name 'red' 'pill' 'tablet',
-        before TabletBefore,
+        after TabletBefore,
         devil_hint "This drug is for fun, it isn't an antidote. And it tastes gorgeous...",
   has   edible scored;
 
@@ -1183,7 +1183,7 @@ Object wrapping_paper "wrapping paper with reindeer on"
 
 Object postcard_of_the_Champs_Elysees "postcard of the Champs-Elysees"  
   with  name 'postcard' 'card',
-        before PostcardBefore,
+        after PostcardBefore,
         sw_to n_obj,
         description "It is addressed to the house, and postmarked 1963, but has no message. Odd, that.",
         devil_hint "There's no message there to read.",
@@ -1203,8 +1203,8 @@ Object Over_the_East_Wing "Over the East Wing"
 
 Object -> Austin "Austin"       
   with  name 'austin' 'cat' 'ginger' 'tail',
-        after AustinAfter,
-        before AustinBefore,
+        before AustinAfter,
+        after AustinBefore,
         life AustinLife,
         initial "Austin, your incorrigible ginger cat, lounges around here.",
         description "(Aunt Jemima has two cats, Jane and Austin, but she finds Austin especially annoying - about the only point you have ever agreed with her about.)^^Austin, a ginger with a long tail and an uncompromisingly lazy expression, is the kind of cat who hates being pushed around.",
@@ -1212,7 +1212,7 @@ Object -> Austin "Austin"
   has   animate proper;
 
 Object Dark_Room "Dark Room"    
-  with  before DarkRoomBefore,
+  with  after DarkRoomBefore,
         e_to Over_the_East_Wing,
         description "This is a roughly-furnished photographer's dark room, used by your grandfather years ago. There's nothing much here now, since you threw the chemicals out in case the children found them.",
         cant_go "The only doorway is back east.",
@@ -1228,21 +1228,21 @@ Object -> sepia_photograph "sepia photograph"
 
 Object -> hanging_cord "hanging cord"   
   with  name 'hanging' 'cord',
-        after HangingCordAfter,
+        before HangingCordAfter,
         initial "You bump your head on the cord hanging from the ceiling, for the umpteenth time.",
         description "It is attached to the ceiling.",
   has   static;
 
 Object -> -> golden_orb "glowing golden orb"    
   with  name 'glowing' 'golden' 'orb',
-        after GlowingOrbAfter,
+        before GlowingOrbAfter,
         initial "Sitting on the grass, beside the well, is a glowing golden orb.",
         description "A treasure in every sense, but misted over, like condensation on a cold window. Odd shapes seem visible through the haze: a horse's head, castle walls, a priest's crook.",
   has   scored;
 
 Object -> photographers_flash "photographer's flash"    
   with  name 'photograp' 'flash' 'compartment',
-        after FlashAFter,
+        before FlashAFter,
         sw_to s_obj,
         initial "A rather more modern photographer's flash lies on a shelf to one side.",
         description "The kind of black box which often sits on top of a camera, used to illuminate otherwise dim scenes. It has an openable compartment on the side, with room left inside for a battery and a timer mechanism (which seem to be optional extras).",
@@ -1256,7 +1256,7 @@ Object red_lamp "red lamp"
 
 Object Disused_Observatory "Disused Observatory"        
   with  name 'mural' 'zodiac' 'beam' 'stand',
-        before ObservatoryBefore,
+        after ObservatoryBefore,
         n_to Over_the_East_Wing,
         s_to Souvenirs_Room,
         w_to Library_Storage,
@@ -1273,7 +1273,7 @@ Object -> smoke_detector "smoke detector"
 
 Object -> solid_glass_ball "solid glass ball"   
   with  name 'glass' 'ball',
-        after GlassBallAfter,
+        before GlassBallAfter,
         initial "Mounted on the old telescope stand is what looks like a solid glass ball.",
   has   static;
 
@@ -1287,13 +1287,13 @@ Object Library_Storage "Library Storage"
 
 Object -> water_pipe "water pipe"       
   with  name 'water' 'pipe' 'joint' 'pipes',
-        after WaterPipeAfter,
+        before WaterPipeAfter,
         description "The joint on the water pipe looks none too sturdy.",
   has   concealed static;
 
 Object -> romantic_novel "romantic novel"       
   with  name 'romance' 'romantic' 'novel' 'book',
-        after RomanticNovelAfter,
+        before RomanticNovelAfter,
         sw_to n_obj,
         initial "A romantic novel and a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.",
         description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the aristocracy.",
@@ -1303,7 +1303,7 @@ Object -> romantic_novel "romantic novel"
 
 Object -> book_of_Twenties_poetry "book of Twenties poetry"     
   with  name 'poetry' 'book',
-        after PoetryAfter,
+        before PoetryAfter,
         sw_to n_obj,
         parse_name ConsultableParsename,
         devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of Tennyson, Kipling and Hardy.",
@@ -1311,8 +1311,8 @@ Object -> book_of_Twenties_poetry "book of Twenties poetry"
 
 Object Souvenirs_Room "Souvenirs Room"  
   with  name 'souvenirs' 'holiday' 'snaps' 'beam',
-        after SouvenirsRoomAfter,
-        before SouvenirsRoomBefore,
+        before SouvenirsRoomAfter,
+        after SouvenirsRoomBefore,
         n_to Disused_Observatory,
         s_to SouvenirsRoomSouth,
         u_to Disused_Observatory,
@@ -1322,20 +1322,20 @@ Object Souvenirs_Room "Souvenirs Room"
 
 Object -> slide_projector "slide projector"     
   with  name 'slide' 'projector' 'switch' 'dial' 'slot' 'focus',
-        after ProjectorAfter,
-        before ProjectorBefore,
+        before ProjectorAfter,
+        after ProjectorBefore,
         description "It has an on/off switch on the side, and a slot for holding whatever is to be projected. There is also a little dial on the back, perhaps for the focus.",
   has   container open scenery switchable;
 
 Object -> south_wall "south wall"       
-  with  after SouthWallAfter,
+  with  before SouthWallAfter,
         n_to nothing,
         w_to ne_obj,
   has   concealed door open scenery static;
 
 Object East_Annexe "East Annexe"        
   with  name 'gap' 'tiles' 'roof',
-        after EastAnnexeAfter,
+        before EastAnnexeAfter,
         n_to cupboard_door,
         s_to Dead_End,
         w_to Over_the_East_Wing,
@@ -1345,7 +1345,7 @@ Object East_Annexe "East Annexe"
 
 Object -> insulation_rolls "insulation rolls"   
   with  name 'insulation' 'rolls' 'roll',
-        after InsulationAfter,
+        before InsulationAfter,
         article "some",
   has   scenery;
 
@@ -1358,7 +1358,7 @@ Object -> -> new_battery "new-looking battery"
 
 Object -> cupboard_door "cupboard door" 
   with  name 'cupboard' 'door',
-        after CupboardAfter,
+        before CupboardAfter,
         n_to Inside_Cupboard,
         s_to "In the north wall is an intriguing closed cupboard door.",
         e_to small_brass_key,
@@ -1368,7 +1368,7 @@ Object -> cupboard_door "cupboard door"
 
 Object Dead_End "Dead End"      
   with  name 'soot' 'chimney' 'sweeping' 'gear',
-        after DeadEndAfter,
+        before DeadEndAfter,
         n_to East_Annexe,
         s_to secret_door,
         e_to nothing,
@@ -1409,7 +1409,7 @@ Object Inside_Cupboard "Inside Cupboard"
 
 Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"       
   with  name 'painting' 'of' 'mad' 'isaac' 'picture',
-        before IsaacPaintingBefore,
+        after IsaacPaintingBefore,
         life LagachLife,
         initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
         description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
@@ -1418,7 +1418,7 @@ Object -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"
 
 Object -> big_iron_fireplace "big iron fireplace"       
   with  name 'iron' 'fireplace' 'chimney',
-        before FireplaceBefore,
+        after FireplaceBefore,
         n_to Chimney,
         w_to nw_obj,
         initial "There is a big iron fireplace in the west wall.",
@@ -1426,7 +1426,7 @@ Object -> big_iron_fireplace "big iron fireplace"
 
 Object -> cranked_skylight "cranked skylight"   
   with  name 'crank' 'cranked' 'skylight' 'handle',
-        after SkylightAfter,
+        before SkylightAfter,
         n_to Roof,
         s_to "Above you is a blacked-out skylight with a crank handle.",
         w_to in_obj,
@@ -1436,7 +1436,7 @@ Object -> cranked_skylight "cranked skylight"
 
 Object -> gas_mask "gas mask"   
   with  name 'gas' 'mask' 'gasmask',
-        before GasMaskBefore,
+        after GasMaskBefore,
         devil_hint "The cork filters have gone. It's useless now.",
   has   clothing;
 
@@ -1459,7 +1459,7 @@ Object Battlements "Battlements"
 
 Object -> iron_key "gothic-looking iron key"    
   with  name 'gothic' 'looking' 'iron' 'key' 'gothic-looking',
-        after GothicKeyAfter,
+        before GothicKeyAfter,
         sw_to compass,
         initial IronKeyInitial,
         devil_hint "Unfortunately, what you need this for is up in the clouds.",
@@ -1475,7 +1475,7 @@ Object -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
   has   animate concealed;
 
 Object Chimney "Chimney"        
-  with  after ChimneyAfter,
+  with  before ChimneyAfter,
         e_to Inside_Cupboard,
         d_to Priest_s_Hole,
         description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
@@ -1492,7 +1492,7 @@ Object -> sooty_old_stick "sooty old stick"
 
 Object Priest_s_Hole "Priest's Hole"    
   with  name 'cross' 'padded' 'chute' 'crawl',
-        after PriestHoleAfter,
+        before PriestHoleAfter,
         u_to Chimney,
         d_to hatch,
         description "Good heavens, so the house has a priest hole after all!  It was always a family legend but nobody seemed to know quite where it was. Apart from a cross painted on one wall and a padded floor (to absorb the noise), this spartan cranny is featureless. Nevertheless there is a spooky air of the supernatural about... A narrow crawl leads up into the chimney.",
@@ -1511,7 +1511,7 @@ Object -> hatch "hatch"
 
 Object -> ancient_prayer_book "ancient prayer book"     
   with  name 'diary' 'ancient' 'prayer' 'book',
-        after PrayerBookAfter,
+        before PrayerBookAfter,
         sw_to n_obj,
         initial "The dust and grime on the floor almost obscures an ancient prayer book.",
         description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
@@ -1522,8 +1522,8 @@ Object -> ancient_prayer_book "ancient prayer book"
 
 Object Alisons_Writing_Room "Alison's Writing Room"     
   with  name 'engraving' 'dice' 'outline' 'sixes' 'door',
-        after WritingRoomAfter,
-        before WritingRoomBefore,
+        before WritingRoomAfter,
+        after WritingRoomBefore,
         n_to Dead_End,
         s_to windows,
         description " .A pleasantly furnished, if now mildewed, box room. There are engravings of Alison's heroines: Christina Rossetti, Elizabeth Browning, Emily Dickinson and Queen Victoria, an unlikely quartet. The wallpaper is done out in a dice motif, and a square outline of sixes surrounds a rather small door leading back north into the attics.^^",
@@ -1533,12 +1533,12 @@ Object Alisons_Writing_Room "Alison's Writing Room"
 
 Object -> comfortable_bed "comfortable bed"     
   with  name 'comfortable' 'bed',
-        after ComfyBedAfter,
+        before ComfyBedAfter,
   has   enterable light scenery supporter;
 
 Object -> windows "windows"     
   with  name 'windows' 'window' 'latticed' 'glass' 'lattice',
-        after WindowAfter,
+        before WindowAfter,
         n_to Tiny_Balcony,
         s_to "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
         w_to ne_obj,
@@ -1547,7 +1547,7 @@ Object -> windows "windows"
 
 Object -> long_vanity_mirror "long vanity mirror"       
   with  name 'long' 'vanity' 'mirror',
-        after MirrorAfter,
+        before MirrorAfter,
         initial "There is a long vanity mirror beside the bed.",
   has   static;
 
@@ -1561,7 +1561,7 @@ Object Tiny_Balcony "Tiny Balcony"
 
 Object -> window_sill "window sill"     
   with  name 'window' 'sill',
-        after WindowSillAfter,
+        before WindowSillAfter,
         initial "The balcony is only a foot or so beneath the window-sill, and only about four feet square.",
         description "You look down on a low, bare window-sill.",
   has   static;
@@ -1574,8 +1574,8 @@ Object -> delicate_gold_key "delicate gold key"
 
 Object Old_Winery "Old Winery"  
   with  name 'banister' 'rail' 'crack' 'paraphern',
-        after OldWineryAfter,
-        before OldWineryBefore,
+        before OldWineryAfter,
+        after OldWineryBefore,
         s_to Attic,
         e_to Storage_Room,
         w_to Conservatory,
@@ -1588,7 +1588,7 @@ Object Old_Winery "Old Winery"
 
 Object -> demijohn "labelXXXled glass demijohn" 
   with  name 'demijohn' 'glass' 'bottle' 'labelXXX',
-        after DemijohnAfter,
+        before DemijohnAfter,
         description "Faded ink on the labelXXX reads: Elderberry '63.",
   has   container openable static transparent;
 
@@ -1601,7 +1601,7 @@ Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"
 
 Object -> -> tourist_map "tourist map"  
   with  name 'hamburg' 'tourist' 'map',
-        after TouristMapAfter,
+        before TouristMapAfter,
         sw_to n_obj,
         description "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg.",
         devil_hint "Purely decorative.",
@@ -1609,7 +1609,7 @@ Object -> -> tourist_map "tourist map"
 
 Object Conservatory "Aunt Jemima's Lair"        
   with  name 'objets' 'trouves' 'pottery' 'bric' 'brac',
-        before ConservatoryBefore,
+        after ConservatoryBefore,
         s_to Airing_Cupboard,
         e_to Old_Winery,
         w_to Potting_Room,
@@ -1621,7 +1621,7 @@ Object Conservatory "Aunt Jemima's Lair"
 
 Object -> daisy_calendar "daisy calendar"       
   with  name 'calendar' 'page' 'pages' 'daisy',
-        after CalendarAfter,
+        before CalendarAfter,
         time_left 5,
   has   scenery;
 
@@ -1635,14 +1635,14 @@ Object Airing_Cupboard "Airing Cupboard"
 
 Object -> pile_of_sheets "pile of sheets"       
   with  name 'pile' 'of' 'sheets' 'sheet',
-        after SheetsAFter,
+        before SheetsAFter,
         daemon SheetsDaemon,
   has   scenery;
 
 Object -> antiquated_wireless "antiquated wireless"     
   with  name 'switch' 'cabinet' 'radio' 'wireless',
-        after WirelessAfter,
-        before WirelessBefore,
+        before WirelessAfter,
+        after WirelessBefore,
         description "It rolls on casters, and has a bakelite on/off switch.",
         describe WirelessDescribe,
         article "an",
@@ -1652,7 +1652,7 @@ Object -> antiquated_wireless "antiquated wireless"
 
 Object Potting_Room "Potting Room"      
   with  name 'plants' 'flowers' 'seeds' 'trowels',
-        before PottingRoomBefore,
+        after PottingRoomBefore,
         e_to Conservatory,
         description "This light room is full of pot plants, flowers, seeds, ornamental trowels and other miscellaneous garden implements.",
         cant_go "The only exit is back east to the conservatory.",
@@ -1661,7 +1661,7 @@ Object Potting_Room "Potting Room"
 
 Object -> old_gardeners__gloves "old gardeners' gloves" 
   with  name 'old' 'gardeners' 'gloves',
-        after GlovesAfter,
+        before GlovesAfter,
         initial "A pair of yellow rubber gloves hangs from a hook on one wall.",
         article "some",
         devil_hint "Good for nothing. Why would you want gloves on?",
@@ -1679,14 +1679,14 @@ Object -> Jemima "Jemima"
 
 Object daisy_chain "daisy chain"        
   with  name 'daisy' 'chain' 'daisychain',
-        after DaisyChainAfter,
+        before DaisyChainAfter,
         u_to DaisyUp,
         number 11,
         devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has   clothing;
 
 Object Storage_Room "Storage Room"      
-  with  after StorageRoomAfter,
+  with  before StorageRoomAfter,
         w_to Old_Winery,
         description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
         cant_go "The only doorway is back west to the winery.",
@@ -1695,7 +1695,7 @@ Object Storage_Room "Storage Room"
 
 Object -> wheel2 "wheel"        
   with  name 'wheel' 'handle' 'catch' 'safety',
-        after WheelAfter,
+        before WheelAfter,
         description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has   on scenery switchable;
 
@@ -1707,33 +1707,33 @@ Object -> dumbwaiter "dumbwaiter"
 
 Object -> -> pulley_ropes "pulley ropes"        
   with  name 'pulley' 'rope' 'ropes',
-        after RopesAfter,
+        before RopesAfter,
         initial "The dumbwaiter hangs on strong pulley ropes which stretch up and down from here.",
         article "the",
   has   static;
 
 Object -> -> chicken_wishbone "chicken wishbone"        
   with  name 'wish' 'bone' 'wishbone' 'chicken',
-        after WishboneBefore,
+        before WishboneBefore,
         description "The half which didn't get the wish, actually.",
         devil_hint "It isn't even mentioned in any of the books I've read.",
   has   ;
 
 Object -> dark_shaft_obj "dark shaft"   
   with  name 'shaft' 'dark',
-        before ShaftBefore,
+        after ShaftBefore,
         description "Uninviting.",
   has   container open scenery;
 
 Object -> steel_wrench "steel wrench"   
   with  name 'steel' 'wrench',
-        before WrenchBefore,
+        after WrenchBefore,
         initial "A steel wrench gathers dust in the corner.",
   has   ;
 
 Object Dark_Shaft "Dark Shaft"  
-  with  after Shaft2After,
-        before ShaftAfter,
+  with  before Shaft2After,
+        after ShaftAfter,
         n_to Dark_Passage,
         d_to Cellars,
         description "Halfway up, or else halfway down, and a dreary place it is too: nothing but a dark corridor leading north.",
@@ -1742,7 +1742,7 @@ Object Dark_Shaft "Dark Shaft"
 
 Object Dark_Passage "Dark Passage"      
   with  name 'coal' 'dust',
-        after DarkPassageAfter,
+        before DarkPassageAfter,
         n_to metal_door,
         s_to Dark_Shaft,
         e_to sandstone_recess,
@@ -1762,7 +1762,7 @@ Object -> sandstone_recess "sandstone recess"
 
 Object -> metal_door "metal door"       
   with  name 'metal' 'door',
-        before MetalDoorBefore,
+        after MetalDoorBefore,
         n_to Garden_Stream,
         s_to "At the north end is a closed metal door.",
         e_to small_brass_key,
@@ -1771,7 +1771,7 @@ Object -> metal_door "metal door"
   has   door lockable locked openable static;
 
 Object Cellars "Cellars"        
-  with  after CellarsAfter,
+  with  before CellarsAfter,
         s_to Cellars_South,
         e_to Wine_Cellars,
         w_to Cellar_West,
@@ -1781,7 +1781,7 @@ Object Cellars "Cellars"
 
 Object -> wheel "wheel" 
   with  name 'wheel' 'handle' 'catch' 'safety',
-        after WheelAfter,
+        before WheelAfter,
         description "There is a concealed safety catch (poorly) hidden on the wheel.",
   has   on scenery switchable;
 
@@ -1806,7 +1806,7 @@ Object -> robot_mouse "robot mouse"
 
 Object Wine_Cellars "Wine Cellars"      
   with  name 'wine' 'woodlice' 'hexagonal' 'racks' 'shaft',
-        after WineCellarsAfter,
+        before WineCellarsAfter,
         w_to Cellars,
         u_to WineCellarsUp,
         description " .The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked",
@@ -1822,7 +1822,7 @@ Object Cellars_South "Cellars South"
 
 Object -> hole_in_the_wall "hole in the wall"   
   with  name 'hole' 'mousehole',
-        after HoleAfter,
+        before HoleAfter,
         life HoleLife,
   has   scenery talkable;
 
@@ -1845,7 +1845,7 @@ Object Cellar_West "Cellar West"
 
 Object -> ironbound_door "ironbound door"       
   with  name 'iron' 'ironbound' 'door',
-        after IronboundDoorAfter,
+        before IronboundDoorAfter,
         n_to Infinity_Symbol,
         s_to "In the northwest wall is a heavy, imposing ironbound door.",
         e_to wrought_iron_key,
@@ -1857,7 +1857,7 @@ Object -> ironbound_door "ironbound door"
 
 Object Infinity_Symbol "Infinity Symbol"        
   with  name 'marble' 'disc' 'webs' 'icicle',
-        before LemniscusBefore,
+        after LemniscusBefore,
         se_to Cellar_West,
         description "An eerie, dark cave carved from crystal icicles of rock and strewn with great spiders' webs hung from the ragged stone, inhabited only by dead white insects. A narrow crevice opens out to an iron doorway and the warmth of the house.^^The rough stone floor levels out to a perfectly round, smooth white marble disc about five yards across, inscribed with a black lemniscus (or infinity) symbol.^^You shiver with foreboding, but inexplicably feel that the map you're looking for must be somewhere near here.",
         section T_MODERN,
@@ -1865,7 +1865,7 @@ Object Infinity_Symbol "Infinity Symbol"
 
 Object -> circular_arc "circular arc"   
   with  name 'wells' 'circular' 'arc' 'socket' 'sockets' 'well',
-        after ArcAfter,
+        before ArcAfter,
         number 0,
   has   scenery;
 
@@ -1875,7 +1875,7 @@ Object -> lemniscus "lemniscus"
 
 Object spherical_opening "spherical opening"    
   with  name 'gold' 'golden' 'spherical' 'opening' 'cavity',
-        after SphericalOpeningAfter,
+        before SphericalOpeningAfter,
         initial "There is now a small spherical opening in one wall.",
         description "It would just hold a ball the size of your palm.",
   has   static;
@@ -1890,7 +1890,7 @@ Object Sandstone_Passage "Sandstone Passage"
   has   light;
 
 Object The_Octagon "The Octagon"        
-  with  before OctagonBefore,
+  with  after OctagonBefore,
         w_to Sandstone_Passage,
         se_to White_Hallway,
         u_to Sandstone_Passage,
@@ -1907,8 +1907,8 @@ Object -> little_window "little window"
 
 Object -> gilded_model_coffin "gilded model coffin"     
   with  name 'gilded' 'model' 'coffin' 'lid' 'inscription',
-        after CoffinAfter,
-        before CoffinBefore,
+        before CoffinAfter,
+        after CoffinBefore,
         initial "A rather morbid, gilded model coffin rests here in peace.",
         description " .The lid bears an inscription in strange hieroglyphics:^",
   has   container openable static;
@@ -1923,7 +1923,7 @@ Object -> ragged_scroll "ragged scroll"
 
 Object -> framed_charcoal_sketch "framed charcoal sketch"       
   with  name 'frame' 'framed' 'charcoal' 'sketch' 'of' 'alexandria',
-        after SketchAfter,
+        before SketchAfter,
         initial "A little charcoal sketch is framed on one wall.",
         description "Behind the frame seems to be an artist's impression of the great Palace of Alexandria as it might once have been.",
         devil_hint "It's the frame which really sets it off.",
@@ -1954,7 +1954,7 @@ Object White_Hallway "White Hallway"
 
 Object -> picture_hook "picture hook"   
   with  name 'picture' 'hook',
-        after HookAfter,
+        before HookAfter,
         initial "Up on one wall is a picture hook.",
   has   static;
 
@@ -1967,8 +1967,8 @@ Object -> umbrella_stand "umbrella stand"
 
 Object -> -> model_golden_sceptre "model golden sceptre"        
   with  name 'model' 'golden' 'gold' 'sceptre',
-        after SceptreAfter,
-        before SceptreBefore,
+        before SceptreAfter,
+        after SceptreBefore,
         initial nothing,
         description "A copy, half-size, of the one from Tutenkhamun's sarcophagus. It isn't real gold, either.",
         number 0,
@@ -2001,7 +2001,7 @@ Object Shadowy_Hallway "Shadowy Hallway"
 
 Object -> poster "poster"       
   with  name 'poster' 'posters' 'peeling',
-        after PosterAfter,
+        before PosterAfter,
         description "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish you had a dog called Toto, so as to be able to say ~Toto, I've got a feeling we're not in England any more.~",
         devil_hint "What a very useful piece of paper. Pity there's writing on it.",
   has   scenery;
@@ -2024,7 +2024,7 @@ Object -> Impressionist_painting "Impressionist painting"
 
 Object Consulting_Room "Consulting Room"        
   with  name 'sevenbran' 'candelabra' 'sticks' 'table',
-        after ConsultingRoomAfter,
+        before ConsultingRoomAfter,
         w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
         d_to Shadowy_Hallway,
         description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table, on which is an electric bell push and a wicked Tarot pack.",
@@ -2033,7 +2033,7 @@ Object Consulting_Room "Consulting Room"
 
 Object -> Tarot_pack "Tarot pack"       
   with  name 'wicked' 'tarot' 'pack' 'deck',
-        after TarotPackAfter,
+        before TarotPackAfter,
   has   scenery;
 
 Object -> curtain "curtain"     
@@ -2042,7 +2042,7 @@ Object -> curtain "curtain"
 
 Object -> bell_push "bell push" 
   with  name 'bell' 'push',
-        after BellPushAfter,
+        before BellPushAfter,
   has   scenery;
 
 Object Madame_Sosostris "Madame Sosostris, famous clairvoyante" 
@@ -2053,7 +2053,7 @@ Object Madame_Sosostris "Madame Sosostris, famous clairvoyante"
 
 Object Death_card "Grim Reaper" 
   with  name 'death' 'grim' 'reaper' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
@@ -2065,7 +2065,7 @@ Object Death_card "Grim Reaper"
 
 Object Fool_card "Fool" 
   with  name 'fool' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
@@ -2077,7 +2077,7 @@ Object Fool_card "Fool"
 
 Object Drowned_Sailor_card "Drowned Sailor"     
   with  name 'drowned' 'sailor' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "Those are pearls that were his eyes...",
@@ -2096,7 +2096,7 @@ Object oak_quarterstaff "oak quarterstaff"
 
 Object Down_by_River "Down by River"    
   with  name 'rats' 'mounds' 'rubbish',
-        after DownByRiverAfter,
+        before DownByRiverAfter,
         e_to Unreal_City,
         w_to DownByRiverWest,
         description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats scuttle up and over the mounds washed up around you.",
@@ -2105,7 +2105,7 @@ Object Down_by_River "Down by River"
 
 Object -> silk_handkerchief "silk handkerchief" 
   with  name 'silk' 'handkerchier' 'hanky' 'hankie',
-        after HandkerchiefAfter,
+        before HandkerchiefAfter,
         initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
         description "Monogrammed J. A. P., but that's no great matter.",
         devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth is hardly attractive, is it?",
@@ -2113,7 +2113,7 @@ Object -> silk_handkerchief "silk handkerchief"
 
 Object -> tourist_boat "tourist boat"   
   with  name 'tourist' 'boat' 'bateau',
-        after TouristBoatAfter,
+        before TouristBoatAfter,
         n_to On_board_the_Phlebas,
         s_to "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to attract its attention.",
         w_to nw_obj,
@@ -2148,7 +2148,7 @@ Object Near_Ring_Road "Near Ring Road"
 
 Object Chatelet_les_Halles "Chatelet-les-Halles"        
   with  name 'gates',
-        after ChateletAfter,
+        before ChateletAfter,
         u_to Near_Ring_Road,
         description "This is a vast underground station in great rectangular caverns, deep beneath the streets. You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't a ticket you're likely to stay that way.",
         cant_go "Back up the stairs for you. Call yourself a traveller...",
@@ -2180,7 +2180,7 @@ Object Museum_Foyer "Museum Foyer"
 
 Object -> revolving_door_obj "revolving door"   
   with  name 'revolving' 'door',
-        after RevolvingDoorAfter,
+        before RevolvingDoorAfter,
         description "Why not go northeast and look inside?",
   has   scenery;
 
@@ -2201,7 +2201,7 @@ Object Revolving_Door1 "Revolving Door"
 
 Object -> door1 "door"  
   with  name 'door' 'revolving',
-        after MuseumDoorAfter,
+        before MuseumDoorAfter,
         description "You stand within it.",
   has   scenery;
 
@@ -2216,14 +2216,14 @@ Object Revolving_Door2 "Revolving Door"
 
 Object -> door2 "door"  
   with  name 'door' 'revolving',
-        after MuseumDoorAfter,
+        before MuseumDoorAfter,
         description "You stand within it.",
   has   scenery;
 
 Object -> beach_ball "beach ball"       
   with  name 'striped' 'beach' 'ball',
-        after BeachBallAfter,
-        before BeachBallBefore,
+        before BeachBallAfter,
+        after BeachBallBefore,
         initial "A colourful, striped inflated beach ball bounces around.",
   has   ;
 
@@ -2237,14 +2237,14 @@ Object Hall_of_Exhibits "Hall of Exhibits"
 
 Object -> Tarot_box "Tarot box" 
   with  name 'box' 'of' 'tarot',
-        after TarotBoxAfter,
+        before TarotBoxAfter,
         initial "Resting on a little display table is a Tarot box.",
         devil_hint "There's nothing worthwhile in it.",
   has   container openable;
 
 Object -> -> Castle "Castle"    
   with  name 'castle' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         n_to Ruined_Castle_Cafe,
         sw_to "Tarot cards",
         description "A stone castle on a hill.",
@@ -2256,7 +2256,7 @@ Object -> -> Castle "Castle"
 
 Object -> -> Star "Star"        
   with  name 'star' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         n_to Lighthouse,
         sw_to "Tarot cards",
         description "A single bright light in the darkness.",
@@ -2268,7 +2268,7 @@ Object -> -> Star "Star"
 
 Object -> -> Eight_of_Wands_card "Eight of Wands"       
   with  name 'eight' 'of' 'wands' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         sw_to "Tarot cards",
         article "the",
         short TarotShort,
@@ -2279,7 +2279,7 @@ Object -> -> Eight_of_Wands_card "Eight of Wands"
 
 Object -> -> Maiden_card "Maiden"       
   with  name 'maiden' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         n_to Sea_Shore,
         sw_to "Tarot cards",
         description "Andromeda chained to a rock on the sea-shore.",
@@ -2297,8 +2297,8 @@ Object -> still_life "still life"
   has   static talkable;
 
 Object Dark_Staircase "Dark Staircase"  
-  with  after DarkStaircaseAfter,
-        before DarkStaircaseBefore,
+  with  before DarkStaircaseAfter,
+        after DarkStaircaseBefore,
         e_to Hall_of_Exhibits,
         u_to Hall_of_Exhibits,
         description "A dark staircase, turning from east to south as it descends. The hideous sound of arhythmic chanting can be heard from below.",
@@ -2314,7 +2314,7 @@ Object -> discarded_matchbook "discarded matchbook"
 
 Object Ace_of_Cups_card "Ace of Cups"   
   with  name 'ace' 'of' 'cups' 'card' 'tarot',
-        after TarotAfter,
+        before TarotAfter,
         n_to Cups_and_Glasses,
         sw_to "Tarot cards",
         description "It shows a great many crystal-glass cups and glasses.",
@@ -2325,7 +2325,7 @@ Object Ace_of_Cups_card "Ace of Cups"
   has   card;
 
 Object Coven_Cell "Coven Cell"  
-  with  after CovenCellAfter,
+  with  before CovenCellAfter,
         description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
         cant_go "There's definitely no way out of here.",
         number 0,
@@ -2347,14 +2347,14 @@ Object -> crook "shepherd's crook"
 
 Object -> cell_door "cell door" 
   with  name 'cell' 'door',
-        after CelldoorAfter,
+        before CelldoorAfter,
         n_to Museum_Foyer,
         s_to "As you might expect, the cell door is closed.",
         w_to ne_obj,
   has   door locked openable static;
 
 Object Cabinet_Room "Cabinet Room"      
-  with  after CabinetRoomAfter,
+  with  before CabinetRoomAfter,
         w_to Hall_of_Exhibits,
         description "An annexe to the museum, containing sundry archaelogical finds, badly labelXXXled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
         section T_HAMBURG,
@@ -2362,7 +2362,7 @@ Object Cabinet_Room "Cabinet Room"
 
 Object -> glass_cabinet "glass cabinet" 
   with  name 'glass' 'cabinet' 'pane',
-        after CabinetAfter,
+        before CabinetAfter,
         s_to "One cabinet looks particularly vulnerable.",
         initial "You could just look inside the broken glass cabinet.",
         number 0,
@@ -2371,7 +2371,7 @@ Object -> glass_cabinet "glass cabinet"
 
 Object -> -> smooth_round_stone "smooth round stone"    
   with  name 'smooth' 'round' 'pumice' 'metal' 'stone',
-        after RoundStoneAfter,
+        before RoundStoneAfter,
         initial nothing,
         description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the labelXXX rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
         angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
@@ -2385,7 +2385,7 @@ Object -> -> papyrus_fragment "papyrus fragment"
 
 Object Ruined_Castle_Cafe "Ruined Castle Cafe"  
   with  name 'decor' 'arrows' 'quartet' 'waiter',
-        before CafeBefore,
+        after CafeBefore,
         initial CafeInitial,
         description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
         cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
@@ -2395,12 +2395,12 @@ Object Ruined_Castle_Cafe "Ruined Castle Cafe"
 
 Object -> cafe_table "cafe table"       
   with  name 'cafe' 'table' 'leg' 'legs',
-        after CafeTableAfter,
+        before CafeTableAfter,
   has   scenery supporter;
 
 Object complicated_looking_bomb "complicated-looking bomb"      
   with  name 'bomb',
-        before BombBefore,
+        after BombBefore,
         initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
         description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
         number 0,
@@ -2410,7 +2410,7 @@ Object complicated_looking_bomb "complicated-looking bomb"
 
 Object -> timer_detonator "timer-detonator"     
   with  name 'timer' 'detonater' 'detonator',
-        after TimerAfter,
+        before TimerAfter,
         number 10,
         time_left 0,
         daemon TimerDaemon,
@@ -2420,22 +2420,22 @@ Object -> timer_detonator "timer-detonator"
 
 Object -> green_wire "green wire"       
   with  name 'green' 'wire',
-        after WireAfter,
+        before WireAfter,
   has   static wire;
 
 Object -> red_wire "red wire"   
   with  name 'red' 'wire',
-        after WireAfter,
+        before WireAfter,
   has   static wire;
 
 Object -> blue_wire "blue wire" 
   with  name 'blue' 'wire',
-        after WireAfter,
+        before WireAfter,
   has   static wire;
 
 Object -> black_wire "black wire"       
   with  name 'black' 'wire',
-        after WireAfter,
+        before WireAfter,
   has   static wire;
 
 Object Cups_and_Glasses "Cups and Glasses"      
@@ -2457,7 +2457,7 @@ Object -> windowed_door "windowed door"
 
 Object -> cups_and_glasses "cups and glasses"   
   with  name 'crates' 'glasses' 'cups',
-        after CupsAndGlassesAfter,
+        before CupsAndGlassesAfter,
         article "numerous",
   has   scenery;
 
@@ -2470,27 +2470,27 @@ Object -> mounted_bottle "mounted bottle"
 
 Object ship_in_a_bottle "ship in a bottle"      
   with  name 'ship' 'in' 'bottle',
-        after BottleShipAfter,
+        before BottleShipAfter,
         description "Within the whisky bottle is a model sailing ship, far too large to have passed the neck.",
         angel_hint "Oh, well done!  Why not take a closer look, you deserve it?",
   has   ;
 
 Object model_ship "model ship"  
   with  name 'model' 'sailing' 'ship' 'anchor' 'chain' 'mermaid' 'filigree' 'prow' 'stern',
-        after ModelShipAfter,
+        before ModelShipAfter,
         description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
         angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has   general;
 
 Object stick_with_an_anchor "stick with an anchor"      
   with  name 'stick' 'with' 'anchor' 'chain' 'sticks' 'ship',
-        after ModelShipAfter,
+        before ModelShipAfter,
         description "A tightly-folded bundle of sticks, about six inches long, with a filigree chain and anchor hanging from it.",
         angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has   ;
 
 Object Sea_Shore "Sea Shore"    
-  with  after SeaShoreAfter,
+  with  before SeaShoreAfter,
         u_to Cliffs,
         description " .A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^",
         cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
@@ -2546,7 +2546,7 @@ Object Outside_Taverna "Outside Taverna"
 
 Object -> small_thorny_tree "small thorny tree" 
   with  name 'tree' 'thorny' 'small',
-        after ThornyTreeAfter,
+        before ThornyTreeAfter,
         description "Only a small, thorny, unclimbable fig tree.",
   has   scenery;
 
@@ -2559,7 +2559,7 @@ Object -> fig "fig"
   has   edible;
 
 Object Eraina_Taverna "Eraina Taverna"  
-  with  after TavernAfter,
+  with  before TavernAfter,
         n_to Outside_Taverna,
         description "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight.",
         cant_go "The tavern entrance is to the north.",
@@ -2569,7 +2569,7 @@ Object Eraina_Taverna "Eraina Taverna"
 
 Object -> Ekmek_Special "Ekmek Special" 
   with  name 'ekmek' 'special' 'dessert',
-        after DessertAfter,
+        before DessertAfter,
         initial "Left untouched on one table is an Ekmek Special dessert.",
         description "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste.",
         devil_hint "Better with chocolate ice cream, I think.",
@@ -2601,7 +2601,7 @@ Object -> wall_of_thorns_object "wall of thorns"
   has   door static;
 
 Object Sacred_Earth "Sacred Earth"      
-  with  before SacredEarthBefore,
+  with  after SacredEarthBefore,
         n_to Wall_of_Thorns,
         s_to SacredEarthSouth,
         description "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number of myths about gods getting cross about that sort of thing.",
@@ -2674,15 +2674,15 @@ Object -> Homer "Homer"
 
 Object -> -> Pan_pipes "Pan pipes"      
   with  name 'pan' 'pipes' 'panpipes' 'syrinx',
-        after PanPipesAfter,
+        before PanPipesAfter,
         description "Carefully cut from river reeds, these once belonged to Homer himself. As you may recall.",
         article "the",
         angel_hint "Marvellous! A sound to soothe the spirit.",
   has   ;
 
 Object Cross_Centre "Cross Centre"      
-  with  after CrossAfter,
-        before CrossBefore,
+  with  before CrossAfter,
+        after CrossBefore,
         s_to Inner_Sanctum,
         ne_to Northeast_Cross,
         se_to Southeast_Cross,
@@ -2698,7 +2698,7 @@ Object Cross_Centre "Cross Centre"
 
 Object -> inscriptions "inscriptions"   
   with  name 'inscription' 'opening',
-        after InscriptsAfter,
+        before InscriptsAfter,
         n_to Oubliette,
         s_to "There are extremely scuffed and faded inscriptions at the centre of the cross.",
         w_to thedark,
@@ -2716,7 +2716,7 @@ Object Oubliette "Oubliette"
 
 Object -> gleaming_amber_gem "gleaming amber gem"       
   with  name 'amber' 'gem',
-        after GemAfter,
+        before GemAfter,
         initial "Lying on top of crushed, broken bones, in plain view, is a gleaming gem of amber.",
         description "Embedded within is the body of a fly. Scratched upon one face is the word ~GALITA~.",
         angel_hint "Isn't there some classical legend about her?",
@@ -2731,8 +2731,8 @@ Object Northeast_Cross "Northeast Cross"
 
 Object -> statue_of_Demeter "statue of Demeter" 
   with  name 'demeter' 'statue' 'of',
-        after ClassicalStatueAfter,
-        before ClassicalStatueBefore,
+        before ClassicalStatueAfter,
+        after ClassicalStatueBefore,
         initial "A fine statue of the goddess Demeter stands here.",
   has   static statue_flag:int;
 
@@ -2745,8 +2745,8 @@ Object Northwest_Cross "Northwest Cross"
 
 Object -> statue_of_Dionysus "statue of Dionysus"       
   with  name 'dionysus' 'statue' 'of',
-        after ClassicalStatueAfter,
-        before ClassicalStatueBefore,
+        before ClassicalStatueAfter,
+        after ClassicalStatueBefore,
         initial "A fine statue of the god Dionysus stands here.",
   has   static statue_flag:int;
 
@@ -2759,8 +2759,8 @@ Object Southeast_Cross "Southeast Cross"
 
 Object -> statue_of_Ares "statue of Ares"       
   with  name 'ares' 'statue' 'of',
-        after ClassicalStatueAfter,
-        before ClassicalStatueBefore,
+        before ClassicalStatueAfter,
+        after ClassicalStatueBefore,
         initial "A fine statue of the god Ares stands here.",
   has   static statue_flag:int;
 
@@ -2773,8 +2773,8 @@ Object Southwest_Cross "Southwest Cross"
 
 Object -> statue_of_Poseidon "statue of Poseidon"       
   with  name 'poseidon' 'statue' 'of',
-        after ClassicalStatueAfter,
-        before ClassicalStatueBefore,
+        before ClassicalStatueAfter,
+        after ClassicalStatueBefore,
         initial "A fine statue of the god Poseidon stands here.",
   has   static statue_flag:int;
 
@@ -2787,7 +2787,7 @@ Object Cave_Mouth "Cave Mouth"
 
 Object -> flaming_bronze_urn "flaming bronze urn"       
   with  name 'flaming' 'bronze' 'urn' 'flame' 'cube' 'obsidian' 'altar' 'stone',
-        after UrnAfter,
+        before UrnAfter,
         initial "In the centre of the cave rests an obsidian altar stone with a flaming bronze urn.",
         description "The altar stone, sometimes called ~Omphalos~ or ~the navel~, bears an odd cross or plus sign and is fabled to mark the centre of the world.^^Around the side of the urn are reliefs of feasts, of oxen being tracked and sacrificed, of the gathering of fruit and the making of cheese.",
         article "the",
@@ -2850,7 +2850,7 @@ Object aft_obj "aft wall"
 
 Object some_landlubbers_direction "some landlubber's direction" 
   with  name 'north' 'n//' 'south' 's//' 'east' 'e//' 'west' 'w//',
-        after LandlubberAfter,
+        before LandlubberAfter,
   has   proper scenery;
 
 Object Aboard_Ship "Aboard Ship"        
@@ -2867,13 +2867,13 @@ Object Aboard_Ship "Aboard Ship"
 
 Object -> mast_and_rigging "mast and rigging"   
   with  name 'mast' 'rigged' 'rigging',
-        after RiggingAfter,
+        before RiggingAfter,
         article "the",
   has   scenery;
 
 Object Up_the_Mast "Up the Mast"        
-  with  after OnMastAfter,
-        before OnMastBefore,
+  with  before OnMastAfter,
+        after OnMastBefore,
         w_to OnMastWest,
         d_to OnMastDown,
         description "Coming up here must be one of your less inspired ideas. The mist is all around you, confusing your senses. Two pale, bluish moons hang in a pink sky.",
@@ -2883,14 +2883,14 @@ Object Up_the_Mast "Up the Mast"
 
 Object -> flagpole "flagpole"   
   with  name 'pole' 'flagpole' 'mast' 'ensign' 'spar',
-        after FlagpoleAfter,
+        before FlagpoleAfter,
         initial "A flagpole juts out portwards from the top of the mast, far too insubstantial to bear any weight. From it hangs the ensign of the British Merchant Navy (which you could just reach the bottom of).",
         description "The flagpole juts out to port with the prevailing... wind?",
   has   static;
 
 Object -> flag_of_the_British_Merchant_Navy "flag of the British Merchant Navy" 
   with  name 'flag' 'ensign' 'navy' 'british' 'merchant' 'of' 'tassels',
-        after FlagAfter,
+        before FlagAfter,
         initial "The flag has fluttered to a heap on deck.",
         description "Broad, heavy, scarlet cloth, halfway between a silken sheet and a carpet, with a cross and a Union Jack in one corner.",
         devil_hint "Piece of advice - it's never very comfortable wrapping yourself in the Flag.",
@@ -2898,7 +2898,7 @@ Object -> flag_of_the_British_Merchant_Navy "flag of the British Merchant Navy"
 
 Object old_timber_spar "old timber spar"        
   with  name 'old' 'prop' 'timber' 'flagpole' 'spar',
-        before TimberSparBefore,
+        after TimberSparBefore,
         initial "The broken flagpole, a plain timber spar, lies beside the mast.",
         description "An old timber prop, once the spar of a main mast.",
         article "an",
@@ -2916,7 +2916,7 @@ Object Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"
 
 Object -> green_branch "green branch"   
   with  name 'green' 'branch' 'leafed',
-        after BranchAfter,
+        before BranchAfter,
         initial "In the Lady Magdalena's loose grip is a traditional sailor's good-luck token: a green-leafed branch, to attract the gulls of an approaching shore.",
         section T_TAROT,
         angel_hint "Oh, you startled me for a moment there! I am getting flighty.",
@@ -2933,13 +2933,13 @@ Object Stern "Stern"
 
 Object -> capstan "capstan"     
   with  name 'capstan' 'anchor' 'chain' 'wheel',
-        after CapstanAfter,
+        before CapstanAfter,
         initial "The top of the anchor chain is wound around the capstan, a great wheel on the deck beside you. The chain disappears over the side.",
   has   static;
 
 Object Garden_Stream "Garden Stream"    
   with  name 'reeds',
-        after GardenStreamAfter,
+        before GardenStreamAfter,
         n_to "Better not... you'd be seen from the Library.",
         s_to coal_bunker,
         e_to Beside_the_Wall,
@@ -2954,7 +2954,7 @@ Object Garden_Stream "Garden Stream"
 
 Object -> coal_bunker "coal bunker"     
   with  name 'coal' 'bunker' 'loading' 'door',
-        before CoalBunkerBefore,
+        after CoalBunkerBefore,
         n_to Dark_Passage,
         s_to "On the house wall is a coal bunker, whose loading door is shut.",
         w_to ne_obj,
@@ -2963,7 +2963,7 @@ Object -> coal_bunker "coal bunker"
 
 Object -> stream "stream"       
   with  name 'stream' 'water' 'gurgling',
-        after StreamAfter,
+        before StreamAfter,
   has   scenery;
 
 Object Beside_the_Wall "Beside the Wall"        
@@ -2980,13 +2980,13 @@ Object Beside_the_Wall "Beside the Wall"
 
 Object -> potted_shrub "potted shrub"   
   with  name 'pot' 'potted' 'tub' 'plant' 'shrub',
-        after ShrubAfter,
+        before ShrubAfter,
         initial "A shrub is being nursed in a wide round tub in the centre of the path, sheltered behind the wall.",
   has   static;
 
 Object -> stone_wall "stone wall"       
   with  name 'stone' 'wall' 'carved' 'carvings' 'painted',
-        after StoneWallAfter,
+        before StoneWallAfter,
         life StoneWallLife,
         description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
         found_in Beside_the_Wall Beside_the_Drive,
@@ -2994,7 +2994,7 @@ Object -> stone_wall "stone wall"
 
 Object timber_hatch "timber hatch"      
   with  name 'timber' 'hatch' 'old' 'rotted' 'rotting' 'lid',
-        before TimberHatchBefore,
+        after TimberHatchBefore,
         n_to Wine_Cellars,
         s_to "Beside the shrub is a timber hatch, three feet across.",
         w_to thedark,
@@ -3015,7 +3015,7 @@ Object Family_Tree "Family Tree"
 
 Object -> plane_tree "plane tree"       
   with  name 'plane' 'tree' 'family',
-        after PlaneTreeAfter,
+        before PlaneTreeAfter,
   has   scenery;
 
 Object Lawn_Ornaments "Lawn Ornaments"  
@@ -3036,7 +3036,7 @@ Object -> plaster_statuette "plaster statuette"
 
 Object ancient_well "ancient well"      
   with  name 'ancient' 'well' 'dark',
-        before WellBefore,
+        after WellBefore,
         initial "The lawn is lightly coated with broken plaster and dust, and in the spot where the statuette once stood is a dark, ancient well.",
         description "You can make out nothing below, and the well is too small to climb down.",
   has   container open static;
@@ -3089,8 +3089,8 @@ Object -> runner_bean_plant "runner-bean plant"
   has   door static;
 
 Object Up_the_Beanstalk "Up the Beanstalk"      
-  with  after BeanStalkAfter,
-        before BeanStalkBefore,
+  with  before BeanStalkAfter,
+        after BeanStalkBefore,
         n_to Heavenly_Place,
         d_to Vegetable_Garden,
         description "At the top of the beanstalk, in amongst the clouds. There is no safe way to go from here except back down, not surprisingly. A dangerous way might be to step out onto the clouds to the north, but even if this is a fairy-tale it would be taking a lot on trust.",
@@ -3106,7 +3106,7 @@ Object Garage "Garage"
 
 Object -> garden_roller "garden roller" 
   with  name 'garden' 'roller' 'switch' 'motor' 'motorised' 'power',
-        after RollerAfter,
+        before RollerAfter,
         s_to "A big motorised garden roller is parked here.",
         initial "The garden roller sits here, its engine still running.",
         description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
@@ -3115,7 +3115,7 @@ Object -> garden_roller "garden roller"
 
 Object -> weed_killer_bottle "weed killer bottle"       
   with  name 'weed' 'killer' 'bottle' 'weedkille',
-        after WeedKillerAfter,
+        before WeedKillerAfter,
         initial "In the shadows is a weed killer bottle.",
         description "If squeezed, it squirts weed killer over the ground. There are many warning labelXXXs about getting it on one's hands.",
         daemon WeedKillerDaemon,
@@ -3124,7 +3124,7 @@ Object -> weed_killer_bottle "weed killer bottle"
 
 Object -> spade "spade" 
   with  name 'bladed' 'agricultural' 'implement' 'zzzzzzzzz',
-        after SpadeAfter,
+        before SpadeAfter,
         initial "Hanging from a hook is a bladed agricultural implement.",
         short SpadeShort,
         angel_hint "Do you think there's anywhere in the garden particularly suitable for such an implement?",
@@ -3132,7 +3132,7 @@ Object -> spade "spade"
 
 Object Up_the_Plane_Tree "Up the Plane Tree"    
   with  name 'jemima' 'conservatory' 'window',
-        after UpTreeAfter,
+        before UpTreeAfter,
         d_to Family_Tree,
         description "A magnificent view of the gardens would be yours, were it not for the branches and leaves which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from her view. Down below, the privet-hedge layout of the maze can be seen through the lower branches.",
         cant_go "No, don't go out on a limb.",
@@ -3146,8 +3146,8 @@ Object -> maze_layout "maze layout"
   has   scenery;
 
 Object Maze "Maze"      
-  with  after MazeAfter,
-        before MazeBefore,
+  with  before MazeAfter,
+        after MazeBefore,
         s_to Family_Tree,
         w_to Viewpoint_Ledge,
         description "A maze of green privet passages, all alike.",
@@ -3157,8 +3157,8 @@ Object Maze "Maze"
 
 Object Patio_in_Maze "Patio in Maze"    
   with  name 'patio' 'flagstone',
-        after PatioAfter,
-        before PatioBefore,
+        before PatioAfter,
+        after PatioBefore,
         u_to "Up?  Are we playing the same game?",
         d_to Crypt,
         description "This is an old stone patio in the heart of the garden maze. A missing flagstone offers an intriguing dark prospect beneath.",
@@ -3168,14 +3168,14 @@ Object Patio_in_Maze "Patio in Maze"
 
 Object -> marble_rose "marble rose"     
   with  name 'marble' 'rose' 'flower',
-        after RoseAfter,
+        before RoseAfter,
         initial "Sticking out of some soft earth is a perfectly-carved marble rose.",
         angel_hint "Perfection set in stone. Not a gift for mortal women!",
   has   ;
 
 Object Viewpoint_Ledge "Viewpoint Ledge"        
   with  name 'motorway' 'coaches',
-        after ViewpointAfter,
+        before ViewpointAfter,
         e_to Maze,
         description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
         cant_go "The hillside is too steep.",
@@ -3197,7 +3197,7 @@ Object -> miniature "miniature"
 
 Object Folly "Folly"    
   with  name 'wain' 'hay' 'valley',
-        before FollyBefore,
+        after FollyBefore,
         e_to Maze_Foundations,
         description "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across the river.^^Towering over you is a monstrously awful piece of architecture, a Folly. The freestanding tower has no appreciable purpose and no apparent entrance. The latter is just as well since it looks extremely unsafe.",
         cant_go "The hillside is too steep.",
@@ -3211,7 +3211,7 @@ Object -> Folly_tower "Folly tower"
 
 Object -> bean_pole "bean pole" 
   with  name 'bean' 'pole' 'beanpole',
-        before BeanpoleBefore,
+        after BeanpoleBefore,
         initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
         number 0,
         daemon BeanpoleDaemon,
@@ -3220,8 +3220,8 @@ Object -> bean_pole "bean pole"
   has   general hidden_rod;
 
 Object Maze_Foundations "Maze Foundations"      
-  with  after FoundationsAfter,
-        before FountdationsBefore,
+  with  before FoundationsAfter,
+        after FountdationsBefore,
         s_to Tree_Planting,
         w_to Folly,
         description "A square grid of plots of grass and seedbeds, all alike.",
@@ -3229,7 +3229,7 @@ Object Maze_Foundations "Maze Foundations"
   has   light;
 
 Object Tree_Planting "Tree Planting"    
-  with  before PlantingBefore,
+  with  after PlantingBefore,
         description "Capability Meldrew and his gang of workmen are delicately planting a sapling plane tree here. Your disturbance annoys them immensely and you are immediately arrested for vagrancy and theft. After a few months in prison, you are hauled up before the County Assizes and sentenced...",
         section T_GARDEN_PAST,
   has   light;
@@ -3256,7 +3256,7 @@ Object -> flock_of_sparrows "flock of sparrows"
   has   static;
 
 Object Summer_House "Summer House"      
-  with  before SummerHouseBefore,
+  with  after SummerHouseBefore,
         n_to nothing,
         s_to SummerHouseSouth,
         description "An old wooden summer house, reeking of varnish and uncertain beneath your feet. Several segments of the tall glass many-sided pyramidal roof are missing and others are cracked, but this is still somehow a homely and welcoming retreat. The only entrance is also the only exit.",
@@ -3272,7 +3272,7 @@ Object -> croquet_mallet "croquet mallet"
 
 Object -> gold_watch_on_a_chain "gold watch on a chain" 
   with  name 'gold' 'watch' 'on' 'chain',
-        after ChainAfter,
+        before ChainAfter,
         initial "Something golden hangs by a chain from a loose pane in the roof, but it's too high up to reach.",
         description "It is beautifully polished, and captivates the eye. You could stare for hours...",
         angel_hint "How easily are the weak mesmerised by baubles.",
@@ -3289,7 +3289,7 @@ Object Behind_Summer_House "Behind Summer House"
 
 Object -> loose_board "loose board"     
   with  name 'loose' 'board',
-        after BoardAfter,
+        before BoardAfter,
         n_to Summer_House,
         s_to "One board of the back wall is noticeably loose, making a good-sized crack.",
         w_to ne_obj,
@@ -3298,8 +3298,8 @@ Object -> loose_board "loose board"
 
 Object -> crack "crack" 
   with  name 'crack' 'gap' 'hole' 'summerhou' 'summer' 'house',
-        after CrackAfter,
-        before CrackBefore,
+        before CrackAfter,
+        after CrackBefore,
         description "Through the crack you can see the summer house.",
   has   container open scenery;
 
@@ -3335,8 +3335,8 @@ Object strongbox "strongbox"
 
 Object -> golden_astrolabe "golden astrolabe"   
   with  name 'golden' 'gold' 'astrolabe' 'eyepiece',
-        after AstrolabeAfter,
-        before AstrolabeBefore,
+        before AstrolabeAfter,
+        after AstrolabeBefore,
         initial nothing,
         description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua Meldrewe's stolen hoard of gold. There is an eyepiece.",
         angel_hint "A mighty fine instrument, though not much use hand-held.",
@@ -3344,7 +3344,7 @@ Object -> golden_astrolabe "golden astrolabe"
 
 Object dug_hole "dug hole"      
   with  name 'hole' 'dug',
-        after DugHoleAfter,
+        before DugHoleAfter,
         description "The rich loam, the silver of earthworms, the dignity of toil... none of these pastoral consolations is yours as you scrabble in the dirt.",
         describe DugHoleDesc,
   has   container open static;
@@ -3380,13 +3380,13 @@ Object Spur_of_Rock "Spur of Rock"
 
 Object -> hanging_rope "hanging rope"   
   with  name 'hanging' 'rope',
-        after RopeAfter,
+        before RopeAfter,
   has   scenery;
 
 Object Hanging_on_Rope "Hanging on Rope"        
   with  name 'patrol' 'men',
-        after HangingOnRopeAfter,
-        before HangingOnRopeBefore,
+        before HangingOnRopeAfter,
+        after HangingOnRopeBefore,
         u_to Spur_of_Rock,
         d_to RopeDown,
         description "You are hanging perilously on a hemp rope, suspended from an overhang of rock above, which drops down into the darkness of the valley. On the tracks below, patrols of men can be heard, and you feel instinctively that they are not friendly.",
@@ -3400,8 +3400,8 @@ Object -> hemp_rope "hemp rope"
 
 Object -> yellow_daisy "yellow daisy"   
   with  name 'yellow' 'daisy',
-        after DaisyAfter,
-        before DaisyBefore,
+        before DaisyAfter,
+        after DaisyBefore,
         u_to DaisyUp,
         initial "A single yellow daisy grows from a little tuft of grass on the crags.",
   has   clothing scored;
@@ -3425,7 +3425,7 @@ Object Roman_Villa "Roman Villa"
 
 Object Stream "Stream"  
   with  name 'river' 'road' 'stream' 'roof',
-        after EndStreamAfter,
+        before EndStreamAfter,
         w_to Roman_Villa,
         u_to "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.",
         description "A stream runs past the villa and cascades down the hillside here, to join the river far below, near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from your back garden. A rough ladder of wood lashed together with leather rests against the villa at the lowest point of the tiled roof.",
@@ -3434,7 +3434,7 @@ Object Stream "Stream"
 
 Object -> rough_ladder "rough ladder"   
   with  name 'rough' 'ladder',
-        after LadderAfter,
+        before LadderAfter,
   has   scenery;
 
 Object Atrium_Cloister "Atrium Cloister"        
@@ -3447,7 +3447,7 @@ Object Atrium_Cloister "Atrium Cloister"
 
 Object -> summoning_horn "summoning horn"       
   with  name 'horn' 'summoning' 'on' 'pole',
-        after HornAfter,
+        before HornAfter,
         initial "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
         rod_assoc rod_of_language,
   has   hidden_rod;
@@ -3475,7 +3475,7 @@ Object Guard_Quarters "Guard Quarters"
 
 Object -> bone_die "crude bone die"     
   with  name 'die' 'dice' 'bone',
-        before DieBefore,
+        after DieBefore,
         description "A crude six-sided die made from animal bone.",
   has   ;
 
@@ -3493,7 +3493,7 @@ Object Triclinium "Triclinium"
 
 Object -> kitchen_well "kitchen well"   
   with  name 'well' 'hinged' 'wooden' 'cover',
-        before WellBefore,
+        after WellBefore,
         n_to Inside_Well,
         s_to "In one corner is a hinged wooden cover of some kind, which is shut.",
         w_to thedark,
@@ -3505,7 +3505,7 @@ Object -> kitchen_well "kitchen well"
 
 Object Inside_Well "Inside Well"        
   with  name 'air',
-        after InsideWellAfter,
+        before InsideWellAfter,
         e_to Hypocaust,
         u_to Triclinium,
         description "You are clinging perilously to the walls of the deep and dangerous well. You can hardly see a thing, even with the aid of the torch, but curiously enough you feel warm air blowing across you from the east.",
@@ -3523,13 +3523,13 @@ Object Hypocaust "Hypocaust"
 
 Object -> vents "vents" 
   with  name 'hypocaust' 'vents',
-        after VentsAfter,
+        before VentsAfter,
         article "the",
   has   scenery;
 
 Object Entrance "Entrance"      
-  with  after EntranceAfter,
-        before EntranceBefore,
+  with  before EntranceAfter,
+        after EntranceBefore,
         n_to Atrium,
         description "A well-flagstoned forecourt at the villa entrance, surrounded by lesser wooden buildings. Some of these are in use as stables, and figures of men slip between them. You hide from sight, not wishing to draw attention to yourself. Up on the hill, where Meldrew Hall will one day be built, men on horseback can be seen circling the access track. For a deserted villa, this is certainly well-guarded.",
         section T_ANCIENT_BRITAIN,
@@ -3544,8 +3544,8 @@ Object Rough_Tent "Rough Tent"
 
 Object -> tent_pole "tent pole" 
   with  name 'tent' 'pole' 'central',
-        after TentPoleAfter,
-        before TentPoleBefore,
+        before TentPoleAfter,
+        after TentPoleBefore,
         number 0,
         daemon TentPoleDaemon,
         rod_assoc rod_of_returning2,
@@ -3553,7 +3553,7 @@ Object -> tent_pole "tent pole"
 
 Object unconscious_Saxon_spy "unconscious Saxon spy"    
   with  name 'saxon' 'spy',
-        after SpyAfter,
+        before SpyAfter,
         life SpyLife,
         initial "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
         description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours.",
@@ -3598,7 +3598,7 @@ Object fifty_franc_note "fifty-franc note"
   has   ;
 
 Object ghost_of_yourself "ghost of yourself"    
-  with  after YourGhostAfter,
+  with  before YourGhostAfter,
         description "You are transparent like a ghost.",
         time_left 0,
         capacity 1,
@@ -3635,8 +3635,8 @@ Object -> bear_tapestry "bear tapestry"
 
 Object -> heavy_iron_mascot "heavy iron mascot" 
   with  name 'heavy' 'iron' 'mascot',
-        after MascotAfter,
-        before MascotBefore,
+        before MascotAfter,
+        after MascotBefore,
         initial "On the table is a heavy iron mascot of some kind.",
         description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
         number 0,
@@ -3659,7 +3659,7 @@ Object Camp_Fire "Camp Fire"
   has   light;
 
 Object Near_Dolmen "Near Dolmen"        
-  with  before DolmenBefore,
+  with  after DolmenBefore,
         description "A standing stone, perhaps a glacial erratic, stands here and on top of it is a shining blue stone, whose brightness almost blinds you. You feel irresistably drawn to it, and your hand reaches out...",
         cant_go DreamCantGo,
         section T_DREAMING,
@@ -3676,12 +3676,12 @@ Object Melancholy_Dream "Melancholy Dream"
 
 Object -> metal_barrier "metal barrier" 
   with  name 'metal' 'barrier',
-        after BarrierAfter,
+        before BarrierAfter,
   has   scenery;
 
 Object green_luminescence "flurries of green luminescence"      
   with  name 'green' 'flurries' 'of' 'luminesce',
-        after LumnescenceAfter,
+        before LumnescenceAfter,
         initial "Flurries of green luminescence whirl endlessly around you, west to east and over.",
         description "The flurries have almost endless fascination... but you manage to tear your eyes away after, oh, an hour?",
   has   static;
@@ -3713,7 +3713,7 @@ Object -> hieroglyphic_symbols "hieroglyphic symbols"
 
 Object -> ships_wheel "ship's wheel"    
   with  name 'ships' 'wheel',
-        after ShipWheelAfter,
+        before ShipWheelAfter,
         initial "A kind of ship's wheel (of eight-spoked timber) is affixed to the northwest wall.",
   has   static;
 
@@ -3738,7 +3738,7 @@ Object -> bronze_mural "bronze mural"
 
 Object Jagged_Passage "Jagged Passage"  
   with  name 'bones',
-        after CryptRoomAfter,
+        before CryptRoomAfter,
         n_to Crypt,
         s_to The_Catacombs,
         e_to Charnel_Passage,
@@ -3756,7 +3756,7 @@ Object -> wrought_iron_key "long wrought iron key"
   has   ;
 
 Object Charnel_Passage "Charnel Passage"        
-  with  after CryptRoomAfter,
+  with  before CryptRoomAfter,
         e_to Sarcophagus,
         w_to Jagged_Passage,
         description "A long, winding, vile passage through the earth, running east to west. The distasteful odour grows stronger as you go east.",
@@ -3764,7 +3764,7 @@ Object Charnel_Passage "Charnel Passage"
   has   ;
 
 Object Sarcophagus "Sarcophagus"        
-  with  after CryptRoomAfter,
+  with  before CryptRoomAfter,
         w_to Charnel_Passage,
         description "Well, perhaps ~sarcophagus~ is a little melodramatic, but it's that kind of moment. This must be somewhere under the old parish church. You are stooped over inside a stone tomb, stained and crumbled with decay, broken only by a crevice you crawled in by. It is a nightmarish place.",
         section T_CATACOMBS,
@@ -3777,7 +3777,7 @@ Object -> tombstone "tombstone"
   has   static;
 
 Object The_Catacombs "Catacombs"        
-  with  after CryptRoomAfter,
+  with  before CryptRoomAfter,
         n_to Jagged_Passage,
         w_to CR,
         u_to Jagged_Passage,
@@ -3790,7 +3790,7 @@ Object The_Catacombs "Catacombs"
 
 Object aluminium_staircase "aluminium staircase"        
   with  name 'staircase' 'stairs' 'stair' 'case' 'aluminium',
-        after AluminumStairAfter,
+        before AluminumStairAfter,
         initial "The odd smell seems to be ozone, and it drifts up from a previously concealed aluminium staircase.",
         description "Leading down.",
         article "an",
@@ -3798,7 +3798,7 @@ Object aluminium_staircase "aluminium staircase"
 
 Object CR "CR"  
   with  name 'basket' 'seesaw' 'hand' 'cannon' 'glass',
-        before CRBefore,
+        after CRBefore,
         n_to metal_wall,
         s_to nothing,
         e_to CREast,
@@ -3810,7 +3810,7 @@ Object CR "CR"
 
 Object -> metal_wall "metal wall"       
   with  name 'mirror' 'metal' 'bronze' 'wall' 'sheet' 'amber',
-        after MetalWallAfter,
+        before MetalWallAfter,
         n_to CR,
         s_to "The north edge of the room is a big sheet of dull amber-coloured metal.",
         w_to w_obj,
@@ -3826,13 +3826,13 @@ Object -> iron_grid "iron grid"
 
 Object -> glowing_golden_orb "glowing golden orb"       
   with  name 'glowing' 'golden' 'orb',
-        after CannonballAfter,
+        before CannonballAfter,
         description "How tantalisingly valuable it seems.",
   has   scenery;
 
 Object -> cannonball "cannonball"       
   with  name 'cannon' 'ball' 'cannonball',
-        after CannonballAfter,
+        before CannonballAfter,
         description "Solid, heavy, reliable, out of reach on the other side of the glass.",
   has   scenery;
 
@@ -3845,20 +3845,20 @@ Object Universe_Maintenance_Room "Universe Maintenance Room"
 
 Object -> big_electricians_switch "big electrician's switch"    
   with  name 'big' 'electricians' 'switch',
-        before SwitchBefore,
+        after SwitchBefore,
         description "The lower, on, position is labelXXXled ~Determinism~. The upper, off, position is labelled ~Chance~.",
   has   on scenery static switchable;
 
 Object -> large_dial "large dial"       
   with  name 'large' 'dial' 'gauges' 'dials',
-        after DialAfter,
+        before DialAfter,
         initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelXXXled in small print.",
         description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
   has   static;
 
 Object Inside_the_Orb "Inside the Orb"  
   with  name 'light',
-        before InOrbBefore,
+        after InOrbBefore,
         description "You half-stand, half-float in a golden, misty sphere perhaps ten yards across, which slowly spins. The centre, out of reach and somehow insubstantial, is an eight-by-eight lattice of oblong crystals, bathed in warm pearly light.",
         number 0,
         each_turn InOrbEachTurn,
@@ -3873,7 +3873,7 @@ Object -> array_of_oblong_crystals "array of oblong crystals"
   has   static;
 
 Object Causeway "Causeway"      
-  with  after CausewayAfter,
+  with  before CausewayAfter,
         n_to Island_of_Pharos,
         se_to Crossroads,
         initial CausewayInitial,
@@ -3885,7 +3885,7 @@ Object Causeway "Causeway"
 
 Object Island_of_Pharos "Island of Pharos"      
   with  name 'pharos' 'lighthouse' 'moon' 'circle' 'octagon' 'square' 'defences' 'causeway' 'island' 'harbour',
-        after CausewayAfter,
+        before CausewayAfter,
         s_to Causeway,
         u_to "The Pharos is unclimbable, alas.",
         d_to rusty_iron_grating,
@@ -3898,7 +3898,7 @@ Object Island_of_Pharos "Island of Pharos"
 
 Object -> rusty_iron_grating "rusty iron grating"       
   with  name 'rusty' 'iron' 'grating' 'seaweed' 'grate' 'rusted',
-        after IronGratingAfter,
+        before IronGratingAfter,
         n_to Jetty,
         s_to "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
         e_to rusty_iron_key,
@@ -3908,14 +3908,14 @@ Object -> rusty_iron_grating "rusty iron grating"
 
 Object -> rusty_iron_key "rusty iron key"       
   with  name 'rusty' 'iron' 'key',
-        after RustyKeyAfter,
+        before RustyKeyAfter,
         sw_to compass,
         initial "Interestingly, a key which looks as if it would fit the grating can be seen inside the passage beneath.",
         angel_hint "Oh dear, surely it's gratingly obvious what this fits?",
   has   ;
 
 Object Jetty "Jetty"    
-  with  after CausewayAfter,
+  with  before CausewayAfter,
         u_to Island_of_Pharos,
         description "Down on a dark stone jetty, where the waters of the Alexandrian harbour splash insistently. Rough-hewn steps rise up the island through the grating.",
         each_turn JettyEachTurn,
@@ -3937,7 +3937,7 @@ Object -> -> adamantine_heart "adamantine heart"
   has   ;
 
 Object Harbour_Mouth "Harbour Mouth"    
-  with  after HarbourMouthAfter,
+  with  before HarbourMouthAfter,
         description "As the skiff passes the jaws of the Royal Harbour, beneath the great Pharos light, you have a final view of the receding civilisation of Alexandria: ahead lies the vast, oil-calm Mediterranean and moonlight on the waters.",
         cant_go "The skiff is not under your control.",
         each_turn HarbourMouthEachTurn,
@@ -3946,7 +3946,7 @@ Object Harbour_Mouth "Harbour Mouth"
 
 Object Drifting "Drifting"      
   with  name 'curious' 'fish' 'zephyr' 'sea',
-        after HarbourMouthAfter,
+        before HarbourMouthAfter,
         description "You drift in the wide, peaceful Lunar sea. Curious fish, their yellow-green eyes gleaming beneath the silver ripples, brush past your wake: the night zephyr is almost slack but still you drift. Minutes pass like hours in paradise.",
         cant_go "You feel only a drug-like calm.",
         each_turn DriftingEachTurn,
@@ -3955,7 +3955,7 @@ Object Drifting "Drifting"
 
 Object Crossroads "Crossroads"  
   with  name 'processio' 'tower',
-        after CrossroadsAfter,
+        before CrossroadsAfter,
         ne_to Outside_the_Royal_Museum,
         se_to A_Tower,
         nw_to Causeway,
@@ -3981,7 +3981,7 @@ Object -> birds_of_prey "birds of prey"
 
 Object unexciting_tombstone "unexciting tombstone"      
   with  name 'tomb' 'tombstone' 'stone' 'unexcitin' 'face' 'socket' 'steps' 'mouth',
-        after TombstoneAfter,
+        before TombstoneAfter,
         n_to The_Height_of_Fashion,
         s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
         w_to thedark,
@@ -3991,7 +3991,7 @@ Object unexciting_tombstone "unexciting tombstone"
 
 Object cloak_of_many_colours "cloak of many colours"    
   with  name 'of' 'many' 'colours' 'cloak' 'coat' 'chlamys',
-        after CloakAfter,
+        before CloakAfter,
         initial "A cloak of many colours lies folded on it.",
         description "A fine cloak, grey-lined, sapphire-encrusted, rippled across with rainbow fabrics from the trade routes of the world.",
         angel_hint "Are you sure it isn't inside out?",
@@ -3999,13 +3999,13 @@ Object cloak_of_many_colours "cloak of many colours"
 
 Object grey_cloak "grey cloak"  
   with  name 'grey' 'cloak' 'coat' 'chlamys',
-        after CloakAfter,
+        before CloakAfter,
         description "A fine grey cloak, sapphire-encrusted, lined with rainbow fabrics from the trade routes of the world.",
         angel_hint "Are you sure it isn't inside out?",
   has   clothing;
 
 Object XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"    
-  with  after PyramidAfter,
+  with  before PyramidAfter,
         n_to Necropolis,
         description "Ransacked, dimly-lit, cramped and empty, this rough-built and uneven burial mound is to the Great Pyramids of Giza (built just a century before) what the summerhouse in your garden is to Windsor Castle. There are only dull painted writings, an unpleasant odour and a passage out to the north.",
         section T_ALEXANDRIA,
@@ -4020,7 +4020,7 @@ Object -> painted_writings "painted writings"
 
 Object The_Height_of_Fashion "The Height of Fashion"    
   with  name 'table' 'panelling' 'doorway' 'door',
-        after HeightFashionAfter,
+        before HeightFashionAfter,
         w_to HeightFashionWest,
         u_to Necropolis,
         description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling. This is the latest in modern funerary apartments.^^There's a couch for visitors, a table, a flight of steps up and a doorway to the west, flanked by two stone sphinxes.",
@@ -4041,15 +4041,15 @@ Object -> wooden_couch "wooden couch"
 
 Object stone_nose_of_a_sphinx "stone nose of a sphinx"  
   with  name 'stone' 'nose',
-        after NoseAfter,
+        before NoseAfter,
         initial "One of the sphinxes does have rather a prominent nose, it must be said.",
         description "Splendid.",
   has   static;
 
 Object The_Spirit_World "The Spirit World"      
   with  name 'table' 'panelling' 'doorway' 'door',
-        after SpiritWorldAfter,
-        before SpiritWorldBefore,
+        before SpiritWorldAfter,
+        after SpiritWorldBefore,
         w_to SpiritWorldWest,
         description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling, at the foot of a flight of steps which leads only to a sealed wall.",
         number 1,
@@ -4106,7 +4106,7 @@ Object -> marble_wall "marble wall"
   has   door static;
 
 Object Quite_an_Undertaking "Quite an Undertaking"      
-  with  after UndertakingAfter,
+  with  before UndertakingAfter,
         e_to This_Is_The_Death,
         u_to This_Is_The_Death,
         description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
@@ -4121,14 +4121,14 @@ Object -> painting_of_the_priest "painting of the priest"
 
 Object -> mummy_case "mummy case"       
   with  name 'mummy' 'case' 'lid' 'sarcophag' 'coffin',
-        after MummyCaseAfter,
+        before MummyCaseAfter,
         initial "A beautiful gold and blue mummy case, or sarcophagus, rests massively here.",
         description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
   has   enterable static;
 
 Object -> first_socket "first socket"   
   with  name 'first' 'socket' 'sockets' 'words',
-        after SocketAfter,
+        before SocketAfter,
         description " .Above ",
         article "the",
         number 1,
@@ -4136,7 +4136,7 @@ Object -> first_socket "first socket"
 
 Object -> second_socket "second socket" 
   with  name 'second' 'socket' 'sockets' 'words',
-        after SocketAfter,
+        before SocketAfter,
         description " .Above ",
         article "the",
         number 1,
@@ -4144,14 +4144,14 @@ Object -> second_socket "second socket"
 
 Object -> third_socket "third socket"   
   with  name 'third' 'socket' 'sockets' 'words',
-        after SocketAfter,
+        before SocketAfter,
         description " .Above ",
         article "the",
         number 1,
   has   scenery;
 
 Object Buried_Alive "Buried Alive"      
-  with  after BuriedAfter,
+  with  before BuriedAfter,
         u_to Sarcophagus,
         description "You lie in the mummy case, your arms folded across each other, face grimaced, running out of air rapidly and with almost no room to maneouvre. The coffin lid is about ten times heavier than you, and its seal is very good.",
         number 5,
@@ -4206,7 +4206,7 @@ Object A_Tower "A Tower"
 
 Object -> defaced_door "defaced door"   
   with  name 'defaced' 'sosostris' 'door' 'writings' 'scripts',
-        after DefacedDoorAfter,
+        before DefacedDoorAfter,
         n_to Consulting_Room,
         s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
         w_to in_obj,
@@ -4223,7 +4223,7 @@ Object Consulting_Room "Consulting Room"
 
 Object -> table "table" 
   with  name 'bare' 'table',
-        after TableAfter,
+        before TableAfter,
         description "Madame Sosostris stares at it fixedly as she meditates.",
   has   scenery supporter;
 
@@ -4241,7 +4241,7 @@ Object -> Madame_Sosostris "Madame Sosostris, famous clairvoyante"
 
 Object quarterstaff "green oak quarterstaff"    
   with  name 'green' 'oak' 'staff' 'quarterst' 'quarter' 'beam' 'wooden',
-        after QuarterstaffAfter,
+        before QuarterstaffAfter,
         initial "You seem to have dislodged one of the wooden beams used by the tomb's builders: a useful length of greenish oak.",
         description "It needs to be left to mature, and yet there's something awfully familiar about it.",
         devil_hint "Ready to use.",
@@ -4255,7 +4255,7 @@ Object silver_keepsake "silver keepsake"
   has   clothing;
 
 Object Warehouses_and_Port "Warehouses and Port"        
-  with  after CausewayAfter,
+  with  before CausewayAfter,
         e_to Outside_the_Theatre,
         description "Down by the sea-front, in the old harbourlands, surrounded by warehouses. The Mediterranean laps darkly against the hard, splashing an occasional wave up the slope. The city, and the party, lie back east.",
         cant_go "There's nowhere to go but the city, east.",
@@ -4264,7 +4264,7 @@ Object Warehouses_and_Port "Warehouses and Port"
 
 Object -> gambling_sailor "gambling sailor"     
   with  name 'sailor' 'gambling' 'gambler' 'grizzled',
-        after SailorAfter,
+        before SailorAfter,
         life SailorLife,
         initial "A grizzled sailor sits at a harbourside table.",
         each_turn GamblingSailorEachTurn,
@@ -4272,7 +4272,7 @@ Object -> gambling_sailor "gambling sailor"
 
 Object -> inscribed_die "inscribed die" 
   with  name 'inscribed' 'die' 'dice' 'cube',
-        after InscribedDieAfter,
+        before InscribedDieAfter,
         initial "An inscribed six-sided die lies on the table in front of him.",
         description "The sides you can see are labelXXXled with short words.",
         article "an",
@@ -4327,7 +4327,7 @@ Object -> scroll_bearing_a_short_poem "scroll bearing a short poem"
   has   ;
 
 Object Oil_Room "Oil Room"      
-  with  after OilRoomAfter,
+  with  before OilRoomAfter,
         n_to The_Birdcage_of_the_Muses,
         description "This small, dark (by night) room is a repository for Library supplies: above all, for lamp oil, which is stored in broad shallow earthenware troughs. Lucky your torch is electric, when you think about it. Anyway, a passage leads back north.",
         section T_ALEXANDRIA,
@@ -4335,7 +4335,7 @@ Object Oil_Room "Oil Room"
 
 Object -> oil_filled_troughs "oil-filled troughs"       
   with  name 'oil' 'troughs' 'shallow' 'lamp',
-        after OilTroughsAfter,
+        before OilTroughsAfter,
         article "the",
   has   scenery;
 
@@ -4348,8 +4348,8 @@ Object Geography_Room "Geography Room"
 
 Object -> spindle_from_the_globe "spindle from the globe"       
   with  name 'spindle' 'axis' 'globe' 'earth',
-        after SpindleAfter,
-        before SpindleBefore,
+        before SpindleAfter,
+        after SpindleBefore,
         initial "Protruding from a broken globe of the Earth (marked with very tentative and approximate maps) is the spindle, the only thing holding it together.",
         description "Perhaps the best work of cartography likely for the next two thousand years, though it seems unlikely to last the next two hours.",
         rod_assoc rod_of_ice,
@@ -4413,8 +4413,8 @@ Object Outside_the_Royal_Palace_of_Alexander "Outside the Royal Palace of Alexan
   has   light;
 
 Object Lost_inside_the_Palace "Lost inside the Palace"  
-  with  after InsidePalaceAfter,
-        before InsidePalaceBefore,
+  with  before InsidePalaceAfter,
+        after InsidePalaceBefore,
         n_to Lost_inside_the_Palace,
         s_to Lost_inside_the_Palace,
         e_to Lost_inside_the_Palace,
@@ -4435,7 +4435,7 @@ Object -> slave "slave"
   has   animate;
 
 Object Palace_Balustrade "Palace Balustrade"    
-  with  after BalustradeAfter,
+  with  before BalustradeAfter,
         description "The magnificent balcony overlooking the Royal harbour of Alexandria. In two hundred years' time, Julius Caesar will be besieged here, and will hold the palace with a tiny force of men against an entire army: and will lose his heart to Cleopatra...^^For the mean time, this is a broad stone balustraded balcony. The coin-bright moon, low in the sky, reflects off the black waters far below.",
         cant_go "There seems to be absolutely no way off the balcony, as the stone doors to the heart of the palace are sealed shut.",
         section T_ALEXANDRIA,
@@ -4443,14 +4443,14 @@ Object Palace_Balustrade "Palace Balustrade"
 
 Object -> astronomical_mounting "astronomical mounting" 
   with  name 'mounting' 'socket' 'astronomical' 'tripod',
-        after MountingAfter,
+        before MountingAfter,
         initial "An impressive astronomical mounting stands on a tripod here. But there is no telescope.",
         article "an",
   has   static;
 
 Object Beside_the_Drive "Beside the Drive"      
   with  name 'wistaria' 'car' 'gravel',
-        after DriveAfter,
+        before DriveAfter,
         n_to "The old carved southern wall of the gardens blocks your way around the edge of the Hall.",
         w_to "The Hall is in the way.",
         ne_to Public_Footpath,
@@ -4462,7 +4462,7 @@ Object Beside_the_Drive "Beside the Drive"
 
 Object -> fire_escape "fire escape"     
   with  name 'fire' 'escape' 'white' 'rope' 'rickety',
-        after FireEscapeAfter,
+        before FireEscapeAfter,
         initial FireEscpeInitial,
         description "For the first couple of storeys, an old iron zig-zag, and after that a ladder that might or might not be well-anchored. The gardeners have done a good job of concealing it behind wistaria which (in any case) looks the stronger of the two.",
   has   static;
@@ -4491,7 +4491,7 @@ Object -> nest "nest"
 
 Object -> bunch_of_nuts "bunch of nuts" 
   with  name 'bunch' 'of' 'nuts',
-        after NutsAfter,
+        before NutsAfter,
         initial "Entwined in the nest is a bunch of nuts.",
         description "A bunch of nuts, left over from last autumn.",
         devil_hint "Nuts to you too.",
@@ -4523,7 +4523,7 @@ Object -> Old_Evans "Old Evans"
 
 Object -> -> Crescent_Moon "Crescent Moon"      
   with  name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
-        after CrescentMoonAfter TarotAfter,
+        before CrescentMoonAfter TarotAfter,
         n_to Parish_Church,
         sw_to "Tarot cards",
         description "Some kind of crescent moon, an old Druidical symbol.",
@@ -4535,13 +4535,13 @@ Object -> -> Crescent_Moon "Crescent Moon"
 
 Object -> -> Racing_Times "Racing Times"        
   with  name 'paper' 'newspaper' 'racing' 'times',
-        after RacingTimesAfter,
+        before RacingTimesAfter,
         description "The front page story (~Lord Lucan's new acquisition Shergar comes out of retirement to win the Grand National~) is so boringly unsensational that you quickly lose interest. But Evans is eternally fascinated with minute details of the form of the horses, tomorrow's race meetings, current odds quoted by the bookmakers, and so on.",
   has   ;
 
 Object -> -> hat_band "hat band"        
   with  name 'hat' 'band',
-        after HatBandAfter,
+        before HatBandAfter,
         description "Racing aficionados consider it lucky to wear mascots in the bands of their hats.",
   has   ;
 
@@ -4552,7 +4552,7 @@ Object -> war_memorial "war memorial"
 
 Object -> parish_church "parish church" 
   with  name 'parish' 'church' 'door',
-        after ChurchAfter,
+        before ChurchAfter,
         n_to Parish_Church,
         w_to w_obj,
         description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
@@ -4560,14 +4560,14 @@ Object -> parish_church "parish church"
 
 Object -> Goat_and_Compasses "Goat and Compasses"       
   with  name 'pub' 'goat' 'compasses' 'public' 'house' 'bar',
-        after GoatsCompassesAfter,
+        before GoatsCompassesAfter,
         w_to w_obj,
         description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing laws. You congratulate yourself on living in such a modern, forward-looking country.",
   has   door locked proper scenery;
 
 Object pet_monkey "pet monkey"  
   with  name 'pet' 'monkey',
-        after PetMonkeyAfter,
+        before PetMonkeyAfter,
         initial "The monkey sits on Evans' shoulder, cheeping with excitement. Evans has found a pet, and is so gruffly delighted that he has forgotten all about the mascot you stole. Now if he could only predict the 3.40 at Borchester Mills...",
   has   animate;
 
@@ -4584,7 +4584,7 @@ Object Parish_Church "Parish Church"
 
 Object -> Moonstone "Moonstone" 
   with  name 'moonstone' 'moon' 'stone' 'door' 'flagstone' 'iron' 'rings' 'old',
-        after MoonstoneAfter,
+        before MoonstoneAfter,
         s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
         w_to thedark,
         initial "A passage slants down through a solid crystal doorway in the Moonstone.",
@@ -4594,8 +4594,8 @@ Object -> Moonstone "Moonstone"
 
 Object West_Side_Chapel "West Side Chapel"      
   with  name 'stained' 'glass' 'windows' 'resurrect',
-        after WestSideChapelAfter,
-        before WestSideChapelBefore,
+        before WestSideChapelAfter,
+        after WestSideChapelBefore,
         e_to Parish_Church,
         description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
         cant_go "The church lies east.",
@@ -4627,7 +4627,7 @@ Object East_Side_Chapel "East Side Chapel"
 
 Object -> statue_of_Diana "statue of Diana"     
   with  name 'marble' 'statue' 'of' 'diana',
-        after DianaAfter,
+        before DianaAfter,
         initial "A tall marble statue of Diana stands here: a find from the nearby Roman remains.",
         description "There is a sly look in her eye as she smiles aslant.",
   has   static;
@@ -4642,7 +4642,7 @@ Object Bell_Tower "Bell Tower"
 
 Object -> bell_ropes "bell ropes"       
   with  name 'bell' 'bells' 'rope' 'ropes' 'braided' 'sash' 'sashes',
-        after BellRopesAfter,
+        before BellRopesAfter,
         article "eight",
   has   scenery;
 
@@ -4669,7 +4669,7 @@ Object -> old_village_clock "old village clock"
 
 Object Hellish_Place "Hellish Place"    
   with  name 'desk',
-        before HellishPlaceBefore,
+        after HellishPlaceBefore,
         n_to Cellar_West,
         u_to Cellar_West,
         description "Hell, you always imagined, would contain fiery, sulphurous pits and a great many gentlemen with forked tails. You were right about the last part. A demon is sitting behind a flame-proofed desk at the bottom of the stairs. There are some disconcerting screams from further away, but nothing to worry about. Not in this life, anyway.",
@@ -4687,8 +4687,8 @@ Object -> demon "demon"
 
 Object Heavenly_Place "Heavenly Place"  
   with  name 'furniture' 'cloud',
-        after HeavenAfter,
-        before HeavenBefore,
+        before HeavenAfter,
+        after HeavenBefore,
         s_to Up_the_Beanstalk,
         description "Heaven, you always imagined, would be a world of marble pillars, fluffy clouds, harps and angelic ladies with serene expressions. You were right about the last part. An angel is sitting here behind some new office furniture, next to a blue Tourist Information sign. A bridge of cloud extends south across the sky to the beanstalk. There is some choral singing going on somewhere, but not loud enough for you to hear properly. Not in this life, anyway.",
         cant_go HeavenCantGo,
@@ -4705,7 +4705,7 @@ Object -> angel "angel"
 
 Object carbolic_soap "carbolic soap"    
   with  name 'soap' 'carbolic',
-        after SoapAfter,
+        before SoapAfter,
         description "~For foulmouths everywhere~.",
         article "a cake of",
         devil_hint "That's the spirit, keep it up!",
@@ -8833,7 +8833,7 @@ Array preactions_table --> IsDirection;
     if (RunRoutines(player,orders) ~= 0) {
         rtrue;
     }
-    if (location ~= nothing && RunRoutines(location,after) ~= 0) {
+    if (location ~= nothing && RunRoutines(location,before) ~= 0) {
         rtrue;
     }
     scope_reason = REACT_BEFORE_REASON;
@@ -8843,7 +8843,7 @@ Array preactions_table --> IsDirection;
     if (parser_one ~= 0) {
         rtrue;
     }
-    if (inp1 > 1 && RunRoutines(inp1,after) ~= 0) {
+    if (inp1 > 1 && RunRoutines(inp1,before) ~= 0) {
         rtrue;
     }
     rfalse;
@@ -8857,10 +8857,10 @@ Array preactions_table --> IsDirection;
     if (parser_one ~= 0) {
         rtrue;
     }
-    if (location ~= nothing && RunRoutines(location,before) ~= 0) {
+    if (location ~= nothing && RunRoutines(location,after) ~= 0) {
         rtrue;
     }
-    if (inp1 > 1 && RunRoutines(inp1,before) ~= 0) {
+    if (inp1 > 1 && RunRoutines(inp1,after) ~= 0) {
         rtrue;
     }
     return Stub8();
@@ -11927,7 +11927,7 @@ Array preactions_table --> IsDirection;
     if (action == ##Attack or ##Push or ##Pull) {
         give windows open;
         give windows openable;
-        selfobj.after = 65535[?];
+        selfobj.before = 65535[?];
         "The windows suddenly give way in a shower of flakes of paint, letting fresh summer air into the room!";
     }
     if (action == ##Enter) {
@@ -15464,7 +15464,7 @@ Array preactions_table --> IsDirection;
         if (player notin garden_roller) {
             "Mustn't tread on the grass now!";
         }
-        return RunRoutines(Maze,after);
+        return RunRoutines(Maze,before);
     }
     rfalse;
 ];
@@ -20478,7 +20478,7 @@ Array preactions_table --> IsDirection;
         postonobj = i;
         k = verb;
         verb = ##Release;
-        if (RunRoutines(i,after) ~= 0) {
+        if (RunRoutines(i,before) ~= 0) {
             verb = k;
             rtrue;
         }
@@ -20554,7 +20554,7 @@ Array preactions_table --> IsDirection;
     if (postonobj ~= 0) {
         k = verb;
         verb = ##Release;
-        if (RunRoutines(postonobj,before) ~= 0) {
+        if (RunRoutines(postonobj,after) ~= 0) {
             verb = k;
             rtrue;
         }
@@ -20639,7 +20639,7 @@ Array preactions_table --> IsDirection;
     }
     if (second > 1) {
         verb = ##Receive;
-        if (RunRoutines(second,after) ~= 0) {
+        if (RunRoutines(second,before) ~= 0) {
             verb = ##PutOn;
             rtrue;
         }
@@ -20678,7 +20678,7 @@ Array preactions_table --> IsDirection;
     }
     if (second > 1) {
         verb = ##Receive;
-        if (RunRoutines(second,before) ~= 0) {
+        if (RunRoutines(second,after) ~= 0) {
             verb = ##PutOn;
             rtrue;
         }
@@ -20705,7 +20705,7 @@ Array preactions_table --> IsDirection;
     }
     if (second > 1) {
         verb = ##Receive;
-        if (RunRoutines(second,after) ~= 0) {
+        if (RunRoutines(second,before) ~= 0) {
             verb = ##Insert;
             rtrue;
         }
@@ -20744,7 +20744,7 @@ Array preactions_table --> IsDirection;
     }
     if (second > 1) {
         verb = ##Receive;
-        if (RunRoutines(second,before) ~= 0) {
+        if (RunRoutines(second,after) ~= 0) {
             verb = ##Insert;
             rtrue;
         }
@@ -20789,7 +20789,7 @@ Array preactions_table --> IsDirection;
             postonobj = par;
             k = verb;
             verb = ##Release;
-            if (RunRoutines(par,after) ~= 0) {
+            if (RunRoutines(par,before) ~= 0) {
                 verb = k;
                 rtrue;
             }
@@ -20799,7 +20799,7 @@ Array preactions_table --> IsDirection;
         if (postonobj ~= 0) {
             k = verb;
             verb = ##Release;
-            if (RunRoutines(postonobj,before) ~= 0) {
+            if (RunRoutines(postonobj,after) ~= 0) {
                 verb = k;
                 rtrue;
             }
@@ -20987,7 +20987,7 @@ Array preactions_table --> IsDirection;
         if (location == thedark) {
             location = real_location;
         }
-        k = RunRoutines(i,after);
+        k = RunRoutines(i,before);
         if (k ~= 3[s_obj?]) {
             location = j;
         }
@@ -21754,7 +21754,7 @@ Array preactions_table --> IsDirection;
 [ ThrowAtSub ;  
     if (second > 1) {
         verb = ##ThrownAt;
-        if (RunRoutines(second,after) ~= 0) {
+        if (RunRoutines(second,before) ~= 0) {
             verb = ##ThrowAt;
             rtrue;
         }
@@ -21841,7 +21841,7 @@ Array preactions_table --> IsDirection;
     lm_n = n;
     lm_o = x1;
     verb = action;
-    if (RunRoutines(lm_object,after) ~= 0) {
+    if (RunRoutines(lm_object,before) ~= 0) {
         verb = s;
         rfalse;
     }
