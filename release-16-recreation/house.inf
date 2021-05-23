@@ -2138,9 +2138,20 @@ HRoom   Wine_Cellars "Wine Cellars"
         cant_go "This is the eastern end of the cellars, from which you can only go west.",
   has   ;
 
+Array mouse_maze string
+    "111111111"
+    "111001001"
+    "111100101"
+    "111110000"
+    "111100111"
+    "111110011"
+    "111111111";
+
 HRoom   Cellars_South "Cellars South"    
   with  n_to Cellars,
-        description "The bricking-up of this cellar seems incomplete, because there is a hole about ten or eleven inches across in the west wall. You peer at this with interest but nothing is within reach inside, and it is far too small for you to wriggle through. The cellars go back north, and so, it would appear, do you.",
+        description "The bricking-up of this cellar seems incomplete, because there is a hole about ten or eleven 
+            inches across in the west wall. You peer at this with interest but nothing is within reach inside, and it
+            is far too small for you to wriggle through. The cellars go back north, and so, it would appear, do you.",
   has   ;
 
 Object  -> hole_in_the_wall "hole in the wall"   
