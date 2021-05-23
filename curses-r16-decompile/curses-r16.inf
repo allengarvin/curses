@@ -7907,7 +7907,7 @@ Array preactions_table --> IsDirection;
         print " with reason = ", scope_reason, " p1 = ", parser_one, " p2 = ", parser_two, "]^";
     }
     generic_globvar = scope_reason;
-    if (generic_globvar == 'invalidDictWord3') {
+    if (generic_globvar == 3[s_obj?]) {
         if (thing.ne_to == nothing or NULL) {
             rtrue;
         }
@@ -7919,7 +7919,7 @@ Array preactions_table --> IsDirection;
         if (parser_one == 0) {
             parser_one = RunRoutines(thing,ne_to);
         }
-    } else if (generic_globvar == 'invalidDictWord4') {
+    } else if (generic_globvar == 4[e_obj?]) {
         if (thing.nw_to == nothing or NULL) {
             rtrue;
         }
@@ -7931,7 +7931,7 @@ Array preactions_table --> IsDirection;
         if (parser_one == 0) {
             parser_one = RunRoutines(thing,nw_to);
         }
-    } else if (generic_globvar == 'invalidDictWord2') {
+    } else if (generic_globvar == 2[?]) {
         if (thing.&each_turn == 0) {
             rtrue;
         }
@@ -7941,11 +7941,11 @@ Array preactions_table --> IsDirection;
             print "]^";
         }
         PrintOrRun(thing,each_turn);
-    } else if (generic_globvar == 'invalidDictWord6') {
+    } else if (generic_globvar == 6[ne_obj?]) {
         if (thing == parser_one) {
             parser_two = 1[?];
         }
-    } else if (generic_globvar == 'invalidDictWord5') {
+    } else if (generic_globvar == 5[w_obj?]) {
         generic_globvar = parser_one(thing);
         parser_one = p1;
     }
@@ -9514,29 +9514,29 @@ Array preactions_table --> IsDirection;
 
 [ DirectionName d ;     
     generic_globvar = d;
-    if (generic_globvar == 'invalidDictWord5') {
+    if (generic_globvar == 5[w_obj?]) {
         print "north";
-    } else if (generic_globvar == 'invalidDictWord6') {
+    } else if (generic_globvar == 6[ne_obj?]) {
         print "south";
-    } else if (generic_globvar == 'invalidDictWord7') {
+    } else if (generic_globvar == 7[se_obj?]) {
         print "east";
-    } else if (generic_globvar == 'invalidDictWord8') {
+    } else if (generic_globvar == 8[nw_obj?]) {
         print "west";
-    } else if (generic_globvar == 'invalidDictWord9') {
+    } else if (generic_globvar == 9[sw_obj?]) {
         print "northeast";
-    } else if (generic_globvar == 'invalidDictWord11') {
+    } else if (generic_globvar == 11[d_obj?]) {
         print "northwest";
-    } else if (generic_globvar == 'invalidDictWord10') {
+    } else if (generic_globvar == 10[u_obj?]) {
         print "southeast";
-    } else if (generic_globvar == 'invalidDictWord12') {
+    } else if (generic_globvar == 12[out_obj?]) {
         print "southwest";
-    } else if (generic_globvar == 'invalidDictWord13') {
+    } else if (generic_globvar == 13[in_obj?]) {
         print "up";
-    } else if (generic_globvar == 'invalidDictWord14') {
+    } else if (generic_globvar == 14[thedark?]) {
         print "down";
-    } else if (generic_globvar == 'invalidDictWord15') {
+    } else if (generic_globvar == 15[yourself?]) {
         print "in";
-    } else if (generic_globvar == 'invalidDictWord16') {
+    } else if (generic_globvar == 16[lm_object?]) {
         print "out";
     } else {
         "** No such direction **";
@@ -10363,53 +10363,53 @@ Array preactions_table --> IsDirection;
             w = NextWord();
         }
         generic_globvar = w;
-        if (generic_globvar == 'me' or 'myself' or 'self') {
+        if (generic_globvar == 35760['me'?] or 36156['myself'?] or 38811['self'?]) {
             set_flag_array(48);
             "Perhaps you may one day earn a place in vol. III.";
         }
-        if (generic_globvar == 'peter') {
+        if (generic_globvar == 37083['peter'?]) {
             "Modestly, the author (died 1940 or so?) missed himself out.";
         }
-        if (generic_globvar == 'jemima') {
+        if (generic_globvar == 34887['jemima'?]) {
             "She's far too recent to be included.";
         }
-        if (generic_globvar == 'isaac') {
+        if (generic_globvar == 34842['isaac'?]) {
             "Mad Isaac (1705-1792) went in for mystic experiments of all kinds, and was a noted antiquarian. He believed that the Meldrew family had an ancestral curse, dooming each member to undertake a futile quest. The only way to break the curse, he thought, was for one of them to actually succeed... unfortunately he died in peculiar circumstances before finding out how.^^Then again, he also believed that King Arthur's wizard Merlin was buried not in a Tintagel cave, as is usually claimed, but somewhere in the back garden (near where the motorway is now), and that the moon is a giant pair of black and white discs towed through the night sky by a team of angels.";
         }
-        if (generic_globvar == 'ebenezer') {
+        if (generic_globvar == 32646['ebenezer'?]) {
             "It seems Ebenezer (1846-1908), the younger of a pair of twins, threw up a promising career in the East India Company one day, took a packet steamer to Cape Colony and simply marched off into the bush on a quest to find a legendary river. His maps were used for several years after, and a province was named after him for a while, but the locals call it something else now.";
         }
-        if (generic_globvar == 'roger') {
+        if (generic_globvar == 38217['roger'?]) {
             "Roger (1846-1913), the elder of a pair of twins, was very Victorian indeed, especially in his disapproval of his beautiful young wife's literary career. He thought her romances so immoral that he refused to allow the family name to appear on them. A prominent local vestryman, his own writing was confined to a great many monographs on the problems of municipal drainage, but he died before his grand National Sewerage Plan was complete.";
         }
-        if (generic_globvar == 'capability' or 'willard') {
+        if (generic_globvar == 31044['capability'?] or 41331['willard'?]) {
             "~Capability~ Meldrew (1761-1817) became a mildly celebrated landscape gardener, starting a brief fashion for crypts and memorials as garden ornaments (he claimed it was closer to nature). Very little of his work now survives. His real name, incidentally, was Willard.";
         }
-        if (generic_globvar == 'henri') {
+        if (generic_globvar == 34275['henri'?]) {
             "Very little is known about Henri, who lived at some time in the fifteenth century. As a young man he fought at Agincourt, and seems to have been some kind of combat engineer. The story goes that he acquired his nickname, The Black Post, from a joke made by the King when he was standing up to his waist in a ditch. He must have been proud of it because his coat of arms bears his name written down the left hand side, and Black Post down the right.^^In his later years he became morbidly possessed, and (according to legend) spent his declining years working on his own tomb, which he insisted would be of celestial importance.";
         }
-        if (generic_globvar == 'helene') {
+        if (generic_globvar == 34230['helene'?]) {
             "Helene Meldrew (1902-) is a noted painter and sculptress. Her relations with the family were broken off in the 20s when she married Anton and ran off to Paris to study art, but she has recently returned to the House, in search (as she puts it) of ~the perfect blue, the blue of the sky, the blue of water~. We wish her well.";
         }
-        if (generic_globvar == 'anton' or 'smyslov') {
+        if (generic_globvar == 29964['anton'?] or 39351['smyslov'?]) {
             "Anton Smyslov shouldn't really be in the book, even if he did marry Helene, but there is a brief passage, since he was so famous - he was a chess grandmaster, and won the Paris Open five years running in the 1930s. His speciality was bold sacrificial attacks, but he was also notorious for eating blueberry yoghurt at the board.";
         }
-        if (generic_globvar == 'alison') {
+        if (generic_globvar == 29784['alison'?]) {
             "Under the pseudonym Marie Swelldon, your ancestress Alison (1871-1930) wrote several mildly successful romances. She obsessively collected lucky charms, and advertised in newspapers for double-headed coins and the like (although she never traced a rumoured find of a five-leafed clover, somewhere in County Donegal).^^In order to write in tranquillity and to avoid her husband, it was she who installed the fake wall at the far south end of the attic east wing, and each afternoon she would sneak upstairs to push it aside.";
         }
-        if (generic_globvar == 'joshua') {
+        if (generic_globvar == 34923['joshua'?]) {
             "Oh dear, the deeply regrettable Sir Joshua Meldrewe (1710-1776). Member of the Dilletanti Society and the Hell-Fire Club, and a politician (chancellor of the exchequer 1762-3; ~probably the least competent minister ever to hold that office~ - Oxford History of England, vol. xii).^^", "His father disinherited him for wildly excessive living (he almost invariably wore jewelled buttons worth at least a thousand pounds) and for marrying a lady of easy virtue while on the run from a prison in France, where he was sentenced to be beheaded. In order to stop his sister getting the fortune, he went back to Italy and advertised for a pregnant bride to provide a male heir. This nefarious plot was foiled when he choked to death on a chicken-bone.^^It is said that he stole the money anyway near the end, and certainly some gold went missing. (He also managed to get the family stripped of its baronetcy by cheating at piquet with the Prince of Wales.)";
         }
-        if (generic_globvar == 'hartley') {
+        if (generic_globvar == 34131['hartley'?]) {
             "Your distant great-uncle Hartley was a tiresomely enthusiastic amateur Egyptologist who, every Christmas, used to sit you on his knee and drone on about trenches and writings and the fellaheen. It was all a bit of a fraud, you now discover, since he only actually went to Egypt once - there was such a scandal about his refusal to donate his best find to the British Museum that he was never allowed to excavate again, though he spent years writing in vain to the Egyptian government.";
         }
-        if (generic_globvar == 'gerard') {
+        if (generic_globvar == 33681['gerard'?]) {
             "Roger's eldest son Gerard (1898-1916) was killed in the Battle of the Somme. His mother, ~Marie Swelldon~, gave up writing afterwards.";
         }
-        if (generic_globvar == 'austin') {
+        if (generic_globvar == 30234['austin'?]) {
             "Austin's quite venerable for a cat, but not that old.";
         }
-        if (generic_globvar == 'tobias') {
+        if (generic_globvar == 40512['tobias'?]) {
             "Tobias Meldrew (1801-1870) was Professor of Theology at Christminster, 1850-66. He set himself the task of proving the existence of God from first principles, a task which he announced in 1860 that he had accomplished with the aid of ten thousand intermediate lemmas. The derision which greeted his attempts to publish the mammoth work eventually drove him insane, and he spent the last four years of his life in the madhouse.";
         }
         "Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find what you want.";
@@ -23167,7 +23167,7 @@ Array preactions_table --> IsDirection;
 [ RestoreSub ;  
     displaying_quote = true;
     @restore -> generic_globvar;
-    if (generic_globvar ~= 'invalidDictWord2') {
+    if (generic_globvar ~= 2[?]) {
         "Failed.";
     }
     new_line;
@@ -24564,7 +24564,7 @@ Array preactions_table --> IsDirection;
         before_short_desc = true;
         PrintShortName(location);
         before_short_desc = false;
-        generic_globvar = 'invalidDictWord20';
+        generic_globvar = 20[rod_of_infinity?];
         if (generic_globvar >= 1) {
           .labelXXX;
             print ' ';
