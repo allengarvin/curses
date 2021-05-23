@@ -10874,16 +10874,16 @@ Array preactions_table --> IsDirection;
             if (location == Dark_Room && random(2) == 1) {
                 "^Austin jumps up at the cord, but falls back down again, growling.";
             }
-            if (i == 1) {
+            if (i == compass) {
                 "^Austin yawns.";
             }
-            if (i == 2) {
+            if (i == n_obj) {
                 "^Austin rolls over on his back and stretches.";
             }
-            if (i == 3) {
+            if (i == s_obj) {
                 "^Austin looks ineffable again.";
             }
-            if (i == 4) {
+            if (i == e_obj) {
                 "^Austin purrs and licks one of his paws.";
             }
             rfalse;
@@ -10900,7 +10900,7 @@ Array preactions_table --> IsDirection;
                 "^Austin, your ginger cat, jumps up through the trap door.";
             }
         }
-        if (env == Attic && hinged_trapdoor has open && i == 10) {
+        if (env == Attic && hinged_trapdoor has open && i == u_obj) {
             move Austin to House;
             if (location == Attic) {
                 "^Austin, bored again, disappears through the trap door.";
@@ -10909,13 +10909,13 @@ Array preactions_table --> IsDirection;
     }
     if (env == Attic) {
         i = random(3);
-        if (i == 1) {
+        if (i == compass) {
             newroom = Old_Furniture;
         }
-        if (i == 2) {
+        if (i == n_obj) {
             newroom = Old_Winery;
         }
-        if (i == 3) {
+        if (i == s_obj) {
             newroom = Servants_Room;
         }
     }
@@ -10923,7 +10923,7 @@ Array preactions_table --> IsDirection;
         newroom = Attic;
     }
     if (env == Old_Furniture) {
-        if (i == 9) {
+        if (i == sw_obj) {
             newroom = Attic;
         } else {
             newroom = Over_the_East_Wing;
@@ -10931,16 +10931,16 @@ Array preactions_table --> IsDirection;
     }
     if (env == Over_the_East_Wing) {
         i = random(4);
-        if (i == 1) {
+        if (i == compass) {
             newroom = Old_Furniture;
         }
-        if (i == 2) {
+        if (i == n_obj) {
             newroom = East_Annexe;
         }
-        if (i == 3) {
+        if (i == s_obj) {
             newroom = Dark_Room;
         }
-        if (i == 4) {
+        if (i == e_obj) {
             newroom = Disused_Observatory;
         }
     }
@@ -10958,13 +10958,13 @@ Array preactions_table --> IsDirection;
             rfalse;
         }
         i = random(3);
-        if (i == 1) {
+        if (i == compass) {
             newroom = Over_the_East_Wing;
         }
-        if (i == 2) {
+        if (i == n_obj) {
             newroom = Library_Storage;
         }
-        if (i == 3) {
+        if (i == s_obj) {
             newroom = Souvenirs_Room;
         }
     }
@@ -10982,19 +10982,19 @@ Array preactions_table --> IsDirection;
     }
     if (env == Old_Winery) {
         i = random(2);
-        if (i == 1) {
+        if (i == compass) {
             newroom = Attic;
         }
-        if (i == 2) {
+        if (i == n_obj) {
             newroom = Conservatory;
         }
     }
     if (env == Conservatory) {
         i = random(2);
-        if (i == 1) {
+        if (i == compass) {
             newroom = Potting_Room;
         }
-        if (i == 2) {
+        if (i == n_obj) {
             newroom = Old_Winery;
         }
     }
@@ -11006,34 +11006,34 @@ Array preactions_table --> IsDirection;
         if (to_current == false) {
             print "^Austin ";
             i = random(10);
-            if (i == 1) {
+            if (i == compass) {
                 print "sidles";
             }
-            if (i == 2) {
+            if (i == n_obj) {
                 print "ambles";
             }
-            if (i == 3) {
+            if (i == s_obj) {
                 print "strolls";
             }
-            if (i == 4) {
+            if (i == e_obj) {
                 print "runs";
             }
-            if (i == 5) {
+            if (i == w_obj) {
                 print "oozes";
             }
-            if (i == 6) {
+            if (i == ne_obj) {
                 print "scurries";
             }
-            if (i == 7) {
+            if (i == se_obj) {
                 print "tiptoes";
             }
-            if (i == 8) {
+            if (i == nw_obj) {
                 print "leaps";
             }
-            if (i == 9) {
+            if (i == sw_obj) {
                 print "crawls";
             }
-            if (i == 10) {
+            if (i == u_obj) {
                 print "rolls";
             }
             if (location == env) {
@@ -11048,40 +11048,40 @@ Array preactions_table --> IsDirection;
             i = newroom;
         }
         print "the ";
-        if (i == 35) {
+        if (i == Attic) {
             "attic.";
         }
-        if (i == 47) {
+        if (i == Old_Furniture) {
             "furniture store.";
         }
-        if (i == 103) {
+        if (i == Old_Winery) {
             "winery.";
         }
-        if (i == 42) {
+        if (i == Servants_Room) {
             "servant's bedroom.";
         }
-        if (i == 107) {
+        if (i == Conservatory) {
             "conservatory.";
         }
-        if (i == 112) {
+        if (i == Potting_Room) {
             "potting room.";
         }
-        if (i == 57) {
+        if (i == Over_the_East_Wing) {
             "east landing.";
         }
-        if (i == 74) {
+        if (i == East_Annexe) {
             "annexe.";
         }
-        if (i == 59) {
+        if (i == Dark_Room) {
             "dark room.";
         }
-        if (i == 64) {
+        if (i == Disused_Observatory) {
             "observatory.";
         }
-        if (i == 71) {
+        if (i == Souvenirs_Room) {
             "souvenirs room.";
         }
-        if (i == 67) {
+        if (i == Library_Storage) {
             "book store.";
         }
         "cold.";
