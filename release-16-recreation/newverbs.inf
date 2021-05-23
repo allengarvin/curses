@@ -12,5 +12,16 @@ Verb 'add' 'join' 'mend' 'repair'
     << Turn noun >>;
 ];
 
+[ KnockSub ;
+    if( noun hasnt door )
+        print "(If you insist.)  ";
+    "There is no reply.";
+];
+
 Extend 'turn' last
     * noun 'with' held                                  -> TurnWith;
+
+Verb 'knock'
+    * 'on' noun                                         -> Knock
+    * 'at' noun                                         -> Knock;
+
