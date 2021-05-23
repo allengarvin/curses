@@ -13177,7 +13177,7 @@ Array preactions_table --> IsDirection;
     move tight_door to Servants_Room;
     selfobj.u_to = Servants_Room;
     print "The staircase leads up into...^";
-    return 42[Servants_Room?];
+    return Servants_Room;
 ];
 
 
