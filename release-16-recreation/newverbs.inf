@@ -2,5 +2,16 @@
 
 Verb 'add' 'join' 'mend' 'repair'
     * noun                                              -> Repair
-    * noun 'to' noun                                    -> Repair
-;
+    * noun 'to' noun                                    -> Repair;
+
+[ TurnWithSub ;
+    if( second ~= steel_wrench )
+        print_ret (The) second, " is unsuitable for turning things.";
+    if( location ~= Library_Storage )
+        print "(The wrench seems unnecessary, so you use bare hands.)^";
+    << Turn noun >>;
+    rtrue;
+];
+
+Extend 'turn' last
+    * noun 'with' held                                  -> TurnWith;
