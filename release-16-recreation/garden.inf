@@ -27,7 +27,7 @@ Object  -> coal_bunker "coal bunker"
             Close: give metal_door ~open; rfalse;
             Open: give metal_door open; rfalse;
             Lock: give metal_door locked; rfalse;
-            Unlock: give metal_door unlocked; rfalse;
+            Unlock: give metal_door ~locked; rfalse;
         ],
         door_to Dark_Passage,
         when_closed "On the house wall is a coal bunker, whose loading door is shut.",
@@ -59,7 +59,7 @@ Object  -> potted_shrub "potted shrub"
   with  name 'pot' 'potted' 'tub' 'plant' 'shrub',
         before [;
             Climb, Enter: "It's only three feet high!";
-            Turn: You swivel the plant's tub.";
+            Turn: "You swivel the plant's tub.";
             Push, PushDir, Pull:
                 if( self has general ) rfalse;
                 give self general;
