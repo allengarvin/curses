@@ -1477,7 +1477,7 @@ Object -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
 Object Chimney "Chimney"        
   with  before ChimneyBefore,
         e_to Inside_Cupboard,
-        d_to Priest_s_Hole,
+        d_to Priests_Hole,
         description "The chimney is cramped, sooty, unpleasant and has no floor to speak of, so you are held up only by jamming your feet against the walls. To the east, through the fireplace, is the cupboard.",
         cant_go "Not a chance!",
         section T_MODERN,
@@ -1490,7 +1490,7 @@ Object -> sooty_old_stick "sooty old stick"
         devil_hint "It's exactly what it seems.",
   has   hidden_rod;
 
-Object Priest_s_Hole "Priest's Hole"    
+Object Priests_Hole "Priest's Hole"     
   with  name 'cross' 'padded' 'chute' 'crawl',
         before PriestHoleBefore,
         u_to Chimney,
@@ -11661,9 +11661,9 @@ Array preactions_table --> IsDirection;
 
 [ FireplaceAfter ;      
     if (action == ##Receive) {
-        move noun to Priest_s_Hole;
+        move noun to Priests_Hole;
         if (sooty_old_stick hasnt moved) {
-            move sooty_old_stick to Priest_s_Hole;
+            move sooty_old_stick to Priests_Hole;
             give sooty_old_stick moved;
         }
         if (noun == medicine_bottle && medicine_bottle has locked) {
@@ -11720,7 +11720,7 @@ Array preactions_table --> IsDirection;
 
 
 [ IronKeyInitial ;      
-    if (location == Priest_s_Hole) {
+    if (location == Priests_Hole) {
         "This chimney must have been the one the gothic-looking iron key fell down, for here it is.";
     }
     "An iron, gothic-looking key catches your eye.";
@@ -11755,7 +11755,7 @@ Array preactions_table --> IsDirection;
         remove noun;
         StopDaemon(selfobj);
         if (noun == chicken_wishbone) {
-            move iron_key to Priest_s_Hole;
+            move iron_key to Priests_Hole;
             give iron_key general;
             remove Sir_Joshua_Meldrewe;
             Achieved(SCORE_JOSHUA);
@@ -23046,7 +23046,7 @@ Array preactions_table --> IsDirection;
     }
     deadflag = FAILED;
     print "As you unwisely blunder about in the dark, you ";
-    if (location == Priest_s_Hole) {
+    if (location == Priests_Hole) {
         "slip down a side passage of the chimney, further and further, blindly landing in a cloud of soot in the fireplace of the lounge downstairs. Fortunately your family is on hand to clean you up and put you back to work packing.";
     }
     if (location >= 123) {
