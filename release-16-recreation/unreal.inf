@@ -1,0 +1,204 @@
+Class   URoom
+  with  section T_UNREAL;
+
+URoom   Unreal_City "Unreal City"        
+  with  n_to Shadowy_Hallway,
+        e_to Near_Ring_Road,
+        w_to Down_by_River,
+        description "This is a city side street, but as if seen through the grey of despair. People stream by, some 
+            of whom you almost recognise, as if dead. The street runs east-west, and to the north is a doorway
+            into a grubby tenement building.",
+        each_turn UnrealEachTurn,
+  has   light scored;
+
+URoom   Shadowy_Hallway "Shadowy Hallway"        
+  with  s_to Unreal_City,
+        e_to Bohemia,
+        u_to Consulting_Room,
+        description "This shambolic flat, extending to the east, shares a filthy hallway with the one upstairs. To 
+            the south, passers-by pass by along the street. Peeling-away posters have been stuck up on top of each
+            other on the walls, in such a way that you can only read the most recent.",
+  has   light;
+
+Object  -> poster "poster"       
+  with  name 'poster' 'posters' 'peeling',
+        before PosterBefore,
+        description "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish you had a dog called Toto, so 
+            as to be able to say ~Toto, I've got a feeling we're not in England any more.~",
+        devil_hint "What a very useful piece of paper. Pity there's writing on it.",
+  has   scenery;
+
+URoom   Bohemia "Bohemia"        
+  with  name 'easels' 'brushes' 'paint',
+        w_to Shadowy_Hallway,
+        initial BohemiaInitial,
+        description "Flats occupied by starving-but-noble artists can be romantic and stylish despite the squalor. 
+            This one, however, is simply a one-room hovel, caked with paint, littered with brushes and improvised
+            easels, and you can't help standing on tiptoe here.",
+  has   light;
+
+Object  -> Impressionist_painting "Impressionist painting"       
+  with  name 'impressionist' 'painting' 'mural',
+        life LagachLife,
+        initial nothing,
+        description "The bottom corner is signed simply ~Helene~.",
+        article "an",
+  has   static talkable;
+
+URoom   Consulting_Room "Consulting Room"        
+  with  name 'sevenbranch' 'candelabra' 'sticks' 'table',
+        before ConsultingRoomBefore,
+        w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
+        d_to Shadowy_Hallway,
+        description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched 
+            candelabra. A doorway with a hanging bead curtain leads west. In the centre of the room is a table,
+            on which is an electric bell push and a wicked Tarot pack.",
+  has   light;
+
+Object  -> Tarot_pack "Tarot pack"       
+  with  name 'wicked' 'tarot' 'pack' 'deck',
+        before TarotPackBefore,
+  has   scenery;
+
+Object  -> curtain "curtain"     
+  with  name 'curtain' 'bead',
+  has   scenery;
+
+Object  -> bell_push "bell push" 
+  with  name 'bell' 'push',
+        before BellPushBefore,
+  has   scenery;
+
+Object  Madame_Sosostris "Madame Sosostris, famous clairvoyante" 
+  with  name 'sosostris' 'madame' 'clairvoyant',
+        life SosostrisLife,
+        description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
+  has   animate proper;
+
+Object  Death_card "Grim Reaper" 
+  with  name 'death' 'grim' 'reaper' 'card' 'tarot',
+        before TarotBefore,
+        n_to Ruined_Castle_Cafe,
+        sw_to "Tarot cards",
+        description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "It's vital you slide right along with this one.",
+  has   card;
+
+Object  Fool_card "Fool" 
+  with  name 'fool' 'card' 'tarot',
+        before TarotBefore,
+        n_to Ruined_Castle_Cafe,
+        sw_to "Tarot cards",
+        description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "Don't worry, he won't slide down the cliff.",
+  has   card;
+
+Object  Drowned_Sailor_card "Drowned Sailor"     
+  with  name 'drowned' 'sailor' 'card' 'tarot',
+        before TarotBefore,
+        n_to Ruined_Castle_Cafe,
+        sw_to "Tarot cards",
+        description "Those are pearls that were his eyes...",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "He's one of my colleagues now, of course.",
+  has   card;
+
+Object  oak_quarterstaff "oak quarterstaff"      
+  with  name 'oak' 'staff' 'quarterstaff',
+        article "an",
+        rod_assoc rod_of_bronze,
+        devil_hint "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?",
+  has   hidden_rod;
+
+URoom   Down_by_River "Down by River"    
+  with  name 'rats' 'mounds' 'rubbish',
+        before DownByRiverBefore,
+        e_to Unreal_City,
+        w_to DownByRiverWest,
+        description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats 
+            scuttle up and over the mounds washed up around you.",
+  has   light;
+
+Object  -> silk_handkerchief "silk handkerchief" 
+  with  name 'silk' 'handkerchier' 'hanky' 'hankie',
+        before HandkerchiefBefore,
+        initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
+        description "Monogrammed J. A. P., but that's no great matter.",
+        devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth is 
+            hardly attractive, is it?",
+  has   ;
+
+Object  -> tourist_boat "tourist boat"   
+  with  name 'tourist' 'boat' 'bateau',
+        before TouristBoatBefore,
+        n_to On_board_the_Phlebas,
+        s_to "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to 
+            attract its attention.",
+        w_to nw_obj,
+        initial "Moored close to the bank is a glass-roofed tourist boat.",
+        description "The side reads: PHLEBAS.",
+  has   door static;
+
+URoom   On_board_the_Phlebas "On board the Phlebas"      
+  with  name 'wheel',
+        e_to Down_by_River,
+        description "A tourist river-boat, glass-roofed. You can climb out to the shore to the east. At the helm is a 
+            very strange man, at times almost a straw dummy, almost perhaps a hollow cut-out made of paper. He
+            (or it) turns the wheel and casts his eyes to windward.",
+  has   light;
+
+Object  -> hollow_man "hollow man"       
+  with  name 'hollow' 'man',
+        life HollowManLife,
+        initial "The hollow man mechanically says: ~Where to, guv'nor?  Me with my big mouth, I gone and done it 
+            again, calling you the guv'nor. I was down Margate Sands way once, had a bloke come on board, he
+            thought any old destination would do, like a real place, like anywhere was real... We are the hollow
+            men, I says, he didn't like that... Hurry up, please, it's time.~",
+        description "Every now and then he whimpers.",
+        article "the",
+  has   animate;
+
+URoom   Near_Ring_Road "Near Ring Road"  
+  with  name 'metro' 'pedestrians' 'army',
+        w_to Unreal_City,
+        d_to Chatelet_les_Halles,
+        description "A dry, desolate waste of buildings borders here on a main road, so full of black-suited 
+            pedestrians off to work at banks that you can't force your way any further east. Once in a while a
+            few of the bowler-hatted army step into the street and down some steps below a Metropolitan sign.",
+        cant_go "You can't force your way through the tide of bankers.",
+        each_turn UnrealEachTurn,
+  has   light;
+
+URoom   Chatelet_les_Halles "Chatelet-les-Halles"        
+  with  name 'gates',
+        before ChateletBefore,
+        u_to Near_Ring_Road,
+        description "This is a vast underground station in great rectangular caverns, deep beneath the streets. 
+            You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't
+            a ticket you're likely to stay that way.",
+        cant_go "Back up the stairs for you. Call yourself a traveller...",
+  has   light;
+
+Object  -> surly_shopkeeper "surly shopkeeper"   
+  with  name 'surly' 'man' 'shopkeeper',
+        life ShopkeeperLife,
+        initial "Behind a kiosk, a surly-looking man is selling guide books and maps.",
+        description "His jumper is unstriped, and there are no onions around his neck. Nonetheless he has a rather 
+            Gallic, disgruntled look to him. Perhaps he's a former Socialist cabinet minister.",
+  has   animate;
+
+Object  tourist_map_of_Paris "tourist map of Paris"      
+  with  name 'tourist' 'map' 'of' 'paris',
+        description "Just the way you remember yours having been.",
+        devil_hint "Burn it!  Burn it at once!",
+        angel_hint "What a very useful map!  Now you can go on holiday.",
+  has   ;
+
