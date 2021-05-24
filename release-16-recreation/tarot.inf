@@ -1,0 +1,531 @@
+Class   TRoom
+  with  section T_TAROT;
+
+TRoom   Ruined_Castle_Cafe "Ruined Castle Cafe"  
+  with  name 'decor' 'arrows' 'quartet' 'waiter',
+        after CafeAfter,
+        initial CafeInitial,
+        description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
+        cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
+        each_turn CafeEachTurn,
+  has   light scored;
+
+Object  -> cafe_table "cafe table"       
+  with  name 'cafe' 'table' 'leg' 'legs',
+        before CafeTableBefore,
+  has   scenery supporter;
+
+Object  complicated_looking_bomb "complicated-looking bomb"      
+  with  name 'bomb',
+        after BombAfter,
+        initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
+        description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
+        number 0,
+        time_left 0,
+        daemon BombDaemon,
+  has   concealed container open;
+
+Object  -> timer_detonator "timer-detonator"     
+  with  name 'timer' 'detonater' 'detonator',
+        before TimerBefore,
+        number 10,
+        time_left 0,
+        daemon TimerDaemon,
+        devil_hint "Time flies down here, you know. Eternity simply breezes by.",
+        angel_hint "Good photographic gear that. You didn't get it from a... well, a bomb, I hope.",
+  has   static;
+
+Object  -> green_wire "green wire"       
+  with  name 'green' 'wire',
+        before WireBefore,
+  has   static wire;
+
+Object  -> red_wire "red wire"   
+  with  name 'red' 'wire',
+        before WireBefore,
+  has   static wire;
+
+Object  -> blue_wire "blue wire" 
+  with  name 'blue' 'wire',
+        before WireBefore,
+  has   static wire;
+
+Object  -> black_wire "black wire"       
+  with  name 'black' 'wire',
+        before WireBefore,
+  has   static wire;
+
+TRoom   Cups_and_Glasses "Cups and Glasses"      
+  with  name 'skylight' 'old' 'women' 'conspirators',
+        n_to windowed_door,
+        description "This basement room is filled with crate after crate of glasses and cups, enough for an entire hotel, or restaurant perhaps. Almost anything might be hidden among them. A little light comes in from an opaque skylight which is at street level outdoors. There is no way out of here, since the only door is shut tight.",
+        cant_go "There's no apparent way out of here.",
+        number 0,
+        each_turn CupsAndGlassesEachTurn,
+  has   light;
+
+Object  -> windowed_door "windowed door" 
+  with  name 'door' 'window' 'windowed',
+        n_to Cups_and_Glasses,
+        w_to w_obj,
+        description "Through the square window in the door you can see a bar at which staff are serving, and a very crowded and lively cafe-restaurant beyond. The cabaret act has her back to you, and a considerable amount of her front to the diners.",
+  has   door lockable locked openable scenery;
+
+Object  -> cups_and_glasses "cups and glasses"   
+  with  name 'crates' 'glasses' 'cups',
+        before CupsAndGlassesBefore,
+        article "numerous",
+  has   scenery;
+
+Object  -> mounted_bottle "mounted bottle"       
+  with  name 'mounted' 'whisky' 'glass' 'bottle',
+        initial "An unlabelXXXled whisky bottle, laid on its side and mounted on a wood plaque, lies deservedly unwanted on one of the crates.",
+        description "Old, unwanted, dusty, empty.",
+        angel_hint "The great challenge, of course, is to get a ship inside.",
+  has   ;
+
+Object  ship_in_a_bottle "ship in a bottle"      
+  with  name 'ship' 'in' 'bottle',
+        before BottleShipBefore,
+        description "Within the whisky bottle is a model sailing ship, far too large to have passed the neck.",
+        angel_hint "Oh, well done!  Why not take a closer look, you deserve it?",
+  has   ;
+
+Object  model_ship "model ship"  
+  with  name 'model' 'sailing' 'ship' 'anchor' 'chain' 'mermaid' 'filigree' 'prow' 'stern',
+        before ModelShipBefore,
+        description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
+        angel_hint "The great challenge, of course, is to get it inside a bottle.",
+  has   general;
+
+Object  stick_with_an_anchor "stick with an anchor"      
+  with  name 'stick' 'with' 'anchor' 'chain' 'sticks' 'ship',
+        before ModelShipBefore,
+        description "A tightly-folded bundle of sticks, about six inches long, with a filigree chain and anchor hanging from it.",
+        angel_hint "The great challenge, of course, is to get it inside a bottle.",
+  has   ;
+
+TRoom   Sea_Shore "Sea Shore"    
+  with  before SeaShoreBefore,
+        u_to Cliffs,
+        description " .A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^",
+        cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
+  has   light;
+
+Object  -> Andromeda "Andromeda" 
+  with  name 'andromeda' 'maiden',
+        life AndromedaLife,
+        initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
+        description " .Avert your eyes. She is naked",
+  has   animate proper;
+
+Object  -> amber_hairband "amber hairband"       
+  with  name 'amber' 'hairband' 'hair' 'band',
+        description "A long clasp of amber, perfect for long straggly Greek hair.",
+        article "Andromeda's",
+        rod_assoc rod_of_sacrifice,
+        devil_hint "Mmm... it still has her perfume on it. Hehehehe. Bet she's dead now.",
+  has   concealed static hidden_rod;
+
+TRoom   Cliffs "Cliffs"  
+  with  name 'pharos' 'lighthouse' 'tower',
+        e_to Clifftop_Walk,
+        sw_to Cave_Mouth,
+        d_to Sea_Shore,
+        description "On top of some exposed cliffs on the Mediterranean. A dangerous slither down leads on one side to the shore, all other ways down being even more hazardous. Atop the cliffs is the Pharos tower, a round stone pinnacle lighthouse, but there is no way in from here.^^A grassy walk leads east, and a narrow crack leads southwest into a cave mouth.",
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+TRoom   Clifftop_Walk "Clifftop Walk"    
+  with  s_to Wall_of_Thorns,
+        e_to ClifftopEast,
+        w_to Cliffs,
+        description "A long clifftop walk by the sea, from the lighthouse to the west to the village not far east. These fields are occupied by herds of hardy mountain goats, continually butting each other and frisking. To the south a path leads across sparse grassland to a great outgrowth of some kind.",
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+Object  -> herd_of_goats "herd of goats" 
+  with  name 'goat' 'goats' 'herd' 'of',
+        life GoatsLife,
+  has   scenery talkable;
+
+TRoom   Outside_Taverna "Outside Taverna"        
+  with  s_to Eraina_Taverna,
+        w_to Clifftop_Walk,
+        description "A long walk along the cliffs from the lighthouse leads naturally here, just outside the Eraina Taverna, whose open doorway lies to the south.",
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+Object  -> small_thorny_tree "small thorny tree" 
+  with  name 'tree' 'thorny' 'small',
+        before ThornyTreeBefore,
+        description "Only a small, thorny, unclimbable fig tree.",
+  has   scenery;
+
+Object  -> fig "fig"     
+  with  name 'fig',
+        initial "Hanging from a low branch of a fig tree is, as you might expect, a fig.",
+        description "Legend has it that the Roman emperor Augustus was killed by his wife Livia, who painted the figs on his tree with poison. Actually it looks like a perfectly nice piece of fruit.",
+        devil_hint "You can ask a god for a date, but they just don't give a fig.",
+        angel_hint "Good enough for a god.",
+  has   edible;
+
+TRoom   Eraina_Taverna "Eraina Taverna"  
+  with  before TavernBefore,
+        n_to Outside_Taverna,
+        description "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight.",
+        cant_go "The tavern entrance is to the north.",
+        each_turn TavernEachTurn,
+  has   light scored;
+
+Object  -> Ekmek_Special "Ekmek Special" 
+  with  name 'ekmek' 'special' 'dessert',
+        before DessertBefore,
+        initial "Left untouched on one table is an Ekmek Special dessert.",
+        description "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste.",
+        devil_hint "Better with chocolate ice cream, I think.",
+        angel_hint "Doesn't somebody else need this more than you?",
+  has   edible proper scored;
+
+Object  -> bartender "bartender" 
+  with  name 'bar' 'tender' 'bartender',
+        life BartenderLife,
+        initial "Behind the bar, a depressed bartender polishes glasses.",
+        description "Morose and unconvivial at the best of times. This is not the best of times.",
+  has   animate;
+
+TRoom   Wall_of_Thorns "Wall of Thorns"  
+  with  n_to Clifftop_Walk,
+        s_to wall_of_thorns_object,
+        description "The rather sparse rolling landscape is dominated here by a massive, and suspiciously unnatural, wall of thorns, which forms a great ring about an area perhaps a hundred yards in diameter. There are goat pastures to the north.",
+        cant_go "There's only dull grassland that way.",
+  has   light;
+
+Object  -> wall_of_thorns_object "wall of thorns"        
+  with  name 'gap' 'thorns' 'of' 'wall',
+        n_to Sacred_Earth,
+        s_to "The wall rustles and clashes its thorns like a beast alive.",
+        w_to ne_obj,
+        initial "A ragged gap in the wall has been burnt out to the south.",
+        description "It's hard to imagine what could possibly shift a wall like that.",
+  has   door static;
+
+TRoom   Sacred_Earth "Sacred Earth"      
+  with  after SacredEarthAfter,
+        n_to Wall_of_Thorns,
+        s_to SacredEarthSouth,
+        description "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number of myths about gods getting cross about that sort of thing.",
+        cant_go "The wall of thorns hems you in.",
+  has   light;
+
+TRoom   Temple_of_Zeus "Temple of Zeus"  
+  with  name 'pillar',
+        n_to TempleNorth,
+        se_to East_Cloister,
+        sw_to West_Cloister,
+        description "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and featureless save for the entrance at the north. So much for all the rumours about hoards of treasure - it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along.^^Cloisters lead southeast and southwest, deeper into the temple.",
+  has   light scored;
+
+Object  -> copper_coin "copper coin"     
+  with  name 'copper' 'coin' 'obol',
+        description "On one side, a man's face: on the other, a symbol, I. One obol, or one-sixth of a drachma.",
+        article "one",
+        angel_hint "This currency is only valid in ancient Greece. Where on earth have you been?",
+  has   ;
+
+TRoom   East_Cloister "East Cloister"    
+  with  name 'niche',
+        nw_to Temple_of_Zeus,
+        sw_to Inner_Sanctum,
+        description "The east cloister of the Temple, which turns from northwest to southwest, is bare but for a small niche.",
+  has   ;
+
+Object  -> inscribed_stone "inscribed stone"     
+  with  name 'rosetta' 'stone' 'inscribed' 'pumice',
+        initial "Resting in the niche is an inscribed pumice stone, two feet tall.",
+        description " .The stone bears two inscriptions, side by side:^",
+        article "an",
+        angel_hint "Whoever wrote this must have wanted to get the message across very badly, to write it all out twice.",
+  has   scored;
+
+TRoom   West_Cloister "West Cloister"    
+  with  ne_to Temple_of_Zeus,
+        se_to Inner_Sanctum,
+        description "Along the west cloister, turning from northeast to southeast, is a broad bas relief depicting the seasons: the planting of seed, high summer, the harvest, floods and then the coming of ice.",
+  has   ;
+
+Object  -> symbol "symbol"       
+  with  name 'symbol' 'symbols',
+        initial "A curious symbol is repeated along the top of the relief.",
+        description "  j  c     k  b   s you gk ",
+  has   static;
+
+TRoom   Inner_Sanctum "Inner Sanctum"    
+  with  n_to Cross_Centre,
+        ne_to East_Cloister,
+        nw_to West_Cloister,
+        d_to Cross_Centre,
+        initial InnerSanctumInitial,
+        description "Here from the dark heart of the temple, cloisters fork northeast and northwest while a flight of narrowing steps lead down and to the north.",
+  has   ;
+
+Object  -> Homer "Homer" 
+  with  name 'homer' 'blind' 'poet',
+        life HomerLife,
+        initial "The blind poet Homer half-slumbers here, clutching his syrinx (or Pan-pipes) to himself.",
+        description "Homer is wearing a Columbo-style raincoat.",
+        time_left 0,
+  has   animate proper;
+
+Object  -> -> Pan_pipes "Pan pipes"      
+  with  name 'pan' 'pipes' 'panpipes' 'syrinx',
+        before PanPipesBefore,
+        description "Carefully cut from river reeds, these once belonged to Homer himself. As you may recall.",
+        article "the",
+        angel_hint "Marvellous! A sound to soothe the spirit.",
+  has   ;
+
+TRoom   Cross_Centre "Cross Centre"      
+  with  before CrossBefore,
+        after CrossAfter,
+        s_to Inner_Sanctum,
+        ne_to Northeast_Cross,
+        se_to Southeast_Cross,
+        nw_to Northwest_Cross,
+        sw_to Southwest_Cross,
+        u_to Inner_Sanctum,
+        d_to inscriptions,
+        initial CrossInitial,
+        description "The fabled Labyrinth seems only to consist of a broad cross. Arms run to northeast, northwest, southeast and southwest, while a flight of stone steps widens and climbs south.",
+        daemon CrossDaemon,
+  has   ;
+
+Object  -> inscriptions "inscriptions"   
+  with  name 'inscription' 'opening',
+        before InscriptsBefore,
+        n_to Oubliette,
+        s_to "There are extremely scuffed and faded inscriptions at the centre of the cross.",
+        w_to thedark,
+        initial "Beside the inscriptions is an opening in the floor, about two feet square.",
+        description "~ka-i ur-a re-im ka an-ge~",
+        article "the",
+  has   door static;
+
+TRoom   Oubliette "Oubliette"    
+  with  name 'crushed' 'broken' 'bones',
+        u_to Cross_Centre,
+        description "A foul, musty bone pit, beneath the cross, where sacrificial victims were once dropped and ~forgotten~.",
+  has   ;
+
+Object  -> gleaming_amber_gem "gleaming amber gem"       
+  with  name 'amber' 'gem',
+        before GemBefore,
+        initial "Lying on top of crushed, broken bones, in plain view, is a gleaming gem of amber.",
+        description "Embedded within is the body of a fly. Scratched upon one face is the word ~GALITA~.",
+        angel_hint "Isn't there some classical legend about her?",
+  has   scored;
+
+TRoom   Northeast_Cross "Northeast Cross"        
+  with  name 'carvings' 'fish' 'nets',
+        sw_to Cross_Centre,
+        description "This cross-corner is inlaid with carvings of fish, of the waves, of great casting nets sweeping through the water.^^The Labyrinth lies to southwest.",
+  has   ;
+
+Object  -> statue_of_Demeter "statue of Demeter" 
+  with  name 'demeter' 'statue' 'of',
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
+        initial "A fine statue of the goddess Demeter stands here.",
+  has   static statue_flag;
+
+TRoom   Northwest_Cross "Northwest Cross"        
+  with  name 'carvings' 'wheat',
+        se_to Cross_Centre,
+        description "This cross-corner is surrounded with carvings of wheat swaying in the breeze, bathed with sunshine.^^The Labyrinth lies to southeast.",
+  has   ;
+
+Object  -> statue_of_Dionysus "statue of Dionysus"       
+  with  name 'dionysus' 'statue' 'of',
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
+        initial "A fine statue of the god Dionysus stands here.",
+  has   static statue_flag;
+
+TRoom   Southeast_Cross "Southeast Cross"        
+  with  name 'carvings' 'hoplite' 'warriors',
+        nw_to Cross_Centre,
+        description "This cross-corner is decorated with carvings of massed ranks of hoplite warriors, advancing into battle.^^The Labyrinth lies to northwest.",
+  has   ;
+
+Object  -> statue_of_Ares "statue of Ares"       
+  with  name 'ares' 'statue' 'of',
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
+        initial "A fine statue of the god Ares stands here.",
+  has   static statue_flag;
+
+TRoom   Southwest_Cross "Southwest Cross"        
+  with  name 'carvings' 'grape' 'vines' 'barrels',
+        ne_to Cross_Centre,
+        description "This cross-corner is decorated with carvings of grape-vines and barrels.^^The Labyrinth lies to northeast.",
+  has   ;
+
+Object  -> statue_of_Poseidon "statue of Poseidon"       
+  with  name 'poseidon' 'statue' 'of',
+        before ClassicalStatueBefore,
+        after ClassicalStatueAfter,
+        initial "A fine statue of the god Poseidon stands here.",
+  has   static statue_flag;
+
+TRoom   Cave_Mouth "Cave Mouth"  
+  with  name 'lamps' 'trestle' 'altar' 'stone',
+        ne_to Cliffs,
+        description "A dry cave opening from a crack to the northeast, becoming a fair-sized cavern, furnished with bronze and lit by trestle lamps chained from the ceiling.",
+  has   light;
+
+Object  -> flaming_bronze_urn "flaming bronze urn"       
+  with  name 'flaming' 'bronze' 'urn' 'flame' 'cube' 'obsidian' 'altar' 'stone',
+        before UrnBefore,
+        initial "In the centre of the cave rests an obsidian altar stone with a flaming bronze urn.",
+        description "The altar stone, sometimes called ~Omphalos~ or ~the navel~, bears an odd cross or plus sign and is fabled to mark the centre of the world.^^Around the side of the urn are reliefs of feasts, of oxen being tracked and sacrificed, of the gathering of fruit and the making of cheese.",
+        article "the",
+  has   container open static;
+
+Object  Oracle "Oracle"  
+  with  name 'oracle' 'masked' 'priestess' 'pythian' 'loxias' 'of' 'apollo',
+        life OracleLife,
+        initial "The Oracle, the masked priestess of Apollo, stands here behind an obsidian altar-stone, three cubits cubed: to her side is a bronze urn, mouthing perpetual flame.",
+        article "the",
+  has   animate;
+
+TRoom   Lighthouse "Lighthouse"  
+  with  name 'smudge' 'quinquire',
+        d_to LighthouseDown,
+        description " .You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Considerately enough, the builders have provided a spiral staircase down. ",
+        cant_go "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
+  has   light scored;
+
+Object  -> mirrored_device "mirrored device"     
+  with  name 'device' 'mirrored' 'bronze',
+  has   container open scenery;
+
+TRoom   Greek_Frieze1 "Greek Frieze"     
+  with  u_to Lighthouse,
+        description "A brown-tinted frieze, depicting hunters and spear-carriers, surrounds this dark stair-well, which has no exit except for a spiral staircase leading back up.",
+  has   light;
+
+Object  -> Greek_frieze2 "Greek frieze"  
+  with  name 'greek' 'frieze' 'mural',
+        life LagachLife,
+        description "The decorated strip of entablature between the architrave and the cornice, in the Attic style circa fifth century B.C.^^Well, you did ask.",
+  has   scenery talkable;
+
+Object  port_obj "port wall"     
+  with  name 'port',
+        w_to nw_obj,
+        article "the",
+  has   scenery;
+
+Object  starboard_obj "starboard wall"   
+  with  name 'starboard',
+        w_to se_obj,
+        article "the",
+  has   scenery;
+
+Object  fore_obj "fore wall"     
+  with  name 'fore',
+        w_to w_obj,
+        article "the",
+  has   scenery;
+
+Object  aft_obj "aft wall"       
+  with  name 'aft',
+        w_to ne_obj,
+        article "the",
+  has   scenery;
+
+Object  some_landlubbers_direction "some landlubber's direction" 
+  with  name 'north' 'n//' 'south' 's//' 'east' 'e//' 'west' 'w//',
+        before LandlubberBefore,
+  has   proper scenery;
+
+TRoom   Aboard_Ship "Aboard Ship"        
+  with  name 'rail' 'storm',
+        n_to Prow_of_the_Lady_Magdalena,
+        s_to Stern,
+        u_to Up_the_Mast,
+        description "There is a storm tossing the deck, one which drives no rain: you reel from one side to the other, hanging onto the rail, grabbing at the mast or the rigging. Nobody else seems to be aboard. The boat makes no headway in a strange, glassy mist.^^The mast rises dizzyingly high.^^You can't even make out the water below. A great pink haze spreads across the sky. With omens like these, who needs albatrosses?",
+        cant_go "The deck runs fore to aft (as all decks do).",
+        daemon OnShipDaemon,
+        each_turn OnShipEachTurn,
+  has   light ship_flag;
+
+Object  -> mast_and_rigging "mast and rigging"   
+  with  name 'mast' 'rigged' 'rigging',
+        before RiggingBefore,
+        article "the",
+  has   scenery;
+
+TRoom   Up_the_Mast "Up the Mast"        
+  with  before OnMastBefore,
+        after OnMastAfter,
+        w_to OnMastWest,
+        d_to OnMastDown,
+        description "Coming up here must be one of your less inspired ideas. The mist is all around you, confusing your senses. Two pale, bluish moons hang in a pink sky.",
+        cant_go "Down might be a better idea.",
+  has   light ship_flag;
+
+Object  -> flagpole "flagpole"   
+  with  name 'pole' 'flagpole' 'mast' 'ensign' 'spar',
+        before FlagpoleBefore,
+        initial "A flagpole juts out portwards from the top of the mast, far too insubstantial to bear any weight. From it hangs the ensign of the British Merchant Navy (which you could just reach the bottom of).",
+        description "The flagpole juts out to port with the prevailing... wind?",
+  has   static;
+
+Object  -> british_flag "flag of the British Merchant Navy" 
+  with  name 'flag' 'ensign' 'navy' 'british' 'merchant' 'of' 'tassels',
+        before FlagBefore,
+        initial "The flag has fluttered to a heap on deck.",
+        description "Broad, heavy, scarlet cloth, halfway between a silken sheet and a carpet, with a cross and a Union Jack in one corner.",
+        devil_hint "Piece of advice - it's never very comfortable wrapping yourself in the Flag.",
+  has   concealed;
+
+Object  old_timber_spar "old timber spar"        
+  with  name 'old' 'prop' 'timber' 'flagpole' 'spar',
+        after TimberSparAfter,
+        initial "The broken flagpole, a plain timber spar, lies beside the mast.",
+        description "An old timber prop, once the spar of a main mast.",
+        article "an",
+        rod_assoc rod_of_returning,
+        devil_hint "A plain old piece of timber.",
+  has   hidden_rod;
+
+TRoom   Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"  
+  with  name 'lady' 'magdalena' 'mermaid' 'figurine',
+        s_to Aboard_Ship,
+        description "You stand in the triangular prow of the ship, which is graced by a carved and painted figurine and named the ~Lady Magdalena~. There is no sign of water, but the boat is rocked too often for it to be aground. And the glassy mist hangs ahead.",
+        cant_go ProwCantGo,
+  has   light ship_flag;
+
+Object  -> green_branch "green branch"   
+  with  name 'green' 'branch' 'leafed',
+        before BranchBefore,
+        initial "In the Lady Magdalena's loose grip is a traditional sailor's good-luck token: a green-leafed branch, to attract the gulls of an approaching shore.",
+        section T_TAROT,
+        angel_hint "Oh, you startled me for a moment there! I am getting flighty.",
+  has   ;
+
+TRoom   Stern "Stern"    
+  with  name 'sand' 'bank' 'mist',
+        n_to Aboard_Ship,
+        d_to SternDown,
+        description "The square stern of the ship looks out south, not onto receding waves, but to what seems a tunnel through dense, glassy mist. You can faintly make out an odd, pale reddish sand bank in the distance.",
+        cant_go "The boat runs fore.",
+  has   light ship_flag;
+
+Object  -> capstan "capstan"     
+  with  name 'capstan' 'anchor' 'chain' 'wheel',
+        before CapstanBefore,
+        initial "The top of the anchor chain is wound around the capstan, a great wheel on the deck beside you. The chain disappears over the side.",
+  has   static;
+
