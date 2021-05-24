@@ -209,7 +209,9 @@ Object  -> statue_of_Diana "statue of Diana"
                 if( adamantine_knight in location ) {
                     if( marble_rose in self )
                         "The knight has done all he can for Diana, and is now in your service.";
-                "The knight is unable to think how he can serve Diana.";
+                    "The knight is unable to think how he can serve Diana.";
+                }
+                rfalse;
         ],
         initial "A tall marble statue of Diana stands here: a find from the nearby Roman remains.",
         description "There is a sly look in her eye as she smiles aslant.",
