@@ -37,6 +37,11 @@ Verb 'add' 'join' 'mend' 'repair'
     "It's good that you can express your frustration in such a mild way.";
 ];
 
+[ SorrySub ;
+    if( carbolic_soap has concealed ) "Oh, don't apologise.";
+    "Sorry isn't good enough!";
+];
+
 Extend 'turn' last
     * noun 'with' held                                  -> TurnWith;
 

@@ -1,0 +1,219 @@
+Object  Beside_the_Drive "Beside the Drive"      
+  with  name 'wistaria' 'car' 'gravel',
+        before DriveBefore,
+        n_to "The old carved southern wall of the gardens blocks your way around the edge of the Hall.",
+        w_to "The Hall is in the way.",
+        ne_to Public_Footpath,
+        u_to "The fire escape is perilous and leads nowhere. Doubtless it would be useless in any real fire.",
+        description "At the foot of the Hall is the drive, a long gravel lane approaching the house through trees.^^Since your family are intermittently loading suitcases into the car, which only makes you feel guilty, the only safe way to creep away is along the public footpath, to northeast.",
+        cant_go "Better not - they might catch you.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> fire_escape "fire escape"     
+  with  name 'fire' 'escape' 'white' 'rope' 'rickety',
+        before FireEscapeBefore,
+        initial FireEscpeInitial,
+        description "For the first couple of storeys, an old iron zig-zag, and after that a ladder that might or might not be well-anchored. The gardeners have done a good job of concealing it behind wistaria which (in any case) looks the stronger of the two.",
+  has   static;
+
+Object  Public_Footpath "Public Footpath"        
+  with  name 'stile' 'dragonflies' 'house' 'hall' 'battlements',
+        n_to Stone_Cross,
+        sw_to Beside_the_Drive,
+        d_to Hollow,
+        description "By a stile in the public footpath across the fields to the village, which lies to the north. Sitting on the stile you have a splendid view of the house and its battlements. The air is ablaze with pollen and dragonflies.^^It might be possible to scramble down to a hollow, but it surely wouldn't be pleasant.",
+        cant_go "The footpath turns from southwest to north.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  Hollow "Hollow"  
+  with  nw_to Mosaic,
+        u_to Public_Footpath,
+        description "A low, muddy, stinking hollow, trodden with reeds, dried out in the long summer and no more than moist now. You could climb back up, or go northwest, though that would mean crawling through a thorny hedge.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> nest "nest"   
+  with  name 'nest',
+        initial "There's a bird's nest at the bottom of the hollow.",
+  has   static;
+
+Object  -> bunch_of_nuts "bunch of nuts" 
+  with  name 'bunch' 'of' 'nuts',
+        before NutsBefore,
+        initial "Entwined in the nest is a bunch of nuts.",
+        description "A bunch of nuts, left over from last autumn.",
+        devil_hint "Nuts to you too.",
+        angel_hint "Do you know, I love nuts, but I have to be so careful what I eat now... Still, the little ones will have them.",
+  has   edible scored;
+
+Object  -> corn_crake "corn crake"       
+  with  name 'corn' 'crake' 'corncrake' 'deaf' 'rail' 'bird',
+        life CornCrakeLife,
+        initial "And sat upon it is, as you might expect, a bird: a corn crake, in fact.",
+        description "A rail with a distinctive cry. And a possessive look.",
+  has   animate;
+
+Object  Stone_Cross "Stone Cross"        
+  with  name 'pub' 'goat' 'compasses',
+        n_to parish_church,
+        s_to Public_Footpath,
+        description "Beside the long triangle of the green, under the stone cross of the First World War memorial. The public footpath runs south to a stile. The village is tiny: the parish church, the ~Goat and Compasses~ pub (which, owing to quaint English licensing laws, is closed) and a few houses and desultory tea-shops for tourists visiting Meldrew Hall.",
+        cant_go "You wander around the peaceful green for a while, but there's nothing to do.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> Old_Evans "Old Evans" 
+  with  name 'racing' 'enthusiast' 'old' 'evans',
+        life OldEvansLife,
+        initial "Old Evans, the village racing enthusiast, sits on the steps of the memorial, combing the back pages of his ~Racing Times~ newspaper.",
+        description "In the band of his hat is his lucky mascot: a little picture of the crescent moon.",
+  has   animate proper transparent;
+
+Object  -> -> Crescent_Moon "Crescent Moon"      
+  with  name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
+        before CrescentMoonBefore TarotBefore,
+        n_to Parish_Church,
+        sw_to "Tarot cards",
+        description "Some kind of crescent moon, an old Druidical symbol.",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "It leads nowhere.",
+  has   card;
+
+Object  -> -> Racing_Times "Racing Times"        
+  with  name 'paper' 'newspaper' 'racing' 'times',
+        before RacingTimesBefore,
+        description "The front page story (~Lord Lucan's new acquisition Shergar comes out of retirement to win the Grand National~) is so boringly unsensational that you quickly lose interest. But Evans is eternally fascinated with minute details of the form of the horses, tomorrow's race meetings, current odds quoted by the bookmakers, and so on.",
+  has   ;
+
+Object  -> -> hat_band "hat band"        
+  with  name 'hat' 'band',
+        before HatBandBefore,
+        description "Racing aficionados consider it lucky to wear mascots in the bands of their hats.",
+  has   ;
+
+Object  -> war_memorial "war memorial"   
+  with  name 'war' 'memorial' 'cross' 'green' 'stone' 'fallen',
+        description "The stone cross, for the fallen of the Great War of 1914-18, contains more names than there are houses in the village.^^Your eye is caught by Second Lieutenant Gerard Meldrew of the 19th/21st Rifles, and you shiver, although the afternoon is warm.",
+  has   scenery;
+
+Object  -> parish_church "parish church" 
+  with  name 'parish' 'church' 'door',
+        before ChurchBefore,
+        n_to Parish_Church,
+        w_to w_obj,
+        description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
+  has   door scenery;
+
+Object  -> Goat_and_Compasses "Goat and Compasses"       
+  with  name 'pub' 'goat' 'compasses' 'public' 'house' 'bar',
+        before GoatsCompassesBefore,
+        w_to w_obj,
+        description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing laws. You congratulate yourself on living in such a modern, forward-looking country.",
+  has   door locked proper scenery;
+
+Object  pet_monkey "pet monkey"  
+  with  name 'pet' 'monkey',
+        before PetMonkeyBefore,
+        initial "The monkey sits on Evans' shoulder, cheeping with excitement. Evans has found a pet, and is so gruffly delighted that he has forgotten all about the mascot you stole. Now if he could only predict the 3.40 at Borchester Mills...",
+  has   animate;
+
+Object  Parish_Church "Parish Church"    
+  with  name 'flowers' 'pews' 'woven' 'mattings' 'lectern' 'altar',
+        s_to ParishChurchSouth,
+        e_to East_Side_Chapel,
+        w_to West_Side_Chapel,
+        u_to Bell_Tower,
+        d_to ParishChurchDown,
+        description "Before this was the Norman church of St Michael and All Angels, it was a Saxon one: this is an ancient site. A great space of stone, filled with dark wooden pews and woven mattings. Flowers left over from Sunday grace the lectern and altar. A narrow stair leads upward, and the village green lies to the south.^^Old side chapels lie east and west.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> Moonstone "Moonstone" 
+  with  name 'moonstone' 'moon' 'stone' 'door' 'flagstone' 'iron' 'rings' 'old',
+        before MoonstoneBefore,
+        s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
+        w_to thedark,
+        initial "A passage slants down through a solid crystal doorway in the Moonstone.",
+        description "The Moonstone is very old, probably pre-dating the rest of the church by some centuries. Legends about it abound: some say the spirits of the departed pass beneath. Old iron rings are set in it, but nobody has ever succeeded in lifting the colossal weight.",
+        article "the",
+  has   door static;
+
+Object  West_Side_Chapel "West Side Chapel"      
+  with  name 'stained' 'glass' 'windows' 'resurrect',
+        before WestSideChapelBefore,
+        after WestSideChapelAfter,
+        e_to Parish_Church,
+        description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
+        cant_go "The church lies east.",
+        each_turn WestSideChapelEachTurn,
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> adamantine_statue "adamantine statue" 
+  with  name 'adamantine' 'statue' 'adamant' 'knight',
+        description "The statue is half-skeleton, and you can see clear through the bones.",
+        article "an",
+  has   concealed static;
+
+Object  adamantine_knight "adamantine knight"    
+  with  name 'adamantine' 'statue' 'adamant' 'knight',
+        life AdamantineKnightLife,
+        initial "The adamantine knight stands staunchly here.",
+        description " .The knight is bursting and eager with life, as though nothing could fade his boundless energy for existence. ",
+        article "the",
+  has   animate;
+
+Object  East_Side_Chapel "East Side Chapel"      
+  with  name 'stained' 'glass' 'windows' 'nativity',
+        w_to Parish_Church,
+        description "A small clear space to the side of the church, in a bay ringed with stained glass windows of the Nativity.",
+        cant_go "The church lies west.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> statue_of_Diana "statue of Diana"     
+  with  name 'marble' 'statue' 'of' 'diana',
+        before DianaBefore,
+        initial "A tall marble statue of Diana stands here: a find from the nearby Roman remains.",
+        description "There is a sly look in her eye as she smiles aslant.",
+  has   static;
+
+Object  Bell_Tower "Bell Tower"  
+  with  name 'clerestory' 'plaque',
+        u_to "The ropes are too smooth and noisy to climb.",
+        d_to Parish_Church,
+        description "The bell-ringing chamber, half-way up the church tower. Thick braided ropes hang down, tailing into sashes. A plaque on one wall announces that in 1901, ten men (Roger Meldrew among them) rang a Kent Triple Bob.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> bell_ropes "bell ropes"       
+  with  name 'bell' 'bells' 'rope' 'ropes' 'braided' 'sash' 'sashes',
+        before BellRopesBefore,
+        article "eight",
+  has   scenery;
+
+Object  Out_on_the_Spire "Out on the Spire"      
+  with  name 'village' 'clerestory' 'hills' 'farmlands' 'weather' 'vane' 'weatherva',
+        d_to OutOfSpireDown,
+        description "There is a beautiful view over the green parceled farmlands and hills surrounding the village, and you feel a certain pride to see Meldrew Hall sitting amongst it. It's also windy and dangerous up here on the grey lead spire of the parish church, beside the old clock: fortunately an opening leads down into the clerestory.",
+        section T_NE_OF_HOME,
+  has   light;
+
+Object  -> adamantine_hand "adamantine hand"     
+  with  name 'adamantine' 'hand' 'adamant',
+        initial "Mounted loosely on the end of the weathervane, an adamantine hand points the way the wind blows.",
+        description "Like a solid glove.^^It reminds you oddly of one of the symbolic pieces in Monopoly - the ship, the car and so on.",
+        article "an",
+        angel_hint "There must be more to this marvellous figure somewhere.",
+  has   ;
+
+Object  -> old_village_clock "old village clock" 
+  with  name 'clock' 'old' 'plaque' 'commemorative',
+        description "The clock stands at ten past three, as it has done for some years. According to a small commemorative plaque, it was the work of William Snelson the Clockmaker (1776-1848).",
+        article "William Snelson's",
+  has   scenery;
+
