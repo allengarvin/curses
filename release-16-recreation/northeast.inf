@@ -1,6 +1,12 @@
 Object  Beside_the_Drive "Beside the Drive"      
   with  name 'wistaria' 'car' 'gravel',
-        before DriveBefore,
+        before [;
+            Go:
+                if( noun == w_obj or u_obj && self.u_to == Dead_End )
+                    print "With your heart in your mouth, you scale the old fire escape once again, breathing a 
+                        sigh of relief as you haul yourself in through the open hatchway at the top.^";
+                rfalse;
+        ],
         n_to "The old carved southern wall of the gardens blocks your way around the edge of the Hall.",
         w_to "The Hall is in the way.",
         ne_to Public_Footpath,
@@ -12,8 +18,13 @@ Object  Beside_the_Drive "Beside the Drive"
 
 Object  -> fire_escape2 "fire escape"     
   with  name 'fire' 'escape' 'white' 'rope' 'rickety',
-        before FireEscapeBefore,
-        initial FireEscpeInitial,
+        before [; Climb, Enter: << Go u_obj >>; ],
+        initial [;
+            if( Beside_the_Drive.u_to ~= Dead_End )
+                "Wistaria climbs a desperately rickety fire escape up the side of the Hall.";
+            "Wistaria climbs a desperately rickety fire escape up the east side of the Hall, and so might you: 
+                at the top the fire escape door into the attic is open.";
+        ],
         description "For the first couple of storeys, an old iron zig-zag, and after that a ladder that might or might not be well-anchored. The gardeners have done a good job of concealing it behind wistaria which (in any case) looks the stronger of the two.",
   has   static;
 
@@ -41,7 +52,11 @@ Object  -> nest "nest"
 
 Object  -> bunch_of_nuts "bunch of nuts" 
   with  name 'bunch' 'of' 'nuts',
-        before NutsBefore,
+        before [;
+            ! Yes, unconditional "before"
+            set_flag_array(41);
+            if( corn_crake in Hollow ) "The corn crake won't let you near her nest.";
+        ],
         initial "Entwined in the nest is a bunch of nuts.",
         description "A bunch of nuts, left over from last autumn.",
         devil_hint "Nuts to you too.",
@@ -50,7 +65,7 @@ Object  -> bunch_of_nuts "bunch of nuts"
 
 Object  -> corn_crake "corn crake"       
   with  name 'corn' 'crake' 'corncrake' 'deaf' 'rail' 'bird',
-        life CornCrakeLife,
+        life [; Order, Ask, Answer: "The bird seems not to have heard."; ],
         initial "And sat upon it is, as you might expect, a bird: a corn crake, in fact.",
         description "A rail with a distinctive cry. And a possessive look.",
   has   animate;
@@ -74,7 +89,7 @@ Object  -> Old_Evans "Old Evans"
 Object  -> -> Crescent_Moon "Crescent Moon"      
   with  name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
         before CrescentMoonBefore TarotBefore,
-        n_to Parish_Church,
+        n_to Parish_Church_Room,
         sw_to "Tarot cards",
         description "Some kind of crescent moon, an old Druidical symbol.",
         article "the",
@@ -102,26 +117,38 @@ Object  -> war_memorial "war memorial"
 
 Object  -> parish_church "parish church" 
   with  name 'parish' 'church' 'door',
-        before ChurchBefore,
-        n_to Parish_Church,
+        before [; 
+            Enter:
+                if( self hasnt open )
+                    "The Church door is barred from the far side.";
+                rfalse;
+        ],
+        n_to Parish_Church_Room,
         w_to w_obj,
         description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
   has   door scenery;
 
 Object  -> Goat_and_Compasses "Goat and Compasses"       
   with  name 'pub' 'goat' 'compasses' 'public' 'house' 'bar',
-        before GoatsCompassesBefore,
-        w_to w_obj,
-        description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing laws. You congratulate yourself on living in such a modern, forward-looking country.",
+        before [; Enter: "The pub is closed, licensing laws being what they are."; ],
+        door_dir w_to,
+        description "In the days of Oliver Cromwell, it was called ~God Encompasseth~, but the locals have worn 
+            down the name over the centuries to ~Goat and Compasses~. It is of course closed, owing to the licensing
+            laws. You congratulate yourself on living in such a modern, forward-looking country.",
   has   door locked proper scenery;
 
 Object  pet_monkey "pet monkey"  
   with  name 'pet' 'monkey',
-        before PetMonkeyBefore,
-        initial "The monkey sits on Evans' shoulder, cheeping with excitement. Evans has found a pet, and is so gruffly delighted that he has forgotten all about the mascot you stole. Now if he could only predict the 3.40 at Borchester Mills...",
+        before [;
+            Touch: "You stroke the monkey's pelt. It jumps about, cheeping.";
+            Kiss: "Evans rather resents this importunate advance.";
+        ],
+        initial "The monkey sits on Evans' shoulder, cheeping with excitement. Evans has found a pet, and is so 
+            gruffly delighted that he has forgotten all about the mascot you stole. Now if he could only predict
+            the 3.40 at Borchester Mills...",
   has   animate;
 
-Object  Parish_Church "Parish Church"    
+Object  Parish_Church_Room "Parish Church"    
   with  name 'flowers' 'pews' 'woven' 'mattings' 'lectern' 'altar',
         s_to ParishChurchSouth,
         e_to East_Side_Chapel,
@@ -146,7 +173,7 @@ Object  West_Side_Chapel "West Side Chapel"
   with  name 'stained' 'glass' 'windows' 'resurrect',
         before WestSideChapelBefore,
         after WestSideChapelAfter,
-        e_to Parish_Church,
+        e_to Parish_Church_Room,
         description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
         cant_go "The church lies east.",
         each_turn WestSideChapelEachTurn,
@@ -169,7 +196,7 @@ Object  adamantine_knight "adamantine knight"
 
 Object  East_Side_Chapel "East Side Chapel"      
   with  name 'stained' 'glass' 'windows' 'nativity',
-        w_to Parish_Church,
+        w_to Parish_Church_Room,
         description "A small clear space to the side of the church, in a bay ringed with stained glass windows of the Nativity.",
         cant_go "The church lies west.",
         section T_NE_OF_HOME,
@@ -177,7 +204,13 @@ Object  East_Side_Chapel "East Side Chapel"
 
 Object  -> statue_of_Diana "statue of Diana"     
   with  name 'marble' 'statue' 'of' 'diana',
-        before DianaBefore,
+        before [;
+            PointAt:
+                if( adamantine_knight in location ) {
+                    if( marble_rose in self )
+                        "The knight has done all he can for Diana, and is now in your service.";
+                "The knight is unable to think how he can serve Diana.";
+        ],
         initial "A tall marble statue of Diana stands here: a find from the nearby Roman remains.",
         description "There is a sly look in her eye as she smiles aslant.",
   has   static;
@@ -185,21 +218,29 @@ Object  -> statue_of_Diana "statue of Diana"
 Object  Bell_Tower "Bell Tower"  
   with  name 'clerestory' 'plaque',
         u_to "The ropes are too smooth and noisy to climb.",
-        d_to Parish_Church,
+        d_to Parish_Church_Room,
         description "The bell-ringing chamber, half-way up the church tower. Thick braided ropes hang down, tailing into sashes. A plaque on one wall announces that in 1901, ten men (Roger Meldrew among them) rang a Kent Triple Bob.",
         section T_NE_OF_HOME,
   has   light;
 
 Object  -> bell_ropes "bell ropes"       
   with  name 'bell' 'bells' 'rope' 'ropes' 'braided' 'sash' 'sashes',
-        before BellRopesBefore,
+        before [;
+            Pull, Push, Blow: "You ring an amateurish, jangling peal.";
+        ],
         article "eight",
   has   scenery;
 
 Object  Out_on_the_Spire "Out on the Spire"      
   with  name 'village' 'clerestory' 'hills' 'farmlands' 'weather' 'vane' 'weatherva',
-        d_to OutOfSpireDown,
-        description "There is a beautiful view over the green parceled farmlands and hills surrounding the village, and you feel a certain pride to see Meldrew Hall sitting amongst it. It's also windy and dangerous up here on the grey lead spire of the parish church, beside the old clock: fortunately an opening leads down into the clerestory.",
+        d_to [;
+            print "You slither down a bell rope, noisily...^";
+            return Bell_Tower;
+        ],
+        description "There is a beautiful view over the green parceled farmlands and hills surrounding the village, 
+            and you feel a certain pride to see Meldrew Hall sitting amongst it. It's also windy and dangerous up
+            here on the grey lead spire of the parish church, beside the old clock: fortunately an opening leads
+            down into the clerestory.",
         section T_NE_OF_HOME,
   has   light;
 
