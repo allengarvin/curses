@@ -830,7 +830,18 @@ Object  -> hanging_cord "hanging cord"
 
 Object  -> -> golden_orb "glowing golden orb"    
   with  name 'glowing' 'golden' 'orb',
-        before GlowingOrbBefore,
+        before [;
+            Rub:
+                if( self has general ) "It shines already!";
+                print "Bewilderingly, the condensation dissolves your hand away, and the water rushes up over your 
+                    body as if it were blotting paper. You feel nothing except disorientation, but your confusion 
+                    soon resolves to...^";
+                move golden_orb to location;
+                ContainerSave = parent(player);
+                LocationSave = location;
+                PlayerTo(Inside_the_Orb);
+                rtrue;
+        ],
         initial "Sitting on the grass, beside the well, is a glowing golden orb.",
         description "A treasure in every sense, but misted over, like condensation on a cold window. Odd shapes 
             seem visible through the haze: a horse's head, castle walls, a priest's crook.",
