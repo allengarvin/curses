@@ -1,0 +1,210 @@
+class   DERoom
+  with  section T_HAMBURG;
+
+DERoom  Museum_Foyer "Museum Foyer"      
+  with  name 'shadows' 'bats' 'lamps' 'rain',
+        s_to FoyerSouth,
+        ne_to Revolving_Door1,
+        description "The Museum of Arcana is deserted after nightfall and only dimly lit by distant sodium street-lamps. Outside it is a stormy October night and rain beats against the windowpanes. Shadows swoop and dive in the air like bats.^^The revolving door to northeast, which leads out, seems to be solidly blocked off. But a dim passage runs south, through a strange metal corridor.",
+        cant_go "There's no apparent way but south.",
+  has   light scored;
+
+Object  -> revolving_door_obj "revolving door"   
+  with  name 'revolving' 'door',
+        before RevolvingDoorBefore,
+        description "Why not go northeast and look inside?",
+  has   scenery;
+
+Object  -> publicity_poster "publicity poster"   
+  with  name 'poster' 'publicity' 'pretentio' 'exhibition',
+        initial "A publicity poster is displayed for passers-by outside to see.",
+        description "One of those pretentious exhibition posters. Your German is just about adequate to the task:^^~Cults of the Druids - a Major Retrospective, October-November 1988~.",
+  has   static;
+
+DERoom  Revolving_Door1 "Revolving Door" 
+  with  n_to RevolvingDoorNorth,
+        e_to "The door only turns clockwise.",
+        sw_to Museum_Foyer,
+        description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
+        cant_go "To north and east are the walls of the door.",
+  has   light;
+
+Object  -> door1 "door"  
+  with  name 'door' 'revolving',
+        before MuseumDoorBefore,
+        description "You stand within it.",
+  has   scenery;
+
+DERoom  Revolving_Door2 "Revolving Door" 
+  with  n_to RevolvingDoorNorth,
+        e_to "The door only turns clockwise.",
+        sw_to Museum_Foyer,
+        description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
+        cant_go "To north and east are the walls of the door.",
+  has   light;
+
+Object  -> door2 "door"  
+  with  name 'door' 'revolving',
+        before MuseumDoorBefore,
+        description "You stand within it.",
+  has   scenery;
+
+Object  -> beach_ball "beach ball"       
+  with  name 'striped' 'beach' 'ball',
+        before BeachBallBefore,
+        after BeachBallAfter,
+        initial "A colourful, striped inflated beach ball bounces around.",
+  has   ;
+
+DERoom  Hall_of_Exhibits "Hall of Exhibits"      
+  with  n_to Museum_Foyer,
+        e_to Cabinet_Room,
+        w_to Dark_Staircase,
+        description "A great square gloomy room, just south of the foyer. There are square lintelled doorways east and west. The storm is dark, and the windows are high, but there's just enough light to see by.",
+  has   light;
+
+Object  -> Tarot_box "Tarot box" 
+  with  name 'box' 'of' 'tarot',
+        before TarotBoxBefore,
+        initial "Resting on a little display table is a Tarot box.",
+        devil_hint "There's nothing worthwhile in it.",
+  has   container openable;
+
+Object  -> -> Castle "Castle"    
+  with  name 'castle' 'card' 'tarot',
+        before TarotBefore,
+        n_to Ruined_Castle_Cafe,
+        sw_to "Tarot cards",
+        description "A stone castle on a hill.",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "It leads nowhere.",
+  has   card;
+
+Object  -> -> Star "Star"        
+  with  name 'star' 'card' 'tarot',
+        before TarotBefore,
+        n_to Lighthouse,
+        sw_to "Tarot cards",
+        description "A single bright light in the darkness.",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "Ugh, what a nasty bright light. Good thing you'll never go there.",
+  has   card;
+
+Object  -> -> Eight_of_Wands_card "Eight of Wands"       
+  with  name 'eight' 'of' 'wands' 'card' 'tarot',
+        before TarotBefore,
+        sw_to "Tarot cards",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        rod_assoc rod_of_infinity,
+        devil_hint "There's less to this card than meets the eye.",
+  has   card hidden_rod;
+
+Object  -> -> Maiden_card "Maiden"       
+  with  name 'maiden' 'card' 'tarot',
+        before TarotBefore,
+        n_to Sea_Shore,
+        sw_to "Tarot cards",
+        description "Andromeda chained to a rock on the sea-shore.",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "What an ugly girl!  Bet she's good for a laugh though.",
+  has   card;
+
+Object  -> still_life "still life"       
+  with  name 'long' 'painted' 'still' 'life' 'painting' 'disturbing',
+        life LagachLife,
+        initial "A long painted still life graces one wall near a corner.",
+        description "A disturbing painting, perhaps by Edvard Munch, this is a still life of a seedling on a table, surrounded by a rusty iron rod with a star on the end, a glass bottle, a lamp and a bunch of keys. No doubt these arcane objects held some special significance for primitive tribes now absorbed into civilisation.",
+  has   static talkable;
+
+DERoom  Dark_Staircase "Dark Staircase"  
+  with  before DarkStaircaseBefore,
+        after DarkStaircaseAfter,
+        e_to Hall_of_Exhibits,
+        u_to Hall_of_Exhibits,
+        description "A dark staircase, turning from east to south as it descends. The hideous sound of arhythmic chanting can be heard from below.",
+  has   light;
+
+Object  -> discarded_matchbook "discarded matchbook"     
+  with  name 'match' 'matchbook' 'book',
+        initial "On one step, an empty matchbook lies discarded.",
+        description "It's from the Ruined Castle Cafe, and (like the Cafe) is matchless.",
+        angel_hint "Ah, I fear it is only a token clue.",
+  has   ;
+
+Object  Ace_of_Cups_card "Ace of Cups"   
+  with  name 'ace' 'of' 'cups' 'card' 'tarot',
+        before TarotBefore,
+        n_to Cups_and_Glasses,
+        sw_to "Tarot cards",
+        description "It shows a great many crystal-glass cups and glasses.",
+        article "the",
+        short TarotShort,
+        parse_name TarotParseName,
+        devil_hint "It leads nowhere.",
+  has   card;
+
+DERoom  Coven_Cell "Coven Cell"  
+  with  before CovenCellBefore,
+        description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
+        cant_go "There's definitely no way out of here.",
+        number 0,
+        daemon CovenCellDaemon,
+  has   light;
+
+Object  -> goat "anxious-looking goat"   
+  with  name 'anxious' 'goat' 'dobbin',
+        life GoatLife,
+        article "an",
+  has   animate static;
+
+Object  -> crook "shepherd's crook"      
+  with  name 'shepherds' 'crook',
+        rod_assoc rod_of_husbandry,
+        devil_hint "Just a crook. And what's wrong with crooks, that's what I say.",
+  has   hidden_rod;
+
+Object  -> cell_door "cell door" 
+  with  name 'cell' 'door',
+        before CelldoorBefore,
+        n_to Museum_Foyer,
+        s_to "As you might expect, the cell door is closed.",
+        w_to ne_obj,
+  has   door locked openable static;
+
+DERoom  Cabinet_Room "Cabinet Room"      
+  with  before CabinetRoomBefore,
+        w_to Hall_of_Exhibits,
+        description "An annexe to the museum, containing sundry archaelogical finds, badly labelXXXled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
+  has   ;
+
+Object  -> glass_cabinet "glass cabinet" 
+  with  name 'glass' 'cabinet' 'pane',
+        before CabinetBefore,
+        s_to "One cabinet looks particularly vulnerable.",
+        initial "You could just look inside the broken glass cabinet.",
+        number 0,
+        daemon CabinetDAemon,
+  has   container static transparent;
+
+Object  -> -> smooth_round_stone "smooth round stone"    
+  with  name 'smooth' 'round' 'pumice' 'metal' 'stone',
+        before RoundStoneBefore,
+        initial nothing,
+        description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the labelXXX rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
+        angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
+  has   scored;
+
+Object  -> -> papyrus_fragment "papyrus fragment"        
+  with  name 'fragment' 'papyrus',
+        description "Only one line has survived intact:^^.<anoppe> an-spe : ska er nog-er an-ge : to-ro-ma ka ur Al-x-an-dr u bir ka ur-a an-ge ur",
+        angel_hint "You need more evidence before you can begin deciphering the language, I fear.",
+  has   ;
+
