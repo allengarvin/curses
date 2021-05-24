@@ -3671,7 +3671,7 @@ Object Melancholy_Dream "Melancholy Dream"
         description "A strangely familiar, dusty passage, sloping down from a southern end bathed in hostile light to some kind of metal barrier in the north.",
         cant_go DreamCantGo,
         each_turn DreamEachTurn,
-        section (T_DREAMING|T_UNREAL),
+        section T_EGYPT_DREAMING,
   has   light;
 
 Object -> metal_barrier "metal barrier" 
@@ -3693,7 +3693,7 @@ Object Solid_Sand "Solid Sand"
         d_to Octagonal_Tomb,
         description "Your ghostly self is embedded in a diagonal downward shaft (descending to the east) entirely filled with dry sand. Solid flagstones line the walls.",
         cant_go DreamCantGo,
-        section (T_DREAMING|T_UNREAL),
+        section T_EGYPT_DREAMING,
   has   light;
 
 Object Octagonal_Tomb "Octagonal Tomb"  
@@ -3702,7 +3702,7 @@ Object Octagonal_Tomb "Octagonal Tomb"
         u_to Solid_Sand,
         description "Flaming torches bracketed in the wall gutter as the last oxygen in the air is consumed, and the flicker of flame plays across the yellow-orange glaze of the tomb walls.^^This octagonal chamber is lined with Egyptian hieroglyphics. Sand spills across the floor from under the sole entrance, sealed by an ingenious stone slab.",
         cant_go DreamCantGo,
-        section (T_DREAMING|T_UNREAL),
+        section T_EGYPT_DREAMING,
   has   light;
 
 Object -> hieroglyphic_symbols "hieroglyphic symbols"   
@@ -4764,6 +4764,7 @@ Constant T_GARDEN_PAST = 6;
 Constant T_ANCIENT_BRITAIN = 7;
 Constant T_DREAMING = 8;
 Constant T_CATACOMBS = 9;
+Constant T_EGYPT_DREAMING = 10;
 Constant T_ALEXANDRIA = 11;
 Constant T_NE_OF_HOME = 12;
 Constant T_SPIRIT_WORLD = 13;
@@ -9598,7 +9599,7 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     if (action == ##Go) {
-        if (lm_n == n_obj && game_section == T_DREAMING or (T_DREAMING|T_UNREAL)) {
+        if (lm_n == n_obj && game_section == T_DREAMING or T_EGYPT_DREAMING) {
             "You drift in that direction, but without gaining any ground.";
         }
         rfalse;
@@ -16423,19 +16424,19 @@ Array preactions_table --> IsDirection;
         "In the dream you are not drowsy.";
     }
     if (verb == ##Wake) {
-        if (game_section == (T_DREAMING|T_UNREAL)) {
+        if (game_section == T_EGYPT_DREAMING) {
             "It doesn't seem to be that easy.";
         } else {
             "You are unable to shake off the dream.";
         }
     }
-    if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Attack && noun == selfobj) {
+    if (game_section == T_EGYPT_DREAMING && verb == ##Attack && noun == selfobj) {
         print "Ouch!  You wake up, smarting.^";
         ChangePlayer(yourself);
         R_Process(##Look);
         rtrue;
     }
-    if (game_section == (T_DREAMING|T_UNREAL) && verb == ##Turn or ##Attack or ##Read) {
+    if (game_section == T_EGYPT_DREAMING && verb == ##Turn or ##Attack or ##Read) {
         rfalse;
     }
     if (verb == ##Go or ##Take or ##Drop) {
@@ -23143,7 +23144,7 @@ Array preactions_table --> IsDirection;
     if (game_section == T_ANCIENT_BRITAIN) {
         print "It is some time in the sixth century A.D., and you are in the Master Game.";
     }
-    if (game_section == T_DREAMING or (T_DREAMING|T_UNREAL)) {
+    if (game_section == T_DREAMING or T_EGYPT_DREAMING) {
         print "Time seems to have no meaning, and you are dreaming.";
     }
     if (game_section == T_CATACOMBS) {
@@ -24634,7 +24635,7 @@ Array preactions_table --> IsDirection;
             if (game_section == T_NE_OF_HOME) {
                 print "    June 3rd, 1993";
             }
-            if (game_section == (T_DREAMING|T_UNREAL) or T_SPIRIT_WORLD or T_TAROT or T_AFTERLIFE) {
+            if (game_section == T_EGYPT_DREAMING or T_SPIRIT_WORLD or T_TAROT or T_AFTERLIFE) {
                 print "                  ";
             }
             @set_cursor 2 2;
@@ -24659,7 +24660,7 @@ Array preactions_table --> IsDirection;
             if (game_section == T_ANCIENT_BRITAIN) {
                 print "(in the Master Game)    ";
             }
-            if (game_section == T_DREAMING or (T_DREAMING|T_UNREAL)) {
+            if (game_section == T_DREAMING or T_EGYPT_DREAMING) {
                 print "(dreaming?)             ";
             }
             if (game_section == T_CATACOMBS) {
