@@ -18,10 +18,37 @@ Verb 'add' 'join' 'mend' 'repair'
     "There is no reply.";
 ];
 
+[ WashSub ;
+    if( noun ~= carbolic_soap ) "That's not something you can wash with.";
+    if( carbolic_soap notin player ) "You've no soap.";
+    remove carbolic_soap;
+    give carbolic_soap concealed;
+    "Ugh, it tastes absolutely ghastly. But you feel better for it.";
+];
+
+
+[ StrongSub ;
+    move carbolic_soap to player;
+    give carbolic_soap ~concealed;
+    "Now, that sort of language is an absolute disgrace, and you're going to have to pay the price for it.";
+];
+
+[ MildSub ;
+    "It's good that you can express your frustration in such a mild way.";
+];
+
 Extend 'turn' last
     * noun 'with' held                                  -> TurnWith;
 
 Verb 'knock'
     * 'on' noun                                         -> Knock
     * 'at' noun                                         -> Knock;
+
+
+Verb 'wash'
+    * 'my' 'mouth' 'with' held                          -> Wash
+    * 'my' 'mouth' 'out' 'with' held                    -> Wash
+    * 'mouth' 'with' held                               -> Wash
+    * 'mouth' 'out' 'with' held                         -> Wash
+;
 
