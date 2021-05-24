@@ -11,7 +11,7 @@ Constant T_GARDEN_PAST = 6;
 Constant T_ANCIENT_BRITAIN = 7;
 Constant T_DREAMING = 8;
 Constant T_CATACOMBS = 9;
-Constant T_DREAMING = 10;
+Constant T_DREAMING_EGYPT = 10;
 Constant T_ALEXANDRIA = 11;
 Constant T_NE_OF_HOME = 12;
 Constant T_SPIRIT_WORLD = 13;
@@ -178,7 +178,7 @@ Include "tarot.inf";
 
 Object carbolic_soap "carbolic soap"
   with  name 'soap' 'carbolic',
-        before [; Eat: << Wash self >>; }
+        before [; Eat: << Wash self >>; ],
         description "~For foulmouths everywhere~.",
         article "a cake of",
         devil_hint "That's the spirit, keep it up!",
