@@ -70,9 +70,8 @@ Object Murky_Cave "Murky Cave"
             }
             if( location ~= Hypocaust ) 
                 rfalse;
-            if( cnt == 8 ) {
+            if( cnt == 8 ) 
                 "^You hear men walking across the mosaic just above your head.";
-            }
             if( cnt == 9 ) {
                 print "^A voice, which can just be heard through the vent, says ";
                 if( KnowLanguages == false ) {
@@ -82,11 +81,12 @@ Object Murky_Cave "Murky Cave"
                  Lament, for the old ways are passing!  There will be a dark age, a collapse into many monarchies,
                  and any man who can hold a town will call himself King and heir to Vortigern.~";
             }
-            if( cnt == 10 ) 
+            if( cnt == 10 ) {
                 print "^A younger, more impatient voice, says ";
                 if( KnowLanguages == false ) "something else.";
                 "~This is an opportunity!  We must be the power behind the thrones, we will in secret unite and 
                  be the true force of the land...~";
+            }
             if( cnt == 11 ) {
                 print "^There is cynical laughter for a moment, and a third voice interjects ";
                 if( KnowLanguages == false ) "something.";
@@ -198,13 +198,13 @@ Object Valley_Prospect "Valley Prospect"
 Object Roman_Villa "Roman Villa"        
   with  name 'timber' 'door',
         s_to Atrium_Cloister,
-        e_to Stream,
+        e_to Villa_Stream,
         w_to Valley_Prospect,
         description "You stand beside a Roman villa, whose columns cast shadows of an Empire in the moonlight. It is thirty years since the fall of the West, and Britain is cut off from the continent, where soon even the existence of the Anglis will become a myth. This villa has survived the pestilence and devastation of the civil war, and although it must be a couple of centuries old, it is still standing. From here you could cut across the hillside east to west, or slip in through a none-too-secure timber door.",
         section T_ANCIENT_BRITAIN,
   has   light;
 
-Object Stream "Stream"  
+Object Villa_Stream "Stream"  
   with  name 'river' 'road' 'stream' 'roof',
         before EndStreamBefore,
         w_to Roman_Villa,
@@ -242,9 +242,10 @@ Object Atrium "Atrium"
         section T_ANCIENT_BRITAIN,
   has   light;
 
-Object -> mosaic "mosaic"       
+Object -> ancient_mosaic "mosaic"       
   with  name 'mosaic',
-        description "The four quarters show white-beards in the Forum, farmers in Italian fields, a military fortification and a grain ship unloading at Ossia.",
+        description "The four quarters show white-beards in the Forum, farmers in Italian fields, a military 
+            fortification and a grain ship unloading at Ossia.",
   has   scenery;
 
 Object Guard_Quarters "Guard Quarters"  
