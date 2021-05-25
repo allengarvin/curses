@@ -138,6 +138,42 @@ Rod     rod_of_fire "Fire"
         angel_hint "This is rather dangerous, I'm afraid. Use only on vegetative matter.",
   has   unidentifed_rod;
 
+[  RodOfReturningAction i loc ;
+    if( second ~= player ) "Nothing obvious happens.";
+    if( location == Inside_the_Orb ) {
+        move golden_orb to player;
+        print "Although nothing seems to happen to you, the whole golden sphere gracefully contracts, pulling 
+            itself tight until it sits comfortably in the palm of your hand. You blink.^";
+        location = LocationSave;
+        move player to ContainerSave;
+        <<Look>>;
+    }
+    FlashFallsOut();
+    print "You are engulfed in a cloud of spinning white lights, like insects. When the swarm clears, 
+        you find yourself transported...^";
+    if( game_section == T_ANCIENT_BRITAIN ) {
+        loc = Infinity_Symbol;
+        remove rod_of_returning2;
+    } else {
+        i = random(4);
+        if( deterministic_transportation == 1 ) {
+            i = 1;
+        }
+        loc = Attic;
+        if( i == 2 ) {
+            loc = Old_Furniture;
+        }
+        if( i == 3 ) {
+            loc = Old_Winery;
+        }
+        if( i == 4 ) {
+            loc = Over_the_East_Wing;
+        }
+    }
+    PlayerTo(loc);
+    rtrue;
+];
+
 Rod     rod_of_returning "Returning"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
@@ -158,7 +194,45 @@ Rod     rod_of_stalking "Stalking"
         article "a",
         parse_name RodParse,
         rod_word 'stalking',
-        rod_action RodOfStalkingAction,
+        rod_action [ i;
+            if( second == adamantine_knight ) 
+                "The knight jumps on the spot (landing loudly).";
+            if( second == potted_shrub ) {
+                potted_shrub.initial = "A blooming shrub, gay with red flowers, is being nursed in a wide round 
+                    tub under the wall here.";
+                "The shrub bursts into bloom, flowering all over in dozens of delicate red moons.";
+            }
+            if( second == marble_rose ) 
+                "The marble jerks, as if straining to grow, but falls back dead.";
+            if( second == small_thorny_tree ) {
+                if( parent(fig) ~= nothing ) {
+                    "The tree tried hard, but in the end it couldn't give a fig.";
+                }
+                move fig to player;
+                "The tree strains especially hard, and manages to produce another fig, which ripens and falls... 
+                 you jump forward and catch the fruit just before it would splatter to earth.";
+            }
+            if( second == player ) 
+                "Your hair stands momentarily on end, as if it wants to stalk up out of your head, but happily 
+                 it decides against.";
+            if( second == plane_tree && location == Family_Tree ) 
+                "The tree shakes and shivers, but thankfully remains intact.";
+            if( second == wall_of_thorns_object ) 
+                "Whoosh!^^The thorn wall grows another twenty feet high, then collapses in on itself, settling 
+                 back like a beast. It is thicker and nastier than ever.";
+            if( second ~= runner_bean_plant || runner_bean_plant has open ) 
+                "Nothing obvious happens.";
+
+            give runner_bean_plant open;
+            print "^Warning: something extremely cliched is about to happen. When you think you have composed 
+                yourself and can stand it, press ENTER. ", '>';
+            buffer->1 = 0;
+            StatusLinePrinter();
+            @aread buffer parse -> i;
+            new_line;
+            "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reac
+             hing up high into the sky!  You yawn convulsively.";
+        ],
         devil_hint "It has no horticultural application.",
   has   unidentifed_rod;
 
@@ -170,7 +244,29 @@ Rod     rod_of_infinity "Infinity"
         article "a",
         parse_name RodParse,
         rod_word 'infinity',
-        rod_action RodOfInfinityAction,
+        rod_action [;
+            if( second == adamantine_knight ) 
+                "Oh, the knight has been nearer the infinite than you could ever take him.";
+            if( second == player ) 
+                "You acquire no especial sense of the infinite.";
+            if( location ~= Infinity_Symbol || second ~= lemniscus ) 
+                "Nothing obvious happens.";
+            t = circular_arc.number;
+            set_flag_array(30);
+            if( t < 9 ) 
+                "You feel the air charge with excitement, and the symbol glows fiercely gold for a moment, but 
+                 then the power drains away into one of the empty sockets in the arc.";
+            if (noun has general) 
+                "Nothing happens this time.";
+            print "The air charges with excitement, and the symbol glows fiercely gold, then begins to spin, 
+                faster and faster into a pearly golden light with bathes you with the flow of pure magic. ";
+            if (spherical_opening hasnt general)
+                "But it is still too weak!  You half-hear, half-imagine a whisper of druids...";
+            print "Everything becomes a daze and then you find yourself...^";
+            give noun general;
+            StartMasterGame();
+            rtrue;
+        ],
         angel_hint "Well, where might you have seen infinity before?",
   has   unidentifed_rod;
 
@@ -182,7 +278,18 @@ Rod     rod_of_husbandry "Husbandry"
         article "a",
         parse_name RodParse,
         rod_word 'husbandry',
-        rod_action RodOfHusbandryAction,
+        rod_action [;
+            if( second == player ) "You feel suddenly obedient, and briefly fancy a dog biscuit.";
+            if( second == Austin ) "Alas, Austin is far, far too undomesticated. It has no effect.";
+            if( second == irate_squirrel_friend ) 
+                "Guided by some animal sixth sense, the squirrel gracefully jumps out of the way.";
+            if( second ~= herd_of_goats ) "Nothing obvious happens.";
+
+            give herd_of_goats general;
+            set_flag_array(24);
+            "The goats suddenly look up at you with awe, although they resume their former interest in eating 
+             the grass quite quickly.";
+        ],
         angel_hint "Perhaps you should look up ~husbandry~ in a dictionary.",
   has   unidentifed_rod;
 
@@ -194,7 +301,21 @@ Rod     rod_of_bronze "Bronze"
         article "a",
         parse_name RodParse,
         rod_word 'bronze',
-        rod_action RodOfBronzeAction,
+        rod_action [;
+            if( second == player ) "You acquire a sudden sun tan, but it soon fades.";
+            if( second == Austin ) "Austin is already ginger, which is near enough.";
+            if( second == adamantine_knight ) "He shrugs it off. (Isn't adamantine impressive enough for you?)";
+            if( second == metal_wall ) {
+                give metal_wall open;
+                "At once, the bronze polishes up to the shine of a mirror.";
+            }
+            if( second ~= bronze_mural ) "Nothing obvious happens.";
+            if( bronze_mural has open ) "Nothing further happens.";
+
+            give bronze_mural open;
+            "With an awful heaving, wrenching noise, the mural slides a little sideways, opening up a murky 
+             downward passage which can't have been used for centuries.";
+        ],
         angel_hint "Bronze is the key here. Have you seen any other bronze anywhere?",
   has   unidentifed_rod;
 
@@ -206,7 +327,50 @@ Rod     rod_of_sacrifice "Sacrifice"
         article "a",
         parse_name RodParse,
         rod_word 'sacrifice',
-        rod_action RodOfSacrificeAction,
+        rod_action [;
+            if( second == herd_of_goats ) {
+                if( herd_of_goats hasnt general ) {
+                    "The goats mill around too much to aim at one accurately.";
+                }
+                "Still obedient to your intent, the goats part so that one stands alone. Using this Rod, you 
+                 vapourise it instantaneously, and the rest contentedly return.^^Do you think there might be a
+                 moral to draw here about the use, and abuse, of power?";
+            }
+            if( second == Austin ) {
+                set_flag_array(6);
+                "You don't really want to sacrifice Austin.";
+            }
+            if( second == adamantine_knight ) 
+                "Would be a shame, after all that surgery.";
+            if( second has moved ) {
+                remove second;
+                print_ret "You decide you can manage without ", (the) second, ", which you annihilate with the Rod.";
+            }
+            if( location == Inside_the_Orb && second == array_of_oblong_crystals ) {
+                if( Inside_the_Orb hasnt general ) {
+                    deadflag = CHECKMATED;
+                    "The Black pieces make a rash break out of their defences, sacrificing a piece in vain and going 
+                     down to a rapid defeat as a result.^^The White Queen rises from the board, an avenging angel's
+                     smile on her face, and swings a broadsword of burning light across your body...";
+                }
+                move golden_orb to player;
+                give golden_orb general;
+                Achieved(SCORE_ORB);
+                golden_orb.description = "A treasure in every sense, the orb pulsates with golden radiance.";
+                print "The White pieces advance: first a bishop, then a knight is sacrificed, clearing away the 
+                    wall of pawns which surround the Black king so that a dazzling checkmate can be executed!^^You
+                    fade out of the orb as oddly as you came, struck by the way it now almost pulsates in your palm.^";
+                move player to ContainerSave;
+                location = LocationSave;
+                << Look >>;
+            }
+            if( second == player ) {
+                deadflag = DIED;
+                "You feel a noble surge of pride as your body is incinerated by the Rod. At least you died for some 
+                 terribly important cause, although exactly what it was seems to have slipped your mind.";
+            }
+            "Nothing obvious happens.";
+        ],
         angel_hint "Far, far too dangerous. The age of martyrs in the church is long gone, you know.",
   has   unidentifed_rod;
 
@@ -218,7 +382,26 @@ Rod     rod_of_luck "Luck"
         article "a",
         parse_name RodParse,
         rod_word 'luck',
-        rod_action RodOfLuckAction,
+        rod_action [;
+            if( second == player ) {
+                if( big_electricians_switch has on ) {
+                    "You feel no different. Perhaps there's no such thing as luck.";
+                }
+                give noun general;
+                "You feel optimistic and lucky. Mind you, you feel that most times.";
+            }
+            if( second == Austin ) "Austin is already too lucky by half.";
+            if( second == adamantine_knight ) "Reassembled after all these years... how lucky can you get?";
+            if( second == gambling_sailor ) {
+                give gambling_sailor lucky;
+                "The sailor shudders suddenly.";
+            }
+            if( second == inscribed_die ) {
+                give inscribed_die lucky;
+                "The die rattles a little, then settles.";
+            }
+            "Nothing obvious happens.";
+        ],
         angel_hint "Well, if there's such a thing as luck, maybe this would help.",
   has   unidentifed_rod;
 
@@ -230,7 +413,20 @@ Rod     rod_of_ice "Ice"
         article "a",
         parse_name RodParse,
         rod_word 'ice',
-        rod_action RodOfIceAction,
+        rod_action [;
+            if( second == player )
+                "You feel a sudden chill.";
+            if( second has animate ) 
+                print_ret "For a fleeting moment, ", (the) second, " freezes up.";
+            if( second has high_rod ) {
+                if( second has general ) {
+                    "It's already cold.";
+                }
+                give second general;
+                "There is an enormous hissing of steam, creating wildly swirling mists, after whose parting an apparently cool rod is left behind.";
+            }
+            "Nothing obvious happens.";
+        ],
         angel_hint "Use only at heated moments, when affairs are delicately balanced.",
   has   unidentifed_rod;
 
@@ -240,7 +436,17 @@ Rod     rod_of_language "Language"
         u_to rod_display_before,
         article "the",
         parse_name RodParse,
-        rod_action RodOfLanguageAction,
+        rod_action [;
+            if( second == player ) {
+                KnowLanguages = true;
+                "Nothing obvious happens. You curse eloquently in Celtic.";
+            }
+            if( second == surly_shopkeeper ) 
+                "Nice idea. Now the kiosk-keeper also knows a smattering of Celtic. Unfortunately his national 
+                 pride is too strong. You'll have to try something else - you have carte blanche to solve this 
+                 problem.";
+            "Nothing obvious happens.";
+        ],
   has   ;
 
 Rod     rod_of_returning2 "Returning"
