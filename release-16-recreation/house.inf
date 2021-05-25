@@ -296,7 +296,23 @@ HRoom   House "House"
 
 HRoom   Servants_Room "Servant's Room"   
   with  name 'bedside' 'table',
-        before ServantsRoomBefore,
+        before [;
+            Sleep:
+                if( carbolic_soap hasnt concealed ) 
+                    "Racked with guilt over your bad language, you are unable to nod off.";
+                if( player notin servants_bed ) 
+                    rfalse;
+                if( Austin in location ) 
+                    "Austin leaps up onto the bed, jumps around for a bit, and then falls back onto the floor. 
+                     You are unable to get any sleep.";
+                if( servants_bed has general ) 
+                    "You doze awhile, but that's all.";
+                give servants_bed general;
+                print "You sleep unexpectedly deeply, but just as you think you are starting to wake up, you 
+                    experience a sudden...^";
+                PremonitionStart();
+                rtrue;
+
         n_to nothing,
         w_to Attic,
         d_to nothing,
@@ -308,12 +324,81 @@ HRoom   Servants_Room "Servant's Room"
 
 Object  -> classical_dictionary "classical dictionary"   
   with  name 'hobsons' 'choice' 'classical' 'dictionary' 'book',
-        before DictionaryBefore,
+        before [ w;
+            Consult:
+                wn = consult_from;
+                w = NextWord();
+                if( Homer has general && Homer.number < 3 && Homer in location ) {
+                    HomerSleeps();
+                    print "~Well, if you're going to cheat, forget it,~ says Homer loudly as he falls asleep.^^";
+                }
+                if( w == 'galita' ) "Minor deity of tombs, reincarnated from a fly who flew into setting amber.";
+                if( w == 'menelaus' ) "General in Trojan War, and brother of Agamemnon.";
+                if( w == 'agamemnon' ) "General in Trojan War, and brother of Menelaus.";
+                if( w == 'ares' ) "Greek god of war.";
+                if( w == 'chlamys' ) "An emperor's (rectangular) cloak.";
+                if( w == 'husbandry' ) "Not this dictionary!";
+                if( w == 'hades' ) "Underworld of spirits.";
+                if( w == 'adamantine' ) "Hardest stone known to the ancients.";
+                if( w == 'iliad' or 'odyssey' ) "Epic by Homer.";
+                if( w == 'helicon' ) "Mythical mountain of poets and muses.";
+                if( w == 'hephaestus' ) "Greek god of blacksmiths and master of metals.";
+                if( w == 'pan' ) "Greek god of pastures and shepherds; player of the syrinx, or pipes.";
+                if( w == 'demeter' ) "Greek goddess of plenty.";
+                if( w == 'poseidon' ) "Greek god of the sea, and of horses.";
+                if( w == 'apollo' or 'loxias' ) "Greek god of words, music and poetry.";
+                if( w == 'zeus' ) "Greek ruler of the gods.";
+                if( w == 'leda' ) "Mortal woman seduced by Zeus, who appeared to her in the form of a swan.";
+                if( w == 'hera' ) "Jealous wife of Zeus.";
+                if( w == 'aphrodite' ) "Greek goddess of beauty.";
+                if( w == 'athene' ) "Greek goddess of wisdom.";
+                if( w == 'diana' ) "Goddess of hunting, the underworld (with Pluto) and the moon.";
+                if( w == 'selenae' ) "Mythical island mountain home of Diana.";
+                if( w == 'sosostris' ) 
+                    "Mythical pharoah of Egypt, after whom a curious cult rose: sometimes confused with 
+                     Alexander the Great.";
+                if( w == 'pluto' ) "Canine Walt Disney character, after whom the planet is named.";
+                if( w == 'dionysus' ) "Greek god of wine, and revelry.";
+                if( w == 'furies' or 'curses' or 'eumenides' ) 
+                    "Eternally pursuing Greek goddesses, they enforced divine rules by punishing the 
+                     families of miscreants through all time.";
+                if( w == 'omphalos' ) "Fabled to be the stone at the centre (literally ~navel~) of the world.";
+                if( w == 'oracle' or 'pythian' ) 
+                    "Priestess of Apollo: her predictions were legendary for their accuracy, and also their 
+                     difficulty to interpret.";
+                if( w == 'pharos' ) 
+                    "Lighthouse-tower. The great one at Alexandria was one of the Seven Wonders of the World.";
+                if( w == 'aeschylus' ) "The first great tragic playwright (525 - c.456 BC).";
+                if( w == 'kraken' ) 
+                    "Legendary sea-monster of Poseidon (though the word derives from the Norwegian - not a 
+                     lot of people know that).";
+                if( w == 'andromeda' ) 
+                    "Maiden sacrificed to a sea-monster, according to myth eventually saved by Perseus.";
+                if( w == 'perseus' ) "Greek hero and slayer of monsters.";
+                if( w == 'syrinx' ) "Pan-pipes: reed-cut.";
+                if( w == 'homer' ) 
+                    "Earliest poet of the Greek tradition, legendarily blind: nothing is known about him, 
+                     except that he (supposedly) wrote the ~Iliad~ and the ~Odyssey~.";
+                if( w == 'ekmek' or 'eraina' ) 
+                    "The Ekmek Special is a delicacy still served to this day by the Eraina Taverna, Free School 
+                     Lane, Cambridge, England. Much prized by itinerant mathematicians.";
+                if( w == 'callimachus' ) 
+                    "Cataloguer of the Alexandrian library: most famous of all the wittily brief epigrammatic poets.";
+                if( w == 'apollonius' ) "Librarian, mathematician, epic poet, politician.";
+                if( w == 'arthur' ) "Half-mythical High King of the Britons.";
+                if( w == 'merlin' or 'merlyn' ) "Half-mythical wizard to the court of King Arthur.";
+                if( w == 'alexandria' ) "City on the Nile Delta founded by Alexander the Great.";
+                if( w == 'alexander' ) "Macedonian who conquered the known world in his twenties.";
+                if( w == 'ptolemy' ) "General of Alexander the Great, governed and later inherited Egypt.";
+                if( w == 'odysseus' or 'ulysses' ) "Wasn't he a sailor?";
+                "Sorry, there's nothing on that.";
+            }
+            rfalse;
+        ],
         list_together n_obj,
         initial "There's a little book on the tiny bedside table.",
         description "~Hobson's: A Choice Classical Dictionary~. It claims to have numerous entries.",
         article "Hobson's",
-        parse_name ConsultableParsename,
         devil_hint "Lots of naughty words in that one.",
   has   consultable;
 

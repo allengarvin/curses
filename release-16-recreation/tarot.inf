@@ -269,25 +269,117 @@ TRoom   Inner_Sanctum "Inner Sanctum"
         description "Here from the dark heart of the temple, cloisters fork northeast and northwest while a flight of narrowing steps lead down and to the north.",
   has   ;
 
+[ HomerSleeps ;
+    give Homer ~general;
+    Homer.initial = "Homer is asleep again, his syrinx tight in his arms.";
+    rtrue;
+];
+
+[ Hopeless;
+    HomerSleeps();
+    "~Hopeless,~ he says dismissively and falls asleep.";
+];
+
 Object  -> Homer "Homer" 
   with  name 'homer' 'blind' 'poet',
-        life HomerLife,
+        life [;
+            Order, Ask:
+                if( self has general )
+                    "Homer is far too busy composing Book XIV of the Iliad.";
+                "Homer is asleep.^";
+            WakeOther:
+                if( self has general )
+                    "Homer is awake already.";
+                give Homer general;
+                Homer.time_left = 0;
+                Homer.initial = "Homer sits half-awake, clutching his syrinx.";
+                "Homer wakes up, with a start. ~I suppose you want the syrinx,~ he grumbles, ~they always do. 
+                 There are three questions you must answer wisely. The usual deal.~^^(He seems to be under an
+                 enchantment and able to speak modern English, or at least American.)^^~First: who is the brother
+                 of Menelaus?~";
+            Attack: "What, strike the greatest poet who ever lived?";
+            Answer:
+                if( Homer hasnt general ) "Homer is asleep.";
+                if( Homer.time_left == 3 ) "Homer glares back.";
+                if( Homer.time_left == 0 ) {
+                    if( special_word == 'agamemnon' ) {
+                        Homer.time_left = 1;
+                        "~Mph,~ he says (untranslatably). ~But can ya see the future?  Who's gonna rule Alexandria 
+                         after the fall of the guy they're gonna call Alexander the Big?~";
+                    }
+                    Hopeless();
+                }
+                if( Homer.time_left == 1 ) {
+                    if( special_word == 'ptolemy' ) {
+                        Homer.time_left = 2;
+                        "~What's your favorite color?~";
+                    }
+                    Hopeless();
+                }
+                if( special_word == 'yellow' ) {
+                    Homer.initial = "Homer glares at you through sightless eyes.";
+                    move Pan_pipes to player;
+                    Homer.time_left = 3;
+                    Achieved(SCORE_HOMER);
+                    "Homer reluctantly hands you the syrinx. ~Now leave me alone, I got six books of the Iliad 
+                     left to compose.~";
+                }
+                Hopeless();
+        ],
         initial "The blind poet Homer half-slumbers here, clutching his syrinx (or Pan-pipes) to himself.",
         description "Homer is wearing a Columbo-style raincoat.",
+        number 0,
         time_left 0,
   has   animate proper;
 
 Object  -> -> Pan_pipes "Pan pipes"      
   with  name 'pan' 'pipes' 'panpipes' 'syrinx',
-        before PanPipesBefore,
+        before [;
+            Blow:
+                if( gas_mask has worn ) 
+                    "With the gas mask on?";
+                if( location == Clifftop_Walk ) "The goats are amused by your derisory playing.";
+                if( location ~= Cave_Mouth ) "You sound off some dissonant notes.";
+                print "Seized by divine inspiration, you launch into J. S. Bach's ";
+                switch( random(5) ) {
+                    1: print "Prelude number 1";
+                    2: print "Passacaglia";
+                    3: print "Chromatic Fantasy and Fugue";
+                    4: print "partita for unaccompanied flute";
+                    5: print "duet number four";
+                }
+                if( Oracle in location ) {
+                    ".";
+                }
+                move Oracle to location;
+                give flaming_bronze_urn ~static;
+                give flaming_bronze_urn scenery;
+                print ". Suddenly the great god Apollo appears before you!  As he speaks the very rock 
+                    reverberates.^^   ~All wisdom is mine, mortal!^   Though you shall seek out your curse^   A 
+                    thousand years and more. Now ask!~^^Apollo, as he vanishes, laughs in that style more recently 
+                    popularised by Third World dictators and mad scientists. His priestess, the Oracle, steps out 
+                    of the shadows.^";
+                Achieved(SCORE_ORACLE);
+                rtrue;
+        ],
         description "Carefully cut from river reeds, these once belonged to Homer himself. As you may recall.",
         article "the",
         angel_hint "Marvellous! A sound to soothe the spirit.",
   has   ;
 
 TRoom   Cross_Centre "Cross Centre"      
-  with  before CrossBefore,
-        after CrossAfter,
+  with  before [;
+            Take, Remove:
+                if( noun == inscribed_stone or old_timber_spar && noun has scenery )
+                    give noun ~scenery moved;
+                rfalse;
+        ],
+        after [;
+            Take, Remove:
+                if( noun == inscribed_stone or old_timber_spar && noun has static )
+                    inscriptions.initial = "The two-foot opening is clear again.";
+                rfalse;
+        ],
         s_to Inner_Sanctum,
         ne_to Northeast_Cross,
         se_to Southeast_Cross,
@@ -295,9 +387,19 @@ TRoom   Cross_Centre "Cross Centre"
         sw_to Southwest_Cross,
         u_to Inner_Sanctum,
         d_to inscriptions,
-        initial CrossInitial,
-        description "The fabled Labyrinth seems only to consist of a broad cross. Arms run to northeast, northwest, southeast and southwest, while a flight of stone steps widens and climbs south.",
-        daemon CrossDaemon,
+        initial [; StartDaemon(self); ],
+        description "The fabled Labyrinth seems only to consist of a broad cross. Arms run to northeast, northwest, 
+            southeast and southwest, while a flight of stone steps widens and climbs south.",
+        daemon [;
+            if( parent(statue_of_Poseidon) == Northeast_Cross && parent(statue_of_Demeter) == Northwest_Cross && 
+                parent(statue_of_Ares) == Southeast_Cross && parent(statue_of_Dionysus) == Southwest_Cross ) {
+                if( inscriptions has open ) 
+                    rtrue;
+                give inscriptions open;
+                Achieved(SCORE_TEMPLE);
+                "^You hear the noise of stone grating against stone.";
+            }
+        ],
   has   ;
 
 Object  -> inscriptions "inscriptions"   
@@ -319,7 +421,19 @@ TRoom   Oubliette "Oubliette"
 
 Object  -> gleaming_amber_gem "gleaming amber gem"       
   with  name 'amber' 'gem',
-        before GemBefore,
+        before [;
+            Take:
+                if( self has moved ) 
+                    rfalse;
+                print "There is a horrible screeching sound as a trap is sprung. ";
+                if( inscribed_stone has scenery || old_timber_spar has scenery ) {
+                    print "The walls begin to crush together: but are securely wedged, and cannot move...^^";
+                    rfalse;
+                }
+                deadflag = DIED;
+                "The opening crushes together, and so do the walls!  They reduce you to powdered dog biscuit in a 
+                 matter of seconds.";
+        ],
         initial "Lying on top of crushed, broken bones, in plain view, is a gleaming gem of amber.",
         description "Embedded within is the body of a fly. Scratched upon one face is the word ~GALITA~.",
         angel_hint "Isn't there some classical legend about her?",
@@ -331,25 +445,36 @@ TRoom   Northeast_Cross "Northeast Cross"
         description "This cross-corner is inlaid with carvings of fish, of the waves, of great casting nets sweeping through the water.^^The Labyrinth lies to southwest.",
   has   ;
 
-Object  -> statue_of_Demeter "statue of Demeter" 
-  with  name 'demeter' 'statue' 'of',
-        before ClassicalStatueBefore,
-        after ClassicalStatueAfter,
-        initial "A fine statue of the goddess Demeter stands here.",
+Class Statue
+  with  before [;
+            Push: "Perhaps you should say which way to push.";
+            PushDir:
+                if( inscriptions has open ) 
+                    "The only direction to push the statue in is to the centre of the cross, but there's a pit 
+                     open in the floor there.";
+            if( second ~= u_obj or d_obj ) {
+                AllowPushDir();
+                rtrue;
+            }
+            rfalse;
+        ],
+        after [; PushDir: "You heave the statue along with you."; ],
   has   static statue_flag;
+
+Statue  -> statue_of_Demeter "statue of Demeter" 
+  with  name 'demeter' 'statue' 'of',
+        initial "A fine statue of the goddess Demeter stands here.";
 
 TRoom   Northwest_Cross "Northwest Cross"        
   with  name 'carvings' 'wheat',
         se_to Cross_Centre,
-        description "This cross-corner is surrounded with carvings of wheat swaying in the breeze, bathed with sunshine.^^The Labyrinth lies to southeast.",
+        description "This cross-corner is surrounded with carvings of wheat swaying in the breeze, bathed with 
+            sunshine.^^The Labyrinth lies to southeast.",
   has   ;
 
-Object  -> statue_of_Dionysus "statue of Dionysus"       
+Statue  -> statue_of_Dionysus "statue of Dionysus"       
   with  name 'dionysus' 'statue' 'of',
-        before ClassicalStatueBefore,
-        after ClassicalStatueAfter,
-        initial "A fine statue of the god Dionysus stands here.",
-  has   static statue_flag;
+        initial "A fine statue of the god Dionysus stands here.";
 
 TRoom   Southeast_Cross "Southeast Cross"        
   with  name 'carvings' 'hoplite' 'warriors',
@@ -357,12 +482,9 @@ TRoom   Southeast_Cross "Southeast Cross"
         description "This cross-corner is decorated with carvings of massed ranks of hoplite warriors, advancing into battle.^^The Labyrinth lies to northwest.",
   has   ;
 
-Object  -> statue_of_Ares "statue of Ares"       
+Statue  -> statue_of_Ares "statue of Ares"       
   with  name 'ares' 'statue' 'of',
-        before ClassicalStatueBefore,
-        after ClassicalStatueAfter,
-        initial "A fine statue of the god Ares stands here.",
-  has   static statue_flag;
+        initial "A fine statue of the god Ares stands here.";
 
 TRoom   Southwest_Cross "Southwest Cross"        
   with  name 'carvings' 'grape' 'vines' 'barrels',
@@ -370,12 +492,9 @@ TRoom   Southwest_Cross "Southwest Cross"
         description "This cross-corner is decorated with carvings of grape-vines and barrels.^^The Labyrinth lies to northeast.",
   has   ;
 
-Object  -> statue_of_Poseidon "statue of Poseidon"       
+Statue  -> statue_of_Poseidon "statue of Poseidon"       
   with  name 'poseidon' 'statue' 'of',
-        before ClassicalStatueBefore,
-        after ClassicalStatueAfter,
-        initial "A fine statue of the god Poseidon stands here.",
-  has   static statue_flag;
+        initial "A fine statue of the god Poseidon stands here.";
 
 TRoom   Cave_Mouth "Cave Mouth"  
   with  name 'lamps' 'trestle' 'altar' 'stone',
