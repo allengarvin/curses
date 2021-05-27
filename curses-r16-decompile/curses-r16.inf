@@ -4732,10 +4732,6 @@ Constant TOOFEW_PE = 16;
 Constant NOTHING_PE = 17;
 Constant ASKSCOPE_PE = 18;
 
-Constant DIR_SOUTH = 3;
-Constant DIR_EAST = 4;
-Constant DIR_NORTH = 6;
-
 Constant PARSING_REASON = 0;
 Constant TALKING_REASON = 1;
 Constant EACH_TURN_REASON = 2;
@@ -17998,10 +17994,10 @@ Array preactions_table --> IsDirection;
         palace_move2 = palace_move1;
         palace_move1 = noun;
         give Lost_inside_the_Palace ~general;
-        if (palace_move3 == DIR_NORTH && palace_move2 == DIR_EAST && palace_move1 == DIR_SOUTH) {
+        if (palace_move3 == ne_obj && palace_move2 == e_obj && palace_move1 == s_obj) {
             give Lost_inside_the_Palace general;
         }
-        if (palace_move1 == DIR_SOUTH && palace_move2 == DIR_SOUTH) {
+        if (palace_move1 == s_obj && palace_move2 == s_obj) {
             location = Outside_the_Royal_Palace_of_Alexander;
             move player to location;
         }
