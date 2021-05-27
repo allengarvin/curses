@@ -4732,6 +4732,10 @@ Constant TOOFEW_PE = 16;
 Constant NOTHING_PE = 17;
 Constant ASKSCOPE_PE = 18;
 
+Constant DIR_SOUTH = 3;
+Constant DIR_EAST = 4;
+Constant DIR_NORTH = 6;
+
 Constant PARSING_REASON = 0;
 Constant TALKING_REASON = 1;
 Constant EACH_TURN_REASON = 2;
@@ -4991,9 +4995,9 @@ Global PlanckWarning;
 Global SpiritCnt;
 Global MummyWarning;
 Global PalaceCnt;
-Global palace_var168;
-Global palace_var169;
-Global palace_var170;
+Global palace_move1;
+Global palace_move2;
+Global palace_move3;
 Global HighRodWarn;
 Global HighRodBalance;
 Global LeftHand;
@@ -17990,14 +17994,14 @@ Array preactions_table --> IsDirection;
         }
         move slave to Lost_inside_the_Palace;
         move player to Lost_inside_the_Palace;
-        palace_var170 = palace_var169;
-        palace_var169 = palace_var168;
-        palace_var168 = noun;
+        palace_move3 = palace_move2;
+        palace_move2 = palace_move1;
+        palace_move1 = noun;
         give Lost_inside_the_Palace ~general;
-        if (palace_var170 == 6 && palace_var169 == 4 && palace_var168 == 3) {
+        if (palace_move3 == DIR_NORTH && palace_move2 == DIR_EAST && palace_move1 == DIR_SOUTH) {
             give Lost_inside_the_Palace general;
         }
-        if (palace_var168 == 3 && palace_var169 == 3) {
+        if (palace_move1 == DIR_SOUTH && palace_move2 == DIR_SOUTH) {
             location = Outside_the_Royal_Palace_of_Alexander;
             move player to location;
         }
