@@ -103,7 +103,7 @@ Object 91 Dark_Passage
 Object 92 metal_door
 Object 93 Cellars
 Object 94 wheel
-Object 95 dark_shaft
+Object 95 dark_shaft_obj
 Object 96 old_timber_prop
 Object 97 rod_of_returning
 Object 98 robot_mouse
@@ -349,19 +349,19 @@ GlobalArray 17 multiple_object:array(16*object)
 Global 18 noun_word:dictword
 Global 19 noun_number:int
 Global 20 game_section:game_area
-GlobalArray 21 card_deck:array(6*object)
+GlobalArray 21 card_deck:array(6*~object)
 Global 22 card_ptr:int
-GlobalArray 23 garden_array:array(24*int)
+GlobalArray 23 garden_array:array(48*~int)
 Global 24 MazeX:int
 Global 25 MazeY:int
 Global 26 WeedkillerX:int
 Global 27 WeedkillerY:int
-GlobalArray 28 mouse_maze:array(27*int) ! byte array, unsupported by reform (6x9 array)
+GlobalArray 28 mouse_maze:array(54*~int)
 Global 29 Mouse_x:int
 Global 30 Mouse_y:int
 Global 31 BombTicking:bool
-GlobalArray 32 task_scores:array(18*int)
-GlobalArray 33 score_array2:array(18*int)
+GlobalArray 32 task_scores:array(18*~int)
+GlobalArray 33 score_array2:array(18*~int)
 Global 34 things_score:int
 Global 35 places_score:int
 Global 36 rod_score:int

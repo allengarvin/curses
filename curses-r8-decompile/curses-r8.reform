@@ -389,8 +389,8 @@ Global 49	projector_on:bool
 Global 50	multiflag:bool
 Global 51	notheld_mode:bool
 Global 52	onotheld_mode:bool
-Global 53	global53:?
-Global 54	global54:?
+Global 53	phrase_len:int
+Global 54	num_words:int
 Global 55	global55:?
 Global 56	global56:?
 Global 57	global57:?
@@ -528,6 +528,8 @@ Action 106	XDemonHint
 Action 107	XAngelHint
 Action 108	Xdeterministic
 
+
+Array 12371 unknown_array:array(18*(int,int))
 
 Word amusin amusing
 Word outlin outline
@@ -918,7 +920,7 @@ Routine 0x135c8 InfinityBefore unused cnt:int
 Routine 0x1367a StreamBefore 
 Routine 0x13756 DieAfter n:int
 Routine 0x13784 InsideWellBefore i
-Routine 0x137be TricliniumBefore 
+Routine 0x137be TricliniumBefore o
 Routine 0x138ba TricliniumAfter o:object
 Routine 0x13944 EntranceBefore
 Routine 0x139ac EntranceAfter 
@@ -944,22 +946,22 @@ Routine 0x15f64 Keyboard a_buffer a_table  nw:int i w:dictword w2 x1 x2
 Routine 0x16060 Parser results syntax line num_lines line_address i j token l m w:dictword etype_local:etype_enum local13 local14 local15
 Routine 0x16894 routine92308 var1 var2 var3
 Routine 0x168c8 MultiAdd o i:int j:int
-Routine 0x16904 routine92420 var1 var2 var3 var4
-Routine 0x16934 routine92468 var1 var2 var3 var4 var5
-Routine 0x1698a routine92554 var1 var2
-Routine 0x169ba routine92602 var1 var2 var3 var4 var5 var6 var7
-Routine 0x16a6a routine92778 var1 var2 var3 var4 var5 var6 var7 var8
+Routine 0x16904 Unknown1 var1 var2 var3 var4
+Routine 0x16934 Unknown2 var1 var2 var3 var4 var5
+Routine 0x1698a Unknown3 var1 var2
+Routine 0x169ba Unknown4 var1 var2 var3 var4 var5 var6 var7
+Routine 0x16a6a Unknown5 var1 var2 var3 var4 var5 var6 var7 var8
 Routine 0x16cc4 PrintCommand from var2 w:dictword k:int pcount:int var6 var7 var8
-Routine 0x16e60 routine93792 var1 var2 var3
-Routine 0x16ea4 routine93860 var1 var2 var3 var4 var5
-Routine 0x16ed6 routine93910 var1 var2
-Routine 0x16ef4 routine93940 var1 var2 var3 var4 var5 var6 var7
-Routine 0x16f9e routine94110 var1 var2 var3 var4 var5 var6
-Routine 0x16fd4 routine94164 var1 var2 var3
-Routine 0x17012 routine94226 var1 var2 var3
-Routine 0x17038 routine94264 var1 d:dictword var3
-Routine 0x1707e DebugParse xlen i inext len
-Routine 0x170e8 TryNumber i j k c:int num len:int mul:int tot:int i:int n:int
+Routine 0x16e60 DebugAdj var1 var2 tbl:^array
+Routine 0x16ea4 Unknown7 var1 var2 var3 var4 var5
+Routine 0x16ed6 Unknown8 var1 var2
+Routine 0x16ef4 Unknown9 var1 var2 var3 var4 var5 var6 var7
+Routine 0x16f9e ParseName o:object w1 w2 addr len:int i
+Routine 0x16fd4 PronounFunc i j:dictword k
+Routine 0x17012 Unknown12 var1 var2 var3
+Routine 0x17038 Unknown13 var1 d:dictword var3
+Routine 0x1707e DebugParse xlen:int i inext:int len
+Routine 0x170e8 TryNumber i:int j k c:int num len:int mul:int tot:int i2:int n:int
 Routine 0x171d2 ZeroTable from i:int len:int
 Routine 0x171f2 CopyTable from dst i:int len:int
 Routine 0x17218 DumpDebug addr:int i:int
