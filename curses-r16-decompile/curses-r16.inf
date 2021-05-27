@@ -4507,7 +4507,7 @@ Object -> corn_crake "corn crake"
 
 Object Stone_Cross "Stone Cross"        
   with  name 'pub' 'goat' 'compasses',
-        n_to parish_church,
+        n_to parish_church_obj,
         s_to Public_Footpath,
         description "Beside the long triangle of the green, under the stone cross of the First World War memorial. The public footpath runs south to a stile. The village is tiny: the parish church, the ~Goat and Compasses~ pub (which, owing to quaint English licensing laws, is closed) and a few houses and desultory tea-shops for tourists visiting Meldrew Hall.",
         cant_go "You wander around the peaceful green for a while, but there's nothing to do.",
@@ -4550,7 +4550,7 @@ Object -> war_memorial "war memorial"
         description "The stone cross, for the fallen of the Great War of 1914-18, contains more names than there are houses in the village.^^Your eye is caught by Second Lieutenant Gerard Meldrew of the 19th/21st Rifles, and you shiver, although the afternoon is warm.",
   has   scenery;
 
-Object -> parish_church "parish church" 
+Object -> parish_church_obj "parish church"     
   with  name 'parish' 'church' 'door',
         before ChurchBefore,
         n_to Parish_Church,
@@ -18193,9 +18193,9 @@ Array preactions_table --> IsDirection;
 
 
 [ ParishChurchSouth ;   
-    if (parish_church hasnt open) {
-        give parish_church open;
-        parish_church.description = "The church door is open.";
+    if (parish_church_obj hasnt open) {
+        give parish_church_obj open;
+        parish_church_obj.description = "The church door is open.";
         print "You unbar the door, and let yourself out.^";
     }
     return Stone_Cross;
