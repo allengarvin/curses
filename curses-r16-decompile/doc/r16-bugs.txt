@@ -17,3 +17,125 @@ Giving anything to Joshua Meldew stops the daemon:
 
 So you can give him something useless, and take your leisure
 
+>get key
+As you reach for the key, a swirling mist condenses about it, into a ghostly head which opens its mouth and eats up the key!  The rest of the ghostly body
+solidifies about the head and rises to swagger before you.
+
+The ghost laughs in a gurgling kind of way, as it were always coughing and spluttering.
+
+>give crumpled paper to ghost
+The ghost swallows the crumpled piece of paper whole and grins!
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+>z
+Time passes.
+
+--------------------------------------------------------------
+The coal bunker has routines for locking and unlocking, but has no 'with_key' property.
+
+Object  -> coal_bunker "coal bunker"
+  with  name 'coal' 'bunker' 'loading' 'door',
+        after [;
+            Close: give metal_door ~open; rfalse;
+            Open: give metal_door open; rfalse;
+            Lock: give metal_door locked; rfalse;
+            Unlock: give metal_door unlocked; rfalse;
+        ],
+        door_to Dark_Passage,
+        when_closed "On the house wall is a coal bunker, whose loading door is shut.",
+        door_dir s_to,
+        when_open "On the house wall is a coal bunker, whose door stands open.",
+  has   door locked openable static;
+
+---------------------------------------------------------------
+Oversight, not bug:
+Object  tight_door "tight door"
+  with  name 'tight' 'door',
+        initial "A tight door stands open in the northern wall, giving onto the servants' staircase.",
+  has   static;
+
+has no door attribute, cannot be closed
+
+---------------------------------------------------------------
+Does the torch ever go out?
+
+The daemon checks:
+    if( self hasnt on ) {
+        rfalse;
+    }
+
+but it's not turned on/off. It has light only
+
+Ah, you can't get into the cupboard without changing it out, but it will never go out
+---------------------------------------------------------------
+Click!  The timer runs out, but the bomb was disarmed. You pocket the timer and hide the rest of the evidence under the table.
+
+The clock is ticking downwards, and is right on the red zone!  None of the wires are plugged in.
+
+The clock is ticking downwards, and is right on the red zone!  None of the wires are plugged in.
+
+>look at detonator
+The timer seems quite simple to set. The clock is ticking downwards, and is right on the red zone!  None of the wires are plugged in.
+
+The clock is ticking downwards, and is right on the red zone!  None of the wires are plugged in.
+
+---------------------------------------------------------------
+
+    if (action == ##Order or ##Answer or ##Ask) {
+        if (special_word == 'curses') {
+            print "In a harsh voice, the goat intones:^^";
+            VersionSub();
+            rtrue;
+        }
+        "Grunt!";
+
+But this doesn't work:
+>goats, curses
+Grunt!
+
+>ask goats about curses
+Grunt!
+
+>ask goats about curses
+Grunt!
+
+>goats, curses
+Grunt!
+
+>answer curses
+(to the herd of goats)
+Grunt!
+
+>answer "curses"
+(to the herd of goats)
+Grunt!
+
+>goats, curses
+Grunt!
+
+---------------------------------------------------------------
+
+>put featureless in coffin
+Which do you mean, the featureless mahogany rod or the Rod of Infinity?
+
+>mahogany
+Which do you mean, the featureless mahogany rod or the Rod of Infinity?
+
+>get featureless
+Which do you mean, the featureless mahogany rod or the Rod of Infinity?
+
+(grr)
