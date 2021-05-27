@@ -45,7 +45,7 @@ Time passes.
 Time passes.
 
 --------------------------------------------------------------
-The coal bunker has routines for locking and unlocking, but has no 'with_key' property.
+The coal bunker has routines for locking and unlocking, but has no 'with_key' property. Thus, it can never be unlocked.
 
 Object  -> coal_bunker "coal bunker"
   with  name 'coal' 'bunker' 'loading' 'door',
@@ -139,3 +139,16 @@ Which do you mean, the featureless mahogany rod or the Rod of Infinity?
 Which do you mean, the featureless mahogany rod or the Rod of Infinity?
 
 (grr)
+
+---------------------------------------------------------------
+Because the smooth_round_stone has its "moved" attribute removed:
+        move smooth_round_stone to Warehouses_and_Port;
+        move rusty_iron_key to Warehouses_and_Port;
+        give smooth_round_stone ~general;
+        give smooth_round_stone ~moved;
+        give smooth_round_stone ~concealed;
+        give rusty_iron_key general;
+        rusty_iron_key.initial = "That iron key seems to have washed up here...";
+it is scored twice in the "things_scored". Thus you can win the game with 554 points.
+
+
