@@ -1096,7 +1096,7 @@ Object -> wheel "wheel"
 	before WheelBefore,
   has	scenery switchable on;
 
-Object -> dark_shaft "dark shaft"	
+Object -> dark_shaft_obj "dark shaft"	
   with	name 'shaft' 'dark',
 	description "Uninviting.",
   has	container transparent open enterable scenery;
@@ -2326,90 +2326,134 @@ Array some_array1 --> 30720[?];
 Array some_array2 --> 16384[?];	
 Array inputobjs --> 16;	
 Array multiple_object --> 16;	
-Array card_deck -->	
-    nothing
-    nothing
-    nothing
-    nothing
-    invalidObj12593
-    invalidObj12593
+Array card_deck -> 6;	
+Array garden_array ->	
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    48
+    48
+    48
+    49
+    48
+    48
+    49
+    49
+    49
+    48
+    49
+    48
+    48
+    49
+    48
+    49
+    49
+    48
+    48
+    48
+    49
+    48
+    48
+    48
+    49
+    49
+    49
+    48
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
 ;
-Array garden_array -->	
-    12593
-    12593
-    12593
-    12593
-    12592
-    12336
-    12336
-    12592
-    12337
-    12593
-    12337
-    12336
-    12592
-    12593
-    12336
-    12337
-    12336
-    12337
-    12593
-    12337
-    12593
-    12593
-    12593
-    12336
+Array mouse_maze ->	
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    48
+    48
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    48
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    48
+    48
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    49
+    49
 ;
-Array mouse_maze -->	
-    12593
-    12593
-    12593
-    12593
-    12593
-    12593
-    12336
-    12592
-    12337
-    12593
-    12593
-    12336
-    12592
-    12593
-    12593
-    12593
-    12336
-    12336
-    12593
-    12593
-    12336
-    12593
-    12593
-    12593
-    12593
-    12336
-    12593
-;
-Array task_scores -->	
-    775
-    1802
-    771
-    1285
-    514
-    818
-    769
-    2052
-    0
-    0
-    0
-    0
-    0
-    0
-    0
-    0
+Array task_scores ->	
+    3
+    7
+    7
+    10
+    3
+    3
+    5
+    5
+    2
+    2
+    3
+    50
+    3
+    1
+    8
+    4
     0
     0
 ;
-Array score_array2 --> 18;	
+Array score_array2 -> 18;	
 Array BombWires --> 4;	
 Array some_array3 --> 1;	
 Array some_array2 --> 1;	
@@ -2879,7 +2923,7 @@ Array verb_routine_array -->
     }
     if (game_section ~= GARDEN_PAST && WeedkillerX < 100) {
         i = WeedkillerX + 9 * WeedkillerY;
-        garden_array->i = 48[poetry_book?];
+        garden_array->i = 48;
         WeedkillerX = 100;
     }
     if (location == Hellish_Place) {
@@ -3597,7 +3641,7 @@ Array verb_routine_array -->
 [ Achieved ndx i ;	
     i = score_array2->ndx;
     if (i == 0) {
-        score_array2->ndx = 1[?];
+        score_array2->ndx = 1;
         if (ndx ~= SCORE_DOLEMN) {
             score = score + task_scores->ndx;
         }

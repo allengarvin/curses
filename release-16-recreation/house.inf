@@ -1131,7 +1131,6 @@ Object  -> romantic_novel "romantic novel"
         description "~Coronets for the Cotton Girl~, by Miss Marie Swelldon, published London, 1912. It's all 
             about the happy-go-lucky daughter of a Yorkshire mill owner and her adventures marrying into the
             aristocracy.",
-        parse_name ConsultableParsename,
         devil_hint "Don't bother reading or thinking about it. Nothing to do with your family.",
   has   consultable;
 
@@ -1164,7 +1163,6 @@ Object  -> book_of_Twenties_poetry "book of Twenties poetry"
                 PlayerTo(Unreal_City);
         ],
         list_together n_obj,
-        parse_name ConsultableParsename,
         devil_hint "My my, a golden age for clear, simple poetry. At last, an end to the dreary obscurity of 
             Tennyson, Kipling and Hardy.",
   has   concealed consultable;
@@ -1211,7 +1209,7 @@ HRoom   Souvenirs_Room "Souvenirs Room"
                 rtrue;
         ],
         n_to Disused_Observatory,
-        s_to SouvenirsRoomSouth,
+        s_to [; << Enter south_wall >>; ],
         u_to Disused_Observatory,
         description "This is where you ought to have left the wretched map, in the family lumber-room of souvenirs 
             and holiday snaps. You checked it thoroughly earlier, and can't bear the thought of searching it
@@ -1323,7 +1321,39 @@ Object  -> slide_projector "slide projector"
 ];
 
 Object  -> south_wall "south wall"       
-  with  before SouthWallBefore,
+  with  before [ o;
+            Enter:
+                o = child(slide_projector);
+                if( o == nothing ) 
+                    "You can't go that way.";
+                if( o == Eight_of_Wands_card ) 
+                    "You are unable to enter the picture. It isn't very realistic, more a stylised figure-eight.";
+                print "You walk confidently into the south wall...^";
+                if( o has general ) 
+                    "But are unable to enter the scene for a second time.";
+                if( o == Death_card ) {
+                    print "^And find yourself in a golden cornfield on a sunny afternoon. You have just time to 
+                        admire the ears of wheat before the scythe of the Grim Reaper cuts your soul from your body.^";
+                    FakeDie(o);
+                    rtrue;
+                }
+                if( o == Drowned_Sailor_card ) {
+                    print "^You are underwater, in the wreck of a ship, surrounded by the skeletons of its 
+                        former crew, whom you abruptly join as your air runs out.^";
+                    FakeDie(o);
+                    rtrue;
+                }
+                if( o == Fool_card ) {
+                    print "^And find yourself stepping off a cliff. All is well for a moment, and then 
+                        like a cartoon character you notice there is no ground beneath you and you plummet to a 
+                        stony death far below.^";
+                    FakeDie(o);
+                    rtrue;
+                }
+                give o general;
+                PlayerTo(o.door_to);
+                rtrue;
+        ],
         n_to nothing,
         w_to ne_obj,
   has   concealed door open scenery static;
@@ -1389,13 +1419,33 @@ Object  -> cupboard_door "cupboard door"
 
 HRoom   Dead_End "Dead End"      
   with  name 'soot' 'chimney' 'sweeping' 'gear',
-        before DeadEndBefore,
+        before [;
+            Go:
+                if( noun == e_obj or d_obj && self.d_to ~= nothing )
+                     print "You clamber out onto a rickety ladder which runs right down the east wall of the 
+                        Hall, and nervously descend...^";
+                rfalse;
+        ],
         n_to East_Annexe,
         s_to secret_door,
         e_to nothing,
         d_to nothing,
         description "The winding attic comes to a dead end here, and particularly dirty it is too, what with soot everywhere from the broken old chimney sweeping gear.",
   has   ;
+
+! this is not in the original, which gives the compass objects names 'wall'. I'm just going to add it for simplicity
+Object  -> south_wall2 "south wall"
+        with name 'south' 'wall',
+        before [;
+            Knock: "The south wall rings curiously hollow.";
+            Push:
+                if( secret_door hasnt concealed ) rfalse;
+                give secret_door ~concealed;
+                move secret_door to Dead_End;
+                Achieved(SCORE_SECRETDOOR);
+                "A secret door springs open!";
+        ],
+        has scenery;
 
 Object  -> rucksack "canvas rucksack"     
   with  name 'canvas' 'rucksack' 'sack',
@@ -1410,7 +1460,7 @@ Object  secret_door "secret door"
   with  name 'secret' 'door',
         door_to Alisons_Writing_Room,
         when_closed "The secret door is closed.",
-        door_dir ne_to,
+        door_dir s_to,
         when_open "A secret door stands open in the south wall!",
   has   concealed door open openable static;
 
@@ -1660,7 +1710,6 @@ Object  -> ancient_prayer_book "ancient prayer book"
         initial "The dust and grime on the floor almost obscures an ancient prayer book.",
         description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
         article "an",
-        parse_name ConsultableParsename,
         devil_hint "The really good research was in his earlier years.",
   has   consultable;
 
@@ -1841,8 +1890,8 @@ HRoom   Old_Winery "Old Winery"
         daemon OldWineryDaemon,
   has   ;
 
-Object  -> demijohn "labelXXXled glass demijohn" 
-  with  name 'demijohn' 'glass' 'bottle' 'labelXXX',
+Object  -> demijohn "labelled glass demijohn" 
+  with  name 'demijohn' 'glass' 'bottle' 'label',
         before [;
             Open:
                 if( old_gardeners__gloves hasnt worn )
@@ -1853,7 +1902,7 @@ Object  -> demijohn "labelXXXled glass demijohn"
                 "The demijohn is made of something like industrial-grade chemistry glass. You kick it and hurt your 
                  foot.";
         ],
-        description "Faded ink on the labelXXX reads: Elderberry '63.",
+        description "Faded ink on the label reads: Elderberry '63.",
   has   container openable static transparent;
 
 Object  -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"       

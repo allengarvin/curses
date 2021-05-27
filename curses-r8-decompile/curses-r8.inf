@@ -2332,8 +2332,8 @@ Global projector_on;
 Global multiflag;
 Global notheld_mode;
 Global onotheld_mode;
-Global global53;
-Global global54;
+Global phrase_len;
+Global num_words;
 Global global55;
 Global global56;
 Global global57;
@@ -2557,6 +2557,26 @@ Array verb_routine_array -->
     0
     0
     0
+;
+Array unknown_array -->	
+    12457 238
+    17063 239
+    14851 240
+    16804 241
+    14480 242
+    16636 243
+    15187 244
+    12625 245
+    16685 246
+    13612 247
+    15145 248
+    14501 249
+    15124 250
+    14445 251
+    13997 252
+    14508 253
+    16846 254
+    15173 255
 ;
 
 
@@ -8770,7 +8790,7 @@ Array verb_routine_array -->
 ];
 
 
-[ TricliniumBefore local1 ;	
+[ TricliniumBefore o ;	
     if (action == ##Enter && noun == kitchen_well) {
         ! no code
     } else {
@@ -9445,7 +9465,7 @@ Array verb_routine_array -->
         new_line;
         rtrue;
     }
-    n = TryNumber(1[?]);
+    n = TryNumber(1);
     new_line;
     if (n == 0) {
         print "There is no question zero.^";
@@ -9558,13 +9578,13 @@ Array verb_routine_array -->
     Keyboard(buffer,parse);	! not popped
     @pop;
   .labelXXX;
-    global54 = parse->1;
+    num_words = parse->1;
     etype_local = STUCK_PE;
     global73 = 1[?];
     actor = player;
   .labelXXX;
-    global53 = global73;
-    verb_word = routine94264();
+    phrase_len = global73;
+    verb_word = Unknown13();
     if (verb_word == 'g//p') {
         verb_word = 'again//p';
     }
@@ -9576,8 +9596,8 @@ Array verb_routine_array -->
     } else {
         i = verb_word->4 & 1;
         if (i == 0) {
-            global53 = global73;
-            l = routine92778(1[?],0,0);
+            phrase_len = global73;
+            l = Unknown5(1[?],0,0);
             if (l == 1000[?]) {
                 jump labelXXX;
             }
@@ -9591,9 +9611,9 @@ Array verb_routine_array -->
                 j = 2[?];
                 --j;
               .labelXXX;
-                if (j < global54) {
+                if (j < num_words) {
                     ++j;
-                    i = routine94264();
+                    i = Unknown13();
                     if (i == 17133['xcommand//p'?]) {
                         jump labelXXX;
                     }
@@ -9603,14 +9623,14 @@ Array verb_routine_array -->
             etype_local = VERB_PE;
             jump labelXXX;
           .labelXXX;
-            j = global53 - 1;
+            j = phrase_len - 1;
             token = 6[ne_obj?];
             if (j == 1[?]) {
                 print "You can't begin with a comma.^";
                 jump labelXXX;
             }
-            global53 = 1[?];
-            l = routine92778(player,location,token);
+            phrase_len = 1;
+            l = Unknown5(player,location,token);
             if (l == 1000[?]) {
                 jump labelXXX;
             }
@@ -9627,7 +9647,7 @@ Array verb_routine_array -->
                 print ".^";
                 jump labelXXX;
             }
-            if (global53 ~= j) {
+            if (phrase_len ~= j) {
                 print "To talk to someone, try ~someone, hello~ or some such.^";
                 jump labelXXX;
             }
@@ -9644,7 +9664,7 @@ Array verb_routine_array -->
         if (line < num_lines) {
             ++line;
             global74 = 0;
-            global53 = global73 + 1;
+            phrase_len = global73 + 1;
             line_address = syntax + (1 + line * 8);
             global63 = 0;
             j = 0;
@@ -9658,7 +9678,7 @@ Array verb_routine_array -->
                 token = line_address->global61;
                 if (token > 7) {
                     global59-->global61 = 1000 + token;
-                    if (global53 > global54) {
+                    if (phrase_len > num_words) {
                         if (global63 == 0 && j < line_address->0) {
                             global63 = global61;
                             global64 = token;
@@ -9667,12 +9687,12 @@ Array verb_routine_array -->
                             jump labelXXX;
                         }
                     }
-                    if (global53 <= global54 && token ~= routine94226(parse)) {
+                    if (phrase_len <= num_words && token ~= Unknown12(parse)) {
                         jump labelXXX;
                     }
                 } else {
                     if (j == line_address->0) {
-                        if (global53 < global54 + 1) {
+                        if (phrase_len < num_words + 1) {
                             m = 0;
                             --m;
                           .labelXXX;
@@ -9686,7 +9706,7 @@ Array verb_routine_array -->
                             jump labelXXX;
                         }
                         if (global57 == 1[?]) {
-                            global53 = local14;
+                            phrase_len = local14;
                             token = local15;
                             jump labelXXX;
                         }
@@ -9721,8 +9741,8 @@ Array verb_routine_array -->
                     global55 = 0;
                     local13 = 0;
                   .labelXXX;
-                    w = routine94264();
-                    --global53;
+                    w = Unknown13();
+                    --phrase_len;
                     if (w == 'it//p' && global4 == 0) {
                         etype_local = VAGUE_PE;
                         jump labelXXX;
@@ -9733,20 +9753,20 @@ Array verb_routine_array -->
                     }
                     global72 = 0;
                     if (w == 'the//p') {
-                        ++global53;
+                        ++phrase_len;
                         jump labelXXX;
                     }
                     if (w == 'a//p') {
-                        ++global53;
+                        ++phrase_len;
                         global72 = 1[?];
                     }
                     if (w == 'an//p') {
-                        ++global53;
+                        ++phrase_len;
                         global72 = 1[?];
                     }
                     if (token == 7[nw_obj?]) {
-                        noun_number = TryNumber(global53);
-                        noun_word = routine94264();
+                        noun_number = TryNumber(phrase_len);
+                        noun_word = Unknown13();
                         results->(j + 2) = 255[carbolic_soap?];
                         j = j + 1;
                         global59-->global61 = 255[carbolic_soap?];
@@ -9782,48 +9802,48 @@ Array verb_routine_array -->
                             }
                             if (global57 == 2[?]) {
                                 if (token == 5[w_obj?]) {
-                                    routine92554(results->3);	! not popped
+                                    Unknown3(results->3);	! not popped
                                     @pop;
                                 }
                                 if (token == 4[e_obj?]) {
-                                    routine92554(actor);	! not popped
+                                    Unknown3(actor);	! not popped
                                     @pop;
                                     w = parent(results->3);
                                     if (w == actor) {
-                                        routine92468(results->3);	! not popped
+                                        Unknown2(results->3);	! not popped
                                         @pop;
                                     }
                                 }
                                 if (token == 2[?]) {
                                     if (location == thedark) {
-                                        routine92554(location);	! not popped
+                                        Unknown3(location);	! not popped
                                         @pop;
                                     } else {
-                                        routine92554(parent(player));	! not popped
+                                        Unknown3(parent(player));	! not popped
                                         @pop;
                                     }
                                 }
                                 if (token == 3[s_obj?]) {
-                                    routine92554(actor);	! not popped
+                                    Unknown3(actor);	! not popped
                                     @pop;
                                 }
                                 if (global56 ~= 0) {
-                                    routine92420(global56);	! not popped
+                                    Unknown1(global56);	! not popped
                                     @pop;
                                 }
                             }
                             if (global57 == 1[?]) {
-                                local14 = global53;
+                                local14 = phrase_len;
                                 local15 = token;
-                                routine92554(location);	! not popped
+                                Unknown3(location);	! not popped
                                 @pop;
                             }
-                            ++global53;
+                            ++phrase_len;
                             jump labelXXX;
                         }
-                        oops_from = global53;
+                        oops_from = phrase_len;
                         if (token ~= 1[?]) {
-                            l = routine92778(location,actor,token);
+                            l = Unknown5(location,actor,token);
                             if (l == 1000[?]) {
                                 jump labelXXX;
                             }
@@ -9845,7 +9865,7 @@ Array verb_routine_array -->
                                 @pop;
                             }
                             if (local13 == 2[?]) {
-                                m = routine92468(l);
+                                m = Unknown2(l);
                                 if (global57 ~= 1[?] && m ~= 0) {
                                     etype_local = m;
                                     jump labelXXX;
@@ -9853,7 +9873,7 @@ Array verb_routine_array -->
                             }
                         }
                         if (token == 1[?]) {
-                            l = routine92778(actor,location,token);
+                            l = Unknown5(actor,location,token);
                             if (l == 1000[?]) {
                                 jump labelXXX;
                             }
@@ -9876,8 +9896,8 @@ Array verb_routine_array -->
                         }
                     }
                   .labelXXX;
-                    w = routine94264();
-                    if (0 ~= routine94110(l,w)) {
+                    w = Unknown13();
+                    if (0 ~= ParseName(l,w)) {
                         jump labelXXX;
                     }
                     if (w == 'xcommand//p') {
@@ -9903,7 +9923,7 @@ Array verb_routine_array -->
                         }
                         jump labelXXX;
                     }
-                    global53 = global53 - 1;
+                    phrase_len = phrase_len - 1;
                   .labelXXX;
                     if (global57 == 2[?]) {
                         jump labelXXX;
@@ -9923,8 +9943,8 @@ Array verb_routine_array -->
   .labelXXX;
     if (actor ~= player) {
         noun_number = TryNumber(global73);
-        global53 = global73;
-        noun_word = routine94264();
+        phrase_len = global73;
+        noun_word = Unknown13();
         action = ##Answer;
         noun = compass;
         second = actor;
@@ -9984,17 +10004,17 @@ Array verb_routine_array -->
     }
     jump labelXXX;
   .labelXXX;
-    w = routine94264();
+    w = Unknown13();
     if (w == 'the//p') {
         jump labelXXX;
     }
     if (w == 'rods//p') {
-        routine92420(18[antique_jewellery_box?]);	! not popped
+        Unknown1(18[antique_jewellery_box?]);	! not popped
         @pop;
         jump labelXXX;
     }
     if (w == 'cards//p') {
-        routine92420(27[servants_bed?]);	! not popped
+        Unknown1(27[servants_bed?]);	! not popped
         @pop;
         jump labelXXX;
     }
@@ -10005,12 +10025,12 @@ Array verb_routine_array -->
         local13 = 2[?];
         jump labelXXX;
     }
-    global53 = global53 - 1;
+    phrase_len = phrase_len - 1;
     jump labelXXX;
     i = 1[?];
     --i;
   .labelXXX;
-    if (i < global54) {
+    if (i < num_words) {
         ++i;
         j = parse-->(2 * i - 1);
         if (j == 0) {
@@ -10031,9 +10051,9 @@ Array verb_routine_array -->
     if (var1 hasnt visited) {
         ! no code
     } else {
-        global53 = global53 - 1;
-        var2 = routine94264();
-        if (0 ~= routine94110(var1,var2)) {
+        phrase_len = phrase_len - 1;
+        var2 = Unknown13();
+        if (0 ~= ParseName(var1,var2)) {
             var3 = 12[thedark?];
             return var3;
         }
@@ -10064,7 +10084,7 @@ Array verb_routine_array -->
     rtrue;
 ];
 
-[ routine92420 var1 var2 var3 var4 ;	
+[ Unknown1 var1 var2 var3 var4 ;	
   .labelXXX;
     var2 = multiple_object->0;
     var3 = 1[?];
@@ -10074,7 +10094,7 @@ Array verb_routine_array -->
         ++var3;
         var4 = multiple_object->var3;
         if (var4 hasnt var1) {
-            routine92468(var4);	! not popped
+            Unknown2(var4);	! not popped
             @pop;
             jump labelXXX;
         }
@@ -10083,7 +10103,7 @@ Array verb_routine_array -->
     rtrue;
 ];
 
-[ routine92468 var1 var2 var3 var4 var5 ;	
+[ Unknown2 var1 var2 var3 var4 var5 ;	
     var2 = multiple_object->0;
     var3 = 1[?];
     --var3;
@@ -10110,7 +10130,7 @@ Array verb_routine_array -->
     return var5;
 ];
 
-[ routine92554 var1 var2 ;	
+[ Unknown3 var1 var2 ;	
     global55 = 1[?];
     multiple_object->0 = 0;
     var1 = child(var1);
@@ -10126,7 +10146,7 @@ Array verb_routine_array -->
     rtrue;
 ];
 
-[ routine92602 var1 var2 var3 var4 var5 var6 var7 ;	
+[ Unknown4 var1 var2 var3 var4 var5 var6 var7 ;	
     var3 = global69 - 1;
     var4 = 0;
     var5 = global68->0;
@@ -10180,27 +10200,27 @@ Array verb_routine_array -->
     rfalse;
 ];
 
-[ routine92778 var1 var2 var3 var4 var5 var6 var7 var8 ;	
+[ Unknown5 var1 var2 var3 var4 var5 var6 var7 var8 ;	
     global70 = 0;
     global69 = 0;
-    global71 = global53;
-    routine93940(var1);	! not popped
+    global71 = phrase_len;
+    Unknown9(var1);	! not popped
     @pop;
-    routine93940(var2);	! not popped
+    Unknown9(var2);	! not popped
     @pop;
-    global53 = global71 + global70;
+    phrase_len = global71 + global70;
     if (global69 == 0) {
-        ++global53;
+        ++phrase_len;
         rfalse;
     }
-    if (global71 <= global54) {
+    if (global71 <= num_words) {
         var4 = global68->0;
         if (global69 == 1[?]) {
             return var4;
         }
     }
     if (global69 > 1) {
-        var4 = routine92602(var3);
+        var4 = Unknown4(var3);
     }
     if (var4 ~= 0) {
         if (global63 == 0) {
@@ -10213,7 +10233,7 @@ Array verb_routine_array -->
         print ")^";
         return var4;
     }
-    if (global71 > global54) {
+    if (global71 > num_words) {
         ! no code
     } else {
         print "Which do you mean, ";
@@ -10263,7 +10283,7 @@ Array verb_routine_array -->
       .labelXXX;
         if (var6 > global71) {
             var4 = var6 - var8;
-            routine93860(var6,parse,var4);	! not popped
+            Unknown7(var6,parse,var4);	! not popped
             @pop;
             --var6;
             jump labelXXX;
@@ -10274,7 +10294,7 @@ Array verb_routine_array -->
         if (var6 < var8) {
             ++var6;
             var4 = global71 + (var6 - 1);
-            routine93860(var4,global12,var6);	! not popped
+            Unknown7(var4,global12,var6);	! not popped
             @pop;
             jump labelXXX;
         }
@@ -10309,7 +10329,7 @@ Array verb_routine_array -->
         if (var6 < var8) {
             ++var6;
             var4 = global71 + (var6 - 1);
-            routine93860(var4,global12,var6);	! not popped
+            Unknown7(var4,global12,var6);	! not popped
             @pop;
             jump labelXXX;
         }
@@ -10321,12 +10341,12 @@ Array verb_routine_array -->
         if (var6 < var8) {
             ++var6;
             var4 = global71 + var6;
-            routine93860(var4,global12,var6);	! not popped
+            Unknown7(var4,global12,var6);	! not popped
             @pop;
             jump labelXXX;
         }
-        global12-->1 = routine93792(global64);
-        routine93860(global71,global12,1[?]);	! not popped
+        global12-->1 = DebugAdj(global64);
+        Unknown7(global71,global12,1[?]);	! not popped
         @pop;
         ++var8;
     }
@@ -10397,7 +10417,7 @@ Array verb_routine_array -->
             }
             if (w >= 1000) {
                 w = w - 1000;
-                print (address) routine93792(w);
+                print (address) DebugAdj(w);
             }
         }
         var6 = 1[?];
@@ -10406,24 +10426,24 @@ Array verb_routine_array -->
     rtrue;
 ];
 
-[ routine93792 var1 var2 var3 ;	
-    var3 = 12371[?];
+[ DebugAdj var1 var2 tbl ;	
+    tbl = unknown_array;
   .labelXXX;
     if (1[?] == 1[?]) {
-        var2 = var3-->1;
+        var2 = tbl-->1;
         if (var2 == var1) {
-            var3 = var3-->0;
-            return var3;
+            tbl = tbl-->0;
+            return tbl;
         }
-        var3 = var3 + 4;
+        tbl = tbl + 4;
         jump labelXXX;
     }
-    var3 = 12371[?];
+    tbl = unknown_array;
     print "<Adjective not found>";
-    return var3;
+    return tbl;
 ];
 
-[ routine93860 var1 var2 var3 var4 var5 ;	
+[ Unknown7 var1 var2 var3 var4 var5 ;	
     var4 = var1 * 2 - 1;
     var5 = var3 * 2 - 1;
     parse-->var4 = var2-->var5;
@@ -10433,7 +10453,7 @@ Array verb_routine_array -->
     rtrue;
 ];
 
-[ routine93910 var1 var2 ;	
+[ Unknown8 var1 var2 ;	
     if (var2 < global70) {
         rtrue;
     }
@@ -10446,34 +10466,34 @@ Array verb_routine_array -->
     rtrue;
 ];
 
-[ routine93940 var1 var2 var3 var4 var5 var6 var7 ;	
+[ Unknown9 var1 var2 var3 var4 var5 var6 var7 ;	
     if (var1 == location) {
-        var2 = routine93940(1[?]);
+        var2 = Unknown9(1[?]);
     }
     var1 = child(var1);
   .labelXXX;
     if (var1 ~= 0) {
-        if (global71 > global54) {
-            routine93910(var1,1[?]);	! not popped
+        if (global71 > num_words) {
+            Unknown8(var1,1[?]);	! not popped
             @pop;
         } else {
-            global53 = global71;
-            var2 = routine94164();
+            phrase_len = global71;
+            var2 = PronounFunc();
             if (var2 == 1[?] && global4 == var1) {
-                routine93910(global4,1[?]);	! not popped
+                Unknown8(global4,1[?]);	! not popped
                 @pop;
             }
-            if (0 == routine94110(var1,var2)) {
+            if (0 == ParseName(var1,var2)) {
                 ! no code
             } else {
                 var7 = 0;
               .labelXXX;
                 ++var7;
-                var5 = routine94264();
-                if (0 ~= routine94110(var1,var5)) {
+                var5 = Unknown13();
+                if (0 ~= ParseName(var1,var5)) {
                     jump labelXXX;
                 }
-                routine93910(var1,var7);	! not popped
+                Unknown8(var1,var7);	! not popped
                 @pop;
             }
         }
@@ -10485,7 +10505,7 @@ Array verb_routine_array -->
             }
             var4 = child(var1);
             if (var4 ~= 0) {
-                var4 = routine93940(var1);
+                var4 = Unknown9(var1);
             }
         }
       .labelXXX;
@@ -10495,16 +10515,16 @@ Array verb_routine_array -->
     rfalse;
 ];
 
-[ routine94110 var1 var2 var3 var4 var5 var6 ;	
-    var4 = var1.&name;
-    var5 = get_prop_len(var4) / 2 - 1;
-    var6 = 0;
-    --var6;
+[ ParseName o w1 w2 addr len i ;	
+    addr = o.&name;
+    len = get_prop_len(addr) / 2 - 1;
+    i = 0;
+    --i;
   .labelXXX;
-    if (var6 < var5) {
-        ++var6;
-        var3 = var4-->var6;
-        if (var2 == var3) {
+    if (i < len) {
+        ++i;
+        w2 = addr-->i;
+        if (w1 == w2) {
             rtrue;
         }
         jump labelXXX;
@@ -10512,29 +10532,29 @@ Array verb_routine_array -->
     rfalse;
 ];
 
-[ routine94164 var1 var2 var3 ;	
-    var1 = 0;
-    var2 = routine94264();
-    if (var2 == 14529['it//p'?]) {
-        var3 = 1[?];
-        return var3;
+[ PronounFunc i j k ;	
+    i = 0;
+    j = Unknown13();
+    if (j == 'it//p') {
+        k = 1[?];
+        return k;
     }
-    if (var2 == 16615['them//p'?]) {
-        var3 = 1[?];
-        return var3;
+    if (j == 'them//p') {
+        k = 1[?];
+        return k;
     }
-    if (var2 == 0) {
+    if (j == 0) {
         rfalse;
     }
-    var3 = var2-->4;
-    if (var3 & 128 == 0) {
+    k = j-->4;
+    if (k & 128 == 0) {
         rfalse;
     }
-    return var2;
+    return j;
 ];
 
-[ routine94226 var1 var2 var3 ;	
-    var3 = routine94264();
+[ Unknown12 var1 var2 var3 ;	
+    var3 = Unknown13();
     if (var3 == 0) {
         rfalse;
     }
@@ -10545,16 +10565,16 @@ Array verb_routine_array -->
     return var3->6;
 ];
 
-[ routine94264 var1 d var3 ;	
-    if (global53 > parse->1) {
-        global53 = global53 + 1;
+[ Unknown13 var1 d var3 ;	
+    if (phrase_len > parse->1) {
+        phrase_len = phrase_len + 1;
         rfalse;
     }
-    var1 = global53 * 2 - 1;
-    global53 = global53 + 1;
+    var1 = phrase_len * 2 - 1;
+    phrase_len = phrase_len + 1;
     d = parse-->var1;
     if (d == 0) {
-        var3 = global53 * 4 - 3;
+        var3 = phrase_len * 4 - 3;
         var1 = buffer->(parse->var3);
         if (var1 == 44[Disused_Observatory?]) {
             d = 'xcommand//p';
@@ -10564,7 +10584,7 @@ Array verb_routine_array -->
 ];
 
 [ DebugParse xlen i inext len ;	
-    len = global53 - 1;
+    len = phrase_len - 1;
     if (len > parse->1) {
         rfalse;
     }
@@ -10575,13 +10595,13 @@ Array verb_routine_array -->
     print "Word ", len, " ends with ";
   .labelXXX;
     xlen = buffer->inext;
-    if (xlen == 32[scratched_cupboard?]) {
+    if (xlen == 32) {
         ++inext;
         jump labelXXX;
     }
-    if (xlen == 44[Disused_Observatory?]) {
+    if (xlen == 44) {
         print "a comma^";
-        inext = 1[?];
+        inext = 1;
         return inext;
     }
     print "no comma^";
@@ -10589,7 +10609,7 @@ Array verb_routine_array -->
     return inext;
 ];
 
-[ TryNumber i j k c num len mul tot i n ;	
+[ TryNumber i j k c num len mul tot i2 n ;	
     j = i * 4 + 1;
     k = parse->j;
     num = k + buffer;
@@ -10616,29 +10636,29 @@ Array verb_routine_array -->
         ++c;
         n = num->c;
         if (n == 48) {
-            i = 0;
+            i2 = 0;
         } else if (n == 49) {
-            i = 1;
+            i2 = 1;
         } else if (n == 50) {
-            i = 2;
+            i2 = 2;
         } else if (n == 51) {
-            i = 3;
+            i2 = 3;
         } else if (n == 52) {
-            i = 4;
+            i2 = 4;
         } else if (n == 53) {
-            i = 5;
+            i2 = 5;
         } else if (n == 54) {
-            i = 6;
+            i2 = 6;
         } else if (n == 55) {
-            i = 7;
+            i2 = 7;
         } else if (n == 56) {
-            i = 8;
+            i2 = 8;
         } else if (n == 57) {
-            i = 9;
+            i2 = 9;
         } else {
             rfalse;
         }
-        tot = tot + mul * i;
+        tot = tot + mul * i2;
         mul = mul / 10;
         jump labelXXX;
     }
