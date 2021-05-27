@@ -4998,7 +4998,7 @@ Global HighRodWarn;
 Global HighRodBalance;
 Global LeftHand;
 Global SkullFit;
-Global bool_array_recently_set = 65535;
+Global quote_selection = 65535;
 Global one_time_try_bonus;
 Global croquet_var;
 Global yard_dir;
@@ -18915,7 +18915,7 @@ Array preactions_table --> IsDirection;
 [ set_flag_array i ;    
     if (extra_global_bool_array->i == 0) {
         extra_global_bool_array->i = 1;
-        bool_array_recently_set = i;
+        quote_selection = i;
     }
     rtrue;
 ];
@@ -24683,9 +24683,9 @@ Array preactions_table --> IsDirection;
     @set_window 0;
     0-->8 = 65533 & 0-->8;
     displaying_quote = false;
-    if (bool_array_recently_set ~= 65535) {
-        display_quote(bool_array_recently_set);
-        bool_array_recently_set = 65535;
+    if (quote_selection ~= 65535) {
+        display_quote(quote_selection);
+        quote_selection = 65535;
     }
     rtrue;
 ];
