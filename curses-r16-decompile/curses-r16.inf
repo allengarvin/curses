@@ -18526,33 +18526,33 @@ Array preactions_table --> IsDirection;
     return Bell_Tower;
 ];
 
-[ AngelDevilConsultTopic tbl w local3 local4 local5 local6 ;    
-    local3 = 0;
+[ AngelDevilConsultTopic tbl w ndx i len flag ; 
+    ndx = 0;
   .labelXXX;
     if (1[?] == 1[?]) {
-        local5 = 1[?];
-        local6 = 0;
-        if (tbl-->local3 == 65535[?]) {
+        len = 1;
+        flag = false;
+        if (tbl-->ndx == 65535) {
             rfalse;
         }
-        if (tbl-->local3 < 20 && tbl-->local3 >= 0) {
-            local5 = tbl-->local3;
-            ++local3;
+        if (tbl-->ndx < 20 && tbl-->ndx >= 0) {
+            len = tbl-->ndx;
+            ++ndx;
         }
-        local4 = 0;
+        i = 0;
       .labelXXX;
-        if (local4 < local5) {
-            if (w == tbl-->local3) {
-                local6 = 1[?];
+        if (i < len) {
+            if (w == tbl-->ndx) {
+                flag = true;
             }
-            ++local4;
-            ++local3;
+            ++i;
+            ++ndx;
             jump labelXXX;
         }
-        if (local6 == 1[?]) {
-            return tbl-->local3;
+        if (flag == true) {
+            return tbl-->ndx;
         }
-        ++local3;
+        ++ndx;
         jump labelXXX;
     }
     rtrue;
