@@ -10,7 +10,24 @@
 ];
 
 Object ghost_of_yourself "ghost of yourself"    
-  with  before YourGhostBefore,
+  with  before [;
+            Sleep: "In the dream you are not drowsy.";
+            Wake:
+                if( game_section == T_DREAMING )
+                    "You are unable to shake off the dream.";
+                else:
+                    "It doesn't seem to be that easy.";
+            Attack:
+                if( game_section == T_DREAMING )
+                    rfalse;
+                print "Ouch!  You wake up, smarting.^";
+                ChangePlayer(yourself);
+                <<Look>>;
+            Go, Take, Drop, Look, Inv, Wait: rfalse;
+            default: 
+                if( game_section == T_DREAMING ) "You seem unable to concentrate sufficiently.";
+                rfalse;
+        ],
         description "You are transparent like a ghost.",
         time_left 0,
         capacity 1,
@@ -144,7 +161,17 @@ Object Camp_Fire "Camp Fire"
   has   light;
 
 Object Near_Dolmen "Near Dolmen"        
-  with  after DolmenAfter,
+  with  after [;
+            Look:
+                if( heavy_iron_mascot in ghost_of_yourself ) {
+                    move heavy_iron_mascot to player;
+                    StartDaemon(heavy_iron_mascot);
+                    heavy_iron_mascot.number = 15;
+                    Achieved(SCORE_MASCOT);
+                    score = score - 50;
+                }
+                "^You awaken, shivering with dread.";
+        ],
         description "A standing stone, perhaps a glacial erratic, stands here and on top of it is a shining 
             blue stone, whose brightness almost blinds you. You feel irresistably drawn to it, and your hand
             reaches out...",
