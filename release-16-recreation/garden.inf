@@ -395,7 +395,11 @@ Object -> croquet_mallet "croquet mallet"
 
 Object -> gold_watch_on_a_chain "gold watch on a chain" 
   with  name 'gold' 'watch' 'on' 'chain',
-        before ChainBefore,
+        before [;
+            if( self hasnt moved )
+                "The watch is just within sight, but quite beyond reach.";
+            Swing, Wave: "You come dangerously close to hypnotising yourself.";
+        ],
         initial "Something golden hangs by a chain from a loose pane in the roof, but it's too high up to reach.",
         description "It is beautifully polished, and captivates the eye. You could stare for hours...",
         angel_hint "How easily are the weak mesmerised by baubles.",
@@ -412,7 +416,12 @@ GRoom  Behind_Summer_House "Behind Summer House"
 
 Object -> loose_board "loose board"     
   with  name 'loose' 'board',
-        before BoardBefore,
+        before [;
+            Open, Push, Pull, Turn:
+                if( irate_squirrel_friend in location )
+                    "The squirrel rears up and nips you on the wrist. You withdraw, hurt.";
+                rfalse;
+        ],
         n_to Summer_House,
         s_to "One board of the back wall is noticeably loose, making a good-sized crack.",
         w_to ne_obj,
@@ -421,14 +430,55 @@ Object -> loose_board "loose board"
 
 Object -> crack "crack" 
   with  name 'crack' 'gap' 'hole' 'summerhou' 'summer' 'house',
-        before CrackBefore,
-        after CrackAfter,
+        before [;
+            Search: "Through the crack you can see sunlight on the summer-house floorboards.";
+        ],
+        after [;
+            Receive:
+                if( noun == bunch_of_nuts ) {
+                    give loose_board open;
+                    move bunch_of_nuts to irate_squirrel_friend;
+                    move irate_squirrel_friend to Summer_House;
+                    GoNuts();
+                    Summer_House.n_to = Behind_Summer_House;
+                    "You throw the nuts through the loose board into the summer house, and the squirrel jumps up after them, battering through the board and opening up a hole in the wall.";
+                }
+                move noun to Summer_House;
+                "Thrown through the loose board into the summer house.";
+        ],
+
         description "Through the crack you can see the summer house.",
   has   container open scenery;
 
+[ GoNuts ;
+    irate_squirrel_friend.initial = "The squirrel sits here, watchfully pecking away at the nuts.";
+    rtrue;
+];
+
 Object -> irate_squirrel_friend "irate squirrel friend" 
   with  name 'irate' 'my' 'squirrel' 'friend',
-        life SquirrelLife,
+        life [;
+            Show:
+                if( noun == bunch_of_nuts ) "The squirrel finds them of consuming interest.";
+                rfalse;
+            Give:
+                if( noun has edible ) {
+                    remove noun;
+                    if( noun == bunch_of_nuts ) {
+                        GoNuts();
+                        "The squirrel is extremely pleased, and devours the nuts delightedly. You have an 
+                         uncomfortable feeling of having been suckered.";
+                    }
+                    print "Grateful for any food he can get, however unsuitable, the squirrel eagerly consumes ";
+                    if( noun == Ekmek_Special ) {
+                        print "the ";
+                    }
+                    print (the) noun;
+                    ". He does of course feel no obligation towards you at all as a result, so don't expect any 
+                     favours.";
+                }
+                rfalse;
+        ],
         initial nothing,
         description "Not at all shy when on his own territory.",
         article "your",
@@ -438,7 +488,14 @@ GRoom  Croquet_Lawn "Croquet Lawn"
   with  w_to Hedgery,
         nw_to nothing,
         initial CroquetLawnInitial,
-        description CroquetLawnDesc,
+        description [;
+            print "One of the most beautiful hedge-enclosed, tree-muffled lawns in England, and just out of sight 
+                of the house, this has been a jewel in the gardens for centuries. Since the twenties it has also
+                been a croquet lawn, of the regulation twenty-four yards square, laid out with a central coloured
+                peg and six peripheral hoops";
+            if( self.nw_to == nothing ) ".";
+            ". The hedge is broken slightly to the northwest.";
+        ],
         cant_go "The lawn is enclosed on all sides, but for a gap back west.",
         short CroquetLawnShort,
         section T_GARDEN,
@@ -446,29 +503,44 @@ GRoom  Croquet_Lawn "Croquet Lawn"
 
 Object -> peg_and_six_hoops "peg and six hoops" 
   with  name 'peg' 'hoop' 'hoops',
-        description "There are six arched hoops in a croquet set, arranged around a central peg. These ones have been safely anchored in place since the lawn was laid out in, oh, Midsummer 1923 if family lore is to be believed.",
+        description "There are six arched hoops in a croquet set, arranged around a central peg. These ones 
+            have been safely anchored in place since the lawn was laid out in, oh, Midsummer 1923 if family lore
+            is to be believed.",
   has   scenery;
 
 Object strongbox "strongbox"    
   with  name 'strong' 'box' 'strongbox',
         e_to iron_key,
-        description "A good strong strongbox, buried for two centuries and now unearthed; it bears a fine gothic iron lock, and a tasteless coat of arms (a wild boar rampant).",
+        description "A good strong strongbox, buried for two centuries and now unearthed; it bears a fine gothic 
+            iron lock, and a tasteless coat of arms (a wild boar rampant).",
         angel_hint "You might have read about this. One of your ancestors is the key, perhaps?",
   has   container lockable locked openable;
 
 Object -> golden_astrolabe "golden astrolabe"   
   with  name 'golden' 'gold' 'astrolabe' 'eyepiece',
-        before AstrolabeBefore,
-        after AstrolabeAfter,
+        before [;
+            Remove: if( noun == second ) "It is in one piece.";
+            Search:
+                if( parent(golden_astrolabe) ~= Palace_Balustrade || golden_astrolabe has moved ) 
+                    "You catch a fascinating, but all too brief, glimpse of something grey, angular and tall... 
+                     which slips out of view as your unsteady hand shakes.";
+                print "Through the golden eyepiece you see, not the moon (for the astrolabe is tilted too low), 
+                    but a curious, sunlit, grey triangle.^^Fascinated, you strain closer to the vision... closer...^";
+                PlayerTo(Out_on_the_Spire);
+                rtrue;
+        ],
+        after [; Take: set_flag_array(43); rfalse; ],
         initial nothing,
-        description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua Meldrewe's stolen hoard of gold. There is an eyepiece.",
+        description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua 
+            Meldrewe's stolen hoard of gold. There is an eyepiece.",
         angel_hint "A mighty fine instrument, though not much use hand-held.",
   has   scored;
 
 Object dug_hole "dug hole"      
   with  name 'hole' 'dug',
-        before DugHoleBefore,
-        description "The rich loam, the silver of earthworms, the dignity of toil... none of these pastoral consolations is yours as you scrabble in the dirt.",
+        before [; Take: "A surreal idea, somewhat reminiscent of the Beatles film ~Yellow Submarine~."; ],
+        description "The rich loam, the silver of earthworms, the dignity of toil... none of these pastoral 
+            consolations is yours as you scrabble in the dirt.",
         describe DugHoleDesc,
   has   container open static;
 

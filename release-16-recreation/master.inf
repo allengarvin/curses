@@ -40,7 +40,9 @@ Object Murky_Cave "Murky Cave"
   with  w_to Spur_of_Rock,
         ne_to Valley_Prospect,
         initial [; StartDaemon(self); ],
-        description "This is a murky hillside cave, whose mouth opens to the northeast, though a tight squeeze might lead a little way west. Outside is a clear starry night. There is no traffic noise, and the air smells fresh.",
+        description "This is a murky hillside cave, whose mouth opens to the northeast, though a tight squeeze might 
+            lead a little way west. Outside is a clear starry night. There is no traffic noise, and the air
+            smells fresh.",
         daemon [ cnt;
             if( game_section ~= T_ANCIENT_BRITAIN ) 
                 StopDaemon(self);
@@ -172,30 +174,55 @@ Object -> flaming_torch "flaming torch"
 Object -> historical_pamphlet "historical pamphlet"     
   with  name 'historical' 'pamphlet',
         sw_to n_obj,
-        description "It is a summary of the writings of a polemical monk called Gildas, and relates to events following the fall of the tyrant Vortigern at the turn of the fifth century A.D. After dark decades of pillage by Saxon mercenaries, Britain was reunited by Ambrosius Aurelianus and then defended at the Battle of Badon Hill, some time in the early years of the sixth century.^^This remarkable victory was of no religious significance, so Gildas does not dwell upon it. He tends only to mention bad kings and leaders, and then chiefly to insult them. (Talking about Gildas is an excellent way to annoy an Anglo-Saxon historian.)  Nobody even knows where Badon Hill is any more, or anything else about it, although some students of Welsh poetry believe Ambrosius was the source of the legend of King Arthur.",
+        description "It is a summary of the writings of a polemical monk called Gildas, and relates to events 
+            following the fall of the tyrant Vortigern at the turn of the fifth century A.D. After dark decades
+            of pillage by Saxon mercenaries, Britain was reunited by Ambrosius Aurelianus and then defended at the
+            Battle of Badon Hill, some time in the early years of the sixth century.^^This remarkable victory was
+            of no religious significance, so Gildas does not dwell upon it. He tends only to mention bad kings
+            and leaders, and then chiefly to insult them. (Talking about Gildas is an excellent way to annoy an
+            Anglo-Saxon historian.)  Nobody even knows where Badon Hill is any more, or anything else about it,
+            although some students of Welsh poetry believe Ambrosius was the source of the legend of King Arthur.",
         article "an",
   has   ;
 
 Object Spur_of_Rock "Spur of Rock"      
   with  e_to Murky_Cave,
         d_to Hanging_on_Rope,
-        description "An uncomfortable spur of rock on the hillside crags. The only natural access to this spot is a crevice in the hill to the east, but there is also a securely fastened rope hanging down into the darkness.",
+        description "An uncomfortable spur of rock on the hillside crags. The only natural access to this spot is a 
+            crevice in the hill to the east, but there is also a securely fastened rope hanging down into the 
+            darkness.",
         cant_go "The crags are too precipitous.",
         section T_ANCIENT_BRITAIN,
   has   light;
 
 Object -> hanging_rope "hanging rope"   
   with  name 'hanging' 'rope',
-        before RopeBefore,
+        before [;
+            Climb: << Go d_obj >>;
+        ],
   has   scenery;
 
 Object Hanging_on_Rope "Hanging on Rope"        
   with  name 'patrol' 'men',
-        before HangingOnRopeBefore,
-        after HangingOnRopeAfter,
+        before [;
+            Swing: if( noun ~= hemp_rope ) rfalse;
+            give hemp_rope general;
+            "You set the rope swinging back and forth. Very exhilarating!";
+        ],
+        after [;
+            Drop:
+                remove(noun);
+                print_ret (The) noun, " tumbles end over end into the valley below.";
+        ],
         u_to Spur_of_Rock,
-        d_to RopeDown,
-        description "You are hanging perilously on a hemp rope, suspended from an overhang of rock above, which drops down into the darkness of the valley. On the tracks below, patrols of men can be heard, and you feel instinctively that they are not friendly.",
+        d_to [;
+            print "You clamber down the rope, straight into a patrol of guards who capture you!^";
+            Capture();
+            rtrue;
+        ],
+        description "You are hanging perilously on a hemp rope, suspended from an overhang of rock above, which 
+            drops down into the darkness of the valley. On the tracks below, patrols of men can be heard, and you
+            feel instinctively that they are not friendly.",
         cant_go "Up and down are it, quite frankly.",
         section T_ANCIENT_BRITAIN,
   has   light;
@@ -206,8 +233,19 @@ Object -> hemp_rope "hemp rope"
 
 Object -> yellow_daisy "yellow daisy"   
   with  name 'yellow' 'daisy',
-        before DaisyBefore,
-        after DaisyAfter,
+        before [;
+            if( self has moved || hemp_rope has general ) rfalse;
+            "You stretch out your hand, but cannot quite reach the daisy, such is the size of the overhang.";
+        ],
+        after [;
+            Wear: "You tuck the daisy behind your ear, almost out of sight.";
+            Take:
+                if( self hasnt general ) {
+                    give self general;
+                    "Aided by the swinging of the rope, you pick the daisy.";
+                }
+                rfalse;
+        ],
         u_to DaisyUp,
         initial "A single yellow daisy grows from a little tuft of grass on the crags.",
   has   clothing scored;
@@ -215,7 +253,11 @@ Object -> yellow_daisy "yellow daisy"
 Object Valley_Prospect "Valley Prospect"        
   with  e_to Roman_Villa,
         sw_to Murky_Cave,
-        description "The geography is strangely familiar here. You are on a natural shelf on the hillside, overlooking the valley below. An all-but invisible cleft in the rock leads to a cave to the southwest, and the slope can safely be traversed to the east.^^It is a brightly moonlit night, cool as in late spring. There will be a sharp frost tomorrow. Down in the valley, a great cartwheel circle of camp fires illuminate some dark shapes, perhaps crude encampments. There is no other sign of civilisation.",
+        description "The geography is strangely familiar here. You are on a natural shelf on the hillside, 
+            overlooking the valley below. An all-but invisible cleft in the rock leads to a cave to the southwest,
+            and the slope can safely be traversed to the east.^^It is a brightly moonlit night, cool as in late
+            spring. There will be a sharp frost tomorrow. Down in the valley, a great cartwheel circle of camp
+            fires illuminate some dark shapes, perhaps crude encampments. There is no other sign of civilisation.",
         cant_go "The hillside is too steep.",
         section T_ANCIENT_BRITAIN,
   has   light;
@@ -225,35 +267,60 @@ Object Roman_Villa "Roman Villa"
         s_to Atrium_Cloister,
         e_to Villa_Stream,
         w_to Valley_Prospect,
-        description "You stand beside a Roman villa, whose columns cast shadows of an Empire in the moonlight. It is thirty years since the fall of the West, and Britain is cut off from the continent, where soon even the existence of the Anglis will become a myth. This villa has survived the pestilence and devastation of the civil war, and although it must be a couple of centuries old, it is still standing. From here you could cut across the hillside east to west, or slip in through a none-too-secure timber door.",
+        description "You stand beside a Roman villa, whose columns cast shadows of an Empire in the moonlight. 
+            It is thirty years since the fall of the West, and Britain is cut off from the continent, where soon even
+            the existence of the Anglis will become a myth. This villa has survived the pestilence and devastation
+            of the civil war, and although it must be a couple of centuries old, it is still standing. From here
+            you could cut across the hillside east to west, or slip in through a none-too-secure timber door.",
         section T_ANCIENT_BRITAIN,
   has   light;
 
 Object Villa_Stream "Stream"  
   with  name 'river' 'road' 'stream' 'roof',
-        before EndStreamBefore,
+        before [;
+            Swim: "Too shallow for comfort.";
+            Drink: "Deliciously clear and unpolluted.";
+        ],
         w_to Roman_Villa,
-        u_to "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.",
-        description "A stream runs past the villa and cascades down the hillside here, to join the river far below, near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from your back garden. A rough ladder of wood lashed together with leather rests against the villa at the lowest point of the tiled roof.",
+        u_to "You climb the ladder and are about to jump onto the roof when you catch sight of a man swaddled in 
+            animal furs, spreadeagled over the tiles, looking down into the central courtyard of the villa. He
+            has a nasty-looking sword and since he hasn't seen you, you quietly shin back down the ladder again.",
+        description "A stream runs past the villa and cascades down the hillside here, to join the river far below, 
+            near the Roman road which will, in 1500 years time, become the motorway which so spoils the view from
+            your back garden. A rough ladder of wood lashed together with leather rests against the villa at the
+            lowest point of the tiled roof.",
         section T_ANCIENT_BRITAIN,
   has   light;
 
 Object -> rough_ladder "rough ladder"   
   with  name 'rough' 'ladder',
-        before LadderBefore,
+        before [; Climb: << Go u_obj >>; ],
   has   scenery;
 
 Object Atrium_Cloister "Atrium Cloister"        
   with  name 'timber' 'door',
         n_to Roman_Villa,
         s_to Atrium,
-        description "The shadowy cloisters of the villa's atrium. You disturb a fieldmouse, and hear the scratching of tiny claws on stone. Moonlight filters in from the central courtyard to the south, and a rotten timber door leads back north.",
+        description "The shadowy cloisters of the villa's atrium. You disturb a fieldmouse, and hear the 
+            scratching of tiny claws on stone. Moonlight filters in from the central courtyard to the south,
+            and a rotten timber door leads back north.",
         section T_ANCIENT_BRITAIN,
   has   light;
 
 Object -> summoning_horn "summoning horn"       
   with  name 'horn' 'summoning' 'on' 'pole',
-        before HornBefore,
+        before [;
+            Blow:
+                print "You blow the horn, and it lets a great clarion call out to the hills. ";
+                if( CouncilCnt >= 7 ) {
+                    print "The guardsmen, all over the villa, find you very quickly.^";
+                    Capture();
+                } else {
+                    print "A call which is rapidly answered as...^";
+                    CouncilCnt = 7;
+                }
+                rtrue; 
+        ],
         initial "Resting against one pillar is a horn made from a tusk, mounted on a long spear-like pole.",
         rod_assoc rod_of_language,
   has   hidden_rod;
@@ -263,7 +330,10 @@ Object Atrium "Atrium"
         s_to Entrance,
         e_to Guard_Quarters,
         w_to Triclinium,
-        description "The central well of the villa, ringed with columns. On the north side is a cloister and stone-linteled doorways lead east, south and west. The central floor area is commanded by a beautiful Roman mosaic, quartered into individual scenes, around the edges of which are vents from the hypocaust. There is no roof over the courtyard, and the atrium is lit by moonlight.",
+        description "The central well of the villa, ringed with columns. On the north side is a cloister and 
+            stone-linteled doorways lead east, south and west. The central floor area is commanded by a beautiful Roman
+            mosaic, quartered into individual scenes, around the edges of which are vents from the hypocaust. There
+            is no roof over the courtyard, and the atrium is lit by moonlight.",
         section T_ANCIENT_BRITAIN,
   has   light;
 
@@ -276,7 +346,9 @@ Object -> ancient_mosaic "mosaic"
 Object Guard_Quarters "Guard Quarters"  
   with  name 'armour' 'spears' 'hides' 'blankets',
         w_to Atrium,
-        description "Whatever function this spacious room once had, now it is evidently home to military men, for it is filled with crude armour, spears, rough blankets which are little more than animal hides. Fortunately for you the guards are absent.",
+        description "Whatever function this spacious room once had, now it is evidently home to military men, 
+            for it is filled with crude armour, spears, rough blankets which are little more than animal
+            hides. Fortunately for you the guards are absent.",
         section T_ANCIENT_BRITAIN,
   has   light;
 
@@ -355,7 +427,9 @@ Object Inside_Well "Inside Well"
         ],
         e_to Hypocaust,
         u_to Triclinium,
-        description "You are clinging perilously to the walls of the deep and dangerous well. You can hardly see a thing, even with the aid of the torch, but curiously enough you feel warm air blowing across you from the east.",
+        description "You are clinging perilously to the walls of the deep and dangerous well. You can hardly see 
+            a thing, even with the aid of the torch, but curiously enough you feel warm air blowing across you
+            from the east.",
         cant_go "Too risky. There might not be anything that way, for all you know.",
         section T_ANCIENT_BRITAIN,
   has   ;
@@ -363,7 +437,11 @@ Object Inside_Well "Inside Well"
 Object Hypocaust "Hypocaust"    
   with  name 'fires' 'heating' 'log' 'logs',
         w_to Inside_Well,
-        description "This very low almost-cellar underneath the atrium is a tiny access space for log fires which are kept going to provide a form of central heating for the villa. They are lit and going away nicely, interestingly. It isn't very warm by twentieth-century standards, but you have to admit it works.^^A tiny amount of light filters in from the vents in the roof; just enough to see by. The only way in seems to be the way you came.",
+        description "This very low almost-cellar underneath the atrium is a tiny access space for log fires which are 
+            kept going to provide a form of central heating for the villa. They are lit and going away nicely,
+            interestingly. It isn't very warm by twentieth-century standards, but you have to admit it works.^^A
+            tiny amount of light filters in from the vents in the roof; just enough to see by. The only way in
+            seems to be the way you came.",
         cant_go "The log fires are hot, and anyway the only way out large enough for you is back west.",
         section T_ANCIENT_BRITAIN,
   has   light;
@@ -395,13 +473,19 @@ Object Entrance "Entrance"
                 CouncilCnt = 1;
         ],
         n_to Atrium,
-        description "A well-flagstoned forecourt at the villa entrance, surrounded by lesser wooden buildings. Some of these are in use as stables, and figures of men slip between them. You hide from sight, not wishing to draw attention to yourself. Up on the hill, where Meldrew Hall will one day be built, men on horseback can be seen circling the access track. For a deserted villa, this is certainly well-guarded.",
+        description "A well-flagstoned forecourt at the villa entrance, surrounded by lesser wooden buildings. 
+            Some of these are in use as stables, and figures of men slip between them. You hide from sight, not
+            wishing to draw attention to yourself. Up on the hill, where Meldrew Hall will one day be built, men
+            on horseback can be seen circling the access track. For a deserted villa, this is certainly well-guarded.",
         section T_ANCIENT_BRITAIN,
   has   light scored;
 
 Object Rough_Tent "Rough Tent"  
   with  name 'hides',
-        description "Well, here you are, imprisoned again. This time the cell is a tent of stitched animal hides, perhaps twenty feet in diameter, supported by a central pole. You have no idea where the entrance is, because you were blindfolded on the way in. There is at least a dim light from the camp-fires outside the tent.",
+        description "Well, here you are, imprisoned again. This time the cell is a tent of stitched animal hides, 
+            perhaps twenty feet in diameter, supported by a central pole. You have no idea where the entrance is,
+            because you were blindfolded on the way in. There is at least a dim light from the camp-fires outside
+            the tent.",
         cant_go "This tent doesn't seem to have an exit, either.",
         section T_ANCIENT_BRITAIN,
   has   light scored;
@@ -418,7 +502,9 @@ Object -> tent_pole "tent pole"
                     rfalse;
                 }
                 give self general;
-                print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
+                print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides 
+                    falling about your head. The hides are heavy and weigh you down, but you just manage to crawl
+                    out...^";
                 StartTimer(Encampment,10);
                 PlayerTo(Encampment);
                 rtrue;
@@ -446,7 +532,8 @@ Object unconscious_Saxon_spy "unconscious Saxon spy"
             Order, Answer, Ask, Give: "He's asleep.";
         ],
         initial "An unconscious Saxon spy is slumped on the ground. Occasionally faint noises can be heard from him.",
-        description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he has been lying down on his front outdoors for hours.",
+        description "He is dishevelled, wiry and unconscious. He is also covered with dust and leaves, as if he 
+            has been lying down on his front outdoors for hours.",
         time_left 0,
         time_out [;
             if( location ~= Rough_Tent ) 
@@ -496,13 +583,15 @@ Object -> dolmen "dolmen"
   with  name 'dolmen' 'coals' 'hot' 'rock',
         n_to Beneath_Dolmen,
         w_to e_obj,
-        initial "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be made out to the east, on the other side of an almost-extinguished campfire of hot coals.",
+        initial "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be 
+            made out to the east, on the other side of an almost-extinguished campfire of hot coals.",
   has   door open static;
 
 Object Beneath_Dolmen "Beneath Dolmen"  
   with  name 'dolmen',
         w_to Encampment,
-        description "You stand beside the eerie dolmen, surrounded by the terrible noises and incantations of a druidic rite.",
+        description "You stand beside the eerie dolmen, surrounded by the terrible noises and incantations of a 
+            druidic rite.",
         cant_go "Far, far too risky.",
         section T_ANCIENT_BRITAIN,
   has   light scored;
