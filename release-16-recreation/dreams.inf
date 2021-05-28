@@ -17,7 +17,10 @@ Object ghost_of_yourself "ghost of yourself"
   has   ;
 
 Object Premonition "Premonition"        
-  with  e_to PremonitionEast,
+  with  e_to [;
+            print "You pass uncomfortably straight through the hide wall.^";
+            return The_Generals_Tent;
+        ],
         sw_to Camp_Fire,
         description "It is a frosty, clear night, but there is a scent of camp-fires burning in the distance. You 
             are passing through the landscape as if a ghost, and all seems faintly unreal. To the east is one side
