@@ -412,7 +412,7 @@ Object -> kitchen_well "kitchen well"
         time_out [;
             if( player notin Triclinium ) rfalse;
             give kitchen_well general;
-            set_flag_array(9);
+            trigger_quotation(9);
             "^You hear a splash from far down in the depths of the well.";
         ],
   has   container door openable static;

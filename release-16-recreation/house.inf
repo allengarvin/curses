@@ -77,7 +77,7 @@ Object  electric_torch "electric torch"
             if( n == 0 ) {
                 print "^The torch finally dies out.^";
                 give electric_torch ~light;
-                set_flag_array(8);
+                trigger_quotation(8);
             }
         ],
         devil_hint "Pity you can't change the batteries.",
@@ -146,7 +146,7 @@ Object  -> teachests "teachests"
                 if( Meldrewes_History has concealed ) {
                     print ", and there's nothing there but that boring old book. You pick it up anyway, bored 
                         as you are";
-                    set_flag_array(33);
+                    trigger_quotation(33);
                     give Meldrewes_History ~concealed;
                     move Meldrewes_History to player;
                 }
@@ -164,7 +164,7 @@ Object  -> -> Meldrewes_History "History of the Meldrews (vol. II)"
             if( w == 'mad' or 'sir' or 'honourable' )
                 w = NextWord();
             if( w == 'me' or 'myself' or 'self' ) {
-                set_flag_array(48);
+                trigger_quotation(48);
                 "Perhaps you may one day earn a place in vol. III.";
             }
             if( w == 'peter' )
@@ -550,7 +550,7 @@ Object  postcard_of_the_Champs_Elysees "postcard of the Champs-Elysees"
             Examine:
                 if( location == Dark_Room && Dark_Room has light ) {
                     Achieved(SCORE_HAMBURG);
-                    set_flag_array(31);
+                    trigger_quotation(31);
                     "^No... wait. The eerie lamp-light is bringing out a message in invisible ink:^^   Hamburg 
                      1420^^   Ticket 7.-^^The seven is crossed through in continental fashion.";
                 }
@@ -1059,7 +1059,7 @@ Object  -> solid_glass_ball "solid glass ball"
                 "You polish the ball to a nice shine.";
             Examine, Search:
                 if( self hasnt general ) "The ball is scratched and misted up.";
-                set_flag_array(32);
+                trigger_quotation(32);
                 switch( random(12) ) {
                     1: "a reflection of your face.";
                     2: "a dizzying aerial view of Meldrew Hall gardens.";
@@ -1122,7 +1122,7 @@ Object  -> romantic_novel "romantic novel"
                 }
             Examine:
                 if( steel_wrench hasnt general ) "You can't read it while it's holding the pipe up.";
-                set_flag_array(35);
+                trigger_quotation(35);
                 rfalse;
         ],
         list_together n_obj,
@@ -1757,7 +1757,7 @@ HRoom   Alisons_Writing_Room "Alison's Writing Room"
         ],
         after [;
             Exit:
-                if( Melancholy_Dream has visited ) set_flag_array(44);
+                if( Melancholy_Dream has visited ) trigger_quotation(44);
                 rfalse;
         ],
         n_to Dead_End,
@@ -1837,7 +1837,7 @@ Object  -> long_vanity_mirror "long vanity mirror"
             Attack: "What, and earn seven years bad luck?";
             Rub:
                 give self general;
-                set_flag_array(21); 
+                trigger_quotation(21); 
                 "You polish up the mirror just a little more.";
             Examine, Search:
                 print "In the mirror is one of the most strikingly attractive people you have ever seen in all your 

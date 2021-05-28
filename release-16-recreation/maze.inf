@@ -290,7 +290,7 @@ GRoom   Maze "Maze"
                     location = Patio_in_Maze;
                     move garden_roller to Patio_in_Maze;
                 }
-                set_flag_array(39);
+                trigger_quotation(39);
                 << Look >>;
         ],
         after [; Look: MazeDescribe(); rtrue; ],

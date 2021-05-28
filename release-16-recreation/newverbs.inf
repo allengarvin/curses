@@ -1,8 +1,21 @@
 [ RepairSub; "You would achieve nothing by this."; ];
 
-Verb 'add' 'join' 'mend' 'repair'
-    * noun                                              -> Repair
-    * noun 'to' noun                                    -> Repair;
+[ WishSub ;
+    if( chicken_wishbone notin player ) {
+        "You make a wish.";
+    }
+    "The wishbone has already been pulled, and you have the part which lost.";
+];
+
+[ InscribeSub ; "Graffiti is uncouth."; ];
+
+[ InscribeOnSub ;
+    if( second has unidentifed_rod ) {
+        "The silver plaque is extremely strong, and resists all attempts to mark it.";
+    }
+    InscribeSub();
+    rtrue;
+];
 
 [ TurnWithSub ;
     if( second ~= steel_wrench )
@@ -165,6 +178,59 @@ Verb 'add' 'join' 'mend' 'repair'
 
 [ GambleSub ; "How, exactly?"; ];
 
+[ HypnotizeSub ;
+    if( second ~= nothing or gold_watch_on_a_chain ) {
+        "You don't seem to have a suitable focus.";
+    }
+    if( gold_watch_on_a_chain notin player ) {
+        "Unaided, you are unable to make any impression.";
+    }
+    print "You set the gold watch swinging, back and forth, spinning the light. ";
+    if( noun == Old_Evans ) {
+        give Old_Evans general;
+        "Old Evans, who is nine-tenths hypnotised most of the time anyway, succumbs easily.";
+    }
+    if( noun == player ) {
+        R_Process(##Sleep);
+        rtrue;
+    }
+    print "But ";
+    Defart(noun);
+    " seems wilful enough to resist hypnosis.";
+];
+
+[ AnointSub ; "You have no oil."; ];
+
+[ AnoppeSub ;
+    if (location ~= Lost_inside_the_Palace || Lost_inside_the_Palace hasnt general) 
+        "Nothing happens.";
+    SlaveFindsYou();
+    rtrue;
+];
+
+[ SailSub ;
+    if (player notin skiff) 
+        "You are not in any suitable means of transport.";
+    if (skiff in Warehouses_and_Port || skiff in Garden_Stream) {
+        if (skiff in Warehouses_and_Port) {
+            move skiff to Garden_Stream;
+            location = Garden_Stream;
+        } else {
+            move skiff to Warehouses_and_Port;
+            location = Warehouses_and_Port;
+        }
+        print "The skiff gathers wind from somewhere, which whistles past you until your eyes are blurred and watery. When you look around, you find that you are moored once again...^";
+        << Look >>;
+    }
+    if (skiff has general) 
+        "That seems to be happening whether you like it or not.";
+    give skiff general;
+    move skiff to Harbour_Mouth;
+    location = Harbour_Mouth;
+    print "You set sail, and a light breeze propels your skiff...^";
+    << Look >>;
+];
+
 Verb 'strike'
     * noun                                              -> Strike
     * noun 'with' held                                  -> Attack;
@@ -226,4 +292,32 @@ Verb 'ram'
 Verb 'bet' 'gamble' 'wager'
     *                                                   -> Gamble
     * 'with' noun                                       -> Gamble;
+
+Verb 'add' 'join' 'mend' 'repair'
+    * noun                                              -> Repair
+    * noun 'to' noun                                    -> Repair;
+
+Verb 'anoppe' 'eppona'
+    *                                                   -> Anoppe;
+
+Verb 'anoint' 'oil'
+    * noun                                              -> Anoint;
+
+Verb 'float' 'sail'
+    *                                                   -> Sail
+    * 'away'                                            -> Sail;
+
+Verb 'hypnotise' 'hypnotize'
+    * creature                                          -> Hypnotize
+    * creature 'with' noun                              -> Hypnotize;
+
+Verb 'etch' 'inscribe' 'scribe' 'write'
+    * special                                           -> Inscribe
+    * special 'on' noun                                 -> InscribeOn;
+
+Verb 'make' 'wish'
+    *                                                   -> Wish
+    * 'wish'                                            -> Wish
+    * 'a//' 'wish'                                      -> Wish
+    * 'for' special                                     -> Wish;
 

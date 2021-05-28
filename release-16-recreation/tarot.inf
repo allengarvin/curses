@@ -687,7 +687,7 @@ TRoom   Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"
         description "You stand in the triangular prow of the ship, which is graced by a carved and painted figurine and named the ~Lady Magdalena~. There is no sign of water, but the boat is rocked too often for it to be aground. And the glassy mist hangs ahead.",
         cant_go [;
             print "You can only go aft.^";
-            set_flag_array(11);
+            trigger_quotation(11);
             rtrue;
         ],
   has   light ship_flag;

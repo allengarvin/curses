@@ -390,7 +390,7 @@ Object  -> maze_layout "maze layout"
 GRoom  Bricked_Path "Bricked Path"      
   with  e_to Hedgery,
         sw_to White_Hallway,
-        initial [; set_flag_array(22); rfalse; ],
+        initial [; trigger_quotation(22); rfalse; ],
         description "You're strolling on a pleasant bricked path, passing from the outer rooms of Meldrew Hall to a track through the eastern side of the garden.",
         section T_GARDEN,
   has   light;
@@ -579,7 +579,7 @@ Object -> golden_astrolabe "golden astrolabe"
                 PlayerTo(Out_on_the_Spire);
                 rtrue;
         ],
-        after [; Take: set_flag_array(43); rfalse; ],
+        after [; Take: trigger_quotation(43); rfalse; ],
         initial nothing,
         description "A very old instrument for measuring altitudes, this is all that remains of Sir Joshua 
             Meldrewe's stolen hoard of gold. There is an eyepiece.",

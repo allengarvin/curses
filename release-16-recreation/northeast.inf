@@ -54,7 +54,7 @@ Object  -> bunch_of_nuts "bunch of nuts"
   with  name 'bunch' 'of' 'nuts',
         before [;
             ! Yes, unconditional "before"
-            set_flag_array(41);
+            trigger_quotation(41);
             if( corn_crake in Hollow ) "The corn crake won't let you near her nest.";
         ],
         initial "Entwined in the nest is a bunch of nuts.",
@@ -100,13 +100,20 @@ Object  -> -> Crescent_Moon "Crescent Moon"
 
 Object  -> -> Racing_Times "Racing Times"        
   with  name 'paper' 'newspaper' 'racing' 'times',
-        before RacingTimesBefore,
-        description "The front page story (~Lord Lucan's new acquisition Shergar comes out of retirement to win the Grand National~) is so boringly unsensational that you quickly lose interest. But Evans is eternally fascinated with minute details of the form of the horses, tomorrow's race meetings, current odds quoted by the bookmakers, and so on.",
+        before [;
+            Take, Remove: "Evans isn't giving up his paper.";
+        ],
+        description "The front page story (~Lord Lucan's new acquisition Shergar comes out of retirement to win 
+            the Grand National~) is so boringly unsensational that you quickly lose interest. But Evans is eternally
+            fascinated with minute details of the form of the horses, tomorrow's race meetings, current odds quoted
+            by the bookmakers, and so on.",
   has   ;
 
 Object  -> -> hat_band "hat band"        
   with  name 'hat' 'band',
-        before HatBandBefore,
+        before [;
+            Take, Remove: "Evans isn't giving up his hat-band.";
+        ],
         description "Racing aficionados consider it lucky to wear mascots in the bands of their hats.",
   has   ;
 
@@ -154,14 +161,31 @@ Object  Parish_Church_Room "Parish Church"
         e_to East_Side_Chapel,
         w_to West_Side_Chapel,
         u_to Bell_Tower,
-        d_to ParishChurchDown,
-        description "Before this was the Norman church of St Michael and All Angels, it was a Saxon one: this is an ancient site. A great space of stone, filled with dark wooden pews and woven mattings. Flowers left over from Sunday grace the lectern and altar. A narrow stair leads upward, and the village green lies to the south.^^Old side chapels lie east and west.",
+        d_to [;
+            if( Moonstone has open ) 
+                "To your horror your body partly thins to mist as you climb down through the threshold!  Alarmed, 
+                 you pull back. The underworld beneath the Moonstone, it seems, is not for mortals.";
+            "The Moonstone is huge and solid.";
+        ],
+        description "Before this was the Norman church of St Michael and All Angels, it was a Saxon one: this is 
+            an ancient site. A great space of stone, filled with dark wooden pews and woven mattings. Flowers left
+            over from Sunday grace the lectern and altar. A narrow stair leads upward, and the village green lies
+            to the south.^^Old side chapels lie east and west.",
         section T_NE_OF_HOME,
   has   light;
 
 Object  -> Moonstone "Moonstone" 
   with  name 'moonstone' 'moon' 'stone' 'door' 'flagstone' 'iron' 'rings' 'old',
-        before MoonstoneBefore,
+        before [;
+            Examine: trigger_quotation(47); rfalse;
+            Open, Push, Pull, Take:
+                trigger_quotation(19);
+                "Legend has it nothing holds down the stone, but if so it's far too heavy to budge.";
+            PointAt, Knock:
+                if( adamantine_knight in location ) 
+                    "The knight comes a little closer, cupping one ear to pantomime listening. He does seem 
+                     to have partial hearing.";
+        ],
         s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
         w_to thedark,
         initial "A passage slants down through a solid crystal doorway in the Moonstone.",

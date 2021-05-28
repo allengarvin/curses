@@ -116,7 +116,7 @@ Object Hellish_Place "Hellish Place"
             the bottom of the stairs. There are some disconcerting screams from further away, but nothing to worry
             about. Not in this life, anyway.",
         cant_go [;
-            set_flag_array(37);
+            trigger_quotation(37);
             "That direction is not for the living.";
         ],
         each_turn [;
@@ -179,7 +179,7 @@ Object Heavenly_Place "Heavenly Place"
             south across the sky to the beanstalk. There is some choral singing going on somewhere, but not loud
             enough for you to hear properly. Not in this life, anyway.",
         cant_go [;
-            set_flag_array(27);
+            trigger_quotation(27);
             "That direction is not for the living.";
         ],
         each_turn [;

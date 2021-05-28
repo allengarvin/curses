@@ -1,0 +1,1103 @@
+Object  Causeway "Causeway"      
+  with  before CausewayBefore,
+        n_to Island_of_Pharos,
+        se_to Crossroads,
+        initial CausewayInitial,
+        description "A warm winter's night in the ancient city of Alexandria, on the Heptastadion causeway across the harbour to the Island of Pharos (to north). The Mediterranean waters lap against the land bridge, and the whole city (southeast) is lit up with torches: it is a night of celebration.",
+        number 2,
+        daemon [ i;
+            if( game_section ~= T_ALEXANDRIA ) rfalse;
+            self.number = (selfobj.number + 1) % 12;
+            if( location ~= Crossroads or Outside_the_Royal_Museum or Stadium ) rfalse;
+
+            i = Causeway.number;
+            if( location == Outside_the_Royal_Museum ) {
+                --i;
+            }
+            if( location == Stadium ) {
+                i = i - 2;
+            }
+            if( i < 4 ) 
+                "^A lively, very noisy procession pushes through here, and some spectacular floats are approaching 
+                 fast.";
+            if( i == 4 ) 
+                "^The Morning Star leads an enormous procession for the festival of Dionysus, which throngs with 
+                 officials dressed as satyrs, actors and townswomen.";
+            if( i == 5 ) 
+                "^Behind the front are huge statues on mechanical floats, flanked by giant overflowing pitchers of 
+                 wine. And the animals are coming!";
+            if( i == 6 ) 
+                "^Yes, 2000 oxen dressed in gold, as many dogs, and the giraffes, the antelopes, the gnus, 
+                 parrots, elephants, wildebeest... ostriches pulling carts, a white bear...";
+            if( i == 7 ) 
+                "^Next the dancers, in a great masque of the life of Alexander the Great, his travels, conquests, 
+                 founding of the City, and so on. The delicate matter of how exactly his general Ptolemy took over
+                 is omitted, since Ptolemy's son Ptolemy II is now very much in charge.";
+            if( i == 8 ) 
+                "^The centrepiece of the procession: an enormous gold ribboned phallus, two hundred feet long 
+                 and with a giant star on the end. Inexplicably, you are the only person present who feels this
+                 to be in doubtful taste.";
+            if( i == 9 ) 
+                "^A procession of women follows next, each in the national dress of an allied city state, from 
+                 all over the Hellenistic world, North Africa to Sicily to Asia.";
+            if( i == 10 ) 
+                "^The procession ends as it began, with a great Evening Star, before falling into a shambolic 
+                 crowd of revellers, drunken and maudlin.";
+            if( i > 10 ) 
+                "^The procession looks like running on forever.";
+        ],
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  Island_of_Pharos "Island of Pharos"      
+  with  name 'pharos' 'lighthouse' 'moon' 'circle' 'octagon' 'square' 'defences' 'causeway' 'island' 'harbour',
+        before CausewayBefore,
+        s_to Causeway,
+        u_to "The Pharos is unclimbable, alas.",
+        d_to rusty_iron_grating,
+        description "The island of the Pharos: the lighthouse after which others are named, one of the Seven 
+            Wonders of the World, blazes into the sharp moonlit sky. It is 120 metres high, a circle on an octagon
+            on a square.^^A light wind blows across the coastal defences. On this spot, seventy-two scholars first
+            translated the Old Testament into Greek: shivering continuously if it was as chilly as this. A narrow
+            causeway runs south across the harbour.",
+        cant_go "The causeway is the only land route off the island.",
+        each_turn [;
+            if( random(5) ~= 1 ) 
+                "^Down below, a wave splashes against the sea front, briefly washing up under the grating.";
+        ],
+        daemon [;
+            if( random(5) ~= 1 ) 
+                rfalse;
+
+            if( smooth_round_stone has general ) {
+                Achieved(SCORE_WASH);
+                move smooth_round_stone to Warehouses_and_Port;
+                move rusty_iron_key to Warehouses_and_Port;
+                give smooth_round_stone ~general;
+                give smooth_round_stone ~moved;
+                give smooth_round_stone ~concealed;
+                give rusty_iron_key general;
+                rusty_iron_key.initial = "That iron key seems to have washed up here...";
+                smooth_round_stone.initial = "...and there's the strange stone again.";
+                if( location == Island_of_Pharos ) 
+                    "^A wave splashes up under the grating, throwing up the strange stone, which bounces back off 
+                     the grating and washes away down the passage out of sight.^^Well, you didn't think it was
+                     going to be that easy, did you?^";
+            } else 
+                StopDaemon(self);
+        ],
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  -> rusty_iron_grating "rusty iron grating"       
+  with  name 'rusty' 'iron' 'grating' 'seaweed' 'grate' 'rusted',
+        before [;
+            Receive:
+                if( noun == player ) 
+                    "The bars are far too close together.";
+                if( noun == smooth_round_stone ) {
+                    move noun to Island_of_Pharos;
+                    give smooth_round_stone general;
+                    give smooth_round_stone concealed;
+                    StartDaemon(Island_of_Pharos);
+                    rusty_iron_key.initial = "The iron key, out of reach below, is glued somehow to the strange stone.";
+                    "The strange stone drops through the grating, and falls on the top step. The iron key 
+                     mysteriously glues itself to the metal in the stone. It's still out of reach, though.";
+                }
+                if( noun == robot_mouse ) 
+                    "The robot mouse is just the wrong shape.";
+                move noun to Jetty;
+                print_ret (The) noun, " drops through the grating and bounces down in the darkness.";
+        ],
+        n_to Jetty,
+        s_to "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
+        e_to rusty_iron_key,
+        w_to thedark,
+        initial "A rusty seaweed-wreathed iron grating lies open here.",
+  has   door lockable locked openable static;
+
+Object  -> rusty_iron_key "rusty iron key"       
+  with  name 'rusty' 'iron' 'key',
+        before [;
+            Take:
+                if( rusty_iron_key hasnt general ) "Reach down the grating as you may, it remains just beyond reach.";
+                rfalse;
+        ],
+        sw_to compass,
+        initial "Interestingly, a key which looks as if it would fit the grating can be seen inside the passage beneath.",
+        angel_hint "Oh dear, surely it's gratingly obvious what this fits?",
+  has   ;
+
+Object  Jetty "Jetty"    
+  with  before CausewayBefore,
+        u_to Island_of_Pharos,
+        description "Down on a dark stone jetty, where the waters of the Alexandrian harbour splash insistently. 
+            Rough-hewn steps rise up the island through the grating.",
+        each_turn [;
+            if( random(4) ~= 1 ) rfalse;
+            if( player in skiff ) "^A wave suddenly rocks the skiff.";
+            "^A wave suddenly splashes against your feet, up to the knees, and washes up the steps toward the grating.";
+        ],
+        section T_ALEXANDRIA,
+  has   light scored cat_nofollow;
+
+Object  -> skiff "skiff" 
+  with  name 'skiff' 'boat' 'small',
+        initial "A skiff (a small sail-boat) is moored up here.",
+        description "You could easily sail away: where you would end is at the mercy of the tides and the night 
+            breeze, since you have no idea how to guide a rudder or trim a sail.",
+  has   container enterable light open static;
+
+Object  -> -> adamantine_heart "adamantine heart"        
+  with  name 'adamantine' 'heart' 'adamant',
+        initial "An adamantine heart lies in the skiff.",
+        description "A cardioid of the kind favoured by Valentine's cards rather than surgeons.^^It reminds you 
+            oddly of one of the symbolic pieces in Monopoly - the ship, the hat and so on.",
+        article "an",
+        angel_hint "There must be more to this marvellous figure somewhere.",
+  has   ;
+
+Object  Harbour_Mouth "Harbour Mouth"    
+  with  before [;
+            Exit, Swim:
+                "The sepulchral calm of the ocean overwhelms you, and you can only watch and sail.";
+        ],
+        description "As the skiff passes the jaws of the Royal Harbour, beneath the great Pharos light, you have a 
+            final view of the receding civilisation of Alexandria: ahead lies the vast, oil-calm Mediterranean
+            and moonlight on the waters.",
+        cant_go "The skiff is not under your control.",
+        each_turn [;
+            if( Harbour_Mouth has general ) {
+                print "^The sails billow, then slacken...^";
+                move skiff to Drifting;
+                location = Drifting;
+                << Look >>;
+            } else
+                give Harbour_Mouth general;
+        ],
+        section T_ALEXANDRIA,
+  has   light cat_nofollow;
+
+Object  Drifting "Drifting"      
+  with  name 'curious' 'fish' 'zephyr' 'sea',
+        before HarbourMouthBefore,
+        description "You drift in the wide, peaceful Lunar sea. Curious fish, their yellow-green eyes gleaming beneath the silver ripples, brush past your wake: the night zephyr is almost slack but still you drift. Minutes pass like hours in paradise.",
+        cant_go "You feel only a drug-like calm.",
+        each_turn [;
+            print "^Light brightens into day. The skiff drifts, drifts upon...^";
+            move skiff to Garden_Stream;
+            location = Garden_Stream;
+            << Look >>;
+        ],
+        section T_ALEXANDRIA,
+  has   light cat_nofollow;
+
+Object  Crossroads "Crossroads"  
+  with  name 'procession' 'tower',
+        before [;
+            Go:
+                if( noun == ne_obj && cloak_of_many_colours has worn ) {
+                    print "The procession happily accommodates another crazily-dressed loon.^";
+                    rfalse;
+                }
+                if( noun == nw_obj or sw_obj or se_obj ) {
+                    rfalse;
+                }
+                "The enormous procession, which throngs the great streets of Alexandria, is impossible to push 
+                 your way through. Better just enjoy the spectacle.";
+        ],
+        ne_to Outside_the_Royal_Museum,
+        se_to A_Tower,
+        nw_to Causeway,
+        sw_to Necropolis,
+        description "The great crossroads at the heart of chlamys-shaped Alexandria, greatest city of the civilised world. The northwest-southeast road runs from the causeway to the Tower: the main road runs southwest from the Necropolis gate, northeast to the great public buildings of the city.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  Necropolis "Necropolis"  
+  with  s_to XIIth_Dynasty_Pyramid,
+        ne_to Crossroads,
+        d_to nothing,
+        description "A spacious, sombre, moonlit and magnificent valley of tombs, some brand new, just outside the walls of Alexandria (to the northeast). Already it is ancient. Most of the little termite-hill style pyramids have been invaded time after time: indeed, one pyramid's entrance gapes open to the south.",
+        cant_go "This is no place to wander after dark.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  -> birds_of_prey "birds of prey" 
+  with  name 'birds' 'of' 'prey',
+        initial "Birds of prey circle high in the night sky, their talons glinting in the moonlight.",
+        article "some",
+  has   static;
+
+Object  unexciting_tombstone "unexciting tombstone"      
+  with  name 'tomb' 'tombstone' 'stone' 'unexcitin' 'face' 'socket' 'steps' 'mouth',
+        before [;
+            Receive:
+                if( noun ~= gleaming_amber_gem ) "Doesn't seem to fit.";
+                if( unexciting_tombstone has open ) "What?";
+                unexciting_tombstone.description = "An amber gem gleams in the mouth of its face.";
+                give unexciting_tombstone open;
+                trigger_quotation(25);
+                move gleaming_amber_gem to unexciting_tombstone;
+                "The amber fits perfectly into the mouth of the stone face, and there is a heaving from beneath 
+                 your feet... you topple over backward, flailing wildly. When you get up you can see a short flight
+                 of steps leading down. You have opened the tomb!";
+        ],
+        n_to The_Height_of_Fashion,
+        s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
+        w_to thedark,
+        initial "You stand near the tombstone, which has become rather more interesting now that a flight of steps downward has appeared.",
+        description "It bears just one word of epigram: ~GALITA~. Below that is a curious face, with an open empty socket of a mouth.",
+  has   door static;
+
+Object  cloak_of_many_colours "cloak of many colours"    
+  with  name 'of' 'many' 'colours' 'cloak' 'coat' 'chlamys',
+        before CloakBefore,
+        initial "A cloak of many colours lies folded on it.",
+        description "A fine cloak, grey-lined, sapphire-encrusted, rippled across with rainbow fabrics from the trade routes of the world.",
+        angel_hint "Are you sure it isn't inside out?",
+  has   clothing;
+
+Object  grey_cloak "grey cloak"  
+  with  name 'grey' 'cloak' 'coat' 'chlamys',
+        before [;
+            Turn, SwitchOn:
+                if( noun has worn ) "Not while you're wearing it.";
+                if( noun notin player ) "You need to be holding it.";
+                if( noun == cloak_of_many_colours ) {
+                    move grey_cloak to player;
+                    remove cloak_of_many_colours;
+                    itobj = grey_cloak;
+                } else { 
+                    move cloak_of_many_colours to player;
+                    remove grey_cloak;
+                    itobj = cloak_of_many_colours;
+                }
+                "You turn the cloak inside out.";
+        ],
+        description "A fine grey cloak, sapphire-encrusted, lined with rainbow fabrics from the trade routes of the world.",
+        angel_hint "Are you sure it isn't inside out?",
+  has   clothing;
+
+Object  XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"    
+  with  before [;
+            Smell:
+                "Why do you only ever smell hard in unpleasant places?  The odour is repulsive in a 
+                 termites-and-honey kind of way.";
+        ],
+        n_to Necropolis,
+        description "Ransacked, dimly-lit, cramped and empty, this rough-built and uneven burial mound is to the Great Pyramids of Giza (built just a century before) what the summerhouse in your garden is to Windsor Castle. There are only dull painted writings, an unpleasant odour and a passage out to the north.",
+        section T_ALEXANDRIA,
+  has   light cat_nofollow;
+
+Object  -> painted_writings "painted writings"   
+  with  name 'painted' 'paintings' 'writing' 'writings',
+        life LagachLife,
+        description "One of the so-called Pyramid Texts making up the so-called ~Book of the Dead~. This dramatic passage seems to be devoted to wise men preparing their bodies to rise in the afterlife, anointing themselves with oil. An interesting motif of ten strokes, arranged^^   III IIIIII I^^catches the eye.",
+        article "some",
+  has   scenery talkable;
+
+Object  The_Height_of_Fashion "The Height of Fashion"    
+  with  name 'table' 'panelling' 'doorway' 'door',
+        before [;
+            Sleep:
+                if( player in wooden_couch ) {
+                    print "The heavy weave mattings feel so restful that you slide into...^";
+                    The_Spirit_World.number = 1;
+                    PlayerTo(The_Spirit_World);
+                    rtrue;
+                }
+                rfalse;
+        ],
+        w_to [;
+            if( player notin location ) "First get up.";
+            print "Slightly to your surprise, the sphinxes make no effort to stop you.^";
+            return This_Is_The_Death;
+        ],
+        u_to Necropolis,
+        description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and browns to simulate alabaster panelling. This is the latest in modern funerary apartments.^^There's a couch for visitors, a table, a flight of steps up and a doorway to the west, flanked by two stone sphinxes.",
+        section T_ALEXANDRIA,
+  has   scored cat_nofollow;
+
+Object  -> sphinxes "sphinxes"   
+  with  name 'sphinx' 'sphinxes' 'stone' 'statue' 'statues',
+        initial "The sphinxes seem to stare balefully at you.",
+        description "No grave would be complete without one.",
+        article "two",
+  has   static;
+
+Object  -> wooden_couch "wooden couch"   
+  with  name 'wood' 'wooden' 'couch' 'bed' 'weave' 'matting',
+        description "A comfortable-looking wooden couch, covered with weave matting.",
+  has   enterable scenery supporter;
+
+Object  stone_nose_of_a_sphinx "stone nose of a sphinx"  
+  with  name 'stone' 'nose',
+        before [;
+            Push, Pull: "It is made of stone, you know.";
+            Turn:
+                if( player notin location ) "You can't reach from the couch.";
+                if( marble_wall has open ) give marble_wall ~open;
+                else give marble_wall open;
+                Achieved(SCORE_SPHINX);
+                "You twist the nose, and before it springs back there is a rumbling of stone from below.";
+        ],
+        initial "One of the sphinxes does have rather a prominent nose, it must be said.",
+        description "Splendid.",
+  has   static;
+
+Object  The_Spirit_World "The Spirit World"      
+  with  name 'table' 'panelling' 'doorway' 'door',
+        before [;
+            Go:
+                if( noun == w_obj ) rfalse;
+                if( The_Spirit_World.number == 4 ) 
+                    "You somehow cannot leave the tomb. Your spirit is anchored still to your body, sleeping two 
+                     thousand years before.";
+                "The tomb is sealed, apparently forever.";
+            Take, Drop, Inv, Empty, Remove, Insert:
+                "You are beyond worldly possessions.";
+            Sleep:
+                if( player in wooden_couch ) {
+                    if( The_Spirit_World.number == 4 ) {
+                        "The spell of the tomb is broken now, and you cannot sleep.";
+                    }
+                    print "The heavy weave mattings draw you deeper into...^";
+                    The_Spirit_World.number = The_Spirit_World.number + 1;
+                    PlayerTo(The_Spirit_World);
+                    rtrue;
+                }
+                rfalse;
+        ],
+        after [ i;
+            Look:
+                i = The_Spirit_World.number;
+                if( i == 1 ) "^The tomb seems older now, weighed under with centuries.";
+                if( i == 2 ) "^The tomb swelters now, a thousand years old.";
+                if( i == 3 ) "^The tomb is beautifully well-preserved, but it seems quite ancient.";
+                if( i == 4 ) {
+                    print "^By now the tomb might be two thousand years old.^";
+                    if( Napoleonic_officers in The_Spirit_World ) 
+                        "^And at last it has been opened.";
+                }
+        ],
+        w_to [;
+            print "The spirits of the sphinxes prowl across the doorway, paws raised, and then lunge towards you. 
+                Their claws rake across your skin, tearing off a layer, unwrapping you in a curiously painless
+                way... and you wake...^";
+            if( The_Spirit_World.number == 1 ) {
+                move player to wooden_couch;
+                location = The_Height_of_Fashion;
+            } else {
+                The_Spirit_World.number = The_Spirit_World.number - 1;
+                move player to wooden_couch;
+                remove Napoleonic_officers;
+            }
+            << Look >>;
+        ],
+        description "A perfectly-cut room of rose-coloured granite, twelve feet across, painted in yellows and 
+            browns to simulate alabaster panelling, at the foot of a flight of steps which leads only to a sealed 
+            wall.",
+        number 1,
+        each_turn [;
+            if( The_Spirit_World.number < 4 ) rfalse;
+
+            ++SpiritCnt;
+            if( SpiritCnt == 2 ) print "^The entrance to the tomb rumbles.^";
+            if( SpiritCnt == 3 ) print "^The noise grows, and dust falls from cracks in the masonry.^";
+            if( SpiritCnt == 4 ) {
+                print "^The entrance bursts open in a shower of plaster!  Light streams in, searing your eyes. 
+                    There is a great commotion. Two Napoleonic French officers stride down the stairs, lanterns
+                    in hand, looking admiringly around the court. They do not seem to see you.^";
+                move Napoleonic_officers to The_Spirit_World;
+            }
+            if( SpiritCnt == 5 ) 
+                print "^The officers are fascinated by the way the tomb seems almost untouched, and yet the couch 
+                    looks slept in.^";
+            if( SpiritCnt == 6 ) 
+                print "^The officers look down the passage, finding it to be sealed.^";
+            if( SpiritCnt == 7 ) 
+                print "^The officers sit next to the sphinxes, stroking their moustaches in comic perplexity. 
+                    As they do so, one bangs his head on a stone nose.^";
+            if( SpiritCnt == 8 ) 
+                print "^The other officer is greatly amused by this slapstick. (You really are beginning to 
+                    see just how boring the living can be.)^";
+            if( SpiritCnt == 9 ) {
+                print "^The first officer tweaks the nose of the sphinx in affection. Suddenly there is a great 
+                    rumbling of stone from the passage below, and they rush down to investigate!^";
+                remove Napoleonic_officers;
+                give sphinxes general;
+                move stone_nose_of_a_sphinx to The_Height_of_Fashion;
+            }
+        ],
+        section T_SPIRIT_WORLD,
+  has   light scored;
+
+Object  -> spirit_sphinxes "sphinxes"   
+  with  name 'sphinx' 'sphinxes' 'stone' 'statue' 'statues',
+        initial "Stone sphinxes guard the west doorway, staring balefully at you.",
+        description "No grave would be complete without one.",
+  has   static;
+
+Object  -> spirit_wooden_couch "wooden couch"   
+  with  name 'wood' 'wooden' 'couch' 'bed' 'weave' 'matting',
+        initial "The weave matting on the couch is now in some disarray.",
+        description "A comfortable-looking wooden couch, covered with weave matting.",
+  has   enterable scenery supporter;
+
+Object  Napoleonic_officers "Napoleonic officers"        
+  with  name 'napoleoni' 'officers' 'soldiers' 'officer' 'soldier' 'lanterns',
+        life [;
+            Kiss, Attack: "Your body passes through them.";
+            Order, Ask, Answer: "They hear nothing.";
+        ],
+        initial "Two Napoleonic officers stand awestruck as light splashes from their lanterns over the riches 
+            of the tomb.",
+        description "The officers wear the uniforms of the Emperor's 1798 occupation of the Nile Delta, and carry 
+            fine brass lanterns.",
+        article "two",
+  has   animate;
+
+Object  This_Is_The_Death "This Is The Death"    
+  with  name 'painted' 'scenes' 'glass' 'ornaments',
+        e_to The_Height_of_Fashion,
+        w_to marble_wall,
+        u_to The_Height_of_Fashion,
+        d_to marble_wall,
+        description "The passage, descending from the east down to the west, is cut from marble, lined with painted scenes from the fashionable comedies of Menander, decorated with Alexandrian coloured glass ornaments.^^The expression ~You can't take it with you~ doesn't seem to be popular hereabouts.",
+        cant_go "Just an east-west passage.",
+        section T_ALEXANDRIA,
+  has   cat_nofollow;
+
+Object  -> model_of_ugly_animal "model of an animal so ugly you can't bear to look at it"        
+  with  name 'model' 'animal' 'ugly' 'monkey',
+        initial "Despite the tasteful decor, the most hideously ugly model animal you have ever seen sits on a little shelf here.",
+        description "You simply can't bear to look. It might be a monkey... at least it has a tail... No. No, you have to look away.",
+        short [;
+            if( self hasnt general ) rfalse;
+            print "model of a mischievous-looking monkey, which wriggles as it comes alive";
+            rtrue;
+        ],
+        devil_hint "Exquisite. Simply charming.",
+        angel_hint "Oh dear.",
+  has   ;
+
+Object  -> marble_wall "marble wall"     
+  with  name 'marble' 'wall',
+        n_to Quite_an_Undertaking,
+        s_to "Unfortunately, the passage slants down only into a solid marble wall.",
+        w_to thedark,
+        initial "The passage opens out onto the burial chamber below.",
+  has   door static;
+
+Object  Quite_an_Undertaking "Quite an Undertaking"      
+  with  before UndertakingBefore,
+        e_to This_Is_The_Death,
+        u_to This_Is_The_Death,
+        description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
+        cant_go "The passage rises sharply to the east.",
+        section T_ALEXANDRIA,
+  has   scored cat_nofollow;
+
+Object  -> painting_of_the_priest "painting of the priest"       
+  with  name 'painting' 'of' 'priest' 'sosostris',
+        description "Drawn in the odd aspect favoured by the Egyptians, who believed in ideal angles rather than accurate drawing. The sceptre, only half the size of the large ones you once saw in the British Museum, looks oddly familiar.^^This close to the wall, you notice words written above the three sockets.",
+  has   scenery;
+
+Object  -> mummy_case "mummy case"       
+  with  name 'mummy' 'case' 'lid' 'sarcophag' 'coffin',
+        before [;
+            Open:
+                if( self hasnt open ) "The lid must weigh a ton. You can't shift it.";
+                "The coffin's already open.";
+            Close:
+                if( noun == mummy_case && noun has open && player in mummy_case ) {
+                    if( MummyWarning == false ) {
+                        MummyWarning = true;
+                        "That seems an awfully... final decision. Here's a chance to reconsider.";
+                    }
+                    print "The lid slams down on you with a very terminal sound indeed.^^^   *** You have ...^^^But - 
+                        something more is happening. The coffin's delicate balance has been altered, and it is
+                        sliding, slipping away down the square passage, endlessly, endlessly...^^And even that
+                        is not the end, for you suddenly crash into buffers at one end. What a lucky escape,
+                        you think... for a moment...^";
+                    PlayerTo(Buried_Alive);
+                    rtrue;
+                }
+                if( self has open ) "No, don't. Once shut it would never open again.";
+                "The coffin is, to put it mildly, already closed.";
+            Enter:
+                if( mummy_case hasnt open ) "It's closed.";
+                print "(You can't help feeling that someone has planned all this... and it isn't you.)^^";
+                rfalse;
+        ],
+        initial "A beautiful gold and blue mummy case, or sarcophagus, rests massively here.",
+        description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
+  has   enterable static;
+
+Object  -> first_socket "first socket"   
+  with  name 'first' 'socket' 'sockets' 'words',
+        before SocketBefore,
+        description " .Above ",
+        article "the",
+        number 1,
+  has   scenery;
+
+Object  -> second_socket "second socket" 
+  with  name 'second' 'socket' 'sockets' 'words',
+        before SocketBefore,
+        description " .Above ",
+        article "the",
+        number 1,
+  has   scenery;
+
+Object  -> third_socket "third socket"   
+  with  name 'third' 'socket' 'sockets' 'words',
+        before SocketBefore,
+        description " .Above ",
+        article "the",
+        number 1,
+  has   scenery;
+
+Object  Buried_Alive "Buried Alive"      
+  with  before BuriedBefore,
+        u_to Sarcophagus,
+        description "You lie in the mummy case, your arms folded across each other, face grimaced, running out of air rapidly and with almost no room to maneouvre. The coffin lid is about ten times heavier than you, and its seal is very good.",
+        number 5,
+        each_turn BuriedEachTurn,
+        section T_ALEXANDRIA,
+  has   light cat_nofollow;
+
+Object  adamantine_skull "adamantine skull"      
+  with  name 'adamantine' 'skull' 'adamant',
+        initial "An adamantine skull lies here, as if casually dropped by a god's hand.",
+        description "It reminds you oddly of one of the symbolic pieces in Monopoly - the car, the boot and so on.",
+        article "an",
+        angel_hint "There must be more to this marvellous figure somewhere.",
+  has   ;
+
+Object  Stadium "Stadium"        
+  with  sw_to Outside_the_Royal_Museum,
+        description "The great Stadium of Alexandria, with capacity enough to hold the whole population of the city: and it looks full. Olympic openings in the age of television have nothing on these people. The procession surges continually in, around the track and then out again, and amid the bustle you cannot push through.",
+        cant_go "It would be easier to breathe back southwest.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  Outside_the_Theatre "Outside the Theatre"        
+  with  n_to Outside_Royal_Palace,
+        s_to Outside_the_Royal_Museum,
+        w_to Warehouses_and_Port,
+        description "Tragically, the Theatre is closed tonight, but roads lead past the great stepped bowl: north 
+            toward the Palace, south to the Museum and west to the harbour-front.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  Outside_the_Royal_Museum "Outside the Royal Museum"      
+  with  n_to Outside_the_Theatre,
+        ne_to Stadium,
+        se_to [;
+            if( purple_sash has worn ) {
+                print "Seeing that you're wearing the sash of a Librarian, the guards part to allow you entrance.^";
+                return The_Birdcage_of_the_Muses;
+            }
+            if( Austin in location ) {
+                print "The Museum guards are so busy abasing themselves before the sacred Cat (incredibly, that's 
+                    Austin) that you are able to slip inside.^^Austin, having at long last found owners even more
+                    gullible and undemanding than yourself, ambles away to a life of extreme cossetting and luxury.^";
+                remove Austin;
+                StopDaemon(Austin);
+                StopDaemon(self);
+                return The_Birdcage_of_the_Muses;
+            }
+            "Museum guards tactfully nudge drunken louts away from the Museum.";
+        ],
+        sw_to Crossroads,
+        description "The main southwest-northeast road forks off with a road due north to the Theatre. Despite the 
+            kaleidoscopic din you are impressed by the sober majesty of the Museum of the Ptolemies, whose fine
+            portico entrance, decked with reliefs, is southeast.",
+        daemon [;
+            if( game_section ~= T_ALEXANDRIA || location has cat_nofollow || Austin in location ) {
+                rfalse;
+            }
+            move Austin to location; 
+            "^Austin strolls regally along with you.";
+        ],
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  -> portico "portico"     
+  with  name 'portico' 'reliefs' 'relief' 'entrance',
+        description "Reliefs of the cat-god bestride the square-cut entrance. The fanaticism of the cult of the Cat in Lower Egypt has such a stranglehold that the image is everywhere. You remember reading somewhere that passers-by in the street have been torn to death before, just on suspicion of mistreating a sacred cat.",
+  has   scenery;
+
+Object  A_Tower "A Tower"        
+  with  nw_to Crossroads,
+        u_to defaced_door,
+        description "This is not the famous Alexandrian tower (which is not due to be built by the Emperor Domitian for centuries), just an anonymous little monument on the same site. It is square-cut inside and there's only a small exit northwest.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  -> defaced_door "defaced door"   
+  with  name 'defaced' 'sosostris' 'door' 'writings' 'scripts',
+        before [;
+            Open:
+                if( grey_cloak has worn ) rfalse;
+                "It won't open, for no reason you can see.";
+            Knock:
+                "The door shakes, and its old wood whispers ~Sosostris, the Priest of Sosostris~ in a falling echo.";
+        ],
+        n_to Ancient_Consulting_Room,
+        s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
+        w_to in_obj,
+        initial "The heavily defaced door opens onto a staircase up.",
+  has   door openable static;
+
+Object  Ancient_Consulting_Room "Consulting Room"        
+  with  name 'sevenbranched' 'candelabra' 'sticks' 'candles',
+        e_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
+        d_to A_Tower,
+        description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched 
+            candelabra. A doorway with a hanging bead curtain leads east. In the centre of the room is a table,
+            which is bare.",
+        section T_ALEXANDRIA,
+  has   light scored cat_nofollow;
+
+Object  -> ancient_table "table" 
+  with  name 'bare' 'table',
+        before [;
+            Receive:
+                if( noun == quarterstaff ) {
+                    remove quarterstaff;
+                    give defaced_door ~open lockable locked;
+                    print "Madame Sosostris looks up, startled. ~Yes,~ she says, ~yes... this has potential.~^^She 
+                        mutters incantations over the green wood and it begins to straighten out in a quite Freudian
+                        way. ~It will be ready in two thousand years. Come back then.~^^And she slips something
+                        into your palm as she bustles you out.^";
+                    PlayerTo(A_Tower);
+                    move silver_keepsake to player;
+                    Achieved(SCORE_QUARTERSTAFF);
+                    rtrue;
+                }
+                move noun to location;
+                print_ret "Madame Sosostris brushes ", (the) noun, " aside impatiently.";
+
+        ],
+        description "Madame Sosostris stares at it fixedly as she meditates.",
+  has   scenery supporter;
+
+Object  -> ancient_curtain "curtain"     
+  with  name 'curtain' 'bead' 'hanging',
+        description "Unmoving.",
+  has   scenery;
+
+Object  -> Ancient_Madame_Sosostris "Madame Sosostris, famous clairvoyante"      
+  with  name 'sosostris' 'madame' 'clairvoyant',
+        life [;
+            Give, Kiss: "She is staring fixedly at the table, meditating.";
+            Ask, Answer, Order: "Madame Sosostris is meditating.";
+            Attack: "Your hand feels impotent to do so.";
+        ],
+        initial "Madame Sosostris, famous clairvoyante, meditates here.",
+        description "Known to be the wisest woman in Asia Minor.",
+  has   animate proper;
+
+Object  quarterstaff "green oak quarterstaff"    
+  with  name 'green' 'oak' 'staff' 'quarterstaff' 'quarter' 'beam' 'wooden',
+        before [;
+            ! minor gamestate bug: it doesn't check if you're wearing daisies
+            Wave: "It rumbles in your hands, but nothing else happens.";
+        ],
+        initial "You seem to have dislodged one of the wooden beams used by the tomb's builders: a useful length of greenish oak.",
+        description "It needs to be left to mature, and yet there's something awfully familiar about it.",
+        devil_hint "Ready to use.",
+        angel_hint "Perhaps it could be put aside for later use.",
+  has   ;
+
+Object  silver_keepsake "silver keepsake"        
+  with  name 'silver' 'locket' 'keepsake',
+        description "A silver locket on a thin chain, with a heart-shaped picture of a knight placing a rose in his 
+            lady's hair. Quite nauseously romantic.",
+        angel_hint "For me? Oh, you shouldn't have... oh, you didn't. Well give it to someone else then.",
+  has   clothing;
+
+Object  Warehouses_and_Port "Warehouses and Port"        
+  with  before CausewayBefore,
+        e_to Outside_the_Theatre,
+        description "Down by the sea-front, in the old harbourlands, surrounded by warehouses. The Mediterranean 
+            laps darkly against the hard, splashing an occasional wave up the slope. The city, and the party,
+            lie back east.",
+        cant_go "There's nowhere to go but the city, east.",
+        section T_ALEXANDRIA,
+  has   light scored;
+
+Object  -> gambling_sailor "gambling sailor"     
+  with  name 'sailor' 'gambling' 'gambler' 'grizzled',
+        before [;
+            Gamble: << Drop inscribed_die >>;
+        ],
+        life [;
+            Order, Ask, Answer: "You can't understand his guttural speech, but the die seems his only fascination.";
+            Kiss: "Yes, your sort can be found down by the docks of most ports.";
+
+            ! Bug: I'm pretty sure Graham meant ##Attack here
+            Answer: "He is burlier than you.";
+        ],
+        initial "A grizzled sailor sits at a harbourside table.",
+        each_turn [ n;
+            if( gambling_sailor has general ) {
+                n = random(5);
+                if( n < 3 ) {
+                    print "^The sailor grabs the die and throws a ~";
+                    n = random(6);
+                    if( gambling_sailor has lucky || inscribed_die has lucky ) {
+                        n = 6;
+                    }
+                    EtruscanInt(n);
+                    print "~, ";
+                    if( n > inscribed_die.number ) {
+                        print "and grins.^";
+                    }
+                    if( n < inscribed_die.number ) {
+                        print "and sighs.^";
+                    }
+                    if( n == inscribed_die.number ) {
+                        print "and shrugs.^";
+                    }
+                    inscribed_die.number = n;
+                    give gambling_sailor ~general;
+                } else {
+                    "^The sailor stares at the die thoughtfully.";
+                }
+            } else
+                "^The sailor hums a sea shanty.";
+        ],
+  has   animate;
+
+[ EtruscanInt i ;       
+    switch( i ) {
+        1: print "thu";
+        2: print "zal";
+        3: print "si";
+        4: print "ca";
+        5: print "mach";
+        6: print "huth";
+    }
+    rtrue;
+];
+
+Object  -> inscribed_die "inscribed die" 
+  with  name 'inscribed' 'die' 'dice' 'cube',
+        before [ i;
+            Take:
+                "The sailor covers it with his hand. But he looks the type who's never averse to a game.";
+            Examine:
+                print "Each side has a word inscribed on it. The word on top is ~";
+                EtruscanInt(self.number);
+                "~.";
+            Drop, ThrowAt, Gamble:
+                i = random(6);
+                if( inscribed_die has lucky ) {
+                    i = 6;
+                }
+                give gambling_sailor general;
+                inscribed_die.number = i;
+                print "You throw a ~";
+                EtruscanInt(i);
+                "~, whatever that means.";
+        ],
+        initial "An inscribed six-sided die lies on the table in front of him.",
+        description "The sides you can see are labelled with short words.",
+        article "an",
+        number 3,
+  has   static;
+
+Object  The_Birdcage_of_the_Muses "The Birdcage of the Muses"    
+  with  name 'little' 'door' 'books',
+        s_to Oil_Room,
+        e_to Reading_Corridor,
+        se_to Geography_Room,
+        nw_to Outside_the_Royal_Museum,
+        description "The celebrated Library of Alexandria, finest in the entire world, possessed of hundreds of 
+            thousands of books: where the ruling Ptolemies keep fanatic, infighting scholars almost imprisoned as
+            they turn out rival commentaries on the ancient poems - hence the nickname.^^There is a little door
+            to the south; a dusty corridor southeast; a thoroughfare east, and a grand entrance northwest.",
+        number 0,
+        each_turn [ i;
+            i = The_Birdcage_of_the_Muses.number;
+            if( i == 3 ) {
+                print "^A messenger-boy in a plain white tunic slips into the library and places a couple of 
+                    tubes in the pigeonhole. So resentful is he of missing the party outside that he fails to
+                    notice you, and runs back out again at once.^";
+                move tube_with_an_alpha_on to pigeonhole;
+                move tube_with_a_kappa_on to pigeonhole;
+            }
+            if( i < 4 )
+                The_Birdcage_of_the_Muses.number = i + 1;
+        ],
+        section T_ALEXANDRIA,
+  has   light scored;
+
+Object  -> pigeonhole "pigeonhole"       
+  with  name 'pigeon' 'hole' 'pigeonhol',
+        initial "There is a pigeonhole mounted on one wall.",
+        description "A depository for scrolls.",
+  has   container open static;
+
+Object  tube_with_an_alpha_on "tube with an alpha on"    
+  with  name 'alpha' 'with' 'tube' 'cylinder',
+        description "An open-ended hollow tube, marked with a Greek capital Alpha.",
+        parse_name TubeParse,
+        angel_hint "Surely this is addressed to someone?",
+  has   container open;
+
+Object  -> scroll_bearing_an_epic_poem "scroll bearing an epic poem"     
+  with  name 'long' 'epic' 'scroll' 'poem',
+        description "All Greek to you, alas, and running on for 1000 lines or more.",
+        parse_name ScrollParse,
+        angel_hint "Oh my. Well, the plot, um, there are seven attackers, all with different shields, one for 
+            each of the seven city gates, and it's a civil war so of course the brothers are really in a duel and
+            there are champions and the women are upset but it's all because of their brother who was really their
+            father... Never mind. It's strictly for aficionados.",
+  has   ;
+
+Object  tube_with_a_kappa_on "tube with a kappa on"      
+  with  name 'kappa' 'with' 'tube' 'cylinder',
+        description "An open-ended hollow tube, marked with a Greek capital Kappa.",
+        parse_name TubeParse,
+        angel_hint "Surely this is addressed to someone?",
+  has   container open;
+
+Object  -> scroll_bearing_a_short_poem "scroll bearing a short poem"     
+  with  name 'short' 'scroll' 'poem',
+        description "All Greek to you, alas. Only a dozen lines or so, though.",
+        parse_name ScrollParse,
+        angel_hint "Oh my. ~I touch your... and the scent of you rises from... your beautiful...~  I'd better not 
+            read the rest. Strictly for aficionados.",
+  has   ;
+
+Object  Oil_Room "Oil Room"      
+  with  before [;
+            Anoint:
+                if( noun ~= player || mummy_case has general ) "That hardly seems worthwhile.";
+                give mummy_case general;
+                "You smear some oil on your head, making a mental note to wash your hair in the morning. It is the 
+                 least sacred sacred ritual you have ever taken part in.";
+        ],
+        n_to The_Birdcage_of_the_Muses,
+        description "This small, dark (by night) room is a repository for Library supplies: above all, for lamp 
+            oil, which is stored in broad shallow earthenware troughs. Lucky your torch is electric, when you think about it. Anyway, a passage leads back north.",
+        section T_ALEXANDRIA,
+  has   ;
+
+Object  -> oil_filled_troughs "oil-filled troughs"       
+  with  name 'oil' 'troughs' 'shallow' 'lamp',
+        before [;
+            Drink, Enter: "What a revolting idea!";
+        ],
+        article "the",
+  has   scenery;
+
+Object  Geography_Room "Geography Room"  
+  with  nw_to The_Birdcage_of_the_Muses,
+        description "The rather neglected hall for the accurate study of geography: as opposed to the 
+            lurid travellers' tales preferred by most writers in this slapdash century. Nobody is working here,
+            and one can only file back northwest.",
+        cant_go "In order to make sure the geographers don't get lost, the only exit is northwest.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  -> spindle_from_the_globe "spindle from the globe"       
+  with  name 'spindle' 'axis' 'globe' 'earth',
+        before [; Pull: << Take self >>; ],
+        after [;
+            if( spindle_from_the_globe hasnt general ) {
+                    give spindle_from_the_globe general;
+                    spindle_from_the_globe.description = "Once the polar axis of a globe.";
+                    "As you pull out its polar axis, the spindle, the Earth collapses altogether in a possibly 
+                     symbolic, certainly dusty shambles.";
+                }
+                rfalse;
+        ],
+        initial "Protruding from a broken globe of the Earth (marked with very tentative and approximate maps) 
+            is the spindle, the only thing holding it together.",
+        description "Perhaps the best work of cartography likely for the next two thousand years, though it seems 
+            unlikely to last the next two hours.",
+        rod_assoc rod_of_ice,
+        devil_hint "Don't go waving this about.",
+  has   hidden_rod;
+
+Object  Reading_Corridor "Reading Corridor"      
+  with  s_to Librarians_Office,
+        w_to The_Birdcage_of_the_Muses,
+        description "A spacious, densely colonnaded corridor, its walls lined with inset shelves on which are scrolls beyond count, ribboned, dusty, disintegrating, badly catalogued so that only an expert can find what he wants.",
+        cant_go "You wander through the columns, but can find no exit save the thoroughfare west and a little office south.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  -> dusty_scrolls "dusty scrolls" 
+  with  name 'dusty' 'scrolls' 'scroll' 'books' 'book',
+        description "Even a single book may run for dozens of individual scrolls, and the titles are hard to interpret: anyway, most of the books are rubbish. Dewey decimal numbers are not due to be invented for millenia.",
+        article "endless",
+  has   scenery;
+
+Object  -> Callimachus "Callimachus"     
+  with  name 'callimachus' 'expert' 'librarian',
+        life CallimachusLife,
+        initial "The expert in question being Callimachus, who is brooding over a scroll, and hardly aware of your presence.",
+        description "Callimachus is famous for something or other. You wonder what...",
+  has   animate proper;
+
+Object  mystic_scroll "mystic scroll"    
+  with  name 'mystic' 'scroll',
+        initial "Apollonius seems to have dropped a mystic scroll in the scuffle.",
+        description "It tells that even the greatest mortal must choose of the three High [and the next word is illegible], for once and all, but that for each there is a way. The usual mystic nonsense.",
+        devil_hint "Don't you believe it!",
+        angel_hint "We in the afterlife, um, have a policy of never commenting on leaked documents.",
+  has   ;
+
+Object  purple_sash "purple sash"        
+  with  name 'purple' 'sash',
+        initial "And Callimachus' purple shoulder-sash has come off.",
+        description "Worn over the shoulder.",
+  has   clothing;
+
+Object  Librarians_Office "Librarian's Office"   
+  with  name 'table' 'sand' 'wells' 'sandwells',
+        n_to Reading_Corridor,
+        description "A tiny office adjoining the colonnades north, this is home to Apollonius the head Librarian, whose writing implements, table and sand-wells are scattered untidily about.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  -> Apollonius "Apollonius"       
+  with  name 'apollonius' 'head' 'expert' 'librarian',
+        life CallimachusLife,
+        initial "Apollonius paces about self-importantly in a purple sash, perusing documents on his desk.",
+        description "His aim in life is chiefly to annoy Callimachus, his junior librarian and the modern poet he despises most.",
+  has   animate proper;
+
+Object  Outside_Royal_Palace "Outside the Royal Palace of Alexander"    
+  with  n_to [;
+            if( cloak_of_many_colours has worn ) {
+                deadflag = DIED;
+                "Or you could just saunter up to them wearing a cloak of many colours. Have it your own way.";
+            }
+            print "^You tiptoe into the palace, and immediately dart away from view of the many clerks and civil 
+                servants manning the machinery of government even at this late hour. Within seconds, you realise 
+                you are...^";
+            return Lost_inside_the_Palace;
+        ],
+
+        s_to Outside_the_Theatre,
+        description "A hugely impressive edifice, and everything you might expect from the man who conquered the 
+            whole of Asia Minor at an age when most people are starting to think about getting a mortgage.^^There
+            are of course guards, but they're trying to catch the procession, so if you're careful not to draw
+            attention to yourself you could probably sneak in to the north.",
+        section T_ALEXANDRIA,
+  has   light;
+
+Object  Lost_inside_the_Palace "Lost inside the Palace"  
+  with  before [;
+            Go:
+                if( purple_sash hasnt worn ) {
+                    move player to Outside_Royal_Palace;
+                    location = Outside_Royal_Palace;
+                    "The slave looks you over and sees that you do not bear the mark of an accredited visitor to 
+                     the Palace.  You are discreetly escorted out.";
+                }
+                rfalse;
+            Drop, Empty: "The slave politely holds your arm fast until you desist.";
+            Anoppe:
+                if( Lost_inside_the_Palace has general ) {
+                    SlaveFindsYou();
+                    rtrue;
+                }
+                rfalse;
+        ],
+        after [;
+            Go:
+                while( child(Lost_inside_the_Palace) ~= nothing )
+                    remove child(Lost_inside_the_Palace);
+                move slave to Lost_inside_the_Palace;
+                move player to Lost_inside_the_Palace;
+                palace_move3 = palace_move2;
+                palace_move2 = palace_move1;
+                palace_move1 = noun;
+                give Lost_inside_the_Palace ~general;
+                if (palace_move3 == ne_obj && palace_move2 == e_obj && palace_move1 == s_obj) {
+                    give Lost_inside_the_Palace general;
+                }
+                if (palace_move1 == s_obj && palace_move2 == s_obj) {
+                    location = Outside_Royal_Palace;
+                    move player to location;
+                }
+                ++PalaceCnt;
+                if (PalaceCnt == 2) {
+                    trigger_quotation(46);
+                }
+                rfalse;
+        ],
+        n_to Lost_inside_the_Palace,
+        s_to Lost_inside_the_Palace,
+        e_to Lost_inside_the_Palace,
+        w_to Lost_inside_the_Palace,
+        ne_to Lost_inside_the_Palace,
+        se_to Lost_inside_the_Palace,
+        nw_to Lost_inside_the_Palace,
+        sw_to Lost_inside_the_Palace,
+        description "Scholars are divided on the origin of the ~maze~ legend: some hold that to a primitive culture, 
+            the Knossos palace was so complex as to seem a maze, and the king so fearsome as to seem a
+            Minotaur.^^Others say the early palaces really were labyrinths to protect sacred altars.^^And you
+            think it's because this is a maze of twisty little passages, all alike.",
+        section T_ALEXANDRIA,
+  has   light scored cat_nofollow;
+
+Object  -> slave "slave" 
+  with  name 'slave' 'deaf' 'mute',
+        life SlaveLife,
+        initial "A slave stands impassively by one wall.",
+        description "Such a slave, a highly trained professional, stands at every intersection of passages in the 
+            palace. They are deaf mutes, to prevent them overhearing State secrets.",
+  has   animate;
+
+[ SlaveFindsYou ;       
+    print "The slave here, a senior adviser merely disguised as a deaf mute, reacts at once, taking you by the 
+        arm and leading you on a convoluted path through the Palace to the...^";
+    PlayerTo(Palace_Balustrade);
+    rtrue;
+];
+
+Object  Palace_Balustrade "Palace Balustrade"    
+  with  before [;
+            Swim, Jump:
+                move player to Warehouses_and_Port;
+                location = Warehouses_and_Port;
+                "You dive off the balcony in a beautifully graceful motion, plunging perfectly into the icy and 
+                 (fortunately) deep waters below. You then struggle to the surface in a panicky, floundering motion,
+                 and finally wash up out of the water in a clumsy, ridiculous one.";
+        ],
+        description "The magnificent balcony overlooking the Royal harbour of Alexandria. In two hundred years' 
+            time, Julius Caesar will be besieged here, and will hold the palace with a tiny force of men against
+            an entire army: and will lose his heart to Cleopatra...^^For the mean time, this is a broad stone
+            balustraded balcony. The coin-bright moon, low in the sky, reflects off the black waters far below.",
+        cant_go "There seems to be absolutely no way off the balcony, as the stone doors to the heart of the palace are sealed shut.",
+        section T_ALEXANDRIA,
+  has   light scored cat_nofollow;
+
+Object  -> astronomical_mounting "astronomical mounting" 
+  with  name 'mounting' 'socket' 'astronomical' 'tripod',
+        before [;
+            Receive:
+                if( noun == golden_astrolabe ) {
+                    remove astronomical_mounting;
+                    move golden_astrolabe to Palace_Balustrade;
+                    give golden_astrolabe static;
+                    give golden_astrolabe ~moved;
+                    golden_astrolabe.initial = "Instead, there is an astrolabe.";
+                    move astronomical_mounting to Palace_Balustrade;
+                    "It fits beautifully, as if designed to go there.";
+                }
+                "Doesn't fit.";
+        ],
+        initial "An impressive astronomical mounting stands on a tripod here. But there is no telescope.",
+        article "an",
+  has   static;

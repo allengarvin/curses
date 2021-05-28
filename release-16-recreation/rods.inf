@@ -70,6 +70,30 @@ Class HighRod
             if( self == rod_of_death ) print "skull";
             " on one end, and inscribed with its title.";
         ],
+        after [;
+            Take:
+                if( HighRodBalance == true ) rfalse;
+
+                remove rod_of_life;
+                give rod_of_life moved;
+                give rod_of_life ~concealed;
+                give rod_of_life scored;
+                remove rod_of_death;
+                give rod_of_death moved;
+                give rod_of_death ~concealed;
+                give rod_of_death scored;
+                remove rod_of_love;
+                give rod_of_love moved;
+                give rod_of_love ~concealed;
+                give rod_of_love scored;
+                move noun to player;
+
+                !! Likely a bug: prevents it from being scored
+                give noun ~scored;
+                HighRodBalance = true;
+                "(Interesting choice.)^^As you take it, you upset the balance and the other two High Rods rattle 
+                 away down the crystal passageway into the underworld.";
+        ],
         article "the",
         list_together ListingHRods,
 
@@ -90,7 +114,7 @@ Rod     rod_of_fire "Fire"
                 "Oh dear. Like Mad Isaac before you, you have spontaneously combusted!";
             }
             if( second == Austin ) {
-                set_flag_array(6);
+                trigger_quotation(6);
                 "You don't really want to vapourise Austin.";
             }
             if( second == adamantine_statue ) {
@@ -252,7 +276,7 @@ Rod     rod_of_infinity "Infinity"
             if( location ~= Infinity_Symbol || second ~= lemniscus ) 
                 "Nothing obvious happens.";
             t = circular_arc.number;
-            set_flag_array(30);
+            trigger_quotation(30);
             if( t < 9 ) 
                 "You feel the air charge with excitement, and the symbol glows fiercely gold for a moment, but 
                  then the power drains away into one of the empty sockets in the arc.";
@@ -286,7 +310,7 @@ Rod     rod_of_husbandry "Husbandry"
             if( second ~= herd_of_goats ) "Nothing obvious happens.";
 
             give herd_of_goats general;
-            set_flag_array(24);
+            trigger_quotation(24);
             "The goats suddenly look up at you with awe, although they resume their former interest in eating 
              the grass quite quickly.";
         ],
@@ -337,7 +361,7 @@ Rod     rod_of_sacrifice "Sacrifice"
                  moral to draw here about the use, and abuse, of power?";
             }
             if( second == Austin ) {
-                set_flag_array(6);
+                trigger_quotation(6);
                 "You don't really want to sacrifice Austin.";
             }
             if( second == adamantine_knight ) 

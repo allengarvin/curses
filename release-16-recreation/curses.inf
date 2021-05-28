@@ -33,6 +33,13 @@ Global StrongboxX;
 Global tablet_eaten;
 Global daisy_given;
 Global projector_reversed;
+Global palace_move3;
+Global palace_move2;
+Global palace_move1;
+Global PalaceCnt;
+Global HighRodBalance;
+Global SpiritCnt;
+Global MummyWarning;
 
 Array type_of_tune table
     "a synthesized"
@@ -136,6 +143,7 @@ Array horrible_tunes table
     "~My Way~, crooned over by Frank Sinatra."
 ;
 
+Attribute cat_nofollow;
 Attribute charged;
 Attribute battery_flag;
 Attribute card;
@@ -168,6 +176,7 @@ Include "tarot.inf";
 Include "northeast.inf";
 Include "master.inf";
 Include "crypt.inf";
+Include "alexandria.inf";
 
 [ Initialise; ;
     StartSplash();
