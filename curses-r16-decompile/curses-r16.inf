@@ -650,7 +650,7 @@ Verb 'long' 'verbose'
     *                                                   -> Verbose
 ;
 
-Verb 'short' 'superbrie'
+Verb 'short' 'superbrief'
     *                                                   -> Superbrief
 ;
 
@@ -1791,7 +1791,7 @@ Object -> dark_shaft_obj2 "dark shaft"
   has   container enterable open scenery;
 
 Object -> little_window1 "little window"        
-  with  name 'little' 'window' 'vent' 'windowven' 'window-v',
+  with  name 'little' 'window' 'vent' 'windowvent' 'window-v',
         initial "There is a little closed window-vent low in the north wall.",
         description "You can just make out an impression of golden light.",
   has   static;
@@ -2088,7 +2088,7 @@ Object Drowned_Sailor_card "Drowned Sailor"
   has   card;
 
 Object oak_quarterstaff "oak quarterstaff"      
-  with  name 'oak' 'staff' 'quarterst',
+  with  name 'oak' 'staff' 'quarterstaff',
         article "an",
         rod_assoc rod_of_bronze,
         devil_hint "Shoddy workmanship, but never mind, it's only a staff and who needs those any more?",
@@ -2156,7 +2156,7 @@ Object Chatelet_les_Halles "Chatelet-les-Halles"
   has   light;
 
 Object -> surly_shopkeeper "surly shopkeeper"   
-  with  name 'surly' 'man' 'shopkeepe',
+  with  name 'surly' 'man' 'shopkeeper',
         life ShopkeeperLife,
         initial "Behind a kiosk, a surly-looking man is selling guide books and maps.",
         description "His jumper is unstriped, and there are no onions around his neck. Nonetheless he has a rather Gallic, disgruntled look to him. Perhaps he's a former Socialist cabinet minister.",
@@ -3114,7 +3114,7 @@ Object -> garden_roller "garden roller"
   has   container enterable open static switchable;
 
 Object -> weed_killer_bottle "weed killer bottle"       
-  with  name 'weed' 'killer' 'bottle' 'weedkille',
+  with  name 'weed' 'killer' 'bottle' 'weedkiller',
         before WeedKillerBefore,
         initial "In the shadows is a weed killer bottle.",
         description "If squeezed, it squirts weed killer over the ground. There are many warning labelXXXs about getting it on one's hands.",
@@ -3297,7 +3297,7 @@ Object -> loose_board "loose board"
   has   door openable static;
 
 Object -> crack "crack" 
-  with  name 'crack' 'gap' 'hole' 'summerhou' 'summer' 'house',
+  with  name 'crack' 'gap' 'hole' 'summerhouse' 'summer' 'house',
         before CrackBefore,
         after CrackAfter,
         description "Through the crack you can see the summer house.",
@@ -3980,7 +3980,7 @@ Object -> birds_of_prey "birds of prey"
   has   static;
 
 Object unexciting_tombstone "unexciting tombstone"      
-  with  name 'tomb' 'tombstone' 'stone' 'unexcitin' 'face' 'socket' 'steps' 'mouth',
+  with  name 'tomb' 'tombstone' 'stone' 'unexciting' 'face' 'socket' 'steps' 'mouth',
         before TombstoneBefore,
         n_to The_Height_of_Fashion,
         s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
@@ -4120,7 +4120,7 @@ Object -> painting_of_the_priest "painting of the priest"
   has   scenery;
 
 Object -> mummy_case "mummy case"       
-  with  name 'mummy' 'case' 'lid' 'sarcophag' 'coffin',
+  with  name 'mummy' 'case' 'lid' 'sarcophagus' 'coffin',
         before MummyCaseBefore,
         initial "A beautiful gold and blue mummy case, or sarcophagus, rests massively here.",
         description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
@@ -4240,7 +4240,7 @@ Object -> Ancient_Madame_Sosostris "Madame Sosostris, famous clairvoyante"
   has   animate proper;
 
 Object quarterstaff "green oak quarterstaff"    
-  with  name 'green' 'oak' 'staff' 'quarterst' 'quarter' 'beam' 'wooden',
+  with  name 'green' 'oak' 'staff' 'quarterstaff' 'quarter' 'beam' 'wooden',
         before QuarterstaffBefore,
         initial "You seem to have dislodged one of the wooden beams used by the tomb's builders: a useful length of greenish oak.",
         description "It needs to be left to mature, and yet there's something awfully familiar about it.",
@@ -4647,7 +4647,7 @@ Object -> bell_ropes "bell ropes"
   has   scenery;
 
 Object Out_on_the_Spire "Out on the Spire"      
-  with  name 'village' 'clerestory' 'hills' 'farmlands' 'weather' 'vane' 'weatherva',
+  with  name 'village' 'clerestory' 'hills' 'farmlands' 'weather' 'vane' 'weathervane',
         d_to OutOfSpireDown,
         description "There is a beautiful view over the green parceled farmlands and hills surrounding the village, and you feel a certain pride to see Meldrew Hall sitting amongst it. It's also windy and dangerous up here on the grey lead spire of the parish church, beside the old clock: fortunately an opening leads down into the clerestory.",
         section T_NE_OF_HOME,
@@ -5637,7 +5637,7 @@ Array henry_post_initial_layout ->
     0
 ;
 Array demon_topics --> 2 'premoniti' 'dream' "~In the premonition, it is vital to get hold of the mascot for later use.~" 2 'torch' 'battery' "~It's no use poking about on the attic floor for fresh torch batteries, because there aren't any.~" 3 'aunt' 'jemima' 'gloves' "~Your Aunt Jemima is not the kind of woman to be distracted by music or frivolous presents, mark my words.~" 3 'romance' 'novel' 'marie' "~Novels are, of course, invariably written by people using their real names, not disguised in any way.~" 3 'daisy' 'daisychain' 'daisies' "~The thing about daisies is, they are the same all year round, not changing with the calendar.~" 'medicine' "~Modern medicine bottles can even withstand falls from a great height. I should try heat if I were you.~" 'demijohn' "~You can easily get a grip on the demijohn with your bare hands.~" 'bottle' "~The answer's the same, whichever bottle you meant. That counts as your hint, I'm afraid. Not very fair, but then I am a demon.~" 'heaven' "The demon acknowledges the question, but cannot bring himself to speak of Heaven." 'hell' "~Hell?  Oh this isn't your eternal damnation, it's mine, having to answer all these wretched questions. No, Hell itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~" 2 'card' 'postcard' "~Don't worry, there's nothing written there. No need to look at the problem in a fresh light.~" 3 'ghost' 'sir' 'joshua' "~History never repeats itself, so it's pointless looking him up in the book.~" 2 'prayer' 'isaac' "~The really interesting stuff is at the very start of his working life.~" 4 'museum' 'arcana' 'doktor' 'stein' "~Forget it, there's no way to return from the museum, and Doktor Stein's medicine has no antidote.~" 2 'merlyn' 'merlin' "~Merlyn doesn't really come into this. Try working on something else.~" 'hat' "~Literally, Merlyn's actual hat. Green pointy felt, I wouldn't wonder.~" 'book' "~The answer's the same, whichever book you meant. That counts as your hint, I'm afraid. Not very fair, but then I am a demon.~" 'ebenezer' "~Ebenezer?  He's absolutely central to this. Concentrate on him, definitely.~" 3 'projector' 'slide' 'cards' "~Trouble with holiday snaps is, once somebody gets the old slide projector going, a boring time is on the cards for all.~" 2 'rod' 'rods' "~You'll need to be wide awake and alert to work out what to do with them. Finding them is easy - just remember to keep an eye out for short, fat things.~" 2 'tarot' 'sosostris' "~Clairvoyantes are expert at detecting stacked decks, so it's no good cheating.~" 2 'boat' 'hollow' "~Phlebas runs a very badly-advertised service, I'm afraid. I've got no time for him.~" 3 'mouse' 'robot' 'hole' "~Once the mouse is in the hole, forget it, it couldn't hear you even if you talked to the hole instead. But there is an alternative method.~" 'key' "~Your fault for letting the key get into the foundations - nothing can get in there to retrieve it.~" 2 'radio' 'wireless' "~Marvellous, marvellous contraption. Starts the moment you switch it on, and then nothing but solid gold classics all the way. You can really concentrate when that's playing.~" 2 'fireplace' 'chimney' "~What, the blocked-up old fireplace that doesn't lead anywhere?  You need to be carrying plenty of equipment to get down it - don't worry if it's dark at the bottom, after all there's nothing you can do about that.~" 2 'sandstone' 'recess' "~The sandstone recess is probably impassible. Better try only when you're wide awake.~" 2 'austin' 'cat' "~Austin's a perfect devil, isn't he?  She, I should say. Good for nothing except getting in the way, of course. Walks into walls just when you don't want, but at least Jemima calms her down.~" 3 'smoke' 'detector' 'alarm' "~Smoke detectors like yours are specially rigged not to be triggered by accidental shafts of light.~" 'ship' "~Of course the ship is far too large and ungainly ever to fit in the bottle.~" 'flag' "~Cold comfort.~" 2 'alison' 'bed' "~A good blanket might be a plain, colourless sort of covering with no emblem to it.~" 'revolving' "~The thing about the revolving door is, you can only revolve it when you're already standing inside.~" 2 'cabinet' 'glass' "~Unbreakable glass.~" 'matchbook' "~A vital clue, and useful in its own right.~" 'curses' "~The greatest computer game of all time. I'm proud to be a part of it.~" 'tera' "The demon blushes. ~Wasn't my fault!  My partner made a mess of it.~" "";       
-Array angel_topics --> 3 'heaven' 'yourself' 'herself' "~Heaven?  Oh this isn't your eternal salvation, it's mine, able to serve by answering all these delightful questions. No, Heaven itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~" 2 'hell' 'demon' "The angel acknowledges the question, but cannot bring herself to speak of Hell." 'rods' "~The rods definitely fit into all this somewhere.~" 'maze' "~If only you could have been there when the maze was being laid out!~" 'master' "~The master game is like a point at infinity to we mortals,~ the angel says wistfully." 3 'infinity' 'lemniscus' 'arc' "~All a matter of fitting the rods in somewhere.~" 3 'andromeda' 'princess' 'maiden' "~How she must long to let her hair down now, instead of being chained to that rock,~ the angel says sorrowfully. ~But in deference to her wishes, I cannot help you rescue her.~" 'mural' "~Amazing fortune you must have in finding it, I can tell.~" 'folly' "~Ah yes, we must all lament for human folly,~ says the angel, misunderstanding completely." 'zeus' "~Zeus wasn't a true god, of course,~ the angel predictably insists, ~just a manifestation of the laws of physics to an Ancient Greek, a kind of symbol for the way the universe fundamentally worked.~" 2 'bomb' 'lighthouse' "The angel maintains a tight-lipped silence." 'sacrifice' "~That's too dangerous a rod to actually use, of course, and the Church no longer approves of martyrs.~" 'luck' "~Is there really such a thing as luck, or free will?  It's a theological grey area,~ says the angel with fine casuistry." 'fire' "~Certainly a thorny problem, that.~" 5 'mascot' 'old' 'evans' 'moon' 'racing' "~Old Evans would never give you his mascot of his own free will.~" 2 'ugly' 'idol' "~One has to reflect on ugliness like that.~" 3 'gold' 'golden' 'watch' "~It's quite hypnotically fascinating, don't you think?~" 4 'squirrel' 'loose' 'board' 'summerhou' "~Squirrels are very fond of nuts, but you can't trust them an inch.~" 'spade' "~Just think what that would do to a decent lawn!  Oh, it makes me go cold all over.~" 2 'croquet' 'lawn' "~Whatever is a croquet lawn for, if not to play croquet?  Although, now I think about it, there is something else down there.~" 2 'anoppe' 'eppona' "~Ah yes, a code word understood by certain of Alexander the Great's slaves. But you'd have to be in the right place at the right time.~" 2 'tombstone' 'tomb' "~The mouth is the key, or rather the lock.~" 2 'sphinx' 'sphinxes' "~Do be careful. The sphinxes are only made of stone, but they could easily give you nightmares.~" 2 'couch' 'couches' "~Jolly comfortable, some of those funeral couches.~" 5 'skiff' 'yacht' 'boat' 'coffin' 'mummy' "~A one-way ride, but that's life.~" 2 'adamantine' 'knight' "~Once fired with life, the knight will only be yours to command when he has discharged his chivalric duty.~" 2 'hand' 'head' "~Some of those ancient knights were rather loose, but perhaps that's better than being screwed up.~" 2 'library' 'portico' "~The Great Library isn't for passing hooligans, you know,~ says the angel reprovingly. ~Besides, the guards understand their duty by the Cat God far too well to let you through.~" 3 'librarian' 'apollonius' 'callimachus' "~They're always at each other's throats. I shudder to think what might happen if a real fight broke out.~" 2 'alexandria' 'processio' "~Oh, find yourself a costume, join the party!~" 3 'quarterst' 'quarter' 'staff' "~The green wood may one day make a really good staff, but it could take ages. Better leave it with someone for safe keeping.~" 'high' "~Some choices are inevitable and permanent, at least in this world.~" 'oubliette' "~Do be careful of the trap, won't you!  You might want to take precautions with the opening.~" 3 'amber' 'gem' 'gemstone' "~Let me see.~" 2 'statues' 'gods' "~You appreciate, in my position I can't really comment on graven images of pagan gods. Better try some dictionary or other.~" 4 'oracle' 'priestess' 'delphic' 'altar' "~That woman will rabbit on, once you set her off. But only if you sacrifice something. Will you be joining us next Harvest Sunday, by the way?~" 2 'oil' 'trough' "~Ooh, it does make me shiver, thinking of the way they used to pour oil over themselves, anointing they called it.~" 2 'homer' 'poet' "~Shabby old gossip, Homer, always reminds me of Peter Falk. Anyway, just give him his answers. Shouldn't be too hard, with what you're wearing and carrying.~" 3 'summer' 'house' 'summerhou' "~Going in round the front just scares the birds away, I fear.~" 3 'contraption' 'panel' 'grid' "~Find out what you can about your ancestor who built it - his tomb isn't far away. Then reflect as best you can on the problem.~" 'ozone' "~Well, if you know what the odour is, that's the main thing.~" "";       
+Array angel_topics --> 3 'heaven' 'yourself' 'herself' "~Heaven?  Oh this isn't your eternal salvation, it's mine, able to serve by answering all these delightful questions. No, Heaven itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~" 2 'hell' 'demon' "The angel acknowledges the question, but cannot bring herself to speak of Hell." 'rods' "~The rods definitely fit into all this somewhere.~" 'maze' "~If only you could have been there when the maze was being laid out!~" 'master' "~The master game is like a point at infinity to we mortals,~ the angel says wistfully." 3 'infinity' 'lemniscus' 'arc' "~All a matter of fitting the rods in somewhere.~" 3 'andromeda' 'princess' 'maiden' "~How she must long to let her hair down now, instead of being chained to that rock,~ the angel says sorrowfully. ~But in deference to her wishes, I cannot help you rescue her.~" 'mural' "~Amazing fortune you must have in finding it, I can tell.~" 'folly' "~Ah yes, we must all lament for human folly,~ says the angel, misunderstanding completely." 'zeus' "~Zeus wasn't a true god, of course,~ the angel predictably insists, ~just a manifestation of the laws of physics to an Ancient Greek, a kind of symbol for the way the universe fundamentally worked.~" 2 'bomb' 'lighthouse' "The angel maintains a tight-lipped silence." 'sacrifice' "~That's too dangerous a rod to actually use, of course, and the Church no longer approves of martyrs.~" 'luck' "~Is there really such a thing as luck, or free will?  It's a theological grey area,~ says the angel with fine casuistry." 'fire' "~Certainly a thorny problem, that.~" 5 'mascot' 'old' 'evans' 'moon' 'racing' "~Old Evans would never give you his mascot of his own free will.~" 2 'ugly' 'idol' "~One has to reflect on ugliness like that.~" 3 'gold' 'golden' 'watch' "~It's quite hypnotically fascinating, don't you think?~" 4 'squirrel' 'loose' 'board' 'summerhouse' "~Squirrels are very fond of nuts, but you can't trust them an inch.~" 'spade' "~Just think what that would do to a decent lawn!  Oh, it makes me go cold all over.~" 2 'croquet' 'lawn' "~Whatever is a croquet lawn for, if not to play croquet?  Although, now I think about it, there is something else down there.~" 2 'anoppe' 'eppona' "~Ah yes, a code word understood by certain of Alexander the Great's slaves. But you'd have to be in the right place at the right time.~" 2 'tombstone' 'tomb' "~The mouth is the key, or rather the lock.~" 2 'sphinx' 'sphinxes' "~Do be careful. The sphinxes are only made of stone, but they could easily give you nightmares.~" 2 'couch' 'couches' "~Jolly comfortable, some of those funeral couches.~" 5 'skiff' 'yacht' 'boat' 'coffin' 'mummy' "~A one-way ride, but that's life.~" 2 'adamantine' 'knight' "~Once fired with life, the knight will only be yours to command when he has discharged his chivalric duty.~" 2 'hand' 'head' "~Some of those ancient knights were rather loose, but perhaps that's better than being screwed up.~" 2 'library' 'portico' "~The Great Library isn't for passing hooligans, you know,~ says the angel reprovingly. ~Besides, the guards understand their duty by the Cat God far too well to let you through.~" 3 'librarian' 'apollonius' 'callimachus' "~They're always at each other's throats. I shudder to think what might happen if a real fight broke out.~" 2 'alexandria' 'processio' "~Oh, find yourself a costume, join the party!~" 3 'quarterstaff' 'quarter' 'staff' "~The green wood may one day make a really good staff, but it could take ages. Better leave it with someone for safe keeping.~" 'high' "~Some choices are inevitable and permanent, at least in this world.~" 'oubliette' "~Do be careful of the trap, won't you!  You might want to take precautions with the opening.~" 3 'amber' 'gem' 'gemstone' "~Let me see.~" 2 'statues' 'gods' "~You appreciate, in my position I can't really comment on graven images of pagan gods. Better try some dictionary or other.~" 4 'oracle' 'priestess' 'delphic' 'altar' "~That woman will rabbit on, once you set her off. But only if you sacrifice something. Will you be joining us next Harvest Sunday, by the way?~" 2 'oil' 'trough' "~Ooh, it does make me shiver, thinking of the way they used to pour oil over themselves, anointing they called it.~" 2 'homer' 'poet' "~Shabby old gossip, Homer, always reminds me of Peter Falk. Anyway, just give him his answers. Shouldn't be too hard, with what you're wearing and carrying.~" 3 'summer' 'house' 'summerhouse' "~Going in round the front just scares the birds away, I fear.~" 3 'contraption' 'panel' 'grid' "~Find out what you can about your ancestor who built it - his tomb isn't far away. Then reflect as best you can on the problem.~" 'ozone' "~Well, if you know what the odour is, that's the main thing.~" "";        
 Array extra_global_bool_array -> 48;    
 Array task_done --> 22; 
 Array rank_levels -->   
