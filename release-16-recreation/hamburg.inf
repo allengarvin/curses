@@ -193,9 +193,9 @@ DERoom  Coven_Cell "Coven Cell"
   with  before [;
             Ram: "No, this is a goat. A ~ram~ is a kind of sheep.";
             Wait: rfalse;
-            if( player hasnt general )
-                rfalse;
-            "You seem to lack the will any more. The drug must have taken hold.";
+            default: 
+                if( player hasnt general ) rfalse;
+                "You seem to lack the will any more. The drug must have taken hold.";
         ],
         description "An old administrative office of the museum, emptied and made into a prison cell: amateur but 
             effective.",
