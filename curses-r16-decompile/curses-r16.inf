@@ -4781,51 +4781,51 @@ Constant PRISON = 8;
 Constant CHECKMATED = 9;
 Constant SPOOKED = 10;
 
-Constant SCORE_HAMBURG = 0;                   3
-Constant SCORE_TORCH = 1;                     7
-Constant SCORE_JOSHUA = 2;                    7
-Constant SCORE_SECRETDOOR = 3;                10
-Constant SCORE_DEMIJOHN = 4;                  3
-Constant SCORE_WAITER = 5;                    3
-Constant SCORE_WAND = 6;                      5
-Constant SCORE_AIMWAND = 7;                   5
-Constant SCORE_WIRELESS = 8;                  2
-Constant SCORE_DAISY = 9;                     2
-Constant SCORE_CHOCOLATE = 10;                3
-Constant SCORE_ANDROMEDA = 11;                50
-Constant SCORE_BATTERY = 12;                  3
-Constant SCORE_PLUMBING = 13;                 4
-Constant SCORE_SMELL = 14;                    6
-Constant SCORE_REFLECTING = 15;               6
-Constant SCORE_HENRIPOST = 16;                15
-Constant SCORE_ORB = 17;                      10
-Constant SCORE_MAP = 18;                      1
-Constant SCORE_ARC = 19;                      8
-Constant SCORE_WELL = 20;                     4
-Constant SCORE_MASCOT = 21;                   0
-Constant SCORE_BISCUIT = 22;                  0
-Constant SCORE_SMOKE = 23;                    3
-Constant SCORE_SHIP = 24;                     3
-Constant SCORE_FLAG = 25;                     6
-Constant SCORE_SLEEP = 26;                    5
-Constant SCORE_SECRET_PASS = 27;              10
-Constant SCORE_ROD_IDENT = 28;                7
-Constant SCORE_WATCH = 29;                    7
-Constant SCORE_HYPNOSIS = 30;                 3
-Constant SCORE_SECURITY = 31;                 3
-Constant SCORE_TEMPLE = 32;                   3
-Constant SCORE_HOMER = 33;                    6
-Constant SCORE_ORACLE = 34;                   3
-Constant SCORE_STRONGBOX = 35;                8
-Constant SCORE_AUSTIN = 36;                   3
-Constant SCORE_WASH = 37;                     3
-Constant SCORE_LIBRARY = 38;                  7
-Constant SCORE_SPHINX = 39;                   3
-Constant SCORE_QUARTERSTAFF = 40;             3
-Constant SCORE_AFTERLIFE = 41;                15
-Constant SCORE_KNIGHT = 42;                   15
-Constant SCORE_KNIGHT_ENCOURAGE = 43;         3
-Constant SCORE_HIGHROD = 44;                  1
+Constant SCORE_HAMBURG = 0;
+Constant SCORE_TORCH = 1;
+Constant SCORE_JOSHUA = 2;
+Constant SCORE_SECRETDOOR = 3;
+Constant SCORE_DEMIJOHN = 4;
+Constant SCORE_WAITER = 5;
+Constant SCORE_WAND = 6;
+Constant SCORE_AIMWAND = 7;
+Constant SCORE_WIRELESS = 8;
+Constant SCORE_DAISY = 9;
+Constant SCORE_CHOCOLATE = 10;
+Constant SCORE_ANDROMEDA = 11;
+Constant SCORE_BATTERY = 12;
+Constant SCORE_PLUMBING = 13;
+Constant SCORE_SMELL = 14;
+Constant SCORE_REFLECTING = 15;
+Constant SCORE_HENRIPOST = 16;
+Constant SCORE_ORB = 17;
+Constant SCORE_MAP = 18;
+Constant SCORE_ARC = 19;
+Constant SCORE_WELL = 20;
+Constant SCORE_MASCOT = 21;
+Constant SCORE_BISCUIT = 22;
+Constant SCORE_SMOKE = 23;
+Constant SCORE_SHIP = 24;
+Constant SCORE_FLAG = 25;
+Constant SCORE_SLEEP = 26;
+Constant SCORE_SECRET_PASS = 27;
+Constant SCORE_ROD_IDENT = 28;
+Constant SCORE_WATCH = 29;
+Constant SCORE_HYPNOSIS = 30;
+Constant SCORE_SECURITY = 31;
+Constant SCORE_TEMPLE = 32;
+Constant SCORE_HOMER = 33;
+Constant SCORE_ORACLE = 34;
+Constant SCORE_STRONGBOX = 35;
+Constant SCORE_AUSTIN = 36;
+Constant SCORE_WASH = 37;
+Constant SCORE_LIBRARY = 38;
+Constant SCORE_SPHINX = 39;
+Constant SCORE_QUARTERSTAFF = 40;
+Constant SCORE_AFTERLIFE = 41;
+Constant SCORE_KNIGHT = 42;
+Constant SCORE_KNIGHT_ENCOURAGE = 43;
+Constant SCORE_HIGHROD = 44;
 
 
 Global location = compass;
@@ -15594,7 +15594,7 @@ Array preactions_table --> IsDirection;
 
 [ FountdationsAfter ;   
     if (action == ##Look) {
-        MzeOldDescribe();
+        MazeOldDescribe();
         rtrue;
     }
     if (action == ##Drop) {
@@ -15604,7 +15604,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ MzeOldDescribe numwalls n_side e_side s_side w_side local6 ;  
+[ MazeOldDescribe numwalls n_side e_side s_side w_side cornerp ;        
     numwalls = MazeBoundary(MazeX,MazeY);
     if (MazeX == 7 && MazeY == 5) {
         numwalls = 2;
@@ -15710,7 +15710,7 @@ Array preactions_table --> IsDirection;
         "This is a fenced-in area.";
     }
     if (numwalls == 2 && s_side == true && w_side == true) {
-        local6 = 1[?];
+        cornerp = true;
     }
   .labelXXX;
     if (numwalls > 0) {
@@ -15729,7 +15729,7 @@ Array preactions_table --> IsDirection;
         }
         --numwalls;
         if (numwalls == 0) {
-            if (local6 == 1[?]) {
+            if (cornerp == true) {
                 "; uncouth rustics are at work to the south, but fortunately they haven't yet seen you.";
             }
             ".";
