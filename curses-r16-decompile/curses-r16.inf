@@ -15428,7 +15428,7 @@ Array preactions_table --> IsDirection;
         if (x == 100) {
             "The maze is constructed with rectangular grid-lines of privet, so you can only proceed north, east, south or west.";
         }
-        if (MazeBoundary(x,y) == 1[?]) {
+        if (MazeBoundary(x,y) == 1) {
             "The privet hedge is in the way.";
         }
         MazeX = x;
