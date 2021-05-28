@@ -231,6 +231,25 @@
     << Look >>;
 ];
 
+[ JumpSub ;
+    if( Austin in location ) {
+        if( game_section == T_ALEXANDRIA ) {
+            "Austin is quite unruffled.";
+        }
+        print "For some reason, Austin is startled and springs for his life ";
+        trigger_quotation(7);
+        if( location == Souvenirs_Room && charcoal_sketch in slide_projector && south_wall hasnt concealed ) {
+            move Austin to Causeway;
+            Achieved(SCORE_AUSTIN);
+            "right up through the south wall and into Alexandria!";
+        }
+        AustinMovements(true);
+        rfalse;
+    }
+    L__M(##Jump);
+    rtrue;
+];
+
 Verb 'strike'
     * noun                                              -> Strike
     * noun 'with' held                                  -> Attack;

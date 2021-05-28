@@ -171,6 +171,8 @@ Replace SaveSub;
 Replace StrongSub;
 Replace MildSub;
 Replace SorrySub;
+Replace JumpSub;
+Replace DarkToDark;
 
 Include "Parser";
 Include "VerbLib";
@@ -211,6 +213,28 @@ Include "afterlife.inf";
      looks as if your great-grandfather was the last person to tidy up these lofts...^";
 ];
 
+[ DarkToDark ;
+    deadflag = DIED;
+    if( game_section ~= T_MODERN ) {
+        "As you step falteringly through the darkness, the air falls ice-cold, whispering in secret languages. 
+         Suddenly a great bear rears up before you, savagely sweeping its paw!";
+    }
+    deadflag = FAILED;
+    print "As you unwisely blunder about in the dark, you ";
+    if( location == Priests_Hole ) 
+        "slip down a side passage of the chimney, further and further, blindly landing in a cloud of soot in the 
+         fireplace of the lounge downstairs. Fortunately your family is on hand to clean you up and put you back
+         to work packing.";
+
+! TODO: handle this
+    if( location >= 123 ) 
+        "miss your footing, trip over and bang your head... Some time later you wake up in hospital, 
+         very confused and not on holiday. Fortunately Aunt Jemima comes to visit you every afternoon with plenty
+         of things for you to do...";
+    "put a foot wrong and crash through a thin plaster roof into one of the upstairs bedrooms, happily landing 
+     on the bed. In later years it becomes a family joke that you demolished half the house for a tatty old
+     tourist map.";
+];
 
 Object carbolic_soap "carbolic soap"
   with  name 'soap' 'carbolic',
