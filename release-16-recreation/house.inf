@@ -2223,7 +2223,15 @@ Object  -> Jemima "Jemima"
 
 Object  daisy_chain "daisy chain"        
   with  name 'daisy' 'chain' 'daisychain',
-        before DaisyChainBefore,
+        before [;
+            Examine:
+                print_ret "A delicate, pretty chain of ", DaisyType(self.number, " daisies.";
+            Drop:
+                remove self;
+                give self ~worn;
+                "The daisychain falls to pieces in your hands!  Cheer up, though, perhaps Jemima might give 
+                 you another.";
+        ],
         u_to DaisyUp,
         number 11,
         devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
@@ -2241,6 +2249,42 @@ HRoom   Storage_Room "Storage Room"
         description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
         cant_go "The only doorway is back west to the winery.",
   has   ;
+
+[ WheelBefore r ;
+    if( action == ##TurnWith ) {
+        if( second == steel_wrench ) 
+            "The wrench doesn't fit a hand-wheel like this.";
+        rfalse;
+    }
+    if( action == ##Turn ) {
+        if( player in dumbwaiter ) "You can just reach the wheel from here, but have too little leverage to turn it.";
+        if( self has on ) "It won't turn. Perhaps it's broken, or perhaps only rusty.";
+        print "It spins round smoothly, and the dumbwaiter is hoisted ";
+        if( dumbwaiter in location ) {
+            print "away out of sight.";
+        } else {
+            print "into view. ";
+            if( medicine_bottle in dark_shaft_obj2 && medicine_bottle has locked ) {
+                give medicine_bottle ~locked;
+                give medicine_bottle open;
+                print "(Just before it reached the bottom there was a curious cracking noise. Was it really wise to leave something in the shaft?)";
+            }
+        }
+        r = parent(dumbwaiter);
+        if( r == Storage_Room ) {
+            move dumbwaiter to Cellars;
+        }
+        if( r == Dark_Shaft ) {
+            move dumbwaiter to location;
+        }
+        if( r == Cellars ) {
+            move dumbwaiter to Storage_Room;
+        }
+        new_line;
+        rtrue;
+    }
+    rfalse;
+];
 
 Object  -> wheel2 "wheel"        
   with  name 'wheel' 'handle' 'catch' 'safety',
@@ -2294,11 +2338,15 @@ Object  -> -> chicken_wishbone "chicken wishbone"
 Object  -> dark_shaft_obj "dark shaft"   
   with  name 'shaft' 'dark',
         after [;
-            Look:
-                if( dumbwaiter notin Dark_Shaft )
-                    print "^Since the dumbwaiter isn't here, the best you can do is clamber down the shaft to the 
-                        cellars.^";
-                rfalse;
+            Receive:
+                move noun to dumbwaiter;
+                if( dumbwaiter in location ) "Put on the dumbwaiter.";
+
+                if( noun == medicine_bottle ) {
+                    give medicine_bottle ~locked open;
+                    "It disappears into the darkness, and there is a slight cracking noise.";
+                }
+                "It disappears into the darkness.";
         ],
         description "Uninviting.",
   has   container open scenery;
@@ -2333,7 +2381,18 @@ HRoom   Dark_Shaft "Dark Shaft"
 
 HRoom   Dark_Passage "Dark Passage"      
   with  name 'coal' 'dust',
-        before DarkPassageBefore,
+        before [;
+            if( sandstone_recess has open ) 
+                Achieved(SCORE_SECRET_PASS);
+            Enter:
+                if( noun == sandstone_recess ) "The recess is too shallow.";
+                rfalse;
+            Go: rfalse;
+            default:
+                if( gas_mask has worn ) rfalse;
+                "The coal dust makes you cough and splutter, and your eyes stream. You are unable to concentrate 
+                 on doing anything here.";
+        ],
         n_to metal_door,
         s_to Dark_Shaft,
         e_to sandstone_recess,
@@ -2345,28 +2404,42 @@ HRoom   Dark_Passage "Dark Passage"
 
 Object  -> sandstone_recess "sandstone recess"   
   with  name 'sandstone' 'recess' 'shallow',
-        n_to Sandstone_Passage,
-        s_to "There is a shallow sandstone recess in the east wall.",
-        w_to se_obj,
-        initial "A secret passage slants down to the east through a sandstone recess.",
+        door_to Sandstone_Passage,
+        when_closed "There is a shallow sandstone recess in the east wall.",
+        door_dir e_to,
+        when_open "A secret passage slants down to the east through a sandstone recess.",
   has   door static;
 
 Object  -> metal_door "metal door"       
   with  name 'metal' 'door',
-        after MetalDoorAfter,
-        n_to Garden_Stream,
-        s_to "At the north end is a closed metal door.",
-        e_to small_brass_key,
-        w_to w_obj,
-        initial "At the north end is a metal door, standing open.",
+        after [;
+            Unlock: give coal_bunker ~locked; rfalse;
+            Lock: give coal_bunker locked; rfalse;
+            Open: give coal_bunker open; rfalse;
+            Close: give coal_bunker ~open; rfalse;
+        ],
+        door_to Garden_Stream,
+        when_closed "At the north end is a closed metal door.",
+        with_key small_brass_key,
+        door_dir n_to,
+        when_open "At the north end is a metal door, standing open.",
   has   door lockable locked openable static;
 
 HRoom   Cellars "Cellars"        
-  with  before CellarsBefore,
+  with  before [;
+            Enter:
+                if( noun == dark_shaft_obj2 ) {
+                    if( dumbwaiter in self )
+                        << Enter dumbwaiter >>;
+                    "No, don't. There's nothing there and it's nasty and dirty. Bring the dumbwaiter down instead.";
+                rfalse;
+        ],
         s_to Cellars_South,
         e_to Wine_Cellars,
         w_to Cellar_West,
-        description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues east-to-west and south.",
+        description "Cobwebbed old cellars. There is nothing to see except an opening in one wall onto a dark shaft, 
+            and a big Victorian-steam-engine style wheel beside it with a handle on. The cellar continues east-to-west
+            and south.",
   has   ;
 
 Object  -> wheel "wheel" 
