@@ -4057,13 +4057,13 @@ Object The_Spirit_World "The Spirit World"
         section T_SPIRIT_WORLD,
   has   light scored;
 
-Object -> sphinxes "sphinxes"   
+Object -> spirit_sphinxes "sphinxes"    
   with  name 'sphinx' 'sphinxes' 'stone' 'statue' 'statues',
         initial "Stone sphinxes guard the west doorway, staring balefully at you.",
         description "No grave would be complete without one.",
   has   static;
 
-Object -> wooden_couch "wooden couch"   
+Object -> spirit_wooden_couch "wooden couch"    
   with  name 'wood' 'wooden' 'couch' 'bed' 'weave' 'matting',
         initial "The weave matting on the couch is now in some disarray.",
         description "A comfortable-looking wooden couch, covered with weave matting.",
@@ -4232,7 +4232,7 @@ Object -> curtain "curtain"
         description "Unmoving.",
   has   scenery;
 
-Object -> Madame_Sosostris "Madame Sosostris, famous clairvoyante"      
+Object -> Ancient_Madame_Sosostris "Madame Sosostris, famous clairvoyante"      
   with  name 'sosostris' 'madame' 'clairvoyant',
         life SosostrisLife2,
         initial "Madame Sosostris, famous clairvoyante, meditates here.",
@@ -17308,7 +17308,7 @@ Array preactions_table --> IsDirection;
         location = The_Height_of_Fashion;
     } else {
         The_Spirit_World.number = The_Spirit_World.number - 1;
-        move player to wooden_couch;
+        move player to spirit_wooden_couch;
         remove Napoleonic_officers;
     }
     R_Process(##Look);
@@ -17330,7 +17330,7 @@ Array preactions_table --> IsDirection;
         "You are beyond worldly possessions.";
     }
     if (action == ##Sleep) {
-        if (player in wooden_couch) {
+        if (player in spirit_wooden_couch) {
             if (The_Spirit_World.number == 4) {
                 "The spell of the tomb is broken now, and you cannot sleep.";
             }
@@ -23027,7 +23027,7 @@ Array preactions_table --> IsDirection;
         himobj = Old_Evans;
     }
     if (who == Consulting_Room) {
-        herobj = Madame_Sosostris;
+        herobj = Ancient_Madame_Sosostris;
     }
     if (who == Reading_Corridor) {
         himobj = Callimachus;
