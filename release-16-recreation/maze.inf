@@ -104,7 +104,7 @@
     rtrue;
 ];
 
-[ MazeOldDescribe numwalls n_side e_side s_side w_side local6 ;
+[ MazeOldDescribe numwalls n_side e_side s_side w_side cornerp ;
     numwalls = MazeBoundary(MazeX,MazeY);
     if( MazeX == 7 && MazeY == 5 ) {
         numwalls = 2;
@@ -206,7 +206,7 @@
         "This is a fenced-in area.";
     }
     if( numwalls == 2 && s_side == true && w_side == true ) {
-        local6 = 1;
+        cornerp = 1;
     }
     while( numwalls > 0 ) {
         if( n_side == true ) {
@@ -224,7 +224,7 @@
         }
         --numwalls;
         if( numwalls == 0 ) {
-            if( local6 == 1[?] ) {
+            if( cornerp == 1 ) {
                 "; uncouth rustics are at work to the south, but fortunately they haven't yet seen you.";
             }
             ".";
@@ -244,7 +244,7 @@
 
 
 GRoom   Maze "Maze"      
-  with  before [;
+  with  before [ x y;
             Exit: "Remember the poor grass!";
             Go:
                 if( garden_roller hasnt on ) {
@@ -277,7 +277,7 @@ GRoom   Maze "Maze"
                 if( x == 100 ) {
                     "The maze is constructed with rectangular grid-lines of privet, so you can only proceed north, east, south or west.";
                 }
-                if( MazeBoundary(x,y) == 1[?] ) {
+                if( MazeBoundary(x,y) == 1 ) {
                     "The privet hedge is in the way.";
                 }
                 MazeX = x;
@@ -292,7 +292,6 @@ GRoom   Maze "Maze"
                 }
                 set_flag_array(39);
                 << Look >>;
-                rtrue;
         ],
         after [; Look: MazeDescribe(); rtrue; ],
         s_to Family_Tree,
@@ -362,7 +361,7 @@ Object  -> miniature "miniature"
 
 Object Folly "Folly"    
   with  name 'wain' 'hay' 'valley',
-        after [; default: MazeX = 0; MazeY = 1; rfalse; ]
+        after [; default: MazeX = 0; MazeY = 1; rfalse; ],
         e_to Maze_Foundations,
         description "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, 
             rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across
@@ -406,7 +405,7 @@ Object -> bean_pole "bean pole"
   has   general hidden_rod;
 
 Object Maze_Foundations "Maze Foundations"      
-  with  before [;
+  with  before [ x y;
             Go:
                 if( MazeX == 4 && MazeY == 6 && noun == s_obj ) {
                     rfalse;
@@ -457,7 +456,6 @@ Object Maze_Foundations "Maze Foundations"
                 MazeX = x;
                 MazeY = y;
                 << Look >>;
-                rtrue;
         ],
         after [;
             Look: MazeOldDescribe(); rtrue;

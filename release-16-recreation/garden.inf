@@ -254,7 +254,8 @@ Object  -> garden_roller "garden roller"
         ],
         s_to "A big motorised garden roller is parked here.",
         initial "The garden roller sits here, its engine still running.",
-        description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
+        description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big 
+            on/off switch.",
         each_turn [;
             if( player notin self || self hasnt on )
                 rfalse;
@@ -272,12 +273,12 @@ Object  -> garden_roller "garden roller"
                 give medicine_bottle ~locked;
             }
         ],
-  has   container enterable open static switchable vehicle;
+  has   container enterable open static switchable;
 
 Object  -> weed_killer_bottle "weed killer bottle"       
   with  name 'weed' 'killer' 'bottle' 'weedkille',
-        before [;
-            Squeeze, Push:"
+        before [ i;
+            Squeeze, Push:
                 if( self has general ) "Nothing emerges. The bottle must be empty.";
                 give self general;
                 if( location == Wall_of_Thorns ) {
@@ -313,7 +314,7 @@ Object  -> weed_killer_bottle "weed killer bottle"
         ],
         initial "In the shadows is a weed killer bottle.",
         description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
-        daemon [;
+        daemon [ ndx;
             if( game_section ~= T_GARDEN_PAST ) {
                 ndx = WeedkillerX + 9 * WeedkillerY;
                 garden_array->ndx = 48;
@@ -335,7 +336,7 @@ Object  -> spade "spade"
                 "On second thoughts, let's just call a spade a spade.";
         ],
         initial "Hanging from a hook is a bladed agricultural implement.",
-        short [ SpadeShort ;
+        short [ ;
             if( self has general ) {
                 print "spade";
             } else {
@@ -361,7 +362,7 @@ GRoom   Up_the_Plane_Tree "Up the Plane Tree"
 
 Object  -> maze_layout "maze layout"     
   with  name 'maze' 'layout',
-        description [;
+        description [ x y wallp;
             print "The layout is roughly as follows:^^";
             0-->8 = 2 | 0-->8;
             y = 0;
