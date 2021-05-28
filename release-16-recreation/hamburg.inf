@@ -5,7 +5,10 @@ DERoom  Museum_Foyer "Museum Foyer"
   with  name 'shadows' 'bats' 'lamps' 'rain',
         s_to FoyerSouth,
         ne_to Revolving_Door1,
-        description "The Museum of Arcana is deserted after nightfall and only dimly lit by distant sodium street-lamps. Outside it is a stormy October night and rain beats against the windowpanes. Shadows swoop and dive in the air like bats.^^The revolving door to northeast, which leads out, seems to be solidly blocked off. But a dim passage runs south, through a strange metal corridor.",
+        description "The Museum of Arcana is deserted after nightfall and only dimly lit by distant sodium 
+            street-lamps. Outside it is a stormy October night and rain beats against the windowpanes. Shadows
+            swoop and dive in the air like bats.^^The revolving door to northeast, which leads out, seems to be
+            solidly blocked off. But a dim passage runs south, through a strange metal corridor.",
         cant_go "There's no apparent way but south.",
   has   light scored;
 
@@ -18,14 +21,16 @@ Object  -> revolving_door_obj "revolving door"
 Object  -> publicity_poster "publicity poster"   
   with  name 'poster' 'publicity' 'pretentio' 'exhibition',
         initial "A publicity poster is displayed for passers-by outside to see.",
-        description "One of those pretentious exhibition posters. Your German is just about adequate to the task:^^~Cults of the Druids - a Major Retrospective, October-November 1988~.",
+        description "One of those pretentious exhibition posters. Your German is just about adequate to the 
+            task:^^~Cults of the Druids - a Major Retrospective, October-November 1988~.",
   has   static;
 
 DERoom  Revolving_Door1 "Revolving Door" 
   with  n_to RevolvingDoorNorth,
         e_to "The door only turns clockwise.",
         sw_to Museum_Foyer,
-        description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
+        description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside 
+            and opens only onto the foyer, southwest.",
         cant_go "To north and east are the walls of the door.",
   has   light;
 
@@ -36,23 +41,42 @@ Object  -> door1 "door"
   has   scenery;
 
 DERoom  Revolving_Door2 "Revolving Door" 
-  with  n_to RevolvingDoorNorth,
+  with  n_to [; << Push door1 >>; ],
         e_to "The door only turns clockwise.",
         sw_to Museum_Foyer,
-        description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside and opens only onto the foyer, southwest.",
+        description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside 
+            and opens only onto the foyer, southwest.",
         cant_go "To north and east are the walls of the door.",
   has   light;
 
 Object  -> door2 "door"  
   with  name 'door' 'revolving',
-        before MuseumDoorBefore,
+        before [;
+            Push, Turn, Pull: "You revolve clockwise with the door, and wind up back adjacent to the foyer.";
+        ],
         description "You stand within it.",
   has   scenery;
 
 Object  -> beach_ball "beach ball"       
   with  name 'striped' 'beach' 'ball',
-        before BeachBallBefore,
-        after BeachBallAfter,
+        before [;
+            Take, Remove:
+                "The beach ball, a welcome dash of colour in this drab monochrome night, is simply too big, 
+                 cumbersome and round to get hold of.";
+            PushDir:
+                if( second == s_obj && location == Museum_Foyer ) {
+                    print "You pass between the steel walls and a light passes over you. Suddenly barriers spring 
+                        out across the corridor, thumping into the beach ball which rapidly begins to deflate.^^There
+                        is a sharp hiss as you nimbly jump over the ball, and then a horrid clang as the barriers
+                        come together behind you.^";
+                    remove beach_ball;
+                    Achieved(SCORE_SECURITY);
+                    PlayerTo(Hall_of_Exhibits);
+                    rtrue;
+                }
+                AllowPushDir();
+        ],
+        after [; PushDir: "You bounce the beach ball along in front of you."; ],
         initial "A colourful, striped inflated beach ball bounces around.",
   has   ;
 
@@ -65,7 +89,11 @@ DERoom  Hall_of_Exhibits "Hall of Exhibits"
 
 Object  -> Tarot_box "Tarot box" 
   with  name 'box' 'of' 'tarot',
-        before TarotBoxBefore,
+        before [;
+            Receive: 
+                if( noun hasnt card ) "Only cards will fit.";
+                rfalse;
+        ],
         initial "Resting on a little display table is a Tarot box.",
         devil_hint "There's nothing worthwhile in it.",
   has   container openable;
@@ -125,8 +153,18 @@ Object  -> still_life "still life"
   has   static talkable;
 
 DERoom  Dark_Staircase "Dark Staircase"  
-  with  before DarkStaircaseBefore,
-        after DarkStaircaseAfter,
+  with  before [;
+            Listen:
+                "It sounds like a thinly, but enthusiastically, attended football match. There are ragged German 
+                 chants but only the word ~Eumenides~ pokes out.";
+            Go:
+                if( noun == s_obj or d_obj )
+                    "You step downward in some confusion, but your senses are assailed by some kind of vision, of 
+                     a ghastly circle of druids watching your every move and plotting, plotting...^^In horror you
+                     turn back.";
+                rfalse;
+        ],
+        after [; set_flag_array(14); ],
         e_to Hall_of_Exhibits,
         u_to Hall_of_Exhibits,
         description "A dark staircase, turning from east to south as it descends. The hideous sound of arhythmic chanting can be heard from below.",
@@ -152,16 +190,60 @@ Object  Ace_of_Cups_card "Ace of Cups"
   has   card;
 
 DERoom  Coven_Cell "Coven Cell"  
-  with  before CovenCellBefore,
-        description "An old administrative office of the museum, emptied and made into a prison cell: amateur but effective.",
+  with  before [;
+            Ram: "No, this is a goat. A ~ram~ is a kind of sheep.";
+            Wait: rfalse;
+            if( player hasnt general )
+                rfalse;
+            "You seem to lack the will any more. The drug must have taken hold.";
+        ],
+        description "An old administrative office of the museum, emptied and made into a prison cell: amateur but 
+            effective.",
         cant_go "There's definitely no way out of here.",
-        number 0,
-        daemon CovenCellDaemon,
+        time_left 0,
+        time_out [;
+            if( player notin self ) rtrue;
+            if( Coven_Cell hasnt general ) {
+                if( tablet_eaten == false ) {
+                    give player general;
+                }
+                give Coven_Cell general;
+                StartTimer(self,3);
+                rtrue;
+            }
+            print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. 
+                ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~
+                He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
+            deadflag = DIED;
+            if( player has general ) 
+                "^In a trance, you go willingly to your (somewhat messy) sacrifice...";
+            "^Kicking and screaming, you are are dragged off to a grisly sacrifice...";
+        ],
   has   light;
 
 Object  -> goat "anxious-looking goat"   
   with  name 'anxious' 'goat' 'dobbin',
-        life GoatLife,
+        life [;
+            Give:
+                if( noun has edible ) {
+                    remove noun;
+                    print_ret "The goat happily munches down ", (the) noun, ".";
+                }
+                if( noun == medicine_bottle && medicine_bottle has locked ) {
+                    give medicine_bottle ~locked open;
+                    "The medicine bottle cracks open in the goat's jaws!";
+                }
+                if( noun == daisy_chain )
+                    "For heaven's sake, the daisy chain is far too useful for that.";
+                rfalse;
+            Order, Answer, Ask:
+                if( special_word == 'curses' ) {
+                    print "In a harsh voice, the goat intones:^^";
+                    VersionSub();
+                    rtrue;
+                }
+                "Grunt!";
+        ],
         article "an",
   has   animate static;
 
@@ -173,30 +255,58 @@ Object  -> crook "shepherd's crook"
 
 Object  -> cell_door "cell door" 
   with  name 'cell' 'door',
-        before CelldoorBefore,
-        n_to Museum_Foyer,
-        s_to "As you might expect, the cell door is closed.",
-        w_to ne_obj,
+        before [;
+            Knock: "They're coming as fast as they can!  Ritual doesn't just happen by itself, you know.";
+        ],
+        door_to Museum_Foyer,
+        when_closed "As you might expect, the cell door is closed.",
+        door_dir w_to,
   has   door locked openable static;
 
 DERoom  Cabinet_Room "Cabinet Room"      
-  with  before CabinetRoomBefore,
+  with  before [;
+            if( noun in glass_cabinet ) "It's too dark to see much inside the cabinet.";
+            rfalse;
+        ],
         w_to Hall_of_Exhibits,
         description "An annexe to the museum, containing sundry archaelogical finds, badly labelled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
   has   ;
 
 Object  -> glass_cabinet "glass cabinet" 
   with  name 'glass' 'cabinet' 'pane',
-        before CabinetBefore,
+        before [;
+            Attack:
+                if( self has open ) "Just how broken do you want it to be?";
+                give self open;
+                StartTimer(self,5);
+                "You smash the glass... noisily. Still, the cabinet is open now.";
+        ],
+
         s_to "One cabinet looks particularly vulnerable.",
         initial "You could just look inside the broken glass cabinet.",
-        number 0,
-        daemon CabinetDAemon,
+        time_left 0,
+        time_out [; 
+            if( game_section == T_HAMBURG && location ~= Coven_Cell ) {
+                print "^Finally reacting to the alarm you set off, Doktor Stein appears and steps toward you, 
+                    clapping his hands sharply. And dozens of robed figures leap out of the darkness - but these
+                    are no security guards. Their faces are painted hideously and they betray no emotion as they
+                    pinion you tight...^^~So, Meldrew. It is all as it was prophesied,~ says Stein in a perfectly
+                    conversational tone as he forces your mouth open and makes you swallow a violet pill.^^~One
+                    of your apothecary ancestors made this drug!  Appropriate, no?~^^", "You feel queasy, but this
+                    is perhaps the least of your problems as they drag you off...^^";
+                StartTimer(Coven_Cell,0);
+                tablet_eaten = false;
+                PlayerTo(Coven_Cell);
+                rtrue;
+            }
+        ],
   has   container static transparent;
 
 Object  -> -> smooth_round_stone "smooth round stone"    
   with  name 'smooth' 'round' 'pumice' 'metal' 'stone',
-        before RoundStoneBefore,
+        before [;
+            Take: if( self has general ) "Reach down the grating as you may, it remains just beyond reach.";
+        ],
         initial nothing,
         description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the label rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
         angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
