@@ -586,24 +586,79 @@ Object  -> mast_and_rigging "mast and rigging"
   has   scenery;
 
 TRoom   Up_the_Mast "Up the Mast"        
-  with  before OnMastBefore,
-        after OnMastAfter,
-        w_to OnMastWest,
-        d_to OnMastDown,
+  with  before [;
+            Jump:
+                print "You jump (madly) from the crow's nest ";
+                if( british_flag has general ) {
+                    print "(tearing the flag as you go) ";
+                }
+                deadflag = DIED;
+                "to a colourful demise on the deck below.";
+            Strike, Point: "Up here?";
+        ],
+        after [;
+            Drop:
+                move noun to Aboard_Ship;
+                if( noun == medicine_bottle && noun has locked ) {
+                    give medicine_bottle ~locked;
+                    give medicine_bottle open;
+                    "The medicine bottle drops like a stone to the deck far below, where it cracks like an egg.";
+                }
+                "Dropped a long way down, onto the deck.";
+        ],
+        w_to [;
+            print "You wander out onto the flagpole, which bows and bends alarmingly, until suddenly...^^Crack!  And you are falling";
+            if( british_flag hasnt general ) {
+                deadflag = DIED;
+                ", plummeting, head over heels to the hard wooden deck and the inevitable iron fixtures...";
+            }
+            move british_flag to Aboard_Ship;
+            give british_flag ~concealed;
+            give british_flag ~general;
+            remove flagpole;
+            move old_timber_spar to Aboard_Ship;
+            move player to Aboard_Ship;
+            location = Aboard_Ship;
+            Achieved(SCORE_FLAG);
+            "... but gracefully, as the flag billows out into a parachute, until it suddenly tears out of your 
+             hand and you come down in an ignominious heap.";
+        ],
+        d_to [;
+            if( british_flag has general ) {
+                give british_flag ~general;
+                print "You are obliged to leave hold of the flag en route.^^";
+            }
+            return Aboard_Ship;
+        ],
         description "Coming up here must be one of your less inspired ideas. The mist is all around you, confusing your senses. Two pale, bluish moons hang in a pink sky.",
         cant_go "Down might be a better idea.",
   has   light ship_flag;
 
 Object  -> flagpole "flagpole"   
   with  name 'pole' 'flagpole' 'mast' 'ensign' 'spar',
-        before FlagpoleBefore,
+        before [;
+            Take, Turn, Push, Pull: "The flagpole is very securely fixed to the main mast.";
+        ],
         initial "A flagpole juts out portwards from the top of the mast, far too insubstantial to bear any weight. From it hangs the ensign of the British Merchant Navy (which you could just reach the bottom of).",
         description "The flagpole juts out to port with the prevailing... wind?",
   has   static;
 
 Object  -> british_flag "flag of the British Merchant Navy" 
   with  name 'flag' 'ensign' 'navy' 'british' 'merchant' 'of' 'tassels',
-        before FlagBefore,
+        before [;
+            Take, Remove:
+                if( self in comfortable_bed ) "The flag seems perfect for the bed as it is.";
+                rfalse;
+            Take, Pull:
+                if( self notin Up_the_Mast ) rfalse;
+                give british_flag general;
+                "You take hold of the tassels of the flag in one hand (though it won't pull away from the pole).";
+            Drop, Remove:
+                ! Slight game-logic mistake: doesn't check if the flag has general
+                give british_flag ~general;
+                "You leave hold of the tassels of the flag.";
+        ],
+
         initial "The flag has fluttered to a heap on deck.",
         description "Broad, heavy, scarlet cloth, halfway between a silken sheet and a carpet, with a cross and a Union Jack in one corner.",
         devil_hint "Piece of advice - it's never very comfortable wrapping yourself in the Flag.",
@@ -611,7 +666,14 @@ Object  -> british_flag "flag of the British Merchant Navy"
 
 Object  old_timber_spar "old timber spar"        
   with  name 'old' 'prop' 'timber' 'flagpole' 'spar',
-        after TimberSparAfter,
+        after [;
+            Take:
+                if( old_timber_spar hasnt general ) rfalse;
+                !!! BUG: this must be left over from the gardens. Pointless, really.
+                give old_timber_spar ~general;
+                StartTimer(bean_pole,5);
+                rfalse;
+        ],
         initial "The broken flagpole, a plain timber spar, lies beside the mast.",
         description "An old timber prop, once the spar of a main mast.",
         article "an",
@@ -623,12 +685,25 @@ TRoom   Prow_of_the_Lady_Magdalena "Prow of the Lady Magdalena"
   with  name 'lady' 'magdalena' 'mermaid' 'figurine',
         s_to Aboard_Ship,
         description "You stand in the triangular prow of the ship, which is graced by a carved and painted figurine and named the ~Lady Magdalena~. There is no sign of water, but the boat is rocked too often for it to be aground. And the glassy mist hangs ahead.",
-        cant_go ProwCantGo,
+        cant_go [;
+            print "You can only go aft.^";
+            set_flag_array(11);
+            rtrue;
+        ],
   has   light ship_flag;
 
 Object  -> green_branch "green branch"   
   with  name 'green' 'branch' 'leafed',
-        before BranchBefore,
+        before [;
+            Wave: 
+                if( Jemima in location ) 
+                    "Jemima, who has hay fever, is extremely annoyed by this. So it wasn't a turn entirely wasted.";
+                if( location ~= Hollow || parent(corn_crake) == nothing ) 
+                    "The pollen given off makes you sneeze a little, but fails to give you the bird. (Worth a try, anyway.)";
+                remove corn_crake;
+                "The bird is so startled by the cloud of pollen from the waved branch that she leaps into the 
+                 skies, squawking with flighty anxiety.";
+        ],
         initial "In the Lady Magdalena's loose grip is a traditional sailor's good-luck token: a green-leafed branch, to attract the gulls of an approaching shore.",
         section T_TAROT,
         angel_hint "Oh, you startled me for a moment there! I am getting flighty.",
@@ -637,14 +712,39 @@ Object  -> green_branch "green branch"
 TRoom   Stern "Stern"    
   with  name 'sand' 'bank' 'mist',
         n_to Aboard_Ship,
-        d_to SternDown,
+        d_to [;
+            if( capstan hasnt general ) 
+                "You shin precariously down the anchor chain, but reach the end while still hanging very far 
+                 above the... water? quicksand?  Concentrating very carefully, you heave yourself back aboard and
+                 pant with relief.";
+            move player to Souvenirs_Room;
+            location = Souvenirs_Room;
+            "You shin down the anchor chain, down, down, under the keel of the Lady Magdalena, down until there is 
+             nothing but the glassy mist and the endless chain...^^...And the approaching soft, spongy, pinkish
+             sand-bank, which welcomes you with its warmth: you step ashore, and immediately sink into the clammy,
+             living sand, until you are engulfed altogether... and pass out.^^However, the hard attic floorboards
+             beneath your back soon wake you again.";
+        ],
         description "The square stern of the ship looks out south, not onto receding waves, but to what seems a tunnel through dense, glassy mist. You can faintly make out an odd, pale reddish sand bank in the distance.",
         cant_go "The boat runs fore.",
   has   light ship_flag;
 
 Object  -> capstan "capstan"     
   with  name 'capstan' 'anchor' 'chain' 'wheel',
-        before CapstanBefore,
-        initial "The top of the anchor chain is wound around the capstan, a great wheel on the deck beside you. The chain disappears over the side.",
+        before [;
+            Turn, Push, PushDir:
+                print "You heave away at the capstan, ";
+                if( capstan has general ) 
+                    give capstan ~general;
+                else {
+                    give capstan general;
+                    print "un";
+                }
+                "winding the great anchor chain.";
+            Climb:
+                << Go d_obj >>;
+        ],
+        initial "The top of the anchor chain is wound around the capstan, a great wheel on the deck beside you. 
+            The chain disappears over the side.",
   has   static;
 
