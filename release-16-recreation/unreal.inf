@@ -22,7 +22,22 @@ URoom   Shadowy_Hallway "Shadowy Hallway"
 
 Object  -> poster "poster"       
   with  name 'poster' 'posters' 'peeling',
-        before PosterBefore,
+        before [;
+            Take, RipDown, Rip, Pull:
+                if( self has scenery ) {
+                    give self ~scenery;
+                    "You hastily tear down the poster, but there's nothing interesting behind it, only painted 
+                     graffiti: ~Shantih Shantih Shantih~.";
+                }
+                rfalse;
+            Wave:
+                if( location == Down_by_River && tourist_boat hasnt open ) {
+                    print "You wave the poster at the boat, but the boat remains unmoved.^";
+                    GoodTry();
+                    rtrue;
+                }
+                rfalse;
+        ],
         description "~Bateaux Phlebas - toujours le dernier mot~. You briefly wish you had a dog called Toto, so 
             as to be able to say ~Toto, I've got a feeling we're not in England any more.~",
         devil_hint "What a very useful piece of paper. Pity there's writing on it.",
@@ -31,7 +46,20 @@ Object  -> poster "poster"
 URoom   Bohemia "Bohemia"        
   with  name 'easels' 'brushes' 'paint',
         w_to Shadowy_Hallway,
-        initial BohemiaInitial,
+        initial [;
+            switch( random(10) ) {
+                1: Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a yellow chair.";
+                2: Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of lilies on a pond.";
+                3: Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a chateau in Aix-en-Provence.";
+                4: Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of nude bathers.";
+                5: Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a waitress at a bar.";
+                6: Impressionist_painting.initial = "One whole wall is an Cubist mural painting of a woman with a plate of fish on her head.";
+                7: Impressionist_painting.initial = "One whole wall is an abstract Cubist mural painting.";
+                8: Impressionist_painting.initial = "One whole wall is an Pre-Raphaelite mural painting of the Virgin Mary looking up at the light.";
+                9: Impressionist_painting.initial = "One whole wall is an Impressionist mural painting of a woman with a parasol.";
+                10: Impressionist_painting.initial = "One whole wall is an pointillist mural painting of a scene in a park by a lake.";
+        ],
+
         description "Flats occupied by starving-but-noble artists can be romantic and stylish despite the squalor. 
             This one, however, is simply a one-room hovel, caked with paint, littered with brushes and improvised
             easels, and you can't help standing on tiptoe here.",
@@ -47,7 +75,7 @@ Object  -> Impressionist_painting "Impressionist painting"
 
 URoom   Consulting_Room "Consulting Room"        
   with  name 'sevenbranch' 'candelabra' 'sticks' 'table',
-        before ConsultingRoomBefore,
+        before [; Smell: "You feel briefly incensed."; ],
         w_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
         d_to Shadowy_Hallway,
         description "The stairs end at a shabby room, with screened windows, lit by incense sticks and sevenbranched 
@@ -57,7 +85,22 @@ URoom   Consulting_Room "Consulting Room"
 
 Object  -> Tarot_pack "Tarot pack"       
   with  name 'wicked' 'tarot' 'pack' 'deck',
-        before TarotPackBefore,
+        before [;
+            Take, Remove:
+                "That's funny. For a moment there your hand seemed to go straight through the pack of cards without 
+                 touching it!";
+            Stack:
+                if( second == nothing )
+                    "An intriguing idea, but you'll have to be more explicit about how to do it.";
+                << Insert second self >>;
+            Receive:
+                if( Madame_Sosostris in location ) "Madame Sosostris won't let you.";
+                if( noun hasnt card ) "That would look rather incongruous, surely?";
+                remove noun;
+                InsertCardIntoDeck(noun);
+                print_ret "You carefully lay ", (the) noun, " face down on the tarot pack.";
+            Search, Examine, LookUnder: "The cards defy mortal examination.";
+        ],
   has   scenery;
 
 Object  -> curtain "curtain"     
@@ -66,12 +109,45 @@ Object  -> curtain "curtain"
 
 Object  -> bell_push "bell push" 
   with  name 'bell' 'push',
-        before BellPushBefore,
+        before [;
+            Push:
+                if( Madame_Sosostris in Consulting_Room ) "Madame Sosostris looks at you in some irritation.";
+                if( Madame_Sosostris hasnt general ) {
+                    move Madame_Sosostris to Consulting_Room;
+                    give curtain general;
+                    "Madame Sosostris, the famous clairvoyante, breezes in through the hanging curtain and sits 
+                     behind the table, making waving gestures with her hands.^^~First, this I must know, were you
+                     born in an even, or an odd, year?~";
+                }
+                if( Unreal_City has general ) "She has helped enough.";
+                print "Madame Sosostris breezes in once more. ~You again,~ she says warily. ~Let us see how your 
+                    fortunes have changed.~^^";
+                SosostrisDeals();
+                rtrue;
+        ],
   has   scenery;
 
 Object  Madame_Sosostris "Madame Sosostris, famous clairvoyante" 
   with  name 'sosostris' 'madame' 'clairvoyant',
-        life SosostrisLife,
+        life [;
+            Give:
+                if( noun == silk_handkerchief )
+                    "Gratefully she blows her nose but then returns the handkerchief. You refold it ingeniously.";
+                print_ret "She looks warily at ", (the) noun, ".";
+            Kiss: "She kisses you forcibly. Her mouth tastes of tobacco.";
+            Attack: "She mesmerises you into immobility. She hasn't lived all these centuries in the Latin Quarter 
+                     for nothing, you know.";
+            Answer:
+                if( curtain hasnt general ) "She is startled and stares.";
+                if( special_word == 'even' or 'odd' ) {
+                    SosostrisDeals();
+                    remove Madame_Sosostris;
+                    give curtain ~general;
+                    give Madame_Sosostris general concealed;
+                    rtrue;
+                }
+                "~You must answer my question!~  She does seem anxious.";
+        ],
         description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
   has   animate proper;
 
@@ -120,16 +196,29 @@ Object  oak_quarterstaff "oak quarterstaff"
 
 URoom   Down_by_River "Down by River"    
   with  name 'rats' 'mounds' 'rubbish',
-        before DownByRiverBefore,
+        before [;
+            Swim, Drink: "That foul water?  Not a chance.";
+        ], 
         e_to Unreal_City,
-        w_to DownByRiverWest,
+        w_to [;
+            if( tourist_boat hasnt open )
+                << Enter tourist_boat >>;
+            return tourist_boat;
+        ],
         description "Down at the end of the street, the brown urban waters carry by unpleasant rubbish, and rats 
             scuttle up and over the mounds washed up around you.",
   has   light;
 
 Object  -> silk_handkerchief "silk handkerchief" 
   with  name 'silk' 'handkerchier' 'hanky' 'hankie',
-        before HandkerchiefBefore,
+        before [;
+            Wave:
+                if( location == Down_by_River && tourist_boat hasnt open ) {
+                    give tourist_boat open;
+                    "You wave the handkerchief, and the boat glides smoothly across the river toward you.";
+                }
+                rfalse;
+        ],
         initial "On one especially repellent mound is, of all things, a fine silk handkerchief.",
         description "Monogrammed J. A. P., but that's no great matter.",
         devil_hint "People had no style in those days, before they invented paper tissues. I mean this tatty cloth is 
@@ -138,12 +227,17 @@ Object  -> silk_handkerchief "silk handkerchief"
 
 Object  -> tourist_boat "tourist boat"   
   with  name 'tourist' 'boat' 'bateau',
-        before TouristBoatBefore,
-        n_to On_board_the_Phlebas,
-        s_to "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see how to 
-            attract its attention.",
-        w_to nw_obj,
-        initial "Moored close to the bank is a glass-roofed tourist boat.",
+        before [;
+            Enter:
+                if( self hasnt open )
+                    "Are you in Seine?  There is a river in between you and the boat.";
+                rfalse;
+        ],
+        door_to On_board_the_Phlebas,
+        when_closed "On the far bank is a glass-roofed tourist boat. As much as you like to explore, you can't see 
+            how to attract its attention.",
+        door_dir w_to,
+        when_open "Moored close to the bank is a glass-roofed tourist boat.",
         description "The side reads: PHLEBAS.",
   has   door static;
 
@@ -157,7 +251,37 @@ URoom   On_board_the_Phlebas "On board the Phlebas"
 
 Object  -> hollow_man "hollow man"       
   with  name 'hollow' 'man',
-        life HollowManLife,
+        life [;
+            Attack: "You are unable to touch the man. It is as if he isn't there.";
+            Ask: "Your question merely echoes inside him.";
+            Answer, Order:
+                if( special_word == 'time' || verb == ##Time ) {
+                    print "You lose all sense of time and place as the boat drifts down river... It comes as a 
+                        considerable relief to your befuddled nerves when the man helps you off the boat again, 
+                        and you find yourself:^";
+                    if( tourist_map_of_Paris has moved ) {
+                        PlayerTo(Infinity_Symbol);
+                        rtrue;
+                    }
+                    PlayerTo(Garden_Stream);
+                    if( hollow_man hasnt general ) {
+                        give hollow_man general;
+                        move Ace_of_Cups_card to player;
+                        "^Was any of that real? you wonder, as you relax in the sunshine. But then you realise 
+                         you are clutching a tarot card which certainly is.";
+                    }
+                    rtrue;
+                }
+                ++hollow_man_cnt;
+                if( hollow_man_cnt == 1 ) "~I don't believe in that place any more. Hurry up please it's time!~";
+                if( hollow_man_cnt == 2 ) "~Hurry up please it's time!~";
+                if( hollow_man_cnt == 3 ) "~HURRY UP PLEASE IT'S TIME!~";
+                if( hollow_man_cnt == 4 ) "He can't be bothered to say anything this time.";
+                if( hollow_man_cnt == 5 ) "It really is time you thought of something.";
+                if( hollow_man_cnt == 6 ) "Time and time again you haven't guessed correctly.";
+                if( hollow_man_cnt == 7 ) "The hollow man must be beginning to think you can't take a hint.";
+                "~It's time!~ repeats the hollow man.";
+        ],
         initial "The hollow man mechanically says: ~Where to, guv'nor?  Me with my big mouth, I gone and done it 
             again, calling you the guv'nor. I was down Margate Sands way once, had a bloke come on board, he
             thought any old destination would do, like a real place, like anywhere was real... We are the hollow
@@ -179,7 +303,7 @@ URoom   Near_Ring_Road "Near Ring Road"
 
 URoom   Chatelet_les_Halles "Chatelet-les-Halles"        
   with  name 'gates',
-        before ChateletBefore,
+        before [; Buy: "~Q'est-ce que vous voulez acheter?~"; ],
         u_to Near_Ring_Road,
         description "This is a vast underground station in great rectangular caverns, deep beneath the streets. 
             You are outside the ticket gates, near a flight of steps back up to the city, and since you haven't
@@ -189,7 +313,24 @@ URoom   Chatelet_les_Halles "Chatelet-les-Halles"
 
 Object  -> surly_shopkeeper "surly shopkeeper"   
   with  name 'surly' 'man' 'shopkeeper',
-        life ShopkeeperLife,
+        life [;
+            Give:
+                if( noun ~= fifty_franc_note ) "~Ceci n'est pas argent,~ he explains wearily.";
+                remove noun;
+                give noun general;
+                "He takes the money. ~Q'est-ce que vous desirez?~";
+            Answer:
+                if( fifty_franc_note hasnt general )
+                    "It's not that he doesn't understand you, he's just obstructive for the sake of it.";
+                if( special_word == 'carte' ) {
+                    move tourist_map_of_Paris to player;
+                    Achieved(SCORE_MAP);
+                    give tourist_map_of_Paris moved;
+                    "Extremely reluctantly he serves you, giving you a tourist map of Paris.";
+                }
+                if( special_word == 'map' ) "He refuses to understand you, on principle.";
+                "~Non.~  And he folds his arms defiantly. Perhaps he has no such thing.";
+        ],
         initial "Behind a kiosk, a surly-looking man is selling guide books and maps.",
         description "His jumper is unstriped, and there are no onions around his neck. Nonetheless he has a rather 
             Gallic, disgruntled look to him. Perhaps he's a former Socialist cabinet minister.",
