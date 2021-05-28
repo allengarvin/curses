@@ -231,33 +231,127 @@ GRoom   Garage "Garage"
 
 Object  -> garden_roller "garden roller" 
   with  name 'garden' 'roller' 'switch' 'motor' 'motorised' 'power',
-        before RollerBefore,
+        before [;
+            Go:
+                if( self hasnt on )
+                    print "(The motor isn't on at the moment.)^";
+                else {
+                    if( noun == u_obj or d_obj ) {
+                        print "The garden roller is a somewhat horizontal conveyance.^";
+                        return 2;
+                    }
+                    if( location == Garden_Stream && noun == s_obj ) {
+                        print "The garden roller will never fit.^";
+                        return 2;
+                    }
+                    if( location == Lawn_Ornaments && noun == e_obj ) {
+                        print "Philistine!  How dare you try to drive a garden roller over a Roman mosaic.^";
+                        return 2;
+                    }
+                    rtrue;
+                }
+                rfalse;
+        ],
         s_to "A big motorised garden roller is parked here.",
         initial "The garden roller sits here, its engine still running.",
         description "A motorised garden roller of the kind you sit inside, among whose simple controls is a big on/off switch.",
-        each_turn RollerEachTurn,
-  has   container enterable open static switchable;
+        each_turn [;
+            if( player notin self || self hasnt on )
+                rfalse;
+            if( location == Lawn_Ornaments && plaster_statuette in Lawn_Ornaments ) {
+                print "^Crunch!  The garden roller ran into something there.^";
+                give CR light;
+                remove plaster_statuette;
+                move ancient_well to Lawn_Ornaments;
+                give Lawn_Ornaments general;
+            }
+            if( medicine_bottle in location && medicine_bottle has locked && location ~= Garage ) {
+                print "^Oh dear. The medicine bottle, which you negligently left lying in the path of the roller, 
+                    seems to have been cracked.^";
+                give medicine_bottle open;
+                give medicine_bottle ~locked;
+            }
+        ],
+  has   container enterable open static switchable vehicle;
 
 Object  -> weed_killer_bottle "weed killer bottle"       
   with  name 'weed' 'killer' 'bottle' 'weedkille',
-        before WeedKillerBefore,
+        before [;
+            Squeeze, Push:"
+                if( self has general ) "Nothing emerges. The bottle must be empty.";
+                give self general;
+                if( location == Wall_of_Thorns ) {
+                    "A valiant but doomed idea. The weed killer harms barely a single tendril of the wall.";
+                }
+                if( location == Vegetable_Garden ) {
+                    remove runner_bean_plant;
+                    Vegetable_Garden.u_to = nothing;
+                    "Congratulations. You have devastated the runner-bean plant.";
+                }
+                if( location == Family_Tree ) {
+                    "Happily, the weed killer makes no impression on the beautiful old tree.";
+                }
+                if( game_section == T_GARDEN ) {
+                    ! no code
+                } else {
+                    if( game_section ~= T_GARDEN_PAST ) {
+                        "A stream of weed-killer emerges, but evaporates almost at once, just as well considering the vile smell.";
+                    }
+                    if( location ~= Maze_Foundations ) {
+                        ! no code
+                    } else {
+                        i = MazeBoundary(MazeX,MazeY);
+                        if( i == 0 ) 
+                            "A stream of weed-killer soaks into the grass, and does nothing obvious.";
+                        WeedkillerX = MazeX;
+                        WeedkillerY = MazeY;
+                        StartDaemon(self);
+                        "A stream of weed-killer soaks into the seedbed, and does nothing obvious.";
+                    }
+                }
+                "A stream of weed-killer soaks into the earth, and does nothing obvious.";
+        ],
         initial "In the shadows is a weed killer bottle.",
         description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
-        daemon WeedKillerDaemon,
+        daemon [;
+            if( game_section ~= T_GARDEN_PAST ) {
+                ndx = WeedkillerX + 9 * WeedkillerY;
+                garden_array->ndx = 48;
+                StopDaemon(self);
+            }
+        ],
         angel_hint "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens.",
   has   ;
 
 Object  -> spade "spade" 
   with  name 'bladed' 'agricultural' 'implement' 'zzzzzzzzz',
-        before SpadeBefore,
+        before [;
+            Examine:
+                if( spade has general ) {
+                    rfalse;
+                }
+                give spade general;
+                spade.&name-->3 = 'spade';
+                "On second thoughts, let's just call a spade a spade.";
+        ],
         initial "Hanging from a hook is a bladed agricultural implement.",
-        short SpadeShort,
+        short [ SpadeShort ;
+            if( self has general ) {
+                print "spade";
+            } else {
+                print "bladed agricultural implement";
+            }
+            rtrue;
+        ],
         angel_hint "Do you think there's anywhere in the garden particularly suitable for such an implement?",
   has   ;
 
 GRoom   Up_the_Plane_Tree "Up the Plane Tree"    
   with  name 'jemima' 'conservatory' 'window',
-        before UpTreeBefore,
+        before [;
+            Jump:
+                deadflag = DIED; "You fall and break your neck!";
+        ],
         d_to Family_Tree,
         description "A magnificent view of the gardens would be yours, were it not for the branches and leaves 
             which surround you. You can make out Aunt Jemima up at one of the conservatory windows, but hide from
@@ -267,112 +361,30 @@ GRoom   Up_the_Plane_Tree "Up the Plane Tree"
 
 Object  -> maze_layout "maze layout"     
   with  name 'maze' 'layout',
-        description " xmThe layout is roughly as follows:^^",
+        description [;
+            print "The layout is roughly as follows:^^";
+            0-->8 = 2 | 0-->8;
+            y = 0;
+            --y;
+            while( y < 6 ) {
+                y++;
+                print "    ";
+                x = 0;
+                x--;
+                while( x < 8 ) {
+                    x++;
+                    wallp = MazeBoundary(x,y);
+                    if( wallp == true )
+                        print "###";
+                    else
+                        print "...";
+                }
+                new_line;
+            }
+            0-->8 = 65533 & 0-->8;
+        ],
         article "the",
   has   scenery;
-
-GRoom   Maze "Maze"      
-  with  before MazeBefore,
-        after MazeAfter,
-        s_to Family_Tree,
-        w_to Viewpoint_Ledge,
-        description "A maze of green privet passages, all alike.",
-        cant_go "The privet hedges are in the way.",
-  has   light scored;
-
-GRoom   Patio_in_Maze "Patio in Maze"    
-  with  name 'patio' 'flagstone',
-        before PatioBefore,
-        after PatioAfter,
-        u_to "Up?  Are we playing the same game?",
-        d_to Crypt,
-        description "This is an old stone patio in the heart of the garden maze. A missing flagstone offers an intriguing dark prospect beneath.",
-        cant_go "The privet hedges are in the way.",
-  has   light scored;
-
-Object  -> marble_rose "marble rose"     
-  with  name 'marble' 'rose' 'flower',
-        before RoseBefore,
-        initial "Sticking out of some soft earth is a perfectly-carved marble rose.",
-        angel_hint "Perfection set in stone. Not a gift for mortal women!",
-  has   ;
-
-GRoom   Viewpoint_Ledge "Viewpoint Ledge"        
-  with  name 'motorway' 'coaches',
-        before ViewpointBefore,
-        e_to Maze,
-        description "This flagstoned rampart on the hillside looks across the valley, down (unfortunately) to the motorway below. Coaches pass by, reminding you of the rapidly approaching time when visitors will have to be let in again for the summer. The only safe way to go is back east into the maze. To one side is a plaque.",
-        cant_go "The hillside is too steep.",
-  has   light scored;
-
-Object  -> plaque "plaque"       
-  with  name 'plaque',
-        description "~This viewpoint, one of the finest in the county, was laid down by Capability Meldrew, a well-known landscape gardener of his day. It was intended as one of the rewards of the garden maze, and was constructed c. 1808 after an earlier folly on the site collapsed.~",
-  has   scenery;
-
-Object  -> miniature "miniature" 
-  with  name 'miniature' 'plastic' 'etching',
-        door_to Folly,
-        initial "A miniature plastic etching rests on the plaque.",
-        description "No larger than a playing card, it depicts the Folly which used to stand on the hillside outcrop.",
-        devil_hint "What's the point of a drawing so small it might almost be a playing card?",
-  has   ;
-
-Object Folly "Folly"    
-  with  name 'wain' 'hay' 'valley',
-        after FollyAfter,
-        e_to Maze_Foundations,
-        description "This is a rampart on the hillside, a natural ledge leading east. Down below in the valley, rough cottages surround a church. Labourers toil in the fields, and a hay wain is being pulled across the river.^^Towering over you is a monstrously awful piece of architecture, a Folly. The freestanding tower has no appreciable purpose and no apparent entrance. The latter is just as well since it looks extremely unsafe.",
-        cant_go "The hillside is too steep.",
-        section T_GARDEN_PAST,
-  has   light scored;
-
-Object -> Folly_tower "Folly tower"     
-  with  name 'folly' 'tower' 'bricks' 'unsafe',
-        description "Decidedly unsteady.",
-  has   scenery;
-
-Object -> bean_pole "bean pole" 
-  with  name 'bean' 'pole' 'beanpole',
-        after [;
-            Take:
-                if( self hasnt general ) {
-                    rfalse;
-                }
-                give self general;
-                StartTimer(self,5);
-                rfalse;
-        ],
-
-        initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
-        time_left 0,
-        time_out [;
-            if( game_section == T_GARDEN_PAST ) {
-                print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the 
-                    hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come
-                    running to investigate. In the ensuing confusion, they come across you and, of course, blame
-                    you for their incompetent masonry. You are hauled up before the county assizes...^";
-                deadflag = AUSTRALIA;
-            }
-        ],
-        rod_assoc rod_of_stalking,
-        devil_hint "Whatever you do, it'll always be a bean pole.",
-  has   general hidden_rod;
-
-Object Maze_Foundations "Maze Foundations"      
-  with  before FoundationsBefore,
-        after FountdationsAfter,
-        s_to Tree_Planting,
-        w_to Folly,
-        description "A square grid of plots of grass and seedbeds, all alike.",
-        section T_GARDEN_PAST,
-  has   light;
-
-Object Tree_Planting "Tree Planting"    
-  with  after [; deadflag = AUSTRALIA; ],
-        description "Capability Meldrew and his gang of workmen are delicately planting a sapling plane tree here. Your disturbance annoys them immensely and you are immediately arrested for vagrancy and theft. After a few months in prison, you are hauled up before the County Assizes and sentenced...",
-        section T_GARDEN_PAST,
-  has   light;
 
 GRoom  Bricked_Path "Bricked Path"      
   with  e_to Hedgery,
@@ -442,7 +454,7 @@ Object -> gold_watch_on_a_chain "gold watch on a chain"
         angel_hint "How easily are the weak mesmerised by baubles.",
   has   ;
 
-GRoom  Behind_Summer_House "Behind Summer House"        
+GRoom   Behind_Summer_House "Behind Summer House"        
   with  s_to loose_board,
         w_to Mosaic,
         se_to Croquet_Lawn,
@@ -459,10 +471,10 @@ Object -> loose_board "loose board"
                     "The squirrel rears up and nips you on the wrist. You withdraw, hurt.";
                 rfalse;
         ],
-        n_to Summer_House,
-        s_to "One board of the back wall is noticeably loose, making a good-sized crack.",
-        w_to ne_obj,
-        initial "You could easily squeeze past the loose board south into the summer house.",
+        door_to Summer_House,
+        when_closed "One board of the back wall is noticeably loose, making a good-sized crack.",
+        door_dir s_to,
+        when_open "You could easily squeeze past the loose board south into the summer house.",
   has   door openable static;
 
 Object -> crack "crack" 
