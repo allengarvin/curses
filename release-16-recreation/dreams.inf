@@ -1,0 +1,237 @@
+[ DreamCantGo ;
+    set_flag_array(29);
+    "You drift in that direction, but without gaining any ground.";
+];
+
+[ PremonitionStart ;    
+    ChangePlayer(ghost_of_yourself);
+    PlayerTo(Premonition);
+    rtrue;
+];
+
+Object ghost_of_yourself "ghost of yourself"    
+  with  before YourGhostBefore,
+        description "You are transparent like a ghost.",
+        time_left 0,
+        capacity 1,
+  has   ;
+
+Object Premonition "Premonition"        
+  with  e_to PremonitionEast,
+        sw_to Camp_Fire,
+        description "It is a frosty, clear night, but there is a scent of camp-fires burning in the distance. You 
+            are passing through the landscape as if a ghost, and all seems faintly unreal. To the east is one side
+            of an animal-hide tent, but there is no way in from here. To southwest, some soldiers sit around the
+            embers of a fire. There is a terrible sense of something about to happen.",
+        cant_go DreamCantGo,
+        section T_DREAMING,
+  has   light;
+
+Object The_Generals_Tent "The General's Tent"   
+  with  n_to Beside_Table,
+        w_to [;
+            print "You pass uncomfortably back through the hide wall.^";
+            return Premonition;
+        ],
+        description "This is the tent of a thin, reedy man who wears no uniform but has an obvious and commanding 
+            presence. He has an aquiline, patrician nose and, at five feet four, is taller than anyone else
+            present. The others are advisers, junior officers, scheming politicians and their like. They are
+            keeping their distance from a trestle table at the north end of the tent.",
+        cant_go DreamCantGo,
+        section T_DREAMING,
+  has   light;
+
+Object Beside_Table "Shrine of the Bear"        
+  with  s_to The_Generals_Tent,
+        description "This is a kind of improvised shrine. A trestle table bears entrails, crude drawings sketched 
+            out on hide, and caged animals: draped beside it is a primitive tapestry of a bear reared up on its
+            hind legs.",
+        cant_go DreamCantGo,
+        section T_DREAMING,
+  has   light;
+
+Object -> bear_tapestry "bear tapestry" 
+  with  name 'bear' 'tapestry',
+        life [;
+            Order, Ask, Answer: "Your mouth is too furred up to speak.";
+        ],
+        description "Primal, bestial, terrifying.",
+  has   scenery talkable;
+
+Object -> heavy_iron_mascot "heavy iron mascot" 
+  with  name 'heavy' 'iron' 'mascot',
+        before [;
+            Give: "Now that really would not be very kind.";
+        ],
+        after [;
+            Take:
+                if( Beside_Table hasnt general ) {
+                    give Beside_Table general;
+                    remove Druid;
+                    "The Druid catches sight of your ghostly hand taking the mascot, and immediately begins her 
+                     occultations, cursing you and your ill-gotten gains. But she is unable to make contact with
+                     you, and turns furiously to the tapestry, hissing ~lagach~ to the Bear. At once a sudden
+                     swirl of wind seems to pull her into the rough cloth, dissolving her to nothing.";
+                }
+                rfalse;
+        ],
+        initial "On the table is a heavy iron mascot of some kind.",
+        description "The mascot is in the shape of an ankh, with a lemniscus (or infinity) symbol moulded onto it.",
+        number 0,
+        daemon [ i;
+            if( heavy_iron_mascot notin player ) rfalse;
+            i = self.number - 1;
+            self.number = i;
+            if( i == 0 ) {
+                deadflag = DIED;
+                print "^In an astonishing freak accident, ";
+                switch( random(5) ) {
+                    1: "a meteorite hurtles through the Earth's atmosphere and then straight through your head. 
+                        Anyone would think you had a curse on you (anyone, that is, still able to think).";
+                    2: "an earthquake demolishes everything in the neighbourhood, swallowing you up into a chasm 
+                        in the ground. Anyone would think you had a curse on you.";
+                    3: "a long-dormant volcano erupts instantaneously below your feet. Anyone would think you 
+                        had a curse on you (anyone, that is, still standing).";
+                    4: "lightning abruptly strikes into your body, making your hair stand on end. (Oh, and 
+                        vapourising you utterly, of course.)";
+                    5: "four hundred Spartan soldiers are transported by some quantum-mechanical fluke from the 
+                        Battle of Thermopylae into your immediate
+                        vicinity. They are quite keen for someone to
+                        explain things to them, but unfortunately most
+                        of the spears they were throwing came with them;
+                        one of which struck straight through the mascot
+                        into your body.";
+                }
+            }
+            if( i == 10 ) "^You feel very nervous indeed, for some reason.";
+            if( i == 7 ) {
+                if( player notin servants_bed ) {
+                    "^You stub your toe painfully, and trip over.";
+                } else {
+                    "^You feel bed-sores coming on.";
+                }
+            }
+            if( i == 5 ) "^You scratch yourself, unable to get rid of an itching sensation.";
+            if( i == 2 ) "^Something feels very wrong indeed. Your hand begins to burn.^";
+        ],
+        devil_hint "An absolute essential.",
+  has   ;
+
+Object -> Druid "Druid" 
+  with  name 'druid' 'druidess',
+        life [;
+            Order, Ask, Answer: "This is one of those dreams where you find you cannot speak.";
+        ],
+        initial "Beside the table is a more substantial adviser, as if she too walks in this strange spirit 
+            plane. She is wearing frightening druidical robes, of strange pelts and furs, with nasty-looking
+            charms around her neck. Every so often, she seems to catch sight of you out of the corner of her eye,
+            but then look round and see nothing. The military men do not believe in her power, and yet... they
+            treat her with respect.",
+  has   animate proper;
+
+Object Camp_Fire "Camp Fire"    
+  with  e_to Near_Dolmen,
+        ne_to Premonition,
+        description "You can almost smell fear here. A motley platoon of soldiers are sitting about the embers 
+            of a fire. None are talking or sleeping, and the false good humour of the evening has died away. At
+            first light, you realise, there will be a battle. It isn't a risk you'd like to run in their place. And
+            there is a strange light already in the east... not yet a dawn, for the soldiers seem unaware of it.",
+        cant_go DreamCantGo,
+        section T_DREAMING,
+  has   light;
+
+Object Near_Dolmen "Near Dolmen"        
+  with  after DolmenAfter,
+        description "A standing stone, perhaps a glacial erratic, stands here and on top of it is a shining 
+            blue stone, whose brightness almost blinds you. You feel irresistably drawn to it, and your hand
+            reaches out...",
+        cant_go DreamCantGo,
+        section T_DREAMING,
+  has   light;
+
+Object Melancholy_Dream "Melancholy Dream"      
+  with  e_to nothing,
+        d_to nothing,
+        description "A strangely familiar, dusty passage, sloping down from a southern end bathed in hostile 
+            light to some kind of metal barrier in the north.",
+        cant_go DreamCantGo,
+        each_turn [;
+            ++DreamCnt;
+            if( DreamCnt ~= 2 ) rfalse;
+            move green_luminescence to Melancholy_Dream;
+            Melancholy_Dream.e_to = Solid_Sand;
+            Melancholy_Dream.d_to = Solid_Sand;
+            "^A ghostly apparition of a venerable man hazes into view. He raises his mahogany staff and strikes
+             it (silently) on the ground, then points it at the walls, and suddenly a flurry of green luminescence
+             chases around you!^^He fades away again, mumbling something incoherent.";
+
+        ],
+        section (T_DREAMING|T_UNREAL),
+  has   light;
+
+Object -> metal_barrier "metal barrier" 
+  with  name 'metal' 'barrier',
+        before [; "The metal barrier is indistinct, on the edge of your consciousness, and you can't get close. 
+            However familiar it seems."; ],
+  has   scenery;
+
+Object green_luminescence "flurries of green luminescence"      
+  with  name 'green' 'flurries' 'of' 'luminesce',
+        before [;
+            Take, Remove, Touch:
+                "You bat at the flurries with your hand, but they're just green light (with the tiniest 
+                 mosquito-sting).";
+        ],
+        initial "Flurries of green luminescence whirl endlessly around you, west to east and over.",
+        description "The flurries have almost endless fascination... but you manage to tear your eyes away after, 
+            oh, an hour?",
+  has   static;
+
+Object Solid_Sand "Solid Sand"  
+  with  e_to Octagonal_Tomb,
+        w_to Melancholy_Dream,
+        u_to Melancholy_Dream,
+        d_to Octagonal_Tomb,
+        description "Your ghostly self is embedded in a diagonal downward shaft (descending to the east) entirely 
+            filled with dry sand. Solid flagstones line the walls.",
+        cant_go DreamCantGo,
+        section (T_DREAMING|T_UNREAL),
+  has   light;
+
+Object Octagonal_Tomb "Octagonal Tomb"  
+  with  name 'torch' 'torches' 'slab',
+        w_to Solid_Sand,
+        u_to Solid_Sand,
+        description "Flaming torches bracketed in the wall gutter as the last oxygen in the air is consumed, 
+            and the flicker of flame plays across the yellow-orange glaze of the tomb walls.^^This octagonal
+            chamber is lined with Egyptian hieroglyphics. Sand spills across the floor from under the sole entrance,
+            sealed by an ingenious stone slab.",
+        cant_go DreamCantGo,
+        section (T_DREAMING|T_UNREAL),
+  has   light;
+
+Object -> hieroglyphic_symbols "hieroglyphic symbols"   
+  with  name 'symbols' 'hieroglyphs' 'egyptian',
+        description [;
+            print "Your dream eye is caught by...^^";
+            0-->8 = 2 | 0-->8;
+            print "       (|/        ^   #   -o-  >>>   ^       /|)        ^";
+            0-->8 = 65533 & 0-->8;
+            "^Confused and hazy, you feel you can understand hieroglyphics, - or hasn't that happened yet?";
+        ],
+        article "some",
+  has   scenery;
+
+Object -> ships_wheel "ship's wheel"    
+  with  name 'ships' 'wheel',
+        before [;
+            Turn:
+                if( self has general ) "Your hands seem unable to touch it again.";
+                give self general;
+                give sandstone_recess open;
+                "You try turning the wheel, but it moves only infinitesimally slowly. The door begins to raise 
+                 the tiniest fraction, and a few grains of sand cascade in slow motion, rattling horribly against
+                 each other...^^It will take forever, and the air is running out...";
+        ],
+        initial "A kind of ship's wheel (of eight-spoked timber) is affixed to the northwest wall.",
+  has   static;
