@@ -1,8 +1,15 @@
 Object  Causeway "Causeway"      
-  with  before CausewayBefore,
+  with  before [;
+            Drink: "Drink warm salty water?  No.";
+            Swim: "The waters are deceptively treacherous. Best not.";
+        ],
         n_to Island_of_Pharos,
         se_to Crossroads,
-        initial CausewayInitial,
+        initial [;
+            StartDaemon(self);
+            if( Austin in self )
+                StartDaemon(Outside_the_Royal_Museum);
+        ],
         description "A warm winter's night in the ancient city of Alexandria, on the Heptastadion causeway across the harbour to the Island of Pharos (to north). The Mediterranean waters lap against the land bridge, and the whole city (southeast) is lit up with torches: it is a night of celebration.",
         number 2,
         daemon [ i;

@@ -1893,7 +1893,12 @@ Object  -> delicate_gold_key "delicate gold key"
 
 HRoom   Old_Winery "Old Winery"  
   with  name 'banister' 'rail' 'crack' 'paraphernalia',
-        before OldWineryBefore,
+        before [;
+            PutOn:
+                if( second == demijohn )
+                    "We know already what happens to things balanced on the demijohn.";
+                rfalse;
+        ],
         after [;
             Look:
                 if( self has general )
@@ -1903,18 +1908,20 @@ HRoom   Old_Winery "Old Winery"
                     slips onto the floor and disappears into a crack in the floorboards. Your spirits sink as it
                     does, rattling down some distance. How on earth are you going to get it back?^";
                 rfalse;
-            PutOn:
-                if( second == demijohn )
-                    "We know already what happens to things balanced on the demijohn.";
-                rfalse;
         ],
         s_to Attic,
         e_to Storage_Room,
         w_to Conservatory,
         d_to Conservatory,
         description "This small cavity at the north end of the attic once housed all manner of home-made wine paraphernalia, now lost and unlamented. Steps, provided with a good strong banister rail, lead down and to the west, and the banister rail continues along a passage east.",
-        number 0,
-        daemon OldWineryDaemon,
+        time_left 0,
+        time_out [;
+            print "^Sorry. Thinking about it again, the score only gets in a muddle this way, so the bonus points had better go after all.^";
+            good_try_bonus = 0;
+            displaying_quote = true;
+            score = score - 5;
+            rfalse;
+        ],
   has   ;
 
 Object  -> demijohn "labelled glass demijohn" 

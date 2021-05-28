@@ -2,7 +2,7 @@ Object Crypt "Crypt"
   with  s_to bronze_mural,
         u_to Patio_in_Maze,
         d_to bronze_mural,
-        initial CryptInitial,
+        initial [; MazeX = 7; MazeY = 5; rfalse; ],
         description "A dismal crypt, disused, rainswept and strewn with leaves. Light streams in from the square hole in the roof. There are no bones or urns on show.",
         section T_CATACOMBS,
   has   light;
@@ -16,6 +16,27 @@ Object -> bronze_mural "bronze mural"
         initial "The mural stands slightly to one side, revealing a passage leading downward.",
         description "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations.",
   has   door static talkable;
+
+[ CryptRoomBefore i ;   
+    if( action == ##Smell ) {
+        if( location ~= The_Catacombs ) "Ugh.";
+
+        i = The_Catacombs.time_left + 1;
+        The_Catacombs.time_left = i;
+        if( i == 1 ) { 
+            "Something like... perhaps, air after a thunderstorm... but no, you still can't be sure what it is.";
+        }
+        if( i == 2 ) {
+            move aluminium_staircase to The_Catacombs;
+            The_Catacombs.d_to = Universe_Maintenance_Room;
+            OzoneSmelled = true;
+            Achieved(SCORE_SMELL);
+            "Ozone!  That's what it's called. Funny sort of odour for a cave - especially since, on investigating further, you find that it's drifting up from a concealed aluminium staircase.";
+        }
+        "Definitely ozone.";
+    }
+    rfalse;
+];
 
 Object Jagged_Passage "Jagged Passage"
   with  name 'bones',
@@ -71,38 +92,124 @@ Object The_Catacombs "Catacombs"
 
 Object aluminium_staircase "aluminium staircase"
   with  name 'staircase' 'stairs' 'stair' 'case' 'aluminium',
-        before AluminumStairBefore,
+        before [; Climb, Enter: << Go d_obj >>; ],
         initial "The odd smell seems to be ozone, and it drifts up from a previously concealed aluminium staircase.",
         description "Leading down.",
         article "an",
   has   static;
+
+[ AdjustSlide i j u v ; 
+    u = henri_post_array->i;
+    v = henri_post_array->j;
+    henri_post_array->j = u;
+    henri_post_array->i = v;
+    rtrue;
+];
+
+[ DisplaySlidePos ndx chr ;      
+    chr = henri_post_array->(ndx - 1);
+    if( chr == 0 ) {
+        print ". ";
+        rfalse;
+    }
+    chr = chr + 65 - 1; 
+    print (char) chr, " ";
+    rtrue;
+];
+
+[ DisplayWholeGrid ;  
+    0-->8 = 2 | 0-->8;
+    print "     ";
+    DisplaySlidePos(1);
+    DisplaySlidePos(2);
+    DisplaySlidePos(3);
+    print "^      + +^", "     ";
+    DisplaySlidePos(4);
+    DisplaySlidePos(5);
+    DisplaySlidePos(6);
+    print "^      + +^", "     ";
+    DisplaySlidePos(7);
+    DisplaySlidePos(8);
+    DisplaySlidePos(9);
+    print "^      + +^", "     ";
+    DisplaySlidePos(10);
+    DisplaySlidePos(11);
+    DisplaySlidePos(12); 
+    print "^      + +^", "     ";
+    DisplaySlidePos(13);
+    DisplaySlidePos(14);
+    DisplaySlidePos(15);
+    new_line;
+    0-->8 = 65533 & 0-->8;
+    rtrue;
+];
 
 Object CR "CR"
   with  name 'basket' 'seesaw' 'hand' 'cannon' 'glass',
         after CRAfter,
         n_to metal_wall,
         s_to nothing,
-        e_to CREast,
+        e_to [;
+            if( self.time_left == 3 )
+                "You bump into an invisible barrier - perhaps the edge of the reflection.";
+            return The_Catacombs;
+        ],
         description "The cartoonist Heath Robinson used to specialise in drawings of fantastically complicated machines of string, pulleys, levers, counterweights, cogs, mice running about on wheels and the like. Just such a contraption fills the west end of this room, though most of the workings are behind a glass wall which, although running with age, is as solid as the day it was built. The parts are very old (hand-made, not machined) but uncorroded.^^The only way out appears to be via the crawl to the east.",
         time_left 2,
-        short CRShort,
+        short [;
+            if( self.time_left == 3 ) 
+                print "Contraption Reflection";
+            else
+                print "Contraption Room";
+            rtrue;
+        ],
         section T_CATACOMBS,
   has   ;
 
 Object -> metal_wall "metal wall"
   with  name 'mirror' 'metal' 'bronze' 'wall' 'sheet' 'amber',
-        before MetalWallBefore,
+        before [;
+            Rub: "You polish the metal a little, but there's far too much to do by hand.";
+        ],
         door_to CR,
         when_closed "The north edge of the room is a big sheet of dull amber-coloured metal.",
         door_dir n_to,
-        initial MetalWallInitial,
+        initial [;
+            print "The whole "; 
+            if( CR.time_left == 2 ) {
+                print "north";
+            } else {
+                print "south";
+            } 
+            " wall is occupied by a bronze mirror, reflecting the room.";
+        ],
         when_open "Someone rather good-looking (you can't help thinking) is reflected in the metal surface.",
   has   door static;
 
 Object -> iron_grid "iron grid"
   with  name 'iron' 'grid' 'contraption' 'panel',
-        initial IronGridInitial,
-        description " .There are fourteen pieces in the grid, and one gap. The pieces have letters upon them ",
+        initial [;
+            print "Amid the glass wall is an iron panel divided into a three-by-five grid.^^Behind the glass is a kind of see-saw of two leather baskets at opposite ends of an oak pivot. ", "In one corner of the roof, above the far end of the see-saw, is a ";
+            if( ancient_well notin nothing ) {
+                print "hole through which dim natural light emanates.^^";
+            } else {
+                print "dark hole.^^";
+            }
+            print "Projecting out of the back of the panel mechanism at the near end is a metal hand, which ";
+            if( CR has general ) {
+                "grasps empty air.";
+            }
+            "grasps a cannonball in mid-air.";
+        ],
+        description [;
+            print "There are fourteen pieces in the grid, and one gap. The pieces have letters upon them ";
+            if( CR.time_left == 3 ) {
+                print "(in reflected script) ";
+            }
+            print "and are arranged as follows:^^";
+            DisplayWholeGrid();
+            "^[Try ~slide b~, for instance, to move a piece into the gap.]";
+        ],
   has   static;
 
 Object -> glowing_golden_orb "glowing golden orb"
@@ -113,7 +220,9 @@ Object -> glowing_golden_orb "glowing golden orb"
 
 Object -> cannonball "cannonball"
   with  name 'cannon' 'ball' 'cannonball',
-        before CannonballBefore,
+        before [;
+            Examine: "It is out of reach, beyond the glass.";
+        ],
         description "Solid, heavy, reliable, out of reach on the other side of the glass.",
   has   scenery;
 
@@ -126,23 +235,79 @@ Object Universe_Maintenance_Room "Universe Maintenance Room"
 
 Object -> big_electricians_switch "big electrician's switch"
   with  name 'big' 'electricians' 'switch',
-        after SwitchAfter,
+        after [;
+            SwitchOn: "Click-clunk!  The world looks precisely the same.";
+            SwitchOff: "Clunk-click!  Probably nothing very much has changed.";
+        ],
         description "The lower, on, position is labelled ~Determinism~. The upper, off, position is labelled ~Chance~.",
   has   on scenery static switchable;
 
 Object -> large_dial "large dial"
   with  name 'large' 'dial' 'gauges' 'dials',
-        before DialBefore,
+        before [;
+            Turn:
+                if( PlanckWarning == false ) {
+                    PlanckWarning = true;
+                    trigger_quotation(12);
+                    "Is it really wise to go meddling with things here?  Well, only one way to find out. Don't expect a second warning!";
+                }
+                deadflag = DESTROYED_UNIVERSE;
+                score = 65437;
+                "Mmm. On the whole, it's probably best not to alter one of the fundamental constants of the physical universe while still inside it. On the bright side, for once you are unlikely to get the blame.";
+        ],
         initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.",
         description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
   has   static;
 
 Object Inside_the_Orb "Inside the Orb"
   with  name 'light',
-        after InOrbAfter,
+        after [;
+            Strike: "The sphere rings with a hollow noise, but the rod charges up.";
+        ],
         description "You half-stand, half-float in a golden, misty sphere perhaps ten yards across, which slowly spins. The centre, out of reach and somehow insubstantial, is an eight-by-eight lattice of oblong crystals, bathed in warm pearly light.",
         number 0,
-        each_turn InOrbEachTurn,
+        each_turn [ i j;
+            i = Inside_the_Orb.number + 1;
+            Inside_the_Orb.number = i;
+            if( i == 1 ) {
+                rtrue;
+            }
+            if( i == 2 ) {
+                print "^The sphere rotates, giving you a fresh view of the images: stylised Kings and Queens?^";
+            }
+            if( i == 4 ) {
+                print "^The sphere rotates, giving you another look: humble tokens of warriors.^";
+            }
+            if( i == 6 ) {
+                print "^The sphere rotates, giving you another look: carved horse-heads and Bishops' mitres.^";
+            }
+            if( i == 8 ) {
+                print "^(The sphere rotates.)  It's a chess game!  Now you understand. But you still can't puzzle out the actual solution.^";
+            }
+            if( i == 10 ) {
+                print "^(The sphere rotates.)  You have some impression that White is trying to make an attack, having plenty of spare pieces.^";
+                trigger_quotation(26);
+            }
+            if( i == 12 ) {
+                print "^(The sphere rotates.)  Seeing the board from Black's point of view, the defence looks solid.^";
+            }
+            if( i == 14 ) {
+                print "^(The sphere rotates.)  Back to White's side. You definitely need to smash through somehow, all that cautious exchanging of pieces hasn't worked. If you want White to win, that is.^";
+            }
+            j = i % 4;
+            if( j == 0 ) {
+                give Inside_the_Orb ~general;
+                if( i > 12 ) {
+                    "^(The sphere rotates.)  Black still looks safe.";
+                }
+            }
+            if( j == 2 ) {
+                give Inside_the_Orb general;
+                if( i > 14 ) {
+                    "^(The sphere rotates.)  White must break out somehow.";
+                }
+            }
+        ],
         section T_CATACOMBS,
   has   light;
 

@@ -86,17 +86,17 @@ Object  -> Old_Evans "Old Evans"
         description "In the band of his hat is his lucky mascot: a little picture of the crescent moon.",
   has   animate proper transparent;
 
-Object  -> -> Crescent_Moon "Crescent Moon"      
+TarotCard -> -> Crescent_Moon "Crescent Moon"      
   with  name 'crescent' 'moon' 'mascot' 'lucky' 'card' 'tarot',
-        before CrescentMoonBefore TarotBefore,
-        n_to Parish_Church_Room,
-        sw_to "Tarot cards",
+        before  [;
+            Take, Remove:
+                if( self in Old_Evans )
+                    "Evans isn't giving up his mascot that easily.";
+                rfalse;
+        ],
+        door_to Parish_Church_Room,
         description "Some kind of crescent moon, an old Druidical symbol.",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "It leads nowhere.",
-  has   card;
+        devil_hint "It leads nowhere.";
 
 Object  -> -> Racing_Times "Racing Times"        
   with  name 'paper' 'newspaper' 'racing' 'times',

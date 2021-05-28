@@ -107,58 +107,38 @@ Object  -> Tarot_box "Tarot box"
         devil_hint "There's nothing worthwhile in it.",
   has   container openable;
 
-Object  -> -> Castle "Castle"    
+TarotCard -> -> Castle "Castle"    
   with  name 'castle' 'card' 'tarot',
-        before TarotBefore,
-        n_to Ruined_Castle_Cafe,
-        sw_to "Tarot cards",
+        door_to Ruined_Castle_Cafe,
         description "A stone castle on a hill.",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "It leads nowhere.",
-  has   card;
+        devil_hint "It leads nowhere.";
 
-Object  -> -> Star "Star"        
+TarotCard -> -> Star "Star"        
   with  name 'star' 'card' 'tarot',
-        before TarotBefore,
-        n_to Lighthouse,
-        sw_to "Tarot cards",
+        door_to Lighthouse,
         description "A single bright light in the darkness.",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "Ugh, what a nasty bright light. Good thing you'll never go there.",
-  has   card;
+        devil_hint "Ugh, what a nasty bright light. Good thing you'll never go there.";
 
-Object  -> -> Eight_of_Wands_card "Eight of Wands"       
+TarotCard  -> -> Eight_of_Wands_card "Eight of Wands"       
   with  name 'eight' 'of' 'wands' 'card' 'tarot',
-        before TarotBefore,
-        sw_to "Tarot cards",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
         rod_assoc rod_of_infinity,
         devil_hint "There's less to this card than meets the eye.",
-  has   card hidden_rod;
+  has   hidden_rod;
 
-Object  -> -> Maiden_card "Maiden"       
+TarotCard -> -> Maiden_card "Maiden"       
   with  name 'maiden' 'card' 'tarot',
-        before TarotBefore,
         n_to Sea_Shore,
-        sw_to "Tarot cards",
         description "Andromeda chained to a rock on the sea-shore.",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "What an ugly girl!  Bet she's good for a laugh though.",
-  has   card;
+        devil_hint "What an ugly girl!  Bet she's good for a laugh though.";
 
 Object  -> still_life "still life"       
   with  name 'long' 'painted' 'still' 'life' 'painting' 'disturbing',
         life LagachLife,
         initial "A long painted still life graces one wall near a corner.",
-        description "A disturbing painting, perhaps by Edvard Munch, this is a still life of a seedling on a table, surrounded by a rusty iron rod with a star on the end, a glass bottle, a lamp and a bunch of keys. No doubt these arcane objects held some special significance for primitive tribes now absorbed into civilisation.",
+        description "A disturbing painting, perhaps by Edvard Munch, this is a still life of a seedling on a 
+            table, surrounded by a rusty iron rod with a star on the end, a glass bottle, a lamp and a bunch of
+            keys. No doubt these arcane objects held some special significance for primitive tribes now absorbed
+            into civilisation.",
   has   static talkable;
 
 DERoom  Dark_Staircase "Dark Staircase"  
@@ -186,17 +166,11 @@ Object  -> discarded_matchbook "discarded matchbook"
         angel_hint "Ah, I fear it is only a token clue.",
   has   ;
 
-Object  Ace_of_Cups_card "Ace of Cups"   
+TarotCard  Ace_of_Cups_card "Ace of Cups"   
   with  name 'ace' 'of' 'cups' 'card' 'tarot',
-        before TarotBefore,
-        n_to Cups_and_Glasses,
-        sw_to "Tarot cards",
+        door_to Cups_and_Glasses,
         description "It shows a great many crystal-glass cups and glasses.",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "It leads nowhere.",
-  has   card;
+        devil_hint "It leads nowhere.";
 
 DERoom  Coven_Cell "Coven Cell"  
   with  before [;

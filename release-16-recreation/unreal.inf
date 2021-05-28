@@ -255,42 +255,6 @@ Object  Madame_Sosostris "Madame Sosostris, famous clairvoyante"
         description "She has a bad cold, but nevertheless is known to be the wisest woman in Europe.",
   has   animate proper;
 
-Object  Death_card "Grim Reaper" 
-  with  name 'death' 'grim' 'reaper' 'card' 'tarot',
-        before TarotBefore,
-        n_to Ruined_Castle_Cafe,
-        sw_to "Tarot cards",
-        description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "It's vital you slide right along with this one.",
-  has   card;
-
-Object  Fool_card "Fool" 
-  with  name 'fool' 'card' 'tarot',
-        before TarotBefore,
-        n_to Ruined_Castle_Cafe,
-        sw_to "Tarot cards",
-        description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "Don't worry, he won't slide down the cliff.",
-  has   card;
-
-Object  Drowned_Sailor_card "Drowned Sailor"     
-  with  name 'drowned' 'sailor' 'card' 'tarot',
-        before TarotBefore,
-        n_to Ruined_Castle_Cafe,
-        sw_to "Tarot cards",
-        description "Those are pearls that were his eyes...",
-        article "the",
-        short TarotShort,
-        parse_name TarotParseName,
-        devil_hint "He's one of my colleagues now, of course.",
-  has   card;
-
 Object  oak_quarterstaff "oak quarterstaff"      
   with  name 'oak' 'staff' 'quarterstaff',
         article "an",

@@ -1,0 +1,56 @@
+class   TarotCard 
+  with  before [;
+            Examine:
+                if( self.door_to ~= nothing )
+                    print "A beautifully realistic picture. ";
+                rfalse;
+        ],
+        list_together "Tarot cards",
+        short [;
+            if (listing_together has card && c_style & 4096 == 0) {
+                c_style = c_style | (4096 + 8);
+                if (c_style & 2 ~= 0) {
+                    c_style = c_style - 2;
+                }
+                if (c_style & 1 ~= 0) {
+                    c_style = c_style - 1;
+                }
+            }
+        ],
+        parse_name [ i w;
+            if( parser_action == ##TheSame )
+                return -1;
+            while( 1 == 1 ) {
+                w = NextWord();
+                if( Refers(self,w) == 1 ) {
+                    ++i;
+                } else if( w == 'cards' ) {
+                    parser_action = ##PluralFound;
+                    ++i;
+                } else {
+                    return i;
+                }
+            }
+            rfalse;
+        ],
+        article "the",
+  has   card;
+
+TarotCard Death_card "Grim Reaper" 
+  with  name 'death' 'grim' 'reaper' 'card' 'tarot',
+        door_to Ruined_Castle_Cafe,
+        description "Hood, scythe, skeleton, implacable grin: yes, it's the Reaper all right.",
+        devil_hint "It's vital you slide right along with this one.";
+
+TarotCard Fool_card "Fool" 
+  with  name 'fool' 'card' 'tarot',
+        door_to Ruined_Castle_Cafe,
+        description "The Fool is a man looking directly ahead as he steps off the edge of a cliff.",
+        devil_hint "Don't worry, he won't slide down the cliff.";
+
+TarotCard Drowned_Sailor_card "Drowned Sailor"     
+  with  name 'drowned' 'sailor' 'card' 'tarot',
+        door_to Ruined_Castle_Cafe,
+        description "Those are pearls that were his eyes...",
+        devil_hint "He's one of my colleagues now, of course.";
+

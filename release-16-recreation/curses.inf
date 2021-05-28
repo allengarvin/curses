@@ -17,6 +17,8 @@ Constant T_NE_OF_HOME = 12;
 Constant T_SPIRIT_WORLD = 13;
 Constant T_AFTERLIFE = 14;
 
+Global OzoneSmelled;
+Global PlanckWarning;
 Global DigX;
 Global DigY;
 Global deterministic_transportation;
@@ -50,6 +52,9 @@ Global LeftHand;
 Global SkullFit;
 Global priest_cnt;
 Global poseiden_warning;
+Global good_try_bonus;
+Global one_time_try_bonus;
+Global displaying_quote;
 
 Array type_of_tune table
     "a synthesized"
@@ -177,11 +182,13 @@ Replace DarkToDark;
 Include "Parser";
 Include "VerbLib";
 
+Include "rods.inf";
+Include "cards.inf";
+
 Include "house.inf";
 Include "garden.inf";
 Include "maze.inf";
 Include "dreams.inf";
-Include "rods.inf";
 Include "unreal.inf";
 Include "hamburg.inf";
 Include "tarot.inf";
@@ -211,6 +218,27 @@ Include "afterlife.inf";
     "^^^^It's become a matter of pride now not to give up. That tourist map of Paris must be up here 
      somewhere in all this clutter, even if it has been five years since your last trip. And it's your own fault. It
      looks as if your great-grandfather was the last person to tidy up these lofts...^";
+];
+
+[ GoodTry ;
+    if( one_time_try_bonus == true ) {
+        rtrue;
+    }
+    one_time_try_bonus = true;
+    displaying_quote = true;
+    StartTimer(Old_Winery,4);
+    score = score + 5;
+    good_try_bonus = 1;
+    "^A shame to see such a good try unrewarded... oh, go on, have an extra five points.";
+];
+
+[ GoodTryRevoked ;
+    if( good_try_bonus == 1 ) {
+        score = score - 5;
+        good_try_bonus = 0;
+        "^Under the circumstances, the 5-point bonus is forfeit.";
+    }
+    rtrue;
 ];
 
 [ DarkToDark ;
