@@ -89,11 +89,75 @@ Verb 'add' 'join' 'mend' 'repair'
     "The rod charges with etherial power, drawn up from the earth through ley lines...";
 ];
 
-
 [ MilkSub ;
     if( noun == goat or herd_of_goats ) 
         "Pour encourager les udders... But milking goats is no job for an amateur.";
     "What?";
+];
+
+[ StackSub; << Drop noun >>; ];
+
+[ RipSub ;
+    "That sort of wilful damage to property is exactly what's wrong with the world today. And another thing, 
+     the influence of so-called rock and roll music on society has in my view, and I may be old-fashioned, 
+     but... [etc]";
+];
+
+[ RipDownSub ;
+    << Rip >>;
+    rtrue;
+];
+
+[ XyzzySub ;
+    "For a moment you can almost hear a hoarse voice say something to you. But it passes.";
+];
+
+[ LagachSub ;
+    "You feel inexplicably powerful, but nothing happens. Perhaps you should have addressed yourself more precisely.";
+];
+
+[ ShantihSub ;
+    "For a moment you can almost hear thunder, as though it were saying something. But the moment pass
+
+
+[ TimeSub ;
+    WhereInGame();
+    new_line;
+    rtrue;
+];
+
+[ WhereInGame ;
+    if( location == Inside_the_Orb ) {
+        print "Inside the golden orb.";
+        rfalse;
+    }
+    if( game_section == T_MODERN ) print "This is the afternoon of June 3rd, 1993, and you are in Meldrew Hall.";
+    if( game_section == T_UNREAL ) print "It is early morning on October 5th, 1922, and you are in the Unreal City.";
+    if( game_section == T_HAMBURG ) print "It is nearly midnight on October 31st, 1988, and you are in a museum in Hamburg.";
+    if( game_section == T_TAROT ) print "You are passing among the strange, unearthly world of the Tarot box.";
+    if( game_section == T_GARDEN ) print "It is the afternoon of June 3rd, 1993, and you are in the gardens.";
+    if( game_section == T_GARDEN_PAST ) print "It is about noon on March 14th, 1808, and you are in the gardens.";
+    if( game_section == T_ANCIENT_BRITAIN ) print "It is some time in the sixth century A.D., and you are in the Master Game.";
+    if( game_section == T_DREAMING or (T_DREAMING|T_UNREAL) ) print "Time seems to have no meaning, and you are dreaming.";
+    if( game_section == T_CATACOMBS ) print "It is the afternoon of June 3rd, 1993, and you are in the catacombs beneath the gardens.";
+    if( game_section == T_ALEXANDRIA ) print "It is some time in the winter of 275 B.C., the reign of Ptolemy II, and you are in ancient Alexandria.";
+    if( game_section == T_NE_OF_HOME ) print "It is the afternoon of June 3rd, 1993, and you are northeast of Meldrew Hall.";
+    if( game_section == T_SPIRIT_WORLD ) print "You are in the Spirit World, centuries ahead of your sleeping body.";
+    if( game_section == T_AFTERLIFE ) 
+        print "In the great Monopoly-board Jail of the afterlife, you are ~Just Visiting~.";
+    }
+    rtrue;
+];
+
+[ SaveSub i;
+!    displaying_quote = true;
+    if( location == Heavenly_Place ) "The angel looks at you reproachfully.";
+    if( location == Hellish_Place ) "The demon looks at you viciously.";
+    @save -> i;
+    if( generic_globvar == 0 ) 
+        "Failed.";
+    print "Ok.^";
+    rtrue;
 ];
 
 Verb 'strike'
@@ -121,4 +185,34 @@ Verb 'wash'
 
 Verb 'milk'
     * noun                                              -> Milk;
+
+Verb 'rip' 'tear'
+    *                                                   -> Rip
+    * 'down' noun                                       -> RipDown
+    * noun                                              -> Rip;
+
+Verb 'achetez'
+    * special                                           -> Buy;
+
+Verb 'stack'
+    * noun                                              -> Stack
+    * noun 'with' held                                  -> Stack
+    * held 'on' noun                                    -> Insert
+    * held 'onto' noun                                  -> Insert
+    * held 'in' noun                                    -> Insert;
+
+Verb 'lagach'
+    *                                                   -> Lagach;
+
+Verb 'shantih'
+    *                                                   -> Shantih
+    * special                                           -> Shantih
+    * special special                                   -> Shantih;
+
+Verb 'plover' 'plugh' 'xyzzy'
+    *                                                   -> Xyzzy;
+
+Verb 'time'
+    *                                                   -> Time;
+
 
