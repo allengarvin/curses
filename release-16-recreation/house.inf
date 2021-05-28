@@ -2225,7 +2225,7 @@ Object  daisy_chain "daisy chain"
   with  name 'daisy' 'chain' 'daisychain',
         before [;
             Examine:
-                print_ret "A delicate, pretty chain of ", DaisyType(self.number, " daisies.";
+                print_ret "A delicate, pretty chain of ", DaisyType(self.number), " daisies.";
             Drop:
                 remove self;
                 give self ~worn;
