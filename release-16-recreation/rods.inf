@@ -55,6 +55,26 @@ Class   Rod
             }
             rfalse;
         ],
+        parse_name [ i w ;
+            if( parser_action == ##TheSame ) {
+                if( parser_one has unidentifed_rod && parser_two has unidentiifed_rod ) {
+                    return -1;
+                }
+                return -2;
+            }
+            while( 1 == 1 ) {
+                w = NextWord();
+                if( Refers(self,w) == 1 ) {
+                    ++i;
+                } else if( w == 'rods' ) {
+                    parser_action = ##PluralFound;
+                    ++i;
+                } else {
+                    return i;
+                }
+            }
+            rfalse;
+        ],
   has   rod_attr;
 
 Class HighRod
@@ -63,6 +83,22 @@ Class HighRod
             "You are knocked off your feet with the power of one of the High Rods, but it is too puissant 
              for a mortal such as you are.";
         ],
+        before [;
+            Take:
+                if( noun has moved ) rfalse;
+                if( noun hasnt general ) {
+                    if( old_gardeners__gloves has worn ) {
+                        "It is searing hot!  Even with the gloves on you cannot touch the adamantine.";
+                    }
+                    "It is searing hot, and you cannot touch the surface!";
+                }
+                if( HighRodWarn == 0 ) {
+                    HighRodWarn = 1;
+                    "Warning (once only!): the three High Rods seem to balanced extremely delicately on the edge of the pit.";
+                }
+                Achieved(SCORE_HIGHROD);
+        ],
+
         description [;
             print "An adamantine rod, bearing a sculpted ";
             if( self == rod_of_life ) print "hand";
@@ -106,7 +142,6 @@ Rod     rod_of_fire "Fire"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'fire',
         rod_action [;
             if( second == player ) {
@@ -204,7 +239,6 @@ Rod     rod_of_returning "Returning"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'returning',
         rod_action RodOfReturningAction,
         devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
@@ -216,7 +250,6 @@ Rod     rod_of_stalking "Stalking"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'stalking',
         rod_action [ i;
             if( second == adamantine_knight ) 
@@ -266,7 +299,6 @@ Rod     rod_of_infinity "Infinity"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'infinity',
         rod_action [ t;
             if( second == adamantine_knight ) 
@@ -300,7 +332,6 @@ Rod     rod_of_husbandry "Husbandry"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'husbandry',
         rod_action [;
             if( second == player ) "You feel suddenly obedient, and briefly fancy a dog biscuit.";
@@ -323,7 +354,6 @@ Rod     rod_of_bronze "Bronze"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'bronze',
         rod_action [;
             if( second == player ) "You acquire a sudden sun tan, but it soon fades.";
@@ -349,7 +379,6 @@ Rod     rod_of_sacrifice "Sacrifice"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'sacrifice',
         rod_action [;
             if( second == herd_of_goats ) {
@@ -404,7 +433,6 @@ Rod     rod_of_luck "Luck"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'luck',
         rod_action [;
             if( second == player ) {
@@ -435,7 +463,6 @@ Rod     rod_of_ice "Ice"
         u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
-        parse_name RodParse,
         rod_word 'ice',
         rod_action [;
             if( second == player )
@@ -459,7 +486,6 @@ Rod     rod_of_language "Language"
         list_together ListingRods,
         u_to rod_display_before,
         article "the",
-        parse_name RodParse,
         rod_action [;
             if( second == player ) {
                 KnowLanguages = true;
@@ -478,34 +504,24 @@ Rod     rod_of_returning2 "Returning"
         list_together ListingRods,
         u_to rod_display_before,
         article "the",
-        parse_name RodParse,
         rod_action RodOfReturningAction,
   has   ;
 
 HighRod     rod_of_life "Life"
   with  name 'life' 'high' 'rod' 'of',
-        before LifeDeathLoveBefore HighRodBefore,
-        after LifeDeathLoveAfter,
         u_to rod_display_before,
         initial "The High HighRods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
-        parse_name HighRodParse,
         angel_hint "Astonishing!  One of the three high HighRods!";
 
 HighRod     rod_of_death "Death"
   with  name 'death' 'high' 'rod' 'of',
-        before LifeDeathLoveBefore HighRodBefore,
-        after LifeDeathLoveAfter,
         u_to rod_display_before,
-        parse_name HighRodParse,
         angel_hint "Astonishing!  One of the three high HighRods!",
   has   concealed;
 
 HighRod     rod_of_love "Love"
   with  name 'love' 'high' 'rod' 'of',
-        before LifeDeathLoveBefore RodBefore,
-        after LifeDeathLoveAfter,
         u_to rod_display_before,
-        parse_name RodParse,
         angel_hint "Astonishing!  One of the three high Rods!",
   has   concealed;
 
