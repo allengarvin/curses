@@ -4175,7 +4175,7 @@ Object Stadium "Stadium"
   has   light;
 
 Object Outside_the_Theatre "Outside the Theatre"        
-  with  n_to Outside_the_Royal_Palace_of_Alexander,
+  with  n_to Outside_Royal_Palace,
         s_to Outside_the_Royal_Museum,
         w_to Warehouses_and_Port,
         description "Tragically, the Theatre is closed tonight, but roads lead past the great stepped bowl: north toward the Palace, south to the Museum and west to the harbour-front.",
@@ -4405,7 +4405,7 @@ Object -> Apollonius "Apollonius"
         description "His aim in life is chiefly to annoy Callimachus, his junior librarian and the modern poet he despises most.",
   has   animate proper;
 
-Object Outside_the_Royal_Palace_of_Alexander "Outside the Royal Palace of Alexander"    
+Object Outside_Royal_Palace "Outside the Royal Palace of Alexander"     
   with  n_to PlaceNorth,
         s_to Outside_the_Theatre,
         description "A hugely impressive edifice, and everything you might expect from the man who conquered the whole of Asia Minor at an age when most people are starting to think about getting a mortgage.^^There are of course guards, but they're trying to catch the procession, so if you're careful not to draw attention to yourself you could probably sneak in to the north.",
@@ -17962,8 +17962,8 @@ Array preactions_table --> IsDirection;
 [ InsidePalaceBefore ;  
     if (action == ##Go) {
         if (purple_sash hasnt worn) {
-            move player to Outside_the_Royal_Palace_of_Alexander;
-            location = Outside_the_Royal_Palace_of_Alexander;
+            move player to Outside_Royal_Palace;
+            location = Outside_Royal_Palace;
             "The slave looks you over and sees that you do not bear the mark of an accredited visitor to the Palace. You are discreetly escorted out.";
         }
         rfalse;
@@ -17999,7 +17999,7 @@ Array preactions_table --> IsDirection;
             give Lost_inside_the_Palace general;
         }
         if (palace_move1 == s_obj && palace_move2 == s_obj) {
-            location = Outside_the_Royal_Palace_of_Alexander;
+            location = Outside_Royal_Palace;
             move player to location;
         }
         ++PalaceCnt;
