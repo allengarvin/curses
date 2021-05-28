@@ -4207,13 +4207,13 @@ Object A_Tower "A Tower"
 Object -> defaced_door "defaced door"   
   with  name 'defaced' 'sosostris' 'door' 'writings' 'scripts',
         before DefacedDoorBefore,
-        n_to Consulting_Room,
+        n_to Ancient_Consulting_Room,
         s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
         w_to in_obj,
         initial "The heavily defaced door opens onto a staircase up.",
   has   door openable static;
 
-Object Consulting_Room "Consulting Room"        
+Object Ancient_Consulting_Room "Consulting Room"        
   with  name 'sevenbran' 'candelabra' 'sticks' 'candles',
         e_to "Peculiarly, the hanging curtain seems to be solid iron when you walk into it.",
         d_to A_Tower,
@@ -4221,13 +4221,13 @@ Object Consulting_Room "Consulting Room"
         section T_ALEXANDRIA,
   has   light scored cat_nofollow;
 
-Object -> table "table" 
+Object -> ancient_table "table" 
   with  name 'bare' 'table',
         before TableBefore,
         description "Madame Sosostris stares at it fixedly as she meditates.",
   has   scenery supporter;
 
-Object -> curtain "curtain"     
+Object -> ancient_curtain "curtain"     
   with  name 'curtain' 'bead' 'hanging',
         description "Unmoving.",
   has   scenery;
@@ -4406,7 +4406,7 @@ Object -> Apollonius "Apollonius"
   has   animate proper;
 
 Object Outside_Royal_Palace "Outside the Royal Palace of Alexander"     
-  with  n_to PlaceNorth,
+  with  n_to PalaceNorth,
         s_to Outside_the_Theatre,
         description "A hugely impressive edifice, and everything you might expect from the man who conquered the whole of Asia Minor at an age when most people are starting to think about getting a mortgage.^^There are of course guards, but they're trying to catch the procession, so if you're careful not to draw attention to yourself you could probably sneak in to the north.",
         section T_ALEXANDRIA,
@@ -17949,7 +17949,7 @@ Array preactions_table --> IsDirection;
 ];
 
 
-[ PlaceNorth ;  
+[ PalaceNorth ; 
     if (cloak_of_many_colours has worn) {
         deadflag = DIED;
         "Or you could just saunter up to them wearing a cloak of many colours. Have it your own way.";
@@ -23026,7 +23026,7 @@ Array preactions_table --> IsDirection;
     if (who == Stone_Cross) {
         himobj = Old_Evans;
     }
-    if (who == Consulting_Room) {
+    if (who == Ancient_Consulting_Room) {
         herobj = Ancient_Madame_Sosostris;
     }
     if (who == Reading_Corridor) {
