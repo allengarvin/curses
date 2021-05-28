@@ -334,10 +334,27 @@ Object -> Folly_tower "Folly tower"
 
 Object -> bean_pole "bean pole" 
   with  name 'bean' 'pole' 'beanpole',
-        after BeanpoleAfter,
+        after [;
+            Take:
+                if( self hasnt general ) {
+                    rfalse;
+                }
+                give self general;
+                StartTimer(self,5);
+                rfalse;
+        ],
+
         initial "A bean pole, of the kind used to grow climbing plants, rests against the side of the tower.",
-        number 0,
-        daemon BeanpoleDaemon,
+        time_left 0,
+        time_out [;
+            if( game_section == T_GARDEN_PAST ) {
+                print "^There is a great rumbling sound and then a thunderous avalanche of stone cascades down the 
+                    hillside into the valley. The Folly has collapsed!  Capability Meldrew and his workmen come
+                    running to investigate. In the ensuing confusion, they come across you and, of course, blame
+                    you for their incompetent masonry. You are hauled up before the county assizes...^";
+                deadflag = AUSTRALIA;
+            }
+        ],
         rod_assoc rod_of_stalking,
         devil_hint "Whatever you do, it'll always be a bean pole.",
   has   general hidden_rod;
@@ -352,7 +369,7 @@ Object Maze_Foundations "Maze Foundations"
   has   light;
 
 Object Tree_Planting "Tree Planting"    
-  with  after PlantingAfter,
+  with  after [; deadflag = AUSTRALIA; ],
         description "Capability Meldrew and his gang of workmen are delicately planting a sapling plane tree here. Your disturbance annoys them immensely and you are immediately arrested for vagrancy and theft. After a few months in prison, you are hauled up before the County Assizes and sentenced...",
         section T_GARDEN_PAST,
   has   light;
@@ -360,13 +377,18 @@ Object Tree_Planting "Tree Planting"
 GRoom  Bricked_Path "Bricked Path"      
   with  e_to Hedgery,
         sw_to White_Hallway,
-        initial BrickPathInitial,
+        initial [; set_flag_array(22); rfalse; ],
         description "You're strolling on a pleasant bricked path, passing from the outer rooms of Meldrew Hall to a track through the eastern side of the garden.",
         section T_GARDEN,
   has   light;
 
 Object Hedgery "Hedgery"        
-  with  n_to HedgeryNorth,
+  with  n_to [;
+            give flock_of_sparrows general;
+            print "Your first step towards the sparrows startles them into the air, and they whirl upwards and 
+                around with panic, chirping their alarm.^";
+            return Summer_House;
+        ],
         e_to Croquet_Lawn,
         w_to Bricked_Path,
         description "Named by some family wag generations back, this is a restful hedge garden, crowned with a summer house to the north, widening out to a broad croquet lawn east.",
@@ -379,10 +401,25 @@ Object -> flock_of_sparrows "flock of sparrows"
   has   static;
 
 GRoom  Summer_House "Summer House"      
-  with  after SummerHouseAfter,
+  with  after [;
+            if( flock_of_sparrows hasnt general ) {
+                    print "^Sparrows chirp happily away to themselves around the high gutter.^";   
+                } else {
+                    print "^Startled sparrows circle high in the sky, showing no signs of calming down.^";
+                }
+                rfalse;
+        ],
         n_to nothing,
-        s_to SummerHouseSouth,
-        description "An old wooden summer house, reeking of varnish and uncertain beneath your feet. Several segments of the tall glass many-sided pyramidal roof are missing and others are cracked, but this is still somehow a homely and welcoming retreat. The only entrance is also the only exit.",
+        s_to [;
+            if( flock_of_sparrows has general ) {
+                give flock_of_sparrows ~general;
+                print "As you step out, the sparrows gradually settle back down again.^";
+            }
+            return Hedgery;
+        ],
+        description "An old wooden summer house, reeking of varnish and uncertain beneath your feet. Several 
+            segments of the tall glass many-sided pyramidal roof are missing and others are cracked, but this is
+            still somehow a homely and welcoming retreat. The only entrance is also the only exit.",
         section T_GARDEN,
   has   light;
 
