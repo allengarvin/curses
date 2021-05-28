@@ -1705,7 +1705,34 @@ Object  -> hatch "hatch"
 
 Object  -> ancient_prayer_book "ancient prayer book"     
   with  name 'diary' 'ancient' 'prayer' 'book',
-        before PrayerBookBefore,
+        before [ year;
+            Consult:
+                year = TryNumber(consult_from);
+                if( year < 1725 || year > 1792 ) "He didn't seem to be experimenting in those days.";
+                if( year == 1792 ) {
+                    "In 1792, the last year of his life, ol' red-eyes becomes very excited about his new discovery. 
+                     This time he claims that Merlyn bounde uppe the mystic estate (by this he means the back 
+                     garden - Isaac never did have any sense of proportion) wyth great Roddes of Power. These are 
+                     dangerous, yet also useful in themselves, but are really part of a great key... the usual 
+                     nonsense. Of course you never actually see these rods, because they disguise themselves until 
+                     waved by someone wearing Merlyn's hat.^^The funny thing is that Isaac died (legend has it, by 
+                     spontaneous combustion) only a week after this breakthrough, preventing him from sending
+                     yet another paper to the Royal Society. But since Merlyn supposedly lived in about the sixth
+                     century A.D., there can't be a lot left of his hat, so the matter may be academic.";
+                }
+                print "In the year ";
+                EnglishNumber(year);
+                print ", Isaac was mainly concerned with ";
+                year = year % 6;
+                switch( year % 6 ) {
+                    0: "alchemy.";
+                    1: "caustical opticks.";
+                    2: "concave mirrors.";
+                    3: "the edibility of reptiles.";
+                    4: "the spleens of flightless birds.";
+                    5: "melting points of metals.";
+                }
+        ],
         list_together n_obj,
         initial "The dust and grime on the floor almost obscures an ancient prayer book.",
         description "Despite appearances, this is not a prayer book after all but is Mad Isaac's diary of supernatural investigations!  The script is cursive and cursory as he rambles on through all those theories about the Curse. There's so much of it that you'd better just look up particular years.",
@@ -1914,7 +1941,21 @@ Object  -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"
 
 Object  -> -> tourist_map "tourist map"  
   with  name 'hamburg' 'tourist' 'map',
-        before TouristMapBefore,
+        before [ n;
+            Consult:
+                if( self in demijohn ) "You can't get a close enough look.";
+                n = TryNumber(consult_from);
+                if( n ~= 1420 )
+                    "Just some anonymous streets. The detail of this map is so tiny that unless you have the exact 
+                     four-digit grid reference for what you want, you'll never find it.";
+                if( Museum_Foyer has visited ) "You remember, the museum.";
+                print "^At that exact grid reference is Meldreustrasse, a minor back street which houses a museum 
+                    of arcana.^^Suddenly you remember!  You visited the place once, and the curator Doktor Stein
+                    showed you round... and he hypnotised you into a swirl of unconsciousness...^^";
+                move tourist_map to location;
+                PlayerTo(Museum_Foyer);
+                rtrue;
+        ],
         list_together n_obj,
         description "The good news is that it has excellent grid references, which are easy to look up. The bad news is that it is a map of central Hamburg.",
         devil_hint "Purely decorative.",
@@ -1933,13 +1974,65 @@ HRoom   Conservatory "Aunt Jemima's Lair"
         w_to Potting_Room,
         sw_to House,
         u_to Old_Winery,
-        description "This used to be called the Conservatory, before Aunt Jemima took it over to potter about with plants, painting and indeed (on occasion) pottery. She has filled the place with objets trouves and bric-a-brac, and hung up a home-made calendar of watercolours. Even the old airing cupboard to the south is cluttered.^^An open doorway leads back southwest onto the upstairs landing, and you can hear the chaotic noise of suitcases being manhandled about - good thing nobody's seen you. A narrow staircase leads up and to the east into the attic.^^Jemima herself seems to be in the potting room to the west.",
+        description "This used to be called the Conservatory, before Aunt Jemima took it over to potter about 
+            with plants, painting and indeed (on occasion) pottery. She has filled the place with objets trouves
+            and bric-a-brac, and hung up a home-made calendar of watercolours. Even the old airing cupboard to the
+            south is cluttered.^^An open doorway leads back southwest onto the upstairs landing, and you can hear
+            the chaotic noise of suitcases being manhandled about - good thing nobody's seen you. A narrow staircase
+            leads up and to the east into the attic.^^Jemima herself seems to be in the potting room to the west.",
   has   light;
 
 Object  -> daisy_calendar "daisy calendar"       
   with  name 'calendar' 'page' 'pages' 'daisy',
-        before CalendarBefore,
-        time_left 5,
+        before [ i w;
+            Examine: 
+                print "The calendar is turned to ";
+                i = self.number;
+                switch( i ) {
+                    0: print "January";
+                    1: print "February";
+                    2: print "March";
+                    3: print "April";
+                    4: print "May";
+                    5: print "June";
+                    6: print "July";
+                    7: print "August";
+                    8: print "September";
+                    9: print "October";
+                    10: print "November";
+                    11: print "December";
+                }
+                print " and a watercolour painting of some ";
+                DaisyType(i);
+                " daisies.";
+            Turn, SwitchOn:
+                self.number = (selfobj.number + 1) % 12;
+                << Examine self >>;
+            Consult:
+                if( consult_words == 1 ) {
+                    wn = consult_from;
+                    w = NextWord();
+                    i = -1;
+                    if( w == 'january' ) i = 0;
+                    if( w == 'february' ) i = 1;
+                    if( w == 'march' ) i = 2;
+                    if( w == 'april' ) i = 3;
+                    if( w == 'may' ) i = 4;
+                    if( w == 'june' ) i = 5;
+                    if( w == 'july' ) i = 6;
+                    if( w == 'august' ) i = 7;
+                    if( w == 'september' ) i = 8;
+                    if( w == 'october' ) i = 9;
+                    if( w == 'november' ) i = 10;
+                    if( w == 'december' ) i = 11;
+                    if( i >= 0 ) {
+                        self.number = i;
+                        << Examine self >>;
+                    }
+                }
+                "It only has the usual twelve months.";
+        ],
+        number 5,
   has   scenery;
 
 HRoom   Airing_Cupboard "Airing Cupboard"        
@@ -2050,9 +2143,24 @@ Object  -> antiquated_wireless "antiquated wireless"
 
 HRoom   Potting_Room "Potting Room"      
   with  name 'plants' 'flowers' 'seeds' 'trowels',
-        after PottingRoomAfter,
+        after [;
+            Go:
+                if( parent(daisy_chain) == nothing && daisy_given == true ) {
+                    give Jemima general;
+                    print "^~Oh, silly old you,~ says Jemima condescendingly, ~You've lost your daisy chain!  What 
+                        colour do you want then?~^";
+                }
+                rfalse;
+            Look:
+                if( antiquated_wireless has general && antiquated_wireless in Conservatory ) 
+                    print "^Execrable music drifts in from the conservatory.^";
+                if( antiquated_wireless has general && antiquated_wireless in Airing_Cupboard )
+                    print "^Happily, the radio is almost inaudible from here.^";
+                rfalse;
+        ],
         e_to Conservatory,
-        description "This light room is full of pot plants, flowers, seeds, ornamental trowels and other miscellaneous garden implements.",
+        description "This light room is full of pot plants, flowers, seeds, ornamental trowels and other 
+            miscellaneous garden implements.",
         cant_go "The only exit is back east to the conservatory.",
   has   light;
 
