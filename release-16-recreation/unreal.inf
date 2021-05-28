@@ -108,6 +108,109 @@ Object  -> curtain "curtain"
   with  name 'curtain' 'bead',
   has   scenery;
 
+[ InsertCardIntoDeck o ;
+    card_deck-->card_ptr = o;
+    ++card_ptr;
+    rtrue;
+];
+
+[ Deal_card_number rank ;
+    print "the ";
+    if( rank == 1 ) print "Ace";
+    if( rank == 2 ) print "Two";
+    if( rank == 3 ) print "Three";
+    if( rank == 4 ) print "Four";
+    if( rank == 5 ) print "Five";
+    if( rank == 6 ) print "Six";
+    if( rank == 7 ) print "Seven";
+    if( rank == 8 ) print "King";
+    if( rank == 9 ) print "Queen";
+    if( rank == 10 ) print "Knave";
+    rtrue;
+];
+
+[ Deal_random_card i j card ;
+    if( card_ptr == 0 ) {
+        card = random(50);
+        while( card == i || card == j )
+            card = random(50);
+        if( card == 1 ) print "the Blank Card (~which I am forbidden to see~)";
+        if( card == 2 ) print "the One-Eyed Merchant";
+        if( card == 3 ) print "Marie, the Sledging Girl";
+        if( card == 4 ) print "the Red Rock";
+        if( card == 5 ) print "the Stony Wastes";
+        if( card == 6 ) print "the Arch-Duke";
+        if( card == 7 ) print "the Hyacinths";
+        if( card == 8 ) print "the Wheel";
+        if( card == 9 ) print "Belladonna, the Lady of the Rocks";
+        if( card == 10 ) print "the Hypocrit Reader";
+        if( card == 11 ) print "the Golden Cupidon";
+        if( card == 12 ) print "the Candle-Flames";
+        if( card == 13 ) print "the Carved Dolphin";
+        if( card == 14 ) print "Philomel, the Barbarous King";
+        if( card == 15 ) print "the Lonely Typist";
+        if( card == 16 ) print "the Bradford Millionaire";
+        if( card == 17 ) print "Magnus, the Martyr";
+        if( card == 18 ) print "Phlebas, the Phoenician";
+        if( card == 19 ) print "the Woman with Long Black Hair";
+        if( card == 20 ) print "the Cicadas in the Pine Trees";
+        if( card < 21 ) return card;
+        if( card < 31 ) {
+            Deal_card_number(card - 20);
+            print " of Staves";
+            return card;
+        }
+        if( card == 31 ) {
+            print "Tiresias, the shape changer";
+            return card;
+        }
+        if( card < 41 ) {
+            Deal_card_number(card - 30);
+            print " of Cups";
+            return card;
+        }
+        Deal_card_number(card - 40);
+        print " of Stones";
+        return card;
+    }
+    --card_ptr;
+    card = card_deck-->card_ptr;
+    move card to Consulting_Room;
+    print (the) card;
+    return card;
+];
+
+[ SosostrisDeals card3 card2 card1 ;     
+    print "Madame Sosostris picks up the cards and deals them onto the table. She frowns in concentration as ";
+    card3 = Deal_random_card(0,0);
+    print ", ";
+    card2 = Deal_random_card(card3,0);
+    print " and then ";
+    card1 = Deal_random_card(card3,card2);
+    print " show. ";
+    if( card3 == Death_card ) {
+        print "She blanches with alarm, then recovers and jabbers something about not taking the cards too 
+            literally, the images being symbolic and so on. As rapidly as she possibly can, she warns you to fear
+            death by water and then hustles you out onto the street.^";
+    } else {
+        if( card3 ~= Star || card2 ~= Maiden_card || card1 ~= Eight_of_Wands_card ) {
+            ! no code
+        } else {
+            print "~You have come!  At last, after all these centuries!  But there is little I can do to ease 
+                your way, save to return the staff you left with me for safe keeping.~  And she shows you out. You
+                feel rather bewildered.^";
+            move oak_quarterstaff to player;
+            give Unreal_City general;
+            PlayerTo(UnrealCity);
+        }
+        trigger_quotation(18);
+        print "~Curse it, another nobody,~ she hisses in an unguarded moment, as she tidies the pack absentmindedly 
+            with her hands. Then she recovers her poise and advises about handsome strangers, fearing death by
+            water, crossing palms with gold and so on. Eventually she ushers you out.^";
+    }
+    PlayerTo(Unreal_City);
+];
+
 Object  -> bell_push "bell push" 
   with  name 'bell' 'push',
         before [;

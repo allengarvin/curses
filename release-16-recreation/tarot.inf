@@ -1,59 +1,267 @@
 Class   TRoom
   with  section T_TAROT;
 
+[ BombTicks w i ;
+    print "The clock is ticking downwards, and is ";
+    if( complicated_looking_bomb.number == 0 ) {
+        print "right on the red zone!  ";
+    } else {
+        EnglishNumber(complicated_looking_bomb.number);
+        print " minute";
+        if( complicated_looking_bomb.number ~= 1 ) {
+            print "s";
+        }
+        print " short of the red zone. ";
+        if( complicated_looking_bomb.number == 5 ) {
+            trigger_quotation(10);
+        }
+    }
+    w = complicated_looking_bomb.time_left;
+    if( w == 0 ) "All four wires are plugged into the timer.";
+    if( w == 1 ) print "Only the ";
+    if( w == 2 ) print "The ";
+    if( w == 3 ) print "The ";
+    if( w == 4 ) "None of the wires are plugged in.";
+
+    i = w;
+    if( red_wire has general ) {
+        PrintShortName(red_wire);
+        --i;
+        AndList(i);
+    }
+    if( green_wire has general ) {
+        PrintShortName(green_wire);
+        --i;
+        AndList(i);
+    }
+    if( blue_wire has general ) {
+        PrintShortName(blue_wire);
+        --i;
+        AndList(i);
+    }
+    if( black_wire has general ) {
+        PrintShortName(black_wire);
+        --i;
+        AndList(i);
+    }
+    if( w == 1 ) 
+        " is unplugged.";
+    " are unplugged.";
+];
+
+[ AndList i ;   
+    if( i == 1 ) {
+        print " and ";
+        rfalse;
+    }
+    if( i == 0 ) {
+        rfalse;
+    }
+    print ", ";
+    rtrue;
+];
+
 TRoom   Ruined_Castle_Cafe "Ruined Castle Cafe"  
   with  name 'decor' 'arrows' 'quartet' 'waiter',
-        after CafeAfter,
-        initial CafeInitial,
-        description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
+        after [;
+            Look:
+                if( Cups_and_Glasses has visited && complicated_looking_bomb has concealed ) 
+                    "^Over in one corner, you can see a little square window, behind which must be the store of cups 
+                     and glasses. Remembering this, you are distracted and unable to enjoy the entertainment. Even
+                     the table is annoying. It must have one leg shorter than the rest, or something, because it
+                     rattles now and then.";
+            Strike:
+                "You look rather conspicuous striking the rod on the cafe table, but everyone else assumes you're 
+                 part of the cabaret. Anyway, the rod charges up as usual.";
+        ],
+        initial [;
+            if( complicated_looking_bomb has concealed ) StartTimer(complicated_looking_bomb,10);
+        ],
+        description "This crowded, bohemian cafe bears only a passing resemblance to the ruined castle of the 
+            Tarot card: the decor imitates castle walls and arrowslits. You find yourself sitting at a table for
+            one in the centre of the cafe floor. It is noisy, bustling and cheery, and a string quartet plays
+            Strauss under the chattering of German voices. Your chances of attracting a waiter are very slight.",
         cant_go "The crowd is lively and exciting, but also inconsiderate and bulky.",
-        each_turn CafeEachTurn,
+        each_turn [;
+            if( complicated_looking_bomb hasnt concealed ) {
+                new_line;
+                BombTicks();
+            } else {
+                print "^The table rattles again.^";
+            }
+        ],
   has   light scored;
 
 Object  -> cafe_table "cafe table"       
   with  name 'cafe' 'table' 'leg' 'legs',
-        before CafeTableBefore,
+        before [;
+            LookUnder, Search:
+                if( complicated_looking_bomb has concealed ) {
+                    give complicated_looking_bomb ~concealed;
+                    move complicated_looking_bomb to Ruined_Castle_Cafe;
+                    "Now don't panic, but there's a ticking bomb loosely taped to the underside of the table you're sitting at!";
+                }
+                "You make no further alarming discoveries.";
+            Enter:
+                "Even in a cafe as lively as this, your natural English inhibitions make it impossible for you to 
+                 climb up on the table.";
+        ],
   has   scenery supporter;
 
 Object  complicated_looking_bomb "complicated-looking bomb"      
   with  name 'bomb',
-        after BombAfter,
+        after [;
+            Take:
+                deadflag = PRISON;
+                "Suddenly, someone catches sight of you with the bomb and screams. One thing leads to another, 
+                 and, well, you know how it is with foreign legal systems. At least the bomb gets defused, and
+                 twenty-five years isn't all that long.";
+        ],
         initial "Taped loosely to the underside of the table is a complicated-looking bomb.",
-        description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
+        description "It contains a timer-detonator, a bundle of plastic explosives and many, many wires. The 
+            most obvious ones are green, red, blue and black. They would pull out of their loose sockets in the
+            timer easily, so perhaps this bomb disposal nonsense isn't as tricky as people make out.",
         number 0,
         time_left 0,
-        daemon BombDaemon,
+        time_out [;
+            if( location ~= Ruined_Castle_Cafe ) 
+                rfalse;
+            if( complicated_looking_bomb hasnt concealed ) {
+                if( blue_wire ~= bomb_wires->0 || green_wire ~= bomb_wires->1 || black_wire ~= bomb_wires->2 || red_wire ~= bomb_wires->3 ) {
+                    print "^Click!  Perhaps there's more to bomb disposal than you thought.^";
+                } else {
+                    print "^Click!  The timer runs out, but the bomb was disarmed. You pocket the timer and hide the rest of the evidence under the table.^";
+                    move timer_detonator to player;
+                    give timer_detonator ~static;
+                    remove complicated_looking_bomb;
+                    rtrue;
+                }
+            }
+            print "^In a sudden cataclysm, there is an enormous explosion from your table, blowing out all the arrowslit windows, making a thunderous noise, starting a minor fire, and of course having one other consequence:^";
+            deadflag = DIED;
+        ],
   has   concealed container open;
 
 Object  -> timer_detonator "timer-detonator"     
   with  name 'timer' 'detonater' 'detonator',
-        before TimerBefore,
+        before [ i;
+            Examine:
+                print "The timer seems quite simple to set. ";
+                i = self.number;
+                if( self.time_left ~= 0 ) {
+                    print "The clock is running, and currently at ";
+                    EnglishNumber(i);
+                    " minutes.";
+                }
+                if( i ~= 0 ) {
+                    BombTicks();
+                    rtrue;
+                }
+                "At present the clock is reset to zero.";
+            Set:
+                if( self.time_left ~= 0 ) {
+                    "It is already running!";
+                }
+                StartTimer(self,10);
+                self.time_left = 1;
+                "You wind back the timer to ten minutes, and off it goes.";
+        ],
         number 10,
         time_left 0,
-        daemon TimerDaemon,
+        time_out [ i j k;
+            i = timer_detonator;
+            j = parent(i);
+            self.time_left = 0;
+            while( parent(i) ~= nothing )
+                i = parent(i);
+
+            if( location == i ) {
+                print "^You hear a sharp click!^";
+                if( j == photographers_flash ) {
+                    new_line;
+                    k = child(j);
+                    if( k == timer_detonator ) {
+                        k = sibling(k);
+                    }
+                    if( k == nothing ) {
+                        "But the flash does nothing.";
+                    }
+                    if( k ~= nasty_battery ) {
+                        "And the flash gives a pathetically small flash of light.";
+                    }
+                    print "The flash suddenly gives an enormous magnesium-flare flash, almost blinding in its intensity. Your eyes take a little while to adjust. ";
+                    if( location == Ruined_Castle_Cafe ) {
+                        print "Consequently you can only hear as the cabaret audience gives you a round of applause for what they think is a magic trick.";
+                    }
+                    k = photographers_flash;
+                    k = parent(k);
+                    if( k == mirrored_device && photographers_flash hasnt general ) {
+                        give photographers_flash general;
+                        print "Consequently you can only hear as the smudge on the horizon rises from the waves, 
+                            becomes an enormous Kraken sea monster and lunges for the stone tower. (Considering this
+                            is supposed to be a Greek myth it feels surprisingly like a Japanese 1960s creature film.)
+                            The Kraken swipes at you, overreaches itself and falls over forward, impaling itself extremely
+                            messily on the pharos. Your eyes just about recover by the time the rest of your body is
+                            crushed by its weight.^^Up on Mount Olympus, Zeus is still cross. ~Take me to your Leda~,
+                            you wittily demand, but this does not seem to improve matters. Poseidon also looks rather
+                            fed up, but luckily a sizeable faction of goddesses takes your side and arranges to have
+                            you resurrected...^";
+                        Achieved(SCORE_ANDROMEDA);
+                        remove photographers_flash;
+                        give Lighthouse ~visited;
+                        give Lighthouse ~scored;
+    
+                        for( i = child(player) : i ~= nothing : i = j ) {
+                            j = sibling(i);
+                            if( i ~= daisy_chain ) {
+                                move i to Lighthouse;
+                                give i ~worn;
+                            }
+                        }
+                        PlayerTo(Family_Tree);
+                        rtrue;
+                    }
+                    if( Austin in location )
+                        "^Austin jumps with fear, then slouches back again into his ~cool~ pose.";
+                    if( irate_squirrel_friend in location )
+                        "^The squirrel covers his eyes with his paws for a moment.";
+                }
+            }
+        ],
         devil_hint "Time flies down here, you know. Eternity simply breezes by.",
         angel_hint "Good photographic gear that. You didn't get it from a... well, a bomb, I hope.",
   has   static;
 
-Object  -> green_wire "green wire"       
-  with  name 'green' 'wire',
-        before WireBefore,
+Class   Wire_Class
+  with  before [ i;
+            Pull:
+                if( self has general ) {
+                    "That one's already pulled out.";
+                }
+                give self general;
+                print "You pull out ", (the) noun, ". ";
+                i = complicated_looking_bomb.time_left;
+                complicated_looking_bomb.time_left = i + 1;
+                bomb_wires->i = self;
+                if( i == 3 ) {
+                    give complicated_looking_bomb general;
+                    "All four wires are now disconnected.";
+                }
+                rtrue;
+        ],
   has   static wire;
 
-Object  -> red_wire "red wire"   
-  with  name 'red' 'wire',
-        before WireBefore,
-  has   static wire;
+Wire_Class -> green_wire "green wire"       
+  with  name 'green' 'wire';
 
-Object  -> blue_wire "blue wire" 
-  with  name 'blue' 'wire',
-        before WireBefore,
-  has   static wire;
+Wire_Class -> red_wire "red wire"   
+  with  name 'red' 'wire';
 
-Object  -> black_wire "black wire"       
-  with  name 'black' 'wire',
-        before WireBefore,
-  has   static wire;
+Wire_Class -> blue_wire "blue wire" 
+  with  name 'blue' 'wire';
+
+Wire_Class -> black_wire "black wire"       
+  with  name 'black' 'wire';
 
 TRoom   Cups_and_Glasses "Cups and Glasses"      
   with  name 'skylight' 'old' 'women' 'conspirators',
@@ -61,7 +269,25 @@ TRoom   Cups_and_Glasses "Cups and Glasses"
         description "This basement room is filled with crate after crate of glasses and cups, enough for an entire hotel, or restaurant perhaps. Almost anything might be hidden among them. A little light comes in from an opaque skylight which is at street level outdoors. There is no way out of here, since the only door is shut tight.",
         cant_go "There's no apparent way out of here.",
         number 0,
-        each_turn CupsAndGlassesEachTurn,
+        each_turn [ i;
+            self.number = selfobj.number + 1;
+            i = self.number;
+            if( i == 2 ) 
+                "^There is a scuffling noise as some people gather up on the pavement outside the skylight.";
+            if( i == 3 ) 
+                "^The men begin to talk like conspirators, but half in chants. You catch occasional sounds, but 
+                 can make little sense of them.";
+            if( i == 4 ) 
+                "^Alarmingly, you catch the odd word ~incendiary~ and are almost sure you can make out someone 
+                 say ~accursed Meldrew~ (in the old-fashioned way, you know, so that ~accursed~ rhymes with
+                 ~dead~). Paranoia, bound to be. There surely can't really be a conspiracy of druid-worshippers
+                 out to get you?";
+            if( i == 5 ) 
+                "^~The prophecy must be fulfilled!~ one warns, in an unearthly voice which suddenly carries. 
+                 The others hush him.";
+            if( i == 6 ) 
+                "^The men walk away, perhaps a few feet, perhaps a mile.";
+        ],
   has   light;
 
 Object  -> windowed_door "windowed door" 
@@ -73,7 +299,16 @@ Object  -> windowed_door "windowed door"
 
 Object  -> cups_and_glasses_obj "cups and glasses"   
   with  name 'crates' 'glasses' 'cups',
-        before CupsAndGlassesBefore,
+        before [;
+            Search, Examine, LookUnder:
+                if( model_ship hasnt general ) 
+                    "Nothing else.";
+                give model_ship ~general;
+                give model_ship moved;
+                move model_ship to player;
+                "In fact there's nothing hidden among the crates but a model sailing ship. You pick it up from force of habit.";
+        ],
+
         article "numerous",
   has   scenery;
 
@@ -84,16 +319,64 @@ Object  -> mounted_bottle "mounted bottle"
         angel_hint "The great challenge, of course, is to get a ship inside.",
   has   ;
 
-Object  ship_in_a_bottle "ship in a bottle"      
+class   Model_Ship_Obj
+  with  before [;
+            Pull:
+                if( noun == model_ship ) {
+                    remove model_ship;
+                    move stick_with_an_anchor to player;
+                    itobj = stick_with_an_anchor;
+                    give itobj moved;
+                    "As you pull the anchor chain, the masts fold inwards and the decks concertina back, until you're holding no more than a tight bundle of sticks.";
+                }
+                remove stick_with_an_anchor;
+                move model_ship to player;
+                itobj = model_ship;
+                "As you pull the anchor chain, the sticks spring back outwards into the fully-rigged model sailing ship you knew of old.";
+            Insert:
+                if( second ~= mounted_bottle )
+                    rfalse;
+                if( noun == model_ship ) {
+                    "The model ship is, of course, far too large to fit into the bottle.";
+                }
+                if( noun == stick_with_an_anchor ) {
+                    remove mounted_bottle;
+                    remove stick_with_an_anchor;
+                    move ship_in_a_bottle to player;
+                    give ship_in_a_bottle moved;
+                    Achieved(SCORE_SHIP);
+                    "The bundle of sticks will just fit through the bottle's neck. With a sudden spring, just as the last of the stick passes the neck, its masts fold out... and you have put the ship into the bottle.";
+                }
+            Wave:
+                if( noun == stick_with_an_anchor )
+                    "Ever the optimist.";
+                rfalse;
+        ];
+
+Model_Ship_Obj ship_in_a_bottle "ship in a bottle"      
   with  name 'ship' 'in' 'bottle',
-        before BottleShipBefore,
+        before [;
+            Examine:
+                if( ship_in_a_bottle notin player ) 
+                    "You can't get a good look from here.";
+                if( game_section ~= T_TAROT ) 
+                    "You admire the fine detail on the model sailing ship, and feel strangely drawn to it. But back out of the world of the Tarot box, nothing else could happen.";
+                if( location == Lighthouse )
+                    "Bright sunshine glints off the glass bottle, making it impossible to see detail within.";
+                move ship_in_a_bottle to Souvenirs_Room;
+                PlayerTo(Aboard_Ship,1);
+                "You look very closely at the fine detail on the model sailing ship. Perhaps it's the distorting 
+                 glass of the bottle, perhaps your romantic imagination, but the deck seems more detailed, the
+                 rigging might almost be swaying, the little figure by one mast might almost be alive...^^In fact,
+                 the closer you look the more sea-sick you feel.^^Thank heavens for the deck rail, something to
+                 hang on to while this moment of queasiness passes.";
+        ],
         description "Within the whisky bottle is a model sailing ship, far too large to have passed the neck.",
         angel_hint "Oh, well done!  Why not take a closer look, you deserve it?",
   has   ;
 
-Object  model_ship "model ship"  
+Model_Ship_Obj model_ship "model ship"  
   with  name 'model' 'sailing' 'ship' 'anchor' 'chain' 'mermaid' 'filigree' 'prow' 'stern',
-        before ModelShipBefore,
         description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
         angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has   general;
@@ -106,17 +389,71 @@ Object  stick_with_an_anchor "stick with an anchor"
   has   ;
 
 TRoom   Sea_Shore "Sea Shore"    
-  with  before SeaShoreBefore,
+  with  before [;
+            Drink: "Salt water!  No thanks.";
+            Swim:
+                if( poseiden_warning == false ) {
+                    poseiden_warning = true; 
+                    "Mmm. Here is your first and only warning: the sea is the domain of Poseidon, and he's not 
+                     what you'd call a gentleman.";
+                }
+                deadflag = MYTH;
+                "As you dive into the sea, you catch sight of Andromeda looking suddenly cheerful. It soon becomes 
+                 apparent why, as a Kraken wakes from the depths of the ocean and swipes you for a quick snack. You
+                 seem to have replaced her as sacrifice... a Pyrrhic victory which even the prospect of stellification
+                 does little to assuage.";
+        ],
         u_to Cliffs,
-        description " .A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^",
+        description [;
+            print "A rough rocky sea shore below barely-climbable cliffs, against which inviting deep blue sea 
+                laps. It seems to be early morning, soon after dawn, from the look of the sun on the water.^";
+            if( Lighthouse has visited && Lighthouse hasnt general ) {
+                give Lighthouse general;
+                "^You can just make out the Pharos atop the cliffs. But it seems to be earlier, nearer dawn, 
+                 than your last visit.";
+            }
+            rtrue;
+        ],
         cant_go "The rocks are too dangerous. You'll have to scale the cliff.",
   has   light;
 
 Object  -> Andromeda "Andromeda" 
   with  name 'andromeda' 'maiden',
-        life AndromedaLife,
-        initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her fate.",
-        description " .Avert your eyes. She is naked",
+        life [;
+            Kiss: "She evades you deftly, having had years of practice with Greek men.";
+            Attack: "No need, if the sea-monster is all it's cracked up to be.";
+            Give:
+                if( noun has edible ) {
+                    if( noun == Ekmek_Special ) {
+                        remove noun;
+                        give amber_hairband ~static;
+                        give amber_hairband moved;
+                        move amber_hairband to player;
+                        "She smiles as if to say there's not much point watching her waist-line any more, and 
+                         hungrily wolfs down her favourite dessert. As a gesture of thanks, she takes off her
+                         amber hairband and hands it you. Quickly she readopts her noble pose, however, just in
+                         case anyone else is looking.";
+                    }
+                    "She looks with obvious hunger, but her sense of duty wins out and she refuses.";
+                }
+                "She looks down her nose at you.";
+            Order, Ask, Answer:
+                "Andromeda hisses something contemptuous at you in Greek. (Attic, not Demotic, ironically enough, 
+                 but then it's all Greek to you.)";
+        ],
+        initial "Chained to the cliff face is the beautiful Andromeda, looking nobly out to sea as she awaits her 
+            fate.",
+        description [;
+            print "Avert your eyes. She is naked";
+            if( amber_hairband has static ) 
+                print " (unless you count a hairband)";
+            print ", as was fashionable for human sacrifices: the victim left overnight without food or shelter 
+                until the dawn. It has to be said that she doesn't look all that keen to be rescued";
+            if( photographers_flash hasnt general ) 
+                ".";
+            ".^^Of course you've already rescued her, in a sense, but that's not due to happen for an hour or two 
+                yet by her time, so you can hardly expect thanks. Gives you a nice warm feeling inside, all the same.";
+        ],
   has   animate proper;
 
 Object  -> amber_hairband "amber hairband"       
@@ -138,7 +475,12 @@ TRoom   Cliffs "Cliffs"
 
 TRoom   Clifftop_Walk "Clifftop Walk"    
   with  s_to Wall_of_Thorns,
-        e_to ClifftopEast,
+        e_to [;
+            if( herd_of_goats hasnt general ) 
+                "The goats hiss and butt against you, not letting you through.";
+            print "The goats obediently part to allow you to get by.^";
+            return Outside_Taverna;
+        ],
         w_to Cliffs,
         description "A long clifftop walk by the sea, from the lighthouse to the west to the village not far east. These fields are occupied by herds of hardy mountain goats, continually butting each other and frisking. To the south a path leads across sparse grassland to a great outgrowth of some kind.",
         cant_go "There's only dull grassland that way.",
@@ -146,7 +488,10 @@ TRoom   Clifftop_Walk "Clifftop Walk"
 
 Object  -> herd_of_goats "herd of goats" 
   with  name 'goat' 'goats' 'herd' 'of',
-        life GoatsLife,
+        life [;
+            Order, Ask, Answer:
+                "Grunt!";
+        ],
   has   scenery talkable;
 
 TRoom   Outside_Taverna "Outside Taverna"        
@@ -158,7 +503,9 @@ TRoom   Outside_Taverna "Outside Taverna"
 
 Object  -> small_thorny_tree "small thorny tree" 
   with  name 'tree' 'thorny' 'small',
-        before ThornyTreeBefore,
+        before [;
+            Climb, Enter: "The thorns deter you.";
+        ],
         description "Only a small, thorny, unclimbable fig tree.",
   has   scenery;
 
@@ -171,16 +518,32 @@ Object  -> fig "fig"
   has   edible;
 
 TRoom   Eraina_Taverna "Eraina Taverna"  
-  with  before TavernBefore,
+  with  before [;
+            Buy: "Given the language difficulty, you'd better resort to barter.";
+        ],
         n_to Outside_Taverna,
         description "A plain but cheery taverna, fill of miserable and rather ashamed men who are drinking retsina heavily. The day is dawning outside the north door, but they strangely do not share your uplifted feeling at the sight.",
         cant_go "The tavern entrance is to the north.",
-        each_turn TavernEachTurn,
+        each_turn [ i;
+            i = random(13);
+            if( i == 1 ) "^The diners grumble and play backgammon viciously.";
+            if( i == 2 ) "^The bartender gives you a hard stare.";
+            if( i == 3 ) "^A fight breaks out, over an obscure question to do with somebody's second cousin.";
+            if( i == 4 ) 
+                "^The gentle sound of bazouki music strikes up in the background, gradually rising to an 
+                 intolerable pitch. After a moment comes a dull thud and a strangled noise, then blessed quiet.";
+        ],
   has   light scored;
 
 Object  -> Ekmek_Special "Ekmek Special" 
   with  name 'ekmek' 'special' 'dessert',
-        before DessertBefore,
+        before [;
+            Take:
+                if( self hasnt moved && copper_coin hasnt general )
+                    "You can't understand a word of what the bartender says, but the drift is clear enough. 
+                     Not until you pay for it.";
+                rfalse;
+        ],
         initial "Left untouched on one table is an Ekmek Special dessert.",
         description "A speciality dessert of the Taverna: ice cream, kateifi, raspberry sauce, cream. An acquired taste.",
         devil_hint "Better with chocolate ice cream, I think.",
@@ -189,7 +552,19 @@ Object  -> Ekmek_Special "Ekmek Special"
 
 Object  -> bartender "bartender" 
   with  name 'bar' 'tender' 'bartender',
-        life BartenderLife,
+        life [;
+            Give:
+                 if( noun == copper_coin ) {
+                    remove copper_coin;
+                    give copper_coin general;
+                    "The bartender takes the coin wearily, with a ~how can you eat at a time like this?~ look.";
+                }
+                print_ret "The bartender looks at ", (the) noun, " with a glazed expression.";
+            Ask, Answer, Order:
+                "Being an educated person, the bartender speaks a little Latin and some Aramaic. Being an 
+                 uneducated one, you don't, and communication proves impossible.";
+            Attack, Kiss: "Here, surrounded by all his cronies?";
+        ],
         initial "Behind the bar, a depressed bartender polishes glasses.",
         description "Morose and unconvivial at the best of times. This is not the best of times.",
   has   animate;
@@ -211,19 +586,45 @@ Object  -> wall_of_thorns_object "wall of thorns"
   has   door static;
 
 TRoom   Sacred_Earth "Sacred Earth"      
-  with  after SacredEarthAfter,
+  with  after [; trigger_quotation(4); rfalse; ],
         n_to Wall_of_Thorns,
-        s_to SacredEarthSouth,
-        description "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number of myths about gods getting cross about that sort of thing.",
+        s_to [;
+            print "Zeus, chief of all the gods, appears and hurls a thunderbolt down just before you begin to 
+                cross into the Temple. ";
+            if( big_electricians_switch has on ) {
+                deadflag = DIED;
+                "With the kind of calculation only a god could make, Zeus has worked out exactly what would happen 
+                 and aimed the thunderbolt so that it hits you straight in the back despite your attempt to weave
+                 about. Pretty impressive prediction, is your last thought.";
+            }
+            if( rod_of_luck has general ) {
+                print "Astonishingly, you beat the luck of the gods and slip into the temple just clear of the 
+                    thunderbolt. ~Damn, missed!~ says a sepulchral voice from without.^";
+                return Temple_of_Zeus;
+            }
+            deadflag = DIED;
+            "With the luck of the gods, Zeus' thunderbolt strikes you just about exactly in the back, despite your 
+                attempts to weave about.";
+        ],
+        description "Here inside the thorn wall, a north-south path leads across sacred earth into the imposing 
+            marble Temple of Zeus. You feel distinctly uneasy walking on such hallowed turf. There are any number
+            of myths about gods getting cross about that sort of thing.",
         cant_go "The wall of thorns hems you in.",
   has   light;
 
 TRoom   Temple_of_Zeus "Temple of Zeus"  
   with  name 'pillar',
-        n_to TempleNorth,
+        n_to [;
+            print "~I'll get you this time, worm!~ bellows Zeus, and hurls another thunderbolt, but now he's 
+                angry his aim is right off. You survive once more.^";
+            return Sacred_Earth;
+        ],
         se_to East_Cloister,
         sw_to West_Cloister,
-        description "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and featureless save for the entrance at the north. So much for all the rumours about hoards of treasure - it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along.^^Cloisters lead southeast and southwest, deeper into the temple.",
+        description "The beautiful candle-lit Temple of Zeus, a cavern of marble pillars which is quite empty and 
+            featureless save for the entrance at the north. So much for all the rumours about hoards of treasure -
+            it looks as if Zeus (who is, by the way howling with anger outside) was bluffing all along.^^Cloisters
+            lead southeast and southwest, deeper into the temple.",
   has   light scored;
 
 Object  -> copper_coin "copper coin"     
@@ -243,7 +644,13 @@ TRoom   East_Cloister "East Cloister"
 Object  -> inscribed_stone "inscribed stone"     
   with  name 'rosetta' 'stone' 'inscribed' 'pumice',
         initial "Resting in the niche is an inscribed pumice stone, two feet tall.",
-        description " .The stone bears two inscriptions, side by side:^",
+        description [;
+            print "The stone bears two inscriptions, side by side:^";
+            0-->8 = 2 | 0-->8;
+            print "^   #. [] = # +*+  __             an-ta re-im ka u bir ka-i^             |||       ^        |        |     ^   / # -+- :; # -+-                 ka ne : to-ro-ma ka ur^        |        |     ^                       ^   >>> -> # (---)         .je-fe-im ka ur-a an-ge to-ro-ma^             |||^";
+            0-->8 = 65533 & 0-->8;
+            rtrue;
+        ],
         article "an",
         angel_hint "Whoever wrote this must have wanted to get the message across very badly, to write it all out twice.",
   has   scored;
@@ -265,7 +672,7 @@ TRoom   Inner_Sanctum "Inner Sanctum"
         ne_to East_Cloister,
         nw_to West_Cloister,
         d_to Cross_Centre,
-        initial InnerSanctumInitial,
+        initial [; StopDaemon(Cross_Centre); rfalse; ],
         description "Here from the dark heart of the temple, cloisters fork northeast and northwest while a flight of narrowing steps lead down and to the north.",
   has   ;
 
@@ -504,23 +911,123 @@ TRoom   Cave_Mouth "Cave Mouth"
 
 Object  -> flaming_bronze_urn "flaming bronze urn"       
   with  name 'flaming' 'bronze' 'urn' 'flame' 'cube' 'obsidian' 'altar' 'stone',
-        before UrnBefore,
+        before [;
+            Receive:
+                if( noun == player ) << Enter self >>;
+                remove noun;
+                if( Oracle notin location ) 
+                    "Perhaps the gods no longer inhabit such places. Your offering burns to nothing, for nothing.";
+                if( noun == fig ) {
+                    move fig to Outside_Taverna;
+                    fig.initial = "The god Apollo moves in mysterious ways, for another fig has appeared on the tree.";
+                    give fig ~moved;
+                }
+                if( noun has edible ) {
+                    give Oracle general;
+                    "You have pleased the god Apollo - Loxias, god of words and counsel, as he was once called!  Very wise.";
+                }
+                "The god Apollo is unimpressed with your offering, which feeds the eternal flame.";
+            Enter: "You have no desire to be burnt.";
+        ],
         initial "In the centre of the cave rests an obsidian altar stone with a flaming bronze urn.",
-        description "The altar stone, sometimes called ~Omphalos~ or ~the navel~, bears an odd cross or plus sign and is fabled to mark the centre of the world.^^Around the side of the urn are reliefs of feasts, of oxen being tracked and sacrificed, of the gathering of fruit and the making of cheese.",
+        description "The altar stone, sometimes called ~Omphalos~ or ~the navel~, bears an odd cross or plus 
+            sign and is fabled to mark the centre of the world.^^Around the side of the urn are reliefs of feasts,
+            of oxen being tracked and sacrificed, of the gathering of fruit and the making of cheese.",
         article "the",
   has   container open static;
 
+[ DescribePaces i ;
+    if( i < 0 ) {
+        i = 0 - i;
+    }
+    if( i == 0 ) {
+        print "nought";
+    }
+    if( i == 1 ) {
+        print "a pace";
+        rfalse;
+    }
+    if( i >= 2 ) {
+        EnglishNumber(i);
+    }
+    print " paces";
+    rtrue;
+];  
+
+[ PriestTalk ;
+    if( priest_cnt == 3 ) {
+        "The priestess has told you enough.";
+    }
+    if( Oracle hasnt general ) {
+        "The priestess remains silent. Only by an offering can the wisdom of Apollo be gained.";
+    }
+    give Oracle ~general;
+    ++priest_cnt;
+    print "The priestess, Pythian oracle of Loxias, seems hardly to hear or understand: but goes into a trance, 
+        swaying to a sensuous rhythm: and chants, in English,^^";
+    if( priest_cnt == 1 ) {
+        print " ~As Hephaestus, master of the metals^  uncovered the gilden sunrise of Helicon^  so, in ";
+        DescribePaces(StrongboxX);
+        print " and ";
+        DescribePaces(StrongboxY);
+        print "^  when six arches have stood sixty years^  shall even a shade's remains be cast.~";
+    }
+    if( priest_cnt == 2 ) {
+        print " ~Like the eruptions of Sicilian mounts^  shall come devices to ruin a castle,^  which no bronze 
+            armour can withstand^  save, it may be, a veil of the neck.~";
+    }
+    if( priest_cnt == 3 ) {
+        print " ~Your ancestor, pestle in hand^  made the salve you shall need^  to defy the Druids' earthly 
+            band:^  take care, mortal, take heed.~";
+    }
+    new_line;
+    if( priest_cnt == 1 ) 
+        "^Apollo is what you might call an annoying git, were he not also an alarmingly powerful deity.";
+    rtrue;
+];
+
 Object  Oracle "Oracle"  
   with  name 'oracle' 'masked' 'priestess' 'pythian' 'loxias' 'of' 'apollo',
-        life OracleLife,
-        initial "The Oracle, the masked priestess of Apollo, stands here behind an obsidian altar-stone, three cubits cubed: to her side is a bronze urn, mouthing perpetual flame.",
+        life [;
+            Attack, Kiss, ThrowAt: "As you ought to know, the Oracle is inviolable.";
+            Ask, Order, Answer: PriestTalk(); rtrue;
+        ],
+        initial "The Oracle, the masked priestess of Apollo, stands here behind an obsidian altar-stone, three 
+            cubits cubed: to her side is a bronze urn, mouthing perpetual flame.",
         article "the",
   has   animate;
 
+[ FlashFallsOut ;        
+    if( photographers_flash in mirrored_device ) {
+        print "(Out of the corner of your eye, you notice the flash fall out of the device.)^";
+        move photographers_flash to Lighthouse;
+    }
+];
+
 TRoom   Lighthouse "Lighthouse"  
   with  name 'smudge' 'quinquire',
-        d_to LighthouseDown,
-        description " .You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Considerately enough, the builders have provided a spiral staircase down. ",
+        d_to [; FlashFallsOut(); return Greek_Frieze1; ],
+        description [;
+            print "You stand atop a pinnacle of stone, on an early Pharos, or lighthouse. Considerately enough, 
+                the builders have provided a spiral staircase down. ";
+            if( Sea_Shore has visited ) 
+                print "The cliffs below are familiar, but it's a little later in the day than your arrival on the 
+                    sea shore. ";
+
+            if( photographers_flash has general ) 
+                print "Much traffic plies across the bay, and trade seems to be picking up again now that the 
+                    Kraken has gone.";
+            else
+                print "There seems to be very little traffic at the moment, though a smudge on the horizon 
+                    might possibly be a quinquireme.";
+
+            print "^^In the centre of the pinnacle is a marvellous device of polished bronze mirrors, its open 
+                end pointed out across the bay. ";
+
+            if( photographers_flash has general ) 
+                "The Mediterranean sparkles in the hot afternoon sun.";
+            "The sun is rising and the sky is clear blue over the Mediterranean: it's going to be a beautiful day.";
+        ],
         cant_go "Being a lighthouse, this pinnacle is way up in the air. Point taken?",
   has   light scored;
 
@@ -565,7 +1072,9 @@ Object  aft_obj "aft wall"
 
 Object  some_landlubbers_direction "some landlubber's direction" 
   with  name 'north' 'n//' 'south' 's//' 'east' 'e//' 'west' 'w//',
-        before LandlubberBefore,
+        before [;
+            "Here aboard ship, such a landlubber's direction seems inappropriate.";
+        ],
   has   proper scenery;
 
 TRoom   Aboard_Ship "Aboard Ship"        
@@ -575,13 +1084,52 @@ TRoom   Aboard_Ship "Aboard Ship"
         u_to Up_the_Mast,
         description "There is a storm tossing the deck, one which drives no rain: you reel from one side to the other, hanging onto the rail, grabbing at the mast or the rigging. Nobody else seems to be aboard. The boat makes no headway in a strange, glassy mist.^^The mast rises dizzyingly high.^^You can't even make out the water below. A great pink haze spreads across the sky. With omens like these, who needs albatrosses?",
         cant_go "The deck runs fore to aft (as all decks do).",
-        daemon OnShipDaemon,
-        each_turn OnShipEachTurn,
+        daemon [;
+            if( location has ship_flag ) {
+                rfalse;
+            }
+            StopDaemon(self);
+            remove port_obj;
+            remove starboard_obj;
+            remove aft_obj;
+            remove fore_obj;
+            remove some_landlubbers_direction;
+            move n_obj to compass;
+            move s_obj to compass;
+            move e_obj to compass;
+            move w_obj to compass;
+            move ne_obj to compass;
+            move nw_obj to compass;
+            move se_obj to compass;
+            move sw_obj to compass;
+            rfalse;
+        ],
+        each_turn [;
+            if( port_obj in compass ) {
+                rfalse;
+            }
+            move n_obj to flagpole;
+            move s_obj to flagpole;
+            move e_obj to flagpole;
+            move w_obj to flagpole;
+            move ne_obj to flagpole;
+            move nw_obj to flagpole;
+            move se_obj to flagpole;
+            move sw_obj to flagpole;
+            move port_obj to compass;
+            move starboard_obj to compass;
+            move aft_obj to compass;
+            move fore_obj to compass;
+            move some_landlubbers_direction to compass;
+            StartDaemon(self);
+        ],
   has   light ship_flag;
 
 Object  -> mast_and_rigging "mast and rigging"   
   with  name 'mast' 'rigged' 'rigging',
-        before RiggingBefore,
+        before [;
+            Enter, Climb: << Go u_obj >>;
+        ],
         article "the",
   has   scenery;
 

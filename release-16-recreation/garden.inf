@@ -534,10 +534,19 @@ Object -> irate_squirrel_friend "irate squirrel friend"
         article "your",
   has   animate;
 
+[ DugHoleDesc ;
+    if( OldDigX == DigX && OldDigY == DigY ) {
+        "^The hole you dug in the lawn is just here.";
+    }
+    print "^Some vandal has dug a hole in the lawn, ";
+    DescribePaces(OldDigX - DigX,OldDigY - DigY);
+    ".";
+];
+
 GRoom  Croquet_Lawn "Croquet Lawn"      
   with  w_to Hedgery,
         nw_to nothing,
-        initial CroquetLawnInitial,
+        initial [; DigX = 0; DigY = 0; rfalse; ],
         description [;
             print "One of the most beautiful hedge-enclosed, tree-muffled lawns in England, and just out of sight 
                 of the house, this has been a jewel in the gardens for centuries. Since the twenties it has also
@@ -547,7 +556,18 @@ GRoom  Croquet_Lawn "Croquet Lawn"
             ". The hedge is broken slightly to the northwest.";
         ],
         cant_go "The lawn is enclosed on all sides, but for a gap back west.",
-        short CroquetLawnShort,
+        short [;
+            if( DigX == 0 && DigY == 0 ) {
+                rfalse;
+            }
+            if( before_short_desc == true ) {
+                rfalse;
+            }
+            print "Croquet Lawn (";
+            DescribePaces(DigX,DigY);
+            print " of the peg)";
+            rtrue;
+        ],
         section T_GARDEN,
   has   light;
 

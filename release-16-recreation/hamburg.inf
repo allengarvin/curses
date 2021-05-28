@@ -3,7 +3,16 @@ class   DERoom
 
 DERoom  Museum_Foyer "Museum Foyer"      
   with  name 'shadows' 'bats' 'lamps' 'rain',
-        s_to FoyerSouth,
+        s_to [;
+            print "You pass between the steel walls and a light passes over you. Now you know how paper feels in a 
+                photocopier";
+            if( child(player) == nothing ) {
+                print ".^";
+                return Hall_of_Exhibits;
+            } 
+            " - in this case, one which jams. Steel barriers appear across the corridor, and you are obliged to 
+             withdraw back to the foyer.^^After a moment, the barriers recede again.";
+        ],
         ne_to Revolving_Door1,
         description "The Museum of Arcana is deserted after nightfall and only dimly lit by distant sodium 
             street-lamps. Outside it is a stormy October night and rain beats against the windowpanes. Shadows

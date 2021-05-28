@@ -79,9 +79,71 @@ Array demon_topics -->
     "";       
 
 Array angel_topics --> 3 'heaven' 'yourself' 'herself' "~Heaven?  Oh this isn't your eternal salvation, it's mine, able to serve by answering all these delightful questions. No, Heaven itself is a marvellous place, and it has an excellent health club too. Look forward to seeing you there.~" 2 'hell' 'demon' "The angel acknowledges the question, but cannot bring herself to speak of Hell." 'rods' "~The rods definitely fit into all this somewhere.~" 'maze' "~If only you could have been there when the maze was being laid out!~" 'master' "~The master game is like a point at infinity to we mortals,~ the angel says wistfully." 3 'infinity' 'lemniscus' 'arc' "~All a matter of fitting the rods in somewhere.~" 3 'andromeda' 'princess' 'maiden' "~How she must long to let her hair down now, instead of being chained to that rock,~ the angel says sorrowfully. ~But in deference to her wishes, I cannot help you rescue her.~" 'mural' "~Amazing fortune you must have in finding it, I can tell.~" 'folly' "~Ah yes, we must all lament for human folly,~ says the angel, misunderstanding completely." 'zeus' "~Zeus wasn't a true god, of course,~ the angel predictably insists, ~just a manifestation of the laws of physics to an Ancient Greek, a kind of symbol for the way the universe fundamentally worked.~" 2 'bomb' 'lighthouse' "The angel maintains a tight-lipped silence." 'sacrifice' "~That's too dangerous a rod to actually use, of course, and the Church no longer approves of martyrs.~" 'luck' "~Is there really such a thing as luck, or free will?  It's a theological grey area,~ says the angel with fine casuistry." 'fire' "~Certainly a thorny problem, that.~" 5 'mascot' 'old' 'evans' 'moon' 'racing' "~Old Evans would never give you his mascot of his own free will.~" 2 'ugly' 'idol' "~One has to reflect on ugliness like that.~" 3 'gold' 'golden' 'watch' "~It's quite hypnotically fascinating, don't you think?~" 4 'squirrel' 'loose' 'board' 'summerhou' "~Squirrels are very fond of nuts, but you can't trust them an inch.~" 'spade' "~Just think what that would do to a decent lawn!  Oh, it makes me go cold all over.~" 2 'croquet' 'lawn' "~Whatever is a croquet lawn for, if not to play croquet?  Although, now I think about it, there is something else down there.~" 2 'anoppe' 'eppona' "~Ah yes, a code word understood by certain of Alexander the Great's slaves. But you'd have to be in the right place at the right time.~" 2 'tombstone' 'tomb' "~The mouth is the key, or rather the lock.~" 2 'sphinx' 'sphinxes' "~Do be careful. The sphinxes are only made of stone, but they could easily give you nightmares.~" 2 'couch' 'couches' "~Jolly comfortable, some of those funeral couches.~" 5 'skiff' 'yacht' 'boat' 'coffin' 'mummy' "~A one-way ride, but that's life.~" 2 'adamantine' 'knight' "~Once fired with life, the knight will only be yours to command when he has discharged his chivalric duty.~" 2 'hand' 'head' "~Some of those ancient knights were rather loose, but perhaps that's better than being screwed up.~" 2 'library' 'portico' "~The Great Library isn't for passing hooligans, you know,~ says the angel reprovingly. ~Besides, the guards understand their duty by the Cat God far too well to let you through.~" 3 'librarian' 'apollonius' 'callimachus' "~They're always at each other's throats. I shudder to think what might happen if a real fight broke out.~" 2 'alexandria' 'processio' "~Oh, find yourself a costume, join the party!~" 3 'quarterst' 'quarter' 'staff' "~The green wood may one day make a really good staff, but it could take ages. Better leave it with someone for safe keeping.~" 'high' "~Some choices are inevitable and permanent, at least in this world.~" 'oubliette' "~Do be careful of the trap, won't you!  You might want to take precautions with the opening.~" 3 'amber' 'gem' 'gemstone' "~Let me see.~" 2 'statues' 'gods' "~You appreciate, in my position I can't really comment on graven images of pagan gods. Better try some dictionary or other.~" 4 'oracle' 'priestess' 'delphic' 'altar' "~That woman will rabbit on, once you set her off. But only if you sacrifice something. Will you be joining us next Harvest Sunday, by the way?~" 2 'oil' 'trough' "~Ooh, it does make me shiver, thinking of the way they used to pour oil over themselves, anointing they called it.~" 2 'homer' 'poet' "~Shabby old gossip, Homer, always reminds me of Peter Falk. Anyway, just give him his answers. Shouldn't be too hard, with what you're wearing and carrying.~" 3 'summer' 'house' 'summerhou' "~Going in round the front just scares the birds away, I fear.~" 3 'contraption' 'panel' 'grid' "~Find out what you can about your ancestor who built it - his tomb isn't far away. Then reflect as best you can on the problem.~" 'ozone' "~Well, if you know what the odour is, that's the main thing.~" "";       
+
+[ AngelDevilConsultTopic tbl w ndx i len flag ;
+    ndx = 0;
+    while( 1 == 1 ) {
+        len = 1;
+        flag = false;
+        if( tbl-->ndx == -1 ) {
+            rfalse;
+        }
+        if( tbl-->ndx < 20 && tbl-->ndx >= 0 ) {
+            len = tbl-->ndx;
+            ++ndx;
+        }
+        i = 0;
+        while( i < len ) {
+            if (w == tbl-->ndx) {
+                flag = true;
+            }
+            ++i;
+            ++ndx;
+        }
+        if( flag == true ) {
+            return tbl-->ndx;
+        }
+        ++ndx;
+    }
+    rtrue;
+];
+
+[ DemonQuestion w topic ;
+    topic = AngelDevilConsultTopic(demon_topics,w);
+    if( topic ~= 0 ) {
+        print (string) topic;
+        new_line;
+        rtrue;
+    }
+    if( AngelDevilConsultTopic(angel_topics,w) ~= 0 ) {
+        "~That's a question you'd better put to my colleague in the Other Place,~ says the demon smoothly. 
+         ~Try something else.~";
+    }
+    print "~That's not something I am empowered to answer,~ says the demon with a nervous glance behind him. 
+           ~Try something else.~^";
+    rfalse;
+];
+
+[ AngelQuestion w topic ;
+    topic = AngelDevilConsultTopic(angel_topics,w);
+    if( topic ~= 0 ) {
+        print (string) topic;
+        new_line;
+        rtrue;
+    }
+    if( AngelDevilConsultTopic(demon_topics,w) ~= 0 ) {
+        "~That's a question you'd better put to my colleague in the Other Place,~ says the angel smoothly. 
+         ~Try something else.~^";
+    }
+    print "~That's not something I am empowered to answer,~ says the angel with a beatific smile upward. 
+           ~Try something else.~^";
+    rfalse;
+];
+
+
 Object Hellish_Place "Hellish Place"
   with  name 'desk',
-        after [;
+        after [ cnt;
             Look:
                 new_line; 
                 if( demon has general ) {
@@ -120,7 +182,7 @@ Object Hellish_Place "Hellish Place"
             "That direction is not for the living.";
         ],
         each_turn [;
-            switch( random(10 ) {
+            switch( random(10) ) {
                 1: "^There is a horrid grinding noise from far away.";
                 2: "^A flash of light sears your eyes, as the sulphurous flames grumble.";
                 3: "^You can almost, but not quite, make out the noise of shouting.";
@@ -132,7 +194,28 @@ Object Hellish_Place "Hellish Place"
 
 Object -> demon "demon"
   with  name 'devil' 'demon' 'demonic' 'gentleman',
-        life DemonLife,
+        life [ i;
+            Ask, Answer:
+                if( HellishAsk() ~= 0 ) rtrue;
+                if( DemonQuestion(special_word) ~= 0 ) give demon ~general;
+                rtrue;
+            Order: "One does not give orders to such a character.";
+            Give, Show:
+                if( HellishAsk() ~= 0 ) rtrue;
+                print "The demon glances lazily at ", (the) noun, " and rouses himself to say: ~";
+                give demon ~general;
+                if( noun has edible ) {
+                    remove noun;
+                    print "Mmm... delicious!~  Sloth and gluttony... two deadly sins in one minute. His boss will be pleased. ~";
+                }
+                i = noun.devil_hint;
+                if( i == -1 || i == nothing ) {
+                    if( noun.angel_hint ~= "" )
+                        "I know about that, but my counterpart doesn't.~";
+                    "I know just what that's for.~";
+                }
+                print_ret (string) i, "~";
+        ],
         description "If you were to cast a film of your adventures so far, you would hire Donald Sutherland to 
             play this gentleman.",
         number 4,
@@ -195,11 +278,28 @@ Object Heavenly_Place "Heavenly Place"
 
 Object -> angel "angel"
   with  name 'angel' 'lady' 'angelic',
-        life AngelLife,
+        life [ i;
+            Answer, Ask:
+                if( AngelHints() ~= 0 ) rtrue;
+                if( AngelQuestion(special_word) ~= 0 )
+                    give demon ~general;   !! Bug, I think. Should be angel
+                rtrue;
+            Order: "One does not give orders to such a character.";
+            Give, Show:
+                if( AngelHints() ~= 0 ) rtrue;
+                print "The angel looks keenly at ", (the) noun, " and rouses himself to say: ~";
+                give angel ~general;
+                i = noun.angel_hint;
+                if( i == -1 || i == nothing ) {
+                    if( noun.devil_hint ~= "" )
+                        "I suppose you could ask, um, that tailed gentleman.~";
+                    "I'm afraid I can't help you there.~";
+                }
+                print_ret (string) i, "~";
+        ],
         description "If you were to cast a film of your adventures so far, you would hire Dame Judi Dench to play this lady.",
         number 4,
   has   animate scenery;
-
 
 [ HellishAsk ;
     if( demon hasnt general ) {

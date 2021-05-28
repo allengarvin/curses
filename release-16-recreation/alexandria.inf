@@ -250,16 +250,8 @@ Object  unexciting_tombstone "unexciting tombstone"
         description "It bears just one word of epigram: ~GALITA~. Below that is a curious face, with an open empty socket of a mouth.",
   has   door static;
 
-Object  cloak_of_many_colours "cloak of many colours"    
-  with  name 'of' 'many' 'colours' 'cloak' 'coat' 'chlamys',
-        before CloakBefore,
-        initial "A cloak of many colours lies folded on it.",
-        description "A fine cloak, grey-lined, sapphire-encrusted, rippled across with rainbow fabrics from the trade routes of the world.",
-        angel_hint "Are you sure it isn't inside out?",
-  has   clothing;
-
-Object  grey_cloak "grey cloak"  
-  with  name 'grey' 'cloak' 'coat' 'chlamys',
+class   Cloak
+  with  angel_hint "Are you sure it isn't inside out?",
         before [;
             Turn, SwitchOn:
                 if( noun has worn ) "Not while you're wearing it.";
@@ -268,16 +260,25 @@ Object  grey_cloak "grey cloak"
                     move grey_cloak to player;
                     remove cloak_of_many_colours;
                     itobj = grey_cloak;
-                } else { 
+                } else {
                     move cloak_of_many_colours to player;
                     remove grey_cloak;
                     itobj = cloak_of_many_colours;
                 }
                 "You turn the cloak inside out.";
         ],
-        description "A fine grey cloak, sapphire-encrusted, lined with rainbow fabrics from the trade routes of the world.",
-        angel_hint "Are you sure it isn't inside out?",
   has   clothing;
+
+Cloak   cloak_of_many_colours "cloak of many colours"    
+  with  name 'of' 'many' 'colours' 'cloak' 'coat' 'chlamys',
+        initial "A cloak of many colours lies folded on it.",
+        description "A fine cloak, grey-lined, sapphire-encrusted, rippled across with rainbow fabrics from the 
+            trade routes of the world.";
+
+Cloak   grey_cloak "grey cloak"  
+  with  name 'grey' 'cloak' 'coat' 'chlamys',
+        description "A fine grey cloak, sapphire-encrusted, lined with rainbow fabrics from the trade routes of the 
+            world.";
 
 Object  XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"    
   with  before [;
@@ -535,36 +536,76 @@ Object  -> mummy_case "mummy case"
         description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
   has   enterable static;
 
-Object  -> first_socket "first socket"   
-  with  name 'first' 'socket' 'sockets' 'words',
-        before SocketBefore,
-        description " .Above ",
-        article "the",
+class   TombSocket
+  with  description [;
+            print "Above ", (the) self, " is the single word ~";
+            EtruscanInt(self.number);
+            "~.";
+        ],
         number 1,
+        before [;
+            Receive:
+                if( noun == model_golden_sceptre ) {
+                    model_golden_sceptre.number = self;
+                    if( self == first_socket ) {
+                        model_golden_sceptre.initial = "The sceptre projects from the first socket like a handle.";
+                    }
+                    if( self == second_socket ) {
+                        model_golden_sceptre.initial = "The sceptre projects from the second socket like a handle.";
+                    }
+                    if( self == third_socket ) {
+                        model_golden_sceptre.initial = "The sceptre projects from the third socket like a handle.";
+                    }
+                    move model_golden_sceptre to Quite_an_Undertaking;
+                    give model_golden_sceptre ~moved;
+                    "It fits perfectly (wouldn't you know it).";
+                } else 
+                    "Doesn't seem to fit, quite.";
+        ],
+        article "the",
   has   scenery;
 
-Object  -> second_socket "second socket" 
-  with  name 'second' 'socket' 'sockets' 'words',
-        before SocketBefore,
-        description " .Above ",
-        article "the",
-        number 1,
-  has   scenery;
+TombSocket -> first_socket "first socket"   
+  with  name 'first' 'socket' 'sockets' 'words';
 
-Object  -> third_socket "third socket"   
-  with  name 'third' 'socket' 'sockets' 'words',
-        before SocketBefore,
-        description " .Above ",
-        article "the",
-        number 1,
-  has   scenery;
+TombSocket  -> second_socket "second socket" 
+  with  name 'second' 'socket' 'sockets' 'words';
+
+TombSocket  -> third_socket "third socket"   
+  with  name 'third' 'socket' 'sockets' 'words';
 
 Object  Buried_Alive "Buried Alive"      
-  with  before BuriedBefore,
+  with  before [;
+            Look, Wait, Inv, Sleep: rfalse;
+            Go:
+                if( mummy_case hasnt general || noun ~= u_obj )
+                    "There's nowhere to go.";
+                if( self has general )
+                    "^Your spirit, having cheated death once already, is weighed down with its double life and 
+                     will not diffuse out again.";
+                give self general;
+                Achieved(SCORE_AFTERLIFE);
+                move adamantine_skull to player;
+                print "^Your spirit rises, prepared as it was for the afterlife, and diffuses through the solid gold 
+                    of the coffin by sheer effort of will, finally beginning to recoalesce. You stagger, confused,
+                    through dark caves until you finally come to light, clutching something solid...^";
+                rfalse;
+            default: "There's very little room, and the air is running out.";
+        ],
         u_to Sarcophagus,
         description "You lie in the mummy case, your arms folded across each other, face grimaced, running out of air rapidly and with almost no room to maneouvre. The coffin lid is about ten times heavier than you, and its seal is very good.",
         number 5,
-        each_turn BuriedEachTurn,
+        each_turn [ i;
+            i = Buried_Alive.number - 1;
+            Buried_Alive.number = i;
+            if( i == 0 ) {
+                deadflag = DIED;
+                "^The air runs out, and you expire. Few corpses as so considerate as to bury themselves in 
+                 advance - hopefully this thought is some consolation.";
+            }
+            if( i == 3 ) "^You are beginning to choke and pant.";
+            if( i == 1 ) "^The air is desperately thin now, and you struggle hopelessly.";
+        ],
         section T_ALEXANDRIA,
   has   light cat_nofollow;
 

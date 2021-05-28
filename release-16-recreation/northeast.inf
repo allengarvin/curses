@@ -195,14 +195,102 @@ Object  -> Moonstone "Moonstone"
 
 Object  West_Side_Chapel "West Side Chapel"      
   with  name 'stained' 'glass' 'windows' 'resurrect',
-        before WestSideChapelBefore,
-        after WestSideChapelAfter,
+        before [;
+            Repair, Insert, PutOn:
+                if( second ~= adamantine_statue ) rfalse;
+                if( noun ~= adamantine_hand or adamantine_skull or adamantine_heart )   
+                    "That seems incongruous.";
+                if( noun == adamantine_hand ) {
+                    move adamantine_hand to West_Side_Chapel;
+                    give adamantine_hand concealed;
+                    LeftHand = 2;
+                    "The hand fits rather loosely onto the left ~wrist~ of the adamantine knight.";
+                }
+                if( noun == adamantine_skull ) {
+                    move adamantine_skull to West_Side_Chapel;
+                    give adamantine_skull concealed;
+                    SkullFit = 2;
+                    "The skull fits very loosely onto the ~neck~ of the adamantine knight.";
+                }
+                if( noun == adamantine_heart ) {
+                    remove adamantine_heart;
+                    give adamantine_heart general;
+                    "The heart sits well in the so-empty ribcage of the adamantine knight.";
+                }
+                rfalse;
+            Turn:
+                if( noun == adamantine_skull or adamantine_hand && noun has concealed ) {
+                    if( noun == adamantine_hand ) {
+                        remove adamantine_hand;
+                        LeftHand = 0;
+                        give adamantine_hand general;
+                        give adamantine_hand ~concealed;
+                        "The hand screws tightly onto the adamantine knight.";
+                    }
+                    if( noun == adamantine_skull ) {
+                        remove adamantine_skull;
+                        SkullFit = 0;
+                        give adamantine_skull general;
+                        give adamantine_skull ~concealed;
+                        "The skull screws tightly onto the adamantine knight.";
+                    }
+                }
+                rfalse;
+        ],
+
+        after [;
+            Look:
+                if( adamantine_statue in West_Side_Chapel ) DisplayKnight();
+                rfalse;
+        ],
         e_to Parish_Church_Room,
         description "An alcove in the ancient west side of the church, beneath stained glass windows of the Resurrection.",
         cant_go "The church lies east.",
-        each_turn WestSideChapelEachTurn,
+        each_turn [;
+            if( SkullFit > 0 ) {
+                --SkullFit;
+                if( SkullFit == 0 ) {
+                    give adamantine_skull ~concealed;
+                    "^The skull wobbles and falls off the knight again.";
+                }
+            }
+            if( LeftHand > 0 ) {
+                --LeftHand;
+                if( LeftHand == 0 ) {
+                    give adamantine_hand ~concealed;
+                    "^The hand wavers and falls off the knight again.";
+                }
+            }
+        ],
         section T_NE_OF_HOME,
   has   light;
+
+
+[ AdamantineKnightDesc ;
+    print "The knight is bursting and eager with life, as though nothing could fade his boundless energy for 
+        existence. ";
+    if( marble_rose in self ) 
+        print "He is holding the marble flower. ";
+    if( statue_of_Diana in location && marble_rose notin statue_of_Diana ) 
+        "He gazes sadly at Diana, wanting only to be of chivalrous service.";
+    new_line;
+    rtrue;
+];
+
+[ DisplayKnight ;
+    if( adamantine_skull hasnt general && adamantine_skull hasnt concealed ) 
+        print "^A headless ";
+    else 
+        print "^An ";
+    print "adamantine statue lies prone here, a knight on a tomb";
+    if( adamantine_hand hasnt general && adamantine_heart hasnt general ) 
+        ".";
+    if( adamantine_hand has general || adamantine_hand has concealed ) 
+        print " with hand outstretched";
+    if( adamantine_heart has general ) 
+        ", a heart in his ribcage. And yet there is no spark of life in him.";
+    ", heartless and implacable.";
+];
 
 Object  -> adamantine_statue "adamantine statue" 
   with  name 'adamantine' 'statue' 'adamant' 'knight',

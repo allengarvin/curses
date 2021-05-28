@@ -2519,7 +2519,47 @@ Object  -> hole_in_the_wall "hole in the wall"
             LetGo:
                 "There's nothing within reach inside.";
         ],
-        life HoleLife,
+        orders [ x1 y1;
+            if( robot_mouse notin self )
+                rfalse;
+            Go:
+                if( Mouse_x == 8 && Mouse_y == 3 && noun == e_obj ) {
+                    move robot_mouse to Cellars_South;
+                    print "The mouse runs back out of the hole, looking dustier but none the worse for its adventure";
+                    if( parent(small_brass_key) ~= robot_mouse )
+                        ".";
+                    move small_brass_key to Cellars_South;
+                    trigger_quotation(3);
+                    ", and then almost looks proud as a magnet cuts out and something metal drops off the underside of the mouse onto the floor. The lost key is found!";
+                } else if( noun == n_obj ) {
+                    x1 = Mouse_x;
+                    y1 = Mouse_y - 1;
+                } else if( noun == e_obj ) {
+                    x1 = Mouse_x + 1;
+                    y1 = Mouse_y;
+                } else if( noun == s_obj ) {
+                    x1 = Mouse_x;
+                    y1 = Mouse_y + 1;
+                } else if( noun == w_obj ) {
+                    x1 = Mouse_x - 1;
+                    y1 = Mouse_y;
+                }
+                if( MouseBoundary(x1,y1) == true )
+                    "From somewhere inside the hole, you hear a disconsolate bleep.";
+
+                Mouse_x = x1;
+                Mouse_y = y1;
+
+                if( Mouse_x == 4 && Mouse_y == 1 && small_brass_key in hole_in_the_wall ) {
+                    move small_brass_key to robot_mouse;
+                    trigger_quotation(2);
+                    "From somewhere inside the hole, you hear the spinning of tiny wheels, followed by an excitable 
+                     high-pitched beep and a dull clanging noise.";
+                }
+                "From somewhere inside the hole, you hear tiny wheels spin.";
+
+            default: "The mouse emits a querulous, unhappy bleep.";
+        ],
   has   scenery talkable;
 
 Object  -> -> small_brass_key "small brass key"  
@@ -2647,7 +2687,12 @@ HRoom   Sandstone_Passage "Sandstone Passage"
   has   light;
 
 HRoom   The_Octagon "The Octagon"        
-  with  after OctagonAfter,
+  with  after [;
+            Take, Remove:
+                if( noun has rod_attr && noun hasnt unidentifed_rod )
+                    Achieved(SCORE_ROD_IDENT);
+                rfalse;
+        ],
         w_to Sandstone_Passage,
         se_to White_Hallway,
         u_to Sandstone_Passage,
@@ -2796,12 +2841,39 @@ Object  -> umbrella_stand "umbrella stand"
 
 Object  -> -> model_golden_sceptre "model golden sceptre"        
   with  name 'model' 'golden' 'gold' 'sceptre',
-        before [;
+        before [ i;
+            Wave: "Apparently, it's not susceptible to that.";
+            Turn:
+                if( self notin Quite_an_Undertaking || self has moved ) 
+                    rfalse;
+                if( self.number ~= 0 && mummy_case has open ) {
+                    give mummy_case ~open;
+                    print "With a crash, the coffin slams shut.^^";
+                }
+                print "You crank the sceptre round, lose control for a moment, and some primitive mechanism spins. 
+                    The word comes to rest as ~";
+                i = random(6);
+                EtruscanInt(i);
+                print "~.^";
+                self.number.number = i;
+                if( deterministic_transportation == 1 ) {
+                    first_socket.number = 3;
+                    second_socket.number = 6;
+                    third_socket.number = 1;
+                }
+                if( first_socket.number == 3 && second_socket.number == 6 && third_socket.number == 1 || 
+                   (first_socket.number == 1 && second_socket.number == 6 && third_socket.number == 3) ) {
+                    give mummy_case open;
+                    mummy_case.initial = "The great lid of the coffin is open.";
+                    "^With an awful groaning noise, the coffin lid heaves open. And it is...^^Empty!";
+                }
+                rtrue;
+        ],
+        after [;
             Take, Remove:
                 if( location == Quite_an_Undertaking ) self.number = 0;
                 rfalse;
         ],
-        after SceptreAfter,
         initial nothing,
         description "A copy, half-size, of the one from Tutenkhamun's sarcophagus. It isn't real gold, either.",
         number 0,
@@ -2813,3 +2885,5 @@ HRoom   Halfway_up_the_Stairs "Halfway up the Stairs"
         d_to White_Hallway,
         description "This dark, steep staircase zigzagging through the house once gave the servants access throughout. But those days are long gone and now all the doors are locked up.",
   has   ;
+
+
