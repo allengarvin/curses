@@ -157,6 +157,14 @@ Verb 'add' 'join' 'mend' 'repair'
     rtrue;
 ];
 
+[ RamSub ;
+    if( game_section == T_MODERN ) "For heaven's sake, this is your own house.";
+    if( location == Coven_Cell ) "No, this is a goat. A ~ram~ is a kind of sheep.";
+    "Please don't ram anything. This computer only has limited RAM.";
+];
+
+[ GambleSub ; "How, exactly?"; ];
+
 Verb 'strike'
     * noun                                              -> Strike
     * noun 'with' held                                  -> Attack;
@@ -212,4 +220,10 @@ Verb 'plover' 'plugh' 'xyzzy'
 Verb 'time'
     *                                                   -> Time;
 
+Verb 'ram'
+    * special                                           -> Ram;
+
+Verb 'bet' 'gamble' 'wager'
+    *                                                   -> Gamble
+    * 'with' noun                                       -> Gamble;
 
