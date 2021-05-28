@@ -299,7 +299,14 @@ URoom   Near_Ring_Road "Near Ring Road"
             pedestrians off to work at banks that you can't force your way any further east. Once in a while a
             few of the bowler-hatted army step into the street and down some steps below a Metropolitan sign.",
         cant_go "You can't force your way through the tide of bankers.",
-        each_turn UnrealEachTurn,
+        each_turn [;
+            switch( random(10) ) {
+                1: "^A clock keeps the hours, with a dead sound on the final stroke of nine.";
+                2: "^There is a brown fog about, like a winter dawn's.";
+                3: "^You can almost make out the pleasant whining of a mandoline from a faraway bar.";
+                4: "^Drifting through the streets from some distant bar comes the sound of one of Scott Joplin's 
+                    newfangled piano pieces, accompanying song settings from ~Romeo and Juliet~.";
+        ],
   has   light;
 
 URoom   Chatelet_les_Halles "Chatelet-les-Halles"        
