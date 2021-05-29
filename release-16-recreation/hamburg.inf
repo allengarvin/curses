@@ -23,7 +23,7 @@ DERoom  Museum_Foyer "Museum Foyer"
 
 Object  -> revolving_door_obj "revolving door"   
   with  name 'revolving' 'door',
-        before RevolvingDoorBefore,
+!        before RevolvingDoorBefore,
         description "Why not go northeast and look inside?",
   has   scenery;
 
@@ -35,7 +35,7 @@ Object  -> publicity_poster "publicity poster"
   has   static;
 
 DERoom  Revolving_Door1 "Revolving Door" 
-  with  n_to RevolvingDoorNorth,
+  with  n_to [; << Push door1 >>; ],
         e_to "The door only turns clockwise.",
         sw_to Museum_Foyer,
         description "Inside one quarter of the cramped revolving door, which is blocked off from the world outside 
@@ -45,7 +45,10 @@ DERoom  Revolving_Door1 "Revolving Door"
 
 Object  -> door1 "door"  
   with  name 'door' 'revolving',
-        before MuseumDoorBefore,
+        before [;
+            Push, Turn, Pull: "You revolve clockwise with the door, and wind up back adjacent to the foyer.";
+        ],
+        found_in Revolving_Door1 Revolving_Door2,
         description "You stand within it.",
   has   scenery;
 
@@ -57,14 +60,6 @@ DERoom  Revolving_Door2 "Revolving Door"
             and opens only onto the foyer, southwest.",
         cant_go "To north and east are the walls of the door.",
   has   light;
-
-Object  -> door2 "door"  
-  with  name 'door' 'revolving',
-        before [;
-            Push, Turn, Pull: "You revolve clockwise with the door, and wind up back adjacent to the foyer.";
-        ],
-        description "You stand within it.",
-  has   scenery;
 
 Object  -> beach_ball "beach ball"       
   with  name 'striped' 'beach' 'ball',
@@ -133,7 +128,7 @@ TarotCard -> -> Maiden_card "Maiden"
 
 Object  -> still_life "still life"       
   with  name 'long' 'painted' 'still' 'life' 'painting' 'disturbing',
-        life LagachLife,
+!        life LagachLife,
         initial "A long painted still life graces one wall near a corner.",
         description "A disturbing painting, perhaps by Edvard Munch, this is a still life of a seedling on a 
             table, surrounded by a rusty iron rod with a star on the end, a glass bottle, a lamp and a bunch of

@@ -1,3 +1,83 @@
+[ KnightReacts o ;
+    if( action == ##Jump or ##Dance or ##Sing ) {
+        "The knight dances a jig with sheer exuberance.";
+    }
+    if( action == ##Open or ##Pull or ##Take && noun == Moonstone && Moonstone hasnt open ) {
+        if( adamantine_knight hasnt general ) {
+            "The knight understands what is to be done. But he is world-weary and sad, and not yet in your service.";
+        }
+        give Moonstone open;
+        "The knight bows, and pulls the enormously heavy Moonstone open. He plainly expected it to be effortless, but by the time he's finished you can almost see ghostly perspiration bead on the ghostly sinews around his adamantine body.";
+    }
+    if( action == ##Go ) {
+        "The knight just about understands that he is to go somewhere, but cannot quite comprehend the direction. You'll have to indicate it somehow. (Shame there were no adamantine ears, really.)";
+    }
+    if( action == ##PointVague ) {
+        if( location == Parish_Church && noun == d_obj ) {
+            if( Moonstone hasnt open ) {
+                "The knight is unable to walk straight through the Moonstone.";
+            }
+            remove adamantine_knight;
+            move rod_of_life to Parish_Church;
+            move rod_of_death to Parish_Church;
+            move rod_of_love to Parish_Church;
+            move Moonstone to Parish_Church;
+            "The knight strides down into the underworld beneath the Moonstone, to be lost to your sight... forever?^^For even he has not life force enough to hold together in the mists: his skeleton begins to clatter away to nothing, falling in all directions, his heart, hand and skull returning Somehow to your feet. And they are altering, altering even as you look down into the void...";
+        }
+        o = nothing;
+        if( location == Parish_Church ) {
+            if( noun == s_obj ) {
+                o = Stone_Cross;
+            }
+            if( noun == e_obj ) {
+                o = East_Side_Chapel;
+            }
+            if( noun == w_obj ) {
+                o = West_Side_Chapel;
+            }
+            if( noun == u_obj ) {
+                "Somewhat comically, the knight is too bulky to squeeze into the staircase. After a moment or two of watching an immovable object fighting it out with an irresistable force, you point back, and the knight returns, chastened.";
+            }
+        }
+        if( location == East_Side_Chapel && noun == w_obj ) {
+            o = Parish_Church;
+        }
+        if( location == West_Side_Chapel && noun == e_obj ) {
+            o = Parish_Church;
+        }
+        if( o == nothing ) {
+            "The knight shakes his head, solemnly.";
+        }
+        if( o == Stone_Cross ) {
+            "The knight won't leave sacred ground.";
+        }
+        move adamantine_knight to o;
+        if( o == East_Side_Chapel ) {
+            adamantine_knight.initial = "The knight stands here, bowing toward Diana.";
+            move statue_of_Diana to o;
+        } else if( marble_rose in adamantine_knight ) {
+            adamantine_knight.initial = "The knight stands clasping the flower.";
+        } else {
+            adamantine_knight.initial = "The knight stands staunchly here.";
+        }
+        print "The knight strides boldly away to the ";
+        if( noun == n_obj ) {
+            "north.";
+        }
+        if( noun == s_obj ) {
+            "south.";
+        }
+        if( noun == e_obj ) {
+            "east.";
+        }
+        "west.";
+    }
+    if( action == ##Give or ##Insert && second == statue_of_Diana && noun == marble_rose ) {
+        "The knight likes the idea but is confused.";
+    }
+    "The knight is confused. Perhaps you were a little rough with the skull.";
+];
+
 Object  Beside_the_Drive "Beside the Drive"      
   with  name 'wistaria' 'car' 'gravel',
         before [;
@@ -81,7 +161,7 @@ Object  Stone_Cross "Stone Cross"
 
 Object  -> Old_Evans "Old Evans" 
   with  name 'racing' 'enthusiast' 'old' 'evans',
-        life OldEvansLife,
+!        life OldEvansLife,
         initial "Old Evans, the village racing enthusiast, sits on the steps of the memorial, combing the back pages of his ~Racing Times~ newspaper.",
         description "In the band of his hat is his lucky mascot: a little picture of the crescent moon.",
   has   animate proper transparent;
@@ -157,7 +237,14 @@ Object  pet_monkey "pet monkey"
 
 Object  Parish_Church_Room "Parish Church"    
   with  name 'flowers' 'pews' 'woven' 'mattings' 'lectern' 'altar',
-        s_to ParishChurchSouth,
+        s_to [;
+            if (parish_church hasnt open) {
+                give parish_church open;
+                parish_church.description = "The church door is open.";
+                print "You unbar the door, and let yourself out.^";
+            }
+            return Stone_Cross;
+        ],
         e_to East_Side_Chapel,
         w_to West_Side_Chapel,
         u_to Bell_Tower,
@@ -186,10 +273,12 @@ Object  -> Moonstone "Moonstone"
                     "The knight comes a little closer, cupping one ear to pantomime listening. He does seem 
                      to have partial hearing.";
         ],
-        s_to "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
-        w_to thedark,
-        initial "A passage slants down through a solid crystal doorway in the Moonstone.",
-        description "The Moonstone is very old, probably pre-dating the rest of the church by some centuries. Legends about it abound: some say the spirits of the departed pass beneath. Old iron rings are set in it, but nobody has ever succeeded in lifting the colossal weight.",
+        when_closed "Set into the floor, and slightly raised, is the Moonstone, an ancient broad flagstone the size of a door, inscribed with a crescent moon.",
+        door_dir d_to,
+        when_open "A passage slants down through a solid crystal doorway in the Moonstone.",
+        description "The Moonstone is very old, probably pre-dating the rest of the church by some centuries. 
+            Legends about it abound: some say the spirits of the departed pass beneath. Old iron rings are set in
+            it, but nobody has ever succeeded in lifting the colossal weight.",
         article "the",
   has   door static;
 
@@ -300,7 +389,7 @@ Object  -> adamantine_statue "adamantine statue"
 
 Object  adamantine_knight "adamantine knight"    
   with  name 'adamantine' 'statue' 'adamant' 'knight',
-        life AdamantineKnightLife,
+!        life AdamantineKnightLife,
         initial "The adamantine knight stands staunchly here.",
         description " .The knight is bursting and eager with life, as though nothing could fade his boundless energy for existence. ",
         article "the",

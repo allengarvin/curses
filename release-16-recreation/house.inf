@@ -1,3 +1,9 @@
+[ EnterDream ;
+    ChangePlayer(ghost_of_yourself);
+    PlayerTo(Melancholy_Dream);
+    rtrue;
+];
+
 ! A room in the house
 Class   HRoom
   with  section T_MODERN; 
@@ -16,7 +22,7 @@ Object  electric_torch "electric torch"
             Receive:
                 if( child(self) ) 
                     "There's a battery in already.";
-                if( nount hasnt battery_flag )
+                if( noun hasnt battery_flag )
                     "Not surprisingly, it won't fit in the battery compartment.";
                 rfalse;
             SwitchOn,SwitchOff:
@@ -797,7 +803,7 @@ Object  -> Austin "Austin"
             2: newroom = Old_Winery;
         }
     }
-    if( newroom == invalidObj65535 ) {
+    if( newroom == -1 ) {
         rfalse;
     }
     move Austin to newroom;
@@ -1494,7 +1500,7 @@ Object  -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"
                 }
                 rfalse;
         ],
-        life LagachLife,
+!        life LagachLife,
         initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
         description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
         devil_hint "Carry this with you everywhere you go.",
@@ -1939,7 +1945,7 @@ Object  -> demijohn "labelled glass demijohn"
         description "Faded ink on the label reads: Elderberry '63.",
   has   container openable static transparent;
 
-Object  -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"       
+Object  -> -> nasty_battery "nasty-looking red battery"       
   with  name 'nasty' 'red' 'battery',
         list_together s_obj,
         description "On the side is the word ~Achtung~.",
@@ -2190,7 +2196,7 @@ Object  -> old_gardeners__gloves "old gardeners' gloves"
 
 Object  -> Jemima "Jemima"       
   with  name 'aunt' 'jemima',
-        life JemimaLife,
+!        life JemimaLife,
         initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
         description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow.",
         article "Aunt",
@@ -2239,7 +2245,7 @@ Object  daisy_chain "daisy chain"
                 "The daisychain falls to pieces in your hands!  Cheer up, though, perhaps Jemima might give 
                  you another.";
         ],
-        u_to DaisyUp,
+!        u_to DaisyUp,
         number 11,
         devil_hint "Dangerous to wear. But at least any sort of daisies will do.",
   has   clothing;
@@ -2469,7 +2475,7 @@ Object  -> little_window1 "little window"
 
 Object  -> robot_mouse "robot mouse"     
   with  name 'robot' 'mouse',
-        life MouseLife,
+!        life MouseLife,
         initial "In one corner is a dust-covered robot mouse.",
         description "Remember the late 1970s, when a craze for home-made robots swept the home computing world?  No, perhaps not, but here is a left-over from it anyway. The mouse is quite large (almost a foot wide and tall), and has a big smile painted on its metal chassis. It has surprisingly modern circuitry in, though, and is even humming very faintly, so someone must have put some work in on it recently.",
         devil_hint "It can't even follow orders.",

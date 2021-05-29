@@ -68,7 +68,7 @@ URoom   Bohemia "Bohemia"
 
 Object  -> Impressionist_painting "Impressionist painting"       
   with  name 'impressionist' 'painting' 'mural',
-        life LagachLife,
+!        life LagachLife,
         initial nothing,
         description "The bottom corner is signed simply ~Helene~.",
         article "an",
@@ -201,7 +201,7 @@ Object  -> curtain "curtain"
                 feel rather bewildered.^";
             move oak_quarterstaff to player;
             give Unreal_City general;
-            PlayerTo(UnrealCity);
+            PlayerTo(Unreal_City);
         }
         trigger_quotation(18);
         print "~Curse it, another nobody,~ she hisses in an unguarded moment, as she tidies the pack absentmindedly 
@@ -323,7 +323,7 @@ Object  -> hollow_man "hollow man"
             Attack: "You are unable to touch the man. It is as if he isn't there.";
             Ask: "Your question merely echoes inside him.";
             Answer, Order:
-                if( special_word == 'time' || verb == ##Time ) {
+                if( special_word == 'time' || action == ##Time ) {
                     print "You lose all sense of time and place as the boat drifts down river... It comes as a 
                         considerable relief to your befuddled nerves when the man helps you off the boat again, 
                         and you find yourself:^";

@@ -810,11 +810,27 @@ TRoom   Cross_Centre "Cross Centre"
 
 Object  -> inscriptions "inscriptions"   
   with  name 'inscription' 'opening',
-        before InscriptsBefore,
-        n_to Oubliette,
-        s_to "There are extremely scuffed and faded inscriptions at the centre of the cross.",
-        w_to thedark,
-        initial "Beside the inscriptions is an opening in the floor, about two feet square.",
+        before [;
+            Receive:
+                if( self hasnt open ) rfalse;
+
+                if( noun ~= inscribed_stone or old_timber_spar )
+                    print_ret (The) noun, " would simply fall through.";
+
+                if( noun == inscribed_stone ) {
+                    self.initial = "The opening is securely wedged with the stone.";
+                } else {
+                    self.initial = "The opening is securely wedged with the prop.";
+                }
+                give noun scenery ~moved ~scored;
+                move noun to location;
+                print_ret "You wedge ", (the) noun, " across the opening.";
+
+        ],
+        door_to Oubliette,
+        when_closed "There are extremely scuffed and faded inscriptions at the centre of the cross.",
+        door_dir d_to,
+        when_open "Beside the inscriptions is an opening in the floor, about two feet square.",
         description "~ka-i ur-a re-im ka an-ge~",
         article "the",
   has   door static;
@@ -822,7 +838,8 @@ Object  -> inscriptions "inscriptions"
 TRoom   Oubliette "Oubliette"    
   with  name 'crushed' 'broken' 'bones',
         u_to Cross_Centre,
-        description "A foul, musty bone pit, beneath the cross, where sacrificial victims were once dropped and ~forgotten~.",
+        description "A foul, musty bone pit, beneath the cross, where sacrificial victims were once dropped and 
+            ~forgotten~.",
   has   ;
 
 Object  -> gleaming_amber_gem "gleaming amber gem"       
@@ -848,7 +865,8 @@ Object  -> gleaming_amber_gem "gleaming amber gem"
 TRoom   Northeast_Cross "Northeast Cross"        
   with  name 'carvings' 'fish' 'nets',
         sw_to Cross_Centre,
-        description "This cross-corner is inlaid with carvings of fish, of the waves, of great casting nets sweeping through the water.^^The Labyrinth lies to southwest.",
+        description "This cross-corner is inlaid with carvings of fish, of the waves, of great casting nets 
+            sweeping through the water.^^The Labyrinth lies to southwest.",
   has   ;
 
 Class Statue
@@ -885,7 +903,8 @@ Statue  -> statue_of_Dionysus "statue of Dionysus"
 TRoom   Southeast_Cross "Southeast Cross"        
   with  name 'carvings' 'hoplite' 'warriors',
         nw_to Cross_Centre,
-        description "This cross-corner is decorated with carvings of massed ranks of hoplite warriors, advancing into battle.^^The Labyrinth lies to northwest.",
+        description "This cross-corner is decorated with carvings of massed ranks of hoplite warriors, advancing 
+            into battle.^^The Labyrinth lies to northwest.",
   has   ;
 
 Statue  -> statue_of_Ares "statue of Ares"       
@@ -895,7 +914,8 @@ Statue  -> statue_of_Ares "statue of Ares"
 TRoom   Southwest_Cross "Southwest Cross"        
   with  name 'carvings' 'grape' 'vines' 'barrels',
         ne_to Cross_Centre,
-        description "This cross-corner is decorated with carvings of grape-vines and barrels.^^The Labyrinth lies to northeast.",
+        description "This cross-corner is decorated with carvings of grape-vines and barrels.^^The Labyrinth 
+            lies to northeast.",
   has   ;
 
 Statue  -> statue_of_Poseidon "statue of Poseidon"       
@@ -905,7 +925,8 @@ Statue  -> statue_of_Poseidon "statue of Poseidon"
 TRoom   Cave_Mouth "Cave Mouth"  
   with  name 'lamps' 'trestle' 'altar' 'stone',
         ne_to Cliffs,
-        description "A dry cave opening from a crack to the northeast, becoming a fair-sized cavern, furnished with bronze and lit by trestle lamps chained from the ceiling.",
+        description "A dry cave opening from a crack to the northeast, becoming a fair-sized cavern, furnished 
+            with bronze and lit by trestle lamps chained from the ceiling.",
   has   light;
 
 Object  -> flaming_bronze_urn "flaming bronze urn"       
@@ -923,7 +944,8 @@ Object  -> flaming_bronze_urn "flaming bronze urn"
                 }
                 if( noun has edible ) {
                     give Oracle general;
-                    "You have pleased the god Apollo - Loxias, god of words and counsel, as he was once called!  Very wise.";
+                    "You have pleased the god Apollo - Loxias, god of words and counsel, as he was once called!  
+                     Very wise.";
                 }
                 "The god Apollo is unimpressed with your offering, which feeds the eternal flame.";
             Enter: "You have no desire to be burnt.";
@@ -1041,7 +1063,7 @@ TRoom   Greek_Frieze1 "Greek Frieze"
 
 Object  -> Greek_frieze2 "Greek frieze"  
   with  name 'greek' 'frieze' 'mural',
-        life LagachLife,
+!        life LagachLife,
         description "The decorated strip of entablature between the architrave and the cornice, in the Attic style circa fifth century B.C.^^Well, you did ask.",
   has   scenery talkable;
 

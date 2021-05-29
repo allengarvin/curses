@@ -7,6 +7,10 @@
     "The wishbone has already been pulled, and you have the part which lost.";
 ];
 
+[ DanceSub ;
+    print_ret (The) noun, " does not wish to dance with you.";
+];
+
 [ InscribeSub ; "Graffiti is uncouth."; ];
 
 [ InscribeOnSub ;
@@ -250,6 +254,11 @@
     rtrue;
 ];
 
+
+[ HintsSub ;
+    "There are hints built into this game, but you will have to find out for yourself how to get them.";
+];
+
 Verb 'strike'
     * noun                                              -> Strike
     * noun 'with' held                                  -> Attack;
@@ -339,4 +348,11 @@ Verb 'make' 'wish'
     * 'wish'                                            -> Wish
     * 'a//' 'wish'                                      -> Wish
     * 'for' special                                     -> Wish;
+
+Verb 'hint' 'hints'
+    *                                                   -> Hints;
+
+Verb 'dance' 'tango' 'waltz'
+    * 'with' creature                                   -> Dance;
+
 

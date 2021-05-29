@@ -9,7 +9,7 @@ Object Crypt "Crypt"
 
 Object -> bronze_mural "bronze mural"
   with  name 'bronze' 'mural',
-        life LagachLife,
+!        life LagachLife,
         n_to Jagged_Passage,
         s_to "The south wall forms a giant bronze mural, which has stood the test of time.",
         w_to thedark,
@@ -146,7 +146,7 @@ Object aluminium_staircase "aluminium staircase"
 
 Object CR "CR"
   with  name 'basket' 'seesaw' 'hand' 'cannon' 'glass',
-        after CRAfter,
+!        after CRAfter,
         n_to metal_wall,
         s_to nothing,
         e_to [;
@@ -214,7 +214,7 @@ Object -> iron_grid "iron grid"
 
 Object -> glowing_golden_orb "glowing golden orb"
   with  name 'glowing' 'golden' 'orb',
-        before CannonballBefore,
+        before [; default: "It is out of reach, beyond the glass."; ],
         description "How tantalisingly valuable it seems.",
   has   scenery;
 

@@ -1,8 +1,10 @@
+[ SeaBefore ;
+    if( action == ##Drink ) "Drink warm salty water?  No.";
+    if( action == ##Swim ) "The waters are deceptively treacherous. Best not.";
+];
+
 Object  Causeway "Causeway"      
-  with  before [;
-            Drink: "Drink warm salty water?  No.";
-            Swim: "The waters are deceptively treacherous. Best not.";
-        ],
+  with  before SeaBefore,
         n_to Island_of_Pharos,
         se_to Crossroads,
         initial [;
@@ -58,7 +60,7 @@ Object  Causeway "Causeway"
 
 Object  Island_of_Pharos "Island of Pharos"      
   with  name 'pharos' 'lighthouse' 'moon' 'circle' 'octagon' 'square' 'defences' 'causeway' 'island' 'harbour',
-        before CausewayBefore,
+        before SeaBefore,
         s_to Causeway,
         u_to "The Pharos is unclimbable, alas.",
         d_to rusty_iron_grating,
@@ -136,7 +138,7 @@ Object  -> rusty_iron_key "rusty iron key"
   has   ;
 
 Object  Jetty "Jetty"    
-  with  before CausewayBefore,
+  with  before SeaBefore,
         u_to Island_of_Pharos,
         description "Down on a dark stone jetty, where the waters of the Alexandrian harbour splash insistently. 
             Rough-hewn steps rise up the island through the grating.",
@@ -166,8 +168,7 @@ Object  -> -> adamantine_heart "adamantine heart"
 
 Object  Harbour_Mouth "Harbour Mouth"    
   with  before [;
-            Exit, Swim:
-                "The sepulchral calm of the ocean overwhelms you, and you can only watch and sail.";
+            Exit, Swim: "The sepulchral calm of the ocean overwhelms you, and you can only watch and sail.";
         ],
         description "As the skiff passes the jaws of the Royal Harbour, beneath the great Pharos light, you have a 
             final view of the receding civilisation of Alexandria: ahead lies the vast, oil-calm Mediterranean
@@ -187,7 +188,9 @@ Object  Harbour_Mouth "Harbour Mouth"
 
 Object  Drifting "Drifting"      
   with  name 'curious' 'fish' 'zephyr' 'sea',
-        before HarbourMouthBefore,
+        before [;
+            Exit, Swim: "The sepulchral calm of the ocean overwhelms you, and you can only watch and sail.";
+        ],
         description "You drift in the wide, peaceful Lunar sea. Curious fish, their yellow-green eyes gleaming beneath the silver ripples, brush past your wake: the night zephyr is almost slack but still you drift. Minutes pass like hours in paradise.",
         cant_go "You feel only a drug-like calm.",
         each_turn [;
@@ -300,7 +303,7 @@ Object  XIIth_Dynasty_Pyramid "XIIth Dynasty Pyramid"
 
 Object  -> painted_writings "painted writings"   
   with  name 'painted' 'paintings' 'writing' 'writings',
-        life LagachLife,
+!        life LagachLife,
         description "One of the so-called Pyramid Texts making up the so-called ~Book of the Dead~. This dramatic passage seems to be devoted to wise men preparing their bodies to rise in the afterlife, anointing themselves with oil. An interesting motif of ten strokes, arranged^^   III IIIIII I^^catches the eye.",
         article "some",
   has   scenery talkable;
@@ -499,7 +502,8 @@ Object  -> marble_wall "marble wall"
   has   door static;
 
 Object  Quite_an_Undertaking "Quite an Undertaking"      
-  with  before UndertakingBefore,
+  with  
+!        before UndertakingBefore,
         e_to This_Is_The_Death,
         u_to This_Is_The_Death,
         description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
@@ -769,7 +773,7 @@ Object  silver_keepsake "silver keepsake"
   has   clothing;
 
 Object  Warehouses_and_Port "Warehouses and Port"        
-  with  before CausewayBefore,
+  with  before SeaBefore,
         e_to Outside_the_Theatre,
         description "Down by the sea-front, in the old harbourlands, surrounded by warehouses. The Mediterranean 
             laps darkly against the hard, splashing an occasional wave up the slope. The city, and the party,
@@ -891,12 +895,49 @@ Object  -> pigeonhole "pigeonhole"
         description "A depository for scrolls.",
   has   container open static;
 
+[ TubeParse i w ;
+    if( parser_action == ##TheSame ) {
+        return -1;
+    }
+    while( 1 == 1 ) {
+        w = NextWord();
+        if( Refers(self,w) == 1 ) {
+            ++i;
+        } else if( w == 'tubes' ) {
+            parser_action = ##PluralFound;
+            ++i;
+        } else {
+            return i;
+        }
+    }
+    rfalse;
+];
+
 Object  tube_with_an_alpha_on "tube with an alpha on"    
   with  name 'alpha' 'with' 'tube' 'cylinder',
         description "An open-ended hollow tube, marked with a Greek capital Alpha.",
         parse_name TubeParse,
         angel_hint "Surely this is addressed to someone?",
   has   container open;
+
+
+[ ScrollParse i w ;
+    if( parser_action == ##TheSame ) {
+        return -1;
+    }
+    while( 1 == 1 ) {
+        w = NextWord();
+        if( Refers(self,w) == 1 ) {
+            ++i;
+        } else if( w == 'poems' or 'scrolls' ) {
+            parser_action = ##PluralFound;
+            ++i;
+        } else {
+            return i;
+        }
+    }
+    rfalse;
+];
 
 Object  -> scroll_bearing_an_epic_poem "scroll bearing an epic poem"     
   with  name 'long' 'epic' 'scroll' 'poem',
@@ -990,7 +1031,7 @@ Object  -> dusty_scrolls "dusty scrolls"
 
 Object  -> Callimachus "Callimachus"     
   with  name 'callimachus' 'expert' 'librarian',
-        life CallimachusLife,
+!        life CallimachusLife,
         initial "The expert in question being Callimachus, who is brooding over a scroll, and hardly aware of your presence.",
         description "Callimachus is famous for something or other. You wonder what...",
   has   animate proper;
@@ -1018,7 +1059,7 @@ Object  Librarians_Office "Librarian's Office"
 
 Object  -> Apollonius "Apollonius"       
   with  name 'apollonius' 'head' 'expert' 'librarian',
-        life CallimachusLife,
+!        life CallimachusLife,
         initial "Apollonius paces about self-importantly in a purple sash, perusing documents on his desk.",
         description "His aim in life is chiefly to annoy Callimachus, his junior librarian and the modern poet he despises most.",
   has   animate proper;
@@ -1101,7 +1142,7 @@ Object  Lost_inside_the_Palace "Lost inside the Palace"
 
 Object  -> slave "slave" 
   with  name 'slave' 'deaf' 'mute',
-        life SlaveLife,
+!        life SlaveLife,
         initial "A slave stands impassively by one wall.",
         description "Such a slave, a highly trained professional, stands at every intersection of passages in the 
             palace. They are deaf mutes, to prevent them overhearing State secrets.",

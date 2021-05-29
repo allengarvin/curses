@@ -1,5 +1,5 @@
 [ discover_rod r ;
-    give r ~unidentiifed_rod;
+    give r ~unidentifed_rod;
     r.&name-->2 = r.rod_word;
     r.&name-->3 = r.rod_word;
     r.article = "the";
@@ -43,6 +43,7 @@ Class   Rod
                 new_line;
                 rtrue;
         ],
+!        u_to rod_display_before,
         short [;
             if( self has unidentifed_rod ) {
                 print "featureless mahogany rod";
@@ -57,7 +58,7 @@ Class   Rod
         ],
         parse_name [ i w ;
             if( parser_action == ##TheSame ) {
-                if( parser_one has unidentifed_rod && parser_two has unidentiifed_rod ) {
+                if( parser_one has unidentifed_rod && parser_two has unidentifed_rod ) {
                     return -1;
                 }
                 return -2;
@@ -139,7 +140,6 @@ Class HighRod
 Rod     rod_of_fire "Fire"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'fire',
@@ -236,7 +236,6 @@ Rod     rod_of_fire "Fire"
 Rod     rod_of_returning "Returning"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'returning',
@@ -247,7 +246,6 @@ Rod     rod_of_returning "Returning"
 Rod     rod_of_stalking "Stalking"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'stalking',
@@ -296,7 +294,6 @@ Rod     rod_of_stalking "Stalking"
 Rod     rod_of_infinity "Infinity"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'infinity',
@@ -329,7 +326,6 @@ Rod     rod_of_infinity "Infinity"
 Rod     rod_of_husbandry "Husbandry"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'husbandry',
@@ -351,7 +347,6 @@ Rod     rod_of_husbandry "Husbandry"
 Rod     rod_of_bronze "Bronze"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'bronze',
@@ -376,7 +371,6 @@ Rod     rod_of_bronze "Bronze"
 Rod     rod_of_sacrifice "Sacrifice"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'sacrifice',
@@ -430,7 +424,6 @@ Rod     rod_of_sacrifice "Sacrifice"
 Rod     rod_of_luck "Luck"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'luck',
@@ -460,7 +453,6 @@ Rod     rod_of_luck "Luck"
 Rod     rod_of_ice "Ice"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
         list_together nothing,
-        u_to rod_display_before,
         d_to "featureless mahogany rods",
         article "a",
         rod_word 'ice',
@@ -484,7 +476,6 @@ Rod     rod_of_ice "Ice"
 Rod     rod_of_language "Language"
   with  name 'rod' 'of' 'language',
         list_together ListingRods,
-        u_to rod_display_before,
         article "the",
         rod_action [;
             if( second == player ) {
@@ -502,26 +493,22 @@ Rod     rod_of_language "Language"
 Rod     rod_of_returning2 "Returning"
   with  name 'rod' 'of' 'returning',
         list_together ListingRods,
-        u_to rod_display_before,
         article "the",
         rod_action RodOfReturningAction,
   has   ;
 
 HighRod     rod_of_life "Life"
   with  name 'life' 'high' 'rod' 'of',
-        u_to rod_display_before,
         initial "The High HighRods of Life, Love and Death lean together in a pyramid at the top of the steep slope, balanced rather delicately.",
         angel_hint "Astonishing!  One of the three high HighRods!";
 
 HighRod     rod_of_death "Death"
   with  name 'death' 'high' 'rod' 'of',
-        u_to rod_display_before,
         angel_hint "Astonishing!  One of the three high HighRods!",
   has   concealed;
 
 HighRod     rod_of_love "Love"
   with  name 'love' 'high' 'rod' 'of',
-        u_to rod_display_before,
         angel_hint "Astonishing!  One of the three high Rods!",
   has   concealed;
 

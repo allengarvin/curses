@@ -17,6 +17,134 @@ Constant T_NE_OF_HOME = 12;
 Constant T_SPIRIT_WORLD = 13;
 Constant T_AFTERLIFE = 14;
 
+Constant DIED = 1;
+Constant WON = 2;
+Constant FAILED = 3;
+Constant DESTROYED_UNIVERSE = 4;
+Constant AUSTRALIA = 5;
+Constant PARADOX = 6;
+Constant MYTH = 7;
+Constant PRISON = 8;
+Constant CHECKMATED = 9;
+Constant SPOOKED = 10;
+
+Constant SCORE_HAMBURG = 0;
+Constant SCORE_TORCH = 1;
+Constant SCORE_JOSHUA = 2;
+Constant SCORE_SECRETDOOR = 3;
+Constant SCORE_DEMIJOHN = 4;
+Constant SCORE_WAITER = 5;
+Constant SCORE_WAND = 6;
+Constant SCORE_AIMWAND = 7;
+Constant SCORE_WIRELESS = 8;
+Constant SCORE_DAISY = 9;
+Constant SCORE_CHOCOLATE = 10;
+Constant SCORE_ANDROMEDA = 11;
+Constant SCORE_BATTERY = 12;
+Constant SCORE_PLUMBING = 13;
+Constant SCORE_SMELL = 14;
+Constant SCORE_REFLECTING = 15;
+Constant SCORE_HENRIPOST = 16;
+Constant SCORE_ORB = 17;
+Constant SCORE_MAP = 18;
+Constant SCORE_ARC = 19;
+Constant SCORE_WELL = 20;
+Constant SCORE_MASCOT = 21;
+Constant SCORE_BISCUIT = 22;
+Constant SCORE_SMOKE = 23;
+Constant SCORE_SHIP = 24;
+Constant SCORE_FLAG = 25;
+Constant SCORE_SLEEP = 26;
+Constant SCORE_SECRET_PASS = 27;
+Constant SCORE_ROD_IDENT = 28;
+Constant SCORE_WATCH = 29;
+Constant SCORE_HYPNOSIS = 30;
+Constant SCORE_SECURITY = 31;
+Constant SCORE_TEMPLE = 32;
+Constant SCORE_HOMER = 33;
+Constant SCORE_ORACLE = 34;
+Constant SCORE_STRONGBOX = 35;
+Constant SCORE_AUSTIN = 36;
+Constant SCORE_WASH = 37;
+Constant SCORE_LIBRARY = 38;
+Constant SCORE_SPHINX = 39;
+Constant SCORE_QUARTERSTAFF = 40;
+Constant SCORE_AFTERLIFE = 41;
+Constant SCORE_KNIGHT = 42;
+Constant SCORE_KNIGHT_ENCOURAGE = 43;
+Constant SCORE_HIGHROD = 44;
+
+Array garden_array ->
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    48
+    48
+    48
+    49
+    48
+    48
+    49
+    49
+    49
+    48
+    49
+    48
+    48
+    49
+    48
+    49
+    49
+    48
+    48
+    48
+    49
+    48
+    48
+    48
+    49
+    49
+    49
+    48
+    49
+    49
+    49
+    49
+    49
+    49
+    49
+    48
+    48
+    48
+    48
+    48
+    49
+    48
+    49
+    49
+    49
+    49
+    49
+    48
+    49
+    49
+    49
+    49
+;
+
+Global ball_polished;
+Global rod_identity;
+Global OldDigX;
+Global OldDigY;
+Global HighRodWarn;
 Global OzoneSmelled;
 Global PlanckWarning;
 Global DigX;
@@ -55,6 +183,73 @@ Global poseiden_warning;
 Global good_try_bonus;
 Global one_time_try_bonus;
 Global displaying_quote;
+
+Array henri_post_array ->
+    8
+    2
+    16
+    14
+    5
+    12
+    1
+    3
+    15
+    18
+    11
+    19
+    0
+    9
+    20
+;
+Array henry_post_initial_layout ->
+    8
+    2
+    16
+    5
+    12
+    15
+    14
+    1
+    19
+    18
+    3
+    20
+    9
+    11
+    0
+;
+
+Array bomb_wires -> 4;
+
+Array rank_levels -->
+    48
+    500 "happy Tourist."
+    499 "very nearly happy Tourist."
+    450 "master Druid."
+    425 "journeyman Druid."
+    400 "apprentice Druid."
+    375 "Master Navigator."
+    340 "Navigator."
+    310 "Voyager."
+    280 "Explorer."
+    250 "expert Traveller."
+    210 "Traveller."
+    170 "Adventurer."
+    150 "Connoisseur."
+    125 "Jack-of-all-trades."
+    100 "amateur Adventurer."
+    75 "Dilettante."
+    50 "cynical Tourist."
+    35 "experienced Tourist."
+    20 "seasoned Tourist."
+    10 "casual Tourist."
+    1 "gauche Tourist."
+    0 "hapless Tourist."
+    65438 "accursed Tourist."
+    64536 "irresponsible deity."
+;
+
+Array card_deck --> 10;
 
 Array type_of_tune table
     "a synthesized"
@@ -272,6 +467,192 @@ Object carbolic_soap "carbolic soap"
         devil_hint "That's the spirit, keep it up!",
         angel_hint "Really!  How disgraceful!",
   has   concealed;
+
+[ PrintTaskName n ;
+    if( n == SCORE_HAMBURG ) {
+        "reading postcard";
+    }
+    if( n == SCORE_TORCH ) {
+        "recharging torch";
+    }
+    if( n == SCORE_JOSHUA ) {
+        "exorcism";
+    }
+    if( n == SCORE_SECRETDOOR ) {
+        "opening secret door";
+    }
+    if( n == SCORE_DEMIJOHN ) {
+        "opening demijohn";
+    }
+    if( n == SCORE_WAITER ) {
+        "using dumbwaiter";
+    }
+    if( n == SCORE_WAND ) {
+        "charging a rod";
+    }
+    if( n == SCORE_AIMWAND ) {
+        "firing a rod";
+    }
+    if( n == SCORE_WIRELESS ) {
+        "exposing radio";
+    }
+    if( n == SCORE_DAISY ) {
+        "sporting a daisy chain";
+    }
+    if( n == SCORE_CHOCOLATE ) {
+        "placating Aunt Jemima";
+    }
+    if( n == SCORE_ANDROMEDA ) {
+        "rescuing Andromeda";
+    }
+    if( n == SCORE_BATTERY ) {
+        "uncovering battery";
+    }
+    if( n == SCORE_PLUMBING ) {
+        "mending the plumbing";
+    }
+    if( n == SCORE_SMELL ) {
+        "scenting a passage";
+    }
+    if( n == SCORE_REFLECTING ) {
+        "reflecting";
+    }
+    if( n == SCORE_HENRIPOST ) {
+        "solving the grid";
+    }
+    if( n == SCORE_ORB ) {
+        "winning the orb";
+    }
+    if( n == SCORE_MAP ) {
+        "buying map of Paris";
+    }
+    if( n == SCORE_ARC ) {
+        "filling the arc";
+    }
+    if( n == SCORE_WELL ) {
+        "getting into the well";
+    }
+    if( n == SCORE_MASCOT ) {
+        "acquiring the mascot";
+    }
+    if( n == SCORE_BISCUIT ) {
+        "eating between meals";
+    }
+    if( n == SCORE_SMOKE ) {
+        "smoke detecting";
+    }
+    if( n == SCORE_SHIP ) {
+        "putting a ship in a bottle";
+    }
+    if( n == SCORE_FLAG ) {
+        "parachuting on deck";
+    }
+    if( n == SCORE_SLEEP ) {
+        "sleeping in Alison's bed";
+    }
+    if( n == SCORE_SECRET_PASS ) {
+        "opening sandstone crevice";
+    }
+    if( n == SCORE_ROD_IDENT ) {
+        "identifying a rod";
+    }
+    if( n == SCORE_WATCH ) {
+        "dislodging the watch";
+    }
+    if( n == SCORE_HYPNOSIS ) {
+        "hypnosis";
+    }
+    if( n == SCORE_SECURITY ) {
+        "passing security";
+    }
+    if( n == SCORE_TEMPLE ) {
+        "restoring the Temple";
+    }
+    if( n == SCORE_HOMER ) {
+        "answering Homer";
+    }
+    if( n == SCORE_ORACLE ) {
+        "summoning the oracle";
+    }
+    if( n == SCORE_STRONGBOX ) {
+        "unearthing strongbox";
+    }
+    if( n == SCORE_AUSTIN ) {
+        "startling Austin";
+    }
+    if( n == SCORE_WASH ) {
+        "washing away the stone";
+    }
+    if( n == SCORE_LIBRARY ) {
+        "provoking the librarians";
+    }
+    if( n == SCORE_SPHINX ) {
+        "twisting the sphinx's nose";
+    }
+    if( n == SCORE_QUARTERSTAFF ) {
+        "depositing the quarterstaff";
+    }
+    if( n == SCORE_AFTERLIFE ) {
+        "rising in the afterlife";
+    }
+    if( n == SCORE_KNIGHT ) {
+        "reviving the knight";
+    }
+    if( n == SCORE_KNIGHT_ENCOURAGE ) {
+        "encouraging the knight";
+    }
+    if( n == SCORE_HIGHROD ) {
+        "choosing a High Rod";
+    }
+    "** Nameless task **";
+];
+
+[ DeathMessage ;
+    if( deadflag == FAILED ) {
+        print "You have missed the point entirely";
+    }
+    if( deadflag == DESTROYED_UNIVERSE ) {
+        print "You have disembodied the entire universe";
+    }
+    if( deadflag == AUSTRALIA ) {
+        print "You have been transported to Australia";
+    }
+    if( deadflag == PARADOX ) {
+        print "You have been annihilated by a temporal paradox";
+    }
+    if( deadflag == MYTH ) {
+        print "You have become a constellation";
+    }
+    if( deadflag == PRISON ) {
+        print "You have been imprisoned as a terrorist";
+    }
+    if( deadflag == CHECKMATED ) {
+        print "You have been checkmated";
+    }
+    if( deadflag == SPOOKED ) {
+        print "You have been spooked";
+    }
+    rtrue;
+];
+
+[ GamePreRoutine ;
+    if( action == ##Go && carbolic_soap hasnt concealed ) {
+        trigger_quotation(13);
+        "You're going nowhere until you make amends for that nasty bad language.";
+    }
+    if( gas_mask has worn ) {
+        if( action == ##Smell ) {
+            "With the gas mask on all you can smell is old cork and rubber.";
+        }
+        if( action == ##Eat ) {
+            "Not with a gas mask on!";
+        }
+        if( action == ##Order or ##Answer or ##Ask ) {
+            "Your speech is muffled into silence by the gas mask.";
+        }
+    }
+    rfalse;
+];
 
 Include "Grammar";
 Include "newverbs.inf";
