@@ -37,7 +37,7 @@ Object  electric_torch "electric torch"
                 "You open the battery compartment of the torch.";
             Close:
                 print "You close the battery compartment of the torch";
-                bat = child(selfobj);
+                bat = child(self);
                 if( bat == nasty_battery ) {
                     if( game_section == T_MODERN ) {
                         deadflag = FAILED;
@@ -1807,10 +1807,10 @@ Object  -> windows "windows"
                 "The windows are old and gummed up somehow.";
         ],
         
-        n_to Tiny_Balcony,
-        s_to "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
-        w_to ne_obj,
-        initial "Black-latticed windows open on a beautiful summer's day.",
+        door_to Tiny_Balcony,
+        when_closed "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
+        dir_dir s_to,
+        when_open "Black-latticed windows open on a beautiful summer's day.",
   has   door static;
 
 [ CheckMirror o ;       
@@ -1826,7 +1826,8 @@ Object  -> windows "windows"
 [ MonkeyAlive ;
     if( Crescent_Moon in Old_Evans ) {
         give model_of_ugly_animal ~general;
-        "^The monkey revels briefly in its new life, but then catches your eyes, sadly realising you offer it no home. Quite quickly it settles back into an ugly idol.";
+        "^The monkey revels briefly in its new life, but then catches your eyes, sadly realising you offer it 
+         no home. Quite quickly it settles back into an ugly idol.";
     }
     remove model_of_ugly_animal;
     give model_of_ugly_animal ~general;
@@ -1873,7 +1874,9 @@ Object  -> long_vanity_mirror "long vanity mirror"
 HRoom   Tiny_Balcony "Tiny Balcony"      
   with  name 'roof' 'motorway' 'garden',
         n_to Alisons_Writing_Room,
-        description "A tiny balcony around Miss Alison's windows, offering fresh air, blue skies and a magnificent view over the gardens down to the droning motorway in the distance. The roof is too perilous to scale even if you had a good reason (which you haven't), so you had better go back north.",
+        description "A tiny balcony around Miss Alison's windows, offering fresh air, blue skies and a 
+            magnificent view over the gardens down to the droning motorway in the distance. The roof is too perilous
+            to scale even if you had a good reason (which you haven't), so you had better go back north.",
         cant_go "The rooftop is far too dangerous in that direction.",
   has   light;
 
@@ -2019,7 +2022,7 @@ Object  -> daisy_calendar "daisy calendar"
                 DaisyType(i);
                 " daisies.";
             Turn, SwitchOn:
-                self.number = (selfobj.number + 1) % 12;
+                self.number = (self.number + 1) % 12;
                 << Examine self >>;
             Consult:
                 if( consult_words == 1 ) {
@@ -2196,7 +2199,104 @@ Object  -> old_gardeners__gloves "old gardeners' gloves"
 
 Object  -> Jemima "Jemima"       
   with  name 'aunt' 'jemima',
-!        life JemimaLife,
+        life [ i;
+            Give:
+                if( noun == box_of_chocolates ) {
+                    remove box_of_chocolates;
+                    Achieved(SCORE_CHOCOLATE);
+                    give Jemima general;
+                    Jemima.description = "Definitely mollified.";
+                    "Aunt Jemima pounces on the chocolates, wolfs down a strawberry cream and persuades you to have 
+                     a vile toffee cracknell. ~Now,~ she says, ~Your turn for a daisy chain!~^^You try to look
+                     pleased.^^~Let's see, the others have had theirs... I have only a few colours left. What
+                     would you like?~";
+                }
+                if( noun == chocolate_biscuit ) {
+                    print "Jemima grudgingly takes the biscuit and nibbles at it, but she is still sulking.^";
+                    GoodTry();
+                    remove chocolate_biscuit;
+                    rtrue;
+                }
+                if( noun == red_tablet ) 
+                    "Jemima looks very suspiciously at the pill. ~Not just now, thanks.~";
+                if( noun == medicine_bottle && noun has locked ) {
+                    remove red_tablet;
+                    give medicine_bottle ~locked;
+                    give medicine_bottle open;
+                    "Jemima takes the bottle absent-mindedly, opens it without the slightest difficulty and (before 
+                     you can stop her) swallows the pill. You'd better hope it wouldn't have been useful anyway.^^~I'm
+                     always leaving my medicine lying around,~ she says vaguely as she hands the bottle back. ~I'll
+                     forget my head one day.~";
+                }
+                print "A peace offering is a nice idea, but somehow ", (the) noun;
+                if( noun == gift_wrapped_parcel ) {
+                    print " lacks style... after all, it isn't Christmas.^";
+                    GoodTry();
+                    rtrue;
+                }
+                " seems inappropriate.";
+            Kiss: 
+                print "She is slightly mollified, but only slightly.^";
+                GoodTry();
+                rtrue;
+            Attack:
+                trigger_quotation(28);
+                "Well, she's annoying, but that's family for you.";
+            Answer:
+                if( self hasnt general ) {
+                    trigger_quotation(17);
+                    "She pretends not to have heard, a favourite ploy of hers when sulking.";
+                }
+                give Jemima ~general;
+                i = 0;
+                if (noun == 'yellow' or 'yellowish') {
+                    i = 1;
+                }
+                if (noun == 'blue') {
+                    i = 2;
+                }
+                if (noun == 'red') {
+                    i = 4;
+                }
+                if (noun == 'white' or 'plain') {
+                    i = 5;
+                }
+                if (noun == 'green') {
+                    i = 6;
+                }
+                if (noun == 'orange') {
+                    i = 9;
+                }
+                if (i ~= 0) {
+                    print "~Right you are then, I'm sure I have some which are just right.~^^";
+                }
+                if (i == 0) {
+                    i = 5;
+                    print "~Nothing like that left. Just plain old daisies for you then dear!~^^";
+                }
+                StartTimer(Jemima,7);
+                daisy_chain.number = i;
+                "After a moment she notices you're still here. ~Come back later, it'll be done soon.~  You groan inwardly but force a sickly smile. Should have eaten the chocolates myself, you find yourself thinking.";
+            Ask:
+                trigger_quotation(17);
+                if (second == 'daisies' or 'chains') "Jemima gives you a cool look. ~They're just for decoration.~";
+                if (second == 'austin' or 'cat') "~Wretched cat!  More trouble than he's worth.~";
+                if (second == 'rubber' or 'gloves') "~Those are my gloves.~";
+                if (second == 'tourist' or 'map' or 'paris' or 'holiday') 
+                    "~I wouldn't know. I'm not the one going on holiday.~";
+                if (second == 'attic' or 'key' or 'winery') "~You haven't lost the attic key again?  Hmph.~";
+                if (second == 'demijohn' or 'bottle') "~Load of old junk.~";
+                if (second == 'dumb' or 'waiter' or 'dumbwaiter') "~You leave that rickety old thing alone!~";
+                if (second == 'calendar') "~Not bad. Of course, my daisies are better, but not bad for beginners.~";
+                if (second == 'colour' or 'colours') "~Everyone has his own favourite.~";
+                if (second == 'radio' or 'wireless') 
+                    "~I've told you a hundred times, I don't want a transistor radio. That old valve set is fine for me.~";
+                if (second == 'curse' or 'curses' or 'family') 
+                    "~Nothing wrong with this family that a good long holiday wouldn't set right.~";
+                if (second == 'me') "~Know thyself, that's what the good book says.~";
+                "Jemima has nothing to say on the subject.";
+        ],
+
         initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
         description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow.",
         article "Aunt",

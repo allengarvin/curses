@@ -16,7 +16,7 @@ Object  Causeway "Causeway"
         number 2,
         daemon [ i;
             if( game_section ~= T_ALEXANDRIA ) rfalse;
-            self.number = (selfobj.number + 1) % 12;
+            self.number = (self.number + 1) % 12;
             if( location ~= Crossroads or Outside_the_Royal_Museum or Stadium ) rfalse;
 
             i = Causeway.number;

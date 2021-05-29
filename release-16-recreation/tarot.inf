@@ -270,7 +270,7 @@ TRoom   Cups_and_Glasses "Cups and Glasses"
         cant_go "There's no apparent way out of here.",
         number 0,
         each_turn [ i;
-            self.number = selfobj.number + 1;
+            self.number = self.number + 1;
             i = self.number;
             if( i == 2 ) 
                 "^There is a scuffling noise as some people gather up on the pavement outside the skylight.";
