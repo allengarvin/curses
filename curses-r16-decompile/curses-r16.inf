@@ -24691,7 +24691,7 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ quote_display lines margin lines columns center cursor i l ;  
+[ quote_display lines margin lines2 columns center cursor i l ; 
     @split_window (lines + 6);
     @set_window 1;
     columns = 0->33;
@@ -24721,7 +24721,7 @@ Array preactions_table --> IsDirection;
         if (generic_globvar ~= 0) jump labelXXX;
     }
     @set_cursor cursor center;
-    l = lines-->i;
+    l = lines2-->i;
     if (l ~= 0) {
         print (string) l;
     }
@@ -24744,7 +24744,7 @@ Array preactions_table --> IsDirection;
     print "[ ";
     i = 0;
   .labelXXX;
-    columns = lines-->i;
+    columns = lines2-->i;
     if (columns ~= 0) {
         print (string) columns;
     }
