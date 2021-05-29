@@ -2253,10 +2253,11 @@ Object  daisy_chain "daisy chain"
 HRoom   Storage_Room "Storage Room"      
   with  before [;
             Enter:
-                if( noun == dark_shaft_obj )
+                if( noun == dark_shaft_obj ) {
                     if( dumbwaiter in dark_shaft_obj )
                         << Enter dumbwaiter >>;
                     "But you suffer from vertigo. Even the thought of the plane journey tomorrow is nerve-wracking.";
+                }
         ],
         w_to Old_Winery,
         description "A disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.",
