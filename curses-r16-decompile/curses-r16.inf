@@ -5838,7 +5838,7 @@ Array preactions_table --> IsDirection;
     Stub7();
     generic_globvar = 0;
     a_buffer->1 = 0;
-    StatusLinePrinter();
+    DrawStatusLine();
     @aread a_buffer a_table -> generic_globvar;
     nw = a_table->1;
     if (nw == 0) {
@@ -8723,7 +8723,7 @@ Array preactions_table --> IsDirection;
     print "> ";
     generic_globvar = 0;
     buffer->1 = 0;
-    StatusLinePrinter();
+    DrawStatusLine();
     @aread buffer parse -> generic_globvar;
     i = parse-->1;
     if (i == 37839 or 37767) {
@@ -8918,7 +8918,7 @@ Array preactions_table --> IsDirection;
     print "^Type a number from 1 to ", lines, ", 0 to redisplay or press ENTER.^> ";
     generic_globvar = 0;
     buffer->1 = 0;
-    StatusLinePrinter();
+    DrawStatusLine();
     @aread buffer parse -> generic_globvar;
     i = parse-->1;
     if (i == 'quit' or 'q//' || parse->1 == 0) {
@@ -10026,7 +10026,7 @@ Array preactions_table --> IsDirection;
     give runner_bean_plant open;
     print "^Warning: something extremely cliched is about to happen. When you think you have composed yourself and can stand it, press ENTER. ", '>';
     buffer->1 = 0;
-    StatusLinePrinter();
+    DrawStatusLine();
     @aread buffer parse -> generic_globvar;
     new_line;
     "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reaching up high into the sky!  You yawn convulsively.";
@@ -20220,7 +20220,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         buffer->1 = 0;
-        StatusLinePrinter();
+        DrawStatusLine();
         @aread buffer parse -> generic_globvar;
         i = parse-->1;
         if (i == 'yes' or 'y//') {
@@ -24520,7 +24520,7 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ StatusLinePrinter columns local2 ;    
+[ DrawStatusLine columns c2 ;   
     columns = 0->33;
     if (columns == 0) {
         columns = 80;
@@ -24577,22 +24577,22 @@ Array preactions_table --> IsDirection;
         displaying_quote = true;
     }
     if (pretty_mode == false) {
-        local2 = columns - 15;
-        @set_cursor 1 local2;
+        c2 = columns - 15;
+        @set_cursor 1 c2;
         save_score = score;
         print score, "/", turns, "   ";
     } else {
         if (displaying_quote == true) {
-            local2 = columns - 35;
-            @set_cursor 1 local2;
+            c2 = columns - 35;
+            @set_cursor 1 c2;
             if (deadflag > 0) {
                 print "Final score: ";
             } else {
                 print "Score: ";
             }
         } else {
-            local2 = columns - 28;
-            @set_cursor 1 local2;
+            c2 = columns - 28;
+            @set_cursor 1 c2;
         }
         if (displaying_quote == true || save_score ~= score) {
             print score;
@@ -24600,15 +24600,15 @@ Array preactions_table --> IsDirection;
                 print "/550";
             }
         }
-        @set_cursor 2 local2;
+        @set_cursor 2 c2;
         if (displaying_quote == true) {
             print "Turns: ";
         }
         print turns;
         if (displaying_quote == true || save_game_sec ~= game_section) {
             game_section = location.section;
-            local2 = columns - 20;
-            @set_cursor 2 local2;
+            c2 = columns - 20;
+            @set_cursor 2 c2;
             if (game_section == T_MODERN) {
                 print "    June 3rd, 1993";
             }
