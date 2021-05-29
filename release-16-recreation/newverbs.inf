@@ -168,7 +168,7 @@
     if( location == Heavenly_Place ) "The angel looks at you reproachfully.";
     if( location == Hellish_Place ) "The demon looks at you viciously.";
     @save -> i;
-    if( generic_globvar == 0 ) 
+    if( i == 0 ) 
         "Failed.";
     print "Ok.^";
     rtrue;

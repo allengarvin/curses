@@ -21,7 +21,7 @@ Object ghost_of_yourself "ghost of yourself"
                 if( game_section == T_DREAMING )
                     rfalse;
                 print "Ouch!  You wake up, smarting.^";
-                ChangePlayer(yourself);
+                ChangePlayer(selfobj);
                 <<Look>>;
             Go, Take, Drop, Look, Inv, Wait: rfalse;
             default: 

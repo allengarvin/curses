@@ -1817,7 +1817,7 @@ Object  -> windows "windows"
     if( long_vanity_mirror has general ) {
         rfalse;
     }
-    if( o in player or rucksack && (o has rod_attr || o has hidden_rod || o has unidentiifed_rod) ) {
+    if( o in player or rucksack && (o has rod_attr || o has hidden_rod || o has unidentifed_rod) ) {
         rtrue;
     }
     rfalse;
@@ -2643,7 +2643,7 @@ Object  -> circular_arc "circular arc"
                 if( noun hasnt rod_attr )
                     "That won't fit in a socket.";
                 if( noun == rod_of_infinity ) {
-                    if( noun has unidentiifed_rod ) 
+                    if( noun has unidentifed_rod ) 
                         "For some reason, that rod is just too large to fit.";
                     "The Rod of Infinity is just slightly too large to fit.";
                 }
@@ -2739,7 +2739,7 @@ Object  -> gilded_model_coffin "gilded model coffin"
                 give gilded_model_coffin ~general;
                 
                 for( r = child(self) : r ~= nothing : r = sibling(r) ) {
-                    if( r has unidentiifed_rod ) {
+                    if( r has unidentifed_rod ) {
                         discover_rod(r);
                         give gilded_model_coffin general;
                     } 

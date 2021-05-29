@@ -4,7 +4,7 @@
     r.&name-->3 = r.rod_word;
     r.article = "the";
     r.d_to = nothing;
-    r.list_together = MasterGameRods;
+    r.list_together = ListingRods;
     rtrue;
 ];
 
@@ -27,7 +27,7 @@
 ];
 
 [ ListingHRods;
-    return MasterGameRods(true);
+    return ListingRods(true);
 ];
 
 Class   Rod
@@ -282,7 +282,7 @@ Rod     rod_of_stalking "Stalking"
             print "^Warning: something extremely cliched is about to happen. When you think you have composed 
                 yourself and can stand it, press ENTER. ", '>';
             buffer->1 = 0;
-            StatusLinePrinter();
+            DrawStatusLine();
             @aread buffer parse -> i;
             new_line;
             "Suddenly an enormous beanstalk sprouts out of the ground, exactly as per fairy tale, reac

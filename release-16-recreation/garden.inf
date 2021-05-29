@@ -560,9 +560,9 @@ GRoom  Croquet_Lawn "Croquet Lawn"
             if( DigX == 0 && DigY == 0 ) {
                 rfalse;
             }
-            if( before_short_desc == true ) {
-                rfalse;
-            }
+!            if( before_short_desc == true ) {
+!                rfalse;
+!            }
             print "Croquet Lawn (";
             DescribePaces(DigX,DigY);
             print " of the peg)";
