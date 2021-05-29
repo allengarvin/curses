@@ -4954,7 +4954,7 @@ Global game_section = T_MODERN;
 Global good_try_bonus;
 Global debug_deterministic_transportation;
 Global KnowLanguages;
-Global displaying_quote = true;
+Global rewdraw_statusline = true;
 Global before_short_desc;
 Global short_loc_var;
 Global save_game_sec;
@@ -12037,7 +12037,7 @@ Array preactions_table --> IsDirection;
 [ OldWineryDaemon ;     
     print "^Sorry. Thinking about it again, the score only gets in a muddle this way, so the bonus points had better go after all.^";
     good_try_bonus = 0;
-    displaying_quote = true;
+    rewdraw_statusline = true;
     score = score - 5;
     rfalse;
 ];
@@ -16733,7 +16733,7 @@ Array preactions_table --> IsDirection;
     if (action == ##Go or ##Enter) {
         if (noun == n_obj or s_obj or metal_wall) {
             print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly the same...^";
-            displaying_quote = true;
+            rewdraw_statusline = true;
             Achieved(SCORE_REFLECTING);
             if (noun == n_obj) {
                 selfobj.s_to = metal_wall;
@@ -18806,7 +18806,7 @@ Array preactions_table --> IsDirection;
         "Newcomers to the game may like to try the following:^^  ~help instructions~   which gives some basic information,^  ~help commands~       details some common commands,^  ~help credits~        runs the game credits,^  ~help legal~          makes some legal disclaimers; or^  ~help inform~         which advertises the compiler Inform,^  ~help archive~        and the interactive fiction archive.";
     }
     DoMenu("Information is available on the following subjects:^^     Instructions    giving some basic information^     Commands        detailing some common commands^     Credits         game credits^     Release         release notes^     Legal           legal disclaimers^     Inform          advertising the compiler Inform^     Archive         and the interactive fiction archive",MainMenu,MainMenuDesc);
-    displaying_quote = true;
+    rewdraw_statusline = true;
     rtrue;
 ];
 
@@ -18922,7 +18922,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ display_quote n ;     
-    displaying_quote = true;
+    rewdraw_statusline = true;
     if (n == 0) {
         quote_line-->0 = "Four be the things I'd been better without:";
         quote_line-->1 = "Love, curiosity, freckles and doubt.";
@@ -22956,7 +22956,7 @@ Array preactions_table --> IsDirection;
         rtrue;
     }
     one_time_try_bonus = true;
-    displaying_quote = true;
+    rewdraw_statusline = true;
     StartTimer(Old_Winery,4);
     score = score + 5;
     good_try_bonus = 1;
@@ -23059,7 +23059,7 @@ Array preactions_table --> IsDirection;
 
 [ Amusing ;     
     Stub11();
-    displaying_quote = true;
+    rewdraw_statusline = true;
     rtrue;
 ];
 
@@ -23167,7 +23167,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ RestoreSub ;  
-    displaying_quote = true;
+    rewdraw_statusline = true;
     @restore -> generic_globvar;
     if (generic_globvar ~= 2[?]) {
         "Failed.";
@@ -23178,7 +23178,7 @@ Array preactions_table --> IsDirection;
 ];
 
 [ SaveSub ;     
-    displaying_quote = true;
+    rewdraw_statusline = true;
     if (location == Heavenly_Place) {
         "The angel looks at you reproachfully.";
     }
@@ -23272,13 +23272,13 @@ Array preactions_table --> IsDirection;
 [ PrettySub ;   
     pretty_mode = true;
     trigger_quotation(5);
-    displaying_quote = true;
+    rewdraw_statusline = true;
     "~Curses~ is now in its (supposedly) ~pretty~ mode.";
 ];
 
 [ PlainSub ;    
     pretty_mode = false;
-    displaying_quote = true;
+    rewdraw_statusline = true;
     "~Curses~ is now in its ~plain~ printing mode.";
 ];
 
@@ -24535,13 +24535,13 @@ Array preactions_table --> IsDirection;
     @set_window 1;
     style reverse;
     if (current_game_sec ~= location.section) {
-        displaying_quote = true;
+        rewdraw_statusline = true;
     }
     current_game_sec = location.section;
     if (deadflag > 0 || undone_flag == 1) {
-        displaying_quote = true;
+        rewdraw_statusline = true;
     }
-    if (displaying_quote == true) {
+    if (rewdraw_statusline == true) {
         @set_cursor 1 1;
         generic_globvar = columns;
         if (generic_globvar >= 1) {
@@ -24561,7 +24561,7 @@ Array preactions_table --> IsDirection;
             }
         }
     }
-    if (displaying_quote == true || short_loc_var ~= location) {
+    if (rewdraw_statusline == true || short_loc_var ~= location) {
         @set_cursor 1 2;
         before_short_desc = true;
         PrintShortName(location);
@@ -24574,7 +24574,7 @@ Array preactions_table --> IsDirection;
             if (generic_globvar ~= 0) jump labelXXX;
         }
         short_loc_var = location;
-        displaying_quote = true;
+        rewdraw_statusline = true;
     }
     if (pretty_mode == false) {
         c2 = columns - 15;
@@ -24582,7 +24582,7 @@ Array preactions_table --> IsDirection;
         save_score = score;
         print score, "/", turns, "   ";
     } else {
-        if (displaying_quote == true) {
+        if (rewdraw_statusline == true) {
             c2 = columns - 35;
             @set_cursor 1 c2;
             if (deadflag > 0) {
@@ -24594,18 +24594,18 @@ Array preactions_table --> IsDirection;
             c2 = columns - 28;
             @set_cursor 1 c2;
         }
-        if (displaying_quote == true || save_score ~= score) {
+        if (rewdraw_statusline == true || save_score ~= score) {
             print score;
             if (deadflag > 0) {
                 print "/550";
             }
         }
         @set_cursor 2 c2;
-        if (displaying_quote == true) {
+        if (rewdraw_statusline == true) {
             print "Turns: ";
         }
         print turns;
-        if (displaying_quote == true || save_game_sec ~= game_section) {
+        if (rewdraw_statusline == true || save_game_sec ~= game_section) {
             game_section = location.section;
             c2 = columns - 20;
             @set_cursor 2 c2;
@@ -24683,7 +24683,7 @@ Array preactions_table --> IsDirection;
     @set_cursor 1 1;
     @set_window 0;
     0-->8 = 65533 & 0-->8;
-    displaying_quote = false;
+    rewdraw_statusline = false;
     if (quote_selection ~= 65535) {
         display_quote(quote_selection);
         quote_selection = 65535;
