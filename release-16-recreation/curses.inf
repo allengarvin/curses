@@ -144,10 +144,10 @@ Array garden_array ->
 
 Global save_game_sec;
 Global before_short_desc;
-Global current_game_sec = T_MODERN;
+Global current_game_sec;
 Global short_loc_var;
 Global save_score;
-Global quote_selection;
+Global quote_selection = -1;
 Global ball_polished;
 Global rod_identity;
 Global OldDigX;
@@ -190,7 +190,7 @@ Global priest_cnt;
 Global poseiden_warning;
 Global good_try_bonus;
 Global one_time_try_bonus;
-Global displaying_quote;
+Global redraw_statusline;
 
 Array henri_post_array ->
     8
@@ -439,7 +439,7 @@ Include "afterlife.inf";
         rtrue;
     }
     one_time_try_bonus = true;
-    displaying_quote = true;
+    redraw_statusline = true;
     StartTimer(Old_Winery,4);
     score = score + 5;
     good_try_bonus = 1;
@@ -655,7 +655,7 @@ Object carbolic_soap "carbolic soap"
 ];
 
 [ display_quote n ;     
-    displaying_quote = true;
+    redraw_statusline = true;
     if (n == 0) {
         quote_line-->0 = "Four be the things I'd been better without:";
         quote_line-->1 = "Love, curiosity, freckles and doubt.";
@@ -1118,43 +1118,31 @@ Object carbolic_soap "carbolic soap"
     @set_window 1;
     style reverse;
     if (current_game_sec ~= location.section) {
-        displaying_quote = true;
+        redraw_statusline = true;
     }
     current_game_sec = location.section;
     if (deadflag > 0 || just_undone == 1) {
-        displaying_quote = true;
+        redraw_statusline = true;
     }
-    if (displaying_quote == true) {
+    if (redraw_statusline == true) {
         @set_cursor 1 1;
         tmpvar = columns;
-        while (tmpvar >= 1) {
-            print " ";
-            tmpvar = tmpvar - 1;
-            if (tmpvar == 0) break;
-        }
+        spaces tmpvar;
         if (pretty_flag == true) {
             @set_cursor 2 1;
             tmpvar = columns;
-            while (tmpvar >= 1) {
-                print " ";
-                tmpvar = tmpvar - 1;
-                if (tmpvar == 0) break;
-            }
+            spaces tmpvar;
         }
     }
-    if (displaying_quote == true || short_loc_var ~= location) {
+    if (redraw_statusline == true || short_loc_var ~= location) {
         @set_cursor 1 2;
         before_short_desc = true;
         PrintShortName(location);
         before_short_desc = false;
         tmpvar = 20;
-        while (tmpvar >= 1) {
-            print " ";
-            tmpvar = tmpvar - 1;
-            if (tmpvar ~= 0) break;
-        }
+        spaces tmpvar;
         short_loc_var = location;
-        displaying_quote = true;
+        redraw_statusline = true;
     }
     if (pretty_flag == false) {
         c2 = columns - 15;
@@ -1162,7 +1150,7 @@ Object carbolic_soap "carbolic soap"
         save_score = score;
         print score, "/", turns, "   ";
     } else {
-        if (displaying_quote == true) {
+        if (redraw_statusline == true) {
             c2 = columns - 35;
             @set_cursor 1 c2;
             if (deadflag > 0) {
@@ -1174,18 +1162,18 @@ Object carbolic_soap "carbolic soap"
             c2 = columns - 28;
             @set_cursor 1 c2;
         }
-        if (displaying_quote == true || save_score ~= score) {
+        if (redraw_statusline == true || save_score ~= score) {
             print score;
             if (deadflag > 0) {
                 print "/550";
             }
         }
         @set_cursor 2 c2;
-        if (displaying_quote == true) {
+        if (redraw_statusline == true) {
             print "Turns: ";
         }
         print turns;
-        if (displaying_quote == true || save_game_sec ~= game_section) {
+        if (redraw_statusline == true || save_game_sec ~= game_section) {
             game_section = location.section;
             c2 = columns - 20;
             @set_cursor 2 c2;
@@ -1263,7 +1251,7 @@ Object carbolic_soap "carbolic soap"
     @set_cursor 1 1;
     @set_window 0;
     0-->8 = 65533 & 0-->8;
-    displaying_quote = false;
+    redraw_statusline = false;
     if (quote_selection ~= -1 ) {
         display_quote(quote_selection);
         quote_selection = -1;

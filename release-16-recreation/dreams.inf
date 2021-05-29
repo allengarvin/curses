@@ -4,6 +4,7 @@
 ];
 
 [ PremonitionStart ;    
+    move ghost_of_yourself to Premonition;
     ChangePlayer(ghost_of_yourself);
     PlayerTo(Premonition);
     rtrue;
@@ -163,6 +164,7 @@ Object Camp_Fire "Camp Fire"
 Object Near_Dolmen "Near Dolmen"        
   with  after [;
             Look:
+                ChangePlayer(selfobj);
                 if( heavy_iron_mascot in ghost_of_yourself ) {
                     move heavy_iron_mascot to player;
                     StartDaemon(heavy_iron_mascot);

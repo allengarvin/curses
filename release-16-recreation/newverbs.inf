@@ -164,7 +164,7 @@
 ];
 
 [ SaveSub i;
-!    displaying_quote = true;
+!    redraw_statusline = true;
     if( location == Heavenly_Place ) "The angel looks at you reproachfully.";
     if( location == Hellish_Place ) "The demon looks at you viciously.";
     @save -> i;

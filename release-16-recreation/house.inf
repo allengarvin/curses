@@ -1924,7 +1924,7 @@ HRoom   Old_Winery "Old Winery"
         time_out [;
             print "^Sorry. Thinking about it again, the score only gets in a muddle this way, so the bonus points had better go after all.^";
             good_try_bonus = 0;
-            displaying_quote = true;
+            redraw_statusline = true;
             score = score - 5;
             rfalse;
         ],
