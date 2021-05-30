@@ -5,6 +5,7 @@ Release 17;
 Constant DEBUG;
 Constant SACK_OBJECT = rucksack;
 Constant MAX_CARRIED = 5;
+Constant MAX_SCORE = 550;
 
 Constant T_MODERN = 1;
 Constant T_UNREAL = 2;
@@ -506,6 +507,24 @@ Object carbolic_soap "carbolic soap"
         devil_hint "That's the spirit, keep it up!",
         angel_hint "Really!  How disgraceful!",
   has   concealed;
+
+[ PrintRank s ndx ;     
+    print ", giving you the rank of ";
+    s = score;
+    if (s ~= 65437 && task_done->11 ~= 0) {
+        s = s - 50;
+    }
+    ndx = 1;
+    while (ndx <= rank_levels-->0 * 2) {
+        if (s >= rank_levels-->ndx) {
+            print (string) rank_levels-->(ndx + 1);
+            new_line;
+            rtrue;
+        }
+        ndx = ndx + 2;
+    }
+    rtrue;
+];
 
 [ PrintTaskName n ;
     if( n == SCORE_HAMBURG ) {

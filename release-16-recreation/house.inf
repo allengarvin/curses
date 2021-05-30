@@ -947,7 +947,7 @@ Object  -> photographers_flash "photographer's flash"
                     "The flash is full already.";
                 if( noun == timer_detonator ) rfalse;
                 if( noun hasnt battery_flag ) "Only batteries and timers will fit in.";
-                if( child(self) has battery_flag )
+                if( child(self) && child(self) has battery_flag )
                     "There is already a battery inside, and there's only room now for a timer."; 
                 rfalse;
         ],
@@ -1066,6 +1066,7 @@ Object  -> solid_glass_ball "solid glass ball"
             Examine, Search:
                 if( self hasnt general ) "The ball is scratched and misted up.";
                 trigger_quotation(32);
+                print "In the ball mists swirl, then part to show ";
                 switch( random(12) ) {
                     1: "a reflection of your face.";
                     2: "a dizzying aerial view of Meldrew Hall gardens.";
@@ -1360,8 +1361,8 @@ Object  -> south_wall "south wall"
                 PlayerTo(o.door_to);
                 rtrue;
         ],
-        n_to nothing,
-        w_to ne_obj,
+        door_to nothing,
+        door_dir s_to,
   has   concealed door open scenery static;
 
 HRoom   East_Annexe "East Annexe"        
@@ -1611,7 +1612,7 @@ Object  -> Sir_Joshua_Meldrewe "Sir Joshua Meldrewe"
                      the key, which sails through the air onto the roof and (against all odds) falls neatly down
                      a chimney.";
                 }
-                print "The ghost swallows ", (the) noun, " whole and grins!";
+                "The ghost swallows ", (the) noun, " whole and grins!";
             Kiss, Attack:
                 "Ectoplasm is as nice to touch as its reputation suggests.";
             Order, Ask, Answer:

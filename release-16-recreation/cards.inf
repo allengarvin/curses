@@ -42,7 +42,7 @@ class   TarotCard
            for (::i++) {   
                 j=NextWord();
                 if (j=='cards') parser_action=##PluralFound;
-                else if (j~='coin' or w) return i;
+                else if (j~='card' or w) return i;
            }
        ],
 
