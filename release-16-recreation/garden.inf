@@ -336,7 +336,7 @@ Object  -> spade "spade"
                 "On second thoughts, let's just call a spade a spade.";
         ],
         initial "Hanging from a hook is a bladed agricultural implement.",
-        short [ ;
+        short_name [ ;
             if( self has general ) {
                 print "spade";
             } else {
@@ -556,7 +556,7 @@ GRoom  Croquet_Lawn "Croquet Lawn"
             ". The hedge is broken slightly to the northwest.";
         ],
         cant_go "The lawn is enclosed on all sides, but for a gap back west.",
-        short [;
+        short_name [;
             if( DigX == 0 && DigY == 0 ) {
                 rfalse;
             }

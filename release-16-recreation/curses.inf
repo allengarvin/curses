@@ -385,6 +385,8 @@ Attribute statue_flag;
 Attribute ship_flag;
 Attribute lucky;
 
+Replace NextWord;
+
 Replace DrawStatusLine;
 Replace SaveSub;
 Replace StrongSub;
@@ -395,6 +397,16 @@ Replace DarkToDark;
 
 Include "Parser";
 Include "VerbLib";
+
+! bug in 6.31.1 library
+[ NextWord i j;
+    if (wn <= 0 || wn > parse->1) { wn++; rfalse; }
+    i = wn*2-1; wn++;
+    j = parse-->i;
+    if (j == ',//') j = comma_word;
+    if (j == './/') j = THEN1__WD;
+    return j;
+];
 
 Include "rods.inf";
 Include "cards.inf";

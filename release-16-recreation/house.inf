@@ -517,7 +517,7 @@ Object  -> -> medicine_bottle "mb"
         ],
         initial nothing,
         description "~Antidote only: no preventative effect.~",
-        short [;
+        short_name [;
             if( self hasnt locked ) {
                 print "cracked medicine bottle";
             } else {

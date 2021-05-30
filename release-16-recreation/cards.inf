@@ -6,33 +6,46 @@ class   TarotCard
                 rfalse;
         ],
         list_together "Tarot cards",
-        short [;
-            if (listing_together has card && c_style & 4096 == 0) {
-                c_style = c_style | (4096 + 8);
-                if (c_style & 2 ~= 0) {
-                    c_style = c_style - 2;
-                }
-                if (c_style & 1 ~= 0) {
-                    c_style = c_style - 1;
-                }
-            }
-        ],
-        parse_name [ i w;
-            if( parser_action == ##TheSame )
-                return -1;
-            while( 1 == 1 ) {
-                w = NextWord();
-                if( Refers(self,w) == 1 ) {
-                    ++i;
-                } else if( w == 'cards' ) {
-                    parser_action = ##PluralFound;
-                    ++i;
-                } else {
-                    return i;
-                }
-            }
-            rfalse;
-        ],
+!        short_name [;
+!            if (listing_together has card && c_style & 4096 == 0) {
+!                c_style = c_style | (4096 + 8);
+!                if (c_style & 2 ~= 0) {
+!                    c_style = c_style - 2;
+!                }
+!                if (c_style & 1 ~= 0) {
+!                    c_style = c_style - 1;
+!                }
+!            }
+!        ],
+!        parse_name [ i w;
+!            if( parser_action == ##TheSame )
+!                return -1;
+!            while( 1 == 1 ) {
+!                w = NextWord();
+!                if( Refers(self,w) == 1 ) {
+!                    ++i;
+!                } else if( w == 'cards' ) {
+!                    parser_action = ##PluralFound;
+!                    ++i;
+!                } else {
+!                    return i;
+!                }
+!            }
+!            rfalse;
+!        ],
+       parse_name [ i j w;
+           if (parser_action==##TheSame) {   
+                if ((parser_one.&name)-->0 == (parser_two.&name)-->0) return -1;
+                return -2;
+           }
+           w=(self.&name)-->0;
+           for (::i++) {   
+                j=NextWord();
+                if (j=='cards') parser_action=##PluralFound;
+                else if (j~='coin' or w) return i;
+           }
+       ],
+
         article "the",
   has   card;
 
