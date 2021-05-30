@@ -904,24 +904,6 @@ Object  -> pigeonhole "pigeonhole"
         description "A depository for scrolls.",
   has   container open static;
 
-[ TubeParse i w ;
-    if( parser_action == ##TheSame ) {
-        return -1;
-    }
-    while( 1 == 1 ) {
-        w = NextWord();
-        if( Refers(self,w) == 1 ) {
-            ++i;
-        } else if( w == 'tubes' ) {
-            parser_action = ##PluralFound;
-            ++i;
-        } else {
-            return i;
-        }
-    }
-    rfalse;
-];
-
 Object  tube_with_an_alpha_on "tube with an alpha on"    
   with  name 'alpha' 'with' 'tube' 'cylinder',
         description "An open-ended hollow tube, marked with a Greek capital Alpha.",
@@ -929,23 +911,52 @@ Object  tube_with_an_alpha_on "tube with an alpha on"
         angel_hint "Surely this is addressed to someone?",
   has   container open;
 
+[ TubeParse i j w len cnt;
+     if( parser_action==##TheSame ) {   
+          if( (parser_one.&name)-->0 == (parser_two.&name)-->0 ) 
+              return -1;
+          return -2;
+     }
+     len = (self.#name)/2;
 
-[ ScrollParse i w ;
-    if( parser_action == ##TheSame ) {
-        return -1;
-    }
-    while( 1 == 1 ) {
-        w = NextWord();
-        if( Refers(self,w) == 1 ) {
-            ++i;
-        } else if( w == 'poems' or 'scrolls' ) {
-            parser_action = ##PluralFound;
-            ++i;
-        } else {
-            return i;
-        }
-    }
-    rfalse;
+     for( w = NextWord() : w : w = NextWord() ) {
+         j = false;
+         for( i=0: i < len : i++ ) {
+             if( w == 'tubes' )
+                 parser_action = ##PluralFound;
+             else if( w == self.&name-->i )
+                 j = true;
+         }
+         if( j == false )
+             return cnt;
+         else
+             cnt++;
+     }
+     return cnt;
+];
+
+[ ScrollParse i j w len cnt;
+     if( parser_action==##TheSame ) {   
+          if( (parser_one.&name)-->0 == (parser_two.&name)-->0 ) 
+              return -1;
+          return -2;
+     }
+     len = (self.#name)/2;
+
+     for( w = NextWord() : w : w = NextWord() ) {
+         j = false;
+         for( i=0: i < len : i++ ) {
+             if( w == 'scrolls' )
+                 parser_action = ##PluralFound;
+             else if( w == self.&name-->i )
+                 j = true;
+         }
+         if( j == false )
+             return cnt;
+         else
+             cnt++;
+     }
+     return cnt;
 ];
 
 Object  -> scroll_bearing_an_epic_poem "scroll bearing an epic poem"     
