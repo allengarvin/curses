@@ -1,3 +1,12 @@
+[ BookParsename ;
+    if (NextWord() == 'books' or 'volumes' or 'tomes') {
+        parser_action = ##PluralFound;
+        return 1;
+    }
+    --wn;
+    return -1;
+];
+
 [ EnterDream ;
     ChangePlayer(ghost_of_yourself);
     PlayerTo(Melancholy_Dream);
@@ -164,97 +173,99 @@ Object  -> teachests "teachests"
 
 Object  -> -> Meldrewes_History "History of the Meldrews (vol. II)"      
   with  name 'book' 'history',
+        parse_name BookParsename,
         before [ w ;
-            wn = consult_from;
-            w = NextWord();
-            if( w == 'mad' or 'sir' or 'honourable' )
+            Consult:
+                wn = consult_from;
                 w = NextWord();
-            if( w == 'me' or 'myself' or 'self' ) {
-                trigger_quotation(48);
-                "Perhaps you may one day earn a place in vol. III.";
-            }
-            if( w == 'peter' )
-                "Modestly, the author (died 1940 or so?) missed himself out.";
-            if( w == 'jemima' )
-                "She's far too recent to be included.";
-            if( w == 'isaac' )
-                "Mad Isaac (1705-1792) went in for mystic experiments of all kinds, and was a noted antiquarian. He
-                believed that the Meldrew family had an ancestral curse, dooming each member to undertake
-                a futile quest. The only way to break the curse, he thought, was for one of them to actually
-                succeed... unfortunately he died in peculiar circumstances before finding out how.^^Then again, he also
-                believed that King Arthur's wizard Merlin was buried not in a Tintagel cave, as is usually claimed,
-                but somewhere in the back garden (near where the motorway is now), and that the moon is a giant pair
-                of black and white discs towed through the night sky by a team of angels.";
-            if( w == 'ebenezer' )
-                "It seems Ebenezer (1846-1908), the younger of a pair of twins, threw up a promising career in the
-                East India Company one day, took a packet steamer to Cape Colony and simply marched off into the bush
-                on a quest to find a legendary river. His maps were used for several years after, and a province was
-                named after him for a while, but the locals call it something else now.";
-            if( w == 'roger' )
-                "Roger (1846-1913), the elder of a pair of twins, was very Victorian indeed, especially in his
-                disapproval of his beautiful young wife's literary career. He thought her romances so immoral that
-                he refused to allow the family name to appear on them. A prominent local vestryman, his own writing
-                was confined to a great many monographs on the problems of municipal drainage, but he died before his
-                grand National Sewerage Plan was complete.";
-            if( w == 'capability' or 'willard' )
-                "~Capability~ Meldrew (1761-1817) became a mildly celebrated landscape gardener, starting a brief
-                fashion for crypts and memorials as garden ornaments (he claimed it was closer to nature). Very little
-                of his work now survives. His real name, incidentally, was Willard.";
-            if( w == 'henri' )
-                "Very little is known about Henri, who lived at some time in the fifteenth century. As a young man
-                he fought at Agincourt, and seems to have been some kind of combat engineer. The story goes that he
-                acquired his nickname, The Black Post, from a joke made by the King when he was standing up to his
-                waist in a ditch. He must have been proud of it because his coat of arms bears his name written down
-                the left hand side, and Black Post down the right.^^In his later years he became morbidly possessed,
-                and (according to legend) spent his declining years working on his own tomb, which he insisted would
-                be of celestial importance.";
-            if( w == 'helene' )
-                "Helene Meldrew (1902-) is a noted painter and sculptress. Her relations with the family were broken off
-                in the 20s when she married Anton and ran off to Paris to study art, but she has recently returned to
-                the House, in search (as she puts it) of ~the perfect blue, the blue of the sky, the blue of water~. We
-                wish her well.";
-            if( w == 'anton' or 'smyslov' )
-                "Anton Smyslov shouldn't really be in the book, even if he did marry Helene, but there is a brief passage,
-                since he was so famous - he was a chess grandmaster, and won the Paris Open five years running in the
-                1930s. His speciality was bold sacrificial attacks, but he was also notorious for eating blueberry
-                yoghurt at the board.";
-            if( w == 'alison' )
-                "Under the pseudonym Marie Swelldon, your ancestress Alison (1871-1930) wrote several mildly successful
-                romances. She obsessively collected lucky charms, and advertised in newspapers for double-headed coins
-                and the like (although she never traced a rumoured find of a five-leafed clover, somewhere in County
-                Donegal).^^In order to write in tranquillity and to avoid her husband, it was she who installed the
-                fake wall at the far south end of the attic east wing, and each afternoon she would sneak upstairs to
-                push it aside.";
-            if( w == 'joshua' )
-                "Oh dear, the deeply regrettable Sir Joshua Meldrewe (1710-1776). Member of the Dilletanti Society
-                and the Hell-Fire Club, and a politician (chancellor of the exchequer 1762-3; ~probably the least
-                competent minister ever to hold that office~ - Oxford History of England, vol. xii).^^", "His father
-                disinherited him for wildly excessive living (he almost invariably wore jewelled buttons worth at least
-                a thousand pounds) and for marrying a lady of easy virtue while on the run from a prison in France,
-                where he was sentenced to be beheaded. In order to stop his sister getting the fortune, he went back
-                to Italy and advertised for a pregnant bride to provide a male heir. This nefarious plot was foiled
-                when he choked to death on a chicken-bone.^^It is said that he stole the money anyway near the end,
-                and certainly some gold went missing. (He also managed to get the family stripped of its baronetcy by
-                cheating at piquet with the Prince of Wales.)";
-            if( w == 'hartley' )
-                "Your distant great-uncle Hartley was a tiresomely enthusiastic amateur Egyptologist who, every Christmas,
-                used to sit you on his knee and drone on about trenches and writings and the fellaheen. It was all a
-                bit of a fraud, you now discover, since he only actually went to Egypt once - there was such a scandal
-                about his refusal to donate his best find to the British Museum that he was never allowed to excavate
-                again, though he spent years writing in vain to the Egyptian government.";
-            if( w == 'gerard' )
-                "Roger's eldest son Gerard (1898-1916) was killed in the Battle of the Somme. His mother, ~Marie
-                Swelldon~, gave up writing afterwards.";
-            if( w == 'austin' )
-                "Austin's quite venerable for a cat, but not that old.";
-            if( w == 'tobias' )
-                "Tobias Meldrew (1801-1870) was Professor of Theology at Christminster, 1850-66. He set himself the
-                task of proving the existence of God from first principles, a task which he announced in 1860 that
-                he had accomplished with the aid of ten thousand intermediate lemmas. The derision which greeted his
-                attempts to publish the mammoth work eventually drove him insane, and he spent the last four years of
-                his life in the madhouse.";
-            "Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find 
-             what you want.";
+                if( w == 'mad' or 'sir' or 'honourable' )
+                    w = NextWord();
+                if( w == 'me' or 'myself' or 'self' ) {
+                    trigger_quotation(48);
+                    "Perhaps you may one day earn a place in vol. III.";
+                }
+                if( w == 'peter' )
+                    "Modestly, the author (died 1940 or so?) missed himself out.";
+                if( w == 'jemima' )
+                    "She's far too recent to be included.";
+                if( w == 'isaac' )
+                    "Mad Isaac (1705-1792) went in for mystic experiments of all kinds, and was a noted antiquarian. He
+                    believed that the Meldrew family had an ancestral curse, dooming each member to undertake
+                    a futile quest. The only way to break the curse, he thought, was for one of them to actually
+                    succeed... unfortunately he died in peculiar circumstances before finding out how.^^Then again, he also
+                    believed that King Arthur's wizard Merlin was buried not in a Tintagel cave, as is usually claimed,
+                    but somewhere in the back garden (near where the motorway is now), and that the moon is a giant pair
+                    of black and white discs towed through the night sky by a team of angels.";
+                if( w == 'ebenezer' )
+                    "It seems Ebenezer (1846-1908), the younger of a pair of twins, threw up a promising career in the
+                    East India Company one day, took a packet steamer to Cape Colony and simply marched off into the bush
+                    on a quest to find a legendary river. His maps were used for several years after, and a province was
+                    named after him for a while, but the locals call it something else now.";
+                if( w == 'roger' )
+                    "Roger (1846-1913), the elder of a pair of twins, was very Victorian indeed, especially in his
+                    disapproval of his beautiful young wife's literary career. He thought her romances so immoral that
+                    he refused to allow the family name to appear on them. A prominent local vestryman, his own writing
+                    was confined to a great many monographs on the problems of municipal drainage, but he died before his
+                    grand National Sewerage Plan was complete.";
+                if( w == 'capability' or 'willard' )
+                    "~Capability~ Meldrew (1761-1817) became a mildly celebrated landscape gardener, starting a brief
+                    fashion for crypts and memorials as garden ornaments (he claimed it was closer to nature). Very little
+                    of his work now survives. His real name, incidentally, was Willard.";
+                if( w == 'henri' )
+                    "Very little is known about Henri, who lived at some time in the fifteenth century. As a young man
+                    he fought at Agincourt, and seems to have been some kind of combat engineer. The story goes that he
+                    acquired his nickname, The Black Post, from a joke made by the King when he was standing up to his
+                    waist in a ditch. He must have been proud of it because his coat of arms bears his name written down
+                    the left hand side, and Black Post down the right.^^In his later years he became morbidly possessed,
+                    and (according to legend) spent his declining years working on his own tomb, which he insisted would
+                    be of celestial importance.";
+                if( w == 'helene' )
+                    "Helene Meldrew (1902-) is a noted painter and sculptress. Her relations with the family were broken off
+                    in the 20s when she married Anton and ran off to Paris to study art, but she has recently returned to
+                    the House, in search (as she puts it) of ~the perfect blue, the blue of the sky, the blue of water~. We
+                    wish her well.";
+                if( w == 'anton' or 'smyslov' )
+                    "Anton Smyslov shouldn't really be in the book, even if he did marry Helene, but there is a brief passage,
+                    since he was so famous - he was a chess grandmaster, and won the Paris Open five years running in the
+                    1930s. His speciality was bold sacrificial attacks, but he was also notorious for eating blueberry
+                    yoghurt at the board.";
+                if( w == 'alison' )
+                    "Under the pseudonym Marie Swelldon, your ancestress Alison (1871-1930) wrote several mildly successful
+                    romances. She obsessively collected lucky charms, and advertised in newspapers for double-headed coins
+                    and the like (although she never traced a rumoured find of a five-leafed clover, somewhere in County
+                    Donegal).^^In order to write in tranquillity and to avoid her husband, it was she who installed the
+                    fake wall at the far south end of the attic east wing, and each afternoon she would sneak upstairs to
+                    push it aside.";
+                if( w == 'joshua' )
+                    "Oh dear, the deeply regrettable Sir Joshua Meldrewe (1710-1776). Member of the Dilletanti Society
+                    and the Hell-Fire Club, and a politician (chancellor of the exchequer 1762-3; ~probably the least
+                    competent minister ever to hold that office~ - Oxford History of England, vol. xii).^^", "His father
+                    disinherited him for wildly excessive living (he almost invariably wore jewelled buttons worth at least
+                    a thousand pounds) and for marrying a lady of easy virtue while on the run from a prison in France,
+                    where he was sentenced to be beheaded. In order to stop his sister getting the fortune, he went back
+                    to Italy and advertised for a pregnant bride to provide a male heir. This nefarious plot was foiled
+                    when he choked to death on a chicken-bone.^^It is said that he stole the money anyway near the end,
+                    and certainly some gold went missing. (He also managed to get the family stripped of its baronetcy by
+                    cheating at piquet with the Prince of Wales.)";
+                if( w == 'hartley' )
+                    "Your distant great-uncle Hartley was a tiresomely enthusiastic amateur Egyptologist who, every Christmas,
+                    used to sit you on his knee and drone on about trenches and writings and the fellaheen. It was all a
+                    bit of a fraud, you now discover, since he only actually went to Egypt once - there was such a scandal
+                    about his refusal to donate his best find to the British Museum that he was never allowed to excavate
+                    again, though he spent years writing in vain to the Egyptian government.";
+                if( w == 'gerard' )
+                    "Roger's eldest son Gerard (1898-1916) was killed in the Battle of the Somme. His mother, ~Marie
+                    Swelldon~, gave up writing afterwards.";
+                if( w == 'austin' )
+                    "Austin's quite venerable for a cat, but not that old.";
+                if( w == 'tobias' )
+                    "Tobias Meldrew (1801-1870) was Professor of Theology at Christminster, 1850-66. He set himself the
+                    task of proving the existence of God from first principles, a task which he announced in 1860 that
+                    he had accomplished with the aid of ten thousand intermediate lemmas. The derision which greeted his
+                    attempts to publish the mammoth work eventually drove him insane, and he spent the last four years of
+                    his life in the madhouse.";
+                "Annoyingly there's no index (there was going to be a consolidated one in vol. I) and you can't find 
+                 what you want.";
         ],
         list_together n_obj,
         description "It was to have been the Honourable Peter Meldrew's life's work, a two-volume edition giving 
@@ -330,6 +341,7 @@ HRoom   Servants_Room "Servant's Room"
 
 Object  -> classical_dictionary "classical dictionary"   
   with  name 'hobsons' 'choice' 'classical' 'dictionary' 'book',
+        parse_name BookParsename,
         before [ w;
             Consult:
                 wn = consult_from;
@@ -1121,6 +1133,7 @@ Object  -> water_pipe "water pipe"
 
 Object  -> romantic_novel "romantic novel"       
   with  name 'romance' 'romantic' 'novel' 'book',
+        parse_name BookParsename,
         before [;
             Take:
                 if( steel_wrench hasnt general ) {
@@ -1150,6 +1163,7 @@ Object  -> romantic_novel "romantic novel"
 
 Object  -> book_of_Twenties_poetry "book of Twenties poetry"     
   with  name 'poetry' 'book',
+        parse_name BookParsename,
         before [;
             Take:
                 if( steel_wrench hasnt general ) {
@@ -1706,13 +1720,14 @@ Object  -> hatch "hatch"
         when_closed "Low down on one wall is a little hatch door, which if it were open would be large enough to 
             enter.",
         with_key small_brass_key,
-        door_to d_to,
+        door_dir d_to,
         when_open "An open hatch-door in the wall at floor level reveals a chute leading down into darkness.",
         description "Perhaps the attic key might unlock it?  It does look modern compared to everything else here.",
   has   door lockable locked openable static;
 
 Object  -> ancient_prayer_book "ancient prayer book"     
   with  name 'diary' 'ancient' 'prayer' 'book',
+        parse_name BookParsename,
         before [ year;
             Consult:
                 year = TryNumber(consult_from);
@@ -2578,9 +2593,71 @@ Object  -> little_window1 "little window"
 
 Object  -> robot_mouse "robot mouse"     
   with  name 'robot' 'mouse',
-!        life MouseLife,
+        orders [ frm dst prev_loc;
+            if (gas_mask has worn && MouseUnderstandsMask == false) {
+                MouseUnderstandsMask = true;
+                print "(amazingly, the mouse can make out your voice even when you 
+                have the gas mask on - that's real engineering, that is)^";
+            }
+            Beep, Sing:
+                "The mouse bleeps with happy pride. That's one thing it really knows how to do.";
+            Go:
+                if( noun == ne_obj or nw_obj or se_obj or sw_obj or d_obj or u_obj )
+                    "The mouse bleeps with annoyance.";
+                frm = parent(self);
+                if (frm == Cellars_South) {
+                    if (noun == n_obj) {
+                        dst = Cellars;
+                    }
+                    if (noun == w_obj) {
+                        dst = hole_in_the_wall;
+                        Mouse_x = 8;
+                        Mouse_y = 3;
+                    }
+                } else if (frm == Cellar_West) {
+                    if (noun == e_obj) {
+                        dst = Cellars;
+                    }
+                } else if (frm == Wine_Cellars) {
+                    if (noun == w_obj) {
+                        dst = Cellars;
+                    }
+                } else if (frm == Cellars) {
+                    if (noun == w_obj) {
+                        dst = Cellar_West;
+                    }
+                    if (noun == s_obj) {
+                        dst = Cellars_South;
+                    }
+                    if (noun == e_obj) {
+                        dst = Wine_Cellars;
+                    }
+                } else
+                    "The mouse wheels spin, but can't get a good enough grip to move.";
+                if( dst == nothing )
+                    "The mouse emits a low-pitched bleep.";
+
+                prev_loc = frm;
+                move robot_mouse to dst;
+                give robot_mouse moved;
+
+                if (location == prev_loc) {
+                    if (dst == hole_in_the_wall) {
+                        trigger_quotation(1);
+                        "The mouse just squeezes through the hole, and disappears from view. Unfortunately you 
+                         can't very easily talk to it now...";
+                    } else 
+                        "The mouse runs off as ordered.";
+                }
+                "POSSIBLE BUG?";
+            default: "The mouse emits a querulous, unhappy bleep.";
+        ],
+
         initial "In one corner is a dust-covered robot mouse.",
-        description "Remember the late 1970s, when a craze for home-made robots swept the home computing world?  No, perhaps not, but here is a left-over from it anyway. The mouse is quite large (almost a foot wide and tall), and has a big smile painted on its metal chassis. It has surprisingly modern circuitry in, though, and is even humming very faintly, so someone must have put some work in on it recently.",
+        description "Remember the late 1970s, when a craze for home-made robots swept the home computing world?  No, 
+                perhaps not, but here is a left-over from it anyway. The mouse is quite large (almost a foot wide
+                and tall), and has a big smile painted on its metal chassis. It has surprisingly modern circuitry
+                in, though, and is even humming very faintly, so someone must have put some work in on it recently.",
         devil_hint "It can't even follow orders.",
   has   talkable;
 
@@ -2703,7 +2780,7 @@ Object  -> ironbound_door "ironbound door"
         door_to Infinity_Symbol,
         when_closed "In the northwest wall is a heavy, imposing ironbound door.",
         with_key wrought_iron_key,
-        door_to nw_to,
+        door_dir nw_to,
         when_open "In the northwest wall the ironbound door stands open.",
         description "There are times when your life seems an endless sequence of locked doors, each harder to pass than the last. This one, though, has a feeling of the ultimate about it.",
         article "an",

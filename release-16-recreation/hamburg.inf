@@ -103,25 +103,25 @@ Object  -> Tarot_box "Tarot box"
   has   container openable;
 
 TarotCard -> -> Castle "Castle"    
-  with  name 'castle' 'card' 'tarot',
+  with  name 'castle',
         door_to Ruined_Castle_Cafe,
         description "A stone castle on a hill.",
         devil_hint "It leads nowhere.";
 
 TarotCard -> -> Star "Star"        
-  with  name 'star' 'card' 'tarot',
+  with  name 'star',
         door_to Lighthouse,
         description "A single bright light in the darkness.",
         devil_hint "Ugh, what a nasty bright light. Good thing you'll never go there.";
 
 TarotCard  -> -> Eight_of_Wands_card "Eight of Wands"       
-  with  name 'eight' 'of' 'wands' 'card' 'tarot',
+  with  name 'eight' 'of' 'wands',
         rod_assoc rod_of_infinity,
         devil_hint "There's less to this card than meets the eye.",
   has   hidden_rod;
 
 TarotCard -> -> Maiden_card "Maiden"       
-  with  name 'maiden' 'card' 'tarot',
+  with  name 'maiden',
         n_to Sea_Shore,
         description "Andromeda chained to a rock on the sea-shore.",
         devil_hint "What an ugly girl!  Bet she's good for a laugh though.";
@@ -162,7 +162,7 @@ Object  -> discarded_matchbook "discarded matchbook"
   has   ;
 
 TarotCard  Ace_of_Cups_card "Ace of Cups"   
-  with  name 'ace' 'of' 'cups' 'card' 'tarot',
+  with  name 'ace' 'of' 'cups',
         door_to Cups_and_Glasses,
         description "It shows a great many crystal-glass cups and glasses.",
         devil_hint "It leads nowhere.";

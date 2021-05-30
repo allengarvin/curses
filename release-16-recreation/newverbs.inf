@@ -1,5 +1,8 @@
 [ RepairSub; "You would achieve nothing by this."; ];
 
+[ BeepSub ;
+    "Are you feeling quite right?";
+];
 
 [ FullScoreSub ndx score_var ;  
     ScoreSub();
@@ -455,5 +458,8 @@ Verb 'hint' 'hints'
 
 Verb 'dance' 'tango' 'waltz'
     * 'with' creature                                   -> Dance;
+
+Verb 'beep' 'bleep' 'chirp'
+    *                                                   -> Beep;
 
 

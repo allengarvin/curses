@@ -306,9 +306,9 @@ Object  -> cups_and_glasses_obj "cups and glasses"
                 give model_ship ~general;
                 give model_ship moved;
                 move model_ship to player;
-                "In fact there's nothing hidden among the crates but a model sailing ship. You pick it up from force of habit.";
+                "In fact there's nothing hidden among the crates but a model sailing ship. You pick it up from 
+                 force of habit.";
         ],
-
         article "numerous",
   has   scenery;
 
@@ -316,53 +316,40 @@ Object  -> mounted_bottle "mounted bottle"
   with  name 'mounted' 'whisky' 'glass' 'bottle',
         initial "An unlabelled whisky bottle, laid on its side and mounted on a wood plaque, lies deservedly unwanted on one of the crates.",
         description "Old, unwanted, dusty, empty.",
-        angel_hint "The great challenge, of course, is to get a ship inside.",
-  has   ;
-
-class   Model_Ship_Obj
-  with  before [;
-            Pull:
-                if( noun == model_ship ) {
-                    remove model_ship;
-                    move stick_with_an_anchor to player;
-                    itobj = stick_with_an_anchor;
-                    give itobj moved;
-                    "As you pull the anchor chain, the masts fold inwards and the decks concertina back, until you're holding no more than a tight bundle of sticks.";
-                }
-                remove stick_with_an_anchor;
-                move model_ship to player;
-                itobj = model_ship;
-                "As you pull the anchor chain, the sticks spring back outwards into the fully-rigged model sailing ship you knew of old.";
-            Insert:
-                if( second ~= mounted_bottle )
-                    rfalse;
-                if( noun == model_ship ) {
+        before [;
+            Receive:
+                if( noun == model_ship )
                     "The model ship is, of course, far too large to fit into the bottle.";
-                }
-                if( noun == stick_with_an_anchor ) {
-                    remove mounted_bottle;
-                    remove stick_with_an_anchor;
-                    move ship_in_a_bottle to player;
-                    give ship_in_a_bottle moved;
-                    Achieved(SCORE_SHIP);
-                    "The bundle of sticks will just fit through the bottle's neck. With a sudden spring, just as the last of the stick passes the neck, its masts fold out... and you have put the ship into the bottle.";
-                }
-            Wave:
-                if( noun == stick_with_an_anchor )
-                    "Ever the optimist.";
-                rfalse;
-        ];
+                if( noun ~= stick_with_an_anchor )
+                    "It won't fit.";
+        ],
+        after [;
+            Receive:
+                remove mounted_bottle;
+                remove stick_with_an_anchor;
+                move ship_in_a_bottle to player;
+                give ship_in_a_bottle moved;
+                Achieved(SCORE_SHIP);
+                "The bundle of sticks will just fit through the bottle's neck. With a sudden spring, just as the 
+                 last of the stick passes the neck, its masts fold out... and you have put the ship into the bottle.";
+        ],
+        angel_hint "The great challenge, of course, is to get a ship inside.",
+  has   open container transparent;
 
-Model_Ship_Obj ship_in_a_bottle "ship in a bottle"      
+Object ship_in_a_bottle "ship in a bottle"      
   with  name 'ship' 'in' 'bottle',
         before [;
             Examine:
-                if( ship_in_a_bottle notin player ) 
+                if( self notin player ) 
                     "You can't get a good look from here.";
+
                 if( game_section ~= T_TAROT ) 
-                    "You admire the fine detail on the model sailing ship, and feel strangely drawn to it. But back out of the world of the Tarot box, nothing else could happen.";
+                    "You admire the fine detail on the model sailing ship, and feel strangely drawn to it. But back 
+                     out of the world of the Tarot box, nothing else could happen.";
+
                 if( location == Lighthouse )
                     "Bright sunshine glints off the glass bottle, making it impossible to see detail within.";
+
                 move ship_in_a_bottle to Souvenirs_Room;
                 PlayerTo(Aboard_Ship,1);
                 "You look very closely at the fine detail on the model sailing ship. Perhaps it's the distorting 
@@ -375,15 +362,33 @@ Model_Ship_Obj ship_in_a_bottle "ship in a bottle"
         angel_hint "Oh, well done!  Why not take a closer look, you deserve it?",
   has   ;
 
-Model_Ship_Obj model_ship "model ship"  
+Object model_ship "model ship"  
   with  name 'model' 'sailing' 'ship' 'anchor' 'chain' 'mermaid' 'filigree' 'prow' 'stern',
         description "A superb model sailing ship, about six inches from prow to stern, immaculate in every detail from an anchor on a filigree chain to a carved mermaid up front.",
+        before [;
+            Pull:
+                remove model_ship;
+                move stick_with_an_anchor to player;
+                itobj = stick_with_an_anchor;
+                give itobj moved;
+                "As you pull the anchor chain, the masts fold inwards and the decks concertina back, until you're 
+                 holding no more than a tight bundle of sticks.";
+        ],
         angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has   general;
 
 Object  stick_with_an_anchor "stick with an anchor"      
   with  name 'stick' 'with' 'anchor' 'chain' 'sticks' 'ship',
-        description "A tightly-folded bundle of sticks, about six inches long, with a filigree chain and anchor hanging from it.",
+        before [;
+            Wave: "Ever the optimist.";
+            Pull:
+                remove stick_with_an_anchor;
+                move model_ship to player;
+                itobj = model_ship;
+                "As you pull the anchor chain, the sticks spring back outwards into the fully-rigged model sailing ship you knew of old.";
+        ],
+        description "A tightly-folded bundle of sticks, about six inches long, with a filigree chain and anchor 
+            hanging from it.",
         angel_hint "The great challenge, of course, is to get it inside a bottle.",
   has   ;
 
@@ -1069,25 +1074,25 @@ Object  -> Greek_frieze2 "Greek frieze"
 
 Object  port_obj "port wall"     
   with  name 'port',
-        w_to nw_obj,
+        door_dir w_to,
         article "the",
   has   scenery;
 
 Object  starboard_obj "starboard wall"   
   with  name 'starboard',
-        w_to se_obj,
+        door_dir e_obj,
         article "the",
   has   scenery;
 
 Object  fore_obj "fore wall"     
   with  name 'fore',
-        w_to w_obj,
+        door_dir n_to,
         article "the",
   has   scenery;
 
 Object  aft_obj "aft wall"       
   with  name 'aft',
-        w_to ne_obj,
+        door_dir s_to,
         article "the",
   has   scenery;
 
@@ -1215,10 +1220,11 @@ Object  -> flagpole "flagpole"
 Object  -> british_flag "flag of the British Merchant Navy" 
   with  name 'flag' 'ensign' 'navy' 'british' 'merchant' 'of' 'tassels',
         before [;
-            Take, Remove:
+            Remove:
                 if( self in comfortable_bed ) "The flag seems perfect for the bed as it is.";
                 rfalse;
             Take, Pull:
+                if( self in comfortable_bed ) "The flag seems perfect for the bed as it is.";
                 if( self notin Up_the_Mast ) rfalse;
                 give british_flag general;
                 "You take hold of the tassels of the flag in one hand (though it won't pull away from the pole).";

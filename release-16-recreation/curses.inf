@@ -152,7 +152,8 @@ Array garden_array ->
     49
 ;
 
-global rod_score;
+Global rod_score;
+Global MouseUnderstandsMask;
 Global save_game_sec;
 Global before_short_desc;
 Global current_game_sec;
@@ -505,7 +506,7 @@ Include "afterlife.inf";
 ];
 
 Object carbolic_soap "carbolic soap"
-  with  name 'soap" "carbolic',
+  with  name 'soap' 'carbolic',
         before [; Eat: << Wash self >>; ],
         description "~For foulmouths everywhere~.",
         article "a cake of",

@@ -50,32 +50,40 @@ Class   Rod
                 print "featureless mahogany rod";
                 rtrue; 
             }
-            if( listing_together hasnt rod_attr ) {
+           ! if( listing_together hasnt rod_attr ) {
                 if( self has high_rod )
                     print "High ";
                 print "Rod of ";
-            }
+           ! }
             rfalse;
         ],
-        parse_name [ i w ;
+        parse_name [ i j w len cnt;
             if( parser_action == ##TheSame ) {
                 if( parser_one has unidentifed_rod && parser_two has unidentifed_rod ) {
                     return -1;
                 }
                 return -2;
             }
-            while( 1 == 1 ) {
-                w = NextWord();
-                if( Refers(self,w) == 1 ) {
-                    ++i;
-                } else if( w == 'rods' ) {
-                    parser_action = ##PluralFound;
-                    ++i;
-                } else {
-                    return i;
+            len = (self.#name)/2;
+
+            for( w = NextWord() : w : w = NextWord() ) {
+                j = false;
+                for( i=0: i < len : i++ ) {
+                    if( w == 'rods' )
+                        parser_action = ##PluralFound;
+                    else if( w == self.&name-->i ) {
+                        if( self hasnt unidentifed_rod && w == 'featureless' )
+                            j == false;
+                        else
+                            j = true;
+                    }
                 }
+                if( j == false )
+                    return cnt;
+                else
+                    cnt++;
             }
-            rfalse;
+            return cnt;
         ],
   has   rod_attr;
 
