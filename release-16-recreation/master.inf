@@ -581,9 +581,9 @@ Object Encampment "Encampment"
 
 Object -> dolmen "dolmen"       
   with  name 'dolmen' 'coals' 'hot' 'rock',
-        n_to Beneath_Dolmen,
-        w_to e_obj,
-        initial "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be 
+        door_to Beneath_Dolmen,
+        door_dir e_to,
+        when_open "An erratic glacial rock, which seems in the feverish firelight to make a natural dolmen, can be 
             made out to the east, on the other side of an almost-extinguished campfire of hot coals.",
   has   door open static;
 

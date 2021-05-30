@@ -292,8 +292,8 @@ TRoom   Cups_and_Glasses "Cups and Glasses"
 
 Object  -> windowed_door "windowed door" 
   with  name 'door' 'window' 'windowed',
-        n_to Cups_and_Glasses,
-        w_to w_obj,
+        door_to Cups_and_Glasses,
+        door_dir n_to,
         description "Through the square window in the door you can see a bar at which staff are serving, and a very crowded and lively cafe-restaurant beyond. The cabaret act has her back to you, and a considerable amount of her front to the diners.",
   has   door lockable locked openable scenery;
 
@@ -577,10 +577,10 @@ TRoom   Wall_of_Thorns "Wall of Thorns"
 
 Object  -> wall_of_thorns_object "wall of thorns"        
   with  name 'gap' 'thorns' 'of' 'wall',
-        n_to Sacred_Earth,
-        s_to "The wall rustles and clashes its thorns like a beast alive.",
-        w_to ne_obj,
-        initial "A ragged gap in the wall has been burnt out to the south.",
+        door_to Sacred_Earth,
+        when_closed "The wall rustles and clashes its thorns like a beast alive.",
+        door_dir s_to,
+        when_open "A ragged gap in the wall has been burnt out to the south.",
         description "It's hard to imagine what could possibly shift a wall like that.",
   has   door static;
 

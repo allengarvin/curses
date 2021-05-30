@@ -1,5 +1,106 @@
 [ RepairSub; "You would achieve nothing by this."; ];
 
+
+[ FullScoreSub ndx score_var ;  
+    ScoreSub();
+    if( score == 0 ) {
+        rfalse;
+    }
+    new_line;
+    L__M(##FullScore,1);
+    ndx = 0;
+    while( ndx < 45 ) {
+        if( task_done->ndx == 1 ) {
+            if( ndx == 21 ) {
+                PANum(65486);
+                score_var = score_var - 50;
+            } else {
+                PANum(task_scores->ndx);
+                score_var = score_var + task_scores->ndx;
+            }
+            PrintTaskName(ndx);
+        }
+        ++ndx;
+    }
+    if( rod_score ~= 0 ) {
+        PANum(rod_score);
+        print "discovering rods^";
+    }
+    if( things_score ~= 0 ) {
+        PANum(things_score);
+        L__M(##FullScore,2);
+    }
+    if( places_score ~= 0 ) {
+        PANum(places_score);
+        L__M(##FullScore,3);
+    }
+    if( good_try_bonus ~= 0 ) {
+        PANum(5);
+        print "bonus for a good try^";
+        score_var = score_var + 5;
+    }
+    score_var = score_var + rod_score + things_score + places_score;
+    if( score == 65437 ) {
+        score_var = 0 - score_var - 99;
+        PANum(score_var);
+        print "destroying universe^";
+    }
+    new_line;
+    PANum(score);
+    L__M(##FullScore,4);
+    if( deadflag == WON && task_done->11 == 0 ) {
+        "^Sadly, you missed out on the 50-point bonus for rescuing Andromeda.";
+    }
+    rtrue;
+];
+
+[ WaveSub r ;
+    if (noun notin player) {
+        "But you aren't holding it.";
+    }
+    if (noun has hidden_rod) {
+        if (daisy_chain in player && daisy_chain has worn && daisy_chain.number == 1) {
+            score = score + 6;
+            rod_score = rod_score + 6;
+            print "Light pulses around the daisy chain, then leaps out to engulf ", (the) noun, " which melts into ";
+            remove noun;
+            r = noun.rod_assoc;
+            itobj = r;
+            give r moved;
+            give r unidentifed_rod;
+            move r to player;
+            print (a) r;
+            "!";
+        }
+        if (yellow_daisy in player && yellow_daisy has worn) {
+            score = score + 6;
+            rod_score = rod_score + 6;
+            print "Light pulses from the daisy behind your ear, leaping out to engulf ", (the) noun, 
+                " which melts into ";
+            remove noun;
+            r = noun.rod_assoc;
+            itobj = r;
+            give r moved;
+            move r to player;
+            if (r has rod_attr) {
+                print (the) r;
+            } else {
+                print (a) r;
+            }
+            "!";
+        }
+    }
+    if (noun has rod_attr) {
+        "That seems to be not quite how they work...";
+    }
+    if (noun has worn) {
+        "You can't wave what you're wearing.";
+    }
+    print "You look ridiculous waving ";
+    Defart(noun);
+    ".";
+];
+
 [ WishSub ;
     if( chicken_wishbone notin player ) {
         "You make a wish.";

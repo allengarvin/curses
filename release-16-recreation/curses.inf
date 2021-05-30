@@ -79,6 +79,7 @@ Constant SCORE_KNIGHT = 42;
 Constant SCORE_KNIGHT_ENCOURAGE = 43;
 Constant SCORE_HIGHROD = 44;
 
+Constant TASKS_PROVIDED;
 Constant NUMBER_TASKS = 45;
 Array task_scores -> 3 7 7 10 3 3 5 5 2 2 3 50 3 4 6 6 15 10 1
     8 4 0 0 3 3 6 5 10 7 7 3 3 3 6 3 8 3 3 7 3 3 15 15 3 1;
@@ -151,6 +152,7 @@ Array garden_array ->
     49
 ;
 
+global rod_score;
 Global save_game_sec;
 Global before_short_desc;
 Global current_game_sec;
@@ -388,6 +390,9 @@ Attribute lucky;
 
 Replace NextWord;
 
+Replace FullScoreSub;
+Replace PrintTaskName;
+Replace WaveSub;
 Replace DrawStatusLine;
 Replace SaveSub;
 Replace StrongSub;

@@ -138,10 +138,10 @@ Object  -> hinged_trapdoor "hinged trapdoor"
                 }
                 "You close the trapdoor once more. No more jewellery boxes though.";
         ],
-        n_to House,
-        s_to "There is a closed trapdoor in the middle of the floor.",
-        w_to thedark,
-        initial "A hinged trapdoor in the floor stands open, and light streams in from below.",
+        door_to House,
+        when_closed "There is a closed trapdoor in the middle of the floor.",
+        door_dir d_to,
+        when_open "A hinged trapdoor in the floor stands open, and light streams in from below.",
   has   door light open openable static;
 
 Object  -> teachests "teachests" 
@@ -1473,9 +1473,9 @@ Object  secret_door "secret door"
 
 Object  fire_escape "fire escape"        
   with  name 'fire' 'escape' 'hatchway' 'hatch',
-        n_to Beside_the_Drive,
-        w_to thedark,
-        initial "A hatchway in the east wall, onto an old iron fire escape, is open and light floods in through it. (Some fool must have set the alarm off.)",
+        door_to Beside_the_Drive,
+        door_dir d_to,
+        when_open "A hatchway in the east wall, onto an old iron fire escape, is open and light floods in through it. (Some fool must have set the alarm off.)",
   has   door open static;
 
 HRoom   Inside_Cupboard "Inside Cupboard"        
@@ -1524,7 +1524,7 @@ Object  -> big_iron_fireplace "big iron fireplace"
         ],
         door_to Chimney,
         door_dir w_to,
-        initial "There is a big iron fireplace in the west wall.",
+        when_open "There is a big iron fireplace in the west wall.",
   has   concealed container door open static;
 
 Object  -> cranked_skylight "cranked skylight"   
@@ -1703,9 +1703,10 @@ HRoom   Priests_Hole "Priest's Hole"
 Object  -> hatch "hatch" 
   with  name 'hatch' 'door',
         door_to Cellar_West,
-        when_closed "Low down on one wall is a little hatch door, which if it were open would be large enough to enter.",
+        when_closed "Low down on one wall is a little hatch door, which if it were open would be large enough to 
+            enter.",
         with_key small_brass_key,
-        w_to thedark,
+        door_to d_to,
         when_open "An open hatch-door in the wall at floor level reveals a chute leading down into darkness.",
         description "Perhaps the attic key might unlock it?  It does look modern compared to everything else here.",
   has   door lockable locked openable static;
@@ -1810,7 +1811,7 @@ Object  -> windows "windows"
         
         door_to Tiny_Balcony,
         when_closed "Blue sky can be seen through south-facing windows, latticed with black lead and shut tight.",
-        dir_dir s_to,
+        door_dir s_to,
         when_open "Black-latticed windows open on a beautiful summer's day.",
   has   door static;
 
@@ -2699,11 +2700,11 @@ Object  -> ironbound_door "ironbound door"
             Knock:
                 "You bark your knuckles painfully on the iron, and to no avail.";
         ],
-        n_to Infinity_Symbol,
-        s_to "In the northwest wall is a heavy, imposing ironbound door.",
-        e_to wrought_iron_key,
-        w_to d_obj,
-        initial "In the northwest wall the ironbound door stands open.",
+        door_to Infinity_Symbol,
+        when_closed "In the northwest wall is a heavy, imposing ironbound door.",
+        with_key wrought_iron_key,
+        door_to nw_to,
+        when_open "In the northwest wall the ironbound door stands open.",
         description "There are times when your life seems an endless sequence of locked doors, each harder to pass than the last. This one, though, has a feeling of the ultimate about it.",
         article "an",
   has   door lockable locked openable static;

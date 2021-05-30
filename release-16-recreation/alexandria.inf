@@ -118,11 +118,11 @@ Object  -> rusty_iron_grating "rusty iron grating"
                 move noun to Jetty;
                 print_ret (The) noun, " drops through the grating and bounces down in the darkness.";
         ],
-        n_to Jetty,
-        s_to "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
-        e_to rusty_iron_key,
-        w_to thedark,
-        initial "A rusty seaweed-wreathed iron grating lies open here.",
+        door_to Jetty,
+        when_closed "In one wall of the wave defences is a rusty seaweed-wreathed iron grating, closed up tight.",
+        with_key rusty_iron_key,
+        door_dir d_to,
+        when_open "A rusty seaweed-wreathed iron grating lies open here.",
   has   door lockable locked openable static;
 
 Object  -> rusty_iron_key "rusty iron key"       
@@ -253,10 +253,10 @@ Object  unexciting_tombstone "unexciting tombstone"
                  your feet... you topple over backward, flailing wildly. When you get up you can see a short flight
                  of steps leading down. You have opened the tomb!";
         ],
-        n_to The_Height_of_Fashion,
-        s_to "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
-        w_to thedark,
-        initial "You stand near the tombstone, which has become rather more interesting now that a flight of steps downward has appeared.",
+        door_to The_Height_of_Fashion,
+        when_closed "You stand near the tombstone to which the birds of prey were so inexplicably drawn.",
+        door_to d_to,
+        when_open "You stand near the tombstone, which has become rather more interesting now that a flight of steps downward has appeared.",
         description "It bears just one word of epigram: ~GALITA~. Below that is a curious face, with an open empty socket of a mouth.",
   has   door static;
 
@@ -495,10 +495,10 @@ Object  -> model_of_ugly_animal "model of an animal so ugly you can't bear to lo
 
 Object  -> marble_wall "marble wall"     
   with  name 'marble' 'wall',
-        n_to Quite_an_Undertaking,
-        s_to "Unfortunately, the passage slants down only into a solid marble wall.",
-        w_to thedark,
-        initial "The passage opens out onto the burial chamber below.",
+        door_to Quite_an_Undertaking,
+        when_closed "Unfortunately, the passage slants down only into a solid marble wall.",
+        door_dir d_to,
+        when_open "The passage opens out onto the burial chamber below.",
   has   door static;
 
 Object  Quite_an_Undertaking "Quite an Undertaking"      
@@ -698,10 +698,10 @@ Object  -> defaced_door "defaced door"
             Knock:
                 "The door shakes, and its old wood whispers ~Sosostris, the Priest of Sosostris~ in a falling echo.";
         ],
-        n_to Ancient_Consulting_Room,
-        s_to "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
-        w_to in_obj,
-        initial "The heavily defaced door opens onto a staircase up.",
+        door_to Ancient_Consulting_Room,
+        when_closed "In one wall is a door heavily defaced with writings, the same word, over and over in a hundred tongues and scripts: the word ~Sosostris~, in fact.",
+        door_dir u_to,
+        when_open "The heavily defaced door opens onto a staircase up.",
   has   door openable static;
 
 Object  Ancient_Consulting_Room "Consulting Room"        

@@ -10,10 +10,10 @@ Object Crypt "Crypt"
 Object -> bronze_mural "bronze mural"
   with  name 'bronze' 'mural',
 !        life LagachLife,
-        n_to Jagged_Passage,
-        s_to "The south wall forms a giant bronze mural, which has stood the test of time.",
-        w_to thedark,
-        initial "The mural stands slightly to one side, revealing a passage leading downward.",
+        door_to Jagged_Passage,
+        when_closed "The south wall forms a giant bronze mural, which has stood the test of time.",
+        door_dir d_to,
+        when_open "The mural stands slightly to one side, revealing a passage leading downward.",
         description "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations.",
   has   door static talkable;
 
@@ -174,7 +174,7 @@ Object -> metal_wall "metal wall"
         door_to CR,
         when_closed "The north edge of the room is a big sheet of dull amber-coloured metal.",
         door_dir n_to,
-        initial [;
+        when_open [;
             print "The whole "; 
             if( CR.time_left == 2 ) {
                 print "north";
@@ -183,7 +183,7 @@ Object -> metal_wall "metal wall"
             } 
             " wall is occupied by a bronze mirror, reflecting the room.";
         ],
-        when_open "Someone rather good-looking (you can't help thinking) is reflected in the metal surface.",
+        description "Someone rather good-looking (you can't help thinking) is reflected in the metal surface.",
   has   door static;
 
 Object -> iron_grid "iron grid"
