@@ -1,10 +1,7 @@
 [ discover_rod r ;
     give r ~unidentifed_rod;
     r.&name-->3 = r.rod_word;
-    if( r has high_rod )
-        r.list_together = "High Rods";
-    else
-        r.list_together = "Rods";
+    r.list_together = "Rods";
     rtrue;
 ];
 
@@ -152,7 +149,6 @@ Class HighRod
 
 Rod     rod_of_fire "Fire"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'fire',
         rod_action [;
             if( second == player ) {
@@ -246,7 +242,6 @@ Rod     rod_of_fire "Fire"
 
 Rod     rod_of_returning "Returning"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'returning',
         rod_action RodOfReturningAction,
         devil_hint "Well, that's not very useful, is it?  I'd go on strike if I were you.",
@@ -254,7 +249,6 @@ Rod     rod_of_returning "Returning"
 
 Rod     rod_of_stalking "Stalking"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'stalking',
         rod_action [ i;
             if( second == adamantine_knight ) 
@@ -300,7 +294,6 @@ Rod     rod_of_stalking "Stalking"
 
 Rod     rod_of_infinity "Infinity"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'infinity',
         rod_action [ t;
             if( second == adamantine_knight ) 
@@ -330,7 +323,6 @@ Rod     rod_of_infinity "Infinity"
 
 Rod     rod_of_husbandry "Husbandry"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'husbandry',
         rod_action [;
             if( second == player ) "You feel suddenly obedient, and briefly fancy a dog biscuit.";
@@ -349,7 +341,6 @@ Rod     rod_of_husbandry "Husbandry"
 
 Rod     rod_of_bronze "Bronze"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'bronze',
         rod_action [;
             if( second == player ) "You acquire a sudden sun tan, but it soon fades.";
@@ -371,7 +362,6 @@ Rod     rod_of_bronze "Bronze"
 
 Rod     rod_of_sacrifice "Sacrifice"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'sacrifice',
         rod_action [;
             if( second == herd_of_goats ) {
@@ -422,7 +412,6 @@ Rod     rod_of_sacrifice "Sacrifice"
 
 Rod     rod_of_luck "Luck"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'luck',
         rod_action [;
             if( second == player ) {
@@ -449,7 +438,6 @@ Rod     rod_of_luck "Luck"
 
 Rod     rod_of_ice "Ice"
   with  name 'rod' 'of' 'mahogany' 'featureless' 'plaque' 'rod' 'of' 'mahogany' 'featureless' 'plaque',
-        list_together nothing,
         rod_word 'ice',
         rod_action [;
             if( second == player )

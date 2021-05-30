@@ -7,15 +7,14 @@ Object Crypt "Crypt"
         section T_CATACOMBS,
   has   light;
 
-Object -> bronze_mural "bronze mural"
+LagachObj -> bronze_mural "bronze mural"
   with  name 'bronze' 'mural',
-!        life LagachLife,
         door_to Jagged_Passage,
         when_closed "The south wall forms a giant bronze mural, which has stood the test of time.",
         door_dir d_to,
         when_open "The mural stands slightly to one side, revealing a passage leading downward.",
         description "The mural depicts an old bearded wise man following a star in the western sky. He has his right arm around an attractive young woman and holds a bundle of wands with his left hand. Around the border are astrological symbols of all kinds, from Tarot suits to zodiacal constellations.",
-  has   door static talkable;
+  has   door static;
 
 [ CryptRoomBefore i ;   
     if( action == ##Smell ) {
@@ -146,7 +145,33 @@ Object aluminium_staircase "aluminium staircase"
 
 Object CR "CR"
   with  name 'basket' 'seesaw' 'hand' 'cannon' 'glass',
-!        after CRAfter,
+        after [;
+            Go, Enter:
+                if (noun == n_obj or s_obj or metal_wall) {
+                    print "^Walking through the mirror is a wrench, but leaves you somewhere... almost exactly 
+                        the same...^";
+                    redraw_statusline = true;
+                    Achieved(SCORE_REFLECTING);
+                    if (noun == n_obj) {
+                        self.s_to = metal_wall;
+                        self.n_to = nothing;
+                        metal_wall.door_dir = s_to,
+                        self.time_left = 3;
+                    } else {
+                        self.n_to = metal_wall;
+                        self.s_to = nothing;
+                        metal_wall.door_to = n_to,
+                        self.time_left = 2;
+                    }
+                    AdjustSlide(0,2);
+                    AdjustSlide(3,5);
+                    AdjustSlide(6,8);
+                    AdjustSlide(9,11);
+                    AdjustSlide(12,14);
+                }
+                rfalse;
+
+        ],
         n_to metal_wall,
         s_to nothing,
         e_to [;
@@ -154,7 +179,11 @@ Object CR "CR"
                 "You bump into an invisible barrier - perhaps the edge of the reflection.";
             return The_Catacombs;
         ],
-        description "The cartoonist Heath Robinson used to specialise in drawings of fantastically complicated machines of string, pulleys, levers, counterweights, cogs, mice running about on wheels and the like. Just such a contraption fills the west end of this room, though most of the workings are behind a glass wall which, although running with age, is as solid as the day it was built. The parts are very old (hand-made, not machined) but uncorroded.^^The only way out appears to be via the crawl to the east.",
+        description "The cartoonist Heath Robinson used to specialise in drawings of fantastically complicated 
+            machines of string, pulleys, levers, counterweights, cogs, mice running about on wheels and the
+            like. Just such a contraption fills the west end of this room, though most of the workings are behind
+            a glass wall which, although running with age, is as solid as the day it was built. The parts are very
+            old (hand-made, not machined) but uncorroded.^^The only way out appears to be via the crawl to the east.",
         time_left 2,
         short_name [;
             if( self.time_left == 3 ) 

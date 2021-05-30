@@ -139,19 +139,18 @@ TarotCard  -> -> Eight_of_Wands_card "Eight of Wands"
 
 TarotCard -> -> Maiden_card "Maiden"       
   with  name 'maiden',
-        n_to Sea_Shore,
+        door_to Sea_Shore,
         description "Andromeda chained to a rock on the sea-shore.",
         devil_hint "What an ugly girl!  Bet she's good for a laugh though.";
 
-Object  -> still_life "still life"       
+LagachObj  -> still_life "still life"       
   with  name 'long' 'painted' 'still' 'life' 'painting' 'disturbing',
-!        life LagachLife,
         initial "A long painted still life graces one wall near a corner.",
         description "A disturbing painting, perhaps by Edvard Munch, this is a still life of a seedling on a 
             table, surrounded by a rusty iron rod with a star on the end, a glass bottle, a lamp and a bunch of
             keys. No doubt these arcane objects held some special significance for primitive tribes now absorbed
             into civilisation.",
-  has   static talkable;
+  has   static;
 
 DERoom  Dark_Staircase "Dark Staircase"  
   with  before [;

@@ -152,6 +152,7 @@ Array garden_array ->
     49
 ;
 
+Global slide_moves;
 Global rod_score;
 Global MouseUnderstandsMask;
 Global save_game_sec;
@@ -392,6 +393,7 @@ Attribute lucky;
 Replace NextWord;
 
 Replace FullScoreSub;
+Replace KillSub;
 Replace PrintTaskName;
 Replace WaveSub;
 Replace DrawStatusLine;
@@ -415,6 +417,65 @@ Include "VerbLib";
     return j;
 ];
 
+[ WindBlows; "A swirl of wind almost bowls you over, but nothing else happens."; ];
+
+Class LagachObj
+  with  orders [ i r flag;
+            Lagach:
+                if( painting_of_Mad_Isaac_Meldrewe notin White_Hallway || painting_of_Mad_Isaac_Meldrewe has moved )
+                    rfalse;
+                if( self == painting_of_Mad_Isaac_Meldrewe && flag == false )
+                    "A breeze ripples the canvas of the unanchored painting, but that's all.";
+                i = 0;
+                if( location == Greek_Frieze1 ) i = 1;
+                if( location == Mosaic ) i = 2;
+                if( location == Crypt ) i = 3;
+                if( location == Bohemia ) i = 4;
+                if( location == Hall_of_Exhibits ) i = 5;
+                if( location == XIIth_Dynasty_Pyramid ) i = 6;
+                if( location == White_Hallway ) i = 7;
+                if( tourist_map_of_Paris has moved )
+                    "Nothing happens!  Already the druids' magic fades from the earth, and you cannot help feeling 
+                     saddened.";
+                if( i == 0 )
+                    return WindBlows();
+                r = carbolic_soap;
+                while( r hasnt visited || (r == White_Hallway && flag == false) ) {
+                    if( i++ == 8 ) {
+                        i = 1;
+                    }
+                    if( i == 1 ) {
+                        r = Greek_Frieze1;
+                    }
+                    if( i == 2 ) {
+                        r = Mosaic;
+                    }
+                    if( i == 3 ) {
+                        r = Crypt;
+                    }
+                    if( i == 4 ) {
+                        r = Bohemia;
+                    }
+                    if( i == 5 ) {
+                        r = Hall_of_Exhibits;
+                    }
+                    if( i == 6 ) {
+                        r = XIIth_Dynasty_Pyramid;
+                    }
+                    if( i == 7 ) {
+                        r = White_Hallway;
+                    }
+                }
+                if( r == location )
+                    return WindBlows();
+
+                print "A swirl of wind snakes out from ", (the) self, " and whisks you away to...^";
+                PlayerTo(r);
+                rtrue;
+            default: return WindBlows();
+        ],
+  has   talkable;
+        
 Include "rods.inf";
 Include "cards.inf";
 

@@ -163,7 +163,6 @@ Object  -> timer_detonator "timer-detonator"
                     "It is already running!";
                 }
                 StartTimer(self,10);
-                self.time_left = 1;
                 "You wind back the timer to ten minutes, and off it goes.";
         ],
         number 10,
@@ -788,7 +787,7 @@ TRoom   Cross_Centre "Cross Centre"
         after [;
             Take, Remove:
                 if( noun == inscribed_stone or old_timber_spar && noun has static )
-                    inscriptions.initial = "The two-foot opening is clear again.";
+                    inscriptions.when_open = "The two-foot opening is clear again.";
                 rfalse;
         ],
         s_to Inner_Sanctum,
@@ -823,9 +822,9 @@ Object  -> inscriptions "inscriptions"
                     print_ret (The) noun, " would simply fall through.";
 
                 if( noun == inscribed_stone ) {
-                    self.initial = "The opening is securely wedged with the stone.";
+                    self.when_open = "The opening is securely wedged with the stone.";
                 } else {
-                    self.initial = "The opening is securely wedged with the prop.";
+                    self.when_open = "The opening is securely wedged with the prop.";
                 }
                 give noun scenery ~moved ~scored;
                 move noun to location;
@@ -1068,9 +1067,8 @@ TRoom   Greek_Frieze1 "Greek Frieze"
 
 Object  -> Greek_frieze2 "Greek frieze"  
   with  name 'greek' 'frieze' 'mural',
-!        life LagachLife,
         description "The decorated strip of entablature between the architrave and the cornice, in the Attic style circa fifth century B.C.^^Well, you did ask.",
-  has   scenery talkable;
+  has   scenery;
 
 Object  port_obj "port wall"     
   with  name 'port',

@@ -1510,12 +1510,11 @@ Object  -> painting_of_Mad_Isaac_Meldrewe "painting of Mad Isaac Meldrewe"
                     "You take Mad Isaac down.";
                 }
                 if( big_iron_fireplace has concealed ) {
-                    give big_iron_fireplace ~concealed;
+                    give big_iron_fireplace ~concealed ~talkable;
                     "Taken. (There's a fireplace behind it, by the way.)";
                 }
                 rfalse;
         ],
-!        life LagachLife,
         initial "A large painting of Mad Isaac Meldrewe, your eighteenth-century ancestor, is propped up against the west wall.",
         description "It used to hang in the downstairs landing, and the red, deranged eyes annoyed everybody who passed. Then Aunt Jemima picked up the ridiculous idea that it was by Sir Joshua Reynolds and had it valued. Happily it wasn't and, to cut a long story long, it ended up here.",
         devil_hint "Carry this with you everywhere you go.",

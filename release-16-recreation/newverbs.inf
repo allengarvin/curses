@@ -1,7 +1,37 @@
+[ KillSub ;     
+    if( noun ~= hard_wooden_ball || second ~= croquet_mallet ) 
+        << Attack noun >>;
+    if( parent(hard_wooden_ball) ~= location ) 
+        "The ball is not on the ground.";
+    trigger_quotation(15);
+    print "You strike the ball with the mallet, and a pleasing cracking sound.^";
+    if( location == Lawn_Ornaments ) 
+        "^The ball ricochets around the ornaments as on a pinball table.";
+
+    if( location ~= Croquet_Lawn || Croquet_Lawn.nw_to ~= nothing ) {
+        rfalse;
+    }
+    print "^The ball runs smoothly across the lawn";
+    if( dug_hole in Croquet_Lawn ) {
+        move hard_wooden_ball to dug_hole;
+        " and falls in the hole.";
+    }
+    remove hard_wooden_ball;
+    Croquet_Lawn.nw_to = Behind_Summer_House;
+    Lawn_Ornaments.cant_go = "There are paths only west and northwest.";
+    Mosaic.e_to = Behind_Summer_House;
+    ", along to the northwestern hedge and into an irate squirrel. In a sudden rustle he leaps away, knocking 
+     aside a rotten branch and uncovering a tiny gap through the hedge.";
+];
+
 [ RepairSub; "You would achieve nothing by this."; ];
 
 [ BeepSub ;
     "Are you feeling quite right?";
+];
+
+[ PlayCroquetSub ;      
+    "You'll have to be a little more explicit.";
 ];
 
 [ FullScoreSub ndx score_var ;  
@@ -316,6 +346,135 @@
     rtrue;
 ];
 
+[ readchar s i j k ;
+    j = wn * 4 + 1;
+    k = parse->j;
+    s = k + buffer;
+    i = parse->(j - 1);
+    if (i ~= true) {
+        return 65535;
+    }
+    j = 65535;
+
+    if (s->0 >= 97 && s->0 <= 122) {
+        j = s->0 - 97 + 1;
+    }
+    if (s->0 >= 65 && s->0 <= 90) {
+        j = s->0 - 65 + 1;
+    }
+    if (j == 65535) {
+        return 65535;
+    }
+    parsed_number = j;
+    ++wn;
+    return 1;
+];
+
+[ SlideSub i j col w;
+    if (location ~= CR) {
+        "~Slide~ is inappropriate here.";
+    }
+    if (noun == nothing) {
+        "What piece was that?";
+    }
+    i = 0;
+  .label128490;
+    if (i <= 14) {
+        if (henri_post_array->i == noun) {
+            if (i >= 3) {
+                j = i - 3;
+                if (henri_post_array->j == 0) {
+                    jump label128652;
+                }
+            }
+            if (i < 12) {
+                j = i + 3;
+                if (henri_post_array->j == 0) {
+                    jump label128652;
+                }
+            }
+            col = i % 3;
+            if (col ~= 0) {
+                j = i - 1;
+                if (henri_post_array->j == 0) {
+                    jump label128652;
+                }
+            }
+            if (col ~= 2) {
+                j = i + 1;
+                if (henri_post_array->j == 0) {
+                    jump label128652;
+                }
+            }
+        }
+        ++i;
+        jump label128490;
+    }
+    print "Unfortunately, '", (char) noun + 65 - 1, "' is not adjacent to the gap.";
+    new_line;
+    rtrue;
+  .label128652;
+    ++slide_moves;
+    if (slide_moves == 8) {
+        trigger_quotation(36);
+    }
+    if (slide_moves == 5) {
+        trigger_quotation(42);
+    }
+    col = henri_post_array->i;
+    henri_post_array->j = col;
+    henri_post_array->i = 0;
+    print "You slide '", (char) noun + 65 - 1, "' into the gap, leaving the grid looking like:^^";
+    DisplayWholeGrid();
+    i = 0;
+  .label128749;
+    if (i <= 14) {
+        if (henri_post_array->i ~= henry_post_initial_layout->i) {
+            rfalse;
+        }
+        ++i;
+        jump label128749;
+    }
+    Achieved(SCORE_HENRIPOST);
+    print "^There is a click from the mechanism. Pulleys pull. Cogs spin. Little bits of string run.^";
+    if (CR hasnt general) {
+        give CR general;
+        print "^The cannonball drops out of the metal hand, and falls into the higher basket, which plunges down, hurling the other basket upwards, ";
+        j = child(hanging_cord);
+        if (j == 0) {
+            "but it must have been empty.";
+        }
+        j = sibling(j);
+        print "and projecting ";
+        if (j == 0) {
+            print "something";
+        } else {
+            print "some things";
+        }
+        print " up the hole in the corner.^";
+        if (CR has light) {
+            j = child(hanging_cord);
+          .label129019;
+            if (j ~= 0) {
+                i = sibling(j);
+                move j to Lawn_Ornaments;
+                j = i;
+                jump label129019;
+            }
+            move ancient_well to Lawn_Ornaments;
+        } else {
+            print "^A moment later, however, there is a distant but loud thump. A moment after that, something plummets back down out of the hole (in a shower of thin white plaster) and into the higher basket, which (owing to fantastic machinery) wrenches down again, hurling the cannonball in the other end up into the air.^^The metal hand catches the cannonball beautifully.^";
+            give CR ~general;
+        }
+        if (parent(golden_orb) == hanging_cord) {
+            move glowing_golden_orb to CR;
+        } else {
+            remove glowing_golden_orb;
+        }
+    }
+    rtrue;
+];
+
 [ SailSub ;
     if (player notin skiff) 
         "You are not in any suitable means of transport.";
@@ -462,4 +621,14 @@ Verb 'dance' 'tango' 'waltz'
 Verb 'beep' 'bleep' 'chirp'
     *                                                   -> Beep;
 
+Verb 'slide'
+    * readchar                                          -> Slide;
+
+Verb 'play'
+    * 'croquet'                                         -> PlayCroquet
+    * 'with' held                                       -> Blow
+    * held                                              -> Blow;
+
+Extend 'attack' last
+   * noun 'with' held                                   -> Kill;
 

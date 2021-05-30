@@ -66,13 +66,12 @@ URoom   Bohemia "Bohemia"
             easels, and you can't help standing on tiptoe here.",
   has   light;
 
-Object  -> Impressionist_painting "Impressionist painting"       
+LagachObj -> Impressionist_painting "Impressionist painting"       
   with  name 'impressionist' 'painting' 'mural',
-!        life LagachLife,
         initial nothing,
         description "The bottom corner is signed simply ~Helene~.",
         article "an",
-  has   static talkable;
+  has   static;
 
 URoom   Consulting_Room "Consulting Room"        
   with  name 'sevenbranch' 'candelabra' 'sticks' 'table',

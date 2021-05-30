@@ -77,8 +77,12 @@ Object  -> stone_wall "stone wall"
             Climb, Enter:
                 "The old, carved garden wall is one of the treasures of rural England, and you're not nearly 
                  desperate enough to crumble it further into ruin.";
+            Answer, Ask: "The old wall is mute.";
         ],
-!        life StoneWallLife,
+        orders [;
+            Lagach: "For a moment, the slightest of zephyrs blows from the wall, but dies away to nothing.";
+            default: "The old wall is mute.";
+        ],
         description "The garden wall once bore painted carvings, but they have fallen into disrepair.",
         found_in Beside_the_Wall Beside_the_Drive,
   has   scenery talkable;
@@ -166,11 +170,10 @@ GRoom   Mosaic "Mosaic"
         cant_go "From here you can climb back up to the lawn.",
   has   light;
 
-Object  -> Roman_mosaic "Roman mosaic"   
+LagachObj -> Roman_mosaic "Roman mosaic"   
   with  name 'roman' 'mosaic',
-!        life LagachLife,
         description "Made of terra-cotta and ceramic fragments, it has held together surprisingly well.",
-  has   scenery talkable;
+  has   scenery;
 
 Object  -> hard_wooden_ball "hard wooden ball"   
   with  name 'croquet' 'hard' 'wooden' 'ball',
