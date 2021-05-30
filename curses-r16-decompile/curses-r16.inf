@@ -4969,7 +4969,7 @@ Global projector_reversed;
 Global tablet_eaten;
 Global daisy_given;
 Global Mouse_x = 8;
-Global Mousy_y = 3;
+Global Mouse_y = 3;
 Global MouseUnderstandsMask;
 Global card_ptr;
 Global hollow_man_cnt;
@@ -12828,7 +12828,7 @@ Array preactions_table --> IsDirection;
             if (noun == w_obj) {
                 dst = hole_in_the_wall;
                 Mouse_x = 8;
-                Mousy_y = 3;
+                Mouse_y = 3;
                 jump labelXXX;
             }
         } else if (frm == Cellar_West) {
@@ -12855,32 +12855,32 @@ Array preactions_table --> IsDirection;
                 jump labelXXX;
             }
         } else {
-            if (frm == hole_in_the_wall && Mouse_x == 8 && Mousy_y == 3 && noun == e_obj) {
+            if (frm == hole_in_the_wall && Mouse_x == 8 && Mouse_y == 3 && noun == e_obj) {
                 dst = Cellars_South;
             } else {
                 if (frm == hole_in_the_wall) {
                     if (noun == n_obj) {
                         x = Mouse_x;
-                        y = Mousy_y - 1;
+                        y = Mouse_y - 1;
                     }
                     if (noun == e_obj) {
                         x = Mouse_x + 1;
-                        y = Mousy_y;
+                        y = Mouse_y;
                     }
                     if (noun == s_obj) {
                         x = Mouse_x;
-                        y = Mousy_y + 1;
+                        y = Mouse_y + 1;
                     }
                     if (noun == w_obj) {
                         x = Mouse_x - 1;
-                        y = Mousy_y;
+                        y = Mouse_y;
                     }
                     if (MouseBoundary(x,y) == true) {
                         "From somewhere inside the hole, you hear a disconsolate bleep.";
                     }
                     Mouse_x = x;
-                    Mousy_y = y;
-                    if (Mouse_x == 4 && Mousy_y == 1 && small_brass_key in hole_in_the_wall) {
+                    Mouse_y = y;
+                    if (Mouse_x == 4 && Mouse_y == 1 && small_brass_key in hole_in_the_wall) {
                         move small_brass_key to robot_mouse;
                         trigger_quotation(2);
                         "From somewhere inside the hole, you hear the spinning of tiny wheels, followed by an excitable high-pitched beep and a dull clanging noise.";
