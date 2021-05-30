@@ -392,17 +392,6 @@ Object  West_Side_Chapel "West Side Chapel"
   has   light;
 
 
-[ AdamantineKnightDesc ;
-    print "The knight is bursting and eager with life, as though nothing could fade his boundless energy for 
-        existence. ";
-    if( marble_rose in self ) 
-        print "He is holding the marble flower. ";
-    if( statue_of_Diana in location && marble_rose notin statue_of_Diana ) 
-        "He gazes sadly at Diana, wanting only to be of chivalrous service.";
-    new_line;
-    rtrue;
-];
-
 [ DisplayKnight ;
     if( adamantine_skull hasnt general && adamantine_skull hasnt concealed ) 
         print "^A headless ";
@@ -428,7 +417,16 @@ Object  adamantine_knight "adamantine knight"
   with  name 'adamantine' 'statue' 'adamant' 'knight',
 !        life AdamantineKnightLife,
         initial "The adamantine knight stands staunchly here.",
-        description " .The knight is bursting and eager with life, as though nothing could fade his boundless energy for existence. ",
+        description [  ;
+            print "The knight is bursting and eager with life, as though nothing could fade his boundless energy for 
+                existence. ";
+            if( marble_rose in self ) 
+                print "He is holding the marble flower. ";
+            if( statue_of_Diana in location && marble_rose notin statue_of_Diana ) 
+                "He gazes sadly at Diana, wanting only to be of chivalrous service.";
+            new_line;
+            rtrue;
+        ],
         article "the",
   has   animate;
 

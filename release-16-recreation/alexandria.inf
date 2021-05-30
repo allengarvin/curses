@@ -1049,9 +1049,70 @@ Object  -> dusty_scrolls "dusty scrolls"
         article "endless",
   has   scenery;
 
+[ CallimachusLife o ;
+    if( action == ##Give ) {
+        if( self == Callimachus && noun == tube_with_an_alpha_on || (self == Apollonius && inp1 == tube_with_a_kappa_on) ) {
+            "He takes the tube, sees the letter on it, looks exasperated, clouts you over the head with the tube and pushes it back into your arms.";
+        }
+        if( noun == tube_with_an_alpha_on or tube_with_a_kappa_on ) {
+            CDefart(self);
+            print " takes the tube and looks inside";
+            o = child(noun); 
+            if( o == nothing ) {
+                move noun to location; 
+                " to find it is empty. He looks at you very darkly indeed but returns to his work, throwing the tube down impatiently.";
+            }
+            if( o == scroll_bearing_a_short_poem or scroll_bearing_an_epic_poem ) {
+                print " to see a scroll, which he pulls out eagerly.^^";
+                if( self == Callimachus && o == scroll_bearing_an_epic_poem || (self == Apollonius && o == scroll_bearing_a_short_poem) ) {
+                    remove o;
+                    if( parent(Callimachus) == parent(Apollonius) ) {
+                        move purple_sash to location;
+                        move mystic_scroll to location;
+                        move Apollonius to location;
+                        Apollonius.initial = "Apollonius and Callimachus are now engaged in a furious, ugly brawl, from which it seems unlikely they will emerge for some considerable time.";
+                        Achieved(SCORE_LIBRARY);
+                        "One look is enough. He throws a vicious punch, and the librarians begin a savage bare-knuckled fist fight.^^This, shall we say, rather petty practical joke of yours does seem to have had one interesting consequence, though.";
+                    }
+                    remove noun;
+                    print "~Arrghhhieee!~ he says (untranslatably), boiling over with rage. He then curses repeatedly, but the only word you can make out is ~";
+                    if( self == Callimachus ) {
+                        print "Apollonius";
+                        move self to parent(Apollonius);
+                    } else {
+                        print "Callimachus";
+                        move self to parent(Callimachus);
+                    }
+                    give Callimachus concealed;
+                    Apollonius.initial = "Apollonius and Callimachus are having a furious, heated, endless argument about something. They seem well practised at this occupation.";
+                    "~. He pushes you out of his way and stomps off.";
+                }
+                print "~Ahhhh...~ he says (untranslatably) as he reads. ";
+                if( noun == Callimachus ) {
+                    print "Eventually, after a very long wait, ";
+                } else {
+                    print "But soon ";
+                }
+                move noun to location; 
+                "he finishes, puts the scroll back into the tube with the habit of a trained librarian, and drops it absentmindedly on the floor.";
+            }
+            print " to find ";
+            Indefart(o);
+            print ", which, to say the least, comes as a surprise. Such a fuss is kicked up that you are quickly thrown out into the street.^";
+            PlayerTo(Outside_the_Royal_Museum,1);
+            rfalse;
+        }
+        "How could you bribe such disinterested men of learning as the librarians?";
+    }
+    if( action == ##Order or ##Ask or ##Answer ) {
+        "As a barbarian scholar, unversed in Greek, you can hardly expect to converse with such as he.";
+    }
+    rfalse;
+];
+
 Object  -> Callimachus "Callimachus"     
   with  name 'callimachus' 'expert' 'librarian',
-!        life CallimachusLife,
+        life CallimachusLife,
         initial "The expert in question being Callimachus, who is brooding over a scroll, and hardly aware of your presence.",
         description "Callimachus is famous for something or other. You wonder what...",
   has   animate proper;
@@ -1079,7 +1140,7 @@ Object  Librarians_Office "Librarian's Office"
 
 Object  -> Apollonius "Apollonius"       
   with  name 'apollonius' 'head' 'expert' 'librarian',
-!        life CallimachusLife,
+        life CallimachusLife,
         initial "Apollonius paces about self-importantly in a purple sash, perusing documents on his desk.",
         description "His aim in life is chiefly to annoy Callimachus, his junior librarian and the modern poet he despises most.",
   has   animate proper;

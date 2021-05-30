@@ -2965,16 +2965,6 @@ Object  -> framed_charcoal_sketch "framed charcoal sketch"
         devil_hint "It's the frame which really sets it off.",
   has   ;
 
-[ LetterDesc ;
-    print "A faint typewritten letter, postmarked Cairo, October 1920, with a handwritten note signed simply 
-        ~Ellingsworth~:^^Hartley - Thought you might be able to date some of these queer pictograms and 
-        determinitives, early New Kingdom?  Pottery unclear, work continues^";
-    0-->8 = 2 | 0-->8;
-    print "^  ::   and        #     the               #.    this^  :;   but        +*+   god/spirit?       (())  all^  =    of         []    house/building    |||   indicates plural^  ->   through    >>>   moves             <>    item/thing?^  __   sits/lies/rests/is near            /     to/toward^";
-    0-->8 = 65533 & 0-->8;
-    rtrue;
-];
-
 Object  charcoal_sketch "charcoal sketch"        
   with  name 'charcoal' 'sketch' 'of' 'alexandria',
         door_to Causeway,
@@ -2985,7 +2975,15 @@ Object  charcoal_sketch "charcoal sketch"
 Object  dog_eared_old_letter "dog-eared old letter"      
   with  name 'old' 'letter',
         list_together n_obj,
-        description " .A faint typewritten letter, postmarked Cairo, October 1920, with a handwritten note signed simply ~Ellingsworth~:^^Hartley - Thought you might be able to date some of these queer pictograms and determinitives, early New Kingdom?  Pottery unclear, work continues^",
+        description [;
+            print "A faint typewritten letter, postmarked Cairo, October 1920, with a handwritten note signed 
+                simply ~Ellingsworth~:^^Hartley - Thought you might be able to date some of these queer pictograms
+                and determinitives, early New Kingdom?  Pottery unclear, work continues^";
+            0-->8 = 2 | 0-->8;
+            print "^  ::   and        #     the               #.    this^  :;   but        +*+   god/spirit?       (())  all^  =    of         []    house/building    |||   indicates plural^  ->   through    >>>   moves             <>    item/thing?^  __   sits/lies/rests/is near            /     to/toward^";
+            0-->8 = 65533 & 0-->8;
+            rtrue;
+        ]
         devil_hint "The ravings of a madman. Ignore it.",
   has   ;
 

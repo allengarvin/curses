@@ -1,3 +1,322 @@
+[ DigWithSub ;
+    if( noun ~= spade ) {
+        "Not really a suitable implement.";
+    }
+    DigSub();
+    rtrue;
+];
+
+[ DigSub ;
+    if( spade notin player ) "You have nothing really suitable to hand.";
+    if( location == Vegetable_Garden or Maze_Foundations ) "You succeed only in turning the earth further.";
+    if( location == Mosaic ) "Archaeology is not for the amateur!";
+    if( location == Beside_the_Drive ) "The gravel is thin and lies on concrete.";
+    if( location == Up_the_Plane_Tree ) "Surreal!";
+    if( location ~= Croquet_Lawn ) "The ground is unsuitable.";
+
+    if( DigX == 0 && DigY == 0 ) 
+        "You surely don't want to dig here, right in the middle of such a fine lawn. The peg would fall out, and 
+         that would never do.";
+    if( DigX == OldDigX && DigY == OldDigY ) "There is already a hole on this exact spot of the lawn.";
+
+    OldDigX = DigX;
+    OldDigY = DigY;
+    print "You dig an energetic little hole in the superb turf";
+    if( dug_hole in Croquet_Lawn ) {
+        print ", filling your last one up with the earth uncovered";
+        while( child(dug_hole) ~= nothing ) {
+            remove child(dug_hole);
+            dig_cnt = 2;
+        }
+    }
+    if( DigX == StrongboxX && DigY == StrongboxY && strongbox hasnt moved ) {
+        print ", until your spade bumps into something solid";
+        move strongbox to dug_hole;
+        Achieved(SCORE_STRONGBOX);
+    } else if( dig_cnt == 1 ) {
+        dig_cnt = 0;
+        print ", failing to find whatever it was you buried";
+    }
+    move dug_hole to Croquet_Lawn;
+    if( dig_cnt == 2 ) {
+        dig_cnt = 1;
+    }
+    ".";
+];
+
+[ LieDownSub ;
+    if( location == Servants_Room ) << Enter servants_bed >>;
+    if( location == Alisons_Writing_Room ) << Enter comfortable_bed >>;
+    "You lie down on the floor for a while and then get up again, feeling foolish.";
+];
+
+
+[ StartSub ;    
+    "You'll have to say exactly how to do that.";
+];
+
+[ LeanSub ;
+    if( location ~= Folly ) {
+        "That won't achieve anything very much.";
+    }
+    if( second ~= Folly_tower ) {
+        "That isn't in conspicuous need of support.";
+    }
+    if( noun ~= old_timber_spar ) {
+        "That isn't a particularly good support.";
+    }
+    move old_timber_spar to Folly;
+    old_timber_spar.initial = "The timber prop leans against the tottering Folly, supporting it.";
+    give old_timber_spar ~moved;
+    bean_pole.number = 0;
+    give old_timber_spar general;
+    give bean_pole ~general;
+    "You lean the timber prop against the Folly tower, supporting it. (Better just hope you won't be needing the prop for anything else!)";
+];
+
+[ PropWithSub o ;
+    o = noun;
+    noun = second;
+    second = o;
+    LeanSub();
+    rtrue;
+];
+
+[ AnotherWord w ;
+    w = NextWordStopped();
+    --wn;
+    return w;
+];
+
+[ DiagnoseSub ;
+    "Hang on a moment... yes, you're still breathing. Keep it up!";
+];
+
+[ PaceDirSub ;
+    if( yard_dir <= 0 ) {
+        yard_dir = e_obj;
+    }
+    PaceMovement(1,yard_dir);
+    rtrue;
+];
+
+[ PaceSub ;
+    PaceMovement(croquet_var,yard_dir);
+    rtrue;
+];
+
+[ PaceMovement i d ydelta xdelta x y ;
+    if( d == nothing ) {
+        d = e_obj;
+    }
+    if( d == 65535 ) {
+        DigX = 0;
+        DigY = 0;
+        << Look >>;
+    }
+    if( d == 65534 ) {
+        DigX = OldDigX;
+        DigY = OldDigY;
+        << Look >>;
+    }
+    if( location ~= Croquet_Lawn ) {
+        "You pace up and down, Holmes-fashion.";
+    }
+    if( d == nothing ) {
+        "Perhaps you should say which way to pace.";
+    }
+    if( parent(d) ~= compass ) {
+        "What?";
+    }
+    if( d == n_obj ) {
+        xdelta = 1;
+    }
+    if( d == s_obj ) {
+        xdelta = 65535;
+    }
+    if( d == e_obj ) {
+        ydelta = 1;
+    }
+    if( d == w_obj ) {
+        ydelta = 65535;
+    }
+    if( d == ne_obj ) {
+        ydelta = 1;
+        xdelta = 1;
+    }
+    if( d == nw_obj ) {
+        ydelta = 65535;
+        xdelta = 1;
+    }
+    if( d == se_obj ) {
+        ydelta = 1;
+        xdelta = 65535;
+    }
+    if( d == sw_obj ) {
+        ydelta = 65535;
+        xdelta = 65535;
+    }
+    if( ydelta == 0 && xdelta == 0 ) {
+        "Hardly!";
+    }
+    x = DigX + ydelta * i;
+    y = DigY + xdelta * i;
+    if( x >= 13 || x <= 65523 || y >= 13 || y <= 65523 ) {
+        "That would go past the edge of the lawn.";
+    }
+    DigX = x;
+    DigY = y;
+    << Look >>;
+];
+
+[ PaceOrPaces d ;
+    if( d == 'pace' or 'step' or 'stride' ) {
+        return 1;
+    }
+    if( d == 'paces' or 'steps' or 'strides' ) {
+        return 2;
+    }
+    rfalse;
+];
+
+[ SomeParse w n i ;
+    i = wn;
+    w = AnotherWord();
+    if (w == 'by' or 'for') {
+        ++wn;
+        w = AnotherWord();
+    }
+    if (w == 'a//' or 'single') {
+        ++wn;
+        w = AnotherWord();
+        if (PaceOrPaces(w) ~= 1) {
+            wn = i;
+            rfalse;
+        }
+        ++wn;
+        return 1;
+    }
+    if (PaceOrPaces(w) == 1) {
+        ++wn;
+        return 1;
+    }
+    n = TryNumber(wn);
+    if (n < 0) {
+        wn = i;
+        rfalse;
+    }
+    ++wn;
+    w = AnotherWord();
+    if (PaceOrPaces(w) == 1 && n == 1 || (PaceOrPaces(w) == 2 && n > 1)) {
+        ++wn;
+    }
+    return n;
+];
+
+[ CroquetMove w i flag j d ;
+    w = AnotherWord();
+    if (w == 'forward' or 'forwards') {
+        ++wn;
+        return yard_dir;
+    }
+    if (w == 'back' or 'backward' or 'backwards') {
+        ++wn;
+        w = AnotherWord();
+        flag = 1;
+    }
+    if (w == 'to') {
+        ++wn;
+        w = AnotherWord();
+    }
+    if (w == 'the') {
+        ++wn;
+        w = AnotherWord();
+    }
+    if (w == 'peg' or 'middle' or 'centre' or 'hoop' or 'hoops' or 'center') {
+        ++wn;
+        return 65535;
+    }
+    if (w == 'hole' && dug_hole in Croquet_Lawn) {
+        ++wn;
+        return 65534;
+    }
+    i = wn;
+    if (w ~= -1 ) {
+        j = NounDomain(true,0,0);
+    } else {
+        j = 65535;
+    }
+    if (j <= top_object && j > 0) {
+        d = j;
+    } else {
+        wn = i;
+        d = yard_dir;
+        if (d <= 0) {
+            d = e_obj;
+        } else if (flag == 1) {
+            if (yard_dir == n_obj) {
+                d = s_obj;
+            }
+            if (yard_dir == s_obj) {
+                d = n_obj;
+            }
+            if (yard_dir == e_obj) {
+                d = w_obj;
+            }
+            if (yard_dir == w_obj) {
+                d = e_obj;
+            }
+            if (yard_dir == ne_obj) {
+                d = sw_obj;
+            }
+            if (yard_dir == nw_obj) {
+                d = se_obj;
+            }
+            if (yard_dir == sw_obj) {
+                d = ne_obj;
+            }
+            if (yard_dir == se_obj) {
+                d = nw_obj;
+            }
+        }
+    }
+    return d;
+];
+
+[ CroquetFunc i j ;     
+    i = SomeParse();
+    if( i == 0 ) {
+        if( AnotherWord() == 65535 ) {
+            return 65535;
+        }
+        j = CroquetMove();
+        if( AnotherWord() == 65535 ) {
+            i = 1;
+        } else {
+            i = SomeParse();
+        }
+        if( i == 0 ) {
+            return 65535;
+        }
+    } else {
+        j = CroquetMove();
+    }
+    croquet_var = i;
+    yard_dir = j;
+    return 0;
+];
+
+[ AnotherCroquetFunc i j ;      
+    i = SomeParse();
+    if( i == 0 ) {
+        return 65535;
+    }
+    j = CroquetMove();
+    croquet_var = i;
+    yard_dir = j;
+    return 0;
+];
+
 [ KillSub ;     
     if( noun ~= hard_wooden_ball || second ~= croquet_mallet ) 
         << Attack noun >>;
@@ -329,8 +648,7 @@
         "Old Evans, who is nine-tenths hypnotised most of the time anyway, succumbs easily.";
     }
     if( noun == player ) {
-        R_Process(##Sleep);
-        rtrue;
+        << Sleep >>;
     }
     print "But ";
     Defart(noun);
@@ -632,3 +950,60 @@ Verb 'play'
 Extend 'attack' last
    * noun 'with' held                                   -> Kill;
 
+Verb 'pace'
+    *                                                   -> Pace
+    * CroquetFunc                                       -> PaceDir;
+
+Extend 'take' last
+    * AnotherCroquetFunc                                -> PaceDir;
+
+
+Verb 'change' 'flip'
+    * noun                                              -> SwitchOn;
+
+Verb 'reverse' 'revolve'
+    * noun                                              -> Turn;
+
+Verb 'pinch' 'slap'
+    * creature                                          -> Attack
+    * noun                                              -> Take;
+
+Verb 'scratch'
+    * noun                                              -> Rub;
+
+Verb 'ring'
+    * noun                                              -> Push;
+
+Verb 'diagnose'
+    *                                                   -> Diagnose;
+
+Verb 'frisk'
+    * animate                                           -> Search;
+
+Verb 'exhibit' 'reveal'
+    *                                                   -> Sing;
+
+Verb 'pet' 'stroke' 'tickle'
+    * noun                                              -> Touch;
+
+Verb 'roll' 'shoot' 'toss'
+    * noun                                              -> Drop;
+
+Verb 'lean' 'prop' 'rest' 'support'
+    * held 'against' noun                               -> Lean
+    * held 'on' noun                                    -> Lean
+    * 'up' noun 'with' held                             -> PropWith
+    * noun 'with' held                                  -> PropWith;
+
+Verb 'lay'
+    * noun 'on' noun                                    -> PutOn;
+
+Verb 'start' 'stop'
+    * noun                                              -> Start;
+
+Extend 'lie' last
+    * 'down'                                            -> LieDown
+    * 'down' 'on' noun                                  -> Enter; 
+
+Extend 'dig' last
+    * 'with' held                                       -> DigWith;
