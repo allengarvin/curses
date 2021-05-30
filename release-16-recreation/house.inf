@@ -2313,8 +2313,19 @@ Object  -> Jemima "Jemima"
                 "Jemima has nothing to say on the subject.";
         ],
 
-        initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.",
-        description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being left alone in the house while you're off on holiday, so best not to get on her bad side. You really ought to make it up to her somehow.",
+        orders [;
+            Give:
+                if( noun == old_gardeners__gloves )
+                    "~I can't give you those, I'm using them!~^^(This is plainly not true, but you know how it is 
+                     with aunts.)";   
+            default:
+                "Aunt Jemima has never done what you suggested at the best of times. This is not the best of times.";
+        ],
+        initial "Aunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual 
+            pastime of deciding which species make the best chains.",
+        description "She's been fiddling about with those cut flowers all afternoon. And she's a bit upset at being 
+            left alone in the house while you're off on holiday, so best not to get on her bad side. You really
+            ought to make it up to her somehow.",
         article "Aunt",
         time_left 0,
         time_out [;
