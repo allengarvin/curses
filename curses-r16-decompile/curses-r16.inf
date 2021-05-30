@@ -4944,7 +4944,7 @@ Global active_timers;
 Global rod_identity = 1;
 Global c_style;
 Global lt_value;
-Global global118;
+Global listing_together;
 Global listing_size;
 Global wlf_indent;
 Global inventory_style;
@@ -9680,7 +9680,7 @@ Array preactions_table --> IsDirection;
         print "featureless mahogany rod";
         rtrue;
     }
-    if (global118 hasnt rod_attr) {
+    if (listing_together hasnt rod_attr) {
         if (self has high_rod) {
             print "High ";
         }
@@ -10198,7 +10198,7 @@ Array preactions_table --> IsDirection;
 
 
 [ TarotShort ;  
-    if (global118 has card && c_style & 4096 == 0) {
+    if (listing_together has card && c_style & 4096 == 0) {
         c_style = c_style | (4096 + 8);
         if (c_style & 2 ~= 0) {
             c_style = c_style - 2;
@@ -19782,12 +19782,12 @@ Array preactions_table --> IsDirection;
                                 }
                             }
                             lt_value = j.sw_to;
-                            global118 = j;
+                            listing_together = j;
                             ++wlf_indent;
                             WriteListR(j,depth,stack_pointer);
                             --wlf_indent;
                             lt_value = 0;
-                            global118 = 0;
+                            listing_together = nothing;
                             if (k2 == 3[s_obj?]) {
                                 if (c_style & 8 ~= 0) {
                                     print ")";
@@ -19911,12 +19911,12 @@ Array preactions_table --> IsDirection;
                         }
                     }
                     lt_value = j.sw_to;
-                    global118 = j;
+                    listing_together = j;
                     ++wlf_indent;
                     WriteListR(j,depth,stack_pointer);
                     --wlf_indent;
                     lt_value = 0;
-                    global118 = 0;
+                    listing_together = nothing;
                     if (k == 3[s_obj?]) {
                         if (q & 8 ~= 0) {
                             print ")";
