@@ -769,7 +769,7 @@ Object -> d_obj "floor"
   has   scenery;
 
 Object -> out_obj "outside"     
-  with  w_to lm_object,
+  with  w_to LibraryMessages,
         article "the",
         time_left 0,
   has   scenery;
@@ -801,7 +801,7 @@ Object selfobj "yourself"
         parse_name nothing,
   has   animate concealed proper transparent;
 
-Object lm_object "lm"   
+Object LibraryMessages "lm"     
   with  before LMBefore,
   has   ;
 
@@ -9538,7 +9538,7 @@ Array preactions_table --> IsDirection;
         print "down";
     } else if (generic_globvar == 15[selfobj?]) {
         print "in";
-    } else if (generic_globvar == 16[lm_object?]) {
+    } else if (generic_globvar == 16[LibraryMessages?]) {
         print "out";
     } else {
         "** No such direction **";
@@ -21843,7 +21843,7 @@ Array preactions_table --> IsDirection;
     lm_n = n;
     lm_o = x1;
     verb = action;
-    if (RunRoutines(lm_object,before) ~= 0) {
+    if (RunRoutines(LibraryMessages,before) ~= 0) {
         verb = s;
         rfalse;
     }
