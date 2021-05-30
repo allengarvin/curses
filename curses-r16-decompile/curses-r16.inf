@@ -775,7 +775,7 @@ Object -> out_obj "outside"
   has   scenery;
 
 Object -> in_obj "inside"       
-  with  w_to yourself,
+  with  w_to selfobj,
         article "the",
         time_left 0,
   has   scenery;
@@ -786,7 +786,7 @@ Object thedark "Darkness"
         short "Darkness",
   has   ;
 
-Object yourself "yourself"      
+Object selfobj "yourself"       
   with  before $ffff,
         after $ffff,
         life $ffff,
@@ -4857,7 +4857,7 @@ Global inp1;
 Global inp2;
 Global special_number1;
 Global special_number2;
-Global selfobj;
+Global self;
 Global noun;
 Global second;
 Global special_word;
@@ -8449,8 +8449,8 @@ Array preactions_table --> IsDirection;
         generic_globvar = get_prop_len(generic_globvar);
     }
     k = generic_globvar;
-    m = selfobj;
-    selfobj = obj;
+    m = self;
+    self = obj;
     ssv = action;
     if (prop == life) {
         action = orders;
@@ -8461,7 +8461,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (i < k / 2) {
         if (j-->i == 65535[?]) {
-            selfobj = m;
+            self = m;
             action = ssv;
             rfalse;
         }
@@ -8469,7 +8469,7 @@ Array preactions_table --> IsDirection;
         if (l == 2[?]) {
             l = (j-->i)();
             if (l ~= 0) {
-                selfobj = m;
+                self = m;
                 action = ssv;
                 return l;
             }
@@ -8482,7 +8482,7 @@ Array preactions_table --> IsDirection;
         ++i;
         jump labelXXX;
     }
-    selfobj = m;
+    self = m;
     action = ssv;
     rfalse;
 ];
@@ -8529,9 +8529,9 @@ Array preactions_table --> IsDirection;
 
 [ PlayTheGame i j k l ; 
     standard_interpreter = 50-->0;
-    player = yourself;
+    player = selfobj;
     top_object = 757 - 255;
-    yourself.capacity = 5;
+    selfobj.capacity = 5;
     j = Initialise;();
     last_score = score;
     move player to location;
@@ -8872,7 +8872,7 @@ Array preactions_table --> IsDirection;
     sn = inp1;
     ss = inp2;
     sa = verb;
-    sse = selfobj;
+    sse = self;
     inp1 = i;
     inp2 = j;
     noun = i;
@@ -8880,7 +8880,7 @@ Array preactions_table --> IsDirection;
     verb = acti;
     if (meta == 1 || AfterRoutines() == 0 && verb < 256) {
         generic_globvar = (actions_table-->verb)();
-        selfobj = sse;
+        self = sse;
         inp1 = sn;
         noun = sn;
         inp2 = ss;
@@ -8888,7 +8888,7 @@ Array preactions_table --> IsDirection;
         verb = sa;
         rfalse;
     }
-    selfobj = sse;
+    self = sse;
     inp1 = sn;
     noun = sn;
     inp2 = ss;
@@ -9395,14 +9395,14 @@ Array preactions_table --> IsDirection;
     PronounsSub(itobj);
     print ", ~him~ ";
     PronounsSub(himobj);
-    if (player == yourself) {
+    if (player == selfobj) {
         print " and";
     } else {
         print ",";
     }
     print " ~her~ ";
     PronounsSub(herobj);
-    if (player == yourself) {
+    if (player == selfobj) {
         ".";
     }
     " and ~me~ means ", (name) player, ".";
@@ -9426,12 +9426,12 @@ Array preactions_table --> IsDirection;
         i = parent(i);
         jump labelXXX;
     }
-    if (player == yourself) {
+    if (player == selfobj) {
         player.short = "your former self";
     }
     player.time_left = real_location;
     player = obj;
-    if (player == yourself) {
+    if (player == selfobj) {
         player.short = NULL;
     }
     give player transparent;
@@ -9536,7 +9536,7 @@ Array preactions_table --> IsDirection;
         print "up";
     } else if (generic_globvar == 14[thedark?]) {
         print "down";
-    } else if (generic_globvar == 15[yourself?]) {
+    } else if (generic_globvar == 15[selfobj?]) {
         print "in";
     } else if (generic_globvar == 16[lm_object?]) {
         print "out";
@@ -9632,14 +9632,14 @@ Array preactions_table --> IsDirection;
 
 [ RodBefore ;   
     if (action == ##Read) {
-        if (selfobj has unidentifed_rod) {
+        if (self has unidentifed_rod) {
             "A featureless mahogany rod, whose purpose is oblique. Or almost featureless: a little silver plaque is left blank at one end.";
         }
-        if (selfobj has high_rod) {
+        if (self has high_rod) {
             rfalse;
         }
         print "The silver plaque on this mahogany rod proclaims it as ";
-        Defart(selfobj);
+        Defart(self);
         print ".";
         if (noun has charged) {
             "  It is fully charged up.";
@@ -9661,7 +9661,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1) {
+        if (Refers(self,w) == 1) {
             ++i;
         } else if (w == 'rods') {
             parser_action = ##PluralFound;
@@ -9676,12 +9676,12 @@ Array preactions_table --> IsDirection;
 
 
 [ rod_short ;   
-    if (selfobj has unidentifed_rod) {
+    if (self has unidentifed_rod) {
         print "featureless mahogany rod";
         rtrue;
     }
     if (listing_together hasnt rod_attr) {
-        if (selfobj has high_rod) {
+        if (self has high_rod) {
             print "High ";
         }
         print "Rod of ";
@@ -9691,7 +9691,7 @@ Array preactions_table --> IsDirection;
 
 
 [ rod_display_before ;  
-    if (rod_identity == 2 && selfobj has charged) {
+    if (rod_identity == 2 && self has charged) {
         print " (charged)";
     }
     rfalse;
@@ -9700,13 +9700,13 @@ Array preactions_table --> IsDirection;
 
 [ LifeDesc ;    
     print "An adamantine rod, bearing a sculpted ";
-    if (selfobj == rod_of_life) {
+    if (self == rod_of_life) {
         print "hand";
     }
-    if (selfobj == rod_of_love) {
+    if (self == rod_of_love) {
         print "heart";
     }
-    if (selfobj == rod_of_death) {
+    if (self == rod_of_death) {
         print "skull";
     }
     " on one end, and inscribed with its title.";
@@ -10085,7 +10085,7 @@ Array preactions_table --> IsDirection;
         if (painting_of_Mad_Isaac_Meldrewe notin White_Hallway || painting_of_Mad_Isaac_Meldrewe has moved) {
             flag = false;
         }
-        if (selfobj == painting_of_Mad_Isaac_Meldrewe && flag == false) {
+        if (self == painting_of_Mad_Isaac_Meldrewe && flag == false) {
             "A breeze ripples the canvas of the unanchored painting, but that's all.";
         }
         if (verb ~= ##Lagach) {
@@ -10152,7 +10152,7 @@ Array preactions_table --> IsDirection;
             "A swirl of wind almost bowls you over, but nothing else happens.";
         }
         print "A swirl of wind snakes out from ";
-        Defart(selfobj);
+        Defart(self);
         print " and whisks you away to...^";
         PlayerTo(r);
         rtrue;
@@ -10167,7 +10167,7 @@ Array preactions_table --> IsDirection;
 
 [ TarotBefore ; 
     if (action == ##Read) {
-        if (selfobj.n_to ~= nothing) {
+        if (self.n_to ~= nothing) {
             print "A beautifully realistic picture. ";
         }
         rfalse;
@@ -10183,7 +10183,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1) {
+        if (Refers(self,w) == 1) {
             ++i;
         } else if (w == 'cards') {
             parser_action = ##PluralFound;
@@ -10223,7 +10223,7 @@ Array preactions_table --> IsDirection;
 
 [ TorchBefore ; 
     if (action == ##Receive) {
-        if (child(selfobj) ~= nothing) {
+        if (child(self) ~= nothing) {
             "There's a battery in already.";
         }
         if (noun hasnt battery_flag) {
@@ -10240,15 +10240,15 @@ Array preactions_table --> IsDirection;
 
 [ TorchAfter bat i ;    
     if (action == ##Open) {
-        if (selfobj has light) {
-            give selfobj ~light;
+        if (self has light) {
+            give self ~light;
             "The torch goes out as you open the battery compartment.";
         }
         "You open the battery compartment of the torch.";
     }
     if (action == ##Close) {
         print "You close the battery compartment of the torch";
-        bat = child(selfobj);
+        bat = child(self);
         if (bat == obj105_nasty_looking_red_battery) {
             if (game_section == T_MODERN) {
                 deadflag = FAILED;
@@ -10266,7 +10266,7 @@ Array preactions_table --> IsDirection;
             if (i == 0) {
                 ", but the battery must be dead because nothing happens.";
             }
-            give selfobj light;
+            give self light;
             if (i > 5) {
                 ", and it lights up brightly.";
             }
@@ -10279,10 +10279,10 @@ Array preactions_table --> IsDirection;
 
 
 [ TorchTimer o n ;      
-    if (selfobj hasnt on) {
+    if (self hasnt on) {
         rfalse;
     }
-    o = child(selfobj);
+    o = child(self);
     if (o == nothing) {
         rfalse;
     }
@@ -10326,11 +10326,11 @@ Array preactions_table --> IsDirection;
 
 [ TrapdoorAfter ;       
     if (action == ##Open) {
-        give selfobj light;
+        give self light;
         rfalse;
     }
     if (action == ##Close) {
-        give selfobj ~light;
+        give self ~light;
         if (antique_jewellery_box has concealed) {
             give antique_jewellery_box ~concealed;
             move antique_jewellery_box to Attic;
@@ -10666,7 +10666,7 @@ Array preactions_table --> IsDirection;
 
 
 [ MedicineShort ;       
-    if (selfobj hasnt locked) {
+    if (self hasnt locked) {
         print "cracked medicine bottle";
     } else {
         print "guaranteed-unbreakable medicine bottle with a child-proof lock";
@@ -10680,13 +10680,13 @@ Array preactions_table --> IsDirection;
         "You become extremely violent in your attempt, but the glass resists all attacks. Whatever would it take to break the dratted thing?";
     }
     if (action == ##Open) {
-        if (selfobj hasnt locked) {
+        if (self hasnt locked) {
             rfalse;
         }
         "You try absolutely everything. Pushing the top down, turning it, pulling it, putting it on the floor and jumping up and down on it, everything. It is resolutely adult-proof. Whatever would it take to break the dratted thing?";
     }
     if (action == ##Receive) {
-        if (selfobj has open && noun ~= red_tablet) {
+        if (self has open && noun ~= red_tablet) {
             "The neck is too narrow to fit anything but the pill.";
         }
         rfalse;
@@ -10706,7 +10706,7 @@ Array preactions_table --> IsDirection;
 
 
 [ OverEastWingInitial ; 
-    if (Austin in selfobj) {
+    if (Austin in self) {
         StartDaemon(Austin);
     }
     rfalse;
@@ -10751,7 +10751,7 @@ Array preactions_table --> IsDirection;
             "Austin refuses to go that way.";
         }
         AllowPushDir();
-        give selfobj moved;
+        give self moved;
         rtrue;
     }
     rfalse;
@@ -10800,8 +10800,8 @@ Array preactions_table --> IsDirection;
 
 
 [ AustinDemon i ;       
-    if (selfobj has moved) {
-        give selfobj ~moved;
+    if (self has moved) {
+        give self ~moved;
         rfalse;
     }
     if (game_section ~= T_MODERN or T_ALEXANDRIA) {
@@ -11094,7 +11094,7 @@ Array preactions_table --> IsDirection;
 
 [ DarkRoomAfter ;       
     if (action == ##Look) {
-        if (selfobj has light) {
+        if (self has light) {
             print "^The room is filled with an eerie, reddish light. You feel gloomy and can't help thinking about aviation accident statistics.^";
         }
         rfalse;
@@ -11122,7 +11122,7 @@ Array preactions_table --> IsDirection;
 [ FlashAFter ;  
     if (action == ##Receive) {
         generic_globvar = 0;
-        if (child(selfobj) ~= nothing) {
+        if (child(self) ~= nothing) {
           .labelXXX;
             ++generic_globvar;
             @get_sibling SP -> SP ?labelXXX;
@@ -11137,7 +11137,7 @@ Array preactions_table --> IsDirection;
         if (noun hasnt battery_flag) {
             "Only batteries and timers will fit in.";
         }
-        if (child(selfobj) has battery_flag) {
+        if (child(self) has battery_flag) {
             "There is already a battery inside, and there's only room now for a timer.";
         }
         rfalse;
@@ -11223,7 +11223,7 @@ Array preactions_table --> IsDirection;
 
 [ GlassBallBefore i ;   
     if (action == ##Rub) {
-        give selfobj general;
+        give self general;
         if (projector_reversed == true && slide_projector has on) {
             print "You polish the ball to a nice shine, and get out of the way of the beam. Now the glass ball ";
             ObservatoryDiffraction();
@@ -11232,7 +11232,7 @@ Array preactions_table --> IsDirection;
         "You polish the ball to a nice shine.";
     }
     if (action == ##Read or ##Search) {
-        if (selfobj hasnt general) {
+        if (self hasnt general) {
             "The ball is scratched and misted up.";
         }
         trigger_quotation(32);
@@ -11286,7 +11286,7 @@ Array preactions_table --> IsDirection;
             CDefart(second);
             " proves inadequate as a plumbing tool.";
         }
-        R_Process(##Turn,selfobj);
+        R_Process(##Turn,self);
         rtrue;
     }
     if (action == ##Repair or ##Turn) {
@@ -11417,7 +11417,7 @@ Array preactions_table --> IsDirection;
 
 [ ProjectorBefore ;     
     if (action == ##Receive) {
-        if (child(selfobj) ~= nothing) {
+        if (child(self) ~= nothing) {
             "There's a slide in already.";
         }
         if (noun == postcard_of_the_Champs_Elysees) {
@@ -11441,14 +11441,14 @@ Array preactions_table --> IsDirection;
     if (action == ##Turn) {
         if (projector_reversed == true) {
             projector_reversed = false;
-            if (selfobj has on) {
+            if (self has on) {
                 give Disused_Observatory ~light;
                 "The sharp beam of light cuts out again.";
             }
             "Click.";
         }
         projector_reversed = true;
-        if (selfobj has on) {
+        if (self has on) {
             give Disused_Observatory light;
             "A sharp beam of white light appears backward out of the projector. As you step out of the beam, it extends dead straight through the north doorway.";
         }
@@ -11460,14 +11460,14 @@ Array preactions_table --> IsDirection;
 
 [ ProjectorAfter o ;    
     if (action == ##Receive) {
-        if (selfobj has on) {
+        if (self has on) {
             ToggleSouthWall(noun);
             rtrue;
         }
         rfalse;
     }
     if (action == ##LetGo) {
-        if (selfobj has on) {
+        if (self has on) {
             ToggleSouthWall(nothing);
             rtrue;
         }
@@ -11597,7 +11597,7 @@ Array preactions_table --> IsDirection;
         if (old_gardeners__gloves hasnt worn) {
             "A rash act. The itchy fibres of the insulation soon deter you.";
         }
-        if (new_battery notin selfobj) {
+        if (new_battery notin self) {
             "Nothing else there, unfortunately.";
         }
         move new_battery to East_Annexe;
@@ -11634,7 +11634,7 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     if (action == ##Go) {
-        if (noun == e_obj or d_obj && selfobj.d_to ~= nothing) {
+        if (noun == e_obj or d_obj && self.d_to ~= nothing) {
             print "You clamber out onto a rickety ladder which runs right down the east wall of the Hall, and nervously descend...^";
         }
         rfalse;
@@ -11645,10 +11645,10 @@ Array preactions_table --> IsDirection;
 
 [ IsaacPaintingAfter ;  
     if (action == ##Take) {
-        if (selfobj in White_Hallway && picture_hook has scenery) {
-            give selfobj ~scenery;
-            give selfobj static;
-            give selfobj ~talkable;
+        if (self in White_Hallway && picture_hook has scenery) {
+            give self ~scenery;
+            give self static;
+            give self ~talkable;
             "You take Mad Isaac down.";
         }
         if (big_iron_fireplace has concealed) {
@@ -11708,11 +11708,11 @@ Array preactions_table --> IsDirection;
 
 [ GothicKeyBefore ;     
     if (action == ##Take) {
-        if (selfobj has general) {
+        if (self has general) {
             rfalse;
         }
         give Sir_Joshua_Meldrewe ~concealed;
-        move selfobj to Sir_Joshua_Meldrewe;
+        move self to Sir_Joshua_Meldrewe;
         Sir_Joshua_Meldrewe.number = 5;
         StartDaemon(Sir_Joshua_Meldrewe);
         "As you reach for the key, a swirling mist condenses about it, into a ghostly head which opens its mouth and eats up the key!  The rest of the ghostly body solidifies about the head and rises to swagger before you.";
@@ -11733,8 +11733,8 @@ Array preactions_table --> IsDirection;
     if (location ~= Battlements) {
         rfalse;
     }
-    n = selfobj.number - 1;
-    selfobj.number = n;
+    n = self.number - 1;
+    self.number = n;
     if (n == 4) {
         "^The ghost laughs in a gurgling kind of way, as it were always coughing and spluttering.";
     }
@@ -11755,7 +11755,7 @@ Array preactions_table --> IsDirection;
 [ GhostLife ;   
     if (action == ##Give or ##ThrowAt) {
         remove noun;
-        StopDaemon(selfobj);
+        StopDaemon(self);
         if (noun == chicken_wishbone) {
             move iron_key to Priests_Hole;
             give iron_key general;
@@ -11929,11 +11929,11 @@ Array preactions_table --> IsDirection;
     if (action == ##Attack or ##Push or ##Pull) {
         give windows open;
         give windows openable;
-        selfobj.before = 65535[?];
+        self.before = 65535[?];
         "The windows suddenly give way in a shower of flakes of paint, letting fresh summer air into the room!";
     }
     if (action == ##Enter) {
-        if (selfobj hasnt open) {
+        if (self hasnt open) {
             "The windows are shut.";
         }
         rfalse;
@@ -11972,7 +11972,7 @@ Array preactions_table --> IsDirection;
         "What, and earn seven years bad luck?";
     }
     if (action == ##Rub) {
-        give selfobj general;
+        give self general;
         trigger_quotation(21);
         "You polish up the mirror just a little more.";
     }
@@ -12023,10 +12023,10 @@ Array preactions_table --> IsDirection;
 
 [ OldWineryAfter ;      
     if (action == ##Look) {
-        if (selfobj has general) {
+        if (self has general) {
             rfalse;
         }
-        give selfobj general;
+        give self general;
         print "^As you disturb the still air, the attic key, which was balanced on top of the demijohn, slips onto the floor and disappears into a crack in the floorboards. Your spirits sink as it does, rattling down some distance. How on earth are you going to get it back?^";
         rfalse;
     }
@@ -12071,7 +12071,7 @@ Array preactions_table --> IsDirection;
 
 [ TouristMapBefore n ;  
     if (action == ##Consult) {
-        if (selfobj in demijohn) {
+        if (self in demijohn) {
             "You can't get a close enough look.";
         }
         n = TryNumber(consult_from);
@@ -12104,7 +12104,7 @@ Array preactions_table --> IsDirection;
 [ CalendarBefore i w ;  
     if (action == ##Read) {
         print "The calendar is turned to ";
-        i = selfobj.time_left;
+        i = self.time_left;
         if (i == 0) {
             print "January";
         }
@@ -12146,8 +12146,8 @@ Array preactions_table --> IsDirection;
         " daisies.";
     }
     if (action == ##Turn or ##SwitchOn) {
-        selfobj.time_left = (selfobj.time_left + 1) % 12;
-        R_Process(##Read,selfobj);
+        self.time_left = (self.time_left + 1) % 12;
+        R_Process(##Read,self);
         rtrue;
     }
     if (action == ##Consult) {
@@ -12192,8 +12192,8 @@ Array preactions_table --> IsDirection;
                 i = 11;
             }
             if (i >= 0) {
-                selfobj.time_left = i;
-                R_Process(##Read,selfobj);
+                self.time_left = i;
+                R_Process(##Read,self);
                 rtrue;
             }
         }
@@ -12232,7 +12232,7 @@ Array preactions_table --> IsDirection;
 
 [ SheetsDaemon ;        
     if (antiquated_wireless hasnt on) {
-        StopDaemon(selfobj);
+        StopDaemon(self);
         give antiquated_wireless ~general;
         rtrue;
     }
@@ -12253,7 +12253,7 @@ Array preactions_table --> IsDirection;
 
 
 [ WirelessBefore ;      
-    if (selfobj has concealed) {
+    if (self has concealed) {
         "You've played this game before.";
     }
     if (action == ##Take) {
@@ -12279,11 +12279,11 @@ Array preactions_table --> IsDirection;
 
 [ WirelessAfter ;       
     if (action == ##SwitchOn) {
-        StartTimer(selfobj,6);
+        StartTimer(self,6);
         "You push the switch on the wireless, but nothing happens.";
     }
     if (action == ##SwitchOff) {
-        if (selfobj has general) {
+        if (self has general) {
             give antiquated_wireless ~general;
             "Thank heaven for that.";
         }
@@ -12298,9 +12298,9 @@ Array preactions_table --> IsDirection;
 
 
 [ WirelessDaemon ;      
-    if (selfobj has on) {
+    if (self has on) {
         StartDaemon(pile_of_sheets);
-        give selfobj general;
+        give self general;
         if (antiquated_wireless in location) {
             print "^The radio valves glow, and execrable so-called easy listening music fills the air with a sort of bland aural candy-floss.^";
         }
@@ -12313,11 +12313,11 @@ Array preactions_table --> IsDirection;
 
 
 [ WirelessDescribe ;    
-    if (selfobj has general) {
+    if (self has general) {
         "^The wireless fills the air with Jemima's favourite station, ~Mild-n-Breezy FM~, about which the least said the better.";
     }
     print "^To one side is a heavy cabinet on casters containing an antiquated wireless, the kind with ";
-    if (selfobj has on) {
+    if (self has on) {
         print "glowing ";
     }
     "valves inside. On the top is a bakelite on-off switch.";
@@ -12362,7 +12362,7 @@ Array preactions_table --> IsDirection;
 
 [ JemimaDaemon ;        
     if (location ~= Potting_Room) {
-        StartTimer(selfobj,1);
+        StartTimer(self,1);
         rtrue;
     }
     print "^~There we are!  All done now.~  Jemima hangs a daisy chain around your neck, then frowns and adjusts your hair in an exceedingly annoying way.^";
@@ -12428,7 +12428,7 @@ Array preactions_table --> IsDirection;
         "Well, quite. Best to just grit your teeth and put up with her though.";
     }
     if (action == ##Answer) {
-        if (selfobj hasnt general) {
+        if (self hasnt general) {
             trigger_quotation(17);
             "She pretends not to have heard, a favourite ploy of hers when sulking.";
         }
@@ -12510,12 +12510,12 @@ Array preactions_table --> IsDirection;
 [ DaisyChainBefore ;    
     if (action == ##Read) {
         print "A delicate, pretty chain of ";
-        DaisyType(selfobj.number);
+        DaisyType(self.number);
         " daisies.";
     }
     if (action == ##Drop) {
-        remove selfobj;
-        give selfobj ~worn;
+        remove self;
+        give self ~worn;
         "The daisychain falls to pieces in your hands!  Cheer up, though, perhaps Jemima might give you another.";
     }
     rfalse;
@@ -12523,7 +12523,7 @@ Array preactions_table --> IsDirection;
 
 
 [ DaisyUp o ;   
-    if (selfobj has worn && rod_identity == 2) {
+    if (self has worn && rod_identity == 2) {
         o = child(player);
       .labelXXX;
         if (o ~= nothing) {
@@ -12607,7 +12607,7 @@ Array preactions_table --> IsDirection;
         if (player in dumbwaiter) {
             "You can just reach the wheel from here, but have too little leverage to turn it.";
         }
-        if (selfobj has on) {
+        if (self has on) {
             "It won't turn. Perhaps it's broken, or perhaps only rusty.";
         }
         print "It spins round smoothly, and the dumbwaiter is hoisted ";
@@ -12819,7 +12819,7 @@ Array preactions_table --> IsDirection;
         if (noun == u_obj) {
             "The mouse bleeps with annoyance.";
         }
-        frm = parent(selfobj);
+        frm = parent(self);
         if (frm == Cellars_South) {
             if (noun == n_obj) {
                 dst = Cellars;
@@ -12919,7 +12919,7 @@ Array preactions_table --> IsDirection;
 
 [ WineCellarsDescription ;      
     print "The wine cellars are now quite badly stocked, many of the hexagonal racks being home only to woodlice now. Much of what there is was laid in by your father and has corked";
-    if (selfobj hasnt light) {
+    if (self hasnt light) {
         ".";
     }
     ". The barrel-shaft slants upwards to the north, and bright light floods in from the gardens above.";
@@ -12935,7 +12935,7 @@ Array preactions_table --> IsDirection;
 
 
 [ WineCellarsUp ;       
-    if (selfobj hasnt light) {
+    if (self hasnt light) {
         rfalse;
     }
     "The barrel-shaft is too steep to climb. You were lucky enough not to break your neck on the way down.";
@@ -12958,7 +12958,7 @@ Array preactions_table --> IsDirection;
 
 [ HoleLife ;    
     if (action == ##Order or ##Ask or ##Answer) {
-        if (robot_mouse in selfobj) {
+        if (robot_mouse in self) {
             return RunRoutines(robot_mouse,life);
         }
         rfalse;
@@ -13018,7 +13018,7 @@ Array preactions_table --> IsDirection;
 
 [ ArcBefore i ; 
     if (action == ##Receive) {
-        i = selfobj.number;
+        i = self.number;
         if (i == 9) {
             "The sockets are all full.";
         }
@@ -13031,10 +13031,10 @@ Array preactions_table --> IsDirection;
             }
             "The Rod of Infinity is just slightly too large to fit.";
         }
-        move noun to selfobj;
+        move noun to self;
         give noun static;
         ++i;
-        selfobj.number = i;
+        self.number = i;
         print "It fits perfectly in one of the arc sockets.^";
         if (parent(spherical_opening) == nothing) {
             move spherical_opening to Infinity_Symbol;
@@ -13108,7 +13108,7 @@ Array preactions_table --> IsDirection;
         "The coffin sparks, spitting with electricity, and begins throbbing with a life of its own!";
     }
     if (action == ##Open) {
-        selfobj.initial = "A rather morbid gilded model coffin rests open here.";
+        self.initial = "A rather morbid gilded model coffin rests open here.";
         rfalse;
     }
     rfalse;
@@ -13164,8 +13164,8 @@ Array preactions_table --> IsDirection;
         move painting_of_Mad_Isaac_Meldrewe to White_Hallway;
         give painting_of_Mad_Isaac_Meldrewe ~moved;
         give painting_of_Mad_Isaac_Meldrewe talkable;
-        give selfobj ~static;
-        give selfobj scenery;
+        give self ~static;
+        give self scenery;
         painting_of_Mad_Isaac_Meldrewe.initial = "Mad Isaac's painting glares at you from the picture hook.";
         "You hang up Mad Isaac, who seems ideally placed there.";
     }
@@ -13177,7 +13177,7 @@ Array preactions_table --> IsDirection;
     Servants_Room.d_to = Halfway_up_the_Stairs;
     Servants_Room.n_to = Halfway_up_the_Stairs;
     move tight_door to Servants_Room;
-    selfobj.u_to = Servants_Room;
+    self.u_to = Servants_Room;
     print "The staircase leads up into...^";
     return Servants_Room;
 ];
@@ -13203,8 +13203,8 @@ Array preactions_table --> IsDirection;
 
 [ PosterBefore ;        
     if (action == ##Take or ##RipDown or ##Rip or ##Pull) {
-        if (selfobj has scenery) {
-            give selfobj ~scenery;
+        if (self has scenery) {
+            give self ~scenery;
             "You hastily tear down the poster, but there's nothing interesting behind it, only painted graffiti: ~Shantih Shantih Shantih~.";
         }
         rfalse;
@@ -13439,7 +13439,7 @@ Array preactions_table --> IsDirection;
         if (second == nothing) {
             "An intriguing idea, but you'll have to be more explicit about how to do it.";
         }
-        R_Process(##Insert,second,selfobj);
+        R_Process(##Insert,second,self);
         rtrue;
     }
     if (action == ##Receive) {
@@ -13544,7 +13544,7 @@ Array preactions_table --> IsDirection;
 
 [ TouristBoatBefore ;   
     if (action == ##Enter) {
-        if (selfobj hasnt open) {
+        if (self hasnt open) {
             "Are you in Seine?  There is a river in between you and the boat.";
         }
         rfalse;
@@ -13752,7 +13752,7 @@ Array preactions_table --> IsDirection;
 
 
 [ CovenCellDaemon ;     
-    if (player notin selfobj) {
+    if (player notin self) {
         rtrue;
     }
     if (Coven_Cell hasnt general) {
@@ -13760,7 +13760,7 @@ Array preactions_table --> IsDirection;
             give player general;
         }
         give Coven_Cell general;
-        StartTimer(selfobj,3);
+        StartTimer(self,3);
         rtrue;
     }
     print "^A key turns in the door and Doktor Stein bursts in. He stops to pat the goat affectionately. ~Cheer up, Dobbin. As soon as I've finished this brutal human sacrifice I'll take you for your walk.~  He feeds Dobbin some sugar-cake. ~They make such marvellous cheese,~ he explains confidentially.^";
@@ -13834,11 +13834,11 @@ Array preactions_table --> IsDirection;
 
 [ CabinetBefore ;       
     if (action == ##Attack) {
-        if (selfobj has open) {
+        if (self has open) {
             "Just how broken do you want it to be?";
         }
-        give selfobj open;
-        StartTimer(selfobj,5);
+        give self open;
+        StartTimer(self,5);
         "You smash the glass... noisily. Still, the cabinet is open now.";
     }
     if (action == ##Open or ##Close) {
@@ -13862,7 +13862,7 @@ Array preactions_table --> IsDirection;
 
 [ RoundStoneBefore ;    
     if (action == ##Take) {
-        if (selfobj has general) {
+        if (self has general) {
             "Reach down the grating as you may, it remains just beyond reach.";
         }
         rfalse;
@@ -13953,7 +13953,7 @@ Array preactions_table --> IsDirection;
 [ TimerDaemon i j k ;   
     i = timer_detonator;
     j = parent(i);
-    selfobj.time_left = 0;
+    self.time_left = 0;
   .labelXXX;
     if (parent(i) ~= nothing) {
         i = parent(i);
@@ -14016,8 +14016,8 @@ Array preactions_table --> IsDirection;
 [ TimerBefore i ;       
     if (action == ##Read) {
         print "The timer seems quite simple to set. ";
-        i = selfobj.number;
-        if (selfobj.time_left ~= 0) {
+        i = self.number;
+        if (self.time_left ~= 0) {
             print "The clock is running, and currently at ";
             EnglishNumber(i);
             " minutes.";
@@ -14029,11 +14029,11 @@ Array preactions_table --> IsDirection;
         "At present the clock is reset to zero.";
     }
     if (action == ##Set) {
-        if (selfobj.time_left ~= 0) {
+        if (self.time_left ~= 0) {
             "It is already running!";
         }
-        StartTimer(selfobj,10);
-        selfobj.time_left = 1;
+        StartTimer(self,10);
+        self.time_left = 1;
         "You wind back the timer to ten minutes, and off it goes.";
     }
     rfalse;
@@ -14042,16 +14042,16 @@ Array preactions_table --> IsDirection;
 
 [ WireBefore i ;        
     if (action == ##Pull) {
-        if (selfobj has general) {
+        if (self has general) {
             "That one's already pulled out.";
         }
-        give selfobj general;
+        give self general;
         print "You pull out ";
         Defart(inp1);
         print ". ";
         i = complicated_looking_bomb.time_left;
         complicated_looking_bomb.time_left = i + 1;
-        bomb_wires->i = selfobj;
+        bomb_wires->i = self;
         if (i == 3) {
             give complicated_looking_bomb general;
             "All four wires are now disconnected.";
@@ -14133,8 +14133,8 @@ Array preactions_table --> IsDirection;
 
 
 [ CupsAndGlassesEachTurn i ;    
-    selfobj.number = selfobj.number + 1;
-    i = selfobj.number;
+    self.number = self.number + 1;
+    i = self.number;
     if (i == 2) {
         "^There is a scuffling noise as some people gather up on the pavement outside the skylight.";
     }
@@ -14340,7 +14340,7 @@ Array preactions_table --> IsDirection;
 
 [ DessertBefore ;       
     if (action == ##Take) {
-        if (selfobj hasnt moved && copper_coin hasnt general) {
+        if (self hasnt moved && copper_coin hasnt general) {
             "You can't understand a word of what the bartender says, but the drift is clear enough. Not until you pay for it.";
         }
         rfalse;
@@ -14526,7 +14526,7 @@ Array preactions_table --> IsDirection;
 
 
 [ CrossInitial ;        
-    StartDaemon(selfobj);
+    StartDaemon(self);
     rfalse;
 ];
 
@@ -14563,7 +14563,7 @@ Array preactions_table --> IsDirection;
 
 [ InscriptsBefore ;     
     if (action == ##Receive) {
-        if (selfobj hasnt open) {
+        if (self hasnt open) {
             rfalse;
         }
         if (noun ~= inscribed_stone or old_timber_spar) {
@@ -14573,9 +14573,9 @@ Array preactions_table --> IsDirection;
             rtrue;
         }
         if (noun == inscribed_stone) {
-            selfobj.initial = "The opening is securely wedged with the stone.";
+            self.initial = "The opening is securely wedged with the stone.";
         } else {
-            selfobj.initial = "The opening is securely wedged with the prop.";
+            self.initial = "The opening is securely wedged with the prop.";
         }
         give noun scenery;
         give noun ~moved;
@@ -14593,7 +14593,7 @@ Array preactions_table --> IsDirection;
 
 [ GemBefore ;   
     if (action == ##Take) {
-        if (selfobj has moved) {
+        if (self has moved) {
             rfalse;
         }
         print "There is a horrible screeching sound as a trap is sprung. ";
@@ -14697,7 +14697,7 @@ Array preactions_table --> IsDirection;
 [ UrnBefore ;   
     if (action == ##Receive) {
         if (noun == player) {
-            R_Process(##Enter,selfobj);
+            R_Process(##Enter,self);
             rtrue;
         }
         remove noun;
@@ -14785,7 +14785,7 @@ Array preactions_table --> IsDirection;
     move aft_obj to compass;
     move fore_obj to compass;
     move some_landlubbers_direction to compass;
-    StartDaemon(selfobj);
+    StartDaemon(self);
     rfalse;
 ];
 
@@ -14794,7 +14794,7 @@ Array preactions_table --> IsDirection;
     if (location has ship_flag) {
         rfalse;
     }
-    StopDaemon(selfobj);
+    StopDaemon(self);
     remove port_obj;
     remove starboard_obj;
     remove aft_obj;
@@ -14887,10 +14887,10 @@ Array preactions_table --> IsDirection;
 
 
 [ FlagBefore ;  
-    if (selfobj in comfortable_bed && verb == ##Take or ##Remove) {
+    if (self in comfortable_bed && verb == ##Take or ##Remove) {
         "The flag seems perfect for the bed as it is.";
     }
-    if (selfobj notin Up_the_Mast) {
+    if (self notin Up_the_Mast) {
         rfalse;
     }
     if (action == ##Take or ##Pull) {
@@ -15021,13 +15021,13 @@ Array preactions_table --> IsDirection;
         "You swivel the plant's tub.";
     }
     if (action == ##Push or ##PushDir or ##Pull) {
-        if (selfobj has general) {
+        if (self has general) {
             rfalse;
         }
-        give selfobj general;
+        give self general;
         move timber_hatch to location;
         Beside_the_Wall.d_to = timber_hatch;
-        move selfobj to location;
+        move self to location;
         "Pushing the shrub a little aside reveals an unsightly old timber hatch, about three feet in diameter.";
     }
     rfalse;
@@ -15056,7 +15056,7 @@ Array preactions_table --> IsDirection;
 [ TimberHatchAfter ;    
     if (action == ##Open) {
         give Wine_Cellars light;
-        print (string) selfobj.initial;
+        print (string) self.initial;
         new_line;
         rtrue;
     }
@@ -15129,7 +15129,7 @@ Array preactions_table --> IsDirection;
 
 [ RollerBefore ;        
     if (action == ##Go) {
-        if (selfobj hasnt on) {
+        if (self hasnt on) {
             print "(The motor isn't on at the moment.)^";
         } else {
             if (noun == u_obj or d_obj) {
@@ -15153,7 +15153,7 @@ Array preactions_table --> IsDirection;
 
 
 [ RollerEachTurn ;      
-    if (player notin selfobj || selfobj hasnt on) {
+    if (player notin self || self hasnt on) {
         rfalse;
     }
     if (location == Lawn_Ornaments && plaster_statuette in Lawn_Ornaments) {
@@ -15174,10 +15174,10 @@ Array preactions_table --> IsDirection;
 
 [ WeedKillerBefore i ;  
     if (action == ##Squeeze or ##Push) {
-        if (selfobj has general) {
+        if (self has general) {
             "Nothing emerges. The bottle must be empty.";
         }
-        give selfobj general;
+        give self general;
         if (location == Wall_of_Thorns) {
             "A valiant but doomed idea. The weed killer harms barely a single tendril of the wall.";
         }
@@ -15204,7 +15204,7 @@ Array preactions_table --> IsDirection;
                 }
                 WeedkillerX = MazeX;
                 WeedkillerY = MazeY;
-                StartDaemon(selfobj);
+                StartDaemon(self);
                 "A stream of weed-killer soaks into the seedbed, and does nothing obvious.";
             }
         }
@@ -15218,14 +15218,14 @@ Array preactions_table --> IsDirection;
     if (game_section ~= T_GARDEN_PAST) {
         ndx = WeedkillerX + 9 * WeedkillerY;
         garden_array->ndx = 48;
-        StopDaemon(selfobj);
+        StopDaemon(self);
     }
     rfalse;
 ];
 
 
 [ SpadeShort ;  
-    if (selfobj has general) {
+    if (self has general) {
         print "spade";
     } else {
         print "bladed agricultural implement";
@@ -15515,11 +15515,11 @@ Array preactions_table --> IsDirection;
 
 [ BeanpoleAfter ;       
     if (action == ##Take) {
-        if (selfobj hasnt general) {
+        if (self hasnt general) {
             rfalse;
         }
-        give selfobj general;
-        StartTimer(selfobj,5);
+        give self general;
+        StartTimer(self,5);
         rfalse;
     }
     rfalse;
@@ -15791,7 +15791,7 @@ Array preactions_table --> IsDirection;
 
 
 [ ChainBefore ; 
-    if (selfobj hasnt moved) {
+    if (self hasnt moved) {
         "The watch is just within sight, but quite beyond reach.";
     }
     if (action == ##Swing or ##Wave) {
@@ -15894,7 +15894,7 @@ Array preactions_table --> IsDirection;
 
 [ CroquetLawnDesc ;     
     print "One of the most beautiful hedge-enclosed, tree-muffled lawns in England, and just out of sight of the house, this has been a jewel in the gardens for centuries. Since the twenties it has also been a croquet lawn, of the regulation twenty-four yards square, laid out with a central coloured peg and six peripheral hoops";
-    if (selfobj.nw_to == nothing) {
+    if (self.nw_to == nothing) {
         ".";
     }
     ". The hedge is broken slightly to the northwest.";
@@ -15969,14 +15969,14 @@ Array preactions_table --> IsDirection;
 
 
 [ MurkyCaveInitial ;    
-    StartDaemon(selfobj);
+    StartDaemon(self);
     rfalse;
 ];
 
 
 [ MurkyCaveDaemon cnt ; 
     if (game_section ~= T_ANCIENT_BRITAIN) {
-        StopDaemon(selfobj);
+        StopDaemon(self);
     }
     cnt = CouncilCnt;
     if (cnt > 0) {
@@ -16136,8 +16136,8 @@ Array preactions_table --> IsDirection;
         "You tuck the daisy behind your ear, almost out of sight.";
     }
     if (action == ##Take) {
-        if (selfobj hasnt general) {
-            give selfobj general;
+        if (self hasnt general) {
+            give self general;
             "Aided by the swinging of the rope, you pick the daisy.";
         }
         rfalse;
@@ -16148,7 +16148,7 @@ Array preactions_table --> IsDirection;
 
 [ DaisyBefore ; 
     if (action == ##Take) {
-        if (selfobj has moved || hemp_rope has general) {
+        if (self has moved || hemp_rope has general) {
             rfalse;
         }
         "You stretch out your hand, but cannot quite reach the daisy, such is the size of the overhang.";
@@ -16158,7 +16158,7 @@ Array preactions_table --> IsDirection;
 
 
 [ DaisyUp o ;   
-    if (selfobj has worn && rod_identity == 2) {
+    if (self has worn && rod_identity == 2) {
         o = child(player);
       .labelXXX;
         if (o ~= nothing) {
@@ -16254,7 +16254,7 @@ Array preactions_table --> IsDirection;
             "It plummets out of sight, until even the light vanishes in the distance. This must be an extremely deep well.";
         }
         if (noun ~= historical_pamphlet) {
-            StartTimer(selfobj,2);
+            StartTimer(self,2);
         }
         CDefart(noun);
         " drops into the well-shaft.";
@@ -16348,10 +16348,10 @@ Array preactions_table --> IsDirection;
 
 [ TentPoleAfter ;       
     if (action == ##Take) {
-        if (selfobj has general) {
+        if (self has general) {
             rfalse;
         }
-        give selfobj general;
+        give self general;
         print "As you uproot the tent-pole, the whole tent collapses ignominiously, the animal hides falling about your head. The hides are heavy and weigh you down, but you just manage to crawl out...^";
         StartTimer(Encampment,10);
         PlayerTo(Encampment);
@@ -16431,9 +16431,9 @@ Array preactions_table --> IsDirection;
             "You are unable to shake off the dream.";
         }
     }
-    if (game_section == T_EGYPT_DREAMING && verb == ##Attack && noun == selfobj) {
+    if (game_section == T_EGYPT_DREAMING && verb == ##Attack && noun == self) {
         print "Ouch!  You wake up, smarting.^";
-        ChangePlayer(yourself);
+        ChangePlayer(selfobj);
         R_Process(##Look);
         rtrue;
     }
@@ -16507,8 +16507,8 @@ Array preactions_table --> IsDirection;
     if (heavy_iron_mascot notin player) {
         rfalse;
     }
-    i = selfobj.number - 1;
-    selfobj.number = i;
+    i = self.number - 1;
+    self.number = i;
     if (i == 0) {
         deadflag = DIED;
         print "^In an astonishing freak accident, ";
@@ -16557,7 +16557,7 @@ Array preactions_table --> IsDirection;
 
 [ DolmenAfter ; 
     if (action == ##Look) {
-        ChangePlayer(yourself);
+        ChangePlayer(selfobj);
         if (heavy_iron_mascot in ghost_of_yourself) {
             move heavy_iron_mascot to player;
             StartDaemon(heavy_iron_mascot);
@@ -16613,10 +16613,10 @@ Array preactions_table --> IsDirection;
 
 [ ShipWheelBefore ;     
     if (action == ##Turn) {
-        if (selfobj has general) {
+        if (self has general) {
             "Your hands seem unable to touch it again.";
         }
-        give selfobj general;
+        give self general;
         give sandstone_recess open;
         "You try turning the wheel, but it moves only infinitesimally slowly. The door begins to raise the tiniest fraction, and a few grains of sand cascade in slow motion, rattling horribly against each other...^^It will take forever, and the air is running out...";
     }
@@ -16712,7 +16712,7 @@ Array preactions_table --> IsDirection;
 
 
 [ CRShort ;     
-    if (selfobj.time_left == 3) {
+    if (self.time_left == 3) {
         print "Contraption Reflection";
     } else {
         print "Contraption Room";
@@ -16722,7 +16722,7 @@ Array preactions_table --> IsDirection;
 
 
 [ CREast ;      
-    if (selfobj.time_left == 3) {
+    if (self.time_left == 3) {
         "You bump into an invisible barrier - perhaps the edge of the reflection.";
     }
     return The_Catacombs;
@@ -16736,15 +16736,15 @@ Array preactions_table --> IsDirection;
             rewdraw_statusline = true;
             Achieved(SCORE_REFLECTING);
             if (noun == n_obj) {
-                selfobj.s_to = metal_wall;
-                selfobj.n_to = nothing;
+                self.s_to = metal_wall;
+                self.n_to = nothing;
                 metal_wall.w_to = ne_obj;
-                selfobj.time_left = 3;
+                self.time_left = 3;
             } else {
-                selfobj.n_to = metal_wall;
-                selfobj.s_to = nothing;
+                self.n_to = metal_wall;
+                self.s_to = nothing;
                 metal_wall.w_to = w_obj;
-                selfobj.time_left = 2;
+                self.time_left = 2;
             }
             AdjustSlide(0,2);
             AdjustSlide(3,5);
@@ -16755,7 +16755,7 @@ Array preactions_table --> IsDirection;
         rfalse;
     }
     if (action == ##Look) {
-        if (selfobj has general) {
+        if (self has general) {
             print "^The lower basket contains a cannonball, and the upper is empty.^";
             rfalse;
         }
@@ -16955,7 +16955,7 @@ Array preactions_table --> IsDirection;
 
 [ GlowingOrbBefore ;    
     if (action == ##Rub) {
-        if (selfobj has general) {
+        if (self has general) {
             "It shines already!";
         }
         print "Bewilderingly, the condensation dissolves your hand away, and the water rushes up over your body as if it were blotting paper. You feel nothing except disorientation, but your confusion soon resolves to...^";
@@ -17034,8 +17034,8 @@ Array preactions_table --> IsDirection;
 
 
 [ CausewayInitial ;     
-    StartDaemon(selfobj);
-    if (Austin in selfobj) {
+    StartDaemon(self);
+    if (Austin in self) {
         StartDaemon(Outside_the_Royal_Museum);
     }
     rfalse;
@@ -17046,7 +17046,7 @@ Array preactions_table --> IsDirection;
     if (game_section ~= T_ALEXANDRIA) {
         rfalse;
     }
-    selfobj.number = (selfobj.number + 1) % 12;
+    self.number = (self.number + 1) % 12;
     if (location ~= Crossroads or Outside_the_Royal_Museum or Stadium) {
         rfalse;
     }
@@ -17114,7 +17114,7 @@ Array preactions_table --> IsDirection;
             "^A wave splashes up under the grating, throwing up the strange stone, which bounces back off the grating and washes away down the passage out of sight.^^Well, you didn't think it was going to be that easy, did you?^";
         }
     } else {
-        StopDaemon(selfobj);
+        StopDaemon(self);
     }
     rfalse;
 ];
@@ -17418,7 +17418,7 @@ Array preactions_table --> IsDirection;
 
 
 [ UglyAnimalShort ;     
-    if (selfobj hasnt general) {
+    if (self hasnt general) {
         rfalse;
     }
     print "model of a mischievous-looking monkey, which wriggles as it comes alive";
@@ -17455,7 +17455,7 @@ Array preactions_table --> IsDirection;
 
 [ MummyCaseBefore ;     
     if (action == ##Open) {
-        if (selfobj hasnt open) {
+        if (self hasnt open) {
             "The lid must weigh a ton. You can't shift it.";
         }
         "The coffin's already open.";
@@ -17470,7 +17470,7 @@ Array preactions_table --> IsDirection;
             PlayerTo(Buried_Alive);
             rtrue;
         }
-        if (selfobj has open) {
+        if (self has open) {
             "No, don't. Once shut it would never open again.";
         }
         "The coffin is, to put it mildly, already closed.";
@@ -17488,9 +17488,9 @@ Array preactions_table --> IsDirection;
 
 [ SocketDesc ;  
     print "Above ";
-    Defart(selfobj);
+    Defart(self);
     print " is the single word ~";
-    EtruscanInt(selfobj.number);
+    EtruscanInt(self.number);
     "~.";
 ];
 
@@ -17498,11 +17498,11 @@ Array preactions_table --> IsDirection;
 [ SocketBefore ;        
     if (action == ##Receive) {
         if (noun == model_golden_sceptre) {
-            model_golden_sceptre.number = selfobj;
-            if (selfobj == first_socket) {
+            model_golden_sceptre.number = self;
+            if (self == first_socket) {
                 model_golden_sceptre.initial = "The sceptre projects from the first socket like a handle.";
             }
-            if (selfobj == second_socket) {
+            if (self == second_socket) {
                 model_golden_sceptre.initial = "The sceptre projects from the second socket like a handle.";
             }
             if (inp2 == third_socket) {
@@ -17523,7 +17523,7 @@ Array preactions_table --> IsDirection;
 [ SceptreAfter ;        
     if (action == ##Take or ##Remove) {
         if (location == Quite_an_Undertaking) {
-            selfobj.number = 0;
+            self.number = 0;
         }
         rfalse;
     }
@@ -17536,10 +17536,10 @@ Array preactions_table --> IsDirection;
         "Apparently, it's not susceptible to that.";
     }
     if (action == ##Turn) {
-        if (selfobj notin Quite_an_Undertaking || selfobj has moved) {
+        if (self notin Quite_an_Undertaking || self has moved) {
             rfalse;
         }
-        if (selfobj.number ~= 0 && mummy_case has open) {
+        if (self.number ~= 0 && mummy_case has open) {
             give mummy_case ~open;
             print "With a crash, the coffin slams shut.^^";
         }
@@ -17547,7 +17547,7 @@ Array preactions_table --> IsDirection;
         i = random(6);
         EtruscanInt(i);
         print "~.^";
-        selfobj.number.number = i;
+        self.number.number = i;
         if (debug_deterministic_transportation == 1) {
             first_socket.number = 3;
             second_socket.number = 6;
@@ -17577,10 +17577,10 @@ Array preactions_table --> IsDirection;
     if (mummy_case hasnt general || inp1 ~= u_obj) {
         "There's nowhere to go.";
     }
-    if (selfobj has general) {
+    if (self has general) {
         "^Your spirit, having cheated death once already, is weighed down with its double life and will not diffuse out again.";
     }
-    give selfobj general;
+    give self general;
     Achieved(SCORE_AFTERLIFE);
     move adamantine_skull to player;
     print "^Your spirit rises, prepared as it was for the afterlife, and diffuses through the solid gold of the coffin by sheer effort of will, finally beginning to recoalesce. You stagger, confused, through dark caves until you finally come to light, clutching something solid...^";
@@ -17614,7 +17614,7 @@ Array preactions_table --> IsDirection;
         print "The Museum guards are so busy abasing themselves before the sacred Cat (incredibly, that's Austin) that you are able to slip inside.^^Austin, having at long last found owners even more gullible and undemanding than yourself, ambles away to a life of extreme cossetting and luxury.^";
         remove Austin;
         StopDaemon(Austin);
-        StopDaemon(selfobj);
+        StopDaemon(self);
         return The_Birdcage_of_the_Muses;
     }
     "Museum guards tactfully nudge drunken louts away from the Museum.";
@@ -17749,7 +17749,7 @@ Array preactions_table --> IsDirection;
     }
     if (action == ##Read) {
         print "Each side has a word inscribed on it. The word on top is ~";
-        EtruscanInt(selfobj.number);
+        EtruscanInt(self.number);
         "~.";
     }
     if (action == ##Drop or ##ThrowAt or ##Gamble) {
@@ -17810,7 +17810,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1) {
+        if (Refers(self,w) == 1) {
             ++i;
         } else if (w == 'tubes') {
             parser_action = ##PluralFound;
@@ -17831,7 +17831,7 @@ Array preactions_table --> IsDirection;
   .labelXXX;
     if (1[?] == 1[?]) {
         w = NextWord();
-        if (Refers(selfobj,w) == 1) {
+        if (Refers(self,w) == 1) {
             ++i;
         } else if (w == 'poems' or 'scrolls') {
             parser_action = ##PluralFound;
@@ -17867,7 +17867,7 @@ Array preactions_table --> IsDirection;
 
 [ SpindleBefore ;       
     if (action == ##Pull) {
-        R_Process(##Take,selfobj);
+        R_Process(##Take,self);
         rtrue;
     }
     rfalse;
@@ -17889,11 +17889,11 @@ Array preactions_table --> IsDirection;
 
 [ CallimachusLife o ;   
     if (action == ##Give) {
-        if (selfobj == Callimachus && noun == tube_with_an_alpha_on || (selfobj == Apollonius && inp1 == tube_with_a_kappa_on)) {
+        if (self == Callimachus && noun == tube_with_an_alpha_on || (self == Apollonius && inp1 == tube_with_a_kappa_on)) {
             "He takes the tube, sees the letter on it, looks exasperated, clouts you over the head with the tube and pushes it back into your arms.";
         }
         if (noun == tube_with_an_alpha_on or tube_with_a_kappa_on) {
-            CDefart(selfobj);
+            CDefart(self);
             print " takes the tube and looks inside";
             o = child(noun);
             if (o == nothing) {
@@ -17902,7 +17902,7 @@ Array preactions_table --> IsDirection;
             }
             if (o == scroll_bearing_a_short_poem or scroll_bearing_an_epic_poem) {
                 print " to see a scroll, which he pulls out eagerly.^^";
-                if (selfobj == Callimachus && o == scroll_bearing_an_epic_poem || (selfobj == Apollonius && o == scroll_bearing_a_short_poem)) {
+                if (self == Callimachus && o == scroll_bearing_an_epic_poem || (self == Apollonius && o == scroll_bearing_a_short_poem)) {
                     remove o;
                     if (parent(Callimachus) == parent(Apollonius)) {
                         move purple_sash to location;
@@ -17914,12 +17914,12 @@ Array preactions_table --> IsDirection;
                     }
                     remove noun;
                     print "~Arrghhhieee!~ he says (untranslatably), boiling over with rage. He then curses repeatedly, but the only word you can make out is ~";
-                    if (selfobj == Callimachus) {
+                    if (self == Callimachus) {
                         print "Apollonius";
-                        move selfobj to parent(Apollonius);
+                        move self to parent(Apollonius);
                     } else {
                         print "Callimachus";
-                        move selfobj to parent(Callimachus);
+                        move self to parent(Callimachus);
                     }
                     give Callimachus concealed;
                     Apollonius.initial = "Apollonius and Callimachus are having a furious, heated, endless argument about something. They seem well practised at this occupation.";
@@ -18066,7 +18066,7 @@ Array preactions_table --> IsDirection;
 
 [ DriveBefore ; 
     if (action == ##Go) {
-        if (noun == w_obj or u_obj && selfobj.u_to == Dead_End) {
+        if (noun == w_obj or u_obj && self.u_to == Dead_End) {
             print "With your heart in your mouth, you scale the old fire escape once again, breathing a sigh of relief as you haul yourself in through the open hatchway at the top.^";
         }
         rfalse;
@@ -18111,14 +18111,14 @@ Array preactions_table --> IsDirection;
 
 [ OldEvansLife ;        
     if (action == ##Order or ##Ask) {
-        if (selfobj hasnt general) {
+        if (self hasnt general) {
             "~Just a minute, I'm doing my form.~";
         }
         print "He looks at you in a hypnotic daze,";
         if (verb == ##Give && noun == Crescent_Moon && second == player) {
             move Crescent_Moon to player;
             Achieved(SCORE_HYPNOSIS);
-            selfobj.description = "Old Evans' hat is empty. You feel terribly guilty.";
+            self.description = "Old Evans' hat is empty. You feel terribly guilty.";
             " and before you can say ~How heartless I am~ he obediently hands you the Moon.";
         }
         " unable to follow your perfectly clear instruction.";
@@ -18138,7 +18138,7 @@ Array preactions_table --> IsDirection;
 
 [ ChurchBefore ;        
     if (action == ##Enter) {
-        if (selfobj hasnt open) {
+        if (self hasnt open) {
             "The Church door is barred from the far side.";
         }
         rfalse;
@@ -18168,7 +18168,7 @@ Array preactions_table --> IsDirection;
 
 [ CrescentMoonBefore ;  
     if (action == ##Take or ##Remove) {
-        if (selfobj in Old_Evans) {
+        if (self in Old_Evans) {
             "Evans isn't giving up his mascot that easily.";
         }
         rfalse;
@@ -18353,7 +18353,7 @@ Array preactions_table --> IsDirection;
 
 [ AdamantineKnightDesc ;        
     print "The knight is bursting and eager with life, as though nothing could fade his boundless energy for existence. ";
-    if (marble_rose in selfobj) {
+    if (marble_rose in self) {
         print "He is holding the marble flower. ";
     }
     if (statue_of_Diana in location && marble_rose notin statue_of_Diana) {
@@ -18502,7 +18502,7 @@ Array preactions_table --> IsDirection;
 [ DianaBefore ; 
     if (action == ##PointAt) {
         if (adamantine_knight in location) {
-            if (marble_rose in selfobj) {
+            if (marble_rose in self) {
                 "The knight has done all he can for Diana, and is now in your service.";
             }
             "The knight is unable to think how he can serve Diana.";
@@ -18795,7 +18795,7 @@ Array preactions_table --> IsDirection;
 
 [ SoapBefore ;  
     if (action == ##Eat) {
-        R_Process(##Wash,selfobj);
+        R_Process(##Wash,self);
         rtrue;
     }
     rfalse;
@@ -20298,7 +20298,7 @@ Array preactions_table --> IsDirection;
 
 [ PlacesSub i j k ;     
     L__M(##Places);
-    i = yourself;
+    i = selfobj;
   .labelXXX;
     if (i <= top_object) {
         if (i has visited) {
@@ -20307,7 +20307,7 @@ Array preactions_table --> IsDirection;
         ++i;
         jump labelXXX;
     }
-    i = yourself;
+    i = selfobj;
   .labelXXX;
     if (i <= top_object) {
         if (i has visited) {
@@ -20330,7 +20330,7 @@ Array preactions_table --> IsDirection;
 
 [ ObjectsSub i j k ;    
     L__M(##Objects,1);
-    i = yourself;
+    i = selfobj;
   .labelXXX;
     if (i <= top_object) {
         if (i has moved) {
