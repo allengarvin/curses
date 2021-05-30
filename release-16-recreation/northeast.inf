@@ -159,9 +159,46 @@ Object  Stone_Cross "Stone Cross"
         section T_NE_OF_HOME,
   has   light;
 
+[ OldEvansLife ;
+    if( action == ##Order or ##Ask ) {
+        if( self hasnt general ) {
+            "~Just a minute, I'm doing my form.~";
+        }
+        print "He looks at you in a hypnotic daze,";
+        if( action == ##Give && noun == Crescent_Moon && second == player ) {
+            move Crescent_Moon to player;
+            Achieved(SCORE_HYPNOSIS);
+            self.description = "Old Evans' hat is empty. You feel terribly guilty.";
+            " and before you can say ~How heartless I am~ he obediently hands you the Moon.";
+        }
+        " unable to follow your perfectly clear instruction.";
+    }
+    if( action == ##Answer ) {
+        "Evans is lost. Whatever do you mean?";
+    }
+    if( action == ##Give ) {
+        if( noun == Crescent_Moon ) {
+            "Evans looks sadly at the mascot. But it is tarnished now, you have spoilt it. Your guilt increases further.";
+        }
+        rfalse;
+    }
+    rfalse;
+];
+
 Object  -> Old_Evans "Old Evans" 
   with  name 'racing' 'enthusiast' 'old' 'evans',
-!        life OldEvansLife,
+        life OldEvansLife,
+        orders [;
+            print "He looks at you in a hypnotic daze,";
+            Give:
+                if( noun == Crescent_Moon && second == player ) {
+                    move Crescent_Moon to player;
+                    Achieved(SCORE_HYPNOSIS);
+                    self.description = "Old Evans' hat is empty. You feel terribly guilty.";
+                    " and before you can say ~How heartless I am~ he obediently hands you the Moon.";
+                }
+            " unable to follow your perfectly clear instruction.";
+        ],
         initial "Old Evans, the village racing enthusiast, sits on the steps of the memorial, combing the back pages of his ~Racing Times~ newspaper.",
         description "In the band of his hat is his lucky mascot: a little picture of the crescent moon.",
   has   animate proper transparent;

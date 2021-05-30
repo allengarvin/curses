@@ -405,6 +405,62 @@ Replace JumpSub;
 Replace DarkToDark;
 
 Include "Parser";
+
+Object LibraryMessages
+  with  before [;
+            Score:
+                if( deadflag == 0 ) {
+                    WhereInGame();
+                    print "  ";
+                }
+                rfalse;
+            Inv:
+                trigger_quotation(0);
+!                print "You are ";
+!                if( location == Inside_the_Orb ) {
+!                    print "bathed in a curious white light, and ";
+!                }
+!                if( lm_n == compass ) {
+!                    "carrying nothing.";
+!                }
+!                print "carrying";
+!                rtrue;
+                rfalse;
+            Drop:
+                if( noun has rod_attr )
+                    trigger_quotation(16);
+                rfalse;
+            Jump:
+                if( Austin notin location ) {
+                    rfalse;
+                }
+                if( game_section == T_ALEXANDRIA ) {
+                    "Austin is quite unruffled.";
+                }
+                print "For some reason, Austin is startled and springs for his life ";
+                trigger_quotation(7);
+                if( location == Souvenirs_Room && charcoal_sketch in slide_projector && south_wall hasnt concealed ) {
+                    move Austin to Causeway;
+                    Achieved(SCORE_AUSTIN);
+                    StartDaemon(Outside_the_Royal_Museum);
+                    "right up through the south wall and into Alexandria!";
+                }
+                AustinMovements(true);
+                rfalse;
+!            Go:
+!                if( lm_n == n_obj && game_section == T_DREAMING or (T_DREAMING|T_UNREAL) ) {
+!                    "You drift in that direction, but without gaining any ground.";
+!                }
+!                rfalse;
+            Listen:
+                if( antiquated_wireless has general && (antiquated_wireless in location || (antiquated_wireless in Conservatory && location == Potting_Room)) )
+                    "You feel your brain turning to rice pudding.";
+                rfalse;
+        ]
+  has   scenery;
+
+
+
 Include "VerbLib";
 
 ! bug in 6.31.1 library

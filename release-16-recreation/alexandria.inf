@@ -1,7 +1,16 @@
 [ SeaBefore ;
-    if( action == ##Drink ) "Drink warm salty water?  No.";
     if( action == ##Swim ) "The waters are deceptively treacherous. Best not.";
+    rfalse;
 ];
+
+! adding this:
+Object  "seawater"
+  with  name 'sea' 'salt' 'water',
+        before [;
+            Drink: "Drink warm salty water?  No.";
+        ],
+        found_in Causeway Island_of_Pharos Jetty Warehouses_and_Port Harbour_Mouth,
+  has   scenery;
 
 Object  Causeway "Causeway"      
   with  before SeaBefore,
@@ -11,6 +20,7 @@ Object  Causeway "Causeway"
             StartDaemon(self);
             if( Austin in self )
                 StartDaemon(Outside_the_Royal_Museum);
+            rfalse;
         ],
         description "A warm winter's night in the ancient city of Alexandria, on the Heptastadion causeway across the harbour to the Island of Pharos (to north). The Mediterranean waters lap against the land bridge, and the whole city (southeast) is lit up with torches: it is a night of celebration.",
         number 2,
