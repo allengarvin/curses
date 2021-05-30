@@ -24,6 +24,22 @@ DERoom  Museum_Foyer "Museum Foyer"
 Object  -> revolving_door_obj "revolving door"   
   with  name 'revolving' 'door',
 !        before RevolvingDoorBefore,
+        before [ dst;
+            Turn, Push, Pull:
+                print "You give the revolving door a heave, and it begins to move; but you pause, out of breath, 
+                    after only a half turn. ";
+                if( Museum_Foyer.ne_to == Revolving_Door1 ) 
+                    dst = Revolving_Door2;
+                else 
+                    dst = Revolving_Door1;
+                Museum_Foyer.ne_to = dst;
+                if( child(dst) )
+                    "Interestingly, there's something inside this segment of it.";
+                new_line;
+                rtrue;
+            Enter:
+                << Go ne_obj >>;
+        ],
         description "Why not go northeast and look inside?",
   has   scenery;
 
@@ -79,6 +95,7 @@ Object  -> beach_ball "beach ball"
                     rtrue;
                 }
                 AllowPushDir();
+                rtrue;
         ],
         after [; PushDir: "You bounce the beach ball along in front of you."; ],
         initial "A colourful, striped inflated beach ball bounces around.",
@@ -243,8 +260,9 @@ Object  -> cell_door "cell door"
 
 DERoom  Cabinet_Room "Cabinet Room"      
   with  before [;
-            if( noun in glass_cabinet ) "It's too dark to see much inside the cabinet.";
-            rfalse;
+            Examine:
+                if( noun in glass_cabinet ) "It's too dark to see much inside the cabinet.";
+                rfalse;
         ],
         w_to Hall_of_Exhibits,
         description "An annexe to the museum, containing sundry archaelogical finds, badly labelled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
@@ -256,12 +274,12 @@ Object  -> glass_cabinet "glass cabinet"
             Attack:
                 if( self has open ) "Just how broken do you want it to be?";
                 give self open;
-                StartTimer(self,5);
+                StartTimer(self, 5);
                 "You smash the glass... noisily. Still, the cabinet is open now.";
         ],
 
-        s_to "One cabinet looks particularly vulnerable.",
-        initial "You could just look inside the broken glass cabinet.",
+        when_closed "One cabinet looks particularly vulnerable.",
+        when_open "You could just look inside the broken glass cabinet.",
         time_left 0,
         time_out [; 
             if( game_section == T_HAMBURG && location ~= Coven_Cell ) {
@@ -286,13 +304,18 @@ Object  -> -> smooth_round_stone "smooth round stone"
             Take: if( self has general ) "Reach down the grating as you may, it remains just beyond reach.";
         ],
         initial nothing,
-        description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the label rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
-        angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
+        description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single 
+            star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the
+            label rightly, something funny has been done to a piece of metal embedded in the top, but your German
+            wasn't up to understanding what.",
+        angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right 
+            direction.",
   has   scored;
 
 Object  -> -> papyrus_fragment "papyrus fragment"        
   with  name 'fragment' 'papyrus',
-        description "Only one line has survived intact:^^.<anoppe> an-spe : ska er nog-er an-ge : to-ro-ma ka ur Al-x-an-dr u bir ka ur-a an-ge ur",
+        description "Only one line has survived intact:^^.<anoppe> an-spe : ska er nog-er an-ge : to-ro-ma ka ur 
+            Al-x-an-dr u bir ka ur-a an-ge ur",
         angel_hint "You need more evidence before you can begin deciphering the language, I fear.",
   has   ;
 

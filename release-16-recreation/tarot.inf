@@ -127,7 +127,7 @@ Object  complicated_looking_bomb "complicated-looking bomb"
             if( location ~= Ruined_Castle_Cafe ) 
                 rfalse;
             if( complicated_looking_bomb hasnt concealed ) {
-                if( blue_wire ~= bomb_wires->0 || green_wire ~= bomb_wires->1 || black_wire ~= bomb_wires->2 || red_wire ~= bomb_wires->3 ) {
+                if( blue_wire ~= bomb_wires-->0 || green_wire ~= bomb_wires-->1 || black_wire ~= bomb_wires-->2 || red_wire ~= bomb_wires-->3 ) {
                     print "^Click!  Perhaps there's more to bomb disposal than you thought.^";
                 } else {
                     print "^Click!  The timer runs out, but the bomb was disarmed. You pocket the timer and hide the rest of the evidence under the table.^";
@@ -240,9 +240,9 @@ Class   Wire_Class
                 }
                 give self general;
                 print "You pull out ", (the) noun, ". ";
-                i = complicated_looking_bomb.time_left;
-                complicated_looking_bomb.time_left = i + 1;
-                bomb_wires->i = self;
+                i = complicated_looking_bomb.number;
+                complicated_looking_bomb.number = i + 1;
+                bomb_wires-->i = self;
                 if( i == 3 ) {
                     give complicated_looking_bomb general;
                     "All four wires are now disconnected.";
