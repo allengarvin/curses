@@ -1586,10 +1586,10 @@ Object Old_Winery "Old Winery"
         section T_MODERN,
   has   ;
 
-Object -> demijohn "labelXXXled glass demijohn" 
-  with  name 'demijohn' 'glass' 'bottle' 'labelXXX',
+Object -> demijohn "labelled glass demijohn"    
+  with  name 'demijohn' 'glass' 'bottle' 'label',
         before DemijohnBefore,
-        description "Faded ink on the labelXXX reads: Elderberry '63.",
+        description "Faded ink on the label reads: Elderberry '63.",
   has   container openable static transparent;
 
 Object -> -> obj105_nasty_looking_red_battery "nasty-looking red battery"       
@@ -2356,7 +2356,7 @@ Object -> cell_door "cell door"
 Object Cabinet_Room "Cabinet Room"      
   with  before CabinetRoomBefore,
         w_to Hall_of_Exhibits,
-        description "An annexe to the museum, containing sundry archaelogical finds, badly labelXXXled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
+        description "An annexe to the museum, containing sundry archaelogical finds, badly labelled in German (which you can hardly read at the best of times) and securely pinioned inside glass cabinets. The storm outside thrashes against the narrow dark windows.",
         section T_HAMBURG,
   has   ;
 
@@ -2373,7 +2373,7 @@ Object -> -> smooth_round_stone "smooth round stone"
   with  name 'smooth' 'round' 'pumice' 'metal' 'stone',
         before RoundStoneBefore,
         initial nothing,
-        description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the labelXXX rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
+        description "A smooth palm-sized disc, perhaps of pumice stone, painted in yellows and browns with a single star motif, around which (clockwise) are the words ~nog~, ~er~, ~ska~ and ~iw~. If you remember the label rightly, something funny has been done to a piece of metal embedded in the top, but your German wasn't up to understanding what.",
         angel_hint "Doesn't the shape strike you as familiar at all?  - There, that should point you in the right direction.",
   has   scored;
 
@@ -2463,7 +2463,7 @@ Object -> cups_and_glasses "cups and glasses"
 
 Object -> mounted_bottle "mounted bottle"       
   with  name 'mounted' 'whisky' 'glass' 'bottle',
-        initial "An unlabelXXXled whisky bottle, laid on its side and mounted on a wood plaque, lies deservedly unwanted on one of the crates.",
+        initial "An unlabelled whisky bottle, laid on its side and mounted on a wood plaque, lies deservedly unwanted on one of the crates.",
         description "Old, unwanted, dusty, empty.",
         angel_hint "The great challenge, of course, is to get a ship inside.",
   has   ;
@@ -3117,7 +3117,7 @@ Object -> weed_killer_bottle "weed killer bottle"
   with  name 'weed' 'killer' 'bottle' 'weedkiller',
         before WeedKillerBefore,
         initial "In the shadows is a weed killer bottle.",
-        description "If squeezed, it squirts weed killer over the ground. There are many warning labelXXXs about getting it on one's hands.",
+        description "If squeezed, it squirts weed killer over the ground. There are many warning labels about getting it on one's hands.",
         daemon WeedKillerDaemon,
         angel_hint "The funny thing is, they didn't have weedkillers in the early nineteenth century, and yet they still planned some marvellous gardens.",
   has   ;
@@ -3846,13 +3846,13 @@ Object Universe_Maintenance_Room "Universe Maintenance Room"
 Object -> big_electricians_switch "big electrician's switch"    
   with  name 'big' 'electricians' 'switch',
         after SwitchAfter,
-        description "The lower, on, position is labelXXXled ~Determinism~. The upper, off, position is labelled ~Chance~.",
+        description "The lower, on, position is labelled ~Determinism~. The upper, off, position is labelled ~Chance~.",
   has   on scenery static switchable;
 
 Object -> large_dial "large dial"       
   with  name 'large' 'dial' 'gauges' 'dials',
         before DialBefore,
-        initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelXXXled in small print.",
+        initial "Particularly prominent are a large dial, like the volume control on an expensive hi-fi amplifier, and a big electrician's switch. Both are labelled in small print.",
         description "Above the dial is a lower-case letter h with a slashed line through it. It is currently turned to 1.055 or thereabouts. There is something worryingly dangerous about its matter-of-factness.",
   has   static;
 
@@ -4274,7 +4274,7 @@ Object -> inscribed_die "inscribed die"
   with  name 'inscribed' 'die' 'dice' 'cube',
         before InscribedDieBefore,
         initial "An inscribed six-sided die lies on the table in front of him.",
-        description "The sides you can see are labelXXXled with short words.",
+        description "The sides you can see are labelled with short words.",
         article "an",
         number 3,
   has   static;
