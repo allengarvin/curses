@@ -14645,7 +14645,7 @@ Array preactions_table --> IsDirection;
     rfalse;
 ];
 
-[ DescribePaces i ;     
+[ DescribePacesPoetically i ;   
     if (i < 0) {
         i = 0 - i;
     }
@@ -14675,9 +14675,9 @@ Array preactions_table --> IsDirection;
     print "The priestess, Pythian oracle of Loxias, seems hardly to hear or understand: but goes into a trance, swaying to a sensuous rhythm: and chants, in English,^^";
     if (priest_cnt == 1) {
         print " ~As Hephaestus, master of the metals^  uncovered the gilden sunrise of Helicon^  so, in ";
-        DescribePaces(StrongboxX);
+        DescribePacesPoetically(StrongboxX);
         print " and ";
-        DescribePaces(StrongboxY);
+        DescribePacesPoetically(StrongboxY);
         print "^  when six arches have stood sixty years^  shall even a shade's remains be cast.~";
     }
     if (priest_cnt == 2) {
@@ -15870,7 +15870,7 @@ Array preactions_table --> IsDirection;
 
 [ DescribePaces x y ;   
     if (x ~= 0) {
-        DescribePaces(x);
+        DescribePacesPoetically(x);
         if (x > 0) {
             print " east";
         } else {
@@ -15881,7 +15881,7 @@ Array preactions_table --> IsDirection;
         }
     }
     if (y ~= 0) {
-        DescribePaces(y);
+        DescribePacesPoetically(y);
         if (y > 0) {
             print " north";
         } else {
