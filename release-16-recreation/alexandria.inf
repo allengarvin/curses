@@ -511,8 +511,38 @@ Object  -> marble_wall "marble wall"
   has   door static;
 
 Object  Quite_an_Undertaking "Quite an Undertaking"      
-  with  
-!        before UndertakingBefore,
+  with  before [;
+            Exit:
+                if( player in mummy_case ) {
+                    print "(That's a relief.)^";
+                    rfalse;
+                }
+                rfalse;
+            Go:
+                if( player in mummy_case ) {
+                    print "(You are so distracted that common sense takes over and you clamber out of the mummy 
+                        case.)^";
+                    << Exit >>;
+                }
+                if( noun == n_obj or ne_obj ) {
+                    if( second_socket hasnt general ) {
+                        move quarterstaff to Quite_an_Undertaking;
+                        give second_socket general;
+                        "The passage seems endless, and you are obliged to retreat before the air runs out. You trip over something as you do, cursing under your breath.";
+                    }
+                    "The passage seems endless and you retreat.";
+                }
+                rfalse;
+            Close:
+                rfalse;
+            default: 
+                if( player notin mummy_case )
+                    rfalse;
+                print "(You are so distracted that common sense takes over and you clamber out of the mummy 
+                    case.)^";
+                move player to parent(mummy_case);
+                location = parent(player);
+        ],
         e_to This_Is_The_Death,
         u_to This_Is_The_Death,
         description "A really luxurious burial chamber, far beneath the entrance court.^^A yard-wide square channel runs away fractionally east of north, in an apparently endless stooped passage.^^On the west wall are three curious sockets, above a painting of a priest of the half-mythical pharoah Sosostris in full sceptred, grey-clad regalia.",
