@@ -378,7 +378,7 @@ Object  The_Spirit_World "The Spirit World"
             Take, Drop, Inv, Empty, Remove, Insert:
                 "You are beyond worldly possessions.";
             Sleep:
-                if( player in wooden_couch ) {
+                if( player in spirit_wooden_couch ) {
                     if( The_Spirit_World.number == 4 ) {
                         "The spell of the tomb is broken now, and you cannot sleep.";
                     }
@@ -410,7 +410,7 @@ Object  The_Spirit_World "The Spirit World"
                 location = The_Height_of_Fashion;
             } else {
                 The_Spirit_World.number = The_Spirit_World.number - 1;
-                move player to wooden_couch;
+                move player to spirit_wooden_couch;
                 remove Napoleonic_officers;
             }
             << Look >>;
@@ -526,13 +526,13 @@ Object  -> painting_of_the_priest "painting of the priest"
   has   scenery;
 
 Object  -> mummy_case "mummy case"       
-  with  name 'mummy' 'case' 'lid' 'sarcophag' 'coffin',
+  with  name 'mummy' 'case' 'lid' 'sarcophagus' 'coffin',
         before [;
             Open:
                 if( self hasnt open ) "The lid must weigh a ton. You can't shift it.";
                 "The coffin's already open.";
             Close:
-                if( noun == mummy_case && noun has open && player in mummy_case ) {
+                if( noun == self && noun has open && player in self ) {
                     if( MummyWarning == false ) {
                         MummyWarning = true;
                         "That seems an awfully... final decision. Here's a chance to reconsider.";
@@ -554,7 +554,7 @@ Object  -> mummy_case "mummy case"
         ],
         initial "A beautiful gold and blue mummy case, or sarcophagus, rests massively here.",
         description "Golden, kingfisher-blue, smoothly curved, immensely heavy, beautiful. And final, and dead.",
-  has   enterable static;
+  has   enterable static transparent;
 
 class   TombSocket
   with  description [;

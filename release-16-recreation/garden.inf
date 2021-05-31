@@ -546,6 +546,29 @@ Object -> irate_squirrel_friend "irate squirrel friend"
     ".";
 ];
 
+[ DescribePaces x y ;
+    if (x ~= 0) {
+        DescribePacesPoetically(x);
+        if (x > 0) {
+            print " east";
+        } else {
+            print " west";
+        }
+        if (y ~= 0) {
+            print " and ";
+        }
+    }
+    if (y ~= 0) {
+        DescribePacesPoetically(y);
+        if (y > 0) {
+            print " north";
+        } else {
+            print " south";
+        }
+    }
+    rtrue;
+];
+
 GRoom  Croquet_Lawn "Croquet Lawn"      
   with  w_to Hedgery,
         nw_to nothing,
@@ -583,7 +606,7 @@ Object -> peg_and_six_hoops "peg and six hoops"
 
 Object strongbox "strongbox"    
   with  name 'strong' 'box' 'strongbox',
-        e_to iron_key,
+        with_key iron_key,
         description "A good strong strongbox, buried for two centuries and now unearthed; it bears a fine gothic 
             iron lock, and a tasteless coat of arms (a wild boar rampant).",
         angel_hint "You might have read about this. One of your ancestors is the key, perhaps?",

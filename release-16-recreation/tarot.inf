@@ -961,7 +961,7 @@ Object  -> flaming_bronze_urn "flaming bronze urn"
         article "the",
   has   container open static;
 
-[ DescribePaces i ;
+[ DescribePacesPoetically i ;
     if( i < 0 ) {
         i = 0 - i;
     }
@@ -992,9 +992,9 @@ Object  -> flaming_bronze_urn "flaming bronze urn"
         swaying to a sensuous rhythm: and chants, in English,^^";
     if( priest_cnt == 1 ) {
         print " ~As Hephaestus, master of the metals^  uncovered the gilden sunrise of Helicon^  so, in ";
-        DescribePaces(StrongboxX);
+        DescribePacesPoetically(StrongboxX);
         print " and ";
-        DescribePaces(StrongboxY);
+        DescribePacesPoetically(StrongboxY);
         print "^  when six arches have stood sixty years^  shall even a shade's remains be cast.~";
     }
     if( priest_cnt == 2 ) {

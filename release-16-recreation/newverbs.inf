@@ -92,29 +92,34 @@
     "Hang on a moment... yes, you're still breathing. Keep it up!";
 ];
 
-[ PaceDirSub ;
+[ PaceSub ;
+!    print "DEBUG: verb, PaceDirSub^";
     if( yard_dir <= 0 ) {
         yard_dir = e_obj;
     }
-    PaceMovement(1,yard_dir);
+    PaceMovement(1, yard_dir);
+    ! PaceMovement(number_paces, yard_dir);
     rtrue;
 ];
 
-[ PaceSub ;
-    PaceMovement(croquet_var,yard_dir);
+[ PaceDirSub ;
+!    print "DEBUG: verb, PaceSub^";
+    PaceMovement(number_paces,yard_dir);
     rtrue;
 ];
 
 [ PaceMovement i d ydelta xdelta x y ;
+!    print "Debug PaceMovement(", i, ", ", (name) d, ")^";
+!    print "Current pos: (", DigX, ", ", DigY, ")^";
     if( d == nothing ) {
         d = e_obj;
     }
-    if( d == 65535 ) {
+    if( d == -1 ) {
         DigX = 0;
         DigY = 0;
         << Look >>;
     }
-    if( d == 65534 ) {
+    if( d == -2 ) {
         DigX = OldDigX;
         DigY = OldDigY;
         << Look >>;
@@ -132,36 +137,37 @@
         xdelta = 1;
     }
     if( d == s_obj ) {
-        xdelta = 65535;
+        xdelta = -1;
     }
     if( d == e_obj ) {
         ydelta = 1;
     }
     if( d == w_obj ) {
-        ydelta = 65535;
+        ydelta = -1;
     }
     if( d == ne_obj ) {
         ydelta = 1;
         xdelta = 1;
     }
     if( d == nw_obj ) {
-        ydelta = 65535;
+        ydelta = -1;
         xdelta = 1;
     }
     if( d == se_obj ) {
         ydelta = 1;
-        xdelta = 65535;
+        xdelta = -1;
     }
     if( d == sw_obj ) {
-        ydelta = 65535;
-        xdelta = 65535;
+        ydelta = -1;
+        xdelta = -1;
     }
     if( ydelta == 0 && xdelta == 0 ) {
         "Hardly!";
     }
+!    print "DEBUG: xdelta = ", xdelta, "  ydelta = ", ydelta, "^";
     x = DigX + ydelta * i;
     y = DigY + xdelta * i;
-    if( x >= 13 || x <= 65523 || y >= 13 || y <= 65523 ) {
+    if( x >= 13 || x <= -13 || y >= 13 || y <= -13 ) {
         "That would go past the edge of the lawn.";
     }
     DigX = x;
@@ -234,17 +240,27 @@
     }
     if (w == 'peg' or 'middle' or 'centre' or 'hoop' or 'hoops' or 'center') {
         ++wn;
-        return 65535;
+        return -1;
     }
     if (w == 'hole' && dug_hole in Croquet_Lawn) {
         ++wn;
-        return 65534;
+        return -2;
     }
     i = wn;
     if (w ~= -1 ) {
-        j = NounDomain(true,0,0);
+        j = NounDomain(compass,0,0);
+
+! ("pace 3 north")
+! [line 4 * Routine(20088) -> PaceDir]
+!  [line 4 token 1 word 2 : Routine(20088)]
+!    [NounDomain called at word 4
+!    seeking definite object
+! 
+! [** Programming error: tried to find the "child" of Class **]
+!    [ND made 0 matches]
+
     } else {
-        j = 65535;
+        j = -1;
     }
     if (j <= top_object && j > 0) {
         d = j;
@@ -280,39 +296,41 @@
             }
         }
     }
+!    print "DEBUG CroquetMove(), return: ", (name) d, "^";
     return d;
 ];
 
 [ CroquetFunc i j ;     
     i = SomeParse();
     if( i == 0 ) {
-        if( AnotherWord() == 65535 ) {
-            return 65535;
+        if( AnotherWord() == -1 ) {
+            return -1;
         }
         j = CroquetMove();
-        if( AnotherWord() == 65535 ) {
+        if( AnotherWord() == -1 ) {
             i = 1;
         } else {
             i = SomeParse();
         }
         if( i == 0 ) {
-            return 65535;
+            return -1;
         }
     } else {
         j = CroquetMove();
     }
-    croquet_var = i;
+    number_paces = i;
     yard_dir = j;
+!    print "DEBUG CroquetFunc(): number_paces = ", number_paces, ", yard_dir = ", (name) yard_dir, "^";
     return 0;
 ];
 
 [ AnotherCroquetFunc i j ;      
     i = SomeParse();
     if( i == 0 ) {
-        return 65535;
+        return -1;
     }
     j = CroquetMove();
-    croquet_var = i;
+    number_paces = i;
     yard_dir = j;
     return 0;
 ];
@@ -670,9 +688,9 @@
     s = k + buffer;
     i = parse->(j - 1);
     if (i ~= true) {
-        return 65535;
+        return -1;
     }
-    j = 65535;
+    j = -1;
 
     if (s->0 >= 97 && s->0 <= 122) {
         j = s->0 - 97 + 1;
@@ -680,8 +698,8 @@
     if (s->0 >= 65 && s->0 <= 90) {
         j = s->0 - 65 + 1;
     }
-    if (j == 65535) {
-        return 65535;
+    if (j == -1) {
+        return -1;
     }
     parsed_number = j;
     ++wn;
@@ -757,7 +775,8 @@
     print "^There is a click from the mechanism. Pulleys pull. Cogs spin. Little bits of string run.^";
     if (CR hasnt general) {
         give CR general;
-        print "^The cannonball drops out of the metal hand, and falls into the higher basket, which plunges down, hurling the other basket upwards, ";
+        print "^The cannonball drops out of the metal hand, and falls into the higher basket, which plunges down, 
+            hurling the other basket upwards, ";
         j = child(hanging_cord);
         if (j == 0) {
             "but it must have been empty.";
@@ -781,7 +800,10 @@
             }
             move ancient_well to Lawn_Ornaments;
         } else {
-            print "^A moment later, however, there is a distant but loud thump. A moment after that, something plummets back down out of the hole (in a shower of thin white plaster) and into the higher basket, which (owing to fantastic machinery) wrenches down again, hurling the cannonball in the other end up into the air.^^The metal hand catches the cannonball beautifully.^";
+            print "^A moment later, however, there is a distant but loud thump. A moment after that, something 
+                plummets back down out of the hole (in a shower of thin white plaster) and into the higher basket,
+                which (owing to fantastic machinery) wrenches down again, hurling the cannonball in the other end
+                up into the air.^^The metal hand catches the cannonball beautifully.^";
             give CR ~general;
         }
         if (parent(golden_orb) == hanging_cord) {
@@ -804,7 +826,8 @@
             move skiff to Warehouses_and_Port;
             location = Warehouses_and_Port;
         }
-        print "The skiff gathers wind from somewhere, which whistles past you until your eyes are blurred and watery. When you look around, you find that you are moored once again...^";
+        print "The skiff gathers wind from somewhere, which whistles past you until your eyes are blurred and watery. 
+            When you look around, you find that you are moored once again...^";
         << Look >>;
     }
     if (skiff has general) 
@@ -1007,3 +1030,7 @@ Extend 'lie' last
 
 Extend 'dig' last
     * 'with' held                                       -> DigWith;
+
+Extend 'go' last
+    * CroquetFunc                                       -> PaceDir;
+

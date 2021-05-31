@@ -247,9 +247,9 @@ Object  -> parish_church "parish church"
                     "The Church door is barred from the far side.";
                 rfalse;
         ],
-        n_to Parish_Church_Room,
-        w_to w_obj,
-        description "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
+        door_to Parish_Church_Room,
+        door_dir n_to,
+        when_closed "The fourteenth-century Church of St Michael and All Angels doesn't seem to be locked up, exactly - just barred from the other side.",
   has   door scenery;
 
 Object  -> Goat_and_Compasses "Goat and Compasses"       
