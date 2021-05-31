@@ -536,7 +536,7 @@
 
 [ PointVagueSub ;
     if( noun in compass && adamantine_knight in location ) {
-        KnightReacts();
+        adamantine_knight.orders();
         rfalse;
     }
     if( noun has rod_attr ) 
