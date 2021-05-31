@@ -174,6 +174,7 @@ Global PlanckWarning;
 Global DigX;
 Global DigY;
 Global deterministic_transportation;
+
 Global WeedkillerX;
 Global WeedkillerY;
 Global Mouse_x;
@@ -555,6 +556,10 @@ Include "afterlife.inf";
 [ Initialise; ;
     StartSplash();
     location = Attic;
+
+    #Ifdef DEBUG;
+    deterministic_transportation = 1;
+    #Endif;
 
     move crumpled_piece_of_paper to player;
     move electric_torch to player;
