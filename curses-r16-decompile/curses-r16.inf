@@ -5774,7 +5774,7 @@ Array actions_table -->
     HelpSpecialSub
     TimeSub
     LookUpSub
-    PaceSub
+    PaceDirSub
     RamSub
     LieSub
     LieDownSub
@@ -5801,7 +5801,7 @@ Array actions_table -->
     XyzzySub
     ShantihSub
     MilkSub
-    PaceDirSub
+    PaceSub
     HypnotizeSub
     AnoppeSub
     SailSub
@@ -23286,7 +23286,7 @@ Array preactions_table --> IsDirection;
     "There are hints built into this game, but you will have to find out for yourself how to get them.";
 ];
 
-[ PaceDirSub ;  
+[ PaceSub ;     
     if (yard_dir <= 0) {
         yard_dir = e_obj;
     }
@@ -23294,7 +23294,7 @@ Array preactions_table --> IsDirection;
     rtrue;
 ];
 
-[ PaceSub ;     
+[ PaceDirSub ;  
     PaceMovement(croquet_var,yard_dir);
     rtrue;
 ];
