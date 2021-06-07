@@ -95,40 +95,6 @@ The clock is ticking downwards, and is right on the red zone!  None of the wires
 
 ---------------------------------------------------------------
 
-    if (action == ##Order or ##Answer or ##Ask) {
-        if (special_word == 'curses') {
-            print "In a harsh voice, the goat intones:^^";
-            VersionSub();
-            rtrue;
-        }
-        "Grunt!";
-
-But this doesn't work:
->goats, curses
-Grunt!
-
->ask goats about curses
-Grunt!
-
->ask goats about curses
-Grunt!
-
->goats, curses
-Grunt!
-
->answer curses
-(to the herd of goats)
-Grunt!
-
->answer "curses"
-(to the herd of goats)
-Grunt!
-
->goats, curses
-Grunt!
-
----------------------------------------------------------------
-
 >put featureless in coffin
 Which do you mean, the featureless mahogany rod or the Rod of Infinity?
 
@@ -140,6 +106,7 @@ Which do you mean, the featureless mahogany rod or the Rod of Infinity?
 
 (grr)
 
+[Ah, I see, it inherits the class and sets it separately. I'm fixing this one in the new release]
 ---------------------------------------------------------------
 Because the smooth_round_stone has its "moved" attribute removed:
         move smooth_round_stone to Warehouses_and_Port;
@@ -149,6 +116,9 @@ Because the smooth_round_stone has its "moved" attribute removed:
         give smooth_round_stone ~concealed;
         give rusty_iron_key general;
         rusty_iron_key.initial = "That iron key seems to have washed up here...";
+
 it is scored twice in the "things_scored". Thus you can win the game with 554 points.
+---------------------------------------------------------------
+You can ask Evans for the mascot multiple times
 
 
